@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="65.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/common_list_item_content_view" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="63.0dip">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_centerVertical="true">
+            <TextView android:id="@id/utils_common_list_item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/utils_text_item_name" />
+            <TextView android:id="@id/utils_common_list_item_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/utils_common_list_item_name" android:layout_alignLeft="@id/utils_common_list_item_name" style="@style/utils_text_item_desc" />
+        </RelativeLayout>
+        <ImageView android:id="@id/utils_common_list_item_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</LinearLayout>

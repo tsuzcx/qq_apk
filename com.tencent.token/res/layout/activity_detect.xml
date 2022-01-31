@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:edu="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/title_layout" android:layout_width="fill_parent" android:layout_height="53.0dip">
+        <com.tencent.token.utils.bugscanuitl.TitleBar android:id="@id/title" android:layout_width="fill_parent" android:layout_height="fill_parent" edu:titletext="@string/app_name" edu:titletextsize="@dimen/text_size_18" edu:backColor="@color/reslutlisttitlebackcolor" edu:titlecolor="@color/add_account_tip_msg_content" edu:padleft="@dimen/titlepadleft" edu:hasleft="true" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/upper_layout" android:background="#ff247fed" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="9.0">
+        <View android:id="@id/divider_line" android:background="#22ffffff" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        <RelativeLayout android:id="@id/scan_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/logo_margin_top" android:layout_below="@id/divider_line" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/scan_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/scan_bottom" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/scan_middle_arc" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/scan_middle_arc" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/start_upper_bug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/start_upper_bug" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:gravity="center" android:id="@id/is_scaning" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/scan_tip_margin_top" android:text="@string/is_scaning" android:layout_below="@id/scan_layout" android:layout_centerHorizontal="true" style="@style/text_view_16_white" />
+        <TextView android:gravity="center" android:id="@id/start_scan_btn" android:background="@drawable/btn_white" android:layout_width="@dimen/btn_width" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/btn_margin_bottom" android:text="@string/start_scan" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/text_view_18_white" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/lower_layout" android:background="@color/text_white" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="4.0">
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/text_gray" android:gravity="fill_horizontal" android:id="@id/text_explain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="40.0dip" android:text="@string/text_explain" android:layout_centerHorizontal="true" android:lineSpacingExtra="5.0dip" />
+    </RelativeLayout>
+</LinearLayout>

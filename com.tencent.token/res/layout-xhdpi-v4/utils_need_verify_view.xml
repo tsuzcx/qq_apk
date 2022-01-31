@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="94.0dip">
+        <ImageView android:id="@id/utils_need_verify_img" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="23.0dip" android:src="@drawable/icon_account_lock" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        <TextView android:id="@id/utils_need_verify_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/utils_account_lock_detail" android:layout_toRightOf="@id/utils_need_verify_img" android:layout_centerVertical="true" style="@style/utils_text_item_detail" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <include android:id="@id/utils_vs_tip_verify" layout="@layout/utils_tip_verify" />
+</LinearLayout>

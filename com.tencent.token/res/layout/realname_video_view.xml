@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:id="@id/videobm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <SurfaceView android:layout_gravity="center" android:id="@id/videoview" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="center" android:id="@id/playbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/playbt" />
+    </FrameLayout>
+    <TextView android:gravity="center" android:id="@id/videotext" android:background="@color/realname_camera_bg" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/realname_record_comfirm_text" style="@style/text_view_22_white" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rl_root" android:background="@color/realname_recording_color_bottom" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/fr_confirm_tv_rescan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/realname_record_buttomtext_rerecord" style="@style/text_view_gray" />
+        <TextView android:id="@id/fr_confirm_tv_next" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/next_button" android:layout_alignParentRight="true" style="@style/text_view_gray" />
+    </RelativeLayout>
+    <ProgressBar android:id="@id/seekbar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:max="100" android:progressDrawable="@drawable/progressbar_color" android:layout_above="@id/rl_root" style="?android:attr/progressBarStyleHorizontal" />
+</RelativeLayout>

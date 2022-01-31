@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.token.widget.InputMethodRelativeLayout android:id="@id/modifypwdlayout" android:background="@color/background" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/scrollAreaLayout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/view_desc" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@id/orange_toast" android:visibility="gone" layout="@layout/toast" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/view_input" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="22.0dip">
+            <TextView android:id="@id/txt_account" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_marginRight="23.0dip" style="@style/text_view_16" />
+            <EditText android:layout_gravity="center_vertical" android:id="@id/txt_password" android:background="@android:color/white" android:paddingLeft="23.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="15.0dip" android:hint="@string/modify_pwd_title" android:singleLine="true" android:maxLength="16" android:layout_below="@id/txt_account" android:inputType="textPassword" />
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/txt_account" android:layout_alignTop="@id/txt_password" />
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/txt_password" />
+            <TextView android:id="@id/modify_pwd_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="23.0dip" android:text="@string/modify_pwd_tip" android:layout_below="@id/txt_password" style="@style/utils_modify_pwd_tip" />
+            <Button android:gravity="center" android:id="@id/btn_password" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="23.0dip" android:text="@string/confirm_button" android:layout_below="@id/modify_pwd_tip" style="@style/text_view_white" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.token.widget.InputMethodRelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/pro_dialog_bg" android:layout_width="255.0dip" android:layout_height="84.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <FrameLayout android:layout_width="36.599976dip" android:layout_height="34.0dip" android:layout_marginTop="18.0dip">
+            <ImageView android:id="@id/pro_dialog_icon_bg" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="1.2999878dip" android:src="@drawable/pro_dialog_icon_bg" android:scaleType="fitXY" />
+            <ImageView android:layout_width="36.599976dip" android:layout_height="34.0dip" android:src="@drawable/pro_dialog_icon" android:scaleType="fitXY" />
+        </FrameLayout>
+        <TextView android:id="@id/pro_dialog_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginTop="25.0dip" android:text="@string/progress_doing" style="@style/text_view_17" />
+    </LinearLayout>
+</RelativeLayout>

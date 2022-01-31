@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/jl_appeal_listview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+    <ProgressBar android:id="@id/jl_appleal_progress" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_centerInParent="true" style="@style/TokenProgressStyle" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/empty" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/img_ico_tip" android:layout_width="72.0dip" android:layout_height="81.0dip" android:src="@drawable/ico_no_msg" android:contentDescription="@string/app_name" />
+        <TextView android:textColor="@color/small_font_color" android:id="@id/tip_detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/jl_appeal_noresult_tip" style="@style/text_view" />
+    </LinearLayout>
+</RelativeLayout>

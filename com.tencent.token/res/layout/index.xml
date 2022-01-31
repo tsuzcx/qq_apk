@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.token.ui.base.SlidingMenuView android:id="@id/sliding_menu_view" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/left_sliding_tab" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:id="@id/account_menu_page" layout="@layout/account_menu_page" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/sliding_body" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TabHost android:id="@android:id/tabhost" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <RelativeLayout android:orientation="vertical" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/relative_layout_tabs" />
+                    <ImageView android:id="@id/index_tab_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:src="@color/common_list_divider" android:scaleType="fitXY" android:layout_above="@id/relative_layout_tabs" android:contentDescription="@string/app_name" />
+                    <RelativeLayout android:id="@id/relative_layout_tabs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                        <TabWidget android:id="@android:id/tabs" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                        <ImageView android:id="@id/tab_account_tip" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/icon_safe_msg_tip" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+                        <ImageView android:id="@id/tab_util_tip" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/icon_safe_msg_tip" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+                        <ImageView android:id="@id/tab_token_tip" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/icon_safe_msg_tip" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+                        <ImageView android:id="@id/tab_setting_tip" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/icon_safe_msg_tip" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </TabHost>
+        </FrameLayout>
+    </com.tencent.token.ui.base.SlidingMenuView>
+</RelativeLayout>

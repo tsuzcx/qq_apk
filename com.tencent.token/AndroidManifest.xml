@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tencent.token">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <application android:allowBackup="false" android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.tencent.token.global.RqdApplication" android:theme="@android:style/Theme.NoTitleBar">
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="18505e0a-7561-4f6d-a411-4b2f89575252"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:name="com.tencent.token.ui.LogoActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="qmtoken"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/app_name" android:name="com.tencent.token.ui.WelcomeActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:label="@string/app_name" android:name="com.tencent.token.ui.BaseActivity" android:screenOrientation="portrait"/>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.tencent.token.ui.IndexActivity" android:screenOrientation="portrait" android:theme="@style/activity_nooverlay"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="true" android:label="@string/app_name" android:name="com.tencent.token.ui.PushTransitionActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/app_name" android:name="com.tencent.token.ui.WidgetTransitionActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_modify_pwd" android:name="com.tencent.token.ui.ModifyQQPwdActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_token_pwd_verify" android:name="com.tencent.token.ui.StartPwdDigitVerifyActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_about" android:name="com.tencent.token.ui.AboutActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_knowtoken" android:name="com.tencent.token.ui.KnowTokenActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/about_list_serialnumber" android:name="com.tencent.token.ui.SerialNumberActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/correct_time_title" android:name="com.tencent.token.ui.CorrectTokenActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/verify_page_barcode" android:name="com.tencent.token.ui.VerifyStartScanActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.BindUinActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.CheckMobileAvailableActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.SmsContentTipActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.RealNameSmsContentTipActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_unbindQQ" android:name="com.tencent.token.ui.UnbindUinActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/more_title" android:name="com.tencent.token.ui.SettingPageActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/app_name" android:name="com.tencent.token.ui.StartPwdDigitSelActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/help_title_5" android:name="com.tencent.token.ui.StartPwdGestureIndexActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/face_pwd" android:name="com.tencent.token.ui.FacePwdIndexActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.NetActiveVryQuesActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.NetActiveVryMobileNoSmsActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/mobile_country_title" android:name="com.tencent.token.ui.SelectCountryCodeActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.NetActiveVryOtherListActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.NetActiveVryQQTokenActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.NetActiveSetDirBySeqActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/tab_name_notify" android:name="com.tencent.token.ui.OpreateMsgActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/tab_name_notify" android:launchMode="singleTask" android:name="com.tencent.token.ui.OpMsgDisplayActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/login_msg_title" android:launchMode="singleTask" android:name="com.tencent.token.ui.LoginMsgActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_title" android:name="com.tencent.token.ui.UtilsActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_qbqd_serv" android:name="com.tencent.token.ui.UtilsQbQdProtectActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_game_serv" android:name="com.tencent.token.ui.UtilsGameProtectActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/help_title_2" android:name="com.tencent.token.ui.UtilsAccountLockActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_login_protect" android:name="com.tencent.token.ui.UtilsLoginProtectActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/help_title_3" android:name="com.tencent.token.ui.UtilsGameLockActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mb_info" android:launchMode="singleTask" android:name="com.tencent.token.ui.UtilsMbInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mb_info" android:name="com.tencent.token.ui.UtilsMbInfoItemActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mb_info" android:name="com.tencent.token.ui.UtilsModSetMobileStep1Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mb_info" android:name="com.tencent.token.ui.UtilsModSetMobileStep2Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mb_info" android:name="com.tencent.token.ui.UtilsModSetMobileStep2SmsActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/jl_finditems_title_default" android:name="com.tencent.token.ui.JLFindItems" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/jl_finditems_title_choosezone" android:name="com.tencent.token.ui.JLFinditemsChooseZone" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/jl_finditems_title_record" android:name="com.tencent.token.ui.JLAppealListActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/jl_finditems_title_record_detail" android:name="com.tencent.token.ui.JLAppealListDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/jl_finditems_title_request" android:name="com.tencent.token.ui.JLFinditemsResult" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/token_lab" android:name="com.tencent.token.ui.UtilsTokenLabActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/facerecognition" android:name="com.tencent.token.ui.FaceRecognitionDefaultActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/facerecognition" android:name="com.tencent.token.ui.FaceRecognitionCreateActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.FaceRecognitionCameraActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.FaceRecognitionCameraActivityOld" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.FacePKCameraActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.FaceRegCameraActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/face_create_title" android:name="com.tencent.token.ui.FaceRegConfirmActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.FaceStartVryCameraActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/improve_info" android:name="com.tencent.token.ui.FaceRecognitionComfirmActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/add_face_title" android:name="com.tencent.token.ui.FaceRecognitionAddFaceActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.RealNameTakeIDPhotoActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.DetectIDPhotoActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.CommonVerifyActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/envir_change" android:launchMode="singleTask" android:name="com.tencent.token.ui.EnvirChangeListviewActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.tencent.qbardemo.MainActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/scanlogin_accountlist_title" android:launchMode="singleTask" android:name="com.tencent.token.ui.ScanLoginAccountListActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/scanlogin_title" android:name="com.tencent.token.ui.ScanLoginConfirmLoginActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/scanlogin_title" android:name="com.tencent.token.ui.ScanLoginBindActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/dual_msg_title" android:name="com.tencent.token.ui.GetBarcodeVerifyMsgActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/dual_msg_title" android:name="com.tencent.token.ui.GetOtherBarcodeActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/gesture_modify_title" android:name="com.tencent.token.ui.StartPwdGestureModifyActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/gesture_title" android:name="com.tencent.token.ui.StartPwdUpdateInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/gesture_title" android:name="com.tencent.token.ui.StartPwdGestureSelActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/security_reporter_title" android:name="com.tencent.token.ui.SecurityReporterActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/get_start_pwd_title" android:name="com.tencent.token.ui.StartPwdGestureForgetActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/gesture_title" android:name="com.tencent.token.ui.StartPwdGestureDeleteActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/gesture_title" android:launchMode="singleTop" android:name="com.tencent.token.ui.StartPwdGestureVerifyActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_recommend" android:name="com.tencent.token.ui.AssistantRecommendFriendQrcode" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/account_title" android:name="com.tencent.token.ui.AccountPageActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/account_detail_title" android:name="com.tencent.token.ui.AccountDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/my_password" android:name="com.tencent.token.ui.MyPswSubPageActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/my_protection" android:name="com.tencent.token.ui.MyProtecSubPageActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/my_mb" android:name="com.tencent.token.ui.MyMbSubPageActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_knowtoken" android:name="com.tencent.token.ui.HelpActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/face_pk" android:name="com.tencent.token.ui.FacePKActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_drop_menu_forget_pwd" android:name="com.tencent.token.ui.FindPasswdH5Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_drop_menu_forget_pwd" android:name="com.tencent.token.ui.FindPasswdActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/login_msg_select_city" android:name="com.tencent.token.ui.LoginMsgReportLocationActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/login_msg_ip_share" android:name="com.tencent.token.ui.LoginMsgIpShareActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/login_msg_abnormal_change_pwd" android:name="com.tencent.token.ui.LoginMsgChangePwdActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_title" android:name="com.tencent.token.ui.WtLoginAccountInput" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.WtloginFinishNoMibaoActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/setting_sendfeedback_title" android:name="com.tencent.token.ui.SettingSubmitCommentActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/look_network_title" android:name="com.tencent.token.ui.LookNetworkActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mb_info_mobile" android:name="com.tencent.token.ui.UtilsMbInfoFeedbackMobileUsingSuccActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/scanlogin_title" android:name="com.tencent.token.ui.ScanLoginSuccActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.SmsActitivity" android:screenOrientation="portrait" android:theme="@style/Theme.CustomDialog">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/jianling_main_activity_title" android:name="com.tencent.token.ui.JianLingActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_mail_protect" android:name="com.tencent.token.ui.UtilsMailProtectActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/abnormal_login_title" android:name="com.tencent.token.ui.AbnormalLoginActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/game_login_snd_confirm_pos_btn" android:name="com.tencent.token.ui.WtloginSigExpireActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/set_button" android:name="com.tencent.token.ui.SettingTokenActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.ShowLogActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname" android:name="com.tencent.token.ui.RealNameActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/vry_mobile" android:name="com.tencent.token.ui.RealNameStep0VerifyMobileActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/vry_mobile" android:name="com.tencent.token.ui.RealNameStep0VerifyMobileDownActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/vry_mobile" android:name="com.tencent.token.ui.RealNameStep0VerifyMobileUpActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname_2_step_titile" android:name="com.tencent.token.ui.RealNameStep1InputNameIdActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname_reg_find_title" android:name="com.tencent.token.ui.RealNameFindActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname_reg_find_fail_title" android:name="com.tencent.token.ui.RealNameFindFailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/bind_nocheck_verifyphone_title" android:name="com.tencent.token.ui.VerifyMobilePhoneActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/real_name" android:name="com.tencent.token.ui.RealNameProtectActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname" android:name="com.tencent.token.ui.RealNameFirstJoinActivity" android:screenOrientation="portrait" android:theme="@style/Transparent"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname" android:name="com.tencent.token.ui.RealNameGuidActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/realname" android:name="com.tencent.token.ui.RealNameDetailActivity" android:screenOrientation="portrait" android:theme="@style/Theme.CustomDialog"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.AppGuidActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.TakeIDPhotoComfirmActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/wtlogin_login_verify" android:name="com.tencent.token.ui.NoCheckWithAuthActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="false" android:name="com.tencent.token.utils.bugscanuitl.DetectActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="false" android:name="com.tencent.token.utils.bugscanuitl.ResultListActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/find_items" android:name="com.tencent.token.ui.FindItemsActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/utils_common_verifiedphone" android:name="com.tencent.token.ui.PCMobileQQVerifyedDevicesActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.VryMobileForStrategyActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/face_change_pwd" android:name="com.tencent.token.ui.FaceChangePwdIndexActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/face_change_mobile_title" android:name="com.tencent.token.ui.FaceChangeMobileActivity" android:screenOrientation="portrait"/>
+        <receiver android:exported="false" android:label="@string/app_name" android:name="com.tencent.token.widget.TokenWidgetProvider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/xmltokenwidget_provider"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.tencent.token.widget.TokenService"/>
+        <service android:exported="false" android:name="com.tencent.token.core.push.PushService"/>
+        <service android:exported="false" android:name="com.tencent.token.core.gamelogin.GameLoginService"/>
+        <receiver android:exported="false" android:name="com.tencent.token.core.push.BootBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.tencent.token.utils.SMSReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.token.sms.SEND"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="TA_APPKEY" android:value="atwik2vjlhy4"/>
+    </application>
+</manifest>

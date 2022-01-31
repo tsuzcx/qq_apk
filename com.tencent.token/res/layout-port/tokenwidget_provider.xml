@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/token_widget_port_bg" android:layout_width="328.0dip" android:layout_height="99.0dip" android:src="@drawable/token_widget" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+    <ImageView android:id="@id/token_widget_speech" android:layout_width="48.0dip" android:layout_height="40.0dip" android:layout_marginLeft="27.0dip" android:src="@drawable/token_widget_speech" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    <ImageView android:id="@id/token_widget_lock" android:visibility="invisible" android:layout_width="42.0dip" android:layout_height="47.0dip" android:layout_marginLeft="30.0dip" android:src="@drawable/widget_lock" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    <ImageView android:id="@id/widget_lock_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:src="@drawable/widget_lock_text" android:layout_toRightOf="@id/token_widget_speech" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    <ImageView android:id="@id/widget_time" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/widget_more_time" android:layout_alignRight="@id/token_widget_port_bg" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/token_widget_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="2.0dip" android:layout_toLeftOf="@id/widget_time" android:layout_toRightOf="@id/token_widget_speech" android:layout_centerVertical="true">
+        <ImageView android:id="@id/token_widget_num_0" android:layout_weight="1.0" android:contentDescription="@string/app_name" style="@style/widget_img_style" />
+        <ImageView android:id="@id/token_widget_num_1" android:layout_weight="1.0" android:contentDescription="@string/app_name" style="@style/widget_img_style" />
+        <ImageView android:id="@id/token_widget_num_2" android:layout_weight="1.0" android:contentDescription="@string/app_name" style="@style/widget_img_style" />
+        <ImageView android:id="@id/token_widget_num_3" android:layout_weight="1.0" android:contentDescription="@string/app_name" style="@style/widget_img_style" />
+        <ImageView android:id="@id/token_widget_num_4" android:layout_weight="1.0" android:contentDescription="@string/app_name" style="@style/widget_img_style" />
+        <ImageView android:id="@id/token_widget_num_5" android:layout_weight="1.0" android:contentDescription="@string/app_name" style="@style/widget_img_style" />
+    </LinearLayout>
+</RelativeLayout>

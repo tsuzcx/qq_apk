@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="26.0dip" />
+    <RelativeLayout android:id="@id/set_face_pwd" android:background="@color/common_list_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/face_pwd" style="@style/text_view" />
+        <com.tencent.token.ui.base.SwitchButton android:id="@id/check_face_pwd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/utils_font_color_item_desc" android:gravity="center_vertical" android:id="@id/face_pwd_verify_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="17.0dip" android:text="@string/face_pwd_verify_list" />
+    <View android:id="@id/divider" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <ListView android:id="@id/face_pwd_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="#00000000" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/realname_2_step0_verify_mobile" style="@style/text_view_16" />
+    <TextView android:gravity="center" android:id="@id/mobile_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" style="@style/text_view_24" />
+    <TextView android:gravity="center_vertical" android:id="@id/tip_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="20.0dip" android:text="@string/activity_sms_info10_3" style="@style/text_view_16" />
+    <Button android:gravity="center" android:id="@id/next_button" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/next_button" style="@style/text_view_white" />
+    <Button android:gravity="center" android:id="@id/change_mobile" android:background="@drawable/gray_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/unbind_btn_change_mobile" style="@style/text_view" />
+</LinearLayout>

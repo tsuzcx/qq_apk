@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_no_login_tip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/img_ico_tip" android:layout_width="160.0dip" android:layout_height="116.0dip" android:layout_marginTop="75.0dip" android:src="@drawable/no_login" android:contentDescription="@string/app_name" />
+        <TextView android:textColor="@color/small_font_color" android:gravity="center" android:id="@id/tip_detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" style="@style/text_view" />
+        <Button android:gravity="center" android:layout_gravity="center" android:id="@id/btn_no_login_tip_return" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="43.0dip" android:layout_marginRight="15.0dip" android:text="@string/return_button" android:singleLine="true" style="@style/text_view_white" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_login_tip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/realname_shake_title" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/my_protec_title" android:drawableLeft="@drawable/protec_sub_title" android:drawablePadding="7.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <RelativeLayout android:id="@id/qq_protect_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/utils_account_protect_item1" android:drawableLeft="@drawable/protec_sub_qq" android:drawablePadding="7.0dip" style="@style/text_view" />
+                <TextView android:id="@id/qq_protect_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+            </RelativeLayout>
+            <View android:id="@id/divider1" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+            <RelativeLayout android:id="@id/game_protect_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/utils_game_serv_abbreviation" android:drawableLeft="@drawable/protec_sub_game_protec" android:drawablePadding="7.0dip" style="@style/text_view" />
+                <TextView android:id="@id/game_protect_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+            </RelativeLayout>
+            <View android:id="@id/divider2" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+            <RelativeLayout android:id="@id/mail_protect_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/utils_account_protect_item3" android:drawableLeft="@drawable/protec_sub_mail" android:drawablePadding="7.0dip" style="@style/text_view" />
+                <TextView android:id="@id/mail_protect_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+            </RelativeLayout>
+            <View android:id="@id/divider3" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+            <RelativeLayout android:id="@id/qb_protect_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/utils_qbqd_serv" android:drawableLeft="@drawable/protec_sub_qb" android:drawablePadding="7.0dip" style="@style/text_view" />
+                <TextView android:id="@id/qb_protect_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+            </RelativeLayout>
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/lock_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <RelativeLayout android:id="@id/account_lock_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/help_title_2" android:drawableLeft="@drawable/protec_sub_account_lock" android:drawablePadding="7.0dip" style="@style/text_view" />
+                <TextView android:id="@id/account_lock_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+            </RelativeLayout>
+            <View android:id="@id/divider4" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+            <RelativeLayout android:id="@id/game_lock_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/help_title_3" android:drawableLeft="@drawable/protec_sub_game_lock" android:drawablePadding="7.0dip" style="@style/text_view" />
+                <TextView android:id="@id/game_lock_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+            </RelativeLayout>
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

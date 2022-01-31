@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="realname_detail_margetop">100.0dip</dimen>
+    <dimen name="branerheight">93.0dip</dimen>
+    <dimen name="photoheight">286.0dip</dimen>
+    <dimen name="photowidth">442.0dip</dimen>
+    <dimen name="account_not_verify_height_margin_top">32.0dip</dimen>
+    <dimen name="orange_toast_height">35.0dip</dimen>
+    <dimen name="account_not_verify_height">12.0dip</dimen>
+    <dimen name="qqface_not_verify_center_width">50.0dip</dimen>
+    <dimen name="qqface_not_verify_center_margin_left">10.0dip</dimen>
+</resources>

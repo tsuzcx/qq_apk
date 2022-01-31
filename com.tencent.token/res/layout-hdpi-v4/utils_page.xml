@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/upper_layout" android:background="@color/utils_upper_background" android:layout_width="fill_parent" android:layout_height="80.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/barcode_layout" android:layout_width="65.0dip" android:layout_height="wrap_content" android:layout_marginRight="39.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <ImageView android:layout_gravity="center" android:layout_width="25.0dip" android:layout_height="26.0dip" android:src="@drawable/verifypage_btn_qr_normal" android:scaleType="fitXY" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/barcode_scan_text_blue" android:gravity="center" android:layout_width="65.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/barcode" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/code_layout" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="21.0dip" android:layout_toLeftOf="@id/barcode_layout">
+                <TextView android:textSize="@dimen/text_size_28" android:textColor="@color/token_code_color" android:gravity="center" android:layout_gravity="center" android:id="@id/code1" android:background="@drawable/dynamic_code_bg" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_size_28" android:textColor="@color/token_code_color" android:gravity="center" android:layout_gravity="center" android:id="@id/code2" android:background="@drawable/dynamic_code_bg" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="2.0dip" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_size_28" android:textColor="@color/token_code_color" android:gravity="center" android:layout_gravity="center" android:id="@id/code3" android:background="@drawable/dynamic_code_bg" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="2.0dip" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_size_28" android:textColor="@color/token_code_color" android:gravity="center" android:layout_gravity="center" android:id="@id/code4" android:background="@drawable/dynamic_code_bg" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="2.0dip" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_size_28" android:textColor="@color/token_code_color" android:gravity="center" android:layout_gravity="center" android:id="@id/code5" android:background="@drawable/dynamic_code_bg" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="2.0dip" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/text_size_28" android:textColor="@color/token_code_color" android:gravity="center" android:layout_gravity="center" android:id="@id/code6" android:background="@drawable/dynamic_code_bg" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="2.0dip" android:layout_weight="1.0" />
+            </LinearLayout>
+            <ImageView android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginTop="5.0dip" android:src="@drawable/codeline_bg" android:layout_below="@id/code_layout" android:layout_alignLeft="@id/code_layout" android:layout_alignRight="@id/code_layout" />
+            <ImageView android:id="@id/verify_codeline" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginTop="5.0dip" android:layout_below="@id/code_layout" android:layout_alignLeft="@id/code_layout" android:layout_alignRight="@id/code_layout" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/account_protect_layout" android:background="@color/common_list_item_background" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_below="@id/upper_layout">
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/utils_font_color_desc" android:gravity="center_vertical" android:id="@id/account_protect_tip" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:text="@string/utils_account_protect_tip" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/view1" android:layout_width="fill_parent" android:layout_height="84.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:baselineAligned="false" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/divider_area1" android:layout_width="fill_parent" android:layout_height="12.0dip" android:layout_below="@id/account_protect_layout" />
+        <LinearLayout android:orientation="vertical" android:id="@id/qq_lock_layout" android:background="@color/common_list_item_background" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_below="@id/divider_area1">
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/utils_font_color_desc" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:text="@string/utils_qq_lock_tip" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/view2" android:layout_width="fill_parent" android:layout_height="63.0dip" android:layout_marginLeft="40.0dip" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/divider_area2" android:layout_width="fill_parent" android:layout_height="12.0dip" android:layout_below="@id/qq_lock_layout" />
+        <LinearLayout android:orientation="vertical" android:id="@id/other_protect_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/divider_area2">
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/utils_font_color_desc" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:text="@string/utils_other_protect_tip" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/view3" android:layout_width="fill_parent" android:layout_height="63.0dip" android:layout_marginLeft="40.0dip" android:baselineAligned="false" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/divider_area3" android:layout_width="fill_parent" android:layout_height="12.0dip" android:layout_below="@id/other_protect_layout" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/realname_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="66.0dip" android:layout_below="@id/divider_area3">
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <ImageView android:id="@id/mask_new" android:layout_width="29.0dip" android:layout_height="14.0dip" android:layout_marginTop="5.0dip" android:src="@drawable/realname_new" android:scaleType="fitXY" />
+            <ImageView android:id="@id/img" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="11.0dip" android:src="@drawable/icon_realname" android:scaleType="fitXY" android:layout_toRightOf="@id/mask_new" android:layout_centerVertical="true" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_toRightOf="@id/img" android:layout_centerVertical="true">
+                <TextView android:textSize="@dimen/text_size_13" android:textColor="@color/utils_font_color_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/realname" android:drawablePadding="2.0dip" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/text_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/utils_realname_tip" />
+            </LinearLayout>
+            <ImageView android:layout_width="8.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/utils_arrow" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <View android:background="@color/personal_forum_frequent_login_time_gray" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/divider_area4" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_below="@id/realname_layout" />
+        <include layout="@layout/wtlogin_tip_verify_view" />
+    </RelativeLayout>
+</ScrollView>

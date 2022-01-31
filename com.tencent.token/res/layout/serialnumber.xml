@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="26.0dip" />
+    <LinearLayout android:id="@id/set_uin_manage" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="24.0sp" android:textColor="@color/font_color" android:gravity="center" android:layout_gravity="center" android:id="@id/find_serialnum" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+    </LinearLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</LinearLayout>

@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TokenProgressStyle" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminateDrawable">@drawable/loading</item>
+    </style>
+    <style name="tokenprogressstylewhite" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminateDrawable">@drawable/loadingwhite</item>
+    </style>
+    <style name="TitleBackgroundColor">
+        <item name="android:background">@color/title_bg</item>
+    </style>
+    <style name="CustomerTitle" parent="@android:style/Theme">
+        <item name="android:windowTitleSize">40.0dip</item>
+        <item name="android:windowTitleBackgroundStyle">@style/TitleBackgroundColor</item>
+    </style>
+    <style name="big_text_view">
+        <item name="android:textSize">@dimen/text_size_21</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="largest_text_view">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="mobile_mask_text_view">
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_small">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_middle">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="text_view_middle_18">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="text_btn_black_bold">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="text_btn_black_bold_20">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="text_btn_black_bold_22">
+        <item name="android:textSize">@dimen/text_size_22</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="text_view_bold">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_realname_title_bold">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/realname_shake_title</item>
+    </style>
+    <style name="text_view_realname_btn_bold">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/realname_shake_btn</item>
+    </style>
+    <style name="text_view_24_bold_white">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_24_bold_realname_red">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_realname_red</item>
+    </style>
+    <style name="text_view_28_bold_white">
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_28_bold_red">
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_red</item>
+    </style>
+    <style name="small_text_view">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="small_text_view_16">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="text_view_20">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_22">
+        <item name="android:textSize">@dimen/text_size_22</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_22_white">
+        <item name="android:textSize">@dimen/text_size_22</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_20_white">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_18_white">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_18_blue">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/font_color_blue</item>
+    </style>
+    <style name="text_view_22_white_bold">
+        <item name="android:textSize">@dimen/text_size_22</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_20_white_bold">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_18_white_bold">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_16_white_bold">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_22_bold">
+        <item name="android:textSize">@dimen/text_size_22</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_24">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_24_white">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_24_white_bold">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_16">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_16_white">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_16_gray">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color_gray</item>
+    </style>
+    <style name="text_view_16_blue">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/fr_loading_blue</item>
+    </style>
+    <style name="text_view_17">
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_14_normal">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_14">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="text_view_14_white">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_14_gray">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/font_color_gray</item>
+    </style>
+    <style name="text_view_13">
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="text_view_13_white">
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_12_white">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_12">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="account_page_text_gray">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/account_page_text_gray</item>
+    </style>
+    <style name="account_page_text_black">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="small_text_view_black">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="text_view_white">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_blue">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/font_color_blue</item>
+    </style>
+    <style name="text_view_white_alpha">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color_white_alpha</item>
+    </style>
+    <style name="text_view_white_bold">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="text_view_yellow">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/realname_btn_text</item>
+    </style>
+    <style name="text_view_gray">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/font_color_gray</item>
+    </style>
+    <style name="text_view_button">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/blue_btn_color</item>
+    </style>
+    <style name="text_view_msg_time">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/btn_color_blue_over</item>
+    </style>
+    <style name="safe_msg_time">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/btn_color_blue_over</item>
+    </style>
+    <style name="wtlogin_account_blue">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/wtlogin_account_blue</item>
+    </style>
+    <style name="activity_nooverlay" parent="@android:style/Theme">
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="help_title">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="help_content">
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="about_content">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/small_font_color</item>
+    </style>
+    <style name="sms_send_tip">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/font_color_red</item>
+    </style>
+    <style name="about_foot_11">
+        <item name="android:textSize">11.0sp</item>
+        <item name="android:textColor">@color/font_color_gray</item>
+    </style>
+    <style name="about_foot_10">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textColor">@color/font_color_gray</item>
+    </style>
+    <style name="widget_img_style">
+        <item name="android:layout_width">29.0dip</item>
+        <item name="android:layout_height">43.0dip</item>
+        <item name="android:layout_marginTop">13.0dip</item>
+    </style>
+    <style name="list_layout_style">
+        <item name="android:layout_marginTop">10.0dip</item>
+        <item name="android:layout_marginBottom">10.0dip</item>
+    </style>
+    <style name="switch_qquser">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="dialog_transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="barcode_scan">
+        <item name="android:windowBackground">@color/background_color_scan</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="utils_text_icon">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="utils_text_item_detail">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="utils_text_item_name">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="utils_text_item_desc">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/utils_font_color_item_desc</item>
+    </style>
+    <style name="utils_text_item_name_mdpi">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="utils_text_item_desc_mdpi">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/utils_font_color_item_desc</item>
+    </style>
+    <style name="utils_text_item_tip">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/utils_font_color_item_tip</item>
+    </style>
+    <style name="utils_text_item_tip_small">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/utils_font_color_item_tip_small</item>
+    </style>
+    <style name="utils_modify_pwd_tip">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/utils_modify_pwd_tip</item>
+    </style>
+    <style name="utils_text_item_detail_ldpi">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="utils_mb_info_item_col1_text">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/msg_tip_text</item>
+    </style>
+    <style name="utils_mb_info_item_col2_text">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/utils_font_color_item_desc</item>
+    </style>
+    <style name="utils_mb_info_item_op">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/utils_font_color_item_desc</item>
+    </style>
+    <style name="account_manage_text">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/account_manage_txt</item>
+    </style>
+    <style name="account_manage_text_small">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/account_manage_txt</item>
+    </style>
+    <style name="account_manage_text_state">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/account_manage_state</item>
+    </style>
+    <style name="account_manage_text_tip">
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:textColor">@color/account_manage_txt</item>
+    </style>
+    <style name="account_manage_text_utils">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/account_manage_txt</item>
+    </style>
+    <style name="account_manage_menu_tip">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color_white</item>
+    </style>
+    <style name="dual_msg_btn_text_view">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textColor">@color/dual_msg_name_font_color</item>
+    </style>
+    <style name="startpwd_gesture_sel">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/dual_msg_name_font_color</item>
+    </style>
+    <style name="login_msg_normal_name">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/login_msg_normal_name_color</item>
+    </style>
+    <style name="login_msg_normal_desc">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/login_msg_normal_desc_color</item>
+    </style>
+    <style name="login_msg_abnormal_name">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/login_msg_abnormal_name_color</item>
+    </style>
+    <style name="login_msg_abnormal_desc">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/login_msg_abnormal_desc_color</item>
+    </style>
+    <style name="login_msg_ip_share_title">
+        <item name="android:textSize">@dimen/text_size_19</item>
+        <item name="android:textColor">@color/login_msg_ip_share_title</item>
+    </style>
+    <style name="login_msg_ip_share_desc">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/login_msg_ip_share_desc</item>
+    </style>
+    <style name="login_msg_report_location">
+        <item name="android:textSize">@dimen/text_size_19</item>
+        <item name="android:textColor">@color/login_msg_report_location_alpha</item>
+    </style>
+    <style name="login_msg_report_location_alpha">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/login_msg_report_location_alpha</item>
+    </style>
+    <style name="login_msg_report_location_alpha_over">
+        <item name="android:textSize">@dimen/text_size_36</item>
+        <item name="android:textColor">@color/login_msg_report_location_alpha_over</item>
+    </style>
+    <style name="msg_list_item_name">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/utils_font_color_icon</item>
+    </style>
+    <style name="msg_list_item_name_ipc">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/msg_name_ipc</item>
+    </style>
+    <style name="msg_list_item_desc">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/utils_font_color_item_desc</item>
+    </style>
+    <style name="msg_list_item_time">
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/utils_font_color_item_desc</item>
+    </style>
+    <style name="msg_item_col1_text">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+    <style name="msg_item_col2_text">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/msg_col2_text</item>
+    </style>
+    <style name="msg_item_tip_text">
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:textColor">@color/msg_tip_text</item>
+    </style>
+    <style name="realname_btn_text">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/realname_btn_text</item>
+    </style>
+    <style name="add_account_content_msg">
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:textColor">@color/add_account_tip_msg_content</item>
+    </style>
+    <style name="add_account_btn_text">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/add_account_tip_btn_text</item>
+    </style>
+    <style name="Theme.CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="Transparent">
+        <item name="android:windowBackground">@color/bantransparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

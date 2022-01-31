@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/second_verify_dialog" android:background="@drawable/second_verify_bg" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/second_verify_tip_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/icon_2nd_verify_tip" android:scaleType="fitXY" />
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/second_verify_tip_color" android:id="@id/second_verify_tip_title_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/second_verify_tip_icon" android:layout_alignTop="@id/second_verify_tip_icon" />
+    <TextView android:textSize="@dimen/text_size_18" android:textColor="@color/second_verify_input_color" android:id="@id/second_verify_tip_detail_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/second_verify_tip_icon" />
+    <EditText android:id="@id/second_verify_input_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" android:layout_below="@id/second_verify_tip_detail_text" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/second_verify_input_text" android:layout_alignLeft="@id/second_verify_input_text" android:layout_alignRight="@id/second_verify_input_text">
+        <Button android:gravity="center" android:id="@id/second_verify_cancel" android:background="@drawable/gray_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_weight="1.0" style="@style/text_view" />
+        <Button android:gravity="center" android:id="@id/second_verify_confirm" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="8.0dip" android:layout_weight="1.0" style="@style/text_view_white" />
+    </LinearLayout>
+</RelativeLayout>

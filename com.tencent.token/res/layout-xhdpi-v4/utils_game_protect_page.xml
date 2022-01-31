@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="94.0dip">
+        <ImageView android:id="@id/qbqd_protect_img" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="23.0dip" android:src="@drawable/icon_game_protect" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/utils_game_protect_detail" android:layout_toRightOf="@id/qbqd_protect_img" android:layout_centerVertical="true" style="@style/utils_text_item_detail" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <com.tencent.token.ui.base.SafeListView android:id="@id/game_protect_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="#00000000" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+    <RelativeLayout android:id="@id/game_protect_load_view" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="20.0dip">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ProgressBar android:id="@id/game_protect_list_tip_progress" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="10.0dip" android:layout_centerVertical="true" style="@style/TokenProgressStyle" />
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/safe_conf_loading" android:layout_toRightOf="@id/game_protect_list_tip_progress" android:layout_alignTop="@id/game_protect_list_tip_progress" style="@style/utils_text_item_name" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="isfullscreen" format="boolean" />
+    <attr name="titletext" format="string" />
+    <attr name="titletextsize" format="dimension" />
+    <attr name="backColor" format="color" />
+    <attr name="titlecolor" format="color" />
+    <attr name="padleft" format="dimension" />
+    <attr name="padright" format="dimension" />
+    <attr name="hasleft" format="boolean" />
+</resources>

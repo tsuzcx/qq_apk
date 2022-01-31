@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/login_msg_menu_mask" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/title_menu_content" android:layout_width="fill_parent" android:layout_height="68.0dip" android:baselineAligned="false">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/menu_clear" android:background="@color/token_code_color" android:layout_width="wrap_content" android:layout_height="68.0dip" android:layout_weight="1.0">
+            <ImageView android:layout_width="22.0dip" android:layout_height="24.0dip" android:src="@drawable/share" android:scaleType="fitXY" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/title_menu_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/face_pk_share_1" />
+        </LinearLayout>
+        <LinearLayout android:background="@color/menu_divider_1" android:layout_width="1.0dip" android:layout_height="68.0dip" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/menu_help" android:background="@color/token_code_color" android:layout_width="wrap_content" android:layout_height="68.0dip" android:layout_weight="1.0">
+            <ImageView android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/share_group" android:scaleType="fitXY" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/title_menu_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/face_pk_share_2" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/msg_page_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/abnormal_login_gradual_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/font_color" android:id="@id/offical_mail_btn_tip" android:paddingLeft="20.0dip" android:paddingTop="10.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/abnormal_login_tip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="#ffe9e9e9" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center" android:id="@id/abnormal_login_mod_pwd" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="3.0dip" android:text="@string/modify_pwd" style="@style/text_view_white" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="200" android:drawable="@drawable/refresh1_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh2_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh3_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh4_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh5_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh6_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh7_white" />
+    <item android:duration="200" android:drawable="@drawable/refresh8_white" />
+</animation-list>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/camPreview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <com.tencent.token.ui.RealNameTakeIDPhotoPreview android:id="@id/previewimg" android:background="#00ffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/iv_face" android:layout_width="442.0dip" android:layout_height="286.0dip" android:src="@drawable/realname_facerect_front" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/bottomiv" android:background="@color/realname_camera_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/iv_face" />
+            <ImageView android:id="@id/topiv" android:background="@color/realname_camera_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/iv_face" />
+            <ImageView android:background="@color/realname_camera_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/iv_face" android:layout_above="@id/bottomiv" android:layout_below="@id/topiv" />
+            <ImageView android:background="@color/realname_camera_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/iv_face" android:layout_above="@id/bottomiv" android:layout_below="@id/topiv" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="#ffffffff" android:layout_gravity="bottom|center" android:id="@id/iv_face_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:text="@string/realname_detect_idphoto_front" />
+    </FrameLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rl_realname_face_preview_action" android:background="@color/font_color" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/realname_takepic_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/realname_takepic_icon" android:layout_centerInParent="true" />
+        <TextView android:id="@id/tv_cancle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel_button" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/text_view_gray" />
+        <TextView android:id="@id/tv_next" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/complete_button" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/text_view_gray" />
+    </RelativeLayout>
+</RelativeLayout>

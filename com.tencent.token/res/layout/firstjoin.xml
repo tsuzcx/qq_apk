@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/realname_upload_cover_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/firsttime_text_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:id="@id/textleft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/realname_firsttime_text" style="@style/text_view_white" />
+        <TextView android:id="@id/firsttime_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" style="@style/text_view_yellow" />
+        <TextView android:id="@id/textright" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/realname_firsttime_text2" style="@style/text_view_white" />
+    </LinearLayout>
+    <Button android:gravity="center" android:id="@id/firsttimebt" android:background="@drawable/realname_btn" android:layout_width="235.0dip" android:layout_height="50.0dip" android:layout_marginTop="40.0dip" android:text="@string/realname_firsttime_buttontext" android:layout_below="@id/firsttime_text_layout" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold" />
+    <ImageView android:id="@id/firstiv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-50.0dip" android:src="@drawable/jiangbeiicon" android:layout_above="@id/firsttime_text_layout" android:layout_centerHorizontal="true" />
+</RelativeLayout>

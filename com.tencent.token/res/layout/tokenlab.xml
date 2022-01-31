@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="84.0dip">
+        <ImageView android:id="@id/tokenlab_face_img" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/icon_lab" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:text="@string/utils_lab_detail" android:layout_toRightOf="@id/tokenlab_face_img" android:layout_centerVertical="true" style="@style/utils_text_item_detail" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/tokenlab_face_content_view" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="67.0dip">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_centerVertical="true">
+            <TextView android:id="@id/tokenlab_face_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/face" android:drawablePadding="5.0dip" style="@style/utils_text_item_name" />
+            <ImageView android:id="@id/new_icon" android:visibility="invisible" android:layout_width="31.0dip" android:layout_height="13.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/icon_new" android:scaleType="fitXY" android:layout_toRightOf="@id/tokenlab_face_name" android:layout_alignTop="@id/tokenlab_face_name" android:contentDescription="@string/app_name" />
+            <TextView android:id="@id/tokenlab_face_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/utils_lab_face_desc" android:layout_below="@id/tokenlab_face_name" android:layout_alignLeft="@id/tokenlab_face_name" style="@style/utils_text_item_desc" />
+        </RelativeLayout>
+        <TextView android:id="@id/tokenlab_face_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:text="@string/setting_token_pwd_off" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/text_view_16_gray" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/tokenlab_realname_content_view" android:background="@color/common_list_item_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="67.0dip">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_centerVertical="true">
+            <TextView android:id="@id/tokenlab_realname_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tokenlab_realname_title" android:drawablePadding="5.0dip" style="@style/utils_text_item_name" />
+            <ImageView android:id="@id/realname_new_icon" android:visibility="invisible" android:layout_width="31.0dip" android:layout_height="13.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/icon_new" android:scaleType="fitXY" android:layout_toRightOf="@id/tokenlab_realname_name" android:layout_alignTop="@id/tokenlab_realname_name" android:contentDescription="@string/app_name" />
+            <TextView android:id="@id/tokenlab_realname_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tokenlab_realname_content" android:layout_below="@id/tokenlab_realname_name" android:layout_alignLeft="@id/tokenlab_realname_name" style="@style/utils_text_item_desc" />
+        </RelativeLayout>
+        <TextView android:id="@id/tokenlab_realname_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:text="@string/lab_option_set" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/text_view_16_blue" />
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="67.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:text="@string/tokenlab_more_exp_tips" android:layout_centerVertical="true" style="@style/text_view_gray" />
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

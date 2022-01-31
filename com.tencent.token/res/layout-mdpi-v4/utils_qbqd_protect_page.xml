@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="82.0dip">
+        <ImageView android:id="@id/qbqd_protect_img" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/icon_qb_protect" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/utils_qbqd_protect_detail" android:layout_toRightOf="@id/qbqd_protect_img" android:layout_centerVertical="true" style="@style/utils_text_item_detail" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/qbqd_protect_content_view" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="67.0dip">
+        <TextView android:id="@id/utils_qbqd_protect_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:text="@string/utils_qbqd_serv" android:layout_centerVertical="true" style="@style/utils_text_item_name" />
+        <com.tencent.token.ui.base.SwitchButton android:id="@id/qbqd_protect_check_box" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ProgressBar android:id="@id/qbqd_protect_progress" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="50.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TokenProgressStyle" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/font_color_gray" android:paddingLeft="23.0dip" android:paddingRight="23.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="20.0dip" android:text="@string/utils_qbqd_desc_tip" />
+</LinearLayout>

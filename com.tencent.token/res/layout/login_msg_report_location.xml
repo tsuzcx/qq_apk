@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/left_list_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="#00000000" android:divider="@null" />
+    <com.tencent.token.ui.base.LoginMsgRightLetterView android:id="@id/right_list_view" android:background="@drawable/login_msg_index_bg" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="2.0dip" android:layout_alignParentRight="true" />
+</RelativeLayout>

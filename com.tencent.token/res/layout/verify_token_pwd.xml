@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:paddingTop="20.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip">
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="14.0dip" android:text="@string/token_pwd_input_go" style="@style/text_view" />
+        <EditText android:layout_gravity="center_vertical" android:id="@id/text_password" android:layout_width="fill_parent" android:layout_height="wrap_content" android:password="true" android:singleLine="true" android:maxLength="8" android:inputType="number" android:imeOptions="actionDone" />
+        <requestFocus />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <Button android:gravity="center" android:id="@id/btn_ok" android:background="@drawable/blue_btn_bg" android:layout_width="100.0dip" android:layout_height="45.0dip" style="@style/text_view_white" />
+    </LinearLayout>
+</LinearLayout>

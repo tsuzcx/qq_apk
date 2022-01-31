@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rl_finditems_choosezone_item" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/zone_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_centerVertical="true" style="@style/text_view" />
+        <ImageView android:id="@id/iv_finditems_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    </RelativeLayout>
+    <ImageView android:background="@drawable/list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/rl_finditems_choosezone_item" />
+</RelativeLayout>

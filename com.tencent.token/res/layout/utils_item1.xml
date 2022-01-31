@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/item_icon" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="15.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" android:contentDescription="@string/app_name" />
+    <ImageView android:id="@id/item_new_flag" android:visibility="visible" android:layout_width="23.0dip" android:layout_height="13.0dip" android:layout_marginLeft="22.0dip" android:src="@drawable/common_new" android:layout_alignLeft="@id/item_icon" android:layout_alignTop="@id/item_icon" android:contentDescription="@string/app_name" />
+    <TextView android:textSize="@dimen/text_size_13" android:textColor="@color/utils_font_color_icon" android:gravity="center" android:id="@id/item_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/item_icon" />
+</RelativeLayout>

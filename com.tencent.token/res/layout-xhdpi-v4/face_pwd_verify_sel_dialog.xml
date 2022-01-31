@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/face_pwd_verify_sel_dialog_bg" android:layout_width="304.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_18" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="66.0dip" android:text="@string/face_pwd_verify_sel" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <ListView android:id="@id/verify_sel_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:cacheColorHint="#00000000" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+</LinearLayout>

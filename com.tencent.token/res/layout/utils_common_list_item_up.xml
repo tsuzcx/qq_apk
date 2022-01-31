@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="69.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/utils_common_list_item_content_view" android:layout_width="fill_parent" android:layout_height="67.0dip">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_centerVertical="true">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lv_utils_common_list_item_name" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@id/utils_utils_common_list_item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/utils_text_item_name" />
+                <ImageView android:id="@id/utils_utils_common_list_item_lockicon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:src="@drawable/accountlock_lock" android:layout_toRightOf="@id/utils_utils_common_list_item_name" />
+            </LinearLayout>
+            <ImageView android:id="@id/utils_utils_common_list_item_newflag" android:layout_width="31.0dip" android:layout_height="13.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:src="@drawable/icon_new" android:layout_toRightOf="@id/lv_utils_common_list_item_name" android:layout_alignTop="@id/lv_utils_common_list_item_name" android:contentDescription="@string/app_name" />
+        </RelativeLayout>
+        <com.tencent.token.ui.base.SwitchButton android:id="@id/utils_common_list_item_check_box" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:button="@drawable/ic_checkbox_background" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ProgressBar android:id="@id/utils_common_list_item_progress" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="50.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TokenProgressStyle" />
+        <ImageView android:id="@id/utils_common_list_item_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/accountlock_green_arrow" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</LinearLayout>

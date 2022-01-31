@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/startpwd_gesture_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <com.tencent.token.ui.base.LockPatternSmallView android:layout_gravity="center" android:id="@id/verify_pattern_preview" android:background="@drawable/startpwd_gesture_smallview_bg" android:layout_width="54.0dip" android:layout_height="0.0dip" android:layout_marginTop="33.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <TextView android:textSize="16.0sp" android:textColor="@color/startpwd_gesture_light_color" android:layout_gravity="center_horizontal" android:id="@id/verify_promt" android:layout_width="wrap_content" android:layout_height="24.0dip" android:text="@string/gesture_startpasswd_input_passwd" />
+    <com.tencent.token.ui.base.LockPatternView android:layout_gravity="center" android:id="@id/verify_pattern_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginTop="33.0dip" android:layout_marginRight="20.0dip" />
+</LinearLayout>

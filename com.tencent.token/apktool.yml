@@ -1,0 +1,31 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: QQ安全中心_6.7.2.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- assets/KingkongPatch.apk
+- assets/channel.ini
+- png
+- mp3
+- wav
+- jpg
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '9'
+  targetSdkVersion: '9'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  com/qq/jce/wup/wup.properties: '8'
+  src/com/qq/jce/wup/wup.properties: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '70'
+  versionName: 6.7.2

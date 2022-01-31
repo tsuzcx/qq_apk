@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/detail_back" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/alert_button" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold" />
+    <TextView android:gravity="center" android:id="@id/msg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/title" android:layout_centerHorizontal="true" style="@style/text_view_small" />
+    <View android:id="@id/line" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="20.0dip" android:layout_below="@id/msg" />
+    <RelativeLayout android:gravity="center" android:id="@id/btn_layout" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/line" android:layout_centerHorizontal="true">
+        <View android:id="@id/ver_line" android:background="@color/common_list_divider" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:gravity="center" android:id="@id/okbt" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="2.0dip" android:text="@string/confirm_button" android:layout_toLeftOf="@id/ver_line" style="@style/text_view_16_blue" />
+        <TextView android:gravity="center" android:id="@id/canclebt" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="2.0dip" android:text="@string/cancel_button" android:layout_toRightOf="@id/ver_line" style="@style/text_view_16_blue" />
+    </RelativeLayout>
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/btn_layout" />
+</RelativeLayout>

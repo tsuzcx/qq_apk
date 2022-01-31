@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/contentAndTitle" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_bar" />
+        <ViewStub android:id="@id/vs_title_menu" android:layout="@layout/viewstub_title_menu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_bar" />
+        <include layout="@layout/title_bar_main" />
+        <ViewStub android:id="@id/vs_lock_verifyview" android:layout="@layout/viewstub_verifyview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/anim_layout" android:background="#e0000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/line_iv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/checking_line" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/arc_iv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/checking_arc" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

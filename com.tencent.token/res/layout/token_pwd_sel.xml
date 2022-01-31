@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="0.0dip" android:baselineAligned="false" android:layout_weight="1.0">
+        <ListView android:id="@id/token_pwd_sel_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:divider="@drawable/list_divider" android:headerDividersEnabled="false" android:footerDividersEnabled="true" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/list_divider" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+    </LinearLayout>
+</LinearLayout>

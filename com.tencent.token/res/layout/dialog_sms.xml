@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center|top" android:id="@id/dialog_sms_root" android:layout_width="255.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/dialog_sms_title" android:background="@drawable/dialog_sms_bg1" android:layout_width="fill_parent" android:layout_height="54.0dip">
+        <ImageView android:id="@id/dialog_sms_title_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dialog_sms_title_icon1" />
+        <TextView android:gravity="center" android:id="@id/dialog_sms_title_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/dialog_sms_title" android:layout_toRightOf="@id/dialog_sms_title_icon" style="@style/text_view_gray" />
+    </RelativeLayout>
+    <ImageView android:id="@id/dialog_sms_mid" android:background="@drawable/dialog_sms_bg2" android:layout_width="fill_parent" android:layout_height="12.0dip" android:layout_below="@id/dialog_sms_title" />
+    <ImageView android:id="@id/dialog_sms_dimiss" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dialog_sms_light" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/dialog_sms_content" android:background="@drawable/dialog_sms_bg2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_below="@id/dialog_sms_mid">
+        <TextView android:id="@id/dialog_sms_content_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerInParent="true" style="@style/text_view" />
+        <TextView android:id="@id/dialog_sms_content_content" android:paddingLeft="15.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/dialog_sms_content_title" android:layout_centerInParent="true" android:lineSpacingMultiplier="1.1" style="@style/text_view_16" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginBottom="10.0dip" android:weightSum="2.0" android:layout_alignParentBottom="true">
+            <Button android:id="@id/btn_dialog_sms_verify" android:background="@drawable/blue_btn_bg" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/dialog_sms_btn_ok" android:layout_weight="1.0" style="@style/text_view_16_white" />
+            <Button android:id="@id/btn_dialog_sms_cancel" android:background="@drawable/gray_btn_bg" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/dialog_sms_btn_cancel" android:layout_weight="1.0" style="@style/text_view_16" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

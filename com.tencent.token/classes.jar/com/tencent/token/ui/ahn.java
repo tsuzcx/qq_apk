@@ -1,0 +1,22 @@
+package com.tencent.token.ui;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.s;
+
+final class ahn
+  implements View.OnClickListener
+{
+  ahn(WtloginFinishNoMibaoActivity paramWtloginFinishNoMibaoActivity) {}
+  
+  public final void onClick(View paramView)
+  {
+    s.a(this.a, this.a.getString(2131362126), this.a.getString(2131362125));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar
+ * Qualified Name:     com.tencent.token.ui.ahn
+ * JD-Core Version:    0.7.0.1
+ */

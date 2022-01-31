@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/background" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/activity_qqtoken_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:text="@string/activity_sms_info16" style="@style/text_view" />
+    <EditText android:id="@id/qqtoken_code" android:background="@android:color/white" android:paddingLeft="20.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:singleLine="true" android:maxLength="6" android:layout_below="@id/activity_qqtoken_tip" android:inputType="number" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/activity_qqtoken_tip" android:layout_alignTop="@id/qqtoken_code" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/qqtoken_code" />
+    <Button android:gravity="center" android:id="@id/next_button" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="25.0dip" android:text="@string/next_button" android:layout_below="@id/qqtoken_code" android:layout_alignLeft="@id/activity_qqtoken_tip" android:layout_alignRight="@id/activity_qqtoken_tip" style="@style/text_view_white" />
+</RelativeLayout>

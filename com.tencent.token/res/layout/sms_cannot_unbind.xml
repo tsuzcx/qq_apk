@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/unbind_info" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/text_view" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/cannot_unbind_view" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="14.0dip">
+        <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cannot_unbind" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="@string/scanlogin_bind_now" style="@style/text_view_white" />
+    </LinearLayout>
+</LinearLayout>

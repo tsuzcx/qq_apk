@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/divider1" android:background="@color/common_list_divider" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentTop="true" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/add_uin" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginLeft="19.0dip" android:src="@drawable/ico_add_uin" android:layout_centerVertical="true" />
+        <TextView android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:text="@string/scanlogin_login_other" android:layout_toRightOf="@id/add_uin" android:layout_centerVertical="true" style="@style/account_manage_text" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+</RelativeLayout>

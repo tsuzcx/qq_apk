@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fr_upload_progress" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="170.0dip" android:layout_marginRight="30.0dip" />
+    <TextView android:textSize="@dimen/text_size_18" android:textColor="@color/fr_loading_blue" android:layout_gravity="center_horizontal" android:id="@id/fr_upload_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/fr_uploading_tips" />
+</LinearLayout>

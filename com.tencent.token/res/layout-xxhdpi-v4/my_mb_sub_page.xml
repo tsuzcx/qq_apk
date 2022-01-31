@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/realname_shake_title" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/my_mb_title" android:drawableLeft="@drawable/mb_sub_set_mb" android:drawablePadding="7.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/third_mb" style="@style/small_text_view" />
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="10.0dip" />
+        <RelativeLayout android:id="@id/face_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/face" android:drawableLeft="@drawable/mb_sub_face" android:drawablePadding="7.0dip" style="@style/text_view" />
+            <TextView android:id="@id/face_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+        </RelativeLayout>
+        <View android:id="@id/divider" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+        <RelativeLayout android:id="@id/realname_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/tokenlab_realname_title" android:drawableLeft="@drawable/mb_sub_realname" android:drawablePadding="7.0dip" style="@style/text_view" />
+            <TextView android:id="@id/realname_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+        </RelativeLayout>
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/second_mb" style="@style/small_text_view" />
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="10.0dip" />
+        <RelativeLayout android:id="@id/mb_mobile_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/utils_mb_info_mobile" android:drawableLeft="@drawable/mb_sub_mobile" android:drawablePadding="7.0dip" style="@style/text_view" />
+            <TextView android:id="@id/mb_mobile_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+        </RelativeLayout>
+        <View android:id="@id/divider1" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+        <RelativeLayout android:id="@id/mb_question_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/mb_question" android:drawableLeft="@drawable/mb_sub_question" android:drawablePadding="7.0dip" style="@style/text_view" />
+            <TextView android:id="@id/mb_question_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+        </RelativeLayout>
+        <View android:id="@id/divider2" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="20.0dip" />
+        <RelativeLayout android:id="@id/qq_token_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/qq_token" android:drawableLeft="@drawable/mb_sub_qq_token" android:drawablePadding="7.0dip" style="@style/text_view" />
+            <TextView android:id="@id/qq_token_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+        </RelativeLayout>
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    </LinearLayout>
+</LinearLayout>

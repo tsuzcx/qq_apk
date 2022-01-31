@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/background" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_no_login_tip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/img_ico_tip" android:layout_width="160.0dip" android:layout_height="116.0dip" android:layout_marginTop="75.0dip" android:src="@drawable/no_login" android:contentDescription="@string/app_name" />
+            <TextView android:textColor="@color/small_font_color" android:gravity="center" android:id="@id/tip_detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" style="@style/text_view" />
+            <Button android:gravity="center" android:layout_gravity="center" android:id="@id/btn_no_login_tip_return" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="43.0dip" android:layout_marginRight="15.0dip" android:text="@string/return_button" android:singleLine="true" style="@style/text_view_white" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/sr_ll_loginmap" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/sr_tv_loginmap_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" style="@style/text_view" />
+            <ImageView android:layout_gravity="center" android:id="@id/sr_iv_loginmap" android:layout_width="fill_parent" android:layout_height="236.0dip" />
+            <ImageView android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/sr_ll_logincount" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/sr_tv_logincount_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" style="@style/text_view" />
+            <ImageView android:layout_gravity="center" android:id="@id/sr_iv_logincount" android:layout_width="fill_parent" android:layout_height="196.0dip" />
+            <ImageView android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/sr_ll_logincity" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/sr_tv_logincity_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" style="@style/text_view" />
+            <ImageView android:layout_gravity="center" android:id="@id/sr_iv_logincity" android:layout_width="fill_parent" android:layout_height="210.0dip" />
+            <ImageView android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/sr_ll_loginplatform" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/sr_tv_loginplatform_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" style="@style/text_view" />
+            <ImageView android:layout_gravity="center" android:id="@id/sr_iv_loginplatform" android:layout_width="fill_parent" android:layout_height="160.0dip" />
+            <ImageView android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/sr_ll_logintime" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/sr_tv_logintime_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" style="@style/text_view" />
+            <ImageView android:layout_gravity="center" android:id="@id/sr_iv_logintime" android:layout_width="fill_parent" android:layout_height="276.0dip" />
+            <ImageView android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/sr_ll_paymentrange" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/sr_tv_paymentrange_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" style="@style/text_view" />
+            <ImageView android:layout_gravity="center" android:id="@id/sr_iv_paymentrange" android:layout_width="fill_parent" android:layout_height="254.0dip" />
+            <ImageView android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/wtlogin_tip_verify" android:background="@color/orange_toast_before" android:layout_width="fill_parent" android:layout_height="30.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/toast_img" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/toast_careful" android:scaleType="fitXY" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/toast_text_color" android:gravity="center" android:id="@id/toast_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/wtlogin_login_tip_bind" android:layout_toRightOf="@id/toast_img" android:layout_centerVertical="true" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/toast_arrow_new" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+</RelativeLayout>

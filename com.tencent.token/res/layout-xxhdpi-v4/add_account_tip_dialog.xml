@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/container" android:visibility="visible" android:layout_width="300.0dip" android:layout_height="@dimen/dialog_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/rectangle_shape2" android:layout_width="292.0dip" android:layout_height="@dimen/dialog_content_height" android:layout_marginTop="10.0dip" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/title_layout" android:background="@drawable/add_account_tip_title_bg_up" android:layout_width="fill_parent" android:layout_height="120.0dip">
+            <ImageView android:id="@id/titile_pic" android:layout_width="fill_parent" android:layout_height="200.0dip" android:src="@drawable/add_account_tip_title_pic" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_layout">
+            <RelativeLayout android:id="@id/tip_text_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dialog_content_top">
+                <TextView android:gravity="center" android:id="@id/tip_text_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/add_account_tip_title" style="@style/text_btn_black_bold_20" />
+                <TextView android:id="@id/tip_text_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="20.0dip" android:text="@string/add_account_tip_account" android:layout_below="@id/tip_text_title" style="@style/add_account_content_msg" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center" android:id="@id/btn_layout" android:background="@drawable/add_account_tip_btn_bg" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true">
+                <ImageView android:id="@id/btn_plus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_account_tip_btn_plus" android:layout_centerInParent="true" />
+                <TextView android:gravity="center" android:id="@id/btn_text" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/verify_now" style="@style/add_account_btn_text" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/add_account_tip_close" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@drawable/add_account_tip_close" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

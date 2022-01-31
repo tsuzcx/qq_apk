@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="26.0dip" />
+    <RelativeLayout android:id="@id/set_token_pwd" android:background="@color/common_list_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/help_title_5" style="@style/text_view" />
+        <TextView android:id="@id/set_token_pwd_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:id="@id/set_correct_time" android:background="@color/common_list_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/correct_time_title" style="@style/text_view" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="24.0dip" />
+    <RelativeLayout android:id="@id/set_recommend2friend" android:background="@color/common_list_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/title_recommend" style="@style/text_view" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:id="@id/set_about" android:background="@color/common_list_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/set_about_txt" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/title_about" style="@style/text_view" />
+        <ImageView android:gravity="center_vertical" android:id="@id/new_icon" android:padding="6.0dip" android:layout_width="31.0dip" android:layout_height="13.0dip" android:src="@drawable/icon_new" android:layout_toRightOf="@id/set_about_txt" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</LinearLayout>

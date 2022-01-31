@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="70.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/find_items_title" android:drawableLeft="@drawable/find_items_icon" android:drawablePadding="5.0dip" android:layout_centerVertical="true" style="@style/small_text_view" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:id="@id/jianling_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/find_items_jianling" android:drawablePadding="7.0dip" style="@style/text_view" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/small_text_view" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip" android:text="@string/find_items_tip" android:drawablePadding="8.0dip" style="@style/small_text_view" />
+</LinearLayout>

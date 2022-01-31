@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="18.0sp" android:textColor="@color/font_color_dark" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/correct_time_desc" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="16.0dip" />
+    <TextView android:textSize="19.0sp" android:textColor="@color/font_color_dark_correct_time" android:gravity="center" android:id="@id/date_display" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:textSize="26.0sp" android:textColor="@color/font_color_dark_correct_time" android:gravity="center" android:id="@id/time_display" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="5.0dip" android:textScaleX="1.1" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <Button android:gravity="center" android:id="@id/correct_time_auto" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/correct_time_auto_corrent" style="@style/text_view_white" />
+</LinearLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/camPreview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <com.tencent.token.ui.FaceRecognitionCameraPreview android:id="@id/previewimg" android:background="#00ffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.token.ui.base.FaceView android:id="@id/iv_face" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/title_bar_v" android:background="@color/common_list_item_background" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="53.0dip">
+        <TextView android:textSize="18.0sp" android:textColor="@color/title_text_color" android:gravity="center" android:id="@id/bar_title_v" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="185.0dip" android:text="@string/facerecognition" android:singleLine="true" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/bar_back_button_v" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/bar_back_img" android:layout_width="@dimen/title_bar_icon_size" android:layout_height="@dimen/title_bar_icon_size" android:src="@drawable/arrow_back" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/bar_right_layout_v" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/bar_right_image" android:layout_width="@dimen/title_bar_icon_size" android:layout_height="@dimen/title_bar_icon_size" android:src="@drawable/title_button_help" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/title_bar_divider" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center" android:id="@id/realname_toast_layout" android:background="@drawable/realname_toast_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/orange_toast_height" android:layout_below="@id/title_bar_v" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/realname_toast_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/realname_toast_icon" android:layout_centerVertical="true" />
+        <TextView android:textColor="#ffffffff" android:id="@id/zzbtitletext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/realname_toast_icon" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/text_size_17" android:textColor="@color/facevry_common" android:id="@id/btn_vry_original" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/vry_original_pwd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/text_size_20" android:textColor="@color/utils_font_color_icon" android:id="@id/livedetect_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="130.0dip" android:text="@string/livedetect_face" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/vry_succ1" android:visibility="invisible" android:layout_width="340.0dip" android:layout_height="340.0dip" android:src="@drawable/commonvry_succ1" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/vry_succ2" android:visibility="invisible" android:layout_width="340.0dip" android:layout_height="340.0dip" android:src="@drawable/commonvry_succ2" android:layout_centerHorizontal="true" />
+</RelativeLayout>

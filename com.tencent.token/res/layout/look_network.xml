@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/title_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/look_network_sub_title" style="@style/text_view_17" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:id="@id/title_2" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/look_network_item_1" style="@style/text_view_14_normal" />
+    <TextView android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/look_network_item_1_1" android:lineSpacingExtra="4.0dip" style="@style/text_view_14_normal" />
+    <TextView android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/look_network_item_1_2" android:lineSpacingExtra="4.0dip" style="@style/text_view_14_normal" />
+    <TextView android:id="@id/title_3" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/look_network_item_2" style="@style/text_view_14_normal" />
+    <TextView android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/look_network_item_2_1" android:lineSpacingExtra="4.0dip" style="@style/text_view_14_normal" />
+</LinearLayout>

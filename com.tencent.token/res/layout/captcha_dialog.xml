@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/captcha_dialog" android:background="@drawable/second_verify_bg" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/font_color" android:id="@id/captcha_input_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/captcha_dialog_input_title" />
+    <ImageView android:id="@id/captcha_image" android:visibility="invisible" android:layout_width="104.0dip" android:layout_height="42.0dip" android:layout_marginTop="5.0dip" android:layout_below="@id/captcha_input_title" android:layout_alignLeft="@id/captcha_input_title" />
+    <RelativeLayout android:id="@id/progress_loading" android:visibility="visible" android:layout_width="104.0dip" android:layout_height="42.0dip" android:layout_marginTop="5.0dip" android:layout_below="@id/captcha_input_title">
+        <ProgressBar android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_centerInParent="true" style="@style/TokenProgressStyle" />
+    </RelativeLayout>
+    <TextView android:gravity="center" android:id="@id/captcha_change_image" android:visibility="visible" android:layout_width="65.0dip" android:layout_height="42.0dip" android:layout_marginLeft="10.0dip" android:text="@string/captcha_dialog_input_tip" android:layout_toRightOf="@id/captcha_image" android:layout_alignBottom="@id/captcha_image" style="@style/safe_msg_time" />
+    <EditText android:id="@id/captcha_input_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" android:layout_below="@id/captcha_image" />
+    <Button android:gravity="center" android:id="@id/captcha_verify_btn" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/confirm_button" android:layout_below="@id/captcha_input_text" style="@style/text_view_white" />
+</RelativeLayout>

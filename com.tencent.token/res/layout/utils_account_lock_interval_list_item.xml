@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="32.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="23.0dip" android:text="@string/utils_account_lock_tip" style="@style/text_view_small" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</LinearLayout>

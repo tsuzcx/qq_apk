@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/login_msg_left_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip">
+        <ImageView android:layout_width="4.0dip" android:layout_height="@dimen/divider_height" android:layout_marginLeft="16.5dip" android:src="@drawable/login_msg_timeline" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/login_msg_dis_time_bg_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/login_msg_time_bg1" />
+        <ImageView android:id="@id/login_msg_dis_time_bg_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/login_msg_time_bg3" />
+        <TextView android:gravity="center" android:id="@id/login_msg_dis_time_1" android:layout_width="44.299988dip" android:layout_height="22.0dip" android:text="@string/login_msg_today" style="@style/text_view_12" />
+        <TextView android:gravity="center" android:id="@id/login_msg_dis_time_2" android:layout_width="82.29999dip" android:layout_height="22.0dip" android:text="@string/login_msg_today" style="@style/text_view_12" />
+        <ImageView android:id="@id/login_msg_bottom" android:layout_width="4.0dip" android:layout_height="@dimen/divider_height" android:layout_marginLeft="16.5dip" android:src="@drawable/login_msg_timeline" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/login_msg_left_down" android:layout_width="37.0dip" android:layout_height="67.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="0.0dip" android:layout_below="@id/login_msg_left_up">
+        <ImageView android:id="@id/login_msg_timeline_1" android:layout_width="4.0dip" android:layout_height="15.0dip" android:src="@drawable/login_msg_timeline" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/login_msg_timeline_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:scaleType="fitXY" android:layout_below="@id/login_msg_timeline_1" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/login_msg_timeline_3" android:layout_width="4.0dip" android:layout_height="40.0dip" android:src="@drawable/login_msg_timeline" android:scaleType="fitXY" android:layout_below="@id/login_msg_timeline_2" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/login_msg_left_down_abnormal" android:layout_width="37.0dip" android:layout_height="67.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="0.0dip" android:layout_below="@id/login_msg_left_up">
+        <ImageView android:id="@id/login_msg_timeline_1_abnormal" android:layout_width="4.0dip" android:layout_height="10.0dip" android:src="@drawable/login_msg_timeline" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/login_msg_timeline_2_abnormal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:scaleType="fitXY" android:layout_below="@id/login_msg_timeline_1_abnormal" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/login_msg_timeline_3_abnormal" android:layout_width="4.0dip" android:layout_height="35.0dip" android:src="@drawable/login_msg_timeline" android:scaleType="fitXY" android:layout_below="@id/login_msg_timeline_2_abnormal" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/login_msg_right" android:background="@drawable/login_msg_item_normal" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="12.0dip" android:layout_toRightOf="@id/login_msg_left_down" android:layout_below="@id/login_msg_left_up" android:layout_alignParentRight="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <TextView android:id="@id/text_op_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="" style="@style/login_msg_normal_name" />
+            <TextView android:id="@id/text_op_detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_below="@id/text_op_name" android:layout_alignLeft="@id/text_op_name" style="@style/login_msg_normal_desc" />
+        </RelativeLayout>
+        <TextView android:id="@id/msg_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/msg_list_item_time" />
+    </RelativeLayout>
+</RelativeLayout>

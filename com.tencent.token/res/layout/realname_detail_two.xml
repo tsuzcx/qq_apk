@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/detail_back" android:layout_width="800.0dip" android:layout_height="450.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/flag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/cannotchangepsw" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/realname_title_cannotchangepsw" android:layout_below="@id/flag" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold_22" />
+    <TextView android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:text="@string/realname_text1_cannotchangepsw" android:layout_below="@id/title" android:layout_alignParentLeft="true" style="@style/text_view_small" />
+    <ImageView android:id="@id/iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:src="@drawable/cannotchangeiv" android:layout_below="@id/text1" android:layout_centerHorizontal="true" />
+</RelativeLayout>

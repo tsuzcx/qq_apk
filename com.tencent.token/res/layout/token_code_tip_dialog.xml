@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/container" android:background="@drawable/rectangle_shape2" android:visibility="visible" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/tip_text_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip">
+        <TextView android:gravity="center" android:id="@id/tip_text_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/token_code" style="@style/text_btn_black_bold_20" />
+        <TextView android:id="@id/tip_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:text="@string/token_code_tip_text" android:layout_below="@id/tip_text_title" android:lineSpacingExtra="3.0dip" style="@style/text_view_middle" />
+    </RelativeLayout>
+    <ImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/token_code_tip_pic" android:layout_below="@id/tip_text_layout" android:layout_centerHorizontal="true" />
+    <Button android:gravity="center" android:id="@id/canclebt" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="20.0dip" android:text="@string/realname_detail_btntext" android:layout_below="@id/icon" android:layout_centerHorizontal="true" style="@style/text_view_white_bold" />
+    <View android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/canclebt" />
+</RelativeLayout>

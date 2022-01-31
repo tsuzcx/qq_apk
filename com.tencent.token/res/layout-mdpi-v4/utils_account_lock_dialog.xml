@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="250.0dip" android:layout_height="300.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/utils_account_lock_dialog_bg" android:layout_width="242.0dip" android:layout_height="292.0dip" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="75.0dip" android:layout_height="78.0dip" android:layout_marginTop="35.0dip" android:src="@drawable/utils_account_lock_tip_img" android:scaleType="fitXY" />
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="19.0dip" android:layout_marginRight="12.0dip" android:text="@string/utils_account_lock_dialog_tip" android:lineSpacingExtra="4.0dip" style="@style/text_view_14_normal" />
+        <Button android:id="@id/utils_account_lock_dialog_lock" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/utils_account_lock_dialog_btn" style="@style/text_view_white" />
+    </LinearLayout>
+    <ImageView android:id="@id/utils_account_lock_dialog_close" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/utils_account_lock_close_bg" android:scaleType="fitXY" />
+</RelativeLayout>

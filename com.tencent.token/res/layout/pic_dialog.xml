@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/container" android:background="@drawable/rectangle_shape" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:src="@drawable/realname_findtunnel_icon" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/tip_text_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_below="@id/icon">
+        <TextView android:gravity="center" android:id="@id/tip_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/zzb_scan_tip" style="@style/text_view_middle" />
+    </RelativeLayout>
+    <Button android:gravity="center" android:id="@id/canclebt" android:background="@drawable/realname_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="15.0dip" android:text="@string/zzb_start_scan" android:layout_below="@id/tip_text_layout" android:layout_centerHorizontal="true" style="@style/text_view_middle" />
+    <View android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/canclebt" />
+</RelativeLayout>

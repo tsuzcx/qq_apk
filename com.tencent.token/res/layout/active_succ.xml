@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.token.ui.base.RoundImageView android:id="@id/img_head" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="50.0dip" android:src="@drawable/default_photo" android:scaleType="fitXY" android:layout_centerHorizontal="true" android:contentDescription="@string/app_name" />
+    <ImageView android:layout_width="22.5dip" android:layout_height="25.0dip" android:layout_marginLeft="-14.0dip" android:src="@drawable/common_success_small" android:scaleType="fitXY" android:layout_toRightOf="@id/img_head" android:layout_alignBottom="@id/img_head" android:contentDescription="@string/app_name" />
+    <TextView android:textSize="@dimen/text_size_20" android:textColor="@color/font_color" android:id="@id/succ_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/activity_succ_2" android:layout_below="@id/img_head" android:layout_centerHorizontal="true" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/succ_desc" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/succ_title" style="@style/login_msg_ip_share_desc" />
+    <Button android:gravity="center" android:id="@id/complete_button" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="17.0dip" android:text="@string/activity_succ_3" android:layout_below="@id/succ_desc" style="@style/text_view_white" />
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/head_view" android:background="@color/msg_refresh_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="80.0dip">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/head_arrowImageView" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/pull_to_refresh_arrow" android:contentDescription="@string/app_name" />
+            <ProgressBar android:id="@id/head_progressBar" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="10.0dip" style="@style/TokenProgressStyle" />
+        </FrameLayout>
+        <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginBottom="10.0dip">
+            <TextView android:id="@id/head_tipsTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/login_msg_pull_to_refresh" style="@style/text_view" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/font_color_dark_gray" android:id="@id/head_refreshTimeTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/msg_refresh_divider" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+</LinearLayout>

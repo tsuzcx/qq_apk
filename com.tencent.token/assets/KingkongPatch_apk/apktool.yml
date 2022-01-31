@@ -1,0 +1,19 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: KingkongPatch.apk
+compressionType: false
+doNotCompress: null
+isFrameworkApk: false
+packageInfo: null
+sdkInfo: null
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  libPatchDispatcher.so: '8'
+  libkkfixerdriver.so: '8'
+  libxposed_art50.so: '8'
+  libxposed_art51.so: '8'
+  libxposed_art60.so: '8'
+  libxposed_dalvik.so: '8'
+usesFramework: null
+version: 2.6.0
+versionInfo: null

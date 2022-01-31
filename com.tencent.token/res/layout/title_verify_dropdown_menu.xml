@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/title_menu_content" android:layout_width="fill_parent" android:layout_height="68.0dip" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/menu_help" android:background="@color/token_code_color" android:layout_width="0.0dip" android:layout_height="68.0dip" android:layout_weight="1.0">
+        <ImageView android:layout_width="22.5dip" android:layout_height="22.0dip" android:src="@drawable/login_msg_menu_help_icon" android:scaleType="fitXY" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/title_menu_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_knowtoken" />
+    </LinearLayout>
+    <LinearLayout android:background="@color/menu_divider_1" android:layout_width="1.0dip" android:layout_height="68.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/menu_get_verify_msg" android:background="@color/token_code_color" android:layout_width="0.0dip" android:layout_height="68.0dip" android:layout_weight="1.0">
+        <ImageView android:layout_width="22.5dip" android:layout_height="22.0dip" android:src="@drawable/title_button_refresh_icon" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/title_menu_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_drop_menu_get_dualmsg" />
+    </LinearLayout>
+</LinearLayout>

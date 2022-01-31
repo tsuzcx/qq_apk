@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:layout_width="147.0dip" android:layout_height="141.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/has_real_on_current_device" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/real_name_title" style="@style/login_msg_ip_share_title" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="23.0dip" />
+    <RelativeLayout android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/real_name_item_2" style="@style/text_view" />
+        <TextView android:id="@id/realname_3_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/lab_option_set" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/text_view_16_blue" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/real_name_item_3" style="@style/text_view" />
+        <TextView android:id="@id/realname_3_id" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/lab_option_set" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/text_view_16_blue" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="20.0dip" />
+    <RelativeLayout android:id="@id/realname_3_item_1_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/real_name_item_1" style="@style/text_view" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/real_name_item_1_desc" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/text_view_16_blue" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:text="@string/real_name_item_5" style="@style/small_text_view" />
+</LinearLayout>

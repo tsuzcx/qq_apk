@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/background" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/recommend_to_wechat" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="26.0dip">
+            <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentTop="true" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/recommend_wechat_icon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/wechat" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/setting_recommend_to_wechat" android:layout_toRightOf="@id/recommend_wechat_icon" style="@style/text_view" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        </RelativeLayout>
+        <View android:id="@id/list_divider" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/recommend_to_wechat" />
+        <RelativeLayout android:id="@id/recommend_to_friend_group" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/list_divider">
+            <ImageView android:id="@id/recommend_friend_group_icon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/group" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/setting_recommend_to_friend_group" android:layout_toRightOf="@id/recommend_friend_group_icon" style="@style/text_view" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        </RelativeLayout>
+        <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/recommend_to_friend_group" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/qrcode" android:background="@drawable/offical_mail_bg" android:layout_width="232.0dip" android:layout_height="232.0dip" android:layout_marginTop="30.0dip" android:layout_below="@id/recommend_to_friend_group" android:layout_centerHorizontal="true" />
+        <ImageView android:layout_width="180.0dip" android:layout_height="180.0dip" android:layout_marginTop="56.0dip" android:src="@drawable/recommend_qrcode" android:layout_below="@id/recommend_to_friend_group" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/gray_recommend_info_fg" android:id="@id/recommend_info" android:layout_width="232.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/assistant_recommend_to_friend_info" android:layout_below="@id/qrcode" android:layout_centerHorizontal="true" style="@style/small_text_view" />
+    </RelativeLayout>
+</ScrollView>

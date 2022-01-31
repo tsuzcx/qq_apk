@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/detail_back" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/flag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/configidicon" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:text="@string/realname_comfig_id_text" android:layout_below="@id/flag" android:layout_alignParentLeft="true" style="@style/text_view" />
+    <TextView android:gravity="center" android:id="@id/name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/realname_reg_alert_content" android:layout_below="@id/title" style="@style/text_view_bold" />
+    <Button android:gravity="center" android:id="@id/okbt" android:background="@drawable/blue_btn_bg" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="@string/realname_confirm_tip_buttontext_ok" android:layout_below="@id/name" style="@style/text_view_18_white" />
+    <Button android:gravity="center" android:id="@id/canclebt" android:background="@drawable/gray_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:text="@string/realname_reg_neg_btn" android:layout_below="@id/okbt" style="@style/text_view_18_blue" />
+    <View android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_below="@id/canclebt" />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/info_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip">
+        <TextView android:gravity="center" android:id="@id/info_upper" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/check_current_mobile" style="@style/text_view" />
+        <TextView android:gravity="center" android:id="@id/mobile_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" style="@style/mobile_mask_text_view" />
+        <TextView android:gravity="center" android:id="@id/info_lower" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/unbind_confirm_send_to_verify" style="@style/text_view" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/btn_layout" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/info_layout">
+        <Button android:gravity="center" android:id="@id/next_button" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="@string/unbind_btn_current_to_verify" style="@style/text_view_white" />
+        <Button android:gravity="center" android:id="@id/cancel" android:background="@drawable/gray_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="10.0dip" android:text="@string/unbind_btn_not_current_to_change" style="@style/text_view_blue" />
+    </LinearLayout>
+    <TextView android:gravity="center" android:id="@id/fee_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/unbind_fee_tip" android:layout_alignParentBottom="true" style="@style/text_view_small" />
+</RelativeLayout>

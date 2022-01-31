@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:orientation="horizontal" android:id="@id/psw_img" android:background="@drawable/my_password_green" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="140.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/text_size_18" android:textColor="@color/realname_shake_title" android:id="@id/psw_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:text="@string/my_psw_high" android:layout_below="@id/psw_img" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/psw_tip_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/psw_title" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/utils_font_color_desc" android:id="@id/psw_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/my_psw_high_tip" />
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/barcode_scan_text_blue" android:id="@id/psw_tip_read_detail" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/my_psw_read_detail" android:layout_toRightOf="@id/psw_tip" />
+    </RelativeLayout>
+    <Button android:id="@id/psw_button" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="20.0dip" android:text="@string/modify_pwd" android:layout_below="@id/psw_tip_layout" style="@style/text_view_white" />
+</RelativeLayout>

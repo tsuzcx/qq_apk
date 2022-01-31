@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.token.ui.base.PullToRefreshListView android:id="@id/msg_page_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+    <RelativeLayout android:id="@id/rl_tip_timezone" android:background="@color/orange_toast_before" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip">
+        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip">
+            <ImageView android:id="@id/toast_img" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/toast_message" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/toast_text_color" android:id="@id/toast_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/msg_tip_timezone" />
+        </LinearLayout>
+        <ImageView android:id="@id/toast_close" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/toast_close_new" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerInParent="true" android:contentDescription="@string/app_name" />
+    </RelativeLayout>
+</RelativeLayout>

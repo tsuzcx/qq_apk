@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/zzb_tip_verify_view" android:background="@color/orange_toast_before" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/toast_text_color" android:gravity="center_vertical" android:id="@id/toast_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/zzb_apply_refused" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/toast_close" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/toast_close_new" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerInParent="true" android:contentDescription="@string/app_name" />
+</RelativeLayout>

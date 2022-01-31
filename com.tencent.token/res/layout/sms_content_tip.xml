@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/use_mb_mobile_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="15.0dip" android:text="@string/use_mb_mobile_to_send_sms" android:layout_alignParentTop="true" style="@style/text_view" />
+    <RelativeLayout android:id="@id/sms_content_layout" android:padding="0.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="14.0dip" android:layout_below="@id/use_mb_mobile_tip">
+        <View android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        <TextView android:gravity="center_vertical" android:id="@id/send_sms" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="@string/send_sms" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/text_view" />
+        <TextView android:gravity="center_vertical" android:id="@id/sms_content" android:layout_width="wrap_content" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_toRightOf="@id/send_sms" android:layout_centerVertical="true" style="@style/text_view" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/mobile_num_layout" android:padding="0.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="5.0dip" android:layout_below="@id/sms_content_layout">
+        <View android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        <TextView android:gravity="center|left" android:id="@id/num_to_send_sms" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="45.0dip" android:text="@string/num_to_send_sms" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/text_view" />
+        <TextView android:gravity="center_vertical" android:id="@id/mobile_num" android:layout_width="wrap_content" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_toRightOf="@id/num_to_send_sms" style="@style/text_view" />
+        <View android:background="@color/divline" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/btn_layout" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/mobile_num_layout">
+        <TextView android:id="@id/text_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/have_sended" android:layout_centerInParent="true" style="@style/text_view_white" />
+        <ProgressBar android:id="@id/pb_id" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/text_ok" android:layout_centerVertical="true" style="?android:attr/progressBarStyleSmall" />
+    </RelativeLayout>
+    <TextView android:gravity="center" android:id="@id/tip_text" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:text="@string/sms_not_sended" android:layout_below="@id/btn_layout" style="@style/sms_send_tip" />
+</RelativeLayout>

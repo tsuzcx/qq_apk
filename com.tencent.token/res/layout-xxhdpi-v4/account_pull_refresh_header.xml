@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/account_pull_refresh_head" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/refresh_array" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/account_pull_array" />
+    <TextView android:textColor="@color/font_color_white" android:gravity="center" android:id="@id/refresh_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.token.ui.base.ScrollLayout android:layout_gravity="center" android:id="@id/ScrollLayout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <include android:id="@id/firstlayout" layout="@layout/realname_detail_one" />
+        <include android:id="@id/twolayout" layout="@layout/realname_detail_two" />
+        <include android:id="@id/threelayout" layout="@layout/realname_detail_three" />
+        <include android:id="@id/forelayout" layout="@layout/realname_detail_four" />
+    </com.tencent.token.ui.base.ScrollLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/flag" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/findaccount" android:layout_centerHorizontal="true" />
+        <TextView android:id="@id/title" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/realname_title_findacount" android:layout_below="@id/flag" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold_22" />
+        <TextView android:id="@id/text1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="10.0dip" android:text="@string/realname_text1_findacount" android:layout_below="@id/title" android:layout_alignParentLeft="true" style="@style/text_view_small" />
+        <ImageView android:id="@id/iv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:src="@drawable/findaccountiv" android:layout_below="@id/text1" android:layout_centerHorizontal="true" />
+        <LinearLayout android:id="@id/pointlayout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/realname_detail_margetop" android:layout_below="@id/iv" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/iv1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/point" />
+            <ImageView android:id="@id/iv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:src="@drawable/point" />
+            <ImageView android:id="@id/iv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:src="@drawable/point" />
+            <ImageView android:id="@id/iv4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:src="@drawable/point" />
+        </LinearLayout>
+        <Button android:id="@id/detailbt" android:background="@drawable/realname_btn" android:layout_width="290.0dip" android:layout_height="50.0dip" android:layout_marginTop="25.0dip" android:text="@string/realname_detail_btntext" android:layout_below="@id/pointlayout" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold" />
+    </RelativeLayout>
+</FrameLayout>

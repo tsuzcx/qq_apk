@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bind_icon" android:layout_width="76.0dip" android:layout_height="86.0dip" android:layout_marginTop="70.0dip" android:src="@drawable/common_success_gray" android:layout_centerHorizontal="true" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/bind_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/game_login_snd_confirm_c1_v1_title" android:layout_below="@id/bind_icon" android:layout_centerHorizontal="true" style="@style/largest_text_view" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/bind_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/game_login_snd_confirm_c1_v1_content" android:layout_below="@id/bind_title" android:layout_centerHorizontal="true" style="@style/text_view_14" />
+    <Button android:id="@id/confirm_btn" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="14.0dip" android:text="@string/confirm_button_interval" android:layout_below="@id/bind_desc" style="@style/text_view_white" />
+</RelativeLayout>

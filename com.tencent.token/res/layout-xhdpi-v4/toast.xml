@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="35.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@color/orange_toast_before" android:layout_width="fill_parent" android:layout_height="35.0dip" android:scaleType="fitXY" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/toast_img" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/toast_text_color" android:ellipsize="marquee" android:gravity="center" android:id="@id/toast_text" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:scrollHorizontally="true" android:singleLine="true" android:layout_toRightOf="@id/toast_img" android:layout_centerVertical="true" android:marqueeRepeatLimit="marquee_forever" />
+    </RelativeLayout>
+</RelativeLayout>

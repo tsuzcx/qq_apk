@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/alpha" android:background="@color/scan_tip_txt_title_color" android:paddingLeft="8.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="20.0dip" style="@style/login_msg_report_location_alpha" />
+    <RelativeLayout android:id="@id/divider" android:background="@color/login_msg_report_location_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/alpha" />
+    <RelativeLayout android:id="@id/name_bg" android:background="@color/login_msg_report_location" android:layout_width="fill_parent" android:layout_height="43.0dip" android:layout_below="@id/divider">
+        <ImageView android:id="@id/select" android:layout_width="15.0dip" android:layout_height="13.0dip" android:layout_marginLeft="11.0dip" android:src="@drawable/login_msg_select_city" android:layout_centerVertical="true" />
+        <TextView android:gravity="center" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="43.0dip" android:layout_marginLeft="33.0dip" android:singleLine="true" style="@style/login_msg_report_location" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/detail_back" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/realname_title_findacount" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold" />
+    <TextView android:gravity="center" android:id="@id/msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:text="@string/realname_text1_findacount" android:layout_below="@id/title" android:layout_centerHorizontal="true" style="@style/text_view_small" />
+    <View android:id="@id/line" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="20.0dip" android:layout_below="@id/msg" />
+    <TextView android:gravity="center" android:id="@id/canclebt" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="2.0dip" android:text="@string/realname_detail_btntext" android:layout_below="@id/line" android:layout_centerHorizontal="true" style="@style/text_view_16_blue" />
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/canclebt" />
+</RelativeLayout>
