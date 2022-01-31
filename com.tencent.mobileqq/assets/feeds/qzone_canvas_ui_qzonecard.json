@@ -1,0 +1,235 @@
+{
+  "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+  "shell": {
+    "id": "qzone_card_root_container",
+    "width": "match_parent",
+    "height": "113 dp",
+    "margin": "7dp,6dp,7dp,6dp"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.CanvasImageArea",
+      "shell": {
+        "id": "qzone_card_bg",
+        "width": "match_parent",
+        "height": "match_parent",
+        "centerInParent":true
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+      "shell": {
+        "id": "qzone_card_avatar_bg",
+        "width": "105 dp",
+        "height": "105 dp",
+        "margin": "6dp,6dp,6dp,6dp",
+        "alignParentLeft":true,
+        "centerVertical":true
+      }
+    },{
+      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "shell": {
+        "id": "qzone_card_right_container",
+        "width": "69dp",
+        "height": "wrap_content",
+        "orientation": "vertical",
+        "centerVertical":true,
+        "alignParentRight": true,
+        "margin": "15 dp ,0,21dp,0"
+      },
+      "children": [
+        {
+          "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+          "shell": {
+            "width": "wrap_content",
+            "height": "wrap_content",
+            "layout_gravity":"center_horizontal",
+            "orientation": "horizontal"
+          },
+          "children": [
+            {
+              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "shell": {
+                "id": "qzone_card_fans",
+                "width": "32dp",
+                "height": "wrap_content",
+                "text_color": "#000000",
+                "text_alignment": "ALIGN_CENTER",
+                "text_size": 11,
+                "max_line": 1,
+                "margin": "0 ,0,5dp,0"
+              }
+            },
+            {
+              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "shell": {
+                "id": "qzone_card_visitor",
+                "width": "32dp",
+                "height": "wrap_content",
+                "text_color": "#000000",
+                "text_alignment": "ALIGN_CENTER",
+                "text_size": 11,
+                "max_line": 1
+              }
+            }
+          ]
+        },
+        {
+          "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+          "shell": {
+            "width": "wrap_content",
+            "height": "wrap_content",
+            "orientation": "horizontal",
+            "layout_gravity":"center_horizontal"
+          },
+          "children": [
+            {
+              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "shell": {
+                "id": "qzone_card_fans_desc",
+                "width": "32dp",
+                "height": "wrap_content",
+                "text": "粉丝",
+                "text_color": "#757575",
+                "text_alignment": "ALIGN_CENTER",
+                "text_size": 11,
+                "max_line": 1,
+                "margin": "0 ,0,5dp,0"
+              }
+            },
+            {
+              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "shell": {
+                "id": "qzone_card_visitor_desc",
+                "width": "32dp",
+                "height": "wrap_content",
+                "text": "访客",
+                "text_color": "#757575",
+                "text_alignment": "ALIGN_CENTER",
+                "max_line": 1,
+                "text_size": 11
+              }
+            }
+          ]
+        },{
+          "Area": "com.qzone.canvasui.widget.CanvasButtonArea",
+          "shell": {
+            "id": "qzone_card_follow_button",
+            "width": "match_parent",
+            "height": "26 dp",
+            "text": "关注",
+            "text_color": "#000000",
+            "gravity": "center",
+            "text_size": 14,
+            "bg_color":"#ffca00",
+            "border_width": "1px",
+            "border_color": "#ffca00",
+            "border_radius": "6px",
+            "layout_gravity":"center_horizontal",
+            "max_line": 1,
+            "margin": "0 ,8dp,0,0"
+          }
+        }
+      ]
+    }
+  ,{
+      "Area": "com.qzone.canvasui.area.CanvasArea",
+      "shell": {
+        "id": "qzone_card_divider",
+        "width": "1dp",
+        "height": "59dp",
+        "bg_color":"#e0e0e0",
+        "toLeftOf":"qzone_card_right_container",
+        "centerVertical":true
+      }
+    },{
+      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "shell": {
+        "id": "qzone_card_left_container",
+        "width": "match_parent",
+        "height": "match_parent",
+        "orientation": "horizontal",
+        "centerVertical":true,
+        "alignParentLeft": true,
+        "gravity": "center_vertical",
+        "toLeftOf":"qzone_card_divider"
+      },
+      "children": [
+        {
+          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "shell": {
+            "id": "qzone_card_avatar",
+            "width": "50dp",
+            "height": "50dp",
+            "border_width": "2px",
+            "border_color": "#ffffff",
+            "layout_gravity": "center_vertical",
+            "margin": "21dp,0,0,0"
+          }
+        },{
+          "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+          "shell": {
+            "width": "match_parent",
+            "height": "wrap_content",
+            "orientation": "vertical",
+            "layout_gravity": "center_vertical",
+            "margin": "8 dp ,0,14dp,0"
+          },
+          "children": [
+            {
+              "Area": "com.qzone.canvasui.widget.FlexLinearAreaLayout",
+              "shell": {
+                "width": "wrap_content",
+                "height": "wrap_content",
+                "orientation": "horizontal",
+                "layout_gravity": "top",
+                "shrinkColumns":0
+              },
+              "children": [
+                {
+                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "shell": {
+                    "id": "qzone_card_nickname",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text_color": "#000000",
+                    "layout_gravity": "right",
+                    "gravity": "right",
+                    "text_size": 16,
+                    "ellipsize":"end",
+                    "max_line": 1
+                  }
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                  "shell": {
+                    "id": "qzone_card_famousspace_icon",
+                    "width": "15 dp",
+                    "height": "15 dp",
+                    "margin": "4dp,0,0,0",
+                    "layout_gravity": "center_vertical"
+                  }
+                }
+              ]
+            },
+            {
+              "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+              "shell": {
+                "id": "qzone_card_desc",
+                "width": "match_parent",
+                "height": "wrap_content",
+                "margin": "0,2dp,0,0",
+                "text_color": "#000000",
+                "gravity": "center",
+                "text_size": 12,
+                "max_line":2,
+                "ellipsize":"end"
+              }
+            }
+          ]
+        }
+
+      ]
+    }
+  ]
+}

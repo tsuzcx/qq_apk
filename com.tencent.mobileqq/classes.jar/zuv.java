@@ -1,0 +1,24 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+
+public final class zuv
+  implements Runnable
+{
+  public zuv(boolean paramBoolean, String paramString) {}
+  
+  public void run()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 0).a();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_JavaLangString, 0).a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     zuv
+ * JD-Core Version:    0.7.0.1
+ */

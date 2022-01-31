@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13c4" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f5" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f4" android:layout_marginRight="1.5dip" android:scaleType="centerCrop" tencent:view_width_weight="1.0" tencent:view_height_weight="0.71774" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13c5" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f5" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f4" android:layout_marginRight="1.5dip" android:scaleType="centerCrop" tencent:view_width_weight="1.0" tencent:view_height_weight="0.71774" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13c6" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f5" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f4" android:scaleType="centerCrop" tencent:view_width_weight="1.0" tencent:view_height_weight="0.71774" />
+</LinearLayout>

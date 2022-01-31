@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/qb_active_search_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/app_img" android:layout_width="@dimen/qb_active_search_img_width" android:layout_height="@dimen/qb_active_search_img_width" android:layout_marginLeft="12.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+        <TextView android:textSize="@dimen/qb_active_search_item_text_big" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/app_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip">
+            <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/star_container" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_active_search_star_off" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/qb_active_search_star_off" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/qb_active_search_star_off" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/qb_active_search_star_off" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/qb_active_search_star_off" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="@dimen/qb_active_search_item_text_small_2" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/app_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

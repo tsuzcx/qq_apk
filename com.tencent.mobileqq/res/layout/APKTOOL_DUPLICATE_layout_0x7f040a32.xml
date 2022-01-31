@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0430" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.proxy.albumcomponent.widget.LoverHeaderCell android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2a" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e3b" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2b" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0397" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="5.0dip" />
+            <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b00" android:background="@null" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

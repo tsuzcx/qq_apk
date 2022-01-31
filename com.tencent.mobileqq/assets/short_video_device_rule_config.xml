@@ -1,0 +1,56 @@
+{
+ 	"resolutionList":"1280*720;960*720;1920*1080",
+	"cpResolutionList": "960*720;640*360;1280*720",
+
+	"maxWeight": "0.5",
+	"renderListWeight": {
+		"10": "0.1",
+		"20": "0.1",
+		"25": "0.1",
+		"70": "0.1",
+		"80": "0.1",
+		"110": "0.2",
+		"120": "0.2",
+	    "100": "0.5",
+		"40": "0.5",
+		"90": "0.5",
+		"130": "0.5",
+		"140": "0.5"
+	},
+
+	"verdor": "Adreno;Mali;PowerVR",
+	"Adreno": {
+		"strategy": "black",
+		"black": {
+			"rule"   : "less",
+			"less" : "3#305;4#404;5#504"
+		}
+	},
+	"Mali": {
+		"strategy": "black",
+		"black": {
+			"rule"   : "less",
+			"less": "T#62#1;T#6#2;T#7#2;T#8#1;T#800;4#450"
+		}
+	},
+	"PowerVR": {
+		"strategy": "white",
+		"white": {
+			"rule"   : "enum",
+			"enum"   : "XXX1;XXX2"
+		}
+	},
+
+	"blackList":[
+		"OPPO;A31t","HUAWEI;ATH-AL00","YuLong;Coolpad 8675","HUAWEI;HUAWEI RIO-AL00","Letv;x600","Meizu;m1 metal","Letv;Letv X500"
+		,"Letv;Letv X501","HUAWEI;HUAWEI ALE-CL00","OPPO;OPPO A33m","OPPO;OPPO A33","YuLong;Coolpad 8675-A","Xiaomi;Redmi Note 2","vivo;vivo X5M","HUAWEI;CHM-CL00"
+		,"OPPO;A51","vivo;vivo Y37","vivo;vivo V3","vivo;vivo X5S L","OPPO;OPPO A53m","Xiaomi;Redmi 3","OPPO;OPPO A53","Xiaomi;HM NOTE 1LTE","OPPO;A31","samsung;SM-A7000"
+		,"OPPO;1107","OPPO;A31c","vivo;vivo Y51A","vivo;vivo Y51","vivo;vivo X3L","HUAWEI;KIW-AL10","vivo;vivo X5Max+","OPPO;3007","HUAWEI;KIW-TL00","samsung;SM-A5000"
+		,"HUAWEI;KIW-TL00H","vivo;vivo Y35A","vivo;vivo Y31A","vivo;vivo X5Max L","vivo;vivo Y31","HUAWEI;HUAWEI P7-L07","OPPO;OPPO R7sPlus","HUAWEI;Che1-CL20","HUAWEI;Che1-CL10"
+		,"OPPO;OPPO R7sm","OPPO;R7Plusm","vivo;vivo Y13iL","vivo;vivo X6A","nubia;NX511J","samsung;SM-A8000","vivo;vivo X5Pro V","HUAWEI;SCL-TL00H","HUAWEI;SCL-AL00"
+		,"vivo;vivo Y18L","HUAWEI;SCL-TL00","CMDC;M623C","vivo;vivo X6Plus A","vivo;vivo V3Max A","OPPO;R8107","Xiaomi;2014813","vivo;vivo Y13L","OPPO;N5117"
+		,"Xiaomi;HM 1S","OPPO;R7c","vivo;vivo Y28L","BBK;vivo X5L","OPPO;R6007","vivo;vivo Y23L","OPPO;R7007","OPPO;R2017","Xiaomi;HM NOTE 1S","vivo;vivo Y27"
+		,"OPPO;R8007","vivo;vivo Y29L","Xiaomi;HM NOTE 1TD","Xiaomi;2014501","HUAWEI;HUAWEI G750-T01","samsung;SM-J3110","HUAWEI;CAM-TL00","HUAWEI;CHM-TL00","OPPO;R2017"
+		,"HUAWEI;ALE-TL00","HUAWEI;ALE-UL00","OPPO;R7005","samsung;SM-J3110","BOWAY;BOWAY_V95","samsung;SM-A7009","samsung;SM-G7200"
+	]
+}

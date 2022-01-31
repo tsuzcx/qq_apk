@@ -1,0 +1,10 @@
+{
+  "filterId" : "7",
+  "name" : "TEATIME",
+  "subId" : "0",
+  "resourceList" : [
+    "10_teatime.png",
+    "10_picture.png"
+  ],
+  "filterExtension" : "0"
+}

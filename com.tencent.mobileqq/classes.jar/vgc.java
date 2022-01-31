@@ -1,0 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoMsgHolder;
+
+public class vgc
+  implements View.OnClickListener
+{
+  public vgc(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  
+  public void onClick(View paramView)
+  {
+    TribeShortVideoItemBuilder.TribeShortVideoMsgHolder localTribeShortVideoMsgHolder = (TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)AIOUtils.a(paramView);
+    if (paramView == localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localTribeShortVideoMsgHolder);
+    }
+    while (paramView != localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+      return;
+    }
+    this.a.a(localTribeShortVideoMsgHolder);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     vgc
+ * JD-Core Version:    0.7.0.1
+ */

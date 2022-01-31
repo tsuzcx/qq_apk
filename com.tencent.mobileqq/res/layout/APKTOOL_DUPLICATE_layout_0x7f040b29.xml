@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e15" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a327c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="2.0dip">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a327d" android:layout_width="12.0dip" android:layout_height="12.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff858585" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a327e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" />
+    </LinearLayout>
+</FrameLayout>

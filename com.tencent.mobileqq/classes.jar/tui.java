@@ -1,0 +1,23 @@
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import java.util.ArrayList;
+
+class tui
+  implements Runnable
+{
+  tui(tuh paramtuh, Handler paramHandler) {}
+  
+  public void run()
+  {
+    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_Tuh.a.app.getManager(47)).a(this.jdField_a_of_type_Tuh.a.a, false);
+    this.jdField_a_of_type_AndroidOsHandler.post(new tuj(this, localArrayList));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     tui
+ * JD-Core Version:    0.7.0.1
+ */

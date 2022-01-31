@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center|left|top" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0407" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1350" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.webviewplugin.Hole android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1351" android:background="#00ff0000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c14" android:layout_width="320.0dip" android:layout_height="132.5dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="150.0dip" />
+        <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c13" android:layout_width="74.5dip" android:layout_height="19.5dip" android:layout_marginLeft="150.0dip" android:layout_marginTop="250.0dip" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1352" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c34" android:paddingLeft="34.0dip" android:paddingRight="34.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="51.0dip">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1353" android:visibility="gone" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0d17" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c3e" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d2" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1354" android:visibility="gone" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0d19" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c3c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d2" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0389" android:visibility="gone" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0d1c" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c3a" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d2" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1355" android:visibility="gone" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0d1a" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c38" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d2" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1356" android:visibility="gone" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0d1d" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c36" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d2" />
+    </LinearLayout>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1357" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c32" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="260.0dip" android:layout_marginTop="250.0dip" />
+</FrameLayout>

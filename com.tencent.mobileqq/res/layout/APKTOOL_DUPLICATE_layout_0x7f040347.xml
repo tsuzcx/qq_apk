@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020435" android:layout_width="fill_parent" android:layout_height="77.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f8" android:layout_width="38.0dip" android:layout_height="57.0dip" android:layout_marginLeft="14.0dip" android:scaleType="fitXY" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="57.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a11f9">
+            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0024" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11fa" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@null" android:maxLines="2" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0024" android:ellipsize="end" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b28b4" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0024" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

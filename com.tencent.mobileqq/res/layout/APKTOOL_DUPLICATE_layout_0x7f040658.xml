@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e65" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e66" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040659" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.armap.wealthgod.ARMapSplashView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e67" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e68" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e69" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02127a" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06f9" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06fa" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06fb" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06fc" />
+    </LinearLayout>
+</FrameLayout>

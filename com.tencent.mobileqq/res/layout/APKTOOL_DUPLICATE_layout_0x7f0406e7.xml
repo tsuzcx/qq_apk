@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20a9" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0099" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MVP" android:singleLine="true" />
+            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20aa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20ab" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0099" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="超神" android:singleLine="true" />
+            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20ac" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20ad" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0099" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="胜率" android:singleLine="true" />
+            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20ae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20af" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0099" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="场次" android:singleLine="true" />
+            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20b0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="130.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17cf" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e2b" android:layout_width="fill_parent" android:layout_height="195.0dip">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e27" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020deb" android:scaleType="fitStart" />
+            <com.tencent.mobileqq.widget.AnimationView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d2" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitEnd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021914" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginTop="35.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="21.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0352" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d4" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f50" android:singleLine="true" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c034e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="皮肤名称最多" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17d7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:background="#ffefefef" android:padding="25.0dip" android:layout_width="fill_parent" android:layout_height="136.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e2c" />
+        <TextView android:textSize="14.0sp" android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="更多皮肤" android:singleLine="true" />
+    </LinearLayout>
+</FrameLayout>

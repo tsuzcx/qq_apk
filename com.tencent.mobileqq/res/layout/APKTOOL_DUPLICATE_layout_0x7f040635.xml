@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d96" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="年龄" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d98" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="星座" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" />
+    </LinearLayout>
+</LinearLayout>

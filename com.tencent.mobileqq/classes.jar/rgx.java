@@ -1,0 +1,22 @@
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+
+public class rgx
+  implements Runnable
+{
+  public rgx(AddRequestActivity paramAddRequestActivity) {}
+  
+  public void run()
+  {
+    Card localCard = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a);
+    this.a.runOnUiThread(new rgy(this, localCard));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     rgx
+ * JD-Core Version:    0.7.0.1
+ */

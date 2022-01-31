@@ -1,0 +1,58 @@
+{
+  "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+  "shell": {
+    "id": "feed_attach_root",
+    "width": "match_parent",
+    "height": "match_parent"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "shell": {
+        "id": "logo_root",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "centerVertical": true
+      },
+      "children": [
+        {
+          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "shell": {
+            "layout_gravity":"center_horizontal",
+            "id": "logo_img",
+            "width": "92 dp",
+            "height": "92 dp"
+          }
+        },
+        {
+          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "shell": {
+            "id": "logo_name",
+            "width": "wrap_content",
+            "layout_gravity":"center_horizontal",
+            "height": "14dp",
+            "text_color": "#787878",
+            "text_size": 13,
+            "margin": "0dp,10dp,0dp,0dp"
+          }
+        },
+        {
+          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "shell": {
+            "id": "logo_jump_button",
+            "layout_gravity":"center_horizontal",
+            "width": "wrap_content",
+            "height": "wrap_content",
+            "text_color": "#FF2664a8",
+            "text_size": 14,
+            "margin": "0,20dp,0,0",
+            "border_width": "1dp",
+            "border_radius": "2dp",
+            "border_color": "#FF2664a8",
+            "padding": "12.5dp, 5dp, 12.5dp, 5dp"
+          }
+        }
+      ]
+    }
+  ]
+}

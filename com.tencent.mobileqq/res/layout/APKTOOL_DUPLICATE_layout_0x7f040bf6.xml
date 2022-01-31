@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="95.0dip" android:layout_height="135.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3441" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3402" android:layout_width="fill_parent" android:layout_height="29.0dip" android:text="无特效" android:singleLine="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3442" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221f1" />
+</RelativeLayout>

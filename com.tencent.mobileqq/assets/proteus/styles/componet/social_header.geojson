@@ -1,0 +1,156 @@
+{
+    "view_type":"container",
+    
+    "layout_type":"layout_relative",
+    "height":{
+        "type":"relative",
+        "value":"59"
+    },
+    "width":{
+        "type":"relative",
+        "value":"375"
+    },
+    "subviews":[
+                {
+                "view_type":"UIButton",
+                "view_id":"id_dislike_button",
+                "align_parent_top":"YES",
+                "align_parent_right":"YES",
+                "event_type":"cmd_dislike_click",
+                "margin_right":"-2",
+                "margin_top":"18.5",
+                "height":{
+                "type":"relative",
+                "value":"30"
+                },
+                "width":{
+                "type":"relative",
+                "value":"41"
+                },
+                "attributes":{
+                "setImage:":"feeds_dislike"
+                }
+                },
+                {
+                "view_type":"QQAvatarView",
+                "view_id":"id_info_avator",
+                "align_parent_left":"YES",
+                "align_parent_top":"YES",
+                "event_type":"cmd_avatar_click",
+                "margin_left":"12",
+                "margin_top":"15",
+                "height":{
+                "type":"relative",
+                "value":"37"
+                },
+                "width":{
+                "type":"relative",
+                "value":"37"
+                },
+                "attributes":{
+                "loadQQAvatar:":"-1",
+                "setFrameString:":"-1"
+               
+              
+               
+                }
+                },
+                {
+                "view_type":"container",
+                "direction":"horizontal",
+                "right_of_view":"id_info_avator",
+                "height":{
+                "type":"wrap_content"
+                },
+                "width":{
+                "type":"wrap_content"
+                },
+                "subviews":[
+                            {
+                            "view_type":"UILabel",
+                            "view_id":"id_nickname",
+                            "align_parent_top":"YES",
+                            "margin_left":"8",
+                            "margin_top":"17.5",
+                            "height":{
+                            "type":"wrap_content"
+                            },
+                            "width":{
+                            "type":"wrap_content"
+                            },
+                            "attributes":{
+                            "setFrameString:":"-1",
+                            "setText:":"-1",
+                            "setTextColorString:":"-1",
+                            "setFontSizeString:":"16",
+                            "setNumberOfLinesString:":"1"
+                            }
+                            },
+                            {
+                            "view_type":"UIImageView",
+                            "view_id":"id_v_icon",
+                            "align_parent_top":"YES",
+                            "margin_left":"8",
+                            "margin_top":"19",
+                            "height": {
+                            "type": "relative",
+                            "value": "15"
+                            },
+                            "width": {
+                            "type": "relative",
+                            "value": "15"
+                            },
+                            "attributes": {
+                            "loadImageWithPath:": "-1"
+                            }
+                            },
+                            {
+                            "view_type":"UILabel",
+                            "view_id":"id_biu_tips",
+                            "align_parent_top":"YES",
+                            "right_of_view":"id_v_icon",
+                            "margin_left":"8",
+                            "margin_top":"18",
+                            "height":{
+                            "type":"wrap_content"
+                            },
+                            "width":{
+                            "type":"wrap_content"
+                            },
+                            "attributes":{
+                            "setFrameString:":"-1",
+                            "setText:":"-1",
+                            "setTextColorString:":"#777777",
+                            "setFontSizeString:":"15",
+                            "setNumberOfLinesString:":"1"
+                            }
+                            }
+                            ]
+                },
+                {
+                "view_type":"UILabel",
+                "view_id":"id_biu_time",
+                "align_parent_bottom":"YES",
+                "right_of_view":"id_info_avator",
+                "margin_left":"8",
+                "margin_bottom":"7",
+                "height":{
+                "type":"wrap_content"
+                },
+                "width":{
+                "type":"wrap_content"
+                },
+                "attributes":{
+                "setFrameString:":"-1",
+                "setText:":"-1",
+                "setTextColorString:":"#9d9d9d",
+                "setFontSizeString:":"12",
+                "setNumberOfLinesString:":"1"
+                }
+                }
+                
+                
+                
+                ]
+    
+}

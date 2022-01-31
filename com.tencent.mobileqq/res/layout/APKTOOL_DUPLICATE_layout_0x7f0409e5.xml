@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d10" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.copyabletextview.FloatMenuRelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d11" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b98" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+        <com.tencent.biz.ui.RefreshView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d12" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="50.0dip" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d58" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400db" />
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d13" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.qzone.detail.ui.component.FeedDetailSkinBgListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cf5" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+        </FrameLayout>
+    </com.qzone.widget.copyabletextview.FloatMenuRelativeLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d14" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e8" />
+    </LinearLayout>
+</FrameLayout>

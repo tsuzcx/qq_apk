@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1375" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1376" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0856" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1377" android:background="#ccdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1378" android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06a7" android:layout_width="fill_parent" android:layout_height="65.0dip" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1379" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040421" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

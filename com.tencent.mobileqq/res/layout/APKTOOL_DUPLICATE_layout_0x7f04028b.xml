@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a7" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f11" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <RadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f12" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View android:layout_width="fill_parent" android:layout_height="45.0dip" />
+    </LinearLayout>
+</RelativeLayout>

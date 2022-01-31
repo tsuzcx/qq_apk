@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1175" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0683" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0684"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1176" android:background="@drawable/common_alert_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</RelativeLayout>

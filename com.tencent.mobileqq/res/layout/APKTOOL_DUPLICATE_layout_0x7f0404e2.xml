@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040483" />
+    <com.tencent.widget.ScrollView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee9" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18ed" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d83" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginBottom="20.0dip">
+                    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18ee" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+                    <LinearLayout android:orientation="vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18ef" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="redwang" android:singleLine="true" android:includeFontPadding="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18f0" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="向个人用户转账" android:singleLine="true" android:includeFontPadding="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f9" />
+                    </LinearLayout>
+                </LinearLayout>
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18f1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d83" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                            <TextView android:layout_gravity="bottom" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f14" android:includeFontPadding="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                            <EditText android:enabled="false" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0305" android:gravity="right" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1723" android:background="@null" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                        </LinearLayout>
+                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginBottom="20.0dip">
+                            <TextView android:gravity="center_vertical" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f42" android:includeFontPadding="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e6" />
+                            <EditText android:enabled="false" android:gravity="right" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18f2" android:background="@null" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:maxLength="12" android:imeOptions="actionDone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e6" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18f3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d83" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginBottom="20.0dip">
+                            <TextView android:gravity="center_vertical" android:layout_width="80.0dip" android:layout_height="fill_parent" android:layout_marginLeft="14.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0dc2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                            <EditText android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0329" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17ee" android:background="@null" android:paddingLeft="7.0dip" android:paddingRight="15.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0dc3" android:singleLine="true" android:maxLength="10" android:layout_weight="1.0" android:inputType="numberDecimal" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                        </LinearLayout>
+                        <LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d83" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                            <EditText android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0329" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1814" android:background="@null" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0f3d" android:singleLine="true" android:maxLength="12" android:imeOptions="actionDone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18f4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037a" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037a" android:layout_marginBottom="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f3f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+        </LinearLayout>
+    </com.tencent.widget.ScrollView>
+    <com.tencent.widget.ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a168a" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:paddingLeft="12.0dip" android:paddingTop="14.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="钱将转入对方的QQ钱包余额" android:includeFontPadding="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fa" />
+            <LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d83" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:gravity="center_vertical" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="收款人QQ号" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00f6" />
+                <EditText android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0301" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0303" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d8" android:background="@null" android:paddingLeft="13.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="46.0dip" android:singleLine="true" android:maxLength="16" android:inputType="number" />
+            </LinearLayout>
+            <Button android:enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16da" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037a" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037a" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0efa" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+        </LinearLayout>
+    </com.tencent.widget.ScrollView>
+</LinearLayout>

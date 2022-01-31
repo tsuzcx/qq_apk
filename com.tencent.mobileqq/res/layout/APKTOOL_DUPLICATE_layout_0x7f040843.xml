@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02169f" android:layout_width="fill_parent" android:layout_height="65.0dip" android:layout_alignParentTop="true" />
+    <LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true">
+        <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2647" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215f3" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="取消" />
+        <View android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216a0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010b" />
+        <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02169d" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010b" />
+    </LinearLayout>
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02169e" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be6" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_alignParentBottom="true">
+        <View android:layout_width="0.0px" android:layout_height="0.0px" android:layout_alignParentBottom="true" />
+        <Button android:layout_gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021762" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginBottom="45.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="Now" />
+        <Button android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217f4" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginBottom="25.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="拍摄" />
+        <Button android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021770" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="45.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="变脸" />
+    </RelativeLayout>
+    <TextView android:textSize="13.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1de4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="拍摄准备中" android:layout_centerInParent="true" android:contentDescription="拍摄准备中" />
+</RelativeLayout>

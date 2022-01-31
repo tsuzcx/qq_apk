@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a6f" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.component.banner.BannerAutoVideoViewWrapper android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a71" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a3" android:layout_width="31.0dip" android:layout_height="13.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a75" />
+            <RelativeLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a70" android:layout_width="fill_parent" android:layout_height="34.0dip" android:layout_alignParentBottom="true">
+                <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxWidth="72.0dip" android:text="昵称" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginBottom="4.0dip" android:maxWidth="72.0dip" android:maxLines="1" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c29" android:drawablePadding="4.0dip" android:layout_alignParentBottom="true" />
+                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a6" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a74" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.qzone.component.banner.BannerAutoVideoViewWrapper>
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef1" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef2" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef3" android:background="#ffffffff" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true">
+            <View android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:alpha="0.1" />
+            <RelativeLayout android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <Button android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021cfe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="移除" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

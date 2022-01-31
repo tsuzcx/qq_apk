@@ -1,0 +1,9 @@
+{
+  "Area": "com.qzone.canvasui.widget.CanvasListArea",
+  "shell": {
+    "id": "commentList",
+    "width": "match_parent",
+    "height": "wrap_content",
+    "padding": "0,1dp,0,4dp"
+  }
+}

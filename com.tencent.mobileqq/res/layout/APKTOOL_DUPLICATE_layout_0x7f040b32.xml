@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/relativeItem" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020437" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02cf" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0574" android:ellipsize="end" android:id="@id/lastMsgTime" android:paddingTop="14.0dip" android:paddingRight="12.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/text1Area" android:paddingRight="76.0dip" android:duplicateParentState="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d1">
+        <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0544" android:ellipsize="end" android:id="@android:id/text1" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textColor="#ff01cf97" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3284" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="直播中" />
+        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3285" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:scaleType="centerCrop" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="12.0dip" android:layout_below="@id/text1Area" android:layout_alignLeft="@id/text1Area">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0574" android:ellipsize="end" android:gravity="center|left" android:id="@android:id/text2" android:paddingRight="6.0dip" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="24.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d3" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.view.widget.DragFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea9" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21d6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21d7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26fc" android:background="#ff262626" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21da" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21d8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </RelativeLayout>
+    </com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout>
+</com.tencent.biz.qqstory.view.widget.DragFrameLayout>

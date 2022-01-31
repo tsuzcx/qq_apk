@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.playvideo.CustomViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2202" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb4" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0408e0" />
+    <com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12a7" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21fa" android:padding="5.0dip" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginTop="25.5dip" android:layout_marginRight="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f5" android:layout_alignParentRight="true" />
+    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ad" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="30.5dip" android:layout_marginRight="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f7" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a21fa" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:layout_marginRight="45.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27cc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27cd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27cf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+</merge>

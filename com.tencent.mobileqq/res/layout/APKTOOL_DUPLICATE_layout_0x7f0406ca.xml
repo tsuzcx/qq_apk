@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2024" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <View android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2025" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215ca" android:layout_width="6.0dip" android:layout_height="6.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f09" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="0秒" android:shadowColor="#80000000" android:shadowRadius="2.0" />
+    </LinearLayout>
+    <RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="125.0dip">
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bed" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" android:contentDescription="点击拍照，长按录制" />
+        <com.tencent.mobileqq.richmedia.capture.view.CaptureCircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bee" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215d1" android:visibility="visible" android:layout_width="71.0dip" android:layout_height="71.0dip" android:layout_centerInParent="true" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2026" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215b8" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1de5" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215de" android:layout_centerInParent="true" android:contentDescription="点击拍照，长按录制" />
+    </RelativeLayout>
+</LinearLayout>

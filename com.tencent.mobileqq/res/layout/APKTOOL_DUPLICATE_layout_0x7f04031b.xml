@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b1c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1186" android:layout_width="40.0dip" android:layout_height="64.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b1d" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1186" android:layout_centerVertical="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1187" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1188" android:layout_alignParentLeft="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0119" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1189" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1188" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1187" android:layout_alignParentLeft="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0118" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1188" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b1b" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a1189" android:layout_alignParentRight="true" android:contentDescription="@null" />
+    </RelativeLayout>
+</RelativeLayout>

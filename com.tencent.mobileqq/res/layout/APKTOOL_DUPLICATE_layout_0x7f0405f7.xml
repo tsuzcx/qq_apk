@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a9" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c56" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07aa" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07aa" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0dip" android:textColor="#ff212226" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c57" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="今天" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff818284" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c58" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="1个视频|浏览123" android:maxLines="1" />
+    </LinearLayout>
+    <dov.com.qq.im.profile.views.ProfileHorizontalList android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c3a" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="15.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1c56" android:layout_centerHorizontal="true" />
+</RelativeLayout>

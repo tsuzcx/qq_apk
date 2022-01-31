@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:stroke="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fa" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c038c" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217c2" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fd" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ff" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0443" android:layout_alignParentBottom="true" />
+    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a00" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

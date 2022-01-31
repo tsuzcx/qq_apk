@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="取消"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1dbf" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0127" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b15f8" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01b3" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2350" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b15fa" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01b3" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2351" android:text="@string/cancel" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01b3" />
+    </LinearLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1dc3" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0941" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1dbf">
+        <requestFocus />
+    </com.tencent.widget.HorizontalListView>
+</RelativeLayout>

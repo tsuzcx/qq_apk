@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d23" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d24" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02046f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b0623">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d25" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f4e" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1902" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d25" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0051" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02046a" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d28" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d27">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ba" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="2.0dip" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04bb" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="2.0dip" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04bc" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="2.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.QQTabHost android:id="@android:id/tabhost" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.recent.cur.DragFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c30" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@android:id/tabcontent" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0024" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.widget.QQTabWidget android:layout_gravity="bottom" android:id="@android:id/tabs" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ff2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:showDividers="none" />
+        <include android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c31" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406b1" />
+    </com.tencent.mobileqq.activity.recent.cur.DragFrameLayout>
+</com.tencent.mobileqq.widget.QQTabHost>

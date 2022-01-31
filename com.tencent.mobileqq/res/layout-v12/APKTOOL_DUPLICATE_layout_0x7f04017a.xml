@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a09" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="3.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#7fffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0a" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="hHHHHHhh" android:maxLines="1" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="5.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0a">
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0c" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021723" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

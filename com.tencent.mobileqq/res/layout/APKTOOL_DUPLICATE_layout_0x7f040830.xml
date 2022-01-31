@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2617" android:padding="12.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2618" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_centerVertical="true" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2618" android:layout_centerVertical="true">
+                <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2619" android:layout_width="88.0dip" android:layout_height="wrap_content" android:text="蜜" android:layout_alignParentTop="true" />
+                <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:visibility="invisible" android:layout_width="88.0dip" android:layout_height="30.0dip" android:layout_marginTop="6.0dip" android:max="100" android:progress="100" android:indeterminateOnly="false" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216c7" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2619" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ac" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216c8" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="下载" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2624" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0443" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2625" android:visibility="invisible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="174.0dip">
+            <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021727" android:scaleType="fitCenter" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bda" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="无法获取贴纸，点击重试" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2626" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryLoadingView android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginBottom="35.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2616" android:visibility="invisible" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:divider="@null" android:overScrollMode="never" />
+</RelativeLayout>

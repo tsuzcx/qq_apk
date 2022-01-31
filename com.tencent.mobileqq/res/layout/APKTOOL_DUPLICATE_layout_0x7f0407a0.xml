@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0765" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021454" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:layout_alignParentTop="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0568" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a241c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021457" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingRight="5.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="给你的个性标签添加照片吧！" android:singleLine="true" />
+</LinearLayout>

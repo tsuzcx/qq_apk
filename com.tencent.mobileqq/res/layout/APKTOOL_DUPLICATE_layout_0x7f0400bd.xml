@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="251.0dip" android:layout_height="124.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="128.5dip" android:layout_height="124.5dip">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0741" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1662" />
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0742" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021df0" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="122.5dip" android:layout_height="124.5dip">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0743" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1662" />
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0744" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021df0" />
+        </FrameLayout>
+    </LinearLayout>
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200dd" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0745" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.5dip" android:text="+4" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

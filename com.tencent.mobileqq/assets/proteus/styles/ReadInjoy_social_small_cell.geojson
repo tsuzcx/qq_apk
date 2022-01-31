@@ -1,0 +1,154 @@
+{
+    "ReadInjoy_social_small_cell":
+    {
+        "view_type":"cell",
+        
+        "direction":"vertical",
+        "height":{
+            "type":"wrap_content"
+        },
+        "width":{
+            "type":"relative",
+            "value":"375"
+        },
+        "subviews":[
+                    
+                    {"$includeComponet":"componet/social_header.geojson"},
+                    {
+                    "view_type":"ReadInJoyBiuCommentView",
+                    "view_id":"id_biu_comment",
+                    "margin_top":"6",
+                    "margin_bottom":"11",
+                    "margin_left":"12",
+                    "attributes":{
+                    "setFrameString:":"-1",
+                    "setArticleModel:":"-1"
+
+                    },
+
+                    "height":{
+                    "type":"wrap_content"
+                    },
+                    "width":{
+                    "type":"relative",
+                    "value":"351"
+                    }
+
+                    },
+                    {
+                    "view_type":"UIView",
+                    "view_id":"id_content_wrapper",
+                    "event_type":"cmd_bg_touch",
+                    "attributes":{
+                    "setBackgroundColorString:":"#f8f8f8"
+                    },
+                     "direction":"vertical",
+                    "height":{
+                    "type":"wrap_content"
+                    },
+                    "width":{
+                    "type":"relative",
+                    "value":"375"
+                    },
+                    "subviews":[
+                                {
+                                "view_type":"ReadInJoySummaryView",
+                                "view_id":"id_summary",
+                                "margin_top":"8",
+                                "margin_left":"12",
+                                "attributes":{
+                                "setFrameString:":"-1",
+                                "setArticleModel:":"-1"
+                                },
+            
+                                "height":{
+                                "type":"wrap_content"
+                                },
+                                "width":{
+                                "type":"relative",
+                                "value":"300"
+                                }
+                                
+                                },
+                                {
+                                "view_type":"UIView",
+                                "view_id":"id_article_wrapper",
+                                "margin_top":"12",
+                                "margin_left":"12",
+                                "margin_bottom":"13",
+                                "attributes":{
+                                "setBackgroundColorString:":"#ffffff"
+                                },
+                                "layout_type":"layout_relative",
+                                "height":{
+                                "type":"relative",
+                                "value":"79"
+                                },
+                                "width":{
+                                "type":"relative",
+                                "value":"351"
+                                },
+                                "subviews":[
+                                            {
+                                            "view_type":"UILabel",
+                                            "view_id":"id_artilce_title",
+                                            "align_parent_left":"YES",
+                                            "align_parent_center_vertical":"YES",
+                                            "margin_left":"12",
+                                            "margin_right":"12",
+                                            "margin_top":"14",
+                                            "height":{
+                                            "type":"wrap_content"
+                                            
+                                            },
+                                            "width":{
+                                            "type":"relative",
+                                            "value":"228"
+                                            },
+                                            "attributes":{
+                                            "setFrameString:":"-1",
+                                            "setText:lineSpace:":["","2"],
+                                            "setTextColorString:":"#000000",
+                                            "setFontSizeString:":"16",
+                                            "setNumberOfLinesString:":"2"
+                                            }
+                                            },
+                                            
+                                            {
+                                            "view_type":"ReadInjoyAsynImageView",
+                                            "view_id":"id_article_small_imge",
+                                            "align_parent_top":"YES",
+                                            "align_parent_right":"YES",
+                         
+                                            "height":{
+                                            "type":"relative",
+                                            "value":"79"
+                                            },
+                                            "width":{
+                                            "type":"relative",
+                                            "value":"104"
+                                            },
+                                            "attributes":{
+                                            "setFrameString:":"-1",
+                                            "setImageWithURLString:lineup:":["-1","-1"]
+                                            }
+                                            }
+
+                                            ]
+                                
+                                }
+                                
+                                
+
+                                
+                                ]
+                    }
+                    ,
+                    
+                    {"$includeComponet":"componet/social_bottom.geojson"},
+                    
+                    {"$includeComponet":"componet/separator.geojson"}
+                ]
+    }
+        
+}

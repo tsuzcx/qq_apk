@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21b8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

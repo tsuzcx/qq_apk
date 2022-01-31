@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1af4" android:layout_width="0.0dip" android:layout_height="130.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_weight="1.0" />
+</LinearLayout>

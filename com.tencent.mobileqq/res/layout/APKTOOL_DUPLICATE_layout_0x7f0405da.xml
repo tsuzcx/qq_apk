@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0311" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040100" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+        <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0582" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0580" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bcf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220ab" android:focusable="false" android:layout_height="32.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:hint="搜索" android:cursorVisible="false" android:drawableLeft="@drawable/skin_searchbar_icon" android:drawablePadding="6.0dip" android:contentDescription="搜索QQ号" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0293" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="12.0dip">
+        <com.tencent.widget.SwipPinnedHeaderExpandableListView android:id="@id/elv_buddies" android:visibility="visible" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" android:overScrollHeader="@null" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bd0" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bd1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021136" android:scaleType="centerInside" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffa7a7a7" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0382" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bd2" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

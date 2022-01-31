@@ -1,0 +1,18 @@
+import com.tencent.mobileqq.widget.QQToast;
+
+public final class aehu
+  implements Runnable
+{
+  public aehu(QQToast paramQQToast) {}
+  
+  public void run()
+  {
+    this.a.a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     aehu
+ * JD-Core Version:    0.7.0.1
+ */

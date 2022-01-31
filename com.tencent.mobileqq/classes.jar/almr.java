@@ -1,0 +1,16 @@
+class almr
+  implements Runnable
+{
+  almr(almp paramalmp, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Almp.b(this.jdField_a_of_type_Int, this.b, this.c);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+ * Qualified Name:     almr
+ * JD-Core Version:    0.7.0.1
+ */

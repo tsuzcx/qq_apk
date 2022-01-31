@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="188.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fe" android:layout_width="188.0dip" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbe" android:layout_width="fill_parent" android:layout_height="46.0dip">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fd" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="好友选择器" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbf" android:layout_centerVertical="true" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fc" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc0" android:background="#25ffffff" android:layout_width="fill_parent" android:layout_height="2.0px" />
+        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc1" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+    </LinearLayout>
+</LinearLayout>

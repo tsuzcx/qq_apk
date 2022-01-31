@@ -1,0 +1,11 @@
+{
+  "filterId": "2",
+  "name": "BOHE",
+  "subId": "1",
+  "resourceList": [
+    "qav_effect_7_1.png",
+    "qav_effect_7_2.png",
+    "qav_effect_7_3.png"
+  ],
+  "filterExtension": "0"
+}

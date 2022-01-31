@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SecCenterConfig Version="1">
+	<ModifyPwdUrls>
+		<UrlItem Name="HasSetPwdUrl" Url="http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_way?source_id=3259" />
+		<UrlItem Name="RegNewUrl" Url="http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw" />
+	</ModifyPwdUrls>
+</SecCenterConfig>

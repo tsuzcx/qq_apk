@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.image.URLImageView android:layout_gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a65" android:layout_width="63.0dip" android:layout_height="63.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="left" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0abd" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0abe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0396" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxEms="12" android:singleLine="true" />
+        <Button android:textSize="13.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0514" android:gravity="center" android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0abf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218c9" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginTop="8.0dip" android:text="更新" android:contentDescription="更新" />
+        <com.tencent.mobileqq.widget.ProgressButton android:textSize="13.0sp" android:textColor="#ff65d6ff" android:gravity="center" android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ac0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203f4" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="8.0dip" android:text="更新" android:contentDescription="更新" />
+    </LinearLayout>
+</LinearLayout>

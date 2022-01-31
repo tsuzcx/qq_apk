@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader android:id="@id/content" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0022"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a333d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+        <FrameLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0022">
+            <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04d7" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+    </FrameLayout>
+</com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader>

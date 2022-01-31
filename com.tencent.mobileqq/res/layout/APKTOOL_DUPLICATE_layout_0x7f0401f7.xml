@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_marginTop="75.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008c">
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040209" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c86" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04020a" />
+        <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c87" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0255" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0255" android:divider="@null" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

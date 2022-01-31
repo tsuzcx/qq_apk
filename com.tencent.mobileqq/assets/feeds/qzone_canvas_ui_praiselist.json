@@ -1,0 +1,76 @@
+{
+  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "shell": {
+    "id":"feed_praiselist_root",
+    "width": "match_parent",
+    "height": "wrap_content",
+    "padding": "10 dp,4 dp,10 dp,0",
+    "orientation": "vertical"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_praiselist_RedPocketList",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "show_shadow_on_press": 1,
+        "text_size": 15,
+        "margin": "0,0,0,5 dp"
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_praiselist_PraiseList",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "text_size": 14,
+        "show_shadow_on_press": 1,
+        "margin": "0,0,0,5 dp"
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_praiselist_LuckyMoneyList",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "text_size": 14,
+        "show_shadow_on_press": 1,
+        "margin": "0,0,0,5 dp"
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_praiselist_forward",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "text_size": 14,
+        "show_shadow_on_press": 1,
+        "margin": "0,0,0,5 dp"
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_praiselist_commentcount",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "text_size": 14,
+        "show_shadow_on_press": 1,
+        "margin": "0,0,0,5 dp"
+      }
+    }
+  ]
+}

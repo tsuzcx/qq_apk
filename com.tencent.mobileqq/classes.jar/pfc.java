@@ -1,0 +1,18 @@
+import com.tencent.component.media.image.ImageManager;
+
+class pfc
+  implements Runnable
+{
+  pfc(pfb parampfb) {}
+  
+  public void run()
+  {
+    ImageManager.b(this.a.a);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     pfc
+ * JD-Core Version:    0.7.0.1
+ */

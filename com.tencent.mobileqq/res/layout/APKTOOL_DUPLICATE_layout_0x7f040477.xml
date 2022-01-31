@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e23" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16ba" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404c7" />
+    <ExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bb" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="200.0dip" android:groupIndicator="@null" android:childDivider="@null" android:divider="@null" android:overScrollMode="never" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bc" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c02f9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bd" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0358" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16be" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="已优惠0.00元" android:includeFontPadding="false" />
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bf" android:visibility="visible" android:layout_marginTop="9.0dip" android:layout_marginBottom="9.0dip" android:text="支付" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16c0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip">
+                <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020da4" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0fc7" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04c8" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16c2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0fd1" android:includeFontPadding="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.proxy.feedcomponent.widget.FeedDate android:textSize="16.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a316c" android:background="@null" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08a3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

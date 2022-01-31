@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.capture.view.ProviderViewEditContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be2" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0031" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="206.0dip" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" />
+</RelativeLayout>

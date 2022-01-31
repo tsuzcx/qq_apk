@@ -1,0 +1,372 @@
+{
+  "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+  "shell": {
+    "id":"feed_title_root",
+    "width": "match_parent",
+    "height": "79 dp",
+    "orientation": "vertical",
+    "margin": "0,0,0,6 dp"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+      "shell": {
+        "id":"feed_skin",
+        "width": "match_parent",
+        "height": "36 dp",
+        "alignParentTop":true
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+      "shell": {
+        "id":"title_content_root",
+        "width": "match_parent",
+        "height": "59 dp",
+        "alignParentBottom":true
+      },
+      "children": [
+        {
+          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "shell": {
+            "id":"avatar",
+            "width": "37 dp",
+            "height": "37 dp",
+            "alignParentLeft" : true,
+            "centerVertical" : true,
+            "margin": "8dp,0,0,0"
+          }
+        },
+        {
+          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "shell": {
+            "id":"avatar_decoration",
+            "width": "49 dp",
+            "height": "56 dp",
+            "alignParentLeft" : true,
+            "centerVertical" : true,
+            "margin": "2.5 dp,0,0,0"
+          }
+        },
+        {
+          "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+          "shell": {
+            "id": "container",
+            "width": "match_parent",
+            "height": "match_parent",
+            "orientation": "vertical",
+            "toRightOf":"avatar",
+            "margin": "7 dp,0,0,0",
+            "gravity":"center_vertical"
+          },
+          "children": [
+            {
+              "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+              "shell": {
+                "id": "line_1",
+                "width": "match_parent",
+                "height": "wrap_content",
+                "alignParentTop" : true,
+                "orientation": "horizontal"
+              },
+              "children": [
+                {
+                  "Area": "com.qzone.canvasui.widget.FlexLinearAreaLayout",
+                  "shell": {
+                    "id": "line_1_1",
+                    "width": "match_parent",
+                    "height": "wrap_content",
+                    "orientation": "horizontal",
+                    "alignParentLeft" : true,
+                    "toLeftOf":"line_1_2",
+                    "gravity":"bottom",
+                    "margin": "0,9 dp,0,0",
+                    "shrinkColumns":0
+                  },
+                  "children": [
+                    {
+                      "Area": "com.qzone.canvasui.widget.CanvasNicknameArea",
+                      "shell": {
+                        "id": "nickname",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "text": "昵称",
+                        "text_color": "#ff000000",
+                        "text_size": 16,
+                        "max_line": 1,
+                        "show_shadow_on_press": 1,
+                        "layout_gravity":"bottom"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "shell": {
+                        "id": "icon_famous",
+                        "width": "14 dp",
+                        "height": "14 dp",
+                        "margin": "6dp,0,0,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "shell": {
+                        "id": "icon_starvip",
+                        "width": "21 dp",
+                        "height": "21 dp",
+                        "margin": "6dp,0,0,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "shell": {
+                        "id": "icon_YellowVip",
+                        "width": "wrap_content",
+                        "height": "21 dp",
+                        "margin": "6dp,0,0,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "shell": {
+                        "id": "icon_LiveMedal",
+                        "width": "wrap_content",
+                        "height": "13.5 dp",
+                        "margin": "6dp,0,0,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "shell": {
+                        "id": "icon_LoverZone",
+                        "width": "17 dp",
+                        "height": "17 dp",
+                        "margin": "6dp,0,0,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "shell": {
+                        "id": "icon_Standalone",
+                        "width": "wrap_content",
+                        "height": "13.5 dp",
+                        "margin": "6dp,0,0,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "shell": {
+                        "id": "action_area",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "text_color": "#ff000000",
+                        "text_size": 14,
+                        "max_line": 1,
+                        "margin": "0,0,10 dp,0",
+                        "layout_gravity":"center_vertical"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+                  "shell": {
+                    "id": "line_1_2",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "orientation": "horizontal",
+                    "margin": "0,6 dp,0,0",
+                    "gravity": "center_vertical",
+                    "alignParentRight" : true
+                  },
+                  "children": [
+                    {
+                      "Area": "com.qzone.canvasui.widget.CanvasButtonArea",
+                      "shell": {
+                        "id": "follow_button",
+                        "width": "60 dp",
+                        "height": "28 dp",
+                        "text": "关注",
+                        "text_color": "#2664a7",
+                        "gravity": "center",
+                        "text_size": 14,
+                        "margin": "0,0,10 dp,0",
+                        "layout_gravity":"center_horizontal",
+                        "border_width":"1dp",
+                        "border_radius":"2dp",
+                        "border_color":"#3878bd"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.CanvasButtonArea",
+                      "shell": {
+                        "id": "add_friend_button",
+                        "width": "60 dp",
+                        "height": "28 dp",
+                        "text": "加好友",
+                        "text_color": "#2664a7",
+                        "gravity": "center",
+                        "text_size": 14,
+                        "margin": "0,0,10 dp,0",
+                        "layout_gravity":"center_horizontal",
+                        "border_width":"1dp",
+                        "border_radius":"2dp",
+                        "border_color":"#00a3ff"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "shell": {
+                        "id": "btn_menu_area",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "text": "菜单",
+                        "text_color": "#ff000000",
+                        "text_size": 14,
+                        "show_shadow_on_press": 1,
+                        "margin": "12 dp,0,12 dp,0"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "shell": {
+                        "id": "count_area",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "text": "Count",
+                        "text_color": "#ff000000",
+                        "text_size": 14
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "shell": {
+                        "id": "friendlike_play_count_area",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "text": "Count",
+                        "text_color": "#ff000000",
+                        "text_size": 14,
+                        "margin": "0,0,10 dp,0"
+                      }
+                    },
+                    {
+                      "Area": "com.qzone.canvasui.widget.CanvasAttachArea",
+                      "shell": {
+                        "id": "attach_area",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "text": "下拉菜单"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+
+            {
+              "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+              "shell": {
+                "id":"line_2",
+                "width": "match_parent",
+                "height": "wrap_content",
+                "orientation": "horizontal",
+                "alignParentBottom" : true,
+                "margin": "0,0,50 dp,9 dp"
+              },
+              "children": [
+                {
+                  "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+                  "shell": {
+                    "id":"original_flag",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text": "原创",
+                    "text_color": "#ff000000",
+                    "text_size": 14,
+                    "max_line":1,
+                    "border_width": "1px",
+                    "border_color": "#ffca00",
+                    "border_radius": "6px",
+                    "margin": "0,0,10 dp,0"
+                  }
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.TimeCountDownArea",
+                  "shell": {
+                    "id":"del_time_area",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text_color": "#ff000000",
+                    "text_size": 14,
+                    "max_line":1,
+                    "margin": "0,0,8 dp,0"
+                  }
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "shell": {
+                    "id":"time_area",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text": "发表时间",
+                    "text_color": "#666666",
+                    "text_size": 12,
+                    "max_line":1,
+                    "margin": "0,0,8 dp,0"
+                  }
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "shell": {
+                    "id":"refer_area",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text": "refer",
+                    "text_color": "#666666",
+                    "text_size": 12,
+                    "max_line":1,
+                    "show_shadow_on_press": 1,
+                    "margin": "0,0,10 dp,0"
+                  }
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "shell": {
+                    "id":"permission_area",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text": "refer",
+                    "text_color": "#666666",
+                    "text_size": 12,
+                    "max_line":1,
+                    "show_shadow_on_press": 1,
+                    "margin": "0,0,10 dp,0"
+                  }
+                },
+                {
+                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "shell": {
+                    "id":"qzonedesc_area",
+                    "width": "wrap_content",
+                    "height": "wrap_content",
+                    "text": "refer",
+                    "text_color": "#666666",
+                    "text_size": 12,
+                    "show_shadow_on_press": 1,
+                    "max_line":1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "shell": {
+    "id":"canvas_feed_content_view",
+    "width": "match_parent",
+    "height": "wrap_content",
+    "orientation": "vertical"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_normal_title",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#2D2D2D",
+        "text":"this is title",
+        "padding": "8dp,0dp,8dp,0dp",
+        "text_size": 15,
+        "visibility":"gone",
+        "max_line":10
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_normal_summary",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#2D2D2D",
+        "max_line":10,
+        "visibility":"gone",
+        "padding": "8dp,0dp,8dp,0dp",
+        "text_size": 15
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_bizRecom_summary",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "padding": "8dp,0dp,8dp,0dp",
+        "text_color": "#2D2D2D",
+        "max_line":2,
+        "visibility":"gone",
+        "text_size": 15
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_bizReco_title",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#000000",
+        "padding": "8dp,0dp,8dp,0dp",
+        "text":"this is title",
+        "visibility":"gone",
+        "text_size": 16,
+        "max_line":1
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_superlike_summary",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "visibility":"gone",
+        "max_line":10,
+        "line_space":5,
+        "text_size": 15,
+        "padding": "8dp,0dp,8dp,0dp"
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_picInfo_display",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#001232",
+        "visibility":"gone",
+        "max_line":10,
+        "line_space":5,
+        "text_size": 15,
+        "padding": "8dp ,0,0,0"
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.CanvasImageArea",
+      "shell": {
+        "id": "feed_content_no_photo_mode",
+        "width": "wrap_content",
+        "visibility":"gone",
+        "height": "wrap_content",
+        "margin": "8dp,8dp,8dp,0dp"
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.CanvasMultiGifArea",
+      "shell": {
+        "id": "feed_content_comment_pic",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "visibility":"gone",
+        "layout_gravity": "center_vertical",
+        "padding": "8dp,6dp,8dp,0dp"
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.FeedDynamicAlbumCanvasArea",
+      "shell": {
+        "id": "feed_content_dynamic_album",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "visibility":"gone",
+        "layout_gravity": "center_vertical",
+        "padding": "8dp,6dp,8dp,0dp"
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.FeedSinglePicCanvasArea",
+      "shell": {
+        "id": "feed_content_singal_pic",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "visibility":"gone",
+        "layout_gravity": "center_vertical",
+        "padding": "0dp,16dp,0dp,0dp"
+      }
+    },
+     {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_content_logo_attach_text",
+        "width": "wrap_content",
+        "height": "wrap_content",
+        "layout_gravity":"center_horizontal",
+        "text_color": "#2D2D2D",
+        "max_line":10,
+        "visibility":"gone",
+         "padding": "0dp,5dp,0dp,0dp",
+        "text_size": 15
+
+      }
+    },
+    {
+      "Area": "com.qzone.canvasui.widget.CanvasMultiGifArea",
+      "shell": {
+        "id": "feed_content_multi_pic",
+        "width": "match_parent",
+        "visibility":"gone",
+        "height": "wrap_content",
+        "layout_gravity": "center_vertical",
+        "padding": "0dp,6dp,0dp,0dp"
+      }
+    }
+
+  ]
+}

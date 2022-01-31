@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e008c">
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040209" />
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04020a" />
+        <LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e0091">
+            <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c7f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0092">
+                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c80" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020767" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0093" />
+                <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c81" android:text="QQ钱包" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0094" />
+                    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c82" android:layout_marginLeft="5.0dip" android:text="95折" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0094" />
+                    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c83" android:text="支付立减5元" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0095" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c84" android:text="余额：222909" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0096" />
+                    <ImageView style="@style/APKTOOL_DUPLICATE_style_0x7f0e0097" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c85" android:layout_marginTop="30.0dip" android:text="确认支付" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0098" />
+    </LinearLayout>
+</RelativeLayout>

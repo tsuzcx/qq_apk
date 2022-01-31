@@ -1,0 +1,44 @@
+package NS_QZONE_FESTIVAL;
+
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
+public final class FestivalGetReq
+  extends JceStruct
+{
+  static ArrayList cache__vec_festivals = new ArrayList();
+  public ArrayList _vec_festivals;
+  
+  static
+  {
+    FestivalGetReqItem localFestivalGetReqItem = new FestivalGetReqItem();
+    cache__vec_festivals.add(localFestivalGetReqItem);
+  }
+  
+  public FestivalGetReq() {}
+  
+  public FestivalGetReq(ArrayList paramArrayList)
+  {
+    this._vec_festivals = paramArrayList;
+  }
+  
+  public void readFrom(JceInputStream paramJceInputStream)
+  {
+    this._vec_festivals = ((ArrayList)paramJceInputStream.read(cache__vec_festivals, 0, false));
+  }
+  
+  public void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    if (this._vec_festivals != null) {
+      paramJceOutputStream.write(this._vec_festivals, 0);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+ * Qualified Name:     NS_QZONE_FESTIVAL.FestivalGetReq
+ * JD-Core Version:    0.7.0.1
+ */

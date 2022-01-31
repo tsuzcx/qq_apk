@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0097"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/icon" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02154b" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0280" />
+    <com.tencent.mobileqq.widget.StatableSpanTextView android:ellipsize="end" android:id="@id/info" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0281" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0661" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0283" />
+</LinearLayout>

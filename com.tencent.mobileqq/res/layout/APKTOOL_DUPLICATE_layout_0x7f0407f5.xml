@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0661" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b6" />
+    <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0389" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/title" android:layout_marginLeft="12.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b2" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19f0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02bf" />
+        <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02bb">
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c5" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2595" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02bd" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04d5" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="-7.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0154" android:layout_marginBottom="8.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0661" android:layout_below="@id/head" android:layout_alignParentLeft="true" android:lineSpacingExtra="4.0dip" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/info" />
+</RelativeLayout>

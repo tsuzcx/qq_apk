@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b2" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0661" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b5" />
+    <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b8">
+        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c5" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:ellipsize="end" android:id="@id/info" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d55" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0940" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21ac" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400db" />
+</RelativeLayout>

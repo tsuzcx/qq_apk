@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0941" android:layout_width="wrap_content" android:layout_height="200.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true">
+        <com.qqdataline.wifiphoto.RouterWifiPhotoGallery android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0942" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:spacing="2.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0943" />
+        <com.dataline.util.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03bd" android:background="#00ff0000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021adc" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0943" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0943" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <Button android:textSize="20.0sp" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0944" android:paddingLeft="60.0dip" android:paddingRight="60.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="10.0dip" android:text="" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0941" android:layout_centerHorizontal="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+</RelativeLayout>

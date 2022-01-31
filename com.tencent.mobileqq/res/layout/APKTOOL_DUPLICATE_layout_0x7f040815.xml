@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a071c" android:background="#ffc6c6c7" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12df" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a071c">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0695" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25ed" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216d7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+            <com.tencent.widget.XEditTextEx android:textSize="18.0dip" android:textColor="#ff000000" android:textColorHint="#ffcccccc" android:gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25ee" android:background="@null" android:paddingLeft="10.0dip" android:paddingTop="7.5dip" android:paddingRight="10.0dip" android:paddingBottom="7.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="101.0dip" android:maxLength="200" android:inputType="textMultiLine" android:imeOptions="actionSend" android:textSelectHandle="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02218f" />
+        </LinearLayout>
+        <ImageButton android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25ef" android:background="@drawable/trans" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02008a" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b0bb4" />
+    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b7f" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a12df">
+        <FrameLayout android:id="@id/emotion_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:id="@id/container_secondary_tab" android:background="#fff7f7f7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_below="@id/emotion_panel">
+            <RelativeLayout android:background="#ffdedede" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02004b" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216fb" android:layout_width="7.5dip" android:layout_height="fill_parent" android:layout_toLeftOf="@id/fun_btn" />
+            <com.tencent.widget.PatchedButton android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0539" android:layout_gravity="center_vertical" android:id="@id/fun_btn" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216fa" android:layout_width="76.0dip" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b188e" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

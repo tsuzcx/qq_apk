@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:SquareImageView="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.SquareImageView android:layout_gravity="center" android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" SquareImageView:scale="1.777778" SquareImageView:scale_offset="5.0" />
+        <ImageView android:textSize="20.0dip" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11ab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b29" android:scaleType="center" />
+    </FrameLayout>
+    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c05a2" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f00" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:maxLines="1" />
+</LinearLayout>

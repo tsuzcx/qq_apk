@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.smtt.sdk.WebView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ea4" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a29ae" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a29af" android:visibility="invisible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020440" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+</RelativeLayout>

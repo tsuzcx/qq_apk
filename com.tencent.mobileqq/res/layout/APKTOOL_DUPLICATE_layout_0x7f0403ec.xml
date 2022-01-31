@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a145e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a145f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021688" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1460" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="赞" />
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.DrawableCenterTextView android:textSize="14.0sp" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cae" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1396" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="6" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021682" android:drawablePadding="8.0dip" android:layout_weight="1.0" />
+    <com.tencent.mobileqq.widget.DrawableCenterTextView android:textSize="14.0sp" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cae" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1461" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="6" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c6e" android:drawablePadding="8.0dip" android:layout_weight="1.0" />
+</LinearLayout>

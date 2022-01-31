@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0407" android:background="#ff181818" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1473" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/title">
+        <com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2044" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="视频" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2045" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2046" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021de0" android:scaleType="center" android:contentDescription="播放" />
+    </FrameLayout>
+    <com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2047" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

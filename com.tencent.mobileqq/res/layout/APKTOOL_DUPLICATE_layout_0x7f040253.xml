@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e54" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="18.0dip" android:textColor="#ff4a4a4a" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="45.5dip" android:layout_marginTop="32.0dip" android:layout_marginRight="45.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5b" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212fc" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c017f" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="手机通讯录" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212fd" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c017f" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="手机号码登录" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212fb" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c017f" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="设备锁" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212f5" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c017f" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="手机营业厅" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="75.0dip" android:layout_marginRight="10.0dip" android:text="更换手机号码" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="*目前QQ仅在部分地区支持手机营业厅功能。" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5d" android:layout_centerInParent="true" />
+</RelativeLayout>

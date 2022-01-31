@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ca8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ca9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:text="账户余额" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0085" />
+    <LinearLayout android:layout_marginTop="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ac">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0caa" android:text="Q币" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ad" />
+        <TextView android:textColor="#ffff8444" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cab" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="200" android:layout_weight="1.0" android:textAlignment="textEnd" />
+        <TextView android:textColor="#ffff8444" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cac" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="Qb" android:textAlignment="textEnd" />
+    </LinearLayout>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cad" android:layout_marginTop="30.0dip" android:text="刷新余额" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0098" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2596" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04d5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2597" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02225a" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0156" android:paddingTop="8.0dip" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0181" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2596" />
+</RelativeLayout>

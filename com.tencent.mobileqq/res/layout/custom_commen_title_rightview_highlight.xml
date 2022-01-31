@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:gravity="center" android:id="@id/ivTitleBtnRightText" android:background="@drawable/top_button_right_highlight_selector" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="35.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:singleLine="true" android:includeFontPadding="false" android:drawablePadding="0.0dip" style="@style/TitleBtn"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

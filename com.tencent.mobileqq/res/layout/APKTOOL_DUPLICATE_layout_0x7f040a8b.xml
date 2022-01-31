@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a89" android:layout_width="wrap_content" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c5" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?attr/progress_drawable" />
+    <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fee" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c039d" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="正在发表..." android:singleLine="true" />
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b87" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d044f" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212f4" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b88" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b206f" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0b87" />
+        <LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b89" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037d" android:weightSum="6.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0b88" android:layout_centerHorizontal="true">
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b8a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2071" android:layout_weight="4.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
+        </LinearLayout>
+        <View android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0450" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0b89" />
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

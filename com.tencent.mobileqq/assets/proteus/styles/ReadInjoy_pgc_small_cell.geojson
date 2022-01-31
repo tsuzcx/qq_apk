@@ -1,0 +1,23 @@
+{
+    "ReadInjoy_pgc_small_cell":
+    {
+        "view_type":"cell",
+        
+        "direction":"vertical",
+        "height":{
+            "type":"wrap_content"
+        },
+        "width":{
+            "type":"relative",
+            "value":"375"
+        },
+        "subviews":[
+                    {"$includeComponet":"componet/social_header.geojson"},
+                    {"$includeComponet":"componet/pgc_small_content.geojson"},
+                    {"$includeComponet":"componet/social_bottom.geojson"},
+                    
+                    {"$includeComponet":"componet/separator.geojson"}
+                ]
+    }
+        
+}

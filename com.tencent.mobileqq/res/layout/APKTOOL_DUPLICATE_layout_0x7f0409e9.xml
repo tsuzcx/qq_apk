@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d1c" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d1d" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d1e" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:scaleType="center" />
+    <com.tencent.widget.FadeIconImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d1f" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:scaleType="center" />
+    <Button android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d20" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d3a" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="24.0dip" android:layout_marginRight="6.0dip" android:text="关注" />
+    <com.qzone.widget.RedDotImageView android:layout_gravity="center|right" android:id="@id/ivTitleBtnRightMore" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022091" android:scaleType="center" />
+</LinearLayout>

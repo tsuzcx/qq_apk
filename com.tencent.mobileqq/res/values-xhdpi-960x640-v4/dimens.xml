@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d03bb">5.0dip</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d03bc">5.0dip</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d0700">12.0sp</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d0704">5.0dip</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d0707">12.0sp</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d0709">14.0sp</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d070a">75.0dip</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d070b">5.0dip</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d070d">20.0sp</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d0710">20.0dip</dimen>
+    <dimen name="APKTOOL_DUPLICATE_dimen_0x7f0d0716">15.0dip</dimen>
+</resources>

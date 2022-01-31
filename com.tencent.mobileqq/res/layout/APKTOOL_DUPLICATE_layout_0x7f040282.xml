@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/skin_list_item_normal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0efe" layout="@layout/search_box" />
+</LinearLayout>

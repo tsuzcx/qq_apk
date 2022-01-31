@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2987" android:layout_width="1.0dip" android:layout_height="44.0dip" android:layout_weight="2.0" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0571" android:layout_width="1.0dip" android:layout_height="44.0dip" android:layout_weight="1.0" />
+</LinearLayout>

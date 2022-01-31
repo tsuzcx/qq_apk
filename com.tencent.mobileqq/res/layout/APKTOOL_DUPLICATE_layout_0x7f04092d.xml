@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04092e" />
+    <ScrollView android:scrollbars="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f75" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28cd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

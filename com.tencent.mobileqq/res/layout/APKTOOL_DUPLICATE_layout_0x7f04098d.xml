@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ae0" android:visibility="gone" android:layout_width="91.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.proxy.albumcomponent.ui.widget.timeline.CommonPhotoTimeLineView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ae1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+</RelativeLayout>

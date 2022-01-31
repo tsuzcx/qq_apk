@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="#00000000"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c57" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c58" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e4" android:text="人物" />
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c59" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e5" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e4" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2c58">
+            <com.qzone.proxy.albumcomponent.ui.widget.NumberShiftingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5b" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e4" android:text="地点" />
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5d" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e5" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e4" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5c">
+            <com.qzone.proxy.albumcomponent.ui.widget.NumberShiftingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5f" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e4" android:text="分类" />
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c61" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e5" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e4" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2c60">
+            <com.qzone.proxy.albumcomponent.ui.widget.NumberShiftingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c62" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

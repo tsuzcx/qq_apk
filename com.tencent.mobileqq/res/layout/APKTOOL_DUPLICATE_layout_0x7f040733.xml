@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2204" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.ImageViewCatchRecycle android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11cf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.widget.ImageViewCatchRecycle android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2205" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView android:id="@id/loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2206" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.nearby.now.view.OperationView android:layout_gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2207" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2208" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载失败，点击重试" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021704" android:drawablePadding="15.0dip" />
+    <com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2203" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

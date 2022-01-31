@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18b7" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e09" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17b6" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404a8" />
+    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e08" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a18b8" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a17b6">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18b9" android:layout_width="208.0dip" android:layout_height="198.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e0b" android:layout_centerInParent="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#fffbd49d" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="出示红包二维码\n小伙伴可扫一扫红包" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a18b9" />
+    </RelativeLayout>
+    <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04c9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18b8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d8a" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="15.0dip" android:text="发红包" android:layout_alignParentBottom="true" />
+</RelativeLayout>

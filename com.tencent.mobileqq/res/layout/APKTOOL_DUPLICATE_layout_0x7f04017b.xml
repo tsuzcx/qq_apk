@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0d" android:layout_width="14.0dip" android:layout_height="10.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bf6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="66.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0d" android:layout_centerVertical="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="DOV好友" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff818284" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="DOV好友" />
+    </LinearLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a10" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="36.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

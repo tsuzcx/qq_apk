@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1449" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e67" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:text="维多利亚、李白、nianwei等6位好友也推荐了" android:includeFontPadding="false" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a144a" android:layout_alignParentLeft="true" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144c" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a144b" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1449">
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403e2" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a144d">
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView android:textSize="17.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="11.0dip" android:includeFontPadding="false" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06e6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ba5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="21.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2e49" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ba6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="" />
+            </LinearLayout>
+            <SeekBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ba7" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="15.0dip" android:maxHeight="9.0dip" android:max="100" android:progress="50" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a13" android:minHeight="9.0dip" android:thumb="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a16" android:thumbOffset="6.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ba8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="21.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2e4a" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ba9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="" />
+            </LinearLayout>
+            <SeekBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1baa" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="15.0dip" android:maxHeight="9.0dip" android:max="100" android:progress="50" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a13" android:minHeight="9.0dip" android:thumb="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a16" android:thumbOffset="6.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="9.0dip" android:textColor="#80ffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bab" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2a45" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

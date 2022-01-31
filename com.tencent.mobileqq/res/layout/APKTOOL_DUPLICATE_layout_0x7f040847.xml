@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021759" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginTop="5.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e9c" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2663" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021759" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="创建圈子" android:layout_weight="1.0" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2664" android:background="#ffdedede" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2665" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021759" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2c62" android:layout_weight="1.0" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2666" android:background="#ffdedede" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2667" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021759" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="分享我的一天" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

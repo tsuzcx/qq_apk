@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.5dip" android:scaleType="fitXY" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2840" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.5dip" android:scaleType="fitXY" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2841" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cm_blue_check_checked" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@null" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2842" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="20.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2843" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="13.0dip" android:layout_margin="5.5dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2844" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+</LinearLayout>

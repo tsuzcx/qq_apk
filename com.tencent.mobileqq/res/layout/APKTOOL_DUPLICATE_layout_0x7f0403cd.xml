@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07dd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f0b" android:padding="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="6.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ea" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip">
+                <TextView android:textSize="11.0sp" android:textColor="#fff05f4c" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13eb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e60" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="17.0dip" android:layout_marginTop="2.0dip" android:text="好友正在看" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ec" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+                    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ed" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="6.0dip" />
+                    <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:text="奔跑的趣多多" android:maxLines="1" android:includeFontPadding="false" />
+                    <TextView android:textSize="13.0sp" android:textColor="#80ffffff" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ef" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biu 了文章" android:maxLines="1" android:includeFontPadding="false" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" android:includeFontPadding="false" android:layout_weight="1.0" />
+                    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f1" android:layout_width="71.0dip" android:layout_height="54.0dip" android:layout_marginLeft="15.0dip">
+                        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f3" android:background="#34000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208d4" android:scaleType="center" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleFrameLayout>
+        <ImageView android:layout_gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021681" />
+    </FrameLayout>
+</FrameLayout>

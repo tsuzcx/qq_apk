@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16b9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d9d" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="30.0dip">
+        <com.tenpay.sdk.i.a android:textColorHint="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16ca" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0eaa" android:maxLength="6" android:layout_weight="1.0" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e53" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e2b" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0e01" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ebb" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16cc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d95" android:translationY="2.0dip" />
+        <Button android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04c8" android:gravity="center_vertical" android:id="@id/change_phone_num_btn" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0eaf" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16ce" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</LinearLayout>

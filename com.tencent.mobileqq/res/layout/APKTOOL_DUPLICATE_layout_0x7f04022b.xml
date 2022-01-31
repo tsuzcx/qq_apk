@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a7" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.activity.photo.ProGallery android:id="@id/gallery" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da1" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginBottom="26.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2758" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:layout_marginBottom="26.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2759" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--pkgName对应GetResourceRespInfo的strPkgName字段-->
+<!--version对应GetResourceRespInfo的uiNewVer字段-->
+<ThemeList version="1"  pkgName="QQThemePkg" >
+     <Theme>
+        <!-- 主题名字--> 
+		<name>蓝色海洋</name>
+		<version>2.0.6</version>
+		<!-- 缩略图地址--> 
+        <coverurl md5 = "bluesea" size="66163">http://appimg1.3g.qq.com/msoft/mobileQQ_theme/android_theme_preview/bluesea_andriod.jpg</coverurl> 
+        <!-- 主题包地址-->  
+        <packageurl md5 = "bluesea" size = "665903">http://dl.url.cn/msoft/mobileQQ_theme/theme_package_android/Ocean-theme.2.0.6.zip</packageurl> 
+    </Theme>
+	 <Theme>
+        <!-- 主题名字--> 
+		<name>粉寇年华</name>
+		<version>2.0.6</version>
+		<!-- 缩略图地址--> 
+        <coverurl md5 = "Duck" size="28662">http://appimg1.3g.qq.com/msoft/mobileQQ_theme/android_theme_preview/duck.jpg</coverurl> 
+        <!-- 主题包地址-->  
+        <packageurl md5 = "Duck-theme" size = "483450">http://dl.url.cn/msoft/mobileQQ_theme/theme_package_android/Duck-theme.2.0.6.zip</packageurl>    
+    </Theme>
+	<Theme>
+        <!-- 主题名字--> 
+		<name>一杆中的</name>
+		<version>2.0.6</version>
+		<!-- 缩略图地址--> 
+        <coverurl md5 = "Golf" size="53731">http://appimg1.3g.qq.com/msoft/mobileQQ_theme/android_theme_preview/golf_android_2.1.jpg</coverurl> 
+        <!-- 主题包地址-->  
+        <packageurl md5 = "Golf-theme" size = "1795329">http://dl.url.cn/msoft/mobileQQ_theme/theme_package_android/Golf-theme.2.0.6.zip</packageurl>    
+    </Theme>
+    <Theme>
+        <!-- 主题名字--> 
+		<name>星际旅行</name>
+		<version>2.0.6</version>
+		<!-- 缩略图地址--> 
+        <coverurl md5 = "UFO" size="27403">http://appimg1.3g.qq.com/msoft/mobileQQ_theme/android_theme_preview/ufo_android.jpg</coverurl> 
+        <!-- 主题包地址-->  
+        <packageurl md5 = "UFO-theme" size = "615386">http://dl.url.cn/msoft/mobileQQ_theme/theme_package_android/ET-theme.2.0.6.zip</packageurl>    
+    </Theme>
+    <Theme>
+        <!-- 主题名字--> 
+		<name>侏罗纪</name>
+		<version>1.0.2</version>
+		<!-- 缩略图地址--> 
+        <coverurl md5 = "jurassic" size="22077">http://appimg1.3g.qq.com/msoft/mobileQQ_theme/android_theme_preview/jurassic_cover1.jpg</coverurl> 
+        <!-- 主题包地址-->  
+        <packageurl md5 = "jurassic-theme" size = "1820758">http://dl.url.cn/msoft/mobileQQ_theme/theme_package_android/Jurassic-Park-theme.1.0.2.zip</packageurl>    
+    </Theme>       	
+</ThemeList>

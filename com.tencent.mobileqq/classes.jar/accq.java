@@ -1,0 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+
+class accq
+  implements DialogInterface.OnClickListener
+{
+  accq(accm paramaccm) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    FileManagerReporter.a("0X80052CF");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     accq
+ * JD-Core Version:    0.7.0.1
+ */

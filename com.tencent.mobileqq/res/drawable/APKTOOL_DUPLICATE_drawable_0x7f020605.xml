@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="#ffe0e0e0" />
+            <padding android:left="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" android:top="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" android:right="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" android:bottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" />
+            <corners android:radius="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b4" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" />
+            <padding android:left="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b3" android:top="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b3" android:right="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b3" android:bottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b3" />
+            <corners android:radius="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b4" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" />
+            <padding android:left="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" android:top="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" android:right="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" android:bottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03b2" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f0f" android:background="#ffffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08c7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#ffcfcfcf" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f10" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f11" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219f8" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="编辑相册" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2f12" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f13" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a19" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="批量管理" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2f14" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f15" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a18" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="制作" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2f16" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f17" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f18" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a42" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="分享" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2f18" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f19" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f0e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a26" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="更多" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2f0e" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

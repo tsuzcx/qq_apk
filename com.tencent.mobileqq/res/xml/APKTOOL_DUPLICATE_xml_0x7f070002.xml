@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <external-path path="Tencent/MobileQQ/TempMail/" name="sharetomail" />
+        <files-path name="my_data" path="../databases/" />
+    </paths>
+</resources>

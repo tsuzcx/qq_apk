@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ab6" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0015" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="212.0dip" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <com.qqfav.widget.QfavSwipListView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ab7" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0559" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ab8" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1146" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ab7" />
+    </RelativeLayout>
+</RelativeLayout>

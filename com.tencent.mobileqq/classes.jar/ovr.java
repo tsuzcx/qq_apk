@@ -1,0 +1,25 @@
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+
+class ovr
+  extends ovu
+{
+  ovr(ovk paramovk, VideoCombineHelper.Callback paramCallback, String paramString)
+  {
+    super(paramovk.a);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    }
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     ovr
+ * JD-Core Version:    0.7.0.1
+ */

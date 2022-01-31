@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f76" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212cb" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:text="荐" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b8f" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="6.0dip">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f6e" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginTop="11.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+            <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01fd" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f77" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\#创业经验" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f78" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="12345人" />
+        </LinearLayout>
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f6f" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03ef" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03ef" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1f6e" />
+        <com.tencent.image.URLImageView android:id="@id/icon" android:duplicateParentState="true" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03ee" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03ee" android:layout_marginTop="3.0dip" android:scaleType="centerCrop" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a1f6f" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</LinearLayout>

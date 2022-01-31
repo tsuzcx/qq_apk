@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f7c" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f6e" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f74" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f75" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f76" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f77" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f78" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f79" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f7a" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f7b" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f6f" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f70" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f71" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f72" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f73" />
+    <item android:duration="25" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f7d" />
+</animation-list>

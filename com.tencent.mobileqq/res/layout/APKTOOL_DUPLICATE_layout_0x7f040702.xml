@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2127" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213ef" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_centerVertical="true">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a213c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="45.0dip" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2129" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飞翔的秋秋" android:singleLine="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a00ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a213a" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2129">
+                <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2139" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="昵称:" android:maxLines="10" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2138" android:layout_centerVertical="true" />
+                <com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a00d2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020859" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginTop="7.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2139">
+                    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a00d0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213f9" android:layout_centerVertical="true" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/qq_aio_ptt_time_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a00d0" android:layout_centerVertical="true" />
+                </com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a212a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="下午 10:10" android:layout_alignParentRight="true" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a212d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a212a" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a212a" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

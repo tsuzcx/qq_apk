@@ -1,0 +1,97 @@
+package NS_MOBILE_FEEDS;
+
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
+
+public final class cell_recomm_header
+  extends JceStruct
+{
+  static Map cache_mapCoverUrl = new HashMap();
+  public String action_type = "";
+  public String action_url = "";
+  public byte btn_type;
+  public String custom_icon = "";
+  public String desc = "";
+  public int icon_height;
+  public int icon_width;
+  public String left_title = "";
+  public Map mapCoverUrl;
+  public long recomm_uin;
+  public String right_title = "";
+  
+  static
+  {
+    s_picurl locals_picurl = new s_picurl();
+    cache_mapCoverUrl.put("", locals_picurl);
+  }
+  
+  public cell_recomm_header() {}
+  
+  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map paramMap, long paramLong, String paramString5, String paramString6)
+  {
+    this.left_title = paramString1;
+    this.btn_type = paramByte;
+    this.right_title = paramString2;
+    this.custom_icon = paramString3;
+    this.icon_width = paramInt1;
+    this.icon_height = paramInt2;
+    this.desc = paramString4;
+    this.mapCoverUrl = paramMap;
+    this.recomm_uin = paramLong;
+    this.action_url = paramString5;
+    this.action_type = paramString6;
+  }
+  
+  public void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.left_title = paramJceInputStream.readString(0, false);
+    this.btn_type = paramJceInputStream.read(this.btn_type, 1, false);
+    this.right_title = paramJceInputStream.readString(2, false);
+    this.custom_icon = paramJceInputStream.readString(3, false);
+    this.icon_width = paramJceInputStream.read(this.icon_width, 4, false);
+    this.icon_height = paramJceInputStream.read(this.icon_height, 5, false);
+    this.desc = paramJceInputStream.readString(6, false);
+    this.mapCoverUrl = ((Map)paramJceInputStream.read(cache_mapCoverUrl, 7, false));
+    this.recomm_uin = paramJceInputStream.read(this.recomm_uin, 8, false);
+    this.action_url = paramJceInputStream.readString(9, false);
+    this.action_type = paramJceInputStream.readString(10, false);
+  }
+  
+  public void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    if (this.left_title != null) {
+      paramJceOutputStream.write(this.left_title, 0);
+    }
+    paramJceOutputStream.write(this.btn_type, 1);
+    if (this.right_title != null) {
+      paramJceOutputStream.write(this.right_title, 2);
+    }
+    if (this.custom_icon != null) {
+      paramJceOutputStream.write(this.custom_icon, 3);
+    }
+    paramJceOutputStream.write(this.icon_width, 4);
+    paramJceOutputStream.write(this.icon_height, 5);
+    if (this.desc != null) {
+      paramJceOutputStream.write(this.desc, 6);
+    }
+    if (this.mapCoverUrl != null) {
+      paramJceOutputStream.write(this.mapCoverUrl, 7);
+    }
+    paramJceOutputStream.write(this.recomm_uin, 8);
+    if (this.action_url != null) {
+      paramJceOutputStream.write(this.action_url, 9);
+    }
+    if (this.action_type != null) {
+      paramJceOutputStream.write(this.action_type, 10);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_header
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a306a" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a306b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a71" android:padding="2.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0393" android:layout_width="96.0dip" android:layout_height="160.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="0.0dip" android:scaleType="fitXY" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a306c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b9c" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginRight="7.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a306d" android:paddingBottom="28.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="smile" android:singleLine="true" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a306b" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0070" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5d" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="3小时前" android:singleLine="true" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a306b" />
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a306e" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021de9" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a306f" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="开启精彩" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

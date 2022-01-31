@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+    <!--只有id有用，增加可读性，先加上几个属性，relase版本时，可以去除其他几个属性。-->
+    <business id="0" path="" author="" info="test"/>
+	 <business id="641d5d" path="" author="" info=""/>
+	 <business id="7ef1aa" path="" author="" info=""/>
+	 <business id="52b7f2" path="" author="" info=""/>
+	 <business id="ea6862" path="" author="" info=""/>
+	 <business id="a4bd32" path="" author="" info=""/>
+	 
+	 <business id="a28ca9" path="" author="" info=""/>
+	 <business id="f66737" path="" author="" info=""/>
+	 <business id="338d83" path="" author="" info=""/>
+	 <business id="5076bf" path="" author="" info=""/>
+	 <business id="62b331" path="" author="" info=""/>
+	 <business id="7411ce" path="" author="" info=""/>
+	 <business id="0db4c4" path="" author="" info=""/>
+	 
+</list>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.RecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2673" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020437" android:paddingLeft="8.5dip" android:paddingBottom="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="95.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

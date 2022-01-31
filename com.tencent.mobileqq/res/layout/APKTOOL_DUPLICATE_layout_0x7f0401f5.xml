@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="#00000000" style="@style/APKTOOL_DUPLICATE_style_0x7f0e005a"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/midas_linear.tipframe">
+        <LinearLayout style="@style/midas_linear">
+            <LinearLayout style="@style/midas_tips_header">
+                <LinearLayout android:orientation="vertical" android:layout_weight="100.0" style="@style/midas_tips_title">
+                    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c75" android:text="QQ会员" style="@style/midas_tx" />
+                </LinearLayout>
+                <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c76" style="@style/midas_ic_tipsclose" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c77" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020741" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_marginBottom="10.0dip" style="@style/midas_linear">
+            <TextView android:textSize="13.0sp" android:ellipsize="end" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c78" android:maxLines="2" style="@style/midas_tx" />
+        </RelativeLayout>
+        <LinearLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020747" android:padding="1.0px" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0078">
+            <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c79" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02076d" android:cacheColorHint="@android:color/transparent" android:divider="@color/APKTOOL_DUPLICATE_color_0x7f0c0254" android:dividerHeight="1.0px" android:layout_weight="1.0" />
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
+            <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c7a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02076d" android:focusable="true" android:clickable="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0079">
+                <LinearLayout android:duplicateParentState="true" android:layout_weight="100.0" style="@style/midas_wrap">
+                    <TextView android:duplicateParentState="true" android:layout_marginLeft="10.0dip" android:text="其他数额" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0064" />
+                </LinearLayout>
+                <ImageView android:duplicateParentState="true" android:layout_marginRight="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0080" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c7b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02076d" style="@style/APKTOOL_DUPLICATE_style_0x7f0e007a">
+                <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c7c" android:layout_marginLeft="35.0dip" android:text="其他..." android:layout_centerVertical="true" style="@style/midas_tx" />
+            </RelativeLayout>
+        </LinearLayout>
+        <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c7d" android:layout_marginTop="7.0dip" android:text="@string/midas_agreecheck" style="@style/midas_agreecheck" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c7e" android:layout_marginLeft="8.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006d" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0257" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cbf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cc0" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:background="#ffffffff" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+                <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04020a" />
+            </RelativeLayout>
+            <com.pay.ui.common.APEditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cc1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="number" />
+            <com.pay.ui.common.APEditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cc2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="number" />
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cc3" android:layout_marginTop="30.0dip" android:text="立即支付" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0098" />
+        </LinearLayout>
+    </ScrollView>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cc4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

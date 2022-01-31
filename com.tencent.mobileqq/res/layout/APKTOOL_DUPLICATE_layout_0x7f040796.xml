@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0097"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_gravity="top" android:id="@id/icon" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021548" android:layout_marginTop="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0280" />
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d008e" android:textColor="#ff797979" android:ellipsize="end" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="15.0dip" android:maxLines="1" android:singleLine="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23ed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="8.0dip" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0661" android:layout_marginTop="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0283" />
+</LinearLayout>

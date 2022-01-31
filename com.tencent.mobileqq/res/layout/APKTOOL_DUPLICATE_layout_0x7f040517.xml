@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a197f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bc5" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04b9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1980" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0323" android:singleLine="true" android:includeFontPadding="false" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

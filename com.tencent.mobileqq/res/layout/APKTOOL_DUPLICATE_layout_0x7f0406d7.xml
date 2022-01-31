@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:dslv="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.emosm.view.DragSortListView android:id="@android:id/list" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" dslv:collapsed_height="1.0dip" dslv:drag_scroll_start="0.33" dslv:remove_mode="APKTOOL_DUPLICATE_id_0x7f0a000e" dslv:float_alpha="0.6" dslv:slide_shuffle_speed="0.3" dslv:drag_enabled="true" dslv:remove_enabled="true" dslv:drag_start_mode="APKTOOL_DUPLICATE_id_0x7f0a0010" dslv:drag_handle_id="@id/APKTOOL_DUPLICATE_id_0x7f0a0039" dslv:click_remove_id="@id/APKTOOL_DUPLICATE_id_0x7f0a003a" dslv:ignore_delete_enabled="true" />
+</LinearLayout>

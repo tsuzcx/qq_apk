@@ -1,0 +1,114 @@
+{
+    "ReadInjoy_topic_recommend_pgc_multi_cell":{
+        
+        "view_type":"cell",
+        "layout_type":"layout_relative",
+        "height":{
+            "type":"wrap_content"
+        },
+        "width":{
+            "type":"relative",
+            "value":"375"
+        },
+        "subviews":[
+                    {
+                    "view_type":"container",
+                    "direction":"vertical",
+                    "height":{
+                    "type":"wrap_content"
+                    },
+                    "width":{
+                    "type":"relative",
+                    "value":"375"
+                    },
+                    "subviews":[
+                                {"$includeComponet":"componet/topic_recommend_header.geojson"},
+                                
+                                {
+                                "view_type":"UIView",
+                                "view_id":"id_summary_wrapper",
+                                "event_type":"cmd_summary_click",
+                                "direction":"vertical",
+                                "align_parent_left":"YES",
+                                "align_parent_top":"YES",
+                                "margin_left":"0",
+                                "margin_top":"0",
+                                "height":{
+                                "type":"wrap_content"
+                                },
+                                "width":{
+                                "type":"relative",
+                                "value":"375"
+                                },
+                                "attributes":{
+                                },
+                                "subviews":[
+                                            {
+                                            "view_type":"ReadInJoySummaryView",
+                                            "view_id":"id_summary",
+                                            "margin_top":"15",
+                                            "margin_left":"12",
+                                            "margin_bottom":"11",
+                                            "attributes":{
+                                            "setFrameString:":"-1",
+                                            "setArticleModel:":"-1"
+                                            },
+                                            
+                                            "height":{
+                                            "type":"wrap_content"
+                                            },
+                                            "width":{
+                                            "type":"relative",
+                                            "value":"351"
+                                            }
+                                            
+                                            }
+                                            ]
+                                },
+                                {
+                                "view_type":"ReadInJoyVariableImageContentView",
+                                "view_id":"id_multi_image",
+                                "margin_left":"12",
+                                "attributes":{
+                                "setArticleModel:":"-1"
+                                },
+                                
+                                "height":{
+                                "type":"wrap_content"
+                                },
+                                "width":{
+                                "type":"relative",
+                                "value":"351"
+                                }
+                                
+                                },
+                                
+                                {"$includeComponet":"componet/social_bottom.geojson"},
+                                
+                                {"$includeComponet":"componet/separator.geojson"}
+                                ]
+                    },
+                    {
+                    "view_type":"UIButton",
+                    "view_id":"id_jump_wrapper",
+                    "event_type":"cmd_jump_wrapper_click",
+                    "align_parent_left":"YES",
+                    "align_parent_top":"YES",
+                    "margin_left":"0",
+                    "margin_top":"0",
+                    "height":{
+                    "type":"match_parent"
+                    },
+                    "width":{
+                    "type":"relative",
+                    "value":"375"
+                    },
+                    "attributes":{
+                    "setBackgroundColor:forStates:":[["#50777777"],["1"]]
+                    }
+                    }
+                    
+                    
+                    ]
+    }
+}

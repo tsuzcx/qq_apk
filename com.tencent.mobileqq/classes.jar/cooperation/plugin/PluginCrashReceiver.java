@@ -1,0 +1,72 @@
+package cooperation.plugin;
+
+import alvy;
+import alvz;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class PluginCrashReceiver
+  extends BroadcastReceiver
+{
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localObject = paramIntent.getAction();
+            if ((!"com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject)) || ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject))) {
+              try
+              {
+                new alvz(paramIntent).execute(new String[] { "" });
+                return;
+              }
+              catch (Throwable paramContext)
+              {
+                return;
+              }
+            }
+            if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject)) {
+              try
+              {
+                new alvy(paramContext).execute(new String[] { "" });
+                return;
+              }
+              catch (Throwable paramContext)
+              {
+                return;
+              }
+            }
+            if (!"com.tencent.mobileqq.ACTION_PLUGIN_INSTALL_FAILED".equals(localObject)) {
+              break;
+            }
+            localObject = BaseApplicationImpl.getApplication().getRuntime();
+          } while (!(localObject instanceof QQAppInterface));
+          paramContext = paramIntent.getStringExtra("plugin");
+          paramIntent = paramIntent.getStringExtra("process");
+          QLog.d("plugin_tag", 1, "receive installFailed " + paramContext + ", " + paramIntent);
+        } while ("com.tencent.mobileqq".equals(paramIntent));
+        paramIntent = (QQAppInterface)localObject;
+      } while (!paramIntent.a(26));
+      ((IPluginManager)paramIntent.getManager(26)).cancelInstall(paramContext);
+      return;
+    } while (!"com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_SPEED_INFO".equals(localObject));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     cooperation.plugin.PluginCrashReceiver
+ * JD-Core Version:    0.7.0.1
+ */

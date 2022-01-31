@@ -1,0 +1,52 @@
+package com.tencent.biz.qqstory.network.response;
+
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class AddGroupVideoResponse$AddGroupFeed
+{
+  @NonNull
+  public final String a;
+  @NonNull
+  public final Map a;
+  @NonNull
+  public String b;
+  
+  public AddGroupVideoResponse$AddGroupFeed(@NonNull qqstory_group.GroupFeed paramGroupFeed)
+  {
+    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
+    while (localIterator.hasNext())
+    {
+      qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
+      localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), localVideoStoryId.story_id.get().toStringUtf8());
+      this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+    }
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = paramGroupFeed.feed_id.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
+  }
+  
+  public String toString()
+  {
+    return "AddGroupFeed[" + this.jdField_a_of_type_JavaLangString + "," + this.b + "," + this.jdField_a_of_type_JavaUtilMap + "]";
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.qqstory.network.response.AddGroupVideoResponse.AddGroupFeed
+ * JD-Core Version:    0.7.0.1
+ */

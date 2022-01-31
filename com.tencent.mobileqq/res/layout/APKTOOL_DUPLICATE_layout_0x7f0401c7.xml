@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="fill_parent" android:layout_height="64.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020865" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020864" android:layout_alignParentLeft="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b13cd" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020867" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f7" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb3" android:layout_width="48.0dip" android:layout_height="26.0dip" android:layout_marginTop="20.5dip" android:layout_marginRight="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206b8" android:layout_alignParentRight="true" />
+    <com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="15.0dip" />
+</RelativeLayout>

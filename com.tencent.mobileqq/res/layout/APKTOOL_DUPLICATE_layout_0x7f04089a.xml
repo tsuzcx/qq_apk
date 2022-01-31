@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip">
+        <com.tencent.widget.XEditTextEx android:textSize="22.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2703" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:hint="搜索附近的位置" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" android:inputType="text" android:textSelectHandle="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02218f" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="center" android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2704" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="取消" />
+    </LinearLayout>
+    <View android:background="#80000000" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2705" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2700" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021829" android:divider="@null" android:dividerHeight="0.0dip" />
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2706" android:layout_width="fill_parent" android:layout_height="fill_parent"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2707" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:layout_width="20.0dip" android:layout_height="20.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0102" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:text="正在搜索附近位置..." />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2708" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="2.0">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                    <ImageView android:layout_width="96.0dip" android:layout_height="96.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021794" android:scaleType="fitCenter" />
+                    <TextView android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2709" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="未搜索到附近与相关的位置信息" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

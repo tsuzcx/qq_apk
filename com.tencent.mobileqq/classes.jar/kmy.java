@@ -1,0 +1,15 @@
+import com.tencent.biz.game.MSFToWebViewConnector;
+
+public class kmy
+{
+  public int a;
+  public long a;
+  
+  private kmy(MSFToWebViewConnector paramMSFToWebViewConnector) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     kmy
+ * JD-Core Version:    0.7.0.1
+ */

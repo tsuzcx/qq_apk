@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1563" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:divider="@null" android:dividerHeight="0.0dip" tencent:showHeaderView="true" tencent:showFooterView="true" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040447" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1564" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1565" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040445" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1488" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1489" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0576" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a148a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载" />
+    </LinearLayout>
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1566" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040412" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1567" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040465" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1379" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040421" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1568" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404ed" android:layout_width="wrap_content" android:layout_height="43.0dip" android:layout_marginTop="58.0dip" />
+</merge>

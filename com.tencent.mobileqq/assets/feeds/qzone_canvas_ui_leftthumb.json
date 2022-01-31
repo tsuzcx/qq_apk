@@ -1,0 +1,60 @@
+{
+  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "shell": {
+    "id":"left_thumb_root",
+    "width": "match_parent",
+    "height": "wrap_content",
+    "orientation": "horizontal",
+    "padding":"0,10 dp,0,0"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.TagImageArea",
+      "shell": {
+        "id":"left_thumb_image",
+        "width": "80 dp",
+        "height": "80 dp"
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "shell": {
+        "id":"left_thumb_right_root",
+        "width": "match_parent",
+        "height": "80 dp",
+        "orientation": "vertical",
+        "padding":"10 dp,0,10 dp,0",
+        "gravity":"center_vertical",
+        "bg_color": "#FFF8F8F8"
+      },
+      "children": [
+        {
+          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "shell": {
+            "id":"left_thumb_title",
+            "width": "match_parent",
+            "height": "wrap_content",
+            "text": "这是标题",
+            "text_color": "#ff000000",
+            "text_size": 14,
+            "max_line":2
+          }
+        },
+        {
+          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "shell": {
+            "id":"left_thumb_content",
+            "width": "match_parent",
+            "height": "wrap_content",
+            "text": "这是内容",
+            "text_color": "#ff777777",
+            "text_size": 14,
+            "max_line":2,
+            "show_shadow_on_press":0
+          }
+        }
+      ]
+    }
+  ]
+}

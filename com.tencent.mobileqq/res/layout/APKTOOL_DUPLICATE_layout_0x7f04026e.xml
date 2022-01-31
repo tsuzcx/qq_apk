@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021666" android:layout_width="251.0dip" android:layout_height="172.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a65" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c03a2" android:layout_width="fill_parent" android:layout_height="139.0dip" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="80.0dip" android:layout_marginRight="9.0dip" android:layout_marginBottom="8.0dip" android:text="像傅园慧哈哈大笑的孩子，给我来一打" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea6" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0a65">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea7" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201c8" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="每日头条" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea7" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

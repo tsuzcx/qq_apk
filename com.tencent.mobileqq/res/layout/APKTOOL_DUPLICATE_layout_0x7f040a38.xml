@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07aa" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07b0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a5" android:text="说说超大字特效" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07af" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a5" android:text="黄钻用户尊享说说超大字展示特权，让你的说说与众不同，成为世界的焦点，快来体验！" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07ad">
+        <CheckBox android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e4a" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:button="@null" android:text="启用超大字效果" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d38" android:drawablePadding="5.0dip" android:layout_alignParentLeft="true" />
+        <ImageView android:layout_width="18.0dip" android:layout_height="14.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e58" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e4b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d61" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07aa">
+        <ImageView android:layout_width="18.0dip" android:layout_height="14.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a0" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d079c" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e58" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffa64600" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a0" android:text="续费黄钻 更多炫酷" />
+    </LinearLayout>
+</LinearLayout>

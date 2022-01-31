@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31dc" android:paddingTop="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.proxy.feedcomponent.widget.AsynAutoGifImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31dd" android:background="@null" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="16.869995sp" android:textColor="@android:color/white" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31de" android:background="#80000000" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="31.5dip" android:text="宣传标题1宣传标题2宣传标题3宣传标题4宣传标题5宣传标题6" android:singleLine="true" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a31dd" />
+    </RelativeLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#ff303030" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31df" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="商品名称" android:singleLine="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="8.0dip">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_alignParentLeft="true">
+                <TextView android:textSize="32.0sp" android:textColor="#ffcf0000" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" android:layout_marginRight="6.0dip" android:text="￥500.00" />
+                <TextView android:textSize="13.5sp" android:textColor="#ff707070" android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.1999817dip" android:text="右部描述" />
+            </LinearLayout>
+            <TextView android:textSize="16.869995sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c052d" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d72" android:layout_width="83.25dip" android:layout_height="33.75dip" android:text="购买" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+</LinearLayout>

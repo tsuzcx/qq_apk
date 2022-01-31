@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31cf" android:visibility="gone" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d44" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31d0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="已赠送" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a31cf" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31d1" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d42" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31d2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="更多" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a31d1" android:layout_centerHorizontal="true" />
+</merge>

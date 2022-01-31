@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.DispatchActionMoveScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ea4" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03e3" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03e4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:orientation="vertical" android:id="@id/action_sheet_actionView" android:layout_alignParentBottom="true" style="@style/action_sheet_layout_style">
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03e6" style="@style/action_sheet_content_style" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.DispatchActionMoveScrollView>

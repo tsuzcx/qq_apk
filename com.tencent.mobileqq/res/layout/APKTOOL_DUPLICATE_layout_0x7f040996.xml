@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b08" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ab6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b09" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409b7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b0a" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409b8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b0b" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409b9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b0c" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409b5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b0d" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409b6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a273a" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="94.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a273b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a273c" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a273d" android:background="#ffcccccc" android:layout_width="1.5dip" android:layout_height="fill_parent" android:layout_marginRight="37.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a273c" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a273e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a273f" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a273f">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2740" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="立即拍摄，24小时后仅自己可见" android:maxLines="1" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2741" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02175e" />
+    </LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a273c" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="13.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="12.0dip" />
+    <TextView android:textSize="30.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a273f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="我的日迹" android:maxLines="1" android:singleLine="true" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a273c" android:layout_alignParentLeft="true" />
+</RelativeLayout>

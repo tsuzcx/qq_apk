@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2780" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:background="#32000000" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.widget.XEditTextEx android:textSize="16.0dip" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12c2" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:minHeight="35.0dip" android:hint="发送聊天消息" android:layout_weight="1.0" android:inputType="textMultiLine" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.InputMethodLinearLayout>

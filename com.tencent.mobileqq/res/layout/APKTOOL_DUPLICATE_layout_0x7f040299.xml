@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f29" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.smtt.sdk.WebView android:scrollbarStyle="insideOverlay" android:id="@id/webview" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" style="?attr/scrollbar_drawable" />
+        <RelativeLayout android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2a" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:max="100" android:progress="0" android:layout_alignParentBottom="true" style="?android:attr/progressBarStyleHorizontal" />
+        </RelativeLayout>
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208f9" android:layout_width="fill_parent" android:layout_height="31.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2d" android:layout_width="0.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208f5" android:layout_weight="1.0" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05d2" android:layout_width="0.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208f7" android:layout_weight="1.0" />
+        <ImageView android:enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b38" android:layout_width="0.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208f6" android:layout_weight="1.0" />
+        <ImageView android:enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ab" android:layout_width="0.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208f8" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

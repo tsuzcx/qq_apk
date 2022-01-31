@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.gdtad.views.canvas.framework.GdtCanvasViewPager android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0518" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentTop="true">
+        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02063d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/close" android:clickable="true" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_alignParentLeft="true">
+            <ImageView android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02063e" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

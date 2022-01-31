@@ -1,0 +1,96 @@
+package com.tencent.qqavopensdk;
+option optimize_for = LITE_RUNTIME;
+option java_package = "com.tencent.qqavopensdk.IntrenalLogic";
+option java_outer_classname = "qqavopensdkSsoTunnel";
+
+//统一SSO协议
+message UniSsoServerReq
+{
+    optional UniSsoServerReqComm comm = 1; 
+    optional string reqdata = 2;                //请求内容（json格式）
+    optional bytes pbReqData = 3;               //请求内容（pb格式）
+}
+
+message UniSsoServerRsp
+{
+    optional int64 ret = 1;
+    optional string errmsg = 2;
+
+    optional UniSsoServerRspComm comm = 3; 
+    optional string rspdata = 4;                //回包内容（json格式）
+    optional bytes pbRspData = 5;               //回包内容（pb格式）
+}
+
+message UniSsoServerReqComm
+{
+    optional int64 platform = 1;                //平台类型 109/110
+    optional string osver = 2;                  //操作系统版本
+    optional string mqqver = 3;                 //手Q版本
+}
+
+message UniSsoServerRspComm
+{
+    optional uint32 delayms = 1;                //终端用于频率控制。限制两个请求间的延迟，单位毫秒。0表示无限制
+    optional uint32 packagesize = 2;            //终端用于控制前端传入的包大小。超过此字节数，不请求到后台。0表示无限制
+    optional int32  proctime = 3;               //后台处理时间，单位毫秒。终端用于上报统计
+}
+
+//音视频请求包
+message STAudioVideoReq
+{
+    optional ReqBody reqBody = 1;             //由于和音视频后台对接采用和花样相同的方式，所以这里按花样的协议传递数据
+    optional uint32 gameId = 2;               //厘米秀游戏ID
+    optional uint64 roomId = 3;               //厘米秀游戏房间ID
+}
+
+//音视频回包
+message STAudioVideoRsp
+{
+    optional RspBody rspbody = 1;                //按花样格式回包
+}
+
+/************花样请求回包协议格式**************/
+message SdkData
+{
+    optional uint32 uint32_sdk_app_id  = 1;
+    optional bytes bytes_sdk_app_token = 2;
+    optional bool  cmlb_test           = 9; //新增 指定appid 现网or测试
+    optional string tinyid             = 10;//用户的交友tinyid （厘米这边传uin）
+}
+
+message CmdErrorCode
+{
+    optional uint32 uint32_code = 1;
+    optional bytes bytes_err_msg = 2;
+}
+
+message ReqBody
+{
+    optional SdkData msg_sdk_data = 1;
+    optional bytes bytes_reqbody = 2;
+}
+
+message RspBody
+{
+    optional CmdErrorCode msg_cmd_error_code = 1;
+    optional bytes bytes_rspbody = 2;
+}
+
+
+
+//音视频控制参数请求
+message STAVCtrlParamReq
+{
+    optional uint32 sdkAppId = 1;           //sdkappid
+    optional uint32 localVer = 2;           //本地版本号，首次不传
+}
+
+//音视频控制参数回包
+message STAVCtrlParamRsp
+{
+    optional uint32 updateFlag = 1;        //是否有更新【1-有更新，0-无更新】
+    optional uint32 svrVer = 2;            //控制参数更新时间，有更新返回
+    optional bytes ctrlParam = 3;          //控制参数json串，有更新返回
+}
+
+

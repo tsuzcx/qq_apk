@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c032c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a08b5" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c032c" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/APKTOOL_DUPLICATE_color_0x7f0c032b" android:dividerHeight="1.0px" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a171a" android:layout_alignParentTop="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17ef" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dcc" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a171a" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a171a" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c032c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f0" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c032b" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="45.5dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c032a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b102b" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c034f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f1" android:paddingLeft="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b102c" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

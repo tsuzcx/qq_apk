@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/qb_tenpay_loading_back_bg" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.65"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c57" android:layout_marginTop="20.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d6" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c02f9" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c58" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="正在修复中（0%）" />
+</LinearLayout>

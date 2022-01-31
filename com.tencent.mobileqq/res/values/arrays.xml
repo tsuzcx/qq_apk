@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name">
+        <item>查看名片</item>
+        <item>删除好友</item>
+        <item>移至分组</item>
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090001">
+        <item>查看名片</item>
+        <item>删除好友</item>
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090002">
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090003">
+        <item>从会话列表中移除</item>
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090004">
+        <item>添加到桌面</item>
+        <item>从会话列表中移除</item>
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090005">
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090006">
+        <item>从打招呼列表中移除</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090007">
+        <item>删除表情</item>
+        <item>发送表情</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090008">
+        <item>发送截图</item>
+        <item>从相册选择</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090009">
+        <item>从相册选择</item>
+        <item>拍照</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000a">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d26</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d27</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000b">
+        <item>删除消息</item>
+        <item>清空所有验证消息</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000c">
+        <item>删除消息</item>
+        <item>清空所有广播消息</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000d">
+        <item>清空所有验证消息</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000e">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e97</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e98</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e99</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09000f">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e97</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e99</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090010">
+        <item>添加新分组</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090011">
+        <item>接收群消息</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090012">
+        <item>屏蔽群消息</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090013">
+        <item>接收所有群消息</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090014">
+        <item>屏蔽所有群消息</item>
+    </string-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090015">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090016">
+        <item>查看更多资料</item>
+        <item>修改备注</item>
+        <item>移动分组</item>
+        <item>删除好友</item>
+        <item>举报</item>
+        <item>屏蔽此人</item>
+        <item>取消屏蔽</item>
+        <item>呼叫联系人</item>
+        <item>发送短信</item>
+        <item>设为备注名</item>
+        <item>复制帐号</item>
+        <item>更换头像</item>
+        <item>查看大头像</item>
+        <item>拍照</item>
+        <item>从相册选择</item>
+        <item>设置好友动态权限</item>
+        <item>取消</item>
+        <item>设置头像挂件</item>
+        <item></item>
+        <item></item>
+        <item>从手机相册选择</item>
+        <item>从空间相册选择</item>
+        <item>拍摄动态头像</item>
+        <item>查看大图</item>
+        <item>从相册选择图片</item>
+        <item>从手机相册选择图片</item>
+        <item>从空间相册选择图片</item>
+        <item>查看历史头像</item>
+        <item>手机相册</item>
+        <item>空间相册</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090017">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b167f</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1680</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090018">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09cb</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09cc</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09cd</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090019">
+        <item>拍照</item>
+        <item>从相册选择</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001a">
+        <item>男</item>
+        <item>女</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001b">
+        <item>仅删除帐号</item>
+        <item>删除帐号和本地记录</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001c">
+        <item>让我们在谈人生、聊理想之前，先看完这本《%s》吧！</item>
+        <item>凭我对你的了解，这本《%s》很适合你，你怎么能不读？</item>
+        <item>知道你和我的差距在哪吗？看完这本《%s》就知道了。</item>
+        <item>我精挑细选才送你这本《%s》，一定要好好研读哦！</item>
+        <item>与其在别处浪费光阴，不如好好品味这本《%s》。</item>
+        <item>别让你的心灵长满枯草，请用这本《%s》来拯救你。</item>
+        <item>学无止境，送你《%s》继续进步吧！</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001d">
+        <item>筛选</item>
+        <item>我的资料</item>
+        <item>清除位置信息并退出</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001e">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27ec</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27db</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27cd</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09001f">
+        <item>今天</item>
+        <item>一周内</item>
+        <item>一周前</item>
+        <item>一个月前</item>
+        <item>三个月前</item>
+        <item>半年前</item>
+        <item>一年前</item>
+        <item>从未发言</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090020">
+        <item>限男生</item>
+        <item>限妹子</item>
+        <item>不限</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090021">
+        <item>我买单</item>
+        <item>求请客</item>
+        <item>AA</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090022">
+        <item>不限</item>
+        <item>2人</item>
+        <item>3-5人</item>
+        <item>6-8人</item>
+        <item>8人以上</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090023">
+        <item>不限</item>
+        <item>自驾</item>
+        <item>飞机</item>
+        <item>火车/高铁</item>
+        <item>汽车</item>
+        <item>邮轮</item>
+        <item>骑行</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090024">
+        <item>自驾</item>
+        <item>飞机</item>
+        <item>火车/高铁</item>
+        <item>汽车</item>
+        <item>邮轮</item>
+        <item>骑行</item>
+        <item>其他交通工具</item>
+        <item>交通工具不限</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090025">
+        <item>约人吃饭</item>
+        <item>约人看电影</item>
+        <item>约人唱歌</item>
+        <item>约人运动</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090026">
+        <item>孤独寂寞求饭友</item>
+        <item>交个朋友，吃饭聊天</item>
+        <item>饭量小，求喂饱</item>
+        <item>这家餐厅不错，一起去吧</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090027">
+        <item>看看电影，聊聊人生</item>
+        <item>找个人安静地看场电影</item>
+        <item>寻最佳影友</item>
+        <item>新片上映，走起</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090028">
+        <item>以歌会友</item>
+        <item>麦霸求PK</item>
+        <item>唱到下一个天亮</item>
+        <item>把我喜欢的歌唱给你听</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090029">
+        <item>小白求指导</item>
+        <item>寻个同伴，互相监督</item>
+        <item>不运动会死星人</item>
+        <item>拒绝宅，挥洒汗水</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09002a">
+        <item>搭伴回家，同路求捡</item>
+        <item>一次说走就走的旅行</item>
+        <item>陪你看遍世间风景</item>
+        <item>文艺青年的行走，爱拍照的来</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09002b">
+        <item>已成功约到人</item>
+        <item>时间冲突</item>
+        <item>约不到人</item>
+        <item>约会内容不满意</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09002c">
+        <item>吃饭</item>
+        <item>看电影</item>
+        <item>唱歌</item>
+        <item>出行</item>
+        <item>运动</item>
+    </string-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f09002d">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f09002e">
+        <item>1408280101</item>
+        <item>1408280102</item>
+        <item>1408280103</item>
+        <item>1408280104</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f09002f">
+        <item>1408280201</item>
+        <item>1408280202</item>
+        <item>1408280203</item>
+        <item>1408280204</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090030">
+        <item>1408280301</item>
+        <item>1408280302</item>
+        <item>1408280303</item>
+        <item>1408280304</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090031">
+        <item>1408280401</item>
+        <item>1408280402</item>
+        <item>1408280403</item>
+        <item>1408280404</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090032">
+        <item>1412150501</item>
+        <item>1412150502</item>
+        <item>1412150503</item>
+        <item>1412150504</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090033">
+        <item>1111110100</item>
+        <item>1111110200</item>
+        <item>1111110300</item>
+        <item>1111110400</item>
+        <item>1111110500</item>
+    </integer-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f090034">
+        <item>14082801</item>
+        <item>14082802</item>
+        <item>14082803</item>
+        <item>14082804</item>
+        <item>14082805</item>
+    </integer-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090035">
+        <item>今天</item>
+        <item>一周内</item>
+        <item>一周前</item>
+        <item>一个月前</item>
+        <item>三个月前</item>
+        <item>半年前</item>
+        <item>一年前</item>
+        <item>两年前</item>
+        <item>三年前</item>
+        <item>五年前</item>
+        <item>七年前</item>
+        <item>十年前</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090036">
+        <item>成员分布</item>
+        <item>邀请好友加入</item>
+        <item>删除成员</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090037">
+        <item>成员分布</item>
+        <item>礼物榜</item>
+        <item>邀请新成员</item>
+        <item>删除成员</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090038">
+        <item>默认排序</item>
+        <item>优先在线成员</item>
+        <item>按活跃时间</item>
+        <item>按加群时间</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090039">
+        <item>默认排序</item>
+        <item>优先在线成员</item>
+        <item>按活跃时间排序</item>
+        <item>按加群时间排序</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003a">
+        <item>默认排序</item>
+        <item>按职务排序</item>
+        <item>礼物榜</item>
+        <item>发起多人聊天</item>
+        <item>邀请新成员</item>
+        <item>删除群成员</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003b">
+        <item>潜水</item>
+        <item>冒泡</item>
+        <item>吐槽</item>
+        <item>活跃</item>
+        <item>话唠</item>
+        <item>传说</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003c">
+        <item>≤5km</item>
+        <item>≤10km</item>
+        <item>≤50km</item>
+        <item>≤500km</item>
+        <item>≤1000km</item>
+        <item>≤2000km</item>
+        <item>≤10000km</item>
+        <item>远在天边</item>
+        <item>未知</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003d">
+        <item>删除未付款成员</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003e">
+        <item>授权给好友</item>
+        <item>修改设备备注</item>
+        <item>检查设备更新</item>
+        <item>设备锁(已启用)</item>
+        <item>打开%s</item>
+        <item>成员脸部管理</item>
+        <item>解除绑定</item>
+        <item>分享</item>
+        <item>举报</item>
+        <item>购买智能设备</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09003f">
+        <item>被选为约会对象</item>
+        <item>收到的报名</item>
+        <item>收到的评论</item>
+        <item>已结束的约会</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090040">
+        <item>去过的地方</item>
+        <item>爱吃的美食</item>
+        <item>常用的品牌</item>
+        <item>喜欢的运动</item>
+        <item>喜欢的电影</item>
+        <item>喜欢的明星</item>
+        <item>喜欢的游戏</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090041">
+        <item>旅游</item>
+        <item>美食</item>
+        <item>时尚</item>
+        <item>运动</item>
+        <item>电影</item>
+        <item>音乐</item>
+        <item>游戏</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090042">
+        <item>未填写</item>
+        <item>老师</item>
+        <item>家长</item>
+        <item>学生</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090043">
+        <item>确定解除</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090044">
+        <item>热映电影</item>
+        <item>附近美食</item>
+        <item>新歌推荐</item>
+        <item>热门漫画</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090045">
+        <item>个人头像违规</item>
+        <item>昵称违规</item>
+        <item>内容违规</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090046">
+        <item>拨打电话</item>
+        <item>拨打免费电话</item>
+        <item>发送短信</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090047">
+        <item>拨打电话</item>
+        <item>拨打免费电话</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090048">
+        <item>图片</item>
+        <item>视频</item>
+        <item>文件</item>
+        <item>文字</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090049">
+        <item>.png</item>
+        <item>.gif</item>
+        <item>.jpg</item>
+        <item>.jpeg</item>
+        <item>.bmp</item>
+        <item>.ico</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004a">
+        <item>.mp2</item>
+        <item>.mp3</item>
+        <item>.wav</item>
+        <item>.ogg</item>
+        <item>.mid</item>
+        <item>.midi</item>
+        <item>.m3u</item>
+        <item>.m4a</item>
+        <item>.m4b</item>
+        <item>.m4p</item>
+        <item>.mpga</item>
+        <item>.wma</item>
+        <item>.amr</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004b">
+        <item>.wmv</item>
+        <item>.mp4</item>
+        <item>.rmvb</item>
+        <item>.avi</item>
+        <item>.flv</item>
+        <item>.rm</item>
+        <item>.asf</item>
+        <item>.mov</item>
+        <item>.mpg</item>
+        <item>.3gp</item>
+        <item>.m4u</item>
+        <item>.mpeg</item>
+        <item>.m4v</item>
+        <item>.vob</item>
+        <item>.mkv</item>
+        <item>.mpe</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004c">
+        <item>.apk</item>
+        <item>.jar</item>
+        <item>.zip</item>
+        <item>.rar</item>
+        <item>.gz</item>
+        <item>.tar</item>
+        <item>.img</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004d">
+        <item>.htm</item>
+        <item>.html</item>
+        <item>.php</item>
+        <item>.jsp</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004e">
+        <item>.txt</item>
+        <item>.java</item>
+        <item>.c</item>
+        <item>.cpp</item>
+        <item>.py</item>
+        <item>.xml</item>
+        <item>.json</item>
+        <item>.log</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09004f">
+        <item>.doc</item>
+        <item>.docx</item>
+        <item>.dot</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090050">
+        <item>.xls</item>
+        <item>.xlsx</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090051">
+        <item>.ppt</item>
+        <item>.pptx</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090052">
+        <item>.pdf</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090053">
+        <item>.chm</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090054">
+        <item>删除所选记录</item>
+        <item>删除所选文件</item>
+        <item>转发</item>
+        <item>存到微云</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090055">
+        <item>China 中国大陆 86 11 常用地区</item>
+        <item>Hong Kong 中国香港 852 8 常用地区</item>
+        <item>Macau 中国澳门 853 8 常用地区</item>
+        <item>Taiwan 中国台湾 886 10 常用地区</item>
+        <item>Japan 日本 81 11 常用地区</item>
+        <item>USA 美国 1 10 常用地区</item>
+        <item>United Kingdom 英国 44 10 常用地区</item>
+        <item>Australia 澳大利亚 61 10 常用地区</item>
+        <item>Canada 加拿大 1 7 常用地区</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090056">
+        <item>常用地区</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090057">
+        <item>Algeria 阿尔及利亚 213 6 A</item>
+        <item>Afghanistan 阿富汗 93 6 A</item>
+        <item>Argentina 阿根廷 54 7 A</item>
+        <item>United Arab Emirates 阿拉伯联合酋长国 971 11 A</item>
+        <item>Aruba 阿鲁巴岛 297 7 A</item>
+        <item>Azerbaija 阿塞拜疆 994 9 A</item>
+        <item>Ascension 阿森松 247 4 A</item>
+        <item>Egypt 埃及 20 8 A</item>
+        <item>Ethiopia 埃塞俄比亚 251 7 A</item>
+        <item>Ireland 爱尔兰 353 9 A</item>
+        <item>Estonia 爱沙尼亚 372 7|8 A</item>
+        <item>Andorra 安道尔共和国 376 6 A</item>
+        <item>Angola 安哥拉 244 6 A</item>
+        <item>Anguilla 安圭拉岛 1-264 7 A</item>
+        <item>Antigua and Barbuda 安提瓜和巴布达 1268 7 A</item>
+        <item>Austria 奥地利 43 8 A</item>
+        <item>Barbados 巴巴多斯 1246 7 B</item>
+        <item>Papua New Guinea 巴布亚新几内亚 675 7 B</item>
+        <item>Bahamas 巴哈马 1242 7 B</item>
+        <item>Pakistan 巴基斯坦 92 11 B</item>
+        <item>Bahrain 巴林 973 8 B</item>
+        <item>Panama 巴拿马 507 7 B</item>
+        <item>Brazil 巴西 55 8 B</item>
+        <item>Belarus 白俄罗斯 375 9 B</item>
+        <item>Bermuda 百慕大群岛 1441 7 B</item>
+        <item>Bulgaria 保加利亚 359 7 B</item>
+        <item>Benin 贝宁 229 8 B</item>
+        <item>Belgium 比利时 32 8 B</item>
+        <item>Iceland 冰岛 354 7 B</item>
+        <item>Puerto Rico 波多黎各 1-787/939 7 B</item>
+        <item>Poland 波兰 48 10 B</item>
+        <item>Bolivia 玻利维亚 591 7 B</item>
+        <item>Belize 伯利兹 501 7 B</item>
+        <item>Botswana 博茨瓦纳 267 7 B</item>
+        <item>Bhutan 不丹 975 5 B</item>
+        <item>Burkina Faso 布基纳法索 226 6 B</item>
+        <item>Burundi 布隆迪 257 8 B</item>
+        <item>Denmark 丹麦 45 8 D</item>
+        <item>Germany 德国 49 11 D</item>
+        <item>East Samoa 东萨摩亚(美) 1684 7 D</item>
+        <item>Togo 多哥 228 7 D</item>
+        <item>Dominican Republic 多米尼加共和国 1890 7 D</item>
+        <item>Russia 俄罗斯 7 10 E</item>
+        <item>Ecuador 厄瓜多尔 593 7 E</item>
+        <item>France 法国 33 10 F</item>
+        <item>French Polynesia 法属波利尼西亚 689 6 F</item>
+        <item>French Guiana 法属圭亚那 594 10 F</item>
+        <item>Philippines 菲律宾 63 11 F</item>
+        <item>Fiji 斐济 679 7 F</item>
+        <item>Finland 芬兰 358 7 F</item>
+        <item>Gambia 冈比亚 220 7 G</item>
+        <item>Congo 刚果 242 7 G</item>
+        <item>Colombia 哥伦比亚 57 10 G</item>
+        <item>Costa Rica 哥斯达黎加 506 8 G</item>
+        <item>Grenada 格林纳达 1473 7 G</item>
+        <item>Georgia 格鲁吉亚 995 8 G</item>
+        <item>Cuba 古巴 53 7 G</item>
+        <item>Guam 关岛 1671 7 G</item>
+        <item>Guyana 圭亚那 592 12 G</item>
+        <item>Kazakhstan 哈萨克斯坦 7 10 H</item>
+        <item>Haiti 海地 509 8 H</item>
+        <item>Korea 韩国 82 11 H</item>
+        <item>Honduras 洪都拉斯 504 7 H</item>
+        <item>Djibouti 吉布提 253 6 J</item>
+        <item>Kyrgyzstan 吉尔吉斯坦 996 9 J</item>
+        <item>Guinea 几内亚 224 6 J</item>
+        <item>Ghana 加纳 233 10 J</item>
+        <item>Gabon 加蓬 241 6 J</item>
+        <item>Cambodia 柬埔寨 855 9 J</item>
+        <item>Czech 捷克 420 9 J</item>
+        <item>Zimbabwe 津巴布韦 263 9 J</item>
+        <item>Cameroon 喀麦隆 237 8 K</item>
+        <item>Qatar 卡塔尔 974 7 K</item>
+        <item>Cayman Islands 开曼群岛 1345 7 K</item>
+        <item>Ivorian 科特迪瓦 225 8 K</item>
+        <item>Kuwait 科威特 965 8 K</item>
+        <item>Kenya 肯尼亚 254 7 K</item>
+        <item>Cook Islands 库克群岛 682 5 K</item>
+        <item>Latvia 拉脱维亚 371 8 L</item>
+        <item>Lesotho 莱索托 266 8 L</item>
+        <item>Laos 老挝 856 10 L</item>
+        <item>Lebanon 黎巴嫩 961 7 L</item>
+        <item>Lithuania 立陶宛 370 5 L</item>
+        <item>Liberia 利比里亚 231 7|8 L</item>
+        <item>Libya 利比亚 218 10 L</item>
+        <item>Liechtenstein 列支敦士登 423 7 L</item>
+        <item>Reunion 留尼汪 262 6 L</item>
+        <item>Luxembourg 卢森堡 352 9 L</item>
+        <item>Romania 罗马尼亚 40 9 L</item>
+        <item>Madagascar 马达加斯加 261 7 M</item>
+        <item>Maldives 马尔代夫 960 7 M</item>
+        <item>Malta 马耳他 356 8 M</item>
+        <item>Malawi 马拉维 265 9 M</item>
+        <item>Malaysia 马来西亚 60 10 M</item>
+        <item>Mali 马里 223 8 M</item>
+        <item>Mariana Islands 马里亚那群岛 596 10 M</item>
+        <item>Martinique 马提尼克 596 10 M</item>
+        <item>Mauritius 毛里求斯 230 7 M</item>
+        <item>Samoa 美属萨摩亚 1684 7 M</item>
+        <item>Bangladesh 孟加拉国 880 7 M</item>
+        <item>Myanmar 缅甸 95 6 M</item>
+        <item>Moldova 摩尔多瓦 373 5 M</item>
+        <item>Monaco 摩纳哥 377 8 M</item>
+        <item>Mozambique 莫桑比克 258 9 M</item>
+        <item>Mexico 墨西哥 52 8 M</item>
+        <item>South Africa 南非 27 9 N</item>
+        <item>Nauru 瑙鲁 674 7 N</item>
+        <item>Niger 尼日尔 227 6 N</item>
+        <item>Nigeria 尼日利亚 234 11 N</item>
+        <item>Norway 挪威 47 8 N</item>
+        <item>Portugal 葡萄牙 351 9 P</item>
+        <item>Sweden 瑞典 46 6 R</item>
+        <item>Switzerland 瑞士 41 10 R</item>
+        <item>Salvador 萨尔瓦多 503 7 S</item>
+        <item>Sierra Leone 塞拉利昂 232 6 S</item>
+        <item>Senegal 塞内加尔 221 7 S</item>
+        <item>Cyprus 塞浦路斯 357 6 S</item>
+        <item>Seychelles 塞舌尔 248 6 S</item>
+        <item>Saudi Arabia 沙特阿拉伯 966 9 S</item>
+        <item>Sao Tome and Principe 圣多美和普林西比 239 6 S</item>
+        <item>Lucia 圣卢西亚 1758 7 S</item>
+        <item>San Marino 圣马力诺 378 10 S</item>
+        <item>St.Vincent 圣文森特 1784 7 S</item>
+        <item>Sri Lanka 斯里兰卡 94 7|8 S</item>
+        <item>Slovakia 斯洛伐克 421 7 S</item>
+        <item>Slovenia 斯洛文尼亚 386 7 S</item>
+        <item>Swaziland 斯威士兰 268 7 S</item>
+        <item>Sudan 苏丹 249 9 S</item>
+        <item>Suriname 苏里南 597 6 S</item>
+        <item>Solomon Islands 所罗门群岛 677 7 S</item>
+        <item>Somalia 索马里 252 7 S</item>
+        <item>Tajikistan 塔吉克斯坦 992 6 T</item>
+        <item>Thailand 泰国 66 10 T</item>
+        <item>Tanzania 坦桑尼亚 255 11 T</item>
+        <item>Tonga 汤加 676 7 T</item>
+        <item>Trinidad and Tobago 特立尼达和多巴哥 1868 7 T</item>
+        <item>Tunisia 突尼斯 216 8 T</item>
+        <item>Turkey 土耳其 90 10 T</item>
+        <item>Turkmenistan 土库曼斯坦 993 6 T</item>
+        <item>Guatemala 危地马拉 502 8 W</item>
+        <item>Venezuela 委内瑞拉 58 7 W</item>
+        <item>Brunei 文莱 673 7 W</item>
+        <item>Uganda 乌干达 256 9 W</item>
+        <item>Ukraine 乌克兰 380 10 W</item>
+        <item>Uruguay 乌拉圭 598 7 W</item>
+        <item>Uzbekistan 乌兹别克斯坦 998 7 W</item>
+        <item>Spain 西班牙 34 9 X</item>
+        <item>Western Samoa 西萨摩亚 685 7 X</item>
+        <item>Greece 希腊 30 10 X</item>
+        <item>Singapor 新加坡 65 8 X</item>
+        <item>New Zealand 新西兰 64 9 X</item>
+        <item>Hungary 匈牙利 36 9 X</item>
+        <item>Syria 叙利亚 963 9 X</item>
+        <item>Jamaica 牙买加 1876 7 Y</item>
+        <item>Armenia 亚美尼亚 374 8 Y</item>
+        <item>Yemen 也门 967 6 Y</item>
+        <item>Iraq 伊拉克 964 8 Y</item>
+        <item>Iran 伊朗 98 8 Y</item>
+        <item>Israel 以色列 972 9 Y</item>
+        <item>Italy 意大利 39 10 Y</item>
+        <item>India 印度 91 10 Y</item>
+        <item>Indonesia 印尼 62 10|11|12 Y</item>
+        <item>Jordan 约旦 962 7 Y</item>
+        <item>Vietnam 越南 84 10 Y</item>
+        <item>Zambia 赞比亚 260 9 Z</item>
+        <item>Zaire 扎伊尔 243 7 Z</item>
+        <item>Chad 乍得 235 7 Z</item>
+        <item>Gibraltar 直布罗陀 350 8 Z</item>
+        <item>Chile 智利 56 7 Z</item>
+        <item>Central African Republic 中非共和国 236 6 Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090058">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <array name="APKTOOL_DUPLICATE_array_0x7f090059">
+        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7c</item>
+        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7d</item>
+    </array>
+    <array name="APKTOOL_DUPLICATE_array_0x7f09005a">
+        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7b</item>
+    </array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005b">
+        <item>从本设备中删除</item>
+        <item>从群文件中删除</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005c">
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005d">
+        <item>301</item>
+        <item>302</item>
+        <item>303</item>
+        <item>304</item>
+        <item>305</item>
+        <item>306</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005e">
+        <item>107</item>
+        <item>401</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f09005f">
+        <item>501</item>
+        <item>502</item>
+        <item>503</item>
+        <item>504</item>
+        <item>505</item>
+        <item>506</item>
+        <item>507</item>
+        <item>508</item>
+        <item>509</item>
+        <item>qrcodecolor</item>
+        <item>601</item>
+        <item>401</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090060">
+        <item>" · "</item>
+        <item>"  "</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090061">
+        <item>月点击超千万次神作：罗布泊之咒</item>
+        <item>小时代三部曲完结篇：刺金时代</item>
+        <item>盗猎者的诡异经历：鬼藏人</item>
+        <item>比外星美男叫兽更具魅力的男主</item>
+        <item>独家推荐：宅斗版后宫《甄嬛传》</item>
+        <item>治愈系：温暖写手叶非夜新书来袭</item>
+        <item>卧底女警行动时神秘失联</item>
+        <item>幽灵诅咒！死亡校舍排行</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090062">
+        <item>作者：周德东</item>
+        <item>作者：郭敬明</item>
+        <item>作者：李达</item>
+        <item>寻找属于你的“都敏俊”</item>
+        <item>不要小看女人</item>
+        <item>男神不要太多哦</item>
+        <item>女警神秘失联</item>
+        <item>死亡宿舍推荐</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090063">
+        <item>中国恐怖小说第一人周德东百万字巨著火热连载中，腾讯独家首发，本书集青春、爱情、悬疑、探险、魔幻于一体，共1001次高潮。邀您一起踏上惊心动魄的“罗布泊之旅”！</item>
+        <item>林萧、顾里、南湘、唐宛如四位主角的故事，画上出乎意料同时又无可辩驳的句号。郭敬明导演同名电影《小时代》最后一部2014年7月上映。前两季交错铺设下的伏笔，将在本季密集引爆。</item>
+        <item>30年前，一支由“死人”组建的勘探队进入杀龙岭，中国隐藏了数千年的终极秘密首次拉开大幕：莽莽丛林背后，究竟隐藏了什么秘密？“一切动物都指向那个终极——天黑莫上山，夜半鬼藏人……</item>
+        <item>此男主，前无古人后无来者，时有怪癖，却极富魅力，追其原因：多金、帅气、人间难遇！要如何把土豪变成自己的？攻略在此，不看后悔哦~</item>
+        <item>伯父冷漠，未婚夫背叛，视若亲母的伯母二十万两银子将她卖为商人妾，彻底断送了她的一生。重生归来，她决心报仇，那些践踏她的人，她必以牙还牙，加倍奉还！</item>
+        <item>“男神大人，小女子有罪，对您有跟踪罪，窥视罪，梦中情人罪……”林深深对着面前冷若冰霜的美男子——锦洋嘴里谢罪，脑内YY，心里大恨：老娘阅男无数，居然栽了！</item>
+        <item>王牌卧底执行公务时突然失联，神秘失踪。她到底遭遇何事，现又身在何处？</item>
+        <item>为寻找失踪的姐姐，她考入姐姐之前的同一所大学。入校当天天，一连串离奇事件就在宿舍接连上演，姐姐的失踪是否与这些有关？事件背后的真相到底是……</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f090064">
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>大神推荐</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+    </string-array>
+</resources>

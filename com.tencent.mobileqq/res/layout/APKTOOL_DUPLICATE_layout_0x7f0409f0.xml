@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d2e" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d2f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d50" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:contentDescription="同步到日迹" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d30" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="同步" />
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1399" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a139a" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a139b" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1398" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c025f" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04eb" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a139c" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

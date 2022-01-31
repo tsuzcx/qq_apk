@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsynAutoGifImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3057" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021adc" android:scaleType="centerCrop" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a305a" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+</RelativeLayout>

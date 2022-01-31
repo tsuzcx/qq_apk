@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.module.feedcomponent.view.AvatarImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c49" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d076b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d076b" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="9.0dip" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c4a" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d076b" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="待接受" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a2c49" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2c49" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c4b" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2c49" />
+</RelativeLayout>

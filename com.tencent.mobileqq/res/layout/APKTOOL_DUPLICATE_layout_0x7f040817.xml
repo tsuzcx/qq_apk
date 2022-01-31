@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b05" android:background="#ff3b3b3b" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020700" />
+        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="我的日迹Tool" />
+    </LinearLayout>
+    <RelativeLayout android:orientation="vertical" android:id="@id/content" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="14.0dip" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25f2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="选择插件文件 (SDCARD/0_mqq_plugins/)" android:layout_alignParentTop="true" />
+        <Spinner android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25f3" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="4.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a25f2" />
+        <Button android:textSize="16.0dip" android:textColor="#ffce787b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25f4" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="杀掉QQ进程" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e60" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="web地图" android:layout_alignParentLeft="true" />
+        <Button android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="webview test" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e60" android:layout_alignParentLeft="true" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e61" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="armap_jump" android:layout_below="@id/webview" android:layout_alignParentLeft="true" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e62" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="开宝箱" android:layout_weight="1.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e61" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e63" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="clear map cache" android:layout_weight="1.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e62" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e64" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="红包列表" android:layout_weight="1.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e63" />
+    </RelativeLayout>
+</ScrollView>

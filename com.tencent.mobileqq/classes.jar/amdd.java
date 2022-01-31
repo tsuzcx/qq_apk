@@ -1,0 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+
+public class amdd
+  implements View.OnClickListener
+{
+  public amdd(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    QzoneVerticalVideoDownloadActivity.a(this.a, true);
+    QzoneVerticalVideoDownloadActivity.b(this.a);
+    this.a.finish();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     amdd
+ * JD-Core Version:    0.7.0.1
+ */

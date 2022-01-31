@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/midas_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e007a">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf6" android:layout_marginLeft="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0081" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c024d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf3" android:layout_marginLeft="35.0dip" android:text="1个月" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0063" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf5" android:text="100.00" android:layout_centerVertical="true" style="@style/midas_tx.price" />
+            <TextView android:text="元" style="@style/midas_tx.price" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

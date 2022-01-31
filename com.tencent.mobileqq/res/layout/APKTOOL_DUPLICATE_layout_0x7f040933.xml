@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28a5" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c00b5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0414" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0414" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04092b" />
+    <LinearLayout android:orientation="vertical" android:paddingBottom="36.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c00a5" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b5c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2202" />
+        <com.tencent.mobileqq.gesturelock.LockPatternView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b5e" android:layout_width="290.0dip" android:layout_height="290.0dip" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c00a7" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b60" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12cb" android:layout_alignParentBottom="true" />
+</RelativeLayout>

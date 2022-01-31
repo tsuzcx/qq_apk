@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a041c" android:visibility="visible" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040100" />
+    <FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.SwipListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a22f5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@android:color/transparent" android:divider="@null" />
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a22f6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021667" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0576" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="暂无好友申请" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07da" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0621" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0311" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0621">
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator android:textSize="18.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e5" android:layout_width="220.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true" app:indicatorColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0212" app:underlineColor="#00ffffff" app:checkTextColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0211" app:uncheckTextColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0213" app:indicatorHeight="4.0dip" app:underlineHeight="0.0dip" app:tabPaddingLeftRight="17.0dip" />
+            <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1511" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+                <com.tencent.widget.FadeIconImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1512" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1513" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400db" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1379" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040421" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</LinearLayout>

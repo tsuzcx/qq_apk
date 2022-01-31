@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.troop.widget.PublishItemContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12c5" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:paddingLeft="15.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12c6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.troop.activity.ExtendGridView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12c7" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:padding="20.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:horizontalSpacing="4.0dip" android:verticalSpacing="4.0dip" android:stretchMode="columnWidth" />
+        </RelativeLayout>
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12c8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="80.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0522" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12c9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c27" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ba6" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bf7" android:drawablePadding="5.0dip" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b0bb7" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="4.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02d8" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02d8">
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a345e" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a345f" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3460" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3461" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3462" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3463" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3464" android:paddingTop="2.5dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02d8" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02d8">
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3465" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3466" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3467" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3468" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3469" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a346a" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b50" />
+    </LinearLayout>
+</LinearLayout>

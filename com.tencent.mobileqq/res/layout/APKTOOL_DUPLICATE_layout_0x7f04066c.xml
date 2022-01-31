@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070d" android:textStyle="bold" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1edf" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070c" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:includeFontPadding="false" android:lineSpacingExtra="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070e" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070d" android:textStyle="bold" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ee0" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070c" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:includeFontPadding="false" android:lineSpacingExtra="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070e" />
+</merge>

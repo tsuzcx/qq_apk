@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor android:enabled="false" android:gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19b4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1149" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.ocr.view.CameraGridView android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13f8" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02160c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0a22" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0429" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="107.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2db5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginBottom="14.0dip" android:text="@string/cancel" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a230f" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

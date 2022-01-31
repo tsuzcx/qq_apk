@@ -1,0 +1,33 @@
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import java.lang.ref.WeakReference;
+
+abstract class agrh
+  extends ProtoUtils.TroopProtocolObserver
+{
+  protected Object a;
+  private WeakReference a;
+  
+  agrh(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramObject);
+  }
+  
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+ * Qualified Name:     agrh
+ * JD-Core Version:    0.7.0.1
+ */

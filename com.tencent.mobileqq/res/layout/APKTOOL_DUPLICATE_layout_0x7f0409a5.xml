@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b83" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b84" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+</LinearLayout>

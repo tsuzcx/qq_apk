@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.magicface.view.MagicfaceContainerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10d4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.magicface.view.MagicFaceGLView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10d5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10d6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218e2" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
+</com.tencent.mobileqq.magicface.view.MagicfaceContainerView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f65" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="player_video_cover_base_cover" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f67" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_net_page" />
+        <ViewStub android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f68" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_loading_layout" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f69" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_play_icon_container" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f6a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_complete_float_page" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f6b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_error_page" />
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f6c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="player_video_cover_complete_page" />
+        <ViewStub android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f6d" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0916" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0917" />
+    </FrameLayout>
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f6e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_play_control" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f6f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_danmaku" />
+</FrameLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d1e" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a150d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c6d" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1461" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="好友Biu过" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a150d" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a150e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.5dip" android:layout_marginRight="13.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020012" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a150f" android:visibility="visible" android:layout_width="26.0dip" android:layout_height="28.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020658" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a150e" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1510" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220e3" android:visibility="visible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="-3.0dip" android:layout_marginTop="-3.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a150f" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a150f" />
+    </RelativeLayout>
+    <View android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+</LinearLayout>

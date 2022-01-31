@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="10.0dip" android:checked="true" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02167b" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1f9c" android:drawablePadding="6.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/C6_Font" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a25b0" android:layout_alignParentLeft="true">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="立即更新" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b3" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="稍后处理" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
+    </LinearLayout>
+    <com.tencent.widget.ProtectedWebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a25b1" android:layout_alignParentTop="true" />
+</RelativeLayout>

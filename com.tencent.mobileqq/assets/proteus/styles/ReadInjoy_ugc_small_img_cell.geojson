@@ -1,0 +1,56 @@
+{
+  "ReadInjoy_ugc_small_img_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+      {
+        "$includeComponet": "componet/social_header.geojson"
+      },
+      {
+        "view_type":"ReadInJoyBiuCommentView",
+        "view_id":"id_biu_comment",
+        "margin_top":"8",
+        "margin_left":"12",
+        "attributes":{
+          "setArticleModel:":"-1"
+        },
+
+        "height":{
+          "type":"wrap_content"
+        },
+        "width":{
+          "type":"relative",
+          "value":"351"
+        }
+
+      },
+      {
+        "view_type":"CornerTextImageView",
+        "view_id":"id_corner_text_image",
+        "margin_top":"8",
+        "margin_left":"12",
+        "attributes":{
+          "setArticleModel:":"-1"
+        },
+
+        "height":{
+          "type":"wrap_content"
+        },
+        "width":{
+          "type":"wrap_content"
+        }
+      },
+      {
+        "$includeComponet": "componet/social_bottom.geojson"
+      },
+      {"$includeComponet":"componet/separator.geojson"}
+    ]
+  }
+}

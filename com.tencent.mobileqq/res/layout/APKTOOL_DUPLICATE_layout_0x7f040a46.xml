@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e73" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e74" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e75" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:contentDescription="@string/close" />
+</RelativeLayout>

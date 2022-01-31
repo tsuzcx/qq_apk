@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2997" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0001" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0b2532" formItem:leftTextColor="APKTOOL_DUPLICATE_id_0x7f0a0016"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq" />

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3471" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3472" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3473" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="100.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3474" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_alignParentLeft="true" />
+</merge>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="small_icon">
+        <item name="android:textSize">10.0dip</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingLeft">2.0dip</item>
+        <item name="android:paddingRight">2.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">6.0dip</item>
+        <item name="android:layout_marginBottom">2.0dip</item>
+    </style>
+</resources>

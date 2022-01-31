@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.qwallet.widget.QwScrollView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee9" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c032d" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:background="#ffffffff" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip">
+            <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1813" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="设置口令" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e1d" android:drawablePadding="5.0dip" />
+            <EditText android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0307" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0329" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1814" android:background="@null" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:hint="如   “张三你好帅”" android:singleLine="true" android:maxLength="18" />
+        </LinearLayout>
+        <View android:paddingLeft="12.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fb" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1815" android:paddingLeft="12.0dip" android:paddingTop="9.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="小伙伴需回复口令抢红包" />
+                <TextView android:textSize="14.0sp" android:textColor="#ffcf3a50" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1816" android:background="@null" android:paddingLeft="5.0dip" android:paddingTop="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="改为语音口令" />
+            </LinearLayout>
+            <View android:layout_marginTop="19.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fb" />
+            <com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1817" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f48" />
+                    <LinearLayout android:gravity="center|right" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <EditText android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0307" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0329" android:gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0946" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0f49" android:singleLine="true" android:maxLength="4" android:inputType="number" />
+                    </LinearLayout>
+                    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="12.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f4e" />
+                </LinearLayout>
+            </com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer>
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fb" />
+            <LinearLayout android:gravity="center_vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f4a" />
+                <LinearLayout android:gravity="center|right" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <EditText android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0307" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0329" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17ee" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0f4d" android:singleLine="true" android:maxLength="7" android:inputType="numberDecimal" />
+                </LinearLayout>
+                <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="12.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0db6" />
+            </LinearLayout>
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fb" />
+        </LinearLayout>
+        <Button android:enabled="false" android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04ca" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a08da" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d88" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f52" />
+    </LinearLayout>
+</com.tencent.mobileqq.activity.qwallet.widget.QwScrollView>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1582" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ce2" android:layout_width="wrap_content" android:layout_height="21.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1583" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="测试" />
+</LinearLayout>

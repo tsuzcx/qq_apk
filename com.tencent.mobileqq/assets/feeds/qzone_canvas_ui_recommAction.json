@@ -1,0 +1,75 @@
+{
+    "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+    "shell": {
+        "id": "qzone_recomm_action_root_container",
+        "width": "match_parent",
+        "height": "53 dp",
+        "margin": "8dp,0dp,8dp,0dp"
+    },
+    "children": [
+        {
+            "Area": "com.qzone.canvasui.gdtui.asynarea.CanvasRecommFriends",
+            "shell": {
+                "id": "friend_chain_area",
+                "margin": "6dp,0dp,0dp,0dp",
+                "width": "wrap_content",
+                "height": "wrap_content",
+                "centerVertical": true,
+                "alignParentLeft": true
+            }
+        },
+        {
+            "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+            "shell": {
+                "id": "text_area",
+                "toRightOf": "friend_chain_area",
+                "margin": "10dp,0dp,0dp,0dp",
+                "width": "wrap_content",
+                "height": "28dp",
+                "text_color": "#777777",
+                "text_size": 14,
+                "centerVertical": true
+            }
+        },
+        {
+            "Area": "com.qzone.canvasui.widget.CanvasCountDownArea",
+            "shell": {
+                "id": "count_down_area",
+                "toRightOf": "text_area",
+                "width": "wrap_content",
+                "height": "wrap_content",
+                "text_size": 12,
+                "centerVertical": true
+            }
+        },
+        {
+            "Area": "com.qzone.canvasui.gdtui.asynarea.CanvasRecommStars",
+            "shell": {
+                "id": "stars_area",
+                "toRightOf": "text_area",
+                "margin": "3dp,0dp,0dp,0dp",
+                "width": "wrap_content",
+                "height": "wrap_content",
+                "centerVertical": true
+            }
+        },
+        {
+            "Area": "com.qzone.canvasui.gdtui.CanvasRecommActionButton",
+            "shell": {
+                "id": "right_button_area",
+                "width": "wrap_content",
+                "height": "27dp",
+                "alignParentRight": true,
+                "margin": "0dp,0dp,10dp,0dp",
+                "bg_color": "#00FFFFFF",
+                "border_width": "1dp",
+                "border_radius": "2dp",
+                "border_color": "#2D8AE7",
+                "centerVertical": true,
+                "padding": "14dp,0dp,14dp,0dp",
+                "text_color": "#2D8AE7",
+                "text_size": 14
+            }
+        }
+    ]
+}

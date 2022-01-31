@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02186b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="6.0dip" android:minHeight="0.0dip">
+            <ImageView android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a281f" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02186c" android:contentDescription="" />
+            <TextView android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2820" android:paddingLeft="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b23e4" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

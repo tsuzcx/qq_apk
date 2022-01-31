@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SecurityConfig Version = "3">
+	<SubConfig Type = "1">
+		<Element Value = "0">
+			<TailWording>消息中可能涉及银行卡号。钱财往来别大意，$1更放心。</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "电话核实"></Action>
+		</Element>
+		<Element Value = "10">
+			<TailWording>银行卡号已认证，未发现安全风险。</TailWording>
+		</Element>
+		<Element Value = "20">
+			<TailWording>系统已自动隐藏银行卡号。请务必$1好友身份，谨防诈骗。$2</TailWording>
+			<TailWording Status = "1">卡号已完整展示。试试$3，免手续费，立即到账好友QQ钱包余额。</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "电话核实"></Action>
+			<Action PlaceHolder = "2" Type = "showAlert" Name = "查看完整卡号">
+				<AlertTitle>安全提示</AlertTitle>
+				<AlertText>请电话核实好友身份，确认卡号安全，谨防诈骗。</AlertText>
+				<AlertOtherBtnText>查看卡号</AlertOtherBtnText>
+				<AlertCancelBtnText>返回</AlertCancelBtnText>
+			</Action>
+			<Action PlaceHolder = "3" Type = "transfer" Name = "QQ转账"></Action>
+		</Element>
+		<Element Value = "30">
+			<TailWording>包含非法欺诈卡号，已被系统自动屏蔽。请$1好友身份，不要轻易汇款。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "电话核实"></Action>
+			<Action PlaceHolder = "2" Type = "showAlert" Name = "查看详情">
+				<AlertTitle>安全警示</AlertTitle>
+				<AlertText>包含非法银行卡号，多人举报为欺诈。请电话核实对方身份，切勿轻易汇款。</AlertText>
+				<AlertCancelBtnText>返回</AlertCancelBtnText>
+			</Action>
+		</Element>
+	</SubConfig>
+	<SubConfig Type = "2">
+		<Element Value = "1">
+			<TailWording>请$1核实好友身份，涉及钱财务必警惕。发现异常？$2。</TailWording>
+			<Action PlaceHolder = "1" Type = "QQCall" Name = "QQ电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "2">
+			<TailWording>亲，当前好友不在常用地登录QQ！请$1确认对方身份，发现异常？$2。</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "5">
+			<TailWording>安全提示：如果聊天中收到对方发来链接要求你购卡充值，请一定先$1核实好友身份及网站安全性。</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+		</Element>
+		<Element Value = "6">
+			<TailWording>安全提示：为保护你和好友的帐号安全，如果聊天过程中有涉及好友辅助申诉的操作，请先$1核实对方的真实身份。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "7">
+			<TailWording>安全提示：如果聊天中有涉及告诉他人自己帐号密码的操作，请一定先$1核实好友身份。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "8">
+			<TailWording>亲：和你聊天的可能不是好友本人！若提到钱财请立即$1核实，谨防被骗。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "QQCall" Name = "QQ电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "9">
+			<TailWording>对方是你新加好友，汇款前请先电话确认，勿泄漏好友姓名、职位、联系方式，谨防骗子用来诈骗。$1 $2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "10">
+			<TailWording>安全提示：请警惕聊天中的网站链接，不要轻易打开并输入QQ帐号密码，发现可疑请$1。</TailWording>
+			<Action PlaceHolder = "1" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "11">
+			<TailWording>安全提示：如果聊天中有超低价的商品交易，请不要轻易相信，以免上当受骗。$1</TailWording>
+			<Action PlaceHolder = "1" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "12">
+			<TailWording>安全提示：对方刚刚非本人在线视频，若聊天中涉及钱财交易，请先$1核实对方身份。</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "打电话"></Action>
+		</Element>
+		<Element Value = "13">
+			<TailWording>安全提示：对方帐号疑似异常，请$1核实好友身份。若发现对方非本人登录请$2。</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "14">
+			<TailWording>安全警示：对方号码疑似异常，若涉及钱财交易，请务必$1核实好友身份。如有异常，请$2。</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "15">
+			<TailWording>警示：对方是你7天内新加的好友，谨防有人冒充好友行骗。如涉及汇款，请先$1确认，发现坏人请$2。</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "16">
+			<TailWording>坏人冒充留学生诈骗亲友频发，请先$1确认对方身份，避免人财两空！$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "举报骗子"></Action>
+		</Element>
+		<Element Value = "17">
+			<TailWording>警惕：你近期异常添加了该好友，谨防有人冒充好友行骗。头像昵称可以仿冒，请$1核实对方身份。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "举报坏人"></Action>
+		</Element>
+		<Element Value = "18">
+			<TailWording>警惕：年关将至，欺诈增多。一旦好友向你借钱，请$1核实是否本人。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "举报坏人"></Action>
+		</Element>
+		<Element Value = "19">
+			<TailWording>对方QQ存在异常，请$1核实对方身份，谨防被骗！$2</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "打电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "20">
+			<TailWording>假冒老板骗财务，$1即揭穿；不经确认就转账，丢了工作还赔钱。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "打个电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "举报骗子"></Action>
+		</Element>
+		<Element Value = "21">
+			<TailWording>此QQ不是腾讯客服帐号，请勿轻信或透露自己的密码、身份等隐私信息。$1</TailWording>
+			<Action PlaceHolder = "1" Type = "tipOff" Name = "举报坏人"></Action>
+		</Element>
+		<Element Value = "22">
+			<TailWording>亲，天上不会掉馅饼，请不要轻信低价虚假交易。发现可疑？$1</TailWording>
+			<Action PlaceHolder = "1" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "23">
+			<TailWording>对方QQ可能被冒用，请勿相信文件或图片内容，先$1核实身份再聊天。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "24">
+			<TailWording>有人举报对方QQ可能被坏人登录，涉及钱财请一定先$1核实对方身份。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "25">
+			<TailWording>亲，小心对方QQ不是好友本人登录！$1谨防被骗。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "打个电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "26">
+			<TailWording>充话费、转帐汇款、淘宝代买东西、银行卡要验证码，统统不！要！信！先$1核实对方是否本人登录。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "立即举报"></Action>
+		</Element>
+		<Element Value = "27">
+			<TailWording>警惕：网上遇借钱，验明身份很重要；若是号被盗，小心钱都打水漂。$1 $2</TailWording>
+			<Action PlaceHolder = "1" Type = "videoCall" Name = "视频电话"></Action>
+			<Action PlaceHolder = "2" Type = "tipOff" Name = "举报骗子"></Action>
+		</Element>
+		<Element Value = "101">
+			<TailWording>让资金安全更有保障？立即$1。</TailWording>
+			<Action PlaceHolder = "1" Type = "openDeviceLock" Name = "开通设备锁"></Action>
+		</Element>
+		<Element Value = "201">
+			<TailWording>试试$1，免手续费，立刻到账。</TailWording>
+			<Action PlaceHolder = "1" Type = "transfer" Name = "QQ转账"></Action>
+		</Element>
+		<Element Value = "202">
+			<TailWording>$1，心意零距离。</TailWording>
+			<Action PlaceHolder = "1" Type = "luckyMoney" Name = "发个红包"></Action>
+		</Element>
+	</SubConfig>
+</SecurityConfig>

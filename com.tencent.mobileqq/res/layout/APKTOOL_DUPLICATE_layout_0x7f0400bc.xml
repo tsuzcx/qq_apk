@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a073d" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a073e" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200dc" android:layout_width="20.5dip" android:layout_height="2.5dip" android:layout_marginTop="19.0dip" android:layout_marginRight="4.5dip" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a073f" android:layout_width="wrap_content" android:layout_height="23.0dip" android:layout_marginTop="9.0dip" android:text="《我在这呢》" android:maxLines="1" />
+        <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200dc" android:layout_width="20.5dip" android:layout_height="2.5dip" android:layout_marginLeft="4.5dip" android:layout_marginTop="19.0dip" android:rotation="180.0" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0740" android:paddingTop="5.0dip" android:paddingRight="7.0dip" android:paddingBottom="4.0dip" android:visibility="visible" android:layout_width="231.0dip" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="38.0dip" android:maxHeight="78.0dip" android:text="青电饭锅符合沟沟壑壑刚刚也和交互发过火风格如果发过火春可爱的下大雪按时吃水电费十多个dddddd" android:maxLines="3" android:lineSpacingExtra="9.0dip" />
+</RelativeLayout>

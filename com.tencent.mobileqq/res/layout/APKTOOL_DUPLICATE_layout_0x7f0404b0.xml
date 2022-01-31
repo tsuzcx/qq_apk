@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="70.0dip" android:layout_height="75.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17da" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17db" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="2.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17dc" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" />
+            <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17dd" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+                <ImageView android:layout_width="7.0dip" android:layout_height="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220e3" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="红包" android:maxEms="5" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a17db" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

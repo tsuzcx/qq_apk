@@ -1,0 +1,81 @@
+{
+  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "shell": {
+    "id":"feed_attach_root",
+    "width": "match_parent",
+    "height": "wrap_content",
+    "orientation": "vertical",
+    "padding": "0, 3dp, 0, 0"
+  },
+  "children": [
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_attach_remark",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#777777",
+        "link_color": "#777777",
+        "text_size": 12,
+        "show_shadow_on_press": 1,
+        "max_line":1
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_attach_refer",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#777777",
+        "link_color": "#777777",
+        "text_size": 12,
+        "show_shadow_on_press": 1,
+        "max_line":1
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_attach_titleinfo",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#777777",
+        "link_color": "#777777",
+        "text_size": 12,
+        "show_shadow_on_press": 1,
+        "max_line":1
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_attach_shootinfo",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#777777",
+        "link_color": "#777777",
+        "text_size": 12,
+        "show_shadow_on_press": 1,
+        "max_line":1
+      }
+    },
+
+    {
+      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "shell": {
+        "id":"feed_attach_lbs",
+        "width": "match_parent",
+        "height": "wrap_content",
+        "text_color": "#777777",
+        "link_color": "#777777",
+        "text_size": 12,
+        "show_shadow_on_press": 1,
+        "max_line":1
+      }
+    }
+  ]
+}

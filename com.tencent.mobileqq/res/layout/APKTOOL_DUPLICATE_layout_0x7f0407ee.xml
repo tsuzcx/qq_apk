@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2584" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2585" android:visibility="gone" android:layout_width="333.0dip" android:layout_height="444.0dip" android:layout_marginTop="70.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2586" android:visibility="gone" android:layout_width="288.0dip" android:layout_height="340.0dip" android:layout_marginTop="37.0dip" android:scaleType="fitXY" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2585" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2587" android:visibility="gone" android:layout_width="250.0dip" android:layout_height="48.0dip" android:layout_marginBottom="31.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

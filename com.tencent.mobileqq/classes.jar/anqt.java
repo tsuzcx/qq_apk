@@ -1,0 +1,29 @@
+import android.graphics.drawable.AnimationDrawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+
+public class anqt
+  implements Animation.AnimationListener
+{
+  public anqt(VideoFilterViewPager paramVideoFilterViewPager, ImageView paramImageView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    if ((paramAnimation instanceof AnimationDrawable)) {
+      ((AnimationDrawable)paramAnimation).start();
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     anqt
+ * JD-Core Version:    0.7.0.1
+ */

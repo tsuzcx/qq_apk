@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.ark.ArkAppManagerPanel android:id="@id/panelLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="196.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/icon_viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a04ca" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020440" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01ea" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0382" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2a8e" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05d2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <View android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05d3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202b7" android:layout_width="45.0dip" android:layout_height="45.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01ea" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05d4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2ce2" />
+    </LinearLayout>
+</com.tencent.mobileqq.ark.ArkAppManagerPanel>

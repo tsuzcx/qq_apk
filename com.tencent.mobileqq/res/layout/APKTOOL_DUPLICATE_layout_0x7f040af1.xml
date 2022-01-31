@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3172" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3173" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasRecomFollowVerticalView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3174" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+</LinearLayout>

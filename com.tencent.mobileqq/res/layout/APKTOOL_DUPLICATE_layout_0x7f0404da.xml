@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:control="http://www.tencent.com/tenpay/android/qqwallet">
+    <View android:layout_marginBottom="15.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
+    <com.tenpay.sdk.i.o android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18c5" android:layout_width="fill_parent" android:layout_height="wrap_content" control:nameText="金        额" control:nameTextColor="777777" control:nameTextSize="16" control:valueText="" control:valueTextColor="000000" control:valueTextSize="23" control:valueLinePosition="32" />
+    <View android:layout_marginTop="13.0dip" android:layout_marginBottom="18.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
+    <com.tenpay.sdk.i.o android:id="@id/deposit_bank" android:layout_width="fill_parent" android:layout_height="wrap_content" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="充值方式" control:valueText="" />
+    <com.tenpay.sdk.i.o android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18c7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="交易时间" control:valueText="" />
+    <com.tenpay.sdk.i.o android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18c8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="18.0dip" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="交易订单" control:valueText="" control:valueTextSize="14" />
+</merge>

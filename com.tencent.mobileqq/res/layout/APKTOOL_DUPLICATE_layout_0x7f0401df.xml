@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09d2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="50.0dip" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0392"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/letsIcon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="4.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09d4" android:layout_width="70.0dip" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0392" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07c0" android:background="@drawable/skin_icon_arrow_right_normal" android:duplicateParentState="true" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0389" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0544" android:gravity="center_vertical" android:id="@id/letsTextView" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="184.0dip" android:singleLine="true" android:layout_toRightOf="@id/letsIcon" android:layout_centerVertical="true" />
+</RelativeLayout>

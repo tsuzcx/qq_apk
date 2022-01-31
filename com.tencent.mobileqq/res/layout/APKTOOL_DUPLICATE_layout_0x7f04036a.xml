@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a121a" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="0,1,2,3"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow>
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1279" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04053f" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a127a" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04053f" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a127b" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04053f" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a127c" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04053f" />
+    </TableRow>
+</TableLayout>

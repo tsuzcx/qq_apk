@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="#ff333333" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2d30" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/close" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c8f" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a141e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="44.0dip" android:layout_marginBottom="44.5dip" android:divider="@null" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a141f" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403d5" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1420" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04041c" />
+    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginBottom="44.0dip" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1421" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c8e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1421" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/input" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c8b" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c8c" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2d31" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1422" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c90" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1423" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c92" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1424" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout>

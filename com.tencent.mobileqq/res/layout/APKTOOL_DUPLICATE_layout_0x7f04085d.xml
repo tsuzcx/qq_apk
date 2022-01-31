@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0407" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0475" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12a7" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26aa" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040865" android:inflatedId="@id/APKTOOL_DUPLICATE_id_0x7f0a26ab" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

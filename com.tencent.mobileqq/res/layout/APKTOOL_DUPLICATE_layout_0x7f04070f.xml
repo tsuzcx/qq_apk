@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a194c" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="12.0dip" />
+    <com.tencent.mobileqq.nearby.profilecard.LabelContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2171" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

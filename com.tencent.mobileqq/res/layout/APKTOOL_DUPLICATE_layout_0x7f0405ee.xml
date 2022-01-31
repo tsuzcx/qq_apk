@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="300.0dip" android:layout_height="400.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c26" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02112b" />
+    <dov.com.qq.im.capture.view.QIMCommonLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c28" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="2.0dip" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c29" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02112c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02112d" />
+</FrameLayout>

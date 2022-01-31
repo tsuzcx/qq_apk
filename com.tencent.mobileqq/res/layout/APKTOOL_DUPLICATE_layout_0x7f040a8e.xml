@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ff0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043a" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0023"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1291" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:minHeight="30.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c039d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1292" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1b58" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c039d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1293" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1294" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="13.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1291" android:layout_alignParentBottom="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1295" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow_2" />
+    </FrameLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1296" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d46" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1297" android:visibility="invisible" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginBottom="10.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

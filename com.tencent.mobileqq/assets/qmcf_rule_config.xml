@@ -1,0 +1,55 @@
+{
+    "snpe": {
+        	"verdor": "Adreno",
+            "Adreno": {
+            	"strategy": "black",
+            	"black": {
+            		"rule"   : "less",
+            		"less": "505"
+            	}
+            }
+        },
+
+    "opencl_ocl": {
+        	"verdor": "Adreno;PowerVR",
+            "Adreno": {
+            	"strategy": "white",
+            	"white": {
+            		"rule"   : "large",
+            		"large" : "3#320;4#419;5#506"
+            	}
+            },
+            "PowerVR": {
+            	"strategy": "white",
+            	"white": {
+            		"rule"   : "enum",
+            		"enum"   : "XXX1;XXX2"
+            	}
+            }
+        },
+
+    "opengl": {
+        	"verdor": "Adreno;Mali;PowerVR",
+			"Adreno": {
+				"strategy": "white",
+				"white": {
+					"rule"   : "large",
+					"large" : "4#420;5#530"
+				}
+			},
+            "Mali": {
+            	"strategy": "black",
+            	"black": {
+            		"rule"   : "less",
+            		"less": "G#51;T#62#1;T#6#2;T#7#2;T#8#1;T#800;4#470"
+            	}
+            },
+            "PowerVR": {
+            	"strategy": "white",
+            	"white": {
+            		"rule"   : "enum",
+            		"enum"   : "XXX1;XXX2"
+            	}
+            }
+        }
+}

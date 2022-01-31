@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="search_item_price_red">#ffff4222</color>
+    <color name="search_item_price_green">#ff00d236</color>
+    <color name="search_item_qzone_title_text">#ff2863ad</color>
+    <color name="search_item_qzone_second_line_text">#ff777777</color>
+    <color name="search_item_qzone_black">#ff000000</color>
+</resources>

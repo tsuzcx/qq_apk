@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/conversation_head" android:layout_width="37.0dip" android:layout_height="37.0dip" android:layout_marginLeft="12.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fc0" android:focusable="true" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b009c" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fc1" android:layout_marginTop="7.0dip" android:layout_marginRight="7.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a1fc0" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a1fc0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d3" />
+</RelativeLayout>

@@ -1,0 +1,160 @@
+{
+    "data_map":{
+        "id_artilce_title":{
+            "setText:":"artilce_title_text",
+            "setText:lineSpace:":[
+                                  "artilce_title_text",
+                                  "article_title_lineSpace"
+                                  ],
+            "setTextColorString:":"title_text_color"
+            
+        },
+        
+        "id_article_large_imge":{
+            "setImageWithURLString:lineup:":["article_large_imge_url","lineup"]
+        },
+        "id_article_small_imge":{
+            "setImageWithURLString:lineup:":["article_small_imge_url","lineup"]
+            
+        },
+        "id_corner_text_image":{
+            "setImageWithURLString:lineup:":["ugc_small_imge_url","lineup"]
+
+        },
+        "id_info_status":{
+            "setText:":"info_status_text",
+            "setTextColorString:":"info_status_text_color",
+            "setBorderColorString:":"info_status_text_color"
+        },
+        "id_gallery_cnt":{
+            "setText:":"gallery_cn_text"
+        },
+        "id_view_app":{
+            "setText:":"view_app_text"
+        },
+        "id_info_avator":{
+            "loadQQAvatar:":"info_avator_uin"
+        },
+        "id_info_source":{
+            "setText:":"info_source_text"
+            
+        },
+        "id_participant_title":{
+            "setText:":"participant_title_text"
+        },
+        "id_participant_imge":{
+            "setImageWithURLString:lineup:":["participant_pic_url","lineup"]
+        },
+     
+        "id_multi_img_1":{
+            "setImageWithURLString:lineup:":["multi_img_url1","lineup"]
+        },
+        "id_multi_img_2":{
+            "setImageWithURLString:lineup:":["multi_img_url2","lineup"]
+        },
+        "id_multi_img_3":{
+            "setImageWithURLString:lineup:":["multi_img_url3","lineup"]
+        },
+        "id_ugc_content_image":{
+            "setImageWithURLString:lineup:":["ugc_image_url","lineup"]
+        },
+        "id_large_video_icon":{
+            "loadImageWithPath:":"large_video_icon"
+        },
+        "id_gallery_img":{
+            "loadImageWithPath:":"gallery_icon"
+        },
+        "id_large_video_cover":{
+            "loadImageWithPath:":"large_video_cover"
+        },
+        "id_large_video_duration":{
+            "setText:":"large_video_duration"
+        },
+        
+        "id_video_play_icon":{
+            "loadImageWithPath:":"video_play_icon"
+        },
+        "id_video_paly_text":{
+            "setText:":"video_paly_text"
+        },
+        "id_video_play_tips":{
+             "setText:":"video_play_tips"
+        },
+        
+        
+        "id_addon_view":{
+            "setText:":"id_addon_text",
+            "setAttatchInfo:":"id_addon_attatch_info"
+        },
+        "id_small_video_icon":{
+            "loadImageWithPath:":"small_video_icon"
+        },
+        "id_small_video_cover":{
+            "loadImageWithPath:":"small_video_cover"
+        },
+        "id_small_video_duration":{
+            "setText:":"small_video_duration"
+        },
+        "id_nickname":{
+            "setText:":"nickname_text"
+        },
+        "id_biu_time":{
+            "setText:":"biu_time_text"
+        },
+        "id_biu_tips":{
+            "setText:":"biu_tips_text"
+        },
+        "id_summary":{
+            "setArticleModel:":"articl_model",
+            "setText:":"summary_text"
+        },
+        "id_like_button":{
+            "setSelectedString:": "selected_state",
+            "setTitle:":"like_count"
+        },
+        "id_comment_button":{
+            "setTitle:":"comment_count"
+        },
+        "id_biu_button":{
+            "setTitle:":"biu_count"
+        },
+        "id_multi_image":{
+            "setArticleModel:":"article_model"
+        },
+        
+        "id_v_icon":{
+            "loadImageWithPath:":"v_icon_image"
+        },
+        "id_biu_comment":{
+            "setArticleModel:":"articl_model",
+            "setText:":"biu_comment"
+        },
+        "id_topic_name":{
+            "setText:":"topic_name"
+        },
+        "id_content":{
+            "setText:":"content_text"
+        },
+        "id_topic_avator":{
+            "setImageWithURLString:lineup:":["topic_avator_url","lineup"]
+        },
+        "id_topic_recommend_header":{
+            "setAttatchInfo:":"topic_header_jump_url"
+        },
+        "id_follow_button":{
+            "setSelectedString:": "selected_status",
+            "setTitle:": "button_status"
+        },
+        "id_topic_arrow_img":{
+            "loadImageWithPath:":"topic_arrow_img"
+        },
+        "id_topic_name_only":{
+            "setText:":"topic_name_only"
+        },
+        "id_topic_pre":{
+            "setText:":"topic_pre"
+        }
+
+    },
+    "version":"201803061040"
+}

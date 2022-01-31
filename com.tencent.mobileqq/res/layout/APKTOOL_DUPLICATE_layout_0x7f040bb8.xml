@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33ac" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02089c" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11bb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

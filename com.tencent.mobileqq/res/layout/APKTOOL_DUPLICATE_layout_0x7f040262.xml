@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e89" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e7" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040828" android:inflatedId="@id/APKTOOL_DUPLICATE_id_0x7f0a0489" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a063e" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0408c7" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e8a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="50.0dip" android:layout_alignParentRight="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409f1" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e8" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04088b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e9" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040889" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ec" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040882" />
+    <com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+</RelativeLayout>

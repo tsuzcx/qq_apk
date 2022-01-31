@@ -1,0 +1,18 @@
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+
+class oel
+  implements Runnable
+{
+  oel(oek paramoek) {}
+  
+  public void run()
+  {
+    EditVideoPoi.a(this.a.a, 0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     oel
+ * JD-Core Version:    0.7.0.1
+ */

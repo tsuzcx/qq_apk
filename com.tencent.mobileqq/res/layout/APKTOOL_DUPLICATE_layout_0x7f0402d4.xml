@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1022" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c029b" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="BtnOnClick"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ddc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04030c" />
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0402d5" />
+</RelativeLayout>

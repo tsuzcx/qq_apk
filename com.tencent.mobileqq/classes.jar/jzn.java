@@ -1,0 +1,22 @@
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+
+public class jzn
+  implements HorizontalListView.OnScrollStateChangedListener
+{
+  public jzn(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
+  
+  public void a(int paramInt)
+  {
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     jzn
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1177" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.av.ui.funchat.filter.EffectFilterTextPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1179" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a117a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0675" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7f" android:scaleType="center" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+</RelativeLayout>

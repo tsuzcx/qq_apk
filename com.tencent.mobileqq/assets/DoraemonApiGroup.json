@@ -1,0 +1,1 @@
+{"1":{"name":"获取你的用户信息","apis":["login","getUserInfo"]},"2":{"name":"获取你的地理位置","apis":["getLocation","getCity"]},"3":{"name":"同玩好友","apis":["getAppFriends"]}}

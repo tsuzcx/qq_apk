@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dbf" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="20.0dip" android:text="QQ运动" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="30.0dip">
+        <LinearLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="里程:" android:alpha="0.6" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0km" android:alpha="0.6" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="用时:" android:alpha="0.6" />
+            <Chronometer android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:format="%s" android:alpha="0.6" />
+        </LinearLayout>
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc2" android:layout_width="60.0dip" android:layout_height="15.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207eb" />
+    </LinearLayout>
+</LinearLayout>
