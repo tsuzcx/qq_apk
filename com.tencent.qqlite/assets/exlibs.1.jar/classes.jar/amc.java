@@ -1,80 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Face2FaceActivity;
 
 public class amc
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public static final int a = 8;
-  private float jdField_a_of_type_Float;
-  private List jdField_a_of_type_JavaUtilList;
-  private int b = 0;
+  public amc(Face2FaceActivity paramFace2FaceActivity) {}
   
-  public amc(EmosmDetailActivity paramEmosmDetailActivity, ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    if (paramArrayList.size() <= 8) {}
-    for (this.jdField_a_of_type_JavaUtilList = paramArrayList;; this.jdField_a_of_type_JavaUtilList = paramArrayList.subList(0, 8))
-    {
-      this.jdField_a_of_type_Float = paramEmosmDetailActivity.a.getResources().getDisplayMetrics().density;
-      return;
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramInt == 0) {}
-    for (this.b += 1; this.b > 1; this.b = 0)
-    {
-      paramViewGroup = paramView;
-      if (paramView == null) {
-        paramViewGroup = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a);
-      }
-      return paramViewGroup;
-    }
-    if (paramView == null) {
-      paramView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a);
-    }
-    for (;;)
-    {
-      paramView = (ImageView)paramView;
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.d, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.e));
-      paramViewGroup = (Emoticon)getItem(paramInt);
-      PicEmoticonInfo localPicEmoticonInfo = new PicEmoticonInfo(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.app.a());
-      localPicEmoticonInfo.a = paramViewGroup;
-      paramViewGroup = localPicEmoticonInfo.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a, this.jdField_a_of_type_Float);
-      if ((paramViewGroup instanceof URLDrawable)) {
-        ((URLDrawable)paramViewGroup).setURLDrawableListener(new amd(this, paramView));
-      }
-      paramView.setImageDrawable(paramViewGroup);
-      return paramView;
-    }
+    this.a.finish();
   }
 }
 

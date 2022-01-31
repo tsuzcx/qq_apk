@@ -1,7 +1,4 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class buh
   implements Runnable
@@ -11,7 +8,6 @@ public class buh
   public void run()
   {
     this.a.g();
-    QQToast.a(RecordSoundPanel.a(this.a).a(), RecordSoundPanel.a(this.a).a().getString(2131362974), 0).a();
   }
 }
 

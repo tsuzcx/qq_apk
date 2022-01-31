@@ -9,14 +9,14 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.widget.QQToast;
-import dur;
-import dus;
-import dut;
-import duu;
-import duv;
-import duw;
 import dux;
 import duy;
+import duz;
+import dva;
+import dvb;
+import dvc;
+import dvd;
+import dve;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -42,7 +42,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new dur(paramInt));
+      new Handler(localLooper).post(new dux(paramInt));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), 1, paramInt, 0).b(jdField_a_of_type_Int);
@@ -57,11 +57,11 @@ public class FMToastUtil
     Object localObject = Looper.getMainLooper();
     if (Thread.currentThread() != ((Looper)localObject).getThread())
     {
-      new Handler((Looper)localObject).post(new duy(paramInt2));
+      new Handler((Looper)localObject).post(new dve(paramInt2));
       return;
     }
     localObject = new QQToast(BaseApplicationImpl.getContext());
-    ((QQToast)localObject).a(2130837966);
+    ((QQToast)localObject).a(2130837962);
     ((QQToast)localObject).c(3000);
     ((QQToast)localObject).b(paramInt2);
     ((QQToast)localObject).b(jdField_a_of_type_Int);
@@ -76,7 +76,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new dus(paramString));
+      new Handler(localLooper).post(new duy(paramString));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), 1, paramString, 0).b(jdField_a_of_type_Int);
@@ -133,7 +133,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new dut(paramInt));
+      new Handler(localLooper).post(new duz(paramInt));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), 2, paramInt, 0).b(jdField_a_of_type_Int);
@@ -147,7 +147,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new duu(paramString));
+      new Handler(localLooper).post(new dva(paramString));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), 2, paramString, 0).b(jdField_a_of_type_Int);
@@ -162,7 +162,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new duw(paramInt));
+      new Handler(localLooper).post(new dvc(paramInt));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), 0, paramInt, 0).b(jdField_a_of_type_Int);
@@ -177,7 +177,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new duv(paramString));
+      new Handler(localLooper).post(new dvb(paramString));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), 2, paramString, 1).b(jdField_a_of_type_Int);
@@ -192,7 +192,7 @@ public class FMToastUtil
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new dux(paramInt));
+      new Handler(localLooper).post(new dvd(paramInt));
       return;
     }
     QQToast.a(BaseApplicationImpl.getContext(), -1, paramInt, 0).b(jdField_a_of_type_Int);

@@ -21,10 +21,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bve;
 import bvf;
 import bvg;
 import bvh;
-import bvi;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -55,7 +55,7 @@ public class LocationItemBuilder
 {
   float jdField_a_of_type_Float = 2.0F;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = a();
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bvf(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bve(this);
   
   public LocationItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -64,7 +64,7 @@ public class LocationItemBuilder
   
   private Drawable a()
   {
-    Bitmap localBitmap1 = BitmapManager.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837999);
+    Bitmap localBitmap1 = BitmapManager.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837993);
     if (localBitmap1 == null) {
       return null;
     }
@@ -95,7 +95,7 @@ public class LocationItemBuilder
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramChatMessage = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    paramView = (bvi)paramChatMessage.getTag();
+    paramView = (bvh)paramChatMessage.getTag();
     paramInt1 = AIOUtils.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     paramInt2 = paramView.c.getPaddingLeft();
     int i = paramView.c.getPaddingRight();
@@ -107,18 +107,18 @@ public class LocationItemBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    bvi localbvi = (bvi)paramViewHolder;
+    bvh localbvh = (bvh)paramViewHolder;
     paramBaseChatItemLayout = (MessageForText)paramChatMessage;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903085, null);
-      localbvi.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131296698));
-      localbvi.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131296697));
+      localbvh.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131296698));
+      localbvh.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131296697));
     }
     paramView = paramBaseChatItemLayout.location;
     if ((paramView == null) || (paramView.length() == 0)) {
-      localbvi.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localbvh.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
     for (;;)
     {
@@ -137,19 +137,19 @@ public class LocationItemBuilder
       }
       paramView = URLDrawable.getDrawable(paramView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       paramView.setTag(paramChatMessage);
-      localbvi.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView);
+      localbvh.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView);
       paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
       return paramViewHolder;
-      localbvi.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localbvi.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      localbvh.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbvh.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
     }
   }
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new bvi(this);
+    return new bvh(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -183,7 +183,7 @@ public class LocationItemBuilder
     do
     {
       return;
-      if (paramInt == 2131298983)
+      if (paramInt == 2131298932)
       {
         ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
         return;
@@ -195,7 +195,7 @@ public class LocationItemBuilder
         QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 7);
         return;
       }
-    } while (paramInt != 2131298990);
+    } while (paramInt != 2131298939);
     a(paramChatMessage);
   }
   
@@ -209,17 +209,17 @@ public class LocationItemBuilder
     {
       return;
       paramView = (MessageForText)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363070);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363071);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363073);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363074);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new bvg(this, paramView), new bvh(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new bvf(this, paramView), new bvg(this)).show();
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131296652, this.jdField_a_of_type_AndroidContentContext.getString(2131363568));
-    paramView.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131362658));
+    paramView.a(2131296652, this.jdField_a_of_type_AndroidContentContext.getString(2131363562));
+    paramView.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131362666));
     a(paramView);
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     return paramView.a();

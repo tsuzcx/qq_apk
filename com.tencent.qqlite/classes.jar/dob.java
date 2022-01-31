@@ -1,20 +1,71 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
 
 public class dob
-  extends TimerTask
+  extends FMObserver
 {
-  public dob(OnlineFileSessionWorker paramOnlineFileSessionWorker) {}
+  public dob(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
-  public void run()
+  protected void a(long paramLong)
   {
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.a).a() + " WaitSenderReplayOnRecvTimer time out!!!!!!!");
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 42, new Object[] { Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
-    this.a.b();
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
+    }
+    OnlineFileSessionWorker localOnlineFileSessionWorker;
+    do
+    {
+      return;
+      localOnlineFileSessionWorker = this.a.a(paramLong);
+      if (localOnlineFileSessionWorker == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
+        return;
+      }
+      localOnlineFileSessionWorker.h();
+    } while (!localOnlineFileSessionWorker.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    }
+    OnlineFileSessionWorker localOnlineFileSessionWorker;
+    do
+    {
+      return;
+      localOnlineFileSessionWorker = this.a.a(paramLong);
+      if (localOnlineFileSessionWorker == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
+        return;
+      }
+      localOnlineFileSessionWorker.j();
+    } while (!localOnlineFileSessionWorker.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
+    }
+    OnlineFileSessionWorker localOnlineFileSessionWorker;
+    do
+    {
+      return;
+      localOnlineFileSessionWorker = this.a.a(paramLong);
+      if (localOnlineFileSessionWorker == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
+        return;
+      }
+      localOnlineFileSessionWorker.l();
+    } while (!localOnlineFileSessionWorker.c());
+    this.a.c(paramLong);
   }
 }
 

@@ -1,41 +1,38 @@
-import android.view.View;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class dgy
-  implements ActionSheet.OnButtonClickListener
+  implements SlideDetectListView.OnScrollToTopListener
 {
-  public dgy(LocalFileBrowserActivity paramLocalFileBrowserActivity, ActionSheet paramActionSheet) {}
+  public dgy(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.c + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
     }
-    for (;;)
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      URLDrawable.resume();
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-        if ((!FileUtil.a(paramView.d())) || (FileUtil.c(paramView.d())))
-        {
-          FileManagerUtil.d(paramView.d());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          FMToastUtil.a(2131361979);
-        }
+    }
+    URLDrawable.pause();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
       }
+      return;
     }
   }
 }

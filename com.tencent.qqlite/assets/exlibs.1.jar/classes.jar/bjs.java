@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SnapScreenActivity;
 
 public class bjs
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bjs(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public bjs(SnapScreenActivity paramSnapScreenActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.a.a.a(true);
   }
 }
 

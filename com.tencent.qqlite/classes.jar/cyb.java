@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class cyb
-  implements Comparator
+  extends TroopObserver
 {
-  public cyb(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
+  private cyb(UpdateTroop paramUpdateTroop) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void a(boolean paramBoolean)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
+    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 

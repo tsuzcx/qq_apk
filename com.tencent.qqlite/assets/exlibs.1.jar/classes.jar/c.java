@@ -76,9 +76,9 @@ public class c
             localObject1 = new d(this, paramView, localDataLineHandler);
             localObject2 = new e(this);
             if (paramView.isSendFromLocal()) {
-              DialogUtil.a(this.a, 230, this.a.getString(2131361828), this.a.getString(2131362019), 2131362790, 2131361835, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
+              DialogUtil.a(this.a, 230, this.a.getString(2131361828), this.a.getString(2131362016), 2131362794, 2131361835, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
             } else {
-              DialogUtil.a(this.a, 230, this.a.getString(2131361831), this.a.getString(2131362020), 2131362790, 2131361835, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
+              DialogUtil.a(this.a, 230, this.a.getString(2131361831), this.a.getString(2131362017), 2131362794, 2131361835, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
             }
           }
           else
@@ -138,7 +138,7 @@ public class c
           }
         }
         else {
-          FMToastUtil.a(2131363449);
+          FMToastUtil.a(2131363450);
         }
       }
     }

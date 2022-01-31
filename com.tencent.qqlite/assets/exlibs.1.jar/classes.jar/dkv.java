@@ -1,46 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class dkv
-  extends IClickListener_Ver51
+  implements Runnable
 {
-  public dkv(QfileLocalFileOtherTabView paramQfileLocalFileOtherTabView) {}
+  public dkv(QfileLocalFileDocTabView paramQfileLocalFileDocTabView, FileInfo paramFileInfo) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.e());
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject, new ArrayList());
+    }
+    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {}
+    do
+    {
+      return;
+      ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.i();
+    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilArrayList.size() != 1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.setSelect(0);
   }
 }
 

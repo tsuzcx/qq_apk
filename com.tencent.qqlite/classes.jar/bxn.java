@@ -1,35 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.UUID;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class bxn
-  implements DialogInterface.OnClickListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public bxn(TroopFileItemBuilder paramTroopFileItemBuilder, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
+  public ImageView a;
+  public LinearLayout a;
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface = TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-      paramDialogInterface.a(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      return;
-    }
-    new TroopFileItemOperation(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
-  }
+  public bxn(TroopFileItemBuilder paramTroopFileItemBuilder) {}
 }
 
 

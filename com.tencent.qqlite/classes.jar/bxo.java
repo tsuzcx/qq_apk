@@ -1,25 +1,10 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder;
 
 public class bxo
-  extends BaseBubbleBuilder.ViewHolder
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public ImageView a;
-  public LinearLayout a;
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  
-  public bxo(TroopFileItemBuilder paramTroopFileItemBuilder) {}
+  public bxo(TroopUnreadTipsChatItemBuilder paramTroopUnreadTipsChatItemBuilder) {}
 }
 
 

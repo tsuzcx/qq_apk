@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import bod;
+import boc;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -25,7 +25,7 @@ public class TroopMemberGagActivity
   public int a;
   Button jdField_a_of_type_AndroidWidgetButton;
   ListView jdField_a_of_type_AndroidWidgetListView;
-  bod jdField_a_of_type_Bod;
+  boc jdField_a_of_type_Boc;
   TroopMemberGagActivity.TroopGagDurationSettingDialog jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagDurationSettingDialog;
   TroopMemberGagActivity.TroopGagListAdapter jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter;
   int b;
@@ -48,8 +48,8 @@ public class TroopMemberGagActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903687);
-    setTitle(getString(2131362534));
+    setContentView(2130903670);
+    setTitle(getString(2131362530));
     paramBundle = (TroopGagMgr)this.app.getManager(42);
     TroopGagMgr.GagCustomConfig localGagCustomConfig = paramBundle.a();
     if (localGagCustomConfig != null)
@@ -61,11 +61,11 @@ public class TroopMemberGagActivity
     }
     paramBundle = paramBundle.a();
     this.jdField_a_of_type_Int = ((TroopGagMgr.GagItem)paramBundle.get(0)).jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bod = new bod(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter = new TroopMemberGagActivity.TroopGagListAdapter(this, paramBundle, this.jdField_a_of_type_Bod);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131298908));
+    this.jdField_a_of_type_Boc = new boc(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter = new TroopMemberGagActivity.TroopGagListAdapter(this, paramBundle, this.jdField_a_of_type_Boc);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131298857));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$TroopGagListAdapter);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298909));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298858));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = getIntent();
     this.jdField_d_of_type_JavaLangString = paramBundle.getStringExtra("param_key_troopUin");

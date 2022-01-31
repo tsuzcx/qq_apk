@@ -1,54 +1,68 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewProvider;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class eqt
-  implements SurfaceHolder.Callback
+  extends TroopFeedViewFactory.ViewProvider
 {
-  public eqt(VideoViewX paramVideoViewX) {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public eqt(TroopFeedViewFactory paramTroopFeedViewFactory)
   {
-    int i = 1;
-    VideoViewX.f(this.a, paramInt2);
-    VideoViewX.g(this.a, paramInt3);
-    if (VideoViewX.g(this.a) == 3)
-    {
-      paramInt1 = 1;
-      if ((VideoViewX.b(this.a) != paramInt2) || (VideoViewX.c(this.a) != paramInt3)) {
-        break label116;
-      }
+    super(paramTroopFeedViewFactory);
+  }
+  
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.a.jdField_a_of_type_AndroidContentContext).inflate(2130903366, null);
     }
-    label116:
-    for (paramInt2 = i;; paramInt2 = 0)
+    paramView = (equ)localView.getTag();
+    Object localObject = paramView;
+    if (paramView == null)
     {
-      if ((VideoViewX.a(this.a) != null) && (paramInt1 != 0) && (paramInt2 != 0))
+      localObject = new equ(this);
+      ((equ)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297046));
+      ((equ)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296932));
+      ((equ)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131297842));
+      ((equ)localObject).b = ((TextView)localView.findViewById(2131297841));
+      ((equ)localObject).c = ((TextView)localView.findViewById(2131297844));
+      localView.setOnClickListener(this.a);
+      localView.setTag(localObject);
+    }
+    ((equ)localObject).jdField_a_of_type_Int = paramInt;
+    ((equ)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
+    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
+    ((equ)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    ((equ)localObject).b.setText(paramTroopFeedItem.content);
+    ((equ)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramView = "点击打开 " + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
+    if (!StringUtil.b(paramTroopFeedItem.ex_1))
+    {
+      ((equ)localObject).c.setText(paramTroopFeedItem.ex_1);
+      paramView = paramView + " " + paramTroopFeedItem.ex_1;
+    }
+    for (;;)
+    {
+      ((equ)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838383);
+      paramTroopFeedItem = paramView;
+      if (!paramBoolean) {
+        paramTroopFeedItem = paramView + " " + "两指向左横向滑动查看下一条通知";
+      }
+      localView.setContentDescription(paramTroopFeedItem);
+      if (this.a.b)
       {
-        if (VideoViewX.d(this.a) != 0) {
-          this.a.a(VideoViewX.d(this.a));
-        }
-        this.a.a();
+        localView.setOnLongClickListener(this.a.jdField_a_of_type_Eqq);
+        localView.setOnTouchListener(this.a.jdField_a_of_type_Eqq);
       }
-      return;
-      paramInt1 = 0;
-      break;
+      return localView;
+      ((equ)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    VideoViewX.a(this.a, paramSurfaceHolder);
-    VideoViewX.c(this.a);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    VideoViewX.a(this.a, null);
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).c();
-    }
-    VideoViewX.a(this.a, true);
   }
 }
 

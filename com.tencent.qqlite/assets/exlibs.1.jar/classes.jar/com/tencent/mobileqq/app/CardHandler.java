@@ -70,8 +70,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cqf;
-import cqg;
+import cql;
+import cqm;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -407,11 +407,7 @@ public class CardHandler
         if (bool3)
         {
           bool2 = bool6;
-          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          bool2 = bool6;
-          long l1 = paramToServiceMsg.getInt();
-          bool2 = bool6;
-          if (paramToServiceMsg.get() != 0) {
+          if (ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray()).get() != 0) {
             continue;
           }
           bool1 = bool4;
@@ -686,7 +682,6 @@ public class CardHandler
       paramBundle.putLong("nextMid", paramFromServiceMsg.stUserData.lNextMid);
       paramBundle.putByteArray("strCookie", paramFromServiceMsg.stUserData.strCookie);
       b(paramToServiceMsg.getUin(), localArrayList);
-      new StringBuilder().append(paramToServiceMsg.extraData.getLong("targetUin")).append("").toString();
       a(42, true, new Object[] { paramObject, paramBundle, localArrayList });
       return;
     }
@@ -1949,9 +1944,9 @@ public class CardHandler
     //   11: ifnull +415 -> 426
     //   14: iconst_1
     //   15: istore 6
-    //   17: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   17: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   20: ifeq +31 -> 51
-    //   23: ldc_w 642
+    //   23: ldc_w 639
     //   26: iconst_2
     //   27: new 182	java/lang/StringBuilder
     //   30: dup
@@ -1959,20 +1954,20 @@ public class CardHandler
     //   34: ldc_w 1114
     //   37: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: iload 6
-    //   42: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   45: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   51: aload_0
     //   52: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   55: bipush 43
     //   57: invokevirtual 389	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   60: checkcast 890	com/tencent/mobileqq/app/FriendsManager
+    //   60: checkcast 888	com/tencent/mobileqq/app/FriendsManager
     //   63: astore_1
     //   64: aload_1
     //   65: aload_0
     //   66: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   69: invokevirtual 437	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   72: invokevirtual 891	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   72: invokevirtual 889	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   75: astore_2
     //   76: iload 6
     //   78: istore 9
@@ -2007,13 +2002,13 @@ public class CardHandler
     //   141: istore 7
     //   143: iload 6
     //   145: istore 8
-    //   147: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   150: ifeq +39 -> 189
     //   153: iload 6
     //   155: istore 7
     //   157: iload 6
     //   159: istore 8
-    //   161: ldc_w 642
+    //   161: ldc_w 639
     //   164: iconst_2
     //   165: new 182	java/lang/StringBuilder
     //   168: dup
@@ -2021,9 +2016,9 @@ public class CardHandler
     //   172: ldc_w 1116
     //   175: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: iload 6
-    //   180: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   180: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   183: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   186: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   189: iload 6
     //   191: istore 9
     //   193: iload 6
@@ -2063,14 +2058,14 @@ public class CardHandler
     //   268: iload 6
     //   270: istore 8
     //   272: aload_3
-    //   273: invokevirtual 548	java/nio/ByteBuffer:getInt	()I
+    //   273: invokevirtual 974	java/nio/ByteBuffer:getInt	()I
     //   276: pop
     //   277: iload 6
     //   279: istore 7
     //   281: iload 6
     //   283: istore 8
     //   285: aload_3
-    //   286: invokevirtual 551	java/nio/ByteBuffer:get	()B
+    //   286: invokevirtual 548	java/nio/ByteBuffer:get	()B
     //   289: pop
     //   290: iload 6
     //   292: istore 7
@@ -2105,9 +2100,9 @@ public class CardHandler
     //   353: istore 7
     //   355: iload 7
     //   357: istore 8
-    //   359: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   359: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   362: ifeq +48 -> 410
-    //   365: ldc_w 642
+    //   365: ldc_w 639
     //   368: iconst_2
     //   369: new 182	java/lang/StringBuilder
     //   372: dup
@@ -2115,14 +2110,14 @@ public class CardHandler
     //   376: ldc_w 1116
     //   379: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   382: iload 7
-    //   384: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   384: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   387: ldc_w 1122
     //   390: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   393: aload_2
     //   394: getfield 1125	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
-    //   397: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   397: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   400: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   403: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   403: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   406: iload 7
     //   408: istore 8
     //   410: aload_0
@@ -2130,7 +2125,7 @@ public class CardHandler
     //   413: iload 8
     //   415: aload_2
     //   416: getfield 1125	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
-    //   419: invokestatic 562	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   419: invokestatic 559	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   422: invokevirtual 408	com/tencent/mobileqq/app/CardHandler:a	(IZLjava/lang/Object;)V
     //   425: return
     //   426: iconst_0
@@ -2196,7 +2191,7 @@ public class CardHandler
     //   545: ifne -190 -> 355
     //   548: aload_1
     //   549: aload_2
-    //   550: invokevirtual 957	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   550: invokevirtual 955	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   553: pop
     //   554: iconst_1
     //   555: istore 7
@@ -2207,18 +2202,18 @@ public class CardHandler
     //   566: astore_1
     //   567: iload 7
     //   569: istore 6
-    //   571: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   571: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   574: ifeq +14 -> 588
-    //   577: ldc_w 642
+    //   577: ldc_w 639
     //   580: iconst_2
     //   581: ldc_w 1130
     //   584: aload_1
-    //   585: invokestatic 888	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   585: invokestatic 886	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   588: iload 6
     //   590: istore 8
-    //   592: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   592: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   595: ifeq -185 -> 410
-    //   598: ldc_w 642
+    //   598: ldc_w 639
     //   601: iconst_2
     //   602: new 182	java/lang/StringBuilder
     //   605: dup
@@ -2226,21 +2221,21 @@ public class CardHandler
     //   609: ldc_w 1116
     //   612: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   615: iload 6
-    //   617: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   617: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   620: ldc_w 1122
     //   623: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   626: aload_2
     //   627: getfield 1125	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
-    //   630: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   630: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   633: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   636: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   636: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   639: iload 6
     //   641: istore 8
     //   643: goto -233 -> 410
     //   646: astore_1
-    //   647: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   647: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   650: ifeq +44 -> 694
-    //   653: ldc_w 642
+    //   653: ldc_w 639
     //   656: iconst_2
     //   657: new 182	java/lang/StringBuilder
     //   660: dup
@@ -2248,14 +2243,14 @@ public class CardHandler
     //   664: ldc_w 1116
     //   667: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   670: iload 8
-    //   672: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   672: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   675: ldc_w 1122
     //   678: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   681: aload_2
     //   682: getfield 1125	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
-    //   685: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   685: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   688: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   691: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   691: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   694: aload_1
     //   695: athrow
     //   696: astore_1
@@ -2750,7 +2745,7 @@ public class CardHandler
         paramObject.setZanShowFlag(bool);
         paramFromServiceMsg.a(paramObject);
         paramFromServiceMsg = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).edit();
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363055) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363058) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         if (l2 != 0L) {
           break label194;
         }
@@ -2784,7 +2779,7 @@ public class CardHandler
     //   7: istore 9
     //   9: iconst_0
     //   10: istore 4
-    //   12: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   15: ifeq +33 -> 48
     //   18: ldc_w 1353
     //   21: iconst_2
@@ -2795,9 +2790,9 @@ public class CardHandler
     //   32: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_2
     //   36: invokevirtual 530	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   39: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   42: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   48: aconst_null
     //   49: astore 10
     //   51: aconst_null
@@ -2830,7 +2825,7 @@ public class CardHandler
     //   103: ifnull +422 -> 525
     //   106: aload_1
     //   107: getfield 426	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   110: invokevirtual 802	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   110: invokevirtual 799	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   113: ifeq +412 -> 525
     //   116: aload_1
     //   117: getfield 426	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
@@ -2838,7 +2833,7 @@ public class CardHandler
     //   123: istore 5
     //   125: iload 5
     //   127: ifne +406 -> 533
-    //   130: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   133: ifeq +36 -> 169
     //   136: ldc_w 1353
     //   139: iconst_2
@@ -2852,7 +2847,7 @@ public class CardHandler
     //   157: invokevirtual 537	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   160: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   163: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   166: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   166: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   169: iload 6
     //   171: ifeq +349 -> 520
     //   174: new 1295	tencent/im/oidb/cmd0x5ea/UpdatePhotoList$RspBody
@@ -2866,7 +2861,7 @@ public class CardHandler
     //   194: checkcast 1295	tencent/im/oidb/cmd0x5ea/UpdatePhotoList$RspBody
     //   197: astore_2
     //   198: iconst_5
-    //   199: anewarray 754	java/lang/Object
+    //   199: anewarray 751	java/lang/Object
     //   202: astore_1
     //   203: aload_1
     //   204: iconst_0
@@ -2902,7 +2897,7 @@ public class CardHandler
     //   258: invokevirtual 537	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   261: invokestatic 227	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   264: aastore
-    //   265: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   265: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   268: ifeq +185 -> 453
     //   271: new 182	java/lang/StringBuilder
     //   274: dup
@@ -2963,31 +2958,31 @@ public class CardHandler
     //   399: aload_1
     //   400: iconst_1
     //   401: aaload
-    //   402: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   402: invokevirtual 779	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   405: ldc_w 1387
     //   408: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   411: aload_1
     //   412: iconst_2
     //   413: aaload
-    //   414: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   414: invokevirtual 779	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   417: ldc_w 1389
     //   420: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   423: aload_1
     //   424: iconst_3
     //   425: aaload
-    //   426: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   426: invokevirtual 779	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   429: ldc_w 1391
     //   432: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: aload_1
     //   436: iconst_4
     //   437: aaload
-    //   438: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   438: invokevirtual 779	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   441: pop
     //   442: ldc_w 1353
     //   445: iconst_2
     //   446: aload_2
     //   447: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   450: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   450: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   453: iload 6
     //   455: istore 7
     //   457: aload_0
@@ -3005,13 +3000,13 @@ public class CardHandler
     //   476: astore_1
     //   477: iload 6
     //   479: istore 7
-    //   481: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   481: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   484: ifeq -27 -> 457
     //   487: ldc_w 1353
     //   490: iconst_2
     //   491: aload_2
     //   492: invokevirtual 1196	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:toString	()Ljava/lang/String;
-    //   495: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   495: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   498: aload_3
     //   499: astore_1
     //   500: iload 6
@@ -3098,7 +3093,7 @@ public class CardHandler
       if (paramFromServiceMsg.uCloseTimeGateVote == 0L) {}
       for (bool1 = true;; bool1 = false)
       {
-        localSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363055) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), bool1).commit();
+        localSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363058) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), bool1).commit();
         break;
       }
     }
@@ -3127,7 +3122,7 @@ public class CardHandler
     label362:
     label364:
     label370:
-    for (boolean bool1 = paramObject.isShowZan();; bool1 = localSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363055) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), false))
+    for (boolean bool1 = paramObject.isShowZan();; bool1 = localSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131363058) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), false))
     {
       paramBundle.putString("uin", paramToServiceMsg.getUin());
       paramBundle.putBoolean("current_switch", bool1);
@@ -3148,7 +3143,7 @@ public class CardHandler
     //   0: aload_1
     //   1: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   4: ldc_w 1412
-    //   7: invokevirtual 838	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   7: invokevirtual 836	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   10: istore 5
     //   12: aload 4
     //   14: ldc_w 1412
@@ -3159,22 +3154,22 @@ public class CardHandler
     //   27: aload_1
     //   28: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   31: ldc_w 1414
-    //   34: invokevirtual 829	android/os/Bundle:getByte	(Ljava/lang/String;)B
+    //   34: invokevirtual 826	android/os/Bundle:getByte	(Ljava/lang/String;)B
     //   37: invokevirtual 1418	android/os/Bundle:putByte	(Ljava/lang/String;B)V
     //   40: aload 4
     //   42: ldc_w 1419
     //   45: aload_1
     //   46: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   49: ldc_w 1419
-    //   52: invokevirtual 819	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   55: invokevirtual 748	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   52: invokevirtual 816	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   55: invokevirtual 745	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
     //   58: aload 4
     //   60: ldc_w 1421
     //   63: aload_1
     //   64: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   67: ldc_w 1421
-    //   70: invokevirtual 819	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   73: invokevirtual 748	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   70: invokevirtual 816	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   73: invokevirtual 745	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
     //   76: iload 5
     //   78: tableswitch	default:+30 -> 108, 0:+141->219, 1:+148->226, 2:+155->233, 3:+162->240
     //   109: istore 5
@@ -3183,7 +3178,7 @@ public class CardHandler
     //   115: if_icmpne +21 -> 136
     //   118: aload_0
     //   119: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   122: invokevirtual 597	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   122: invokevirtual 594	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   125: aload_0
     //   126: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   129: invokevirtual 437	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
@@ -3193,7 +3188,7 @@ public class CardHandler
     //   137: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   140: bipush 43
     //   142: invokevirtual 389	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   145: checkcast 890	com/tencent/mobileqq/app/FriendsManager
+    //   145: checkcast 888	com/tencent/mobileqq/app/FriendsManager
     //   148: astore 4
     //   150: aload_2
     //   151: invokevirtual 530	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
@@ -3203,7 +3198,7 @@ public class CardHandler
     //   161: if_icmpne +86 -> 247
     //   164: aload 4
     //   166: aload_1
-    //   167: invokevirtual 712	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   167: invokevirtual 709	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
     //   170: invokevirtual 1424	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   173: astore_3
     //   174: aload_3
@@ -3214,11 +3209,11 @@ public class CardHandler
     //   181: aload_1
     //   182: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   185: ldc_w 1419
-    //   188: invokevirtual 819	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   188: invokevirtual 816	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
     //   191: putfield 1276	com/tencent/mobileqq/data/Card:vBackground	[B
     //   194: aload 4
     //   196: aload_3
-    //   197: invokevirtual 957	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   197: invokevirtual 955	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   200: pop
     //   201: aload_3
     //   202: astore_1
@@ -3253,11 +3248,11 @@ public class CardHandler
     //   262: aload_1
     //   263: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   266: ldc_w 1430
-    //   269: invokevirtual 819	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   269: invokevirtual 816	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
     //   272: invokespecial 1431	java/io/ByteArrayInputStream:<init>	([B)V
     //   275: invokespecial 1434	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   278: invokevirtual 1437	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   281: checkcast 688	java/util/ArrayList
+    //   281: checkcast 685	java/util/ArrayList
     //   284: astore_2
     //   285: aload 4
     //   287: aload_0
@@ -3279,7 +3274,7 @@ public class CardHandler
     //   319: pop
     //   320: aload 4
     //   322: aload_1
-    //   323: invokevirtual 957	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   323: invokevirtual 955	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   326: pop
     //   327: goto -124 -> 203
     //   330: astore_2
@@ -3304,7 +3299,7 @@ public class CardHandler
     //   368: aload_1
     //   369: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   372: ldc_w 1414
-    //   375: invokevirtual 829	android/os/Bundle:getByte	(Ljava/lang/String;)B
+    //   375: invokevirtual 826	android/os/Bundle:getByte	(Ljava/lang/String;)B
     //   378: invokevirtual 1442	com/tencent/mobileqq/app/FriendsManagerImp:a	(Ljava/lang/String;B)V
     //   381: aload_2
     //   382: aload_0
@@ -3317,7 +3312,7 @@ public class CardHandler
     //   398: bipush 41
     //   400: if_icmpne +413 -> 813
     //   403: aload_2
-    //   404: invokevirtual 709	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   404: invokevirtual 706	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   407: sipush 1000
     //   410: if_icmpne +321 -> 731
     //   413: aload_3
@@ -3325,7 +3320,7 @@ public class CardHandler
     //   417: ifeq +314 -> 731
     //   420: iconst_1
     //   421: istore 6
-    //   423: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   423: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   426: ifeq +41 -> 467
     //   429: ldc_w 1446
     //   432: iconst_2
@@ -3335,13 +3330,13 @@ public class CardHandler
     //   440: ldc_w 1448
     //   443: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   446: iload 6
-    //   448: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   448: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   451: ldc_w 1450
     //   454: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   457: aload_3
-    //   458: invokevirtual 782	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   458: invokevirtual 779	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   461: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   464: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   464: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   467: aload_3
     //   468: ifnull +338 -> 806
     //   471: iload 6
@@ -3349,7 +3344,7 @@ public class CardHandler
     //   476: aload_3
     //   477: checkcast 1444	QQService/RespSetCard
     //   480: astore_1
-    //   481: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   481: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   484: ifeq +37 -> 521
     //   487: aload_1
     //   488: ifnull +33 -> 521
@@ -3364,7 +3359,7 @@ public class CardHandler
     //   509: invokevirtual 1453	QQService/RespSetCard:toString	()Ljava/lang/String;
     //   512: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   515: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   518: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   521: aload_1
     //   522: getfield 1454	QQService/RespSetCard:stHeader	LQQService/RespHead;
     //   525: ifnull +281 -> 806
@@ -3387,7 +3382,7 @@ public class CardHandler
     //   566: astore_2
     //   567: aload_2
     //   568: ifnull +238 -> 806
-    //   571: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   571: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   574: ifeq +33 -> 607
     //   577: ldc_w 1446
     //   580: iconst_2
@@ -3400,7 +3395,7 @@ public class CardHandler
     //   595: getfield 1470	SummaryCardTaf/SSummaryCardRsp:res	I
     //   598: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   601: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   604: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   604: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   607: aload_2
     //   608: getfield 1470	SummaryCardTaf/SSummaryCardRsp:res	I
     //   611: ifne +126 -> 737
@@ -3433,7 +3428,7 @@ public class CardHandler
     //   665: putfield 1497	com/tencent/mobileqq/data/Card:templateRet	I
     //   668: aload 4
     //   670: aload_1
-    //   671: invokevirtual 957	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   671: invokevirtual 955	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   674: pop
     //   675: aload_0
     //   676: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -3494,7 +3489,7 @@ public class CardHandler
     //   783: aload_0
     //   784: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   787: invokevirtual 437	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   790: invokevirtual 891	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   790: invokevirtual 889	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   793: invokevirtual 408	com/tencent/mobileqq/app/CardHandler:a	(IZLjava/lang/Object;)V
     //   796: return
     //   797: astore_2
@@ -3927,7 +3922,7 @@ public class CardHandler
   private void s(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, Bundle paramBundle)
   {
     // Byte code:
-    //   0: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +33 -> 36
     //   6: ldc_w 1638
     //   9: iconst_2
@@ -3937,11 +3932,11 @@ public class CardHandler
     //   17: ldc_w 1718
     //   20: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_2
-    //   24: invokevirtual 709	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   24: invokevirtual 706	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   27: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   30: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   36: invokestatic 766	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   33: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: invokestatic 763	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   39: ifeq +3226 -> 3265
     //   42: invokestatic 1723	java/lang/System:currentTimeMillis	()J
     //   45: lstore 8
@@ -3974,7 +3969,7 @@ public class CardHandler
     //   102: ifne +268 -> 370
     //   105: iconst_1
     //   106: istore 6
-    //   108: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   108: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   111: ifeq +33 -> 144
     //   114: ldc_w 1638
     //   117: iconst_2
@@ -3987,11 +3982,11 @@ public class CardHandler
     //   132: getfield 1660	SummaryCard/RespHead:iResult	I
     //   135: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   138: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   141: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   144: aload_1
     //   145: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   148: ldc_w 355
-    //   151: invokevirtual 581	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   151: invokevirtual 578	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   154: lstore 10
     //   156: aload_1
     //   157: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
@@ -4001,7 +3996,7 @@ public class CardHandler
     //   168: aload_1
     //   169: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   172: ldc_w 1731
-    //   175: invokevirtual 838	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   175: invokevirtual 836	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   178: istore 7
     //   180: iload 6
     //   182: ifeq +2998 -> 3180
@@ -4009,7 +4004,7 @@ public class CardHandler
     //   186: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   189: bipush 43
     //   191: invokevirtual 389	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   194: checkcast 890	com/tencent/mobileqq/app/FriendsManager
+    //   194: checkcast 888	com/tencent/mobileqq/app/FriendsManager
     //   197: astore 14
     //   199: aload_0
     //   200: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -4071,7 +4066,7 @@ public class CardHandler
     //   320: iconst_1
     //   321: aload_1
     //   322: invokevirtual 408	com/tencent/mobileqq/app/CardHandler:a	(IZLjava/lang/Object;)V
-    //   325: invokestatic 766	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   325: invokestatic 763	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   328: ifeq +35 -> 363
     //   331: ldc_w 1638
     //   334: iconst_4
@@ -4083,9 +4078,9 @@ public class CardHandler
     //   348: invokestatic 1723	java/lang/System:currentTimeMillis	()J
     //   351: lload 8
     //   353: lsub
-    //   354: invokevirtual 652	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   354: invokevirtual 649	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   357: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   360: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   360: invokestatic 651	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   363: return
     //   364: iconst_0
     //   365: istore 6
@@ -4098,26 +4093,26 @@ public class CardHandler
     //   380: astore_2
     //   381: aload 13
     //   383: astore 4
-    //   385: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   385: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   388: ifeq +15 -> 403
     //   391: ldc_w 1638
     //   394: iconst_2
     //   395: aload 4
     //   397: invokevirtual 1699	java/lang/Exception:toString	()Ljava/lang/String;
-    //   400: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   400: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   403: iconst_0
     //   404: istore 6
     //   406: goto -262 -> 144
     //   409: aload_1
     //   410: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   413: ldc_w 1767
-    //   416: invokevirtual 615	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   416: invokevirtual 612	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   419: iconst_1
     //   420: if_icmpne +708 -> 1128
     //   423: aload_0
     //   424: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   427: invokevirtual 618	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   430: invokevirtual 624	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   427: invokevirtual 615	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   430: invokevirtual 621	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   433: astore 4
     //   435: aload_1
     //   436: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
@@ -4132,17 +4127,17 @@ public class CardHandler
     //   453: lcmp
     //   454: ifle +30 -> 484
     //   457: aload 4
-    //   459: ldc_w 626
+    //   459: ldc_w 623
     //   462: ldc_w 1774
     //   465: iconst_1
     //   466: anewarray 268	java/lang/String
     //   469: dup
     //   470: iconst_0
     //   471: lload 8
-    //   473: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   473: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   476: aastore
-    //   477: invokevirtual 633	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   480: checkcast 626	com/tencent/mobileqq/data/NearbyPeopleCard
+    //   477: invokevirtual 630	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   480: checkcast 623	com/tencent/mobileqq/data/NearbyPeopleCard
     //   483: astore_1
     //   484: aload_1
     //   485: astore_3
@@ -4156,23 +4151,23 @@ public class CardHandler
     //   498: lcmp
     //   499: ifle +30 -> 529
     //   502: aload 4
-    //   504: ldc_w 626
-    //   507: ldc_w 628
+    //   504: ldc_w 623
+    //   507: ldc_w 625
     //   510: iconst_1
     //   511: anewarray 268	java/lang/String
     //   514: dup
     //   515: iconst_0
     //   516: lload 10
-    //   518: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   518: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   521: aastore
-    //   522: invokevirtual 633	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   525: checkcast 626	com/tencent/mobileqq/data/NearbyPeopleCard
+    //   522: invokevirtual 630	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   525: checkcast 623	com/tencent/mobileqq/data/NearbyPeopleCard
     //   528: astore_3
     //   529: aload_3
     //   530: ifnonnull +2725 -> 3255
-    //   533: new 626	com/tencent/mobileqq/data/NearbyPeopleCard
+    //   533: new 623	com/tencent/mobileqq/data/NearbyPeopleCard
     //   536: dup
-    //   537: invokespecial 809	com/tencent/mobileqq/data/NearbyPeopleCard:<init>	()V
+    //   537: invokespecial 806	com/tencent/mobileqq/data/NearbyPeopleCard:<init>	()V
     //   540: astore_1
     //   541: aload 13
     //   543: getfield 1779	SummaryCard/RespSummaryCard:stDateCard	LSummaryCard/DateCard;
@@ -4180,8 +4175,8 @@ public class CardHandler
     //   547: aload_1
     //   548: aload 13
     //   550: getfield 1775	SummaryCard/RespSummaryCard:lUIN	J
-    //   553: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   556: putfield 812	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
+    //   553: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   556: putfield 809	com/tencent/mobileqq/data/NearbyPeopleCard:uin	Ljava/lang/String;
     //   559: lload 8
     //   561: lconst_0
     //   562: lcmp
@@ -4192,36 +4187,36 @@ public class CardHandler
     //   572: aload_1
     //   573: aload 13
     //   575: getfield 1747	SummaryCard/RespSummaryCard:strNick	Ljava/lang/String;
-    //   578: putfield 825	com/tencent/mobileqq/data/NearbyPeopleCard:nickname	Ljava/lang/String;
+    //   578: putfield 822	com/tencent/mobileqq/data/NearbyPeopleCard:nickname	Ljava/lang/String;
     //   581: aload_1
     //   582: aload 13
     //   584: getfield 1782	SummaryCard/RespSummaryCard:vRichSign	[B
-    //   587: putfield 822	com/tencent/mobileqq/data/NearbyPeopleCard:xuanYan	[B
+    //   587: putfield 819	com/tencent/mobileqq/data/NearbyPeopleCard:xuanYan	[B
     //   590: aload_1
     //   591: aload_3
     //   592: getfield 1787	SummaryCard/DateCard:bMarriage	B
-    //   595: putfield 832	com/tencent/mobileqq/data/NearbyPeopleCard:maritalStatus	B
+    //   595: putfield 829	com/tencent/mobileqq/data/NearbyPeopleCard:maritalStatus	B
     //   598: aload_1
     //   599: aload 13
     //   601: getfield 1745	SummaryCard/RespSummaryCard:bSex	B
-    //   604: putfield 835	com/tencent/mobileqq/data/NearbyPeopleCard:gender	B
+    //   604: putfield 832	com/tencent/mobileqq/data/NearbyPeopleCard:gender	B
     //   607: aload_1
     //   608: aload 13
     //   610: getfield 1739	SummaryCard/RespSummaryCard:bAge	B
-    //   613: putfield 842	com/tencent/mobileqq/data/NearbyPeopleCard:age	I
+    //   613: putfield 840	com/tencent/mobileqq/data/NearbyPeopleCard:age	I
     //   616: aload_1
     //   617: aload 13
     //   619: getfield 1790	SummaryCard/RespSummaryCard:iBirthday	I
-    //   622: putfield 840	com/tencent/mobileqq/data/NearbyPeopleCard:birthday	I
+    //   622: putfield 838	com/tencent/mobileqq/data/NearbyPeopleCard:birthday	I
     //   625: aload_1
     //   626: aload_3
     //   627: getfield 1793	SummaryCard/DateCard:uProfession	J
     //   630: l2i
-    //   631: putfield 848	com/tencent/mobileqq/data/NearbyPeopleCard:job	I
+    //   631: putfield 846	com/tencent/mobileqq/data/NearbyPeopleCard:job	I
     //   634: aload_1
     //   635: aload_3
     //   636: getfield 1794	SummaryCard/DateCard:bConstellation	B
-    //   639: putfield 845	com/tencent/mobileqq/data/NearbyPeopleCard:constellation	B
+    //   639: putfield 843	com/tencent/mobileqq/data/NearbyPeopleCard:constellation	B
     //   642: aload_1
     //   643: aload_3
     //   644: getfield 1797	SummaryCard/DateCard:strDistance	Ljava/lang/String;
@@ -4241,7 +4236,7 @@ public class CardHandler
     //   675: aload_1
     //   676: aload 13
     //   678: getfield 1821	SummaryCard/RespSummaryCard:iVoteCount	I
-    //   681: putfield 636	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
+    //   681: putfield 633	com/tencent/mobileqq/data/NearbyPeopleCard:likeCount	I
     //   684: aload_1
     //   685: aload_3
     //   686: getfield 1824	SummaryCard/DateCard:vDateInfo	[B
@@ -4249,31 +4244,31 @@ public class CardHandler
     //   692: aload_1
     //   693: aload_3
     //   694: getfield 1828	SummaryCard/DateCard:strCompany	Ljava/lang/String;
-    //   697: putfield 850	com/tencent/mobileqq/data/NearbyPeopleCard:company	Ljava/lang/String;
+    //   697: putfield 848	com/tencent/mobileqq/data/NearbyPeopleCard:company	Ljava/lang/String;
     //   700: aload_1
     //   701: aload_3
     //   702: getfield 1829	SummaryCard/DateCard:strSchool	Ljava/lang/String;
-    //   705: putfield 852	com/tencent/mobileqq/data/NearbyPeopleCard:college	Ljava/lang/String;
+    //   705: putfield 850	com/tencent/mobileqq/data/NearbyPeopleCard:college	Ljava/lang/String;
     //   708: aload_1
     //   709: aload_3
     //   710: getfield 1832	SummaryCard/DateCard:uHomeCountry	J
     //   713: invokestatic 1029	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   716: putfield 858	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCountry	Ljava/lang/String;
+    //   716: putfield 856	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCountry	Ljava/lang/String;
     //   719: aload_1
     //   720: aload_3
     //   721: getfield 1835	SummaryCard/DateCard:uHomeProvince	J
     //   724: invokestatic 1029	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   727: putfield 861	com/tencent/mobileqq/data/NearbyPeopleCard:hometownProvice	Ljava/lang/String;
+    //   727: putfield 859	com/tencent/mobileqq/data/NearbyPeopleCard:hometownProvice	Ljava/lang/String;
     //   730: aload_1
     //   731: aload_3
     //   732: getfield 1838	SummaryCard/DateCard:uHomeCity	J
     //   735: invokestatic 1029	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   738: putfield 864	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCity	Ljava/lang/String;
+    //   738: putfield 862	com/tencent/mobileqq/data/NearbyPeopleCard:hometownCity	Ljava/lang/String;
     //   741: aload_1
     //   742: aload_3
     //   743: getfield 1841	SummaryCard/DateCard:uHomeZone	J
     //   746: invokestatic 1029	com/tencent/mobileqq/app/ConditionSearchManager:a	(J)Ljava/lang/String;
-    //   749: putfield 867	com/tencent/mobileqq/data/NearbyPeopleCard:hometownDistrict	Ljava/lang/String;
+    //   749: putfield 865	com/tencent/mobileqq/data/NearbyPeopleCard:hometownDistrict	Ljava/lang/String;
     //   752: aload_1
     //   753: aload 13
     //   755: getfield 1844	SummaryCard/RespSummaryCard:strQzoneFeedsDesc	Ljava/lang/String;
@@ -4311,7 +4306,7 @@ public class CardHandler
     //   829: ifne +159 -> 988
     //   832: aload_1
     //   833: iconst_1
-    //   834: putfield 637	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
+    //   834: putfield 634	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
     //   837: aload_2
     //   838: ifnull +11 -> 849
     //   841: aload_1
@@ -4327,7 +4322,7 @@ public class CardHandler
     //   859: ifeq +137 -> 996
     //   862: aload_1
     //   863: iconst_1
-    //   864: putfield 874	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
+    //   864: putfield 872	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
     //   867: aload_1
     //   868: getfield 1865	com/tencent/mobileqq/data/NearbyPeopleCard:userFlag	J
     //   871: ldc2_w 1892
@@ -4337,7 +4332,7 @@ public class CardHandler
     //   877: ifeq +127 -> 1004
     //   880: aload_1
     //   881: iconst_1
-    //   882: putfield 877	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
+    //   882: putfield 875	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
     //   885: aload_1
     //   886: invokevirtual 1896	com/tencent/mobileqq/data/NearbyPeopleCard:isPhotoUseCache	()Z
     //   889: ifne +179 -> 1068
@@ -4360,14 +4355,14 @@ public class CardHandler
     //   927: ifnull +141 -> 1068
     //   930: aload_2
     //   931: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   934: invokevirtual 695	java/util/ArrayList:size	()I
+    //   934: invokevirtual 692	java/util/ArrayList:size	()I
     //   937: ifle +131 -> 1068
     //   940: iconst_0
     //   941: istore 6
     //   943: iload 6
     //   945: aload_2
     //   946: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   949: invokevirtual 695	java/util/ArrayList:size	()I
+    //   949: invokevirtual 692	java/util/ArrayList:size	()I
     //   952: if_icmpge +116 -> 1068
     //   955: iload 6
     //   957: ifne +55 -> 1012
@@ -4375,7 +4370,7 @@ public class CardHandler
     //   961: aload_2
     //   962: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
     //   965: iload 6
-    //   967: invokevirtual 696	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   967: invokevirtual 693	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   970: checkcast 1916	SummaryCard/PhotoInfo
     //   973: getfield 1919	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
     //   976: putfield 1899	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_1	Ljava/lang/String;
@@ -4386,15 +4381,15 @@ public class CardHandler
     //   985: goto -42 -> 943
     //   988: aload_1
     //   989: iconst_0
-    //   990: putfield 637	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
+    //   990: putfield 634	com/tencent/mobileqq/data/NearbyPeopleCard:bVoted	B
     //   993: goto -156 -> 837
     //   996: aload_1
     //   997: iconst_0
-    //   998: putfield 874	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
+    //   998: putfield 872	com/tencent/mobileqq/data/NearbyPeopleCard:switchQzone	Z
     //   1001: goto -134 -> 867
     //   1004: aload_1
     //   1005: iconst_0
-    //   1006: putfield 877	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
+    //   1006: putfield 875	com/tencent/mobileqq/data/NearbyPeopleCard:switchHobby	Z
     //   1009: goto -124 -> 885
     //   1012: iload 6
     //   1014: iconst_1
@@ -4403,7 +4398,7 @@ public class CardHandler
     //   1019: aload_2
     //   1020: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
     //   1023: iload 6
-    //   1025: invokevirtual 696	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1025: invokevirtual 693	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   1028: checkcast 1916	SummaryCard/PhotoInfo
     //   1031: getfield 1919	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
     //   1034: putfield 1902	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_2	Ljava/lang/String;
@@ -4415,18 +4410,18 @@ public class CardHandler
     //   1047: aload_2
     //   1048: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
     //   1051: iload 6
-    //   1053: invokevirtual 696	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1053: invokevirtual 693	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   1056: checkcast 1916	SummaryCard/PhotoInfo
     //   1059: getfield 1919	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
     //   1062: putfield 1905	com/tencent/mobileqq/data/NearbyPeopleCard:qzonePicUrl_3	Ljava/lang/String;
     //   1065: goto -86 -> 979
     //   1068: aload_1
-    //   1069: invokevirtual 880	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
+    //   1069: invokevirtual 878	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
     //   1072: sipush 1000
     //   1075: if_icmpne +23 -> 1098
     //   1078: aload 4
     //   1080: aload_1
-    //   1081: invokevirtual 883	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   1081: invokevirtual 881	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   1084: aload 4
     //   1086: invokevirtual 1920	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   1089: aload_0
@@ -4436,24 +4431,24 @@ public class CardHandler
     //   1094: invokevirtual 408	com/tencent/mobileqq/app/CardHandler:a	(IZLjava/lang/Object;)V
     //   1097: return
     //   1098: aload_1
-    //   1099: invokevirtual 880	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
+    //   1099: invokevirtual 878	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
     //   1102: sipush 1001
     //   1105: if_icmpeq +13 -> 1118
     //   1108: aload_1
-    //   1109: invokevirtual 880	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
+    //   1109: invokevirtual 878	com/tencent/mobileqq/data/NearbyPeopleCard:getStatus	()I
     //   1112: sipush 1002
     //   1115: if_icmpne -31 -> 1084
     //   1118: aload 4
     //   1120: aload_1
-    //   1121: invokevirtual 640	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   1121: invokevirtual 637	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   1124: pop
     //   1125: goto -41 -> 1084
     //   1128: lload 10
-    //   1130: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1130: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1133: astore 16
     //   1135: aload 14
     //   1137: aload 16
-    //   1139: invokevirtual 891	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   1139: invokevirtual 889	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   1142: astore 4
     //   1144: aload 4
     //   1146: aload 13
@@ -4462,12 +4457,12 @@ public class CardHandler
     //   1154: aload 4
     //   1156: aload 13
     //   1158: getfield 1747	SummaryCard/RespSummaryCard:strNick	Ljava/lang/String;
-    //   1161: putfield 894	com/tencent/mobileqq/data/Card:strNick	Ljava/lang/String;
+    //   1161: putfield 892	com/tencent/mobileqq/data/Card:strNick	Ljava/lang/String;
     //   1164: aload 4
     //   1166: aload 13
     //   1168: getfield 1745	SummaryCard/RespSummaryCard:bSex	B
     //   1171: i2s
-    //   1172: putfield 904	com/tencent/mobileqq/data/Card:shGender	S
+    //   1172: putfield 902	com/tencent/mobileqq/data/Card:shGender	S
     //   1175: aload 4
     //   1177: aload 13
     //   1179: getfield 1739	SummaryCard/RespSummaryCard:bAge	B
@@ -4476,7 +4471,7 @@ public class CardHandler
     //   1186: aload 4
     //   1188: aload 13
     //   1190: getfield 1739	SummaryCard/RespSummaryCard:bAge	B
-    //   1193: putfield 909	com/tencent/mobileqq/data/Card:age	B
+    //   1193: putfield 907	com/tencent/mobileqq/data/Card:age	B
     //   1196: aload 4
     //   1198: aload 13
     //   1200: getfield 1926	SummaryCard/RespSummaryCard:iFace	I
@@ -4488,15 +4483,15 @@ public class CardHandler
     //   1216: aload 4
     //   1218: aload 13
     //   1220: getfield 1755	SummaryCard/RespSummaryCard:strCity	Ljava/lang/String;
-    //   1223: putfield 942	com/tencent/mobileqq/data/Card:strCity	Ljava/lang/String;
+    //   1223: putfield 940	com/tencent/mobileqq/data/Card:strCity	Ljava/lang/String;
     //   1226: aload 4
     //   1228: aload 13
     //   1230: getfield 1751	SummaryCard/RespSummaryCard:strProvince	Ljava/lang/String;
-    //   1233: putfield 939	com/tencent/mobileqq/data/Card:strProvince	Ljava/lang/String;
+    //   1233: putfield 937	com/tencent/mobileqq/data/Card:strProvince	Ljava/lang/String;
     //   1236: aload 4
     //   1238: aload 13
     //   1240: getfield 1753	SummaryCard/RespSummaryCard:strCountry	Ljava/lang/String;
-    //   1243: putfield 936	com/tencent/mobileqq/data/Card:strCountry	Ljava/lang/String;
+    //   1243: putfield 934	com/tencent/mobileqq/data/Card:strCountry	Ljava/lang/String;
     //   1246: aload 4
     //   1248: aload 13
     //   1250: getfield 1930	SummaryCard/RespSummaryCard:strRemark	Ljava/lang/String;
@@ -4545,7 +4540,7 @@ public class CardHandler
     //   1357: aload_1
     //   1358: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   1361: ldc_w 1731
-    //   1364: invokevirtual 838	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   1364: invokevirtual 836	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   1367: bipush 37
     //   1369: if_icmpne +18 -> 1387
     //   1372: aload 4
@@ -4660,7 +4655,7 @@ public class CardHandler
     //   1609: iload 6
     //   1611: aload_2
     //   1612: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
-    //   1615: invokevirtual 695	java/util/ArrayList:size	()I
+    //   1615: invokevirtual 692	java/util/ArrayList:size	()I
     //   1618: if_icmpge +128 -> 1746
     //   1621: iload 6
     //   1623: ifne +65 -> 1688
@@ -4668,7 +4663,7 @@ public class CardHandler
     //   1628: aload_2
     //   1629: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
     //   1632: iload 6
-    //   1634: invokevirtual 696	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1634: invokevirtual 693	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   1637: checkcast 1916	SummaryCard/PhotoInfo
     //   1640: getfield 1919	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
     //   1643: putfield 1987	com/tencent/mobileqq/data/Card:strQzonePicUrl1	Ljava/lang/String;
@@ -4700,7 +4695,7 @@ public class CardHandler
     //   1696: aload_2
     //   1697: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
     //   1700: iload 6
-    //   1702: invokevirtual 696	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1702: invokevirtual 693	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   1705: checkcast 1916	SummaryCard/PhotoInfo
     //   1708: getfield 1919	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
     //   1711: putfield 1990	com/tencent/mobileqq/data/Card:strQzonePicUrl2	Ljava/lang/String;
@@ -4712,7 +4707,7 @@ public class CardHandler
     //   1725: aload_2
     //   1726: getfield 1914	SummaryCard/AlbumInfo:vPhotos	Ljava/util/ArrayList;
     //   1729: iload 6
-    //   1731: invokevirtual 696	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1731: invokevirtual 693	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   1734: checkcast 1916	SummaryCard/PhotoInfo
     //   1737: getfield 1919	SummaryCard/PhotoInfo:strPicUrl	Ljava/lang/String;
     //   1740: putfield 1993	com/tencent/mobileqq/data/Card:strQzonePicUrl3	Ljava/lang/String;
@@ -4724,7 +4719,7 @@ public class CardHandler
     //   1756: aload_1
     //   1757: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   1760: ldc_w 2000
-    //   1763: invokevirtual 581	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   1763: invokevirtual 578	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   1766: lstore 10
     //   1768: lconst_1
     //   1769: lload 10
@@ -4743,7 +4738,7 @@ public class CardHandler
     //   1798: aload 4
     //   1800: aload 16
     //   1802: putfield 2004	com/tencent/mobileqq/data/Card:strShowName	Ljava/lang/String;
-    //   1805: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1805: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1808: ifeq +34 -> 1842
     //   1811: ldc_w 1638
     //   1814: iconst_2
@@ -4756,7 +4751,7 @@ public class CardHandler
     //   1830: getfield 2003	SummaryCard/RespSummaryCard:strShowName	Ljava/lang/String;
     //   1833: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1836: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1839: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1839: invokestatic 651	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1842: ldc2_w 2007
     //   1845: lload 10
     //   1847: land
@@ -4787,9 +4782,9 @@ public class CardHandler
     //   1900: lconst_0
     //   1901: lcmp
     //   1902: ifeq +54 -> 1956
-    //   1905: new 577	java/util/HashMap
+    //   1905: new 574	java/util/HashMap
     //   1908: dup
-    //   1909: invokespecial 578	java/util/HashMap:<init>	()V
+    //   1909: invokespecial 575	java/util/HashMap:<init>	()V
     //   1912: astore_2
     //   1913: aload 13
     //   1915: getfield 2024	SummaryCard/RespSummaryCard:vRespTemplateInfo	[B
@@ -4820,7 +4815,7 @@ public class CardHandler
     //   1969: aload 13
     //   1971: getfield 1862	SummaryCard/RespSummaryCard:lUserFlag	J
     //   1974: putfield 2031	com/tencent/mobileqq/data/Card:lUserFlag	J
-    //   1977: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1977: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1980: ifeq +34 -> 2014
     //   1983: ldc_w 1638
     //   1986: iconst_2
@@ -4831,9 +4826,9 @@ public class CardHandler
     //   1997: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2000: aload 4
     //   2002: getfield 2031	com/tencent/mobileqq/data/Card:lUserFlag	J
-    //   2005: invokevirtual 652	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2005: invokevirtual 649	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2008: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2011: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2011: invokestatic 651	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2014: ldc2_w 2034
     //   2017: lload 10
     //   2019: land
@@ -4848,7 +4843,7 @@ public class CardHandler
     //   2037: aload 13
     //   2039: getfield 2044	SummaryCard/RespSummaryCard:strLoginDesc	Ljava/lang/String;
     //   2042: putfield 2047	com/tencent/mobileqq/data/Card:strLoginDaysDesc	Ljava/lang/String;
-    //   2045: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2045: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2048: ifeq +48 -> 2096
     //   2051: ldc_w 1638
     //   2054: iconst_2
@@ -4859,14 +4854,14 @@ public class CardHandler
     //   2065: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2068: aload 4
     //   2070: getfield 2041	com/tencent/mobileqq/data/Card:lLoginDays	J
-    //   2073: invokevirtual 652	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2073: invokevirtual 649	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2076: ldc_w 2051
     //   2079: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2082: aload 4
     //   2084: getfield 2047	com/tencent/mobileqq/data/Card:strLoginDaysDesc	Ljava/lang/String;
     //   2087: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2090: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2093: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2093: invokestatic 651	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2096: aload 13
     //   2098: getfield 2054	SummaryCard/RespSummaryCard:stDiamonds	LQQService/VipBaseInfo;
     //   2101: ifnull +172 -> 2273
@@ -4976,9 +4971,9 @@ public class CardHandler
     //   2325: putfield 1125	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
     //   2328: aload 14
     //   2330: aload 4
-    //   2332: invokevirtual 957	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
+    //   2332: invokevirtual 955	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Card;)Z
     //   2335: pop
-    //   2336: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2336: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2339: ifeq +76 -> 2415
     //   2342: ldc_w 1638
     //   2345: iconst_2
@@ -4989,7 +4984,7 @@ public class CardHandler
     //   2356: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2359: aload 4
     //   2361: getfield 2041	com/tencent/mobileqq/data/Card:lLoginDays	J
-    //   2364: invokevirtual 652	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2364: invokevirtual 649	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2367: ldc_w 2108
     //   2370: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2373: aload 4
@@ -4999,14 +4994,14 @@ public class CardHandler
     //   2384: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2387: aload 4
     //   2389: getfield 2106	com/tencent/mobileqq/data/Card:allowClick	Z
-    //   2392: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2392: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2395: ldc_w 2112
     //   2398: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2401: aload 4
     //   2403: getfield 1125	com/tencent/mobileqq/data/Card:allowPeopleSee	Z
-    //   2406: invokevirtual 647	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2406: invokevirtual 644	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2409: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2412: invokestatic 654	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2412: invokestatic 651	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2415: aload 14
     //   2417: aload 16
     //   2419: invokevirtual 2115	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/ExtensionInfo;
@@ -5032,7 +5027,7 @@ public class CardHandler
     //   2459: aload 14
     //   2461: aload_2
     //   2462: invokevirtual 2130	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/ExtensionInfo;)V
-    //   2465: invokestatic 567	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2465: invokestatic 564	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2468: ifeq +44 -> 2512
     //   2471: ldc_w 1638
     //   2474: iconst_2
@@ -5047,9 +5042,9 @@ public class CardHandler
     //   2496: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2499: aload_2
     //   2500: getfield 2125	com/tencent/mobileqq/data/ExtensionInfo:pendantId	J
-    //   2503: invokevirtual 652	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2503: invokevirtual 649	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2506: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2509: invokestatic 575	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2509: invokestatic 572	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2512: aload 14
     //   2514: aload 16
     //   2516: invokevirtual 2137	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
@@ -5060,7 +5055,7 @@ public class CardHandler
     //   2526: putfield 2142	com/tencent/mobileqq/data/Friends:signature	Ljava/lang/String;
     //   2529: aload_3
     //   2530: aload 4
-    //   2532: getfield 894	com/tencent/mobileqq/data/Card:strNick	Ljava/lang/String;
+    //   2532: getfield 892	com/tencent/mobileqq/data/Card:strNick	Ljava/lang/String;
     //   2535: putfield 2145	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
     //   2538: aload_3
     //   2539: aload 4
@@ -5079,7 +5074,7 @@ public class CardHandler
     //   2563: aload_2
     //   2564: putfield 2151	com/tencent/mobileqq/data/Friends:alias	Ljava/lang/String;
     //   2567: aload 4
-    //   2569: getfield 904	com/tencent/mobileqq/data/Card:shGender	S
+    //   2569: getfield 902	com/tencent/mobileqq/data/Card:shGender	S
     //   2572: ifne +418 -> 2990
     //   2575: iconst_1
     //   2576: istore 5
@@ -5088,7 +5083,7 @@ public class CardHandler
     //   2581: putfield 2152	com/tencent/mobileqq/data/Friends:gender	B
     //   2584: aload_3
     //   2585: aload 4
-    //   2587: getfield 909	com/tencent/mobileqq/data/Card:age	B
+    //   2587: getfield 907	com/tencent/mobileqq/data/Card:age	B
     //   2590: putfield 2153	com/tencent/mobileqq/data/Friends:age	I
     //   2593: ldc2_w 1892
     //   2596: lload 10
@@ -5191,7 +5186,7 @@ public class CardHandler
     //   2804: if_icmpne +248 -> 3052
     //   2807: aload 15
     //   2809: lload 10
-    //   2811: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   2811: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   2814: invokevirtual 2198	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopInfo;
     //   2817: astore_1
     //   2818: aload_1
@@ -5218,10 +5213,10 @@ public class CardHandler
     //   2865: invokevirtual 389	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
     //   2868: checkcast 391	com/tencent/mobileqq/app/FriendsManagerImp
     //   2871: lload 10
-    //   2873: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   2873: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   2876: aload 13
     //   2878: getfield 1775	SummaryCard/RespSummaryCard:lUIN	J
-    //   2881: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   2881: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   2884: aload 13
     //   2886: getfield 1939	SummaryCard/RespSummaryCard:strGroupNick	Ljava/lang/String;
     //   2889: bipush 156
@@ -5242,14 +5237,14 @@ public class CardHandler
     //   2918: invokevirtual 408	com/tencent/mobileqq/app/CardHandler:a	(IZLjava/lang/Object;)V
     //   2921: goto -2596 -> 325
     //   2924: aload_2
-    //   2925: ldc_w 589
+    //   2925: ldc_w 586
     //   2928: ldc_w 2213
-    //   2931: invokevirtual 594	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2931: invokevirtual 591	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   2934: pop
     //   2935: aload_0
     //   2936: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2939: invokevirtual 597	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2942: invokestatic 602	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   2939: invokevirtual 594	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2942: invokestatic 599	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   2945: aload 16
     //   2947: ldc_w 2215
     //   2950: iconst_0
@@ -5258,7 +5253,7 @@ public class CardHandler
     //   2953: aconst_null
     //   2954: ldc_w 266
     //   2957: iconst_0
-    //   2958: invokevirtual 609	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   2958: invokevirtual 606	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   2961: goto -1005 -> 1956
     //   2964: aload 4
     //   2966: iconst_0
@@ -5273,7 +5268,7 @@ public class CardHandler
     //   2986: astore_2
     //   2987: goto -425 -> 2562
     //   2990: aload 4
-    //   2992: getfield 904	com/tencent/mobileqq/data/Card:shGender	S
+    //   2992: getfield 902	com/tencent/mobileqq/data/Card:shGender	S
     //   2995: iconst_1
     //   2996: if_icmpne +9 -> 3005
     //   2999: iconst_2
@@ -5312,7 +5307,7 @@ public class CardHandler
     //   3070: astore_1
     //   3071: aload_1
     //   3072: lload 10
-    //   3074: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   3074: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   3077: aload 16
     //   3079: invokevirtual 2220	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionMemberInfo;
     //   3082: astore_2
@@ -5359,13 +5354,13 @@ public class CardHandler
     //   3180: aload_1
     //   3181: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   3184: ldc_w 1731
-    //   3187: invokevirtual 838	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   3187: invokevirtual 836	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   3190: bipush 41
     //   3192: if_icmpeq +18 -> 3210
     //   3195: aload_1
     //   3196: getfield 353	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   3199: ldc_w 1731
-    //   3202: invokevirtual 838	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   3202: invokevirtual 836	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   3205: bipush 6
     //   3207: if_icmpne +14 -> 3221
     //   3210: aload_0
@@ -5387,7 +5382,7 @@ public class CardHandler
     //   3235: invokevirtual 408	com/tencent/mobileqq/app/CardHandler:a	(IZLjava/lang/Object;)V
     //   3238: goto -2913 -> 325
     //   3241: lload 10
-    //   3243: invokestatic 604	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   3243: invokestatic 601	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   3246: astore_1
     //   3247: goto -16 -> 3231
     //   3250: astore 4
@@ -5695,7 +5690,7 @@ public class CardHandler
     localMessageRecord.senderuin = String.valueOf(localVisitor.lUIN);
     localMessageRecord.extraflag = paramPushVoteIncreaseInfo.iIncrement;
     localMessageRecord.time = (System.currentTimeMillis() / 1000L);
-    new cqf(this, paramPushVoteIncreaseInfo.iIncrement, paramPushVoteIncreaseInfo.vVoterList).start();
+    new cql(this, paramPushVoteIncreaseInfo.iIncrement, paramPushVoteIncreaseInfo.vVoterList).start();
     try
     {
       Object localObject1 = new String(localVisitor.vecNick, "UTF8");
@@ -5705,7 +5700,7 @@ public class CardHandler
       }
       if (1 == paramPushVoteIncreaseInfo.iIncrement)
       {
-        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363552), new Object[] { localObject2 });
+        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363546), new Object[] { localObject2 });
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, paramString1);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, true, true);
         localObject1 = new Bundle();
@@ -5727,7 +5722,7 @@ public class CardHandler
         }
         String str = "";
         continue;
-        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363553), new Object[] { localObject2, Integer.valueOf(paramPushVoteIncreaseInfo.iIncrement) });
+        localMessageRecord.msg = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getApplicationContext().getString(2131363547), new Object[] { localObject2, Integer.valueOf(paramPushVoteIncreaseInfo.iIncrement) });
       }
     }
   }
@@ -6360,7 +6355,7 @@ public class CardHandler
   
   public void b(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqg(this, paramBundle));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqm(this, paramBundle));
   }
   
   public void b(String paramString1, String paramString2, long paramLong, int paramInt)
@@ -6384,8 +6379,8 @@ public class CardHandler
     //   10: ifle +73 -> 83
     //   13: aload_0
     //   14: getfield 383	com/tencent/mobileqq/app/CardHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   17: invokevirtual 618	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   20: invokevirtual 624	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   17: invokevirtual 615	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   20: invokevirtual 621	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   23: astore_1
     //   24: aload_1
     //   25: ifnull +58 -> 83
@@ -6401,8 +6396,8 @@ public class CardHandler
     //   51: aload_1
     //   52: aload_2
     //   53: invokeinterface 467 1 0
-    //   58: checkcast 789	com/tencent/mobileqq/data/CardProfile
-    //   61: invokevirtual 883	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   58: checkcast 786	com/tencent/mobileqq/data/CardProfile
+    //   61: invokevirtual 881	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   64: goto -22 -> 42
     //   67: astore_2
     //   68: aload_2

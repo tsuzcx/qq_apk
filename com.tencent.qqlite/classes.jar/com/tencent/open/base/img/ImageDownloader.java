@@ -605,22 +605,22 @@ public class ImageDownloader
     //   813: astore 10
     //   815: aconst_null
     //   816: astore_0
-    //   817: aload 8
+    //   817: aload 7
     //   819: astore 12
-    //   821: aload 7
-    //   823: astore 8
+    //   821: aload 8
+    //   823: astore 7
     //   825: aload 12
-    //   827: astore 7
+    //   827: astore 8
     //   829: goto -230 -> 599
     //   832: astore 9
-    //   834: aconst_null
-    //   835: astore_0
-    //   836: aload 7
-    //   838: astore 12
-    //   840: aload 8
-    //   842: astore 7
+    //   834: aload 8
+    //   836: astore 12
+    //   838: aconst_null
+    //   839: astore_0
+    //   840: aload 7
+    //   842: astore 8
     //   844: aload 12
-    //   846: astore 8
+    //   846: astore 7
     //   848: goto -249 -> 599
     //   851: astore 13
     //   853: aload 9
@@ -639,14 +639,14 @@ public class ImageDownloader
     //   879: astore 11
     //   881: aload 9
     //   883: astore_0
-    //   884: aload 8
+    //   884: aload 7
     //   886: astore 12
-    //   888: aload 7
-    //   890: astore 8
-    //   892: aload 13
-    //   894: astore 9
+    //   888: aload 13
+    //   890: astore 9
+    //   892: aload 8
+    //   894: astore 7
     //   896: aload 12
-    //   898: astore 7
+    //   898: astore 8
     //   900: goto -301 -> 599
     // Local variable table:
     //   start	length	slot	name	signature
@@ -656,17 +656,17 @@ public class ImageDownloader
     //   114	204	3	l	long
     //   81	588	5	bool1	boolean
     //   7	660	6	bool2	boolean
-    //   13	886	7	localObject1	Object
+    //   13	882	7	localObject1	Object
     //   211	506	8	localInputStream	java.io.InputStream
     //   733	3	8	localException1	Exception
-    //   745	146	8	localObject2	Object
+    //   745	154	8	localObject2	Object
     //   220	332	9	localObject3	Object
     //   586	20	9	localException2	Exception
     //   699	71	9	localObject4	Object
     //   789	1	9	localException3	Exception
     //   810	1	9	localException4	Exception
     //   832	22	9	localException5	Exception
-    //   866	29	9	localObject5	Object
+    //   866	25	9	localObject5	Object
     //   396	418	10	localObject6	Object
     //   4	639	11	localObject7	Object
     //   766	10	11	localObject8	Object
@@ -674,7 +674,7 @@ public class ImageDownloader
     //   1	896	12	localObject10	Object
     //   229	250	13	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     //   851	14	13	localException6	Exception
-    //   875	18	13	localException7	Exception
+    //   875	14	13	localException7	Exception
     //   366	130	14	str	String
     // Exception table:
     //   from	to	target	type

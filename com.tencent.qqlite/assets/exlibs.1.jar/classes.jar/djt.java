@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
-public class djt
+class djt
   implements Runnable
 {
-  public djt(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  djt(djs paramdjs) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    QfileBaseLocalFileTabView.a(this.a.a);
   }
 }
 

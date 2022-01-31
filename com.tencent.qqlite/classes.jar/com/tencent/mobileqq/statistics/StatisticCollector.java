@@ -28,9 +28,9 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexFile;
-import eep;
-import eeq;
-import eer;
+import eeu;
+import eev;
+import eew;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -146,7 +146,7 @@ public class StatisticCollector
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private Stack jdField_a_of_type_JavaUtilStack = new Stack();
-  private eer[] jdField_a_of_type_ArrayOfEer = { new eer(this, "com.tencent.mtt", "qqBrowser"), new eer(this, "com.tencent.android.qqdownloader", "qqMarket"), new eer(this, "com.tencent.qqgame", "qqGame"), new eer(this, "com.tencent.qqmusic", "qqMusic"), new eer(this, "com.tencent.news", "qqNews"), new eer(this, "com.qq.reader", "qqReader"), new eer(this, "com.tencent.qqlive", "qqVideo"), new eer(this, "com.tencent.wblog", "qqMicroblog"), new eer(this, "com.tencent.qqphonebook", "qqPhonebook") };
+  private eew[] jdField_a_of_type_ArrayOfEew = { new eew(this, "com.tencent.mtt", "qqBrowser"), new eew(this, "com.tencent.android.qqdownloader", "qqMarket"), new eew(this, "com.tencent.qqgame", "qqGame"), new eew(this, "com.tencent.qqmusic", "qqMusic"), new eew(this, "com.tencent.news", "qqNews"), new eew(this, "com.qq.reader", "qqReader"), new eew(this, "com.tencent.qqlive", "qqVideo"), new eew(this, "com.tencent.wblog", "qqMicroblog"), new eew(this, "com.tencent.qqphonebook", "qqPhonebook") };
   private long jdField_b_of_type_Long;
   private int jdField_c_of_type_Int;
   private boolean f;
@@ -226,12 +226,12 @@ public class StatisticCollector
       return null;
     }
     int i1 = 0;
-    if (i1 < this.jdField_a_of_type_ArrayOfEer.length)
+    if (i1 < this.jdField_a_of_type_ArrayOfEew.length)
     {
-      String str = this.jdField_a_of_type_ArrayOfEer[i1].a;
+      String str = this.jdField_a_of_type_ArrayOfEew[i1].a;
       if (!paramString.toLowerCase().contains(str)) {}
     }
-    for (paramString = this.jdField_a_of_type_ArrayOfEer[i1].b;; paramString = null)
+    for (paramString = this.jdField_a_of_type_ArrayOfEew[i1].b;; paramString = null)
     {
       return paramString;
       i1 += 1;
@@ -399,11 +399,11 @@ public class StatisticCollector
     for (;;)
     {
       return;
-      paramString1 = new eeq(System.currentTimeMillis(), paramString1, paramString2);
+      paramString1 = new eev(System.currentTimeMillis(), paramString1, paramString2);
       this.jdField_a_of_type_JavaUtilLinkedList.add(paramString1);
       int i1 = this.c;
       for (this.c = (paramString1.a + i1); (this.c > 15360L) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 1); this.c -= paramString1.a) {
-        paramString1 = (eeq)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
+        paramString1 = (eev)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
       }
     }
   }
@@ -792,7 +792,7 @@ public class StatisticCollector
     if (QLog.isColorLevel()) {
       QLog.d("StatisticCollector", 2, "initCrashReport ... process:" + BaseApplicationImpl.getMobileQQ().getProcessName() + " pid=" + android.os.Process.myPid());
     }
-    CrashReport.initCrashReport(BaseApplication.getContext(), new eep(this), null, true, paramString, 30000L);
+    CrashReport.initCrashReport(BaseApplication.getContext(), new eeu(this), null, true, paramString, 30000L);
     if (jdField_b_of_type_Boolean) {
       NativeExceptionUpload.setNativeLogMode(3);
     }

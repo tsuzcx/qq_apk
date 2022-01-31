@@ -1,36 +1,22 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnPlayListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
 
-public class equ
-  implements Runnable
+class equ
+  extends TroopFeedViewFactory.ViewHolder
 {
-  public equ(VideoViewX paramVideoViewX) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public void run()
+  equ(eqt parameqt)
   {
-    if (VideoViewX.a(this.a) != null)
-    {
-      if (VideoViewX.a(this.a).getCurrentPosition() > 0)
-      {
-        if (this.a.a)
-        {
-          this.a.a = false;
-          if (VideoViewX.a(this.a) != null) {
-            VideoViewX.a(this.a).b();
-          }
-        }
-        if (VideoViewX.a(this.a) != null) {
-          VideoViewX.a(this.a).a(VideoViewX.a(this.a));
-        }
-        VideoViewX.c(this.a, false);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.postDelayed(VideoViewX.a(this.a), 300L);
+    super(parameqt.a);
   }
 }
 

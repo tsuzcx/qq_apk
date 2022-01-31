@@ -1,15 +1,37 @@
+import android.hardware.SensorManager;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
 
 public class adk
-  extends ProxyObserver
+  implements AudioPlayer.AudioPlayerListener
 {
   public adk(ChatHistory paramChatHistory) {}
   
-  public void a()
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    this.a.runOnUiThread(new adl(this));
+    this.a.k();
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    this.a.setVolumeControlStream(3);
+    ChatHistory.a(this.a).unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.a(2131363178);
+    this.a.setVolumeControlStream(3);
+    ChatHistory.a(this.a).unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

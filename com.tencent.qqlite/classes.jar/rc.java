@@ -1,23 +1,32 @@
+import android.os.AsyncTask;
 import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.model.TroopInfoManager;
 
-public class rc
-  extends BizTroopObserver
+class rc
+  extends AsyncTask
 {
-  public rc(TroopMemberApiService paramTroopMemberApiService) {}
+  rc(rb paramrb, TroopInfoManager paramTroopInfoManager, Bundle paramBundle, String paramString) {}
   
-  protected void a(String paramString, List paramList, int paramInt)
+  protected Void a(Void... paramVarArgs)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 25);
-    localBundle.putString("pageUrl", paramString);
-    localBundle.putStringArrayList("lstVideoUrl", (ArrayList)paramList);
-    localBundle.putInt("totalTime", paramInt);
-    this.a.a(5, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a();
+    return null;
   }
+  
+  protected void a(Void paramVoid)
+  {
+    paramVoid = this.jdField_a_of_type_AndroidOsBundle;
+    if ((this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.b())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramVoid.putBoolean("ret", bool);
+      this.jdField_a_of_type_Rb.a.a(4, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+  }
+  
+  protected void onCancelled() {}
 }
 
 

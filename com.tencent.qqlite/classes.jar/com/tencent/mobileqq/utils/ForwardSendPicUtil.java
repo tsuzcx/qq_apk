@@ -50,7 +50,7 @@ public class ForwardSendPicUtil
     paramString1 = a(paramContext, paramString1, paramInt, paramBoolean);
     if (!FileUtils.b(paramString1))
     {
-      Toast.makeText(paramQQAppInterface.a(), paramQQAppInterface.a().getString(2131363409), 0).show();
+      Toast.makeText(paramQQAppInterface.a(), paramQQAppInterface.a().getString(2131363412), 0).show();
       return false;
     }
     a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt, str);

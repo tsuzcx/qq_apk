@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.thridappshare.ThridAppShareHelper;
+import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardOperations.CancelCallback;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class anb
-  implements DialogInterface.OnClickListener
+class anb
+  implements Runnable
 {
-  public anb(ForwardOperations paramForwardOperations) {}
+  anb(ana paramana, Drawable paramDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if ((this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(ForwardOperations.a(this.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
     }
-    ThridAppShareHelper.a(this.a.H, "app_share_cancle", "", "", "");
   }
 }
 

@@ -1,14 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView.LeftEventListener;
 
 public class aqv
-  implements DragSortListView.LeftEventListener
+  implements DialogInterface.OnClickListener
 {
   public aqv(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

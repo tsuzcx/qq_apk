@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class wb
-  extends AccountObserver
+  implements View.OnTouchListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
+  public wb(AddFriendActivity paramAddFriendActivity) {}
   
-  public wb(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onDeleteAccount(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    if ((AddFriendActivity.a(this.a) != null) && (paramMotionEvent.getAction() == 0)) {
+      AddFriendActivity.a(this.a).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
     }
-    if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
-    }
+    return false;
   }
 }
 

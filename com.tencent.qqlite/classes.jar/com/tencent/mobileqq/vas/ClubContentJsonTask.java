@@ -9,9 +9,9 @@ import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import ewp;
-import ewq;
-import ewr;
+import ewu;
+import ewv;
+import eww;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -360,7 +360,7 @@ public class ClubContentJsonTask
         if (QLog.isColorLevel()) {
           QLog.d("ClubContentJsonTask", 2, "downloadAllIfNotExist, not found: " + jdField_a_of_type_ArrayOfComTencentMobileqqVasClubContentJsonTask$TaskInfo[i].jdField_a_of_type_JavaLangString);
         }
-        paramQQAppInterface.a(new ewq(str, localFile));
+        paramQQAppInterface.a(new ewv(str, localFile));
       }
       i += 1;
     }
@@ -374,7 +374,7 @@ public class ClubContentJsonTask
       if (QLog.isColorLevel()) {
         QLog.d("ClubContentJsonTask", 2, "downloadIfNotExist, not exist: " + paramTaskInfo.jdField_a_of_type_JavaLangString);
       }
-      paramQQAppInterface.a(new ewp(paramTaskInfo, localFile));
+      paramQQAppInterface.a(new ewu(paramTaskInfo, localFile));
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -385,7 +385,7 @@ public class ClubContentJsonTask
   public static void a(QQAppInterface paramQQAppInterface, ClubContentJsonTask.TaskInfo paramTaskInfo, int paramInt)
   {
     Context localContext = paramQQAppInterface.getApplication().getApplicationContext();
-    paramQQAppInterface.a(new ewr(paramTaskInfo, new File(localContext.getFilesDir(), paramTaskInfo.jdField_a_of_type_JavaLangString), localContext, paramInt));
+    paramQQAppInterface.a(new eww(paramTaskInfo, new File(localContext.getFilesDir(), paramTaskInfo.jdField_a_of_type_JavaLangString), localContext, paramInt));
   }
   
   public static int b(Context paramContext, String paramString)

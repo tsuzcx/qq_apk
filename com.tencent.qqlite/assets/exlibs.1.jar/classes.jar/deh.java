@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 
 public class deh
   implements Runnable
 {
-  public deh(EmoticonLinearLayout paramEmoticonLinearLayout) {}
+  public deh(BigEmoticonViewBinder paramBigEmoticonViewBinder, ImageView paramImageView) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.postDelayed(this, 100L);
+    Bitmap localBitmap = EmosmUtils.getCoverBitmap(2, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_AndroidContentContext != null) && (localBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
     }
   }
 }

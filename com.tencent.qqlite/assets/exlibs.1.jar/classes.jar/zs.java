@@ -10,7 +10,7 @@ public class zs
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.T();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, true);
   }
 }
 

@@ -1,24 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class coa
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public coa(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public coa(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      ShortVideoPreviewActivity.a(this.a);
-    }
+    ShortVideoPlayActivity.a(this.a).setVisibility(0);
+    ShortVideoPlayActivity.b(this.a).setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

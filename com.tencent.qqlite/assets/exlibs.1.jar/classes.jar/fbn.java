@@ -1,18 +1,40 @@
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.open.agent.FriendListOpenFrame;
+import com.tencent.open.agent.FriendListOpenFrame.ViewHolder;
 
 public class fbn
-  implements Runnable
+  extends Handler
 {
-  public fbn(OpenSdkFriendService.GetFriendListCallback paramGetFriendListCallback, ArrayList paramArrayList, String paramString) {}
+  public fbn(FriendListOpenFrame paramFriendListOpenFrame) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.i))
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      return;
+      String str = paramMessage.getData().getString("url");
+      paramMessage = (Bitmap)paramMessage.obj;
+      int j = this.a.a.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.a.a.getChildAt(i).getTag();
+        if ((localViewHolder != null) && (str.equals(localViewHolder.b)))
+        {
+          localViewHolder.c.setImageBitmap(paramMessage);
+          return;
+        }
+        i += 1;
+      }
     }
   }
 }

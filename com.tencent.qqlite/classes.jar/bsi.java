@@ -1,6 +1,5 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper;
 
 public final class bsi
   implements Runnable
@@ -9,7 +8,7 @@ public final class bsi
   
   public void run()
   {
-    this.a.edit().putInt("open_times", AIOInputTypeHelper.b).commit();
+    this.a.edit().putBoolean("input_type_changed", true).commit();
   }
 }
 

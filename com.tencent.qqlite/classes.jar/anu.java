@@ -1,25 +1,22 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class anu
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public anu(ForwardRecentActivity paramForwardRecentActivity) {}
+  public anu(ForwardRecentActivity paramForwardRecentActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidAppDialog = null;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

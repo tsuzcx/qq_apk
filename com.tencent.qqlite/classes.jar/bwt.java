@@ -1,26 +1,35 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.qphone.base.util.QLog;
 
 public class bwt
-  extends AbstractChatItemBuilder.ViewHolder
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  public AnyScaleTypeImageView a;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public bwt(ShakeItemBuilder paramShakeItemBuilder) {}
   
-  public bwt(RichStatItemBuilder paramRichStatItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
+    }
+    if (ShakeItemBuilder.a(this.a)) {
+      return;
+    }
+    paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
+    {
+      ((ChatActivity)this.a.jdField_a_of_type_AndroidContentContext).a().T();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+  }
 }
 
 

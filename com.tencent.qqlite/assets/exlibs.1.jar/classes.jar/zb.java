@@ -1,84 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class zb
-  extends WtloginObserver
+  implements Runnable
 {
   public zb(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void OnAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.g();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
-      }
-      if (paramDevlockInfo.TimeLimit <= 0) {
-        paramDevlockInfo.TimeLimit = 60;
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramWUserSigInfo = this.a.getString(2131363283);
-    this.a.a(paramWUserSigInfo, 1);
-  }
-  
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt == 0)
-    {
-      paramErrMsg = AuthDevVerifyCodeActivity.a(this.a).getAccount();
-      if (EquipmentLockImpl.a().c()) {}
-      for (paramWUserSigInfo = "Push";; paramWUserSigInfo = "Manually")
+      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
       {
-        ReportController.b(null, "P_CliOper", "Safe_DeviceLock", paramErrMsg, "UserBehavior", paramWUserSigInfo, 0, 9, "", "", "", "");
-        this.a.setResult(-1);
-        this.a.finish();
-        EquipmentLockImpl.a().a(AuthDevVerifyCodeActivity.a(this.a), this.a, AuthDevVerifyCodeActivity.a(this.a).getAccount(), true);
-        return;
+        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        AuthDevVerifyCodeActivity.a(this.a).b(2131363558);
+        AuthDevVerifyCodeActivity.a(this.a).d(true);
       }
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
+        AuthDevVerifyCodeActivity.a(this.a).show();
+      }
       return;
     }
-    this.a.a(2131363314, 1);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

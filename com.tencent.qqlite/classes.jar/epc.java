@@ -1,18 +1,26 @@
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class epc
+  implements Runnable
 {
-  public static final int a = 1;
-  public static final int b = 2;
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
+  public epc(TroopFileTransferManager.TaskPool paramTaskPool) {}
+  
+  public void run()
+  {
+    synchronized (this.a)
+    {
+      if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+        return;
+      }
+      TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+      localTask.run();
+    }
+  }
 }
 
 

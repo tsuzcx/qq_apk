@@ -35,7 +35,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cup;
+import cuv;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
@@ -103,11 +103,11 @@ public class EnterpriseQQHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList begin.");
     }
-    cup localcup = new cup();
+    cuv localcuv = new cuv();
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()) || (paramObject == null))
     {
-      localcup.jdField_a_of_type_Int = -1;
-      localcup.jdField_a_of_type_Boolean = true;
+      localcuv.jdField_a_of_type_Int = -1;
+      localcuv.jdField_a_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
         QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList error");
       }
@@ -119,8 +119,8 @@ public class EnterpriseQQHandler
     }
     if (i != 1000)
     {
-      localcup.jdField_a_of_type_Int = -1;
-      localcup.jdField_a_of_type_Boolean = true;
+      localcuv.jdField_a_of_type_Int = -1;
+      localcuv.jdField_a_of_type_Boolean = true;
       return;
     }
     long l1 = paramToServiceMsg.extraData.getLong("begin");
@@ -137,19 +137,19 @@ public class EnterpriseQQHandler
           continue;
         }
         i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
-        localcup.jdField_a_of_type_Int = i;
+        localcuv.jdField_a_of_type_Int = i;
         if (i == 0) {
           continue;
         }
-        localcup.jdField_a_of_type_Boolean = true;
+        localcuv.jdField_a_of_type_Boolean = true;
         bool = false;
       }
       catch (Exception paramToServiceMsg)
       {
         long l3;
         RecentUser localRecentUser;
-        localcup.jdField_a_of_type_Int = -1;
-        localcup.jdField_a_of_type_Boolean = true;
+        localcuv.jdField_a_of_type_Int = -1;
+        localcuv.jdField_a_of_type_Boolean = true;
         paramToServiceMsg.printStackTrace();
         bool = false;
         continue;
@@ -159,7 +159,7 @@ public class EnterpriseQQHandler
         bool = false;
         continue;
       }
-      a(100, bool, localcup);
+      a(100, bool, localcuv);
       return;
       i = 0;
       continue;
@@ -168,12 +168,12 @@ public class EnterpriseQQHandler
         i = paramToServiceMsg.seqno.get();
         l3 = Utils.a(i);
         paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoListFromEqq(paramToServiceMsg.accountInfo.get(), l2);
-        localcup.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+        localcuv.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
         if ((!paramToServiceMsg.is_over.has()) || (!paramToServiceMsg.is_over.get())) {
           continue;
         }
         bool = true;
-        localcup.jdField_a_of_type_Boolean = bool;
+        localcuv.jdField_a_of_type_Boolean = bool;
         paramObject = ((PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(paramFromServiceMsg, l2);
         i = 0;
         paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
@@ -193,7 +193,7 @@ public class EnterpriseQQHandler
           if ((i != 0) && (paramFromServiceMsg != null)) {
             paramFromServiceMsg.sendEmptyMessage(1009);
           }
-          if ((!localcup.jdField_a_of_type_Boolean) || (!localcup.jdField_a_of_type_Boolean)) {
+          if ((!localcuv.jdField_a_of_type_Boolean) || (!localcuv.jdField_a_of_type_Boolean)) {
             if (!paramToServiceMsg.next_pos.has()) {
               break label590;
             }

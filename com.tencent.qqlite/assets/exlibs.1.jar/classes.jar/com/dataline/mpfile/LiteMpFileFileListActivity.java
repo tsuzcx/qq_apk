@@ -15,13 +15,14 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cf;
+import cg;
 import ch;
 import ci;
 import cj;
-import ck;
 import cl;
+import cm;
 import cn;
-import co;
 import com.dataline.util.DBNetworkUtil;
 import com.dataline.util.HttpUpload;
 import com.tencent.mobileqq.app.DataLineHandler;
@@ -36,7 +37,6 @@ import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import cp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -62,7 +62,7 @@ public class LiteMpFileFileListActivity
   public static final int j = 8;
   public static final int k = 101;
   private long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ck(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ci(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -95,7 +95,7 @@ public class LiteMpFileFileListActivity
   {
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     jdField_a_of_type_Int += 1;
-    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new cl(this));
+    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new cj(this));
   }
   
   private void b(String paramString)
@@ -147,7 +147,7 @@ public class LiteMpFileFileListActivity
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
-      runOnUiThread(new cp(this));
+      runOnUiThread(new cn(this));
     }
     label293:
     label431:
@@ -174,11 +174,11 @@ public class LiteMpFileFileListActivity
           a(String.format(this.jdField_b_of_type_JavaLangString, new Object[] { MpfileDataCenter.k, Integer.valueOf(MpfileDataCenter.E), Integer.valueOf(this.l), Integer.valueOf(this.m), this.jdField_a_of_type_JavaLangString }));
         }
       }
-      runOnUiThread(new cn(this));
+      runOnUiThread(new cl(this));
       return;
       if (n == 2)
       {
-        runOnUiThread(new co(this));
+        runOnUiThread(new cm(this));
         return;
       }
     } while (n != 7);
@@ -206,9 +206,9 @@ public class LiteMpFileFileListActivity
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(getResources().getString(2131361918));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(getResources().getString(2131361917));
     if (paramInt == MpfileDataCenter.q) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361911));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361910));
     }
     for (;;)
     {
@@ -219,33 +219,33 @@ public class LiteMpFileFileListActivity
       return;
       if (paramInt == MpfileDataCenter.r)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361913));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361912));
       }
       else if (paramInt == MpfileDataCenter.t)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361911));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361910));
       }
       else if (paramInt == MpfileDataCenter.s)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361909));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361908));
       }
       else if (paramInt == MpfileDataCenter.u)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361914));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361913));
       }
       else if (paramInt == MpfileDataCenter.v)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361915));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361914));
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       }
       else if (paramInt == MpfileDataCenter.w)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361924));
-        this.jdField_a_of_type_AndroidWidgetButton.setText(getResources().getString(2131361923));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361923));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(getResources().getString(2131361922));
       }
       else if (paramInt == 7)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361933));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131361932));
       }
     }
   }
@@ -278,25 +278,25 @@ public class LiteMpFileFileListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903457);
+    setContentView(2130903446);
     paramBundle = getIntent().getExtras().getString("fileId");
     Object localObject = getIntent().getExtras().getString("name");
-    setLeftViewName(2131361917);
+    setLeftViewName(2131361916);
     this.jdField_a_of_type_JavaLangString = paramBundle;
     if ((localObject == null) || (((String)localObject).length() != 0)) {
       setTitle((CharSequence)localObject);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298125));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298084));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298123));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298082));
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298126));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298086));
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298119));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298085));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296764));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296760));
       this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter = new MpfileFileListAdapter(this);
       this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter.a(this.jdField_a_of_type_JavaUtilList);
       this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296662));
@@ -313,13 +313,13 @@ public class LiteMpFileFileListActivity
       }
       this.j.setVisibility(8);
       this.p.setVisibility(0);
-      this.p.setImageResource(2130838604);
-      this.p.setContentDescription(getString(2131361921));
-      this.p.setOnClickListener(new ch(this));
+      this.p.setImageResource(2130838581);
+      this.p.setContentDescription(getString(2131361920));
+      this.p.setOnClickListener(new cf(this));
       b();
       c();
       return false;
-      setTitle(getResources().getString(2131361919));
+      setTitle(getResources().getString(2131361918));
     }
   }
   
@@ -338,7 +338,7 @@ public class LiteMpFileFileListActivity
     {
       ReportController.b(this.app, "CliOper", "", "", "0X800421A", "0X800421A", 0, 0, "", "", "", "");
       c();
-      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new cj(this), 3000L);
+      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new ch(this), 3000L);
     }
   }
   
@@ -353,14 +353,14 @@ public class LiteMpFileFileListActivity
     {
       paramAdapterView.jdField_b_of_type_Int = MpfileDataCenter.z;
       MpFileDataReportCenter.a(this.app, paramAdapterView);
-      FMToastUtil.a(2131363449);
+      FMToastUtil.a(2131363450);
       return;
     }
     if (((RegisterProxySvcPackHandler)this.app.a(9)).a() == 0)
     {
       paramAdapterView.jdField_b_of_type_Int = MpfileDataCenter.s;
       MpFileDataReportCenter.a(this.app, paramAdapterView);
-      FMToastUtil.a(2131361909);
+      FMToastUtil.a(2131361908);
       return;
     }
     paramView = (MpfileItemInfo)this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter.getItem(paramInt);
@@ -424,7 +424,7 @@ public class LiteMpFileFileListActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new ci(this));
+    runOnUiThread(new cg(this));
   }
 }
 

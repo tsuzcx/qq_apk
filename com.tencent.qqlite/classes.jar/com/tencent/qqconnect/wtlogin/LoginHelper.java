@@ -2,7 +2,7 @@ package com.tencent.qqconnect.wtlogin;
 
 import android.content.Context;
 import com.tencent.common.app.AppInterface;
-import fgj;
+import fgo;
 import mqq.manager.TicketManager;
 import mqq.observer.SSOAccountObserver;
 
@@ -14,7 +14,7 @@ public class LoginHelper
   
   public LoginHelper(Context paramContext, AppInterface paramAppInterface, LoginHelper.Callback paramCallback)
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fgj(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fgo(this);
     this.jdField_a_of_type_ComTencentQqconnectWtloginLoginHelper$Callback = paramCallback;
     paramAppInterface.ssoGetTicketNoPasswd(paramAppInterface.getAccount(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
   }

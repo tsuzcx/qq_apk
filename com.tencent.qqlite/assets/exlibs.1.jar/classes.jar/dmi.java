@@ -1,40 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 
 public class dmi
   implements Runnable
 {
-  public dmi(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  public dmi(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
   
   public void run()
   {
     this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put("WORD", new ArrayList());
-    localLinkedHashMap.put("PPT", new ArrayList());
-    localLinkedHashMap.put("PDF", new ArrayList());
-    localLinkedHashMap.put("EXCEL", new ArrayList());
     Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      String str = QfileRecentDocFileTabView.a(this.a, localFileManagerEntity.fileName);
-      if (str != null) {
-        ((List)localLinkedHashMap.get(str)).add(localFileManagerEntity);
+      String str = QfileTimeUtils.a(localFileManagerEntity.srvTime);
+      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
+        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
       }
+      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localFileManagerEntity);
     }
-    localIterator = localLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      if (((List)localLinkedHashMap.get((String)localIterator.next())).size() == 0) {
-        localIterator.remove();
-      }
-    }
-    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(localLinkedHashMap);
     this.a.i();
     this.a.setSelect(0);
     this.a.a(true);

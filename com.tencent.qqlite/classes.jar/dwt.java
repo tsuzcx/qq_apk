@@ -1,49 +1,39 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class dwt
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public dwt(UiApiPlugin paramUiApiPlugin) {}
+  public dwt(QQApiPlugin paramQQApiPlugin, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent == null) {}
-    int i;
-    do
+    Object localObject = HttpUtil.a(this.jdField_a_of_type_JavaUtilHashMap);
+    String str1 = (String)((HashMap)localObject).get("share_url");
+    if (str1 == null) {
+      str1 = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
     {
-      do
+      String str2 = (String)((HashMap)localObject).get("image_url");
+      if (str2 == null) {
+        str2 = this.b;
+      }
+      for (;;)
       {
-        boolean bool;
-        int j;
-        do
-        {
-          do
-          {
-            return;
-            i = paramIntent.getIntExtra("mode", 0);
-            bool = paramIntent.getBooleanExtra("exclude", false);
-            j = paramIntent.getIntExtra("sender", 0);
-            paramContext = this.a.mRuntime.a();
-          } while ((paramContext == null) || (paramContext.isFinishing()));
-          if (j != this.a.d) {
-            break;
-          }
-        } while (bool);
-        paramContext.finish();
-        return;
-        if (j <= this.a.d) {
-          break;
+        String str3 = (String)((HashMap)localObject).get("flash_url");
+        localObject = str3;
+        if (str3 == null) {
+          localObject = this.c;
         }
-      } while ((i != 0) && (i != 2));
-      paramContext.finish();
-      return;
-    } while ((i != 0) && (i != 1));
-    paramContext.finish();
+        this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(new dwu(this, str1, str2, (String)localObject));
+        return;
+      }
+    }
   }
 }
 

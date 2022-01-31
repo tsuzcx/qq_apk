@@ -1,15 +1,29 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class btz
-  implements Runnable
+  extends Handler
 {
-  public btz(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
-  
-  public void run()
+  public btz(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
   {
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.g();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    RecordSoundPanel.a(this.a).e(1);
+    this.a.g();
+    QQToast.a(RecordSoundPanel.a(this.a).a(), RecordSoundPanel.a(this.a).a().getString(2131362977), 1).a();
   }
 }
 

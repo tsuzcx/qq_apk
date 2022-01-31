@@ -1,22 +1,13 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class cnu
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
   public cnu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    ShortVideoPlayActivity.a(this.a).setVisibility(0);
-    ShortVideoPlayActivity.b(this.a).setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

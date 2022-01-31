@@ -1,24 +1,35 @@
-import com.dataline.mpfile.MpfileFileListDownloader;
-import com.dataline.mpfile.MpfileFileListDownloader.MpFileHttpDownloadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.dataline.util.DataLineReportUtil;
+import com.dataline.util.DatalineFilesAdapter;
+import com.dataline.util.DatalineFilesAdapter.ItemHolder;
+import com.dataline.util.file.DLFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
 
-public final class df
-  implements Runnable
+class df
+  implements DialogInterface.OnClickListener
 {
-  public df(String paramString, MpfileFileListDownloader.MpFileHttpDownloadListener paramMpFileHttpDownloadListener, int paramInt) {}
+  df(de paramde, DataLineMsgRecord paramDataLineMsgRecord, DatalineFilesAdapter.ItemHolder paramItemHolder) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = MpfileFileListDownloader.a(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComDatalineMpfileMpfileFileListDownloader$MpFileHttpDownloadListener != null)
-    {
-      if ((str != null) && (str.length() > 0)) {
-        this.jdField_a_of_type_ComDatalineMpfileMpfileFileListDownloader$MpFileHttpDownloadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, str);
-      }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = DatalineFilesAdapter.a(this.jdField_a_of_type_De.a).a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.setPaused(false);
     }
-    else {
+    if (this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder.a.a != 1)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.fileMsgStatus == 1L) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
+        DataLineReportUtil.e(DatalineFilesAdapter.a(this.jdField_a_of_type_De.a));
+      }
+      DatalineFilesAdapter.a(this.jdField_a_of_type_De.a, this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
       return;
     }
-    this.jdField_a_of_type_ComDatalineMpfileMpfileFileListDownloader$MpFileHttpDownloadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    DatalineFilesAdapter.b(this.jdField_a_of_type_De.a, this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
   }
 }
 

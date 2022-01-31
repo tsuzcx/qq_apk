@@ -1,23 +1,18 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class eoh
-  extends AsyncTask
+  implements View.OnClickListener
 {
-  private RollangleImageView b;
+  public eoh(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public eoh(RollangleImageView paramRollangleImageView) {}
-  
-  protected Bitmap a(Boolean... paramVarArgs)
+  public void onClick(View paramView)
   {
-    return RollangleImageView.a(this.a, paramVarArgs[0].booleanValue());
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      this.a.setImageBitmap(paramBitmap);
+    if ((VideoPlayLogic.a(this.a) instanceof ChatActivity)) {
+      ((ChatActivity)VideoPlayLogic.a(this.a)).a().S();
     }
   }
 }

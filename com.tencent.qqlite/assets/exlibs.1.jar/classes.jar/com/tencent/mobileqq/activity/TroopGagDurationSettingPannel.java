@@ -42,9 +42,9 @@ public class TroopGagDurationSettingPannel
     {
       this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903295, this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNumberWheelView = ((NumberWheelView)findViewById(2131297571));
-      this.jdField_b_of_type_ComTencentMobileqqActivityNumberWheelView = ((NumberWheelView)findViewById(2131297573));
-      this.jdField_c_of_type_ComTencentMobileqqActivityNumberWheelView = ((NumberWheelView)findViewById(2131297575));
+      this.jdField_a_of_type_ComTencentMobileqqActivityNumberWheelView = ((NumberWheelView)findViewById(2131297567));
+      this.jdField_b_of_type_ComTencentMobileqqActivityNumberWheelView = ((NumberWheelView)findViewById(2131297569));
+      this.jdField_c_of_type_ComTencentMobileqqActivityNumberWheelView = ((NumberWheelView)findViewById(2131297571));
       this.jdField_a_of_type_ComTencentMobileqqActivityNumberWheelView.setScrollStateListener(this);
       this.jdField_b_of_type_ComTencentMobileqqActivityNumberWheelView.setScrollStateListener(this);
       this.jdField_c_of_type_ComTencentMobileqqActivityNumberWheelView.setScrollStateListener(this);

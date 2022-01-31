@@ -1,11 +1,15 @@
-class ecz
-  implements Runnable
+import PersonalState.UserProfile;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import java.util.Comparator;
+
+public class ecz
+  implements Comparator
 {
-  ecz(ecx paramecx, long paramLong1, long paramLong2, long paramLong3) {}
+  public ecz(StatusManager paramStatusManager) {}
   
-  public void run()
+  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
   {
-    this.jdField_a_of_type_Ecx.b(this.jdField_a_of_type_Long, this.b, this.c);
+    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
   }
 }
 

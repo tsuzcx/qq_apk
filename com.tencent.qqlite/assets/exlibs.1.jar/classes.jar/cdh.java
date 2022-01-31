@@ -1,43 +1,27 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class cdh
-  implements View.OnTouchListener
+  extends SearchResultDialog
 {
-  private float jdField_a_of_type_Float;
-  private float b;
-  
-  public cdh(NotificationView paramNotificationView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public cdh(DiscussionView paramDiscussionView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
+      return localArrayList;
     }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      }
-    }
+    return b(paramContext, paramQQAppInterface, 17179869184L, 0);
   }
 }
 

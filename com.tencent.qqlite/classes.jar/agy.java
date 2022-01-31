@@ -1,47 +1,27 @@
-import android.os.Message;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class agy
-  extends TransProcessorHandler
+  implements Animation.AnimationListener
 {
-  public agy(Conversation paramConversation) {}
+  public agy(Conversation paramConversation, View paramView, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j = 0;
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((Conversation.a(this.a) == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.m))) {}
-    do
-    {
-      int k;
-      int i;
-      do
-      {
-        return;
-        k = paramMessage.what;
-        if (localFileMsg.e != 1)
-        {
-          i = j;
-          if (localFileMsg.e != 2) {}
-        }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.e != 2) && (!Conversation.a(this.a)))));
-      this.a.a(8, localFileMsg.m, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.PerfTrace", 2, "conversationTab search up anim time: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,47 +1,16 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QWalletAuthObserver;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public class etr
-  extends Handler
+public final class etr
+  implements Runnable
 {
-  private etr(JumpAction paramJumpAction) {}
+  public etr(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what != 1) {
-      return;
-    }
-    if (JumpAction.a(this.a) != null)
-    {
-      JumpAction.a(this.a).a();
-      JumpAction.a(this.a).c(JumpAction.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
-      }
-      JumpAction.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
-      {
-        JumpAction.b(this.a);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
-      }
-    }
-    JumpAction.a(this.a, 1);
+    StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, 0L, 0L, new HashMap(), "");
   }
 }
 

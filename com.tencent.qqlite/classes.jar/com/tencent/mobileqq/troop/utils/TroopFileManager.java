@@ -21,8 +21,8 @@ import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eop;
-import eoq;
+import eou;
+import eov;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -106,7 +106,7 @@ public class TroopFileManager
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager$Filter = new TroopFileManager.NormalFileFilter();
     this.jdField_b_of_type_ComTencentMobileqqTroopUtilsTroopFileManager$Filter = new TroopFileManager.UploadingFileFilter();
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new eoq(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new eov(this);
     this.jdField_b_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager = TroopFileTransferManager.a(paramQQAppInterface, paramLong);
@@ -123,7 +123,7 @@ public class TroopFileManager
         this.jdField_c_of_type_JavaUtilMap.put(localTroopFileInfo.jdField_b_of_type_JavaLangString, localTroopFileInfo);
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = new eop(this, paramQQAppInterface.getApplication().getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new eou(this, paramQQAppInterface.getApplication().getMainLooper());
   }
   
   public static TroopFileManager a(QQAppInterface paramQQAppInterface, long paramLong)

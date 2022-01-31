@@ -1,15 +1,13 @@
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import java.util.Comparator;
 
-public class dlv
-  implements Comparator
+class dlv
+  implements Runnable
 {
-  public dlv(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  dlv(dls paramdls) {}
   
-  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
+  public void run()
   {
-    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
+    QfileBaseRecentFileTabView.a(this.a.a);
   }
 }
 

@@ -1,44 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.WeiYunClassificationType;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
 import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
-import com.weiyun.sdk.data.WyCategoryInfo;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class dqi
-  implements IWyFileSystem.IWyCallback
+  implements Runnable
 {
-  public dqi(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public dqi(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onSucceed, num[" + paramList.size() + "]");
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    ArrayList localArrayList = new ArrayList();
+    synchronized (UniformDownloadMgr.a(this.a))
     {
-      WyCategoryInfo localWyCategoryInfo = (WyCategoryInfo)paramList.next();
-      WeiYunClassificationType localWeiYunClassificationType = new WeiYunClassificationType();
-      localWeiYunClassificationType.jdField_a_of_type_JavaLangString = localWyCategoryInfo.categoryId;
-      localWeiYunClassificationType.b = localWyCategoryInfo.name;
-      localWeiYunClassificationType.jdField_a_of_type_Long = localWyCategoryInfo.timestamp;
-      localWeiYunClassificationType.jdField_a_of_type_Int = localWyCategoryInfo.totalNum;
-      this.a.b.add(localWeiYunClassificationType);
+      Iterator localIterator = UniformDownloadMgr.a(this.a).values().iterator();
+      while (localIterator.hasNext())
+      {
+        dqj localdqj2 = (dqj)localIterator.next();
+        if ((localdqj2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localdqj2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b()) && (2 == localdqj2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.g())) {
+          localArrayList.add(localdqj2);
+        }
+      }
     }
-    this.a.a.a().a(true, 30, this.a.b);
-  }
-  
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    ??? = localObject2.iterator();
+    while (((Iterator)???).hasNext())
+    {
+      dqj localdqj1 = (dqj)((Iterator)???).next();
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> pauseSlienceRuningGenDownloadOfOldApp, url:[" + localdqj1.jdField_a_of_type_JavaLangString + "]");
+      localdqj1.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.e();
     }
-    this.a.a.a().a(false, 30, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
+    UniformDownloadMgr.b(this.a);
   }
 }
 

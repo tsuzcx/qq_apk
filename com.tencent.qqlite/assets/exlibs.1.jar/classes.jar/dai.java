@@ -1,19 +1,16 @@
-class dai
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.utils.StartupTracker;
+
+public class dai
   implements Runnable
 {
-  dai(dah paramdah, Runnable paramRunnable) {}
+  public dai(BubbleManager paramBubbleManager, int paramInt) {}
   
   public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_Dah.a();
-    }
+    StartupTracker.a(null, "AIO_bubble_craete_bubble_info");
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, true);
+    StartupTracker.a("AIO_bubble_craete_bubble_info", null);
   }
 }
 

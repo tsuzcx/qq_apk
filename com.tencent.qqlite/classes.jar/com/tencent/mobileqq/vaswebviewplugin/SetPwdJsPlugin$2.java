@@ -16,7 +16,7 @@ class SetPwdJsPlugin$2
       {
         SetPwdJsPlugin.access$002(this.this$0, new QQProgressDialog(this.this$0.activity, this.this$0.activity.getTitleBarHeight()));
         SetPwdJsPlugin.access$000(this.this$0).setCancelable(false);
-        SetPwdJsPlugin.access$000(this.this$0).b(2131363564);
+        SetPwdJsPlugin.access$000(this.this$0).b(2131363558);
       }
       if ((SetPwdJsPlugin.access$000(this.this$0) != null) && (!SetPwdJsPlugin.access$000(this.this$0).isShowing())) {
         SetPwdJsPlugin.access$000(this.this$0).show();

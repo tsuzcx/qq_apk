@@ -1,33 +1,37 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class eoj
-  extends Handler
+  implements View.OnClickListener
 {
-  public eoj(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public eoj(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
+    if (VideoPlayLogic.a(this.a).a()) {
+      if (VideoPlayLogic.a(this.a) != null)
+      {
+        VideoPlayLogic.a(this.a).setVisibility(0);
+        VideoPlayLogic.a(this.a, false);
+        if (VideoPlayLogic.a(this.a)) {
+          ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
+        }
+      }
+    }
+    while (VideoPlayLogic.a(this.a) == null) {
       return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    }
+    if (VideoPlayLogic.a(this.a)) {
+      ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
+    }
+    VideoPlayLogic.a(this.a).setVisibility(8);
+    VideoPlayLogic.a(this.a, true);
   }
 }
 

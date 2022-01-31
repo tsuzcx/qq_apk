@@ -1,18 +1,14 @@
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
 class bxt
   implements Runnable
 {
-  bxt(bxs parambxs, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  bxt(bxr parambxr, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2) {}
   
   public void run()
   {
-    if (bxr.a(this.jdField_a_of_type_Bxs.a) != null) {
-      ((AIOGalleryScene)bxr.b(this.jdField_a_of_type_Bxs.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
-    }
-    if (bxr.a(this.jdField_a_of_type_Bxs.a) != null) {
-      ((AIOImageListScene)bxr.b(this.jdField_a_of_type_Bxs.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    if (bxq.c(this.jdField_a_of_type_Bxr.a) != null) {
+      ((AIOGalleryScene)bxq.d(this.jdField_a_of_type_Bxr.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long);
     }
   }
 }

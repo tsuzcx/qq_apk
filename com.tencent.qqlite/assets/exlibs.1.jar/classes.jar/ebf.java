@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.richstatus.ActionInfo;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class ebf
-  implements IActionListener
+  extends WebChromeClient
 {
-  public ebf(EditActivity paramEditActivity) {}
+  private ebf(ActionUrlActivity paramActionUrlActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
-    {
-      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
-      if (localActionInfo != null)
-      {
-        EditActivity.a(this.a).c = localActionInfo.d;
-        EditActivity.a(this.a, false);
-      }
-    }
-    if (EditActivity.a(this.a) != null)
-    {
-      EditActivity.a(this.a, true);
-      EditActivity.a(this.a).notifyDataSetChanged();
-    }
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.setTitle(paramString);
   }
 }
 

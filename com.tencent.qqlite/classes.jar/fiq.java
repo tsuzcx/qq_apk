@@ -1,13 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.Switch;
+import android.view.animation.Interpolator;
+import com.tencent.util.AnimateUtils;
+import com.tencent.widget.ListView;
 
 public class fiq
-  implements View.OnClickListener
+  implements Interpolator
 {
-  public fiq(Switch paramSwitch) {}
+  private fiq(ListView paramListView) {}
   
-  public void onClick(View paramView) {}
+  public float getInterpolation(float paramFloat)
+  {
+    return AnimateUtils.a(paramFloat);
+  }
 }
 
 

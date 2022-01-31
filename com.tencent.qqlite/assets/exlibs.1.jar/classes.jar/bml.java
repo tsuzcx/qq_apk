@@ -1,24 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class bml
-  implements DialogInterface.OnClickListener
+public class bml
+  extends FriendListObserver
 {
-  bml(bmk parambmk, QQCustomDialog paramQQCustomDialog) {}
+  public bml(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    ReportController.a(this.jdField_a_of_type_Bmk.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Bmk.a.b, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Bmk.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Bmk.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

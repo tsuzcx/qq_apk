@@ -1,7 +1,5 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.activity.QQSetting;
 import com.tencent.mobileqq.statistics.ReportController;
 
@@ -12,9 +10,8 @@ public class ber
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.a(), AccountManageActivity.class);
-    this.a.a(paramView);
-    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "Clk_manage_acc", 0, 0, "", "", "", "");
+    this.a.o();
+    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "Clk_myalbum", 0, 0, "", "", "", "");
   }
 }
 

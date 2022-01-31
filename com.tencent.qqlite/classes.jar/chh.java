@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-
 public class chh
-  implements DialogInterface.OnClickListener
 {
-  public chh(DialogBaseActivity paramDialogBaseActivity) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public chh(String paramString)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    paramString = paramString.split(" ");
+    if (paramString.length == 1)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString[0];
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    if (paramString.length == 4)
+    {
+      this.b = paramString[0];
+      this.c = paramString[1];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = paramString[3];
+      return;
+    }
+    throw new RuntimeException("format error!");
   }
 }
 

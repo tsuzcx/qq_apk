@@ -1,23 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.VersionUtils;
 
-public class ckc
-  implements View.OnClickListener
+class ckc
+  implements Runnable
 {
-  public ckc(BannerManager paramBannerManager) {}
+  ckc(ckb paramckb) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (VersionUtils.e())
-    {
-      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-      return;
-    }
-    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    BannerManager.a(this.a.a, true);
   }
 }
 

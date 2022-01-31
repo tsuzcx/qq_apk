@@ -9,7 +9,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.QLog;
-import eei;
 import java.io.File;
 
 public class UpdatePluginVersion
@@ -21,35 +20,38 @@ public class UpdatePluginVersion
   
   private void a(Context paramContext)
   {
+    int i = 0;
     if (QLog.isColorLevel()) {
       QLog.d("UpdatePluginVersion", 2, "clearOldPlugin : " + a.length);
     }
-    int i = 0;
+    File localFile1 = PluginUtils.getPluginInstallDir(paramContext);
+    paramContext = paramContext.getDir("plugin_info", 0);
     while (i < a.length)
     {
-      File localFile = PluginUtils.getInstallPath(paramContext, a[i]);
-      Object localObject = localFile.getName();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpdatePluginVersion", 2, "plugin : " + (String)localObject);
-      }
-      localObject = localFile.getParentFile().listFiles(new eei(this, (String)localObject));
+      Object localObject = a[i];
+      File localFile2 = new File(localFile1, (String)localObject + ".cfg");
       boolean bool;
-      if ((localObject != null) && (localObject.length > 0))
+      if (localFile2.exists())
       {
-        localObject = localObject[0];
-        if (((File)localObject).exists())
-        {
-          bool = ((File)localObject).delete();
-          if (QLog.isColorLevel()) {
-            QLog.d("UpdatePluginVersion", 2, "clear cfg file." + bool);
-          }
+        bool = localFile2.delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpdatePluginVersion", 2, "clear cfg file." + bool);
         }
       }
-      if (localFile.exists())
+      localFile2 = new File(localFile1, (String)localObject);
+      if (localFile2.exists())
       {
-        bool = localFile.delete();
+        bool = localFile2.delete();
         if (QLog.isColorLevel()) {
           QLog.d("UpdatePluginVersion", 2, "clear plugin file." + bool);
+        }
+      }
+      localObject = new File(paramContext, (String)localObject + ".cfg");
+      if (((File)localObject).exists())
+      {
+        bool = ((File)localObject).delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpdatePluginVersion", 2, "clear update cfg file." + bool);
         }
       }
       i += 1;

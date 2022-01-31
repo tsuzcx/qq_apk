@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
@@ -65,7 +66,7 @@ import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import cyy;
+import cze;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -263,7 +264,10 @@ public class QQMessageFacade
   
   private void a(String paramString, MessageRecord paramMessageRecord)
   {
-    paramMessageRecord.vipBubbleID = ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).b();
+    paramString = (SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12);
+    if (!AnonymousChatHelper.a(paramMessageRecord)) {
+      paramMessageRecord.vipBubbleID = paramString.b();
+    }
   }
   
   private void a(List paramList, EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
@@ -1097,7 +1101,7 @@ public class QQMessageFacade
   
   public void a()
   {
-    ThreadManager.a(new cyy(this));
+    ThreadManager.a(new cze(this));
   }
   
   public void a(int paramInt)

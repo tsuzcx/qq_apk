@@ -1,21 +1,44 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 
-class agl
-  implements Runnable
+public class agl
+  extends CardObserver
 {
-  agl(agj paramagj, boolean paramBoolean) {}
+  public agl(Conversation paramConversation) {}
   
-  public void run()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    Conversation.a(this.jdField_a_of_type_Agj.a, 800L);
-    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Agj.a);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 2)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      localPullRefreshHeader.a(i);
+      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.a.a())))
+      {
+        this.a.a(8, paramObject.uin, -2147483648);
+        this.a.m();
+      }
       return;
     }
+  }
+  
+  protected void onGreetingRecv(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (this.a.a.a().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      }
+      this.a.a(8, AppConstants.Z, 1001);
+    }
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (Conversation.c(this.a)) && (this.a.a != null) && (Utils.a(paramString, this.a.a.a()))) {}
   }
 }
 

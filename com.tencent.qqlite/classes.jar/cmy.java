@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class cmy
-  implements Parcelable.Creator
+class cmy
+  implements DialogInterface.OnClickListener
 {
-  public SelectMemberActivity.ResultRecord a(Parcel paramParcel)
-  {
-    return new SelectMemberActivity.ResultRecord(paramParcel, null);
-  }
+  cmy(cmw paramcmw) {}
   
-  public SelectMemberActivity.ResultRecord[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SelectMemberActivity.ResultRecord[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

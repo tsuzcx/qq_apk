@@ -1,28 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.Gallery;
 
-class apl
-  implements Runnable
+public class apl
+  implements DialogInterface.OnClickListener
 {
-  apl(apk paramapk) {}
+  public apl(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
-  {
-    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b()) {
-      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
-    }
-    View localView;
-    do
-    {
-      return;
-      localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.a();
-    } while (localView == null);
-    this.a.a.jdField_a_of_type_AndroidViewView = localView;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

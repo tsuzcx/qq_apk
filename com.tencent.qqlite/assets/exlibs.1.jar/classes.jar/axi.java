@@ -2,7 +2,6 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class axi
   implements View.OnClickListener
@@ -11,13 +10,11 @@ public class axi
   
   public void onClick(View paramView)
   {
-    if ((NearbyPeopleProfileActivity.a(this.a) != null) && (!this.a.isFinishing()))
+    if ((NearbyPeopleProfileActivity.b(this.a) != null) && (!this.a.isFinishing()))
     {
-      NearbyPeopleProfileActivity.a(this.a).dismiss();
-      NearbyPeopleProfileActivity.a(this.a, null);
+      NearbyPeopleProfileActivity.b(this.a).dismiss();
+      NearbyPeopleProfileActivity.b(this.a, null);
     }
-    NearbyPeopleProfileActivity.d(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
   }
 }
 

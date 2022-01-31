@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906cc" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.dataline.util.widget.AsyncImageView android:id="@id/image" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="false" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902cb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020033" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/image" android:layout_alignTop="@id/image" android:layout_alignRight="@id/image" android:layout_alignBottom="@id/image" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906cd" android:paddingLeft="3.0dip" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020401" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0902e7" android:layout_width="fill_parent" android:layout_height="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

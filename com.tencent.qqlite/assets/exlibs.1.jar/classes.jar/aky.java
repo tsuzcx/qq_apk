@@ -1,12 +1,18 @@
+import android.graphics.Color;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
 
-public class aky
-  implements ClearableEditText.OnTextClearedListener
+class aky
+  implements Runnable
 {
-  public aky(EditInfoActivity paramEditInfoActivity) {}
+  aky(akx paramakx) {}
   
-  public void a() {}
+  public void run()
+  {
+    this.a.a.a.setText(this.a.a.b);
+    this.a.a.a.setTextColor(Color.rgb(119, 119, 119));
+    EditInfoActivity.b(this.a.a, true);
+  }
 }
 
 

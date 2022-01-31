@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class dok
-  extends dop
+  extends dov
 {
   public dok(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -10,7 +10,7 @@ public class dok
   
   protected String a()
   {
-    return "StateCancelUploadWhenRecv";
+    return "StateAcceptByPC";
   }
 }
 

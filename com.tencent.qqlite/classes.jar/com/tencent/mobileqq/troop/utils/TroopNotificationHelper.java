@@ -38,7 +38,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.trunk.group_feeds.group_feeds.GroupFeedsMessage;
 import com.trunk.group_feeds.group_feeds.GroupFeedsMessage.MessageContent;
-import epc;
+import eph;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -172,13 +172,13 @@ public class TroopNotificationHelper
     }
   }
   
-  public static TroopNotificationCache a(epc paramepc, String paramString, int paramInt1, int paramInt2, long paramLong)
+  public static TroopNotificationCache a(eph parameph, String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    if (paramepc != null)
+    if (parameph != null)
     {
-      if (paramepc.jdField_c_of_type_Int == 1)
+      if (parameph.jdField_c_of_type_Int == 1)
       {
-        String str2 = a(paramepc.jdField_c_of_type_JavaLangString);
+        String str2 = a(parameph.jdField_c_of_type_JavaLangString);
         int i = str2.lastIndexOf('&');
         String str1 = str2;
         if (i != -1)
@@ -188,41 +188,41 @@ public class TroopNotificationHelper
             str1 = str2.substring(0, i - 1);
           }
         }
-        str2 = a(paramepc.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty(paramepc.jdField_a_of_type_JavaLangString))
+        str2 = a(parameph.jdField_a_of_type_JavaLangString);
+        if (TextUtils.isEmpty(parameph.jdField_a_of_type_JavaLangString))
         {
-          str2 = new SimpleDateFormat("yyyy年M月d日").format(new Date(paramepc.jdField_e_of_type_Int * 1000L));
+          str2 = new SimpleDateFormat("yyyy年M月d日").format(new Date(parameph.jdField_e_of_type_Int * 1000L));
           str2 = str2 + " 群公告";
         }
         paramString = String.format("http://web.qun.qq.com/mannounce/index.html?_wv=1031&amp;_bid=148#gc=%d&amp;feedType=%d&amp;gotoFid=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), paramString });
         TroopNotificationCache localTroopNotificationCache = new TroopNotificationCache();
-        localTroopNotificationCache.title = paramepc.jdField_a_of_type_JavaLangString;
+        localTroopNotificationCache.title = parameph.jdField_a_of_type_JavaLangString;
         localTroopNotificationCache.feedType = paramInt1;
         localTroopNotificationCache.appId = paramInt2;
-        localTroopNotificationCache.userUin = paramepc.jdField_d_of_type_Int;
+        localTroopNotificationCache.userUin = parameph.jdField_d_of_type_Int;
         localTroopNotificationCache.troopUin = paramLong;
-        localTroopNotificationCache.time = paramepc.jdField_e_of_type_Int;
-        localTroopNotificationCache.feedsId = paramepc.jdField_b_of_type_JavaLangString;
+        localTroopNotificationCache.time = parameph.jdField_e_of_type_Int;
+        localTroopNotificationCache.feedsId = parameph.jdField_b_of_type_JavaLangString;
         localTroopNotificationCache.serviceID = 27;
         String str3 = new SimpleDateFormat("M-d HH:mm").format(new Date(localTroopNotificationCache.time * 1000L));
-        if (TextUtils.isEmpty(paramepc.jdField_d_of_type_JavaLangString)) {}
-        for (localTroopNotificationCache.xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"1\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, str3, str1 }).getBytes();; localTroopNotificationCache.xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"6\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /></item><item layout=\"2\"><picture cover=\"%s\"/><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, paramepc.jdField_d_of_type_JavaLangString, str3, str1 }).getBytes()) {
+        if (TextUtils.isEmpty(parameph.jdField_d_of_type_JavaLangString)) {}
+        for (localTroopNotificationCache.xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"1\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, str3, str1 }).getBytes();; localTroopNotificationCache.xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"6\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /></item><item layout=\"2\"><picture cover=\"%s\"/><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, parameph.jdField_d_of_type_JavaLangString, str3, str1 }).getBytes()) {
           return localTroopNotificationCache;
         }
       }
-      if (paramepc.jdField_c_of_type_Int == 2)
+      if (parameph.jdField_c_of_type_Int == 2)
       {
         paramString = new TroopNotificationCache();
         paramString.feedType = paramInt1;
         paramString.appId = paramInt2;
-        paramString.userUin = paramepc.jdField_d_of_type_Int;
+        paramString.userUin = parameph.jdField_d_of_type_Int;
         paramString.troopUin = paramLong;
-        paramString.time = paramepc.jdField_e_of_type_Int;
-        paramString.feedsId = paramepc.jdField_b_of_type_JavaLangString;
-        paramString.ctrlStr = paramepc.jdField_e_of_type_JavaLangString;
-        paramString.xmlBytes = paramepc.jdField_a_of_type_ArrayOfByte;
-        paramString.src = paramepc.f;
-        paramString.filterID = paramepc.jdField_a_of_type_Long;
+        paramString.time = parameph.jdField_e_of_type_Int;
+        paramString.feedsId = parameph.jdField_b_of_type_JavaLangString;
+        paramString.ctrlStr = parameph.jdField_e_of_type_JavaLangString;
+        paramString.xmlBytes = parameph.jdField_a_of_type_ArrayOfByte;
+        paramString.src = parameph.f;
+        paramString.filterID = parameph.jdField_a_of_type_Long;
         paramString.serviceID = 20;
         return paramString;
       }
@@ -230,7 +230,7 @@ public class TroopNotificationHelper
     return null;
   }
   
-  public static epc a(DataInputStream paramDataInputStream, boolean paramBoolean)
+  public static eph a(DataInputStream paramDataInputStream, boolean paramBoolean)
   {
     paramDataInputStream.read();
     paramDataInputStream.readShort();
@@ -264,7 +264,7 @@ public class TroopNotificationHelper
     return paramDataInputStream;
   }
   
-  public static epc a(String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
+  public static eph a(String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     int j = 0;
     for (;;)
@@ -339,12 +339,12 @@ public class TroopNotificationHelper
             }
           }
           localObject3 = ((StringBuilder)localObject5).toString();
-          localObject5 = new epc(null);
-          ((epc)localObject5).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-          ((epc)localObject5).jdField_b_of_type_JavaLangString = paramString;
-          ((epc)localObject5).jdField_c_of_type_JavaLangString = ((String)localObject3);
-          ((epc)localObject5).jdField_d_of_type_JavaLangString = ((String)localObject1);
-          ((epc)localObject5).jdField_c_of_type_Int = 1;
+          localObject5 = new eph(null);
+          ((eph)localObject5).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+          ((eph)localObject5).jdField_b_of_type_JavaLangString = paramString;
+          ((eph)localObject5).jdField_c_of_type_JavaLangString = ((String)localObject3);
+          ((eph)localObject5).jdField_d_of_type_JavaLangString = ((String)localObject1);
+          ((eph)localObject5).jdField_c_of_type_Int = 1;
           return localObject5;
         }
         if (i == 22)
@@ -418,13 +418,13 @@ public class TroopNotificationHelper
         continue;
       }
       long l2 = l1;
-      localObject3 = new epc(null);
-      ((epc)localObject3).jdField_b_of_type_JavaLangString = paramString;
-      ((epc)localObject3).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      ((epc)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
-      ((epc)localObject3).jdField_c_of_type_Int = 2;
-      ((epc)localObject3).jdField_a_of_type_Long = l2;
-      ((epc)localObject3).f = i;
+      localObject3 = new eph(null);
+      ((eph)localObject3).jdField_b_of_type_JavaLangString = paramString;
+      ((eph)localObject3).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      ((eph)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
+      ((eph)localObject3).jdField_c_of_type_Int = 2;
+      ((eph)localObject3).jdField_a_of_type_Long = l2;
+      ((eph)localObject3).f = i;
       return localObject3;
       return null;
       label679:

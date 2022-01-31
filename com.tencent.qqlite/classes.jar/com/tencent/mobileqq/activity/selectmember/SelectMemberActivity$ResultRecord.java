@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.selectmember;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import cmy;
+import cne;
 
 public class SelectMemberActivity$ResultRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new cmy();
+  public static final Parcelable.Creator CREATOR = new cne();
   public int a;
   public String a;
   public String b;

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
+import abf;
+import abg;
 import abh;
-import abi;
-import abj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -49,7 +49,7 @@ public class BookShareAdviceEditActivity
   
   public BookShareAdviceEditActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new abh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new abf(this);
   }
   
   private int a(Context paramContext, float paramFloat)
@@ -124,7 +124,7 @@ public class BookShareAdviceEditActivity
       long l = i;
       localObject1 = MessageRecordFactory.a(this.app, (String)localObject2, str, (String)localObject2, 0, l, (AbsStructMsg)localObject1);
       this.app.a().a((MessageRecord)localObject1, null);
-      QQToast.a(this, 2, getString(2131364144), 0).b(getTitleBarHeight());
+      QQToast.a(this, 2, getString(2131364129), 0).b(getTitleBarHeight());
       setResult(-1);
       finish();
     }
@@ -167,8 +167,8 @@ public class BookShareAdviceEditActivity
     {
       this.jdField_c_of_type_Int = ((120 - this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a((String)localObject) + 2) / 3);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_Int + "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new abi(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new abj(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new abg(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new abh(this));
       return;
       label346:
       this.k.setEnabled(true);
@@ -179,7 +179,7 @@ public class BookShareAdviceEditActivity
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setBackgroundResource(2130839092);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setBackgroundResource(2130839060);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -191,10 +191,10 @@ public class BookShareAdviceEditActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903077);
-    setTitle(getString(2131364143));
-    a(2131364141, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    setTitle(getString(2131364128));
+    a(2131364126, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     c(true);
-    setLeftViewName(2131364513);
+    setLeftViewName(2131364492);
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
     d();
   }

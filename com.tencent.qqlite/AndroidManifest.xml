@@ -70,8 +70,8 @@
     <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
     <uses-feature android:name="android.hardware.location.network" android:required="false"/>
     <uses-feature android:name="android.hardware.telephony" android:required="false"/>
-    <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:name="com.tencent.common.app.BaseApplicationImpl" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0149">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="7cc5e74b-3025-4dbc-bd8d-1611e3c030dd"/>
+    <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:name="com.tencent.common.app.BaseApplicationImpl" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0149">
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="ad4d1ae6-853c-4019-ab89-4414fa737942"/>
         <meta-data android:name="SC_DBVersion" android:value="27"/>
         <meta-data android:name="QfavDBVersion" android:value="10"/>
         <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
@@ -168,7 +168,7 @@
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterSendUpSms" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterPersonalInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterQQNumberActivity" android:screenOrientation="portrait"/>
-        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.SplashActivity" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0151" android:windowSoftInputMode="adjustPan">
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.SplashActivity" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0151" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -258,7 +258,7 @@
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TroopInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopClassChoiceActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.EditInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysVisible"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.ForceLogoutActivity" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e00a7">
             <intent-filter>
                 <action android:name="mqql.intent.action.FORCE_LOGOUT"/>
@@ -389,7 +389,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="mqqopensdkapi"/>
             </intent-filter>
-            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a07f2">
+            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a07e9">
                 <action android:name="android.intent.action.SEND"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="image/*"/>
@@ -402,7 +402,7 @@
                 <data android:mimeType="text/xml"/>
                 <data android:mimeType="text/csv"/>
             </intent-filter>
-            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a07f2">
+            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a07e9">
                 <action android:name="android.intent.action.SEND_MULTIPLE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="image/*"/>
@@ -419,7 +419,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="wtloginmqq"/>
             </intent-filter>
-            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a07f2">
+            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a07e9">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="image/*"/>
@@ -507,7 +507,7 @@
             <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/APKTOOL_DUPLICATE_xml_0x7f060004"/>
             <meta-data android:name="android.provider.CONTACTS_STRUCTURE" android:resource="@xml/APKTOOL_DUPLICATE_xml_0x7f060003"/>
         </service>
-        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="true" android:icon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ff" android:name="com.tencent.mobileqq.activity.qfileJumpActivity" android:theme="@android:style/Theme.Translucent">
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="true" android:icon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203e8" android:name="com.tencent.mobileqq.activity.qfileJumpActivity" android:theme="@android:style/Theme.Translucent">
             <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a0055">
                 <action android:name="android.intent.action.SEND"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -564,17 +564,17 @@
         <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.QuickLoginAuthorityActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
         <activity android:configChanges="orientation" android:exported="true" android:name="com.tencent.open.agent.EncryTokenActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
         <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.SwitchAccountActivity" android:process=":openSdk" android:screenOrientation="portrait"/>
-        <activity android:exported="false" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:name="com.tencent.qqconnect.wtlogin.Login" android:process=":openSdk" android:screenOrientation="portrait"/>
+        <activity android:exported="false" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:name="com.tencent.qqconnect.wtlogin.Login" android:process=":openSdk" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.agent.BindGroupActivity" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0149" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.agent.BindGroupConfirmActivity" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0149" android:windowSoftInputMode="adjustPan"/>
-        <activity android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:name="com.tencent.qqconnect.wtlogin.AuthDevUgActivity2" android:process=":openSdk" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqconnect.wtlogin">
+        <activity android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:name="com.tencent.qqconnect.wtlogin.AuthDevUgActivity2" android:process=":openSdk" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqconnect.wtlogin">
             <intent-filter>
                 <action android:name="mqql.opensdk.intent.action.ACTION_VERYFY_LOCK_CODE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:exported="false" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:name="com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2" android:process=":openSdk" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity2" android:process=":openSdk" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqconnect.wtlogin" android:windowSoftInputMode="stateAlwaysVisible">
+        <activity android:exported="false" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:name="com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2" android:process=":openSdk" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity2" android:process=":openSdk" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqconnect.wtlogin" android:windowSoftInputMode="stateAlwaysVisible">
             <intent-filter>
                 <action android:name="mqql.opensdk.intent.action.VERIFYCODE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -633,14 +633,14 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qqfav.QfavPluginProxyActivity$SingleTop" android:process=":qqfav" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0140"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qqfav.QfavPluginProxyActivity$DetailProxy" android:process=":qqfav" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0140"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qqfav.QfavPluginProxyActivity$ScreenOrientationProxy" android:process=":qqfav"/>
-        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="true" android:icon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ee" android:name="cooperation.qqfav.widget.QfavJumpActivity" android:theme="@android:style/Theme.Translucent">
-            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03ba">
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="true" android:icon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d7" android:name="cooperation.qqfav.widget.QfavJumpActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03c0">
                 <action android:name="android.intent.action.SEND"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="image/*"/>
                 <data android:mimeType="text/*"/>
             </intent-filter>
-            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03ba">
+            <intent-filter android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03c0">
                 <action android:name="android.intent.action.SEND_MULTIPLE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="image/*"/>
@@ -701,16 +701,14 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PayBridgeActivity" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e013e" android:windowSoftInputMode="adjustNothing"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DialogActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
-        <activity android:exported="true" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03de" android:name="com.tencent.mobileqq.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:exported="true" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a03e3" android:name="com.tencent.mobileqq.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
         <activity android:exported="false" android:name="com.tencent.mobileqq.activity.MusicSharePlayActivity" android:screenOrientation="portrait"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.music.QQPlayerService"/>
         <meta-data android:name="APPKEY_DENGTA" android:value="0M200DUZRH0WKT2R"/>
         <activity android:exported="false" android:launchMode="singleTask" android:name="com.dataline.activities.LiteWifiphotoActivity" android:screenOrientation="portrait"/>
         <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileFileListActivity" android:screenOrientation="portrait"/>
         <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileMainActivity" android:screenOrientation="portrait"/>
-        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileActionListActivity" android:screenOrientation="portrait"/>
         <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileDownloadActivity" android:screenOrientation="portrait"/>
-        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileUploadActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.aio.MessageShareActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity" android:process=":web" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopCreateActivity" android:process=":web" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
@@ -733,7 +731,7 @@
     <uses-permission android:name="com.tencent.msf.permission.account.sync"/>
     <permission android:name="com.tencent.music.data.permission2" android:protectionLevel="signature"/>
     <uses-permission android:name="com.tencent.music.data.permission2"/>
-    <permission android:description="@string/APKTOOL_DUPLICATE_string_0x7f0a05bb" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a05ba" android:name="com.tencent.msf.permission.ACCOUNT_NOTICE" android:permissionGroup="android.permission-group.SYSTEM_TOOLS" android:protectionLevel="normal"/>
+    <permission android:description="@string/APKTOOL_DUPLICATE_string_0x7f0a05be" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a05bd" android:name="com.tencent.msf.permission.ACCOUNT_NOTICE" android:permissionGroup="android.permission-group.SYSTEM_TOOLS" android:protectionLevel="normal"/>
     <uses-permission android:name="com.tencent.msf.permission.ACCOUNT_NOTICE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>

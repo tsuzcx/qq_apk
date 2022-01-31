@@ -1,26 +1,17 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.activity.TroopNewcomerNoticeActivity;
 
 public class els
-  implements MediaRecorder.OnInfoListener
+  implements Runnable
 {
-  public els(VideoRecordActivity paramVideoRecordActivity) {}
+  public els(TroopNewcomerNoticeActivity paramTroopNewcomerNoticeActivity) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void run()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 801: 
-      QQToast.a(this.a, "录制视频大小达到上限", 1).a();
-      VideoRecordActivity.c(this.a);
-      return;
-    }
-    QQToast.a(this.a, "录制时长达到上限", 1).a();
-    VideoRecordActivity.c(this.a);
+    BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).edit().putBoolean(this.a.c, false).commit();
   }
 }
 

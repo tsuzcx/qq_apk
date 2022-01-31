@@ -1,31 +1,21 @@
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQObserver;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.List;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 
 public class bzc
-  extends EnterpriseQQObserver
+  implements DialogInterface.OnClickListener
 {
-  public bzc(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public bzc(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie, PublicAccountDataManager paramPublicAccountDataManager) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.b = EnterpriseQQManager.a(BusinessCmrTmpChatPie.e(this.a)).a(BusinessCmrTmpChatPie.d(this.a), this.a.a());
-      if ((1024 == BusinessCmrTmpChatPie.h(this.a).jdField_a_of_type_Int) && (!CrmUtils.a(BusinessCmrTmpChatPie.f(this.a), BusinessCmrTmpChatPie.i(this.a).jdField_a_of_type_JavaLangString))) {
-        this.a.b = null;
-      }
-      BusinessCmrTmpChatPie.a(this.a, this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        BusinessCmrTmpChatPie.a(this.a, false);
-      }
-    }
+    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie).mIsAgreeSyncLbs = true;
+    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie).mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a(BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie));
+    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie, 1, null);
+    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,61 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
+import java.util.Comparator;
 
 public class enq
-  implements Animation.AnimationListener
+  implements Comparator
 {
-  public enq(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
+  public enq(TroopMessageProcessor paramTroopMessageProcessor) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.f = false;
-    if (this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.setVisibility(4);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.clearAnimation();
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.d = false;
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        this.a.b(true);
-        this.a.jdField_b_of_type_Boolean = false;
-      }
-      if (this.a.jdField_b_of_type_AndroidWidgetImageView != null) {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838387);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != paramAnimation);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.clearAnimation();
-        if (this.a.c)
-        {
-          this.a.c = false;
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAioFeedsCenterView.a(true);
-        }
-      }
-    } while (this.a.jdField_b_of_type_AndroidWidgetImageView == null);
-    this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838388);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.f = true;
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

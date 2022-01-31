@@ -1,29 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bkv
-  implements View.OnClickListener
+  implements Runnable
 {
   public bkv(SplashActivity paramSplashActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (SplashActivity.a(this.a) == null)
+    if (!this.a.isResume()) {}
+    do
     {
-      SplashActivity.a(this.a, (ActionSheet)ActionSheetHelper.a(this.a, null));
-      SplashActivity.a(this.a).c(this.a.getString(2131363980));
-      SplashActivity.a(this.a).c(this.a.getString(2131363356));
-      SplashActivity.a(this.a).c(this.a.getString(2131363770));
-      SplashActivity.a(this.a).c(this.a.getString(2131364088));
-      if (SplashActivity.c()) {
-        SplashActivity.a(this.a).c(this.a.getString(2131363741));
-      }
-    }
-    SplashActivity.a(this.a).a(new bkw(this));
-    SplashActivity.a(this.a).show();
+      return;
+      localIntent = this.a.app.a();
+      this.a.app.a(null);
+    } while (localIntent == null);
+    String str = localIntent.getStringExtra("wording");
+    int i = localIntent.getIntExtra("timetowait", 360000);
+    Intent localIntent = new Intent("com.tencent.mobileqq.action.SECURITY_DETECT_PUSH_BANNER");
+    localIntent.putExtra("wording", str);
+    localIntent.putExtra("timetowait", i);
+    SplashActivity.a(this.a, localIntent);
   }
 }
 

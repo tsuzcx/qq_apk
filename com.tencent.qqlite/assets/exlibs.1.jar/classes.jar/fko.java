@@ -1,22 +1,15 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog.Callback;
 
 public final class fko
-  implements QFavDownloadProgressDialog.Callback
+  implements DialogInterface.OnClickListener
 {
-  public fko(DialogInterface.OnClickListener paramOnClickListener, QFavDownloadProgressDialog paramQFavDownloadProgressDialog) {}
+  public fko(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog, -2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.dismiss();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog, -2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 

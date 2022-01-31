@@ -252,7 +252,7 @@ public class ThemeAndBubbleCommonJsPlugin
       paramString = new StringBuilder();
       paramString.append(paramJSONObject);
       paramString.append("?client=androidQQ");
-      paramString.append("&version=3.3.0.544");
+      paramString.append("&version=3.4.0.607");
       paramString.append("&system=" + Build.VERSION.RELEASE);
       paramString.append("&device=" + Build.DEVICE);
       paramString.append("&uin=" + ((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());

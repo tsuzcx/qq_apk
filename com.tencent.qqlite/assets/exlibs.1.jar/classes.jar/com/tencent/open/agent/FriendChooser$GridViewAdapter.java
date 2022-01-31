@@ -9,8 +9,8 @@ import com.tencent.open.agent.datamodel.AgentBaseAdapter;
 import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
-import fbf;
-import fbh;
+import fbk;
+import fbm;
 import java.util.ArrayList;
 
 public class FriendChooser$GridViewAdapter
@@ -36,7 +36,7 @@ public class FriendChooser$GridViewAdapter
     Friend localFriend = (Friend)getItem(paramInt);
     if (paramView == null)
     {
-      paramViewGroup = new fbh();
+      paramViewGroup = new fbm();
       paramView = this.a.getLayoutInflater().inflate(2130903214, null);
       paramViewGroup.a = ((ImageView)paramView.findViewById(2131296439));
       paramView.setTag(paramViewGroup);
@@ -51,11 +51,11 @@ public class FriendChooser$GridViewAdapter
       if (localBitmap != null) {
         break;
       }
-      paramViewGroup.a.setImageResource(2130838042);
+      paramViewGroup.a.setImageResource(2130838036);
       paramViewGroup = paramViewGroup.a;
-      ImageLoader.a().a(localFriend.d, new fbf(this, paramViewGroup));
+      ImageLoader.a().a(localFriend.d, new fbk(this, paramViewGroup));
       return paramView;
-      paramViewGroup = (fbh)paramView.getTag();
+      paramViewGroup = (fbm)paramView.getTag();
     }
     paramViewGroup.a.setImageBitmap(localBitmap);
     return paramView;

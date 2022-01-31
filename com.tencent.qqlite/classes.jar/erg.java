@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
 
 public class erg
-  implements DialogInterface.OnDismissListener
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public erg(TroopShareUtility paramTroopShareUtility) {}
+  public erg(VideoViewX paramVideoViewX) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    TroopShareUtility.b(this.a, false);
-    if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).i();
     }
   }
 }

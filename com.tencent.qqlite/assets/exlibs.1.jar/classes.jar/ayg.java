@@ -1,20 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ayg
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public ayg(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public ayg(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.b(this.a), 40);
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    while (paramInt != 0) {
+      return;
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

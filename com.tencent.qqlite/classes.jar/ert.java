@@ -1,26 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FetchInfoListManager;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class ert
-  extends Handler
+  extends FriendListObserver
 {
-  public ert(FetchInfoListManager paramFetchInfoListManager, Looper paramLooper)
+  private ert(FaceDecoder paramFaceDecoder) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
   {
-    super(paramLooper);
+    FaceDecoder.a(this.a, paramBoolean, 1, paramString, 0);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if (paramMessage.what == 1) {
-      FetchInfoListManager.a(this.a);
-    }
-    while ((paramMessage.what != 2) || (FetchInfoListManager.a(this.a) == null)) {
+    int i = 200;
+    if (paramInt == 3000) {}
+    for (;;)
+    {
+      FaceDecoder.a(this.a, paramBoolean1, 32, paramString, i);
       return;
+      if (paramInt == 3001) {
+        i = 202;
+      } else if (paramInt == 3002) {
+        i = 204;
+      }
     }
-    FetchInfoListManager.a(this.a).remove(paramMessage.obj);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDecoder.a(this.a, paramBoolean, 11, paramString, 0);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDecoder.a(this.a, paramBoolean, 4, paramString, 0);
   }
 }
 

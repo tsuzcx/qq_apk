@@ -22,7 +22,7 @@ class DragSortAdapter$3$3
       return;
       this.this$1.val$progressCircle.setProgress(0);
       this.this$1.val$progressCircle.setVisibility(8);
-      localButton = (Button)this.this$1.val$updateLayout.findViewById(2131297085);
+      localButton = (Button)this.this$1.val$updateLayout.findViewById(2131297081);
     } while (localButton == null);
     localButton.setVisibility(0);
   }

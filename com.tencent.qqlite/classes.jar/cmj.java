@@ -1,23 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class cmj
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   public cmj(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new FrameLayout.LayoutParams(-1, -1);
-    SelectMemberActivity.a(this.a).setLayoutParams(paramAnimation);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

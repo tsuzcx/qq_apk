@@ -9,8 +9,8 @@ import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import dse;
-import dsg;
+import dsk;
+import dsm;
 
 public class BaseActionBarWeiyunFile
   extends BaseQfileActionBar
@@ -25,12 +25,12 @@ public class BaseActionBarWeiyunFile
   
   public void a()
   {
-    a(0, "下载原文件", new dse(this));
+    a(0, "下载原文件", new dsk(this));
   }
   
   public void a(Activity paramActivity)
   {
-    b(paramActivity, "存到微云", 2130838521, 2130838522, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+    b(paramActivity, "存到微云", 2130838498, 2130838499, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
     super.a(paramActivity);
   }
   
@@ -54,7 +54,7 @@ public class BaseActionBarWeiyunFile
     }
     else
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "发给好友（免流量）", 2130838515, 2130838516, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 10003, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+      a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "发给好友（免流量）", 2130838492, 2130838493, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 10003, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
       if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 0) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 3)) {
         break label224;
       }
@@ -79,7 +79,7 @@ public class BaseActionBarWeiyunFile
   
   public void c()
   {
-    a(0, "恢复下载", new dsg(this));
+    a(0, "恢复下载", new dsm(this));
   }
 }
 

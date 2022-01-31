@@ -2,7 +2,6 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 class EmojiUiPlugin$HomePageLoadInfo
 {
-  boolean bUseConfigUrl = false;
   String homePageUrl = "";
   boolean isNeedKey = false;
   

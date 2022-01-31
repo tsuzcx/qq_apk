@@ -1,44 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class bgd
-  extends FriendListObserver
+  extends ConfigObserver
 {
-  public bgd(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public bgd(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void b(boolean paramBoolean, Map paramMap)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.h();
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131363541, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
-    {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.app.f() != 1) {
-        break label159;
-      }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131363542, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.a(this.a);
   }
 }
 

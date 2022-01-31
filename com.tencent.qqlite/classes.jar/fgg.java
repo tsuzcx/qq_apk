@@ -1,43 +1,21 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.qqconnect.wtlogin.Login;
-import java.util.HashMap;
 
 public class fgg
-  extends Handler
+  implements TextView.OnEditorActionListener
 {
   public fgg(Login paramLogin) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    Bundle localBundle = paramMessage.getData();
-    this.a.f();
-    switch (paramMessage.what)
+    if (paramInt == 6)
     {
+      this.a.d();
+      return true;
     }
-    do
-    {
-      return;
-      this.a.a(String.format(this.a.getResources().getString(2131363839), new Object[] { this.a.getResources().getString(2131363834), Integer.valueOf(3100) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3100");
-      StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-      paramMessage = localBundle.getString("OTHER_ERROR");
-      if (localBundle.getBoolean("pwdblank", false)) {
-        this.a.b.setText("");
-      }
-      this.a.a(String.format(this.a.getResources().getString(2131363839), new Object[] { paramMessage, Integer.valueOf(3101) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3101");
-      StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-    } while (this.a.isFinishing());
-    this.a.f();
+    return false;
   }
 }
 

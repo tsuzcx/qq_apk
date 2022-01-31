@@ -1,27 +1,46 @@
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import android.view.animation.AnimationSet;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.QQToastNotifier;
 
 public class ezb
-  implements Runnable
+  extends Handler
 {
-  public ezb(ScrollerRunnable paramScrollerRunnable, View paramView) {}
-  
-  public void run()
+  public ezb(QQToastNotifier paramQQToastNotifier, Looper paramLooper)
   {
-    ezd localezd1 = new ezd(this.jdField_a_of_type_AndroidViewView, 1.0F, 0.0F);
-    localezd1.setFillEnabled(true);
-    localezd1.setDuration(700L);
-    ezd localezd2 = new ezd(this.jdField_a_of_type_AndroidViewView, 0.0F, 1.0F);
-    localezd2.setFillEnabled(true);
-    localezd2.setStartTime(700L);
-    localezd2.setDuration(700L);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localezd1);
-    localAnimationSet.addAnimation(localezd2);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new ezc(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = (ezc)paramMessage.obj;
+    if (this.a.jdField_a_of_type_AndroidWidgetToast == null)
+    {
+      if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {}
+      for (this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, paramMessage.jdField_a_of_type_JavaLangString, paramMessage.c).a(paramMessage.d);; this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, paramMessage.b, paramMessage.c).a(paramMessage.d))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetToast.show();
+        return;
+      }
+    }
+    View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
+    TextView localTextView = (TextView)localView.findViewById(2131297375);
+    if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {
+      localTextView.setText(paramMessage.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      ((ImageView)localView.findViewById(2131297374)).setImageResource(QQToast.a(paramMessage.jdField_a_of_type_Int));
+      this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(paramMessage.c);
+      break;
+      localTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getString(paramMessage.b));
+    }
   }
 }
 

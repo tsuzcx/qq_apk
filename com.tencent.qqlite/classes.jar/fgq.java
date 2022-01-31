@@ -1,21 +1,11 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import com.tencent.qqprotect.singleupdate.QPSinlgeUpdInfo;
 
 public class fgq
-  implements Runnable
 {
-  public fgq(AbsListView paramAbsListView, View paramView, fhb paramfhb) {}
+  public String a;
+  public String b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
-    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.q) {
-      this.jdField_a_of_type_Fhb.run();
-    }
-    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
-  }
+  public fgq(QPSinlgeUpdInfo paramQPSinlgeUpdInfo) {}
 }
 
 

@@ -1,41 +1,48 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.SocialFriendChooser;
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.settings.ServerSetting;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.open.agent.util.AuthorityUtil;
 
 public class fbu
   extends Handler
 {
-  public fbu(SocialFriendChooser paramSocialFriendChooser) {}
+  public fbu(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", CommonDataAdapter.a().d());
-      paramMessage.putString("facetype", "mqqface");
-      String str = ServerSetting.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      OpenSdkFriendService.a().a(str, paramMessage, new fbv(this));
-      return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
-    }
-    this.a.n();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", "网络连接超时!");
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramMessage = (Bitmap)paramMessage.obj;
+        } while (paramMessage == null);
+        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
+        localMessage = Message.obtain();
+        localMessage.what = 1002;
+        localMessage.obj = paramMessage;
+        this.a.b.sendMessage(localMessage);
+        return;
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      paramMessage = AuthorityActivity.a(paramMessage);
+    } while (paramMessage == null);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1003;
+    localMessage.obj = paramMessage;
+    this.a.b.sendMessage(localMessage);
   }
 }
 

@@ -1,15 +1,27 @@
 import android.app.Activity;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import java.util.TimerTask;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class dud
-  extends TimerTask
+  extends WebViewClient
 {
   public dud(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
   
-  public void run()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    PreviewingOfflineFileViewBase.e(this.a).runOnUiThread(new due(this));
+    if (PreviewingOfflineFileViewBase.a(this.a) == null) {
+      return;
+    }
+    PreviewingOfflineFileViewBase.c(this.a).runOnUiThread(new duf(this));
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    QLog.e("PreviewingOfflineFileViewBase<FileAssistant>", 1, "load url[" + paramString2 + "] error! errCode[" + String.valueOf(paramInt) + "],description[" + String.valueOf(paramString1) + "]");
+    PreviewingOfflineFileViewBase.b(this.a).runOnUiThread(new due(this, paramInt, paramString1));
   }
 }
 

@@ -1,13 +1,23 @@
-import com.tencent.open.appcommon.js.BaseJsCallBack;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.smtt.sdk.WebView;
+import java.util.List;
+import java.util.TimerTask;
 
 public class fcp
-  implements Runnable
+  extends TimerTask
 {
-  public fcp(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  public fcp(BaseInterface paramBaseInterface, WebView paramWebView, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals("1")) {}
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.optLef <= 0)
+    {
+      cancel();
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.firstIn = true;
+    }
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallbackQueue.size() > 0) {
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallback(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Long);
+    }
   }
 }
 

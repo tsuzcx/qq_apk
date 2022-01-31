@@ -1,21 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class axs
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   public axs(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    NearbyPeopleProfileActivity.a(this.a).setVisibility(8);
+    NearbyPeopleProfileActivity.k(this.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800482C", "0X800482C", 0, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

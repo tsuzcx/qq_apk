@@ -37,8 +37,8 @@ public class StructMsgItemLayout1
   public View b(Context paramContext, View paramView)
   {
     Resources localResources = paramContext.getResources();
-    int m = localResources.getDimensionPixelSize(2131492991);
-    int n = localResources.getDimensionPixelSize(2131492992);
+    int m = localResources.getDimensionPixelSize(2131492986);
+    int n = localResources.getDimensionPixelSize(2131492987);
     int i = AIOUtils.a(5.0F, localResources);
     int k;
     Object localObject2;
@@ -47,7 +47,7 @@ public class StructMsgItemLayout1
     {
       paramView = (LinearLayout)paramView;
       if (!TextUtils.isEmpty(this.c)) {
-        paramView.setBackgroundResource(2130837928);
+        paramView.setBackgroundResource(2130837924);
       }
       b(paramView);
       if (paramView.getChildCount() != this.a.size()) {

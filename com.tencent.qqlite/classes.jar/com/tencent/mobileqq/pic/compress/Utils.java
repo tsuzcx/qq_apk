@@ -23,7 +23,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dzv;
+import eab;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -73,7 +73,7 @@ public class Utils
     return paramBitmap;
   }
   
-  private static dzv a(int paramInt1, int paramInt2)
+  private static eab a(int paramInt1, int paramInt2)
   {
     int i = 0;
     int j = 1;
@@ -88,11 +88,11 @@ public class Utils
     }
     for (;;)
     {
-      dzv localdzv = new dzv(null);
-      localdzv.a = paramInt2;
-      localdzv.b = paramInt1;
-      Logger.a("compress.Utils", "getType()", " type=" + localdzv);
-      return localdzv;
+      eab localeab = new eab(null);
+      localeab.a = paramInt2;
+      localeab.b = paramInt1;
+      Logger.a("compress.Utils", "getType()", " type=" + localeab);
+      return localeab;
       paramInt1 = 2;
       paramInt2 = 2;
       continue;
@@ -265,17 +265,17 @@ public class Utils
       m = 0;
       j = 0;
       localObject1 = "";
-      str2 = BaseApplication.getContext().getString(2131364314);
-      str3 = BaseApplication.getContext().getString(2131364315);
-      str4 = BaseApplication.getContext().getString(2131364316);
-      str5 = BaseApplication.getContext().getString(2131364317);
+      str2 = BaseApplication.getContext().getString(2131364299);
+      str3 = BaseApplication.getContext().getString(2131364300);
+      str4 = BaseApplication.getContext().getString(2131364301);
+      str5 = BaseApplication.getContext().getString(2131364302);
       i1 = 0;
       i = 0;
       str1 = "";
-      str6 = BaseApplication.getContext().getString(2131364318);
-      str7 = BaseApplication.getContext().getString(2131364319);
-      localObject3 = BaseApplication.getContext().getString(2131364320);
-      localObject2 = BaseApplication.getContext().getString(2131364321);
+      str6 = BaseApplication.getContext().getString(2131364303);
+      str7 = BaseApplication.getContext().getString(2131364304);
+      localObject3 = BaseApplication.getContext().getString(2131364305);
+      localObject2 = BaseApplication.getContext().getString(2131364306);
       localObject4 = paramList.iterator();
       for (;;)
       {
@@ -823,10 +823,10 @@ public class Utils
     if (localOptions.outWidth > localOptions.outHeight) {
       j = localOptions.outWidth;
     }
-    dzv localdzv;
+    eab localeab;
     for (int i = localOptions.outHeight;; i = localOptions.outWidth)
     {
-      localdzv = a(i, j);
+      localeab = a(i, j);
       if (a(localOptions, PhotoPreviewConstant.l)) {
         break;
       }
@@ -866,7 +866,7 @@ public class Utils
         k = ((Bitmap)localObject2).getWidth();
         j = ((Bitmap)localObject2).getHeight();
         Logger.a("compress.Utils", "compressAIOThumbnail()", paramString3 + " sample after W:" + k + " H:" + j);
-        switch (localdzv.b)
+        switch (localeab.b)
         {
         case 2: 
         case 4: 
@@ -884,7 +884,7 @@ public class Utils
             break label1921;
           }
           bool2 = true;
-          Logger.a("compress.Utils", "compressAIOThumbnail()", paramString3 + " sample after W:" + j + " H:" + i + " isLongImg:" + a(0, 0) + " type:" + localdzv + " needRotate:" + bool2);
+          Logger.a("compress.Utils", "compressAIOThumbnail()", paramString3 + " sample after W:" + j + " H:" + i + " isLongImg:" + a(0, 0) + " type:" + localeab + " needRotate:" + bool2);
           if (m <= k) {
             break label952;
           }
@@ -892,7 +892,7 @@ public class Utils
           i1 = k;
           n = PhotoPreviewConstant.l;
           i2 = PhotoPreviewConstant.k;
-          switch (localdzv.a)
+          switch (localeab.a)
           {
           default: 
             bool1 = false;
@@ -957,7 +957,7 @@ public class Utils
             }
             ((Bitmap)localObject2).recycle();
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " cut 3:1 createBitmap OutOfMemoryError, type:" + localdzv);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " cut 3:1 createBitmap OutOfMemoryError, type:" + localeab);
             return false;
           }
         }
@@ -1024,7 +1024,7 @@ public class Utils
               }
               ((Bitmap)localObject3).recycle();
               paramString1.printStackTrace();
-              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: cut createBitmap OutOfMemoryError, type:" + localdzv);
+              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: cut createBitmap OutOfMemoryError, type:" + localeab);
               return false;
             }
             paramString1 = paramString1;
@@ -1032,7 +1032,7 @@ public class Utils
               ((Bitmap)localObject2).recycle();
             }
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: scale or rotate createBitmap OutOfMemoryError, type:" + localdzv);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 1: scale or rotate createBitmap OutOfMemoryError, type:" + localeab);
             return false;
           }
           j = n;
@@ -1073,7 +1073,7 @@ public class Utils
                 }
                 ((Bitmap)localObject2).recycle();
                 paramString1.printStackTrace();
-                Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 2: scale or rotate createBitmap OutOfMemoryError, type:" + localdzv);
+                Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 2: scale or rotate createBitmap OutOfMemoryError, type:" + localeab);
                 return false;
               }
             }
@@ -1104,7 +1104,7 @@ public class Utils
               ((Bitmap)localObject2).recycle();
             }
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 3: rotate createBitmap OutOfMemoryError, type:" + localdzv);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 3: rotate createBitmap OutOfMemoryError, type:" + localeab);
             return false;
           }
         }
@@ -1159,7 +1159,7 @@ public class Utils
               }
               paramString1.recycle();
               paramString2.printStackTrace();
-              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: cut createBitmap OutOfMemoryError, type:" + localdzv);
+              Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: cut createBitmap OutOfMemoryError, type:" + localeab);
               return false;
             }
             paramString1 = paramString1;
@@ -1167,7 +1167,7 @@ public class Utils
               ((Bitmap)localObject2).recycle();
             }
             paramString1.printStackTrace();
-            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: rotate createBitmap OutOfMemoryError, type:" + localdzv);
+            Logger.b("compress.Utils", "compressAIOThumbnail()", paramString3 + " case 4: rotate createBitmap OutOfMemoryError, type:" + localeab);
             return false;
           }
           i = i1;

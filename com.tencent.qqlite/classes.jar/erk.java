@@ -1,35 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
+import android.view.View;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class erk
-  extends Handler
+public class erk
+  implements ActionSheet.OnButtonClickListener
 {
-  public erk(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public erk(TroopShareUtility paramTroopShareUtility) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(View paramView, int paramInt)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.what != FaceDecodeTask.a());
-      paramMessage = (FaceDecodeTask)paramMessage.obj;
-    } while ((paramMessage == null) || (FaceDecodeTask.a(paramMessage) == null) || (FaceDecodeTask.a(paramMessage) == null));
-    if (FaceDecodeTask.a(paramMessage))
-    {
-      FaceDecodeTask.a(paramMessage).b = 2;
-      FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
+    if (TroopShareUtility.a(this.a)) {
       return;
     }
-    FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
+    TroopShareUtility.a(this.a, -1);
+    TroopShareUtility.b(this.a, -1);
+    TroopShareUtility.a(this.a, true);
+    TroopShareUtility.a(this.a).dismiss();
   }
 }
 

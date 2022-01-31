@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
-import bxr;
+import bxq;
 import com.tencent.common.galleryactivity.GalleryManager;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -16,7 +16,7 @@ public class AIOGalleryActivity
   extends PeakActivity
 {
   private static AIOGalleryCollector jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryCollector;
-  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new bxr(this, null);
+  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new bxq(this, null);
   public IAIOImageProvider a;
   
   public static AIOGalleryCollector a()

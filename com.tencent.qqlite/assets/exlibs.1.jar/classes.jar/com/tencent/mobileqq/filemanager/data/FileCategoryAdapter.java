@@ -72,13 +72,13 @@ public class FileCategoryAdapter
       localView.setTag(paramView);
       if ((localFileCategoryEntity.A == 0) || (localFileCategoryEntity.A == 3))
       {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131298024));
+        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131297987));
         paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298025));
-        paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298028));
-        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298026));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298027));
-        paramView.c = ((TextView)localView.findViewById(2131297795));
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297988));
+        paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297991));
+        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131297989));
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131297990));
+        paramView.c = ((TextView)localView.findViewById(2131297791));
         paramViewGroup = paramView;
         paramView = localView;
       }
@@ -116,13 +116,13 @@ public class FileCategoryAdapter
           switch (localFileCategoryEntity.F)
           {
           default: 
-            paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837928);
+            paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837924);
             return paramView;
             if (localFileCategoryEntity.A != 1) {
               break label567;
             }
-            paramView.d = ((TextView)localView.findViewById(2131297999));
-            paramView.e = ((TextView)localView.findViewById(2131298000));
+            paramView.d = ((TextView)localView.findViewById(2131297962));
+            paramView.e = ((TextView)localView.findViewById(2131297963));
             paramViewGroup = paramView;
             paramView = localView;
             break label178;
@@ -137,13 +137,13 @@ public class FileCategoryAdapter
             paramViewGroup.c.setVisibility(8);
           }
         }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837928);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837924);
         return paramView;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837931);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
         return paramView;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837930);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837926);
         return paramView;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837931);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
         return paramView;
       }
       localView = paramView;

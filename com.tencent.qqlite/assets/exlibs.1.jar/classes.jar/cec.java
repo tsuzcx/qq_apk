@@ -1,13 +1,19 @@
 import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.widget.AbsListView;
 
-class cec
-  implements Runnable
+public class cec
+  extends SlideDetectListView.OnScrollGroupFloatingListener
 {
-  cec(ceb paramceb) {}
+  public cec(TroopView paramTroopView) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a.a();
+    if (this.a.a != null) {
+      TroopView.a(this.a, paramInt1);
+    }
   }
 }
 

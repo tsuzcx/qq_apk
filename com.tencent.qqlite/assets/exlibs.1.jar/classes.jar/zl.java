@@ -1,13 +1,16 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class zl
-  implements Runnable
+  implements View.OnClickListener
 {
   public zl(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a(131072);
+    this.a.c.cancel();
   }
 }
 

@@ -1,17 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.NearFieldDiscussHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class clb
-  implements Runnable
+public class clb
+  extends BroadcastReceiver
 {
-  clb(cla paramcla) {}
+  public clb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a.a);
-    ((NearFieldDiscussHandler)this.a.a.app.a(32)).a(this.a.a.a.toString(), this.a.a.b, localLBSInfo, false);
+    if ((NetworkUtil.e(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.b) && (this.a.isResume()))
+    {
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
   }
 }
 

@@ -1,14 +1,15 @@
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
 
 class bvo
   implements Runnable
 {
-  bvo(bvn parambvn) {}
+  bvo(bvm parambvm) {}
   
   public void run()
   {
-    ReportController.b(this.a.a.a, "CliOper", "", "", "MbJieshou", "MbZidongBofang", 0, 0, "", "", "", "");
+    ((ChatActivity)this.a.a.b).a().H();
   }
 }
 

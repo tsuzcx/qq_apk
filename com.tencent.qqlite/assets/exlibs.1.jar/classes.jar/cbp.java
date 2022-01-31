@@ -1,21 +1,50 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.LBSObserver;
+import android.app.Activity;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.ThreadPriorityManager;
 
 public class cbp
-  extends LBSObserver
+  implements ContactBaseView.IAddContactContext
 {
-  public cbp(AddContactsView paramAddContactsView) {}
+  public cbp(AddContactsActivity paramAddContactsActivity) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public Activity a()
   {
-    if (paramBoolean) {
-      this.a.a = paramLBSInfo.a();
+    return this.a;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public void a()
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
-    if ((this.a.a == null) || (this.a.a.length != 4)) {
-      this.a.a = new String[] { "-1", "-1", "-1", "-1" };
-    }
-    this.a.d();
+    AddContactsActivity.a(this.a, 2130837635);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -(this.a.getTitleBarHeight() + AddContactsActivity.a(this.a).a()));
+    localTranslateAnimation.setDuration(250L);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setAnimationListener(new cbq(this));
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
+    ThreadPriorityManager.a(true);
+  }
+  
+  public void b()
+  {
+    this.a.findViewById(2131297141).setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -(this.a.getTitleBarHeight() + AddContactsActivity.a(this.a).a()), 0.0F);
+    localTranslateAnimation.setDuration(250L);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setAnimationListener(new cbr(this));
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
 }
 

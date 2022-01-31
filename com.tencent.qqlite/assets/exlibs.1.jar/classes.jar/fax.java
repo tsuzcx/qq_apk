@@ -1,16 +1,16 @@
 import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.util.AuthorityUtil;
 
 public class fax
-  implements ImageLoader.ImageLoadListener
+  implements Runnable
 {
-  public fax(BragActivity paramBragActivity) {}
+  public fax(BindGroupConfirmActivity paramBindGroupConfirmActivity, Bitmap paramBitmap) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    this.a.a.setImageBitmap(paramBitmap);
+    Bitmap localBitmap = AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
+    this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.runOnUiThread(new fay(this, localBitmap));
   }
 }
 

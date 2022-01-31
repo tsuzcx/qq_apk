@@ -1,18 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class cfy
-  implements DialogInterface.OnKeyListener
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public cfy(BaseActivityView paramBaseActivityView) {}
+  private cfy(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return (paramInt == 4) && (this.a.a.h()) && (NetworkUtil.e(this.a.getContext()));
+    if (paramInt == 3)
+    {
+      MessageSearchDialog.a(this.a);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        MessageSearchDialog.a(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

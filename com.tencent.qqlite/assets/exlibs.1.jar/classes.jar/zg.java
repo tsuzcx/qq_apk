@@ -1,62 +1,18 @@
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
 
 public class zg
-  extends MessageObserver
+  implements View.OnFocusChangeListener
 {
-  public zg(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public zg(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      paramString = this.a.getString(2131362892);
-      QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+    if ((paramBoolean) && (BaseChatPie.a(this.a) != null) && (BaseChatPie.a(this.a).getVisibility() == 0)) {
+      BaseChatPie.a(this.a, true);
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    long l1 = FriendSystemMsgController.a().b();
-    if (!TextUtils.isEmpty(paramString1)) {}
-    for (;;)
-    {
-      try
-      {
-        long l2 = Long.parseLong(paramString1);
-        l1 = l2;
-        if (paramBoolean) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        if (SystemMsgUtils.a(FriendSystemMsgController.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4))
-        {
-          this.a.setResult(-1);
-          this.a.finish();
-        }
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    paramString1 = null;
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText != null) {
-      paramString1 = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    }
-    SystemMsgUtils.a(FriendSystemMsgController.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
-    SystemMsgUtils.a(l1, paramInt1, paramString1, paramInt4);
-    this.a.setResult(-1);
-    this.a.finish();
   }
 }
 

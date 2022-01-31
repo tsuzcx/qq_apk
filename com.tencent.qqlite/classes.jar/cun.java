@@ -1,19 +1,20 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.ProcessExitReceiver;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class cun
-  extends Thread
+  implements Runnable
 {
-  public cun(ProcessExitReceiver paramProcessExitReceiver) {}
+  public cun(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
+      QLog.d("PhoneContact", 2, "syncBindState mCurrentBindState = " + this.a.a);
     }
-    Process.killProcess(Process.myPid());
+    if (this.a.a >= 6) {
+      return;
+    }
+    this.a.f();
   }
 }
 

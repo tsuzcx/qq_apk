@@ -3,14 +3,14 @@ package com.tencent.mobileqq.service.friendlist.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import edk;
+import edq;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendGroupListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new edk();
+  public static final Parcelable.Creator CREATOR = new edq();
   public int a;
   public List a;
   

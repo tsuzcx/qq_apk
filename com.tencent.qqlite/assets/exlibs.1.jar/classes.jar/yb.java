@@ -2,7 +2,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class yb
@@ -12,15 +11,8 @@ public class yb
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AssistantSettingActivity.b(this.a).setContentDescription("2G/3G/4G下自动接收图片");
-    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363049), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      return;
-    }
+    AssistantSettingActivity.d(this.a).setContentDescription("内存低时自动清理内存");
+    SettingCloneUtil.writeValue(this.a, null, null, "qqsetting_clear_memory_key", paramBoolean);
   }
 }
 

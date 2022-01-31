@@ -1,31 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import mqq.manager.ServerConfigManager.ConfigType;
 
 public class azn
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public azn(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  public azn(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
+    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130839101), 2131363556);
+    localProgressDialog.setOnDismissListener(new azo(this));
+    ReportLog.a(this.a.app.getAccount());
+    paramView = null;
+    if (this.a.app.getSid() != null) {
+      paramView = this.a.app.getSid().getBytes();
+    }
+    ReportLog.a(paramView);
+    paramView = this.a.app.a(ServerConfigManager.ConfigType.app, "log_upload");
+    if ((!TextUtils.isEmpty(paramView)) && (paramView.equals("1")))
     {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
-      }
-      label39:
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      ReportLog.a(this.a.app.a(), this.a.app.a(), localProgressDialog);
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label39;
-    }
+    ReportLog.a(this.a.app.a(), this.a.app.a(), localProgressDialog);
   }
 }
 

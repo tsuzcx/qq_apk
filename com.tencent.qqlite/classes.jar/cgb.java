@@ -1,26 +1,15 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class cgb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cgb(BindNumberActivity paramBindNumberActivity) {}
+  public cgb(BaseActivityView paramBaseActivityView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.a.isFinishing())
-    {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.a.a.setSelection(this.a.a.getText().toString().length());
-    }
+    this.a.f();
   }
 }
 

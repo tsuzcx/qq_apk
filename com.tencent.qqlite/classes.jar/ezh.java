@@ -1,33 +1,27 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ezh
-  implements AbsListView.OnScrollListener
+class ezh
+  implements Animation.AnimationListener
 {
-  public ezh(SlideDetectListView paramSlideDetectListView) {}
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Ezg.a.getBackground();
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  ezh(ezg paramezg) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
-    }
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
-    }
+    this.jdField_a_of_type_Ezg.a.clearAnimation();
+    this.jdField_a_of_type_Ezg.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    this.jdField_a_of_type_Ezg.a.setBackgroundResource(17170443);
   }
 }
 

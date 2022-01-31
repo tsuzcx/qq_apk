@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class cof
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public cof(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public cof(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ShortVideoPlayActivity.a(this.a).removeView(ShortVideoPlayActivity.a(this.a));
+  }
 }
 
 

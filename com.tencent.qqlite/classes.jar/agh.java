@@ -1,17 +1,60 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class agh
-  implements IIconListener
+  extends MessageObserver
 {
-  private agh(Contacts paramContacts) {}
+  public agh(Conversation paramConversation) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if ((this.a.a) && (paramBitmap != null) && (paramInt2 == 200)) {
-      this.a.a(1400L, false);
+    if (paramInt1 == 0) {
+      this.a.b(new agk(this));
     }
+  }
+  
+  protected void b()
+  {
+    TroopAssistantManager.a().c(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
+    }
+    this.a.a(0L);
+  }
+  
+  protected void c()
+  {
+    this.a.a(0L);
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetOfflineMsgFinished|isSuc = " + paramBoolean);
+    }
+    if (this.a.b != 1000L) {
+      this.a.b = 1000L;
+    }
+    this.a.b(new agi(this, paramBoolean));
+  }
+  
+  public void c(boolean paramBoolean, String paramString)
+  {
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void d(boolean paramBoolean)
+  {
+    this.a.b(new agj(this, paramBoolean));
+  }
+  
+  protected void d(boolean paramBoolean, String paramString)
+  {
+    paramString = RecentDataListManager.a(paramString, -2147483648);
+    this.a.a(2, 9, paramString);
   }
 }
 

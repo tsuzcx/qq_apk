@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 class apy
   implements Runnable
 {
-  apy(apx paramapx) {}
+  apy(apv paramapv) {}
   
   public void run()
   {
-    this.a.a.a.a();
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

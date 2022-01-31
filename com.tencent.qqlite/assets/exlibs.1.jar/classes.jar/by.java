@@ -1,32 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.dataline.mpfile.LiteMpFileActionListActivity;
-import com.dataline.mpfile.MpFileConstant;
-import com.dataline.util.DatalineMathUtil;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.MpfileTaskInfo;
+import com.dataline.mpfile.MpfileTaskListAdapter;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 
 public class by
-  extends BroadcastReceiver
+  implements SlideDetectListView.OnSlideListener
 {
-  public by(LiteMpFileActionListActivity paramLiteMpFileActionListActivity) {}
+  public by(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals(MpFileConstant.d)))
-      {
-        paramContext = paramIntent.getExtras();
-        paramIntent = DatalineMathUtil.a(paramContext.getLong("ip"));
-        int i = paramContext.getInt("port");
-        LiteMpFileActionListActivity.jdField_a_of_type_JavaLangString = paramIntent;
-        LiteMpFileActionListActivity.jdField_a_of_type_Int = i;
-        LiteMpFileActionListActivity.a(this.a, String.format("http://%s:%d/qqmpfile/?action=fileList&offset=0&limit=100", new Object[] { LiteMpFileActionListActivity.jdField_a_of_type_JavaLangString, Integer.valueOf(LiteMpFileActionListActivity.jdField_a_of_type_Int) }));
-        LiteMpFileActionListActivity.a(this.a);
-      }
+    paramSlideDetectListView = (MpfileTaskInfo)LiteMpFileDownloadActivity.a(this.a).getItem(paramInt);
+    if (paramSlideDetectListView == null) {
+      return;
     }
+    paramView = paramView.findViewById(2131296441);
+    if (paramView != null)
+    {
+      Button localButton = (Button)paramView.findViewById(2131297123);
+      LiteMpFileDownloadActivity.a(this.a).a(paramSlideDetectListView);
+      LiteMpFileDownloadActivity.a(this.a, paramSlideDetectListView.c);
+      localButton.setOnClickListener(this.a.a);
+      ((ShaderAnimLayout)paramView).a();
+      LiteMpFileDownloadActivity.a(this.a).setDeleteAreaDim(paramView.getLayoutParams().width, paramView.getLayoutParams().height);
+    }
+    this.a.a();
+  }
+  
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    LiteMpFileDownloadActivity.a(this.a, "");
+    LiteMpFileDownloadActivity.a(this.a).a(null);
+    this.a.a();
   }
 }
 

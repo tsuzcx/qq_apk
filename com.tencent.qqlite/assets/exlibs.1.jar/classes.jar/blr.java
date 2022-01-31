@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class blr
-  implements View.OnClickListener
+  extends TransProcessorHandler
 {
-  public blr(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
+  public blr(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131298956: 
-      TroopAssistSetGuideActivity.a(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "Grp_helper", "Clk_not_set", 0, 0, "", "", "", "");
-      return;
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.d();
     }
-    TroopAssistSetGuideActivity.b(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "Grp_helper", "Clk_quiet_mode", 0, 0, "", "", "", "");
   }
 }
 

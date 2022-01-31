@@ -15,14 +15,14 @@ public class TroopPrivilegeActivity$PrivilegeTroopObserver
     if (paramBoolean1)
     {
       localPrivilegeAdapter = this.a.a;
-      str = this.a.getString(2131362364);
+      str = this.a.getString(2131362361);
       if (!paramBoolean4) {
         break label92;
       }
       i = 1;
       localPrivilegeAdapter.a(str, i);
       localPrivilegeAdapter = this.a.a;
-      str = this.a.getString(2131362363);
+      str = this.a.getString(2131362360);
       if (!paramBoolean3) {
         break label98;
       }

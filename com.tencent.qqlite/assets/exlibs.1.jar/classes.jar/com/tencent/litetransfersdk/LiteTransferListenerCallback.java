@@ -19,11 +19,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
+import tw;
+import tx;
+import ty;
+import tz;
 import ua;
-import ub;
-import uc;
-import ud;
-import ue;
 
 public class LiteTransferListenerCallback
 {
@@ -310,7 +310,7 @@ public class LiteTransferListenerCallback
       localObject = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        new Handler((Looper)localObject).post(new ud(this, paramLong, paramInt1));
+        new Handler((Looper)localObject).post(new tz(this, paramLong, paramInt1));
         return;
       }
       _onSessionComplete(paramLong, paramInt1);
@@ -334,7 +334,7 @@ public class LiteTransferListenerCallback
       }
       Looper localLooper = Looper.getMainLooper();
       if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new ua(this, paramSession, paramNFCInfo, paramFTNInfo));
+        new Handler(localLooper).post(new tw(this, paramSession, paramNFCInfo, paramFTNInfo));
       }
       for (;;)
       {
@@ -355,7 +355,7 @@ public class LiteTransferListenerCallback
       localObject = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        new Handler((Looper)localObject).post(new uc(this, paramLong1, paramLong2, paramLong3));
+        new Handler((Looper)localObject).post(new ty(this, paramLong1, paramLong2, paramLong3));
         return;
       }
       _onSessionProgress(paramLong1, paramLong2, paramLong3);
@@ -375,7 +375,7 @@ public class LiteTransferListenerCallback
       localObject = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        new Handler((Looper)localObject).post(new ub(this, paramLong));
+        new Handler((Looper)localObject).post(new tx(this, paramLong));
         return;
       }
       _startSession(this.mHandler.a(paramLong), null, null, true);
@@ -389,7 +389,7 @@ public class LiteTransferListenerCallback
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ue(this, paramLong, paramString));
+      new Handler(localLooper).post(new ua(this, paramLong, paramString));
       return;
     }
     _onSessionThumbUpdate(paramLong, paramString);

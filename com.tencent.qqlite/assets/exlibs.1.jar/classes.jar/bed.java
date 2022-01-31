@@ -1,51 +1,58 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class bed
-  extends CardObserver
+  extends FriendListObserver
 {
   public bed(QQSetting paramQQSetting) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.a.a().equals(((Card)paramObject).uin))) {
-      QQSetting.a(this.a, ((Card)paramObject).iQQLevel);
+    if ((paramBoolean) && (this.a.a != null) && (paramString != null) && (paramString.equals(this.a.a.a()))) {
+      this.a.b(new bef(this));
     }
   }
   
-  protected void onNearByProfileSymbolGet(boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CardHandler", 2, "Leba.onNearbyProfileSymbolGet(), isSuccess: " + paramBoolean + " symbol is: " + paramInt + " is leba resume :" + QQSetting.a(this.a));
+      QLog.d("QQSettingActivity", 2, "onUpdateCustomHead: uin:" + paramString + ", success :" + paramBoolean);
     }
-    if ((QQSetting.a(this.a) != null) && (QQSetting.a(this.a).isShowing()))
-    {
-      QQSetting.a(this.a).dismiss();
-      if (QQSetting.b(this.a))
-      {
-        if (!paramBoolean) {
-          break label128;
-        }
-        Intent localIntent = new Intent(this.a.a(), NearbyActivity.class);
-        this.a.a(localIntent);
-      }
+    if ((paramBoolean) && (paramString != null) && (this.a.a != null) && (paramString.equals(this.a.a.a()))) {
+      this.a.b(new bee(this, paramString));
     }
-    return;
-    label128:
-    QQToast.a(this.a.a(), "检查资料失败，请稍后重试。", 1).a();
   }
   
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean) && (paramString != null) && (this.a.a.a().equals(paramString))) {
-      this.a.b(new bee(this, paramString));
+    if (paramBoolean2) {
+      this.a.b();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    String str;
+    int i;
+    if ((paramBoolean) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    {
+      str = this.a.a.a();
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((str != null) && (i < paramArrayOfString.length))
+      {
+        if (str.equals(paramArrayOfString[i])) {
+          this.a.n();
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
     }
   }
 }

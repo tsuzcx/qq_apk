@@ -1,19 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
+import com.tencent.mobileqq.shortvideo.UiCallBack;
 
-public final class eee
-  extends PluginRecoverReceiver
+public abstract interface eee
 {
-  protected void onRecver(String paramString)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "NetPlugins", "Download", 9527, 0, "0", "0", paramString, "");
-    }
-  }
+  public abstract MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo);
+  
+  public abstract void a(ShortVideoUploadInfo paramShortVideoUploadInfo);
+  
+  public abstract void a(UiCallBack paramUiCallBack);
 }
 
 

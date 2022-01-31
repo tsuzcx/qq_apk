@@ -1,16 +1,17 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class aph
-  implements AdapterView.OnItemClickListener
+  implements AdapterView.OnItemLongClickListener
 {
   public aph(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.c();
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

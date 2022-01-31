@@ -10,7 +10,7 @@ import android.text.format.Time;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.MD5;
-import fdi;
+import fdn;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -120,7 +120,7 @@ public class AppReportReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ThreadManager.b(new fdi(this, paramIntent, paramContext));
+    ThreadManager.b(new fdn(this, paramIntent, paramContext));
   }
 }
 

@@ -1,22 +1,42 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase.IControllProxyInterface;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
 
 class dtz
-  implements Runnable
+  extends FMObserver
 {
-  dtz(dtx paramdtx) {}
+  dtz(dty paramdty) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
   {
-    if (PreviewingOfflineFileViewBase.a(this.a.a) == null) {}
-    while (PreviewingOfflineFileViewBase.a(this.a.a)) {
-      return;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        dty.a(this.a, paramString3, paramString4, paramInt2, paramString2);
+        this.a.a.e();
+        return;
+      }
+      finally {}
+      PreviewingOfflineFileView.b(this.a.a).runOnUiThread(new dub(this, paramInt1, paramString1));
     }
-    PreviewingOfflineFileViewBase.a(this.a.a, true);
-    String str = this.a.a.a().d();
-    PreviewingOfflineFileViewBase.a(this.a.a).loadUrl(str);
-    PreviewingOfflineFileViewBase.a(this.a.a).loadUrl("javascript:add_more_page()");
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        dty.a(this.a, paramString3, paramString4, paramInt2, paramString2);
+        this.a.a.e();
+        return;
+      }
+      finally {}
+      PreviewingOfflineFileView.a(this.a.a).runOnUiThread(new dua(this, paramInt1, paramString1));
+    }
   }
 }
 

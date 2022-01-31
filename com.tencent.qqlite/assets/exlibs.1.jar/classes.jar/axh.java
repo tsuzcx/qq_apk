@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class axh
-  implements DialogInterface.OnClickListener
+public class axh
+  implements View.OnClickListener
 {
-  axh(axf paramaxf, QQCustomDialog paramQQCustomDialog) {}
+  public axh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    NearbyPeopleProfileActivity.e(this.jdField_a_of_type_Axf.a);
+    if ((NearbyPeopleProfileActivity.a(this.a) != null) && (!this.a.isFinishing()))
+    {
+      NearbyPeopleProfileActivity.a(this.a).dismiss();
+      NearbyPeopleProfileActivity.a(this.a, null);
+    }
   }
 }
 

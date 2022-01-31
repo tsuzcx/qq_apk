@@ -1,16 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class ekl
-  implements View.OnClickListener
+  extends AsyncTask
 {
-  public ekl(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
+  public ekl(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onClick(View paramView)
+  protected String a(Void... paramVarArgs)
   {
-    this.a.a.f();
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363440) + " " + paramVarArgs;
+      }
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363441);
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363441);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363441);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
   }
 }
 

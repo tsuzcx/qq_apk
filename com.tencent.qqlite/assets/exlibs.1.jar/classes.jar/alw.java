@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class alw
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public alw(EmosmDetailActivity paramEmosmDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    EmosmDetailActivity.a(this.a.app, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Ep_pkg_detail", 0);
-    EmojiHomeUiPlugin.openEmojiDetailPage(this.a, this.a.app.getAccount(), 8, this.a.a.a.epId, this.a.app.getSid(), false);
+    this.a.d = true;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.b.setVisibility(0);
+    paramAnimation = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramAnimation.height = (this.a.a.getHeight() - this.a.b.getHeight());
+    this.a.a.setLayoutParams(paramAnimation);
   }
 }
 

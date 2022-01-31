@@ -1,18 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
-class cgg
-  implements DialogInterface.OnClickListener
+public class cgg
+  extends Handler
 {
-  cgg(cgf paramcgf) {}
+  private WeakReference a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public cgg(BaseActivityView paramBaseActivityView)
   {
-    this.a.a.app.a(new cgh(this));
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

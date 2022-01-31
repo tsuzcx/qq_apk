@@ -1,21 +1,47 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import java.util.ArrayList;
 
 public class bin
-  implements Runnable
+  extends BaseAdapter
 {
-  public bin(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
+  private bin(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void run()
+  public int getCount()
   {
-    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null))
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText(str);
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setEnabled(true);
+      localView = this.a.getLayoutInflater().inflate(2130903602, paramViewGroup, false);
+      paramView = new bio();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298092));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298093));
+      paramView.b = ((TextView)localView.findViewById(2131298702));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
     }
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 

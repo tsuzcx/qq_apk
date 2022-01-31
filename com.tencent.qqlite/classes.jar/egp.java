@@ -1,16 +1,33 @@
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.mobileqq.transfile.CommenTransFileProcessor;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class egp
-  extends TimerTask
+  implements Runnable
 {
-  public egp(CommenTransFileProcessor paramCommenTransFileProcessor, JceOutputStream paramJceOutputStream) {}
+  public egp(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
   public void run()
   {
-    byte[] arrayOfByte = this.jdField_a_of_type_ComQqTafJceJceOutputStream.toByteArray();
-    CommenTransFileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor, this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor.a, arrayOfByte);
+    switch (this.a.aM)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
+      return;
+    case 2: 
+      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
+      this.a.s();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
+    {
+      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().resumeTransactionTask(this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+      return;
+    }
+    this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
   }
 }
 

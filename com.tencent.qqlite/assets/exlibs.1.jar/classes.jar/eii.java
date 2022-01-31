@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
-class eii
-  implements Runnable
+public class eii
+  implements View.OnClickListener
 {
-  eii(eih parameih) {}
+  public eii(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(this.a.a.a, this.a.a.b, this.a.a.c, this.a.a.d, this.a.a.e);
+    switch (paramView.getId())
+    {
+    default: 
+      this.a.v();
+      return;
+    case 2131296897: 
+      this.a.onBackPressed();
+      return;
+    }
+    this.a.u();
   }
 }
 

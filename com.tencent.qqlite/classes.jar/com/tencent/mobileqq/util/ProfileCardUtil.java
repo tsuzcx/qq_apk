@@ -69,10 +69,10 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import esd;
-import ese;
-import esf;
 import esi;
+import esj;
+import esk;
+import esn;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -894,7 +894,7 @@ public class ProfileCardUtil
       String str;
       if (i1 == 0)
       {
-        paramProfileCardInfo = paramContext.getString(2131363196);
+        paramProfileCardInfo = paramContext.getString(2131363199);
         str = "";
         if (localCard == null) {
           break label485;
@@ -902,7 +902,7 @@ public class ProfileCardUtil
         i1 = localCard.age;
         label76:
         if (i1 > 0) {
-          str = i1 + paramContext.getString(2131363198);
+          str = i1 + paramContext.getString(2131363201);
         }
         localObject = "";
         if (localCard == null) {
@@ -968,7 +968,7 @@ public class ProfileCardUtil
         if (i1 != 1) {
           break label60;
         }
-        paramProfileCardInfo = paramContext.getString(2131363197);
+        paramProfileCardInfo = paramContext.getString(2131363200);
         break label60;
         label485:
         i1 = i2;
@@ -1273,8 +1273,8 @@ public class ProfileCardUtil
   {
     Object localObject1 = null;
     int i2 = 0;
-    TextView localTextView = (TextView)paramView.findViewById(2131296957);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131297748);
+    TextView localTextView = (TextView)paramView.findViewById(2131296953);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131297744);
     if (paramRichStatus != null) {
       localObject1 = paramRichStatus.a(null, -8947849, paramResources.getColor(2131427354));
     }
@@ -1312,7 +1312,7 @@ public class ProfileCardUtil
       label221:
       if (paramBoolean)
       {
-        i1 = 2130837914;
+        i1 = 2130837910;
         label231:
         paramResources = paramResources.getDrawable(i1);
         if (localImageView.getDrawable() != paramResources)
@@ -1355,14 +1355,14 @@ public class ProfileCardUtil
       {
         i2 += 1;
         break label357;
-        localObject1 = BitmapManager.a(paramResources, 2130839114);
+        localObject1 = BitmapManager.a(paramResources, 2130839082);
         break;
         localTextView.setText((CharSequence)localObject2);
         break label209;
         label436:
         paramBoolean = paramStatusManager.a();
         break label221;
-        i1 = 2130837718;
+        i1 = 2130837716;
         break label231;
         label453:
         i1 = 0;
@@ -1396,12 +1396,12 @@ public class ProfileCardUtil
     }
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramBaseActivity, paramBaseActivity.getTitleBarHeight());
     localQQProgressDialog.show();
-    new Thread(new esf(paramBaseActivity, paramString2, paramBoolean, paramString1, paramString3, localQQProgressDialog)).start();
+    new Thread(new esk(paramBaseActivity, paramString2, paramBoolean, paramString1, paramString3, localQQProgressDialog)).start();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
   {
-    paramQQAppInterface.a(new esi(paramQQAppInterface, paramLong1, paramLong2));
+    paramQQAppInterface.a(new esn(paramQQAppInterface, paramLong1, paramLong2));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
@@ -1426,7 +1426,7 @@ public class ProfileCardUtil
     for (;;)
     {
       if (Utils.a(paramString, paramQQAppInterface.a())) {}
-      for (paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.3.0", localObject1 });; paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.3.0", localObject1 }))
+      for (paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.4.0", localObject1 });; paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.4.0", localObject1 }))
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.profilecard.Detail", 2, "openDetail() url = " + paramString);
@@ -1650,7 +1650,7 @@ public class ProfileCardUtil
       }
     }
     label368:
-    for (paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.3.0", localObject1 });; paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.3.0", localObject1 }))
+    for (paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.4.0", localObject1 });; paramString = String.format("http://ti.qq.com/qcard/index.html?sid=%s&qq=%s&appid=%s&version=%s&main_qq=%s&_wv=1027", new Object[] { paramQQAppInterface.getSid(), paramString, String.valueOf(paramQQAppInterface.a()), "android-3.4.0", localObject1 }))
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.profilecard.FrdProfileCard", 2, "openDetails() url = " + paramString);
@@ -1694,7 +1694,7 @@ public class ProfileCardUtil
     {
       paramArrayOfByte = HexUtil.a(paramArrayOfByte);
       String str = HexUtil.a(paramArrayOfByte);
-      new esd(str, b(paramArrayOfByte)).start();
+      new esi(str, b(paramArrayOfByte)).start();
       b(str);
       return;
     }
@@ -1803,10 +1803,10 @@ public class ProfileCardUtil
     for (;;)
     {
       return bool;
-      paramImageView.setImageResource(2130839373);
+      paramImageView.setImageResource(2130839338);
       bool = true;
       continue;
-      paramImageView.setImageResource(2130839370);
+      paramImageView.setImageResource(2130839335);
       bool = true;
       continue;
       bool = false;
@@ -2035,7 +2035,7 @@ public class ProfileCardUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.a().post(new ese(paramString));
+    ThreadManager.a().post(new esj(paramString));
   }
   
   public static String e(String paramString)

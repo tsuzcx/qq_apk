@@ -1,17 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import protocol.KQQConfig.GetResourceRespInfo;
 
 public class arc
-  extends ConfigObserver
+  implements View.OnClickListener
 {
   public arc(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.a(1);
-    }
+    IndividuationSetActivity.a(this.a).setEnabled(false);
+    IndividuationSetActivity.a(this.a);
   }
 }
 

@@ -1,15 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public final class duv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public duv(String paramString) {}
+  public duv(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(FMToastUtil.a());
+    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 

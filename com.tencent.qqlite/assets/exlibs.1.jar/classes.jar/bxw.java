@@ -1,33 +1,49 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryCollector;
 
 public class bxw
-  extends Handler
 {
-  public bxw(AIOGalleryCollector paramAIOGalleryCollector, Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  
+  private bxw(AIOGalleryCollector paramAIOGalleryCollector) {}
+  
+  private void a()
   {
-    super(paramLooper);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Int += 1;
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      if (this.jdField_b_of_type_Int > 1) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      this.c = false;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  private void b()
   {
-    switch (paramMessage.what)
+    if (this.jdField_b_of_type_Boolean)
     {
-    default: 
-      return;
-    case 0: 
-      bxx.a((bxx)paramMessage.obj);
-      return;
-    case 1: 
-      bxx.b((bxx)paramMessage.obj);
-      return;
-    case 2: 
-      bxx.c((bxx)paramMessage.obj);
-      return;
+      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_b_of_type_Boolean = false;
     }
-    AIOGalleryCollector.a(this.a);
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (!this.c))
+    {
+      this.jdField_a_of_type_Int += 1;
+      this.c = true;
+    }
   }
 }
 

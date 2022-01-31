@@ -23,7 +23,7 @@ public class PluginTab
       return;
     }
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginTab addTabSpec:" + paramTabSpec.getTag() + ", " + paramString);
+      DebugHelper.log("plugin_tag", "PluginTab addTabSpec:" + paramTabSpec.getTag() + ", " + paramString);
     }
     paramTabSpec.setContent(this);
     this.mPluginTabHost.addPluginInfo(paramTabSpec.getTag(), paramString, paramIntent);
@@ -33,7 +33,7 @@ public class PluginTab
   public View createTabContent(String paramString)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginTab createTabContent:" + paramString);
+      DebugHelper.log("plugin_tag", "PluginTab createTabContent:" + paramString);
     }
     PluginTabHost.TabSpecPluginInfo localTabSpecPluginInfo = this.mPluginTabHost.getPluginInfo(paramString);
     Object localObject2 = null;
@@ -50,16 +50,16 @@ public class PluginTab
       if (DebugHelper.sDebug)
       {
         paramString = localObject2;
-        DebugHelper.log("PluginDebug", "PluginTab Activity:" + localIPluginActivity);
+        DebugHelper.log("plugin_tag", "PluginTab Activity:" + localIPluginActivity);
       }
       paramString = localObject2;
-      localIPluginActivity.IInit(this.mPluginID, this.mApkFilePath, this, (ClassLoader)localObject1, this.mPackageInfo, this.mUseSkinEngine, this.mUseQqResources);
+      localIPluginActivity.IInit(this.mPluginID, this.mApkFilePath, this, (ClassLoader)localObject1, this.mPackageInfo, this.mUseSkinEngine, this.mPluginResourcesType);
       paramString = localObject2;
       localIPluginActivity.ISetIsTab();
       paramString = localObject2;
       localIPluginActivity.ISetParent(this);
       paramString = localObject2;
-      localIPluginActivity.ISetIntent(getIntent());
+      localIPluginActivity.ISetIntent(localTabSpecPluginInfo.mIntent);
       paramString = localObject2;
       localIPluginActivity.IOnSetTheme();
       paramString = localObject2;
@@ -73,7 +73,7 @@ public class PluginTab
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.e("PluginDebug", 1, this.mPluginID + " createTabContent fail", localException);
+      QLog.e("plugin_tag", 1, this.mPluginID + " createTabContent fail", localException);
       PluginRuntime.handleCrash(localException, this.mPluginID, this);
     }
     return paramString;
@@ -197,7 +197,7 @@ public class PluginTab
   public void onTabChanged(String paramString)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginTab onTabChanged:" + paramString);
+      DebugHelper.log("plugin_tag", "PluginTab onTabChanged:" + paramString);
     }
     IPluginActivity localIPluginActivity = getActivityByTag(this.mPreTag);
     if (localIPluginActivity != null) {
@@ -221,7 +221,7 @@ public class PluginTab
   protected final void setPluginTabHost(PluginTabHost paramPluginTabHost)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginTab setPluginTabHost:" + paramPluginTabHost);
+      DebugHelper.log("plugin_tag", "PluginTab setPluginTabHost:" + paramPluginTabHost);
     }
     this.mPluginTabHost = paramPluginTabHost;
     this.mPluginTabHost.setup();

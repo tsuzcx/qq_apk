@@ -1,6 +1,6 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalPicFile;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalAppFile;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 

@@ -1,27 +1,46 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dms
-  implements Runnable
+  extends IClickListener_Ver51
 {
-  public dms(QfileRecentPicFileTabView paramQfileRecentPicFileTabView, FileManagerEntity paramFileManagerEntity) {}
+  public dms(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject = QfileTimeUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
-      return;
-    }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.i();
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().u();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().H();
   }
 }
 

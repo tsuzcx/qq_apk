@@ -1,100 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.PointF;
-import android.graphics.Rect;
+import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cko
-  implements Runnable
+  implements View.OnClickListener
 {
-  public static final int a = 40;
-  private List jdField_a_of_type_JavaUtilList;
-  private int b;
+  public cko(BannerManager paramBannerManager) {}
   
-  public cko(DragFrameLayout paramDragFrameLayout, List paramList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    this.b = -1;
-  }
-  
-  public Bitmap a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.b >= 0)
-    {
-      localObject1 = localObject2;
-      if (this.b >= DragFrameLayout.a().length) {}
-    }
-    try
-    {
-      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getResources(), DragFrameLayout.a()[this.b]);
-      return localObject1;
-    }
-    catch (Throwable localThrowable)
-    {
-      do
-      {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localThrowable, localThrowable);
-    }
-    return null;
-  }
-  
-  public PointF a()
-  {
-    PointF localPointF = new PointF();
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      Rect localRect = new Rect();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getGlobalVisibleRect(localRect);
-      int i = localRect.left;
-      int j = localRect.top;
-      localView.getGlobalVisibleRect(localRect);
-      localRect.left -= i;
-      localRect.top -= j;
-      localRect.right -= i;
-      localRect.bottom -= j;
-      localPointF.set(localRect.centerX(), localRect.centerY());
-    }
-    return localPointF;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
-    {
-      if (this == DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout)) {
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, null);
-      }
-      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, -1);
-      if (QLog.isColorLevel()) {
-        QLog.d("Drag", 2, "DONE!");
-      }
-      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.invalidate();
-      return;
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (this.b == DragFrameLayout.a().length)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        this.b = -1;
-      }
-      else
-      {
-        localView.setVisibility(4);
-        this.b += 1;
-      }
-    }
+    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
+    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
+    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    ReportController.b(BannerManager.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
   }
 }
 

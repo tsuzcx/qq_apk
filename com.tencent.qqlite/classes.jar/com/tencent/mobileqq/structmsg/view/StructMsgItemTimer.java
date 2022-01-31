@@ -10,8 +10,8 @@ import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgNode;
 import com.tencent.mobileqq.structmsg.StructMsgUtils;
 import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import efj;
-import efk;
+import efo;
+import efp;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import org.xmlpull.v1.XmlSerializer;
@@ -103,7 +103,7 @@ public class StructMsgItemTimer
     if ((paramView != null) && ((paramView instanceof CountdownTextView)))
     {
       paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new efj(this, paramContext));
+      paramContext.a(a(), new efo(this, paramContext));
       paramContext.setTag(this);
       return paramContext;
     }
@@ -117,7 +117,7 @@ public class StructMsgItemTimer
     if (this.k != null) {
       paramContext.setText(a(l1));
     }
-    paramContext.a(l1, new efk(this, paramContext));
+    paramContext.a(l1, new efp(this, paramContext));
     return paramContext;
   }
   

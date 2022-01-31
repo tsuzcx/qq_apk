@@ -34,23 +34,23 @@ public class OfflineSimpleFileView
       }
       return;
     }
-    Object localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297648);
+    Object localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297644);
     TextView localTextView;
     if (5 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a())
     {
-      ((AsyncImageView)localObject).setDefaultImage(2130838532);
+      ((AsyncImageView)localObject).setDefaultImage(2130838509);
       ((AsyncImageView)localObject).setApkIconAsyncImage(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c());
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298022)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
-      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646);
       if (2 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c()) {
         break label224;
       }
     }
     label224:
-    for (localObject = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361978);; localObject = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361978) + FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.b(), false) + BaseApplicationImpl.getContext().getString(2131361975))
+    for (localObject = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361977);; localObject = FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) + BaseApplicationImpl.getContext().getString(2131361977) + FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.b(), false) + BaseApplicationImpl.getContext().getString(2131361974))
     {
       localTextView.setText((CharSequence)localObject);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298096)).setVisibility(8);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298059)).setVisibility(8);
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.f() != null)
       {
@@ -64,14 +64,14 @@ public class OfflineSimpleFileView
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903442, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903432, paramViewGroup, false);
     e();
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public String a()
   {
-    return BaseApplicationImpl.getContext().getString(2131361986);
+    return BaseApplicationImpl.getContext().getString(2131361983);
   }
   
   public boolean a()

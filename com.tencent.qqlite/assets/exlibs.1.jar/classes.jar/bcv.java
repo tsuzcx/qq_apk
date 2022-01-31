@@ -1,8 +1,12 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bcv
+class bcv
+  implements DialogInterface.OnClickListener
 {
-  TextView a;
+  bcv(bcu parambcu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

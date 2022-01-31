@@ -1,22 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class cmz
-  implements TextWatcher
+  implements Handler.Callback
 {
-  private cmz(SelectMemberActivity paramSelectMemberActivity) {}
+  public cmz(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramEditable = this.a.a.getText().toString();
-    this.a.b(paramEditable);
+    if ((paramMessage != null) && (paramMessage.what == 1))
+    {
+      this.a.s = 2;
+      this.a.finish();
+    }
+    return false;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

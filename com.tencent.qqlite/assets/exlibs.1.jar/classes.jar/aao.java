@@ -1,34 +1,13 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
 
-class aao
-  implements Animation.AnimationListener
+public class aao
+  implements Runnable
 {
-  aao(aam paramaam) {}
+  public aao(BaseChatPie paramBaseChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-    this.a.a.a.post(new aap(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    this.a.U();
   }
 }
 

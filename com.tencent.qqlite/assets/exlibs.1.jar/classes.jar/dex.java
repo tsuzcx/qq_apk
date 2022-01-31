@@ -1,79 +1,62 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.EmoticonKeyword;
-import com.tencent.mobileqq.data.EmoticonKeywordForCloud;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPageIndicator;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.RecentAndFavPanelViewBinder;
+import java.util.ArrayList;
 import java.util.List;
 
 public class dex
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  public dex(EmotionPreviewLayout paramEmotionPreviewLayout) {}
+  public dex(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    QLog.e(EmotionPreviewLayout.jdField_a_of_type_JavaLangString, 2, "bigImage load faild");
-    if ((this.a.jdField_a_of_type_AndroidWidgetEditText != null) && (this.a.b.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString())))
+    Object localObject;
+    int i;
+    int k;
+    if ((EmoticonMainPanel.g == 1) && (EmoticonMainPanel.h == 0) && (this.a.b != null) && (this.a.b.size() > 0))
     {
-      paramThrowable = (EmoticonKeywordForCloud)paramURLDrawable.getTag();
-      if (paramThrowable != null)
+      localObject = (EmoticonViewBinder)this.a.b.get(0);
+      if ((localObject != null) && ((localObject instanceof RecentAndFavPanelViewBinder)))
       {
-        paramURLDrawable.setTag(paramThrowable);
-        paramThrowable.loadedType = 3;
-      }
-      paramURLDrawable = this.a;
-      paramURLDrawable.f -= 1;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10002));
-      if (this.a.f == 0) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10000), 3000L);
-      }
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.e(EmotionPreviewLayout.jdField_a_of_type_JavaLangString, 2, "bigImage load successed");
-    if ((this.a.jdField_a_of_type_AndroidWidgetEditText != null) && (this.a.b.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString())))
-    {
-      paramURLDrawable = (EmoticonKeywordForCloud)paramURLDrawable.getTag();
-      if (paramURLDrawable != null)
-      {
-        paramURLDrawable.loadedType = 2;
-        if (this.a.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-          EmoticonKeyword localEmoticonKeyword;
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localEmoticonKeyword = (EmoticonKeyword)localIterator.next();
-          } while ((!localEmoticonKeyword.eId.equals(paramURLDrawable.eId)) || (!localEmoticonKeyword.epId.equals(paramURLDrawable.epId)));
+        localObject = (RecentAndFavPanelViewBinder)localObject;
+        ((RecentAndFavPanelViewBinder)localObject).a(true);
+        if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.notifyDataSetChanged();
         }
+        this.a.jdField_a_of_type_JavaUtilList = this.a.b;
+        i = ((RecentAndFavPanelViewBinder)localObject).a();
+        k = ((RecentAndFavPanelViewBinder)localObject).b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setRecent(true);
+        if (i != 0) {
+          break label258;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setVisibility(4);
       }
     }
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i == 0) {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      int j = this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
+      i = j;
+      if (j >= k) {
+        i = k - 1;
       }
-      paramURLDrawable = this.a;
-      paramURLDrawable.f -= 1;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10002));
-      if (this.a.f == 0) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10000), 3000L);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
+        this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
+        this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(i, false);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(true);
       }
       return;
+      label258:
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.a(i, false);
     }
   }
 }

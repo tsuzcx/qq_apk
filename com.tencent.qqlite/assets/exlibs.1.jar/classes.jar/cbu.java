@@ -1,55 +1,17 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 
 public class cbu
-  extends FriendListObserver
+  implements ConditionSearchManager.IConfigListener
 {
-  public cbu(ContactSearchFacade paramContactSearchFacade) {}
+  public cbu(AddContactsView paramAddContactsView) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, Object paramObject, int paramInt2, String paramString)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d(ContactSearchFacade.a, 2, "onSearchFriendResult  searchType = " + paramInt1 + " isSuccess = " + paramBoolean);
-    }
-    this.a.b();
-    Object localObject;
-    if (paramInt1 == 86) {
-      if (ContactSearchFacade.a(this.a) != null)
-      {
-        localObject = ContactSearchFacade.a(this.a);
-        if (i == 0) {
-          break label203;
-        }
-      }
-    }
-    for (;;)
+    if ((paramInt == 2) && (paramBoolean))
     {
-      ((ContactSearchFacade.ISearchListener)localObject).a(paramInt1, paramBoolean, paramObject, paramInt2, paramString);
-      return;
-      if (paramInt1 == 87)
-      {
-        if (paramBoolean)
-        {
-          localObject = (ArrayList)paramObject;
-          if ((localObject != null) && (ContactSearchFacade.a(this.a) != 80000002) && (((ArrayList)localObject).size() == 1)) {
-            ContactSearchFacade.a(this.a, ((SearchResult)((ArrayList)localObject).get(0)).b);
-          }
-          i = 0;
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(ContactSearchFacade.a, 2, "search failed error msg = " + paramString);
-        }
-      }
-      i = 0;
-      break;
-      label203:
-      paramInt1 = ContactSearchFacade.a(this.a);
+      this.a.b = true;
+      this.a.d();
     }
   }
 }

@@ -1,49 +1,50 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.biz.common.util.LoadedBack;
+import com.tencent.biz.common.util.LoadedBack2;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.smtt.sdk.WebView;
 
 public class rz
-  implements LoadedBack
+  implements LoadedBack2
 {
   public rz(OfflinePlugin paramOfflinePlugin) {}
   
-  public void a(int paramInt) {}
+  public void a()
+  {
+    Object localObject = this.a.mRuntime.a();
+    if (localObject == null) {}
+    CustomWebView localCustomWebView;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(localObject instanceof QQBrowserActivity));
+        localObject = (QQBrowserActivity)localObject;
+      } while (QQBrowserActivity.sTopActivity == localObject);
+      localCustomWebView = this.a.mRuntime.a();
+    } while (localCustomWebView == null);
+    localCustomWebView.loadUrl(((QQBrowserActivity)localObject).K);
+  }
+  
+  public void a(int paramInt)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.arg1 = 4;
+    localMessage.arg2 = paramInt;
+    this.a.a.sendMessage(localMessage);
+  }
   
   public void a(int paramInt, String paramString)
   {
-    if (paramInt == 9)
-    {
-      try
-      {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i(OfflinePlugin.a(this.a), 2, "checkUp loaded err:" + paramString);
-          }
-          paramString = null;
-        }
-      }
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      this.a.a.sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
-      return;
-    }
     paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 2;
+    paramString.arg1 = 5;
+    paramString.arg2 = paramInt;
     this.a.a.sendMessage(paramString);
   }
 }

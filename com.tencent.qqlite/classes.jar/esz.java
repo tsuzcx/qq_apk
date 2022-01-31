@@ -1,14 +1,8 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 
-public final class esz
-  implements MediaPlayer.OnCompletionListener
+public class esz
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
-  }
+  public static AntiFraudConfigFileUtil a = new AntiFraudConfigFileUtil(null);
 }
 
 

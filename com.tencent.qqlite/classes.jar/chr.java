@@ -1,26 +1,58 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class chr
-  extends ContactBindObserver
+  implements BaseActivityView.IPhoneContext
 {
-  public chr(RebindActivity paramRebindActivity) {}
+  public chr(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public View a()
   {
-    this.a.d();
-    if (paramBoolean)
-    {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("k_number", this.a.d);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      this.a.startActivityForResult(paramBundle, 1);
-      return;
-    }
-    this.a.b(2131363380);
+    return this.a.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public ImageView a()
+  {
+    return this.a.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView a()
+  {
+    return PhoneFrameActivity.a(this.a);
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public View b()
+  {
+    return this.a.jdField_b_of_type_AndroidViewView;
+  }
+  
+  public ImageView b()
+  {
+    return this.a.jdField_b_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return PhoneFrameActivity.c(this.a);
+  }
+  
+  public TextView c()
+  {
+    return PhoneFrameActivity.b(this.a);
+  }
+  
+  public TextView d()
+  {
+    return this.a.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

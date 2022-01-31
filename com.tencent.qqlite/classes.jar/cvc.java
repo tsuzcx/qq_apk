@@ -1,11 +1,13 @@
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class cvc
   extends Handler
@@ -17,45 +19,59 @@ public class cvc
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    ArrayList localArrayList;
+    int i;
+    Intent localIntent;
+    if (paramMessage.what == 990)
     {
+      paramMessage = QQAppInterface.a(this.a);
+      QQAppInterface.a(this.a, null);
+      QQAppInterface.a(this.a).removeMessages(990);
+      localArrayList = new ArrayList();
+      if ((paramMessage != null) && (paramMessage.size() > 0))
+      {
+        i = 0;
+        while (i < paramMessage.size())
+        {
+          localArrayList.add(this.a.a(1, (String)paramMessage.get(i), 0));
+          i += 1;
+        }
+        localIntent = new Intent("com.tencent.qqhead.getheadresp");
+        localIntent.putStringArrayListExtra("uinList", paramMessage);
+        localIntent.putStringArrayListExtra("headPathList", localArrayList);
+        this.a.a().sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+      }
+      if (QLog.isColorLevel()) {
+        QQUtils.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead resp uinList: ", paramMessage);
+      }
     }
     do
     {
-      return;
-      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
-      if (paramMessage != null) {
-        break;
+      do
+      {
+        return;
+      } while (paramMessage.what != 991);
+      paramMessage = QQAppInterface.b(this.a);
+      QQAppInterface.b(this.a, null);
+      QQAppInterface.a(this.a).removeMessages(991);
+      localArrayList = new ArrayList();
+      if ((paramMessage != null) && (paramMessage.size() > 0))
+      {
+        i = 0;
+        while (i < paramMessage.size())
+        {
+          localArrayList.add(this.a.a(4, (String)paramMessage.get(i), 0));
+          i += 1;
+        }
+        localIntent = new Intent("com.tencent.qqhead.getheadresp");
+        localIntent.setPackage(QQAppInterface.d(this.a).getPackageName());
+        localIntent.putStringArrayListExtra("uinList", paramMessage);
+        localIntent.putStringArrayListExtra("headPathList", localArrayList);
+        localIntent.putExtra("faceType", 4);
+        this.a.a().sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
       }
     } while (!QLog.isColorLevel());
-    QLog.d(QQAppInterface.jdField_b_of_type_JavaLangString, 2, "getOnlineFriend app is null");
-    return;
-    long l1 = QQAppInterface.bi;
-    long l2 = SystemClock.uptimeMillis();
-    long l3 = l2 - this.a.jdField_b_of_type_Long;
-    if ((!"0".equals(paramMessage.a())) && (l3 > QQAppInterface.bi))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQAppInterface.jdField_b_of_type_JavaLangString, 2, "getOnlineFriend");
-      }
-      this.a.jdField_b_of_type_Long = l2;
-      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
-      if (localFriendListHandler != null) {
-        localFriendListHandler.d(paramMessage.a(), (byte)0);
-      }
-    }
-    if (l3 < QQAppInterface.bi) {
-      l1 = QQAppInterface.bi - l3;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQAppInterface.jdField_b_of_type_JavaLangString, 2, "getOnlineFriend send next msg " + l1);
-      }
-      paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
-      this.a.a.sendMessageDelayed(paramMessage, l1);
-      return;
-    }
+    QQUtils.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead resp uinList: ", paramMessage);
   }
 }
 

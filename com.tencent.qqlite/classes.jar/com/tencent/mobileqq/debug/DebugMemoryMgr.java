@@ -14,7 +14,7 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ddc;
+import ddi;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -81,9 +81,9 @@ public class DebugMemoryMgr
       Iterator localIterator = jdField_a_of_type_JavaUtilMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        ddc localddc = (ddc)((Map.Entry)localIterator.next()).getValue();
-        if ((localddc != null) && (ddc.a(localddc) >= 5242880L)) {
-          localArrayList.add(Pair.create(ddc.a(localddc), Long.valueOf(ddc.a(localddc))));
+        ddi localddi = (ddi)((Map.Entry)localIterator.next()).getValue();
+        if ((localddi != null) && (ddi.a(localddi) >= 5242880L)) {
+          localArrayList.add(Pair.create(ddi.a(localddi), Long.valueOf(ddi.a(localddi))));
         }
       }
     }

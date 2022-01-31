@@ -19,7 +19,7 @@ public abstract class RecentItemBaseBuilder
 {
   public static final String a = "tag_recent_item_menu_item";
   public static final int[] a;
-  public static final int[] b = { 2130837943, 2130837950, 2130837947, 2130837953 };
+  public static final int[] b = { 2130837939, 2130837946, 2130837943, 2130837949 };
   public static final int c = -1;
   public static final int d = -2;
   public static final int e = -3;
@@ -31,7 +31,7 @@ public abstract class RecentItemBaseBuilder
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131363247, 2131363823, 2131364386, 2131364385 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131363250, 2131363814, 2131364368, 2131364367 };
   }
   
   public abstract View a(int paramInt, Object paramObject, Drawable paramDrawable, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener);
@@ -63,12 +63,12 @@ public abstract class RecentItemBaseBuilder
     }
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(0);
-    int k = paramContext.getResources().getDimensionPixelSize(2131493095);
-    int m = paramContext.getResources().getDimensionPixelSize(2131493094);
+    int k = paramContext.getResources().getDimensionPixelSize(2131493079);
+    int m = paramContext.getResources().getDimensionPixelSize(2131493078);
     int j = 0;
     while (j < paramInt)
     {
-      ImageView localImageView = (ImageView)LayoutInflater.from(paramContext).inflate(2130903607, null);
+      ImageView localImageView = (ImageView)LayoutInflater.from(paramContext).inflate(2130903591, null);
       localLinearLayout.addView(localImageView, new LinearLayout.LayoutParams(k, m));
       if ((paramArrayOfImageView != null) && (j < paramArrayOfImageView.length)) {
         paramArrayOfImageView[j] = localImageView;
@@ -90,7 +90,7 @@ public abstract class RecentItemBaseBuilder
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(0);
     localLinearLayout.addView(paramView1, new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout.addView(paramView2, new LinearLayout.LayoutParams(paramContext.getResources().getDimensionPixelSize(2131493095), -2));
+    localLinearLayout.addView(paramView2, new LinearLayout.LayoutParams(paramContext.getResources().getDimensionPixelSize(2131493079), -2));
     return localLinearLayout;
   }
   
@@ -118,7 +118,7 @@ public abstract class RecentItemBaseBuilder
           k = j;
           if ((m & 0xF00) == 256)
           {
-            a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0], paramInt, b[1], jdField_a_of_type_ArrayOfInt[1], 2130837942, paramOnClickListener);
+            a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0], paramInt, b[1], jdField_a_of_type_ArrayOfInt[1], 2130837938, paramOnClickListener);
             k = 1;
           }
         }
@@ -134,13 +134,13 @@ public abstract class RecentItemBaseBuilder
           if (i1 != 32) {
             break label362;
           }
-          a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[k], paramInt, b[2], jdField_a_of_type_ArrayOfInt[2], 2130837942, paramOnClickListener);
+          a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[k], paramInt, b[2], jdField_a_of_type_ArrayOfInt[2], 2130837938, paramOnClickListener);
           j = k + 1;
         }
       }
       if ((j < n) && (paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[j] != null) && ((m & 0xF) == 1))
       {
-        a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[j], paramInt, b[0], jdField_a_of_type_ArrayOfInt[0], 2130837944, paramOnClickListener);
+        a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[j], paramInt, b[0], jdField_a_of_type_ArrayOfInt[0], 2130837940, paramOnClickListener);
         j += 1;
       }
       for (;;)
@@ -165,12 +165,12 @@ public abstract class RecentItemBaseBuilder
             if (i1 != 16) {
               break;
             }
-            a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[k], paramInt, b[3], jdField_a_of_type_ArrayOfInt[3], 2130837942, paramOnClickListener);
+            a(paramRecentItemBaseHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[k], paramInt, b[3], jdField_a_of_type_ArrayOfInt[3], 2130837938, paramOnClickListener);
             j = k + 1;
             break;
           }
         }
-        j = paramContext.getResources().getDimensionPixelSize(2131493095) * j;
+        j = paramContext.getResources().getDimensionPixelSize(2131493079) * j;
         paramContext = (LinearLayout.LayoutParams)paramRecentItemBaseHolder.b.getLayoutParams();
         if ((paramContext != null) && (paramContext.width != j)) {
           paramContext.width = j;

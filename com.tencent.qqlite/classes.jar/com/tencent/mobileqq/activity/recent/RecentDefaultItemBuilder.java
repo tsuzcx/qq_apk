@@ -24,7 +24,7 @@ import java.util.List;
 public class RecentDefaultItemBuilder
   extends RecentItemBaseBuilder
 {
-  public static final int a = 2;
+  public static final int a = 0;
   public static int b = 0;
   private static final String b = "RecentDefaultItemBuilder";
   private List a;
@@ -43,16 +43,16 @@ public class RecentDefaultItemBuilder
     if (paramViewGroup == null)
     {
       paramOnDragModeChangedListener = new RecentDefaultItemBuilder.RecentItemDefaultHolder();
-      View localView = a(paramContext, 2130903605, paramOnDragModeChangedListener, 2);
+      View localView = a(paramContext, 2130903589, paramOnDragModeChangedListener, 0);
       paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131296453));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298713));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131298717));
-      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131297255));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298715));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298662));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131298666));
+      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131297251));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298664));
       paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(16908308));
-      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298345));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298714));
-      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298716));
+      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298305));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298663));
+      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298665));
       paramOnDragModeChangedListener.e = ((TextView)localView.findViewById(16908309));
       a(localView, paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView, paramContext);
       localView.setTag(paramOnDragModeChangedListener);
@@ -149,7 +149,7 @@ public class RecentDefaultItemBuilder
   {
     try
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131296884);
+      LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131296880);
       paramView = TimeManager.a().a("000000", 1225168973512L);
       if (TextUtils.isEmpty(paramView))
       {
@@ -348,7 +348,7 @@ public class RecentDefaultItemBuilder
             }
             else if (i == 3)
             {
-              j = 2130839375;
+              j = 2130839340;
               if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
               paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1);
               k = 99;
@@ -356,14 +356,14 @@ public class RecentDefaultItemBuilder
             }
             else if (i == 4)
             {
-              j = 2130839374;
+              j = 2130839339;
               paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
               k = 99;
               i = 3;
             }
             else
             {
-              j = 2130839374;
+              j = 2130839339;
               paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
               k = 99;
               i = 3;
@@ -389,7 +389,7 @@ public class RecentDefaultItemBuilder
       return;
     }
     paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837957);
+    paramRecentItemDefaultHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130837953);
   }
 }
 

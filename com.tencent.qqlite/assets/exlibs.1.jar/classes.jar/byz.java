@@ -1,15 +1,23 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class byz
-  implements View.OnClickListener
+  implements CustomMenuBar.OnMenuItemClickListener
 {
   public byz(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    paramView.setVisibility(8);
+    BusinessCmrTmpChatPie.a(this.a).setVisibility(0);
+    BusinessCmrTmpChatPie.a(this.a).sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = BusinessCmrTmpChatPie.a(this.a, paramInt1);
+    EnterpriseQQManager.a(BusinessCmrTmpChatPie.b(this.a)).a(paramString, this.a.a(), BusinessCmrTmpChatPie.a(this.a), this.a.a(), localButtonInfo);
+    ReportController.b(BusinessCmrTmpChatPie.c(this.a), "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
 }
 

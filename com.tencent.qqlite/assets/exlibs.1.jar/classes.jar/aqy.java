@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.utils.DialogUtil;
 
 public class aqy
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public aqy(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.a = ((Groups)paramView.getTag());
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131363784, 2131363785, this.a.a.group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
+  }
 }
 
 

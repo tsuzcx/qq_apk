@@ -1,16 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
 
 public class wq
-  implements QQProgressDialog.Callback
+  implements DialogInterface.OnClickListener
 {
   public wq(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onBackPressed();
-    AddFriendLogicActivity.a(this.a).a(null);
+    if (AddFriendLogicActivity.c(this.a) == 1)
+    {
+      this.a.finish();
+      return;
+    }
+    AddFriendLogicActivity.a(this.a);
   }
 }
 

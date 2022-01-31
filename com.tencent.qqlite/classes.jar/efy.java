@@ -7,13 +7,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class efy
   implements Runnable
 {
-  public efy(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public efy(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
     if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("delete_system_msg_item", this.jdField_a_of_type_Boolean).commit();
+      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
     }
   }
 }

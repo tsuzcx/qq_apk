@@ -7,8 +7,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import cwl;
-import cwn;
+import cwr;
+import cwt;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.concurrent.Executor;
@@ -65,7 +65,7 @@ public final class ThreadManager
     if (jdField_a_of_type_JavaUtilTimer == null) {}
     try
     {
-      jdField_a_of_type_JavaUtilTimer = new cwl("QQ_Timer");
+      jdField_a_of_type_JavaUtilTimer = new cwr("QQ_Timer");
       return jdField_a_of_type_JavaUtilTimer;
     }
     finally {}
@@ -73,7 +73,7 @@ public final class ThreadManager
   
   public static Executor a()
   {
-    return new cwn(null);
+    return new cwt(null);
   }
   
   public static void a() {}

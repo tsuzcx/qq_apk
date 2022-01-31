@@ -1,10 +1,9 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.QQSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class beq
@@ -14,11 +13,20 @@ public class beq
   
   public void onClick(View paramView)
   {
-    ((RedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32)).b(String.valueOf(100005));
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    paramView = new Intent(this.a.a(), IndividuationSetActivity.class);
-    this.a.a(paramView);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Trends_tab", "Personality_setting_native", 0, 0, "", "", "", "");
+    try
+    {
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        paramView = new ProfileActivity.AllInOne(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+        paramView.f = 1;
+        paramView.g = 8;
+        ProfileActivity.a(this.a.a(), paramView, 1009);
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_profile", 0, 0, "", "", "", "");
+      }
+      return;
+    }
+    finally {}
   }
 }
 

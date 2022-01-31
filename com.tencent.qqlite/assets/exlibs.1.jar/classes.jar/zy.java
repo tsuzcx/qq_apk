@@ -1,21 +1,16 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zy
-  implements ClickableColorSpanTextView.SpanClickListener
+  implements Runnable
 {
   public zy(BaseChatPie paramBaseChatPie) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131363138, 1).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

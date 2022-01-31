@@ -33,7 +33,6 @@ import org.json.JSONObject;
 public class RedTouchWebviewHandler
   extends VasWebviewJsPlugin
 {
-  private static final String OBJECT_NAME = "redpoint";
   public static String TAG = "RedTouchWebviewHandler";
   
   public void getAppInfo(String paramString)
@@ -174,7 +173,6 @@ public class RedTouchWebviewHandler
       }
       callJs(str1, new String[] { localJSONObject2.toString() });
       return;
-      localRedTouchManager.a(i);
       localObject = localRedTouchManager.a(Integer.parseInt((String)localObject));
       localJSONObject2.put("code", 0);
       if (((RedTouchInfo)localObject).i > 0)
@@ -326,7 +324,6 @@ public class RedTouchWebviewHandler
   public void reportRedTouch(String paramString)
   {
     Object localObject2 = "callback";
-    new JSONObject();
     localJSONObject = new JSONObject();
     localObject1 = localObject2;
     try
@@ -347,7 +344,7 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).uin.set(Long.parseLong(this.mRuntime.a().a()));
       localObject1 = paramString;
-      ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).clientver.set("3.3.0.544");
+      ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).clientver.set("3.4.0.607");
       localObject1 = paramString;
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).platid.set(109);
       localObject1 = paramString;
@@ -414,7 +411,6 @@ public class RedTouchWebviewHandler
   
   public void setAppInfo(String paramString)
   {
-    new JSONObject();
     JSONObject localJSONObject = new JSONObject();
     new JSONObject();
     for (;;)

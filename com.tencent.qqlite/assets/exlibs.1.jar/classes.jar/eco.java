@@ -1,193 +1,161 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.AssetManager;
-import android.os.AsyncTask;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.StateTag;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity.ItemViewHolder;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity.MoreViewHolder;
 import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 public class eco
-  extends AsyncTask
+  extends BaseAdapter
 {
-  public eco(StatusManager paramStatusManager) {}
+  private eco(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  private void a(long paramLong)
+  public int getCount()
   {
-    long l = StatusManager.a(this.a).getLong("k_icon", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 65L);
+    int i = 1;
+    int j = StatusHistoryActivity.a(this.a).size();
+    if (j == 0) {
+      return 1;
     }
-    Object localObject;
-    if (l < paramLong)
-    {
-      localObject = null;
-      if (paramLong <= 65L) {
-        break label180;
-      }
-    }
+    if (StatusHistoryActivity.a(this.a) != 0) {}
     for (;;)
     {
-      try
-      {
-        InputStream localInputStream = StatusManager.a(this.a).a().getAssets().open("rich_status.xml");
-        localObject = localInputStream;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-      }
-      localObject = (SparseArray)StatusManager.a(this.a, localObject)[0];
-      if (StatusManager.a(this.a, (SparseArray)localObject, StatusManager.a(this.a))) {
-        StatusManager.a(this.a).edit().putLong("k_icon", paramLong).commit();
-      }
-      return;
-      try
-      {
-        label180:
-        FileInputStream localFileInputStream = new FileInputStream(new File(StatusManager.a(this.a).a().getFilesDir(), "rich_status.xml"));
-        localObject = localFileInputStream;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        localFileNotFoundException.printStackTrace();
-      }
+      return i + j;
+      i = 0;
     }
   }
   
-  protected Integer a(Void... arg1)
+  public Object getItem(int paramInt)
   {
-    long l = StatusManager.a(this.a).getLong("k_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 65L);
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return getItemViewType(paramInt);
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int i = StatusHistoryActivity.a(this.a).size();
+    if (i == 0) {
+      return 2;
     }
-    if (l > 65L) {}
-    ArrayList localArrayList;
-    label226:
-    for (;;)
+    if (paramInt < i) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    if (i == 2)
     {
-      try
-      {
-        ??? = new FileInputStream(new File(StatusManager.a(this.a).a().getFilesDir(), "rich_status.xml"));
-        if (??? != null) {
-          break label226;
-        }
-        Object localObject1;
-        ??? = null;
-      }
-      catch (FileNotFoundException ???)
-      {
-        try
-        {
-          localObject1 = StatusManager.a(this.a).a().getAssets().open("rich_status.xml");
-          ??? = (Void[])localObject1;
-          l = 65L;
-          ??? = StatusManager.a(this.a, ???);
-          localObject1 = (SparseArray)???[0];
-          localArrayList = (ArrayList)???[1];
-          if ((localObject1 != null) && (((SparseArray)localObject1).size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
-            break;
-          }
-          publishProgress(new Integer[] { Integer.valueOf(-1) });
-          a(l);
-          return Integer.valueOf(100);
-        }
-        catch (IOException localIOException)
-        {
-          localIOException.printStackTrace();
-        }
-        ??? = ???;
-        ???.printStackTrace();
-      }
+      StatusHistoryActivity.a(this.a).setLayoutParams(new AbsListView.LayoutParams(StatusHistoryActivity.a(this.a).getWidth(), StatusHistoryActivity.a(this.a).getHeight()));
+      return StatusHistoryActivity.a(this.a);
     }
-    for (;;)
+    if (i == 0)
     {
-      int i;
-      int j;
-      synchronized (StatusManager.a(this.a))
+      RichStatus localRichStatus;
+      if (paramView == null)
       {
-        if ((!isCancelled()) && (StatusManager.a(this.a).size() == 0))
-        {
-          StatusManager.a(this.a, localIOException);
-          StatusManager.a(this.a).clear();
-          StatusManager.a(this.a).addAll(localArrayList);
-          publishProgress(new Integer[] { Integer.valueOf(102) });
-          i = 0;
-          if (i < StatusManager.a(this.a).size())
-          {
-            StateTag localStateTag = (StateTag)StatusManager.a(this.a).get(i);
-            if (!localStateTag.jdField_a_of_type_JavaLangString.equals("日常生活")) {
-              break label425;
-            }
-            j = 0;
-            if (j >= localStateTag.jdField_a_of_type_JavaUtilArrayList.size()) {
-              break label425;
-            }
-            if (((Integer)localStateTag.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue() != 15) {
-              break label418;
-            }
-            localStateTag.jdField_a_of_type_JavaUtilArrayList.remove(j);
-            break label418;
-          }
+        paramView = LayoutInflater.from(this.a).inflate(2130903644, null);
+        paramView.setFocusable(true);
+        paramViewGroup = new StatusHistoryActivity.ItemViewHolder();
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298813));
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView = ((ClickableColorSpanTextView)paramView.findViewById(2131298814));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298812));
+        paramViewGroup.b = paramView.findViewById(2131298811);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setTag(paramViewGroup);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setSpanClickListener(this.a);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131296441));
+        paramViewGroup.jdField_a_of_type_AndroidViewView = paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.findViewById(2131297123);
+        paramView.setTag(paramViewGroup);
+        paramView.setClickable(true);
+        localRichStatus = (RichStatus)StatusHistoryActivity.a(this.a).get(paramInt);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = localRichStatus;
+        if (!TextUtils.isEmpty(localRichStatus.c)) {
+          break label352;
         }
-        else
-        {
-          cancel(true);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839360);
+        label240:
+        if (StatusHistoryActivity.a(this.a).size() != 1) {
+          break label380;
+        }
+        paramViewGroup.b.setVisibility(8);
+      }
+      for (;;)
+      {
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setText(localRichStatus.a(null, this.a.getResources().getColor(2131427469)));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRichStatus.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, TimeFormatterUtils.a(this.a, 3, localRichStatus.a * 1000L) + "    "));
+        return paramView;
+        paramViewGroup = (StatusHistoryActivity.ItemViewHolder)paramView.getTag();
+        break;
+        label352:
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(StatusHistoryActivity.a(this.a).a(localRichStatus.b, 201));
+        break label240;
+        label380:
+        paramViewGroup.b.setVisibility(0);
+        if (paramInt == 0) {
+          paramViewGroup.b.setBackgroundResource(2130839363);
+        } else if (paramInt == StatusHistoryActivity.a(this.a).size() - 1) {
+          paramViewGroup.b.setBackgroundResource(2130839361);
+        } else {
+          paramViewGroup.b.setBackgroundResource(2130839362);
         }
       }
-      label418:
-      j += 1;
-      continue;
-      label425:
-      i += 1;
     }
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
-    }
-    StatusManager.a(this.a, null);
-    if (101 == StatusManager.a(this.a, false)) {
-      StatusManager.a(this.a);
-    }
-    this.a.a(false);
-  }
-  
-  protected void a(Integer... paramVarArgs)
-  {
-    int i = paramVarArgs[0].intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
-    }
-    if (StatusManager.a(this.a) != null)
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      paramVarArgs = StatusManager.a(this.a).iterator();
-      while (paramVarArgs.hasNext()) {
-        ((IActionListener)paramVarArgs.next()).a(i, 300);
-      }
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903239, null);
+      paramViewGroup.setOnClickListener(this.a);
+      paramView = new StatusHistoryActivity.MoreViewHolder();
+      paramViewGroup.setTag(paramView);
+      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131296558));
+      paramViewGroup.findViewById(2131297310).setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131297311));
     }
+    if (StatusHistoryActivity.a(this.a) == 1)
+    {
+      StatusHistoryActivity.a(this.a, 2);
+      this.a.a(false, false);
+    }
+    paramView = (StatusHistoryActivity.MoreViewHolder)paramViewGroup.getTag();
+    if (StatusHistoryActivity.a(this.a) == 3)
+    {
+      paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("暂无更多，请重试。");
+      return paramViewGroup;
+    }
+    paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText("加载更多中...");
+    return paramViewGroup;
   }
   
-  protected void onCancelled()
+  public int getViewTypeCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
-    }
-    StatusManager.a(this.a, null);
+    return 3;
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return 2 != getItemViewType(paramInt);
   }
 }
 

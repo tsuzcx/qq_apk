@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ame;
+import amc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,20 +20,20 @@ public class Face2FaceActivity
   
   private void c()
   {
-    ((ImageView)findViewById(2131297129)).setOnClickListener(this);
-    ((ImageView)findViewById(2131297130)).setOnClickListener(this);
-    setTitle(getString(2131364088), getString(2131364088));
-    TextView localTextView = (TextView)findViewById(2131296901);
+    ((ImageView)findViewById(2131297125)).setOnClickListener(this);
+    ((ImageView)findViewById(2131297126)).setOnClickListener(this);
+    setTitle(getString(2131364075), getString(2131364075));
+    TextView localTextView = (TextView)findViewById(2131296897);
     localTextView.setVisibility(0);
     localTextView.setContentDescription("返回，按钮");
-    localTextView.setOnClickListener(new ame(this));
+    localTextView.setOnClickListener(new amc(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903198);
-    d(2130837633);
+    d(2130837635);
     c();
     return true;
   }
@@ -46,7 +46,7 @@ public class Face2FaceActivity
     {
     default: 
       return;
-    case 2131297129: 
+    case 2131297125: 
       localIntent.setClass(this, AddFriendScannerActivity.class);
       startActivity(localIntent);
       ReportController.b(this.app, "CliOper", "", "", "0X80049F1", "0X80049F1", 0, 0, "", "", "", "");

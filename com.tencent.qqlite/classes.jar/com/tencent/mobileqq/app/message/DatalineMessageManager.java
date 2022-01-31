@@ -21,9 +21,9 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cyg;
-import cyh;
-import cyi;
+import cym;
+import cyn;
+import cyo;
 import java.util.Map;
 
 public class DatalineMessageManager
@@ -125,7 +125,7 @@ public class DatalineMessageManager
     if (Thread.currentThread() == localLooper.getThread()) {
       return a(localDataLineMsgSet);
     }
-    new Handler(localLooper).post(new cyh(this, localDataLineMsgSet));
+    new Handler(localLooper).post(new cyn(this, localDataLineMsgSet));
     return 0;
   }
   
@@ -163,7 +163,7 @@ public class DatalineMessageManager
       }
       return i;
     }
-    new Handler((Looper)localObject).post(new cyi(this, paramDataLineMsgSet));
+    new Handler((Looper)localObject).post(new cyo(this, paramDataLineMsgSet));
     return 0;
   }
   
@@ -221,7 +221,7 @@ public class DatalineMessageManager
         }
       }
     }
-    new Handler((Looper)localObject2).post(new cyg(this, paramDataLineMsgRecord, (WaitEvent)localObject1));
+    new Handler((Looper)localObject2).post(new cym(this, paramDataLineMsgRecord, (WaitEvent)localObject1));
     ((WaitEvent)localObject1).a(-1L);
     return 0L;
   }

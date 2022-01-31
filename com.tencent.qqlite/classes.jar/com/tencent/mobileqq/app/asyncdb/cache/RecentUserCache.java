@@ -11,9 +11,9 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import cws;
-import cwt;
-import cwu;
+import cwy;
+import cwz;
+import cxa;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,7 +33,7 @@ public class RecentUserCache
   private static final int jdField_b_of_type_Int = 90;
   private static final String jdField_b_of_type_JavaLangString = "check_newfriend_when_upgrade";
   private static final String c = "new_friend_upgrade_pref";
-  Comparator jdField_b_of_type_JavaUtilComparator = new cwt(this);
+  Comparator jdField_b_of_type_JavaUtilComparator = new cwz(this);
   protected ConcurrentHashMap b;
   
   public RecentUserCache(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
@@ -105,7 +105,7 @@ public class RecentUserCache
     {
       paramList.remove(localObject2);
       long l = localObject2.getId();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cws(this, l));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cwy(this, l));
     }
   }
   
@@ -123,7 +123,7 @@ public class RecentUserCache
     }
     return;
     label71:
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cwu(this, localSharedPreferences));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cxa(this, localSharedPreferences));
   }
   
   public RecentUser a(String paramString, int paramInt)
@@ -210,6 +210,7 @@ public class RecentUserCache
                 ((RecentUser)localObject1).type = paramRecentUser.type;
                 ((RecentUser)localObject1).displayName = paramRecentUser.displayName;
                 ((RecentUser)localObject1).lastmsgtime = paramRecentUser.lastmsgtime;
+                ((RecentUser)localObject1).showUpTime = Math.max(((RecentUser)localObject1).showUpTime, paramRecentUser.showUpTime);
                 ((RecentUser)localObject1).troopUin = paramRecentUser.troopUin;
                 ((RecentUser)localObject1).lastmsgdrafttime = paramRecentUser.lastmsgdrafttime;
                 ((RecentUser)localObject1).msgData = paramRecentUser.msgData;

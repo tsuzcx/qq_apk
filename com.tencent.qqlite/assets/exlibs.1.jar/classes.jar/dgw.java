@@ -1,56 +1,32 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
-import com.tencent.widget.MenuPopupDialog;
+import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
 
 public class dgw
-  implements SlideDetectListView.OnSlideListener
+  implements Runnable
 {
-  public dgw(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dgw(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void run()
   {
-    if (LocalFileBrowserActivity.a(this.a) != null) {
-      LocalFileBrowserActivity.a(this.a).dismiss();
-    }
-    if (!this.a.f())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      paramView.setPressed(false);
-    }
-    do
-    {
+    if (this.a.c) {
       return;
-      paramSlideDetectListView = paramView.findViewById(2131296441);
-      paramView = (FileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getItem(paramInt);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131297127);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
-  }
-  
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    paramSlideDetectListView = paramView.findViewById(2131296441);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-    if (paramSlideDetectListView != null)
-    {
-      ((ShaderAnimLayout)paramSlideDetectListView).d();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131297127);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
     }
-    LocalFileBrowserActivity.a(this.a);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
+    localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eTranslateAnim;
+    localFilePreviewAnim.jdField_a_of_type_Int = 250;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+    this.a.c = true;
   }
 }
 

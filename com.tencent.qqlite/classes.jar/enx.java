@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
 
 public class enx
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public enx(VideoPlayLogic paramVideoPlayLogic) {}
+  public enx(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    VideoPlayLogic.a(this.a);
+    this.a.a(false);
   }
 }
 

@@ -1,17 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.plugin.IPluginManager;
+import common.qzone.component.cache.common.SoftHashMap;
 
-public final class fju
-  implements View.OnClickListener
+public class fju
+  extends fjq
 {
-  public void onClick(View paramView)
+  fju(SoftHashMap paramSoftHashMap)
   {
-    if ((IPluginManager.a() != null) && (IPluginManager.a().isShowing())) {
-      IPluginManager.a().dismiss();
-    }
-    IPluginManager.a(null);
+    super(paramSoftHashMap);
+  }
+  
+  public Object next()
+  {
+    return fjn.a(a());
   }
 }
 

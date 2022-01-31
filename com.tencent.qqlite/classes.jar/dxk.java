@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.maproam.Utils;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class dxk
-  implements DialogInterface.OnDismissListener
+class dxk
+  implements View.OnClickListener
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
+  dxk(dxh paramdxh, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == Utils.a) {
-      Utils.a = null;
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

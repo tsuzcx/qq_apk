@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aql
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
   public aql(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    paramDialogInterface.dismiss();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.a()))) {}
+    while (this.a.a == null) {
+      return;
+    }
+    paramString = GesturePWDUnlockActivity.a(this.a, this.a.app.a(), true);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

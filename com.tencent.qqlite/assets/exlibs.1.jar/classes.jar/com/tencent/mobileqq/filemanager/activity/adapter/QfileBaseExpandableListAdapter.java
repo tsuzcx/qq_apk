@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.widget.MotionViewSetter;
 import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
-import dhm;
+import dhs;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -78,13 +78,13 @@ public abstract class QfileBaseExpandableListAdapter
   
   public void a(View paramView, int paramInt)
   {
-    Object localObject = (dhm)paramView.getTag();
+    Object localObject = (dhs)paramView.getTag();
     if (localObject == null)
     {
-      localObject = new dhm();
-      paramView.findViewById(2131296847).setVisibility(0);
-      ((dhm)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296848));
-      ((dhm)localObject).b = ((TextView)paramView.findViewById(2131296849));
+      localObject = new dhs();
+      paramView.findViewById(2131296843).setVisibility(0);
+      ((dhs)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296844));
+      ((dhs)localObject).b = ((TextView)paramView.findViewById(2131296845));
       paramView.setTag(localObject);
     }
     for (paramView = (View)localObject;; paramView = (View)localObject)
@@ -203,7 +203,7 @@ public abstract class QfileBaseExpandableListAdapter
     Object localObject;
     if (paramView != null)
     {
-      localObject = (dhm)paramView.getTag();
+      localObject = (dhs)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
     }
@@ -218,9 +218,9 @@ public abstract class QfileBaseExpandableListAdapter
       paramViewGroup.setContentDescription((String)localObject + "分组已展开，双击此处可收起分组");
       return paramViewGroup;
       paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903119, paramViewGroup, false);
-      paramView = new dhm();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296848));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131296849));
+      paramView = new dhs();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296844));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131296845));
       paramViewGroup.setTag(paramView);
     }
     paramViewGroup.setContentDescription((String)localObject + "分组已折叠，双击此处可展开分组");

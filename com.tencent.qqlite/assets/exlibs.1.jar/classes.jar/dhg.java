@@ -1,20 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
 public class dhg
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public int b;
+  public dhg(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public dhg(LocalFileBrowserActivity paramLocalFileBrowserActivity)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public dhg(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

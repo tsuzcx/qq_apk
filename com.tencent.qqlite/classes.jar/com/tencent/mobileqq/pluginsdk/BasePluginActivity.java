@@ -54,7 +54,7 @@ public class BasePluginActivity
   protected Activity mOutActivity = null;
   protected PackageInfo mPackageInfo;
   protected String mPluginID;
-  protected boolean mUseQqResources;
+  protected int mPluginResourcesType;
   protected boolean mUseSkinEngine = false;
   View mViewShadow;
   SkinnableActivityProcesser processer;
@@ -151,11 +151,11 @@ public class BasePluginActivity
   }
   
   /* Error */
-  public void IInit(String paramString1, String paramString2, Activity paramActivity, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean1, boolean paramBoolean2)
+  public void IInit(String paramString1, String paramString2, Activity paramActivity, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean, int paramInt)
   {
     // Byte code:
     //   0: getstatic 214	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
-    //   3: ifeq +47 -> 50
+    //   3: ifeq +49 -> 52
     //   6: ldc 216
     //   8: new 218	java/lang/StringBuilder
     //   11: dup
@@ -170,290 +170,283 @@ public class BasePluginActivity
     //   31: invokevirtual 230	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   34: ldc 227
     //   36: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: iload 7
-    //   41: invokevirtual 230	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 238	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;)V
-    //   50: aload_0
-    //   51: iconst_1
-    //   52: putfield 55	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
-    //   55: aload_0
-    //   56: aload 4
-    //   58: putfield 73	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mDexClassLoader	Ljava/lang/ClassLoader;
-    //   61: aload_0
-    //   62: aload_3
-    //   63: putfield 57	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
-    //   66: aload_0
-    //   67: aload_1
-    //   68: putfield 240	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginID	Ljava/lang/String;
-    //   71: aload_0
-    //   72: aload_2
-    //   73: putfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mApkFilePath	Ljava/lang/String;
-    //   76: aload_0
-    //   77: aload 5
-    //   79: putfield 242	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPackageInfo	Landroid/content/pm/PackageInfo;
-    //   82: aload_0
-    //   83: iload 7
-    //   85: putfield 244	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mUseQqResources	Z
-    //   88: aload_0
-    //   89: getfield 59	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
-    //   92: ifnonnull +33 -> 125
-    //   95: iload 7
-    //   97: ifeq +335 -> 432
-    //   100: aload_0
-    //   101: new 246	com/tencent/mobileqq/pluginsdk/PluginContext
-    //   104: dup
-    //   105: aload_3
-    //   106: iconst_0
-    //   107: aload_0
-    //   108: getfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mApkFilePath	Ljava/lang/String;
-    //   111: aload_0
-    //   112: getfield 73	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mDexClassLoader	Ljava/lang/ClassLoader;
-    //   115: aload_3
-    //   116: invokevirtual 201	android/app/Activity:getResources	()Landroid/content/res/Resources;
-    //   119: invokespecial 249	com/tencent/mobileqq/pluginsdk/PluginContext:<init>	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/ClassLoader;Landroid/content/res/Resources;)V
-    //   122: putfield 59	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
-    //   125: aload_0
+    //   39: aload_0
+    //   40: getfield 232	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginResourcesType	I
+    //   43: invokevirtual 235	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 243	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: aload_0
+    //   53: iconst_1
+    //   54: putfield 56	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
+    //   57: aload_0
+    //   58: aload 4
+    //   60: putfield 74	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mDexClassLoader	Ljava/lang/ClassLoader;
+    //   63: aload_0
+    //   64: aload_3
+    //   65: putfield 58	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
+    //   68: aload_0
+    //   69: aload_1
+    //   70: putfield 245	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginID	Ljava/lang/String;
+    //   73: aload_0
+    //   74: aload_2
+    //   75: putfield 70	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mApkFilePath	Ljava/lang/String;
+    //   78: aload_0
+    //   79: aload 5
+    //   81: putfield 247	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPackageInfo	Landroid/content/pm/PackageInfo;
+    //   84: aload_0
+    //   85: iload 7
+    //   87: putfield 232	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginResourcesType	I
+    //   90: aload_0
+    //   91: getfield 60	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
+    //   94: ifnonnull +32 -> 126
+    //   97: aload_0
+    //   98: new 249	com/tencent/mobileqq/pluginsdk/PluginContext
+    //   101: dup
+    //   102: aload_3
+    //   103: iconst_0
+    //   104: aload_0
+    //   105: getfield 70	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mApkFilePath	Ljava/lang/String;
+    //   108: aload_0
+    //   109: getfield 74	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mDexClassLoader	Ljava/lang/ClassLoader;
+    //   112: aload_3
+    //   113: invokevirtual 201	android/app/Activity:getResources	()Landroid/content/res/Resources;
+    //   116: aload_0
+    //   117: getfield 232	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginResourcesType	I
+    //   120: invokespecial 252	com/tencent/mobileqq/pluginsdk/PluginContext:<init>	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/ClassLoader;Landroid/content/res/Resources;I)V
+    //   123: putfield 60	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
     //   126: aload_0
-    //   127: getfield 59	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
-    //   130: invokevirtual 252	com/tencent/mobileqq/pluginsdk/BasePluginActivity:attachBaseContext	(Landroid/content/Context;)V
-    //   133: aload_0
-    //   134: iload 6
-    //   136: putfield 71	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mUseSkinEngine	Z
-    //   139: getstatic 47	com/tencent/mobileqq/pluginsdk/BasePluginActivity:sSkilEngineInit	Z
-    //   142: ifne +289 -> 431
-    //   145: iload 6
-    //   147: ifeq +284 -> 431
-    //   150: iconst_1
-    //   151: ifeq +280 -> 431
-    //   154: aload_0
-    //   155: getfield 244	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mUseQqResources	Z
-    //   158: ifne +328 -> 486
-    //   161: new 218	java/lang/StringBuilder
-    //   164: dup
-    //   165: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   168: aload 5
-    //   170: getfield 257	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
-    //   173: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: ldc_w 259
-    //   179: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: astore_3
-    //   186: aconst_null
-    //   187: astore_1
-    //   188: aload 4
-    //   190: new 218	java/lang/StringBuilder
-    //   193: dup
-    //   194: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   197: aload_3
-    //   198: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: ldc_w 261
-    //   204: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokevirtual 267	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   213: astore_2
-    //   214: aload_2
-    //   215: astore_1
-    //   216: aconst_null
-    //   217: astore_2
-    //   218: aload 4
-    //   220: new 218	java/lang/StringBuilder
-    //   223: dup
-    //   224: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   227: aload_3
-    //   228: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   231: ldc_w 269
-    //   234: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokevirtual 267	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   243: astore_3
-    //   244: aload_3
-    //   245: astore_2
-    //   246: iconst_0
-    //   247: istore 10
-    //   249: iload 10
-    //   251: istore 8
-    //   253: aload_1
-    //   254: ifnull +77 -> 331
-    //   257: aload_1
-    //   258: invokevirtual 273	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
-    //   261: astore_3
-    //   262: aload_3
-    //   263: arraylength
-    //   264: istore 11
-    //   266: iconst_0
-    //   267: istore 9
-    //   269: iload 10
-    //   271: istore 8
-    //   273: iload 9
-    //   275: iload 11
-    //   277: if_icmpge +54 -> 331
-    //   280: aload_3
-    //   281: iload 9
-    //   283: aaload
-    //   284: astore 4
-    //   286: aload 4
-    //   288: invokevirtual 279	java/lang/reflect/Field:getModifiers	()I
-    //   291: bipush 25
-    //   293: iand
-    //   294: bipush 25
-    //   296: if_icmpne +162 -> 458
-    //   299: aload 4
-    //   301: invokevirtual 283	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   304: getstatic 289	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   307: invokevirtual 295	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   310: ifeq +148 -> 458
-    //   313: aload 4
-    //   315: aconst_null
-    //   316: invokevirtual 299	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
-    //   319: istore 8
-    //   321: iload 8
-    //   323: bipush 16
-    //   325: ishr
-    //   326: bipush 16
-    //   328: ishl
-    //   329: istore 8
-    //   331: iconst_0
-    //   332: istore 11
-    //   334: iload 11
-    //   336: istore 10
-    //   338: aload_2
-    //   339: ifnull +77 -> 416
-    //   342: aload_2
-    //   343: invokevirtual 273	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
-    //   346: astore_3
-    //   347: aload_3
-    //   348: arraylength
-    //   349: istore 12
-    //   351: iconst_0
-    //   352: istore 9
-    //   354: iload 11
-    //   356: istore 10
-    //   358: iload 9
-    //   360: iload 12
-    //   362: if_icmpge +54 -> 416
-    //   365: aload_3
-    //   366: iload 9
-    //   368: aaload
-    //   369: astore 4
-    //   371: aload 4
-    //   373: invokevirtual 279	java/lang/reflect/Field:getModifiers	()I
-    //   376: bipush 25
-    //   378: iand
-    //   379: bipush 25
-    //   381: if_icmpne +88 -> 469
-    //   384: aload 4
-    //   386: invokevirtual 283	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   389: getstatic 289	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   392: invokevirtual 295	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   395: ifeq +74 -> 469
-    //   398: aload 4
-    //   400: aconst_null
-    //   401: invokevirtual 299	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
-    //   404: istore 10
-    //   406: iload 10
-    //   408: bipush 16
-    //   410: ishr
-    //   411: bipush 16
-    //   413: ishl
-    //   414: istore 10
-    //   416: aload_0
-    //   417: aload_1
-    //   418: iload 8
-    //   420: aload_2
-    //   421: iload 10
-    //   423: aconst_null
-    //   424: invokestatic 305	com/tencent/theme/SkinEngine:init	(Landroid/content/Context;Ljava/lang/Class;ILjava/lang/Class;ILjava/io/File;)V
-    //   427: iconst_1
-    //   428: putstatic 47	com/tencent/mobileqq/pluginsdk/BasePluginActivity:sSkilEngineInit	Z
-    //   431: return
-    //   432: aload_0
-    //   433: new 246	com/tencent/mobileqq/pluginsdk/PluginContext
-    //   436: dup
-    //   437: aload_3
-    //   438: iconst_0
-    //   439: aload_0
-    //   440: getfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mApkFilePath	Ljava/lang/String;
-    //   443: aload_0
-    //   444: getfield 73	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mDexClassLoader	Ljava/lang/ClassLoader;
-    //   447: invokespecial 308	com/tencent/mobileqq/pluginsdk/PluginContext:<init>	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/ClassLoader;)V
-    //   450: putfield 59	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
-    //   453: goto -328 -> 125
-    //   456: astore 4
-    //   458: iload 9
-    //   460: iconst_1
-    //   461: iadd
-    //   462: istore 9
-    //   464: goto -195 -> 269
-    //   467: astore 4
-    //   469: iload 9
-    //   471: iconst_1
-    //   472: iadd
-    //   473: istore 9
-    //   475: goto -121 -> 354
-    //   478: astore_1
-    //   479: invokestatic 312	com/tencent/theme/SkinEngine:getInstances	()Lcom/tencent/theme/SkinEngine;
-    //   482: invokevirtual 315	com/tencent/theme/SkinEngine:unInit	()V
-    //   485: return
-    //   486: ldc_w 317
-    //   489: invokestatic 320	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   492: ldc_w 322
-    //   495: iconst_1
-    //   496: anewarray 96	java/lang/Class
-    //   499: dup
-    //   500: iconst_0
-    //   501: ldc 195
-    //   503: aastore
-    //   504: invokevirtual 326	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   507: invokestatic 332	mqq/app/MobileQQ:getMobileQQ	()Lmqq/app/MobileQQ;
-    //   510: iconst_1
-    //   511: anewarray 291	java/lang/Object
-    //   514: dup
-    //   515: iconst_0
-    //   516: aload_0
-    //   517: aastore
-    //   518: invokevirtual 338	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   521: pop
-    //   522: iconst_1
-    //   523: putstatic 47	com/tencent/mobileqq/pluginsdk/BasePluginActivity:sSkilEngineInit	Z
-    //   526: return
-    //   527: astore_1
-    //   528: aload_1
-    //   529: invokevirtual 341	java/lang/Exception:printStackTrace	()V
-    //   532: return
-    //   533: astore 4
-    //   535: goto -77 -> 458
-    //   538: astore 4
-    //   540: goto -71 -> 469
-    //   543: astore_3
-    //   544: goto -298 -> 246
-    //   547: astore_2
-    //   548: goto -332 -> 216
+    //   127: aload_0
+    //   128: getfield 60	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mContext	Landroid/content/Context;
+    //   131: invokevirtual 255	com/tencent/mobileqq/pluginsdk/BasePluginActivity:attachBaseContext	(Landroid/content/Context;)V
+    //   134: aload_0
+    //   135: iload 6
+    //   137: putfield 72	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mUseSkinEngine	Z
+    //   140: getstatic 48	com/tencent/mobileqq/pluginsdk/BasePluginActivity:sSkilEngineInit	Z
+    //   143: ifne +298 -> 441
+    //   146: iload 6
+    //   148: ifeq +293 -> 441
+    //   151: iconst_1
+    //   152: ifeq +289 -> 441
+    //   155: aload_0
+    //   156: getfield 232	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginResourcesType	I
+    //   159: iconst_1
+    //   160: if_icmpeq +312 -> 472
+    //   163: aload_0
+    //   164: getfield 232	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mPluginResourcesType	I
+    //   167: iconst_2
+    //   168: if_icmpeq +304 -> 472
+    //   171: new 218	java/lang/StringBuilder
+    //   174: dup
+    //   175: invokespecial 219	java/lang/StringBuilder:<init>	()V
+    //   178: aload 5
+    //   180: getfield 260	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
+    //   183: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: ldc_w 262
+    //   189: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: astore_3
+    //   196: aconst_null
+    //   197: astore_1
+    //   198: aload 4
+    //   200: new 218	java/lang/StringBuilder
+    //   203: dup
+    //   204: invokespecial 219	java/lang/StringBuilder:<init>	()V
+    //   207: aload_3
+    //   208: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: ldc_w 264
+    //   214: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: invokevirtual 270	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   223: astore_2
+    //   224: aload_2
+    //   225: astore_1
+    //   226: aconst_null
+    //   227: astore_2
+    //   228: aload 4
+    //   230: new 218	java/lang/StringBuilder
+    //   233: dup
+    //   234: invokespecial 219	java/lang/StringBuilder:<init>	()V
+    //   237: aload_3
+    //   238: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: ldc_w 272
+    //   244: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: invokevirtual 270	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   253: astore_3
+    //   254: aload_3
+    //   255: astore_2
+    //   256: iconst_0
+    //   257: istore 9
+    //   259: iload 9
+    //   261: istore 7
+    //   263: aload_1
+    //   264: ifnull +77 -> 341
+    //   267: aload_1
+    //   268: invokevirtual 276	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   271: astore_3
+    //   272: aload_3
+    //   273: arraylength
+    //   274: istore 10
+    //   276: iconst_0
+    //   277: istore 8
+    //   279: iload 9
+    //   281: istore 7
+    //   283: iload 8
+    //   285: iload 10
+    //   287: if_icmpge +54 -> 341
+    //   290: aload_3
+    //   291: iload 8
+    //   293: aaload
+    //   294: astore 4
+    //   296: aload 4
+    //   298: invokevirtual 282	java/lang/reflect/Field:getModifiers	()I
+    //   301: bipush 25
+    //   303: iand
+    //   304: bipush 25
+    //   306: if_icmpne +138 -> 444
+    //   309: aload 4
+    //   311: invokevirtual 286	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   314: getstatic 292	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   317: invokevirtual 298	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   320: ifeq +124 -> 444
+    //   323: aload 4
+    //   325: aconst_null
+    //   326: invokevirtual 302	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
+    //   329: istore 7
+    //   331: iload 7
+    //   333: bipush 16
+    //   335: ishr
+    //   336: bipush 16
+    //   338: ishl
+    //   339: istore 7
+    //   341: iconst_0
+    //   342: istore 10
+    //   344: iload 10
+    //   346: istore 9
+    //   348: aload_2
+    //   349: ifnull +77 -> 426
+    //   352: aload_2
+    //   353: invokevirtual 276	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   356: astore_3
+    //   357: aload_3
+    //   358: arraylength
+    //   359: istore 11
+    //   361: iconst_0
+    //   362: istore 8
+    //   364: iload 10
+    //   366: istore 9
+    //   368: iload 8
+    //   370: iload 11
+    //   372: if_icmpge +54 -> 426
+    //   375: aload_3
+    //   376: iload 8
+    //   378: aaload
+    //   379: astore 4
+    //   381: aload 4
+    //   383: invokevirtual 282	java/lang/reflect/Field:getModifiers	()I
+    //   386: bipush 25
+    //   388: iand
+    //   389: bipush 25
+    //   391: if_icmpne +64 -> 455
+    //   394: aload 4
+    //   396: invokevirtual 286	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   399: getstatic 292	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   402: invokevirtual 298	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   405: ifeq +50 -> 455
+    //   408: aload 4
+    //   410: aconst_null
+    //   411: invokevirtual 302	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
+    //   414: istore 9
+    //   416: iload 9
+    //   418: bipush 16
+    //   420: ishr
+    //   421: bipush 16
+    //   423: ishl
+    //   424: istore 9
+    //   426: aload_0
+    //   427: aload_1
+    //   428: iload 7
+    //   430: aload_2
+    //   431: iload 9
+    //   433: aconst_null
+    //   434: invokestatic 308	com/tencent/theme/SkinEngine:init	(Landroid/content/Context;Ljava/lang/Class;ILjava/lang/Class;ILjava/io/File;)V
+    //   437: iconst_1
+    //   438: putstatic 48	com/tencent/mobileqq/pluginsdk/BasePluginActivity:sSkilEngineInit	Z
+    //   441: return
+    //   442: astore 4
+    //   444: iload 8
+    //   446: iconst_1
+    //   447: iadd
+    //   448: istore 8
+    //   450: goto -171 -> 279
+    //   453: astore 4
+    //   455: iload 8
+    //   457: iconst_1
+    //   458: iadd
+    //   459: istore 8
+    //   461: goto -97 -> 364
+    //   464: astore_1
+    //   465: invokestatic 312	com/tencent/theme/SkinEngine:getInstances	()Lcom/tencent/theme/SkinEngine;
+    //   468: invokevirtual 315	com/tencent/theme/SkinEngine:unInit	()V
+    //   471: return
+    //   472: ldc_w 317
+    //   475: invokestatic 320	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   478: ldc_w 322
+    //   481: iconst_1
+    //   482: anewarray 97	java/lang/Class
+    //   485: dup
+    //   486: iconst_0
+    //   487: ldc 195
+    //   489: aastore
+    //   490: invokevirtual 326	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   493: aconst_null
+    //   494: iconst_1
+    //   495: anewarray 294	java/lang/Object
+    //   498: dup
+    //   499: iconst_0
+    //   500: aload_0
+    //   501: aastore
+    //   502: invokevirtual 332	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   505: pop
+    //   506: iconst_1
+    //   507: putstatic 48	com/tencent/mobileqq/pluginsdk/BasePluginActivity:sSkilEngineInit	Z
+    //   510: return
+    //   511: astore_1
+    //   512: aload_1
+    //   513: invokevirtual 335	java/lang/Exception:printStackTrace	()V
+    //   516: return
+    //   517: astore 4
+    //   519: goto -75 -> 444
+    //   522: astore 4
+    //   524: goto -69 -> 455
+    //   527: astore_3
+    //   528: goto -272 -> 256
+    //   531: astore_2
+    //   532: goto -306 -> 226
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	551	0	this	BasePluginActivity
-    //   0	551	1	paramString1	String
-    //   0	551	2	paramString2	String
-    //   0	551	3	paramActivity	Activity
-    //   0	551	4	paramClassLoader	ClassLoader
-    //   0	551	5	paramPackageInfo	PackageInfo
-    //   0	551	6	paramBoolean1	boolean
-    //   0	551	7	paramBoolean2	boolean
-    //   251	168	8	i	int
-    //   267	207	9	j	int
-    //   247	175	10	k	int
-    //   264	91	11	m	int
-    //   349	14	12	n	int
+    //   0	535	0	this	BasePluginActivity
+    //   0	535	1	paramString1	String
+    //   0	535	2	paramString2	String
+    //   0	535	3	paramActivity	Activity
+    //   0	535	4	paramClassLoader	ClassLoader
+    //   0	535	5	paramPackageInfo	PackageInfo
+    //   0	535	6	paramBoolean	boolean
+    //   0	535	7	paramInt	int
+    //   277	183	8	i	int
+    //   257	175	9	j	int
+    //   274	91	10	k	int
+    //   359	14	11	m	int
     // Exception table:
     //   from	to	target	type
-    //   313	321	456	java/lang/IllegalArgumentException
-    //   398	406	467	java/lang/IllegalArgumentException
-    //   416	431	478	java/lang/Exception
-    //   486	526	527	java/lang/Exception
-    //   313	321	533	java/lang/IllegalAccessException
-    //   398	406	538	java/lang/IllegalAccessException
-    //   218	244	543	java/lang/ClassNotFoundException
-    //   188	214	547	java/lang/ClassNotFoundException
+    //   323	331	442	java/lang/IllegalArgumentException
+    //   408	416	453	java/lang/IllegalArgumentException
+    //   426	441	464	java/lang/Exception
+    //   472	510	511	java/lang/Exception
+    //   323	331	517	java/lang/IllegalAccessException
+    //   408	416	522	java/lang/IllegalAccessException
+    //   228	254	527	java/lang/ClassNotFoundException
+    //   198	224	531	java/lang/ClassNotFoundException
   }
   
   public boolean IIsWrapContent()
@@ -654,7 +647,7 @@ public class BasePluginActivity
           j = i;
           if (DebugHelper.sDebug)
           {
-            DebugHelper.log("PluginDebug", "BasePluginActivity.finish", localException);
+            DebugHelper.log("plugin_tag", "BasePluginActivity.finish", localException);
             localObject1 = localObject3;
             j = i;
           }
@@ -1025,6 +1018,19 @@ public class BasePluginActivity
       return;
     }
     super.setTitle(paramCharSequence);
+  }
+  
+  public void startActivity(Intent paramIntent)
+  {
+    try
+    {
+      super.startActivity(paramIntent);
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      startActivityForResult(paramIntent, -1);
+    }
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)

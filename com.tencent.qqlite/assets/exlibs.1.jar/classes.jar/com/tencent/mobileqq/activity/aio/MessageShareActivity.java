@@ -98,8 +98,8 @@ public class MessageShareActivity
       finish();
       return true;
     case 2: 
-      ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297435)).setText("处理失败");
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297434).setVisibility(4);
+      ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297431)).setText("处理失败");
+      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297430).setVisibility(4);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 800L);
       return true;
     }
@@ -114,7 +114,7 @@ public class MessageShareActivity
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624119);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903271);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297435)).setText(2131364070);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131297431)).setText(2131364057);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {

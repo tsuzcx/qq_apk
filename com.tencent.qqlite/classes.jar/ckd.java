@@ -1,9 +1,18 @@
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.dataline.activities.LiteWifiphotoActivity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.Banner;
 import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.struct.PushBanner;
+import com.tencent.mobileqq.widget.ADView;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ckd
   implements View.OnClickListener
@@ -12,14 +21,42 @@ public class ckd
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    BannerManager.a(this.a).getSharedPreferences("QQLite", 0).edit().putBoolean("push_banner_display" + BannerManager.a(this.a).app.getAccount(), false).commit();
+    paramView = BannerManager.a(this.a)[12];
+    ADView localADView;
+    if ((paramView != null) && (paramView.a != null))
     {
-    default: 
+      localADView = (ADView)paramView.a.findViewById(2131297445);
+      if (localADView == null) {
+        break label224;
+      }
+    }
+    label224:
+    for (paramView = localADView.a(0);; paramView = null)
+    {
+      if (paramView != null)
+      {
+        int j = paramView.getChildCount();
+        LinkedList localLinkedList = new LinkedList();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = paramView.getChildAt(i);
+          if (localView != null) {
+            localLinkedList.add((PushBanner)localView.getTag());
+          }
+          i += 1;
+        }
+        ThreadManager.a().post(new cke(this, j, localLinkedList));
+        if (localADView != null) {
+          localADView.a();
+        }
+      }
+      this.a.a(12, 0);
+      this.a.a(null);
+      this.a.b = false;
       return;
     }
-    paramView = new Intent(BannerManager.a(this.a), LiteWifiphotoActivity.class);
-    paramView.putExtra("isFromStatusbar", true);
-    BannerManager.a(this.a).startActivity(paramView);
   }
 }
 

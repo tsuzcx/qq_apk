@@ -1,17 +1,19 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import java.net.URL;
 
 public class egw
   implements BitmapDecoder
 {
-  public egw(FileAssistantDownloader paramFileAssistantDownloader) {}
+  public egv a;
+  
+  public egw(DataLineDownloader paramDataLineDownloader) {}
   
   public Bitmap a(URL paramURL)
   {
-    paramURL = this.a.a(paramURL);
-    return FileAssistantDownloader.a(this.a, paramURL);
+    this.jdField_a_of_type_Egv = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
+    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Egv);
   }
 }
 

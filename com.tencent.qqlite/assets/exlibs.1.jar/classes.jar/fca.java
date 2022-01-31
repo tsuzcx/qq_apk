@@ -1,40 +1,16 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.FriendGroup;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateListener;
+import com.tencent.open.agent.SocialFriendChooser;
 
-public final class fca
-  implements DbCacheData.DbCreator
+class fca
+  implements OpenSdkFriendService.CheckAvatarUpdateListener
 {
-  public int a()
-  {
-    return 0;
-  }
+  fca(fbz paramfbz) {}
   
-  public FriendGroup a(Cursor paramCursor)
+  public void a()
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
-    }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new FriendGroup();
-    ((FriendGroup)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
+    ((OpenFrame)this.a.a.a.getCurrentView()).f();
   }
 }
 

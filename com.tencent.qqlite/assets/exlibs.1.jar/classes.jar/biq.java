@@ -1,12 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SearchTroopListActivity;
 
 public class biq
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public biq(SearchTroopListActivity paramSearchTroopListActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
 }
 
 

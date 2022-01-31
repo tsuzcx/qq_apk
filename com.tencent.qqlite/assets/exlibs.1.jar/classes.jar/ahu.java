@@ -1,27 +1,20 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahu
-  implements IphonePickerView.PickerViewAdapter
+  extends Handler
 {
   public ahu(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131363196);
+    if ((paramMessage.what == 1000) && ((this.a.s == 1) || (this.a.s == 2)))
+    {
+      this.a.a();
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
     }
-    return this.a.getString(2131363197);
   }
 }
 

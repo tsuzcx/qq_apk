@@ -1,25 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
 
-public final class eoo
-  implements DialogInterface.OnClickListener
+public class eoo
+  extends Handler
 {
-  public eoo(long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public eoo(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
     {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
       return;
-      TroopFileTransferManager.g();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
   }
 }
 

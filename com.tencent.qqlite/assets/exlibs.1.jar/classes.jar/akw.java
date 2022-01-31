@@ -1,14 +1,12 @@
 import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
 
 public class akw
-  implements Runnable
+  implements ClearableEditText.OnTextClearedListener
 {
   public akw(EditInfoActivity paramEditInfoActivity) {}
   
-  public void run()
-  {
-    this.a.a();
-  }
+  public void a() {}
 }
 
 

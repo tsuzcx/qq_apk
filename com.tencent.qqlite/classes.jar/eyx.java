@@ -1,10 +1,15 @@
+import android.graphics.drawable.Animatable;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+
 public class eyx
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public eyx(QQProgressDialog paramQQProgressDialog) {}
+  
+  public void run()
+  {
+    QQProgressDialog.a(this.a).start();
+  }
 }
 
 

@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.RegisterGuideActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class bhg
-  implements Runnable
+  extends Handler
 {
-  public bhg(RegisterGuideActivity paramRegisterGuideActivity) {}
+  public bhg(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    RegisterGuideActivity.a(this.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

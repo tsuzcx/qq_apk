@@ -252,11 +252,11 @@ public class QPSingleUpdEngine
     Object localObject1 = new String();
     int i = 0;
     Object localObject2;
-    while (i < "3.3.0".length())
+    while (i < "3.4.0".length())
     {
       localObject2 = localObject1;
-      if ("3.3.0".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("3.3.0".charAt(i)));
+      if ("3.4.0".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("3.4.0".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -519,8 +519,8 @@ public class QPSingleUpdEngine
       i = 0;
       while (i < j)
       {
-        this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPSinlgeUpdInfo.jdField_a_of_type_ArrayOfFgl[i].jdField_a_of_type_JavaLangString = new String(localObject4[i].bytes_name.get().toByteArray());
-        this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPSinlgeUpdInfo.jdField_a_of_type_ArrayOfFgl[i].jdField_b_of_type_JavaLangString = new String(localObject4[i].bytes_hash.get().toByteArray());
+        this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPSinlgeUpdInfo.jdField_a_of_type_ArrayOfFgq[i].jdField_a_of_type_JavaLangString = new String(localObject4[i].bytes_name.get().toByteArray());
+        this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPSinlgeUpdInfo.jdField_a_of_type_ArrayOfFgq[i].jdField_b_of_type_JavaLangString = new String(localObject4[i].bytes_hash.get().toByteArray());
         i += 1;
       }
       i = ((InputStream)localObject3).read();

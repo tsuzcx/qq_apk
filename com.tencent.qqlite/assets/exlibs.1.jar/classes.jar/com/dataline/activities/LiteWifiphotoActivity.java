@@ -54,7 +54,7 @@ public class LiteWifiphotoActivity
     {
       this.j.setVisibility(4);
       String str = this.h.getText().toString();
-      if (str.contains(getString(2131362946)))
+      if (str.contains(getString(2131362950)))
       {
         this.b = this.h;
         e();
@@ -62,14 +62,14 @@ public class LiteWifiphotoActivity
       do
       {
         return;
-        if (str.contains(getString(2131362937)))
+        if (str.contains(getString(2131362941)))
         {
           this.b = this.h;
           this.b = this.h;
           e();
           return;
         }
-      } while (!str.contains(getString(2131361939)));
+      } while (!str.contains(getString(2131361938)));
       return;
     }
     this.h.setVisibility(4);
@@ -93,15 +93,15 @@ public class LiteWifiphotoActivity
         if (i <= 99) {
           break label66;
         }
-        this.b.setText(getString(2131362946) + "(99+)");
+        this.b.setText(getString(2131362950) + "(99+)");
       }
     }
     return;
     label66:
-    this.b.setText(getString(2131362946) + "(" + i + ")");
+    this.b.setText(getString(2131362950) + "(" + i + ")");
     return;
     label107:
-    this.b.setText(getString(2131362946));
+    this.b.setText(getString(2131362950));
   }
   
   protected boolean a()
@@ -113,12 +113,12 @@ public class LiteWifiphotoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903464);
+    setContentView(2130903452);
     c();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("isFromStatusbar", false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298119));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298085));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296764));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296760));
     paramBundle = (DataLineHandler)this.app.a(8);
     if (DataLineHandler.a.a.b()) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131361857);

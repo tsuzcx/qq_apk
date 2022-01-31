@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class chn
-  extends ContactBindObserver
+  implements DialogInterface.OnClickListener
 {
-  public chn(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public chn(DialogBaseActivity paramDialogBaseActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-    }
-    this.a.d();
-    if (paramBoolean)
-    {
-      if (this.a.a != null)
-      {
-        this.a.app.unRegistObserver(this.a.a);
-        this.a.a = null;
-      }
-      this.a.finish();
-      return;
-    }
-    this.a.a("更新失败，请稍后重试。");
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

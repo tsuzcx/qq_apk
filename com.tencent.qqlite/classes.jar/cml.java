@@ -1,23 +1,25 @@
-import android.app.Dialog;
+import android.view.View;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
+import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
 
-class cml
-  implements Runnable
+public class cml
+  implements ConversationSearchAdapter.SearchResultCallBack
 {
-  cml(cmk paramcmk) {}
+  public cml(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    try
+    if (1 == paramInt)
     {
-      if (!this.a.a.isFinishing())
-      {
-        this.a.a.a.dismiss();
-        this.a.a.finish();
+      if (SelectMemberActivity.a(this.a).getCount() == 0) {
+        SelectMemberActivity.a(this.a).setVisibility(0);
       }
+    }
+    else {
       return;
     }
-    catch (Exception localException) {}
+    SelectMemberActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,24 +1,50 @@
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
-import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
 public class edv
-  extends TimerTask
+  extends Handler
 {
-  public edv(QZoneNotifyServlet paramQZoneNotifyServlet) {}
-  
-  public void run()
+  public edv(AppLaucherHelper paramAppLaucherHelper, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.QZoneNotifyServlet", 2, "QZONE GET UNREAD.QZoneFeedTimeTask run.");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
+      if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+      }
+      paramMessage = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
+      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
+      AppLaucherHelper.jdField_a_of_type_Boolean = false;
+      return;
     }
-    AppRuntime localAppRuntime = this.a.getAppRuntime();
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
-    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
-    localNewIntent.putExtra("bNotWorkInBackGround", true);
-    localAppRuntime.startServlet(localNewIntent);
+    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
+    }
+    AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
   }
 }
 

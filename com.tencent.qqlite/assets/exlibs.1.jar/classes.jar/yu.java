@@ -1,68 +1,24 @@
-import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
 
 public class yu
-  extends SecSvcObserver
+  implements View.OnClickListener
 {
-  public yu(AuthDevActivity paramAuthDevActivity) {}
+  public yu(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
   
-  protected void a(int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramBundle == null) {
-      return;
-    }
-    paramInt = paramBundle.getInt("cmd", 1);
-    int i = paramBundle.getInt("opt", 2);
-    int j = paramBundle.getInt("ret", -1);
-    paramBundle = (String)paramBundle.get("wording");
-    FormSwitchItem localFormSwitchItem;
-    switch (paramInt)
+    paramView = (ImageView)paramView.findViewById(2131296957);
+    if (paramView != null)
     {
-    default: 
-      return;
-    case 1: 
-      if (j == 0)
-      {
-        AuthDevActivity.a(this.a).setVisibility(0);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-        localFormSwitchItem = AuthDevActivity.a(this.a);
-        if (i == 1) {}
-        for (;;)
-        {
-          localFormSwitchItem.setChecked(bool1);
-          AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-          AuthDevActivity.b(this.a).setVisibility(0);
-          AuthDevActivity.b(this.a).setText(paramBundle);
-          return;
-          bool1 = false;
-        }
+      int i = 0;
+      if (paramView.getVisibility() == 0) {
+        i = 4;
       }
-      AuthDevActivity.a(this.a).setVisibility(8);
-      AuthDevActivity.b(this.a).setVisibility(8);
-      return;
+      paramView.setVisibility(i);
     }
-    if (j == 0)
-    {
-      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-      localFormSwitchItem = AuthDevActivity.a(this.a);
-      if (i == 1) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        localFormSwitchItem.setChecked(bool1);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-        AuthDevActivity.b(this.a).setText(paramBundle);
-        return;
-      }
-    }
-    AuthDevActivity.a(this.a).setVisibility(8);
-    AuthDevActivity.b(this.a).setVisibility(8);
-    QQToast.a(this.a, paramBundle, 0).b(this.a.getTitleBarHeight());
   }
 }
 

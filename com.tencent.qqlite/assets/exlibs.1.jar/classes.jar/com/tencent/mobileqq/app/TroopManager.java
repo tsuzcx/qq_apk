@@ -290,7 +290,7 @@ public class TroopManager
       {
         do
         {
-          return 2130839471;
+          return 2130839436;
           TroopMemberInfo localTroopMemberInfo = a(paramString1, paramString2);
           if ((localTroopMemberInfo == null) || (localTroopMemberInfo.level <= 0)) {
             break;
@@ -298,13 +298,16 @@ public class TroopManager
           paramString1 = a(paramString1);
         } while (paramString1 == null);
         if (paramString1.isTroopOwner(paramString2)) {
-          return 2130839473;
+          return 2130839438;
         }
-      } while (!paramString1.isTroopAdmin(paramString2));
-      return 2130839472;
+        if (paramString1.isTroopAdmin(paramString2)) {
+          return 2130839437;
+        }
+      } while (!paramBoolean);
+      return 2130838404;
     } while (!QLog.isColorLevel());
     QLog.d("Q.contacttab.troop", 2, "getTroopMemberLevel returns null");
-    return 2130839471;
+    return 2130839436;
   }
   
   public long a(String paramString1, String paramString2)
@@ -581,13 +584,13 @@ public class TroopManager
     //   27: ifnull +139 -> 166
     //   30: aload 4
     //   32: invokevirtual 139	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
-    //   35: invokestatic 430	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
+    //   35: invokestatic 431	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
     //   38: lstore_2
     //   39: aload_0
     //   40: getfield 80	com/tencent/mobileqq/app/TroopManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   43: ldc_w 270
     //   46: iconst_0
-    //   47: ldc_w 432
+    //   47: ldc_w 433
     //   50: iconst_1
     //   51: anewarray 155	java/lang/String
     //   54: dup
@@ -603,7 +606,7 @@ public class TroopManager
     //   66: aload_1
     //   67: ifnull +99 -> 166
     //   70: aload_1
-    //   71: invokeinterface 433 1 0
+    //   71: invokeinterface 434 1 0
     //   76: astore_1
     //   77: aload_1
     //   78: invokeinterface 252 1 0
@@ -613,27 +616,27 @@ public class TroopManager
     //   92: checkcast 270	com/tencent/mobileqq/data/TroopMemberInfo
     //   95: astore 5
     //   97: aload 5
-    //   99: invokestatic 438	com/tencent/mobileqq/activity/ChatActivityUtils:a	(Lcom/tencent/mobileqq/data/TroopMemberInfo;)Z
+    //   99: invokestatic 439	com/tencent/mobileqq/activity/ChatActivityUtils:a	(Lcom/tencent/mobileqq/data/TroopMemberInfo;)Z
     //   102: ifeq -25 -> 77
     //   105: aload 5
-    //   107: getfield 301	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
+    //   107: getfield 302	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
     //   110: lconst_0
     //   111: lcmp
     //   112: ifeq -35 -> 77
     //   115: aload 5
-    //   117: getfield 301	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
+    //   117: getfield 302	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
     //   120: lload_2
     //   121: lcmp
     //   122: ifle -45 -> 77
     //   125: aload 6
-    //   127: new 303	com/tencent/mobileqq/app/TroopManager$MemberGagInfo
+    //   127: new 304	com/tencent/mobileqq/app/TroopManager$MemberGagInfo
     //   130: dup
     //   131: aload_0
     //   132: aload 5
-    //   134: getfield 374	com/tencent/mobileqq/data/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   134: getfield 375	com/tencent/mobileqq/data/TroopMemberInfo:memberuin	Ljava/lang/String;
     //   137: aload 5
-    //   139: getfield 301	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
-    //   142: invokespecial 306	com/tencent/mobileqq/app/TroopManager$MemberGagInfo:<init>	(Lcom/tencent/mobileqq/app/TroopManager;Ljava/lang/String;J)V
+    //   139: getfield 302	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
+    //   142: invokespecial 307	com/tencent/mobileqq/app/TroopManager$MemberGagInfo:<init>	(Lcom/tencent/mobileqq/app/TroopManager;Ljava/lang/String;J)V
     //   145: invokevirtual 208	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   148: pop
     //   149: goto -72 -> 77
@@ -826,7 +829,7 @@ public class TroopManager
     if (TextUtils.isEmpty(paramString2)) {
       if ((1L & paramLong2) == 1L) {
         if ((1L & paramLong3) == 1L) {
-          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362371);
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362368);
         }
       }
     }
@@ -838,13 +841,13 @@ public class TroopManager
       localMessageForGrayTips.isread = true;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForGrayTips, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
       return;
-      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362370);
+      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362367);
       continue;
       if ((0x2 & paramLong2) == 2L) {
         if ((0x2 & paramLong3) == 2L) {
-          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362369);
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362366);
         } else {
-          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362368);
+          paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131362365);
         }
       }
     }
@@ -894,7 +897,7 @@ public class TroopManager
     //   6: new 217	java/lang/StringBuilder
     //   9: dup
     //   10: invokespecial 218	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 611
+    //   13: ldc_w 612
     //   16: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: astore 5
     //   21: aload_1
@@ -907,10 +910,10 @@ public class TroopManager
     //   34: aload 5
     //   36: iload 4
     //   38: invokevirtual 228	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   41: ldc_w 406
+    //   41: ldc_w 407
     //   44: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: lload_2
-    //   48: invokevirtual 614	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 615	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   51: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   54: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   57: aload_1
@@ -924,7 +927,7 @@ public class TroopManager
     //   72: goto -41 -> 31
     //   75: aload_0
     //   76: aload_1
-    //   77: invokespecial 616	com/tencent/mobileqq/app/TroopManager:b	(Ljava/util/ArrayList;)V
+    //   77: invokespecial 617	com/tencent/mobileqq/app/TroopManager:b	(Ljava/util/ArrayList;)V
     //   80: aload_0
     //   81: getfield 80	com/tencent/mobileqq/app/TroopManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   84: invokevirtual 135	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
@@ -933,25 +936,25 @@ public class TroopManager
     //   89: invokevirtual 139	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   92: aload_0
     //   93: getfield 37	com/tencent/mobileqq/app/TroopManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   96: invokevirtual 619	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   99: invokeinterface 446 1 0
+    //   96: invokevirtual 620	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   99: invokeinterface 447 1 0
     //   104: astore 5
     //   106: aload 5
     //   108: invokeinterface 252 1 0
     //   113: ifeq +119 -> 232
     //   116: aload 5
     //   118: invokeinterface 256 1 0
-    //   123: checkcast 621	java/util/Map$Entry
-    //   126: invokeinterface 624 1 0
+    //   123: checkcast 622	java/util/Map$Entry
+    //   126: invokeinterface 625 1 0
     //   131: checkcast 141	com/tencent/mobileqq/data/TroopInfo
     //   134: astore 6
     //   136: aload 6
-    //   138: getfield 627	com/tencent/mobileqq/data/TroopInfo:timeSec	J
+    //   138: getfield 628	com/tencent/mobileqq/data/TroopInfo:timeSec	J
     //   141: lload_2
     //   142: lcmp
     //   143: ifge -37 -> 106
     //   146: aload 5
-    //   148: invokeinterface 629 1 0
+    //   148: invokeinterface 630 1 0
     //   153: aload_0
     //   154: getfield 80	com/tencent/mobileqq/app/TroopManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   157: aload 6
@@ -959,27 +962,27 @@ public class TroopManager
     //   162: pop
     //   163: aload_0
     //   164: getfield 67	com/tencent/mobileqq/app/TroopManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   167: invokevirtual 632	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/proxy/ProxyManager;
+    //   167: invokevirtual 633	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/proxy/ProxyManager;
     //   170: astore 7
     //   172: aload 7
-    //   174: invokevirtual 637	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;
+    //   174: invokevirtual 638	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;
     //   177: aload 6
     //   179: getfield 146	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
     //   182: iconst_1
-    //   183: invokevirtual 642	com/tencent/mobileqq/app/proxy/RecentUserProxy:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/data/RecentUser;
+    //   183: invokevirtual 643	com/tencent/mobileqq/app/proxy/RecentUserProxy:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/data/RecentUser;
     //   186: astore 8
     //   188: aload 8
     //   190: ifnull +13 -> 203
     //   193: aload 7
-    //   195: invokevirtual 637	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;
+    //   195: invokevirtual 638	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;
     //   198: aload 8
-    //   200: invokevirtual 645	com/tencent/mobileqq/app/proxy/RecentUserProxy:b	(Lcom/tencent/mobileqq/data/RecentUser;)V
-    //   203: invokestatic 537	com/tencent/mobileqq/managers/TroopAssistantManager:a	()Lcom/tencent/mobileqq/managers/TroopAssistantManager;
+    //   200: invokevirtual 646	com/tencent/mobileqq/app/proxy/RecentUserProxy:b	(Lcom/tencent/mobileqq/data/RecentUser;)V
+    //   203: invokestatic 538	com/tencent/mobileqq/managers/TroopAssistantManager:a	()Lcom/tencent/mobileqq/managers/TroopAssistantManager;
     //   206: aload 6
     //   208: getfield 146	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
     //   211: aload_0
     //   212: getfield 67	com/tencent/mobileqq/app/TroopManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   215: invokevirtual 539	com/tencent/mobileqq/managers/TroopAssistantManager:b	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   215: invokevirtual 540	com/tencent/mobileqq/managers/TroopAssistantManager:b	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   218: goto -112 -> 106
     //   221: astore 5
     //   223: aload_1
@@ -1218,15 +1221,15 @@ public class TroopManager
     //   0: aload_1
     //   1: ifnull +12 -> 13
     //   4: aload_1
-    //   5: invokeinterface 700 1 0
+    //   5: invokeinterface 701 1 0
     //   10: ifeq +7 -> 17
     //   13: iconst_0
     //   14: istore_3
     //   15: iload_3
     //   16: ireturn
-    //   17: new 702	java/util/HashSet
+    //   17: new 703	java/util/HashSet
     //   20: dup
-    //   21: invokespecial 703	java/util/HashSet:<init>	()V
+    //   21: invokespecial 704	java/util/HashSet:<init>	()V
     //   24: astore 7
     //   26: iconst_0
     //   27: istore_3
@@ -1249,7 +1252,7 @@ public class TroopManager
     //   57: iload 4
     //   59: istore_3
     //   60: aload_1
-    //   61: invokeinterface 433 1 0
+    //   61: invokeinterface 434 1 0
     //   66: astore_1
     //   67: iload_2
     //   68: istore_3
@@ -1268,12 +1271,12 @@ public class TroopManager
     //   96: dup
     //   97: invokespecial 218	java/lang/StringBuilder:<init>	()V
     //   100: aload 6
-    //   102: getfield 678	com/tencent/mobileqq/data/TroopMemberInfo:troopuin	Ljava/lang/String;
+    //   102: getfield 679	com/tencent/mobileqq/data/TroopMemberInfo:troopuin	Ljava/lang/String;
     //   105: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: ldc_w 359
+    //   108: ldc_w 360
     //   111: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: aload 6
-    //   116: getfield 374	com/tencent/mobileqq/data/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   116: getfield 375	com/tencent/mobileqq/data/TroopMemberInfo:memberuin	Ljava/lang/String;
     //   119: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   125: astore 8
@@ -1281,32 +1284,32 @@ public class TroopManager
     //   128: istore_3
     //   129: aload 7
     //   131: aload 8
-    //   133: invokevirtual 705	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   133: invokevirtual 706	java/util/HashSet:contains	(Ljava/lang/Object;)Z
     //   136: ifne +194 -> 330
     //   139: iload_2
     //   140: istore_3
     //   141: aload_0
     //   142: aload 6
-    //   144: getfield 678	com/tencent/mobileqq/data/TroopMemberInfo:troopuin	Ljava/lang/String;
+    //   144: getfield 679	com/tencent/mobileqq/data/TroopMemberInfo:troopuin	Ljava/lang/String;
     //   147: aload 6
-    //   149: getfield 374	com/tencent/mobileqq/data/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   149: getfield 375	com/tencent/mobileqq/data/TroopMemberInfo:memberuin	Ljava/lang/String;
     //   152: aload 6
-    //   154: getfield 388	com/tencent/mobileqq/data/TroopMemberInfo:troopnick	Ljava/lang/String;
+    //   154: getfield 389	com/tencent/mobileqq/data/TroopMemberInfo:troopnick	Ljava/lang/String;
     //   157: aload 6
     //   159: getfield 279	com/tencent/mobileqq/data/TroopMemberInfo:level	I
     //   162: aconst_null
     //   163: aconst_null
     //   164: aload 6
-    //   166: getfield 691	com/tencent/mobileqq/data/TroopMemberInfo:age	B
+    //   166: getfield 692	com/tencent/mobileqq/data/TroopMemberInfo:age	B
     //   169: aload 6
-    //   171: getfield 694	com/tencent/mobileqq/data/TroopMemberInfo:sex	B
+    //   171: getfield 695	com/tencent/mobileqq/data/TroopMemberInfo:sex	B
     //   174: aload 6
-    //   176: getfield 708	com/tencent/mobileqq/data/TroopMemberInfo:distance	I
+    //   176: getfield 709	com/tencent/mobileqq/data/TroopMemberInfo:distance	I
     //   179: aload 6
-    //   181: getfield 686	com/tencent/mobileqq/data/TroopMemberInfo:msgseq	J
+    //   181: getfield 687	com/tencent/mobileqq/data/TroopMemberInfo:msgseq	J
     //   184: aload 6
-    //   186: getfield 301	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
-    //   189: invokevirtual 710	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIIJJ)Z
+    //   186: getfield 302	com/tencent/mobileqq/data/TroopMemberInfo:gagTimeStamp	J
+    //   189: invokevirtual 711	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIIJJ)Z
     //   192: istore 4
     //   194: iload 4
     //   196: iload_2
@@ -1314,7 +1317,7 @@ public class TroopManager
     //   198: istore_2
     //   199: aload 7
     //   201: aload 8
-    //   203: invokevirtual 711	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   203: invokevirtual 712	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   206: pop
     //   207: goto -140 -> 67
     //   210: iload_2
@@ -1341,8 +1344,8 @@ public class TroopManager
     //   248: ldc 15
     //   250: iconst_2
     //   251: aload 5
-    //   253: invokestatic 715	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   256: invokestatic 717	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   253: invokestatic 716	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   256: invokestatic 718	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   259: iload_2
     //   260: istore_3
     //   261: aload_1

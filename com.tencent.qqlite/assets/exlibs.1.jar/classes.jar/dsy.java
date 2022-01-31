@@ -1,25 +1,42 @@
 import android.text.format.Time;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
 import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
-class dsy
-  implements Runnable
+public class dsy
+  implements SeekBar.OnSeekBarChangeListener
 {
-  dsy(dsx paramdsx) {}
+  public dsy(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((LocalMusicFileView.a(this.a.a.a) == null) || (!LocalMusicFileView.a(this.a.a.a).b(LocalMusicFileView.a(this.a.a.a)))) {
+    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {}
+    while (!paramBoolean) {
       return;
     }
-    int i = LocalMusicFileView.a(this.a.a.a).b();
-    LocalMusicFileView.a(this.a.a.a).setProgress(i);
-    Object localObject = new Time();
-    ((Time)localObject).set(i);
-    localObject = ((Time)localObject).format("%M:%S");
-    LocalMusicFileView.a(this.a.a.a).setText((CharSequence)localObject);
+    LocalMusicFileView.a(this.a).a(paramInt);
+    paramSeekBar = new Time();
+    paramSeekBar.set(paramInt);
+    paramSeekBar = paramSeekBar.format("%M:%S");
+    LocalMusicFileView.a(this.a).setText(paramSeekBar);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {
+      return;
+    }
+    LocalMusicFileView.a(this.a).d();
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {
+      return;
+    }
+    LocalMusicFileView.a(this.a).e();
   }
 }
 

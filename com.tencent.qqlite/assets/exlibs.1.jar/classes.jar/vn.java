@@ -1,17 +1,11 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
 class vn
   implements Runnable
 {
-  vn(vm paramvm, Drawable paramDrawable) {}
+  vn(vm paramvm) {}
   
   public void run()
   {
-    ((ImageView)this.jdField_a_of_type_Vm.jdField_a_of_type_Vl.a.a.getChildAt(this.jdField_a_of_type_Vm.jdField_a_of_type_Int).findViewById(2131296453)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.a.b = true;
   }
 }
 

@@ -62,6 +62,7 @@ public class RecentItemPcDataLine
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
+    super.a(paramQQAppInterface, paramContext);
     QQMessageFacade.Message localMessage = null;
     Object localObject = paramQQAppInterface.a();
     if (localObject != null) {
@@ -83,11 +84,11 @@ public class RecentItemPcDataLine
         a(paramQQAppInterface, paramContext, (MsgSummary)localObject);
         paramContext = new StringBuilder().append("我的电脑");
         if (this.v != 0) {
-          break label214;
+          break label220;
         }
       }
     }
-    label214:
+    label220:
     for (paramQQAppInterface = " ";; paramQQAppInterface = this.v + " ")
     {
       this.c = (paramQQAppInterface + ((MsgSummary)localObject).b + " " + this.b);
@@ -195,24 +196,24 @@ public class RecentItemPcDataLine
       }
       if (paramMessage.msgtype == -2000)
       {
-        paramMsgSummary.b = a(paramContext.getString(2131363275), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.b = a(paramContext.getString(2131363278), bool1, bool2, null, paramMsgSummary);
         return;
       }
       if (paramMessage.msgtype == -2005)
       {
-        paramMsgSummary.b = a(paramContext.getString(2131363567), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.b = a(paramContext.getString(2131363561), bool1, bool2, null, paramMsgSummary);
         return;
       }
       if (paramMessage.msgtype == -2009)
       {
-        paramMsgSummary.b = a(paramContext.getString(2131363977), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.b = a(paramContext.getString(2131363966), bool1, bool2, null, paramMsgSummary);
         return;
       }
     } while (paramMessage.msgtype != -2335);
     label195:
     label345:
     label351:
-    paramMsgSummary.b = a(paramContext.getString(2131363567), bool1, bool2, null, paramMsgSummary);
+    paramMsgSummary.b = a(paramContext.getString(2131363561), bool1, bool2, null, paramMsgSummary);
     return;
     paramMsgSummary.b = "";
   }

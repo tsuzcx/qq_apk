@@ -1,20 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class awf
-  extends Handler
+  implements ConditionSearchManager.IConfigListener
 {
   public awf(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramMessage.what == 1000)
-    {
-      this.a.e();
-      QQToast.a(this.a, 2131364412, 0).b(this.a.getTitleBarHeight());
+    this.a.e();
+    if (!paramBoolean) {
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
     }
+    while (paramInt != 2) {
+      return;
+    }
+    this.a.d();
   }
 }
 

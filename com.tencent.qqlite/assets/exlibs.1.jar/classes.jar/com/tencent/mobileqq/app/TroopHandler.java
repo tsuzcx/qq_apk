@@ -56,8 +56,8 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
-import cwp;
-import cwq;
+import cwv;
+import cww;
 import friendlist.GetMultiTroopInfoResp;
 import friendlist.GetTroopAppointRemarkResp;
 import friendlist.GetTroopListRespV2;
@@ -284,11 +284,11 @@ public class TroopHandler
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
     boolean bool = false;
-    cwp localcwp = new cwp();
-    localcwp.jdField_a_of_type_Long = paramIntent.getLongExtra("TroopUin", 0L);
-    localcwp.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isClear", false);
-    localcwp.b = paramIntent.getIntExtra("lat", 0);
-    localcwp.c = paramIntent.getIntExtra("lon", 0);
+    cwv localcwv = new cwv();
+    localcwv.jdField_a_of_type_Long = paramIntent.getLongExtra("TroopUin", 0L);
+    localcwv.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isClear", false);
+    localcwv.b = paramIntent.getIntExtra("lat", 0);
+    localcwv.c = paramIntent.getIntExtra("lon", 0);
     if (paramFromServiceMsg.isSuccess()) {}
     for (;;)
     {
@@ -296,28 +296,28 @@ public class TroopHandler
       {
         paramIntent = new GroupLocation.SetGroupLocationRes();
         paramIntent.mergeFrom(paramArrayOfByte);
-        localcwp.jdField_a_of_type_Int = paramIntent.result.get();
-        if (localcwp.jdField_a_of_type_Int != 0) {
+        localcwv.jdField_a_of_type_Int = paramIntent.result.get();
+        if (localcwv.jdField_a_of_type_Int != 0) {
           break label213;
         }
-        localcwp.jdField_a_of_type_JavaLangString = paramIntent.grouplocation.get();
+        localcwv.jdField_a_of_type_JavaLangString = paramIntent.grouplocation.get();
         paramIntent = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
         if (paramIntent != null)
         {
-          paramFromServiceMsg = paramIntent.a("" + localcwp.jdField_a_of_type_Long);
-          paramFromServiceMsg.strLocation = localcwp.jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = paramIntent.a("" + localcwv.jdField_a_of_type_Long);
+          paramFromServiceMsg.strLocation = localcwv.jdField_a_of_type_JavaLangString;
           paramIntent.b(paramFromServiceMsg);
         }
         bool = true;
       }
       catch (Exception paramIntent)
       {
-        localcwp.jdField_a_of_type_Int = -1;
+        localcwv.jdField_a_of_type_Int = -1;
         continue;
       }
-      a(15, bool, localcwp);
+      a(15, bool, localcwv);
       return;
-      localcwp.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
+      localcwv.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
       continue;
       label213:
       bool = false;
@@ -1968,7 +1968,7 @@ public class TroopHandler
   
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    cwq localcwq = new cwq();
+    cww localcww = new cww();
     Object localObject1 = null;
     Object localObject2 = null;
     if (paramFromServiceMsg.isSuccess()) {
@@ -1986,9 +1986,9 @@ public class TroopHandler
     try
     {
       paramFromServiceMsg.mergeFrom(paramArrayOfByte);
-      localcwq.jdField_a_of_type_Int = paramFromServiceMsg.dwResult.get();
-      localcwq.jdField_a_of_type_JavaLangString = paramFromServiceMsg.sErrInfo.get();
-      if (localcwq.jdField_a_of_type_Int != 0) {
+      localcww.jdField_a_of_type_Int = paramFromServiceMsg.dwResult.get();
+      localcww.jdField_a_of_type_JavaLangString = paramFromServiceMsg.sErrInfo.get();
+      if (localcww.jdField_a_of_type_Int != 0) {
         break label326;
       }
       paramArrayOfByte = (SearchGroup.GroupClusterInfo)paramFromServiceMsg.stGroupClusterInfo.get();
@@ -1996,10 +1996,10 @@ public class TroopHandler
         break label233;
       }
       bool = true;
-      localcwq.jdField_a_of_type_Boolean = bool;
-      localcwq.b = paramArrayOfByte.dwTotalSearchNum.get();
-      localcwq.jdField_a_of_type_Long = paramFromServiceMsg.dwNextRecTime.get();
-      localcwq.jdField_a_of_type_JavaUtilList = paramArrayOfByte.vGroupInfo.get();
+      localcww.jdField_a_of_type_Boolean = bool;
+      localcww.b = paramArrayOfByte.dwTotalSearchNum.get();
+      localcww.jdField_a_of_type_Long = paramFromServiceMsg.dwNextRecTime.get();
+      localcww.jdField_a_of_type_JavaUtilList = paramArrayOfByte.vGroupInfo.get();
       bool = true;
     }
     catch (Exception paramArrayOfByte)
@@ -2013,7 +2013,7 @@ public class TroopHandler
     if (paramIntent.getIntExtra("searchType", 0) == 8)
     {
       if (bool) {}
-      a(28, bool, localcwq);
+      a(28, bool, localcww);
       if (paramFromServiceMsg != null) {
         if (NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()) != 1) {
           break label285;
@@ -2025,18 +2025,18 @@ public class TroopHandler
         return;
         bool = false;
         break;
-        localcwq.jdField_a_of_type_Int = -1;
-        localcwq.jdField_a_of_type_Boolean = true;
+        localcww.jdField_a_of_type_Int = -1;
+        localcww.jdField_a_of_type_Boolean = true;
         bool = false;
         break label140;
-        localcwq.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
-        localcwq.jdField_a_of_type_Boolean = true;
+        localcww.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
+        localcww.jdField_a_of_type_Boolean = true;
         bool = false;
         paramFromServiceMsg = localObject2;
         break label140;
       }
     }
-    a(13, bool, localcwq);
+    a(13, bool, localcww);
   }
   
   private void b(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

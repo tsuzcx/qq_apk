@@ -1,34 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
-class fem
-  implements DialogInterface.OnClickListener
+public class fem
+  implements Runnable
 {
-  fem(fek paramfek) {}
+  public fem(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
     try
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
-      return;
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
+      if (localTMAssistantDownloadTaskInfo != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+      }
     }
-    catch (Exception paramDialogInterface)
+    catch (Exception localException)
     {
-      break label6;
+      for (;;)
+      {
+        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      }
+    }
+    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
     }
   }
 }

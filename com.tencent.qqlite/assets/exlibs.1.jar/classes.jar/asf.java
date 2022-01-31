@@ -1,20 +1,14 @@
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class asf
-  implements Runnable
+  extends GetRedPointExObserver
 {
-  public asf(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
+  public asf(Leba paramLeba) {}
   
-  public void run()
+  protected void a()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a().createEntityManager();
-    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
-    localEntityManager.a();
+    Leba.b(this.a);
   }
 }
 

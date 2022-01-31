@@ -1,21 +1,14 @@
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.log.ReportLogHelper;
-import java.util.Timer;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.widget.XListView;
 
-class dxc
-  implements View.OnClickListener
+public class dxc
+  implements Runnable
 {
-  dxc(dxb paramdxb, Dialog paramDialog) {}
+  public dxc(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ReportLogHelper.a(this.jdField_a_of_type_Dxb.a, 2131363564);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    paramView.show();
-    new Timer().schedule(new dxd(this, paramView), 100L);
+    UiApiPlugin.a(this.a).B();
   }
 }
 

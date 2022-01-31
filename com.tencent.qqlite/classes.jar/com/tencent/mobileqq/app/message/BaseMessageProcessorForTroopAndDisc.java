@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.app.message;
 
 import android.util.Pair;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,7 +24,7 @@ import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import cyb;
+import cyh;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -34,6 +35,7 @@ import msf.msgcomm.msg_comm.ContentHead;
 import msf.msgcomm.msg_comm.GroupInfo;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.AnonymousGroupMsg;
 import tencent.im.msg.im_msg_body.Attr;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.ElemFlags2;
@@ -51,7 +53,7 @@ public class BaseMessageProcessorForTroopAndDisc
   public BaseMessageProcessorForTroopAndDisc(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_JavaUtilComparator = new cyb(this);
+    this.jdField_a_of_type_JavaUtilComparator = new cyh(this);
   }
   
   private void a(String paramString)
@@ -83,19 +85,17 @@ public class BaseMessageProcessorForTroopAndDisc
     long l8 = localMsgHead.msg_time.get();
     long l3 = 0L;
     long l7 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     Object localObject1;
     int k;
-    int i;
     int j;
+    int i;
     if (paramMsg.content_head.has())
     {
       localObject1 = (msg_comm.ContentHead)paramMsg.content_head.get();
       k = ((msg_comm.ContentHead)localObject1).div_seq.get();
-      i = ((msg_comm.ContentHead)localObject1).pkg_num.get();
-      int m = ((msg_comm.ContentHead)localObject1).pkg_index.get();
-      j = i;
-      i = m;
+      j = ((msg_comm.ContentHead)localObject1).pkg_num.get();
+      i = ((msg_comm.ContentHead)localObject1).pkg_index.get();
     }
     for (;;)
     {
@@ -105,13 +105,14 @@ public class BaseMessageProcessorForTroopAndDisc
       {
         l1 = ((Long)((Pair)localObject1).first).longValue();
         if (l1 != -1L) {
-          break label1503;
+          break label1742;
         }
       }
-      label934:
-      label1488:
-      label1494:
-      label1503:
+      label772:
+      label782:
+      label1044:
+      label1173:
+      label1742:
       for (long l2 = 0L;; l2 = l1)
       {
         Object localObject2 = new ArrayList();
@@ -124,227 +125,270 @@ public class BaseMessageProcessorForTroopAndDisc
         }
         for (;;)
         {
-          localObject1 = ((List)localObject2).iterator();
+          Object localObject3 = ((List)localObject2).iterator();
           byte b1 = 0;
           byte b2;
-          im_msg_body.RichText localRichText;
           for (;;)
           {
-            if (((Iterator)localObject1).hasNext())
+            if (!((Iterator)localObject3).hasNext()) {
+              break label1044;
+            }
+            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
+            localMessageRecord.time = l8;
+            localMessageRecord.msgseq = l8;
+            localMessageRecord.shmsgseq = l6;
+            localMessageRecord.msgUid = l1;
+            localMessageRecord.selfuin = str2;
+            localMessageRecord.istroop = paramPBDecodeContext.c;
+            localMessageRecord.senderuin = String.valueOf(l5);
+            localMessageRecord.frienduin = String.valueOf(paramPBDecodeContext.e);
+            localMessageRecord.longMsgId = k;
+            localMessageRecord.longMsgCount = j;
+            localMessageRecord.longMsgIndex = i;
+            if (paramPBDecodeContext.d == 127)
             {
-              localObject2 = (MessageRecord)((Iterator)localObject1).next();
-              ((MessageRecord)localObject2).time = l8;
-              ((MessageRecord)localObject2).msgseq = l8;
-              ((MessageRecord)localObject2).shmsgseq = l6;
-              ((MessageRecord)localObject2).msgUid = l1;
-              ((MessageRecord)localObject2).selfuin = str;
-              ((MessageRecord)localObject2).istroop = paramPBDecodeContext.c;
-              ((MessageRecord)localObject2).senderuin = String.valueOf(l5);
-              ((MessageRecord)localObject2).frienduin = String.valueOf(paramPBDecodeContext.e);
-              ((MessageRecord)localObject2).longMsgId = k;
-              ((MessageRecord)localObject2).longMsgCount = j;
-              ((MessageRecord)localObject2).longMsgIndex = i;
-              if (paramPBDecodeContext.d == 127)
-              {
-                ((MessageRecord)localObject2).msg = "PTT_URL";
-                ((MessageRecord)localObject2).msgtype = -2006;
-                ((MessageRecord)localObject2).isread = true;
-              }
-              if (((MessageRecord)localObject2).msgtype == -1035) {
-                ((ChatMessage)localObject2).parse();
-              }
+              localMessageRecord.msg = "PTT_URL";
+              localMessageRecord.msgtype = -2006;
+              localMessageRecord.isread = true;
+            }
+            if (localMessageRecord.msgtype == -1035) {
+              ((ChatMessage)localMessageRecord).parse();
+            }
+            b2 = b1;
+            if (localMsgHead.msg_flag.has())
+            {
               b2 = b1;
-              if (localMsgHead.msg_flag.has())
+              if ((localMsgHead.msg_flag.get() & 1L) == 1L)
               {
+                b1 = 1;
+                localMessageInfo.b.a(l6, localMessageRecord.uniseq);
                 b2 = b1;
-                if ((localMsgHead.msg_flag.get() & 1L) == 1L)
+                if (QLog.isColorLevel())
                 {
-                  b1 = 1;
-                  localMessageInfo.b.a(l6, ((MessageRecord)localObject2).uniseq);
+                  QLog.d("Q.msg.BaseMessageProcessorForTroopAndDisc", 2, "receive the TroopMsg from TroopSpecialAttention!");
                   b2 = b1;
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.d("Q.msg.BaseMessageProcessorForTroopAndDisc", 2, "receive the TroopMsg from TroopSpecialAttention!");
-                    b2 = b1;
+                }
+              }
+            }
+            if (paramMessageInfo != null)
+            {
+              if (localMessageInfo.c.a != -1L) {
+                localMessageInfo.c.b = localMessageRecord.uniseq;
+              }
+              if (localMessageInfo.a.a != -1L) {
+                localMessageInfo.a.b = localMessageRecord.uniseq;
+              }
+              if (l6 > this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(String.valueOf(paramPBDecodeContext.e), 1)) {
+                paramMessageInfo.a(localMessageInfo);
+              }
+            }
+            int m;
+            byte[] arrayOfByte;
+            int n;
+            int i1;
+            if ((paramPBDecodeContext.c == 1) && (paramMsg != null))
+            {
+              localObject1 = paramMsg.iterator();
+              while (((Iterator)localObject1).hasNext())
+              {
+                localObject2 = (im_msg_body.Elem)((Iterator)localObject1).next();
+                if (((im_msg_body.Elem)localObject2).anon_group_msg.has())
+                {
+                  localObject1 = (im_msg_body.AnonymousGroupMsg)((im_msg_body.Elem)localObject2).anon_group_msg.get();
+                  m = ((im_msg_body.AnonymousGroupMsg)localObject1).uint32_flags.get();
+                  arrayOfByte = ((im_msg_body.AnonymousGroupMsg)localObject1).str_anon_id.get().toByteArray();
+                  localObject2 = ((im_msg_body.AnonymousGroupMsg)localObject1).str_anon_nick.get().toByteArray();
+                  n = ((im_msg_body.AnonymousGroupMsg)localObject1).uint32_head_portrait.get();
+                  i1 = ((im_msg_body.AnonymousGroupMsg)localObject1).uint32_expire_time.get();
+                  if (arrayOfByte == null) {
+                    break label1022;
                   }
                 }
               }
-              if (paramMessageInfo != null)
-              {
-                if (localMessageInfo.c.a != -1L) {
-                  localMessageInfo.c.b = ((MessageRecord)localObject2).uniseq;
-                }
-                if (localMessageInfo.a.a != -1L) {
-                  localMessageInfo.a.b = ((MessageRecord)localObject2).uniseq;
-                }
-                if (l6 > this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(String.valueOf(paramPBDecodeContext.e), 1)) {
-                  paramMessageInfo.a(localMessageInfo);
-                }
+            }
+            try
+            {
+              localObject1 = new String(arrayOfByte, "ISO-8859-1");
+              if (localObject2 != null) {
+                break label1030;
               }
-              paramArrayList.add(localObject2);
+              localObject2 = "";
+              localMessageRecord.saveExtInfoToExtStr("anonymous", AnonymousChatHelper.a(m, (String)localObject1, (String)localObject2, n, i1));
+              localMessageRecord.extLong |= 0x3;
+              if (QLog.isColorLevel()) {
+                QLog.d("anonymous_decode", 2, "anonymous_flags = " + m);
+              }
+              paramArrayList.add(localMessageRecord);
               b1 = b2;
-              continue;
-              l1 = ((Long)((Pair)localObject1).second).longValue();
-              break;
-              if (!paramMsg.msg_body.has()) {
-                break label1494;
-              }
-              localObject1 = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-              if (!((im_msg_body.MsgBody)localObject1).rich_text.has()) {
-                break label1494;
-              }
-              localRichText = (im_msg_body.RichText)((im_msg_body.MsgBody)localObject1).rich_text.get();
-              if (!localRichText.attr.has()) {
-                break label1488;
-              }
+            }
+            catch (UnsupportedEncodingException localUnsupportedEncodingException)
+            {
+              localUnsupportedEncodingException.printStackTrace();
             }
           }
-          for (l1 = MessageUtils.a(((im_msg_body.Attr)localRichText.attr.get()).random.get());; l1 = 0L)
+          l1 = ((Long)((Pair)localObject1).second).longValue();
+          break;
+          if (paramMsg.msg_body.has())
           {
-            localObject1 = localRichText.elems.get();
-            if (localRichText.ptt.has())
+            localObject1 = (im_msg_body.MsgBody)paramMsg.msg_body.get();
+            if (((im_msg_body.MsgBody)localObject1).rich_text.has())
             {
-              MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, (List)localObject2);
-              paramMsg = (msg_comm.Msg)localObject1;
-              break;
-            }
-            MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (List)localObject2, paramMsg, false, false, localMessageInfo);
-            paramMsg = (msg_comm.Msg)localObject1;
-            break;
-            byte b3;
-            boolean bool1;
-            boolean bool2;
-            if (paramPBDecodeContext.c == 1)
-            {
-              b2 = 0;
-              b3 = 1;
-              i = 100;
-              paramPBDecodeContext = (msg_comm.GroupInfo)localMsgHead.group_info.get();
-              if (paramPBDecodeContext != null)
+              localObject3 = (im_msg_body.RichText)((im_msg_body.MsgBody)localObject1).rich_text.get();
+              if (((im_msg_body.RichText)localObject3).attr.has()) {}
+              for (l1 = MessageUtils.a(((im_msg_body.Attr)((im_msg_body.RichText)localObject3).attr.get()).random.get());; l1 = 0L)
               {
-                l1 = paramPBDecodeContext.group_code.get();
-                if (paramMsg != null)
+                localObject1 = ((im_msg_body.RichText)localObject3).elems.get();
+                if (((im_msg_body.RichText)localObject3).ptt.has())
                 {
-                  paramMsg = paramMsg.iterator();
-                  if (paramMsg.hasNext())
+                  MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, (List)localObject2);
+                  paramMsg = (msg_comm.Msg)localObject1;
+                  break;
+                }
+                MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (List)localObject2, paramMsg, false, false, localMessageInfo);
+                paramMsg = (msg_comm.Msg)localObject1;
+                break;
+                label1022:
+                String str1 = "";
+                break label772;
+                localObject2 = new String((byte[])localObject2);
+                break label782;
+                byte b3;
+                boolean bool1;
+                boolean bool2;
+                if (paramPBDecodeContext.c == 1)
+                {
+                  b2 = 0;
+                  b3 = 1;
+                  i = 100;
+                  paramPBDecodeContext = (msg_comm.GroupInfo)localMsgHead.group_info.get();
+                  if (paramPBDecodeContext != null)
                   {
-                    paramMessageInfo = (im_msg_body.Elem)paramMsg.next();
-                    if (paramMessageInfo.pub_group.has())
+                    l1 = paramPBDecodeContext.group_code.get();
+                    if (paramMsg != null)
                     {
-                      bool1 = true;
-                      paramMsg = (im_msg_body.PubGroup)paramMessageInfo.pub_group.get();
-                      b2 = (byte)paramMsg.uint32_age.get();
-                      b3 = (byte)paramMsg.uint32_gender.get();
-                      i = paramMsg.uint32_distance.get();
-                    }
-                    for (;;)
-                    {
-                      if (QLog.isColorLevel()) {
-                        QLog.d("OpenTroopDebug", 2, "recv msg, groupcode = " + l1 + ", hasPubGroup = " + bool1);
+                      paramMsg = paramMsg.iterator();
+                      if (paramMsg.hasNext())
+                      {
+                        paramMessageInfo = (im_msg_body.Elem)paramMsg.next();
+                        if (paramMessageInfo.pub_group.has())
+                        {
+                          bool1 = true;
+                          paramMsg = (im_msg_body.PubGroup)paramMessageInfo.pub_group.get();
+                          b2 = (byte)paramMsg.uint32_age.get();
+                          b3 = (byte)paramMsg.uint32_gender.get();
+                          i = paramMsg.uint32_distance.get();
+                        }
+                        for (;;)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d("OpenTroopDebug", 2, "recv msg, groupcode = " + l1 + ", hasPubGroup = " + bool1);
+                          }
+                          paramMsg = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
+                          bool2 = paramMsg.f("" + l1);
+                          if (!bool1) {
+                            break label1386;
+                          }
+                          if (!bool2) {
+                            break label1380;
+                          }
+                          paramMsg = paramMsg.a("" + l1);
+                          if ((paramMsg != null) && (!paramMsg.isNeedDelete)) {
+                            break label1386;
+                          }
+                          paramArrayList.clear();
+                          return null;
+                          if ((!paramMessageInfo.elem_flags2.has()) || (!((im_msg_body.ElemFlags2)paramMessageInfo.elem_flags2.get()).uint32_longtitude.has()) || (!((im_msg_body.ElemFlags2)paramMessageInfo.elem_flags2.get()).uint32_latitude.has()) || (l7 != l5)) {
+                            break;
+                          }
+                          bool1 = false;
+                        }
+                        label1380:
+                        paramArrayList.clear();
+                        return null;
+                        label1386:
+                        if ((bool2) && (!bool1))
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.e("OpenTroopDebug", 2, "opentroop but no PubGroup, server error!");
+                          }
+                          bool1 = true;
+                          paramMessageInfo = String.valueOf(l1);
+                          str1 = String.valueOf(l5);
+                          paramMsg = paramPBDecodeContext.group_card.get().toByteArray();
+                          j = paramPBDecodeContext.group_level.get();
+                        }
                       }
-                      paramMsg = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
-                      bool2 = paramMsg.f("" + l1);
-                      if (!bool1) {
-                        break label1147;
-                      }
-                      if (!bool2) {
-                        break label1141;
-                      }
-                      paramMsg = paramMsg.a("" + l1);
-                      if ((paramMsg != null) && (!paramMsg.isNeedDelete)) {
-                        break label1147;
-                      }
-                      paramArrayList.clear();
-                      return null;
-                      if ((!paramMessageInfo.elem_flags2.has()) || (!((im_msg_body.ElemFlags2)paramMessageInfo.elem_flags2.get()).uint32_longtitude.has()) || (!((im_msg_body.ElemFlags2)paramMessageInfo.elem_flags2.get()).uint32_latitude.has()) || (l7 != l5)) {
-                        break;
-                      }
-                      bool1 = false;
-                    }
-                    label1141:
-                    paramArrayList.clear();
-                    return null;
-                    label1147:
-                    if ((bool2) && (!bool1))
-                    {
-                      if (QLog.isColorLevel()) {
-                        QLog.e("OpenTroopDebug", 2, "opentroop but no PubGroup, server error!");
-                      }
-                      bool1 = true;
-                      paramMessageInfo = String.valueOf(l1);
-                      localObject1 = String.valueOf(l5);
-                      paramMsg = paramPBDecodeContext.group_card.get().toByteArray();
-                      j = paramPBDecodeContext.group_level.get();
                     }
                   }
                 }
-              }
-            }
-            for (;;)
-            {
-              try
-              {
-                paramMsg = new String(paramMsg, "utf-8");
-                if ((!bool1) && (!bool2))
+                for (;;)
                 {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("OpenTroopDebug", 2, "checkGroupExist, groupcode = " + paramMessageInfo);
+                  try
+                  {
+                    paramMsg = new String(paramMsg, "utf-8");
+                    if ((!bool1) && (!bool2))
+                    {
+                      if (QLog.isColorLevel()) {
+                        QLog.d("OpenTroopDebug", 2, "checkGroupExist, groupcode = " + paramMessageInfo);
+                      }
+                      a(paramMessageInfo);
+                    }
+                    if (paramBoolean)
+                    {
+                      ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramMessageInfo, str1, paramMsg, j, null, null, b2, b3, i, l6, b1, 0L, -100.0D);
+                      paramMsg = null;
+                      paramArrayList = paramArrayList.iterator();
+                      if (!paramArrayList.hasNext()) {
+                        continue;
+                      }
+                      ((MessageRecord)paramArrayList.next()).vipBubbleID = l2;
+                      continue;
+                    }
                   }
-                  a(paramMessageInfo);
-                }
-                if (paramBoolean)
-                {
-                  ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramMessageInfo, (String)localObject1, paramMsg, j, null, null, b2, b3, i, l6, b1, 0L, -100.0D);
-                  paramMsg = null;
-                  paramArrayList = paramArrayList.iterator();
-                  if (!paramArrayList.hasNext()) {
+                  catch (UnsupportedEncodingException paramMsg)
+                  {
+                    paramMsg.printStackTrace();
+                    paramMsg = null;
                     continue;
+                    paramPBDecodeContext = new TroopMemberInfo();
+                    paramPBDecodeContext.troopuin = paramMessageInfo;
+                    paramPBDecodeContext.memberuin = str1;
+                    paramPBDecodeContext.troopnick = paramMsg;
+                    paramPBDecodeContext.level = j;
+                    paramPBDecodeContext.sex = b3;
+                    paramPBDecodeContext.age = b2;
+                    paramPBDecodeContext.distance = i;
+                    paramPBDecodeContext.msgseq = l6;
+                    if (b1 == 1)
+                    {
+                      paramBoolean = true;
+                      paramPBDecodeContext.isTroopFollowed = paramBoolean;
+                      paramPBDecodeContext.distanceToSelf = -100.0D;
+                      paramPBDecodeContext.distanceToSelfUpdateTimeStamp = System.currentTimeMillis();
+                      paramMsg = paramPBDecodeContext;
+                      continue;
+                    }
+                    paramBoolean = false;
+                    continue;
+                    MsgAutoMonitorUtil.a().g(System.currentTimeMillis() - l4);
+                    return paramMsg;
                   }
-                  ((MessageRecord)paramArrayList.next()).vipBubbleID = l2;
-                  continue;
+                  break label1415;
+                  bool1 = false;
+                  break label1173;
+                  l1 = 0L;
+                  break;
+                  paramMsg = null;
                 }
               }
-              catch (UnsupportedEncodingException paramMsg)
-              {
-                paramMsg.printStackTrace();
-                paramMsg = null;
-                continue;
-                paramPBDecodeContext = new TroopMemberInfo();
-                paramPBDecodeContext.troopuin = paramMessageInfo;
-                paramPBDecodeContext.memberuin = ((String)localObject1);
-                paramPBDecodeContext.troopnick = paramMsg;
-                paramPBDecodeContext.level = j;
-                paramPBDecodeContext.sex = b3;
-                paramPBDecodeContext.age = b2;
-                paramPBDecodeContext.distance = i;
-                paramPBDecodeContext.msgseq = l6;
-                if (b1 == 1)
-                {
-                  paramBoolean = true;
-                  paramPBDecodeContext.isTroopFollowed = paramBoolean;
-                  paramPBDecodeContext.distanceToSelf = -100.0D;
-                  paramPBDecodeContext.distanceToSelfUpdateTimeStamp = System.currentTimeMillis();
-                  paramMsg = paramPBDecodeContext;
-                  continue;
-                }
-                paramBoolean = false;
-                continue;
-                MsgAutoMonitorUtil.a().g(System.currentTimeMillis() - l4);
-                return paramMsg;
-              }
-              break label1176;
-              bool1 = false;
-              break label934;
-              l1 = 0L;
-              break;
-              paramMsg = null;
             }
           }
           paramMsg = null;
           l1 = l3;
         }
       }
-      label1176:
+      label1030:
+      label1415:
       i = 0;
       j = 0;
       k = 0;

@@ -1,16 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
 public class clk
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TextView b;
+  public clk(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  private clk(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
+  public void run()
+  {
+    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.app.a(32);
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
+    localNearFieldDiscussHandler.b(this.a.a.toString(), this.a.b, localLBSInfo);
+  }
 }
 
 

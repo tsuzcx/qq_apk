@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import java.net.URL;
 
 public class ehb
-  implements Runnable
+  implements BitmapDecoder
 {
-  public ehb(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  public ehb(FileAssistantDownloader paramFileAssistantDownloader) {}
   
-  public void run()
+  public Bitmap a(URL paramURL)
   {
-    this.a.w();
+    paramURL = this.a.a(paramURL);
+    return FileAssistantDownloader.a(this.a, paramURL);
   }
 }
 

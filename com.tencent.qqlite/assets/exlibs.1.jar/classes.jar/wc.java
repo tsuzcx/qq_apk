@@ -1,41 +1,46 @@
-import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wc
-  implements ActionSheet.OnButtonClickListener
+  extends LBSObserver
 {
-  int jdField_a_of_type_Int = -1;
+  public wc(AddFriendActivity paramAddFriendActivity) {}
   
-  public wc(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, List paramList, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    switch (paramInt)
+    if (paramBoolean)
     {
-    }
-    do
-    {
-      do
+      this.a.jdField_a_of_type_JavaUtilList = paramList;
+      if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-      } while (this.jdField_a_of_type_Int < 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.a.c.setText(2131363379);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      this.a.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-    } while (this.jdField_a_of_type_Int < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+      paramList = (List)((ArrayList)this.a.jdField_a_of_type_JavaUtilList).clone();
+      this.a.app.a(new wd(this, paramList));
+      AddFriendActivity.a(this.a);
+      continue;
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (!this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        AddFriendActivity.a(this.a);
+      }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.a.c.setText(2131363378);
+      }
+    }
   }
 }
 

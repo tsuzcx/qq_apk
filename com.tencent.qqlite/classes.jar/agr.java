@@ -1,27 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 public class agr
-  extends DataLineObserver
+  extends BroadcastReceiver
 {
   public agr(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.a(8, AppConstants.T, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    this.a.a(9, AppConstants.T, 6000);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.a(8, AppConstants.T, 6000);
+    if ("login".equals(paramIntent.getStringExtra("status")))
+    {
+      this.a.a.a(6, 2);
+      this.a.a.d = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a(null);
+      return;
+    }
+    this.a.a.a();
   }
 }
 

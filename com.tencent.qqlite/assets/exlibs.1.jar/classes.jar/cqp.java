@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ChatBackgroundManagerImp;
+import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import java.util.ArrayList;
 
 public class cqp
   implements Runnable
 {
-  public cqp(ConditionSearchManager paramConditionSearchManager) {}
+  public cqp(ChatBackgroundManagerImp paramChatBackgroundManagerImp, ChatBackgroundInfo paramChatBackgroundInfo) {}
   
   public void run()
   {
-    int j = this.a.a();
-    int i = -1;
-    if (j != 0) {
-      i = this.a.a(j);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
-    }
-    if (j == 0) {
-      ConditionSearchManager.a(this.a).a(new cqq(this));
+    if (this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo != null)
+    {
+      ChatBackgroundManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppChatBackgroundManagerImp).add(this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo);
+      ChatBackgroundManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppChatBackgroundManagerImp, this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo);
     }
   }
 }

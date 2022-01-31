@@ -1,19 +1,4 @@
-import java.io.File;
-
-class ebe
-{
-  private String a;
-  
-  public ebe(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public File a(int paramInt, String paramString)
-  {
-    return null;
-  }
-}
+public class ebe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\assets\exlibs.1.jar\classes.jar

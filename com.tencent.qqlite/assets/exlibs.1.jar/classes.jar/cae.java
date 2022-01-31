@@ -1,5 +1,5 @@
-import android.os.AsyncTask;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class cae
   implements Runnable
@@ -8,7 +8,7 @@ public class cae
   
   public void run()
   {
-    new caf(this).execute(new Void[0]);
+    this.a.a.E();
   }
 }
 

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-rotate android:drawable="@drawable/common_loading2_0" android:pivotX="50.0%" android:pivotY="50.0%"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020239" />
+</selector>

@@ -1,37 +1,50 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.AdWebviewPlugin;
-import com.tencent.mobileqq.mp.SSOHttp.SSOHttpResponse;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.util.HashMap;
 
 public class ry
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public ry(AdWebviewPlugin paramAdWebviewPlugin, String paramString) {}
+  public ry(OfflinePlugin paramOfflinePlugin) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {}
-    while (!paramBoolean) {
-      return;
-    }
-    try
+    paramView = this.a.mRuntime.a();
+    if (paramView == null) {}
+    OfflineUpdateStatus localOfflineUpdateStatus;
+    do
     {
-      SSOHttp.SSOHttpResponse localSSOHttpResponse = new SSOHttp.SSOHttpResponse();
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localSSOHttpResponse.mergeFrom(paramBundle);
+      do
+      {
+        do
+        {
+          return;
+        } while ((OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.b(this.a))));
+        localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.b(this.a));
+      } while (localOfflineUpdateStatus == null);
+      if (localOfflineUpdateStatus.b() == 3)
+      {
+        localOfflineUpdateStatus.a();
+        this.a.a();
+        localOfflineUpdateStatus.b(4);
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.remove(OfflinePlugin.b(this.a));
+        return;
       }
-      paramBundle = new JSONObject();
-      paramBundle.put("header", localSSOHttpResponse.header.get());
-      paramBundle.put("body", localSSOHttpResponse.body.get());
-      paramBundle.put("retcode", localSSOHttpResponse.retcode.get());
-      this.jdField_a_of_type_ComTencentBizWebviewpluginAdWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (Exception paramBundle) {}
+    } while (localOfflineUpdateStatus.b() != 0);
+    HtmlOffline.a(paramView.getApplicationContext(), OfflinePlugin.b(this.a), localOfflineUpdateStatus.jdField_f_of_type_JavaLangString, localOfflineUpdateStatus.jdField_f_of_type_Int, localOfflineUpdateStatus);
+    localOfflineUpdateStatus.b(1);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(OfflinePlugin.a(this.a), 2000L);
   }
 }
 

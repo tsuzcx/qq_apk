@@ -1,39 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
 public class ank
-  extends SSOAccountObserver
+  extends TroopObserver
 {
-  WeakReference a;
+  public ank(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public ank(ForwardOperations paramForwardOperations)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    this.a = new WeakReference(paramForwardOperations);
-  }
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    paramString = (ForwardOperations)this.a.get();
-    if ((paramString != null) && (!paramString.c) && (ForwardOperations.a(paramString) != null)) {
-      ForwardOperations.a(paramString).sendEmptyMessage(0);
+    if (paramBoolean1) {
+      ForwardRecentActivity.b(this.a);
     }
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
   {
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (ForwardOperations)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.C = paramString;
-        paramArrayOfByte.c = true;
-      }
-      return;
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.b(this.a);
     }
   }
 }

@@ -1,50 +1,41 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.widget.ProtectedWebView;
 
 public class ebg
-  extends Handler
+  extends WebViewClient
 {
-  public ebg(EditActivity paramEditActivity) {}
+  private ebg(ActionUrlActivity paramActionUrlActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          EditActivity.b(this.a, true);
-        } while (!EditActivity.a(this.a));
-        paramMessage = this.a.app.getPreferences().getString(this.a.app.a() + "sp_hot_status", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("get_hot_rich_status", 2, "old_hot_action_ids: " + paramMessage);
-        }
-      } while ((paramMessage == null) || (paramMessage.length() <= 0));
-      paramMessage = paramMessage.split(";");
-    } while ((paramMessage == null) || (paramMessage.length <= 0));
-    int i = 0;
-    while ((i < 6) && (i < paramMessage.length))
-    {
-      if ((paramMessage[i] != null) && (paramMessage[i].length() > 0))
-      {
-        String[] arrayOfString = paramMessage[i].split(":");
-        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
-          EditActivity.a(this.a).add(Integer.valueOf(Integer.parseInt(arrayOfString[0])));
-        }
-      }
-      i += 1;
-    }
-    EditActivity.b(this.a);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    ActionUrlActivity.a(this.a).clearView();
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
   }
 }
 

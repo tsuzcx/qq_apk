@@ -21,31 +21,30 @@ public class av
   {
     switch (LiteActivity.a(this.a).a()[paramInt][1])
     {
-    case 2130837692: 
-    case 2130837693: 
     case 2130837694: 
     case 2130837695: 
-    case 2130837697: 
-    case 2130837699: 
+    case 2130837696: 
+    case 2130837698: 
+    case 2130837700: 
     default: 
       return;
-    case 2130837690: 
+    case 2130837692: 
       StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.a(), "dl_cktkphoto");
       this.a.a_();
       ReportController.b(this.a.app, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
       return;
-    case 2130837696: 
+    case 2130837697: 
       StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.a(), "dl_ckpic");
       this.a.c();
       ReportController.b(this.a.app, "CliOper", "", "", "0X8004079", "0X8004079", 0, 0, "", "", "", "");
       return;
-    case 2130837700: 
+    case 2130837701: 
       StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.a(), "dl_ckvideo");
       paramAdapterView = new Intent(this.a.getApplicationContext(), LiteVideoActivity.class);
       this.a.startActivityForResult(paramAdapterView, 1);
       ReportController.b(this.a.app, "CliOper", "", "", "0X8004086", "0X8004086", 0, 0, "", "", "", "");
       return;
-    case 2130837698: 
+    case 2130837699: 
       StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.a(), "dl_ckfile");
       paramAdapterView = new Intent(this.a.getApplicationContext(), FMActivity.class);
       paramAdapterView.putExtra("category", 6);

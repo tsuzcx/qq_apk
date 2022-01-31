@@ -1,20 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.tips.ReaderTipsBar;
+import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
 
 public class cao
-  implements View.OnClickListener
+  implements TroopFileError.TroopFileErrorFilter
 {
-  public cao(ReaderTipsBar paramReaderTipsBar) {}
+  public String a;
   
-  public void onClick(View paramView)
+  public cao(String paramString)
   {
-    paramView = new Intent();
-    paramView.setAction("com.qqreader.aioback2reader");
-    paramView.putExtra("bookid", ReaderTipsBar.a(this.a));
-    ReaderTipsBar.a(this.a).sendBroadcast(paramView);
+    this.a = paramString;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

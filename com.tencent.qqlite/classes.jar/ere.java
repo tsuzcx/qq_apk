@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.util.VersionUtils;
 
 public class ere
-  implements DialogInterface.OnDismissListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public ere(TroopShareUtility paramTroopShareUtility) {}
+  public ere(VideoViewX paramVideoViewX) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  @TargetApi(8)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    TroopShareUtility.a(this.a, false);
-    if ((!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) || (this.a.a)) {
-      return;
+    VideoViewX.b(this.a);
+    VideoViewX.c(this.a, 5);
+    VideoViewX.d(this.a, 5);
+    if (VideoViewX.a(this.a) != null)
+    {
+      VideoViewX.a(this.a).d();
+      VideoViewX.a(this.a).c();
     }
-    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+    if (VersionUtils.b()) {
+      ((AudioManager)BaseApplication.getContext().getSystemService("audio")).abandonAudioFocus(this.a.a);
+    }
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onCompletion(VideoViewX.a(this.a));
+    }
   }
 }
 

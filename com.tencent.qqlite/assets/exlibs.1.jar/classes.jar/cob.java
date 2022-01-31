@@ -1,23 +1,23 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class cob
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animation.AnimationListener
 {
-  public cob(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public cob(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.a(this.a).getWidth());
-    ShortVideoPreviewActivity.b(this.a, ShortVideoPreviewActivity.a(this.a).getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + ShortVideoPreviewActivity.a(this.a) + ",mSurfaceViewHeight:" + ShortVideoPreviewActivity.b(this.a));
-    }
-    ShortVideoPreviewActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.a(this.a).setVisibility(4);
+    ShortVideoPlayActivity.b(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

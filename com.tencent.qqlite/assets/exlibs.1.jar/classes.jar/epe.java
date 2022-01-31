@@ -1,35 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import android.content.Context;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class epe
-  extends SOSOMapLBSApiListener
+  implements Runnable
 {
-  public epe(AutoLocationMapView paramAutoLocationMapView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
+  public epe(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  public void run()
   {
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    Message localMessage = this.a.a.obtainMessage(1);
-    if (paramSOSOMapLBSApiResult.Info == 1)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramSOSOMapLBSApiResult = new GeoPoint((int)(paramSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(paramSOSOMapLBSApiResult.Longitude * 1000000.0D));
-      localMessage.arg1 = 0;
-      localMessage.obj = paramSOSOMapLBSApiResult;
-    }
-    for (;;)
-    {
-      localMessage.sendToTarget();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
       return;
-      localMessage.arg2 = -1;
     }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130837987, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

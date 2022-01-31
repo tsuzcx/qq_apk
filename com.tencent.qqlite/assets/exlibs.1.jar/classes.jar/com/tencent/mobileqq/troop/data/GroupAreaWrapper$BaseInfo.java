@@ -39,12 +39,12 @@ public abstract class GroupAreaWrapper$BaseInfo
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903317, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.ActivityAndTopicViewHolder();
-    paramViewGroup.a = ((TextView)paramContext.findViewById(2131297679));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297681));
-    paramViewGroup.c = ((TextView)paramContext.findViewById(2131297685));
-    paramViewGroup.d = ((TextView)paramContext.findViewById(2131297686));
-    paramViewGroup.e = ((TextView)paramContext.findViewById(2131297687));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131297683));
+    paramViewGroup.a = ((TextView)paramContext.findViewById(2131297675));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297677));
+    paramViewGroup.c = ((TextView)paramContext.findViewById(2131297681));
+    paramViewGroup.d = ((TextView)paramContext.findViewById(2131297682));
+    paramViewGroup.e = ((TextView)paramContext.findViewById(2131297683));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131297679));
     paramContext.setTag(paramViewGroup);
     a(paramContext);
     return paramContext;
@@ -73,17 +73,17 @@ public abstract class GroupAreaWrapper$BaseInfo
     {
       localActivityAndTopicViewHolder.d.setText(this.d + " " + (String)localObject);
       localActivityAndTopicViewHolder.d.setCompoundDrawablePadding(8);
-      localActivityAndTopicViewHolder.d.setCompoundDrawablesWithIntrinsicBounds(2130838271, 0, 0, 0);
+      localActivityAndTopicViewHolder.d.setCompoundDrawablesWithIntrinsicBounds(2130838263, 0, 0, 0);
       a(localActivityAndTopicViewHolder.e);
       localActivityAndTopicViewHolder.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
       try
       {
         localActivityAndTopicViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(this.e));
-        localObject = (RelativeLayout)paramView.findViewById(2131297678);
+        localObject = (RelativeLayout)paramView.findViewById(2131297674);
         if (localObject != null) {
           ((RelativeLayout)localObject).setOnClickListener(this);
         }
-        paramView = (RelativeLayout)paramView.findViewById(2131297682);
+        paramView = (RelativeLayout)paramView.findViewById(2131297678);
         if (paramView != null) {
           paramView.setOnClickListener(this);
         }
@@ -104,7 +104,7 @@ public abstract class GroupAreaWrapper$BaseInfo
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131297678)
+    if (i == 2131297674)
     {
       localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
       localIntent.putExtra("url", this.f);
@@ -112,7 +112,7 @@ public abstract class GroupAreaWrapper$BaseInfo
       localIntent.putExtra("hide_more_button", true);
       paramView.getContext().startActivity(localIntent);
     }
-    while (i != 2131297682) {
+    while (i != 2131297678) {
       return;
     }
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);

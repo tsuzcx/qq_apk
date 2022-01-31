@@ -10,12 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import blj;
+import blk;
 import bll;
 import blm;
 import bln;
 import blo;
-import blp;
-import blq;
 import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
 import com.tencent.mobileqq.app.ContactFacade;
 import com.tencent.mobileqq.app.FriendListObserver;
@@ -43,9 +43,9 @@ public class TroopAssisSettingActivity
   extends IphoneTitleBarActivity
   implements Observer
 {
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bll(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new blj(this);
   public TroopMessageSettingAdapter a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new blp(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bln(this);
   private XExpandableListView jdField_a_of_type_ComTencentWidgetXExpandableListView;
   public String a;
   public List a;
@@ -85,15 +85,15 @@ public class TroopAssisSettingActivity
   private View e()
   {
     View localView = View.inflate(this, 2130903219, null);
-    localView.findViewById(2131297239).setFocusable(true);
-    Object localObject = (Switch)localView.findViewById(2131297240);
+    localView.findViewById(2131297235).setFocusable(true);
+    Object localObject = (Switch)localView.findViewById(2131297236);
     ((Switch)localObject).setChecked(TroopAssistantManager.a().a());
     ((Switch)localObject).setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    localObject = (TextView)localView.findViewById(2131297241);
+    localObject = (TextView)localView.findViewById(2131297237);
     if (TroopAssistantManager.a().d(this.app)) {
       TroopAssistantManager.a().g(this.app);
     }
-    for (int i = 2131363864;; i = 2131363863)
+    for (int i = 2131363854;; i = 2131363853)
     {
       ((TextView)localObject).setText(i);
       ((TextView)localObject).setFocusable(true);
@@ -121,8 +121,8 @@ public class TroopAssisSettingActivity
   {
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setGroupIndicator(null);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnItemClickListener(null);
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new bln(this));
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new blo(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new bll(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new blm(this));
   }
   
   public void a(TroopInfo paramTroopInfo)
@@ -131,25 +131,25 @@ public class TroopAssisSettingActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
     int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramTroopInfo.troopuin)).intValue();
     int j = DBUtils.a().a(paramTroopInfo.troopuin, this.app);
-    String str2 = getString(2131363868, new Object[] { StringUtil.a(getBaseContext(), j) });
+    String str2 = getString(2131363858, new Object[] { StringUtil.a(getBaseContext(), j) });
     String str1;
     if (TextUtils.isEmpty(paramTroopInfo.troopname))
     {
       str1 = paramTroopInfo.troopuin;
-      localActionSheet.a(getString(2131363867, new Object[] { str1 }));
+      localActionSheet.a(getString(2131363857, new Object[] { str1 }));
       localActionSheet.b(str2);
       if (i != 1) {
         break label217;
       }
       bool1 = true;
       label126:
-      localActionSheet.a(2131362536, bool1);
+      localActionSheet.a(2131362532, bool1);
       if (i != 2) {
         break label223;
       }
       bool1 = true;
       label144:
-      localActionSheet.a(2131362537, bool1);
+      localActionSheet.a(2131362533, bool1);
       if (i != 3) {
         break label229;
       }
@@ -159,9 +159,9 @@ public class TroopAssisSettingActivity
     label229:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localActionSheet.a(2131362538, bool1);
-      localActionSheet.d(getString(2131362790));
-      localActionSheet.a(new blm(this, i, paramTroopInfo, localActionSheet));
+      localActionSheet.a(2131362534, bool1);
+      localActionSheet.d(getString(2131362794));
+      localActionSheet.a(new blk(this, i, paramTroopInfo, localActionSheet));
       localActionSheet.show();
       return;
       str1 = paramTroopInfo.troopname;
@@ -188,15 +188,15 @@ public class TroopAssisSettingActivity
         if (i <= 99) {
           break label80;
         }
-        this.h.setText(getString(2131362946) + "(" + "99+" + ")");
+        this.h.setText(getString(2131362950) + "(" + "99+" + ")");
       }
     }
     return;
     label80:
-    this.h.setText(getString(2131362946) + "(" + i + ")");
+    this.h.setText(getString(2131362950) + "(" + i + ")");
     return;
     label124:
-    this.h.setText(getString(2131362946));
+    this.h.setText(getString(2131362950));
   }
   
   public void d()
@@ -219,8 +219,8 @@ public class TroopAssisSettingActivity
   {
     super.onCreate(paramBundle);
     setContentView(d());
-    d(2130837633);
-    setTitle(2131363858);
+    d(2130837635);
+    setTitle(2131363848);
     d();
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.app.a().addObserver(this);
@@ -262,7 +262,7 @@ public class TroopAssisSettingActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new blq(this));
+      runOnUiThread(new blo(this));
     }
   }
 }

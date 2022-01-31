@@ -1,14 +1,20 @@
-import com.tencent.open.base.ToastUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.MyAppApi;
 
 public class ffd
-  implements Runnable
+  extends BroadcastReceiver
 {
   public ffd(MyAppApi paramMyAppApi) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ToastUtil.a().a(this.a.b);
+    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqql.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.f();
+    }
   }
 }
 

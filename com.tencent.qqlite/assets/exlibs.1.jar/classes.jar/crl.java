@@ -1,16 +1,20 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.service.HttpNotify;
+import com.tencent.qphone.base.util.QLog;
+import wifiphoto.WifiPhotoDataCenter;
 
 public class crl
-  implements HttpNotify
+  extends Thread
 {
   public crl(DataLineHandler paramDataLineHandler) {}
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
+  public void run()
+  {
+    DataLineHandler.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("wifiphoto", 2, "openWifiPhoto is running, resendWifiPhotoBasicInfo");
+    }
+    DataLineHandler.b(this.a);
+  }
 }
 
 

@@ -1,29 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class bua
-  extends Handler
+  implements Runnable
 {
-  public bua(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bua(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    RecordSoundPanel.a(this.a).e(1);
-    this.a.g();
-    QQToast.a(RecordSoundPanel.a(this.a).a(), RecordSoundPanel.a(this.a).a().getString(2131362973), 1).a();
+    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.g();
   }
 }
 

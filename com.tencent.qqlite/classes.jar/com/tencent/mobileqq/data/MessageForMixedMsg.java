@@ -52,7 +52,7 @@ public class MessageForMixedMsg
           if ((??? instanceof MessageForText)) {
             localStringBuilder.append(((MessageForText)???).msg);
           } else if ((??? instanceof MessageForPic)) {
-            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362792));
+            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362796));
           }
         }
       }
@@ -91,7 +91,7 @@ public class MessageForMixedMsg
             if ((localMessageRecord instanceof MessageForText)) {
               localObject1.append(((MessageForText)localMessageRecord).msg);
             } else if ((localMessageRecord instanceof MessageForPic)) {
-              localObject1.append(BaseApplicationImpl.getContext().getString(2131362792));
+              localObject1.append(BaseApplicationImpl.getContext().getString(2131362796));
             }
           }
         }
@@ -169,7 +169,7 @@ public class MessageForMixedMsg
             ((MessageForPic)localObject3).subMsgId = i;
             copyBaseInfoFromMixedToPic((MessageForPic)localObject3, this);
             this.msgElemList.add(localObject3);
-            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362792));
+            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131362796));
           }
         }
         finally {}

@@ -1,17 +1,27 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.Gallery;
 
-public class apj
-  implements AdapterView.OnItemLongClickListener
+class apj
+  implements Runnable
 {
-  public apj(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  apj(api paramapi) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    FriendProfileImageActivity.a(this.a);
-    return true;
+    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b()) {
+      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
+    }
+    View localView;
+    do
+    {
+      return;
+      localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.a();
+    } while (localView == null);
+    this.a.a.jdField_a_of_type_AndroidViewView = localView;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
+    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
   }
 }
 

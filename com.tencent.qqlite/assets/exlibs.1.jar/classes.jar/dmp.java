@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class dmp
-  extends FMObserver
+  implements Runnable
 {
-  public dmp(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public dmp(QfileRecentDocFileTabView paramQfileRecentDocFileTabView, String paramString, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void run()
   {
-    super.a(paramThumbnailInfo);
-    if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0)) {
-      this.a.i();
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.a.put(this.jdField_a_of_type_JavaLangString, new ArrayList());
     }
+    List localList = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.a.get(this.jdField_a_of_type_JavaLangString);
+    if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+      return;
+    }
+    localList.add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.i();
   }
 }
 

@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.widget.TextView;
-import cjn;
+import cjt;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pic.Logger;
@@ -62,7 +62,7 @@ public class SendPhotoActivity
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903271);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131297435));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131297431));
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
       }
       return;
@@ -96,7 +96,7 @@ public class SendPhotoActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    Looper.myQueue().addIdleHandler(new cjn(this));
+    Looper.myQueue().addIdleHandler(new cjt(this));
   }
 }
 

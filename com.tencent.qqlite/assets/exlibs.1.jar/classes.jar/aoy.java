@@ -1,25 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aoy
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aoy(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public aoy(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.c) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+    this.a.a.startAnimation(this.a.b);
   }
 }
 

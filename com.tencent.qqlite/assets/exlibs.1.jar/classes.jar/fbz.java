@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.agent.OpenSdkFriendService;
+import com.tencent.open.agent.SocialFriendChooser;
+import com.tencent.open.base.http.HttpCgiAsyncTask;
+import com.tencent.open.settings.ServerSetting;
 
-public final class fbz
-  implements Parcelable.Creator
+public class fbz
+  extends Handler
 {
-  public Friend a(Parcel paramParcel)
-  {
-    Friend localFriend = new Friend();
-    localFriend.a = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    return localFriend;
-  }
+  public fbz(SocialFriendChooser paramSocialFriendChooser) {}
   
-  public Friend[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new Friend[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 10001: 
+      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
+      paramMessage.putString("agentversion", CommonDataAdapter.a().d());
+      paramMessage.putString("facetype", "mqqface");
+      String str = ServerSetting.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
+      OpenSdkFriendService.a().a(str, paramMessage, new fca(this));
+      return;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
+      this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
+    }
+    this.a.n();
+    paramMessage = new Intent();
+    paramMessage.putExtra("key_error_code", -7);
+    paramMessage.putExtra("key_error_msg", "网络连接超时!");
+    this.a.setResult(-1, paramMessage);
+    this.a.finish();
   }
 }
 

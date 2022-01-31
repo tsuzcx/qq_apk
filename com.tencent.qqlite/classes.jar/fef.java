@@ -1,23 +1,14 @@
-import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
-public class fef
+public final class fef
   implements Runnable
 {
-  public fef(DownloadManager paramDownloadManager, String paramString) {}
+  public fef(DownloadListener paramDownloadListener) {}
   
   public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-    }
+    DownloadManager.a().b(this.a);
   }
 }
 

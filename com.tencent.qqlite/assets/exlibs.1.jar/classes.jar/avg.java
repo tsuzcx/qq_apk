@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class avg
-  implements DialogInterface.OnCancelListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public avg(MayKnowManActivity paramMayKnowManActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-    if (!this.a.isFinishing()) {
-      this.a.finish();
-    }
-  }
+  private avg(MayKnowManActivity paramMayKnowManActivity) {}
 }
 
 

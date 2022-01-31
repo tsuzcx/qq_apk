@@ -1,32 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
+import android.media.SoundPool;
 import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 public class mz
-  extends Handler
+  implements Runnable
 {
-  public mz(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public mz(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 5) {
-      SensorAPIJavaScript.a(this.a, (String)paramMessage.obj);
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
     }
-    if (paramMessage.what == 291) {
-      this.a.a((String)paramMessage.obj);
-    }
-    WebView localWebView;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      localWebView = (WebView)this.a.a.get();
-    } while (localWebView == null);
-    localWebView.loadUrl((String)paramMessage.obj);
   }
 }
 

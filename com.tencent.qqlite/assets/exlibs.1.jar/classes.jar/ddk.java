@@ -1,67 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.IndividuationSetActivity.EmojiJsBridgeListener;
+import com.tencent.mobileqq.emoji.EmojiJsHandler;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ddk
-  extends DownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public ddk(EmojiManager paramEmojiManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public ddk(EmojiJsHandler paramEmojiJsHandler, IndividuationSetActivity.EmojiJsBridgeListener paramEmojiJsBridgeListener) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onDone(paramDownloadTask);
-    Object localObject = paramDownloadTask.a();
-    int j = ((Bundle)localObject).getInt(paramDownloadTask.b);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + paramDownloadTask + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
+      QLog.i("Emoji.EmojiJsHandler", 2, "not wifi network cancel download");
     }
-    int i = 0;
-    if (paramDownloadTask.a() != 3)
+    try
     {
-      i = EmosmUtils.checkResultCode(paramDownloadTask.z);
-      if (this.a.a(j)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, -1, i);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    for (;;)
-    {
-      long l1 = paramDownloadTask.h;
-      long l2 = paramDownloadTask.g;
-      this.a.a((EmoticonPackage)localObject, i);
-      this.a.a((EmoticonPackage)localObject, i, l1 - l2);
+      paramDialogInterface = new JSONObject();
+      paramDialogInterface.put("result", 2);
+      paramDialogInterface.put("message", "user cancel download emoji in not wifi network");
+      paramDialogInterface.put("what", 1014);
+      this.jdField_a_of_type_ComTencentMobileqqActivityIndividuationSetActivity$EmojiJsBridgeListener.a(paramDialogInterface);
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, 0, 0);
     }
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.b);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + paramDownloadTask);
-    }
-    if (this.a.a(i))
+    catch (Exception paramDialogInterface)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
-      this.a.a("param_step", String.valueOf(i));
+      paramDialogInterface.printStackTrace();
     }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return super.onStart(paramDownloadTask);
   }
 }
 

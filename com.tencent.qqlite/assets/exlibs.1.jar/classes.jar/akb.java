@@ -1,10 +1,6 @@
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.DoodleActivity;
 import com.tencent.mobileqq.widget.DoodlePicView;
 import com.tencent.mobileqq.widget.DoodleTextView;
@@ -16,23 +12,34 @@ public class akb
   
   public void onClick(View paramView)
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.a()))
+    int j = 0;
+    int i = 0;
+    while (i < 6)
     {
-      Toast.makeText(BaseApplicationImpl.getContext(), this.a.getString(2131363451) + "...", 0).show();
-      return;
+      this.a.jdField_b_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
+      i += 1;
     }
-    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.a()))
+    paramView.setBackgroundResource(2130839136);
+    int k = paramView.getId();
+    i = j;
+    for (;;)
     {
-      Toast.makeText(BaseApplicationImpl.getContext(), this.a.getString(2131363450) + "...", 0).show();
-      return;
+      if (i < 6)
+      {
+        if (this.a.jdField_b_of_type_ArrayOfInt[i] == k)
+        {
+          if (this.a.jdField_a_of_type_Boolean) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setPaintColor(this.a.d[i]);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintColor(this.a.d[i]);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
     }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
   }
 }
 

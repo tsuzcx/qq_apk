@@ -1,77 +1,100 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.common.util.ImageUtil;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.Config;
-import com.tencent.mobileqq.config.struct.ADMsg;
-import com.tencent.mobileqq.model.FriendManager;
 
-class bbq
-  implements View.OnClickListener
+public class bbq
+  extends Handler
 {
-  bbq(bbm parambbm, ADMsg paramADMsg, SharedPreferences paramSharedPreferences, String paramString) {}
+  public bbq(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.e;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.f;
-    if ((((String)localObject).equals("TMTWAPI")) || (((String)localObject).equals("WAPI")))
+    int i = 1;
+    switch (paramMessage.what)
     {
-      paramView = Config.a(paramView, 0, null);
-      localObject = new Intent(this.jdField_a_of_type_Bbm.a, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Bbm.a.app.a());
-      this.jdField_a_of_type_Bbm.a.startActivity(((Intent)localObject).putExtra("url", paramView));
     }
-    for (;;)
+    label84:
+    label89:
+    do
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-      this.jdField_a_of_type_Bbm.a.a.sendEmptyMessageDelayed(1010, 1000L);
-      return;
-      if ((((String)localObject).equals("TMTWAP")) || (((String)localObject).equals("WAP")))
+      Object localObject;
+      do
       {
-        localObject = new Intent(this.jdField_a_of_type_Bbm.a, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Bbm.a.app.a());
-        this.jdField_a_of_type_Bbm.a.startActivity(((Intent)localObject).putExtra("url", paramView));
-      }
-      else if (((String)localObject).equals("LOCAL"))
-      {
-        if ("CARD".equalsIgnoreCase(paramView))
+        do
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.g.split(",")[0];
-          if (("".equals(paramView)) || (this.jdField_a_of_type_Bbm.a.app.a().equals(paramView))) {}
-          for (paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_Bbm.a.app.a(), 0);; paramView = new ProfileActivity.AllInOne(paramView, 19))
+          return;
+          j = paramMessage.arg1;
+          boolean bool;
+          if ((j & 0x1) == 0)
           {
-            ProfileActivity.b(this.jdField_a_of_type_Bbm.a, paramView);
-            break;
-          }
-        }
-        if ("CHAT".equalsIgnoreCase(paramView))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.g.split(",")[0];
-          if (!"".equals(paramView))
-          {
-            localObject = (FriendManager)this.jdField_a_of_type_Bbm.a.app.getManager(8);
-            if (((FriendManager)localObject).b(paramView)) {
-              this.jdField_a_of_type_Bbm.a(paramView, 0, ((FriendManager)localObject).a(paramView));
-            } else {
-              this.jdField_a_of_type_Bbm.a(paramView, 1001, ((FriendManager)localObject).a(paramView));
+            bool = true;
+            this.a.a(bool);
+            if ((j & 0x2) != 0) {
+              break label84;
             }
           }
-        }
-        else if ("NEARBY".equalsIgnoreCase(paramView))
+          for (;;)
+          {
+            if (i == 0) {
+              break label89;
+            }
+            QQBrowserActivity.a(this.a).setVisibility(0);
+            return;
+            bool = false;
+            break;
+            i = 0;
+          }
+          QQBrowserActivity.b(this.a).setVisibility(8);
+          return;
+        } while (this.a.k);
+        i = paramMessage.arg1;
+        int j = paramMessage.arg2;
+        paramMessage = QQBrowserActivity.a(this.a).getBackground();
+        if (paramMessage != null)
         {
-          this.jdField_a_of_type_Bbm.a.startActivity(new Intent(this.jdField_a_of_type_Bbm.a, NearbyActivity.class));
+          localObject = paramMessage.getBounds();
+          if ((((Rect)localObject).width() <= 0) || ((((Rect)localObject).height() <= 0) && (j < 20)))
+          {
+            sendMessageDelayed(obtainMessage(2, i, j + 1), 50L);
+            return;
+          }
         }
+        localObject = QQBrowserActivity.c(this.a).getDrawable();
+        if (localObject != null)
+        {
+          Rect localRect = ((Drawable)localObject).getBounds();
+          if ((localRect.width() <= 0) || ((localRect.height() <= 0) && (j < 20)))
+          {
+            sendMessageDelayed(obtainMessage(2, i, j + 1), 50L);
+            return;
+          }
+        }
+        if (paramMessage != null)
+        {
+          if (!QQBrowserActivity.a(this.a))
+          {
+            QQBrowserActivity.a(this.a, paramMessage);
+            QQBrowserActivity.a(this.a, true);
+          }
+          paramMessage = ImageUtil.a(paramMessage, i);
+          if (paramMessage != null) {
+            QQBrowserActivity.b(this.a).setBackgroundDrawable(paramMessage);
+          }
+        }
+      } while (localObject == null);
+      if (!QQBrowserActivity.b(this.a))
+      {
+        QQBrowserActivity.b(this.a, (Drawable)localObject);
+        QQBrowserActivity.b(this.a, true);
       }
-    }
+      paramMessage = ImageUtil.a((Drawable)localObject, i);
+    } while (paramMessage == null);
+    QQBrowserActivity.d(this.a).setImageDrawable(paramMessage);
   }
 }
 

@@ -17,8 +17,8 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
-import eko;
-import ekp;
+import ekt;
+import eku;
 import java.net.URLEncoder;
 
 public abstract class TroopCreateBaseActivity
@@ -100,8 +100,8 @@ public abstract class TroopCreateBaseActivity
   
   public void c(String paramString1, String paramString2, String paramString3)
   {
-    paramString3 = new ekp(this, paramString3);
-    DialogUtil.a(this, 230, paramString1, paramString2, 2131362790, 2131362791, paramString3, paramString3).show();
+    paramString3 = new eku(this, paramString3);
+    DialogUtil.a(this, 230, paramString1, paramString2, 2131362794, 2131362795, paramString3, paramString3).show();
   }
   
   protected void d()
@@ -120,7 +120,7 @@ public abstract class TroopCreateBaseActivity
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     localQQProgressDialog.a(paramString);
     localQQProgressDialog.setCancelable(false);
-    localQQProgressDialog.setOnDismissListener(new eko(this));
+    localQQProgressDialog.setOnDismissListener(new ekt(this));
     this.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -139,7 +139,6 @@ public abstract class TroopCreateBaseActivity
   public void x()
   {
     CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getChildCount();
     localCustomWebView.setFocusableInTouchMode(true);
     localCustomWebView.setFocusable(true);
     localCustomWebView.requestFocus();

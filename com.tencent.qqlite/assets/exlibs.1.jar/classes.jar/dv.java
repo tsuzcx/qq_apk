@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.util.file.DLFileInfo;
+import android.os.Handler;
+import com.dataline.util.widget.WaitTextView;
+import com.dataline.util.widget.WaitTextView.RefreshListener;
 
-public final class dv
-  implements Parcelable.Creator
+public class dv
+  implements Runnable
 {
-  public DLFileInfo a(Parcel paramParcel)
-  {
-    return new DLFileInfo(paramParcel, null);
-  }
+  public dv(WaitTextView paramWaitTextView) {}
   
-  public DLFileInfo[] a(int paramInt)
+  public void run()
   {
-    return new DLFileInfo[paramInt];
+    WaitTextView.a(this.a);
+    if (WaitTextView.a(this.a) != null) {
+      WaitTextView.a(this.a).a();
+    }
+    WaitTextView.a(this.a).postDelayed(this, 500L);
   }
 }
 

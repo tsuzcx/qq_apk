@@ -5,42 +5,68 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.view.ContextThemeWrapper;
+import com.tencent.commonsdk.soload.SoLoadCore;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 class PluginContext
   extends ContextThemeWrapper
 {
   private static final String TAG = PluginContext.class.getSimpleName();
-  private AssetManager mAsset = null;
+  private static final boolean USE_RESOURCES_CACHE = false;
+  private static final HashMap<String, ContextRIT> sResourcesCache = new HashMap();
   private ClassLoader mClassLoader;
   private Context mOutContext;
-  private Resources mResources = null;
-  private Resources.Theme mTheme = null;
-  private int mThemeResId;
+  private ContextRIT mRIT;
   
-  public PluginContext(Context paramContext, int paramInt, String paramString, ClassLoader paramClassLoader)
+  public PluginContext(Context paramContext, int paramInt1, String paramString, ClassLoader paramClassLoader, Resources paramResources, int paramInt2)
   {
-    this(paramContext, paramInt, paramString, paramClassLoader, null);
-  }
-  
-  public PluginContext(Context paramContext, int paramInt, String paramString, ClassLoader paramClassLoader, Resources paramResources)
-  {
-    super(paramContext, paramInt);
+    super(paramContext, paramInt1);
     this.mClassLoader = paramClassLoader;
-    if (paramResources != null) {
-      this.mAsset = paramResources.getAssets();
+    if (paramInt2 == 2) {
+      paramString = getOrCreateRIT(paramContext, new String[] { SoLoadCore.getApkPath(MobileQQ.getContext()), paramString });
     }
-    for (this.mResources = paramResources;; this.mResources = getSelfRes(paramContext, this.mAsset))
+    for (;;)
     {
-      this.mTheme = getSelfTheme(this.mResources);
+      this.mRIT = paramString;
       this.mOutContext = paramContext;
       return;
-      this.mAsset = getSelfAssets(paramString);
+      if (paramInt2 == 1)
+      {
+        paramString = new ContextRIT(null, paramResources);
+        createTheme(paramString);
+      }
+      else
+      {
+        paramString = getOrCreateRIT(paramContext, new String[] { paramString });
+      }
     }
   }
   
-  private int getInnerRIdValue(String paramString)
+  private static Resources createResources(Context paramContext, AssetManager paramAssetManager)
+  {
+    return new Resources(paramAssetManager, paramContext.getResources().getDisplayMetrics(), paramContext.getResources().getConfiguration());
+  }
+  
+  private static Resources createResources(Context paramContext, String[] paramArrayOfString)
+  {
+    AssetManager localAssetManager = new AssetManager();
+    localAssetManager.addAssetPaths(paramArrayOfString);
+    return createResources(paramContext, localAssetManager);
+  }
+  
+  private static void createTheme(ContextRIT paramContextRIT)
+  {
+    Resources.Theme localTheme = paramContextRIT.mR.newTheme();
+    localTheme.applyStyle(getInnerRIdValue("com.android.internal.R.style.Theme"), true);
+    paramContextRIT.mT = localTheme;
+  }
+  
+  private static int getInnerRIdValue(String paramString)
   {
     int j = -1;
     int i = j;
@@ -63,11 +89,11 @@ class PluginContext
       if (DebugHelper.sDebug)
       {
         i = j;
-        DebugHelper.log("PluginDebug", "getInnderR rStrnig:" + paramString);
+        DebugHelper.log("plugin_tag", "getInnderR rStrnig:" + paramString);
         i = j;
-        DebugHelper.log("PluginDebug", "getInnderR className:" + str2);
+        DebugHelper.log("plugin_tag", "getInnderR className:" + str2);
         i = j;
-        DebugHelper.log("PluginDebug", "getInnderR fieldName:" + str1);
+        DebugHelper.log("plugin_tag", "getInnderR fieldName:" + str1);
       }
       return j;
     }
@@ -78,39 +104,25 @@ class PluginContext
     return i;
   }
   
-  private AssetManager getSelfAssets(String paramString)
+  private static ContextRIT getOrCreateRIT(Context paramContext, String... paramVarArgs)
   {
-    Object localObject = null;
-    try
+    ArrayList localArrayList = new ArrayList();
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      AssetManager localAssetManager = (AssetManager)AssetManager.class.newInstance();
-      localObject = localAssetManager;
-      AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class }).invoke(localAssetManager, new Object[] { paramString });
-      return localAssetManager;
+      localArrayList.add(paramVarArgs[i]);
+      i += 1;
     }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localObject;
-  }
-  
-  private Resources getSelfRes(Context paramContext, AssetManager paramAssetManager)
-  {
-    return new Resources(paramAssetManager, paramContext.getResources().getDisplayMetrics(), paramContext.getResources().getConfiguration());
-  }
-  
-  private Resources.Theme getSelfTheme(Resources paramResources)
-  {
-    paramResources = paramResources.newTheme();
-    this.mThemeResId = getInnerRIdValue("com.android.internal.R.style.Theme");
-    paramResources.applyStyle(this.mThemeResId, true);
-    return paramResources;
+    Collections.sort(localArrayList);
+    paramContext = new ContextRIT(null, createResources(paramContext, paramVarArgs));
+    createTheme(paramContext);
+    return paramContext;
   }
   
   public AssetManager getAssets()
   {
-    return this.mAsset;
+    return this.mRIT.mR.getAssets();
   }
   
   public ClassLoader getClassLoader()
@@ -121,24 +133,36 @@ class PluginContext
     return super.getClassLoader();
   }
   
-  public Resources getRes()
+  public Context getOutContext()
   {
-    return this.mResources;
+    return this.mOutContext;
   }
   
   public Resources getResources()
   {
-    return this.mResources;
+    return this.mRIT.mR;
   }
   
   public Resources.Theme getTheme()
   {
-    return this.mTheme;
+    return this.mRIT.mT;
   }
   
   public void setClassLoader(ClassLoader paramClassLoader)
   {
     this.mClassLoader = paramClassLoader;
+  }
+  
+  private static class ContextRIT
+  {
+    public Resources mR;
+    public Resources.Theme mT;
+    
+    public ContextRIT(Resources.Theme paramTheme, Resources paramResources)
+    {
+      this.mT = paramTheme;
+      this.mR = paramResources;
+    }
   }
 }
 

@@ -73,25 +73,25 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import crb;
-import crc;
-import crd;
-import cre;
-import crf;
-import crg;
 import crh;
 import cri;
 import crj;
 import crk;
 import crl;
 import crm;
+import crn;
 import cro;
 import crp;
 import crq;
 import crr;
 import crs;
-import crt;
 import cru;
+import crv;
+import crw;
+import crx;
+import cry;
+import crz;
+import csa;
 import java.io.File;
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -192,7 +192,7 @@ public class DataLineHandler
   private MpfileDataCenter jdField_a_of_type_ComDatalineMpfileMpfileDataCenter = null;
   public LiteTransferWrapper a;
   public MsgHeader a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new crg(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new crm(this);
   public HttpServer a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -221,7 +221,7 @@ public class DataLineHandler
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper = new LiteTransferWrapper(this);
     o();
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new crb(this, paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new crh(this, paramQQAppInterface);
     IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.intent.logout");
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     localIntentFilter.addAction("com.tencent.dataline.wifiphoto.ACTION_WIFIPHOTO_CONNECTED");
@@ -244,7 +244,7 @@ public class DataLineHandler
   
   public static int a(DataLineHandler.EFILETYPE paramEFILETYPE)
   {
-    switch (crn.a[paramEFILETYPE.ordinal()])
+    switch (crt.a[paramEFILETYPE.ordinal()])
     {
     case 2: 
     default: 
@@ -458,7 +458,7 @@ public class DataLineHandler
   
   private void a(long paramLong1, long paramLong2, long paramLong3, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList)
   {
-    new Handler(Looper.getMainLooper()).post(new crk(this, paramMsgHeader, paramList));
+    new Handler(Looper.getMainLooper()).post(new crq(this, paramMsgHeader, paramList));
   }
   
   private void a(long paramLong1, long paramLong2, long paramLong3, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean)
@@ -473,7 +473,7 @@ public class DataLineHandler
       }
     }
     if (localArrayList.size() > 0) {
-      new Handler(Looper.getMainLooper()).post(new cri(this, paramMsgHeader, localArrayList, paramBoolean));
+      new Handler(Looper.getMainLooper()).post(new cro(this, paramMsgHeader, localArrayList, paramBoolean));
     }
   }
   
@@ -731,7 +731,6 @@ public class DataLineHandler
     if (QLog.isColorLevel()) {
       QLog.d("wifiphoto", 2, "handleWifiphotoType5MsgPush");
     }
-    System.currentTimeMillis();
     paramArrayOfByte = new String(paramArrayOfByte);
     if (QLog.isColorLevel()) {
       QLog.d("wifiphoto", 2, "handleWifiphotoType5MsgPush" + paramArrayOfByte);
@@ -750,10 +749,10 @@ public class DataLineHandler
       }
       if (str.equalsIgnoreCase("2")) {
         if (!paramArrayOfByte.has("msgid")) {
-          break label388;
+          break label384;
         }
       }
-      label388:
+      label384:
       for (long l1 = paramArrayOfByte.getLong("msgid");; l1 = 0L)
       {
         if ((l1 == 0L) || (!jdField_a_of_type_WifiphotoWifiPhotoDataCenter.jdField_a_of_type_WifiphotoWifiPhotoMsgStrategy.a(l1)))
@@ -819,7 +818,7 @@ public class DataLineHandler
     {
       SubMsgType0x7.MsgBody.NFCNotify localNFCNotify = (SubMsgType0x7.MsgBody.NFCNotify)localIterator.next();
       if ((localNFCNotify.uint64_sessionid.has()) && (localNFCNotify.uint32_originfiletype.has()) && (localNFCNotify.str_file_name.has()) && (localNFCNotify.uint64_file_len.has()) && (localNFCNotify.bytes_file_md5.has()) && (localNFCNotify.fixed32_ip.has()) && (localNFCNotify.uint32_port.has()) && (localNFCNotify.bytes_url_notify.has()) && (localNFCNotify.bytes_tokenkey.has())) {
-        new Handler(Looper.getMainLooper()).post(new crj(this, paramMsgHeader, paramList, paramBoolean));
+        new Handler(Looper.getMainLooper()).post(new crp(this, paramMsgHeader, paramList, paramBoolean));
       }
     }
   }
@@ -1036,7 +1035,7 @@ public class DataLineHandler
   {
     q();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new crh(this);
+    this.jdField_a_of_type_JavaUtilTimerTask = new crn(this);
     this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 5000L, 5000L);
   }
   
@@ -1722,7 +1721,7 @@ public class DataLineHandler
   {
     Intent localIntent = new Intent(paramBaseActivity, LiteActivity.class);
     Bundle localBundle = new Bundle();
-    localBundle.putString("leftViewText", paramBaseActivity.getString(2131362936));
+    localBundle.putString("leftViewText", paramBaseActivity.getString(2131362940));
     localIntent.putExtras(localBundle);
     localIntent.putExtra("dataline_send_file_path", paramString);
     localIntent.putExtra("dataline_send_file_type", paramEFILETYPE.ordinal());
@@ -1787,7 +1786,7 @@ public class DataLineHandler
         return;
       }
     }
-    new Handler(Looper.getMainLooper()).post(new cru(this, paramToServiceMsg, paramFromServiceMsg, paramInt));
+    new Handler(Looper.getMainLooper()).post(new csa(this, paramToServiceMsg, paramFromServiceMsg, paramInt));
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1802,7 +1801,7 @@ public class DataLineHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new crt(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
+      new Handler(localLooper).post(new crz(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
       return;
     }
     b(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -1816,7 +1815,7 @@ public class DataLineHandler
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131361871));
       return;
     }
-    new Handler(localLooper).post(new cro(this, paramString));
+    new Handler(localLooper).post(new cru(this, paramString));
   }
   
   public void a(ArrayList paramArrayList)
@@ -2917,7 +2916,7 @@ public class DataLineHandler
       FMToastUtil.a(2131361874);
       return;
     }
-    new Handler(localLooper).post(new crr(this));
+    new Handler(localLooper).post(new crx(this));
   }
   
   public void b(int paramInt)
@@ -2935,7 +2934,7 @@ public class DataLineHandler
     if ((paramInt == 3) || (paramInt == 2) || (paramInt == 1) || (paramInt == 8))
     {
       this.jdField_b_of_type_JavaUtilTimer = new Timer();
-      this.jdField_b_of_type_JavaUtilTimer.schedule(new crm(this), 20000L);
+      this.jdField_b_of_type_JavaUtilTimer.schedule(new crs(this), 20000L);
     }
     a(paramInt, paramBoolean, paramObject);
   }
@@ -2964,7 +2963,7 @@ public class DataLineHandler
       QQToast.a(BaseApplicationImpl.getContext(), 1, paramString, 0).b(i1);
       return;
     }
-    new Handler(localLooper).post(new crp(this, paramString, i1));
+    new Handler(localLooper).post(new crv(this, paramString, i1));
   }
   
   public void b(boolean paramBoolean)
@@ -3007,7 +3006,7 @@ public class DataLineHandler
       FMToastUtil.a(2131361875);
       return;
     }
-    new Handler(localLooper).post(new crs(this));
+    new Handler(localLooper).post(new cry(this));
   }
   
   public void c(int paramInt)
@@ -3048,7 +3047,7 @@ public class DataLineHandler
         return;
       }
     }
-    new Handler(Looper.getMainLooper()).post(new crc(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
+    new Handler(Looper.getMainLooper()).post(new cri(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
   }
   
   public void c(String paramString)
@@ -3059,7 +3058,7 @@ public class DataLineHandler
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131361846));
       return;
     }
-    new Handler(localLooper).post(new crq(this, paramString));
+    new Handler(localLooper).post(new crw(this, paramString));
   }
   
   public boolean c()
@@ -3146,7 +3145,7 @@ public class DataLineHandler
         return;
       }
     }
-    new Handler(Looper.getMainLooper()).post(new crd(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
+    new Handler(Looper.getMainLooper()).post(new crj(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
   }
   
   public void e()
@@ -3239,7 +3238,7 @@ public class DataLineHandler
     if (!jdField_a_of_type_WifiphotoWifiPhotoDataCenter.jdField_a_of_type_WifiphotoWifiPhotoStatusMgr.a())
     {
       jdField_a_of_type_WifiphotoWifiPhotoDataCenter.jdField_a_of_type_WifiphotoWifiPhotoStatusMgr.b();
-      new cre(this).start();
+      new crk(this).start();
       StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Open_wp");
       if (QLog.isColorLevel()) {
         QLog.d("wifiphoto", 2, "StatisticAssist click Open_wp");
@@ -3260,7 +3259,7 @@ public class DataLineHandler
       }
       return;
     }
-    new crf(this).start();
+    new crl(this).start();
   }
   
   public void g()
@@ -3327,7 +3326,7 @@ public class DataLineHandler
     if (this.jdField_a_of_type_ComTencentMobileqqServiceHttpServer == null) {
       this.jdField_a_of_type_ComTencentMobileqqServiceHttpServer = new HttpServer(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpServer.a("", new crl(this));
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpServer.a("", new crr(this));
   }
   
   public void k()

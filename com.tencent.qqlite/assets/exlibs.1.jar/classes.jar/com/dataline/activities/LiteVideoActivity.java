@@ -110,9 +110,9 @@ public class LiteVideoActivity
   private void c()
   {
     Object localObject = ((WindowManager)getSystemService("window")).getDefaultDisplay();
-    this.jdField_h_of_type_Int = getResources().getDimensionPixelSize(2131492960);
-    this.f = getResources().getDimensionPixelSize(2131492958);
-    this.g = getResources().getDimensionPixelSize(2131492959);
+    this.jdField_h_of_type_Int = getResources().getDimensionPixelSize(2131492956);
+    this.f = getResources().getDimensionPixelSize(2131492954);
+    this.g = getResources().getDimensionPixelSize(2131492955);
     this.jdField_a_of_type_Int = ((((Display)localObject).getWidth() - this.jdField_h_of_type_Int * 2 - this.f * 3) / 4);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     localObject = getIntent();
@@ -130,7 +130,7 @@ public class LiteVideoActivity
   {
     setTitle(2131361838);
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296895));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
     }
     this.jdField_b_of_type_AndroidWidgetTextView = this.jdField_h_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
@@ -158,7 +158,7 @@ public class LiteVideoActivity
   
   private void f()
   {
-    FMDialogUtil.a(getActivity(), 2131362021, 2131362019, new bq(this));
+    FMDialogUtil.a(getActivity(), 2131362018, 2131362016, new bq(this));
   }
   
   private boolean f()
@@ -176,7 +176,7 @@ public class LiteVideoActivity
     QQToast localQQToast = new QQToast(this);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    localQQToast.a(2130837966);
+    localQQToast.a(2130837962);
     localQQToast.c(2000);
     localQQToast.b(2131361844);
     localQQToast.b(localDisplayMetrics.heightPixels / 2);
@@ -185,7 +185,7 @@ public class LiteVideoActivity
   private void h()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837966);
+    localQQToast.a(2130837962);
     localQQToast.c(2000);
     localQQToast.b(2131361846);
     localQQToast.b(this.jdField_a_of_type_AndroidUtilDisplayMetrics.heightPixels / 2);
@@ -221,7 +221,7 @@ public class LiteVideoActivity
     d();
     c();
     this.jdField_c_of_type_JavaLangString = ((String)getResources().getText(2131361838));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131296994));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131296990));
     this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
     this.jdField_a_of_type_AndroidWidgetGridView.setScrollBarStyle(0);
     this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(4);

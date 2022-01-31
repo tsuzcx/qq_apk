@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public final class fgn
-  implements Parcelable.Creator
+public class fgn
+  implements DialogInterface.OnClickListener
 {
-  public BinderWarpper a(Parcel paramParcel)
-  {
-    return new BinderWarpper(paramParcel.readStrongBinder());
-  }
+  public fgn(Login paramLogin) {}
   
-  public BinderWarpper[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new BinderWarpper[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.widget.AbsListView;
 
 public class cnh
-  extends TroopObserver
+  extends SlideDetectListView.OnScrollGroupFloatingListener
 {
-  public cnh(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public cnh(TroopListInnerFrame paramTroopListInnerFrame) {}
   
-  protected void b(boolean paramBoolean)
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    new Thread(new cni(this)).start();
+    if (TroopListInnerFrame.a(this.a) != null) {
+      TroopListInnerFrame.a(this.a, paramInt1);
+    }
   }
 }
 

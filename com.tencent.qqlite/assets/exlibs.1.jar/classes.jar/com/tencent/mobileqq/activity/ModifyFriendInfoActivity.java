@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
+import avj;
 import avk;
-import avl;
+import avo;
 import avp;
 import avq;
 import avr;
-import avs;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -29,15 +29,14 @@ public class ModifyFriendInfoActivity
   static final int jdField_b_of_type_Int = 1;
   static final int jdField_c_of_type_Int = 2;
   private static final int d = 1000;
-  private float jdField_a_of_type_Float;
   public int a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avk(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avj(this);
   private View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new avs(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new avr(this);
   public String a;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new avr(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new avq(this);
   private View jdField_b_of_type_AndroidViewView;
   public TextView b;
   public String b;
@@ -49,27 +48,27 @@ public class ModifyFriendInfoActivity
   public ModifyFriendInfoActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new avq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new avp(this);
   }
   
   private void d()
   {
-    new avp(this).start();
+    new avo(this).start();
   }
   
   private void e()
   {
     this.jdField_c_of_type_AndroidWidgetTextView = this.i;
-    this.j.setText(2131363430);
+    this.j.setText(2131363433);
     this.j.setVisibility(0);
     this.j.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297309));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296848));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131297307);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297305));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296844));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131297303);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131297310);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131297306);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131297313);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131297309);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
   }
   
@@ -77,7 +76,7 @@ public class ModifyFriendInfoActivity
   {
     super.a();
     this.j.setVisibility(0);
-    this.j.setText(2131362932);
+    this.j.setText(2131362936);
     this.j.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     this.j.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     return this.j;
@@ -85,7 +84,7 @@ public class ModifyFriendInfoActivity
   
   public void c()
   {
-    new avl(this).start();
+    new avk(this).start();
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -114,7 +113,7 @@ public class ModifyFriendInfoActivity
             ((FriendListHandler)localQQAppInterface1.a(1)).a(this.jdField_a_of_type_JavaLangString, paramIntent, false);
             return;
           }
-          Toast.makeText(this.app.a(), getString(2131363448), 1).show();
+          Toast.makeText(this.app.a(), getString(2131363449), 1).show();
           return;
         }
       } while (paramInt1 != 0);
@@ -128,7 +127,7 @@ public class ModifyFriendInfoActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903238);
-    d(2130837633);
+    d(2130837635);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("uin");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("uinname");
@@ -136,8 +135,8 @@ public class ModifyFriendInfoActivity
     for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = this.jdField_b_of_type_JavaLangString)
     {
       this.jdField_b_of_type_JavaLangString = paramBundle;
-      setTitle(2131363623);
-      this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
+      setTitle(2131363617);
+      this.jdField_c_of_type_Float = getResources().getDisplayMetrics().density;
       d();
       c();
       e();

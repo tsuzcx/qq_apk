@@ -1,16 +1,44 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class fas
-  implements Runnable
+  extends OpenIdObserver
 {
-  public fas(BindGroupConfirmActivity paramBindGroupConfirmActivity, Bitmap paramBitmap) {}
+  public fas(BindGroupActivity paramBindGroupActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    Bitmap localBitmap = AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
-    this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.runOnUiThread(new fat(this, localBitmap));
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
+    }
+    if ((this.a.isFinishing()) || (this.a.c)) {}
+    do
+    {
+      return;
+      this.a.b.hide();
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BindGroupActivity", 2, "openIdObserver success");
+        }
+        this.a.f = paramOpenID.openID;
+        if (!paramOpenID.openID.equals(this.a.e))
+        {
+          this.a.d();
+          return;
+        }
+        this.a.c();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
   }
 }
 

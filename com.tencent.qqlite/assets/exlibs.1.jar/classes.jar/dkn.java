@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class dkn
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public dkn(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
+  public dkn(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(AppConstants.ay, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, this.a);
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileDocTabView.a(this.a, new dko(this));
+    QfileLocalFileCategoryBrowserActivity.a(this.a, paramView);
   }
 }
 

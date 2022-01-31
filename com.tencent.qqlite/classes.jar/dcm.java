@@ -1,33 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
 
-public final class dcm
-  implements Parcelable.Creator
+public class dcm
 {
-  public MessageForShortVideo a(Parcel paramParcel)
-  {
-    MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
-    localMessageForShortVideo.uuid = paramParcel.readString();
-    localMessageForShortVideo.md5 = paramParcel.readString();
-    localMessageForShortVideo.videoFileName = paramParcel.readString();
-    localMessageForShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForShortVideo.fileType = paramParcel.readInt();
-    localMessageForShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForShortVideo.fileSource = paramParcel.readString();
-    localMessageForShortVideo.lastModified = paramParcel.readLong();
-    return localMessageForShortVideo;
-  }
+  public static final int a = 0;
+  public static final Uri a;
+  public static final String a = "raw_contact_id=?";
+  public static final String[] a;
+  public static final int b = 1;
+  public static final String b = "mimetype = ?";
+  public static final String[] b = { "raw_contact_id", "data1" };
+  public static final int c = 2;
+  public static final int d = 0;
+  public static final int e = 1;
   
-  public MessageForShortVideo[] a(int paramInt)
+  static
   {
-    return new MessageForShortVideo[paramInt];
+    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
   }
 }
 

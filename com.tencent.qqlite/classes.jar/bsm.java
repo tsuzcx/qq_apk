@@ -1,46 +1,43 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bsm
-  implements View.OnLongClickListener
+public final class bsm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bsm(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public boolean onLongClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return false;
+    Object localObject = (ChatMessage)paramCompoundButton.getTag();
+    if (localObject == null) {}
+    while (paramBoolean == MultiMsgManager.a().a((ChatMessage)localObject)) {
+      return;
     }
-    Object localObject = (ChatActivity)paramView.getContext();
-    String str = (String)paramView.getTag(2131296298);
-    paramView = (ChatMessage)paramView.getTag();
-    if (paramView != null)
+    if (!paramBoolean)
     {
-      localObject = ((ChatActivity)localObject).a();
-      if (!(localObject instanceof TroopChatPie)) {
-        break label124;
-      }
-      if (((TroopChatPie)localObject).a(paramView.senderuin, str, false)) {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-      }
+      MultiMsgManager.a().a((ChatMessage)localObject, paramBoolean);
+      return;
     }
-    for (;;)
+    if (MultiMsgManager.a().b())
     {
-      return true;
-      label124:
-      if ((localObject instanceof DiscussChatPie)) {
-        ((DiscussChatPie)localObject).a(paramView.senderuin, str, false);
-      }
+      localObject = paramCompoundButton.getContext().getString(2131362995, new Object[] { Integer.valueOf(MultiMsgManager.a().a()) });
+      QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((ChatActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+      paramCompoundButton.setChecked(false);
+      return;
     }
+    if ((((localObject instanceof MessageForPic)) || ((localObject instanceof MessageForMixedMsg)) || (((ChatMessage)localObject).msgtype == -1036)) && (MultiMsgManager.a().c()))
+    {
+      localObject = paramCompoundButton.getContext().getString(2131362996, new Object[] { Integer.valueOf(MultiMsgManager.a().b()) });
+      QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((ChatActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+      paramCompoundButton.setChecked(false);
+      return;
+    }
+    MultiMsgManager.a().a((ChatMessage)localObject, paramBoolean);
   }
 }
 

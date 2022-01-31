@@ -1,26 +1,44 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class afn
-  implements Animation.AnimationListener
+public class afn
+  implements URLDrawable.URLDrawableListener
 {
-  afn(afm paramafm, LinearLayout paramLinearLayout) {}
+  public afn(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramAnimation = new TranslateAnimation(-this.jdField_a_of_type_Afm.a.ao, 0.0F, 0.0F, 0.0F);
-    paramAnimation.setDuration(800L);
-    paramAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(paramAnimation);
+    try
+    {
+      paramURLDrawable = ImageUtil.a(paramURLDrawable);
+      if (paramURLDrawable != null)
+      {
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(paramURLDrawable, paramURLDrawable.getWidth(), paramURLDrawable.getHeight());
+        paramURLDrawable.recycle();
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      }
+      return;
+    }
+    catch (NullPointerException paramURLDrawable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.chatopttroop", 2, QLog.getStackTraceString(paramURLDrawable));
+      return;
+    }
+    catch (OutOfMemoryError paramURLDrawable) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

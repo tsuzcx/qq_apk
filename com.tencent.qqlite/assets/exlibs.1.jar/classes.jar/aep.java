@@ -1,80 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.utils.ContactUtils;
 
 public class aep
-  extends Handler
+  extends CardObserver
 {
   public aep(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-    default: 
-    case 18: 
-    case 16711681: 
-      do
+      if ((paramBoolean) && (paramObject != null))
       {
-        do
+        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
         {
-          return;
-          paramMessage = (String)paramMessage.obj;
-          ChatSettingActivity.a(this.a, paramMessage);
-          return;
-        } while (ChatSettingActivity.a(this.a) != 0);
-        paramMessage = (String)paramMessage.obj;
-      } while ((ChatSettingActivity.a(this.a) == null) || (paramMessage == null) || (!ChatSettingActivity.a(this.a).equals(paramMessage)));
-      this.a.finish();
+          String str = ((FriendManager)this.a.app.getManager(8)).b(ChatSettingActivity.a(this.a));
+          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.e(this.a)))) {
+            ChatSettingActivity.c(this.a, str);
+          }
+        }
+        if ((this.a.a != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.a);
+        }
+      }
       return;
-    case 32: 
-      if (ChatSettingActivity.a(this.a) != 1001) {
-        if (ChatSettingActivity.a(this.a) == 1006)
-        {
-          if (TextUtils.isEmpty(ChatSettingActivity.b(this.a))) {
-            ChatSettingActivity.a(this.a, false);
-          }
-        }
-        else
-        {
-          paramMessage = (ShieldMsgManger)this.a.app.getManager(15);
-          if ((paramMessage != null) && (!TextUtils.isEmpty(ChatSettingActivity.c(this.a)))) {
-            ChatSettingActivity.b(this.a, paramMessage.a(ChatSettingActivity.c(this.a)));
-          }
-        }
-      }
-      for (;;)
-      {
-        ChatSettingActivity.b(this.a);
-        return;
-        paramMessage = ContactUtils.d(this.a.app, ChatSettingActivity.b(this.a));
-        if (TextUtils.isEmpty(paramMessage))
-        {
-          ChatSettingActivity.a(this.a, false);
-          break;
-        }
-        ChatSettingActivity.a(this.a, true);
-        ChatSettingActivity.a(this.a, paramMessage);
-        break;
-        paramMessage = (FriendManager)this.a.app.getManager(8);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.c(ChatSettingActivity.c(this.a));
-          if ((paramMessage != null) && (paramMessage.groupid == -1002)) {
-            ChatSettingActivity.b(this.a, true);
-          } else {
-            ChatSettingActivity.b(this.a, false);
-          }
-        }
-      }
     }
-    ChatSettingActivity.c(this.a);
   }
 }
 

@@ -1,26 +1,12 @@
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import java.io.File;
+import java.util.Comparator;
 
 public class fdb
-  implements Runnable
+  implements Comparator
 {
-  public fdb(ToastUtil paramToastUtil, View paramView, int paramInt) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b == null)
-    {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b = new Toast(CommonDataAdapter.a().a());
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
+    return paramFile1.getName().compareTo(paramFile2.getName());
   }
 }
 

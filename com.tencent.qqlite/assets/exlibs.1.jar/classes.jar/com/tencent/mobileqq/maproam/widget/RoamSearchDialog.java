@@ -19,12 +19,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import dxn;
-import dxo;
-import dxp;
-import dxq;
 import dxt;
+import dxu;
 import dxv;
+import dxw;
+import dxz;
+import dyb;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class RoamSearchDialog
   public RoamSearchDialog.OnRoamResultObserver a;
   public RoamSearchDialog.OnSearchResultItemClick a;
   public XListView a;
-  public dxv a;
+  public dyb a;
   public List a;
   public String b;
   public int k = 1;
@@ -89,40 +89,40 @@ public class RoamSearchDialog
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296870));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296866));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Dxv = new dxv(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dxv);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new dxn(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new dxo(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296871));
+    this.jdField_a_of_type_Dyb = new dyb(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dyb);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new dxt(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new dxu(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296867));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363152);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363155);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297994));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297957));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(15) });
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131364371);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new dxp(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131364355);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new dxv(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    dxt localdxt = new dxt(this, null);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(localdxt);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(localdxt);
+    dxz localdxz = new dxz(this, null);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(localdxz);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(localdxz);
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131297986));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131297950));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298453));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298408));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -150,13 +150,13 @@ public class RoamSearchDialog
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.a();
-    if ((this.jdField_a_of_type_Dxv == null) || (localObject == null) || (localObject != this.jdField_a_of_type_Dxv) || (this.jdField_a_of_type_Dxv.getItemViewType(paramInt) == 1)) {}
+    if ((this.jdField_a_of_type_Dyb == null) || (localObject == null) || (localObject != this.jdField_a_of_type_Dyb) || (this.jdField_a_of_type_Dyb.getItemViewType(paramInt) == 1)) {}
     do
     {
       do
       {
         return;
-        localObject = (LocationDetail)this.jdField_a_of_type_Dxv.getItem(paramInt);
+        localObject = (LocationDetail)this.jdField_a_of_type_Dyb.getItem(paramInt);
       } while ((this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick == null) || (localObject == null));
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick.a(paramAdapterView, paramView, paramInt, (LocationDetail)localObject);
     } while (!QLog.isColorLevel());
@@ -176,11 +176,11 @@ public class RoamSearchDialog
     if (paramInt2 == 1)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      if (this.jdField_a_of_type_Dxv != null) {
-        this.jdField_a_of_type_Dxv.notifyDataSetChanged();
+      if (this.jdField_a_of_type_Dyb != null) {
+        this.jdField_a_of_type_Dyb.notifyDataSetChanged();
       }
     }
-    new dxq(this, paramString1, paramString2, paramInt1, paramInt2).start();
+    new dxw(this, paramString1, paramString2, paramInt1, paramInt2).start();
   }
   
   /* Error */
@@ -343,12 +343,12 @@ public class RoamSearchDialog
     //   343: invokevirtual 314	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   346: invokestatic 317	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   349: aload_1
-    //   350: new 503	dxr
+    //   350: new 503	dxx
     //   353: dup
     //   354: aload_0
     //   355: iload_3
     //   356: aload 6
-    //   358: invokespecial 506	dxr:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;ILjava/lang/String;)V
+    //   358: invokespecial 506	dxx:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;ILjava/lang/String;)V
     //   361: invokevirtual 510	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   364: pop
     //   365: return
@@ -452,12 +452,12 @@ public class RoamSearchDialog
     //   600: istore_3
     //   601: goto -201 -> 400
     //   604: aload_1
-    //   605: new 567	dxs
+    //   605: new 567	dxy
     //   608: dup
     //   609: aload_0
     //   610: aload 6
     //   612: iload 4
-    //   614: invokespecial 570	dxs:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;Ljava/util/List;I)V
+    //   614: invokespecial 570	dxy:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;Ljava/util/List;I)V
     //   617: invokevirtual 510	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   620: pop
     //   621: return
@@ -500,8 +500,8 @@ public class RoamSearchDialog
   {
     ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.jdField_a_of_type_Dxv != null) {
-      this.jdField_a_of_type_Dxv.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Dyb != null) {
+      this.jdField_a_of_type_Dyb.notifyDataSetChanged();
     }
     this.jdField_a_of_type_AndroidWidgetEditText.setText("");
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
@@ -519,7 +519,7 @@ public class RoamSearchDialog
     switch (paramView.getId())
     {
     default: 
-    case 2131297986: 
+    case 2131297950: 
       do
       {
         return;

@@ -1,26 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryPageView;
+import com.tencent.litetransfersdk.FTNInfo;
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.NFCInfo;
+import com.tencent.litetransfersdk.Session;
 
 public class tw
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public tw(GalleryPageView paramGalleryPageView) {}
+  public tw(LiteTransferListenerCallback paramLiteTransferListenerCallback, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.d()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+    LiteTransferListenerCallback.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
   }
 }
 

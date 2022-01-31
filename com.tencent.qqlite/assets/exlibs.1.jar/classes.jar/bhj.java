@@ -1,10 +1,10 @@
 import android.content.Intent;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.CommonWebActivity;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bhj
   implements View.OnClickListener
@@ -13,14 +13,15 @@ public class bhj
   
   public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(RegisterPhoneNumActivity.a(this.a))) {}
-    while (!RegisterPhoneNumActivity.a(this.a)) {
+    if (!RegisterPhoneNumActivity.a(this.a)) {
       return;
     }
     RegisterPhoneNumActivity.a(this.a, false);
     this.a.b.postDelayed(new bhk(this), 1000L);
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", RegisterPhoneNumActivity.a(this.a));
+    paramView = new Intent(this.a, CommonWebActivity.class);
+    paramView.putExtra("uin", this.a.app.a());
+    paramView.putExtra("ba_is_login", false);
+    paramView.putExtra("url", "http://zc.qq.com/chs/agreement1_chs.html");
     paramView.putExtra("hide_more_button", true);
     this.a.startActivity(paramView);
   }

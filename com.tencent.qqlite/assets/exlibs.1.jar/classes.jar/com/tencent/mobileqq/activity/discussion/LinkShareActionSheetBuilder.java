@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import cee;
+import cek;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
@@ -27,12 +27,12 @@ public class LinkShareActionSheetBuilder
   public ActionSheet a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null, 2131624119);
-    GridView localGridView = (GridView)View.inflate(this.a, 2130903701, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2130903684, null);
     localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837508));
-    localGridView.setAdapter(new cee(this, null));
+    localGridView.setAdapter(new cek(this, null));
     localGridView.setOnItemClickListener(paramOnItemClickListener);
     localActionSheet.a(localGridView);
-    localActionSheet.d(2131362790);
+    localActionSheet.d(2131362794);
     return localActionSheet;
   }
 }

@@ -1,28 +1,25 @@
+import android.content.Context;
+import android.net.Uri;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity.SoundStyle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class bkd
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public bkd(SoundAndVibrateActivity paramSoundAndVibrateActivity, ActionSheet paramActionSheet) {}
+  public bkd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt < 0) && (paramInt >= SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).size())) {
-      return;
-    }
-    try
+    this.a.a(SoundAndVibrateActivity.SoundStyle.office);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.a(), "sound_type", "qqsetting_notify_soundtype_key", 2131165185);
+    if (this.a.a().booleanValue())
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.e(paramInt);
-      SoundAndVibrateActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, paramInt);
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
+      this.a.d();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131165185));
     }
   }
 }

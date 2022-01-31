@@ -16,8 +16,8 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import sf;
-import sg;
+import sb;
+import sc;
 
 public class PubAccountMailJsPlugin
   extends WebViewPlugin
@@ -76,16 +76,16 @@ public class PubAccountMailJsPlugin
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog == null)
     {
       QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-      localQQCustomMenu.a(1, localActivity.getString(2131364459));
-      localQQCustomMenu.a(2, localActivity.getString(2131364460));
-      localQQCustomMenu.a(String.format(localActivity.getString(2131364458), new Object[] { this.c }));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog = DialogUtil.a(localActivity, localQQCustomMenu, new sg(this));
+      localQQCustomMenu.a(1, localActivity.getString(2131364440));
+      localQQCustomMenu.a(2, localActivity.getString(2131364441));
+      localQQCustomMenu.a(String.format(localActivity.getString(2131364439), new Object[] { this.c }));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog = DialogUtil.a(localActivity, localQQCustomMenu, new sc(this));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.show();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.setTitle(String.format(localActivity.getString(2131364458), new Object[] { this.c }));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.setTitle(String.format(localActivity.getString(2131364439), new Object[] { this.c }));
     }
   }
   
@@ -129,18 +129,18 @@ public class PubAccountMailJsPlugin
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this.mRuntime.a());
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131363569), this.c }));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364457);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364458);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131363570);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362790);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new sf(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131363563), this.c }));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364438);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131364439);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131363564);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new sb(this));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131363569), this.c }));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131363563), this.c }));
     }
   }
   

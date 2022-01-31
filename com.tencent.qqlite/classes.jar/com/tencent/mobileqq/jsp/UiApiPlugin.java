@@ -47,9 +47,9 @@ import com.tencent.widget.ActionSheet.OnDismissListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
-import dwt;
-import dwx;
-import dwy;
+import dwz;
+import dxd;
+import dxe;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -82,13 +82,13 @@ public class UiApiPlugin
   static final String k = "openids";
   static final String l = "types";
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dwt(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dwz(this);
   private View jdField_a_of_type_AndroidViewView;
   TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private dwy jdField_a_of_type_Dwy;
+  private dxe jdField_a_of_type_Dxe;
   private boolean jdField_a_of_type_Boolean = false;
   private boolean jdField_b_of_type_Boolean;
   private boolean jdField_c_of_type_Boolean;
@@ -192,7 +192,7 @@ public class UiApiPlugin
     paramArrayOfString.setWithouLogin(true);
     paramArrayOfString.putExtra("cmd", "CommCompSvr.get_openid");
     paramArrayOfString.putExtra("data", localGetOpenidReq.toByteArray());
-    paramArrayOfString.setObserver(new dwx(paramActivity));
+    paramArrayOfString.setObserver(new dxd(paramActivity));
     paramAppInterface.startServlet(paramArrayOfString);
   }
   
@@ -303,20 +303,20 @@ public class UiApiPlugin
       localObject1 = this.mRuntime.a();
     } while ((localObject1 == null) || (((Activity)localObject1).isFinishing()));
     TextView localTextView = new TextView((Context)localObject1);
-    localTextView.setText(2131363522);
-    localTextView.setBackgroundResource(2130839459);
+    localTextView.setText(2131363523);
+    localTextView.setBackgroundResource(2130839424);
     localTextView.setGravity(17);
     localTextView.setIncludeFontPadding(false);
     localTextView.setMaxWidth(Util.a((Context)localObject2, 100.0F));
     localTextView.setMinWidth(Util.a((Context)localObject2, 52.0F));
     localTextView.setSingleLine();
-    localTextView.setTextColor(((Context)localObject2).getResources().getColor(2131427467));
+    localTextView.setTextColor(((Context)localObject2).getResources().getColor(2131427462));
     localTextView.setTextSize(1, 17.0F);
     Object localObject2 = new RelativeLayout.LayoutParams(-2, Util.a((Context)localObject2, 36.0F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(0, 2131296904);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(0, 2131296900);
     ((RelativeLayout.LayoutParams)localObject2).addRule(15, -1);
     localTextView.setOnClickListener(this);
-    Object localObject1 = (RelativeLayout)((Activity)localObject1).findViewById(2131296894);
+    Object localObject1 = (RelativeLayout)((Activity)localObject1).findViewById(2131296890);
     if (localObject1 != null) {
       ((RelativeLayout)localObject1).addView(localTextView, (ViewGroup.LayoutParams)localObject2);
     }
@@ -400,7 +400,7 @@ public class UiApiPlugin
           paramString.putBoolean("hide_operation_bar", false);
           paramString.putString("webStyle", "");
           continue;
-          localActivity.overridePendingTransition(2130968637, 0);
+          localActivity.overridePendingTransition(2130968635, 0);
           return;
         }
       }
@@ -430,8 +430,8 @@ public class UiApiPlugin
       this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new FrameLayout.LayoutParams((FrameLayout.LayoutParams)((View)localObject).getLayoutParams()));
       ((ViewGroup)localViewParent).removeView((View)localObject);
       ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2, 0));
-      this.jdField_a_of_type_Dwy = new dwy((View)localObject);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dwy);
+      this.jdField_a_of_type_Dxe = new dxe((View)localObject);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dxe);
       this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(localActivity).inflate(2130903274, this.jdField_a_of_type_ComTencentWidgetXListView, false));
       ((ViewGroup)localViewParent).addView(this.jdField_a_of_type_ComTencentWidgetXListView, 0);
     }
@@ -537,8 +537,8 @@ public class UiApiPlugin
               Object localObject = paramString.getIntent();
               if (((((QQBrowserActivity)paramString).v & 0x200000) == 0) && (!((Intent)localObject).getBooleanExtra("show_right_close_button", false)))
               {
-                localObject = (TextView)paramString.findViewById(2131296905);
-                if ((localObject == null) || (((TextView)localObject).getVisibility() != 0) || (!paramString.getString(2131363522).equals(((TextView)localObject).getText()))) {
+                localObject = (TextView)paramString.findViewById(2131296901);
+                if ((localObject == null) || (((TextView)localObject).getVisibility() != 0) || (!paramString.getString(2131363523).equals(((TextView)localObject).getText()))) {
                   break label214;
                 }
               }
@@ -1033,11 +1033,11 @@ public class UiApiPlugin
     //   976: aload 12
     //   978: invokevirtual 883	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(Ljava/lang/CharSequence;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   981: pop
-    //   982: new 885	dwu
+    //   982: new 885	dxa
     //   985: dup
     //   986: aload_0
     //   987: aload 5
-    //   989: invokespecial 888	dwu:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;Ljava/lang/String;)V
+    //   989: invokespecial 888	dxa:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;Ljava/lang/String;)V
     //   992: astore 12
     //   994: iload 8
     //   996: ifeq +30 -> 1026
@@ -1075,11 +1075,11 @@ public class UiApiPlugin
     //   1060: invokestatic 270	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1063: ifne +18 -> 1081
     //   1066: aload 11
-    //   1068: new 899	dwv
+    //   1068: new 899	dxb
     //   1071: dup
     //   1072: aload_0
     //   1073: aload 5
-    //   1075: invokespecial 900	dwv:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;Ljava/lang/String;)V
+    //   1075: invokespecial 900	dxb:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;Ljava/lang/String;)V
     //   1078: invokevirtual 901	com/tencent/mobileqq/utils/QQCustomDialog:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
     //   1081: aload 11
     //   1083: invokevirtual 902	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
@@ -1751,10 +1751,10 @@ public class UiApiPlugin
     //   2536: invokevirtual 1076	com/tencent/mobileqq/widget/PullRefreshHeader:a	(ILjava/lang/String;)V
     //   2539: aload_0
     //   2540: getfield 146	com/tencent/mobileqq/jsp/UiApiPlugin:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
-    //   2543: new 1078	dww
+    //   2543: new 1078	dxc
     //   2546: dup
     //   2547: aload_0
-    //   2548: invokespecial 1079	dww:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;)V
+    //   2548: invokespecial 1079	dxc:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;)V
     //   2551: ldc2_w 1080
     //   2554: invokevirtual 1085	com/tencent/widget/XListView:postDelayed	(Ljava/lang/Runnable;J)Z
     //   2557: pop
@@ -2027,7 +2027,7 @@ public class UiApiPlugin
     {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader((View)null);
-      this.jdField_a_of_type_Dwy = null;
+      this.jdField_a_of_type_Dxe = null;
     }
     super.onDestroy();
   }

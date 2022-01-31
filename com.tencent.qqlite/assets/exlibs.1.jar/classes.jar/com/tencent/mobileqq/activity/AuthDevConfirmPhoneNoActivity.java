@@ -50,19 +50,19 @@ public class AuthDevConfirmPhoneNoActivity
   
   private void c()
   {
-    setContentView(2130903489);
-    setTitle(2131364204);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298212));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298215));
-    this.c = ((TextView)findViewById(2131298216));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298217));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298218));
+    setContentView(2130903477);
+    setTitle(2131364189);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298172));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298175));
+    this.c = ((TextView)findViewById(2131298176));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298177));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298178));
     if ((QLog.isColorLevel()) && ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.c == null) || (this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_b_of_type_AndroidWidgetButton == null)))
     {
       QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "one or more controls is null! ");
       return;
     }
-    ((TextView)findViewById(2131296901)).setOnClickListener(this);
+    ((TextView)findViewById(2131296897)).setOnClickListener(this);
     if (this.n != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.n);
     }
@@ -72,8 +72,8 @@ public class AuthDevConfirmPhoneNoActivity
     if (this.p != null) {
       this.c.setText(this.p);
     }
-    String str1 = getString(2131364249);
-    String str2 = getString(2131364250);
+    String str1 = getString(2131364234);
+    String str2 = getString(2131364235);
     this.jdField_a_of_type_AndroidWidgetButton.setText(str1);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -138,7 +138,7 @@ public class AuthDevConfirmPhoneNoActivity
     {
     default: 
       return;
-    case 2131298217: 
+    case 2131298177: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click confirm mobile phone button! ");
       }
@@ -165,7 +165,7 @@ public class AuthDevConfirmPhoneNoActivity
         return;
         paramView = "Manually";
       }
-    case 2131298218: 
+    case 2131298178: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click modify mobile phone button! ");
       }

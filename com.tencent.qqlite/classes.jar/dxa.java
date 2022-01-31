@@ -1,29 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public final class dxa
-  implements IHttpCommunicatorListener
+public class dxa
+  implements DialogInterface.OnClickListener
 {
-  public void a(HttpMsg paramHttpMsg) {}
+  public dxa(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportLog.a().sendEmptyMessage(10000001);
-  }
-  
-  public void a(String paramString) {}
-  
-  public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
-  {
-    return true;
-  }
-  
-  public void b(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    ReportLog.a = false;
-    ReportLog.a().sendEmptyMessage(10000001);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
+        return;
+      }
+    } while (paramInt != 1);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
   }
 }
 

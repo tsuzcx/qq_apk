@@ -1,21 +1,13 @@
-import com.tencent.open.base.ImageUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.base.img.ImageDownCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
 
-public class fed
-  implements ImageDownCallback
+public final class fed
+  implements Runnable
 {
-  public fed(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public fed(String paramString) {}
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
+    DownloadManager.a().a(this.a);
   }
 }
 

@@ -2333,7 +2333,7 @@ public class BizTroopHandler
       {
         localReqBody.uint32_network_type.set(1);
         localReqBody.uint32_cur_play_time.set(0);
-        localReqBody.bytes_mobileQ_ver.set(ByteStringMicro.copyFrom("3.3.0".getBytes()));
+        localReqBody.bytes_mobileQ_ver.set(ByteStringMicro.copyFrom("3.4.0".getBytes()));
         localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
         localToServiceMsg.extraData.putString("pageUrl", paramString);
         b(localToServiceMsg);

@@ -1,37 +1,19 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.appreport.AppReport;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadConstants;
 
-public class feq
-  implements Runnable
+class feq
+  implements DialogInterface.OnClickListener
 {
-  public feq(DownloadManager paramDownloadManager) {}
+  feq(fep paramfep) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Context localContext = CommonDataAdapter.a().a();
-    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
-    SimpleAccount localSimpleAccount = BaseApplicationImpl.a().getFirstSimpleAccount();
-    String str = "";
-    if (localSimpleAccount != null) {
-      str = localSimpleAccount.getUin();
-    }
-    if (!bool)
-    {
-      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
-      AppReport.a(localContext, null, null, str);
-    }
-    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
-      return;
-    }
-    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
-    AppReport.a(localContext, null, 0, null, null, str);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(DownloadConstants.q, false);
+    DownloadApi.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.b);
+    paramDialogInterface.dismiss();
   }
 }
 

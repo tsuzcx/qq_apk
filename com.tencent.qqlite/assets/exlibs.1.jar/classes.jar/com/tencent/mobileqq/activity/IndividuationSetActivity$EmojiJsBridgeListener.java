@@ -20,7 +20,7 @@ public class IndividuationSetActivity$EmojiJsBridgeListener
       switch (paramJSONObject.getInt("what"))
       {
       case 1005: 
-        QQToast.a(this.a, this.a.getString(2131363401), 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a, this.a.getString(2131363404), 0).b(this.a.getTitleBarHeight());
         IndividuationSetActivity.a(this.a, false);
         return;
       }
@@ -30,22 +30,22 @@ public class IndividuationSetActivity$EmojiJsBridgeListener
       paramJSONObject.printStackTrace();
       return;
     }
-    QQToast.a(this.a, this.a.getString(2131363511), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, this.a.getString(2131363512), 0).b(this.a.getTitleBarHeight());
     IndividuationSetActivity.a(this.a, false);
     return;
-    QQToast.a(this.a, this.a.getString(2131363515), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, this.a.getString(2131363516), 0).b(this.a.getTitleBarHeight());
     IndividuationSetActivity.a(this.a, false);
     return;
     IndividuationSetActivity.a(this.a, false);
     return;
-    QQToast.a(this.a, this.a.getString(2131364529), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, this.a.getString(2131364504), 0).b(this.a.getTitleBarHeight());
     IndividuationSetActivity.a(this.a, false);
     return;
     this.a.a.a(this);
     return;
     IndividuationSetActivity.a(this.a, true);
     return;
-    QQToast.a(this.a, this.a.getString(2131364531), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, this.a.getString(2131364506), 0).b(this.a.getTitleBarHeight());
     IndividuationSetActivity.a(this.a, false);
     return;
   }

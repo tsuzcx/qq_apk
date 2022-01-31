@@ -1,34 +1,18 @@
-import android.view.KeyEvent;
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class dxt
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements View.OnTouchListener
 {
-  private dxt(RoamSearchDialog paramRoamSearchDialog) {}
+  public dxt(RoamSearchDialog paramRoamSearchDialog) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 3)
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
-      }
-      return true;
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
   }
 }

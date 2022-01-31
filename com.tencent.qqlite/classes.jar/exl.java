@@ -1,42 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.widget.AntiphingToast;
 
 public class exl
-  implements View.OnTouchListener
+  extends Handler
 {
-  public exl(ClearableEditText paramClearableEditText) {}
+  public exl(AntiphingToast paramAntiphingToast) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
-          return false;
-          i = 0;
-        }
-      }
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
     }
+    super.handleMessage(paramMessage);
   }
 }
 

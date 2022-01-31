@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.support.v4.util.MQLruCache;
 import android.util.Pair;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
@@ -102,12 +103,12 @@ public class FontManager
     {
       try
       {
-        m = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493067);
-        n = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493068);
+        m = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493054);
+        n = paramAppInterface.getApplication().getResources().getDimensionPixelSize(2131493055);
         if (paramInt != 0) {
           continue;
         }
-        localObject1 = BitmapManager.a(paramAppInterface.a().getResources(), 2130838981, m, n);
+        localObject1 = BitmapManager.a(paramAppInterface.a().getResources(), 2130838952, m, n);
       }
       catch (Throwable localThrowable)
       {
@@ -159,7 +160,6 @@ public class FontManager
     switch (paramChatMessage.istroop)
     {
     default: 
-      return null;
     case 0: 
     case 1000: 
     case 1001: 
@@ -172,11 +172,15 @@ public class FontManager
     case 1020: 
     case 1022: 
     case 1025: 
-      if (paramChatMessage.isSend()) {
-        return paramChatMessage.selfuin;
-      }
-      return paramChatMessage.frienduin;
     case 1: 
+      do
+      {
+        return null;
+        if (paramChatMessage.isSend()) {
+          return paramChatMessage.selfuin;
+        }
+        return paramChatMessage.frienduin;
+      } while (AnonymousChatHelper.a(paramChatMessage));
       if (paramChatMessage.isSend()) {
         return paramChatMessage.selfuin;
       }
@@ -196,16 +200,16 @@ public class FontManager
     //   3: dup
     //   4: getstatic 74	com/etrump/mixlayout/FontManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   7: ldc 22
-    //   9: invokespecial 318	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: invokespecial 323	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   12: astore_2
     //   13: aload_2
-    //   14: invokevirtual 321	java/io/File:exists	()Z
+    //   14: invokevirtual 326	java/io/File:exists	()Z
     //   17: ifeq +205 -> 222
-    //   20: new 323	java/io/FileReader
+    //   20: new 328	java/io/FileReader
     //   23: dup
     //   24: aload_2
-    //   25: invokevirtual 326	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   28: invokespecial 329	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   25: invokevirtual 331	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   28: invokespecial 334	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   31: astore_3
     //   32: aload_3
     //   33: astore_2
@@ -222,7 +226,7 @@ public class FontManager
     //   53: astore_2
     //   54: aload_3
     //   55: aload 4
-    //   57: invokevirtual 333	java/io/FileReader:read	([C)I
+    //   57: invokevirtual 338	java/io/FileReader:read	([C)I
     //   60: istore_1
     //   61: iload_1
     //   62: ifle +103 -> 165
@@ -232,7 +236,7 @@ public class FontManager
     //   69: aload 4
     //   71: iconst_0
     //   72: iload_1
-    //   73: invokevirtual 336	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 341	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   76: pop
     //   77: goto -25 -> 52
     //   80: astore 4
@@ -245,19 +249,19 @@ public class FontManager
     //   92: ldc 10
     //   94: iconst_2
     //   95: aload 4
-    //   97: invokevirtual 337	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   100: invokestatic 339	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   97: invokevirtual 342	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   100: invokestatic 344	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   103: aload_3
     //   104: ifnull +7 -> 111
     //   107: aload_3
-    //   108: invokevirtual 342	java/io/FileReader:close	()V
+    //   108: invokevirtual 347	java/io/FileReader:close	()V
     //   111: aload_0
     //   112: getfield 91	com/etrump/mixlayout/FontManager:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
     //   115: ifnonnull +14 -> 129
     //   118: aload_0
-    //   119: new 344	org/json/JSONArray
+    //   119: new 349	org/json/JSONArray
     //   122: dup
-    //   123: invokespecial 345	org/json/JSONArray:<init>	()V
+    //   123: invokespecial 350	org/json/JSONArray:<init>	()V
     //   126: putfield 91	com/etrump/mixlayout/FontManager:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
     //   129: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   132: ifeq +32 -> 164
@@ -266,11 +270,11 @@ public class FontManager
     //   138: new 54	java/lang/StringBuilder
     //   141: dup
     //   142: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   145: ldc_w 347
+    //   145: ldc_w 352
     //   148: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: aload_0
     //   152: getfield 91	com/etrump/mixlayout/FontManager:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   155: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   158: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   161: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   164: return
@@ -284,15 +288,15 @@ public class FontManager
     //   179: aload_3
     //   180: astore_2
     //   181: aload_0
-    //   182: new 344	org/json/JSONArray
+    //   182: new 349	org/json/JSONArray
     //   185: dup
     //   186: aload 4
-    //   188: invokespecial 351	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   188: invokespecial 356	org/json/JSONArray:<init>	(Ljava/lang/String;)V
     //   191: putfield 91	com/etrump/mixlayout/FontManager:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
     //   194: aload_3
     //   195: ifnull -84 -> 111
     //   198: aload_3
-    //   199: invokevirtual 342	java/io/FileReader:close	()V
+    //   199: invokevirtual 347	java/io/FileReader:close	()V
     //   202: goto -91 -> 111
     //   205: astore_2
     //   206: goto -95 -> 111
@@ -302,7 +306,7 @@ public class FontManager
     //   212: aload_2
     //   213: ifnull +7 -> 220
     //   216: aload_2
-    //   217: invokevirtual 342	java/io/FileReader:close	()V
+    //   217: invokevirtual 347	java/io/FileReader:close	()V
     //   220: aload_3
     //   221: athrow
     //   222: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -313,9 +317,9 @@ public class FontManager
     //   234: dup
     //   235: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   238: aload_2
-    //   239: invokevirtual 326	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   239: invokevirtual 331	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   242: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: ldc_w 353
+    //   245: ldc_w 358
     //   248: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   254: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -390,32 +394,32 @@ public class FontManager
     //   18: dup
     //   19: getstatic 74	com/etrump/mixlayout/FontManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   22: ldc 22
-    //   24: invokespecial 318	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: invokespecial 323	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: astore_3
     //   28: aload_3
-    //   29: invokevirtual 321	java/io/File:exists	()Z
+    //   29: invokevirtual 326	java/io/File:exists	()Z
     //   32: ifeq +8 -> 40
     //   35: aload_3
-    //   36: invokevirtual 358	java/io/File:delete	()Z
+    //   36: invokevirtual 363	java/io/File:delete	()Z
     //   39: pop
-    //   40: new 360	java/io/RandomAccessFile
+    //   40: new 365	java/io/RandomAccessFile
     //   43: dup
     //   44: aload_3
-    //   45: ldc_w 362
-    //   48: invokespecial 365	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   45: ldc_w 367
+    //   48: invokespecial 370	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   51: astore 4
     //   53: aload 4
     //   55: astore_3
     //   56: aload 4
     //   58: aload_0
     //   59: getfield 91	com/etrump/mixlayout/FontManager:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   62: invokevirtual 366	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   65: invokevirtual 370	java/lang/String:getBytes	()[B
-    //   68: invokevirtual 374	java/io/RandomAccessFile:write	([B)V
+    //   62: invokevirtual 371	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   65: invokevirtual 375	java/lang/String:getBytes	()[B
+    //   68: invokevirtual 379	java/io/RandomAccessFile:write	([B)V
     //   71: aload 4
     //   73: astore_3
     //   74: aload 4
-    //   76: invokevirtual 375	java/io/RandomAccessFile:close	()V
+    //   76: invokevirtual 380	java/io/RandomAccessFile:close	()V
     //   79: iconst_1
     //   80: istore_2
     //   81: iload_2
@@ -423,7 +427,7 @@ public class FontManager
     //   83: aload 4
     //   85: ifnull +10 -> 95
     //   88: aload 4
-    //   90: invokevirtual 375	java/io/RandomAccessFile:close	()V
+    //   90: invokevirtual 380	java/io/RandomAccessFile:close	()V
     //   93: iload_2
     //   94: istore_1
     //   95: iload_1
@@ -435,17 +439,17 @@ public class FontManager
     //   106: new 54	java/lang/StringBuilder
     //   109: dup
     //   110: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   113: ldc_w 377
+    //   113: ldc_w 382
     //   116: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: iload_1
-    //   120: invokevirtual 380	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   120: invokevirtual 385	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   123: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   126: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   129: iload_1
     //   130: ireturn
     //   131: astore_3
     //   132: aload_3
-    //   133: invokevirtual 383	java/io/IOException:printStackTrace	()V
+    //   133: invokevirtual 388	java/io/IOException:printStackTrace	()V
     //   136: iload_2
     //   137: istore_1
     //   138: goto -43 -> 95
@@ -455,19 +459,19 @@ public class FontManager
     //   146: aload 4
     //   148: astore_3
     //   149: aload 5
-    //   151: invokevirtual 384	java/io/FileNotFoundException:printStackTrace	()V
+    //   151: invokevirtual 389	java/io/FileNotFoundException:printStackTrace	()V
     //   154: iload_2
     //   155: istore_1
     //   156: aload 4
     //   158: ifnull -63 -> 95
     //   161: aload 4
-    //   163: invokevirtual 375	java/io/RandomAccessFile:close	()V
+    //   163: invokevirtual 380	java/io/RandomAccessFile:close	()V
     //   166: iload_2
     //   167: istore_1
     //   168: goto -73 -> 95
     //   171: astore_3
     //   172: aload_3
-    //   173: invokevirtual 383	java/io/IOException:printStackTrace	()V
+    //   173: invokevirtual 388	java/io/IOException:printStackTrace	()V
     //   176: iload_2
     //   177: istore_1
     //   178: goto -83 -> 95
@@ -477,19 +481,19 @@ public class FontManager
     //   186: aload 4
     //   188: astore_3
     //   189: aload 5
-    //   191: invokevirtual 383	java/io/IOException:printStackTrace	()V
+    //   191: invokevirtual 388	java/io/IOException:printStackTrace	()V
     //   194: iload_2
     //   195: istore_1
     //   196: aload 4
     //   198: ifnull -103 -> 95
     //   201: aload 4
-    //   203: invokevirtual 375	java/io/RandomAccessFile:close	()V
+    //   203: invokevirtual 380	java/io/RandomAccessFile:close	()V
     //   206: iload_2
     //   207: istore_1
     //   208: goto -113 -> 95
     //   211: astore_3
     //   212: aload_3
-    //   213: invokevirtual 383	java/io/IOException:printStackTrace	()V
+    //   213: invokevirtual 388	java/io/IOException:printStackTrace	()V
     //   216: iload_2
     //   217: istore_1
     //   218: goto -123 -> 95
@@ -499,12 +503,12 @@ public class FontManager
     //   225: aload_3
     //   226: ifnull +7 -> 233
     //   229: aload_3
-    //   230: invokevirtual 375	java/io/RandomAccessFile:close	()V
+    //   230: invokevirtual 380	java/io/RandomAccessFile:close	()V
     //   233: aload 4
     //   235: athrow
     //   236: astore_3
     //   237: aload_3
-    //   238: invokevirtual 383	java/io/IOException:printStackTrace	()V
+    //   238: invokevirtual 388	java/io/IOException:printStackTrace	()V
     //   241: goto -8 -> 233
     //   244: astore 4
     //   246: goto -21 -> 225

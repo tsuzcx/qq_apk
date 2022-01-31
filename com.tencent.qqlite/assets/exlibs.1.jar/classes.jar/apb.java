@@ -1,24 +1,30 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class apb
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   public apb(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.c = false;
-    FriendProfileImageActivity.a(this.a).setVisibility(0);
+    if (paramView.getId() == 2131296440)
+    {
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
+      {
+        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
+        localActionSheet.a(2131363936, 3);
+        localActionSheet.d(2131362794);
+        localActionSheet.a(new apc(this, paramView, localActionSheet));
+        localActionSheet.show();
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

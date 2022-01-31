@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class fcn
-  implements DialogInterface.OnClickListener
+public final class fcn
+  implements Runnable
 {
-  public fcn(BaseJsCallBack paramBaseJsCallBack) {}
+  public fcn(Activity paramActivity, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, false, false);
+  }
 }
 
 

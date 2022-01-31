@@ -1,21 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class bgw
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
   public bgw(RegisterActivity paramRegisterActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
-    }
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
   }
 }
 

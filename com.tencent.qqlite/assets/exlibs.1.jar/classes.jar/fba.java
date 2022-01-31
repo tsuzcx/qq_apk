@@ -1,18 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.os.Message;
-import com.tencent.mobileqq.transfile.LastModifySupportDownloader;
-import com.tencent.open.agent.CardContainer;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.agent.BindGroupConfirmActivity;
 
 public class fba
   implements Runnable
 {
-  public fba(CardContainer paramCardContainer) {}
+  public fba(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(LastModifySupportDownloader.a(this.a.a()));
-    if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
     }
   }
 }

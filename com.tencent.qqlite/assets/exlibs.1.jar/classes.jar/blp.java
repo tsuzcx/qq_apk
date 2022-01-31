@@ -1,43 +1,26 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class blp
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public blp(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public blp(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
   
-  protected void a(boolean paramBoolean, Map paramMap)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    do
+    switch (paramView.getId())
     {
+    default: 
       return;
-      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-    this.a.d();
-    QQToast.a(this.a.getActivity(), 2131363416, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-      if (this.a.jdField_a_of_type_JavaUtilMap != null) {}
-    }
-    else
-    {
+    case 2131298905: 
+      TroopAssistSetGuideActivity.a(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp_helper", "Clk_not_set", 0, 0, "", "", "", "");
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-    this.a.d();
+    TroopAssistSetGuideActivity.b(this.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "Grp_helper", "Clk_quiet_mode", 0, 0, "", "", "", "");
   }
 }
 

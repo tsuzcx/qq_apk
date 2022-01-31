@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import ers;
+import erx;
 
 public class FetchBuddyAndTroopNameHelper
 {
@@ -16,7 +16,7 @@ public class FetchBuddyAndTroopNameHelper
   
   private FetchInfoListManager a()
   {
-    return new FetchInfoListManager(new ers(this));
+    return new FetchInfoListManager(new erx(this));
   }
   
   public void a()

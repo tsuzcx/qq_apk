@@ -3,7 +3,7 @@ package com.tencent.mobileqq.text;
 import android.text.Editable.Factory;
 import android.text.SpannableStringBuilder;
 import com.tencent.qphone.base.util.QLog;
-import egf;
+import egk;
 
 public class QQTextBuilder
   extends SpannableStringBuilder
@@ -14,7 +14,7 @@ public class QQTextBuilder
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new egf();
+    jdField_a_of_type_AndroidTextEditable$Factory = new egk();
   }
   
   public QQTextBuilder(int paramInt)

@@ -1,17 +1,13 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
 
 public class efb
-  implements View.OnTouchListener
+  extends StructMsgClickHandler
 {
-  public efb(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public efb(QQAppInterface paramQQAppInterface, View paramView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+    super(paramQQAppInterface, paramView);
   }
 }
 

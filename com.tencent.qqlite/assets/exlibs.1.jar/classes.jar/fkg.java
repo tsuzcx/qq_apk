@@ -1,22 +1,20 @@
 import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
 
-class fkg
-  extends fke
+public final class fkg
+  implements IPluginManager.OnPluginReadyListener
 {
-  public Context a;
-  
-  public fkg(fkc paramfkc, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    super(paramfkc);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
-  }
-  
-  public void a()
-  {
-    IPluginManager.d(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      IPluginManager.d(paramContext, paramPluginParams);
+    }
   }
 }
 

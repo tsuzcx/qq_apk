@@ -14,8 +14,8 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cya;
-import cyw;
+import cyg;
+import czc;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -90,7 +90,7 @@ public abstract class BaseMessageProcessor
     return new Pair(paramList1, localStringBuilder);
   }
   
-  public cyw a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public czc a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return null;
   }
@@ -206,7 +206,7 @@ public abstract class BaseMessageProcessor
       i = 0;
       while (i < 9)
       {
-        localSendMessageHandler.a(new cya(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
+        localSendMessageHandler.a(new cyg(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
         i += 1;
       }
       i = 0;

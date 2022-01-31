@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-public class djc
-  extends FMObserver
+class djc
+  implements View.OnClickListener
 {
-  public djc(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
+  djc(djb paramdjb) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QfileFileAssistantActivity.b(this.a)) {
-      return;
-    }
-    this.a.runOnUiThread(new djd(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!QfileFileAssistantActivity.b(this.a)) {
-      FMToastUtil.a(paramString);
-    }
+    this.a.a.h();
   }
 }
 

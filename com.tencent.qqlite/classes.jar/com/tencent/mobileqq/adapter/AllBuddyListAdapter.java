@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cok;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.persistence.Entity;
@@ -25,6 +24,7 @@ import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
+import cor;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -41,7 +41,7 @@ public class AllBuddyListAdapter
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new cok(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new cor(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private char[] jdField_a_of_type_ArrayOfChar = null;
   private int[] jdField_a_of_type_ArrayOfInt = null;
@@ -75,8 +75,8 @@ public class AllBuddyListAdapter
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903121, paramViewGroup, false);
       paramViewGroup = new BuddyListAdapter.ViewTag();
       paramViewGroup.b = ((ImageView)paramView.findViewById(2131296453));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131296851));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131296854));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131296847));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131296850));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       localFriends = (Friends)getItem(paramInt);
@@ -106,13 +106,13 @@ public class AllBuddyListAdapter
       if ((!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) && (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) && (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))) {
         break label463;
       }
-      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427517));
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427512));
       label328:
       if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
         break label486;
       }
       paramViewGroup.d.setCompoundDrawablePadding(this.c);
-      paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839406, 0);
+      paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839371, 0);
     }
     for (;;)
     {
@@ -127,7 +127,7 @@ public class AllBuddyListAdapter
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       label430:
-      paramViewGroup.b.setImageResource(2130838527);
+      paramViewGroup.b.setImageResource(2130838504);
       break label135;
       label443:
       bool = false;
@@ -136,13 +136,13 @@ public class AllBuddyListAdapter
       paramViewGroup.e.setCompoundDrawables(null, null, null, null);
       break label259;
       label463:
-      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427471));
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427466));
       break label328;
       label486:
       if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
       {
         paramViewGroup.d.setCompoundDrawablePadding(this.c);
-        paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839483, 0);
+        paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839448, 0);
       }
       else
       {

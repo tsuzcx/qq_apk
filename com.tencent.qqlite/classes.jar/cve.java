@@ -1,47 +1,31 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class cve
-  extends DefaultHandler
+  implements SosoInterface.OnLocationListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
   public cve(QQAppInterface paramQQAppInterface) {}
   
-  public HashMap a()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo, byte[] paramArrayOfByte, SosoInterface paramSosoInterface)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
+    if (QLog.isColorLevel()) {
+      QLog.d("LBS", 2, "onLocationFinish result:" + paramInt);
     }
-  }
-  
-  public void endDocument()
-  {
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    com.tencent.mobileqq.app.LBSHandler.A = paramInt;
+    paramSosoInterface = QQAppInterface.a(this.a);
+    if (paramInt == 0) {}
+    try
+    {
+      QQAppInterface.a(this.a, paramArrayOfByte);
+      QQAppInterface.a(this.a, paramSosoLbsInfo);
+      QQAppInterface.a(this.a, QQAppInterface.a(paramSosoLbsInfo));
+      QQAppInterface.a(this.a).notifyAll();
+      return;
+    }
+    finally {}
   }
 }
 

@@ -1,33 +1,21 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.app.LBSObserver;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class dat
-  extends Handler
+  extends LBSObserver
 {
   public dat(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (paramMessage.what == 1000) {
-      if ((this.a.h == 1) || (this.a.h == 2))
-      {
-        this.a.d();
-        QQToast.a(this.a, 2131364412, 0).b(this.a.getTitleBarHeight());
-      }
+    if (paramBoolean) {
+      this.a.c = paramLBSInfo.a();
     }
-    while ((paramMessage.what != 1001) || (!this.a.c)) {
-      return;
+    if ((this.a.c == null) || (this.a.c.length != 4)) {
+      this.a.c = new String[] { "-1", "-1", "-1", "-1" };
     }
-    Object localObject = (Object[])paramMessage.obj;
-    paramMessage = (String[])localObject[0];
-    localObject = (String)localObject[1];
-    Intent localIntent = new Intent();
-    localIntent.putExtra("param_location", paramMessage);
-    localIntent.putExtra("param_location_param", (String)localObject);
-    this.a.doOnActivityResult(1000, -1, localIntent);
+    this.a.c();
   }
 }
 

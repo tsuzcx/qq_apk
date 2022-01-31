@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import auj;
 import auk;
-import aul;
 import com.tencent.mobileqq.activity.phone.CountryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
@@ -32,11 +32,11 @@ public class LoginPhoneNumActivity
   public static final int b = 2014;
   public static final int c = 2015;
   private long jdField_a_of_type_Long = 0L;
-  Handler jdField_a_of_type_AndroidOsHandler = new auk(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new auj(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aul(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new auk(this);
   private boolean jdField_a_of_type_Boolean = false;
   private String b;
   
@@ -124,7 +124,7 @@ public class LoginPhoneNumActivity
     this.c = a(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString());
     if (this.c == null)
     {
-      a(2131363313, 1);
+      a(2131363316, 1);
       bool = false;
     }
     return bool;
@@ -132,12 +132,12 @@ public class LoginPhoneNumActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298260));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363341) + "+" + this.d);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298220));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363344) + "+" + this.d);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297386));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297382));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298261));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298221));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -149,13 +149,13 @@ public class LoginPhoneNumActivity
       return;
       if (!NetworkUtil.e(BaseApplication.getContext()))
       {
-        a(2131362785, 0);
+        a(2131362790, 0);
         return;
       }
-      a(2131363296);
+      a(2131363299);
     } while (PhoneNumLoginImpl.a().a(this.app, this.c, this.d, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     g();
-    a(getString(2131363283), 1);
+    a(getString(2131363286), 1);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -197,8 +197,8 @@ public class LoginPhoneNumActivity
   {
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903507));
-    setTitle(2131362902);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903495));
+    setTitle(2131362906);
     paramBundle = getIntent();
     if (paramBundle != null) {
       this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("isSubaccount", false);
@@ -246,7 +246,7 @@ public class LoginPhoneNumActivity
     {
     default: 
       return;
-    case 2131298260: 
+    case 2131298220: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }

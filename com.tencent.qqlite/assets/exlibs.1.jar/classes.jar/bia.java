@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bia
   implements Runnable
 {
-  public bia(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public bia(RegisterSendUpSms paramRegisterSendUpSms, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
-      {
-        RegisterQQNumberActivity.a(this.a).dismiss();
-        RegisterQQNumberActivity.a(this.a).cancel();
+      if (RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms) == null) {
+        RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms.getTitleBarHeight()));
       }
-      RegisterQQNumberActivity.a(this.a, null);
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).a(this.jdField_a_of_type_JavaLangString);
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).setOnKeyListener(new bib(this));
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).show();
       return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
   }
 }

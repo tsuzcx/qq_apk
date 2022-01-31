@@ -1,24 +1,25 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import android.text.format.Time;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
-public class dte
-  implements View.OnClickListener
+class dte
+  implements Runnable
 {
-  public dte(LocalVideoFileView paramLocalVideoFileView) {}
+  dte(dtd paramdtd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (LocalVideoFileView.b(this.a).getRequestedOrientation() != 0)
-    {
-      LocalVideoFileView.b(this.a).setRequestedOrientation(0);
-      LocalVideoFileView.a(this.a).setBackgroundResource(2130838597);
+    if ((LocalMusicFileView.a(this.a.a.a) == null) || (!LocalMusicFileView.a(this.a.a.a).b(LocalMusicFileView.a(this.a.a.a)))) {
       return;
     }
-    LocalVideoFileView.b(this.a).setRequestedOrientation(1);
-    LocalVideoFileView.a(this.a).setBackgroundResource(2130838600);
+    int i = LocalMusicFileView.a(this.a.a.a).b();
+    LocalMusicFileView.a(this.a.a.a).setProgress(i);
+    Object localObject = new Time();
+    ((Time)localObject).set(i);
+    localObject = ((Time)localObject).format("%M:%S");
+    LocalMusicFileView.a(this.a.a.a).setText((CharSequence)localObject);
   }
 }
 

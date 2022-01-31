@@ -1,56 +1,95 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import cooperation.troop.TroopProxyActivity;
-import java.util.ArrayList;
+import android.graphics.Rect;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class dwb
-  extends AsyncTask
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public dwb(SendBottomBar paramSendBottomBar) {}
+  public dwb(QfileHorizontalListView paramQfileHorizontalListView) {}
   
-  protected Void a(Void... paramVarArgs)
+  private boolean a(MotionEvent paramMotionEvent, View paramView)
   {
-    paramVarArgs = SendBottomBar.a(this.a).c();
-    int i = SendBottomBar.a(this.a).a();
-    if (i == 5)
-    {
-      TroopProxyActivity.a.addAll(FMDataCache.b());
-      return null;
-    }
-    if (paramVarArgs.equals(AppConstants.T))
-    {
-      paramVarArgs = FMDataCache.b();
-      ((DataLineHandler)SendBottomBar.a(this.a).a(8)).a(paramVarArgs);
-      return null;
-    }
-    if (i == 1)
-    {
-      SendBottomBar.a(this.a).a().a(paramVarArgs);
-      return null;
-    }
-    String str = SendBottomBar.a(this.a).d();
-    SendBottomBar.a(this.a).a().a(str, paramVarArgs, i);
-    return null;
+    Rect localRect = new Rect();
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[0];
+    int j = paramView.getWidth();
+    int k = arrayOfInt[1];
+    localRect.set(i, k, j + i, paramView.getHeight() + k);
+    return localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
   }
   
-  protected void a(Void paramVoid)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    super.onPostExecute(paramVoid);
-    this.a.c();
-    FMDataCache.b();
-    SendBottomBar.a(this.a);
+    return this.a.a(paramMotionEvent);
   }
   
-  protected void onPreExecute()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super.onPreExecute();
-    this.a.a(2131364071);
+    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    int j = this.a.getChildCount();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        View localView = this.a.getChildAt(i);
+        if (!a(paramMotionEvent, localView)) {
+          break label99;
+        }
+        if (QfileHorizontalListView.a(this.a) != null) {
+          QfileHorizontalListView.a(this.a).a(this.a, localView, QfileHorizontalListView.a(this.a) + 1 + i, this.a.a.getItemId(i + (QfileHorizontalListView.a(this.a) + 1)));
+        }
+      }
+      return;
+      label99:
+      i += 1;
+    }
+  }
+  
+  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    synchronized (this.a)
+    {
+      paramMotionEvent2 = this.a;
+      paramMotionEvent2.b += (int)paramFloat1;
+      this.a.requestLayout();
+      return true;
+    }
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    int i = 0;
+    for (;;)
+    {
+      if (i < this.a.getChildCount())
+      {
+        View localView = this.a.getChildAt(i);
+        if (!a(paramMotionEvent, localView)) {
+          break label155;
+        }
+        if (QfileHorizontalListView.a(this.a) != null) {
+          QfileHorizontalListView.a(this.a).a(this.a, localView, QfileHorizontalListView.a(this.a) + 1 + i, this.a.a.getItemId(QfileHorizontalListView.a(this.a) + 1 + i));
+        }
+        if (QfileHorizontalListView.a(this.a) != null) {
+          QfileHorizontalListView.a(this.a).b(this.a, localView, QfileHorizontalListView.a(this.a) + 1 + i, this.a.a.getItemId(QfileHorizontalListView.a(this.a) + 1 + i));
+        }
+      }
+      return true;
+      label155:
+      i += 1;
+    }
   }
 }
 

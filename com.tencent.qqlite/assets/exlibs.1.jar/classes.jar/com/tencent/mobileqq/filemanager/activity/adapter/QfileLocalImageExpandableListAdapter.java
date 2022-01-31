@@ -19,7 +19,7 @@ import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.qphone.base.util.QLog;
-import dho;
+import dhu;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -72,21 +72,21 @@ public class QfileLocalImageExpandableListAdapter
       paramView = a(paramViewGroup);
     }
     paramView.removeAllViews();
-    dho localdho = (dho)paramView.getTag();
+    dhu localdhu = (dhu)paramView.getTag();
     int i = 0;
     for (;;)
     {
       View localView;
       if (i < 4)
       {
-        localView = b(paramInt1, paramInt2 * 4 + i, paramBoolean, localdho.a[i], paramViewGroup);
+        localView = b(paramInt1, paramInt2 * 4 + i, paramBoolean, localdhu.a[i], paramViewGroup);
         if (localView != null) {}
       }
       else
       {
         return paramView;
       }
-      localdho.a[i] = localView;
+      localdhu.a[i] = localView;
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
       localObject = localLayoutParams;
       if (localLayoutParams == null)
@@ -109,7 +109,7 @@ public class QfileLocalImageExpandableListAdapter
     paramViewGroup.setOrientation(0);
     paramViewGroup.setClickable(false);
     paramViewGroup.setLongClickable(false);
-    paramViewGroup.setTag(new dho(null));
+    paramViewGroup.setTag(new dhu(null));
     return paramViewGroup;
   }
   
@@ -125,7 +125,7 @@ public class QfileLocalImageExpandableListAdapter
       if (paramView == null) {}
       try
       {
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903430, null);
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903420, null);
         paramView = paramViewGroup;
         try
         {
@@ -135,9 +135,9 @@ public class QfileLocalImageExpandableListAdapter
           paramView = paramViewGroup;
           localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131296283));
           paramView = paramViewGroup;
-          localImageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298056));
+          localImageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131298019));
           paramView = paramViewGroup;
-          localImageHolder.b = ((ImageView)paramViewGroup.findViewById(2131296801));
+          localImageHolder.b = ((ImageView)paramViewGroup.findViewById(2131296797));
           paramView = paramViewGroup;
           paramViewGroup.setTag(localImageHolder);
           paramView = paramViewGroup;
@@ -151,13 +151,13 @@ public class QfileLocalImageExpandableListAdapter
           paramView = paramViewGroup;
           localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
           paramView = paramViewGroup;
-          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130839066);
+          localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130839034);
           paramView = paramViewGroup;
           localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
           paramView = paramViewGroup;
           paramInt1 = paramInt2 / 4;
           paramView = paramViewGroup;
-          String str = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362018), new Object[] { Integer.valueOf(paramInt1 + 1), Integer.valueOf((paramInt2 & 0x3) + 1) });
+          String str = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362015), new Object[] { Integer.valueOf(paramInt1 + 1), Integer.valueOf((paramInt2 & 0x3) + 1) });
           paramView = paramViewGroup;
           localImageHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setContentDescription(str);
           paramView = paramViewGroup;

@@ -1,17 +1,98 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.widget.XPanelContainer;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import com.tencent.widget.XBaseAdapter;
+import java.util.ArrayList;
 
 public class fjd
-  implements ValueAnimator.AnimatorUpdateListener
+  extends DataSetObservable
 {
-  public fjd(XPanelContainer paramXPanelContainer, int paramInt) {}
+  public fjd(XBaseAdapter paramXBaseAdapter) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt1, int paramInt2)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof fjc)) {
+            ((fjc)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
+  }
+  
+  public void a(int... paramVarArgs)
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof fjc)) {
+            ((fjc)localDataSetObserver).a(paramVarArgs);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof fjc)) {
+            ((fjc)localDataSetObserver).b(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    int i = this.mObservers.size() - 1;
+    if (i >= 0)
+    {
+      DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+      if ((localDataSetObserver instanceof fjc)) {
+        ((fjc)localDataSetObserver).c(paramInt1, paramInt2);
+      }
+      for (;;)
+      {
+        i -= 1;
+        break;
+        localDataSetObserver.onChanged();
+      }
+    }
   }
 }
 

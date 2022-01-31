@@ -1,27 +1,19 @@
 import android.app.Activity;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
 import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
 public class dul
-  implements MediaPlayer.OnVideoSizeChangedListener
+  extends TimerTask
 {
-  public dul(FileViewMusicService paramFileViewMusicService, Activity paramActivity) {}
+  public dul(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
   
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileViewMusicService<FileAssistant>", 2, "invalid video width(" + paramInt1 + ") or height(" + paramInt2 + ")");
-      }
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PreviewingOfflineFileViewBase<FileAssistant>", 4, "TimeoutTimer run");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FileViewMusicService<FileAssistant>", 2, "onVideoSizeChanged width:" + paramInt1 + " height:" + paramInt2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a(this.jdField_a_of_type_AndroidAppActivity);
+    PreviewingOfflineFileViewBase.g(this.a).runOnUiThread(new dum(this));
   }
 }
 

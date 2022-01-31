@@ -1,12 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public final class etl
-  implements Runnable
+public class etl
+  implements FileFilter
 {
-  public void run()
+  public boolean accept(File paramFile)
   {
-    FileUtils.a(BaseApplicationImpl.a, true);
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 

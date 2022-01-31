@@ -1,21 +1,15 @@
-import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-class cmm
-  implements Runnable
+public class cmm
+  implements View.OnClickListener
 {
-  cmm(cmk paramcmk) {}
+  public cmm(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (!this.a.a.isFinishing()) {
-        this.a.a.a.dismiss();
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    this.a.g();
   }
 }
 

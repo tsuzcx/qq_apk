@@ -44,18 +44,18 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.Gallery;
-import ejw;
-import ejx;
-import ejy;
-import ejz;
 import ekb;
 import ekc;
 import ekd;
 import eke;
-import ekf;
 import ekg;
 import ekh;
 import eki;
+import ekj;
+import ekk;
+import ekl;
+import ekm;
+import ekn;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -109,7 +109,7 @@ public class TroopAvatarWallPreviewActivity
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Long = 300L;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ejz(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eke(this);
   }
   
   private Bitmap a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, Drawable paramDrawable, boolean paramBoolean)
@@ -234,7 +234,7 @@ public class TroopAvatarWallPreviewActivity
   
   private void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new ekg(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new ekl(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private boolean c()
@@ -267,9 +267,9 @@ public class TroopAvatarWallPreviewActivity
     this.f = true;
     this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.a((Bitmap)localObject2, localRect3, localRect2, localRect1, (Rect)localObject1, this.jdField_a_of_type_Long);
     this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setAnimationListener(new ekh(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setAnimationListener(new ekm(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new eki(this), this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new ekn(this), this.jdField_a_of_type_Long);
     localObject1 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject1).setInterpolator(new DecelerateInterpolator());
     ((AlphaAnimation)localObject1).setDuration(500L);
@@ -295,19 +295,19 @@ public class TroopAvatarWallPreviewActivity
       } while ((localObject == null) || (!(localObject instanceof URLDrawable)));
       localObject = (URLDrawable)localObject;
     } while (((URLDrawable)localObject).getStatus() != 1);
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
     if (this.c)
     {
-      localActionSheet.a(2131363941, 1);
-      localActionSheet.a(2131363945, 1);
+      localActionSheet.a(2131363930, 1);
+      localActionSheet.a(2131363934, 1);
     }
     if (this.jdField_b_of_type_Boolean)
     {
-      localActionSheet.a(2131362531, 5);
-      localActionSheet.a(2131363947, 3);
+      localActionSheet.a(2131362527, 5);
+      localActionSheet.a(2131363936, 3);
     }
-    localActionSheet.d(2131362790);
-    localActionSheet.a(new ekd(this, (URLDrawable)localObject, localActionSheet));
+    localActionSheet.d(2131362794);
+    localActionSheet.a(new eki(this, (URLDrawable)localObject, localActionSheet));
     localActionSheet.show();
   }
   
@@ -361,7 +361,7 @@ public class TroopAvatarWallPreviewActivity
       finish();
       return;
     }
-    QQToast.a(this, getString(2131362521), 1).b(getTitleBarHeight());
+    QQToast.a(this, getString(2131362517), 1).b(getTitleBarHeight());
   }
   
   public void a(URLDrawable paramURLDrawable)
@@ -388,12 +388,12 @@ public class TroopAvatarWallPreviewActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131363440), 0).a();
+          QQToast.a(this, getString(2131363441), 0).a();
           return;
         }
       }
     }
-    DialogUtil.a(this, 230).setTitle(getString(2131363442)).setMessage(getString(2131363444)).setPositiveButton(getString(2131363443), new ekf(this, paramURLDrawable, str)).setNegativeButton(getString(2131362787), new eke(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131363443)).setMessage(getString(2131363445)).setPositiveButton(getString(2131363444), new ekk(this, paramURLDrawable, str)).setNegativeButton(getString(2131362791), new ekj(this)).show();
   }
   
   public void a(URLDrawable paramURLDrawable, String paramString)
@@ -500,8 +500,8 @@ public class TroopAvatarWallPreviewActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new ejx(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(new ejy(this), 500L);
+    localAnimationSet.setAnimationListener(new ekc(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(new ekd(this), 500L);
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
@@ -545,16 +545,16 @@ public class TroopAvatarWallPreviewActivity
         e = true;
         setContentView(2130903211);
         ??? = getIntent().getExtras();
-        this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131297187));
+        this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131297183));
         this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296993));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296989));
         this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296564));
         this.jdField_a_of_type_AndroidViewView = findViewById(2131296445);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297186));
+        this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297182));
         this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131296440));
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView = ((ImageAnimationView)findViewById(2131297188));
-        ((ImageView)findViewById(2131297189)).setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView = ((ImageAnimationView)findViewById(2131297184));
+        ((ImageView)findViewById(2131297185)).setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
         this.jdField_b_of_type_Boolean = ???.getBoolean("IS_EDIT");
         if (this.jdField_b_of_type_Boolean)
@@ -584,11 +584,11 @@ public class TroopAvatarWallPreviewActivity
           this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a(???.getBoolean("is_use_path", false));
           this.jdField_a_of_type_Int = ???.getInt("index", -1);
           this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter);
-          this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131492924));
+          this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131492920));
           this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new ejw(this));
-          this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new ekb(this));
-          this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new ekc(this));
+          this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new ekb(this));
+          this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new ekg(this));
+          this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new ekh(this));
           return;
         }
       }

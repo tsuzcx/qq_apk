@@ -55,7 +55,7 @@ public class TroopMemberListActivity$SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903697, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903680, paramViewGroup, false);
       paramViewGroup = new TroopMemberListActivity.TmViewHolder(paramView);
       paramView.setTag(paramViewGroup);
     }

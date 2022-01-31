@@ -1,81 +1,54 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.SearchTroopListActivity.StrangeTroopWrapper;
 
-public class biv
-  extends TroopObserver
+public final class biv
+  implements Parcelable.Creator
 {
-  private int jdField_a_of_type_Int = -2;
-  
-  public biv(SearchTroopListActivity paramSearchTroopListActivity) {}
-  
-  protected void a(int paramInt1, boolean paramBoolean, int paramInt2, List paramList)
+  /* Error */
+  public SearchTroopListActivity.StrangeTroopWrapper a(android.os.Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.removeObserver(SearchTroopListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity));
-    Object localObject;
-    if (paramInt1 == 0)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidAppDialog != null) || (this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_b_of_type_Int == 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_JavaUtilList.clear();
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity;
-      ((SearchTroopListActivity)localObject).jdField_b_of_type_Int += 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_JavaUtilList.isEmpty())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.setTitle(2131363211);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidWidgetTextView.setText(2131363193);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.c();
-      paramList = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView.findViewById(2131296558);
-      localObject = (ImageView)this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView.findViewById(2131297314);
-      paramList.setVisibility(8);
-      ((ImageView)localObject).setVisibility(0);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidAppDialog != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_Biw);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_Biw.notifyDataSetChanged();
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView.findViewById(2131296558).setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView.findViewById(2131297314).setVisibility(8);
-        paramList = (TextView)this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView.findViewById(2131297315);
-        paramList.setVisibility(0);
-        paramList.setText("没有更多");
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.c();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      continue;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidAppDialog != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.jdField_b_of_type_AndroidWidgetTextView.setText(2131363786);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.c();
-        return;
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity, "加载失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivitySearchTroopListActivity.c);
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokevirtual 21	android/os/Parcel:readInt	()I
+    //   4: newarray byte
+    //   6: astore_2
+    //   7: aload_1
+    //   8: aload_2
+    //   9: invokevirtual 25	android/os/Parcel:readByteArray	([B)V
+    //   12: new 27	tencent/im/kqq/searchgroup/SearchGroup$GroupInfo
+    //   15: dup
+    //   16: invokespecial 28	tencent/im/kqq/searchgroup/SearchGroup$GroupInfo:<init>	()V
+    //   19: astore_1
+    //   20: aload_1
+    //   21: aload_2
+    //   22: invokevirtual 32	tencent/im/kqq/searchgroup/SearchGroup$GroupInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   25: pop
+    //   26: new 34	com/tencent/mobileqq/activity/SearchTroopListActivity$StrangeTroopWrapper
+    //   29: dup
+    //   30: aload_1
+    //   31: invokespecial 37	com/tencent/mobileqq/activity/SearchTroopListActivity$StrangeTroopWrapper:<init>	(Ltencent/im/kqq/searchgroup/SearchGroup$GroupInfo;)V
+    //   34: areturn
+    //   35: astore_1
+    //   36: aconst_null
+    //   37: astore_1
+    //   38: goto -12 -> 26
+    //   41: astore_2
+    //   42: goto -16 -> 26
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	45	0	this	biv
+    //   0	45	1	paramParcel	android.os.Parcel
+    //   6	16	2	arrayOfByte	byte[]
+    //   41	1	2	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   12	20	35	java/lang/Exception
+    //   20	26	41	java/lang/Exception
+  }
+  
+  public SearchTroopListActivity.StrangeTroopWrapper[] a(int paramInt)
+  {
+    return new SearchTroopListActivity.StrangeTroopWrapper[paramInt];
   }
 }
 

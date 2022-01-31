@@ -1,47 +1,90 @@
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class bzh
-  extends DiscussionObserver
+  extends MessageObserver
 {
   public bzh(DiscussChatPie paramDiscussChatPie) {}
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    String str = (String)paramArrayOfObject[0];
-    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    if ((DiscussChatPie.a(this.a).jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean))
+    if ((paramString1 == null) || (!paramString1.equals(DiscussChatPie.i(this.a).jdField_a_of_type_JavaLangString)) || (paramInt1 != DiscussChatPie.j(this.a).jdField_a_of_type_Int))
     {
-      if (bool) {
-        this.a.d(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("DiscussChatPie", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
       }
-      if (DiscussChatPie.b(this.a).jdField_a_of_type_Int == 3000)
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussChatPie", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
+    {
+      paramSendMessageHandler = DiscussChatPie.c(this.a).a().a(paramString1, paramInt1, paramLong2);
+      if ((paramSendMessageHandler != null) && ((paramSendMessageHandler instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction))) {
+        MultiMsgManager.a().a(DiscussChatPie.d(this.a), paramString1, paramInt1, paramLong2, false);
+      }
+    }
+    if (paramInt1 == 3000) {
+      switch (paramInt2)
       {
-        paramArrayOfObject = ((FriendsManagerImp)DiscussChatPie.a(this.a).getManager(8)).a(str);
-        if ((paramArrayOfObject != null) && (paramArrayOfObject.discussionName != null))
-        {
-          DiscussChatPie.c(this.a).d = paramArrayOfObject.discussionName;
-          this.a.a(DiscussChatPie.d(this.a).d, paramArrayOfObject.uin, DiscussChatPie.a(this.a));
+      }
+    }
+    for (;;)
+    {
+      this.a.a(196608);
+      return;
+      QQToast.a(DiscussChatPie.b(this.a), 2131363128, 1).b(DiscussChatPie.a(this.a).getTitleBarHeight());
+      continue;
+      QQToast.a(DiscussChatPie.d(this.a), 2131363129, 1).b(DiscussChatPie.c(this.a).getTitleBarHeight());
+      continue;
+      DialogUtil.a(DiscussChatPie.e(this.a), 230, "发送失败", DiscussChatPie.f(this.a).getString(2131363669), new bzi(this, paramString1), null).show();
+      continue;
+      try
+      {
+        if (!DiscussChatPie.g(this.a).isFinishing()) {
+          DialogUtil.a(DiscussChatPie.h(this.a), 230, "发送失败", DiscussChatPie.i(this.a).getString(2131363130), new bzj(this, paramString1), null).show();
         }
       }
+      catch (Throwable paramString1) {}
     }
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if ((DiscussChatPie.e(this.a).jdField_a_of_type_JavaLangString.equals(paramString)) && (DiscussChatPie.f(this.a).jdField_a_of_type_Int == 3000))
-    {
-      paramString = ((FriendsManagerImp)DiscussChatPie.b(this.a).getManager(8)).a(paramString);
-      if ((paramString != null) && (paramString.discussionName != null))
-      {
-        DiscussChatPie.g(this.a).d = paramString.discussionName;
-        this.a.a(DiscussChatPie.h(this.a).d, paramString.uin, DiscussChatPie.b(this.a));
-      }
+    if (paramBoolean1) {
+      this.a.C();
     }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.a(65536);
+  }
+  
+  protected void d(boolean paramBoolean, String paramString)
+  {
+    MultiMsgManager.a().b("send struct msg  ");
+    MultiMsgManager.a().c();
+    MultiMsgManager.a().a("all cost time ");
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(DiscussChatPie.k(this.a).jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.j = true;
+    this.a.a(131072);
   }
 }
 

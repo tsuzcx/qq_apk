@@ -1,39 +1,28 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class chy
-  implements AdapterView.OnItemClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  private chy(AlbumListActivity paramAlbumListActivity) {}
+  public chy(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(View paramView, int paramInt)
   {
-    paramAdapterView = this.a.a.a(paramInt);
-    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt == 0)
     {
-      QQToast.a(this.a, 2131364072, 0).a();
+      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363450);
+      }
+    }
+    else {
       return;
     }
-    paramView = this.a.getIntent();
-    paramView.putExtra("ALBUM_ID", paramAdapterView._id);
-    paramView.putExtra("ALBUM_NAME", paramAdapterView.name);
-    paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramView.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
-    paramView.putExtra("album_enter_directly", false);
-    AlbumListActivity.a(this.a, true);
-    paramView.setClass(this.a, PhotoListActivity.class);
-    paramView.addFlags(603979776);
-    this.a.startActivity(paramView);
-    this.a.finish();
-    AlbumUtil.a(this.a, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
   }
 }
 

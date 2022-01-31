@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class cex
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public cex(MainAssistObserver paramMainAssistObserver) {}
+  public cex(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(false);
   }
 }
 

@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.MenuPopupDialog;
 
-class dll
-  implements FMDialogUtil.FMDialogInterface
+public class dll
+  implements View.OnLongClickListener
 {
-  dll(dlj paramdlj, FileManagerEntity paramFileManagerEntity) {}
+  public dll(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType == 0)
-    {
-      QfileBaseRecentFileTabView.k(this.jdField_a_of_type_Dlj.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
     }
-    QfileBaseRecentFileTabView.l(this.jdField_a_of_type_Dlj.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
+    QfileBaseRecentFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new dlm(this, paramView), new dln(this, paramView)));
+    return true;
   }
-  
-  public void b() {}
 }
 
 

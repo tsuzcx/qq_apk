@@ -1,19 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class cgm
-  implements DialogInterface.OnKeyListener
+class cgm
+  implements DialogInterface.OnClickListener
 {
-  public cgm(ContactListView paramContactListView) {}
+  cgm(cgl paramcgl) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.f();
-    }
-    return false;
+    this.a.a.app.a(new cgn(this));
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

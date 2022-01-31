@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import java.lang.ref.WeakReference;
 
 public class dvi
-  implements Runnable
+  extends ClickableSpan
 {
-  public dvi(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  private WeakReference a;
   
-  public void run()
+  public dvi(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 3);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+    this.a = new WeakReference(paramTipsClickedInterface);
+  }
+  
+  public void onClick(View paramView)
+  {
+    FileManagerUtil.TipsClickedInterface localTipsClickedInterface = (FileManagerUtil.TipsClickedInterface)this.a.get();
+    if (localTipsClickedInterface != null) {
+      localTipsClickedInterface.a(paramView);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

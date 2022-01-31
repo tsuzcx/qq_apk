@@ -1,15 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
 import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
-public class bdv
-  implements View.OnClickListener
+class bdv
+  implements Runnable
 {
-  public bdv(QQMapActivity paramQQMapActivity) {}
+  bdv(bdu parambdu, SOSOMapLBSApiResult paramSOSOMapLBSApiResult, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.k();
+    GeoPoint localGeoPoint = new GeoPoint((int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Longitude * 1000000.0D));
+    this.jdField_a_of_type_Bdu.a.a.setCenter(localGeoPoint);
+    if (this.jdField_a_of_type_Bdu.a.h) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Bdu.a.a(localGeoPoint, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bdu.a.h();
+      return;
+      this.jdField_a_of_type_Bdu.a.j = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bdu.a.b.setVisibility(0);
+      this.jdField_a_of_type_Bdu.a.c.setVisibility(0);
+      this.jdField_a_of_type_Bdu.a.a(localGeoPoint);
+    }
   }
 }
 

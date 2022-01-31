@@ -1,132 +1,68 @@
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
 public class bpn
-  extends TroopObserver
+  extends MessageObserver
 {
   public bpn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(int paramInt, byte paramByte)
+  protected void a(String paramString)
   {
-    if ((paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7)) {
-      this.a.a.sendEmptyMessage(1);
-    }
-    if (paramInt == 8) {
-      this.a.a.sendEmptyMessage(1);
+    if ((TroopRequestActivity.a(this.a) != null) && (TroopRequestActivity.a(this.a).isShowing()))
+    {
+      TroopRequestActivity.a(this.a).dismiss();
+      paramString = this.a.getString(2131362896);
+      QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
     }
   }
   
-  protected void a(int paramInt, byte paramByte, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7))
+    this.a.a(2130837985, this.a.getString(2131363413));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = GroupSystemMsgController.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
     {
-      if (paramByte != 0) {
-        break label68;
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
+      {
+        if (TroopRequestActivity.a(this.a) != null) {
+          TroopRequestActivity.a(this.a).dismiss();
+        }
+        if (SystemMsgUtils.a(GroupSystemMsgController.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
+        }
+        return;
       }
-      this.a.a.sendEmptyMessage(0);
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
       this.a.finish();
-    }
-    for (;;)
-    {
-      if (paramInt == 8)
-      {
-        if (paramByte != 0) {
-          break;
-        }
-        this.a.a.sendEmptyMessage(0);
-      }
+      SystemMsgUtils.a(GroupSystemMsgController.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
       return;
-      label68:
-      this.a.a.sendEmptyMessage(1);
     }
-    this.a.a.sendEmptyMessage(1);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.p == null) {}
-    do
+    catch (Exception paramString1)
     {
       for (;;)
       {
-        return;
-        this.a.p = this.a.p.trim();
-        try
-        {
-          long l = Long.parseLong(this.a.p);
-          if (paramLong != l) {}
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_1_Ret=>NumberFormatException");
-              continue;
-              QQToast.a(this.a.app.getApplication(), 2131363365, 0).b(this.a.getTitleBarHeight());
-            }
-          }
-          this.a.a.sendEmptyMessage(1);
-        }
+        l1 = l2;
       }
-      this.a.f();
-      if (!paramBoolean) {
-        break label205;
-      }
-      if ((paramTroopInfo.cGroupOption == 4) || (paramTroopInfo.cGroupOption == 5)) {
-        TroopRequestActivity.a(this.a, paramTroopInfo.joinTroopQuestion);
-      }
-      TroopRequestActivity.a(this.a, paramTroopInfo.cGroupOption);
-      if (TroopRequestActivity.a(this.a) == 3) {
-        break;
-      }
-      TroopRequestActivity.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.systemmsg.TroopRequestActivity", 2, "troop.cGroupOption = " + paramTroopInfo.cGroupOption);
-    return;
-    label205:
+    }
   }
   
-  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    if (this.a.p == null) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          this.a.p = this.a.p.trim();
-          long l = Long.parseLong(this.a.p);
-          if ((paramLong != l) || (!paramBoolean) || (paramTroopInfo == null)) {}
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_10_Ret=>NumberFormatException");
-            }
-          }
-        }
-      }
-      paramTroopInfo = GroupCatalogTool.a(BaseApplication.getContext()).a(this.a, Long.toString(paramTroopInfo.dwGroupClassExt));
-    } while (paramTroopInfo == null);
-    paramString = new Message();
-    paramString.what = 2;
-    paramString.obj = paramTroopInfo.a();
-    this.a.a.sendMessage(paramString);
+    this.a.a(2130837985, this.a.getString(2131363414));
   }
 }
 

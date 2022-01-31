@@ -45,11 +45,11 @@ public class CustomWidgetUtil
       else
       {
         paramString = "";
-        paramInt1 = 2130839370;
+        paramInt1 = 2130839335;
         paramInt2 = 0;
         continue;
         if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130839374)
+        for (paramInt2 = paramInt3;; paramInt2 = 2130839339)
         {
           paramString = "NEW";
           paramInt1 = 0;
@@ -65,7 +65,7 @@ public class CustomWidgetUtil
           paramInt1 = 0;
           paramInt2 = paramInt3;
           break;
-          paramInt3 = 2130839374;
+          paramInt3 = 2130839339;
         }
         label167:
         paramString = String.valueOf(paramInt2);
@@ -82,7 +82,7 @@ public class CustomWidgetUtil
           paramInt1 = 0;
           paramInt2 = paramInt3;
           break;
-          paramInt3 = 2130839374;
+          paramInt3 = 2130839339;
         }
         label207:
         paramString = String.valueOf(paramInt2);
@@ -90,7 +90,7 @@ public class CustomWidgetUtil
         paramInt2 = paramInt3;
         continue;
         if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130839374)
+        for (paramInt2 = paramInt3;; paramInt2 = 2130839339)
         {
           if (!TextUtils.isEmpty(paramString)) {
             break label249;
@@ -103,7 +103,7 @@ public class CustomWidgetUtil
         paramInt1 = 0;
       }
     }
-    Object localObject = paramTextView.getTag(2131298717);
+    Object localObject = paramTextView.getTag(2131298666);
     if (((localObject == null) && (paramInt1 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt1))) {}
     for (;;)
     {
@@ -116,7 +116,7 @@ public class CustomWidgetUtil
       paramTextView.setVisibility(0);
       return;
       paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, 0, 0, 0);
-      paramTextView.setTag(2131298717, Integer.valueOf(paramInt1));
+      paramTextView.setTag(2131298666, Integer.valueOf(paramInt1));
       paramTextView.setText(paramString);
       paramTextView.setPadding(0, 0, 0, 0);
     }

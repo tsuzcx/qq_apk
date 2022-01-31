@@ -42,10 +42,10 @@ public class TroopFileTransferManager$TaskPool
     //   35: return
     //   36: new 40	java/lang/Thread
     //   39: dup
-    //   40: new 42	eox
+    //   40: new 42	epc
     //   43: dup
     //   44: aload_0
-    //   45: invokespecial 45	eox:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool;)V
+    //   45: invokespecial 45	epc:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool;)V
     //   48: invokespecial 48	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   51: invokevirtual 51	java/lang/Thread:start	()V
     //   54: goto -21 -> 33

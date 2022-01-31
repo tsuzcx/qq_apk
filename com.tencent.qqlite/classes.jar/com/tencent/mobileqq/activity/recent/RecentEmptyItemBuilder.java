@@ -24,9 +24,9 @@ public class RecentEmptyItemBuilder
     if (paramView == null)
     {
       paramDrawable = View.inflate(paramContext, 2130903128, null);
-      this.b = paramContext.getResources().getDimensionPixelSize(2131492954);
-      this.a = paramContext.getResources().getDimensionPixelSize(2131492953);
-      this.j = paramContext.getResources().getDimensionPixelSize(2131492956);
+      this.b = paramContext.getResources().getDimensionPixelSize(2131492950);
+      this.a = paramContext.getResources().getDimensionPixelSize(2131492949);
+      this.j = paramContext.getResources().getDimensionPixelSize(2131492952);
     }
     int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
     if (i > this.j)
@@ -36,7 +36,7 @@ public class RecentEmptyItemBuilder
       paramView.height = i;
       paramDrawable.setLayoutParams(paramView);
       paramDrawable.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramDrawable.findViewById(2131296887);
+      paramView = (TextView)paramDrawable.findViewById(2131296883);
       if (!(paramObject instanceof Integer)) {
         break label278;
       }
@@ -44,10 +44,10 @@ public class RecentEmptyItemBuilder
       if (i != 1) {
         break label216;
       }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838144, 0, 0);
+      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838138, 0, 0);
       paramView.setVisibility(0);
-      paramView.setText(2131364065);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131427500));
+      paramView.setText(2131364052);
+      paramView.setTextColor(paramContext.getResources().getColorStateList(2131427495));
     }
     label278:
     for (;;)
@@ -59,10 +59,10 @@ public class RecentEmptyItemBuilder
       label216:
       if (i == 0)
       {
-        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838144, 0, 0);
+        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130838138, 0, 0);
         paramView.setVisibility(0);
-        paramView.setText(2131363478);
-        paramView.setTextColor(paramContext.getResources().getColorStateList(2131427500));
+        paramView.setText(2131363479);
+        paramView.setTextColor(paramContext.getResources().getColorStateList(2131427495));
       }
       else
       {

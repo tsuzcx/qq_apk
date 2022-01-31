@@ -1,19 +1,10 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.PredownloadTest;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class yh
-  implements View.OnClickListener
+  extends Handler
 {
-  public yh(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a, PredownloadTest.class);
-    this.a.startActivity(paramView);
-  }
+  public yh(AuthDevActivity paramAuthDevActivity) {}
 }
 
 

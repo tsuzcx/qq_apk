@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:id="@id/photo_preview_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cancel" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006c" />
-        <TextView android:id="@id/photo_preview_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0874" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0071" />
+        <TextView android:id="@id/photo_preview_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0869" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0071" />
     </RelativeLayout>
 </FrameLayout>

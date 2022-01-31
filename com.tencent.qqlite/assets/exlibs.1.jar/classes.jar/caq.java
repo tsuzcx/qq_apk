@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import java.util.TimerTask;
 
 public class caq
-  implements Runnable
+  extends TimerTask
 {
-  public caq(TipsManager paramTipsManager) {}
+  public caq(FraudTipsBar paramFraudTipsBar) {}
   
   public void run()
   {
-    if (TipsManager.a(this.a) != null) {
-      TipsManager.a(this.a).a();
-    }
-    TipsManager.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.clear();
-    }
+    FraudTipsBar.a(this.a).post(new car(this));
   }
 }
 

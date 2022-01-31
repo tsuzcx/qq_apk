@@ -1,24 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class anf
-  implements URLDrawable.URLDrawableListener
+public class anf
+  implements DialogInterface.OnClickListener
 {
-  anf(ane paramane) {}
+  public anf(ForwardOperations paramForwardOperations) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramURLDrawable.setBounds(ImageUtil.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable, 36, 100, ForwardOperations.a(this.a.jdField_a_of_type_Anc.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations)));
-    this.a.jdField_a_of_type_Anc.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(paramURLDrawable);
+    this.a.a.finish();
   }
 }
 

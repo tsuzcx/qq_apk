@@ -4,6 +4,8 @@ import MessageSvcPack.SvcResponseGroupMsgReadConfirm;
 import PushNotifyPack.GroupMsgReadedNotify;
 import android.os.Bundle;
 import android.util.Pair;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,8 +29,8 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import enl;
-import enm;
+import enq;
+import enr;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,7 +51,7 @@ public class TroopMessageProcessor
   public static final String c = "Q.msg.TroopMessageProcessor";
   public static final int d = 3;
   public static final int e = 4;
-  public Comparator b = new enl(this);
+  public Comparator b = new enq(this);
   
   public TroopMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
@@ -575,8 +577,14 @@ public class TroopMessageProcessor
               paramArrayList.append("----------initGetPullTroopMsg update send message  mr.senderuin: ").append(paramPbGetGroupMsgResp.senderuin).append(" mr.msgtype: ").append(paramPbGetGroupMsgResp.msgtype).append(" mr.frienduin: ").append(paramPbGetGroupMsgResp.frienduin).append(" mr.shmsgseq: ").append(paramPbGetGroupMsgResp.shmsgseq).append(" mr.time:").append(paramPbGetGroupMsgResp.time).append(" mr.msg: ").append(paramPbGetGroupMsgResp.getLogColorContent());
               QLog.d("Q.msg.TroopMessageProcessor", 2, paramArrayList.toString());
             }
-            if ((paramPbGetGroupMsgResp.senderuin != null) && (paramPbGetGroupMsgResp.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a())))
+            if (((paramPbGetGroupMsgResp.senderuin != null) && (paramPbGetGroupMsgResp.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) || ((AnonymousChatHelper.a(paramPbGetGroupMsgResp)) && (AnonymousChatHelper.b(paramPbGetGroupMsgResp))))
             {
+              if (AnonymousChatHelper.a(paramPbGetGroupMsgResp))
+              {
+                paramPbGetGroupMsgResp.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+                localObject3 = AnonymousChatHelper.a(paramPbGetGroupMsgResp);
+                AnonymousChatHelper.a().a(paramPbGetGroupMsgResp.frienduin, paramPbGetGroupMsgResp.vipBubbleID, ((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_b_of_type_Int, ((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_b_of_type_JavaLangString, ((AnonymousChatHelper.AnonymousExtInfo)localObject3).c, ((AnonymousChatHelper.AnonymousExtInfo)localObject3).a);
+              }
               localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramPbGetGroupMsgResp.frienduin, 1, paramPbGetGroupMsgResp);
               if (localObject3 != null)
               {
@@ -605,7 +613,7 @@ public class TroopMessageProcessor
           {
             paramArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((String)localObject1);
             if (paramArrayList == null) {
-              break label1037;
+              break label1109;
             }
             l2 = ((Long)paramArrayList[0]).longValue();
             int k = paramToServiceMsg.size();
@@ -624,7 +632,7 @@ public class TroopMessageProcessor
             }
             paramArrayList = (BaseMessageManagerForTroopAndDisc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1);
             if (paramArrayList.a((String)localObject1, 1, paramToServiceMsg, paramString)) {
-              break label1037;
+              break label1109;
             }
             bool2 = MessageHandlerUtils.a(paramToServiceMsg);
             boolean bool3 = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg);
@@ -666,7 +674,7 @@ public class TroopMessageProcessor
           j = 1;
           paramToServiceMsg = (ToServiceMsg)localObject2;
           continue;
-          label1037:
+          label1109:
           i = 0;
           bool1 = false;
           bool2 = false;
@@ -696,7 +704,7 @@ public class TroopMessageProcessor
     //   31: new 61	java/lang/StringBuilder
     //   34: dup
     //   35: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   38: ldc_w 589
+    //   38: ldc_w 617
     //   41: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: aload_3
     //   45: invokevirtual 74	java/util/ArrayList:size	()I
@@ -734,7 +742,7 @@ public class TroopMessageProcessor
     //   125: invokevirtual 126	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   128: lstore 10
     //   130: aload_3
-    //   131: getfield 592	msf/msgcomm/msg_comm$MsgHead:to_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   131: getfield 620	msf/msgcomm/msg_comm$MsgHead:to_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   134: invokevirtual 126	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   137: lstore 12
     //   139: aload_3
@@ -797,7 +805,7 @@ public class TroopMessageProcessor
     //   272: new 61	java/lang/StringBuilder
     //   275: dup
     //   276: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   279: ldc_w 594
+    //   279: ldc_w 622
     //   282: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   285: lload 14
     //   287: invokevirtual 184	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -837,7 +845,7 @@ public class TroopMessageProcessor
     //   372: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   375: lload 20
     //   377: invokevirtual 184	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   380: ldc_w 596
+    //   380: ldc_w 624
     //   383: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   386: aload 26
     //   388: getfield 158	msf/msgcomm/msg_comm$GroupInfo:group_card	Lcom/tencent/mobileqq/pb/PBBytesField;
@@ -909,7 +917,7 @@ public class TroopMessageProcessor
     //   549: new 61	java/lang/StringBuilder
     //   552: dup
     //   553: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   556: ldc_w 598
+    //   556: ldc_w 626
     //   559: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   562: iload 5
     //   564: invokevirtual 77	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -993,14 +1001,14 @@ public class TroopMessageProcessor
     //   738: aload_0
     //   739: getfield 43	com/tencent/mobileqq/troop/data/TroopMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   742: invokevirtual 487	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   745: invokevirtual 535	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   745: invokevirtual 563	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   748: ifeq +9 -> 757
     //   751: aload 23
     //   753: iconst_2
-    //   754: putfield 542	com/tencent/mobileqq/data/MessageRecord:issend	I
+    //   754: putfield 570	com/tencent/mobileqq/data/MessageRecord:issend	I
     //   757: aload 23
     //   759: iconst_1
-    //   760: putfield 539	com/tencent/mobileqq/data/MessageRecord:isread	Z
+    //   760: putfield 567	com/tencent/mobileqq/data/MessageRecord:isread	Z
     //   763: goto -58 -> 705
     //   766: aload 4
     //   768: aload_0
@@ -1008,7 +1016,7 @@ public class TroopMessageProcessor
     //   772: invokestatic 447	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   775: aload_2
     //   776: getfield 409	msf/msgsvc/msg_svc$PbGetGroupMsgResp:group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   779: invokevirtual 599	java/lang/Object:toString	()Ljava/lang/String;
+    //   779: invokevirtual 627	java/lang/Object:toString	()Ljava/lang/String;
     //   782: astore_3
     //   783: aload_0
     //   784: getfield 43	com/tencent/mobileqq/troop/data/TroopMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1021,8 +1029,8 @@ public class TroopMessageProcessor
     //   801: pop
     //   802: aload_1
     //   803: getfield 338	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   806: ldc_w 601
-    //   809: invokevirtual 605	android/os/Bundle:getBundle	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   806: ldc_w 629
+    //   809: invokevirtual 633	android/os/Bundle:getBundle	(Ljava/lang/String;)Landroid/os/Bundle;
     //   812: astore_1
     //   813: new 37	java/util/ArrayList
     //   816: dup
@@ -1031,24 +1039,24 @@ public class TroopMessageProcessor
     //   821: aload_1
     //   822: ifnull +39 -> 861
     //   825: aload_1
-    //   826: ldc_w 607
+    //   826: ldc_w 635
     //   829: aload_2
-    //   830: getfield 610	msf/msgsvc/msg_svc$PbGetGroupMsgResp:return_begin_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   830: getfield 638	msf/msgsvc/msg_svc$PbGetGroupMsgResp:return_begin_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   833: invokevirtual 126	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   836: invokevirtual 613	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   836: invokevirtual 641	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   839: aload_1
-    //   840: ldc_w 615
+    //   840: ldc_w 643
     //   843: aload_2
     //   844: getfield 430	msf/msgsvc/msg_svc$PbGetGroupMsgResp:return_end_seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   847: invokevirtual 126	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   850: invokevirtual 613	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   850: invokevirtual 641	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   853: aload_1
-    //   854: ldc_w 617
+    //   854: ldc_w 645
     //   857: iconst_1
-    //   858: invokevirtual 621	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   858: invokevirtual 649	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   861: aload_0
     //   862: getfield 43	com/tencent/mobileqq/troop/data/TroopMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   865: invokevirtual 493	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   865: invokevirtual 521	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   868: aload_2
     //   869: getfield 409	msf/msgsvc/msg_svc$PbGetGroupMsgResp:group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   872: invokevirtual 126	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
@@ -1057,11 +1065,11 @@ public class TroopMessageProcessor
     //   879: aload 4
     //   881: aload_3
     //   882: aload_1
-    //   883: invokevirtual 624	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;ILjava/util/List;Ljava/util/List;Landroid/os/Bundle;)V
+    //   883: invokevirtual 652	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;ILjava/util/List;Ljava/util/List;Landroid/os/Bundle;)V
     //   886: aload_0
     //   887: getfield 328	com/tencent/mobileqq/troop/data/TroopMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   890: aload_3
-    //   891: invokevirtual 586	com/tencent/mobileqq/app/MessageHandler:b	(Ljava/util/ArrayList;)V
+    //   891: invokevirtual 614	com/tencent/mobileqq/app/MessageHandler:b	(Ljava/util/ArrayList;)V
     //   894: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1142,20 +1150,20 @@ public class TroopMessageProcessor
       label483:
       label489:
       label495:
-      label1274:
       boolean bool2;
+      label1356:
       boolean bool3;
       for (;;)
       {
         ArrayList localArrayList;
-        Object localObject5;
+        PBDecodeContext localPBDecodeContext;
         TroopInfoManager localTroopInfoManager;
         try
         {
           localObject1 = new String((byte[])localObject1, "utf-8");
           localObject3 = new ArrayList();
           if (!paramMsg.content_head.has()) {
-            break label1525;
+            break label1607;
           }
           localObject4 = (msg_comm.ContentHead)paramMsg.content_head.get();
           k = ((msg_comm.ContentHead)localObject4).div_seq.get();
@@ -1165,10 +1173,10 @@ public class TroopMessageProcessor
           localObject4 = String.valueOf(l7);
           if ((localObject1 != null) && (((String)localObject1).length() > 0)) {}
           localArrayList = new ArrayList();
-          localObject5 = new PBDecodeContext();
-          ((PBDecodeContext)localObject5).e = l7;
-          ((PBDecodeContext)localObject5).c = 1;
-          ((PBDecodeContext)localObject5).d = m;
+          localPBDecodeContext = new PBDecodeContext();
+          localPBDecodeContext.e = l7;
+          localPBDecodeContext.c = 1;
+          localPBDecodeContext.d = m;
           if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject4) != 2) {
             break label489;
           }
@@ -1197,12 +1205,12 @@ public class TroopMessageProcessor
         continue;
         bool1 = false;
         continue;
-        Object localObject6;
+        Object localObject5;
         if (QLog.isColorLevel())
         {
-          localObject6 = new StringBuilder("<---handleMsgPush_PB_Group : before analysis :");
-          ((StringBuilder)localObject6).append(" fromUin:").append(l4).append(" toUin:").append(l5).append(" msgTime:").append(l2).append(" msgSeq:").append(l1).append(" msgUid:").append(l6).append(" userActive:").append(n).append(" fromInstid:").append(i1).append(" groupCode:").append(l7).append(" groupType:").append(m).append(" groupSeq:").append(l8).append(" cardName:").append(Utils.a((String)localObject2)).append(" hasAppShare:").append(paramMsg.appshare_info.has()).append(" bFinished:").append(bool1).append(" divSeq:").append(k).append(" pkgIndex:").append(i).append(" pkgNum:").append(j);
-          QLog.d("Q.msg.TroopMessageProcessor", 2, ((StringBuilder)localObject6).toString());
+          localObject5 = new StringBuilder("<---handleMsgPush_PB_Group : before analysis :");
+          ((StringBuilder)localObject5).append(" fromUin:").append(l4).append(" toUin:").append(l5).append(" msgTime:").append(l2).append(" msgSeq:").append(l1).append(" msgUid:").append(l6).append(" userActive:").append(n).append(" fromInstid:").append(i1).append(" groupCode:").append(l7).append(" groupType:").append(m).append(" groupSeq:").append(l8).append(" cardName:").append(Utils.a((String)localObject2)).append(" hasAppShare:").append(paramMsg.appshare_info.has()).append(" bFinished:").append(bool1).append(" divSeq:").append(k).append(" pkgIndex:").append(i).append(" pkgNum:").append(j);
+          QLog.d("Q.msg.TroopMessageProcessor", 2, ((StringBuilder)localObject5).toString());
           if (paramFromServiceMsg.getAttribute("__timestamp_net2msf") != null)
           {
             l4 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() / 1000L;
@@ -1212,7 +1220,7 @@ public class TroopMessageProcessor
         paramFromServiceMsg = new MessageInfo();
         try
         {
-          a(paramMsg, (ArrayList)localObject3, (PBDecodeContext)localObject5, true, paramFromServiceMsg);
+          a(paramMsg, (ArrayList)localObject3, localPBDecodeContext, true, paramFromServiceMsg);
           MessageHandlerUtils.a((List)localObject3);
           if (((ArrayList)localObject3).size() == 0)
           {
@@ -1248,8 +1256,14 @@ public class TroopMessageProcessor
                 ((StringBuilder)localObject5).append(" mr.senderuin:").append(((MessageRecord)localObject2).senderuin).append(" mr.msgtype:").append(((MessageRecord)localObject2).msgtype).append(" mr.frienduin:").append(((MessageRecord)localObject2).frienduin).append(" mr.shmsgseq:").append(((MessageRecord)localObject2).shmsgseq).append(" mr.time:").append(((MessageRecord)localObject2).time).append(" mr.msg:").append(((MessageRecord)localObject2).getLogColorContent());
                 QLog.d("Q.msg.TroopMessageProcessor", 2, ((StringBuilder)localObject5).toString());
               }
-              if ((((MessageRecord)localObject2).senderuin != null) && (((MessageRecord)localObject2).senderuin.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a())))
+              if (((((MessageRecord)localObject2).senderuin != null) && (((MessageRecord)localObject2).senderuin.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) || ((AnonymousChatHelper.a((MessageRecord)localObject2)) && (AnonymousChatHelper.b((MessageRecord)localObject2))))
               {
+                if (AnonymousChatHelper.a((MessageRecord)localObject2))
+                {
+                  ((MessageRecord)localObject2).senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+                  localObject5 = AnonymousChatHelper.a((MessageRecord)localObject2);
+                  AnonymousChatHelper.a().a(String.valueOf(localPBDecodeContext.e), ((MessageRecord)localObject2).vipBubbleID, ((AnonymousChatHelper.AnonymousExtInfo)localObject5).jdField_b_of_type_Int, ((AnonymousChatHelper.AnonymousExtInfo)localObject5).jdField_b_of_type_JavaLangString, ((AnonymousChatHelper.AnonymousExtInfo)localObject5).c, ((AnonymousChatHelper.AnonymousExtInfo)localObject5).a);
+                }
                 localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, 1, (MessageRecord)localObject2);
                 if (localObject5 != null)
                 {
@@ -1263,8 +1277,8 @@ public class TroopMessageProcessor
                   this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(((MessageRecord)localObject2).frienduin, 1, ((MessageRecord)localObject5).uniseq, ((MessageRecord)localObject2).shmsgseq, ((MessageRecord)localObject2).time);
                   if (((MessageRecord)localObject5).msgtype == -2017)
                   {
-                    localObject6 = MsgProxyUtils.a((MessageRecord)localObject5, (MessageRecord)localObject2);
-                    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, 1, ((MessageRecord)localObject5).uniseq, (byte[])localObject6);
+                    byte[] arrayOfByte = MsgProxyUtils.a((MessageRecord)localObject5, (MessageRecord)localObject2);
+                    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, 1, ((MessageRecord)localObject5).uniseq, arrayOfByte);
                   }
                   if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject5))
                   {
@@ -1280,7 +1294,7 @@ public class TroopMessageProcessor
                 i += 1;
                 break;
                 this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a((MessageRecord)localObject2, (MessageRecord)localObject5);
-                break label1274;
+                break label1356;
                 ((MessageRecord)localObject2).isread = true;
                 ((MessageRecord)localObject2).issend = 2;
                 this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, 1, ((MessageRecord)localObject2).shmsgseq);
@@ -1298,12 +1312,12 @@ public class TroopMessageProcessor
           }
           paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
           if (!bool2) {
-            break label1519;
+            break label1601;
           }
         }
       }
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause) {}
-      label1519:
+      label1601:
       for (boolean bool1 = true;; bool1 = false)
       {
         paramFromServiceMsg.a(paramMsg, String.valueOf(l3), bool1);
@@ -1317,7 +1331,7 @@ public class TroopMessageProcessor
         this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramMsg);
         return;
       }
-      label1525:
+      label1607:
       int k = 0;
       int i = 0;
       int j = 0;
@@ -1390,7 +1404,7 @@ public class TroopMessageProcessor
   
   public void a(long paramLong1, long paramLong2)
   {
-    a(true, false, false, 0L, new enm(this, paramLong1, paramLong2));
+    a(true, false, false, 0L, new enr(this, paramLong1, paramLong2));
   }
   
   public void a(GroupMsgReadedNotify paramGroupMsgReadedNotify)

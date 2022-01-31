@@ -80,19 +80,20 @@ public class BusinessInfoCheckUpdateItem
   
   public BusinessInfoCheckUpdateItem(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    String[] arrayOfString1 = { "100005", "100005.100001", "1" };
-    String[] arrayOfString2 = { "100005", "100005.100002", "1" };
+    String[] arrayOfString1 = { "100005", "100005.100002", "1" };
+    String[] arrayOfString2 = { "100005", "100005.100003", "1" };
     String[] arrayOfString3 = { "100005", "100005.100011", "1" };
     String[] arrayOfString4 = { "100007", "100007", "1" };
-    String[] arrayOfString5 = { "100007", "100007.100014.100015", "1" };
-    String[] arrayOfString6 = { "100400", "100400", "1" };
-    String[] arrayOfString7 = { "100200", "100200", "1" };
-    String[] arrayOfString8 = { "100160", "100160", "1" };
-    String[] arrayOfString9 = { "100016", "100016", "1" };
-    String[] arrayOfString10 = { "886", "886", "0" };
-    String[] arrayOfString11 = { "886", "886.100171", "0" };
-    String[] arrayOfString12 = { "886", "886.100172", "0" };
-    this.jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "100005", "100005", "1" }, arrayOfString1, arrayOfString2, { "100005", "100005.100003", "1" }, arrayOfString3, arrayOfString4, { "100007", "100007.100009", "1" }, { "100007", "100007.100009.100010", "1" }, { "100007", "100007.100013", "1" }, { "100007", "100007.100014", "1" }, arrayOfString5, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, { "886", "886.100170", "0" }, arrayOfString11, arrayOfString12 };
+    String[] arrayOfString5 = { "100007", "100007.100009.100010", "1" };
+    String[] arrayOfString6 = { "100007", "100007.100013", "1" };
+    String[] arrayOfString7 = { "100007", "100007.100014", "1" };
+    String[] arrayOfString8 = { "100007", "100007.100014.100015", "1" };
+    String[] arrayOfString9 = { "100400", "100400", "1" };
+    String[] arrayOfString10 = { "100200", "100200", "1" };
+    String[] arrayOfString11 = { "100016", "100016", "1" };
+    String[] arrayOfString12 = { "886", "886.100171", "0" };
+    String[] arrayOfString13 = { "886", "886.100172", "0" };
+    this.jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "100005", "100005", "1" }, { "100005", "100005.100001", "1" }, arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, { "100007", "100007.100009", "1" }, arrayOfString5, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, { "100160", "100160", "1" }, arrayOfString11, { "886", "886", "0" }, { "886", "886.100170", "0" }, arrayOfString12, arrayOfString13 };
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.J = paramInt;
   }
@@ -267,7 +268,7 @@ public class BusinessInfoCheckUpdateItem
     BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
     localTimeReqBody.iProtocolVer.set(1);
     localTimeReqBody.uiClientPlatID.set(109);
-    localTimeReqBody.sClientVer.set("3.3.0.544");
+    localTimeReqBody.sClientVer.set("3.4.0.607");
     localTimeReqBody.uiUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
     List localList = ResourcePluginInfo.getAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager(), 64, false);
     RedTouchManager localRedTouchManager = (RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32);

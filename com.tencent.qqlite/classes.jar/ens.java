@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
 
 public class ens
   implements Runnable
 {
-  public ens(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
+  public ens(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
   public void run()
   {
-    this.a.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -25,8 +25,8 @@ import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import ehe;
-import ehr;
+import ehj;
+import ehw;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.OutputStream;
@@ -95,11 +95,11 @@ public class MultiMsgUpProcessor
     ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.jdField_f_of_type_ArrayOfByte));
     localObject1 = new String();
     int i = 0;
-    while (i < "3.3.0".length())
+    while (i < "3.4.0".length())
     {
       localObject2 = localObject1;
-      if ("3.3.0".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("3.3.0".charAt(i)));
+      if ("3.4.0".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("3.4.0".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -469,7 +469,7 @@ public class MultiMsgUpProcessor
       this.aw = 0;
       this.L = "";
       this.jdField_b_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehe(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehj(this));
     }
     return 0;
   }

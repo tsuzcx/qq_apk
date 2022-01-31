@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import protocol.KQQConfig.GetResourceRespInfo;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class cqv
   implements Runnable
 {
-  public cqv(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public cqv(ConditionSearchManager paramConditionSearchManager) {}
   
   public void run()
   {
-    File localFile = new File(AppConstants.aZ);
-    try
-    {
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), localFile))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-      return;
+    int j = this.a.a();
+    int i = -1;
+    if (j != 0) {
+      i = this.a.a(j);
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
+    }
+    if (j == 0) {
+      ConditionSearchManager.a(this.a).a(new cqw(this));
     }
   }
 }

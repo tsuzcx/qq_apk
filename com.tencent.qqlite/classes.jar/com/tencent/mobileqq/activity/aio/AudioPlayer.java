@@ -7,7 +7,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import android.os.Handler;
-import bsl;
+import bsk;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
 import com.tencent.mobileqq.utils.AudioUtil;
@@ -30,7 +30,7 @@ public class AudioPlayer
   private Application jdField_a_of_type_AndroidAppApplication;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bsl(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bsk(this);
   private AudioPlayer.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener;
   private volatile AudioHelper.AudioPlayerParameter jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
   private boolean jdField_a_of_type_Boolean = false;

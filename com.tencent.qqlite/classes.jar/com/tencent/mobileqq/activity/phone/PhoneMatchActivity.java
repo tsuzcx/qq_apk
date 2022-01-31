@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import chn;
-import cho;
+import cht;
+import chu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -22,25 +22,25 @@ public class PhoneMatchActivity
   private void c()
   {
     this.h.setText("通讯录");
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297417));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297413));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    setLeftButton(2131363522, this);
+    setLeftButton(2131363523, this);
   }
   
   private void e()
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363449);
+      b(2131363450);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chn(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cht(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
-    this.app.a(new cho(this));
-    b(2131363378, 1000L);
+    this.app.a(new chu(this));
+    b(2131363381, 1000L);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)

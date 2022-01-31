@@ -1,15 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
 class aii
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  aii(aih paramaih, Drawable paramDrawable) {}
+  aii(aih paramaih) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aih.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130968593);
   }
 }
 

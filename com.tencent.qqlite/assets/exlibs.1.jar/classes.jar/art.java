@@ -10,9 +10,10 @@ public class art
   
   public void onClick(View paramView)
   {
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      LbsBaseActivity.a(this.a).dismiss();
+    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
+      LbsBaseActivity.b(this.a).dismiss();
     }
+    this.a.a();
   }
 }
 

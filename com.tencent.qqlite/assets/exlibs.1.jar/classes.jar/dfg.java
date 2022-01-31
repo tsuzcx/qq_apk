@@ -1,25 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class dfg
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public dfg(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt, Drawable paramDrawable) {}
+  public dfg(FastImagePreviewLayout paramFastImagePreviewLayout) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.a.getChildAt(this.jdField_a_of_type_Int);
-    if (localObject == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
     }
-    localObject = (ImageView)((View)localObject).findViewById(2131297090);
-    ((ImageView)localObject).setAdjustViewBounds(false);
-    ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    ((ImageView)localObject).invalidate();
+    this.a.removeAllViews();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

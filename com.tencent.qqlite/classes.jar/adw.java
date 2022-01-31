@@ -1,34 +1,25 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
 
-public class adw
-  implements View.OnClickListener
+class adw
+  implements Runnable
 {
-  public adw(ChatHistory paramChatHistory) {}
+  adw(adv paramadv, Object paramObject, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.c > 1)
+    if ((this.jdField_a_of_type_Adv.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837680);
-      paramView = this.a;
-      paramView.c -= 1;
-      if (this.a.c <= 1)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838096);
-      }
-      this.a.e = ((this.a.c - 1) * 8);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.c));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      Toast.makeText(this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131363404), 0).show();
+      return;
     }
+    if (this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
+      this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
+    }
+    this.jdField_a_of_type_Adv.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Adv.jdField_a_of_type_JavaLangString);
   }
 }
 

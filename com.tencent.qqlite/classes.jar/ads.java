@@ -1,17 +1,22 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 
 public class ads
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ads(ChatHistory paramChatHistory) {}
+  public ads(ChatHistory paramChatHistory, View paramView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class dvg
-  implements Runnable
+public final class dvg
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dvg(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  public dvg(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void a()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 1);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

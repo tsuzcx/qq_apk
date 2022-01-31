@@ -1,49 +1,55 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.base.http.HttpCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.os.Bundle;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.RSACrypt;
+import oicq.wlogin_sdk.tools.util;
 
-public final class fdd
-  implements DbCacheData.DbCreator
+public class fdd
+  extends SSOAccountObserver
 {
-  public int a()
-  {
-    return 1;
-  }
+  public fdd(TicketUtils paramTicketUtils) {}
   
-  public HttpCacheData a(Cursor paramCursor)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    try
-    {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+    if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
+      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
     }
-    catch (Exception paramCursor)
+  }
+  
+  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
+  {
+    if (paramInt1 == 0)
     {
-      paramCursor.printStackTrace();
+      paramBundle = new WloginSimpleInfo();
+      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
+        this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, paramBundle);
+      }
+      paramString = "" + paramBundle._uin;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+      {
+        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
+        paramArrayOfByte = new RSACrypt(CommonDataAdapter.a().a()).EncryptData(this.a.a(CommonDataAdapter.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
+        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
+        if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
+          this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a(paramString, paramArrayOfByte);
+        }
+      }
     }
-    return null;
+    while (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
   }
   
-  public String a()
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
+    if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
+      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
+    }
   }
 }
 

@@ -1,22 +1,15 @@
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
-class dtl
-  implements Runnable
+public class dtl
+  implements View.OnClickListener
 {
-  dtl(dtk paramdtk) {}
+  public dtl(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((LocalVideoFileView.a(this.a.a.a) == null) || (!LocalVideoFileView.a(this.a.a.a).b(LocalVideoFileView.a(this.a.a.a)))) {
-      return;
-    }
-    int i = LocalVideoFileView.a(this.a.a.a).b();
-    String str = LocalVideoFileView.a(this.a.a.a, i);
-    LocalVideoFileView.a(this.a.a.a).setProgress(i);
-    LocalVideoFileView.a(this.a.a.a).setText(str);
+    LocalVideoFileView.c(this.a);
   }
 }
 

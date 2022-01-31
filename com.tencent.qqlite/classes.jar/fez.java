@@ -1,27 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class fez
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  public fez(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  public fez(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void a()
+  public void run()
   {
-    LogUtility.a("MyAppApi", "onGetA1Fail ---");
-    ThreadManager.b().post(new ffb(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.a("MyAppApi", "onGetA1 ---");
-    ThreadManager.b().post(new ffa(this, paramArrayOfByte, paramString));
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
+        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

@@ -15,14 +15,14 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.util.ThreeDes;
 import java.util.concurrent.atomic.AtomicInteger;
-import og;
+import oc;
 
 public class PublicAccountJavascriptInterface$LocListener
   extends SOSOMapLBSApiListener
 {
   public long a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new og(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new oc(this);
   public String a;
   boolean jdField_a_of_type_Boolean;
   

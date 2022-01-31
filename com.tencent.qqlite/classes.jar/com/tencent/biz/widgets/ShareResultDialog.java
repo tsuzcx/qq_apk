@@ -8,8 +8,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.qphone.base.util.QLog;
-import tf;
-import tg;
+import tb;
+import tc;
 
 public class ShareResultDialog
   extends Dialog
@@ -32,11 +32,11 @@ public class ShareResultDialog
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296918));
-    this.b = ((TextView)super.findViewById(2131296919));
-    this.c = ((TextView)super.findViewById(2131297112));
-    this.d = ((TextView)super.findViewById(2131297113));
-    this.e = ((TextView)super.findViewById(2131297114));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296914));
+    this.b = ((TextView)super.findViewById(2131296915));
+    this.c = ((TextView)super.findViewById(2131297108));
+    this.d = ((TextView)super.findViewById(2131297109));
+    this.e = ((TextView)super.findViewById(2131297110));
   }
   
   private void b(boolean paramBoolean)
@@ -99,7 +99,7 @@ public class ShareResultDialog
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tf(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tb(this, paramOnClickListener));
   }
   
   public void a(boolean paramBoolean)
@@ -137,7 +137,7 @@ public class ShareResultDialog
     }
     b(true);
     this.b.setText(paramString);
-    this.b.setOnClickListener(new tg(this, paramOnClickListener));
+    this.b.setOnClickListener(new tc(this, paramOnClickListener));
   }
   
   public void c(int paramInt)

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class dyn
-  implements Parcelable.Creator
+public class dyn
+  implements Runnable
 {
-  public SongInfo a(Parcel paramParcel)
-  {
-    return new SongInfo(paramParcel, null);
-  }
+  public dyn(QQPlayerService paramQQPlayerService) {}
   
-  public SongInfo[] a(int paramInt)
+  public void run()
   {
-    return new SongInfo[paramInt];
+    if (QQPlayerService.g() == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQPlayerService", 2, "===========> timeout retry to check playState:" + QQPlayerService.b(QQPlayerService.g()) + ",needRetryPlay:" + bool);
+      }
+      if ((bool) && (QQPlayerService.b() != null)) {
+        QQPlayerService.a(this.a, QQPlayerService.b().a);
+      }
+      return;
+    }
   }
 }
 

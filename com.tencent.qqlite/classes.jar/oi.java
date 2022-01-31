@@ -1,15 +1,29 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 import mqq.observer.BusinessObserver;
 
-class oi
-  implements BusinessObserver
+public class oi
+  implements Runnable
 {
-  oi(oh paramoh) {}
+  public oi(PublicAccountManager paramPublicAccountManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.a.a.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((this.a.jdField_a_of_type_AndroidContentContext != null) && (localQQAppInterface != null))
+    {
+      localQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
+      arrayOfByte = localQQAppInterface.b();
+      ((LBSHandler)localQQAppInterface.a(3)).a(arrayOfByte);
+    }
+    while (localQQAppInterface == null)
+    {
+      byte[] arrayOfByte;
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_AndroidContentContext, localQQAppInterface, this.a.q, this.a.r, false, 0.0D, 0.0D, (BusinessObserver)PublicAccountManager.a(this.a).get());
   }
 }
 

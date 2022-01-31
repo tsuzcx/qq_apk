@@ -24,16 +24,16 @@ import com.tencent.tmassistantsdk.openSDK.ITMQQDownloaderOpenSDKListener;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
-import fey;
-import fez;
-import ffc;
 import ffd;
 import ffe;
-import fff;
-import ffg;
 import ffh;
+import ffi;
+import ffj;
+import ffk;
 import ffl;
-import ffo;
+import ffm;
+import ffq;
+import fft;
 import java.io.File;
 import mqq.app.AppActivity;
 
@@ -282,7 +282,7 @@ public class MyAppApi
   
   public void a(Activity paramActivity)
   {
-    ThreadManager.b().post(new ffc(this, paramActivity));
+    ThreadManager.b().post(new ffh(this, paramActivity));
   }
   
   protected void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener, int paramInt3, boolean paramBoolean, String paramString2)
@@ -309,7 +309,7 @@ public class MyAppApi
         switch (paramInt1)
         {
         default: 
-          localObject = localResources.getString(2131362105);
+          localObject = localResources.getString(2131362102);
           label110:
           if (((paramInt1 != 2) && (paramInt1 != 4)) || (!TextUtils.isEmpty(paramString2))) {
             break;
@@ -322,15 +322,15 @@ public class MyAppApi
       try
       {
         paramString1 = String.format((String)localObject, new Object[] { paramString1 });
-        paramString2 = localResources.getString(2131362101);
+        paramString2 = localResources.getString(2131362098);
         localObject = new MyAppDialog(paramActivity);
-        ((MyAppDialog)localObject).a(2131362102, paramOnClickListener2);
-        ((MyAppDialog)localObject).b(2131362103, paramOnClickListener1);
+        ((MyAppDialog)localObject).a(2131362099, paramOnClickListener2);
+        ((MyAppDialog)localObject).b(2131362100, paramOnClickListener1);
         ((MyAppDialog)localObject).a(paramString2);
         ((MyAppDialog)localObject).b(paramString1);
         ((MyAppDialog)localObject).a(true);
         ((MyAppDialog)localObject).a(paramOnCancelListener);
-        ((MyAppDialog)localObject).a(new ffo(this));
+        ((MyAppDialog)localObject).a(new fft(this));
         if (((paramActivity instanceof AppActivity)) && (!((AppActivity)paramActivity).isResume()))
         {
           LogUtility.c("TIME-STATISTIC", "MyAppApi--showTipDialog---cancel !isResume");
@@ -357,24 +357,24 @@ public class MyAppApi
           label309:
           str = paramString2;
           break label56;
-          localObject = localResources.getString(2131362105);
+          localObject = localResources.getString(2131362102);
           break label110;
-          localObject = localResources.getString(2131362106, new Object[] { paramString1 });
+          localObject = localResources.getString(2131362103, new Object[] { paramString1 });
           break label110;
-          localObject = localResources.getString(2131362107);
+          localObject = localResources.getString(2131362104);
           break label110;
-          localObject = localResources.getString(2131362108, new Object[] { paramString1 });
+          localObject = localResources.getString(2131362105, new Object[] { paramString1 });
         }
       }
       catch (Exception paramString2)
       {
         if (paramInt1 == 2)
         {
-          paramString1 = localResources.getString(2131362105);
+          paramString1 = localResources.getString(2131362102);
           LogUtility.c("MyAppApi", " errorMsg = " + paramString2.getMessage());
           continue;
         }
-        paramString1 = localResources.getString(2131362107);
+        paramString1 = localResources.getString(2131362104);
         continue;
         if (!paramActivity.isFinishing()) {
           ((MyAppDialog)localObject).a();
@@ -423,7 +423,7 @@ public class MyAppApi
       LogUtility.e("MyAppApi", "startToAuthorizedDirect lastAuthorizeParam = null, needCarryQQIdentity = false");
       return;
       localTicketUtils = new TicketUtils();
-      localTicketUtils.a(new fez(this, localTicketUtils, l, paramActivity, paramOnClickListener));
+      localTicketUtils.a(new ffe(this, localTicketUtils, l, paramActivity, paramOnClickListener));
     } while (!(paramActivity instanceof BaseActivity));
     localTicketUtils.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
   }
@@ -481,9 +481,9 @@ public class MyAppApi
         StaticAnalyz.a("200", str2, str1);
         return;
       }
-      ThreadManager.b().post(new ffe(this, str2, str1));
+      ThreadManager.b().post(new ffj(this, str2, str1));
       bool4 = ControlPolicyUtil.a();
-      fff localfff = new fff(this, bool1, k, paramActivity, paramBundle, bool2, bool3, paramOnClickListener, str2, str1);
+      ffk localffk = new ffk(this, bool1, k, paramActivity, paramBundle, bool2, bool3, paramOnClickListener, str2, str1);
       MyAppApi.ClickListenerProxy localClickListenerProxy = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str2, str1);
       MyAppApi.BackListener localBackListener = new MyAppApi.BackListener(this, str2, str1);
       Object localObject2 = null;
@@ -500,8 +500,8 @@ public class MyAppApi
           }
         }
       }
-      a(paramActivity, j, i, (String)localObject1, localfff, localClickListenerProxy, localBackListener, paramBundle.getInt("source"), bool4, paramBundle.getString(DownloadConstants.o));
-      ThreadManager.b().post(new ffg(this, str2, str1));
+      a(paramActivity, j, i, (String)localObject1, localffk, localClickListenerProxy, localBackListener, paramBundle.getInt("source"), bool4, paramBundle.getString(DownloadConstants.o));
+      ThreadManager.b().post(new ffl(this, str2, str1));
       this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
       return;
     } while (i != 0);
@@ -615,7 +615,7 @@ public class MyAppApi
       ((TMQQDownloaderOpenSDK_V2)this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToDownloadTaskList(paramContext, localTMQQDownloaderOpenSDKParam, paramBoolean1, paramBoolean2, j);
       return;
       localObject = new TicketUtils();
-      ((TicketUtils)localObject).a(new ffl(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+      ((TicketUtils)localObject).a(new ffq(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
       if (!(paramContext instanceof BaseActivity)) {
         break;
       }
@@ -707,7 +707,7 @@ public class MyAppApi
           return false;
         }
         localObject = new TicketUtils();
-        ((TicketUtils)localObject).a(new ffh(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+        ((TicketUtils)localObject).a(new ffm(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
         if ((paramContext instanceof BaseActivity)) {
           ((TicketUtils)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
         }
@@ -786,7 +786,7 @@ public class MyAppApi
       if (this.jdField_d_of_type_Boolean)
       {
         if (!b()) {
-          new Handler(Looper.getMainLooper()).postDelayed(new ffd(this), 2000L);
+          new Handler(Looper.getMainLooper()).postDelayed(new ffi(this), 2000L);
         }
         this.jdField_d_of_type_Boolean = false;
         paramActivity = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0).edit();
@@ -944,8 +944,8 @@ public class MyAppApi
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqql.intent.action.ACCOUNT_EXPIRED");
-    fey localfey = new fey(this);
-    CommonDataAdapter.a().a().registerReceiver(localfey, localIntentFilter);
+    ffd localffd = new ffd(this);
+    CommonDataAdapter.a().a().registerReceiver(localffd, localIntentFilter);
   }
   
   public void d(Activity paramActivity)

@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
 public class ewl
+  implements Runnable
 {
-  public static final KapalaiAdapterUtil a = new KapalaiAdapterUtil(null);
+  public ewl(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, ewn paramewn) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Ewn);
+  }
 }
 
 

@@ -5,7 +5,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
-import etl;
+import etq;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,7 +26,7 @@ public class FileUtils
   static
   {
     jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangRunnable = new etl();
+    jdField_a_of_type_JavaLangRunnable = new etq();
   }
   
   public static float a()

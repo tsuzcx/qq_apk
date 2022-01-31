@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aav
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aav(BaseChatPie paramBaseChatPie) {}
+  public aav(BaseChatPie paramBaseChatPie, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setContentDescription(this.jdField_a_of_type_JavaLangString);
   }
 }
 

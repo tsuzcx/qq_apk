@@ -1,24 +1,21 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class anj
-  extends Handler
+  implements Runnable
 {
-  public anj(ForwardOperations paramForwardOperations) {}
+  public anj(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, "网络异常", 0).a();
-    }
-    while (1 != paramMessage.what) {
+    if (this.a.isFinishing()) {}
+    do
+    {
       return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+      this.a.d = true;
+      ForwardRecentActivity.a(this.a).d();
+    } while ((!this.a.b) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
   }
 }
 

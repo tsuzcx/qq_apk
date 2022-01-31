@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import tk;
-import tm;
+import tg;
+import ti;
 
 public class ThreadTracker
 {
@@ -31,7 +31,7 @@ public class ThreadTracker
   
   public static Iterable a(Iterable paramIterable, boolean paramBoolean)
   {
-    return new tk(paramIterable, paramBoolean);
+    return new tg(paramIterable, paramBoolean);
   }
   
   public static void a(String paramString)
@@ -59,14 +59,14 @@ public class ThreadTracker
     }
   }
   
-  private static tm b(long paramLong, List paramList)
+  private static ti b(long paramLong, List paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      tm localtm = (tm)paramList.next();
-      if (tm.a(localtm) == paramLong) {
-        return localtm;
+      ti localti = (ti)paramList.next();
+      if (ti.a(localti) == paramLong) {
+        return localti;
       }
     }
     return null;
@@ -101,9 +101,9 @@ public class ThreadTracker
         localObject1 = paramString[i];
         localObject2 = b(((Thread)localObject1).getId(), localArrayList);
         if (localObject2 != null) {
-          tm.a((tm)localObject2, ((Thread)localObject1).getName());
+          ti.a((ti)localObject2, ((Thread)localObject1).getName());
         } else {
-          localArrayList.add(new tm(((Thread)localObject1).getId(), ((Thread)localObject1).getName(), 0L, null));
+          localArrayList.add(new ti(((Thread)localObject1).getId(), ((Thread)localObject1).getName(), 0L, null));
         }
       }
     }
@@ -118,10 +118,10 @@ public class ThreadTracker
     label220:
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (tm)((Iterator)localObject1).next();
-      if (!tm.a((tm)localObject2).startsWith("SharedPreferencesImpl"))
+      localObject2 = (ti)((Iterator)localObject1).next();
+      if (!ti.a((ti)localObject2).startsWith("SharedPreferencesImpl"))
       {
-        localPrintStream.println(i + "," + ((tm)localObject2).toString());
+        localPrintStream.println(i + "," + ((ti)localObject2).toString());
         i += 1;
         break label575;
       }
@@ -132,12 +132,12 @@ public class ThreadTracker
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (tm)((Iterator)localObject1).next();
-        if ((tm.a((tm)localObject2) != null) && (!tm.a((tm)localObject2).startsWith("SharedPreferencesImpl")))
+        localObject2 = (ti)((Iterator)localObject1).next();
+        if ((ti.a((ti)localObject2) != null) && (!ti.a((ti)localObject2).startsWith("SharedPreferencesImpl")))
         {
-          localPrintStream.println("id:" + tm.a((tm)localObject2));
-          localPrintStream.println("name:" + tm.a((tm)localObject2));
-          tm.a((tm)localObject2).printStackTrace(localPrintStream);
+          localPrintStream.println("id:" + ti.a((ti)localObject2));
+          localPrintStream.println("name:" + ti.a((ti)localObject2));
+          ti.a((ti)localObject2).printStackTrace(localPrintStream);
           localPrintStream.println();
         }
       }
@@ -153,10 +153,10 @@ public class ThreadTracker
         localObject1 = b(paramString[i].getId(), localArrayList);
         if (localObject1 != null)
         {
-          localPrintStream.println("id:" + tm.a((tm)localObject1));
-          localPrintStream.println("name:" + tm.a((tm)localObject1));
-          if (tm.a((tm)localObject1) != null) {
-            tm.a((tm)localObject1).printStackTrace(localPrintStream);
+          localPrintStream.println("id:" + ti.a((ti)localObject1));
+          localPrintStream.println("name:" + ti.a((ti)localObject1));
+          if (ti.a((ti)localObject1) != null) {
+            ti.a((ti)localObject1).printStackTrace(localPrintStream);
           }
           for (;;)
           {

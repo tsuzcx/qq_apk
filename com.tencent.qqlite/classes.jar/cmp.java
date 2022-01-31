@@ -1,30 +1,23 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
 
 public class cmp
-  implements AdapterView.OnItemClickListener
+  implements Animation.AnimationListener
 {
   public cmp(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAdapterView = ((SelectMemberActivity.ResultRecord)paramView.getTag()).a;
-    if (this.a.a(paramAdapterView))
-    {
-      this.a.a(paramAdapterView);
-      this.a.c();
-      paramInt = this.a.a.a();
-      if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5) || (paramInt == 2)) {
-        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
-      }
-      this.a.a(false);
-    }
+    paramAnimation = new FrameLayout.LayoutParams(-1, -1);
+    SelectMemberActivity.a(this.a).setLayoutParams(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

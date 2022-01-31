@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class cij
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public cij(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cij(AlbumListAdapter paramAlbumListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a = null;
+    LogTag.a();
+    QQAlbumInfo localQQAlbumInfo = this.a.a(AlbumListAdapter.a(this.a), 200, 100, AlbumListAdapter.a(this.a));
+    AlbumListAdapter.b(this.a, localQQAlbumInfo);
+    LogTag.a("PEAK", "queryRecentBucket");
   }
 }
 

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class ajg
-  implements View.OnClickListener
+  extends FriendListObserver
 {
   public ajg(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    DiscussionMemberActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

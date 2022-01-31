@@ -4,12 +4,12 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DebugHelper
 {
-  public static final String TAG = "PluginDebug";
+  public static final String TAG = "plugin_tag";
   public static boolean sDebug = true;
   
   public static void debug(String paramString)
   {
-    debug("PluginDebug", paramString);
+    debug("plugin_tag", paramString);
   }
   
   public static void debug(String paramString1, String paramString2)
@@ -34,7 +34,7 @@ public class DebugHelper
   public static void log(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PluginDebug", 2, paramString);
+      QLog.d("plugin_tag", 2, paramString);
     }
   }
   

@@ -1,55 +1,24 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
+import mqq.app.AppRuntime;
+import mqq.manager.ServerConfigManager.ConfigType;
 
 public class ews
-  extends Handler
+  implements Runnable
 {
-  public ews() {}
+  public ews(VipPathTracker paramVipPathTracker, AppRuntime paramAppRuntime) {}
   
-  public ews(Looper paramLooper)
+  public void run()
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (ThemeUiPlugin.reportHandler == null) {
-      ThemeUiPlugin.reportHandler = new ews(BaseApplication.getContext().getMainLooper());
-    }
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
+    String str = ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(ServerConfigManager.ConfigType.common, "PathTrack");
+    VipPathTracker localVipPathTracker = this.jdField_a_of_type_ComTencentMobileqqUtilsPathtrackerVipPathTracker;
+    if ((!TextUtils.isEmpty(str)) && (str.equals("0"))) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (ThemeUiPlugin.reportTimes < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        if (QLog.isColorLevel()) {
-          QLog.i("ThemeUiPlugin", 2, ThemeUiPlugin.initDownloadedThemeNumForReport + "," + ThemeUiPlugin.initCurrThemeNameForReport);
-        }
-        ReportController.b((QQAppInterface)localObject, "CliStatus", "", "", "ThemeMall", "ThemeCount", 0, 0, "" + ThemeUiPlugin.initDownloadedThemeNumForReport, "", "", "");
-        ReportController.b((QQAppInterface)localObject, "CliStatus", "", "", "ThemeMall", "ThemeOn", 0, 0, "theme_" + ThemeUiPlugin.initCurrThemeNameForReport, "", "", "");
-        ThemeUiPlugin.reportTimes += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeUiPlugin", 2, "reportTimes is:" + ThemeUiPlugin.reportTimes);
-        }
-        Message localMessage = ThemeUiPlugin.reportHandler.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ThemeUiPlugin.reportHandler.sendMessageDelayed(localMessage, 120000L);
-      }
-    }
-    else {
+      VipPathTracker.a(localVipPathTracker, Boolean.valueOf(bool));
       return;
     }
-    ThemeUiPlugin.reportTimes = 0;
   }
 }
 

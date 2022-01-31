@@ -1,4 +1,8 @@
 import com.dataline.mpfile.LiteMpFileFileListActivity;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
 public class cn
   implements Runnable
@@ -7,7 +11,16 @@ public class cn
   
   public void run()
   {
-    this.a.b();
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 253;
+    localMpfileDataReportInfo.jdField_a_of_type_Int = 0;
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.b();
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileFileListActivity.b(this.a);
+    localMpfileDataReportInfo.c = LiteMpFileFileListActivity.c(this.a);
+    MpFileDataReportCenter.a(this.a.app, localMpfileDataReportInfo);
+    this.a.a(MpfileDataCenter.t);
   }
 }
 

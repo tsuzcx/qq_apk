@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class dma
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public dma(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    QfileBaseRecentFileTabView.a(this.a);
+    this.a.e();
   }
 }
 

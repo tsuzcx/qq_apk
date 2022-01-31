@@ -1,26 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
 
 public class dyl
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public dyl(QQPlayerService paramQQPlayerService) {}
+  public dyl(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-    }
-    if (("com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) || ("qqplayer_exit_action".equals(paramIntent.getAction())))
-    {
-      if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-        this.a.a.b = true;
-      }
-      QQPlayerService.c(this.a.getApplicationContext());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
   }
 }
 

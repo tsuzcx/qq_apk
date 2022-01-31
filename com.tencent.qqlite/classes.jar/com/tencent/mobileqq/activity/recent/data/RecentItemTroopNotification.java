@@ -28,8 +28,9 @@ public class RecentItemTroopNotification
     do
     {
       return;
+      super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362941);
+        this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362945);
       }
       this.v = TroopNotificationUtils.a(paramQQAppInterface);
       paramContext = paramQQAppInterface.a().a(AppConstants.ae, 0);
@@ -39,7 +40,7 @@ public class RecentItemTroopNotification
       paramContext = ((MessageForSystemMsg)paramContext.get(paramContext.size() - 1)).getSystemMsg();
       int i = GroupSystemMsgController.a().a(paramQQAppInterface);
       if ((paramContext == null) || (i <= 0)) {
-        break label182;
+        break label188;
       }
       this.jdField_a_of_type_Long = paramContext.msg_time.get();
       this.jdField_b_of_type_JavaLangCharSequence = GroupSystemMsgController.a().a(paramQQAppInterface);
@@ -53,7 +54,7 @@ public class RecentItemTroopNotification
       return;
       paramContext = GroupSystemMsgController.a().a();
       break;
-      label182:
+      label188:
       if (paramContext != null)
       {
         this.jdField_a_of_type_Long = paramContext.msg_time.get();

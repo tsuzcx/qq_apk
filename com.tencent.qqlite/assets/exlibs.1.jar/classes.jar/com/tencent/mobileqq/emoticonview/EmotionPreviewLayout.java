@@ -33,10 +33,10 @@ import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import dew;
-import dex;
-import dey;
-import dez;
+import dfc;
+import dfd;
+import dfe;
+import dff;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
@@ -59,10 +59,10 @@ public class EmotionPreviewLayout
   Context jdField_a_of_type_AndroidContentContext;
   public Handler a;
   public EditText a;
-  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new dex(this);
+  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new dfd(this);
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new dez(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new dff(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   public List a;
   public String b;
@@ -86,7 +86,7 @@ public class EmotionPreviewLayout
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     int j = (int)(10.0F * this.jdField_a_of_type_Float);
     setPadding(0, j, j, j);
-    this.jdField_a_of_type_AndroidOsHandler = new dew(this);
+    this.jdField_a_of_type_AndroidOsHandler = new dfc(this);
     getBackground().setAlpha(204);
   }
   
@@ -123,10 +123,10 @@ public class EmotionPreviewLayout
           {
             bool2 = true;
             if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-              this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838986));
+              this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838957));
             }
             if ((this.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {
-              this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838987));
+              this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838958));
             }
             localObject1 = URLDrawable.getDrawable((URL)localObject1, (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (Drawable)this.jdField_b_of_type_JavaLangRefWeakReference.get(), bool1);
             if (((URLDrawable)localObject1).getStatus() != 1)
@@ -205,13 +205,13 @@ public class EmotionPreviewLayout
       ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_CENTER);
       ((ImageView)localObject2).setContentDescription("原创表情loading");
       ((ImageView)localObject2).setOnClickListener(this);
-      ((ImageView)localObject2).setImageResource(2130838986);
+      ((ImageView)localObject2).setImageResource(2130838957);
       localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject2).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject2).width = ((int)(this.jdField_a_of_type_Float * 66.0F));
       ((RelativeLayout.LayoutParams)localObject2).height = ((int)(this.jdField_a_of_type_Float * 66.0F));
       ((RelativeLayout.LayoutParams)localObject2).leftMargin = ((int)(10.0F * this.jdField_a_of_type_Float));
       localObject2 = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-      ((ProgressBar)localObject2).setIndeterminateDrawable(getResources().getDrawable(2130837910));
+      ((ProgressBar)localObject2).setIndeterminateDrawable(getResources().getDrawable(2130837906));
       int j = AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.bottomMargin = j;
@@ -226,7 +226,7 @@ public class EmotionPreviewLayout
       for (;;)
       {
         localObject2 = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-        ((EmosmHandler)localObject2).a(new dey(this, (EmosmHandler)localObject2));
+        ((EmosmHandler)localObject2).a(new dfe(this, (EmosmHandler)localObject2));
         ((EmosmHandler)localObject2).a(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString(), (ArrayList)localObject1);
         return;
         localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
@@ -320,7 +320,7 @@ public class EmotionPreviewLayout
         addView(localView);
         localEmoticonKeywordForCloud.loadedType = 1;
         ProgressBar localProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-        localProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130837910));
+        localProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130837906));
         k = AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, k);
         localLayoutParams.bottomMargin = k;

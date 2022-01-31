@@ -1,48 +1,19 @@
+import com.tencent.mobileqq.app.ClubContentUpdateHandler.ClubContentUpdateListener;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
-import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
-import java.util.List;
+import java.util.HashMap;
 
 public class dep
-  implements Runnable
+  implements ClubContentUpdateHandler.ClubContentUpdateListener
 {
   public dep(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void run()
+  public void a(HashMap paramHashMap)
   {
-    int i;
-    Object localObject;
-    if (this.a.c != null)
-    {
-      i = 0;
-      int j = this.a.c.size();
-      if (i >= j) {
-        break label107;
-      }
-      localObject = (EmoticonViewBinder)this.a.c.get(i);
-      if ((localObject == null) || (!(localObject instanceof MagicFaceViewBinder))) {
-        break label73;
-      }
-      localObject = (MagicFaceViewBinder)localObject;
-    }
-    for (;;)
-    {
-      if ((i == -1) || (localObject == null))
-      {
-        return;
-        label73:
-        i += 1;
-        break;
-      }
-      if (localObject != null) {
-        ((MagicFaceViewBinder)localObject).c();
-      }
-      this.a.post(new deq(this, i, (MagicFaceViewBinder)localObject));
+    if ((paramHashMap == null) || (paramHashMap.size() == 0)) {}
+    while ((!this.a.b) || (this.a.getVisibility() != 0) || (EmoticonMainPanel.g != 2)) {
       return;
-      label107:
-      localObject = null;
-      i = -1;
     }
+    this.a.post(new deq(this));
   }
 }
 

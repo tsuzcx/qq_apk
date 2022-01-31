@@ -1,11 +1,13 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class xu
   implements View.OnClickListener
@@ -14,13 +16,35 @@ public class xu
   
   public void onClick(View paramView)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
+    int i = 0;
+    ReportController.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
+    Object localObject = (FriendManager)this.a.app.getManager(8);
+    boolean bool = ((FriendManager)localObject).b(AddRequestActivity.a(this.a));
+    paramView = new Intent(this.a, ChatActivity.class);
+    paramView.putExtra("uin", AddRequestActivity.a(this.a));
+    paramView.putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
+    if (bool)
     {
-      long l = Long.valueOf(this.a.app.a()).longValue();
-      this.a.a.a(l, Long.valueOf(AddRequestActivity.a(this.a)).longValue(), 1);
-      return;
+      localObject = ((FriendManager)localObject).c(AddRequestActivity.a(this.a));
+      if (localObject != null)
+      {
+        paramView.putExtra("cSpecialFlag", ((Friends)localObject).cSpecialFlag);
+        paramView.putExtra("uinname", ContactUtils.a((Friends)localObject));
+      }
+      if (!bool) {
+        break label193;
+      }
     }
-    QQToast.a(this.a, 2131363515, 0).b(this.a.getTitleBarHeight());
+    for (;;)
+    {
+      paramView.putExtra("uintype", i);
+      this.a.startActivity(paramView);
+      return;
+      paramView.putExtra("uinname", this.a.q);
+      break;
+      label193:
+      i = 1022;
+    }
   }
 }
 

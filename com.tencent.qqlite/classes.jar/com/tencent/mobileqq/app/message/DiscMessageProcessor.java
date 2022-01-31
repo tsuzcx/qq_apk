@@ -45,11 +45,11 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cyj;
-import cyk;
-import cyl;
-import cym;
-import cyw;
+import cyp;
+import cyq;
+import cyr;
+import cys;
+import czc;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -85,7 +85,7 @@ public class DiscMessageProcessor
   public static final byte h = 15;
   public static final byte i = 7;
   public static final byte j = 22;
-  public cym a;
+  public cys a;
   private final Timer a;
   public final ConcurrentHashMap a;
   
@@ -94,7 +94,7 @@ public class DiscMessageProcessor
     super(paramQQAppInterface, paramMessageHandler);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilTimer = ThreadManager.a();
-    this.jdField_a_of_type_Cym = new cym(this, null);
+    this.jdField_a_of_type_Cys = new cys(this, null);
   }
   
   private MessageRecord a(MsgInfo paramMsgInfo, long paramLong)
@@ -195,7 +195,7 @@ public class DiscMessageProcessor
               }
               localObject2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), (String)localObject5);
             }
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363223, new Object[] { localObject2 });
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363226, new Object[] { localObject2 });
             ((List)localObject4).add(localObject5);
             if (((String)localObject5).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
             {
@@ -264,7 +264,7 @@ public class DiscMessageProcessor
                   QLog.d("Q.msg.DiscMessageProcessor.discuss", 2, "cOptye:" + b1 + "dwCmdUin =" + l2 + " dwCmdTime=" + l3 + " strName=" + (String)localObject4);
                 }
                 if (l2 == paramLong) {}
-                for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363968, new Object[] { localObject4 });; localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363969, new Object[] { localObject2, localObject4 }))
+                for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363957, new Object[] { localObject4 });; localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363958, new Object[] { localObject2, localObject4 }))
                 {
                   ((DiscussionHandler)localObject3).a(String.valueOf(l1), (String)localObject4);
                   a(paramMsgInfo, paramLong, l1, l2, (String)localObject1);
@@ -327,7 +327,7 @@ public class DiscMessageProcessor
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.msg.DiscMessageProcessor.discuss", 2, "cOptye:9 +sTips=" + (String)localObject1 + "+lUin=" + paramLong);
                   }
-                  this.jdField_a_of_type_JavaUtilTimer.schedule(new cyj(this, (ArrayList)localObject3, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
+                  this.jdField_a_of_type_JavaUtilTimer.schedule(new cyp(this, (ArrayList)localObject3, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
                 }
               }
             }
@@ -413,7 +413,7 @@ public class DiscMessageProcessor
           }
         }
         ((DiscussionHandler)localObject3).a(l1, String.valueOf(l3), (List)localObject4, 0);
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new cyk(this, l3, paramLong, (Pair)localObject6, paramMsgInfo, l1, l2, b1, l4, (Pair)localObject7, localArrayList), 2000L);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new cyq(this, l3, paramLong, (Pair)localObject6, paramMsgInfo, l1, l2, b1, l4, (Pair)localObject7, localArrayList), 2000L);
       }
       PkgTools.a((byte[])localObject5, 5);
       PkgTools.a((byte[])localObject5, 9);
@@ -507,7 +507,7 @@ public class DiscMessageProcessor
           localObject2 = ((StringBuffer)localObject4).deleteCharAt(((StringBuffer)localObject4).toString().length() - 1).toString();
         }
         localObject4 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363224, new Object[] { localObject2 });
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363227, new Object[] { localObject2 });
         if (((HashSet)localObject7).contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
         {
           ((DiscussionHandler)localObject4).a(String.valueOf(l1));
@@ -570,18 +570,18 @@ public class DiscMessageProcessor
         paramPair2 = localFriendManager.c(String.valueOf(paramLong2), String.valueOf(l2));
       }
       if (paramLong4 == 0L) {
-        paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363235, new Object[] { paramPair1 });
+        paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363238, new Object[] { paramPair1 });
       }
       for (;;)
       {
         a(paramMsgInfo, paramLong1, paramLong2, paramLong3, paramPair1);
         return;
         if (paramLong4 == 1L) {
-          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363237, new Object[] { paramPair1, paramPair2 });
+          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363240, new Object[] { paramPair1, paramPair2 });
         } else if (paramLong4 == 2L) {
-          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364395, new Object[] { paramPair1 });
+          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364377, new Object[] { paramPair1 });
         } else {
-          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363222, new Object[] { paramPair1 });
+          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363225, new Object[] { paramPair1 });
         }
       }
     }
@@ -607,7 +607,7 @@ public class DiscMessageProcessor
         if (m == 0) {
           break label142;
         }
-        paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363230);
+        paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363233);
         label115:
         if (k != 0) {
           break label210;
@@ -643,12 +643,12 @@ public class DiscMessageProcessor
     Object localObject = MessageRecordFactory.a(k);
     paramPair = "";
     if (paramByte == 11) {
-      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363234, new Object[] { localStringBuffer.toString() });
+      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363237, new Object[] { localStringBuffer.toString() });
     }
     if (paramByte == 22)
     {
       if (paramLong2 == 0L) {
-        paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363234, new Object[] { localStringBuffer.toString() });
+        paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363237, new Object[] { localStringBuffer.toString() });
       }
       for (;;)
       {
@@ -669,9 +669,9 @@ public class DiscMessageProcessor
         }
         return;
         if (paramLong2 == 1L) {
-          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363236);
+          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363239);
         } else if (paramLong2 == 2L) {
-          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364396, new Object[] { localStringBuffer.toString() });
+          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364378, new Object[] { localStringBuffer.toString() });
         }
       }
     }
@@ -685,11 +685,11 @@ public class DiscMessageProcessor
       if (!QLog.isColorLevel()) {
         break label780;
       }
-      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363229);
+      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363232);
     }
     for (;;)
     {
-      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363222, new Object[] { localStringBuffer.toString() });
+      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363225, new Object[] { localStringBuffer.toString() });
       break;
       m = 0;
       break label610;
@@ -702,7 +702,7 @@ public class DiscMessageProcessor
         }
         paramPair = localFriendManager.c(paramString, String.valueOf(l));
       }
-      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363228);
+      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363231);
       continue;
       label780:
       paramPair = "";
@@ -1506,7 +1506,7 @@ public class DiscMessageProcessor
     //   98	110	116	finally
   }
   
-  public cyw a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public czc a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     switch (paramInt)
     {
@@ -1515,7 +1515,7 @@ public class DiscMessageProcessor
     {
       return null;
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        return new cyw(a(paramMsgInfo, paramSvcReqPushMsg), false);
+        return new czc(a(paramMsgInfo, paramSvcReqPushMsg), false);
       }
       a(getClass().getName(), paramInt);
     }
@@ -1598,7 +1598,7 @@ public class DiscMessageProcessor
   
   public void a(long paramLong1, long paramLong2)
   {
-    a(true, false, false, 0L, new cyl(this, paramLong1, paramLong2));
+    a(true, false, false, 0L, new cyr(this, paramLong1, paramLong2));
   }
   
   public void a(DisMsgReadedNotify paramDisMsgReadedNotify)

@@ -10,9 +10,9 @@ import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.qphone.base.util.QLog;
-import dkm;
-import dkn;
-import dkp;
+import dks;
+import dkt;
+import dkv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -41,7 +41,7 @@ public class QfileLocalFileDocTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().Y();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dkm(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dks(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -75,7 +75,7 @@ public class QfileLocalFileDocTabView
   protected void a()
   {
     this.jdField_a_of_type_AndroidOsHandler = ThreadManager.b();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dkn(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dkt(this));
   }
   
   protected void b(FileInfo paramFileInfo)
@@ -83,7 +83,7 @@ public class QfileLocalFileDocTabView
     if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramFileInfo)) {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramFileInfo);
     }
-    a(new dkp(this, paramFileInfo));
+    a(new dkv(this, paramFileInfo));
   }
   
   protected boolean b(FileInfo paramFileInfo)

@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class ecw
-  implements Comparator
+public class ecw
+  extends FriendListObserver
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public ecw(StatusManager paramStatusManager) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    long l1 = paramISearchable1.d();
-    long l2 = paramISearchable2.d();
-    if (l1 < l2) {}
-    do
-    {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramISearchable1.c();
-      l2 = paramISearchable2.c();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.set", 2, "onSetSelfSignatureResult " + paramBoolean);
     }
-    return 0;
+    StatusManager.a(this.a, null);
+    if (paramBoolean) {}
+    for (int i = 100; StatusManager.b(this.a) != null; i = -1)
+    {
+      RichStatus localRichStatus = this.a.a();
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((IStatusListener)localIterator.next()).a(i, localRichStatus);
+      }
+    }
   }
 }
 

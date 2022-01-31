@@ -23,7 +23,7 @@ public final class OpenFileUtil
       localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230741)))
+    if (a(str, paramContext.getResources().getStringArray(2131230740)))
     {
       localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
       return localIntent;
@@ -44,32 +44,32 @@ public final class OpenFileUtil
       localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230742)))
+    if (a(str, paramContext.getResources().getStringArray(2131230741)))
     {
       localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230746)))
+    if (a(str, paramContext.getResources().getStringArray(2131230745)))
     {
       localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230743)))
+    if (a(str, paramContext.getResources().getStringArray(2131230742)))
     {
       localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230744)))
+    if (a(str, paramContext.getResources().getStringArray(2131230743)))
     {
       localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230745)))
+    if (a(str, paramContext.getResources().getStringArray(2131230744)))
     {
       localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
       return localIntent;
     }
-    if (a(str, paramContext.getResources().getStringArray(2131230747)))
+    if (a(str, paramContext.getResources().getStringArray(2131230746)))
     {
       localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
       return localIntent;

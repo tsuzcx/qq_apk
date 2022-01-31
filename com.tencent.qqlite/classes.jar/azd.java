@@ -11,9 +11,10 @@ public class azd
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = "http://aq.qq.com/007?from=andapp&account=" + NotificationActivity.a(this.a);
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(localIntent.putExtra("url", paramDialogInterface));
+    paramDialogInterface = "http://haoma.qq.com/m/expire.html?num=" + NotificationActivity.a(this.a);
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramDialogInterface);
+    this.a.startActivity(localIntent);
     this.a.finish();
   }
 }

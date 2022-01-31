@@ -77,8 +77,8 @@ public class QQMapActivity$GetLocNameTask
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.f.findViewById(2131297247).setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.f.findViewById(2131297248).setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.f.findViewById(2131297243).setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.f.findViewById(2131297244).setVisibility(0);
       }
     }
     return;

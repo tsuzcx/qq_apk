@@ -1,37 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
-class doa
-  implements Runnable
+public class doa
+  extends BroadcastReceiver
 {
-  doa(dnz paramdnz) {}
+  public doa(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread start. . .");
-    this.a.a(false);
-    for (;;)
+    if (paramIntent != null)
     {
-      if (!this.a.b()) {}
-      try
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
       {
-        Thread.sleep(1000L);
-        boolean bool = this.a.b();
-        if (bool)
-        {
-          this.a.a(true);
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread exit. . .");
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
         }
-        Message localMessage = new Message();
-        localMessage.what = 1;
-        this.a.a.a.sendMessage(localMessage);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
+        this.a.a();
       }
     }
   }

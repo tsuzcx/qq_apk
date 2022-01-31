@@ -7,7 +7,7 @@ public class bts
   
   public void run()
   {
-    this.a.h();
+    this.a.i();
   }
 }
 

@@ -1,42 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
-import com.tencent.widget.ActionSheet;
-import cooperation.qqfav.QfavBuilder;
-import cooperation.qqfav.QfavReport;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOfflineFile.BaseActionBarOfflineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public final class drx
-  implements View.OnClickListener
+class drx
+  implements FMDialogUtil.FMDialogInterface
 {
-  public drx(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
+  drx(drw paramdrw) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (6 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType)
-    {
-      QfavBuilder.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 7, 3);
-    }
-    for (;;)
-    {
-      if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
-      {
-        paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
-        if (paramView.a.isShowing()) {
-          paramView.a.dismiss();
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.i();
-      }
-      return;
-      new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
-    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.a.h();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().i();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
   }
+  
+  public void b() {}
 }
 
 

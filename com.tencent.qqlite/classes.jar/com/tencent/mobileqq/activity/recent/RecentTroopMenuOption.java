@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.content.res.Resources;
-import ckm;
+import cks;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.managers.TroopAssistantManager;
@@ -33,20 +33,20 @@ public class RecentTroopMenuOption
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_set_right", 0, 0, paramString1, String.valueOf(i - 1), "", "");
     Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources();
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, 2131624119);
-    localActionSheet.a(localResources.getString(2131363867, new Object[] { paramString2 }));
+    localActionSheet.a(localResources.getString(2131363857, new Object[] { paramString2 }));
     i = DBUtils.a().a(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localActionSheet.b(localResources.getString(2131363868, new Object[] { StringUtil.a(BaseApplication.getContext(), i) }));
-    localActionSheet.a(localResources.getString(2131362536), false);
-    localActionSheet.a(localResources.getString(2131362537), false);
-    localActionSheet.a(localResources.getString(2131362538), false);
+    localActionSheet.b(localResources.getString(2131363858, new Object[] { StringUtil.a(BaseApplication.getContext(), i) }));
+    localActionSheet.a(localResources.getString(2131362532), false);
+    localActionSheet.a(localResources.getString(2131362533), false);
+    localActionSheet.a(localResources.getString(2131362534), false);
     i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(String.valueOf(paramString1));
     switch (i)
     {
     }
     for (;;)
     {
-      localActionSheet.d(2131362790);
-      localActionSheet.a(new ckm(this, i, paramString1, localActionSheet));
+      localActionSheet.d(2131362794);
+      localActionSheet.a(new cks(this, i, paramString1, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.e(0);

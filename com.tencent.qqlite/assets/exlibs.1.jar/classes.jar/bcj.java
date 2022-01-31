@@ -1,25 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class bcj
-  extends Client.onRemoteRespObserver
+  implements AdapterView.OnItemClickListener
 {
-  public bcj(QQBrowserActivity paramQQBrowserActivity) {}
+  public bcj(QQLSActivity paramQQLSActivity) {}
   
-  public void onBindedToClient()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QQBrowserActivity.a(this.a);
-    WebIPCOperator.getInstance().unRegisterObserver(this);
-    QQBrowserActivity.a(this.a, null);
+    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
+    paramLong = paramAdapterView.a().getItemId(paramInt);
+    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+      }
+      QQLSActivity.a(this.a, -1L);
+      QQLSActivity.b(this.a, 0L);
+      QQLSActivity.a(this.a, paramView);
+      QQLSActivity.a(this.a, true);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("QQLSActivity", 2, "mRecentList  click once");
+    }
+    QQLSActivity.a(this.a, paramLong);
+    QQLSActivity.b(this.a, System.currentTimeMillis());
+    if (QQLSActivity.a(this.a)) {
+      QQLSActivity.a(this.a).setText(2131364402);
+    }
+    for (;;)
+    {
+      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
+      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+      return;
+      QQLSActivity.a(this.a).setText(2131364401);
+    }
   }
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 

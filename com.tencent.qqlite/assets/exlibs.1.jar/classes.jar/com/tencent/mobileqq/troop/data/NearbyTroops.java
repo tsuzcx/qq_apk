@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.widget.AbsListView.LayoutParams;
-import emb;
+import emg;
 import java.text.DecimalFormat;
 
 public class NearbyTroops
@@ -77,16 +77,16 @@ public class NearbyTroops
   
   public static View a(Context paramContext, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130903664, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130903648, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.CustomViewHolder();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131297604));
-    paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297606));
-    paramViewGroup.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297608));
-    paramViewGroup.h = ((TextView)paramContext.findViewById(2131297609));
-    paramViewGroup.c = ((ImageView)paramContext.findViewById(2131298529));
-    paramViewGroup.d = ((ImageView)paramContext.findViewById(2131298876));
-    paramViewGroup.e = ((ImageView)paramContext.findViewById(2131298877));
-    paramViewGroup.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131298878));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131297600));
+    paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297602));
+    paramViewGroup.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297604));
+    paramViewGroup.h = ((TextView)paramContext.findViewById(2131297605));
+    paramViewGroup.c = ((ImageView)paramContext.findViewById(2131298484));
+    paramViewGroup.d = ((ImageView)paramContext.findViewById(2131298826));
+    paramViewGroup.e = ((ImageView)paramContext.findViewById(2131298827));
+    paramViewGroup.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131298828));
     paramViewGroup.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131296502));
     if (paramBoolean) {
       paramViewGroup.jdField_g_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -118,7 +118,7 @@ public class NearbyTroops
     for (String str1 = "当前人数：" + paramGroupInfo.iMemberCnt + "人  ";; str1 = "[icon]" + " " + paramGroupInfo.iMemberCnt + "人  ")
     {
       SpannableString localSpannableString = new SpannableString(str1);
-      localImageSpan = new ImageSpan(paramContext, 2130839474, 1);
+      localImageSpan = new ImageSpan(paramContext, 2130839439, 1);
       localSpannableString.setSpan(localImageSpan, 0, str2.length(), 17);
       if ((paramGroupInfo.strLocation != null) && (paramGroupInfo.strLocation.length() != 0) && (paramBoolean.booleanValue())) {
         break label164;
@@ -130,7 +130,7 @@ public class NearbyTroops
     label164:
     paramGroupInfo = "[icon]" + " " + paramGroupInfo.strLocation;
     paramGroupInfo = new SpannableString(str1 + paramGroupInfo);
-    paramContext = new ImageSpan(paramContext, 2130839475, 1);
+    paramContext = new ImageSpan(paramContext, 2130839440, 1);
     paramGroupInfo.setSpan(localImageSpan, 0, str2.length(), 17);
     paramGroupInfo.setSpan(paramContext, str1.length(), str1.length() + "[icon]".length(), 17);
     return paramGroupInfo;
@@ -138,10 +138,10 @@ public class NearbyTroops
   
   public static void a(View paramView)
   {
-    paramView.setBackgroundResource(2130837633);
+    paramView.setBackgroundResource(2130837635);
     paramView = (NearbyTroops.MoreBtnViewHolder)paramView.getTag();
     paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131363195);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131363198);
     paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     paramView.b.setVisibility(8);
     paramView.jdField_a_of_type_Boolean = true;
@@ -154,7 +154,7 @@ public class NearbyTroops
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (NearbyTroops.OccupyViewHolder)paramView.getTag();
     if (paramInt2 == 2) {}
-    for (paramInt1 = 2131362831;; paramInt1 = 2131362830)
+    for (paramInt1 = 2131362835;; paramInt1 = 2131362834)
     {
       ((NearbyTroops.OccupyViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramInt1);
       ((NearbyTroops.OccupyViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8814455);
@@ -185,26 +185,26 @@ public class NearbyTroops
         break label463;
       }
       localCustomViewHolder.c.setVisibility(0);
-      localCustomViewHolder.c.setBackgroundResource(2130838183);
+      localCustomViewHolder.c.setBackgroundResource(2130838177);
       if (!paramGroupInfo.bIsNew) {
         break label521;
       }
-      localCustomViewHolder.e.setBackgroundResource(2130838316);
+      localCustomViewHolder.e.setBackgroundResource(2130838308);
       localCustomViewHolder.e.setVisibility(0);
       if ((paramGroupInfo.lCreator != paramLong) || (paramLong == 0L)) {
         break label534;
       }
-      localCustomViewHolder.d.setBackgroundResource(2130838318);
+      localCustomViewHolder.d.setBackgroundResource(2130838310);
       localCustomViewHolder.d.setVisibility(0);
       if ((paramGroupInfo.dwExtFlag & 1L) == 0L) {
         break label547;
       }
-      localCustomViewHolder.jdField_f_of_type_AndroidWidgetImageView.setBackgroundResource(2130838308);
+      localCustomViewHolder.jdField_f_of_type_AndroidWidgetImageView.setBackgroundResource(2130838300);
       localCustomViewHolder.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
       if ((paramGroupInfo.dwGroupFlagExt & 0x100000) == 0L) {
         break label560;
       }
-      localObject = paramContext.getResources().getDrawable(2130838317);
+      localObject = paramContext.getResources().getDrawable(2130838309);
       ((Drawable)localObject).setBounds(AIOUtils.a(5.0F, paramContext.getResources()), AIOUtils.a(1.0F, paramContext.getResources()), AIOUtils.a(37.5F, paramContext.getResources()), AIOUtils.a(13.5F, paramContext.getResources()));
       localCustomViewHolder.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
       localCustomViewHolder.jdField_f_of_type_AndroidWidgetTextView.setPadding(0, 0, AIOUtils.a(6.0F, paramContext.getResources()), 0);
@@ -234,7 +234,7 @@ public class NearbyTroops
       if (paramGroupInfo.dwCertType == 1L)
       {
         localCustomViewHolder.c.setVisibility(0);
-        localCustomViewHolder.c.setBackgroundResource(2130838246);
+        localCustomViewHolder.c.setBackgroundResource(2130838238);
         break label114;
       }
       localCustomViewHolder.c.setVisibility(8);
@@ -257,7 +257,7 @@ public class NearbyTroops
         if ((i2 <= 0) || (i2 >= 6)) {
           break label311;
         }
-        i1 = 2130838380;
+        i1 = 2130838368;
         switch (i2)
         {
         }
@@ -268,15 +268,15 @@ public class NearbyTroops
           localCustomViewHolder.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
           localCustomViewHolder.jdField_f_of_type_AndroidWidgetTextView.setPadding(0, 0, AIOUtils.a(6.0F, paramContext.getResources()), 0);
           break;
-          i1 = 2130838381;
+          i1 = 2130838369;
           continue;
-          i1 = 2130838382;
+          i1 = 2130838370;
           continue;
-          i1 = 2130838383;
+          i1 = 2130838371;
           continue;
-          i1 = 2130838384;
+          i1 = 2130838372;
           continue;
-          i1 = 2130838385;
+          i1 = 2130838373;
         }
       }
       localCustomViewHolder.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
@@ -289,29 +289,29 @@ public class NearbyTroops
   public static void a(View paramView, XiaoQuInfo paramXiaoQuInfo, Context paramContext)
   {
     paramView = (NearbyTroops.CustomViewHolder)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838319);
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838311);
     paramView.jdField_f_of_type_AndroidWidgetTextView.setText(paramXiaoQuInfo.strName);
     paramView.c.setVisibility(8);
     paramView.h.setText(paramXiaoQuInfo.strIntro);
-    Object localObject = paramContext.getResources().getDrawable(2130838320);
+    Object localObject = paramContext.getResources().getDrawable(2130838312);
     ((Drawable)localObject).setBounds(AIOUtils.a(5.0F, paramContext.getResources()), AIOUtils.a(1.0F, paramContext.getResources()), AIOUtils.a(47.5F, paramContext.getResources()), AIOUtils.a(13.5F, paramContext.getResources()));
     paramView.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
     paramView.jdField_f_of_type_AndroidWidgetTextView.setPadding(0, 0, AIOUtils.a(6.0F, paramContext.getResources()), 0);
     localObject = paramXiaoQuInfo.iMemberCnt + "人";
     paramXiaoQuInfo = "[icon]" + " " + paramXiaoQuInfo.strLocation;
     paramXiaoQuInfo = new SpannableString((String)localObject + paramXiaoQuInfo);
-    paramXiaoQuInfo.setSpan(new ImageSpan(paramContext, 2130839475, 1), ((String)localObject).length(), ((String)localObject).length() + "[icon]".length(), 17);
+    paramXiaoQuInfo.setSpan(new ImageSpan(paramContext, 2130839440, 1), ((String)localObject).length(), ((String)localObject).length() + "[icon]".length(), 17);
     paramView.jdField_g_of_type_AndroidWidgetTextView.setText(paramXiaoQuInfo);
   }
   
-  public static void a(View paramView, emb paramemb)
+  public static void a(View paramView, emg paramemg)
   {
     paramView = (NearbyTroops.CustomViewHolder)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramemb.jdField_c_of_type_Int);
-    paramView.jdField_f_of_type_AndroidWidgetTextView.setText(paramemb.jdField_a_of_type_JavaLangString);
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramemg.jdField_c_of_type_Int);
+    paramView.jdField_f_of_type_AndroidWidgetTextView.setText(paramemg.jdField_a_of_type_JavaLangString);
     paramView.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    paramView.jdField_g_of_type_AndroidWidgetTextView.setText(paramemb.b);
-    paramView.h.setText(paramemb.jdField_c_of_type_JavaLangString);
+    paramView.jdField_g_of_type_AndroidWidgetTextView.setText(paramemg.b);
+    paramView.h.setText(paramemg.jdField_c_of_type_JavaLangString);
   }
   
   public static void a(View paramView, String paramString, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -337,7 +337,7 @@ public class NearbyTroops
   public static void a(View paramView, boolean paramBoolean, int paramInt)
   {
     int i2 = 8;
-    paramView.setBackgroundResource(2130837904);
+    paramView.setBackgroundResource(2130837757);
     paramView = (NearbyTroops.MoreBtnViewHolder)paramView.getTag();
     Object localObject = paramView.jdField_a_of_type_AndroidWidgetProgressBar;
     if (paramBoolean)
@@ -371,7 +371,7 @@ public class NearbyTroops
       if (!paramBoolean) {
         break label131;
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131363195);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131363198);
       return;
       i1 = 8;
       break;
@@ -386,8 +386,8 @@ public class NearbyTroops
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903321, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.GroupViewHolder();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297709));
-    paramViewGroup.b = ((TextView)paramContext.findViewById(2131297710));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297705));
+    paramViewGroup.b = ((TextView)paramContext.findViewById(2131297706));
     paramViewGroup.jdField_a_of_type_Int = 3;
     paramContext.setTag(paramViewGroup);
     return paramContext;
@@ -406,7 +406,7 @@ public class NearbyTroops
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903326, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.OccupyViewHolder();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131296936));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131296932));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -416,9 +416,9 @@ public class NearbyTroops
     paramContext = LayoutInflater.from(paramContext).inflate(2130903325, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.MoreBtnViewHolder();
     paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131296558));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131297314));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297315));
-    paramViewGroup.b = ((TextView)paramContext.findViewById(2131296957));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131297310));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131297311));
+    paramViewGroup.b = ((TextView)paramContext.findViewById(2131296953));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }

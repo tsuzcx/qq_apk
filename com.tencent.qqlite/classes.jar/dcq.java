@@ -1,29 +1,29 @@
-import android.database.DatabaseErrorHandler;
-import android.database.DefaultDatabaseErrorHandler;
-import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class dcq
-  implements DatabaseErrorHandler
 {
-  private DefaultDatabaseErrorHandler jdField_a_of_type_AndroidDatabaseDefaultDatabaseErrorHandler = new DefaultDatabaseErrorHandler();
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
   
-  public dcq(QQEntityManagerFactory paramQQEntityManagerFactory) {}
-  
-  public void onCorruption(SQLiteDatabase paramSQLiteDatabase)
+  public dcq(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory.TAG, 2, "[SQLiteDatabaseCorruptException]Corruption reported by sqlite on database: " + paramSQLiteDatabase.getPath());
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
+    if (paramInt3 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.c = paramInt4;
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_ROM", DeviceInfoUtil.i());
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actSqliteDatabaseCorrupt", true, -1L, 0L, localHashMap, null, false);
-    this.jdField_a_of_type_AndroidDatabaseDefaultDatabaseErrorHandler.onCorruption(paramSQLiteDatabase);
   }
 }
 

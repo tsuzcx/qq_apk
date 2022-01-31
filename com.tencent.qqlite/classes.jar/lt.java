@@ -1,7 +1,7 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.common.util.LoadedCallBack;
+import com.tencent.biz.common.util.ShareToQZone;
+import com.tencent.biz.common.util.ShareToQZoneBack;
 import com.tencent.qphone.base.util.QLog;
 
 public final class lt
@@ -9,21 +9,19 @@ public final class lt
 {
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.arg1 == 0) && (ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack != null)) {
-      ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a((String)paramMessage.obj);
+    if (QLog.isColorLevel()) {
+      QLog.i(ShareToQZone.jdField_a_of_type_JavaLangString, 2, "======handleMessage =========");
     }
-    for (;;)
+    if (ShareToQZone.jdField_a_of_type_ComTencentBizCommonUtilShareToQZoneBack != null)
     {
-      ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack = null;
-      ImageUtil.d = null;
-      ImageUtil.e = null;
-      long l = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.i(ImageUtil.b, 2, "======time:" + (l - ImageUtil.jdField_a_of_type_Long) + ", start:" + ImageUtil.jdField_a_of_type_Long + ", endTime:" + l);
+        QLog.i(ShareToQZone.jdField_a_of_type_JavaLangString, 2, "======handleMessage *****");
       }
-      return;
-      ImageUtil.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a(null);
+      ShareToQZone.jdField_a_of_type_ComTencentBizCommonUtilShareToQZoneBack.a(paramMessage.arg1, ShareToQZone.b);
     }
+    ShareToQZone.jdField_a_of_type_AndroidContentContext = null;
+    ShareToQZone.jdField_a_of_type_AndroidOsBundle = null;
+    ShareToQZone.jdField_a_of_type_ComTencentBizCommonUtilShareToQZoneBack = null;
   }
 }
 

@@ -1,25 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
 
 public class efn
-  extends Handler
+  extends URLDrawableDownListener.Adapter
 {
-  public efn(FriendSystemMsgController paramFriendSystemMsgController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public efn(StructMsgItemCover paramStructMsgItemCover) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((FriendSystemMsgController.a(this.a)) && (FriendSystemMsgController.a(this.a) != null))
-    {
-      FriendSystemMsgController.a(this.a, false);
-      FriendSystemMsgController.a(this.a).a().a(2);
-    }
+    paramView.setBackgroundDrawable(null);
   }
 }
 

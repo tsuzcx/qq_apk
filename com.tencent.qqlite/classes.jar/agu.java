@@ -1,47 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.provider.Settings.System;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agu
-  extends BroadcastReceiver
+class agu
+  implements Runnable
 {
-  public agu(Conversation paramConversation) {}
+  agu(agt paramagt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext)))
-    {
-      paramContext = Settings.System.getString(this.a.a().getContentResolver(), "date_format");
-      if (Conversation.a(this.a) != null)
-      {
-        TimeManager.a().a();
-        if (paramContext != null)
-        {
-          TimeManager.a().a(paramContext);
-          TimeManager.a().a();
-        }
-        if (Conversation.a(this.a))
-        {
-          Conversation.a(this.a, 1014, 0L, false);
-          this.a.m();
-        }
-      }
-      if (this.a.a != null)
-      {
-        paramContext = this.a.a.a(TroopAssistantActivity.class);
-        if (paramContext != null) {
-          paramContext.sendEmptyMessage(2);
-        }
-      }
-    }
+    this.a.a.a.y();
   }
 }
 

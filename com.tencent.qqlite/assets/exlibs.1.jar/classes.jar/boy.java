@@ -1,105 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class boy
-  extends TroopObserver
+class boy
+  implements Runnable
 {
-  public boy(TroopMemberListActivity paramTroopMemberListActivity) {}
+  boy(box parambox, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivity", 2, "onDeleteTroopMember, isSuccess:" + paramBoolean + " errorCode:" + paramInt);
-    }
-    if (paramBoolean)
+    if ((this.jdField_a_of_type_Box.a.b != null) && (this.jdField_a_of_type_Box.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        this.a.c((String)paramArrayList.get(0));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6));
-      }
+      ((Animatable)this.jdField_a_of_type_Box.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable).stop();
+      this.jdField_a_of_type_Box.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
+      ((TextView)this.jdField_a_of_type_Box.a.b.findViewById(2131298895)).setCompoundDrawables(null, null, null, null);
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Box.a.h))) {}
+    while ((this.jdField_a_of_type_Box.a.b == null) || (this.jdField_a_of_type_Box.a.b.getVisibility() == 8)) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(7));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivity", 2, "onGetTroopInfoResult, isSuccess:" + paramBoolean + " returnUin:" + paramString + " mTroopCode:" + this.a.i + " time:" + (System.currentTimeMillis() - this.a.b) / 1000L + "s");
+    this.jdField_a_of_type_Box.a.b.setEnabled(true);
+    ((TextView)this.jdField_a_of_type_Box.a.b.findViewById(2131296875)).setTextColor(this.jdField_a_of_type_Box.a.getResources().getColor(2131427466));
+    this.jdField_a_of_type_Box.a.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Box.a.l = this.jdField_b_of_type_JavaLangString;
+    ((TextView)this.jdField_a_of_type_Box.a.b.findViewById(2131298895)).setText(this.c);
+    String str = "@全体成员";
+    if (this.c != null) {
+      str = "@全体成员" + "," + this.c;
     }
-    if ((!paramBoolean) || (!this.a.i.equals(paramString))) {}
-    do
-    {
-      return;
-      this.a.getSharedPreferences("last_update_time" + this.a.app.a(), 0).edit().putLong("key_troop_info_last_update" + this.a.i, System.currentTimeMillis()).commit();
-      paramString = ((FriendManager)this.a.app.getManager(8)).a(paramString);
-    } while (paramString == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopowneruin != null) {
-      this.a.j = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopowneruin;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator != null) {
-      this.a.k = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator;
-    }
-    paramString = this.a;
-    if ((this.a.app.a().equals(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopowneruin)) || ((this.a.k != null) && (this.a.k.contains(this.a.app.a()))))
-    {
-      paramBoolean = true;
-      paramString.jdField_a_of_type_Boolean = paramBoolean;
-      if ((this.a.j == null) || (!this.a.j.equals(this.a.app.a()))) {
-        break label418;
-      }
-    }
-    for (this.a.p = "0";; this.a.p = "1") {
-      label418:
-      do
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9));
-        return;
-        paramBoolean = false;
-        break;
-      } while ((this.a.k == null) || (!this.a.k.contains(this.a.app.a())));
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3)
-  {
-    this.a.runOnUiThread(new boz(this, paramBoolean1, paramString1, paramBoolean2, paramString3, paramString2));
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivity", 2, "onUpdateTroopGetMemberList:" + paramBoolean + " time:" + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long) / 1000L + "s");
-    }
-    if (paramBoolean) {}
-    try
-    {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.a(), 0).edit().putLong("key_last_update_time" + this.a.i, System.currentTimeMillis()).commit();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      Object[] arrayOfObject = this.a.b(this.a.i);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, arrayOfObject));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberListActivity", 2, "onUpdateTroopGetMemberList:" + localException.toString());
-        }
-      }
-    }
+    this.jdField_a_of_type_Box.a.b.setContentDescription(str);
   }
 }
 

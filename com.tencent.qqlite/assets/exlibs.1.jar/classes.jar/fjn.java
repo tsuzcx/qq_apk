@@ -1,62 +1,87 @@
 import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.util.Map.Entry;
 
 public class fjn
-  extends AbstractSet
+  extends SoftReference
+  implements Map.Entry
 {
-  public fjn(SoftHashMap paramSoftHashMap) {}
+  private final int jdField_a_of_type_Int;
+  private fjn jdField_a_of_type_Fjn;
+  private Object jdField_a_of_type_JavaLangObject;
   
-  public void clear()
+  public fjn(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue, int paramInt, fjn paramfjn)
   {
-    this.a.clear();
+    super(paramObject1, paramReferenceQueue);
+    this.jdField_a_of_type_JavaLangObject = paramObject2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Fjn = paramfjn;
   }
   
-  public boolean contains(Object paramObject)
+  public boolean equals(Object paramObject)
   {
-    return this.a.containsKey(paramObject);
-  }
-  
-  public Iterator iterator()
-  {
-    return new fjm(this.a);
-  }
-  
-  public boolean remove(Object paramObject)
-  {
-    if (this.a.containsKey(paramObject))
+    if (!(paramObject instanceof Map.Entry)) {}
+    Object localObject1;
+    do
     {
-      this.a.remove(paramObject);
-      return true;
-    }
-    return false;
+      Object localObject2;
+      do
+      {
+        return false;
+        paramObject = (Map.Entry)paramObject;
+        localObject1 = getKey();
+        localObject2 = paramObject.getKey();
+      } while ((localObject1 != localObject2) && ((localObject1 == null) || (!localObject1.equals(localObject2))));
+      localObject1 = getValue();
+      paramObject = paramObject.getValue();
+    } while ((localObject1 != paramObject) && ((localObject1 == null) || (!localObject1.equals(paramObject))));
+    return true;
   }
   
-  public int size()
+  public Object getKey()
   {
-    return this.a.size();
+    return SoftHashMap.a(get());
   }
   
-  public Object[] toArray()
+  public Object getValue()
   {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
-    }
-    return localArrayList.toArray();
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public Object[] toArray(Object[] paramArrayOfObject)
+  public int hashCode()
   {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
+    int j = 0;
+    Object localObject1 = getKey();
+    Object localObject2 = getValue();
+    int i;
+    if (localObject1 == null)
+    {
+      i = 0;
+      if (localObject2 != null) {
+        break label36;
+      }
     }
-    return localArrayList.toArray(paramArrayOfObject);
+    for (;;)
+    {
+      return j ^ i;
+      i = localObject1.hashCode();
+      break;
+      label36:
+      j = localObject2.hashCode();
+    }
+  }
+  
+  public Object setValue(Object paramObject)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return getKey() + "=" + getValue();
   }
 }
 

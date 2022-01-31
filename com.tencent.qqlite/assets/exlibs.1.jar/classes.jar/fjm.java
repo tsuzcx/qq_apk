@@ -1,16 +1,15 @@
-import common.qzone.component.cache.common.SoftHashMap;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class fjm
-  extends fjl
+  extends WeakReference
 {
-  fjm(SoftHashMap paramSoftHashMap)
-  {
-    super(paramSoftHashMap);
-  }
+  public Object a;
   
-  public Object next()
+  public fjm(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
   {
-    return a().getKey();
+    super(paramObject2, paramReferenceQueue);
+    this.a = paramObject1;
   }
 }
 

@@ -1,21 +1,20 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ayi
   implements DialogInterface.OnClickListener
 {
-  public ayi(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, QQCustomDialog paramQQCustomDialog) {}
+  public ayi(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (NearbyPeopleProfileActivity.c(this.a).isShowing())) {
+      NearbyPeopleProfileActivity.c(this.a).dismiss();
     }
-    while (paramInt != 0) {
-      return;
-    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004829", "0X8004829", 2, 0, "", "", "", "");
   }
 }
 

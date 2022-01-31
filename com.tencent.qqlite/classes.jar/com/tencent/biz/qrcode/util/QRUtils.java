@@ -31,7 +31,7 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import mqq.app.NewIntent;
-import qz;
+import qv;
 
 public class QRUtils
 {
@@ -673,7 +673,7 @@ public class QRUtils
     }
     localObject = Bitmap.createBitmap(i6, i6, Bitmap.Config.ARGB_8888);
     ((Bitmap)localObject).setPixels(paramString2, 0, i6, 0, 0, i6, i6);
-    paramContext = a(paramContext, localBitmap1, paramBitmap, localBundle.getInt("nameClr"), paramString1, localBitmap2, (Bitmap)localObject, localBundle.getInt("head"), localBundle.getInt("tipsClr"), paramContext.getString(2131362424), null, null, null);
+    paramContext = a(paramContext, localBitmap1, paramBitmap, localBundle.getInt("nameClr"), paramString1, localBitmap2, (Bitmap)localObject, localBundle.getInt("head"), localBundle.getInt("tipsClr"), paramContext.getString(2131362421), null, null, null);
     ((Bitmap)localObject).recycle();
     return paramContext;
   }
@@ -984,7 +984,7 @@ public class QRUtils
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, QRCodeEncodeCallback paramQRCodeEncodeCallback)
   {
     paramString1 = QRActionEntity.a(paramInt, paramString1).a();
-    paramString2 = new qz(paramQRCodeEncodeCallback);
+    paramString2 = new qv(paramQRCodeEncodeCallback);
     paramContext = new NewIntent(paramContext, QRCodeServlet.class);
     paramContext.putExtra("skey", paramString3);
     paramContext.putExtra("d", paramString1);

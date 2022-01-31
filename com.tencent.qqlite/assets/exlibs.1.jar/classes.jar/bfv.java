@@ -1,36 +1,24 @@
 import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class bfv
-  extends Handler
+class bfv
+  implements Runnable
 {
-  public bfv(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  bfv(bfu parambfu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    this.a.a.app.a().k();
+    this.a.a.app.a().g();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    Handler localHandler = this.a.a.app.a(Conversation.class);
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(1009);
     }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363250));
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839156);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363249));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
   }
 }
 

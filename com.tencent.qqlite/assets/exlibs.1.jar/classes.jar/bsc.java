@@ -1,33 +1,52 @@
+import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class bsc
-  implements TabBarView.OnTabChangeListener
+  implements IIconListener
 {
   public bsc(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    View localView = this.a.a.getChildAt(0);
-    if (paramInt2 == 0)
-    {
-      str = "已选中" + this.a.getString(2131363547);
-      localView.setContentDescription(str);
-      localView = this.a.a.getChildAt(1);
-      if (paramInt2 != 1) {
-        break label125;
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200)) {
+      if (this.a.h == 0) {
+        paramBitmap = this.a.a;
       }
     }
-    label125:
-    for (String str = "已选中" + this.a.getString(2131363548);; str = this.a.getString(2131363548))
+    for (;;)
     {
-      localView.setContentDescription(str);
-      this.a.a(paramInt2);
-      return;
-      str = this.a.getString(2131363547);
-      break;
+      if (paramBitmap != null) {
+        paramInt2 = paramBitmap.getChildCount();
+      }
+      for (;;)
+      {
+        if (i < paramInt2)
+        {
+          Object localObject = paramBitmap.getChildAt(i).getTag();
+          if ((localObject != null) && ((localObject instanceof bse)))
+          {
+            localObject = (bse)localObject;
+            if ((((bse)localObject).a == paramInt1) && (((bse)localObject).d != null)) {
+              VisitorsActivity.a(this.a, ((bse)localObject).d, paramInt1);
+            }
+          }
+          i += 1;
+          continue;
+          if (this.a.h != 1) {
+            break label145;
+          }
+          paramBitmap = this.a.b;
+          break;
+        }
+        return;
+        paramInt2 = 0;
+      }
+      label145:
+      paramBitmap = null;
     }
   }
 }

@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
 
-class wo
-  implements View.OnClickListener
+public class wo
+  implements QQProgressDialog.Callback
 {
-  wo(wn paramwn) {}
+  public wo(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Object localObject = paramView.getTag();
-    if (localObject != null)
-    {
-      int i = ((wp)localObject).a;
-      this.a.a.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener.onItemClick(this.a.a.jdField_a_of_type_AndroidWidgetGridView, paramView, i, i);
-    }
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

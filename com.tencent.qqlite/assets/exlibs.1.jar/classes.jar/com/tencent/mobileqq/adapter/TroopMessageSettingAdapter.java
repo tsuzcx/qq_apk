@@ -71,7 +71,7 @@ public class TroopMessageSettingAdapter
     if (QLog.isColorLevel()) {
       QLog.i("TroopMessageSettingAdapter", 2, "setItemBackground() childPos = " + paramInt1 + ", listSize = " + paramInt2);
     }
-    paramView.setBackgroundResource(2130837758);
+    paramView.setBackgroundResource(2130837754);
   }
   
   private void a(List paramList)
@@ -98,7 +98,7 @@ public class TroopMessageSettingAdapter
           {
             localTroopInfo = new TroopInfo();
             localTroopInfo.troopuin = jdField_a_of_type_JavaLangString;
-            localTroopInfo.troopname = this.jdField_a_of_type_AndroidContentContext.getString(2131363915);
+            localTroopInfo.troopname = this.jdField_a_of_type_AndroidContentContext.getString(2131363904);
             this.jdField_a_of_type_AndroidUtilSparseArray.put(i, new ArrayList());
             ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).add(localTroopInfo);
           }
@@ -171,7 +171,7 @@ public class TroopMessageSettingAdapter
       if (paramView != null) {
         if (((Integer)paramView.getTag()).intValue() == 1)
         {
-          paramViewGroup = (TextView)paramView.findViewById(2131298819);
+          paramViewGroup = (TextView)paramView.findViewById(2131298768);
           paramViewGroup.setEnabled(false);
           if (!TextUtils.isEmpty(((TroopInfo)localObject).troopname)) {
             break label262;
@@ -186,24 +186,24 @@ public class TroopMessageSettingAdapter
       paramView.setTag(Integer.valueOf(i));
       paramView.setFocusable(true);
       return paramView;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903651, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903635, null);
       break;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903651, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903635, null);
       break;
       if (paramView != null) {
         if (((Integer)paramView.getTag()).intValue() != 0) {}
       }
       for (;;)
       {
-        paramViewGroup = (TextView)paramView.findViewById(2131298819);
-        ImageView localImageView = (ImageView)paramView.findViewById(2131298818);
+        paramViewGroup = (TextView)paramView.findViewById(2131298768);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131298767);
         localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(((TroopInfo)localObject).troopuin));
         localImageView.setVisibility(0);
         a(paramView, paramInt2, getChildrenCount(paramInt1));
         break;
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903650, null);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903634, null);
         continue;
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903650, null);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903634, null);
       }
     }
   }
@@ -265,11 +265,11 @@ public class TroopMessageSettingAdapter
         localView.setFocusable(true);
         localView.setTag(a(paramInt));
         return localView;
-        i = 2130903679;
+        i = 2130903662;
         continue;
-        i = 2130903681;
+        i = 2130903664;
         continue;
-        i = 2130903680;
+        i = 2130903663;
       }
     }
   }

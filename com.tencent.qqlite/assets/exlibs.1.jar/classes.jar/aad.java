@@ -1,45 +1,38 @@
-import android.os.Handler;
+import android.view.View;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.mobileqq.app.StrangerHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aad
-  implements Runnable
+class aad
+  implements ActionSheet.OnButtonClickListener
 {
-  public aad(BaseChatPie paramBaseChatPie) {}
+  aad(aac paramaac, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    BaseChatPie.a(this.a, this.a.c());
-    BaseChatPie.d(this.a, BaseChatPie.b(this.a));
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16711689, 300000L);
-    if (BaseChatPie.b(this.a)) {
-      ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      try
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
-          SystemMsgController.a().a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b == null))
-        {
-          return;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Long != -1L) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Long = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-          break;
-        }
-        SystemMsgController.a().a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ReportController.b(this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+      paramView = (StrangerHandler)this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+      paramView.b(localArrayList);
+      if (this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+        this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0);
       }
-      catch (Exception localException) {}
+      this.jdField_a_of_type_Aac.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
   }
 }

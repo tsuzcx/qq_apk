@@ -1,30 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class djv
-  implements ActionSheet.OnButtonClickListener
+class djv
+  implements Runnable
 {
-  public djv(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView, ActionSheet paramActionSheet) {}
+  djv(djs paramdjs) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (QfileBaseLocalFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_Long)) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-      }
-      QfileBaseLocalFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView);
-    }
+    QfileBaseLocalFileTabView.a(this.a.a);
   }
 }
 

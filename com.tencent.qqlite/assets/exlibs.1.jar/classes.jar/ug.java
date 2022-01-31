@@ -3,11 +3,11 @@ import com.tencent.litetransfersdk.LiteTransferWrapper;
 public class ug
   implements Runnable
 {
-  public ug(LiteTransferWrapper paramLiteTransferWrapper, long paramLong1, long paramLong2, int paramInt1, int paramInt2, short paramShort) {}
+  public ug(LiteTransferWrapper paramLiteTransferWrapper, String paramString1, String paramString2) {}
   
   public void run()
   {
-    LiteTransferWrapper.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Short);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetServicePathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

@@ -1,26 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PredownloadTest;
-import com.tencent.mobileqq.activity.PredownloadTest.ConfigInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.BaseStrategy;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import java.util.ArrayList;
 
-public class bay
-  implements View.OnClickListener
+public final class bay
+  implements Parcelable.Creator
 {
-  public bay(PredownloadTest paramPredownloadTest) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.AllInOne a(Parcel paramParcel)
   {
-    paramView = new PredownloadTest.ConfigInfo();
-    paramView.a = this.a.a(this.a.a);
-    paramView.b = this.a.a(this.a.b);
-    paramView.c = this.a.a(this.a.c);
-    paramView.d = this.a.a(this.a.d);
-    paramView.e = this.a.a(this.a.e);
-    paramView.f = this.a.a(this.a.f);
-    this.a.app.a().a.a(paramView);
+    boolean bool = true;
+    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(null);
+    localAllInOne.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_a_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_b_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_a_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_a_of_type_Short = ((short)paramParcel.readInt());
+    localAllInOne.jdField_b_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_c_of_type_Int = paramParcel.readInt();
+    localAllInOne.jdField_c_of_type_Byte = paramParcel.readByte();
+    localAllInOne.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
+    localAllInOne.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localAllInOne.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    paramParcel.readTypedList(localAllInOne.jdField_a_of_type_JavaUtilArrayList, ProfileActivity.CardContactInfo.CREATOR);
+    localAllInOne.jdField_d_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() == 1) {}
+    for (;;)
+    {
+      localAllInOne.jdField_a_of_type_Boolean = bool;
+      localAllInOne.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_e_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      localAllInOne.k = paramParcel.readString();
+      localAllInOne.l = paramParcel.readString();
+      localAllInOne.m = paramParcel.readString();
+      localAllInOne.n = paramParcel.readString();
+      localAllInOne.jdField_f_of_type_Int = paramParcel.readInt();
+      localAllInOne.g = paramParcel.readInt();
+      localAllInOne.jdField_h_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
+      localAllInOne.jdField_i_of_type_Int = paramParcel.readInt();
+      localAllInOne.jdField_j_of_type_Int = paramParcel.readInt();
+      localAllInOne.o = paramParcel.readString();
+      localAllInOne.p = paramParcel.readString();
+      return localAllInOne;
+      bool = false;
+    }
+  }
+  
+  public ProfileActivity.AllInOne[] a(int paramInt)
+  {
+    return new ProfileActivity.AllInOne[paramInt];
   }
 }
 

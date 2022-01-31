@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class bgn
   implements Runnable
 {
-  public bgn(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public bgn(RegisterActivity paramRegisterActivity) {}
   
   public void run()
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
-      {
-        RecentLoginDevActivity.a(this.a).dismiss();
-        RecentLoginDevActivity.a(this.a).cancel();
-      }
-      RecentLoginDevActivity.a(this.a, null);
-      return;
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.a = null;
   }
 }
 

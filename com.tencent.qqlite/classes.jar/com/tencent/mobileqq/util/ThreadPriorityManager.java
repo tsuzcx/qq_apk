@@ -3,13 +3,13 @@ package com.tencent.mobileqq.util;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.util.LongSparseArray;
-import esp;
+import esu;
 
 public class ThreadPriorityManager
 {
   private static final int jdField_a_of_type_Int = 1;
   private static final long jdField_a_of_type_Long = 7000L;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new esp(Looper.getMainLooper());
+  private static Handler jdField_a_of_type_AndroidOsHandler = new esu(Looper.getMainLooper());
   private static LongSparseArray jdField_a_of_type_ComTencentUtilLongSparseArray;
   private static final int b = 2;
   private static int c = 1;

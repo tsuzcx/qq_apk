@@ -1,16 +1,31 @@
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class efc
-  implements View.OnLongClickListener
+public final class efc
+  implements ActionSheet.OnButtonClickListener
 {
-  public efc(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  public efc(String paramString, Context paramContext) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      StructMsgClickHandler.a().dismiss();
+      return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

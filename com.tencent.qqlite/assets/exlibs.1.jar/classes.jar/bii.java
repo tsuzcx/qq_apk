@@ -1,13 +1,23 @@
+import android.os.Handler;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
-class bii
+public class bii
   implements Runnable
 {
-  bii(bih parambih, int paramInt) {}
+  public bii(RegisterSendUpSms paramRegisterSendUpSms) {}
   
   public void run()
   {
-    RegisterSendUpSms.a(this.jdField_a_of_type_Bih.a, this.jdField_a_of_type_Int);
+    if (RegisterSendUpSms.a(this.a) == 1)
+    {
+      RegisterSendUpSms.a(this.a).setText(2131363343);
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      return;
+    }
+    RegisterSendUpSms.b(this.a);
+    RegisterSendUpSms.a(this.a).setText(this.a.getString(2131363343) + "(" + RegisterSendUpSms.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

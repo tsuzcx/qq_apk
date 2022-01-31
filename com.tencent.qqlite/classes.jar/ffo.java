@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class ffo
-  implements DialogInterface.OnDismissListener
+class ffo
+  implements Runnable
 {
-  public ffo(MyAppApi paramMyAppApi) {}
+  ffo(ffn paramffn, DownloadInfo paramDownloadInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
-    this.a.c = false;
-    this.a.c = false;
+    DownloadManager.a().e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 

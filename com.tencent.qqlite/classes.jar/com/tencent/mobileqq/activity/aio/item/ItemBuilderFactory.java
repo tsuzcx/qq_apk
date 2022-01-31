@@ -39,11 +39,11 @@ import java.util.ArrayList;
 
 public class ItemBuilderFactory
 {
-  private static final int A = 28;
-  private static final int B = 29;
-  private static final int C = 30;
-  private static final int D = 32;
-  public static final int a = 30;
+  private static final int A = 25;
+  private static final int B = 26;
+  private static final int C = 27;
+  private static final int D = 28;
+  public static final int a = 29;
   private static final int b = 0;
   private static final int c = 1;
   private static final int d = 2;
@@ -53,22 +53,22 @@ public class ItemBuilderFactory
   private static final int h = 6;
   private static final int i = 7;
   private static final int j = 8;
-  private static final int k = 10;
-  private static final int l = 12;
-  private static final int m = 13;
-  private static final int n = 14;
-  private static final int o = 15;
-  private static final int p = 16;
-  private static final int q = 17;
-  private static final int r = 18;
-  private static final int s = 19;
-  private static final int t = 20;
-  private static final int u = 22;
-  private static final int v = 23;
-  private static final int w = 24;
-  private static final int x = 25;
-  private static final int y = 26;
-  private static final int z = 27;
+  private static final int k = 9;
+  private static final int l = 10;
+  private static final int m = 11;
+  private static final int n = 12;
+  private static final int o = 13;
+  private static final int p = 14;
+  private static final int q = 15;
+  private static final int r = 16;
+  private static final int s = 17;
+  private static final int t = 18;
+  private static final int u = 19;
+  private static final int v = 20;
+  private static final int w = 21;
+  private static final int x = 22;
+  private static final int y = 23;
+  private static final int z = 24;
   private Context jdField_a_of_type_AndroidContentContext;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   ActivityChatItemBuilder jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder;
@@ -108,12 +108,12 @@ public class ItemBuilderFactory
   
   public int a(ChatMessage paramChatMessage)
   {
-    int i2 = 15;
+    int i2 = 13;
     int i1;
     if ((paramChatMessage instanceof MessageForText))
     {
       if (((MessageForText)paramChatMessage).locationUrl != null) {
-        i1 = 10;
+        i1 = 9;
       }
     }
     else
@@ -138,7 +138,7 @@ public class ItemBuilderFactory
       if ((paramChatMessage instanceof MessageForPic))
       {
         if (((MessageForPic)paramChatMessage).isMixed) {
-          return 24;
+          return 21;
         }
         return 1;
       }
@@ -149,14 +149,14 @@ public class ItemBuilderFactory
         return 3;
       }
       if ((paramChatMessage instanceof MessageForMarketFace)) {
-        return 12;
+        return 10;
       }
       if ((paramChatMessage instanceof MessageForRichState))
       {
         if (((MessageForRichState)paramChatMessage).isRickSignState) {
-          return 13;
+          return 11;
         }
-        return 14;
+        return 12;
       }
       if ((paramChatMessage instanceof MessageForPubAccount))
       {
@@ -170,7 +170,7 @@ public class ItemBuilderFactory
             if (paramChatMessage.items.size() >= 2)
             {
               if (!TextUtils.isEmpty(((PAMessage.Item)paramChatMessage.items.get(1)).a_rankListUrl)) {
-                return 30;
+                return 27;
               }
               return 7;
             }
@@ -184,43 +184,43 @@ public class ItemBuilderFactory
       else
       {
         if ((paramChatMessage instanceof MessageForTroopNotification)) {
-          return 28;
+          return 25;
         }
         if ((paramChatMessage instanceof MessageForStructing)) {
           return 5;
         }
         if ((paramChatMessage instanceof MessageForFunnyFace)) {
-          return 19;
-        }
-        if (((paramChatMessage instanceof MessageForLongMsg)) && (paramChatMessage.msgtype != -1036)) {
           return 17;
         }
-        if (((paramChatMessage instanceof MessageForMixedMsg)) || ((paramChatMessage != null) && (paramChatMessage.msgtype == -1036))) {
-          return 18;
+        if (((paramChatMessage instanceof MessageForLongMsg)) && (paramChatMessage.msgtype != -1036)) {
+          return 15;
         }
-        if ((paramChatMessage instanceof MessageForActivity)) {
+        if (((paramChatMessage instanceof MessageForMixedMsg)) || ((paramChatMessage != null) && (paramChatMessage.msgtype == -1036))) {
           return 16;
         }
+        if ((paramChatMessage instanceof MessageForActivity)) {
+          return 14;
+        }
         if ((paramChatMessage instanceof MessageForEnterTroop)) {
-          return 22;
+          return 19;
         }
         if ((paramChatMessage instanceof MessageForMyEnterTroop)) {
-          return 23;
+          return 20;
         }
         if ((paramChatMessage instanceof MessageForTroopFile)) {
-          return 25;
+          return 22;
         }
         if ((paramChatMessage instanceof MessageForShakeWindow)) {
-          return 26;
+          return 23;
         }
         if ((paramChatMessage instanceof MessageForTroopUnreadTips)) {
-          return 27;
+          return 24;
         }
         if ((paramChatMessage instanceof MessageForShortVideo)) {
-          return 29;
+          return 26;
         }
         if ((paramChatMessage instanceof MessageForQQWalletMsg)) {
-          return 32;
+          return 28;
         }
       }
     }
@@ -232,12 +232,8 @@ public class ItemBuilderFactory
     switch (a(paramChatMessage))
     {
     case 4: 
-    case 9: 
-    case 11: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 31: 
+    case 17: 
+    case 18: 
     default: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder = new TextItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
@@ -262,7 +258,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: PicItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder;
-    case 24: 
+    case 21: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAppSharePicItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAppSharePicItemBuilder = new AppSharePicItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -278,7 +274,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: PttItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder;
-    case 15: 
+    case 13: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder = new GrayTipsItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -310,7 +306,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: PATextItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPATextItemBuilder;
-    case 30: 
+    case 27: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPAGameItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPAGameItemBuilder = new PAGameItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -326,7 +322,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: StructingMsgItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder;
-    case 10: 
+    case 9: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder = new LocationItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -334,7 +330,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: LocationItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder;
-    case 13: 
+    case 11: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder = new RichStatItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
@@ -347,7 +343,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: RichStatItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder;
-    case 14: 
+    case 12: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextSignatureItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextSignatureItemBuilder = new TextSignatureItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -355,7 +351,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: TextSignatureItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextSignatureItemBuilder;
-    case 12: 
+    case 10: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder = new MarketFaceItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -363,7 +359,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: MarketFaceItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder;
-    case 16: 
+    case 14: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder = new ActivityChatItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -371,7 +367,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: ActivityChatItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder;
-    case 22: 
+    case 19: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemEnterTroopChatItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemEnterTroopChatItemBuilder = new EnterTroopChatItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -379,7 +375,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: EnterTroopChatItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemEnterTroopChatItemBuilder;
-    case 23: 
+    case 20: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMyEnterTroopChatItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMyEnterTroopChatItemBuilder = new MyEnterTroopChatItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -387,7 +383,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: MyEnterTroopChatItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMyEnterTroopChatItemBuilder;
-    case 17: 
+    case 15: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder = new LongMsgItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -395,7 +391,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: LongMsgItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder;
-    case 18: 
+    case 16: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMixedMsgItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMixedMsgItemBuilder = new MixedMsgItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -403,7 +399,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: MixedMsgItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMixedMsgItemBuilder;
-    case 25: 
+    case 22: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder = new TroopFileItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -411,7 +407,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: TroopFileItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder;
-    case 26: 
+    case 23: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder = new ShakeItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -419,7 +415,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: ShakeItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder;
-    case 27: 
+    case 24: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopUnreadTipsChatItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopUnreadTipsChatItemBuilder = new TroopUnreadTipsChatItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -427,7 +423,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: TroopUnreadTipsChatItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopUnreadTipsChatItemBuilder;
-    case 28: 
+    case 25: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructTroopNotificationItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructTroopNotificationItemBuilder = new StructTroopNotificationItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
@@ -435,7 +431,7 @@ public class ItemBuilderFactory
         QLog.d("AutoMonitor", 2, "ItemBuilder is: StructTroopNotificationItemBuilder");
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructTroopNotificationItemBuilder;
-    case 29: 
+    case 26: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder = new ShortVideoItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }

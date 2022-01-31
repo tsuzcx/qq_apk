@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 
 public class cjt
-  implements View.OnClickListener
+  implements MessageQueue.IdleHandler
 {
-  public cjt(BannerManager paramBannerManager) {}
+  public cjt(SendPhotoActivity paramSendPhotoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    if (UpgradeController.a().a() == 4)
-    {
-      UpgradeController.a().a(BannerManager.a(this.a));
-      return;
-    }
-    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
+    new cju(this.a).execute(new Void[0]);
+    return false;
   }
 }
 

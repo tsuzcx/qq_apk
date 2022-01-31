@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import ddx;
-import ddy;
+import ded;
+import dee;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -49,18 +49,18 @@ public class SogouEmojiTaskController
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "func addTask begins, packId:" + paramString1 + ",exprId:" + paramString2);
     }
-    ddy localddy = new ddy();
+    dee localdee = new dee();
     this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    localddy.jdField_a_of_type_JavaLangString = paramString1;
-    localddy.b = paramString2;
-    localddy.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localdee.jdField_a_of_type_JavaLangString = paramString1;
+    localdee.b = paramString2;
+    localdee.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localddy);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localdee);
     }
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "func addTask ends, mCurTaskId:" + this.jdField_a_of_type_Int + ",task size:" + this.jdField_a_of_type_JavaUtilMap.size());
     }
-    b(2131364070);
+    b(2131364057);
     return this.jdField_a_of_type_Int;
   }
   
@@ -100,7 +100,7 @@ public class SogouEmojiTaskController
     }
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      if ((ddy)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
+      if ((dee)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
       for (boolean bool = true;; bool = false)
       {
         if (QLog.isColorLevel()) {
@@ -154,11 +154,11 @@ public class SogouEmojiTaskController
       }
       return;
       this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624119);
-      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new ddx(this));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new ded(this));
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903271);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131297435));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131297431));
     }
   }
   

@@ -1,14 +1,11 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-public class etg
-  implements FileFilter
+public abstract class etg
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
-  }
+  public int a;
+  public byte[] a;
+  
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 

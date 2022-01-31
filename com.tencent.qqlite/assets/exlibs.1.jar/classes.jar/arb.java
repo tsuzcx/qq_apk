@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.theme.NightModeLogic;
 
 public class arb
-  implements DialogInterface.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public arb(GroupManagerActivity paramGroupManagerActivity) {}
+  public arb(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    GroupManagerActivity.a(this.a, null);
+    if (!BaseApplicationImpl.a)
+    {
+      Toast.makeText(this.a, this.a.getString(2131363264), 0).show();
+      return;
+    }
+    if (IndividuationSetActivity.a(this.a))
+    {
+      IndividuationSetActivity.a(this.a).startNightMode(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "QQLite_Trends_tab", "Neight_theme", 0, 0, "", "", "", "");
+    }
+    IndividuationSetActivity.a(this.a, true);
   }
 }
 

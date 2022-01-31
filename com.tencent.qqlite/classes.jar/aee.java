@@ -1,45 +1,104 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ImageViewParameter;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.MenuPopupDialog;
 
 public class aee
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener, View.OnClickListener, OnLongClickAndTouchListener
 {
-  public aee(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, ImageViewParameter paramImageViewParameter, String paramString) {}
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  MenuPopupDialog jdField_a_of_type_ComTencentWidgetMenuPopupDialog;
+  
+  private aee(ChatHistory paramChatHistory) {}
+  
+  void a(View paramView)
+  {
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Int == -3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.istroop == 1001))
+    if (paramView.getId() == 2131298932)
     {
-      paramView = PkgTools.c(this.jdField_a_of_type_JavaLangString);
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, paramView);
-      if (paramView != null) {
-        paramView.b();
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      if (this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog != null) {
+        this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog.dismiss();
       }
     }
-    do
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = null;
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog != null) && (this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog.isShowing()))
     {
-      return;
-      if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.action, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.shareAppID, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.msgtype);
-        return;
+      a(paramView);
+      return false;
+    }
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131298932, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131363076));
+    if (localQQCustomMenu.a() > 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((aef)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      String str;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForText)) {
+        if (((MessageForText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).location != null) {
+          str = "地理位置";
+        }
       }
-      if (this.jdField_a_of_type_Int == -3005)
+      for (;;)
       {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.action, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.shareAppID, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.msgtype);
-        return;
+        this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = MenuPopupDialog.a(paramView, str, localQQCustomMenu, this, this);
+        a(paramView);
+        return true;
+        str = "消息";
+        continue;
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForFile)) {
+          str = "文件";
+        } else if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPtt)) {
+          str = "语音";
+        } else if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) {
+          str = "图片";
+        } else if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMarketFace)) {
+          str = "表情";
+        } else {
+          str = "消息";
+        }
       }
-    } while (this.jdField_a_of_type_Int == -3001);
-    PicItemBuilder.a(paramView.getContext(), paramView, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a, ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a));
+    }
+    a(paramView);
+    return false;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

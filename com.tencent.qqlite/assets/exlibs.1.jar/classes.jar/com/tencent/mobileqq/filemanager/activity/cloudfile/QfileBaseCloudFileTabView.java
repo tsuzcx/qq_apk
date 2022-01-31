@@ -42,21 +42,21 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.ExpandableListView;
 import com.tencent.widget.MenuPopupDialog;
-import dhw;
-import dhx;
-import dia;
-import dib;
-import dif;
-import dij;
-import dik;
+import dic;
+import did;
+import dig;
+import dih;
 import dil;
-import dim;
-import din;
-import dio;
 import dip;
 import diq;
 import dir;
 import dis;
+import dit;
+import diu;
+import div;
+import diw;
+import dix;
+import diy;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -77,7 +77,7 @@ public abstract class QfileBaseCloudFileTabView
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public QfileBaseExpandableListAdapter a;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dif(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dil(this);
   NoFileRelativeLayout jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = null;
   public QfilePinnedHeaderExpandableListView a;
   public ViewerMoreRelativeLayout a;
@@ -96,7 +96,7 @@ public abstract class QfileBaseCloudFileTabView
   View c;
   public TextView c;
   public boolean c;
-  public View.OnClickListener d = new dib(this);
+  public View.OnClickListener d = new dih(this);
   int e = 0;
   
   static
@@ -111,10 +111,10 @@ public abstract class QfileBaseCloudFileTabView
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dio(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dis(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new dhx(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dia(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new diu(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new diy(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new did(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dig(this);
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
@@ -140,7 +140,7 @@ public abstract class QfileBaseCloudFileTabView
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter instanceof QfileWeiYunImageExpandableListAdapter))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131298060));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131298023));
       this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(0);
     }
@@ -148,7 +148,7 @@ public abstract class QfileBaseCloudFileTabView
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setContentDescription("微云文件分组");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131298060));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131298023));
       this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(0);
     }
@@ -159,11 +159,11 @@ public abstract class QfileBaseCloudFileTabView
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = new NoFileRelativeLayout(a());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131361977);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131361976);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout = new ViewerMoreRelativeLayout(a());
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.findViewById(2131298040));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.findViewById(2131298003));
       if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter instanceof QfileWeiYunImageExpandableListAdapter)) {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout);
       }
@@ -267,7 +267,7 @@ public abstract class QfileBaseCloudFileTabView
   
   public void b()
   {
-    a(2130903432);
+    a(2130903422);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter = a();
@@ -276,7 +276,7 @@ public abstract class QfileBaseCloudFileTabView
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter instanceof QfileWeiYunImageExpandableListAdapter))
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131427345);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGroupIndicator(a().getResources().getDrawable(2130837938));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGroupIndicator(a().getResources().getDrawable(2130837934));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setTranscriptMode(0);
       i = 0;
@@ -286,10 +286,10 @@ public abstract class QfileBaseCloudFileTabView
         i += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupExpandListener(new dhw(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupCollapseListener(new dil(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupExpandListener(new dic(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnGroupCollapseListener(new dir(this));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131427345);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGroupIndicator(a().getResources().getDrawable(2130837938));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGroupIndicator(a().getResources().getDrawable(2130837934));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setTranscriptMode(0);
     int i = 0;
@@ -303,16 +303,16 @@ public abstract class QfileBaseCloudFileTabView
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setTranscriptMode(0);
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter instanceof QfileWeiYunImageExpandableListAdapter))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getViewTreeObserver().addOnGlobalLayoutListener(new dim(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getViewTreeObserver().addOnGlobalLayoutListener(new dis(this));
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout == null) {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout = new ViewerMoreRelativeLayout(getContext());
       }
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.findViewById(2131298040));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.findViewById(2131298003));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getViewTreeObserver().addOnGlobalLayoutListener(new din(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getViewTreeObserver().addOnGlobalLayoutListener(new dit(this));
   }
   
   public void b(WeiYunFileInfo paramWeiYunFileInfo)
@@ -368,11 +368,11 @@ public abstract class QfileBaseCloudFileTabView
   public void e()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(a(), null);
-    localActionSheet.a(getResources().getStringArray(2131230748)[0], 3);
-    localActionSheet.a(new dip(this, localActionSheet));
-    localActionSheet.setOnDismissListener(new diq(this));
-    localActionSheet.setOnCancelListener(new dir(this));
-    localActionSheet.d(2131362790);
+    localActionSheet.a(getResources().getStringArray(2131230747)[0], 3);
+    localActionSheet.a(new div(this, localActionSheet));
+    localActionSheet.setOnDismissListener(new diw(this));
+    localActionSheet.setOnCancelListener(new dix(this));
+    localActionSheet.d(2131362794);
     localActionSheet.show();
   }
   
@@ -380,7 +380,7 @@ public abstract class QfileBaseCloudFileTabView
   {
     if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837906);
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
     }
@@ -401,7 +401,7 @@ public abstract class QfileBaseCloudFileTabView
   
   public void i()
   {
-    a(new dij(this));
+    a(new dip(this));
   }
   
   public void j()
@@ -440,7 +440,7 @@ public abstract class QfileBaseCloudFileTabView
       }
       return;
     }
-    a(new dik(this, paramInt));
+    a(new diq(this, paramInt));
   }
 }
 

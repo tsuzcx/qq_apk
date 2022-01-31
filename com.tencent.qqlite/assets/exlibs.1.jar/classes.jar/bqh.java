@@ -1,102 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import java.util.ArrayList;
 
-public class bqh
-  extends TroopObserver
+class bqh
+  implements DialogInterface.OnClickListener
 {
-  public bqh(TroopTransferActivity paramTroopTransferActivity) {}
+  bqh(bqg parambqg, QQCustomDialog paramQQCustomDialog) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!Utils.a(String.valueOf(paramLong), this.a.b)) || (!Utils.a(paramString1, this.a.app.a()))) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-      }
-      paramString1 = (TroopManager)this.a.app.getManager(44);
-      paramString3 = paramString1.a(paramLong + "");
-      if (paramString3 != null)
-      {
-        paramString3.dwAdditionalFlag = 0L;
-        paramString1.b(paramString3);
-      }
-      paramString1 = new Intent();
-      paramString1.putExtra("isNeedFinish", true);
-      paramString1.putExtra("fin_tip_msg", this.a.getString(2131363640));
-      paramString1.putExtra("uin", paramString2);
-      this.a.setResult(-1, paramString1);
-      this.a.finish();
-      return;
-    }
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      paramString1 = this.a.getString(2131363641);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, paramString1, 1500);
-      return;
-      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
-      {
-        paramString1 = this.a.getString(2131363643);
-      }
-      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
-      {
-        paramString1 = this.a.getString(2131363642);
-      }
-      else
-      {
-        if (paramInt == 12)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-          }
-          paramString1 = DialogUtil.a(this.a, 230);
-          paramString1.setTitle(this.a.getString(2131362597));
-          paramString1.setMessage(this.a.getString(2131362600));
-          paramString1.setNegativeButton(this.a.getString(2131362596), new bqi(this, paramString1));
-          paramString1.setPositiveButton(this.a.getString(2131363666), new bqj(this, paramString1));
-          paramString1.show();
-          return;
-        }
-        paramString1 = this.a.getString(2131363642);
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void d(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
+    ReportController.a(this.jdField_a_of_type_Bqg.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Bqg.a.b, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Bqg.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Bqg.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

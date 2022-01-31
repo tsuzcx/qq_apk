@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class djw
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   public djw(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
     QfileBaseLocalFileTabView.a(this.a);
   }

@@ -187,7 +187,6 @@ public class LiteActivity
   static final int m = 55;
   long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
   public View.OnClickListener a;
   public View.OnLongClickListener a;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new au(this);
@@ -218,10 +217,7 @@ public class LiteActivity
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   public View.OnClickListener b;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c;
-  private boolean d = false;
+  private boolean b;
   private int n;
   
   static
@@ -231,7 +227,7 @@ public class LiteActivity
   
   public LiteActivity()
   {
-    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidViewView$OnClickListener = new l(this);
     this.jdField_b_of_type_AndroidViewView$OnClickListener = new m(this);
@@ -265,8 +261,8 @@ public class LiteActivity
       return;
     }
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this);
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(getString(2131363384));
-    String str2 = getString(2131362486);
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(getString(2131363387));
+    String str2 = getString(2131362483);
     String str1 = str2;
     if (paramString != null) {
       str1 = str2 + paramString;
@@ -280,7 +276,7 @@ public class LiteActivity
   public static void a(Context paramContext)
   {
     j localj = new j();
-    DialogUtil.a(paramContext, 233, paramContext.getString(2131363512), paramContext.getString(2131361878), 2131361823, 2131361823, localj, null).show();
+    DialogUtil.a(paramContext, 233, paramContext.getString(2131363513), paramContext.getString(2131361878), 2131361823, 2131361823, localj, null).show();
   }
   
   private void a(Intent paramIntent, boolean paramBoolean)
@@ -305,16 +301,16 @@ public class LiteActivity
     {
       if (!FileUtils.e(paramIntent))
       {
-        QQToast.a(this, getString(2131363408), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131363411), 0).b(getTitleBarHeight());
         return;
       }
       if (!new File(paramIntent).exists()) {
-        QQToast.a(this, getString(2131363409), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131363412), 0).b(getTitleBarHeight());
       }
     }
     else
     {
-      QQToast.a(this, getString(2131363409), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131363412), 0).b(getTitleBarHeight());
       return;
     }
     localObject = new Intent();
@@ -341,14 +337,14 @@ public class LiteActivity
   {
     if (!NetworkUtil.e(getActivity()))
     {
-      FMToastUtil.a(2131363449);
+      FMToastUtil.a(2131363450);
       return;
     }
     Object localObject2 = "";
     DataLineMsgSet localDataLineMsgSet = paramItemHolder.a();
     Object localObject1;
     if ((FileManagerUtil.a()) && (localDataLineMsgSet.isFileType()) && (localDataLineMsgSet.getFileTotalSize() > 5242880L)) {
-      localObject1 = getString(2131362019);
+      localObject1 = getString(2131362016);
     }
     label80:
     int i1;
@@ -359,8 +355,8 @@ public class LiteActivity
         localObject1 = getString(2131361829);
         localObject2 = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
         ((ActionSheet)localObject2).a((CharSequence)localObject1);
-        ((ActionSheet)localObject2).a(getResources().getString(2131361994), 1);
-        ((ActionSheet)localObject2).d(2131362790);
+        ((ActionSheet)localObject2).a(getResources().getString(2131361991), 1);
+        ((ActionSheet)localObject2).d(2131362794);
         ((ActionSheet)localObject2).a(new n(this, localDataLineMsgSet, paramItemHolder, (ActionSheet)localObject2));
         ((ActionSheet)localObject2).show();
         return;
@@ -395,7 +391,7 @@ public class LiteActivity
     for (;;)
     {
       break label205;
-      localObject1 = String.format(getString(2131361902), new Object[] { Integer.valueOf(i1) });
+      localObject1 = String.format(getString(2131361901), new Object[] { Integer.valueOf(i1) });
       break;
       break label80;
     }
@@ -403,7 +399,7 @@ public class LiteActivity
   
   private static void a(IphoneTitleBarActivity paramIphoneTitleBarActivity)
   {
-    View localView = paramIphoneTitleBarActivity.findViewById(2131296947);
+    View localView = paramIphoneTitleBarActivity.findViewById(2131296943);
     if (ThemeUtil.isInNightMode(paramIphoneTitleBarActivity.app)) {
       if (localView != null) {
         localView.setVisibility(0);
@@ -582,7 +578,7 @@ public class LiteActivity
     {
       paramArrayList = new ax(this, localaw, paramEFILETYPE);
       paramEFILETYPE = new i(this);
-      DialogUtil.a(getActivity(), 230, getString(2131361833), getString(2131361834), 2131362790, 2131361835, paramArrayList, paramEFILETYPE).show();
+      DialogUtil.a(getActivity(), 230, getString(2131361833), getString(2131361834), 2131362794, 2131361835, paramArrayList, paramEFILETYPE).show();
       return;
     }
     localaw.execute(new DataLineHandler.EFILETYPE[] { paramEFILETYPE });
@@ -635,7 +631,7 @@ public class LiteActivity
     {
       try
       {
-        paramViewGroup.setBackgroundResource(2130837674);
+        paramViewGroup.setBackgroundResource(2130837676);
         paramViewGroup.setTag(2131296393, "null");
         return true;
       }
@@ -644,14 +640,14 @@ public class LiteActivity
         if (QLog.isColorLevel()) {
           paramIphoneTitleBarActivity.printStackTrace();
         }
-        paramViewGroup.setBackgroundResource(2130839253);
+        paramViewGroup.setBackgroundResource(2130839221);
         continue;
       }
       if ("none".equals(paramString))
       {
         if (!"none".equals(localObject))
         {
-          paramViewGroup.setBackgroundResource(2130839246);
+          paramViewGroup.setBackgroundResource(2130839214);
           paramViewGroup.setTag(2131296393, "none");
         }
       }
@@ -700,12 +696,12 @@ public class LiteActivity
   {
     if (!NetworkUtil.e(getActivity()))
     {
-      FMToastUtil.a(2131363449);
+      FMToastUtil.a(2131363450);
       return;
     }
     DataLineMsgSet localDataLineMsgSet = paramItemHolder.a();
     if ((FileManagerUtil.a()) && (localDataLineMsgSet.isFileType()) && (localDataLineMsgSet.getFileTotalSize() > 5242880L)) {}
-    for (paramItemHolder = getString(2131362020);; paramItemHolder = "")
+    for (paramItemHolder = getString(2131362017);; paramItemHolder = "")
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject = localDataLineMsgSet.values().iterator();
@@ -722,10 +718,10 @@ public class LiteActivity
       {
         int i1 = localDataLineMsgSet.getTotalCount() - localDataLineMsgSet.getComeCount();
         if ((localDataLineMsgSet.getGroupType() == -2000) || ((localDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgSet.getFirstItem().bIsMoloImage))) {}
-        for (paramItemHolder = String.format(getString(2131361904), new Object[] { Integer.valueOf(i1) });; paramItemHolder = String.format(getString(2131361903), new Object[] { Integer.valueOf(i1) }))
+        for (paramItemHolder = String.format(getString(2131361903), new Object[] { Integer.valueOf(i1) });; paramItemHolder = String.format(getString(2131361902), new Object[] { Integer.valueOf(i1) }))
         {
           localObject = new o(this);
-          DialogUtil.a(this, 230, getString(2131361833), paramItemHolder, 2131362791, 2131362791, null, (DialogInterface.OnClickListener)localObject).show();
+          DialogUtil.a(this, 230, getString(2131361833), paramItemHolder, 2131362795, 2131362795, null, (DialogInterface.OnClickListener)localObject).show();
           return;
         }
       }
@@ -737,7 +733,7 @@ public class LiteActivity
         {
           localObject = paramItemHolder;
           if (!localDataLineMsgSet.isSingle()) {
-            localObject = String.format(getString(2131361901), new Object[] { Integer.valueOf(localArrayList.size()) });
+            localObject = String.format(getString(2131361900), new Object[] { Integer.valueOf(localArrayList.size()) });
           }
         }
       }
@@ -747,8 +743,8 @@ public class LiteActivity
       }
       localObject = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
       ((ActionSheet)localObject).a(paramItemHolder);
-      ((ActionSheet)localObject).a(getResources().getString(2131361993), 1);
-      ((ActionSheet)localObject).d(2131362790);
+      ((ActionSheet)localObject).a(getResources().getString(2131361990), 1);
+      ((ActionSheet)localObject).d(2131362794);
       ((ActionSheet)localObject).a(new p(this, localDataLineMsgSet, localArrayList, (ActionSheet)localObject));
       ((ActionSheet)localObject).show();
       return;
@@ -948,7 +944,7 @@ public class LiteActivity
       return;
     }
     paramIntent.putExtra("dataline_send_file_path", "");
-    setLeftViewName(2131362936);
+    setLeftViewName(2131362940);
     int i1 = paramIntent.getIntExtra("dataline_send_file_type", -1);
     paramIntent = new ArrayList();
     paramIntent.add(localObject);
@@ -1020,7 +1016,7 @@ public class LiteActivity
     ImageView localImageView = this.p;
     localImageView.setContentDescription(getResources().getText(2131361836));
     localImageView.setVisibility(0);
-    localImageView.setImageResource(2130839307);
+    localImageView.setImageResource(2130839273);
     localImageView.setOnClickListener(new k(this));
     this.p.setContentDescription("进入我的电脑高级设置界面");
     g(getIntent());
@@ -1313,18 +1309,16 @@ public class LiteActivity
   {
     setLeftViewName(paramIntent);
     String str = this.h.getText().toString();
-    if (str.contains(getString(2131362946)))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView = this.h;
+    if (str.contains(getString(2131362950))) {
       StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.a(), "dl_op4recent");
     }
     for (;;)
     {
       if ((paramIntent != null) && (paramIntent.getExtras() != null)) {
-        this.jdField_c_of_type_Boolean = paramIntent.getExtras().getBoolean("isBack2Root");
+        this.jdField_b_of_type_Boolean = paramIntent.getExtras().getBoolean("isBack2Root");
       }
       if ((paramIntent != null) && (!TextUtils.isEmpty(paramIntent.getAction())) && ((paramIntent.getAction().equals("android.intent.action.SEND")) || (paramIntent.getAction().equals("android.intent.action.SEND_MULTIPLE")))) {
-        this.jdField_c_of_type_Boolean = true;
+        this.jdField_b_of_type_Boolean = true;
       }
       if ((paramIntent != null) && (paramIntent.getIntExtra("dataline_forward_type", -1) != -1))
       {
@@ -1332,13 +1326,13 @@ public class LiteActivity
           this.jdField_a_of_type_Boolean = paramIntent.getExtras().getBoolean("is_share_flag");
         }
         if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_c_of_type_Boolean = true;
+          this.jdField_b_of_type_Boolean = true;
         }
       }
       return;
-      if (str.contains(getString(2131362937))) {
+      if (str.contains(getString(2131362941))) {
         StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.a(), "dl_op4buddylist");
-      } else if (str.contains(getString(2131361939))) {
+      } else if (str.contains(getString(2131361938))) {
         StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.a(), "dl_op4dongtai");
       }
     }
@@ -1347,7 +1341,7 @@ public class LiteActivity
   private void h()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837966);
+    localQQToast.a(2130837962);
     localQQToast.c(2000);
     localQQToast.b(2131361847);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
@@ -1356,7 +1350,7 @@ public class LiteActivity
   private void i()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837966);
+    localQQToast.a(2130837962);
     localQQToast.c(2000);
     localQQToast.b(2131361848);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
@@ -1365,7 +1359,7 @@ public class LiteActivity
   private void j()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130837966);
+    localQQToast.a(2130837962);
     localQQToast.c(2000);
     localQQToast.b(2131361863);
     localQQToast.b(this.jdField_a_of_type_ComTencentWidgetXListView.getHeight() / 2);
@@ -1440,7 +1434,7 @@ public class LiteActivity
       {
         localObject = String.format(getString(2131361891), new Object[] { Integer.valueOf(i3), Integer.valueOf(i4) });
         ((DataLineHandler)this.app.a(8)).a(115);
-        DialogUtil.a(this, 230, getString(2131361833), (String)localObject, 2131362790, 2131361892, localak, localal).show();
+        DialogUtil.a(this, 230, getString(2131361833), (String)localObject, 2131362794, 2131361892, localak, localal).show();
       }
       return;
     }
@@ -1504,7 +1498,7 @@ public class LiteActivity
     }
     boolean bool2 = getIntent().getBooleanExtra("dataline_send_file_flag", false);
     getIntent().putExtra("dataline_send_file_flag", false);
-    if ((this.jdField_c_of_type_Boolean) || (bool1) || (bool2))
+    if ((this.jdField_b_of_type_Boolean) || (bool1) || (bool2))
     {
       Intent localIntent = new Intent(this, SplashActivity.class);
       localIntent.putExtra("tab_index", 0);
@@ -1537,9 +1531,9 @@ public class LiteActivity
       {
         return false;
         localObject2 = ((ItemHolder)localObject1).a().jdField_a_of_type_AndroidWidgetRelativeLayout;
-        localQQCustomMenu.a(2131298994, paramView.getContext().getString(2131363570));
-        localQQCustomMenu.a(2131296652, paramView.getContext().getString(2131363568));
-        localQQCustomMenu.a(2131296656, paramView.getContext().getString(2131362658));
+        localQQCustomMenu.a(2131298943, paramView.getContext().getString(2131363564));
+        localQQCustomMenu.a(2131296652, paramView.getContext().getString(2131363562));
+        localQQCustomMenu.a(2131296656, paramView.getContext().getString(2131362666));
         localObject1 = "消息";
         continue;
         localObject2 = ((ItemHolder)localObject1).a().jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -1560,17 +1554,17 @@ public class LiteActivity
       {
         localQQCustomMenu.a(2131296652, localContext.getString(2131361852));
         if (localDataLineMsgSet.getGroupType() == -2000) {
-          localQQCustomMenu.a(2131296656, paramView.getContext().getString(2131362658));
+          localQQCustomMenu.a(2131296656, paramView.getContext().getString(2131362666));
         }
         if (a(this.app, localDataLineMsgRecord)) {
-          localQQCustomMenu.a(2131298995, localContext.getString(2131361851));
+          localQQCustomMenu.a(2131298944, localContext.getString(2131361851));
         }
       }
     }
     for (;;)
     {
       localObject2 = ((RelativeLayout)localObject2).getContext();
-      localQQCustomMenu.a(2131298987, ((Context)localObject2).getString(2131361850));
+      localQQCustomMenu.a(2131298936, ((Context)localObject2).getString(2131361850));
       if ((localDataLineMsgSet.getGroupType() == -2000) || ((localDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgRecord.bIsMoloImage))) {}
       for (boolean bool = true;; bool = false)
       {
@@ -1742,7 +1736,7 @@ public class LiteActivity
     getWindow().setBackgroundDrawable(null);
     f();
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$LiteJumpAction = new LiteActivity.LiteJumpAction(this, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)findViewById(2131296941));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)findViewById(2131296937));
     this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131296393, "n/a");
     this.app.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     this.app.a(ChatActivity.class, this.jdField_a_of_type_AndroidOsHandler);
@@ -1750,9 +1744,8 @@ public class LiteActivity
     if (localObject1 != null) {
       ((QQMessageFacade)localObject1).addObserver(this);
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296942));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296938));
     this.jdField_a_of_type_AndroidViewView = new View(this);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
     ((DataLineHandler)this.app.a(8)).jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView.setPadding(0, (int)TypedValue.applyDimension(1, 12.0F, getResources().getDisplayMetrics()), 0, 0);
     this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_AndroidViewView);
@@ -1766,14 +1759,14 @@ public class LiteActivity
       this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter = new DatalineSessionAdapter(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList, this, this.app);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter);
       localObject1 = LayoutInflater.from(getActivity()).inflate(2130903115, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130838640));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130838616));
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader((View)localObject1);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new h(this));
       this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131296553));
-      localObject1 = getResources().getDrawable(2130839328);
+      localObject1 = getResources().getDrawable(2130839294);
       if (!(localObject1 instanceof BitmapDrawable)) {
-        break label828;
+        break label817;
       }
       localObject1 = ((BitmapDrawable)localObject1).getBitmap();
     }
@@ -1788,7 +1781,7 @@ public class LiteActivity
           ((BitmapDrawable)localObject1).setDither(true);
           this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable((Drawable)localObject1);
         }
-        this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131296946));
+        this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131296942));
         this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
         this.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131296667));
@@ -1807,9 +1800,9 @@ public class LiteActivity
           this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new ac(this));
           e();
           this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ar(this));
-          this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131296945));
+          this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131296941));
           this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131296944));
+          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131296940));
           this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
           m();
           addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
@@ -1831,7 +1824,7 @@ public class LiteActivity
           return true;
           this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList = ((DataLineMsgProxy)localObject1).a(true);
           break;
-          label828:
+          label817:
           if ((localObject1 instanceof SkinnableBitmapDrawable)) {
             localObject1 = ((SkinnableBitmapDrawable)localObject1).getBitmap();
           }
@@ -1902,7 +1895,7 @@ public class LiteActivity
         QLog.d(jdField_a_of_type_JavaLangString, 2, "finishing LiteActivity (ask ippan)");
       }
       finish();
-      com.tencent.mobileqq.app.PhoneContactManagerImp.jdField_c_of_type_Boolean = false;
+      com.tencent.mobileqq.app.PhoneContactManagerImp.c = false;
     }
   }
   
@@ -1960,13 +1953,11 @@ public class LiteActivity
       d(false);
     }
     ReportController.b(this.app, "CliOper", "", "", "0X8004078", "0X8004078", 0, 0, "", "", "", "");
-    label305:
-    Object localObject;
     switch (i1)
     {
     default: 
-    case 2131296944: 
-    case 2131296945: 
+    case 2131296940: 
+    case 2131296941: 
       do
       {
         return;
@@ -1981,12 +1972,12 @@ public class LiteActivity
           {
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout = ((FastImagePreviewLayout)LayoutInflater.from(getActivity()).inflate(2130903062, null));
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setBackgroundDrawable(getResources().getDrawable(2130837543));
-            i1 = (int)(5.0F * this.jdField_c_of_type_Float);
+            i1 = (int)(5.0F * this.c);
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setPadding(i1, i1, i1, i1 * 3);
             this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-2, -2);
             this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(12);
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((int)(5.0F * this.jdField_c_of_type_Float + 0.5F));
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin = ((int)(246.0F * this.jdField_c_of_type_Float + 0.5F));
+            this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((int)(5.0F * this.c + 0.5F));
+            this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin = ((int)(246.0F * this.c + 0.5F));
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setId(2131296410);
             this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setHandler(this.jdField_a_of_type_AndroidOsHandler);
           }
@@ -2006,24 +1997,24 @@ public class LiteActivity
         paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       } while ((paramView == null) || (paramView.length() <= 0));
       StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.a(), "dl_cktxt");
-      localObject = AppConstants.T;
       a(new QQText(paramView, 13, 32, 6000).toString());
       this.jdField_a_of_type_AndroidWidgetEditText.setText("");
       return;
     case 2131296312: 
-      localObject = (Intent)paramView.getTag();
-      if (((Intent)localObject).getExtras().getInt("uintype") == 0)
+      label305:
+      Intent localIntent = (Intent)paramView.getTag();
+      if (localIntent.getExtras().getInt("uintype") == 0)
       {
-        String str = ((Intent)localObject).getExtras().getString("uin");
+        String str = localIntent.getExtras().getString("uin");
         if (!ChatActivityUtils.a(this.app, str))
         {
-          ((Intent)localObject).removeExtra("uintype");
-          ((Intent)localObject).putExtra("uintype", 1003);
+          localIntent.removeExtra("uintype");
+          localIntent.putExtra("uintype", 1003);
         }
       }
-      ((Intent)localObject).putExtra("message_box_click", true);
+      localIntent.putExtra("message_box_click", true);
       MediaPlayerManager.a(this.app).a(false);
-      startActivity((Intent)localObject);
+      startActivity(localIntent);
       paramView.setVisibility(8);
       finish();
       return;

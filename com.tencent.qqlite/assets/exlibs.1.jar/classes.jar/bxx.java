@@ -1,49 +1,17 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryCollector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bxx
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  public bxx(AIOGalleryScene paramAIOGalleryScene) {}
   
-  private bxx(AIOGalleryCollector paramAIOGalleryCollector) {}
-  
-  private void a()
+  public void onClick(View paramView)
   {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Int += 1;
-      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      if (this.jdField_b_of_type_Int > 1) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      this.c = false;
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void c()
-  {
-    if ((this.jdField_b_of_type_Boolean) && (!this.c))
-    {
-      this.jdField_a_of_type_Int += 1;
-      this.c = true;
-    }
+    ReportController.b(null, "CliOper", "", "", "View_pic", "View_pic_menu", 0, 0, "1", "", "", "");
+    AIOGalleryScene.a(this.a);
   }
 }
 

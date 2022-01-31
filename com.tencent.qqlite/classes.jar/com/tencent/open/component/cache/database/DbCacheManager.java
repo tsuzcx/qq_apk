@@ -3,7 +3,7 @@ package com.tencent.open.component.cache.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import fdn;
+import fds;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ public class DbCacheManager
   extends AbstractDbCacheManager
 {
   protected Cursor a;
-  protected fdn a;
+  protected fds a;
   protected final ArrayList b = new ArrayList();
   protected String e;
   protected String f;
@@ -121,9 +121,9 @@ public class DbCacheManager
     finally {}
   }
   
-  void a(fdn paramfdn)
+  void a(fds paramfds)
   {
-    this.jdField_a_of_type_Fdn = paramfdn;
+    this.jdField_a_of_type_Fds = paramfds;
   }
   
   public void a(DbCacheData[] paramArrayOfDbCacheData, int paramInt)
@@ -256,9 +256,9 @@ public class DbCacheManager
   
   protected void f()
   {
-    fdn localfdn = this.jdField_a_of_type_Fdn;
-    if (localfdn != null) {
-      localfdn.a(this);
+    fds localfds = this.jdField_a_of_type_Fds;
+    if (localfds != null) {
+      localfds.a(this);
     }
   }
   

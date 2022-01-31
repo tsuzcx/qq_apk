@@ -1,33 +1,22 @@
-import android.os.Handler;
-import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.config.QQMapConstants;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.widget.SelectPicPopupWindow;
+import java.io.File;
 
-public class bdo
-  implements AsyncBack
+class bdo
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
+  bdo(bdm parambdm) {}
   
-  public bdo(QQMapActivity paramQQMapActivity) {}
-  
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt - this.jdField_a_of_type_Int >= 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdp(this, paramInt));
+    this.a.a.r = null;
+    this.a.a.p = true;
+    this.a.a.a.a(this.a.a.getString(2131362610));
+    if (new File(QQMapConstants.i).exists()) {
+      UniformDownloadUtil.a(QQMapConstants.i);
     }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdq(this));
-      ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_tx_download", 0, 0, "", "", "", "");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdr(this));
-    ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_tx_download", 0, 1, "", "", "", "");
   }
 }
 

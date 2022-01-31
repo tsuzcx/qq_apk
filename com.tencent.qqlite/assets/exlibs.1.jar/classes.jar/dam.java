@@ -1,20 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class dam
-  implements TextWatcher
+  extends Handler
 {
-  public dam(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private QQAnimationDrawable a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public dam(QQAnimationDrawable paramQQAnimationDrawable)
   {
-    this.a.b = true;
+    this.a = paramQQAnimationDrawable;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.obj instanceof Long)) {
+      this.a.scheduleSelf(this.a, ((Long)paramMessage.obj).longValue());
+    }
+  }
 }
 
 

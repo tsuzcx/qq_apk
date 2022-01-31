@@ -599,7 +599,6 @@ class ThemeSwitchManager$SwitchThemeTask
       try
       {
         int i = paramObject.getInt("ret");
-        paramObject.getString("msg");
         localObject1 = paramObject.getString("themeId");
         String str = paramObject.getString("version");
         if (i != this.THEME_OPTION_SUCCESS) {
@@ -689,7 +688,7 @@ class ThemeSwitchManager$SwitchThemeTask
       ThemeSwitchManager.isSwitchTheme = true;
       this.this$0.themeSwitchDialog = new QQProgressDialog(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
       this.this$0.themeSwitchDialog.setCancelable(false);
-      this.this$0.themeSwitchDialog.b(2131363260);
+      this.this$0.themeSwitchDialog.b(2131363263);
       this.this$0.themeSwitchDialog.show();
     }
     for (;;)

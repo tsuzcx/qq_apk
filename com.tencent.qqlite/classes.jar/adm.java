@@ -1,37 +1,30 @@
-import android.hardware.SensorManager;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class adm
-  implements AudioPlayer.AudioPlayerListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public adm(ChatHistory paramChatHistory) {}
+  public adm(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void a(View paramView, int paramInt)
   {
-    this.a.k();
-    if (this.a.a != null) {
-      this.a.a.b();
+    switch (paramInt)
+    {
     }
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      paramView = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).obtainMessage(1);
+      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new adn(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    }
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.a(2131363175);
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

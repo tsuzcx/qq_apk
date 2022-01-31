@@ -18,7 +18,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import etf;
+import etk;
 import friendlist.stTroopRemarkInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class DBUtils
   
   public static DBUtils a()
   {
-    return etf.a;
+    return etk.a;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt)

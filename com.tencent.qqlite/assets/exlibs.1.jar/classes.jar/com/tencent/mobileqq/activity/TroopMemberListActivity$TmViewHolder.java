@@ -25,19 +25,19 @@ public class TroopMemberListActivity$TmViewHolder
   
   public TroopMemberListActivity$TmViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297013));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297406));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131297844));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131298935);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131298898);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131298899);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297015));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298936));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296879));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298937));
-    this.e = ((TextView)paramView.findViewById(2131298939));
-    this.f = ((TextView)paramView.findViewById(2131298901));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131298938);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297009));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297402));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131297828));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131298884);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131298847);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131298848);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297011));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298885));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298886));
+    this.e = ((TextView)paramView.findViewById(2131298888));
+    this.f = ((TextView)paramView.findViewById(2131298850));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131298887);
     this.jdField_a_of_type_Boolean = false;
   }
 }

@@ -1,26 +1,22 @@
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
 
 public class aas
-  implements Comparator
+  implements Runnable
 {
-  public aas(BaseChatPie paramBaseChatPie) {}
+  public aas(BaseChatPie paramBaseChatPie, Intent paramIntent1, Intent paramIntent2) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void run()
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      if (paramChatMessage1.getId() <= paramChatMessage2.getId()) {}
-    }
-    while (paramChatMessage1.time > paramChatMessage2.time)
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.D();
+    if (this.b.getBooleanExtra("isFromShare", false))
     {
-      return 1;
-      if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
-        return -1;
-      }
-      return 0;
+      this.b.removeExtra("forward_type");
+      this.b.getExtras().remove("forward_type");
+      this.b.removeExtra("isFromShare");
     }
-    return -1;
   }
 }
 

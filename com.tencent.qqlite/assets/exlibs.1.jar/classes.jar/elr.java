@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class elr
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public elr(VideoRecordActivity paramVideoRecordActivity) {}
+  public elr(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView, int paramInt)
+  {
+    TroopLocationModifyActivity.a(this.a);
+    if (paramInt == 0) {
+      TroopLocationModifyActivity.a(this.a, "");
+    }
+  }
 }
 
 

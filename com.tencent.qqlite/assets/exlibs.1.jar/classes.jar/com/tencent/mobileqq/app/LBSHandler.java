@@ -113,10 +113,10 @@ public class LBSHandler
   
   public static Dialog a(Activity paramActivity, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramString = DialogUtil.a(paramActivity, 230, null, paramString, 2131362790, 2131363077, paramOnClickListener1, paramOnClickListener2);
+    paramString = DialogUtil.a(paramActivity, 230, null, paramString, 2131362794, 2131363080, paramOnClickListener1, paramOnClickListener2);
     if (paramString != null)
     {
-      ((TextView)paramString.findViewById(2131296929)).setVisibility(8);
+      ((TextView)paramString.findViewById(2131296925)).setVisibility(8);
       paramOnClickListener1 = (TextView)paramString.findViewById(2131296470);
       paramOnClickListener2 = new LinearLayout.LayoutParams(-2, -2);
       paramOnClickListener2.gravity = 17;
@@ -1232,7 +1232,7 @@ public class LBSHandler
     Roam.RoamReqHead localRoamReqHead = new Roam.RoamReqHead();
     localRoamReqHead.protocol_ver.set(1);
     localRoamReqHead.client_plat_id.set(109);
-    localRoamReqHead.client_ver.set("3.3.0");
+    localRoamReqHead.client_ver.set("3.4.0");
     localRoamReqHead.os_ver.set(Build.VERSION.RELEASE);
     Object localObject = localRoamReqHead.uin;
     if (TextUtils.isDigitsOnly(str)) {}
@@ -1243,7 +1243,7 @@ public class LBSHandler
       ((Roam.RoamQualifyReq)localObject).head.set(localRoamReqHead);
       localToServiceMsg.putWupBuffer(((Roam.RoamQualifyReq)localObject).toByteArray());
       if (QLog.isColorLevel()) {
-        QLog.d("LBSHandler", 2, "getRoamQualify client_ver=3.3.0,os_ver=" + Build.VERSION.RELEASE + ",uin=" + str);
+        QLog.d("LBSHandler", 2, "getRoamQualify client_ver=3.4.0,os_ver=" + Build.VERSION.RELEASE + ",uin=" + str);
       }
       b(localToServiceMsg);
       return;

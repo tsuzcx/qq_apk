@@ -1,44 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
 
 public class dxs
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public dxs(RoamSearchDialog paramRoamSearchDialog, List paramList, int paramInt) {}
+  public dxs(RoamLocalSearchBar paramRoamLocalSearchBar) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.size() < this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Dxv.b = true;
-      if (QLog.isColorLevel()) {
-        QLog.i(RoamSearchDialog.jdField_a_of_type_JavaLangString, 2, "getResultFromLocation, currentCount = " + this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.size() + ", totalCount = " + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label209;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Dxv.a = false;
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Dxv.notifyDataSetChanged();
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Dxv.b = false;
-      break;
-      label209:
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog = null;
+    paramDialogInterface = AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidContentContext, 2130968605);
+    this.a.startAnimation(paramDialogInterface);
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.service;
 
 import com.dataline.util.DBNetworkUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ecx;
 import edd;
 import edj;
+import edp;
 import java.io.IOException;
 import java.net.InetAddress;
 
@@ -12,7 +12,7 @@ public class HttpServer
 {
   public static final String a = "dlFileTransfer.Server";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private edd jdField_a_of_type_Edd = null;
+  private edj jdField_a_of_type_Edj = null;
   
   public HttpServer(QQAppInterface paramQQAppInterface)
   {
@@ -21,69 +21,69 @@ public class HttpServer
   
   public int a()
   {
-    if (this.jdField_a_of_type_Edd != null) {
-      return this.jdField_a_of_type_Edd.a();
+    if (this.jdField_a_of_type_Edj != null) {
+      return this.jdField_a_of_type_Edj.a();
     }
     return 0;
   }
   
   public String a(long paramLong)
   {
-    return edj.a(paramLong);
+    return edp.a(paramLong);
   }
   
   public InetAddress a()
   {
-    if (this.jdField_a_of_type_Edd != null) {
-      return this.jdField_a_of_type_Edd.a();
+    if (this.jdField_a_of_type_Edj != null) {
+      return this.jdField_a_of_type_Edj.a();
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Edd != null)
+    if (this.jdField_a_of_type_Edj != null)
     {
-      this.jdField_a_of_type_Edd.a();
-      this.jdField_a_of_type_Edd = null;
+      this.jdField_a_of_type_Edj.a();
+      this.jdField_a_of_type_Edj = null;
     }
   }
   
   public void a(long paramLong)
   {
-    edj.a(paramLong);
+    edp.a(paramLong);
   }
   
   public void a(long paramLong, String paramString)
   {
-    edj.a(paramLong, paramString);
+    edp.a(paramLong, paramString);
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Edd != null) {
-      return this.jdField_a_of_type_Edd.c();
+    if (this.jdField_a_of_type_Edj != null) {
+      return this.jdField_a_of_type_Edj.c();
     }
     return false;
   }
   
   public boolean a(String paramString, HttpNotify paramHttpNotify)
   {
-    paramHttpNotify = new ecx(paramHttpNotify);
+    paramHttpNotify = new edd(paramHttpNotify);
     try
     {
-      if (this.jdField_a_of_type_Edd != null)
+      if (this.jdField_a_of_type_Edj != null)
       {
-        if (this.jdField_a_of_type_Edd.c()) {
+        if (this.jdField_a_of_type_Edj.c()) {
           return true;
         }
         a();
       }
       if (DBNetworkUtil.a())
       {
-        this.jdField_a_of_type_Edd = new edd(paramString, paramHttpNotify, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_Edd.setDaemon(false);
-        boolean bool = this.jdField_a_of_type_Edd.b();
+        this.jdField_a_of_type_Edj = new edj(paramString, paramHttpNotify, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_Edj.setDaemon(false);
+        boolean bool = this.jdField_a_of_type_Edj.b();
         return bool;
       }
     }
@@ -93,7 +93,7 @@ public class HttpServer
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Edd.a();
+    return this.jdField_a_of_type_Edj.a();
   }
 }
 

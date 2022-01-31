@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile;
 
 import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.QLog;
-import ehl;
-import ehm;
+import ehq;
+import ehr;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -244,9 +244,9 @@ public class RichMediaUtil
           if ((QLog.isColorLevel()) || (jdField_a_of_type_Boolean)) {
             QLog.d("RichMediaUtil", 2, "activeReport start : " + paramString);
           }
-          jdField_a_of_type_JavaUtilHashMap.put(paramString, new ehm(paramInt1, paramArrayOfString));
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, new ehr(paramInt1, paramArrayOfString));
           QLog.startColorLog(paramArrayOfString);
-          paramString = new ehl(paramString);
+          paramString = new ehq(paramString);
           new Timer().schedule(paramString, paramLong);
           return;
         }
@@ -298,7 +298,7 @@ public class RichMediaUtil
         if ((QLog.isColorLevel()) || (jdField_a_of_type_Boolean)) {
           QLog.d("RichMediaUtil", 2, "activeReport stop : " + paramString1 + ", " + paramBoolean);
         }
-        paramString1 = (ehm)jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+        paramString1 = (ehr)jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
         if (paramString1 != null) {
           QLog.endColorLog(paramString1.jdField_a_of_type_ArrayOfJavaLangString, paramString1.jdField_a_of_type_Int, paramBoolean, paramString2);
         }

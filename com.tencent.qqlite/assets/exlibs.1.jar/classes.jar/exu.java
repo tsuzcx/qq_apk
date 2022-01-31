@@ -1,53 +1,56 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CustomAlertDialog;
-import com.tencent.mobileqq.widget.CustomAlertDialog.OnPrepareOptionMenuItem;
-import java.util.HashMap;
-import java.util.List;
+import android.app.Activity;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
 
 public class exu
-  extends BaseAdapter
+  implements ActionMode.Callback
 {
-  List jdField_a_of_type_JavaUtilList;
+  exu(ContainerView.SelectableTextView paramSelectableTextView, ContainerView paramContainerView) {}
   
-  public exu(CustomAlertDialog paramCustomAlertDialog, List paramList)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903104, null);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMenuItem.getItemId() == 2131298931)
+    {
+      paramActionMode = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getContext();
+      bool1 = bool2;
+      if (paramActionMode != null)
+      {
+        bool1 = bool2;
+        if ((paramActionMode instanceof TextPreviewActivity))
+        {
+          paramMenuItem = (TextPreviewActivity)paramActionMode;
+          CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getText().subSequence(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionStart(), this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionEnd());
+          if (localCharSequence != null) {
+            TextPreviewActivity.a(localCharSequence.toString(), (Activity)paramActionMode, paramMenuItem.app, paramMenuItem.g, paramMenuItem.jdField_a_of_type_Int, TextPreviewActivity.jdField_a_of_type_Long, false);
+          }
+          ReportController.b(paramMenuItem.app, "CliOper", "", "", "0X8004065", "0X8004065", 0, 0, "", "", "", "");
+          bool1 = true;
+        }
+      }
     }
-    ((TextView)paramViewGroup.findViewById(2131296764)).setText((String)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("optionStr"));
-    paramViewGroup.setOnClickListener(new exv(this, paramInt));
-    ((ImageView)paramViewGroup.findViewById(2131296763)).setImageResource(((Integer)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("imgId")).intValue());
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem.a(paramInt, paramViewGroup);
-    }
-    return paramViewGroup;
+    return bool1;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode.getMenuInflater().inflate(2131755008, paramMenu);
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return true;
   }
 }
 

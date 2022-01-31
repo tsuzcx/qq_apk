@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bxp;
+import bxo;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
@@ -28,31 +29,37 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramMessageRecord = (bxp)paramViewHolder;
-    paramMessageRecord = paramView;
+    paramViewHolder = (bxo)paramViewHolder;
+    paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903112, null);
-      paramMessageRecord = (TextView)paramViewHolder.findViewById(2131296827);
-      paramMessageRecord.setMovementMethod(null);
-      paramMessageRecord.setGravity(17);
-      paramMessageRecord = paramViewHolder;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903112, null);
+      paramViewHolder = (TextView)paramView.findViewById(2131296823);
+      paramViewHolder.setMovementMethod(null);
+      paramViewHolder.setGravity(17);
+      paramViewHolder = paramView;
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        paramMessageRecord = (TextView)paramViewHolder.findViewById(2131296838);
-        paramView = (TextView)paramViewHolder.findViewById(2131296839);
-        paramMessageRecord.setBackgroundColor(2130838323);
-        paramView.setBackgroundColor(2130838323);
-        paramMessageRecord = paramViewHolder;
+        paramViewHolder = (TextView)paramView.findViewById(2131296834);
+        paramLinearLayout = (TextView)paramView.findViewById(2131296835);
+        paramViewHolder.setBackgroundColor(2130838315);
+        paramLinearLayout.setBackgroundColor(2130838315);
+        paramViewHolder = paramView;
       }
     }
-    ((TextView)paramMessageRecord.findViewById(2131296827)).setTextColor(paramMessageRecord.getResources().getColorStateList(2131427337));
-    return paramMessageRecord;
+    paramView = (TextView)paramViewHolder.findViewById(2131296823);
+    if ((paramMessageRecord.istroop == 1) && (AnonymousChatHelper.a().a(paramMessageRecord.senderuin)))
+    {
+      paramView.setTextColor(AnonymousChatHelper.d);
+      return paramViewHolder;
+    }
+    paramView.setTextColor(paramViewHolder.getResources().getColorStateList(2131427337));
+    return paramViewHolder;
   }
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bxp(this);
+    return new bxo(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

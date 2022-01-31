@@ -1,28 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface.LocListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class oc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public oc(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
+  public oc(PublicAccountJavascriptInterface.LocListener paramLocListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
-    if (paramDialogInterface == null) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramInt != 1);
-    paramDialogInterface.loadUrl("javascript:" + this.b);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "-2", "{type:1, data:null}" });
+    String str = Long.toString(System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+    ReportController.a(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), str, "", "");
+    if (PublicAccountJavascriptInterface.a.decrementAndGet() == 0) {
+      SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    }
   }
 }
 

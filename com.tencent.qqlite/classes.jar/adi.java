@@ -1,20 +1,14 @@
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class adi
-  implements Runnable
+  extends ProxyObserver
 {
-  public adi(ChatHistory paramChatHistory, boolean paramBoolean) {}
+  public adi(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void a()
   {
-    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (int i = 2131363117;; i = 2131363118)
-    {
-      localChatHistory1.b(localChatHistory2.getString(i));
-      return;
-    }
+    this.a.runOnUiThread(new adj(this));
   }
 }
 

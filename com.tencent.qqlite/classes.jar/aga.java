@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class aga
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public aga(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public aga(Contacts paramContacts) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.setSelection(0);
   }
 }
 

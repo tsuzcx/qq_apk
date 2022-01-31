@@ -1,13 +1,14 @@
 import com.tencent.mobileqq.activity.ForwardOperations;
+import java.util.HashMap;
 
 class amp
   implements Runnable
 {
-  amp(amo paramamo) {}
+  amp(amm paramamm, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(1004, 0, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b);
+    this.jdField_a_of_type_Amm.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Amm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amm.jdField_a_of_type_Int, this.jdField_a_of_type_Amm.b, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

@@ -1,16 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.emoji.EmojiJsHandler;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.debug.DebugActivity;
 
-class ddg
-  implements DialogInterface.OnDismissListener
+public class ddg
+  implements DialogInterface.OnClickListener
 {
-  ddg(ddf paramddf) {}
+  private ddg(DebugActivity paramDebugActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.c();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

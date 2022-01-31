@@ -1,10 +1,20 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.util.ArrayList;
 
 public class avw
-  extends Handler
+  implements Runnable
 {
   public avw(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  
+  public void run()
+  {
+    this.a.c();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.a.app.a());
+    this.a.a.a(this.a.b, this.a.c, localArrayList);
+  }
 }
 
 

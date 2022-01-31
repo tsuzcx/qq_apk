@@ -1,35 +1,14 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.EmosmHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
 
-public class all
-  implements DragSortListView.RemoveListener
+class all
+  implements Runnable
 {
-  public all(EmosmActivity paramEmosmActivity) {}
+  all(alk paramalk, EmoticonPackage paramEmoticonPackage) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!NetworkUtil.e(this.a))
-    {
-      localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130837966);
-      ((QQToast)localObject).c(1500);
-      ((QQToast)localObject).a("无网络连接，删除失败");
-      ((QQToast)localObject).b(0);
-      return;
-    }
-    this.a.jdField_a_of_type_Int = 0;
-    this.a.b = 1;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131364053));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    ((EmosmHandler)this.a.app.a(11)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    this.jdField_a_of_type_Alk.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
   }
 }
 

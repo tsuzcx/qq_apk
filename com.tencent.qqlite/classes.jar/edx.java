@@ -1,76 +1,138 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
 public class edx
-  implements Runnable
+  implements SharedPreferences.Editor
 {
-  public edx(BaseShortVideoOprerator paramBaseShortVideoOprerator, ShortVideoUploadInfo paramShortVideoUploadInfo) {}
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  public edx(MessageCache paramMessageCache, SharedPreferences.Editor paramEditor)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo;
-    int i;
-    if (((ShortVideoUploadInfo)localObject).jdField_g_of_type_Int == 0)
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = paramEditor;
+  }
+  
+  @TargetApi(9)
+  public void apply()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.a((ShortVideoUploadInfo)localObject);
-      i = 1;
+      this.jdField_a_of_type_Boolean = false;
+      if (Build.VERSION.SDK_INT >= 9) {}
     }
-    for (;;)
+    else
     {
-      if (localObject == null)
+      try
       {
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
         return;
-        if (((ShortVideoUploadInfo)localObject).jdField_g_of_type_Int == 1)
-        {
-          localObject = (MessageForShortVideo)((ShortVideoUploadInfo)localObject).a;
-          i = 0;
-        }
       }
-      else
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
-        long l = System.currentTimeMillis();
-        TransferRequest localTransferRequest = new TransferRequest();
-        localTransferRequest.jdField_a_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-        localTransferRequest.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).frienduin;
-        localTransferRequest.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-        if (((MessageRecord)localObject).istroop == 0) {
-          localTransferRequest.jdField_b_of_type_Int = 6;
+        if (QLog.isColorLevel()) {
+          QLog.w(MessageCache.c(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
         }
-        for (;;)
-        {
-          localTransferRequest.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-          localTransferRequest.jdField_a_of_type_Boolean = true;
-          localTransferRequest.d = 0;
-          localTransferRequest.e = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo.e;
-          localTransferRequest.h = (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo.jdField_g_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo.h + "QQ_&_MoblieQQ_&_QQ" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo.jdField_f_of_type_JavaLangString);
-          if (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack != null) {
-            localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator;
-          }
-          localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
-          if (i != 0) {
-            BaseShortVideoOprerator.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator, (MessageRecord)localObject);
-          }
-          Logger.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_JavaLangString, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
-          Logger.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_JavaLangString, "doSendShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
-          return;
-          if (((MessageRecord)localObject).istroop == 3000) {
-            localTransferRequest.jdField_b_of_type_Int = 17;
-          } else if (((MessageRecord)localObject).istroop == 1) {
-            localTransferRequest.jdField_b_of_type_Int = 9;
-          }
-        }
+        this.jdField_a_of_type_Boolean = true;
+        return;
       }
-      localObject = null;
-      i = 0;
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(MessageCache.c(), 2, "commit Exception ! ", localException);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return;
+      }
     }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+  }
+  
+  public SharedPreferences.Editor clear()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.clear();
+    return this;
+  }
+  
+  public boolean commit()
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    try
+    {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+      return bool;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w(MessageCache.c(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w(MessageCache.c(), 2, "commit Exception ! ", localException);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return false;
+  }
+  
+  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(paramString, paramBoolean);
+    return this;
+  }
+  
+  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(paramString, paramFloat);
+    return this;
+  }
+  
+  public SharedPreferences.Editor putInt(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(paramString, paramInt);
+    return this;
+  }
+  
+  public SharedPreferences.Editor putLong(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(paramString, paramLong);
+    return this;
+  }
+  
+  public SharedPreferences.Editor putString(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(paramString1, paramString2);
+    return this;
+  }
+  
+  @Deprecated
+  public SharedPreferences.Editor putStringSet(String paramString, Set paramSet)
+  {
+    return this;
+  }
+  
+  public SharedPreferences.Editor remove(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.remove(paramString);
+    return this;
   }
 }
 

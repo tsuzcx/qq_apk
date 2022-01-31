@@ -1,17 +1,69 @@
+import android.content.Intent;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aho
-  implements Runnable
+  extends CardObserver
 {
   public aho(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void run()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    Card localCard = ((FriendsManager)this.a.app.getManager(43)).b(this.a.app.a());
-    this.a.app.runOnUiThread(new ahp(this, localCard));
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (this.a.app.a().equals(paramObject.uin)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DetailProfileActivity", 2, "on my card download");
+        }
+        this.a.a(paramObject);
+      }
+      return;
+    }
+  }
+  
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DetailProfileActivity", 2, "onGetDetailInfo, isSuccess = " + paramBoolean);
+    }
+    if ((paramBoolean) && (paramCard != null) && (this.a.app.a().equals(paramCard.uin))) {
+      this.a.a(paramCard);
+    }
+  }
+  
+  protected void onGetLocationDescription(boolean paramBoolean, String paramString, Card paramCard)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DetailProfileActivity", 2, "onGetLocationDescription, isSuccess = " + paramBoolean + ", card = ");
+    }
+    if ((paramBoolean) && (paramString.equals(this.a.app.a())) && (paramCard != null)) {
+      this.a.a(paramCard);
+    }
+  }
+  
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  {
+    this.a.a();
+    if ((!paramBoolean) || (paramInt != 0))
+    {
+      int i = 2131364465;
+      if (paramInt == 36) {
+        i = 2131364466;
+      }
+      this.a.a(i, 1);
+      return;
+    }
+    DetailProfileActivity.a(this.a);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130968584);
+    paramCard = new Intent();
+    paramCard.putExtra("changed", true);
+    this.a.setResult(-1, paramCard);
   }
 }
 

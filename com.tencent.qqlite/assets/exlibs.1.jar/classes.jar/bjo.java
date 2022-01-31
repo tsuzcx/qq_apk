@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
-public final class bjo
-  implements Parcelable.Creator
+public class bjo
+  implements Handler.Callback
 {
-  public SetTroopAdminsActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new SetTroopAdminsActivity.TroopAdmin(paramParcel, null);
-  }
+  public bjo(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public SetTroopAdminsActivity.TroopAdmin[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new SetTroopAdminsActivity.TroopAdmin[paramInt];
+    this.a.finish();
+    return true;
   }
 }
 

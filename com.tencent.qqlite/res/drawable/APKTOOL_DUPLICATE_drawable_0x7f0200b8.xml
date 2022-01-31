@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/skin_aio_tip_bg_pressed" />
-    <item android:drawable="@drawable/skin_aio_tip_bg" />
-</selector>
+    <solid android:color="#70000000" />
+    <corners android:radius="12.0dip" android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" />
+</shape>

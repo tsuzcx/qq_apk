@@ -1,11 +1,24 @@
-import com.dataline.mpfile.LiteMpFileActionListActivity;
+import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.LiteMpFileDownloadActivity.SortComparator;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class bz
   implements Runnable
 {
-  public bz(LiteMpFileActionListActivity paramLiteMpFileActionListActivity) {}
+  public bz(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void run() {}
+  public void run()
+  {
+    Object localObject = (DataLineHandler)this.a.app.a(8);
+    LiteMpFileDownloadActivity.a(this.a, ((DataLineHandler)localObject).a().a());
+    localObject = new LiteMpFileDownloadActivity.SortComparator(this.a);
+    Collections.sort(LiteMpFileDownloadActivity.a(this.a), (Comparator)localObject);
+    this.a.runOnUiThread(new ca(this));
+  }
 }
 
 

@@ -35,6 +35,10 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.FTNNotify
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.FileControl;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify;
+import uc;
+import ud;
+import ue;
+import uf;
 import ug;
 import uh;
 import ui;
@@ -48,10 +52,6 @@ import up;
 import uq;
 import ur;
 import us;
-import ut;
-import uu;
-import uv;
-import uw;
 
 public class LiteTransferWrapper
 {
@@ -109,7 +109,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new un(this, paramMsgCSBody));
+      new Handler(localLooper).post(new uj(this, paramMsgCSBody));
       return;
     }
     SetProxyToJni();
@@ -262,7 +262,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ut(this, paramInt));
+      new Handler(localLooper).post(new up(this, paramInt));
       return;
     }
     CancelAllToJNI(this.mLiteTransferOperator, paramInt);
@@ -279,7 +279,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uh(this, paramInt1, paramLong, paramInt2, paramBoolean));
+      new Handler(localLooper).post(new ud(this, paramInt1, paramLong, paramInt2, paramBoolean));
       return;
     }
     CancelGroupToJNI(this.mLiteTransferOperator, paramInt1, paramLong, paramInt2, paramBoolean);
@@ -305,7 +305,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new up(this, paramLong1, paramLong2, paramLong3, paramString1, paramLong4, paramArrayOfByte1, paramString2, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramLong5, paramLong6, paramLong7, paramBoolean));
+      new Handler(localLooper).post(new ul(this, paramLong1, paramLong2, paramLong3, paramString1, paramLong4, paramArrayOfByte1, paramString2, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramLong5, paramLong6, paramLong7, paramBoolean));
       return;
     }
     _convertFileComing0x210_0x2To0x211_0x2(paramLong1, paramLong2, paramLong3, paramString1, paramLong4, paramArrayOfByte1, paramString2, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramLong5, paramLong6, paramLong7, paramBoolean);
@@ -350,7 +350,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uw(this, paramArrayOfSession, paramArrayOfNFCInfo, paramArrayOfFTNInfo, paramBoolean));
+      new Handler(localLooper).post(new us(this, paramArrayOfSession, paramArrayOfNFCInfo, paramArrayOfFTNInfo, paramBoolean));
       return;
     }
     SetProxyToJni();
@@ -365,7 +365,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uv(this, paramArrayList, paramBoolean1, paramBoolean2));
+      new Handler(localLooper).post(new ur(this, paramArrayList, paramBoolean1, paramBoolean2));
       return;
     }
     SetProxyToJni();
@@ -383,7 +383,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ui(this, paramString));
+      new Handler(localLooper).post(new ue(this, paramString));
       return;
     }
     SetDefaultPathToJNI(this.mLiteTransferOperator, paramString);
@@ -411,7 +411,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uk(this, paramString1, paramString2));
+      new Handler(localLooper).post(new ug(this, paramString1, paramString2));
       return;
     }
     SetServicePathToJNI(this.mLiteTransferOperator, paramString1, paramString2);
@@ -428,7 +428,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ul(this, paramString));
+      new Handler(localLooper).post(new uh(this, paramString));
       return;
     }
     SetTempPathToJNI(this.mLiteTransferOperator, paramString);
@@ -445,7 +445,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uj(this, paramString));
+      new Handler(localLooper).post(new uf(this, paramString));
       return;
     }
     SetThumbPathToJNI(this.mLiteTransferOperator, paramString);
@@ -462,7 +462,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new um(this, paramString));
+      new Handler(localLooper).post(new ui(this, paramString));
       return;
     }
     SetThumbTempPathToJNI(this.mLiteTransferOperator, paramString);
@@ -476,7 +476,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uu(this, paramArrayOfSession));
+      new Handler(localLooper).post(new uq(this, paramArrayOfSession));
       return;
     }
     SyncGroupToJNI(this.mLiteTransferOperator, paramArrayOfSession);
@@ -488,7 +488,7 @@ public class LiteTransferWrapper
   {
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new ur(this));
+      new Handler(localLooper).post(new un(this));
     }
     while (this.mLiteTransferOperator != 0L) {
       return;
@@ -542,7 +542,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uo(this, paramInt, paramMsgSCBody));
+      new Handler(localLooper).post(new uk(this, paramInt, paramMsgSCBody));
       return;
     }
     DoPbMsgReplyToJNI(this.mLiteTransferOperator, paramInt, paramMsgSCBody);
@@ -552,7 +552,7 @@ public class LiteTransferWrapper
   {
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new us(this, paramBoolean));
+      new Handler(localLooper).post(new uo(this, paramBoolean));
     }
     do
     {
@@ -967,7 +967,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new uq(this, paramLong1, paramLong2, paramLong3, paramString, paramLong4, paramArrayOfByte1, paramLong5, paramLong6, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramInt1, paramInt2, paramInt3, paramInt4, paramLong7, paramLong8, paramLong9, paramBoolean));
+      new Handler(localLooper).post(new um(this, paramLong1, paramLong2, paramLong3, paramString, paramLong4, paramArrayOfByte1, paramLong5, paramLong6, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramInt1, paramInt2, paramInt3, paramInt4, paramLong7, paramLong8, paramLong9, paramBoolean));
       return;
     }
     _convertFileComing0x210_0xaTo0x211_0xa(paramLong1, paramLong2, paramLong3, paramString, paramLong4, paramArrayOfByte1, paramLong5, paramLong6, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramInt1, paramInt2, paramInt3, paramInt4, paramLong7, paramLong8, paramLong9, paramBoolean);
@@ -978,7 +978,7 @@ public class LiteTransferWrapper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ug(this, paramLong1, paramLong2, paramInt1, paramInt2, paramShort));
+      new Handler(localLooper).post(new uc(this, paramLong1, paramLong2, paramInt1, paramInt2, paramShort));
       return;
     }
     _convertOperate0x210To0x211(paramLong1, paramLong2, paramInt1, paramInt2, paramShort);

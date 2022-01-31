@@ -1,77 +1,38 @@
 import android.app.Activity;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.jsp.DataApiPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.io.IOException;
-import org.json.JSONArray;
-import org.json.JSONException;
 
 public class dwk
-  extends Thread
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  
-  public dwk(MediaApiPlugin paramMediaApiPlugin, String paramString, int paramInt, String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
+  public dwk(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
   
   public void run()
   {
-    int i = 0;
+    i = 200;
+    Object localObject1 = null;
     try
     {
-      JSONArray localJSONArray = new JSONArray();
-      int j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      if (i < j) {
-        if (isInterrupted()) {
-          throw new InterruptedException();
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        System.gc();
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "[]" });
-        return;
-        localOutOfMemoryError.put(MediaApiPlugin.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], this.jdField_a_of_type_Int));
-        i += 1;
-      }
-      if (isInterrupted()) {
-        throw new InterruptedException();
-      }
+      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
+      localObject1 = localObject2;
     }
     catch (IOException localIOException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localIOException.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
-      if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "[]" });
+      for (;;)
+      {
+        Object localObject2;
+        i = 0;
+        localIOException.printStackTrace();
       }
-      return;
     }
-    finally
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
+    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
+      ((Activity)localObject2).runOnUiThread(new dwl(this, (Activity)localObject2, localObject1, i));
     }
   }
 }

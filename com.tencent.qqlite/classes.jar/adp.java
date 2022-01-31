@@ -1,28 +1,19 @@
-import android.os.AsyncTask;
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class adp
-  extends AsyncTask
+public class adp
+  implements View.OnClickListener
 {
-  adp(ado paramado) {}
+  public adp(ChatHistory paramChatHistory) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.a.a.app.a().a(paramVarArgs[0], true);
-    return null;
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    ChatHistory.a(this.a.a).removeMessages(1);
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
-      this.a.a.a.dismiss();
+    long l = System.currentTimeMillis();
+    if (l - this.a.a > this.a.b)
+    {
+      this.a.a = l;
+      this.a.a();
     }
   }
 }

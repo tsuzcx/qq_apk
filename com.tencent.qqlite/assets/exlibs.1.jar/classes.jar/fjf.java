@@ -1,27 +1,23 @@
-import android.support.v4.util.LruCache;
-import common.qzone.component.cache.common.ExtendLruCache;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.widget.XCursorAdapter;
 
 public class fjf
-  extends LruCache
+  extends ContentObserver
 {
-  public fjf(ExtendLruCache paramExtendLruCache, int paramInt)
+  public fjf(XCursorAdapter paramXCursorAdapter)
   {
-    super(paramInt);
+    super(new Handler());
   }
   
-  protected Object create(Object paramObject)
+  public boolean deliverSelfNotifications()
   {
-    return this.a.c(paramObject);
+    return true;
   }
   
-  protected void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3)
+  public void onChange(boolean paramBoolean)
   {
-    this.a.a(paramBoolean, paramObject1, paramObject2, paramObject3);
-  }
-  
-  protected int sizeOf(Object paramObject1, Object paramObject2)
-  {
-    return this.a.a(paramObject1, paramObject2);
+    this.a.a();
   }
 }
 

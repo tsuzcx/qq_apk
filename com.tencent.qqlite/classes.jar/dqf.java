@@ -1,19 +1,15 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class dqf
   implements Runnable
 {
-  public dqf(UniformDownloadNfn paramUniformDownloadNfn) {}
+  public dqf(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
-    this.a.jdField_a_of_type_AndroidOsHandlerThread = null;
-    this.a.jdField_a_of_type_AndroidOsHandler = null;
-    QLog.i(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>stop thread:D_NFThread...");
+    UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

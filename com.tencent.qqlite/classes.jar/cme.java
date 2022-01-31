@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class cme
-  implements View.OnClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public cme(SelectMemberActivity paramSelectMemberActivity) {}
+  public CheckBox a;
+  public TextView a;
   
-  public void onClick(View paramView)
-  {
-    this.a.g();
-  }
+  private cme(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 

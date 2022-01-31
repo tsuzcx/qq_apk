@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class brq
-  implements View.OnClickListener
+  implements TextWatcher
 {
   public brq(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      Toast.makeText(this.a, this.a.getString(2131363454), 0).show();
-    }
-    while (paramView == null) {
+    if (paramEditable.length() >= 4)
+    {
+      VerifyCodeActivity.c(this.a, true);
       return;
     }
-    this.a.a(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    VerifyCodeActivity.b(this.a, false);
+    VerifyCodeActivity.d(this.a, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

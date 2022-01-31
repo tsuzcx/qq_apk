@@ -17,7 +17,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ehu;
+import ehz;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +28,7 @@ public class TrickHelper
   private static TrickHelper jdField_a_of_type_ComTencentMobileqqTrickTrickHelper = null;
   private static final String jdField_a_of_type_JavaLangString = "TrickHelper";
   public static final int b = 2014;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ehu(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ehz(this);
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private FrontWindow jdField_a_of_type_ComTencentMobileqqTrickFrontWindow;

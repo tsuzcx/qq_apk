@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class eur
-  implements Runnable
+  implements View.OnClickListener
 {
-  public eur(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  int jdField_a_of_type_Int;
   
-  public void run()
+  public eur(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
   {
-    this.a.a.setVisibility(0);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    }
   }
 }
 

@@ -14,8 +14,8 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import cxm;
-import cxn;
+import cxs;
+import cxt;
 import java.util.HashMap;
 
 public class RegisterProxy
@@ -25,7 +25,7 @@ public class RegisterProxy
   private static final int k = 1;
   private static final int l = 2;
   MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
-  private cxm jdField_a_of_type_Cxm;
+  private cxs jdField_a_of_type_Cxs;
   public long c;
   private int m = 0;
   private int n = 0;
@@ -132,10 +132,10 @@ public class RegisterProxy
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cxn(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cxt(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      this.jdField_a_of_type_Cxm = new cxm(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cxm);
+      this.jdField_a_of_type_Cxs = new cxs(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cxs);
     }
     if ((this.h == 16) || (this.h == 18)) {
       MsgAutoMonitorUtil.a().a(Thread.currentThread().getThreadGroup().activeCount());
@@ -154,8 +154,8 @@ public class RegisterProxy
     {
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cxm);
-      this.jdField_a_of_type_Cxm = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cxs);
+      this.jdField_a_of_type_Cxs = null;
     }
     MsgAutoMonitorUtil.a().b(Thread.currentThread().getThreadGroup().activeCount());
     c();

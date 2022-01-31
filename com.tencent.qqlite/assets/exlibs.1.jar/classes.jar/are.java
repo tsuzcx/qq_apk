@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.IndividuationSetActivity;
 
-public class are
-  implements View.OnClickListener
+class are
+  implements Runnable
 {
-  public are(IndividuationSetActivity paramIndividuationSetActivity) {}
+  are(ard paramard, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    IndividuationSetActivity.a(this.a).setEnabled(false);
-    IndividuationSetActivity.a(this.a);
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Ard.a.a.setImageDrawable(localBitmapDrawable);
   }
 }
 

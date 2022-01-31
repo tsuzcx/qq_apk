@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import android.database.DataSetObserver;
+import com.tencent.widget.AdapterViewPagerAdapter;
 
-public final class fhw
-  implements Parcelable.Creator
+public class fhw
+  extends DataSetObserver
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
+  public fhw(AdapterViewPagerAdapter paramAdapterViewPagerAdapter) {}
+  
+  public void onChanged()
   {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
+    this.a.notifyDataSetChanged();
   }
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public void onInvalidated()
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    super.onInvalidated();
   }
 }
 

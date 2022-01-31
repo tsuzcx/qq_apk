@@ -1,22 +1,47 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.Adapter;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.search.ContactsSearchableRecentUser;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class ahb
-  implements Animation.AnimationListener
+  implements AdapterView.OnItemClickListener
 {
-  public ahb(Conversation paramConversation, View paramView) {}
+  private long jdField_a_of_type_Long = 0L;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ahb(Conversation paramConversation) {}
+  
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(0);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    paramLong = System.currentTimeMillis();
+    long l = Math.abs(paramLong - this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onItemClick() gap = " + l);
+    }
+    if (l < 250L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "onItemClick() 点击太快了吧， pos = " + paramInt);
+      }
+    }
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Long = paramLong;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "onItemClick() pos = " + paramInt);
+      }
+      paramAdapterView = paramAdapterView.a();
+      if (paramAdapterView == null) {}
+      for (paramAdapterView = null; (paramAdapterView instanceof ContactsSearchableRecentUser); paramAdapterView = paramAdapterView.getItem(paramInt))
+      {
+        paramAdapterView = (ContactsSearchableRecentUser)paramAdapterView;
+        this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(paramView, paramAdapterView, paramAdapterView.a(), false);
+        return;
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

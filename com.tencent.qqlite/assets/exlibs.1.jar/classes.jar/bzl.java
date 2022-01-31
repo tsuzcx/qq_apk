@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.servlet.ReduFriendObserver;
 
 public class bzl
-  implements Runnable
+  extends ReduFriendObserver
 {
   public bzl(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (FriendChatPie.a(this.a) == null) {}
-    while (FriendChatPie.b(this.a).a == 0) {
-      return;
-    }
+    if (paramBoolean) {}
   }
 }
 

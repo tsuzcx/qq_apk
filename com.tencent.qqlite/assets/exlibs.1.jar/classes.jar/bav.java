@@ -1,26 +1,30 @@
+import android.view.ScaleGestureDetector;
 import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
 
 public class bav
-  implements Runnable
+  extends PortraitImageview.SimpleOnScaleGestureListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public bav(PortraitImageview paramPortraitImageview) {}
   
-  public bav(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3) {}
-  
-  public void run()
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.c, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f1, 0.0F, this.d, this.c);
-    float f3 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f1, 0.0F, this.e, this.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 - this.jdField_a_of_type_Float, f3 - this.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageMatrix(this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a());
-    this.jdField_a_of_type_Float = f2;
-    this.b = f3;
-    if (f1 < this.c) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.e(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
+      }
     }
+    return false;
   }
 }
 

@@ -33,17 +33,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import clz;
-import cma;
-import cmb;
-import cmd;
-import cme;
 import cmf;
 import cmg;
 import cmh;
-import cmi;
 import cmj;
 import cmk;
+import cml;
+import cmm;
 import cmn;
 import cmo;
 import cmp;
@@ -52,8 +48,12 @@ import cmt;
 import cmu;
 import cmv;
 import cmw;
-import cmx;
 import cmz;
+import cna;
+import cnb;
+import cnc;
+import cnd;
+import cnf;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
@@ -149,7 +149,7 @@ public class SelectMemberActivity
   public Intent a;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new cmt(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new cmz(this);
   public final Handler a;
   public View a;
   private ViewStub jdField_a_of_type_AndroidViewViewStub;
@@ -164,7 +164,7 @@ public class SelectMemberActivity
   public ProgressBar a;
   public RelativeLayout a;
   public TextView a;
-  private cmx jdField_a_of_type_Cmx;
+  private cnd jdField_a_of_type_Cnd;
   public InnerFrameManager a;
   private ContactsSearchResultAdapter jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter;
   private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver;
@@ -213,7 +213,7 @@ public class SelectMemberActivity
   {
     this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = null;
-    this.jdField_a_of_type_AndroidOsHandler = new cmk(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cmq(this);
   }
   
   private String a(String paramString)
@@ -310,11 +310,11 @@ public class SelectMemberActivity
     this.h = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("param_face_to_face_troop", false);
     this.G = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_title");
     if (this.G == null) {
-      this.G = getString(2131363979);
+      this.G = getString(2131363968);
     }
     this.H = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_done_button_wording");
     if (this.H == null) {
-      this.H = getString(2131363983);
+      this.H = getString(2131363972);
     }
     this.I = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_done_button_highlight_wording");
     if (this.I == null) {
@@ -327,25 +327,25 @@ public class SelectMemberActivity
   
   private void k()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131297511);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296895));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296906));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298796));
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131297516));
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = ((InnerFrameManager)findViewById(2131298797));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131297518));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131297520));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131297523));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131297522));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131297507);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296902));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298745));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131297512));
+    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = ((InnerFrameManager)findViewById(2131298746));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131297514));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131297516));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131297519));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131297518));
   }
   
   private void l()
   {
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838049);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838043);
     this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("搜索");
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new clz(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new cmf(this));
     if (this.t == 0) {
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     }
@@ -355,8 +355,8 @@ public class SelectMemberActivity
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.G);
       this.jdField_c_of_type_AndroidWidgetTextView.setText(this.G);
       this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.G);
-      localTextView.setContentDescription(getString(2131362790));
-      localTextView.setOnClickListener(new cmn(this));
+      localTextView.setContentDescription(getString(2131362794));
+      localTextView.setOnClickListener(new cmt(this));
       return;
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -368,35 +368,35 @@ public class SelectMemberActivity
     if (Build.VERSION.SDK_INT >= 9) {
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_Cmx = new cmx(this, null);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cmx);
+    this.jdField_a_of_type_Cnd = new cnd(this, null);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cnd);
     this.jdField_a_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetButton.setText(this.H);
     this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_c_of_type_AndroidWidgetButton.setVisibility(4);
     this.jdField_c_of_type_AndroidWidgetButton.setText(this.I);
-    this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new cmp(this));
-    this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new cmq(this));
+    this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new cmv(this));
+    this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new cmw(this));
   }
   
   private void n()
   {
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624119);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903615);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903599);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131296470));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363378));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363381));
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131296469));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131298746));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131298695));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
   
   private void o()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new cmv(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cmw(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cma(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new cnb(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cnc(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cmg(this);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
@@ -461,7 +461,7 @@ public class SelectMemberActivity
     if (paramBoolean) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 200L);
     }
-    this.jdField_a_of_type_Cmx.notifyDataSetChanged();
+    this.jdField_a_of_type_Cnd.notifyDataSetChanged();
   }
   
   void a(boolean paramBoolean, String paramString1, String paramString2)
@@ -469,7 +469,7 @@ public class SelectMemberActivity
     if (paramBoolean)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new cmo(this));
+      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new cmu(this));
       IphoneTitleBarActivity.setLayerType(this.jdField_c_of_type_AndroidWidgetTextView);
       if ((paramString2 != null) && ((paramString2.equals("群")) || (paramString2.equals("讨论组")))) {
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -682,12 +682,12 @@ public class SelectMemberActivity
       }
       label534:
       if (this.B == 0) {}
-      for (i1 = 2131363214;; i1 = 2131363215)
+      for (i1 = 2131363217;; i1 = 2131363218)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131492887));
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(i1);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        localObject1 = new cmu(this, (FriendManager)localObject1);
+        localObject1 = new cna(this, (FriendManager)localObject1);
         ((Thread)localObject1).setName("SelectMemberActivity_addDiscussion");
         ((Thread)localObject1).start();
         return;
@@ -704,7 +704,7 @@ public class SelectMemberActivity
         }
         if (!e())
         {
-          QQToast.a(this, 2131363684, 0).b(getTitleBarHeight());
+          QQToast.a(this, 2131363678, 0).b(getTitleBarHeight());
           return;
         }
         ((TroopHandler)this.app.a(17)).a(this.F, (ArrayList)localObject1, "");
@@ -723,7 +723,7 @@ public class SelectMemberActivity
     {
       if (this.jdField_c_of_type_JavaUtilArrayList.size() >= this.u)
       {
-        b(2131363225);
+        b(2131363228);
         return true;
       }
     }
@@ -733,19 +733,19 @@ public class SelectMemberActivity
       {
         if (this.jdField_c_of_type_JavaUtilArrayList.size() >= this.u)
         {
-          b(2131363803);
+          b(2131363795);
           return true;
         }
       }
       else if ((this.B == 1) && (!this.l) && (this.jdField_c_of_type_JavaUtilArrayList.size() >= this.u))
       {
-        b(2131363803);
+        b(2131363795);
         return true;
       }
     }
     else if (this.jdField_c_of_type_JavaUtilArrayList.size() >= this.u)
     {
-      c(String.format(getString(2131363996), new Object[] { Integer.valueOf(this.u) }));
+      c(String.format(getString(2131363985), new Object[] { Integer.valueOf(this.u) }));
       return true;
     }
     return false;
@@ -763,7 +763,7 @@ public class SelectMemberActivity
     j();
     setTheme(2131624275);
     super.doOnCreate(paramBundle);
-    setContentView(2130903637);
+    setContentView(2130903621);
     if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false) == true) {
       super.getWindow().addFlags(524288);
     }
@@ -840,7 +840,7 @@ public class SelectMemberActivity
     localTranslateAnimation.setFillAfter(true);
     Object localObject = new AlphaAnimation(0.0F, 1.0F);
     ((AlphaAnimation)localObject).setDuration(300L);
-    localTranslateAnimation.setAnimationListener(new cmb(this, localTranslateAnimation, (AlphaAnimation)localObject, l1));
+    localTranslateAnimation.setAnimationListener(new cmh(this, localTranslateAnimation, (AlphaAnimation)localObject, l1));
     localObject = new FrameLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() + this.jdField_a_of_type_AndroidViewView.getHeight());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
@@ -852,23 +852,23 @@ public class SelectMemberActivity
   public void f()
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297994));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297986));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131298453));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296869);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296870));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296871);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cmz(this, null));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new cmd(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cme(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundDrawable(getResources().getDrawable(2130837633));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297957));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297950));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131298408));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296865);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296866));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296867);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cnf(this, null));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new cmj(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cmk(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundDrawable(getResources().getDrawable(2130837635));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(0);
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(this.app, this, this.jdField_a_of_type_ComTencentWidgetXListView, null, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(new cmf(this));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter.a(new cml(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new cmg(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new cmh(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new cmi(this));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new cmm(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new cmn(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new cmo(this));
   }
   
   public void finish()
@@ -889,7 +889,7 @@ public class SelectMemberActivity
     this.jdField_a_of_type_AndroidWidgetEditText.setText("");
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -this.jdField_a_of_type_AndroidViewView.getHeight(), 0.0F);
     localTranslateAnimation.setDuration(300L);
-    localTranslateAnimation.setAnimationListener(new cmj(this));
+    localTranslateAnimation.setAnimationListener(new cmp(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(getWindow().peekDecorView().getWindowToken(), 0);
@@ -900,7 +900,7 @@ public class SelectMemberActivity
   {
     if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837914);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);

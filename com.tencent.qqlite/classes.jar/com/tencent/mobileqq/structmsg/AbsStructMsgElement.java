@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import eew;
+import efb;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import org.xmlpull.v1.XmlSerializer;
@@ -98,7 +98,7 @@ public abstract class AbsStructMsgElement
       localObject = (AbsStructMsgElement)localObject;
       localContext = paramView.getContext();
     } while (!ChatActivity.class.isInstance(localContext));
-    new eew(((ChatActivity)localContext).a(), paramView).a(((AbsStructMsgElement)localObject).c, ((AbsStructMsgElement)localObject).b, ((AbsStructMsgElement)localObject).jdField_d_of_type_JavaLangString, ((AbsStructMsgElement)localObject).jdField_e_of_type_JavaLangString);
+    new efb(((ChatActivity)localContext).a(), paramView).a(((AbsStructMsgElement)localObject).c, ((AbsStructMsgElement)localObject).b, ((AbsStructMsgElement)localObject).jdField_d_of_type_JavaLangString, ((AbsStructMsgElement)localObject).jdField_e_of_type_JavaLangString);
   }
 }
 

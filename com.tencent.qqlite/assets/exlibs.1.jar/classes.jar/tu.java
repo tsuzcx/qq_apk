@@ -1,15 +1,14 @@
-import com.tencent.common.galleryactivity.GalleryManager;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class tu
   implements Runnable
 {
-  public tu(GalleryManager paramGalleryManager) {}
+  public tu(GalleryPageView paramGalleryPageView) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = true;
-    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene);
-    GalleryManager.a(this.a);
+    this.a.a.startAnimation(this.a.b);
   }
 }
 

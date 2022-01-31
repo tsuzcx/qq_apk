@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import java.util.List;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public class cia
-  implements Runnable
+class cia
+  extends ContactBindObserver
 {
-  public cia(AlbumListAdapter paramAlbumListAdapter, List paramList) {}
+  cia(chz paramchz) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    AlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter, this.jdField_a_of_type_JavaUtilList);
+    super.b(paramBoolean);
+    this.a.a.d();
+    this.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.setResult(-1);
+      this.a.a.finish();
+    }
   }
 }
 

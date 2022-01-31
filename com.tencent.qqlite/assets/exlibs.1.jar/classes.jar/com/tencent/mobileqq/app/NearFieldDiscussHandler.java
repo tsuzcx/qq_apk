@@ -143,7 +143,7 @@ public class NearFieldDiscussHandler
           try
           {
             paramToServiceMsg = paramToServiceMsg.extraData.getString("FACE_TO_FACE_ID");
-            paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364397, new Object[] { paramToServiceMsg });
+            paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364379, new Object[] { paramToServiceMsg });
             a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), j, paramToServiceMsg);
             paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
             if (paramToServiceMsg.b(paramFromServiceMsg, 3000) != null)

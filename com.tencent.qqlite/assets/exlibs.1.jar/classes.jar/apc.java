@@ -1,21 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class apc
-  implements Animation.AnimationListener
+class apc
+  implements ActionSheet.OnButtonClickListener
 {
-  public apc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  apc(apb paramapb, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView, int paramInt)
   {
-    this.a.c = false;
-    this.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_Apb.a.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

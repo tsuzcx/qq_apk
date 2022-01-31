@@ -1,19 +1,52 @@
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class bcn
-  extends MessageObserver
+  implements View.OnTouchListener
 {
   public bcn(QQLSActivity paramQQLSActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    if (paramMotionEvent.getAction() == 0) {
+      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "singlelist  click doble");
+        }
+        if (QQLSActivity.a(this.a) != null)
+        {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+          QQLSActivity.a(this.a, true);
+        }
+        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
+      }
     }
-    this.a.finish();
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "singlelist  click once");
+      }
+      if (QQLSActivity.a(this.a)) {
+        QQLSActivity.b(this.a).setText(2131364402);
+      }
+      for (;;)
+      {
+        paramView = QQLSActivity.a(this.a).obtainMessage(5);
+        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+        break;
+        QQLSActivity.b(this.a).setText(2131364401);
+      }
+      if (paramMotionEvent.getAction() == 1) {
+        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
+      }
+    }
   }
 }
 

@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class ayc
-  implements DialogInterface.OnClickListener
+public class ayc
+  extends TransProcessorHandler
 {
-  ayc(axy paramaxy, QQCustomDialog paramQQCustomDialog) {}
+  public ayc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (NearbyPeopleProfileActivity.b(this.a) != 1) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.aN);
+        }
+        break;
+      }
+    } while (NearbyPeopleProfileActivity.a(this.a) == null);
+    NearbyPeopleProfileActivity.a(this.a).a = NearbyPeoplePhotoUploadProcessor.aN;
+    NearbyPeopleProfileActivity.f(this.a);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload fail.");
+    }
+    this.a.c();
+    QQToast.a(this.a, "上传失败", 0).b(this.a.getTitleBarHeight());
   }
 }
 

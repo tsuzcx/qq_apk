@@ -17,10 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cch;
-import cci;
-import cck;
-import ccl;
+import ccn;
+import cco;
+import ccq;
+import ccr;
 import com.tencent.mobileqq.activity.BaseForwardSelectionActivity;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.app.NewFriendManager;
@@ -136,7 +136,7 @@ public class NewFriendActivity
     boolean bool = false;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837914);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.b.getCompoundDrawables();
       this.j = this.b.getCompoundDrawablePadding();
       this.b.setCompoundDrawablePadding(10);
@@ -149,20 +149,20 @@ public class NewFriendActivity
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = new cch(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = new ccn(this);
   }
   
   private void f()
   {
-    setContentView(2130903523);
+    setContentView(2130903510);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296564));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297596));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297145));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296895));
-    this.b = ((TextView)findViewById(2131296901));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131297592));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297141));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296891));
+    this.b = ((TextView)findViewById(2131296897));
     this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296906));
-    this.c = ((TextView)findViewById(2131296905));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296902));
+    this.c = ((TextView)findViewById(2131296901));
     c();
     this.i = 3;
     if (this.jdField_a_of_type_Boolean) {}
@@ -172,15 +172,15 @@ public class NewFriendActivity
       if (this.jdField_a_of_type_Boolean) {
         this.c.setContentDescription("取消本次转发");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131363498));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131363499));
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setText("新朋友");
       this.b.setText("新朋友");
       a(true);
       this.c.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838044);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ccl(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838038);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ccr(this));
     }
   }
   
@@ -231,9 +231,9 @@ public class NewFriendActivity
   public void d()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(getString(2131363251), 0, false);
-    localActionSheet.a(new cci(this, localActionSheet));
-    localActionSheet.d(2131362790);
+    localActionSheet.a(getString(2131363254), 0, false);
+    localActionSheet.a(new cco(this, localActionSheet));
+    localActionSheet.d(2131362794);
     localActionSheet.show();
   }
   
@@ -258,8 +258,8 @@ public class NewFriendActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130903523);
-    d(2130837633);
+    setContentView(2130903510);
+    d(2130837635);
     e();
     f();
     return true;
@@ -355,7 +355,7 @@ public class NewFriendActivity
         }
       }
       if (k != 0) {
-        runOnUiThread(new cck(this));
+        runOnUiThread(new ccq(this));
       }
     }
   }

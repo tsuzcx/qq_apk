@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class ccf
+  implements View.OnClickListener
 {
-  public int a;
-  public RichStatus a;
-  public AccountSearchPb.record a;
-  public String a;
-  public int b;
+  public ccf(SearchBaseActivity paramSearchBaseActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+  }
 }
 
 

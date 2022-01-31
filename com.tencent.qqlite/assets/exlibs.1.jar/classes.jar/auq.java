@@ -10,14 +10,12 @@ public class auq
   {
     try
     {
-      if ((LoginVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((LoginVerifyCodeActivity.a(this.a) != null) && (LoginVerifyCodeActivity.a(this.a).isShowing()))
       {
-        LoginVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        LoginVerifyCodeActivity.a(this.a).b(2131363564);
+        LoginVerifyCodeActivity.a(this.a).dismiss();
+        LoginVerifyCodeActivity.a(this.a).cancel();
       }
-      if ((LoginVerifyCodeActivity.a(this.a) != null) && (!LoginVerifyCodeActivity.a(this.a).isShowing())) {
-        LoginVerifyCodeActivity.a(this.a).show();
-      }
+      LoginVerifyCodeActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

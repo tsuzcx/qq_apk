@@ -1,15 +1,25 @@
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bal
-  implements Runnable
+  extends FriendListObserver
 {
   public bal(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  protected void d(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = this.a.app.q();
-    this.a.runOnUiThread(new bam(this, bool));
+    if (!paramBoolean1) {
+      this.a.a(2131364023, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+  }
+  
+  protected void e(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    }
   }
 }
 

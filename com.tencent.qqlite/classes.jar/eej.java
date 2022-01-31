@@ -1,60 +1,173 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Application;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity.ChatBgPicDownloader;
+import com.tencent.mobileqq.activity.aio.photo.PhotoDecoder;
+import com.tencent.mobileqq.emoticonview.FavoriteDownloader;
+import com.tencent.mobileqq.transfile.AIOPhotoImageDownloader;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
+import com.tencent.mobileqq.transfile.ChatImageDownloader;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
+import com.tencent.mobileqq.transfile.EmotionDownloader;
+import com.tencent.mobileqq.transfile.FavoriteImageDownloader;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.transfile.LBSImageDownloader;
+import com.tencent.mobileqq.transfile.LastModifySupportDownloader;
+import com.tencent.mobileqq.transfile.LocalBilldDownloader;
+import com.tencent.mobileqq.transfile.LocationDownloader;
+import com.tencent.mobileqq.transfile.PicEmotionDownloader;
+import com.tencent.mobileqq.transfile.ProfileImgDownloader;
+import com.tencent.mobileqq.transfile.QZoneCoverDownloader;
+import com.tencent.mobileqq.transfile.QZoneRecentPhotoDownloader;
+import com.tencent.mobileqq.transfile.RegionalThumbDownloader;
+import com.tencent.mobileqq.transfile.ShortVideoThumbDownloader;
+import com.tencent.mobileqq.transfile.ThirdPartAppIconDownloader;
+import com.tencent.mobileqq.transfile.VideoThumbDownloader;
 
 public class eej
-  extends Handler
+  extends URLDrawableParams
 {
-  public eej(MainAcitivityReportHelper paramMainAcitivityReportHelper) {}
+  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
+  private AIOPhotoImageDownloader jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader;
+  private ProtocolDownloader b;
+  private ProtocolDownloader c;
+  private ProtocolDownloader d;
+  private ProtocolDownloader e;
   
-  public void handleMessage(Message paramMessage)
+  public eej(Application paramApplication)
   {
-    SplashActivity localSplashActivity = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localSplashActivity == null) {}
-    do
+    super(paramApplication);
+    this.mFadeInImage = false;
+    this.mUseGifAnimation = false;
+    this.mMemoryCache = BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+  }
+  
+  protected ProtocolDownloader doGetDownloader(String paramString)
+  {
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
     {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return;
-        localQQAppInterface = localSplashActivity.app;
-      } while ((localQQAppInterface == null) || (!localQQAppInterface.isLogin()));
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
+      if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
+        this.jdField_a_of_type_ComTencentImageProtocolDownloader = new HttpDownloader();
       }
-      MainAcitivityReportHelper.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.e("MainActivityReportHandler", 2, "handleMessage count:" + MainAcitivityReportHelper.b(this.a));
-      }
-      if (!"0".equals(localQQAppInterface.a()))
-      {
-        long l = System.currentTimeMillis();
-        if (l - this.a.jdField_a_of_type_Long > 300000L)
-        {
-          this.a.jdField_a_of_type_Long = l;
-          paramMessage = (FriendListHandler)localQQAppInterface.a(1);
-          if (paramMessage != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("MainActivityReportHandler", 2, "handleMessage requst online friens");
-            }
-            paramMessage.d(localQQAppInterface.a(), (byte)0);
-          }
-        }
-      }
-    } while ((localSplashActivity == null) || (!localSplashActivity.isResume()) || (MainAcitivityReportHelper.b(this.a) >= 1));
-    MainAcitivityReportHelper.c(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.e("MainActivityReportHandler", 2, "handleMessage sand msg count:" + MainAcitivityReportHelper.b(this.a));
+      return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 300000L);
+    if (("chatthumb".equals(paramString)) || ("chatimg".equals(paramString)) || ("chatraw".equals(paramString)))
+    {
+      if (this.b == null) {
+        this.b = new ChatImageDownloader(BaseApplicationImpl.a());
+      }
+      return this.b;
+    }
+    if (("lbsthumb".equals(paramString)) || ("lbsimg".equals(paramString)))
+    {
+      if (this.c == null) {
+        this.c = new LBSImageDownloader(BaseApplicationImpl.a());
+      }
+      return this.c;
+    }
+    if ("datalineimage".equals(paramString)) {
+      return new DataLineDownloader(BaseApplicationImpl.a());
+    }
+    if ("emotion".equals(paramString)) {
+      return new EmotionDownloader(BaseApplicationImpl.a());
+    }
+    if ("emotion_pic".equals(paramString)) {
+      return new PicEmotionDownloader(BaseApplicationImpl.a());
+    }
+    if ("favorite".equals(paramString)) {
+      return new FavoriteDownloader(BaseApplicationImpl.a());
+    }
+    if ("albumthumb".equals(paramString)) {
+      return new AlbumThumbDownloader(BaseApplicationImpl.a());
+    }
+    if ("videothumb".equals(paramString)) {
+      return new VideoThumbDownloader();
+    }
+    if ("pubaccountimage".equals(paramString)) {
+      return new PubAccountHttpDownloader(BaseApplicationImpl.a());
+    }
+    if ("location".equals(paramString)) {
+      return new LocationDownloader(BaseApplicationImpl.a());
+    }
+    if (("billdthumb".equals(paramString)) || ("billdimg".equals(paramString)))
+    {
+      if (this.d == null) {
+        this.d = new LocalBilldDownloader(BaseApplicationImpl.a());
+      }
+      return this.d;
+    }
+    if (("profile_img_big".equals(paramString)) || ("profile_img_thumb".equals(paramString)) || ("profile_img_icon".equals(paramString)))
+    {
+      if (this.e == null) {
+        this.e = new ProfileImgDownloader();
+      }
+      return this.e;
+    }
+    if ("qzone_cover".equals(paramString)) {
+      return new QZoneCoverDownloader();
+    }
+    if ("favimage".equals(paramString)) {
+      return new FavoriteImageDownloader(BaseApplicationImpl.a());
+    }
+    if ("fileassistantimage".equals(paramString)) {
+      return new FileAssistantDownloader(BaseApplicationImpl.a());
+    }
+    if ("troop_photo_qzone".equals(paramString)) {
+      return new QZoneRecentPhotoDownloader();
+    }
+    if ("aiothumb".equals(paramString))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader == null) {
+        this.jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader = new AIOPhotoImageDownloader(BaseApplicationImpl.a());
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader;
+    }
+    if (("file".equals(paramString)) || (BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getProcessName().endsWith(":peak"))) {
+      return new PhotoDecoder(BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources());
+    }
+    if ("regionalthumb".equals(paramString)) {
+      return new RegionalThumbDownloader(BaseApplicationImpl.a());
+    }
+    if ("third_part".equals(paramString)) {
+      return new ThirdPartAppIconDownloader(BaseApplicationImpl.a());
+    }
+    if ("gamead".equals(paramString)) {
+      return new LastModifySupportDownloader();
+    }
+    if ("shortVideoThumb".equals(paramString)) {
+      return new ShortVideoThumbDownloader();
+    }
+    if ("chatbg_pro".equals(paramString)) {
+      return new ChatBackgroundSettingActivity.ChatBgPicDownloader(BaseApplicationImpl.a());
+    }
+    return null;
+  }
+  
+  protected String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  protected Drawable getDefaultLoadingDrawable()
+  {
+    try
+    {
+      Drawable localDrawable = BaseApplicationImpl.a().getResources().getDrawable(2130837550);
+      return localDrawable;
+    }
+    catch (Exception localException) {}
+    return new ColorDrawable(0);
+  }
+  
+  protected Drawable getDefualtFailedDrawable()
+  {
+    return BaseApplicationImpl.a().getResources().getDrawable(2130837552);
   }
 }
 

@@ -1,21 +1,20 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class arw
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public arw(LbsBaseActivity paramLbsBaseActivity) {}
+  public arw(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.startActivityForResult(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"), 10);
-    this.a.b();
-    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
-      LbsBaseActivity.b(this.a).dismiss();
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.d();
+      return;
     }
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

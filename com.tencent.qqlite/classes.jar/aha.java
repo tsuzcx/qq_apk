@@ -1,27 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.qphone.base.util.QLog;
 
 public class aha
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public aha(Conversation paramConversation, View paramView, long paramLong) {}
+  public aha(Conversation paramConversation, View paramView, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.PerfTrace", 2, "conversationTab search up anim time: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

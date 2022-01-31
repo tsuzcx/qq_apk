@@ -1,14 +1,14 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppApi;
 
-class ffj
+public class ffj
   implements Runnable
 {
-  ffj(ffi paramffi, DownloadInfo paramDownloadInfo) {}
+  public ffj(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    DownloadManager.a().e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
   }
 }
 

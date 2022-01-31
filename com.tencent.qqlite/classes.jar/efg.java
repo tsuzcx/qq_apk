@@ -1,16 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class efg
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public efg(StructMsgForHypertext paramStructMsgForHypertext) {}
+  public efg(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    new StructMsgClickHandler(paramView).a("web", this.a.mSourceUrl, null, null);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
   }
 }
 

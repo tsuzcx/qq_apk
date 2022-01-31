@@ -1,15 +1,23 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class anh
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   public anh(ForwardOperations paramForwardOperations) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, "网络异常", 0).a();
+    }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
     this.a.a.finish();
   }
 }

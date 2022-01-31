@@ -1,311 +1,673 @@
-import com.tencent.feedback.eup.CrashHandleListener;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.MessageReportData;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.mtt.MttBrowerWrapper;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.pic.PicReporter;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.statistics.StatisticTroopAssist;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.QQSettingUtil;
+import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class eep
-  implements CrashHandleListener
+  implements Runnable
 {
-  public eep(StatisticCollector paramStatisticCollector) {}
+  public eep(MainAcitivityReportHelper paramMainAcitivityReportHelper) {}
   
-  public byte[] getCrashExtraData()
+  private void a()
   {
-    return null;
-  }
-  
-  /* Error */
-  public String getCrashExtraMessage()
-  {
-    // Byte code:
-    //   0: new 24	java/lang/StringBuilder
-    //   3: dup
-    //   4: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   7: astore 4
-    //   9: aload 4
-    //   11: new 24	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 27
-    //   20: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: getstatic 36	com/tencent/common/app/BaseApplicationImpl:a	Ljava/lang/String;
-    //   26: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: pop
-    //   36: aload 4
-    //   38: new 24	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   45: ldc 41
-    //   47: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: getstatic 44	com/tencent/common/app/BaseApplicationImpl:b	Ljava/lang/String;
-    //   53: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: pop
-    //   63: aload 4
-    //   65: new 24	java/lang/StringBuilder
-    //   68: dup
-    //   69: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   72: ldc 46
-    //   74: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: getstatic 49	com/tencent/common/app/BaseApplicationImpl:c	Ljava/lang/String;
-    //   80: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: pop
-    //   90: aload 4
-    //   92: new 24	java/lang/StringBuilder
-    //   95: dup
-    //   96: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   99: ldc 51
-    //   101: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: getstatic 56	com/tencent/mobileqq/startup/director/StartupDirector:c	I
-    //   107: invokevirtual 59	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: pop
-    //   117: aload 4
-    //   119: ldc 61
-    //   121: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: pop
-    //   125: invokestatic 65	com/tencent/mobileqq/statistics/StatisticCollector:a	()Ljava/lang/String;
-    //   128: astore 5
-    //   130: invokestatic 70	mqq/app/AppRuntime:showInfo	()Ljava/lang/String;
-    //   133: astore 6
-    //   135: new 24	java/lang/StringBuilder
-    //   138: dup
-    //   139: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   142: ldc 72
-    //   144: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: astore 7
-    //   149: getstatic 78	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   152: ifnonnull +97 -> 249
-    //   155: ldc 80
-    //   157: astore_3
-    //   158: aload 7
-    //   160: aload_3
-    //   161: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: ldc 61
-    //   166: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: astore_3
-    //   173: new 24	java/lang/StringBuilder
-    //   176: dup
-    //   177: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   180: astore 7
-    //   182: aload_0
-    //   183: getfield 12	eep:a	Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   186: invokestatic 83	com/tencent/mobileqq/statistics/StatisticCollector:a	(Lcom/tencent/mobileqq/statistics/StatisticCollector;)Ljava/util/Stack;
-    //   189: invokevirtual 89	java/util/Stack:size	()I
-    //   192: istore_2
-    //   193: iload_2
-    //   194: iconst_5
-    //   195: invokestatic 95	java/lang/Math:min	(II)I
-    //   198: istore_1
-    //   199: iload_1
-    //   200: ifle +59 -> 259
-    //   203: aload_0
-    //   204: getfield 12	eep:a	Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   207: invokestatic 83	com/tencent/mobileqq/statistics/StatisticCollector:a	(Lcom/tencent/mobileqq/statistics/StatisticCollector;)Ljava/util/Stack;
-    //   210: invokevirtual 99	java/util/Stack:pop	()Ljava/lang/Object;
-    //   213: checkcast 101	java/lang/String
-    //   216: astore 8
-    //   218: aload 7
-    //   220: invokevirtual 104	java/lang/StringBuilder:length	()I
-    //   223: ifle +11 -> 234
-    //   226: aload 7
-    //   228: ldc 106
-    //   230: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: pop
-    //   234: aload 7
-    //   236: aload 8
-    //   238: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: pop
-    //   242: iload_1
-    //   243: iconst_1
-    //   244: isub
-    //   245: istore_1
-    //   246: goto -47 -> 199
-    //   249: getstatic 78	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   252: invokevirtual 107	java/lang/Object:toString	()Ljava/lang/String;
-    //   255: astore_3
-    //   256: goto -98 -> 158
-    //   259: aload_0
-    //   260: getfield 12	eep:a	Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   263: invokestatic 83	com/tencent/mobileqq/statistics/StatisticCollector:a	(Lcom/tencent/mobileqq/statistics/StatisticCollector;)Ljava/util/Stack;
-    //   266: invokevirtual 110	java/util/Stack:clear	()V
-    //   269: aload 4
-    //   271: new 24	java/lang/StringBuilder
-    //   274: dup
-    //   275: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   278: aload 5
-    //   280: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: ldc 61
-    //   285: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   288: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   291: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: pop
-    //   295: aload 4
-    //   297: new 24	java/lang/StringBuilder
-    //   300: dup
-    //   301: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   304: aload 6
-    //   306: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   309: ldc 61
-    //   311: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   317: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: pop
-    //   321: aload 4
-    //   323: aload_3
-    //   324: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: pop
-    //   328: aload 4
-    //   330: new 24	java/lang/StringBuilder
-    //   333: dup
-    //   334: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   337: ldc 112
-    //   339: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: iload_2
-    //   343: invokevirtual 59	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   346: ldc 114
-    //   348: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   351: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   354: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   357: pop
-    //   358: aload 4
-    //   360: new 24	java/lang/StringBuilder
-    //   363: dup
-    //   364: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   367: aload 7
-    //   369: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   372: ldc 61
-    //   374: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   377: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   380: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   383: pop
-    //   384: aload 4
-    //   386: ldc 119
-    //   388: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   391: pop
-    //   392: aload 4
-    //   394: aload_0
-    //   395: getfield 12	eep:a	Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   398: invokestatic 122	com/tencent/mobileqq/statistics/StatisticCollector:a	(Lcom/tencent/mobileqq/statistics/StatisticCollector;)Ljava/util/HashMap;
-    //   401: invokevirtual 125	java/util/HashMap:toString	()Ljava/lang/String;
-    //   404: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: pop
-    //   408: aload 4
-    //   410: ldc 61
-    //   412: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   415: pop
-    //   416: aload 4
-    //   418: ldc 61
-    //   420: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: pop
-    //   424: aload_0
-    //   425: getfield 12	eep:a	Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   428: invokestatic 128	com/tencent/mobileqq/statistics/StatisticCollector:a	(Lcom/tencent/mobileqq/statistics/StatisticCollector;)Ljava/util/LinkedList;
-    //   431: invokevirtual 131	java/util/LinkedList:size	()I
-    //   434: ifle +29 -> 463
-    //   437: aload 4
-    //   439: aload_0
-    //   440: getfield 12	eep:a	Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   443: invokestatic 128	com/tencent/mobileqq/statistics/StatisticCollector:a	(Lcom/tencent/mobileqq/statistics/StatisticCollector;)Ljava/util/LinkedList;
-    //   446: invokevirtual 134	java/util/LinkedList:removeLast	()Ljava/lang/Object;
-    //   449: checkcast 136	eeq
-    //   452: invokevirtual 137	eeq:toString	()Ljava/lang/String;
-    //   455: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: pop
-    //   459: goto -35 -> 424
-    //   462: astore_3
-    //   463: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   466: ifeq +32 -> 498
-    //   469: ldc 145
-    //   471: iconst_2
-    //   472: new 24	java/lang/StringBuilder
-    //   475: dup
-    //   476: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   479: ldc 147
-    //   481: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: aload 4
-    //   486: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   489: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   492: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   495: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   498: invokestatic 156	com/tencent/smtt/sdk/WebView:getQQBrowserVersion	()I
-    //   501: istore_1
-    //   502: invokestatic 159	com/tencent/mobileqq/statistics/StatisticCollector:a	()Landroid/content/Context;
-    //   505: invokestatic 163	com/tencent/smtt/sdk/WebView:getQQBrowserCoreVersion	(Landroid/content/Context;)I
-    //   508: istore_2
-    //   509: iload_1
-    //   510: ifne +17 -> 527
-    //   513: aload 4
-    //   515: ldc 165
-    //   517: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   520: pop
-    //   521: aload 4
-    //   523: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   526: areturn
-    //   527: aload 4
-    //   529: new 24	java/lang/StringBuilder
-    //   532: dup
-    //   533: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   536: ldc 167
-    //   538: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   541: iload_1
-    //   542: invokevirtual 59	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   545: ldc 169
-    //   547: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   550: iload_2
-    //   551: invokevirtual 59	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   554: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   557: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   560: pop
-    //   561: goto -40 -> 521
-    //   564: astore_3
-    //   565: goto -44 -> 521
-    //   568: astore_3
-    //   569: goto -145 -> 424
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	572	0	this	eep
-    //   198	344	1	i	int
-    //   192	359	2	j	int
-    //   157	167	3	str1	String
-    //   462	1	3	localThrowable1	Throwable
-    //   564	1	3	localThrowable2	Throwable
-    //   568	1	3	localThrowable3	Throwable
-    //   7	521	4	localStringBuilder1	java.lang.StringBuilder
-    //   128	151	5	str2	String
-    //   133	172	6	str3	String
-    //   147	221	7	localStringBuilder2	java.lang.StringBuilder
-    //   216	21	8	str4	String
-    // Exception table:
-    //   from	to	target	type
-    //   424	459	462	java/lang/Throwable
-    //   498	509	564	java/lang/Throwable
-    //   513	521	564	java/lang/Throwable
-    //   527	561	564	java/lang/Throwable
-    //   9	155	568	java/lang/Throwable
-    //   158	199	568	java/lang/Throwable
-    //   203	234	568	java/lang/Throwable
-    //   234	242	568	java/lang/Throwable
-    //   249	256	568	java/lang/Throwable
-    //   259	424	568	java/lang/Throwable
-  }
-  
-  public boolean onCrashFinished(Thread paramThread, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StatisticCollector", 2, "onCrashFinished ... throwable:" + paramThrowable.getMessage());
+    SplashActivity localSplashActivity = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localSplashActivity == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = localSplashActivity.app;
+    } while (localQQAppInterface == null);
+    String str = localQQAppInterface.a();
+    StatisticCollector localStatisticCollector = StatisticCollector.a(localSplashActivity);
+    Object localObject = (EmoticonManager)localQQAppInterface.getManager(13);
+    if (localObject != null)
+    {
+      localObject = ((EmoticonManager)localObject).b();
+      if (localObject == null) {}
     }
-    return true;
+    for (int i = ((List)localObject).size();; i = 0)
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put("Ep_amount", Integer.valueOf(i));
+      localStatisticCollector.b(localQQAppInterface, str, (Map)localObject);
+      i = 0;
+      while (i < 3)
+      {
+        localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "ep_tab2", 0, StatisticAssist.a(localSplashActivity, str, "ep_tab2" + i), 0, i);
+        i += 1;
+      }
+      i = StatisticAssist.a(localSplashActivity, str, "Ep_manage");
+      if (i > 0) {
+        localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "Ep_manage", 0, i, 0);
+      }
+      i = StatisticAssist.a(localSplashActivity, str, "Clk_ep_edit");
+      if (i > 0) {
+        localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "Clk_ep_edit", 0, i, 0);
+      }
+      i = StatisticAssist.a(localSplashActivity, str, "Delete_ep");
+      if (i > 0) {
+        localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "Delete_ep", 0, i, 0);
+      }
+      i = StatisticAssist.a(localSplashActivity, str, "Ep_order");
+      if (i <= 0) {
+        break;
+      }
+      localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "Ep_order", 0, i, 0);
+      return;
+    }
   }
   
-  public void onCrashHappen(Thread paramThread, Throwable paramThrowable) {}
+  private void a(String paramString)
+  {
+    Object localObject = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((SplashActivity)localObject).app;
+    } while (localObject == null);
+    int i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_op4dongtai");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Clk_data_wire_in", 8, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_op4buddylist");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Clk_data_wire_in", 21, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_op4recent");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Clk_data_wire_in", 22, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_ckpic");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Upload_pic", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_ckvideo");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Upload_video", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_ckfile");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Upload_file", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_cktxt");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Upload_text", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_cktkphoto");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Upload_photo", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_copy");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Long_press_copy", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_forward");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Long_press_retran", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_delete");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Long_press_delete", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_save2weiyun");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Long_press_weiyun", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_ckadv");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "data_wire_setting", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_ckviewrecvfile");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Chkfiles_data_wire", 0, i, 0);
+    }
+    i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_ckclearmsg");
+    if (i > 0) {
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Clean_data_wire", 0, i, 0);
+    }
+    boolean bool = ((QQAppInterface)localObject).getPreferences().getBoolean("auto_receive_files", false);
+    StatisticCollector localStatisticCollector = StatisticCollector.a(MainAcitivityReportHelper.a(this.a));
+    HashMap localHashMap = new HashMap();
+    localHashMap.clear();
+    if (bool) {}
+    for (i = 1;; i = 0)
+    {
+      localHashMap.put("auto_receive_files", Integer.valueOf(i));
+      localStatisticCollector.b((AppRuntime)localObject, paramString, localHashMap);
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_forwardin_text");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Retran_text", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_forwardin_image");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Retran_pic", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_forwardin_file");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Retran_file", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_forwardin_link");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Retran_link", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_open_via_qq");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "Open_via_qq", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_share_my_pc");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "share_my_PC", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "dl_share_frd");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "data_wire", "share_frd", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "Clk_disconnect_wp");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "Wifiphoto", "Clk_disconnect_wp", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "Clk_wp_back");
+      if (i > 0) {
+        StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "Wifiphoto", "Clk_wp_back", 0, i, 0);
+      }
+      i = StatisticAssist.a(MainAcitivityReportHelper.a(this.a), paramString, "Open_wp");
+      if (i <= 0) {
+        break;
+      }
+      StatisticCollector.a(MainAcitivityReportHelper.a(this.a)).a((AppRuntime)localObject, paramString, paramString, "Wifiphoto", "Open_wp", 0, i, 0);
+      return;
+    }
+  }
   
-  public void onNativeCrash(int paramInt1, int paramInt2, String paramString) {}
+  private void b()
+  {
+    Object localObject1 = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject1 == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = ((SplashActivity)localObject1).app;
+    } while (localQQAppInterface == null);
+    List localList = ((EmoticonManager)localQQAppInterface.getManager(13)).b();
+    localObject1 = "";
+    Object localObject2 = localObject1;
+    int i;
+    if (localList != null)
+    {
+      i = 0;
+      localObject2 = localObject1;
+      if (i < localList.size())
+      {
+        localObject2 = (EmoticonPackage)localList.get(i);
+        if (3 != ((EmoticonPackage)localObject2).jobType) {
+          break label186;
+        }
+        if (!"100000".equals(((EmoticonPackage)localObject2).epId)) {}
+      }
+    }
+    label186:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (((String)localObject1).equals(""))
+      {
+        localObject1 = ((EmoticonPackage)localObject2).epId;
+      }
+      else
+      {
+        localObject1 = (String)localObject1 + "|" + ((EmoticonPackage)localObject2).epId;
+        continue;
+        ReportController.b(localQQAppInterface, "CliStatus", "", "", "MbBaoyou", "MbBaoyouID", 0, 0, (String)localObject2, "", "", "");
+        return;
+      }
+    }
+  }
+  
+  private void c()
+  {
+    Object localObject = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+        localQQAppInterface = ((SplashActivity)localObject).app;
+      } while (localQQAppInterface == null);
+      localObject = localQQAppInterface.a().getSharedPreferences("chat_background_path_" + localQQAppInterface.a(), 0).getString("chat_uniform_bg", "null");
+      if ((localObject == null) || (((String)localObject).trim().length() == 0) || (((String)localObject).equals("null")))
+      {
+        ReportController.b(localQQAppInterface, "CliStatus", "", "", "BjBaoyou", "BjIDBaoyouID", 0, 0, "default", "", "", "");
+        return;
+      }
+      if (((String)localObject).equals("none"))
+      {
+        ReportController.b(localQQAppInterface, "CliStatus", "", "", "BjBaoyou", "BjIDBaoyouID", 0, 0, "default", "", "", "");
+        return;
+      }
+      i = ((String)localObject).lastIndexOf(File.separatorChar);
+      str = ((String)localObject).substring(0, i + 1);
+    } while (!AppConstants.bb.equals(str));
+    String str = ((String)localObject).substring(i + 1);
+    int i = str.lastIndexOf('.');
+    localObject = str;
+    if (i >= 0) {
+      localObject = str.substring(0, i);
+    }
+    ReportController.b(localQQAppInterface, "CliStatus", "", "", "BjBaoyou", "BjIDBaoyouID", 0, 0, (String)localObject, "", "", "");
+  }
+  
+  private void d()
+  {
+    Object localObject = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((SplashActivity)localObject).app;
+    } while (localObject == null);
+    String str = ThemeUtil.getUserCurrentThemeId((AppInterface)localObject);
+    SVIPHandler localSVIPHandler = (SVIPHandler)((QQAppInterface)localObject).a(12);
+    ReportController.b((QQAppInterface)localObject, "CliStatus", "", "", "0X800498F", "0X800498F", 0, 0, str, "", "", localSVIPHandler.c() + "");
+  }
+  
+  private void e()
+  {
+    Object localObject = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((SplashActivity)localObject).app;
+    } while (localObject == null);
+    SVIPHandler localSVIPHandler = (SVIPHandler)((QQAppInterface)localObject).a(12);
+    int i = localSVIPHandler.b();
+    ReportController.b((QQAppInterface)localObject, "CliStatus", "", "", "0X8004990", "0X8004990", 0, 0, i + "", "", "", localSVIPHandler.c() + "");
+  }
+  
+  private void f()
+  {
+    Object localObject = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((SplashActivity)localObject).app;
+    } while (localObject == null);
+    boolean bool1 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.chat_font.name());
+    boolean bool2 = ((QQAppInterface)localObject).a().getSharedPreferences("font_open_switch", 0).getBoolean("isUserOpenFontSwitch_" + ((QQAppInterface)localObject).getAccount(), false);
+    int i;
+    if (bool1) {
+      i = 2;
+    }
+    for (;;)
+    {
+      ReportController.b((QQAppInterface)localObject, "CliStatus", "", "", "font_switch", "switch_on", 0, 0, i + "", "", "", "");
+      return;
+      if (FontManager.b) {
+        i = 3;
+      } else if (bool2) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  private void g()
+  {
+    Object localObject = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {}
+    QQAppInterface localQQAppInterface;
+    EntityManager localEntityManager;
+    do
+    {
+      do
+      {
+        return;
+        localQQAppInterface = ((SplashActivity)localObject).app;
+      } while (localQQAppInterface == null);
+      localEntityManager = localQQAppInterface.a().createEntityManager();
+    } while (localEntityManager == null);
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { localQQAppInterface.a() });
+    if (localNearbyPeopleCard != null)
+    {
+      if (!localNearbyPeopleCard.switchHobby) {
+        break label152;
+      }
+      localObject = "1";
+      ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X8004A12", "0X8004A12", 0, 0, (String)localObject, "", "", "");
+      if (!localNearbyPeopleCard.switchQzone) {
+        break label159;
+      }
+    }
+    label152:
+    label159:
+    for (localObject = "1";; localObject = "0")
+    {
+      ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X8004A13", "0X8004A13", 0, 0, (String)localObject, "", "", "");
+      localEntityManager.a();
+      return;
+      localObject = "0";
+      break;
+    }
+  }
+  
+  public void run()
+  {
+    Object localObject1 = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject1 == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = ((SplashActivity)localObject1).app;
+    } while (localQQAppInterface == null);
+    SharedPreferences localSharedPreferences = ((SplashActivity)localObject1).getSharedPreferences("QQLite", 0);
+    long l2 = localSharedPreferences.getLong("LastTimeLogin_" + localQQAppInterface.a(), 0L);
+    long l3 = System.currentTimeMillis() - 10L;
+    Calendar localCalendar1 = Calendar.getInstance();
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(l2);
+    localCalendar2.add(5, 1);
+    localCalendar2.clear(10);
+    localCalendar2.clear(12);
+    localCalendar2.clear(13);
+    localCalendar2.clear(14);
+    localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).add(5, 1);
+    ((Calendar)localObject1).clear(10);
+    ((Calendar)localObject1).clear(12);
+    ((Calendar)localObject1).clear(13);
+    ((Calendar)localObject1).clear(14);
+    long l1 = ((Calendar)localObject1).getTimeInMillis() - l3 - 100L;
+    if (l1 < 0L) {
+      l1 = 86400000L;
+    }
+    for (;;)
+    {
+      int i;
+      Activity localActivity;
+      String str;
+      StatisticCollector localStatisticCollector;
+      if ((l2 > 0L) && (localCalendar1.after(localCalendar2)))
+      {
+        QQSettingUtil.a(localQQAppInterface);
+        NotifyPushSettingActivity.a(localQQAppInterface, localQQAppInterface.a());
+        StatisticCollector.a(BaseApplication.getContext()).b(localQQAppInterface, localQQAppInterface.a());
+        g();
+        StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "friend", Contacts.c);
+        StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "troop", Contacts.b);
+        StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "discussion", Contacts.d);
+        StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "search", Contacts.a);
+        StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "plugin_manage", Leba.e);
+        if (DiscussionInfoCardActivity.c > 0) {
+          StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "", "discuss", "share_discuss", 0, DiscussionInfoCardActivity.c, 0);
+        }
+        if (DiscussionInfoCardActivity.d > 0) {
+          StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "", "discuss", "copy_link", 0, DiscussionInfoCardActivity.d, 0);
+        }
+        if (DiscussionInfoCardActivity.e > 0) {
+          StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "", "discuss", "share_linkman", 0, DiscussionInfoCardActivity.e, 0);
+        }
+        if (MttBrowerWrapper.a > 0) {
+          StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "", "discuss", "click_link", 0, MttBrowerWrapper.a, 0);
+        }
+        localObject1 = new HashMap();
+        i = localSharedPreferences.getInt("online_friend_enter_count_" + localQQAppInterface.a(), 0);
+        if (i > 0) {
+          ((HashMap)localObject1).put("Click_online", Integer.valueOf(i));
+        }
+        if (AssistantSettingActivity.a > 0) {
+          ((HashMap)localObject1).put("Cleancache_pic", Integer.valueOf(AssistantSettingActivity.a));
+        }
+        i = StatisticTroopAssist.a(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        if (i > 0) {
+          ((HashMap)localObject1).put("Click_grp_asst", Integer.valueOf(i));
+        }
+        i = StatisticTroopAssist.b(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        if (i > 0) {
+          ((HashMap)localObject1).put("grp_setting_asst", Integer.valueOf(i));
+        }
+        i = StatisticTroopAssist.c(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        if (i > 0) {
+          ((HashMap)localObject1).put("grp_setting_msg", Integer.valueOf(i));
+        }
+        i = StatisticTroopAssist.d(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        if (i > 0) {
+          ((HashMap)localObject1).put("grp_msg_equ", Integer.valueOf(i));
+        }
+        i = StatisticTroopAssist.e(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        if (i > 0) {
+          ((HashMap)localObject1).put("grp_msg_dec", Integer.valueOf(i));
+        }
+        i = StatisticTroopAssist.f(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        if (i > 0) {
+          ((HashMap)localObject1).put("grp_msg_inc", Integer.valueOf(i));
+        }
+        StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), (Map)localObject1);
+        StatisticTroopAssist.h(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+        FileManagerUtil.a(localQQAppInterface, MainAcitivityReportHelper.a(this.a));
+        a(localQQAppInterface.a());
+        localActivity = MainAcitivityReportHelper.a(this.a);
+        str = localQQAppInterface.a();
+        localStatisticCollector = StatisticCollector.a(localActivity);
+        i = StatisticAssist.a(localActivity, str, "ep_tab");
+        if (i > 0) {
+          localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "ep_tab", 1, i, 0);
+        }
+        i = StatisticAssist.a(localActivity, str, "ep_mall_in2");
+        if (i > 0) {
+          localStatisticCollector.a(localQQAppInterface, str, "", "ep_mall", "ep_mall_in", 2, i, 0);
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          a();
+          b();
+          c();
+          d();
+          e();
+          f();
+          localObject1 = (FriendsManagerImp)localQQAppInterface.getManager(8);
+          if (localObject1 == null) {
+            break label2299;
+          }
+          localObject1 = ((FriendsManagerImp)localObject1).a(str);
+          if (localObject1 != null) {
+            ReportController.b(localQQAppInterface, "CliStatus", "", "", "FontStatus", "FontOn", 0, 0, String.valueOf(((ExtensionInfo)localObject1).uVipFont), "", "", "");
+          }
+          if (localObject1 != null)
+          {
+            j = ((SVIPHandler)localQQAppInterface.a(12)).c();
+            if (j == 2)
+            {
+              i = 0;
+              ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X8004A26", "0X8004A26", 0, 0, "" + i, "" + ((ExtensionInfo)localObject1).colorRingId, "", "");
+            }
+          }
+          else
+          {
+            localObject1 = StatisticAssist.a(localQQAppInterface);
+            if (localObject1 == null) {
+              continue;
+            }
+            localObject1 = ((List)localObject1).iterator();
+            if (!((Iterator)localObject1).hasNext()) {
+              continue;
+            }
+            localObject3 = (MessageReportData)((Iterator)localObject1).next();
+            if (((MessageReportData)localObject3).msgCount <= 0) {
+              continue;
+            }
+            localStatisticCollector.c(localQQAppInterface, ((MessageReportData)localObject3).getMsgReport());
+            continue;
+          }
+        }
+        catch (Exception localException)
+        {
+          Object localObject3;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("MainAcitivityReportHelper", 2, "reportAioEmotionData", localException);
+          continue;
+          i = j;
+          if (j != 3) {
+            continue;
+          }
+          i = 2;
+          continue;
+          i = localQQAppInterface.a().a(-2002);
+          int j = localQQAppInterface.a().c();
+          if (j > 0)
+          {
+            localObject2 = new BigDecimal(i * 100.0D / j).setScale(0, 4);
+            localObject3 = new HashMap();
+            ((HashMap)localObject3).put("pttPercent", Integer.toString(((BigDecimal)localObject2).intValue()));
+            ((HashMap)localObject3).put("pttMsgNum", Integer.toString(i));
+            ((HashMap)localObject3).put("totalMsgNum", Integer.toString(j));
+            StatisticCollector.a(BaseApplication.getContext()).a(null, "actPttMsg", true, 0L, 0L, (HashMap)localObject3, null);
+            if (QLog.isColorLevel()) {
+              QLog.d("SendMessageStatistic", 2, "pttMsgNum=" + i + ",totalMsgNum=" + j + ",pttPercent=" + localObject2);
+            }
+            localQQAppInterface.a().h();
+          }
+          j = localQQAppInterface.a().c("recv_msg_back_group");
+          int k = localQQAppInterface.a().c("recv_msg_back_public");
+          int m = localQQAppInterface.a().c("recv_msg_notify");
+          i = localQQAppInterface.a().c("pull_num_group_msg");
+          int n = localQQAppInterface.a().c("recv_msg_back_notify_group");
+          int i1 = localQQAppInterface.a().c("recv_msg_fore_notify_group");
+          int i2 = localQQAppInterface.a().c("recv_msg_fore_num_group");
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actBackNumGroupMsg", true, j, 0L, null, null);
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actBackPublicMsg", true, k, 0L, null, null);
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actNotifyMsg", true, m, 0L, null, null);
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actPullNumGroupMsg", true, i, 0L, null, null);
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actBackGroupMsg", true, n, 0L, null, null);
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actForeGroupMsg", true, i1, 0L, null, null);
+          StatisticCollector.a(BaseApplication.getContext()).a(null, "actForeNumGroupMsg", true, i2, 0L, null, null);
+          i = 0;
+          if (j + k + m > 0)
+          {
+            i = (k + j) * 100 / (j + k + m);
+            StatisticCollector.a(BaseApplication.getContext()).a(null, "RecvSilentMsgPercent", true, i, 0L, null, null);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("RecvMessageStatistic", 2, "backNumGroup=" + j + ",backPub=" + k + ",notifyMsg=" + m + ",RecvSilentMsgPercent=" + i + ",backGroup=" + n + ",foreGroup=" + i1 + ",foreNumGroup=" + i2);
+          }
+          localQQAppInterface.a().i();
+          i = MainAcitivityReportHelper.a(localActivity, str);
+          if (i > 0) {
+            StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "Menu_Quit", i);
+          }
+          i = QQSettingUtil.a(localActivity, str);
+          if (i > 0) {
+            StatisticCollector.a(BaseApplication.getContext()).a(localQQAppInterface, localQQAppInterface.a(), "Setting_Quit", i);
+          }
+          i = StatisticAssist.a(localActivity, str, "public_account_search_list_click");
+          if (i > 0) {
+            localStatisticCollector.a(localQQAppInterface, str, "", "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot", 1, i, 0);
+          }
+          i = NotifyPushSettingActivity.b(localActivity, str, "LED_light");
+          localObject2 = new HashMap();
+          ((HashMap)localObject2).clear();
+          ((HashMap)localObject2).put("LED_light", Integer.valueOf(i));
+          localStatisticCollector.b(localQQAppInterface, str, (Map)localObject2);
+          PicReporter.a();
+          i = ThemeUtil.getThemeSwitchTimes(localQQAppInterface);
+          if (i > 0) {
+            localStatisticCollector.a(localQQAppInterface, str, "", "theme_mall", "theme_replace", 0, i, 0);
+          }
+          i = ChatBackgroundSettingActivity.a(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a());
+          if (i > 0) {
+            localStatisticCollector.a(localQQAppInterface, str, "", "background", "bkground_replace", 0, i, 0);
+          }
+          if (!Boolean.valueOf(SettingCloneUtil.readValue(MainAcitivityReportHelper.a(this.a), localQQAppInterface.a(), MainAcitivityReportHelper.a(this.a).getString(2131363738), "qqsetting_lock_screen_whenexit_key", true)).booleanValue()) {}
+        }
+        for (Object localObject2 = "1";; localObject2 = "0")
+        {
+          ReportController.b(localQQAppInterface, "CliStatus", "", "", "0X80040D9", "0X80040D9", 0, 0, (String)localObject2, "", "", "");
+          MainAcitivityReportHelper.a(this.a, localStatisticCollector);
+          MainAcitivityReportHelper.b(this.a, localStatisticCollector);
+          this.a.a();
+          if (QLog.isColorLevel()) {
+            QLog.d("StatisticCollector", 2, "**************report data below:*****************");
+          }
+          this.a.b(localQQAppInterface.getAccount());
+          localSharedPreferences.edit().putLong("LastTimeLogin_" + localQQAppInterface.a(), l3).commit();
+          if (localCalendar1.after(localCalendar2))
+          {
+            ThemeUiPlugin.reportThemeNumAndCurrThemeName(localQQAppInterface, localQQAppInterface.a());
+            ChatBackgroundSettingActivity.a(localQQAppInterface, localQQAppInterface.a());
+          }
+          if (l2 == 0L) {
+            localSharedPreferences.edit().putLong("LastTimeLogin_" + localQQAppInterface.a(), l3).commit();
+          }
+          LebaShowListManager.a().a(localQQAppInterface);
+          l2 = (Math.random() * 30.0D * 60.0D * 1000.0D);
+          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, l2 + l1 + 60000L);
+          return;
+        }
+        label2299:
+        localObject2 = null;
+      }
+    }
+  }
 }
 
 

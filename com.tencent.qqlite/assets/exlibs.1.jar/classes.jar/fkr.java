@@ -1,7 +1,7 @@
+import android.app.ProgressDialog;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
@@ -26,8 +26,8 @@ public class fkr
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
     }
-    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog != null)) {
-      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.show();
+    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
   }
   
@@ -36,10 +36,10 @@ public class fkr
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
     }
-    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog != null))
+    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null))
     {
-      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.c(paramInt2);
-      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.b(paramInt1);
+      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
+      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
     }
   }
   
@@ -71,15 +71,15 @@ public class fkr
       QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
     }
     paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
-    if ((!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog != null)) {
-      paramString.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.dismiss();
+    if ((!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
     }
     if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
     {
       paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
       if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e.equals("com.qqfav.activity.FavoritesListActivity")) && (!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e.equals("com.tencent.mobileqq.troop.activity.TroopFileBroswerActivity")) && (!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e.equals("com.tencent.mobileqq.troop.activity.TroopFileViewerActivity")))
       {
-        QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362663, 2);
+        QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362670, 2);
         QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2).getAccount(), true);
       }
     }

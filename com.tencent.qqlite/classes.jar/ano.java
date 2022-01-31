@@ -1,31 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ano
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public ano(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      if ((this.a.b) && (this.a.f == 11)) {
-        ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362375));
-      }
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.setResult(0);
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.finish();
+    ForwardRecentActivity.a(this.a).a(String.valueOf(AppConstants.T), -1, "", "我的电脑");
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
   }
 }
 

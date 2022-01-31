@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.DragBaseActivity;
+import com.tencent.mobileqq.app.DiscussionIconHelper;
+import java.util.Comparator;
 
 public class cse
-  implements View.OnClickListener
+  implements Comparator
 {
-  public cse(DragBaseActivity paramDragBaseActivity) {}
+  public cse(DiscussionIconHelper paramDiscussionIconHelper) {}
   
-  public void onClick(View paramView)
+  public int a(String paramString1, String paramString2)
   {
-    this.a.a();
+    try
+    {
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
+      }
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
+    }
+    catch (Exception paramString1) {}
+    return 0;
   }
 }
 

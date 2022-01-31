@@ -1,29 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.widget.CustomAlertDialog;
+import com.tencent.mobileqq.widget.CustomAlertDialog.OnOptionMenuClick;
+import java.util.HashMap;
+import java.util.List;
 
-public class eya
+class eya
   implements View.OnClickListener
 {
-  public eya(DropdownView paramDropdownView) {}
+  eya(exz paramexz, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Eyd.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Eyd.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Eyd.getAdapter() != null) && (this.a.jdField_a_of_type_Eyd.getAdapter().getCount() > 0))
-    {
-      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
-        DropdownView.a(this.a).postDelayed(new eyb(this, paramView), 250L);
-      }
+    if (this.jdField_a_of_type_Exz.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a != null) {
+      this.jdField_a_of_type_Exz.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a.a(((Integer)((HashMap)this.jdField_a_of_type_Exz.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).get("commandId")).intValue());
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Eyd.dismissDropDown();
+    this.jdField_a_of_type_Exz.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.dismiss();
   }
 }
 

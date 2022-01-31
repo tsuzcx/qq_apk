@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.widget.ClickableImageSpan;
-import com.tencent.mobileqq.widget.ClickableImageSpan.ClickableImageSpanListener;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ebq
-  implements ClickableImageSpan.ClickableImageSpanListener
+class ebq
+  implements Runnable
 {
-  public ebq(EditActivity paramEditActivity) {}
+  ebq(ebp paramebp, ImageView paramImageView, TextView paramTextView) {}
   
-  public void a(ClickableImageSpan paramClickableImageSpan)
+  public void run()
   {
-    if ((EditActivity.a(this.a) == paramClickableImageSpan) && (System.currentTimeMillis() - this.a.a > 1300L)) {
-      this.a.c();
-    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(200L);
+    localAlphaAnimation.setAnimationListener(new ebr(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
+    this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
   }
 }
 

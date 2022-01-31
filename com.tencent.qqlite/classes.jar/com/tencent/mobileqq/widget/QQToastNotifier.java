@@ -5,14 +5,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
-import eyw;
-import eyx;
+import ezb;
+import ezc;
 
 public class QQToastNotifier
 {
   private static final int jdField_a_of_type_Int = 1;
   public Context a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new eyw(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new ezb(this, Looper.getMainLooper());
   public Toast a;
   
   public QQToastNotifier(Context paramContext)
@@ -42,12 +42,12 @@ public class QQToastNotifier
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    eyx localeyx = new eyx(null);
-    localeyx.jdField_a_of_type_Int = paramInt4;
-    localeyx.b = paramInt1;
-    localeyx.c = paramInt3;
-    localeyx.d = paramInt2;
-    localMessage.obj = localeyx;
+    ezc localezc = new ezc(null);
+    localezc.jdField_a_of_type_Int = paramInt4;
+    localezc.b = paramInt1;
+    localezc.c = paramInt3;
+    localezc.d = paramInt2;
+    localMessage.obj = localezc;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
@@ -55,12 +55,12 @@ public class QQToastNotifier
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    eyx localeyx = new eyx(null);
-    localeyx.jdField_a_of_type_Int = paramInt3;
-    localeyx.jdField_a_of_type_JavaLangString = paramString;
-    localeyx.c = paramInt2;
-    localeyx.d = paramInt1;
-    localMessage.obj = localeyx;
+    ezc localezc = new ezc(null);
+    localezc.jdField_a_of_type_Int = paramInt3;
+    localezc.jdField_a_of_type_JavaLangString = paramString;
+    localezc.c = paramInt2;
+    localezc.d = paramInt1;
+    localMessage.obj = localezc;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }

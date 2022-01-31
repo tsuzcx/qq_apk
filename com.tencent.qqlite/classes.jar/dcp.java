@@ -1,32 +1,35 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
-class dcp
-  extends SQLiteCursor
+public class dcp
+  implements Runnable
 {
-  dcp(dco paramdco, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  
+  public dcp(MessageProgressTextView paramMessageProgressTextView, int paramInt1, int paramInt2)
   {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public byte[] getBlob(int paramInt)
+  public void a(int paramInt)
   {
-    return SecurityUtile.a(super.getBlob(paramInt));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String getString(int paramInt)
+  public void b(int paramInt)
   {
-    String str1 = super.getString(paramInt);
-    try
+    this.b = paramInt;
+  }
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.jdField_a_of_type_Dcp = null;
+    if (!this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.jdField_a_of_type_Boolean)
     {
-      String str2 = SecurityUtile.a(str1);
-      return str2;
+      this.jdField_a_of_type_Int += this.b;
+      MessageProgressTextView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView, this.jdField_a_of_type_Int, this.b);
     }
-    catch (Exception localException) {}
-    return str1;
   }
 }
 

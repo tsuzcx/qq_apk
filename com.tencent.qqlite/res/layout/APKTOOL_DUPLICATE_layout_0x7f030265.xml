@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a0e" android:background="@drawable/skin_slidetab_slider_current" android:padding="0.0px" android:layout_width="2.0dip" android:layout_height="4.0dip" tencent:skintype="title_slidetab"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite" />
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200f4" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_margin="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090793" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090794" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090793" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,30 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateEnterActivity;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class eie
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
   public eie(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      TroopCreateEnterActivity.a(this.a, 2, 51);
-      this.a.v();
-      ReportController.b(this.a.app, "P_CliOper", "Grp_nearby", "", "right", "create", 0, 0, "", "", "", "");
-      return;
-    }
-    AddContactsActivity.a(this.a);
-    this.a.v();
-    ReportController.b(this.a.app, "P_CliOper", "Grp_nearby", "", "right", "find", 0, 0, "", "", "", "");
+    NearbyTroopsActivity.a(this.a);
   }
 }
 

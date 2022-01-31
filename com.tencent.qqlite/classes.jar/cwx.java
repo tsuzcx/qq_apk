@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.asyncdb.BaseCache;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
 public class cwx
-  implements Runnable
+  implements Comparator
 {
-  public cwx(CheckMsgCount paramCheckMsgCount) {}
+  public cwx(BaseCache paramBaseCache) {}
   
-  public void run()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    CheckMsgCount.a(this.a).a.a().l();
-    CheckMsgCount.b(this.a).a.a().c();
+    return (int)(paramEntity1.getId() - paramEntity2.getId());
   }
 }
 

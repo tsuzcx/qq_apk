@@ -1,26 +1,45 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileObserver;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import java.util.Collection;
 
-class afh
-  implements Runnable
+public class afh
+  implements TroopFileObserver
 {
-  afh(afg paramafg, boolean paramBoolean) {}
+  public afh(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_Afg.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ArrayOfAndroidViewView[2];
-    if ((localView != null) && (this.jdField_a_of_type_Afg.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null))
+    if (paramInt > 0)
     {
-      ((TextView)localView.findViewById(2131296936)).setText(this.jdField_a_of_type_Afg.jdField_a_of_type_JavaLangString);
-      TextView localTextView = (TextView)localView.findViewById(2131296957);
-      localTextView.setText(this.jdField_a_of_type_Afg.b);
-      localTextView.setMaxLines(3);
-      this.jdField_a_of_type_Afg.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a(true);
-      this.jdField_a_of_type_Afg.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(true);
-      this.jdField_a_of_type_Afg.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(localView, 0, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Afg.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(localView, this.jdField_a_of_type_Afg.b);
+      View localView = this.a.jdField_a_of_type_ArrayOfAndroidViewView[1];
+      this.a.a(localView, paramInt);
+    }
+  }
+  
+  public void a(TroopFileInfo paramTroopFileInfo) {}
+  
+  public void a(Collection paramCollection, boolean paramBoolean) {}
+  
+  public void b(TroopFileInfo paramTroopFileInfo) {}
+  
+  public void c(TroopFileInfo paramTroopFileInfo)
+  {
+    if ((paramTroopFileInfo != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 7;
+      localMessage.obj = paramTroopFileInfo;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    }
+    if (ChatSettingForTroop.a(this.a).a() > 0)
+    {
+      paramTroopFileInfo = this.a.jdField_a_of_type_ArrayOfAndroidViewView[1];
+      this.a.a(paramTroopFileInfo, ChatSettingForTroop.a(this.a).a());
     }
   }
 }

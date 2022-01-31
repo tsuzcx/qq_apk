@@ -23,9 +23,9 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
-import dqv;
-import dqw;
-import dqx;
+import drb;
+import drc;
+import drd;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -786,11 +786,11 @@ public class FileManagerProxy
       if (this.b.size() > 30) {
         this.b.remove(0);
       }
-      dqx localdqx = new dqx(this);
-      localdqx.jdField_a_of_type_Long = paramLong1;
-      localdqx.jdField_a_of_type_JavaLangString = paramString;
-      localdqx.b = paramLong2;
-      this.b.add(localdqx);
+      drd localdrd = new drd(this);
+      localdrd.jdField_a_of_type_Long = paramLong1;
+      localdrd.jdField_a_of_type_JavaLangString = paramString;
+      localdrd.b = paramLong2;
+      this.b.add(localdrd);
     } while (!QLog.isColorLevel());
     QLog.i("FileManagerProxy<FileAssistant>", 2, "saveDeletedEntity nSessionId=" + paramLong1 + " nOlSessionId=" + paramLong2);
   }
@@ -961,7 +961,7 @@ public class FileManagerProxy
   {
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      if (((dqx)localIterator.next()).jdField_a_of_type_Long == paramLong) {
+      if (((drd)localIterator.next()).jdField_a_of_type_Long == paramLong) {
         return true;
       }
     }
@@ -1061,8 +1061,8 @@ public class FileManagerProxy
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
-      dqx localdqx = (dqx)localIterator.next();
-      if ((localdqx.b == paramLong) && (localdqx.jdField_a_of_type_JavaLangString != null) && (localdqx.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
+      drd localdrd = (drd)localIterator.next();
+      if ((localdrd.b == paramLong) && (localdrd.jdField_a_of_type_JavaLangString != null) && (localdrd.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
         return true;
       }
     }
@@ -1245,7 +1245,7 @@ public class FileManagerProxy
         }
       }
       finally {}
-      new Handler(localLooper).post(new dqv(this, paramFileManagerEntity));
+      new Handler(localLooper).post(new drb(this, paramFileManagerEntity));
     }
   }
   
@@ -1424,7 +1424,7 @@ public class FileManagerProxy
         return;
       }
     }
-    new Handler(paramFileManagerEntity).post(new dqw(this, localContentValues, l));
+    new Handler(paramFileManagerEntity).post(new drc(this, localContentValues, l));
   }
   
   /* Error */

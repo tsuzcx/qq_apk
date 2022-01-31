@@ -1,14 +1,27 @@
-import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class xl
-  implements Runnable
+public class xl
+  implements DialogInterface.OnClickListener
 {
-  xl(xj paramxj) {}
+  public xl(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AddRequestActivity.a(this.a.a).dismiss();
+    if (NetworkUtil.e(BaseApplication.getContext()))
+    {
+      long l = Long.valueOf(this.a.app.a()).longValue();
+      this.a.showDialog(2);
+      this.a.a.a(l, Long.valueOf(AddRequestActivity.a(this.a)).longValue(), 1);
+      return;
+    }
+    QQToast.a(this.a, 2131363516, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,26 +1,42 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileWeiYunImageExpandableListAdapter.ImageHolder;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class die
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  die(dib paramdib, WeiYunFileInfo paramWeiYunFileInfo) {}
+  die(did paramdid, View paramView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.k(this.jdField_a_of_type_Dib.a).a().a(localFileManagerEntity);
-    QfileBaseCloudFileTabView.l(this.jdField_a_of_type_Dib.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Dib.a.a(localFileManagerEntity);
+    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((paramView instanceof QfileWeiYunImageExpandableListAdapter.ImageHolder))
+    {
+      paramView = (WeiYunFileInfo)((QfileWeiYunImageExpandableListAdapter.ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      if ((FMDataCache.a(paramView.a)) && (QLog.isColorLevel())) {
+        QLog.d(QfileBaseCloudFileTabView.a, 2, "there is a bug ");
+      }
+      QfileBaseCloudFileTabView.c(this.jdField_a_of_type_Did.a).a().a(paramView);
+      QfileBaseCloudFileTabView.a(this.jdField_a_of_type_Did.a);
+    }
+    do
+    {
+      return;
+      if ((paramView instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
+      {
+        paramView = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e(QfileBaseCloudFileTabView.a, 2, "unknow Object");
   }
-  
-  public void b() {}
 }
 
 

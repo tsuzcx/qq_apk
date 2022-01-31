@@ -1,14 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
 public class dhf
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public dhf(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
+    this.a.a.a(null);
     LocalFileBrowserActivity.a(this.a);
   }
 }

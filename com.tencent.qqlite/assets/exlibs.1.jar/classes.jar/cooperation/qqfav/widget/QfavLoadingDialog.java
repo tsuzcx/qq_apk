@@ -25,7 +25,7 @@ public class QfavLoadingDialog
   {
     super(paramContext, 2131624118);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2130903409, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130903399, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
@@ -33,21 +33,21 @@ public class QfavLoadingDialog
     localLayoutParams.height = -1;
     ((Window)localObject).setAttributes(localLayoutParams);
     setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131296901);
+    localObject = (TextView)paramContext.findViewById(2131296897);
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131362660);
+      ((TextView)localObject).setText(2131362668);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131296895));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131296891));
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362660);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131362668);
     }
-    paramContext = (FadeIconImageView)paramContext.findViewById(2131296906);
+    paramContext = (FadeIconImageView)paramContext.findViewById(2131296902);
     if (paramContext != null)
     {
       paramContext.setVisibility(0);
-      paramContext.setImageResource(2130839342);
+      paramContext.setImageResource(2130839308);
     }
   }
   
@@ -62,7 +62,7 @@ public class QfavLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837914));
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837910));
     if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);

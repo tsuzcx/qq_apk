@@ -1,41 +1,22 @@
-import android.app.Activity;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.OfflineVideoFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 
 class dtt
   extends FMObserver
 {
   dtt(dts paramdts) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    if (paramBoolean) {}
-    for (;;)
+    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
     {
-      try
-      {
-        dts.a(this.a, paramString3, paramString4, paramInt2, paramString2);
+      paramThumbnailInfo = (FileManagerEntity)paramThumbnailInfo.a;
+      if ((paramThumbnailInfo.Uuid != null) && (paramThumbnailInfo.Uuid.equals(OfflineVideoFileView.a(this.a.a).d()))) {
         this.a.a.e();
-        return;
       }
-      finally {}
-      PreviewingOfflineFileView.b(this.a.a).runOnUiThread(new dtv(this, paramInt1, paramString1));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        dts.a(this.a, paramString3, paramString4, paramInt2, paramString2);
-        this.a.a.e();
-        return;
-      }
-      finally {}
-      PreviewingOfflineFileView.a(this.a.a).runOnUiThread(new dtu(this, paramInt1, paramString1));
     }
   }
 }

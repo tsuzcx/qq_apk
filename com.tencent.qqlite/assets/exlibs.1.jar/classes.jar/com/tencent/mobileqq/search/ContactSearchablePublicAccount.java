@@ -88,7 +88,7 @@ public class ContactSearchablePublicAccount
     if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade <= 0L) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getDrawable(2130838183);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getDrawable(2130838177);
   }
   
   public PublicAccountInfo a()

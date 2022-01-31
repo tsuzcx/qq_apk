@@ -1,49 +1,45 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class bpi
-  implements Animation.AnimationListener
+class bpi
+  implements Runnable
 {
-  public static final String a = "right";
-  public static final int b = 0;
-  public static final String b = "left";
-  public static final int c = 1;
-  public static final int d = 2;
-  public static final int e = 3;
-  public static final int f = 4;
-  public static final int g = 5;
-  public static final int h = 6;
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
+  bpi(bph parambph) {}
   
-  public bpi(TroopMemberListActivity paramTroopMemberListActivity, View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new bpj(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {
+      return;
     }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    RelativeLayout.LayoutParams localLayoutParams;
+    switch (this.a.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    default: 
+      return;
+    case 0: 
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839121);
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839120);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }
   }
 }

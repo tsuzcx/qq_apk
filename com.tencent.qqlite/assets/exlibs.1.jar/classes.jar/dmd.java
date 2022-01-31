@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dmd
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public dmd(QfileRecentAllFileTabView paramQfileRecentAllFileTabView, FileManagerEntity paramFileManagerEntity) {}
+  public dmd(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    Object localObject = QfileTimeUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.put(localObject, new ArrayList());
+    switch (paramInt)
+    {
     }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      if (QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.a)) {}
+      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
     }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.i();
   }
 }
 

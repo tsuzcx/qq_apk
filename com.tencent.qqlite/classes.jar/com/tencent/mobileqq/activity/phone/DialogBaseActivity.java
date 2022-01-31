@@ -5,11 +5,11 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
-import chf;
-import chg;
-import chh;
-import chi;
-import chj;
+import chl;
+import chm;
+import chn;
+import cho;
+import chp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
@@ -26,7 +26,7 @@ public class DialogBaseActivity
   static final int d = 1;
   static final int e = 2;
   private View jdField_a_of_type_AndroidViewView;
-  private chj jdField_a_of_type_Chj;
+  private chp jdField_a_of_type_Chp;
   public PhoneContactManager a;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   public QQProgressDialog a;
@@ -36,7 +36,7 @@ public class DialogBaseActivity
     if ((!isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new chg(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new chm(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -48,7 +48,7 @@ public class DialogBaseActivity
     if (!isFinishing())
     {
       b(paramInt);
-      this.jdField_a_of_type_Chj.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Chp.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
@@ -57,8 +57,8 @@ public class DialogBaseActivity
     if ((isFinishing()) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 231, getString(2131362091), getString(2131362090), 2131362092, 2131362093, paramOnClickListener, new chh(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new chi(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 231, getString(2131362088), getString(2131362087), 2131362089, 2131362090, paramOnClickListener, new chn(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new cho(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -73,13 +73,8 @@ public class DialogBaseActivity
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      DialogUtil.a(this, 231, paramString1, paramString2, new chf(this), null).show();
+      DialogUtil.a(this, 231, paramString1, paramString2, new chl(this), null).show();
     }
-  }
-  
-  protected String a_()
-  {
-    return null;
   }
   
   public void b(int paramInt)
@@ -89,13 +84,18 @@ public class DialogBaseActivity
   
   public void b(int paramInt, long paramLong)
   {
-    Message localMessage = this.jdField_a_of_type_Chj.obtainMessage(1, paramInt, 0);
-    this.jdField_a_of_type_Chj.sendMessageDelayed(localMessage, paramLong);
+    Message localMessage = this.jdField_a_of_type_Chp.obtainMessage(1, paramInt, 0);
+    this.jdField_a_of_type_Chp.sendMessageDelayed(localMessage, paramLong);
+  }
+  
+  protected String b_()
+  {
+    return null;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Chj.removeMessages(1);
+    this.jdField_a_of_type_Chp.removeMessages(1);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
@@ -106,7 +106,7 @@ public class DialogBaseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Chj = new chj(this);
+    this.jdField_a_of_type_Chp = new chp(this);
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = ((PhoneContactManager)this.app.getManager(10));
     return true;
   }

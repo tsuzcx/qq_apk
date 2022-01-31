@@ -5,8 +5,6 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 public class EmojiSubHomeUiPlugin
   extends EmojiUiPlugin
 {
-  private int tt;
-  
   public void OnActivityCreate()
   {
     this.mActivityType = 3;

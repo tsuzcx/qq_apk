@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 @Deprecated
 public abstract interface PhotoConst$Menu
 {
-  public static final int a = 2131363950;
-  public static final int b = 2131363951;
-  public static final int c = 2131363952;
-  public static final int d = 2131363954;
-  public static final int e = 2131363955;
+  public static final int a = 2131363939;
+  public static final int b = 2131363940;
+  public static final int c = 2131363941;
+  public static final int d = 2131363943;
+  public static final int e = 2131363944;
 }
 
 

@@ -32,13 +32,13 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.NewIntent;
 import mqq.manager.AccountManager;
-import op;
-import oq;
-import or;
+import ol;
+import om;
+import on;
+import oo;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.json.JSONObject;
-import os;
 
 public class PublicAccountUtil
 {
@@ -142,7 +142,7 @@ public class PublicAccountUtil
       try
       {
         localFollowRequest.uin.set((int)Long.parseLong(paramString));
-        localNewIntent.setObserver(new or(paramAppInterface, paramContext, paramString));
+        localNewIntent.setObserver(new on(paramAppInterface, paramContext, paramString));
         localNewIntent.putExtra("data", localFollowRequest.toByteArray());
         paramAppInterface.startServlet(localNewIntent);
         return;
@@ -157,7 +157,7 @@ public class PublicAccountUtil
     String str = paramQQAppInterface.getSid();
     if (TextUtils.isEmpty(str))
     {
-      ((AccountManager)paramQQAppInterface.getManager(0)).updateSid(new op(paramQQAppInterface, paramContext, paramString));
+      ((AccountManager)paramQQAppInterface.getManager(0)).updateSid(new ol(paramQQAppInterface, paramContext, paramString));
       return;
     }
     b(paramQQAppInterface, paramContext, paramString, str);
@@ -166,13 +166,13 @@ public class PublicAccountUtil
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
     ActionSheet localActionSheet = ActionSheet.a(paramContext, 2131624119);
-    localActionSheet.a(paramContext.getResources().getString(2131362494));
-    localActionSheet.a(2131363247, 3);
+    localActionSheet.a(paramContext.getResources().getString(2131362491));
+    localActionSheet.a(2131363250, 3);
     if (paramString.equals("2010741172")) {
-      localActionSheet.c(2131362457);
+      localActionSheet.c(2131362454);
     }
-    localActionSheet.d(2131362790);
-    localActionSheet.a(new oq(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
+    localActionSheet.d(2131362794);
+    localActionSheet.a(new om(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
     localActionSheet.show();
   }
   
@@ -333,7 +333,7 @@ public class PublicAccountUtil
             if (i != 0) {
               break;
             }
-            QQToast.a(paramContext.getApplicationContext(), paramContext.getResources().getString(2131362458), 0).a();
+            QQToast.a(paramContext.getApplicationContext(), paramContext.getResources().getString(2131362455), 0).a();
             return;
             i += 1;
             break label39;
@@ -393,7 +393,7 @@ public class PublicAccountUtil
       localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(paramString));
       label76:
       localNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-      localNewIntent.setObserver(new os(paramContext, paramAppInterface));
+      localNewIntent.setObserver(new oo(paramContext, paramAppInterface));
       paramAppInterface.startServlet(localNewIntent);
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountUtil", 2, "sendDetailInfoRequest exit");

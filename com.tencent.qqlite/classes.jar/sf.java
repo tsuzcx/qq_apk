@@ -1,35 +1,64 @@
-import android.view.View;
-import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.SSOWebviewPlugin;
+import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sf
-  implements ActionSheet.OnButtonClickListener
+  implements BusinessObserver
 {
-  public sf(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
+  public sf(SSOWebviewPlugin paramSSOWebviewPlugin, String paramString) {}
   
-  public void a(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    if (paramBoolean) {}
+    try
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d(PubAccountMailJsPlugin.jdField_a_of_type_JavaLangString, 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject == null) {
+        return;
       }
-      return;
-    case 0: 
-      PubAccountMailJsPlugin.a(this.a);
-      return;
-    case 1: 
-      PubAccountMailJsPlugin.b(this.a);
-      return;
-    case 2: 
-      PubAccountMailJsPlugin.c(this.a);
+      paramBundle = new WebSsoBody.WebSsoResponseBody();
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("data", paramBundle.data.get());
+      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
+      ((JSONObject)localObject).put("cret", 0);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
+        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.a = ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get();
+      }
+      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.b = ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get();
       return;
     }
-    PubAccountMailJsPlugin.d(this.a);
+    catch (Exception paramBundle)
+    {
+      paramBundle = new JSONObject();
+      try
+      {
+        paramBundle.put("cret", 2);
+        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
+    paramBundle = new JSONObject();
+    paramBundle.put("cret", 1);
+    this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+    return;
   }
 }
 

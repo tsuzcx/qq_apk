@@ -1,24 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.newfriend.NewFriendPushListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class agt
-  extends BroadcastReceiver
+  implements NewFriendPushListener
 {
   public agt(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(NewFriendMessage paramNewFriendMessage)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
-    {
-      this.a.a.a(6, 2);
-      this.a.a.d = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a(null);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onRecommendMsgPushed");
     }
-    this.a.a.a();
+    this.a.b(new agu(this));
+    this.a.a(0L);
   }
 }
 

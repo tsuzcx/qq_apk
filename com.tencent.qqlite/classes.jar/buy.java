@@ -1,16 +1,21 @@
-import android.app.Activity;
+import android.content.Context;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class buy
   extends ClickableSpan
 {
-  public buy(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public buy(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    ((Activity)GrayTipsItemBuilder.d(this.a)).showDialog(230);
+    paramView = GrayTipsItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131363585) + " " + this.jdField_a_of_type_JavaLangString;
+    paramView = DialogUtil.a(GrayTipsItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), 230).setTitle(paramView).setMessage(this.b);
+    paramView.setPositiveButton(GrayTipsItemBuilder.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131363587), new bva(this)).setNegativeButton(GrayTipsItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131362794), new buz(this));
+    paramView.show();
   }
 }
 

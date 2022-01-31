@@ -1,16 +1,30 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class aeb
   implements View.OnClickListener
 {
-  public aeb(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
+  public aeb(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
   
   public void onClick(View paramView)
   {
-    View localView = (View)paramView.getParent();
-    new aec(this, paramView.getTag(), localView).run();
+    if ((paramView != null) && ((paramView instanceof ImageView)))
+    {
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = EmosmUtils.getEmoticonSoundPath(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
+    }
   }
 }
 

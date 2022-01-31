@@ -80,11 +80,7 @@ public class LiteActivity$LiteJumpAction
     {
       return;
       paramIntent.putExtra("dataline_share_finish", true);
-      ((Bundle)localObject).getString("android.intent.extra.TITLE");
-      ((Bundle)localObject).getString("android.intent.extra.SUBJECT");
       str1 = ((Bundle)localObject).getString("android.intent.extra.TEXT");
-      ((Bundle)localObject).getString("image_url");
-      ((Bundle)localObject).getString("detail_url");
       str2 = paramIntent.getType();
     } while (TextUtils.isEmpty(str2));
     if ((str2.startsWith("text")) && (!((Bundle)localObject).containsKey("android.intent.extra.STREAM")))

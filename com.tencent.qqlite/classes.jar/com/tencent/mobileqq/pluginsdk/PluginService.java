@@ -21,12 +21,12 @@ public abstract class PluginService
   protected Service mOutService;
   protected PackageInfo mPackageInfo;
   protected String mPluginID;
-  private boolean mUseQqResources;
+  private int mPluginResourcesType;
   
-  public void IInit(String paramString1, String paramString2, Service paramService, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean)
+  public void IInit(String paramString1, String paramString2, Service paramService, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginService.IInit: " + paramString1 + ", " + paramBoolean);
+      DebugHelper.log("plugin_tag", "PluginService.IInit: " + paramString1 + ", " + this.mPluginResourcesType);
     }
     this.mIsRunInPlugin = true;
     this.mPluginID = paramString1;
@@ -34,21 +34,18 @@ public abstract class PluginService
     this.mOutService = paramService;
     this.mDexClassLoader = paramClassLoader;
     this.mPackageInfo = paramPackageInfo;
-    this.mUseQqResources = paramBoolean;
+    this.mPluginResourcesType = paramInt;
     if (this.mContext == null) {}
     try
     {
-      if (this.mUseQqResources) {}
-      for (this.mContext = new PluginContext(paramService, 0, this.mApkFilePath, this.mDexClassLoader, paramService.getResources());; this.mContext = new PluginContext(paramService, 0, this.mApkFilePath, this.mDexClassLoader))
-      {
-        label117:
-        attachBaseContext(this.mContext);
-        return;
-      }
+      this.mContext = new PluginContext(paramService, 0, this.mApkFilePath, this.mDexClassLoader, paramService.getResources(), this.mPluginResourcesType);
+      label116:
+      attachBaseContext(this.mContext);
+      return;
     }
     catch (Error paramString1)
     {
-      break label117;
+      break label116;
     }
   }
   
@@ -56,7 +53,7 @@ public abstract class PluginService
   {
     IBinder localIBinder = onBind(paramIntent);
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginService.IOnBind: " + localIBinder + ", " + paramIntent);
+      DebugHelper.log("plugin_tag", "PluginService.IOnBind: " + localIBinder + ", " + paramIntent);
     }
     return localIBinder;
   }

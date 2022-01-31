@@ -1,50 +1,66 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopSearchLogicActivity;
-import java.util.List;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import NearbyGroup.GroupArea;
+import NearbyGroup.GroupInfo;
+import NearbyGroup.RspGetGroupInArea;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.troop.activity.TroopLocationActivity;
+import com.tencent.mobileqq.troop.activity.TroopLocationActivity.TroopsAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class elp
-  extends Handler
+  extends LBSObserver
 {
-  public elp(TroopSearchLogicActivity paramTroopSearchLogicActivity) {}
+  public elp(TroopLocationActivity paramTroopLocationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, RspGetGroupInArea paramRspGetGroupInArea)
   {
-    boolean bool;
-    if (paramMessage.what == 1)
+    if (this.a == null) {}
+    Object localObject;
+    do
     {
-      this.a.c();
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 != 1) {
-        break label183;
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_Boolean) {
+            this.a.a(paramBoolean);
+          }
+        } while ((!paramBoolean) || (paramRspGetGroupInArea == null));
+        paramRspGetGroupInArea = paramRspGetGroupInArea.stGroupArea;
+      } while (paramRspGetGroupInArea == null);
+      if (this.a.jdField_a_of_type_Boolean)
+      {
+        localObject = paramRspGetGroupInArea.strStreet;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          this.a.b.setText((CharSequence)localObject);
+          this.a.b.setVisibility(0);
+        }
       }
-      bool = true;
-      paramMessage = (List)paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.size() != 1)) {
-        break label188;
-      }
-      paramMessage = (SearchGroup.GroupInfo)paramMessage.get(0);
-      paramMessage = TroopInfoActivity.a(6, String.valueOf(paramMessage.dwGroupCode.get()), "", paramMessage.sGroupName.get(), String.valueOf(paramMessage.dwGroupOwnerId.get()), "", (byte)SearchTroopListActivity.a(paramMessage), paramMessage.dwGroupFlagExt.get(), (short)paramMessage.dwGroupFaceId.get(), paramMessage.sGroupFingerMem.get(), paramMessage.sGroupLocation.get(), paramMessage.bGroupIn.get(), null, paramMessage.dwGroupFlagExt.get(), paramMessage.dwAuthGroupType.get(), this.a.jdField_d_of_type_Int);
-      ChatSettingForTroop.a(this.a, paramMessage, 2);
+    } while ((paramRspGetGroupInArea.vGroupInfo == null) || (paramRspGetGroupInArea.vGroupInfo.size() == 0));
+    if (this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspGetGroupInArea.vGroupInfo.size());
     }
-    for (;;)
+    this.a.j = ((int)paramRspGetGroupInArea.dwGroupTotalCnt);
+    paramRspGetGroupInArea = paramRspGetGroupInArea.vGroupInfo.iterator();
+    while (paramRspGetGroupInArea.hasNext())
     {
-      this.a.finish();
-      return;
-      label183:
-      bool = false;
-      break;
-      label188:
-      if ((paramMessage != null) && (paramMessage.size() > 1)) {
-        SearchTroopListActivity.a(this.a, this.a.jdField_d_of_type_JavaLangString, paramMessage, bool);
+      localObject = (GroupInfo)paramRspGetGroupInArea.next();
+      this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    }
+    if (this.a.j <= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {}
+    for (this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopLocationActivity$TroopsAdapter.jdField_a_of_type_Boolean = false;; this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopLocationActivity$TroopsAdapter.jdField_a_of_type_Boolean = true)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopLocationActivity$TroopsAdapter.b = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopLocationActivity$TroopsAdapter.notifyDataSetChanged();
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break;
       }
+      this.a.e();
+      return;
     }
   }
 }

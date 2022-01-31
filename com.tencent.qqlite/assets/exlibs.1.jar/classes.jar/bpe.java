@@ -9,7 +9,6 @@ public class bpe
   
   public void onClick(View paramView)
   {
-    this.a.setResult(0, this.a.getIntent());
     this.a.finish();
   }
 }

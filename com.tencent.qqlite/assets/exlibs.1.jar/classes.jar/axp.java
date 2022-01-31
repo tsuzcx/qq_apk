@@ -1,20 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 
 public class axp
-  implements TextWatcher
+  implements Animation.AnimationListener
 {
   public axp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.a(this.a), 36);
+    NearbyPeopleProfileActivity.a(this.a).setVisibility(0);
+    NearbyPeopleProfileActivity.j(this.a);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

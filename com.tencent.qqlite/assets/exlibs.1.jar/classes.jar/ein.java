@@ -1,17 +1,13 @@
 import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView.UIHandler;
-import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
-import com.tencent.tencentmap.mapsdk.map.MapController;
 
-public class ein
+class ein
   implements Runnable
 {
-  public ein(NearbyTroopsView.UIHandler paramUIHandler) {}
+  ein(eim parameim) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.getMaxZoomLevel() - 1);
-    this.a.a.a(this.a.a.d, this.a.a.e);
+    this.a.a.a(this.a.a.a, this.a.a.b, this.a.a.c, this.a.a.d, this.a.a.e);
   }
 }
 

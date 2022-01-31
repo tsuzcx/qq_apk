@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bta;
+import bsz;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -31,16 +31,16 @@ public class PanelAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(int paramInt, bta parambta)
+  private void a(int paramInt, bsz parambsz)
   {
     int m = this.jdField_a_of_type_Int;
     int n = this.b;
-    parambta.jdField_a_of_type_Int = paramInt;
+    parambsz.jdField_a_of_type_Int = paramInt;
     int j = 0;
     int i = 0;
     while (j < this.b)
     {
-      LinearLayout localLinearLayout = (LinearLayout)parambta.getChildAt(j);
+      LinearLayout localLinearLayout = (LinearLayout)parambsz.getChildAt(j);
       int k = 0;
       if (k < this.jdField_a_of_type_Int)
       {
@@ -131,10 +131,10 @@ public class PanelAdapter
         int i = 0;
         while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
         {
-          bta localbta = (bta)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-          if ((localbta != null) && (paramInt == localbta.jdField_a_of_type_Int))
+          bsz localbsz = (bsz)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+          if ((localbsz != null) && (paramInt == localbsz.jdField_a_of_type_Int))
           {
-            a(paramInt, localbta);
+            a(paramInt, localbsz);
             return;
           }
           i += 1;
@@ -145,9 +145,9 @@ public class PanelAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    bta localbta = (bta)paramObject;
-    ((ViewGroup)paramView).removeView(localbta);
-    localbta.a();
+    bsz localbsz = (bsz)paramObject;
+    ((ViewGroup)paramView).removeView(localbsz);
+    localbsz.a();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a((View)paramObject);
   }
   
@@ -172,18 +172,18 @@ public class PanelAdapter
     if (QLog.isColorLevel()) {
       QLog.d("PanelIconAdapter", 2, "instantiateItem " + paramInt);
     }
-    bta localbta2 = (bta)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
+    bsz localbsz2 = (bsz)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-    bta localbta1 = localbta2;
-    if (localbta2 == null) {
-      localbta1 = new bta(this, this.jdField_a_of_type_AndroidContentContext, null);
+    bsz localbsz1 = localbsz2;
+    if (localbsz2 == null) {
+      localbsz1 = new bsz(this, this.jdField_a_of_type_AndroidContentContext, null);
     }
-    localbta1.jdField_a_of_type_Int = paramInt;
-    a(paramInt, localbta1);
-    if ((localbta1.getParent() != paramView) && (paramInt < getCount())) {
-      ((ViewGroup)paramView).addView(localbta1);
+    localbsz1.jdField_a_of_type_Int = paramInt;
+    a(paramInt, localbsz1);
+    if ((localbsz1.getParent() != paramView) && (paramInt < getCount())) {
+      ((ViewGroup)paramView).addView(localbsz1);
     }
-    return localbta1;
+    return localbsz1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)

@@ -1,37 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView.FlingGestureListener;
 
 public class enw
-  implements View.OnClickListener
+  extends TroopAioFeedsCenterView.FlingGestureListener
 {
-  public enw(VideoPlayLogic paramVideoPlayLogic) {}
+  public enw(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (VideoPlayLogic.a(this.a) != null) {
-      VideoPlayLogic.a(this.a).c();
-    }
-    if (VideoPlayLogic.a(this.a))
-    {
-      if (this.a.c()) {
-        ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
-      }
-      while (VideoPlayLogic.a(this.a) != null)
-      {
-        new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
-        return;
-        ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
-      }
-      this.a.a(VideoPlayLogic.a(this.a));
-      return;
-    }
-    this.a.a(VideoPlayLogic.a(this.a));
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_fold", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "1", "", "");
+    this.a.b();
   }
 }
 

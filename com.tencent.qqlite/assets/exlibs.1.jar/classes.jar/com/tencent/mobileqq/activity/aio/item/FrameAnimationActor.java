@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.view.View;
-import buu;
+import but;
 
 public class FrameAnimationActor
 {
@@ -15,7 +15,7 @@ public class FrameAnimationActor
   
   public FrameAnimationActor(View paramView, int[] paramArrayOfInt, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new buu(this);
+    this.jdField_a_of_type_JavaLangRunnable = new but(this);
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
     this.c = paramInt;

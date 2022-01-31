@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager.Listener;
 
 public class bsx
   implements Runnable
 {
-  public bsx(MediaPlayerManager paramMediaPlayerManager, AudioPlayer paramAudioPlayer, int paramInt) {}
+  public bsx(MediaPlayerManager paramMediaPlayerManager, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_Int);
+    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager) != null) {
+      MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager).d(this.jdField_a_of_type_Int);
+    }
   }
 }
 

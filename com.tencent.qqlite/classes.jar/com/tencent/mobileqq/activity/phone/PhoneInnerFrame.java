@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import chm;
+import chs;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.activity.ForwardOperations;
@@ -172,7 +172,7 @@ public class PhoneInnerFrame
     g();
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chm(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chs(this);
       b().a().registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     ((PhoneContactManager)b().a().getManager(10)).c();

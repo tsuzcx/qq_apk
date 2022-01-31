@@ -1,43 +1,47 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity.SoundStyle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.io.File;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bkh
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public bkh(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a(SoundAndVibrateActivity.SoundStyle.theme);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.a(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
+    int i = 1;
+    if (paramBoolean)
     {
-      this.a.d();
-      paramView = ThemeUtil.getThemeVoiceRootPath();
-      if (paramView != null)
+      SoundAndVibrateActivity.c(this.a).setVisibility(0);
+      this.a.b.setVisibility(0);
+      if (this.a.app.c() == 0)
       {
-        paramView = new File(paramView + File.separatorChar + "message.mp3");
-        if (paramView.exists())
-        {
-          this.a.d();
-          this.a.a(Uri.fromFile(paramView));
+        this.a.b.setChecked(false);
+        this.a.app.f(1);
+        label63:
+        paramCompoundButton = this.a.app;
+        if (!paramBoolean) {
+          break label152;
         }
       }
     }
-    else
+    for (;;)
     {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
       return;
+      this.a.b.setChecked(true);
+      break;
+      SoundAndVibrateActivity.c(this.a).setVisibility(8);
+      this.a.b.setVisibility(8);
+      this.a.app.f(0);
+      break label63;
+      label152:
+      i = 0;
     }
-    this.a.d();
-    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131165185));
   }
 }
 

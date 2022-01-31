@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class xn
-  implements DialogInterface.OnClickListener
+  extends CardObserver
 {
   public xn(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.app.a()).longValue();
-      this.a.showDialog(2);
-      this.a.a.a(l, Long.valueOf(AddRequestActivity.a(this.a)).longValue(), 1);
+    if (!AddRequestActivity.a(this.a).equals(paramString)) {
       return;
     }
-    QQToast.a(this.a, 2131363515, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean)
+    {
+      this.a.a(2130837985, this.a.getString(2131363024));
+      return;
+    }
+    this.a.a(2130837975, this.a.getString(2131363023));
   }
 }
 

@@ -10,8 +10,9 @@ public class brh
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    UpgradeActivity.a(this.a, false);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    this.a.finish();
+    this.a.d();
   }
 }
 

@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import java.util.List;
 
 public class dbm
-  implements View.OnClickListener
+  implements ConditionSearchManager.ISearchListener
 {
-  public dbm(IphonePickerView paramIphonePickerView) {}
+  public dbm(SearchResultActivity paramSearchResultActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
+    if (!paramBoolean1)
+    {
+      this.a.b = 3;
+      this.a.jdField_a_of_type_Dbo.notifyDataSetChanged();
+      return;
+    }
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    paramList = this.a;
+    if (paramBoolean2) {}
+    for (int i = 1;; i = 0)
+    {
+      paramList.b = i;
+      break;
     }
   }
 }

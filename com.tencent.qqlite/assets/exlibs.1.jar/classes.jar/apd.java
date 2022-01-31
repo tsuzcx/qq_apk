@@ -1,29 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery;
 
 public class apd
-  implements View.OnClickListener
+  implements FriendProfileImageModel.InfoUpdateListener
 {
   public apd(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (paramView.getId() == 2131296440)
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-        localActionSheet.a(2131363947, 3);
-        localActionSheet.d(2131362790);
-        localActionSheet.a(new ape(this, paramView, localActionSheet));
-        localActionSheet.show();
-      }
+    FriendProfileImageActivity localFriendProfileImageActivity = this.a;
+    localFriendProfileImageActivity.b += 1;
+  }
+  
+  public void a(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
+  {
+    this.a.c(paramProfileImageInfo);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.PhotoWall", 2, "onDeleteSuccess()");
     }
+    this.a.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a() != 0)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter.notifyDataSetChanged();
+      return;
+    }
+    this.a.finish();
+  }
+  
+  public void b(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
+  {
+    this.a.c(paramProfileImageInfo);
+    this.a.a(2131363938, 1);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.PhotoWall", 2, "onDeleteFailed()");
+    }
+    this.a.b();
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(new ape(this), 50L);
   }
 }
 

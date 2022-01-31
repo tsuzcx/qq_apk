@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bxk;
+import bxj;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.ChatBackground;
@@ -107,7 +107,7 @@ public class TextSignatureItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Object localObject2 = (MessageForRichState)paramMessageRecord;
-    paramLinearLayout = (bxk)paramViewHolder;
+    paramLinearLayout = (bxj)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
@@ -189,7 +189,7 @@ public class TextSignatureItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bxk(this);
+    return new bxj(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

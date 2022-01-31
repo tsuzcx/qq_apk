@@ -1,26 +1,78 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.PerformanceReportUtils;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.ServerConfigManager.ConfigType;
 
-public class ety
-  implements View.OnClickListener
+public final class ety
+  extends AsyncTask
 {
-  public ety(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  public ety(String paramString1, int paramInt, String paramString2) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
+    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.n());
+    if (QLog.isDevelopLevel()) {
+      QLog.d(PerformanceReportUtils.c(), 4, "reportFPS openStr ：" + paramVarArgs);
     }
-    try
+    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
+    for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      return null;
+      long l1;
+      try
+      {
+        paramVarArgs = PerformanceReportUtils.a();
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Int > 0))
+        {
+          if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
+            QLog.e(PerformanceReportUtils.c(), 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
+          }
+          long l2 = paramVarArgs.getLong(this.jdField_a_of_type_JavaLangString, 0L);
+          l1 = PerformanceReportUtils.a();
+          Object localObject = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.o());
+          if (localObject != null) {}
+          try
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.c(), 4, "reportFPS  server time：" + (String)localObject);
+            }
+            l1 = Long.valueOf((String)localObject).longValue();
+            l1 *= 1000L;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              l1 = PerformanceReportUtils.a();
+            }
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.c(), 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
+          }
+          if ((l2 == 0L) || (SystemClock.uptimeMillis() < l2) || (SystemClock.uptimeMillis() - l2 >= l1))
+          {
+            localObject = new HashMap();
+            ((HashMap)localObject).put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
+            ((HashMap)localObject).put("aioBusiness", this.b);
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.c(), 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
+            }
+            StatisticCollector.a(BaseApplication.getContext()).a(QQUtils.a(), this.jdField_a_of_type_JavaLangString, PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString), 0L, 0L, (HashMap)localObject, PerformanceReportUtils.m());
+            paramVarArgs.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
+            return null;
+          }
+        }
       }
-      return;
+      catch (Exception paramVarArgs) {}
     }
-    catch (Exception paramView) {}
+    return null;
   }
 }
 

@@ -1,102 +1,47 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.text.TextUtils;
+import android.widget.EditText;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
 
 public class wx
   extends FriendListObserver
 {
-  private wx(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public wx(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((AddFriendLogicActivity.b(this.a) == 1) && (paramInt1 == 147) && (String.valueOf(paramLong).equals(AddFriendLogicActivity.a(this.a))))
-    {
-      if ((!paramBoolean) || (paramInt2 == 0)) {
-        AddFriendLogicActivity.a(this.a);
-      }
-    }
-    else {
-      return;
-    }
-    AddFriendLogicActivity.a(this.a, paramInt2);
-    AntiFraudConfigFileUtil.a().a(this.a.app, "SecWarningCfg");
-    try
-    {
-      AddFriendLogicActivity.a(this.a, DialogUtil.a(this.a, 230, "", "", this.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.a.b));
-      AddFriendLogicActivity.b(this.a);
-      AddFriendLogicActivity.a(this.a).setOnDismissListener(this.a.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      AddFriendLogicActivity.a(this.a).show();
-      ReportController.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.a(), "AlertDialog", "Display", 0, AddFriendLogicActivity.c(this.a), "", "", "", "");
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    if ((paramBoolean) && (TextUtils.equals(paramString1, AddFriendVerifyActivity.a(this.a))) && (!TextUtils.isEmpty(paramString2))) {
+      AddFriendVerifyActivity.c(this.a).setText(paramString2);
     }
   }
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    Object localObject = paramBundle.getString("uin");
-    if (!AddFriendLogicActivity.a(this.a).equals(localObject)) {
+    if (!AddFriendVerifyActivity.a(this.a).equals(paramString)) {
       return;
     }
-    if ((AddFriendLogicActivity.a(this.a) != null) && (AddFriendLogicActivity.a(this.a).isShowing())) {
-      AddFriendLogicActivity.a(this.a).dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
-    if (paramBoolean)
+    if (paramBoolean1)
     {
-      int i = paramBundle.getInt("friend_setting");
-      localObject = paramBundle.getStringArrayList("user_question");
-      paramBundle = Boolean.valueOf(paramBundle.getBoolean("contact_bothway"));
-      if ((paramBundle.booleanValue()) && (i != 0))
+      if (paramBoolean2)
       {
-        if (AddFriendLogicActivity.a(this.a) == 3006) {
-          this.a.getIntent().putExtra("sub_source_id", 2);
-        }
-        this.a.a(i, paramBundle.booleanValue(), (ArrayList)localObject, AutoRemarkActivity.class);
+        this.a.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim(), paramBundle.getByteArray("sig"));
         return;
       }
-      switch (i)
+      if ((paramBundle.getString("ErrorString") != null) && (!paramBundle.getString("ErrorString").trim().equals(""))) {}
+      for (paramString = paramBundle.getString("ErrorString");; paramString = this.a.getString(2131363394))
       {
-      default: 
-        QQToast.a(this.a.app.getApplication(), 2131363380, 0).b(this.a.getTitleBarHeight());
-        this.a.finish();
-        return;
-      case 0: 
-        this.a.a(i, paramBundle.booleanValue(), (ArrayList)localObject, AutoRemarkActivity.class);
-        return;
-      case 1: 
-      case 3: 
-      case 4: 
-        this.a.a(i, paramBundle.booleanValue(), (ArrayList)localObject, AddFriendVerifyActivity.class);
-        return;
-      case 2: 
-        QQToast.a(this.a.app.getApplication(), 2131363379, 0).b(this.a.getTitleBarHeight());
-        this.a.finish();
+        QQToast.a(this.a, 1, paramString, 1).b(this.a.getTitleBarHeight());
         return;
       }
-      QQToast.a(this.a.app.getApplication(), "对方已经是你的好友了", 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
     }
-    QQToast.a(this.a.app.getApplication(), 2131363380, 0).b(this.a.getTitleBarHeight());
-    this.a.finish();
+    QQToast.a(this.a, 1, this.a.getString(2131363386), 1).b(this.a.getTitleBarHeight());
   }
 }
 

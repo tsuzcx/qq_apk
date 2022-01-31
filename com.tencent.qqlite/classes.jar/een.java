@@ -1,51 +1,23 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public final class een
-  extends AsyncTask
+  implements Runnable
 {
-  public een(String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    paramVarArgs = BaseApplicationImpl.getContext();
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(paramVarArgs);
-    if (((SharedPreferences)localObject).getBoolean("hasReportDeviceProfile", false)) {
-      return null;
-    }
-    ((SharedPreferences)localObject).edit().putBoolean("hasReportDeviceProfile", true);
-    localObject = new HashMap();
-    int i = MainAcitivityReportHelper.a(paramVarArgs);
-    int j = DeviceInfoUtil.b() * 100 + MainAcitivityReportHelper.b();
-    if (i <= 240) {
-      i = j + 1;
-    }
-    for (;;)
-    {
-      ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a, "reportDeviceProfile", false, 0L, 0L, (HashMap)localObject, "");
-      return null;
-      if (i <= 320) {
-        i = j + 2;
-      } else if (i <= 480) {
-        i = j + 3;
-      } else if (i <= 640) {
-        i = j + 4;
-      } else if (i <= 720) {
-        i = j + 5;
-      } else if (i <= 1080) {
-        i = j + 6;
-      } else {
-        i = j + 7;
-      }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    long l = localCalendar.getTimeInMillis();
+    BaseApplicationImpl.a().getSharedPreferences("banner_and_splash", 0).edit().putLong("splashshowtime", l).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("SetSplash", 2, "显示了一个非默认闪屏时间是" + localCalendar.toString());
     }
   }
 }

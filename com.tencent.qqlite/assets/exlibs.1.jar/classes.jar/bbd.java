@@ -1,46 +1,77 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
 public class bbd
-  implements DialogInterface.OnClickListener
+  extends ShieldListObserver
 {
-  public bbd(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString) {}
+  public bbd(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(ChatActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(ChatSettingActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
+    if (this.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131362933, 1);
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = ProfileCardMoreActivity.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, false);
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = ProfileCardMoreActivity.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, true);
+      return;
+    }
   }
 }
 

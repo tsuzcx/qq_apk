@@ -21,6 +21,8 @@ public class RecentUser
   public Object msg;
   public byte[] msgData;
   public int msgType;
+  @defaultzero
+  public long showUpTime;
   public String troopUin;
   public int type;
   public String uin;

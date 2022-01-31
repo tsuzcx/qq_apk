@@ -29,6 +29,7 @@ public class RecentItemDiscussionMsgData
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
+    super.a(paramQQAppInterface, paramContext);
     Object localObject1 = paramQQAppInterface.a();
     if (localObject1 != null) {}
     for (localObject1 = ((QQMessageFacade)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);; localObject1 = null)
@@ -44,7 +45,7 @@ public class RecentItemDiscussionMsgData
         if (localObject3 != null)
         {
           this.v = ((ConversationFacade)localObject3).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          label119:
+          label125:
           localObject3 = (FriendManager)paramQQAppInterface.getManager(8);
           if (localObject3 != null) {
             localObject2 = ((FriendManager)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
@@ -85,19 +86,19 @@ public class RecentItemDiscussionMsgData
             a(paramQQAppInterface, localMsgSummary);
             a(paramQQAppInterface, paramContext, localMsgSummary);
             if (this.jdField_a_of_type_JavaLangString == null) {
-              break label637;
+              break label643;
             }
             paramQQAppInterface = this.jdField_a_of_type_JavaLangString + "讨论组";
             if (this.v <= 0) {
-              break label656;
+              break label662;
             }
             int i = this.v;
             if (localMsgSummary.b == null) {
-              break label643;
+              break label649;
             }
             paramContext = localMsgSummary.b;
             if (this.b == null) {
-              break label649;
+              break label655;
             }
             localObject1 = this.b;
             paramQQAppInterface = String.format("%s,%d,%s,%s", new Object[] { paramQQAppInterface, Integer.valueOf(i), paramContext, localObject1 });
@@ -106,7 +107,7 @@ public class RecentItemDiscussionMsgData
             this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject1).time;
             continue;
             this.v = 0;
-            break label119;
+            break label125;
             this.v = 0;
             this.jdField_a_of_type_Long = 0L;
           }
@@ -129,35 +130,35 @@ public class RecentItemDiscussionMsgData
               {
                 ((QQMessageFacade.Message)localObject1).nickName = ((QQMessageFacade.Message)localObject1).senderuin;
                 continue;
-                label637:
+                label643:
                 paramQQAppInterface = "讨论组";
                 continue;
-                label643:
+                label649:
                 paramContext = "";
                 continue;
-                label649:
+                label655:
                 localObject1 = "";
               }
             }
           }
         }
       }
-      label656:
+      label662:
       if (localNumberFormatException.b != null)
       {
         paramContext = localNumberFormatException.b;
-        label670:
+        label676:
         if (this.b == null) {
-          break label715;
+          break label721;
         }
       }
-      label715:
+      label721:
       for (localObject1 = this.b;; localObject1 = "")
       {
         paramQQAppInterface = String.format("%s,%s,%s", new Object[] { paramQQAppInterface, paramContext, localObject1 });
         break;
         paramContext = "";
-        break label670;
+        break label676;
       }
     }
   }

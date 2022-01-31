@@ -1,16 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.adapter.WebFacePreloadBaseAdapter;
+import EncounterSvc.RespEncounterInfo;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class cpl
-  extends Handler
+  implements Runnable
 {
-  public cpl(WebFacePreloadBaseAdapter paramWebFacePreloadBaseAdapter) {}
+  public cpl(PeopleAroundAdapter paramPeopleAroundAdapter, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1) {
-      this.a.c();
+    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.a;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
+    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
+    {
+      localFaceDecoder.a(str, 3001, l);
+      return;
     }
   }
 }

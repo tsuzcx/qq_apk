@@ -1,40 +1,15 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDecoder;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class ero
-  extends FriendListObserver
+  extends WeakReference
 {
-  private ero(FaceDecoder paramFaceDecoder) {}
+  private final String a;
   
-  protected void a(boolean paramBoolean, String paramString)
+  public ero(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
   {
-    FaceDecoder.a(this.a, paramBoolean, 1, paramString, 0);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    int i = 200;
-    if (paramInt == 3000) {}
-    for (;;)
-    {
-      FaceDecoder.a(this.a, paramBoolean1, 32, paramString, i);
-      return;
-      if (paramInt == 3001) {
-        i = 202;
-      } else if (paramInt == 3002) {
-        i = 204;
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    FaceDecoder.a(this.a, paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    FaceDecoder.a(this.a, paramBoolean, 4, paramString, 0);
+    super(paramObject, paramReferenceQueue);
+    this.a = paramString;
   }
 }
 

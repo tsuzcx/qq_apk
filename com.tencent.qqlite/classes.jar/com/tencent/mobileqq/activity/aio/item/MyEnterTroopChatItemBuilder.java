@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bvz;
+import bvy;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
@@ -28,19 +28,19 @@ public class MyEnterTroopChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (bvz)paramViewHolder;
+    paramLinearLayout = (bvy)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.a).inflate(2130903110, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131296827));
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131296823));
     }
     paramLinearLayout.b.setMovementMethod(null);
     paramLinearLayout.b.setGravity(17);
     if ((paramMessageRecord instanceof MessageForMyEnterTroop))
     {
       paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.a.getString(2131362169);
+      paramMessageRecord = this.a.getString(2131362166);
       paramLinearLayout.b.setText(paramMessageRecord);
       paramView = this.a.getResources().getColorStateList(2131427339);
       if (paramView != null) {
@@ -53,7 +53,7 @@ public class MyEnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bvz(this);
+    return new bvy(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

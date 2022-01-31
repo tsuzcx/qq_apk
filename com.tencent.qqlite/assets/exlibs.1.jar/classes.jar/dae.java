@@ -1,18 +1,16 @@
-import java.util.concurrent.ThreadFactory;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
 
-public final class dae
-  implements ThreadFactory
+public class dae
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public dae(UpgradeController paramUpgradeController, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  
+  public void run()
   {
-    paramRunnable = new Thread("Bubble_Animation");
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
-    }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
+    new UpgradeTipsDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, UpgradeController.a(this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeController), null);
   }
 }
 

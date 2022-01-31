@@ -71,7 +71,7 @@ public class MessageForLongMsg
       if ((localMessageRecord instanceof MessageForMixedMsg)) {
         localObject2.append(((MessageForMixedMsg)localMessageRecord).msg);
       } else if ((localMessageRecord instanceof MessageForPic)) {
-        localObject2.append(BaseApplicationImpl.getContext().getString(2131362792));
+        localObject2.append(BaseApplicationImpl.getContext().getString(2131362796));
       }
     }
     this.msg = localObject2.toString();

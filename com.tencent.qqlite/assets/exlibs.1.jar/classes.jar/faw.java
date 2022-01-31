@@ -1,48 +1,25 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
 import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Message;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.AuthorityActivity;
 import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
 
-public class faw
-  implements BusinessObserver
+class faw
+  implements Runnable
 {
-  public faw(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  faw(fav paramfav, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.app.a().equals(localObject)) {}
-    for (;;)
+    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
+    if (localBitmap != null)
     {
-      return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
-      {
-        localObject = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
-            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localObject;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
+      Message localMessage = new Message();
+      localMessage.obj = localBitmap;
+      localMessage.what = 4;
+      this.jdField_a_of_type_Fav.a.a.sendMessage(localMessage);
     }
   }
 }

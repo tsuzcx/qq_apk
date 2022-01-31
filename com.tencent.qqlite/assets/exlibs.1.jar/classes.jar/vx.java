@@ -1,92 +1,49 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.qphone.base.util.QLog;
 
-class vx
-  extends GestureDetector.SimpleOnGestureListener
+public class vx
+  implements Animation.AnimationListener
 {
-  vx(vw paramvw) {}
+  public static final String a = "right";
+  public static final int b = 0;
+  public static final String b = "left";
+  public static final int c = 1;
+  public static final int d = 2;
+  public static final int e = 3;
+  public static final int f = 4;
+  public static final int g = 5;
+  public static final int h = 6;
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public vx(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
   {
-    ViewGroup.LayoutParams localLayoutParams;
-    if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c) && (this.a.jdField_a_of_type_AndroidViewView != null))
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).postDelayed(new vy(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
     {
-      paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296441);
-      if (paramMotionEvent1 != null)
-      {
-        if (paramMotionEvent1.getVisibility() == 0) {
-          break label453;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("AccountManage", 2, "hide previous selectedAccountView");
-          }
-          ((ShaderAnimLayout)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView)).d();
-          paramMotionEvent2 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView, 2130968579, 3);
-          localLayoutParams = paramMotionEvent2.getLayoutParams();
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
-            break label402;
-          }
-          localLayoutParams.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - AccountManageActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) * 40.0F));
-          paramMotionEvent2.setLayoutParams(localLayoutParams);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountManage", 2, "show current selectedAccountView");
-        }
-        ((ShaderAnimLayout)paramMotionEvent1).a();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131296452);
-        paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView, 2130968580, 2);
-        paramMotionEvent2 = paramMotionEvent1.getLayoutParams();
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
-          break label421;
-        }
-      }
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    label402:
-    label421:
-    for (paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - 75.0F * AccountManageActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity)));; paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - 35.0F * AccountManageActivity.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity))))
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
     {
-      paramMotionEvent1.setLayoutParams(paramMotionEvent2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = true;
-      this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-      return true;
-      localLayoutParams.width = ((int)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
-      break;
-    }
-    label453:
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "hide current selectedAccountView");
-    }
-    ((ShaderAnimLayout)paramMotionEvent1).d();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView != null)
-    {
-      paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView, 2130968579, 3);
-      paramMotionEvent2 = paramMotionEvent1.getLayoutParams();
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
-        break label642;
-      }
-    }
-    label642:
-    for (paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - AccountManageActivity.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) * 40.0F));; paramMotionEvent2.width = ((int)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity)))
-    {
-      paramMotionEvent1.setLayoutParams(paramMotionEvent2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = null;
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = true;
-      this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-      return true;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }

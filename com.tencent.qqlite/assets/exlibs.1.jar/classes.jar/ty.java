@@ -1,14 +1,13 @@
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.GalleryPageView;
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
 
 public class ty
   implements Runnable
 {
-  public ty(GalleryPageView paramGalleryPageView) {}
+  public ty(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong1, long paramLong2, long paramLong3) {}
   
   public void run()
   {
-    this.a.a.startAnimation(this.a.b);
+    LiteTransferListenerCallback.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 

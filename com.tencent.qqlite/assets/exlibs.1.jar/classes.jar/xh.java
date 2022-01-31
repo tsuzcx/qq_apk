@@ -1,52 +1,43 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class xh
-  implements TextWatcher
+  extends Handler
 {
-  public xh(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public xh(AddRequestActivity paramAddRequestActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void handleMessage(Message paramMessage)
   {
-    int i = paramEditable.length();
-    int j = i;
-    if (i > 30)
+    switch (paramMessage.what)
     {
-      paramEditable = paramEditable.toString();
-      if (i > 30)
-      {
-        i = paramEditable.length();
-        if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
-        for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
-        {
-          i = paramEditable.length();
-          break;
-        }
-      }
-      if (AddFriendVerifyActivity.a(this.a) != 4) {
-        break label162;
-      }
-      AddFriendVerifyActivity.a(this.a).setText(paramEditable);
-      AddFriendVerifyActivity.a(this.a).setSelection(paramEditable.length());
     }
-    for (j = i;; j = i)
+    do
     {
-      if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0) {
-        AddFriendVerifyActivity.b(this.a).setText(30 - j + "");
-      }
       return;
-      label162:
-      this.a.a.setText(paramEditable);
-      this.a.a.setSelection(paramEditable.length());
-    }
+      if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
+      {
+        AddRequestActivity.a(this.a).setText(this.a.getString(2131363387));
+        AddRequestActivity.a(this.a).setVisibility(8);
+        AddRequestActivity.a(this.a).setVisibility(0);
+        AddRequestActivity.a(this.a).setImageResource(2130837985);
+        postDelayed(new xi(this), 1500L);
+        return;
+      }
+      this.a.finish();
+      return;
+      this.a.a(true);
+    } while ((AddRequestActivity.a(this.a) == null) || (!AddRequestActivity.a(this.a).isShowing()));
+    AddRequestActivity.a(this.a).setText(this.a.getString(2131363388));
+    AddRequestActivity.a(this.a).setVisibility(8);
+    AddRequestActivity.a(this.a).setVisibility(0);
+    AddRequestActivity.a(this.a).setImageResource(2130837975);
+    postDelayed(new xj(this), 1500L);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

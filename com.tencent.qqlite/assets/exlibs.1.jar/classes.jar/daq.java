@@ -1,49 +1,36 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import android.graphics.Bitmap;
+import android.os.Message;
+import android.os.Process;
+import android.os.SystemClock;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import java.util.concurrent.Callable;
 
 public class daq
-  implements IphonePickerView.PickerViewAdapter
+  implements Callable
 {
-  public daq(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public int a()
+  public daq(QQAnimationDrawable paramQQAnimationDrawable, int paramInt, long paramLong)
   {
-    return 1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public int a(int paramInt)
+  public Bitmap a()
   {
-    if (this.a.c == 0) {
-      return ConditionSearchFriendActivity.b.length;
+    Process.setThreadPriority(10);
+    this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.b = this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(false, this.jdField_a_of_type_Int);
+    QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap == null) && (this.jdField_a_of_type_Int == 0)) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.b;
     }
-    return ConditionSearchFriendActivity.a.length;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (this.a.c == 0)
-    {
-      if (paramInt2 >= 0)
-      {
-        paramInt1 = paramInt2;
-        if (paramInt2 < ConditionSearchFriendActivity.b.length) {}
-      }
-      else
-      {
-        paramInt1 = 0;
-      }
-      return ConditionSearchFriendActivity.b[paramInt1];
-    }
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 < ConditionSearchFriendActivity.a.length) {}
-    }
-    else
-    {
-      paramInt1 = 0;
-    }
-    return ConditionSearchFriendActivity.a[paramInt1];
+    long l1 = SystemClock.uptimeMillis();
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.jdField_a_of_type_Dam.obtainMessage();
+    long l2 = SystemClock.uptimeMillis();
+    localMessage.obj = Long.valueOf(Long.valueOf(Math.max(this.jdField_a_of_type_Long - l1, 0L)).longValue() + l2);
+    localMessage.sendToTarget();
+    return this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.b;
   }
 }
 

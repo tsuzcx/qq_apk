@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.managers.LoadingStateManager;
+import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 
 public class ahe
-  extends Handler
+  implements Runnable
 {
-  public ahe(Conversation paramConversation) {}
+  public ahe(Conversation paramConversation, Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    LoadingStateManager.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      Conversation.a(this.a, 1134013, 0L, false);
-      return;
-    }
-    Conversation.a(this.a, true);
+    ((OnDrawCompleteListener)this.jdField_a_of_type_AndroidContentContext).d();
   }
 }
 

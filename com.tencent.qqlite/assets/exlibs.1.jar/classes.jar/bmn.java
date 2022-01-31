@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.app.TroopObserver;
 
 public class bmn
-  extends FriendListObserver
+  extends TroopObserver
 {
-  public bmn(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public bmn(TroopGagActivity paramTroopGagActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+    if (paramBoolean) {
       this.a.a.notifyDataSetChanged();
     }
   }

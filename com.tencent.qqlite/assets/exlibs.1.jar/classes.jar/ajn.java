@@ -1,15 +1,17 @@
 import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class ajn
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
   public ajn(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
     this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }

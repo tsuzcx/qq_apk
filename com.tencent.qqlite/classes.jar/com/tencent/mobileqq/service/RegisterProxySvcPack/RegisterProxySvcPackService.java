@@ -42,7 +42,7 @@ public class RegisterProxySvcPackService
     localSvcReqRegister.lBid = 7L;
     localSvcReqRegister.cConnType = 0;
     AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
-    switch (edi.a[localStatus.ordinal()])
+    switch (edo.a[localStatus.ordinal()])
     {
     default: 
       if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) {

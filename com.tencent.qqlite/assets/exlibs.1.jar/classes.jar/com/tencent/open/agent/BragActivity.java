@@ -15,7 +15,7 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.widget.IKeyboardChanged;
 import com.tencent.open.widget.KeyboardDetectorRelativeLayout;
-import fax;
+import fbc;
 
 public class BragActivity
   extends ChallengeBragBase
@@ -58,14 +58,14 @@ public class BragActivity
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131297491));
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131297490));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131297487));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131297486));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297493));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131297495));
-    this.b = ((TextView)super.findViewById(2131296919));
-    this.c = ((TextView)super.findViewById(2131296918));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297494));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297489));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131297491));
+    this.b = ((TextView)super.findViewById(2131296915));
+    this.c = ((TextView)super.findViewById(2131296914));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297490));
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.j);
@@ -87,8 +87,8 @@ public class BragActivity
       e();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838042);
-    ImageLoader.a().a(this.k, new fax(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838036);
+    ImageLoader.a().a(this.k, new fbc(this));
   }
   
   public void d()

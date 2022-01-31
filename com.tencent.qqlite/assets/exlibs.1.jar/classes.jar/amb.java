@@ -1,44 +1,35 @@
-import android.content.Context;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.EmosmHandler;
-import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmosmResp;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amb
-  implements EmosmHandler.EmosmHandlerListener
+class amb
+  implements URLDrawable.URLDrawableListener
 {
-  public amb(EmosmHandler paramEmosmHandler, int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, ImageView paramImageView, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo) {}
+  amb(ama paramama, ImageView paramImageView) {}
   
-  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramInt == 6) || (paramInt == 7) || (paramInt == 107))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
-      if (paramBoolean != true) {
-        break label100;
-      }
-      paramInt = paramEmosmResp.delEpId;
-      if ((paramEmosmResp.keySeq != null) && (!paramEmosmResp.keySeq.equals(""))) {
-        break label92;
-      }
-      paramEmosmResp = "你暂时没有此表情的权限。";
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "ImageonLoadFail ");
     }
-    for (;;)
-    {
-      EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_AndroidWidgetImageView, paramInt, paramEmosmResp, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      return;
-      label92:
-      paramEmosmResp = paramEmosmResp.keySeq;
-      continue;
-      label100:
-      paramInt = -404;
-      paramEmosmResp = "服务器忙，请稍后再试";
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "ImageonLoadProgress ");
     }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "ImageonLoadSuccessed ");
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

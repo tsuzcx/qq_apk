@@ -16,9 +16,9 @@ public class QQResourceIdMapper
     case 1: 
       return 2130968606;
     case 2: 
-      return 2130968637;
+      return 2130968635;
     case 7: 
-      return 2130968639;
+      return 2130968637;
     case 3: 
       return 2130968590;
     case 6: 

@@ -1,25 +1,12 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class eoa
-  implements TroopMemberApiClient.Callback
+class eoa
+  implements DialogInterface.OnClickListener
 {
-  public eoa(VideoPlayLogic paramVideoPlayLogic) {}
+  eoa(eny parameny) {}
   
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle.getBoolean("ret"))
-    {
-      VideoPlayLogic.b(this.a);
-      return;
-    }
-    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
-      VideoPlayLogic.a(this.a).dismiss();
-    }
-    this.a.a(VideoPlayLogic.a(this.a));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

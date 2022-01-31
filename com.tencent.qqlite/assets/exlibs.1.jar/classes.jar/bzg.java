@@ -1,37 +1,46 @@
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class bzg
-  extends SOSOMapLBSApiListener
+  extends DiscussionObserver
 {
-  public bzg(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public bzg(DiscussChatPie paramDiscussChatPie) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
+    String str = (String)paramArrayOfObject[0];
+    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
+    if ((DiscussChatPie.a(this.a).jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean))
+    {
+      if (bool) {
+        this.a.d(false);
+      }
+      if (DiscussChatPie.b(this.a).jdField_a_of_type_Int == 3000)
+      {
+        paramArrayOfObject = ((FriendsManagerImp)DiscussChatPie.a(this.a).getManager(8)).a(str);
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.discussionName != null))
+        {
+          DiscussChatPie.c(this.a).d = paramArrayOfObject.discussionName;
+          this.a.a(DiscussChatPie.d(this.a).d, paramArrayOfObject.uin, DiscussChatPie.a(this.a));
+        }
+      }
+    }
   }
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onLocationUpdate(): BEGIN");
-    }
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    if (paramSOSOMapLBSApiResult.Address == null) {}
-    for (String str = "";; str = paramSOSOMapLBSApiResult.Address)
+    if ((DiscussChatPie.e(this.a).jdField_a_of_type_JavaLangString.equals(paramString)) && (DiscussChatPie.f(this.a).jdField_a_of_type_Int == 3000))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessChatPie", 2, "onLocationUpdate(): locResult=" + paramSOSOMapLBSApiResult + ", latitude=" + paramSOSOMapLBSApiResult.Latitude + ", longitude=" + paramSOSOMapLBSApiResult.Longitude + ", address=" + str);
+      paramString = ((FriendsManagerImp)DiscussChatPie.b(this.a).getManager(8)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        DiscussChatPie.g(this.a).d = paramString.discussionName;
+        this.a.a(DiscussChatPie.h(this.a).d, paramString.uin, DiscussChatPie.b(this.a));
       }
-      ((EnterpriseQQHandler)BusinessCmrTmpChatPie.g(this.a).a(18)).a(BusinessCmrTmpChatPie.j(this.a).a, paramSOSOMapLBSApiResult.Latitude, paramSOSOMapLBSApiResult.Longitude, str);
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessChatPie", 2, "onLocationUpdate(): END");
-      }
-      return;
     }
   }
 }

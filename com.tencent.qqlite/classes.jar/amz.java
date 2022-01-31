@@ -1,19 +1,20 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.thridappshare.ThridAppShareHelper;
 import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.ForwardOperations.CancelCallback;
 
 public class amz
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
   public amz(ForwardOperations paramForwardOperations) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
+    if (this.a.a != null) {
+      this.a.a.b();
     }
+    ThridAppShareHelper.a(this.a.H, "app_share_cancle", "", "", "");
   }
 }
 

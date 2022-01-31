@@ -1,25 +1,34 @@
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
 public class cjj
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
   public cjj(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (PhotoPreviewActivity.a(this.a))
+    this.a.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    if (this.a.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.jdField_b_of_type_Int)))
     {
-      PhotoPreviewActivity.a(this.a, false);
-      this.a.a.setVisibility(4);
-      this.a.b.setVisibility(4);
+      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      int i = this.a.jdField_b_of_type_JavaUtilArrayList.indexOf(Integer.valueOf(this.a.jdField_b_of_type_Int));
+      if (i >= 0) {
+        this.a.jdField_b_of_type_JavaUtilArrayList.remove(i);
+      }
+      PhotoPreviewActivity.a(this.a);
       return;
     }
-    PhotoPreviewActivity.a(this.a, true);
-    this.a.a.setVisibility(0);
-    this.a.b.setVisibility(0);
+    if ((PhotoPreviewActivity.a(this.a) == 2) && (this.a.jdField_b_of_type_Int < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+      PhotoPreviewActivity.a(this.a, (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_b_of_type_Int));
+    }
+    this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(this.a.jdField_b_of_type_Int));
+    PhotoPreviewActivity.a(this.a);
   }
 }
 

@@ -9,24 +9,24 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import cek;
-import cel;
-import cem;
-import cep;
 import ceq;
 import cer;
 import ces;
+import cev;
 import cew;
 import cex;
 import cey;
-import cez;
-import cfa;
-import cfb;
 import cfc;
 import cfd;
 import cfe;
 import cff;
 import cfg;
+import cfh;
+import cfi;
+import cfj;
+import cfk;
+import cfl;
+import cfm;
 import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
 import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -76,27 +76,27 @@ public class MainAssistObserver
 {
   static final long jdField_a_of_type_Long = 1728000000L;
   public int a;
-  Handler jdField_a_of_type_AndroidOsHandler = new ces(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new cey(this, Looper.getMainLooper());
   public SplashActivity a;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new cel(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new cer(this);
   public FriendListObserver a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cfa(this);
-  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new cff(this);
-  private SecSigObserver jdField_a_of_type_ComTencentMobileqqAppSecSigObserver = new cem(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new cfg(this);
+  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new cfl(this);
+  private SecSigObserver jdField_a_of_type_ComTencentMobileqqAppSecSigObserver = new ces(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
-  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new cfd(this);
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new cfg(this);
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new cfc(this);
-  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new cey(this);
-  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new cfb(this);
+  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new cfj(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new cfm(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new cfi(this);
+  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new cfe(this);
+  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new cfh(this);
   SdCardChangeListener jdField_a_of_type_ComTencentMobileqqObserverSdCardChangeListener = null;
   public MainAcitivityReportHelper a;
   public QQCustomDialog a;
-  private ResourcePluginListener b = new cfe(this);
+  private ResourcePluginListener b = new cfk(this);
   
   public MainAssistObserver(SplashActivity paramSplashActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cep(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cev(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity = paramSplashActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
@@ -138,8 +138,8 @@ public class MainAssistObserver
       {
         localObject = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 0);
         ((QQCustomDialog)localObject).setTitle("debug版过期了不能用，请下最新版本");
-        ((QQCustomDialog)localObject).setPositiveButton("ok", new ceq(this));
-        ((QQCustomDialog)localObject).setOnDismissListener(new cer(this, paramQQAppInterface));
+        ((QQCustomDialog)localObject).setPositiveButton("ok", new cew(this));
+        ((QQCustomDialog)localObject).setOnDismissListener(new cex(this, paramQQAppInterface));
         ((QQCustomDialog)localObject).show();
         bool = true;
       }
@@ -314,7 +314,7 @@ public class MainAssistObserver
   
   public void c()
   {
-    ThreadManager.a().schedule(new cek(this), 500L);
+    ThreadManager.a().schedule(new ceq(this), 500L);
   }
   
   public void d()
@@ -331,7 +331,7 @@ public class MainAssistObserver
   
   public void e()
   {
-    new Timer().schedule(new cez(this), 500L);
+    new Timer().schedule(new cff(this), 500L);
   }
   
   public void f()
@@ -463,15 +463,15 @@ public class MainAssistObserver
     String str;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app != null) && (GesturePWDUtils.getGestureUnlockFailed(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.a())))
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364029);
+      str = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364016);
       if (GesturePWDUtils.getGestureUnlockFailedType(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity) != 1) {
         break label167;
       }
     }
     label167:
-    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364030);; localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364031))
+    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364017);; localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131364018))
     {
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, (String)localObject, 2131362790, 2131364028, new cew(this), new cex(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, (String)localObject, 2131362794, 2131364015, new cfc(this), new cfd(this)).show();
       return;
     }
   }

@@ -1,18 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.UnderlinePageIndicator.SavedState;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Scroller;
+import com.tencent.mobileqq.widget.TCTransitDrawable;
 
-public final class ezp
-  implements Parcelable.Creator
+public class ezp
+  extends Handler
 {
-  public UnderlinePageIndicator.SavedState a(Parcel paramParcel)
-  {
-    return new UnderlinePageIndicator.SavedState(paramParcel, null);
-  }
+  public ezp(TCTransitDrawable paramTCTransitDrawable) {}
   
-  public UnderlinePageIndicator.SavedState[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new UnderlinePageIndicator.SavedState[paramInt];
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.b) && (this.a.c)) {}
+    }
+    while (paramMessage.what != 2)
+    {
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.f;
+        int m = this.a.g;
+        this.a.f = i;
+        this.a.g = j;
+        paramMessage = this.a;
+        paramMessage.d += i - k;
+        paramMessage = this.a;
+        paramMessage.e += j - m;
+        this.a.invalidateSelf();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+        return;
+      }
+      this.a.d();
+      return;
+    }
+    this.a.d();
   }
 }
 

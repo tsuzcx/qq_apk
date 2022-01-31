@@ -1,37 +1,32 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.webviewplugin.SosoPlugin;
+import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
+import com.tencent.qphone.base.util.QLog;
 
-class sq
-  implements Runnable
+public class sq
+  extends BroadcastReceiver
 {
-  sq(sp paramsp, String paramString) {}
+  public sq(SosoPlugin paramSosoPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str2;
-    String str3;
-    if ((this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
+    int i = paramIntent.getIntExtra("com.tencent.receiver.soso.type", SosoSrvAddrProvider.a);
+    if (i == SosoSrvAddrProvider.a)
     {
-      if ((this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d(SosoPlugin.a(this.a), 2, "soso receiver ACTION_SOSO_TYPE_UPDATE");
       }
-      str2 = String.format("mqqapi://app/action?pkg=com.tencent.qqlite&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { this.jdField_a_of_type_Sp.b });
-      str3 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { this.jdField_a_of_type_Sp.b });
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label241;
-      }
+      SosoSrvAddrProvider.a().c();
     }
-    label241:
-    for (String str1 = this.jdField_a_of_type_Sp.jdField_a_of_type_JavaLangString;; str1 = this.jdField_a_of_type_JavaLangString)
-    {
-      String str4 = String.format(this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131362471), new Object[] { this.jdField_a_of_type_Sp.c });
-      ShareMsgHelper.a(this.jdField_a_of_type_Sp.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 1001, 1, "struct_msg_from_h5", this.jdField_a_of_type_Sp.b, str1, this.jdField_a_of_type_Sp.c, this.jdField_a_of_type_Sp.d, str4, this.jdField_a_of_type_Sp.e, "web", null, null, null, "plugin", null, str2, str3, "http://url.cn/JS8oE7", this.jdField_a_of_type_Sp.f, null);
+    while (i != SosoSrvAddrProvider.b) {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(SosoPlugin.b(this.a), 2, "soso receiver ACTION_SOSO_TYPE_CLEAR");
+    }
+    SosoSrvAddrProvider.a().a();
   }
 }
 

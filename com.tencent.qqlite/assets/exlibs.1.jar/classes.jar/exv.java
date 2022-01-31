@@ -1,21 +1,41 @@
+import android.content.Context;
+import android.text.Selection;
+import android.text.Spannable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.CustomAlertDialog;
-import com.tencent.mobileqq.widget.CustomAlertDialog.OnOptionMenuClick;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View.OnLongClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
 
-class exv
-  implements View.OnClickListener
+public class exv
+  implements View.OnLongClickListener
 {
-  exv(exu paramexu, int paramInt) {}
+  public exv(ContainerView.SelectableTextView paramSelectableTextView) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_Exu.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a != null) {
-      this.jdField_a_of_type_Exu.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a.a(((Integer)((HashMap)this.jdField_a_of_type_Exu.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).get("commandId")).intValue());
+    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
+    {
+      this.a.onTextContextMenuItem(16908321);
+      Toast.makeText(this.a.getContext(), "已经复制到剪贴板", 0).show();
     }
-    this.jdField_a_of_type_Exu.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.dismiss();
+    for (;;)
+    {
+      return true;
+      try
+      {
+        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
+        this.a.onTextContextMenuItem(16908328);
+        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
+        }
+      }
+    }
   }
 }
 

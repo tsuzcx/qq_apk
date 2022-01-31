@@ -6,10 +6,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
-import efz;
-import ega;
-import egb;
-import egc;
+import ege;
+import egf;
+import egg;
+import egh;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,7 +38,7 @@ public class ShareAppLogHelper
   private static final int h = 1001;
   private static final int i = 1002;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new efz(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new ege(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
   private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
@@ -71,7 +71,7 @@ public class ShareAppLogHelper
     {
       return j;
       a();
-      localObject = ((File)localObject).listFiles(new ega(this));
+      localObject = ((File)localObject).listFiles(new egf(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int m = localObject.length;
@@ -160,7 +160,7 @@ public class ShareAppLogHelper
     Object localObject = new File(this.d);
     if (((File)localObject).exists())
     {
-      localObject = ((File)localObject).listFiles(new egb(this));
+      localObject = ((File)localObject).listFiles(new egg(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int k = localObject.length;
@@ -186,7 +186,7 @@ public class ShareAppLogHelper
   
   private void a(String paramString)
   {
-    new egc(this, paramString).start();
+    new egh(this, paramString).start();
   }
   
   private int b()

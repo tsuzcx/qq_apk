@@ -1,34 +1,22 @@
 import android.view.View;
-import com.tencent.biz.webviewplugin.ReportPlugin;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class afk
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public afk(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
+  public afk(ChatSettingForTroop paramChatSettingForTroop, View paramView) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app != null))
-      {
-        ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 301, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.c, "", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getAccount());
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.al == 1) {
-          ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.b);
-        }
-      }
-    }
+    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131297090);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, -this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.ao, 0.0F, 0.0F);
+    localTranslateAnimation.setDuration(800L);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setAnimationListener(new afl(this, localLinearLayout));
+    localLinearLayout.startAnimation(localTranslateAnimation);
   }
 }
 

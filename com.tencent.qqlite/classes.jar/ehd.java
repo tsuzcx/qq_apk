@@ -1,20 +1,15 @@
-import QQService.RespTmpChatPicDownload;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.transfile.LbsTransfileProcessor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ehd
-  extends MessageObserver
+  implements Runnable
 {
-  public ehd(LbsTransfileProcessor paramLbsTransfileProcessor) {}
+  public ehd(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
-  protected void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload)
+  public void run()
   {
-    if ((paramRespTmpChatPicDownload != null) && (paramRespTmpChatPicDownload.lReplyCode == 0) && (paramRespTmpChatPicDownload.strDownloadURL != null) && (paramRespTmpChatPicDownload.strDownloadURL.length() > 0))
-    {
-      this.a.d(paramRespTmpChatPicDownload.strDownloadURL);
-      return;
-    }
-    this.a.b(null, null);
+    QQToast.a(BaseApplicationImpl.a, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.open.agent.datamodel;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import fbz;
+import fce;
 
 public class Friend
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fbz();
+  public static final Parcelable.Creator CREATOR = new fce();
   public int a;
   public String a;
   public int b;

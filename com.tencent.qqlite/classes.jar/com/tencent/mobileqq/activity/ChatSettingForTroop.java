@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity;
 
+import aes;
+import aet;
 import aeu;
 import aev;
 import aew;
@@ -11,23 +13,18 @@ import afb;
 import afc;
 import afd;
 import afe;
-import aff;
 import afg;
+import afh;
 import afi;
 import afj;
 import afk;
-import afl;
 import afm;
-import afo;
-import afp;
+import afn;
 import afq;
 import afr;
 import afs;
 import aft;
 import afu;
-import afv;
-import afw;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +36,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.SpannableString;
@@ -49,24 +45,20 @@ import android.text.style.ImageSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.InflateException;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.WindowManager.BadTokenException;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.tencent.biz.common.report.BnrReport;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -87,7 +79,6 @@ import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.profile.view.ReboundHorizontalScrollView;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQTextBuilder;
@@ -125,12 +116,10 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.MenuPopupDialog;
 import com.tencent.widget.XListView;
-import com.tencent.widget.XSimpleListAdapter;
 import cooperation.qzone.QZoneHelper;
 import cooperation.troop.TroopProxyActivity;
 import java.net.MalformedURLException;
@@ -145,7 +134,6 @@ import mqq.app.MobileQQ;
 import mqq.manager.AccountManager;
 import mqq.manager.WtloginManager;
 import mqq.observer.AccountObserver;
-import mqq.util.WeakReference;
 import oicq.wlogin_sdk.request.Ticket;
 import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
@@ -245,16 +233,16 @@ public class ChatSettingForTroop
   public Drawable a;
   public Handler a;
   protected DisplayMetrics a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afo(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afm(this);
   protected View a;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   protected LinearLayout a;
   public TextView a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new afe(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new afc(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new afa(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new afc(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new afa(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aey(this);
   public TroopInfo a;
   public TroopFileObserver a;
   private TroopFileManager jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager;
@@ -271,7 +259,7 @@ public class ChatSettingForTroop
   private HashMap jdField_a_of_type_JavaUtilHashMap = null;
   public LinkedHashMap a;
   public List a;
-  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aff(this);
+  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new afd(this);
   protected boolean a;
   public View[] a;
   private final int aI = 103;
@@ -284,7 +272,7 @@ public class ChatSettingForTroop
   public View b;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   LinearLayout.LayoutParams jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams;
-  TroopObserver jdField_b_of_type_ComTencentMobileqqAppTroopObserver = new afb(this);
+  TroopObserver jdField_b_of_type_ComTencentMobileqqAppTroopObserver = new aez(this);
   List jdField_b_of_type_JavaUtilList;
   public boolean b;
   ImageView c;
@@ -320,8 +308,8 @@ public class ChatSettingForTroop
     this.jdField_f_of_type_Boolean = false;
     this.jdField_g_of_type_Boolean = false;
     this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new aez(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileObserver = new afj(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aex(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileObserver = new afh(this);
   }
   
   private void A()
@@ -374,24 +362,24 @@ public class ChatSettingForTroop
       }
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_b_of_type_JavaLangString))
       {
-        startActivity(AddFriendLogicActivity.a(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short, i1, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.s, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_b_of_type_JavaLangString, a_()));
+        startActivity(AddFriendLogicActivity.a(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short, i1, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.s, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_b_of_type_JavaLangString, b_()));
         return;
       }
-      startActivityForResult(AddFriendLogicActivity.a(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short, i1, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.s, null, a_()), 11);
+      startActivityForResult(AddFriendLogicActivity.a(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short, i1, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.s, null, b_()), 11);
       return;
     }
-    b(2131363365, 1);
+    b(2131363368, 1);
   }
   
   private void D()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(2131363586, 5);
+    localActionSheet.a(2131363580, 5);
     if (this.al == 1) {
-      localActionSheet.a(2131363424, 3);
+      localActionSheet.a(2131363427, 3);
     }
-    localActionSheet.d(2131362790);
-    localActionSheet.a(new afk(this, localActionSheet));
+    localActionSheet.d(2131362794);
+    localActionSheet.a(new afi(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -416,7 +404,7 @@ public class ChatSettingForTroop
   private void F()
   {
     View localView1 = this.jdField_a_of_type_ArrayOfAndroidViewView[13];
-    LinearLayout localLinearLayout = (LinearLayout)localView1.findViewById(2131297094);
+    LinearLayout localLinearLayout = (LinearLayout)localView1.findViewById(2131297090);
     Object localObject1 = (TroopInfoManager)this.app.getManager(33);
     if (localObject1 != null)
     {
@@ -430,8 +418,8 @@ public class ChatSettingForTroop
         if (((Iterator)localObject1).hasNext())
         {
           localObject2 = (TroopAppInfo)((Iterator)localObject1).next();
-          localLinearLayout.addView(View.inflate(this, 2130903375, null), this.jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams);
-          View localView2 = View.inflate(this, 2130903373, null);
+          localLinearLayout.addView(View.inflate(this, 2130903374, null), this.jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams);
+          View localView2 = View.inflate(this, 2130903372, null);
           localView2.setFocusable(true);
           localView2.setClickable(true);
           Object localObject3 = (TextView)localView2.findViewById(2131296455);
@@ -442,7 +430,7 @@ public class ChatSettingForTroop
           ((ViewGroup.LayoutParams)localObject3).width = i2;
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
           localObject3 = URLDrawable.getDrawable(((TroopAppInfo)localObject2).appIcon + "_48.png");
-          ((URLDrawable)localObject3).setURLDrawableListener(new afl(this, localImageView, (URLDrawable)localObject3));
+          ((URLDrawable)localObject3).setURLDrawableListener(new afj(this, localImageView, (URLDrawable)localObject3));
           localImageView.setImageDrawable((Drawable)localObject3);
           localView2.setTag(Long.valueOf(((TroopAppInfo)localObject2).appId));
           localView2.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -459,8 +447,8 @@ public class ChatSettingForTroop
             break;
           }
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new afm(this, localView1), 300L);
-        localView1.setContentDescription(getString(2131362574));
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new afk(this, localView1), 300L);
+        localView1.setContentDescription(getString(2131362570));
       }
     }
   }
@@ -488,7 +476,7 @@ public class ChatSettingForTroop
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aeu(this, paramInt), 0L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aes(this, paramInt), 0L);
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean1, int paramInt4, boolean paramBoolean2)
@@ -533,7 +521,7 @@ public class ChatSettingForTroop
     localIntent.putExtra("param_only_friends", true);
     localIntent.putExtra("param_is_troop_admin", paramBoolean);
     localIntent.putExtra("param_uins_selected_default", paramArrayList);
-    localIntent.putExtra("param_title", paramActivity.getString(2131362501));
+    localIntent.putExtra("param_title", paramActivity.getString(2131362498));
     if (!paramBoolean) {
       localIntent.putExtra("param_max", 10);
     }
@@ -602,7 +590,7 @@ public class ChatSettingForTroop
         if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363515, 1500);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363516, 1500);
         return;
       }
       this.ak |= 0x1;
@@ -636,17 +624,17 @@ public class ChatSettingForTroop
       return;
     case 1: 
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short = 1;
-      this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_JavaLangString = getString(2131363087);
+      this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_JavaLangString = getString(2131363090);
       return;
     case 2: 
     case 4: 
     case 5: 
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short = 2;
-      this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_JavaLangString = getString(2131363088);
+      this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_JavaLangString = getString(2131363091);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Short = 3;
-    this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_JavaLangString = getString(2131363089);
+    this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_JavaLangString = getString(2131363092);
   }
   
   private void b(boolean paramBoolean)
@@ -658,7 +646,7 @@ public class ChatSettingForTroop
       ((Intent)localObject1).putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString);
       ((Intent)localObject1).putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f);
       ((Intent)localObject1).putExtra("troop_code", this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_d_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("leftViewText", 2131363671);
+      ((Intent)localObject1).putExtra("leftViewText", 2131363665);
       startActivityForResult((Intent)localObject1, 6);
       localObject2 = this.app;
       if (!paramBoolean) {
@@ -670,15 +658,15 @@ public class ChatSettingForTroop
     {
       ReportController.b((QQAppInterface)localObject2, "CliOper", "", "", "Grp", "Clk_quit_grp", 0, 0, (String)localObject1, "", "", "");
       return;
-      localObject2 = getString(2131363425);
+      localObject2 = getString(2131363428);
       if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f == null) {}
       for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString;; localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f + "(" + this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString + ")")
       {
-        localObject1 = String.format(getString(2131363421), new Object[] { localObject1 });
+        localObject1 = String.format(getString(2131363424), new Object[] { localObject1 });
         localObject1 = DialogUtil.a(this, 230).setTitle((String)localObject2).setMessage((CharSequence)localObject1);
-        ((QQCustomDialog)localObject1).setPositiveButton(getString(2131363039), new afu(this, (QQCustomDialog)localObject1));
+        ((QQCustomDialog)localObject1).setPositiveButton(getString(2131363042), new afs(this, (QQCustomDialog)localObject1));
         ((QQCustomDialog)localObject1).setPositiveButtonContentDescription(getString(2131361813));
-        ((QQCustomDialog)localObject1).setNegativeButton(getString(2131362790), new afv(this, (QQCustomDialog)localObject1));
+        ((QQCustomDialog)localObject1).setNegativeButton(getString(2131362794), new aft(this, (QQCustomDialog)localObject1));
         ((QQCustomDialog)localObject1).setNegativeButtonContentDescription(getString(2131361814));
         ((QQCustomDialog)localObject1).show();
         break;
@@ -760,20 +748,20 @@ public class ChatSettingForTroop
     for (;;)
     {
       ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-      localActionSheet.a(getString(2131363867, new Object[] { str }));
+      localActionSheet.a(getString(2131363857, new Object[] { str }));
       int i1 = DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, this.app);
-      localActionSheet.b(getString(2131363868, new Object[] { StringUtil.a(BaseApplication.getContext(), i1) }));
-      localActionSheet.a(getString(2131362536), false);
-      localActionSheet.a(getString(2131362537), false);
-      localActionSheet.a(getString(2131362538), false);
+      localActionSheet.b(getString(2131363858, new Object[] { StringUtil.a(BaseApplication.getContext(), i1) }));
+      localActionSheet.a(getString(2131362532), false);
+      localActionSheet.a(getString(2131362533), false);
+      localActionSheet.a(getString(2131362534), false);
       i1 = this.app.b(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString);
       switch (i1)
       {
       }
       for (;;)
       {
-        localActionSheet.d(2131362790);
-        localActionSheet.a(new afw(this, i1, localActionSheet));
+        localActionSheet.d(2131362794);
+        localActionSheet.a(new afu(this, i1, localActionSheet));
         localActionSheet.show();
         return;
         localActionSheet.e(0);
@@ -799,444 +787,1773 @@ public class ChatSettingForTroop
   protected Drawable a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return getResources().getDrawable(2130838380);
+      return getResources().getDrawable(2130838368);
     }
     int i1 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_n_of_type_Int;
     if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i()) {
       i1 = 0;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString;
     switch (i1)
     {
     default: 
-      return getResources().getDrawable(2130838380);
+      return getResources().getDrawable(2130838368);
     case 0: 
-      return getResources().getDrawable(2130838380);
+      return getResources().getDrawable(2130838368);
     case 1: 
-      return getResources().getDrawable(2130838381);
+      return getResources().getDrawable(2130838369);
     case 2: 
-      return getResources().getDrawable(2130838382);
+      return getResources().getDrawable(2130838370);
     case 3: 
-      return getResources().getDrawable(2130838383);
+      return getResources().getDrawable(2130838371);
     case 4: 
-      return getResources().getDrawable(2130838384);
+      return getResources().getDrawable(2130838372);
     }
-    return getResources().getDrawable(2130838385);
+    return getResources().getDrawable(2130838373);
   }
   
-  @SuppressLint({"NewApi"})
+  /* Error */
+  @android.annotation.SuppressLint({"NewApi"})
   protected void a()
   {
-    long l1 = System.currentTimeMillis();
-    Object localObject1 = (LayoutInflater)getSystemService("layout_inflater");
-    label2852:
-    label3498:
-    for (;;)
-    {
-      Object localObject3;
-      try
-      {
-        localObject3 = View.inflate(this, 2130903689, null);
-        this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject3).findViewById(2131296783));
-        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)((View)localObject3).findViewById(2131298916));
-        this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-        this.jdField_a_of_type_ArrayOfAndroidViewView = new View[19];
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
-        localObject1 = new AbsListView.LayoutParams(-1, -2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-        localObject1 = new XSimpleListAdapter(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter((ListAdapter)localObject1);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130837633);
-        if (this.al == 2)
-        {
-          i1 = this.jdField_a_of_type_ComTencentWidgetXListView.getPaddingLeft();
-          i2 = this.jdField_a_of_type_ComTencentWidgetXListView.getPaddingLeft();
-          int i3 = getResources().getDimensionPixelOffset(2131493003);
-          this.jdField_a_of_type_ComTencentWidgetXListView.setPadding(i1, 0, i2, i3);
-        }
-        setContentView((View)localObject3);
-        setTitle(getString(2131363669));
-        setLeftViewName(2131363832);
-        int i1 = this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels;
-        int i2 = (i1 - getResources().getDimensionPixelSize(2131493046)) / 4;
-        Object localObject6;
-        TextView localTextView;
-        ImageView localImageView;
-        Object localObject7;
-        boolean bool = false;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          localObject1 = View.inflate(this, 2130903296, null);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView = ((AvatarWallView)((View)localObject1).findViewById(2131296994));
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView.setColumnWidth(i2);
-          if ((!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e()) || (this.al != 1)) {
-            break label2881;
-          }
-          bool = true;
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter = new AvatarWallAdapter(new WeakReference(this), this.app, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsHandler, bool, "Grp_Admin_data");
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView.setNumColumns(4);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(i2);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = View.inflate(this, 2130903298, null);
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131296993));
-          this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
-          this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          if (bool) {
-            break label2887;
-          }
-          ((View)localObject1).setVisibility(8);
-          this.jdField_b_of_type_AndroidViewView = ((View)localObject1);
-          localObject1 = View.inflate(this, 2130903372, null);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[12] = localObject1;
-          localObject5 = (ImageView)((View)localObject1).findViewById(2131297604);
-          localObject6 = (TextView)((View)localObject1).findViewById(2131297606);
-          localTextView = (TextView)((View)localObject1).findViewById(2131297877);
-          localImageView = (ImageView)((View)localObject1).findViewById(2131297879);
-          localObject4 = ((View)localObject1).findViewById(2131297880);
-          localObject7 = this.app.a(4, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, (byte)3, 0);
-          localObject7 = this.app.a((String)localObject7);
-          if (localObject7 != null)
-          {
-            ((ImageView)localObject5).setImageBitmap((Bitmap)localObject7);
-            this.jdField_g_of_type_Boolean = true;
-          }
-          ((ImageView)localObject5).setTag(Integer.valueOf(26));
-          ((ImageView)localObject5).setOnClickListener(this);
-          ((ImageView)localObject5).setContentDescription(super.getString(2131362647));
-          localTextView.setTag(Integer.valueOf(4));
-          localTextView.setOnLongClickListener(this);
-          ((TextView)localObject6).setTag(Integer.valueOf(4));
-          ((TextView)localObject6).setOnLongClickListener(this);
-          ((TextView)localObject6).setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f);
-          localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString);
-          localImageView.setImageDrawable(a());
-          localImageView.setTag(Integer.valueOf(4));
-          localImageView.setOnClickListener(this);
-          localImageView.setContentDescription(String.format(getResources().getString(2131363036), new Object[] { Integer.valueOf(0) }));
-          ((View)localObject4).setTag(Integer.valueOf(11));
-          ((View)localObject4).setOnClickListener(this);
-          localObject5 = (TextView)((View)localObject4).findViewById(2131296936);
-          localObject6 = getResources().getDrawable(2130838424);
-          ((Drawable)localObject6).setBounds(0, 0, ((Drawable)localObject6).getMinimumWidth(), ((Drawable)localObject6).getMinimumHeight());
-          ((TextView)localObject5).setCompoundDrawables((Drawable)localObject6, null, null, null);
-          ((TextView)localObject5).setCompoundDrawablePadding(10);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString)) {
-            break label2958;
-          }
-          ((View)localObject4).setVisibility(8);
-          ((View)localObject1).setBackgroundResource(2130837758);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          t();
-          this.ao = ((i1 - getResources().getDimensionPixelSize(2131493046) - PublicAccountUtil.a(this, 1.0F) * 3) / 4);
-          localObject1 = View.inflate(this, 2130903188, null);
-          ((View)localObject1).setBackgroundResource(2130837758);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[13] = localObject1;
-          localObject4 = (ReboundHorizontalScrollView)((View)localObject1).findViewById(2131297093);
-          if (Build.VERSION.SDK_INT >= 9) {
-            ((ReboundHorizontalScrollView)localObject4).setOverScrollMode(2);
-          }
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(this.ao, PublicAccountUtil.a(this, 65.0F));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
-          localObject1 = (LinearLayout)((View)localObject1).findViewById(2131297094);
-          localObject4 = View.inflate(this, 2130903373, null);
-          ((View)localObject4).setFocusable(true);
-          ((View)localObject4).setClickable(true);
-          ((LinearLayout)localObject1).setGravity(16);
-          localObject5 = (TextView)((View)localObject4).findViewById(2131296455);
-          localObject6 = (ImageView)((View)localObject4).findViewById(2131296453);
-          ((TextView)localObject5).setText(2131362572);
-          ((ImageView)localObject6).setImageResource(2130838425);
-          ((View)localObject4).setTag(Integer.valueOf(0));
-          ((View)localObject4).setOnClickListener(this);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject4;
-          ((LinearLayout)localObject1).addView((View)localObject4, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-          this.jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(PublicAccountUtil.a(this, 1.0F), PublicAccountUtil.a(this, 25.0F));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 16;
-          ((LinearLayout)localObject1).addView(View.inflate(this, 2130903375, null), this.jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams);
-          localObject4 = View.inflate(this, 2130903373, null);
-          ((View)localObject4).setFocusable(true);
-          ((View)localObject4).setClickable(true);
-          localObject5 = (TextView)((View)localObject4).findViewById(2131296455);
-          localObject6 = (ImageView)((View)localObject4).findViewById(2131296453);
-          ((TextView)localObject5).setText(2131362967);
-          ((ImageView)localObject6).setImageResource(2130838418);
-          ((View)localObject4).setTag(Integer.valueOf(1));
-          ((View)localObject4).setOnClickListener(this);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localObject4;
-          ((LinearLayout)localObject1).addView((View)localObject4, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          if (this.al == 1)
-          {
-            localObject1 = View.inflate(this, 2130903569, null);
-            this.jdField_a_of_type_ArrayOfAndroidViewView[2] = localObject1;
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-            a(2, 2, (View)localObject1, getString(2131363034), "", true, 0, false);
-            localObject1 = new ImageView(this);
-            ((ImageView)localObject1).setBackgroundResource(2130837995);
-            localObject4 = new LinearLayout.LayoutParams(-1, 2);
-            ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-            ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          }
-          if (this.al != 1) {
-            break label3052;
-          }
-          localObject1 = View.inflate(this, 2130903566, null);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[7] = localObject1;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_g_of_type_JavaLangString)) {
-            break label2979;
-          }
-          a(7, 2, (View)localObject1, getString(2131363081), this.app.c(), true);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = View.inflate(this, 2130903573, null);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[3] = localObject1;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject4 = new ImageView(this);
-          ((ImageView)localObject4).setBackgroundResource(2130837995);
-          localObject5 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject5).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
-          if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e()) {
-            break label3006;
-          }
-          a(3, 2, (View)localObject1, getString(2131362839), this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_JavaLangString, true);
-          a((View)localObject1);
-          localObject1 = View.inflate(this, 2130903571, null);
-          a(6, 2, (FormSimpleItem)((View)localObject1).findViewById(2131298569), getString(2131363102), "", true);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[6] = localObject1;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e()) {
-            break label3032;
-          }
-          ((View)localObject1).setVisibility(0);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new FormSimpleItem(this);
-          a(17, 2, (FormSimpleItem)localObject1, getString(2131363689), "", true);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[17] = localObject1;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new FormSimpleItem(this);
-          a(21, 2, (FormSimpleItem)localObject1, getString(2131363080), "", true);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new FormSimpleItem(this);
-          a(20, 2, (FormSimpleItem)localObject1, getString(2131363539), "", true);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = View.inflate(this, 2130903571, null);
-          a(8, 2, (FormSimpleItem)((View)localObject1).findViewById(2131298569), getString(2131363076), "", true);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[8] = localObject1;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = View.inflate(this, 2130903575, null);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = View.inflate(this, 2130903570, null);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[15] = localObject1;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m)) {
-            break label3042;
-          }
-          localObject4 = new ImageView(this);
-          ((ImageView)localObject4).setBackgroundResource(2130837995);
-          localObject5 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject5).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m;
-          b(15, 0, (View)localObject1, getString(2131363029), (CharSequence)localObject4, false);
-          localObject1 = new ImageView(this);
-          ((ImageView)localObject1).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          localObject1 = View.inflate(this, 2130903575, null);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.chatopttroop", 2, "initUI: time = " + (System.currentTimeMillis() - l1));
-          }
-          this.p.setVisibility(0);
-          this.p.setImageResource(2130838044);
-          this.p.setContentDescription(getString(2131362535));
-          this.p.setOnClickListener(new afq(this));
-          this.jdField_a_of_type_AndroidViewView = ((View)localObject3).findViewById(2131297534);
-          if (this.al == 2)
-          {
-            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298563);
-            localObject3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298564);
-            this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-            if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean) {
-              break label3498;
-            }
-            ((ImageView)localObject1).setImageResource(2130838304);
-            ((TextView)localObject3).setText(2131363893);
-            this.jdField_a_of_type_AndroidViewView.setTag(Integer.valueOf(24));
-            this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-          }
-          a(false);
-          this.jdField_a_of_type_ComTencentWidgetXListView.getViewTreeObserver().addOnGlobalLayoutListener(new afr(this));
-          return;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          if (!QLog.isColorLevel()) {
-            break label2852;
-          }
-          QLog.d("Q.chatopttroop", 2, localOutOfMemoryError2.getMessage());
-          finish();
-          return;
-        }
-        catch (InflateException localInflateException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label2876;
-          }
-          QLog.d("Q.chatopttroop", 2, localInflateException.getMessage());
-          finish();
-          return;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        finish();
-        localOutOfMemoryError1.printStackTrace();
-        return;
-      }
-      label2876:
-      label2881:
-      continue;
-      label2887:
-      Object localObject4 = new ImageView(this);
-      ((ImageView)localObject4).setBackgroundResource(2130837995);
-      Object localObject5 = new LinearLayout.LayoutParams(-1, 2);
-      ((LinearLayout.LayoutParams)localObject5).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-      ((ImageView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
-      continue;
-      ((View)localObject4).setVisibility(0);
-      ((TextView)localObject5).setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString);
-      continue;
-      a(7, 2, localInflateException, getString(2131363081), this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_g_of_type_JavaLangString, true);
-      continue;
-      label3006:
-      a(3, 2, localInflateException, getString(2131362839), this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_JavaLangString, true);
-      continue;
-      label3032:
-      localInflateException.setVisibility(8);
-      continue;
-      label3042:
-      localInflateException.setVisibility(8);
-      continue;
-      label3052:
-      if (this.al == 2)
-      {
-        Object localObject2 = View.inflate(this, 2130903573, null);
-        this.jdField_a_of_type_ArrayOfAndroidViewView[16] = localObject2;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-        a(16, 1, (View)localObject2, getString(2131362867), getString(2131362869), true);
-        a((View)localObject2);
-        localObject2 = new ImageView(this);
-        ((ImageView)localObject2).setBackgroundResource(2130837995);
-        localObject4 = new LinearLayout.LayoutParams(-1, 2);
-        ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-        ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-        localObject4 = View.inflate(this, 2130903574, null);
-        this.jdField_a_of_type_ArrayOfAndroidViewView[18] = localObject4;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
-        localObject2 = new ImageView(this);
-        ((ImageView)localObject2).setBackgroundResource(2130837995);
-        localObject5 = new LinearLayout.LayoutParams(-1, 2);
-        ((LinearLayout.LayoutParams)localObject5).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-        ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-        localObject2 = "";
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_JavaLangString != null) {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_JavaLangString;
-        }
-        a(18, 3, (View)localObject4, getString(2131362839), (CharSequence)localObject2, true);
-        f();
-        localObject2 = View.inflate(this, 2130903575, null);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-        localObject2 = View.inflate(this, 2130903570, null);
-        this.jdField_a_of_type_ArrayOfAndroidViewView[15] = localObject2;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m))
-        {
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m;
-          b(15, 0, (View)localObject2, getString(2131363029), (CharSequence)localObject4, false);
-          localObject2 = new ImageView(this);
-          ((ImageView)localObject2).setBackgroundResource(2130837995);
-          localObject4 = new LinearLayout.LayoutParams(-1, 2);
-          ((LinearLayout.LayoutParams)localObject4).setMargins((int)this.jdField_c_of_type_Float * 14, 0, (int)this.jdField_c_of_type_Float * 14, 0);
-          ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
-        }
-        else
-        {
-          ((View)localObject2).setVisibility(8);
-          continue;
-          if (this.an == 2) {
-            ReportController.b(this.app, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_objgrp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, "", "", "");
-          }
-          ((ImageView)localObject2).setImageResource(2130838244);
-          ((TextView)localObject3).setText(2131362803);
-          this.jdField_a_of_type_AndroidViewView.setTag(Integer.valueOf(25));
-          this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-        }
-      }
-    }
+    // Byte code:
+    //   0: invokestatic 667	java/lang/System:currentTimeMillis	()J
+    //   3: lstore 4
+    //   5: aload_0
+    //   6: ldc_w 1093
+    //   9: aconst_null
+    //   10: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   13: astore 8
+    //   15: aload_0
+    //   16: aload 8
+    //   18: ldc_w 1094
+    //   21: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   24: checkcast 1096	com/tencent/widget/XListView
+    //   27: putfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   30: aload_0
+    //   31: aload 8
+    //   33: ldc_w 1099
+    //   36: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   39: checkcast 1101	android/widget/EditText
+    //   42: putfield 1103	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   45: aload_0
+    //   46: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   49: iconst_0
+    //   50: invokevirtual 1106	com/tencent/widget/XListView:setVerticalScrollBarEnabled	(Z)V
+    //   53: aload_0
+    //   54: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   57: aconst_null
+    //   58: invokevirtual 1109	com/tencent/widget/XListView:setDivider	(Landroid/graphics/drawable/Drawable;)V
+    //   61: aload_0
+    //   62: bipush 19
+    //   64: anewarray 471	android/view/View
+    //   67: putfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   70: aload_0
+    //   71: new 477	android/widget/LinearLayout
+    //   74: dup
+    //   75: aload_0
+    //   76: invokespecial 1112	android/widget/LinearLayout:<init>	(Landroid/content/Context;)V
+    //   79: putfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   82: new 1116	com/tencent/widget/AbsListView$LayoutParams
+    //   85: dup
+    //   86: iconst_m1
+    //   87: bipush 254
+    //   89: invokespecial 1118	com/tencent/widget/AbsListView$LayoutParams:<init>	(II)V
+    //   92: astore 7
+    //   94: aload_0
+    //   95: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   98: aload 7
+    //   100: invokevirtual 1119	android/widget/LinearLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   103: aload_0
+    //   104: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   107: iconst_1
+    //   108: invokevirtual 1122	android/widget/LinearLayout:setOrientation	(I)V
+    //   111: new 1124	com/tencent/widget/XSimpleListAdapter
+    //   114: dup
+    //   115: aload_0
+    //   116: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   119: invokespecial 1127	com/tencent/widget/XSimpleListAdapter:<init>	(Landroid/view/View;)V
+    //   122: astore 7
+    //   124: aload_0
+    //   125: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   128: aload 7
+    //   130: invokevirtual 1131	com/tencent/widget/XListView:setAdapter	(Landroid/widget/ListAdapter;)V
+    //   133: aload_0
+    //   134: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   137: ldc_w 1132
+    //   140: invokevirtual 1135	com/tencent/widget/XListView:setBackgroundResource	(I)V
+    //   143: aload_0
+    //   144: getfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
+    //   147: iconst_2
+    //   148: if_icmpne +41 -> 189
+    //   151: aload_0
+    //   152: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   155: invokevirtual 1138	com/tencent/widget/XListView:getPaddingLeft	()I
+    //   158: istore_1
+    //   159: aload_0
+    //   160: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   163: invokevirtual 1138	com/tencent/widget/XListView:getPaddingLeft	()I
+    //   166: istore_2
+    //   167: aload_0
+    //   168: invokevirtual 1070	com/tencent/mobileqq/activity/ChatSettingForTroop:getResources	()Landroid/content/res/Resources;
+    //   171: ldc_w 1139
+    //   174: invokevirtual 1143	android/content/res/Resources:getDimensionPixelOffset	(I)I
+    //   177: istore_3
+    //   178: aload_0
+    //   179: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   182: iload_1
+    //   183: iconst_0
+    //   184: iload_2
+    //   185: iload_3
+    //   186: invokevirtual 1147	com/tencent/widget/XListView:setPadding	(IIII)V
+    //   189: aload_0
+    //   190: aload 8
+    //   192: invokevirtual 1150	com/tencent/mobileqq/activity/ChatSettingForTroop:setContentView	(Landroid/view/View;)V
+    //   195: aload_0
+    //   196: aload_0
+    //   197: ldc_w 1151
+    //   200: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   203: invokevirtual 1153	com/tencent/mobileqq/activity/ChatSettingForTroop:setTitle	(Ljava/lang/CharSequence;)V
+    //   206: aload_0
+    //   207: ldc_w 1154
+    //   210: invokevirtual 1157	com/tencent/mobileqq/activity/ChatSettingForTroop:setLeftViewName	(I)V
+    //   213: aload_0
+    //   214: getfield 1159	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidUtilDisplayMetrics	Landroid/util/DisplayMetrics;
+    //   217: getfield 1164	android/util/DisplayMetrics:widthPixels	I
+    //   220: istore_1
+    //   221: iload_1
+    //   222: aload_0
+    //   223: invokevirtual 1070	com/tencent/mobileqq/activity/ChatSettingForTroop:getResources	()Landroid/content/res/Resources;
+    //   226: ldc_w 1165
+    //   229: invokevirtual 1168	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   232: isub
+    //   233: iconst_4
+    //   234: idiv
+    //   235: istore_2
+    //   236: aload_0
+    //   237: ldc_w 1169
+    //   240: aconst_null
+    //   241: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   244: astore 7
+    //   246: aload_0
+    //   247: aload 7
+    //   249: ldc_w 1170
+    //   252: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   255: checkcast 1172	com/tencent/mobileqq/troop/widget/AvatarWallView
+    //   258: putfield 1174	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView	Lcom/tencent/mobileqq/troop/widget/AvatarWallView;
+    //   261: aload_0
+    //   262: getfield 1174	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView	Lcom/tencent/mobileqq/troop/widget/AvatarWallView;
+    //   265: iload_2
+    //   266: invokevirtual 1177	com/tencent/mobileqq/troop/widget/AvatarWallView:setColumnWidth	(I)V
+    //   269: aload_0
+    //   270: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   273: invokevirtual 1179	com/tencent/mobileqq/troopinfo/TroopInfoData:e	()Z
+    //   276: ifeq +2593 -> 2869
+    //   279: aload_0
+    //   280: getfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
+    //   283: iconst_1
+    //   284: if_icmpne +2585 -> 2869
+    //   287: iconst_1
+    //   288: istore 6
+    //   290: aload_0
+    //   291: new 1181	com/tencent/mobileqq/troop/widget/AvatarWallAdapter
+    //   294: dup
+    //   295: new 1183	mqq/util/WeakReference
+    //   298: dup
+    //   299: aload_0
+    //   300: invokespecial 1185	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   303: aload_0
+    //   304: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   307: aload_0
+    //   308: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   311: getfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   314: aload_0
+    //   315: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   318: getfield 275	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Boolean	Z
+    //   321: aload_0
+    //   322: getfield 238	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   325: iload 6
+    //   327: ldc_w 1187
+    //   330: invokespecial 1190	com/tencent/mobileqq/troop/widget/AvatarWallAdapter:<init>	(Lmqq/util/WeakReference;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;ZLandroid/os/Handler;ZLjava/lang/String;)V
+    //   333: putfield 1192	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter	Lcom/tencent/mobileqq/troop/widget/AvatarWallAdapter;
+    //   336: aload_0
+    //   337: getfield 1174	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView	Lcom/tencent/mobileqq/troop/widget/AvatarWallView;
+    //   340: aload_0
+    //   341: getfield 1192	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter	Lcom/tencent/mobileqq/troop/widget/AvatarWallAdapter;
+    //   344: invokevirtual 1193	com/tencent/mobileqq/troop/widget/AvatarWallView:setAdapter	(Landroid/widget/ListAdapter;)V
+    //   347: aload_0
+    //   348: getfield 1174	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView	Lcom/tencent/mobileqq/troop/widget/AvatarWallView;
+    //   351: iconst_4
+    //   352: invokevirtual 1196	com/tencent/mobileqq/troop/widget/AvatarWallView:setNumColumns	(I)V
+    //   355: aload_0
+    //   356: getfield 1192	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter	Lcom/tencent/mobileqq/troop/widget/AvatarWallAdapter;
+    //   359: iload_2
+    //   360: invokevirtual 1197	com/tencent/mobileqq/troop/widget/AvatarWallAdapter:a	(I)V
+    //   363: aload_0
+    //   364: getfield 1192	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter	Lcom/tencent/mobileqq/troop/widget/AvatarWallAdapter;
+    //   367: aload_0
+    //   368: getfield 1174	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView	Lcom/tencent/mobileqq/troop/widget/AvatarWallView;
+    //   371: invokevirtual 1200	com/tencent/mobileqq/troop/widget/AvatarWallAdapter:a	(Lcom/tencent/widget/GridView;)V
+    //   374: aload_0
+    //   375: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   378: aload 7
+    //   380: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   383: new 486	android/widget/ImageView
+    //   386: dup
+    //   387: aload_0
+    //   388: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   391: astore 7
+    //   393: aload 7
+    //   395: ldc_w 1204
+    //   398: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   401: new 1207	android/widget/LinearLayout$LayoutParams
+    //   404: dup
+    //   405: iconst_m1
+    //   406: iconst_2
+    //   407: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   410: astore 9
+    //   412: aload 9
+    //   414: aload_0
+    //   415: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   418: f2i
+    //   419: bipush 14
+    //   421: imul
+    //   422: iconst_0
+    //   423: aload_0
+    //   424: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   427: f2i
+    //   428: bipush 14
+    //   430: imul
+    //   431: iconst_0
+    //   432: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   435: aload 7
+    //   437: aload 9
+    //   439: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   442: aload_0
+    //   443: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   446: aload 7
+    //   448: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   451: aload_0
+    //   452: ldc_w 1214
+    //   455: aconst_null
+    //   456: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   459: astore 7
+    //   461: aload_0
+    //   462: aload 7
+    //   464: ldc_w 1215
+    //   467: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   470: checkcast 529	android/widget/TextView
+    //   473: putfield 1217	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   476: aload_0
+    //   477: getfield 1217	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   480: iconst_1
+    //   481: invokevirtual 1218	android/widget/TextView:setFocusable	(Z)V
+    //   484: aload_0
+    //   485: getfield 1217	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   488: iconst_1
+    //   489: invokevirtual 1221	android/widget/TextView:setFocusableInTouchMode	(Z)V
+    //   492: aload_0
+    //   493: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   496: aload 7
+    //   498: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   501: iload 6
+    //   503: ifne +2372 -> 2875
+    //   506: aload 7
+    //   508: bipush 8
+    //   510: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   513: aload_0
+    //   514: aload 7
+    //   516: putfield 1226	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   519: aload_0
+    //   520: ldc_w 1227
+    //   523: aconst_null
+    //   524: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   527: astore 7
+    //   529: aload_0
+    //   530: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   533: aload 7
+    //   535: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   538: aload_0
+    //   539: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   542: bipush 12
+    //   544: aload 7
+    //   546: aastore
+    //   547: aload 7
+    //   549: ldc_w 1228
+    //   552: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   555: checkcast 486	android/widget/ImageView
+    //   558: astore 10
+    //   560: aload 7
+    //   562: ldc_w 1229
+    //   565: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   568: checkcast 529	android/widget/TextView
+    //   571: astore 11
+    //   573: aload 7
+    //   575: ldc_w 1230
+    //   578: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   581: checkcast 529	android/widget/TextView
+    //   584: astore 12
+    //   586: aload 7
+    //   588: ldc_w 1231
+    //   591: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   594: checkcast 486	android/widget/ImageView
+    //   597: astore 13
+    //   599: aload 7
+    //   601: ldc_w 1232
+    //   604: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   607: astore 9
+    //   609: aload_0
+    //   610: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   613: iconst_4
+    //   614: aload_0
+    //   615: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   618: getfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   621: iconst_3
+    //   622: iconst_0
+    //   623: invokevirtual 1235	com/tencent/mobileqq/app/QQAppInterface:a	(ILjava/lang/String;BI)Ljava/lang/String;
+    //   626: astore 14
+    //   628: aload_0
+    //   629: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   632: aload 14
+    //   634: invokevirtual 1238	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   637: astore 14
+    //   639: aload 14
+    //   641: ifnull +15 -> 656
+    //   644: aload 10
+    //   646: aload 14
+    //   648: invokevirtual 1242	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   651: aload_0
+    //   652: iconst_1
+    //   653: putfield 222	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_g_of_type_Boolean	Z
+    //   656: aload 10
+    //   658: bipush 26
+    //   660: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   663: invokevirtual 1243	android/widget/ImageView:setTag	(Ljava/lang/Object;)V
+    //   666: aload 10
+    //   668: aload_0
+    //   669: invokevirtual 1244	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   672: aload 10
+    //   674: aload_0
+    //   675: ldc_w 1245
+    //   678: invokespecial 1246	com/tencent/mobileqq/app/IphoneTitleBarActivity:getString	(I)Ljava/lang/String;
+    //   681: invokevirtual 1247	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   684: aload 12
+    //   686: iconst_4
+    //   687: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   690: invokevirtual 1248	android/widget/TextView:setTag	(Ljava/lang/Object;)V
+    //   693: aload 12
+    //   695: aload_0
+    //   696: invokevirtual 1252	android/widget/TextView:setOnLongClickListener	(Landroid/view/View$OnLongClickListener;)V
+    //   699: aload 11
+    //   701: iconst_4
+    //   702: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   705: invokevirtual 1248	android/widget/TextView:setTag	(Ljava/lang/Object;)V
+    //   708: aload 11
+    //   710: aload_0
+    //   711: invokevirtual 1252	android/widget/TextView:setOnLongClickListener	(Landroid/view/View$OnLongClickListener;)V
+    //   714: aload 11
+    //   716: aload_0
+    //   717: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   720: getfield 364	com/tencent/mobileqq/troopinfo/TroopInfoData:f	Ljava/lang/String;
+    //   723: invokevirtual 536	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   726: aload 12
+    //   728: aload_0
+    //   729: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   732: getfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   735: invokevirtual 536	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   738: aload 13
+    //   740: aload_0
+    //   741: invokevirtual 1254	com/tencent/mobileqq/activity/ChatSettingForTroop:a	()Landroid/graphics/drawable/Drawable;
+    //   744: invokevirtual 576	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   747: aload 13
+    //   749: iconst_4
+    //   750: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   753: invokevirtual 1243	android/widget/ImageView:setTag	(Ljava/lang/Object;)V
+    //   756: aload 13
+    //   758: aload_0
+    //   759: invokevirtual 1244	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   762: aload 13
+    //   764: aload_0
+    //   765: invokevirtual 1070	com/tencent/mobileqq/activity/ChatSettingForTroop:getResources	()Landroid/content/res/Resources;
+    //   768: ldc_w 1255
+    //   771: invokevirtual 1256	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   774: iconst_1
+    //   775: anewarray 911	java/lang/Object
+    //   778: dup
+    //   779: iconst_0
+    //   780: iconst_0
+    //   781: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   784: aastore
+    //   785: invokestatic 915	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   788: invokevirtual 1247	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   791: aload 9
+    //   793: bipush 11
+    //   795: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   798: invokevirtual 583	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   801: aload 9
+    //   803: aload_0
+    //   804: invokevirtual 587	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   807: aload 9
+    //   809: ldc_w 1257
+    //   812: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   815: checkcast 529	android/widget/TextView
+    //   818: astore 10
+    //   820: aload_0
+    //   821: invokevirtual 1070	com/tencent/mobileqq/activity/ChatSettingForTroop:getResources	()Landroid/content/res/Resources;
+    //   824: ldc_w 1258
+    //   827: invokevirtual 1076	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   830: astore 11
+    //   832: aload 11
+    //   834: iconst_0
+    //   835: iconst_0
+    //   836: aload 11
+    //   838: invokevirtual 1263	android/graphics/drawable/Drawable:getMinimumWidth	()I
+    //   841: aload 11
+    //   843: invokevirtual 1266	android/graphics/drawable/Drawable:getMinimumHeight	()I
+    //   846: invokevirtual 1269	android/graphics/drawable/Drawable:setBounds	(IIII)V
+    //   849: aload 10
+    //   851: aload 11
+    //   853: aconst_null
+    //   854: aconst_null
+    //   855: aconst_null
+    //   856: invokevirtual 1273	android/widget/TextView:setCompoundDrawables	(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+    //   859: aload 10
+    //   861: bipush 10
+    //   863: invokevirtual 1276	android/widget/TextView:setCompoundDrawablePadding	(I)V
+    //   866: aload_0
+    //   867: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   870: getfield 1277	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   873: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   876: ifeq +2070 -> 2946
+    //   879: aload 9
+    //   881: bipush 8
+    //   883: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   886: aload 7
+    //   888: ldc_w 1278
+    //   891: invokevirtual 1279	android/view/View:setBackgroundResource	(I)V
+    //   894: new 486	android/widget/ImageView
+    //   897: dup
+    //   898: aload_0
+    //   899: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   902: astore 7
+    //   904: aload 7
+    //   906: ldc_w 1204
+    //   909: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   912: new 1207	android/widget/LinearLayout$LayoutParams
+    //   915: dup
+    //   916: iconst_m1
+    //   917: iconst_2
+    //   918: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   921: astore 9
+    //   923: aload 9
+    //   925: aload_0
+    //   926: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   929: f2i
+    //   930: bipush 14
+    //   932: imul
+    //   933: iconst_0
+    //   934: aload_0
+    //   935: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   938: f2i
+    //   939: bipush 14
+    //   941: imul
+    //   942: iconst_0
+    //   943: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   946: aload 7
+    //   948: aload 9
+    //   950: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   953: aload_0
+    //   954: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   957: aload 7
+    //   959: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   962: aload_0
+    //   963: invokevirtual 1281	com/tencent/mobileqq/activity/ChatSettingForTroop:t	()V
+    //   966: aload_0
+    //   967: iload_1
+    //   968: aload_0
+    //   969: invokevirtual 1070	com/tencent/mobileqq/activity/ChatSettingForTroop:getResources	()Landroid/content/res/Resources;
+    //   972: ldc_w 1165
+    //   975: invokevirtual 1168	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   978: isub
+    //   979: aload_0
+    //   980: fconst_1
+    //   981: invokestatic 1286	com/tencent/biz/pubaccount/util/PublicAccountUtil:a	(Landroid/content/Context;F)I
+    //   984: iconst_3
+    //   985: imul
+    //   986: isub
+    //   987: iconst_4
+    //   988: idiv
+    //   989: putfield 1288	com/tencent/mobileqq/activity/ChatSettingForTroop:ao	I
+    //   992: aload_0
+    //   993: ldc_w 1289
+    //   996: aconst_null
+    //   997: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1000: astore 7
+    //   1002: aload 7
+    //   1004: ldc_w 1278
+    //   1007: invokevirtual 1279	android/view/View:setBackgroundResource	(I)V
+    //   1010: aload_0
+    //   1011: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1014: bipush 13
+    //   1016: aload 7
+    //   1018: aastore
+    //   1019: aload 7
+    //   1021: ldc_w 1290
+    //   1024: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1027: checkcast 1292	com/tencent/mobileqq/profile/view/ReboundHorizontalScrollView
+    //   1030: astore 9
+    //   1032: getstatic 1297	android/os/Build$VERSION:SDK_INT	I
+    //   1035: bipush 9
+    //   1037: if_icmplt +9 -> 1046
+    //   1040: aload 9
+    //   1042: iconst_2
+    //   1043: invokevirtual 1300	com/tencent/mobileqq/profile/view/ReboundHorizontalScrollView:setOverScrollMode	(I)V
+    //   1046: aload_0
+    //   1047: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1050: aload 7
+    //   1052: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1055: aload_0
+    //   1056: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1059: dup
+    //   1060: aload_0
+    //   1061: getfield 1288	com/tencent/mobileqq/activity/ChatSettingForTroop:ao	I
+    //   1064: aload_0
+    //   1065: ldc_w 1301
+    //   1068: invokestatic 1286	com/tencent/biz/pubaccount/util/PublicAccountUtil:a	(Landroid/content/Context;F)I
+    //   1071: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1074: putfield 589	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1077: aload_0
+    //   1078: getfield 589	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1081: bipush 17
+    //   1083: putfield 1304	android/widget/LinearLayout$LayoutParams:gravity	I
+    //   1086: aload_0
+    //   1087: getfield 589	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1090: fconst_1
+    //   1091: putfield 1307	android/widget/LinearLayout$LayoutParams:weight	F
+    //   1094: aload 7
+    //   1096: ldc_w 469
+    //   1099: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1102: checkcast 477	android/widget/LinearLayout
+    //   1105: astore 7
+    //   1107: aload_0
+    //   1108: ldc_w 519
+    //   1111: aconst_null
+    //   1112: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1115: astore 9
+    //   1117: aload 9
+    //   1119: iconst_1
+    //   1120: invokevirtual 523	android/view/View:setFocusable	(Z)V
+    //   1123: aload 9
+    //   1125: iconst_1
+    //   1126: invokevirtual 526	android/view/View:setClickable	(Z)V
+    //   1129: aload 7
+    //   1131: bipush 16
+    //   1133: invokevirtual 1310	android/widget/LinearLayout:setGravity	(I)V
+    //   1136: aload 9
+    //   1138: ldc_w 527
+    //   1141: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1144: checkcast 529	android/widget/TextView
+    //   1147: astore 10
+    //   1149: aload 9
+    //   1151: ldc_w 484
+    //   1154: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1157: checkcast 486	android/widget/ImageView
+    //   1160: astore 11
+    //   1162: aload 10
+    //   1164: ldc_w 1311
+    //   1167: invokevirtual 1313	android/widget/TextView:setText	(I)V
+    //   1170: aload 11
+    //   1172: ldc_w 1314
+    //   1175: invokevirtual 1317	android/widget/ImageView:setImageResource	(I)V
+    //   1178: aload 9
+    //   1180: iconst_0
+    //   1181: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1184: invokevirtual 583	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   1187: aload 9
+    //   1189: aload_0
+    //   1190: invokevirtual 587	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   1193: aload_0
+    //   1194: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1197: iconst_0
+    //   1198: aload 9
+    //   1200: aastore
+    //   1201: aload 7
+    //   1203: aload 9
+    //   1205: aload_0
+    //   1206: getfield 589	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1209: invokevirtual 518	android/widget/LinearLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   1212: aload_0
+    //   1213: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1216: dup
+    //   1217: aload_0
+    //   1218: fconst_1
+    //   1219: invokestatic 1286	com/tencent/biz/pubaccount/util/PublicAccountUtil:a	(Landroid/content/Context;F)I
+    //   1222: aload_0
+    //   1223: ldc_w 1318
+    //   1226: invokestatic 1286	com/tencent/biz/pubaccount/util/PublicAccountUtil:a	(Landroid/content/Context;F)I
+    //   1229: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1232: putfield 514	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1235: aload_0
+    //   1236: getfield 589	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1239: bipush 16
+    //   1241: putfield 1304	android/widget/LinearLayout$LayoutParams:gravity	I
+    //   1244: aload 7
+    //   1246: aload_0
+    //   1247: ldc_w 508
+    //   1250: aconst_null
+    //   1251: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1254: aload_0
+    //   1255: getfield 514	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_b_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1258: invokevirtual 518	android/widget/LinearLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   1261: aload_0
+    //   1262: ldc_w 519
+    //   1265: aconst_null
+    //   1266: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1269: astore 9
+    //   1271: aload 9
+    //   1273: iconst_1
+    //   1274: invokevirtual 523	android/view/View:setFocusable	(Z)V
+    //   1277: aload 9
+    //   1279: iconst_1
+    //   1280: invokevirtual 526	android/view/View:setClickable	(Z)V
+    //   1283: aload 9
+    //   1285: ldc_w 527
+    //   1288: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1291: checkcast 529	android/widget/TextView
+    //   1294: astore 10
+    //   1296: aload 9
+    //   1298: ldc_w 484
+    //   1301: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1304: checkcast 486	android/widget/ImageView
+    //   1307: astore 11
+    //   1309: aload 10
+    //   1311: ldc_w 1319
+    //   1314: invokevirtual 1313	android/widget/TextView:setText	(I)V
+    //   1317: aload 11
+    //   1319: ldc_w 1320
+    //   1322: invokevirtual 1317	android/widget/ImageView:setImageResource	(I)V
+    //   1325: aload 9
+    //   1327: iconst_1
+    //   1328: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1331: invokevirtual 583	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   1334: aload 9
+    //   1336: aload_0
+    //   1337: invokevirtual 587	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   1340: aload_0
+    //   1341: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1344: iconst_1
+    //   1345: aload 9
+    //   1347: aastore
+    //   1348: aload 7
+    //   1350: aload 9
+    //   1352: aload_0
+    //   1353: getfield 589	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams	Landroid/widget/LinearLayout$LayoutParams;
+    //   1356: invokevirtual 518	android/widget/LinearLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   1359: new 486	android/widget/ImageView
+    //   1362: dup
+    //   1363: aload_0
+    //   1364: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   1367: astore 7
+    //   1369: aload 7
+    //   1371: ldc_w 1204
+    //   1374: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   1377: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1380: dup
+    //   1381: iconst_m1
+    //   1382: iconst_2
+    //   1383: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1386: astore 9
+    //   1388: aload 9
+    //   1390: aload_0
+    //   1391: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1394: f2i
+    //   1395: bipush 14
+    //   1397: imul
+    //   1398: iconst_0
+    //   1399: aload_0
+    //   1400: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1403: f2i
+    //   1404: bipush 14
+    //   1406: imul
+    //   1407: iconst_0
+    //   1408: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   1411: aload 7
+    //   1413: aload 9
+    //   1415: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   1418: aload_0
+    //   1419: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1422: aload 7
+    //   1424: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1427: aload_0
+    //   1428: getfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
+    //   1431: iconst_1
+    //   1432: if_icmpne +119 -> 1551
+    //   1435: aload_0
+    //   1436: ldc_w 1321
+    //   1439: aconst_null
+    //   1440: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1443: astore 7
+    //   1445: aload_0
+    //   1446: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1449: iconst_2
+    //   1450: aload 7
+    //   1452: aastore
+    //   1453: aload_0
+    //   1454: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1457: aload 7
+    //   1459: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1462: aload_0
+    //   1463: iconst_2
+    //   1464: iconst_2
+    //   1465: aload 7
+    //   1467: aload_0
+    //   1468: ldc_w 1322
+    //   1471: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   1474: ldc_w 594
+    //   1477: iconst_1
+    //   1478: iconst_0
+    //   1479: iconst_0
+    //   1480: invokevirtual 1325	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;ZIZ)V
+    //   1483: new 486	android/widget/ImageView
+    //   1486: dup
+    //   1487: aload_0
+    //   1488: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   1491: astore 7
+    //   1493: aload 7
+    //   1495: ldc_w 1204
+    //   1498: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   1501: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1504: dup
+    //   1505: iconst_m1
+    //   1506: iconst_2
+    //   1507: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1510: astore 9
+    //   1512: aload 9
+    //   1514: aload_0
+    //   1515: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1518: f2i
+    //   1519: bipush 14
+    //   1521: imul
+    //   1522: iconst_0
+    //   1523: aload_0
+    //   1524: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1527: f2i
+    //   1528: bipush 14
+    //   1530: imul
+    //   1531: iconst_0
+    //   1532: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   1535: aload 7
+    //   1537: aload 9
+    //   1539: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   1542: aload_0
+    //   1543: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1546: aload 7
+    //   1548: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1551: aload_0
+    //   1552: getfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
+    //   1555: iconst_1
+    //   1556: if_icmpne +1484 -> 3040
+    //   1559: aload_0
+    //   1560: ldc_w 1326
+    //   1563: aconst_null
+    //   1564: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1567: astore 7
+    //   1569: aload_0
+    //   1570: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1573: bipush 7
+    //   1575: aload 7
+    //   1577: aastore
+    //   1578: aload_0
+    //   1579: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1582: aload 7
+    //   1584: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1587: aload_0
+    //   1588: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1591: getfield 1327	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_g_of_type_JavaLangString	Ljava/lang/String;
+    //   1594: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1597: ifeq +1370 -> 2967
+    //   1600: aload_0
+    //   1601: bipush 7
+    //   1603: iconst_2
+    //   1604: aload 7
+    //   1606: aload_0
+    //   1607: ldc_w 1328
+    //   1610: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   1613: aload_0
+    //   1614: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1617: invokevirtual 1330	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
+    //   1620: iconst_1
+    //   1621: invokevirtual 1333	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   1624: new 486	android/widget/ImageView
+    //   1627: dup
+    //   1628: aload_0
+    //   1629: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   1632: astore 7
+    //   1634: aload 7
+    //   1636: ldc_w 1204
+    //   1639: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   1642: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1645: dup
+    //   1646: iconst_m1
+    //   1647: iconst_2
+    //   1648: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1651: astore 9
+    //   1653: aload 9
+    //   1655: aload_0
+    //   1656: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1659: f2i
+    //   1660: bipush 14
+    //   1662: imul
+    //   1663: iconst_0
+    //   1664: aload_0
+    //   1665: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1668: f2i
+    //   1669: bipush 14
+    //   1671: imul
+    //   1672: iconst_0
+    //   1673: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   1676: aload 7
+    //   1678: aload 9
+    //   1680: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   1683: aload_0
+    //   1684: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1687: aload 7
+    //   1689: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1692: aload_0
+    //   1693: ldc_w 1334
+    //   1696: aconst_null
+    //   1697: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1700: astore 7
+    //   1702: aload_0
+    //   1703: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1706: iconst_3
+    //   1707: aload 7
+    //   1709: aastore
+    //   1710: aload_0
+    //   1711: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1714: aload 7
+    //   1716: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1719: new 486	android/widget/ImageView
+    //   1722: dup
+    //   1723: aload_0
+    //   1724: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   1727: astore 9
+    //   1729: aload 9
+    //   1731: ldc_w 1204
+    //   1734: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   1737: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1740: dup
+    //   1741: iconst_m1
+    //   1742: iconst_2
+    //   1743: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1746: astore 10
+    //   1748: aload 10
+    //   1750: aload_0
+    //   1751: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1754: f2i
+    //   1755: bipush 14
+    //   1757: imul
+    //   1758: iconst_0
+    //   1759: aload_0
+    //   1760: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1763: f2i
+    //   1764: bipush 14
+    //   1766: imul
+    //   1767: iconst_0
+    //   1768: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   1771: aload 9
+    //   1773: aload 10
+    //   1775: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   1778: aload_0
+    //   1779: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1782: aload 9
+    //   1784: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1787: aload_0
+    //   1788: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1791: invokevirtual 1179	com/tencent/mobileqq/troopinfo/TroopInfoData:e	()Z
+    //   1794: ifeq +1200 -> 2994
+    //   1797: aload_0
+    //   1798: iconst_3
+    //   1799: iconst_2
+    //   1800: aload 7
+    //   1802: aload_0
+    //   1803: ldc_w 1335
+    //   1806: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   1809: aload_0
+    //   1810: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1813: getfield 1336	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   1816: iconst_1
+    //   1817: invokevirtual 1333	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   1820: aload_0
+    //   1821: aload 7
+    //   1823: invokevirtual 1338	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Landroid/view/View;)V
+    //   1826: aload_0
+    //   1827: ldc_w 1339
+    //   1830: aconst_null
+    //   1831: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   1834: astore 7
+    //   1836: aload_0
+    //   1837: bipush 6
+    //   1839: iconst_2
+    //   1840: aload 7
+    //   1842: ldc_w 1340
+    //   1845: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   1848: checkcast 1342	com/tencent/mobileqq/widget/FormSimpleItem
+    //   1851: aload_0
+    //   1852: ldc_w 1343
+    //   1855: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   1858: ldc_w 594
+    //   1861: iconst_1
+    //   1862: invokevirtual 1346	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILcom/tencent/mobileqq/widget/FormSimpleItem;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   1865: aload_0
+    //   1866: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1869: bipush 6
+    //   1871: aload 7
+    //   1873: aastore
+    //   1874: aload_0
+    //   1875: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1878: aload 7
+    //   1880: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1883: aload_0
+    //   1884: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1887: invokevirtual 1179	com/tencent/mobileqq/troopinfo/TroopInfoData:e	()Z
+    //   1890: ifeq +1130 -> 3020
+    //   1893: aload 7
+    //   1895: iconst_0
+    //   1896: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   1899: new 486	android/widget/ImageView
+    //   1902: dup
+    //   1903: aload_0
+    //   1904: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   1907: astore 7
+    //   1909: aload 7
+    //   1911: ldc_w 1204
+    //   1914: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   1917: new 1207	android/widget/LinearLayout$LayoutParams
+    //   1920: dup
+    //   1921: iconst_m1
+    //   1922: iconst_2
+    //   1923: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   1926: astore 9
+    //   1928: aload 9
+    //   1930: aload_0
+    //   1931: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1934: f2i
+    //   1935: bipush 14
+    //   1937: imul
+    //   1938: iconst_0
+    //   1939: aload_0
+    //   1940: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   1943: f2i
+    //   1944: bipush 14
+    //   1946: imul
+    //   1947: iconst_0
+    //   1948: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   1951: aload 7
+    //   1953: aload 9
+    //   1955: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   1958: aload_0
+    //   1959: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   1962: aload 7
+    //   1964: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   1967: new 1342	com/tencent/mobileqq/widget/FormSimpleItem
+    //   1970: dup
+    //   1971: aload_0
+    //   1972: invokespecial 1347	com/tencent/mobileqq/widget/FormSimpleItem:<init>	(Landroid/content/Context;)V
+    //   1975: astore 7
+    //   1977: aload_0
+    //   1978: bipush 17
+    //   1980: iconst_2
+    //   1981: aload 7
+    //   1983: aload_0
+    //   1984: ldc_w 1348
+    //   1987: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   1990: ldc_w 594
+    //   1993: iconst_1
+    //   1994: invokevirtual 1346	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILcom/tencent/mobileqq/widget/FormSimpleItem;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   1997: aload_0
+    //   1998: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   2001: bipush 17
+    //   2003: aload 7
+    //   2005: aastore
+    //   2006: aload_0
+    //   2007: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2010: aload 7
+    //   2012: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2015: new 486	android/widget/ImageView
+    //   2018: dup
+    //   2019: aload_0
+    //   2020: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   2023: astore 7
+    //   2025: aload 7
+    //   2027: ldc_w 1204
+    //   2030: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   2033: new 1207	android/widget/LinearLayout$LayoutParams
+    //   2036: dup
+    //   2037: iconst_m1
+    //   2038: iconst_2
+    //   2039: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2042: astore 9
+    //   2044: aload 9
+    //   2046: aload_0
+    //   2047: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2050: f2i
+    //   2051: bipush 14
+    //   2053: imul
+    //   2054: iconst_0
+    //   2055: aload_0
+    //   2056: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2059: f2i
+    //   2060: bipush 14
+    //   2062: imul
+    //   2063: iconst_0
+    //   2064: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   2067: aload 7
+    //   2069: aload 9
+    //   2071: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2074: aload_0
+    //   2075: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2078: aload 7
+    //   2080: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2083: new 1342	com/tencent/mobileqq/widget/FormSimpleItem
+    //   2086: dup
+    //   2087: aload_0
+    //   2088: invokespecial 1347	com/tencent/mobileqq/widget/FormSimpleItem:<init>	(Landroid/content/Context;)V
+    //   2091: astore 7
+    //   2093: aload_0
+    //   2094: bipush 21
+    //   2096: iconst_2
+    //   2097: aload 7
+    //   2099: aload_0
+    //   2100: ldc_w 1349
+    //   2103: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   2106: ldc_w 594
+    //   2109: iconst_1
+    //   2110: invokevirtual 1346	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILcom/tencent/mobileqq/widget/FormSimpleItem;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   2113: aload_0
+    //   2114: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2117: aload 7
+    //   2119: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2122: new 486	android/widget/ImageView
+    //   2125: dup
+    //   2126: aload_0
+    //   2127: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   2130: astore 7
+    //   2132: aload 7
+    //   2134: ldc_w 1204
+    //   2137: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   2140: new 1207	android/widget/LinearLayout$LayoutParams
+    //   2143: dup
+    //   2144: iconst_m1
+    //   2145: iconst_2
+    //   2146: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2149: astore 9
+    //   2151: aload 9
+    //   2153: aload_0
+    //   2154: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2157: f2i
+    //   2158: bipush 14
+    //   2160: imul
+    //   2161: iconst_0
+    //   2162: aload_0
+    //   2163: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2166: f2i
+    //   2167: bipush 14
+    //   2169: imul
+    //   2170: iconst_0
+    //   2171: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   2174: aload 7
+    //   2176: aload 9
+    //   2178: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2181: aload_0
+    //   2182: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2185: aload 7
+    //   2187: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2190: new 1342	com/tencent/mobileqq/widget/FormSimpleItem
+    //   2193: dup
+    //   2194: aload_0
+    //   2195: invokespecial 1347	com/tencent/mobileqq/widget/FormSimpleItem:<init>	(Landroid/content/Context;)V
+    //   2198: astore 7
+    //   2200: aload_0
+    //   2201: bipush 20
+    //   2203: iconst_2
+    //   2204: aload 7
+    //   2206: aload_0
+    //   2207: ldc_w 1350
+    //   2210: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   2213: ldc_w 594
+    //   2216: iconst_1
+    //   2217: invokevirtual 1346	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILcom/tencent/mobileqq/widget/FormSimpleItem;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   2220: aload_0
+    //   2221: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2224: aload 7
+    //   2226: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2229: new 486	android/widget/ImageView
+    //   2232: dup
+    //   2233: aload_0
+    //   2234: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   2237: astore 7
+    //   2239: aload 7
+    //   2241: ldc_w 1204
+    //   2244: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   2247: new 1207	android/widget/LinearLayout$LayoutParams
+    //   2250: dup
+    //   2251: iconst_m1
+    //   2252: iconst_2
+    //   2253: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2256: astore 9
+    //   2258: aload 9
+    //   2260: aload_0
+    //   2261: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2264: f2i
+    //   2265: bipush 14
+    //   2267: imul
+    //   2268: iconst_0
+    //   2269: aload_0
+    //   2270: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2273: f2i
+    //   2274: bipush 14
+    //   2276: imul
+    //   2277: iconst_0
+    //   2278: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   2281: aload 7
+    //   2283: aload 9
+    //   2285: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2288: aload_0
+    //   2289: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2292: aload 7
+    //   2294: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2297: aload_0
+    //   2298: ldc_w 1339
+    //   2301: aconst_null
+    //   2302: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   2305: astore 7
+    //   2307: aload_0
+    //   2308: bipush 8
+    //   2310: iconst_2
+    //   2311: aload 7
+    //   2313: ldc_w 1340
+    //   2316: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   2319: checkcast 1342	com/tencent/mobileqq/widget/FormSimpleItem
+    //   2322: aload_0
+    //   2323: ldc_w 1351
+    //   2326: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   2329: ldc_w 594
+    //   2332: iconst_1
+    //   2333: invokevirtual 1346	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILcom/tencent/mobileqq/widget/FormSimpleItem;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   2336: aload_0
+    //   2337: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   2340: bipush 8
+    //   2342: aload 7
+    //   2344: aastore
+    //   2345: aload_0
+    //   2346: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2349: aload 7
+    //   2351: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2354: aload_0
+    //   2355: ldc_w 1352
+    //   2358: aconst_null
+    //   2359: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   2362: astore 7
+    //   2364: aload_0
+    //   2365: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2368: aload 7
+    //   2370: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2373: aload_0
+    //   2374: ldc_w 1353
+    //   2377: aconst_null
+    //   2378: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   2381: astore 7
+    //   2383: aload_0
+    //   2384: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   2387: bipush 15
+    //   2389: aload 7
+    //   2391: aastore
+    //   2392: aload_0
+    //   2393: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2396: aload 7
+    //   2398: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2401: aload_0
+    //   2402: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   2405: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   2408: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2411: ifne +619 -> 3030
+    //   2414: new 486	android/widget/ImageView
+    //   2417: dup
+    //   2418: aload_0
+    //   2419: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   2422: astore 9
+    //   2424: aload 9
+    //   2426: ldc_w 1204
+    //   2429: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   2432: new 1207	android/widget/LinearLayout$LayoutParams
+    //   2435: dup
+    //   2436: iconst_m1
+    //   2437: iconst_2
+    //   2438: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2441: astore 10
+    //   2443: aload 10
+    //   2445: aload_0
+    //   2446: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2449: f2i
+    //   2450: bipush 14
+    //   2452: imul
+    //   2453: iconst_0
+    //   2454: aload_0
+    //   2455: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2458: f2i
+    //   2459: bipush 14
+    //   2461: imul
+    //   2462: iconst_0
+    //   2463: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   2466: aload 9
+    //   2468: aload 10
+    //   2470: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2473: aload_0
+    //   2474: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2477: aload 9
+    //   2479: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2482: aload_0
+    //   2483: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   2486: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   2489: astore 9
+    //   2491: aload_0
+    //   2492: bipush 15
+    //   2494: iconst_0
+    //   2495: aload 7
+    //   2497: aload_0
+    //   2498: ldc_w 1354
+    //   2501: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   2504: aload 9
+    //   2506: iconst_0
+    //   2507: invokevirtual 1356	com/tencent/mobileqq/activity/ChatSettingForTroop:b	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   2510: new 486	android/widget/ImageView
+    //   2513: dup
+    //   2514: aload_0
+    //   2515: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   2518: astore 7
+    //   2520: aload 7
+    //   2522: ldc_w 1204
+    //   2525: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   2528: new 1207	android/widget/LinearLayout$LayoutParams
+    //   2531: dup
+    //   2532: iconst_m1
+    //   2533: iconst_2
+    //   2534: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2537: astore 9
+    //   2539: aload 9
+    //   2541: aload_0
+    //   2542: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2545: f2i
+    //   2546: bipush 14
+    //   2548: imul
+    //   2549: iconst_0
+    //   2550: aload_0
+    //   2551: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2554: f2i
+    //   2555: bipush 14
+    //   2557: imul
+    //   2558: iconst_0
+    //   2559: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   2562: aload 7
+    //   2564: aload 9
+    //   2566: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2569: aload_0
+    //   2570: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2573: aload 7
+    //   2575: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2578: aload_0
+    //   2579: ldc_w 1352
+    //   2582: aconst_null
+    //   2583: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   2586: astore 7
+    //   2588: aload_0
+    //   2589: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2592: aload 7
+    //   2594: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2597: invokestatic 684	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2600: ifeq +34 -> 2634
+    //   2603: ldc 55
+    //   2605: iconst_2
+    //   2606: new 314	java/lang/StringBuilder
+    //   2609: dup
+    //   2610: invokespecial 315	java/lang/StringBuilder:<init>	()V
+    //   2613: ldc_w 1358
+    //   2616: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2619: invokestatic 667	java/lang/System:currentTimeMillis	()J
+    //   2622: lload 4
+    //   2624: lsub
+    //   2625: invokevirtual 592	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2628: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2631: invokestatic 739	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2634: aload_0
+    //   2635: getfield 1360	com/tencent/mobileqq/activity/ChatSettingForTroop:p	Landroid/widget/ImageView;
+    //   2638: iconst_0
+    //   2639: invokevirtual 1361	android/widget/ImageView:setVisibility	(I)V
+    //   2642: aload_0
+    //   2643: getfield 1360	com/tencent/mobileqq/activity/ChatSettingForTroop:p	Landroid/widget/ImageView;
+    //   2646: ldc_w 1362
+    //   2649: invokevirtual 1317	android/widget/ImageView:setImageResource	(I)V
+    //   2652: aload_0
+    //   2653: getfield 1360	com/tencent/mobileqq/activity/ChatSettingForTroop:p	Landroid/widget/ImageView;
+    //   2656: aload_0
+    //   2657: ldc_w 1363
+    //   2660: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   2663: invokevirtual 1247	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   2666: aload_0
+    //   2667: getfield 1360	com/tencent/mobileqq/activity/ChatSettingForTroop:p	Landroid/widget/ImageView;
+    //   2670: new 1365	afo
+    //   2673: dup
+    //   2674: aload_0
+    //   2675: invokespecial 1366	afo:<init>	(Lcom/tencent/mobileqq/activity/ChatSettingForTroop;)V
+    //   2678: invokevirtual 1244	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   2681: aload_0
+    //   2682: aload 8
+    //   2684: ldc_w 1367
+    //   2687: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   2690: putfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   2693: aload_0
+    //   2694: getfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
+    //   2697: iconst_2
+    //   2698: if_icmpne +87 -> 2785
+    //   2701: aload_0
+    //   2702: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   2705: ldc_w 1370
+    //   2708: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   2711: checkcast 486	android/widget/ImageView
+    //   2714: astore 7
+    //   2716: aload_0
+    //   2717: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   2720: ldc_w 1371
+    //   2723: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
+    //   2726: checkcast 529	android/widget/TextView
+    //   2729: astore 8
+    //   2731: aload_0
+    //   2732: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   2735: iconst_0
+    //   2736: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   2739: aload_0
+    //   2740: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   2743: getfield 275	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Boolean	Z
+    //   2746: ifeq +740 -> 3486
+    //   2749: aload 7
+    //   2751: ldc_w 1372
+    //   2754: invokevirtual 1317	android/widget/ImageView:setImageResource	(I)V
+    //   2757: aload 8
+    //   2759: ldc_w 1373
+    //   2762: invokevirtual 1313	android/widget/TextView:setText	(I)V
+    //   2765: aload_0
+    //   2766: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   2769: bipush 24
+    //   2771: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2774: invokevirtual 583	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   2777: aload_0
+    //   2778: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   2781: aload_0
+    //   2782: invokevirtual 587	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   2785: aload_0
+    //   2786: iconst_0
+    //   2787: invokevirtual 1375	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Z)V
+    //   2790: aload_0
+    //   2791: getfield 1098	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   2794: invokevirtual 1379	com/tencent/widget/XListView:getViewTreeObserver	()Landroid/view/ViewTreeObserver;
+    //   2797: new 1381	afp
+    //   2800: dup
+    //   2801: aload_0
+    //   2802: invokespecial 1382	afp:<init>	(Lcom/tencent/mobileqq/activity/ChatSettingForTroop;)V
+    //   2805: invokevirtual 1388	android/view/ViewTreeObserver:addOnGlobalLayoutListener	(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
+    //   2808: return
+    //   2809: astore 7
+    //   2811: aload_0
+    //   2812: invokevirtual 351	com/tencent/mobileqq/activity/ChatSettingForTroop:finish	()V
+    //   2815: aload 7
+    //   2817: invokevirtual 1391	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   2820: return
+    //   2821: astore 7
+    //   2823: invokestatic 684	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2826: ifeq +14 -> 2840
+    //   2829: ldc 55
+    //   2831: iconst_2
+    //   2832: aload 7
+    //   2834: invokevirtual 1394	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   2837: invokestatic 689	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2840: aload_0
+    //   2841: invokevirtual 351	com/tencent/mobileqq/activity/ChatSettingForTroop:finish	()V
+    //   2844: return
+    //   2845: astore 7
+    //   2847: invokestatic 684	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2850: ifeq +14 -> 2864
+    //   2853: ldc 55
+    //   2855: iconst_2
+    //   2856: aload 7
+    //   2858: invokevirtual 1395	android/view/InflateException:getMessage	()Ljava/lang/String;
+    //   2861: invokestatic 689	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2864: aload_0
+    //   2865: invokevirtual 351	com/tencent/mobileqq/activity/ChatSettingForTroop:finish	()V
+    //   2868: return
+    //   2869: iconst_0
+    //   2870: istore 6
+    //   2872: goto -2582 -> 290
+    //   2875: new 486	android/widget/ImageView
+    //   2878: dup
+    //   2879: aload_0
+    //   2880: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   2883: astore 9
+    //   2885: aload 9
+    //   2887: ldc_w 1204
+    //   2890: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   2893: new 1207	android/widget/LinearLayout$LayoutParams
+    //   2896: dup
+    //   2897: iconst_m1
+    //   2898: iconst_2
+    //   2899: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2902: astore 10
+    //   2904: aload 10
+    //   2906: aload_0
+    //   2907: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2910: f2i
+    //   2911: bipush 14
+    //   2913: imul
+    //   2914: iconst_0
+    //   2915: aload_0
+    //   2916: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   2919: f2i
+    //   2920: bipush 14
+    //   2922: imul
+    //   2923: iconst_0
+    //   2924: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   2927: aload 9
+    //   2929: aload 10
+    //   2931: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2934: aload_0
+    //   2935: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   2938: aload 9
+    //   2940: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   2943: goto -2430 -> 513
+    //   2946: aload 9
+    //   2948: iconst_0
+    //   2949: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   2952: aload 10
+    //   2954: aload_0
+    //   2955: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   2958: getfield 1277	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   2961: invokevirtual 536	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   2964: goto -2078 -> 886
+    //   2967: aload_0
+    //   2968: bipush 7
+    //   2970: iconst_2
+    //   2971: aload 7
+    //   2973: aload_0
+    //   2974: ldc_w 1328
+    //   2977: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   2980: aload_0
+    //   2981: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   2984: getfield 1327	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_g_of_type_JavaLangString	Ljava/lang/String;
+    //   2987: iconst_1
+    //   2988: invokevirtual 1333	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   2991: goto -1367 -> 1624
+    //   2994: aload_0
+    //   2995: iconst_3
+    //   2996: iconst_2
+    //   2997: aload 7
+    //   2999: aload_0
+    //   3000: ldc_w 1335
+    //   3003: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   3006: aload_0
+    //   3007: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   3010: getfield 1336	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   3013: iconst_1
+    //   3014: invokevirtual 1333	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   3017: goto -1197 -> 1820
+    //   3020: aload 7
+    //   3022: bipush 8
+    //   3024: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   3027: goto -1060 -> 1967
+    //   3030: aload 7
+    //   3032: bipush 8
+    //   3034: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   3037: goto -459 -> 2578
+    //   3040: aload_0
+    //   3041: getfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
+    //   3044: iconst_2
+    //   3045: if_icmpne -467 -> 2578
+    //   3048: aload_0
+    //   3049: ldc_w 1334
+    //   3052: aconst_null
+    //   3053: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   3056: astore 7
+    //   3058: aload_0
+    //   3059: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   3062: bipush 16
+    //   3064: aload 7
+    //   3066: aastore
+    //   3067: aload_0
+    //   3068: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3071: aload 7
+    //   3073: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3076: aload_0
+    //   3077: bipush 16
+    //   3079: iconst_1
+    //   3080: aload 7
+    //   3082: aload_0
+    //   3083: ldc_w 1396
+    //   3086: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   3089: aload_0
+    //   3090: ldc_w 1397
+    //   3093: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   3096: iconst_1
+    //   3097: invokevirtual 1333	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   3100: aload_0
+    //   3101: aload 7
+    //   3103: invokevirtual 1338	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Landroid/view/View;)V
+    //   3106: new 486	android/widget/ImageView
+    //   3109: dup
+    //   3110: aload_0
+    //   3111: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   3114: astore 7
+    //   3116: aload 7
+    //   3118: ldc_w 1204
+    //   3121: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   3124: new 1207	android/widget/LinearLayout$LayoutParams
+    //   3127: dup
+    //   3128: iconst_m1
+    //   3129: iconst_2
+    //   3130: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   3133: astore 9
+    //   3135: aload 9
+    //   3137: aload_0
+    //   3138: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   3141: f2i
+    //   3142: bipush 14
+    //   3144: imul
+    //   3145: iconst_0
+    //   3146: aload_0
+    //   3147: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   3150: f2i
+    //   3151: bipush 14
+    //   3153: imul
+    //   3154: iconst_0
+    //   3155: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   3158: aload 7
+    //   3160: aload 9
+    //   3162: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   3165: aload_0
+    //   3166: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3169: aload 7
+    //   3171: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3174: aload_0
+    //   3175: ldc_w 1398
+    //   3178: aconst_null
+    //   3179: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   3182: astore 9
+    //   3184: aload_0
+    //   3185: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   3188: bipush 18
+    //   3190: aload 9
+    //   3192: aastore
+    //   3193: aload_0
+    //   3194: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3197: aload 9
+    //   3199: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3202: new 486	android/widget/ImageView
+    //   3205: dup
+    //   3206: aload_0
+    //   3207: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   3210: astore 7
+    //   3212: aload 7
+    //   3214: ldc_w 1204
+    //   3217: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   3220: new 1207	android/widget/LinearLayout$LayoutParams
+    //   3223: dup
+    //   3224: iconst_m1
+    //   3225: iconst_2
+    //   3226: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   3229: astore 10
+    //   3231: aload 10
+    //   3233: aload_0
+    //   3234: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   3237: f2i
+    //   3238: bipush 14
+    //   3240: imul
+    //   3241: iconst_0
+    //   3242: aload_0
+    //   3243: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   3246: f2i
+    //   3247: bipush 14
+    //   3249: imul
+    //   3250: iconst_0
+    //   3251: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   3254: aload 7
+    //   3256: aload 10
+    //   3258: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   3261: aload_0
+    //   3262: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3265: aload 7
+    //   3267: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3270: ldc_w 594
+    //   3273: astore 7
+    //   3275: aload_0
+    //   3276: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   3279: getfield 1336	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   3282: ifnull +12 -> 3294
+    //   3285: aload_0
+    //   3286: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   3289: getfield 1336	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   3292: astore 7
+    //   3294: aload_0
+    //   3295: bipush 18
+    //   3297: iconst_3
+    //   3298: aload 9
+    //   3300: aload_0
+    //   3301: ldc_w 1335
+    //   3304: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   3307: aload 7
+    //   3309: iconst_1
+    //   3310: invokevirtual 1333	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   3313: aload_0
+    //   3314: invokevirtual 1400	com/tencent/mobileqq/activity/ChatSettingForTroop:f	()V
+    //   3317: aload_0
+    //   3318: ldc_w 1352
+    //   3321: aconst_null
+    //   3322: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   3325: astore 7
+    //   3327: aload_0
+    //   3328: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3331: aload 7
+    //   3333: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3336: aload_0
+    //   3337: ldc_w 1353
+    //   3340: aconst_null
+    //   3341: invokestatic 512	android/view/View:inflate	(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+    //   3344: astore 7
+    //   3346: aload_0
+    //   3347: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   3350: bipush 15
+    //   3352: aload 7
+    //   3354: aastore
+    //   3355: aload_0
+    //   3356: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3359: aload 7
+    //   3361: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3364: aload_0
+    //   3365: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   3368: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   3371: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3374: ifne +102 -> 3476
+    //   3377: aload_0
+    //   3378: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   3381: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   3384: astore 9
+    //   3386: aload_0
+    //   3387: bipush 15
+    //   3389: iconst_0
+    //   3390: aload 7
+    //   3392: aload_0
+    //   3393: ldc_w 1354
+    //   3396: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   3399: aload 9
+    //   3401: iconst_0
+    //   3402: invokevirtual 1356	com/tencent/mobileqq/activity/ChatSettingForTroop:b	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   3405: new 486	android/widget/ImageView
+    //   3408: dup
+    //   3409: aload_0
+    //   3410: invokespecial 1203	android/widget/ImageView:<init>	(Landroid/content/Context;)V
+    //   3413: astore 7
+    //   3415: aload 7
+    //   3417: ldc_w 1204
+    //   3420: invokevirtual 1205	android/widget/ImageView:setBackgroundResource	(I)V
+    //   3423: new 1207	android/widget/LinearLayout$LayoutParams
+    //   3426: dup
+    //   3427: iconst_m1
+    //   3428: iconst_2
+    //   3429: invokespecial 1208	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   3432: astore 9
+    //   3434: aload 9
+    //   3436: aload_0
+    //   3437: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   3440: f2i
+    //   3441: bipush 14
+    //   3443: imul
+    //   3444: iconst_0
+    //   3445: aload_0
+    //   3446: getfield 1210	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_Float	F
+    //   3449: f2i
+    //   3450: bipush 14
+    //   3452: imul
+    //   3453: iconst_0
+    //   3454: invokevirtual 1213	android/widget/LinearLayout$LayoutParams:setMargins	(IIII)V
+    //   3457: aload 7
+    //   3459: aload 9
+    //   3461: invokevirtual 552	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   3464: aload_0
+    //   3465: getfield 1114	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   3468: aload 7
+    //   3470: invokevirtual 1202	android/widget/LinearLayout:addView	(Landroid/view/View;)V
+    //   3473: goto -895 -> 2578
+    //   3476: aload 7
+    //   3478: bipush 8
+    //   3480: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   3483: goto -905 -> 2578
+    //   3486: aload_0
+    //   3487: getfield 371	com/tencent/mobileqq/activity/ChatSettingForTroop:an	I
+    //   3490: iconst_2
+    //   3491: if_icmpne +43 -> 3534
+    //   3494: aload_0
+    //   3495: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3498: ldc_w 606
+    //   3501: ldc_w 1402
+    //   3504: ldc_w 594
+    //   3507: ldc_w 1404
+    //   3510: ldc_w 1406
+    //   3513: iconst_0
+    //   3514: iconst_0
+    //   3515: aload_0
+    //   3516: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   3519: getfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   3522: ldc_w 594
+    //   3525: ldc_w 594
+    //   3528: ldc_w 594
+    //   3531: invokestatic 617	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3534: aload 7
+    //   3536: ldc_w 1407
+    //   3539: invokevirtual 1317	android/widget/ImageView:setImageResource	(I)V
+    //   3542: aload 8
+    //   3544: ldc_w 1408
+    //   3547: invokevirtual 1313	android/widget/TextView:setText	(I)V
+    //   3550: aload_0
+    //   3551: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   3554: bipush 25
+    //   3556: invokestatic 861	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3559: invokevirtual 583	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   3562: aload_0
+    //   3563: getfield 1369	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   3566: aload_0
+    //   3567: invokevirtual 587	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   3570: goto -785 -> 2785
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	3573	0	this	ChatSettingForTroop
+    //   158	821	1	i1	int
+    //   166	194	2	i2	int
+    //   177	9	3	i3	int
+    //   3	2620	4	l1	long
+    //   288	2583	6	bool	boolean
+    //   92	2658	7	localObject1	Object
+    //   2809	7	7	localOutOfMemoryError1	OutOfMemoryError
+    //   2821	12	7	localOutOfMemoryError2	OutOfMemoryError
+    //   2845	186	7	localInflateException	InflateException
+    //   3056	479	7	localObject2	Object
+    //   13	3530	8	localObject3	Object
+    //   410	3050	9	localObject4	Object
+    //   558	2699	10	localObject5	Object
+    //   571	747	11	localObject6	Object
+    //   584	143	12	localTextView	TextView
+    //   597	166	13	localImageView	ImageView
+    //   626	21	14	localObject7	Object
+    // Exception table:
+    //   from	to	target	type
+    //   5	15	2809	java/lang/OutOfMemoryError
+    //   236	246	2821	java/lang/OutOfMemoryError
+    //   236	246	2845	android/view/InflateException
   }
   
   protected void a(int paramInt1, int paramInt2)
@@ -1247,8 +2564,8 @@ public class ChatSettingForTroop
     do
     {
       return;
-      str = String.format(getString(2131363646), new Object[] { Integer.valueOf(paramInt1) });
-      localObject = (TextView)((View)localObject).findViewById(2131296957);
+      str = String.format(getString(2131363640), new Object[] { Integer.valueOf(paramInt1) });
+      localObject = (TextView)((View)localObject).findViewById(2131296953);
     } while (localObject == null);
     ((TextView)localObject).setText(str);
   }
@@ -1256,7 +2573,7 @@ public class ChatSettingForTroop
   protected void a(int paramInt1, int paramInt2, View paramView, String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
     a(paramInt1, paramInt2, paramView, paramString, paramBoolean);
-    paramString = (TextView)paramView.findViewById(2131296957);
+    paramString = (TextView)paramView.findViewById(2131296953);
     paramString.setEditableFactory(QQTextBuilder.a);
     if (paramCharSequence == null) {}
     for (paramView = "";; paramView = new QQText(paramCharSequence, 3))
@@ -1270,7 +2587,7 @@ public class ChatSettingForTroop
   {
     a(paramInt1, paramInt2, paramView, paramString, paramBoolean1);
     a(paramView, paramInt3, paramBoolean2);
-    paramString = (TextView)paramView.findViewById(2131296957);
+    paramString = (TextView)paramView.findViewById(2131296953);
     paramString.setEditableFactory(QQTextBuilder.a);
     if (paramCharSequence == null) {}
     for (paramView = "";; paramView = new QQText(paramCharSequence, 11))
@@ -1289,8 +2606,8 @@ public class ChatSettingForTroop
     }
     for (;;)
     {
-      paramView.setBackgroundResource(2130837758);
-      TextView localTextView = (TextView)paramView.findViewById(2131296936);
+      paramView.setBackgroundResource(2130837754);
+      TextView localTextView = (TextView)paramView.findViewById(2131296932);
       String str = paramString;
       if (paramString == null) {
         str = "";
@@ -1370,7 +2687,7 @@ public class ChatSettingForTroop
         bool = false;
       }
     }
-    paramView = paramView.findViewById(2131297748);
+    paramView = paramView.findViewById(2131297744);
     if (bool) {}
     for (paramInt = i1;; paramInt = 8)
     {
@@ -1390,7 +2707,7 @@ public class ChatSettingForTroop
       TextView localTextView;
       if (localView != null)
       {
-        localTextView = (TextView)localView.findViewById(2131296957);
+        localTextView = (TextView)localView.findViewById(2131296953);
         if (paramInt != 15) {
           break label163;
         }
@@ -1464,52 +2781,52 @@ public class ChatSettingForTroop
     //   0: aload_1
     //   1: ifnull +10 -> 11
     //   4: aload_1
-    //   5: getfield 1527	KQQ/BatchResponse:result	I
+    //   5: getfield 1519	KQQ/BatchResponse:result	I
     //   8: ifeq +4 -> 12
     //   11: return
-    //   12: new 1529	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   12: new 1521	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   15: dup
-    //   16: invokespecial 1530	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   16: invokespecial 1522	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
     //   19: astore 10
     //   21: aload 10
     //   23: aload_1
-    //   24: getfield 1533	KQQ/BatchResponse:buffer	[B
-    //   27: checkcast 1534	[B
-    //   30: invokevirtual 1538	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   24: getfield 1525	KQQ/BatchResponse:buffer	[B
+    //   27: checkcast 1526	[B
+    //   30: invokevirtual 1530	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   33: pop
     //   34: aload_1
-    //   35: getfield 1541	KQQ/BatchResponse:seq	I
+    //   35: getfield 1533	KQQ/BatchResponse:seq	I
     //   38: ifne +200 -> 238
     //   41: aload 10
     //   43: ifnull +195 -> 238
     //   46: aload 10
-    //   48: getfield 1545	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   51: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   48: getfield 1537	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   51: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   54: ifeq +184 -> 238
     //   57: aload 10
-    //   59: getfield 1545	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   62: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   65: invokevirtual 1559	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   59: getfield 1537	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   62: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   65: invokevirtual 1551	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   68: astore 9
-    //   70: new 1561	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody
+    //   70: new 1553	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody
     //   73: dup
-    //   74: invokespecial 1562	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody:<init>	()V
+    //   74: invokespecial 1554	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody:<init>	()V
     //   77: astore 8
     //   79: aload 8
     //   81: aload 9
-    //   83: invokevirtual 1563	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   83: invokevirtual 1555	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   86: pop
     //   87: aconst_null
     //   88: astore 9
     //   90: aload 8
-    //   92: getfield 1567	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody:stzrspgroupinfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   95: invokevirtual 1571	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   92: getfield 1559	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspBody:stzrspgroupinfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   95: invokevirtual 1563	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   98: astore 11
     //   100: aload 11
     //   102: ifnonnull +57 -> 159
     //   105: iconst_0
     //   106: istore_2
-    //   107: goto +1378 -> 1485
+    //   107: goto +1369 -> 1476
     //   110: aload 9
     //   112: ifnonnull +126 -> 238
     //   115: iload_3
@@ -1517,8 +2834,8 @@ public class ChatSettingForTroop
     //   117: if_icmpge +121 -> 238
     //   120: aload 11
     //   122: iload_3
-    //   123: invokeinterface 1506 2 0
-    //   128: checkcast 1573	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo
+    //   123: invokeinterface 1498 2 0
+    //   128: checkcast 1565	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo
     //   131: astore 12
     //   133: aload 12
     //   135: ifnonnull +35 -> 170
@@ -1533,15 +2850,15 @@ public class ChatSettingForTroop
     //   150: goto -40 -> 110
     //   153: astore_1
     //   154: aload_1
-    //   155: invokevirtual 1574	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
+    //   155: invokevirtual 1566	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
     //   158: return
     //   159: aload 11
     //   161: invokeinterface 483 1 0
     //   166: istore_2
-    //   167: goto +1318 -> 1485
+    //   167: goto +1309 -> 1476
     //   170: aload 12
-    //   172: getfield 1578	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   175: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   172: getfield 1570	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   175: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   178: istore 4
     //   180: iload 4
     //   182: bipush 72
@@ -1553,10 +2870,10 @@ public class ChatSettingForTroop
     //   195: iconst_1
     //   196: if_icmpne +378 -> 574
     //   199: aload_0
-    //   200: ldc_w 1583
+    //   200: ldc_w 1575
     //   203: iconst_1
-    //   204: invokestatic 1588	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
-    //   207: invokevirtual 1591	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   204: invokestatic 1580	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
+    //   207: invokevirtual 1583	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   210: pop
     //   211: aload 9
     //   213: astore 8
@@ -1564,85 +2881,85 @@ public class ChatSettingForTroop
     //   218: astore 8
     //   220: invokestatic 684	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   223: ifeq +15 -> 238
-    //   226: ldc_w 1593
+    //   226: ldc_w 1585
     //   229: iconst_2
     //   230: aload 8
     //   232: invokevirtual 737	java/lang/Exception:toString	()Ljava/lang/String;
     //   235: invokestatic 739	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   238: aload_1
-    //   239: getfield 1541	KQQ/BatchResponse:seq	I
+    //   239: getfield 1533	KQQ/BatchResponse:seq	I
     //   242: iconst_1
     //   243: if_icmpne +81 -> 324
     //   246: aload 10
     //   248: ifnull +76 -> 324
     //   251: aload 10
-    //   253: getfield 1545	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   256: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   253: getfield 1537	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   256: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   259: ifeq +65 -> 324
     //   262: aload 10
-    //   264: getfield 1545	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   267: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   270: invokevirtual 1559	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   264: getfield 1537	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   267: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   270: invokevirtual 1551	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   273: astore 8
-    //   275: new 1595	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody
+    //   275: new 1587	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody
     //   278: dup
-    //   279: invokespecial 1596	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:<init>	()V
+    //   279: invokespecial 1588	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:<init>	()V
     //   282: astore 9
     //   284: aload 9
     //   286: aload 8
-    //   288: invokevirtual 1597	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   288: invokevirtual 1589	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   291: pop
     //   292: aload 9
-    //   294: getfield 1600	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:rpt_memberlist	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   294: getfield 1592	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:rpt_memberlist	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   297: ifnull +27 -> 324
     //   300: aload_0
     //   301: aload 9
-    //   303: getfield 1600	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:rpt_memberlist	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   306: invokevirtual 1571	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   309: invokevirtual 1603	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Ljava/util/List;)V
+    //   303: getfield 1592	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:rpt_memberlist	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   306: invokevirtual 1563	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   309: invokevirtual 1595	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Ljava/util/List;)V
     //   312: aload_0
     //   313: aload 9
-    //   315: getfield 1600	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:rpt_memberlist	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   318: invokevirtual 1571	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   321: putfield 1605	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   315: getfield 1592	tencent/im/oidb/cmd0x899/oidb_0x899$RspBody:rpt_memberlist	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   318: invokevirtual 1563	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   321: putfield 1597	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_c_of_type_JavaUtilList	Ljava/util/List;
     //   324: aload_1
-    //   325: getfield 1541	KQQ/BatchResponse:seq	I
+    //   325: getfield 1533	KQQ/BatchResponse:seq	I
     //   328: iconst_2
     //   329: if_icmpne -318 -> 11
     //   332: aload 10
     //   334: ifnull -323 -> 11
     //   337: aload 10
-    //   339: getfield 1545	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   342: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   339: getfield 1537	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   342: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   345: ifeq -334 -> 11
     //   348: aload 10
-    //   350: getfield 1545	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   353: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   356: invokevirtual 1559	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   350: getfield 1537	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   353: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   356: invokevirtual 1551	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   359: astore_1
-    //   360: new 1607	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody
+    //   360: new 1599	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody
     //   363: dup
-    //   364: invokespecial 1608	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:<init>	()V
+    //   364: invokespecial 1600	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:<init>	()V
     //   367: astore 8
     //   369: aload 8
     //   371: aload_1
-    //   372: invokevirtual 1609	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   372: invokevirtual 1601	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   375: pop
     //   376: aload 8
-    //   378: getfield 1612	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:rpt_msg_level_name	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   381: invokevirtual 1571	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   378: getfield 1604	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:rpt_msg_level_name	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   381: invokevirtual 1563	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   384: astore_1
     //   385: aload 8
-    //   387: getfield 1615	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:rpt_msg_member_level_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   390: invokevirtual 1571	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   387: getfield 1607	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:rpt_msg_member_level_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   390: invokevirtual 1563	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   393: astore 9
     //   395: aload 8
-    //   397: getfield 1618	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint32_sys_show_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   400: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   397: getfield 1610	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint32_sys_show_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   400: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   403: istore_2
     //   404: aload_0
     //   405: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   408: invokevirtual 1621	com/tencent/mobileqq/app/QQAppInterface:getLongAccountUin	()J
+    //   408: invokevirtual 1613	com/tencent/mobileqq/app/QQAppInterface:getLongAccountUin	()J
     //   411: lstore 6
     //   413: iload_2
     //   414: ifeq -403 -> 11
@@ -1666,20 +2983,20 @@ public class ChatSettingForTroop
     //   457: if_icmpge -446 -> 11
     //   460: aload 9
     //   462: iload_2
-    //   463: invokeinterface 1506 2 0
-    //   468: checkcast 1623	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo
+    //   463: invokeinterface 1498 2 0
+    //   468: checkcast 1615	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo
     //   471: astore 8
     //   473: aload 8
-    //   475: ifnull +997 -> 1472
+    //   475: ifnull +988 -> 1463
     //   478: lload 6
     //   480: aload 8
-    //   482: getfield 1627	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   485: invokevirtual 1631	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   482: getfield 1619	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   485: invokevirtual 1623	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   488: lcmp
-    //   489: ifne +983 -> 1472
+    //   489: ifne +974 -> 1463
     //   492: aload 8
-    //   494: getfield 1634	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   497: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   494: getfield 1626	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   497: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   500: istore_3
     //   501: aload_1
     //   502: invokeinterface 483 1 0
@@ -1691,24 +3008,24 @@ public class ChatSettingForTroop
     //   514: if_icmpge -503 -> 11
     //   517: aload_1
     //   518: iload_2
-    //   519: invokeinterface 1506 2 0
-    //   524: checkcast 1636	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName
+    //   519: invokeinterface 1498 2 0
+    //   524: checkcast 1628	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName
     //   527: astore 8
     //   529: aload 8
-    //   531: getfield 1637	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   534: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   531: getfield 1629	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   534: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   537: iload_3
     //   538: if_icmpne +29 -> 567
     //   541: aload 8
-    //   543: getfield 1640	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName:str_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   546: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   543: getfield 1632	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName:str_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   546: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   549: ifeq +18 -> 567
     //   552: aload_0
     //   553: aload 8
-    //   555: getfield 1640	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName:str_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   558: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   561: invokevirtual 1643	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   564: invokevirtual 1645	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Ljava/lang/String;)V
+    //   555: getfield 1632	tencent/im/oidb/cmd0x787/oidb_0x787$LevelName:str_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   558: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   561: invokevirtual 1635	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   564: invokevirtual 1637	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(Ljava/lang/String;)V
     //   567: iload_2
     //   568: iconst_1
     //   569: iadd
@@ -1721,10 +3038,10 @@ public class ChatSettingForTroop
     //   582: iconst_2
     //   583: if_icmpne -441 -> 142
     //   586: aload_0
-    //   587: ldc_w 1646
+    //   587: ldc_w 1638
     //   590: iconst_1
-    //   591: invokestatic 1588	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
-    //   594: invokevirtual 1591	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   591: invokestatic 1580	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;II)Lcom/tencent/mobileqq/widget/QQToast;
+    //   594: invokevirtual 1583	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   597: pop
     //   598: aload 9
     //   600: astore 8
@@ -1736,13 +3053,13 @@ public class ChatSettingForTroop
     //   614: aload 9
     //   616: astore 8
     //   618: aload 12
-    //   620: getfield 1650	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo:stgroupinfo	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo;
-    //   623: invokevirtual 1653	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:has	()Z
+    //   620: getfield 1642	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo:stgroupinfo	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo;
+    //   623: invokevirtual 1645	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:has	()Z
     //   626: ifeq -484 -> 142
     //   629: aload 12
-    //   631: getfield 1650	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo:stgroupinfo	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo;
-    //   634: invokevirtual 1656	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   637: checkcast 1652	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo
+    //   631: getfield 1642	tencent/im/oidb/cmd0x88d/oidb_0x88d$RspGroupInfo:stgroupinfo	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo;
+    //   634: invokevirtual 1648	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   637: checkcast 1644	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo
     //   640: astore 9
     //   642: aload 9
     //   644: astore 8
@@ -1750,25 +3067,25 @@ public class ChatSettingForTroop
     //   648: ifnull -506 -> 142
     //   651: aload_0
     //   652: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   655: ifnull +537 -> 1192
+    //   655: ifnull +528 -> 1183
     //   658: aload_0
     //   659: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
     //   662: bipush 12
     //   664: aaload
     //   665: astore 8
     //   667: aload 9
-    //   669: getfield 1659	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   672: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   669: getfield 1651	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   672: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   675: ifeq +42 -> 717
     //   678: aload_0
     //   679: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   682: aload 9
-    //   684: getfield 1659	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   687: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   690: invokevirtual 1643	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   684: getfield 1651	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   687: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   690: invokevirtual 1635	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   693: putfield 364	com/tencent/mobileqq/troopinfo/TroopInfoData:f	Ljava/lang/String;
     //   696: aload 8
-    //   698: ldc_w 1237
+    //   698: ldc_w 1229
     //   701: invokevirtual 475	android/view/View:findViewById	(I)Landroid/view/View;
     //   704: checkcast 529	android/widget/TextView
     //   707: aload_0
@@ -1778,61 +3095,61 @@ public class ChatSettingForTroop
     //   717: aload_0
     //   718: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   721: aload 9
-    //   723: getfield 1662	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_grade	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   726: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   723: getfield 1654	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_grade	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   726: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   729: putfield 1078	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_n_of_type_Int	I
     //   732: aload_0
     //   733: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   736: aload 9
-    //   738: getfield 1665	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_active_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   741: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   744: putfield 1667	com/tencent/mobileqq/troopinfo/TroopInfoData:o	I
+    //   738: getfield 1657	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_active_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   741: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   744: putfield 1659	com/tencent/mobileqq/troopinfo/TroopInfoData:o	I
     //   747: aload_0
     //   748: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   751: aload 9
-    //   753: getfield 1670	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   756: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   753: getfield 1662	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   756: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   759: i2l
-    //   760: putfield 1672	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Long	J
+    //   760: putfield 1664	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Long	J
     //   763: aload_0
     //   764: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   767: aload 9
-    //   769: getfield 1675	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_certification_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   772: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   769: getfield 1667	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_certification_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   772: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   775: i2l
-    //   776: putfield 1677	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_Long	J
+    //   776: putfield 1669	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_Long	J
     //   779: aload_0
     //   780: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   783: aload 9
-    //   785: getfield 1680	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_class_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   788: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   785: getfield 1672	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_class_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   788: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   791: i2l
     //   792: putfield 991	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Long	J
     //   795: aload_0
     //   796: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   799: aload 9
-    //   801: getfield 1683	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   804: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   807: putfield 1685	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_Int	I
+    //   801: getfield 1675	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   804: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   807: putfield 1677	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_Int	I
     //   810: aload_0
     //   811: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   814: aload 9
-    //   816: getfield 1688	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_type_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   819: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   822: putfield 1690	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_r_of_type_Int	I
+    //   816: getfield 1680	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_type_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   819: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   822: putfield 1682	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_r_of_type_Int	I
     //   825: aload_0
-    //   826: invokevirtual 1692	com/tencent/mobileqq/activity/ChatSettingForTroop:v	()V
+    //   826: invokevirtual 1684	com/tencent/mobileqq/activity/ChatSettingForTroop:v	()V
     //   829: aload 9
-    //   831: getfield 1695	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_class_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   834: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   831: getfield 1687	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_class_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   834: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   837: ifeq +42 -> 879
     //   840: aload_0
     //   841: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   844: aload 9
-    //   846: getfield 1695	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_class_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   849: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   852: invokevirtual 1643	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   855: putfield 1697	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_j_of_type_JavaLangString	Ljava/lang/String;
+    //   846: getfield 1687	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_class_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   849: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   852: invokevirtual 1635	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   855: putfield 1689	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_j_of_type_JavaLangString	Ljava/lang/String;
     //   858: aload_0
     //   859: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
     //   862: ifnull +17 -> 879
@@ -1840,281 +3157,276 @@ public class ChatSettingForTroop
     //   866: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
     //   869: aload_0
     //   870: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   873: getfield 1697	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_j_of_type_JavaLangString	Ljava/lang/String;
-    //   876: putfield 1700	com/tencent/mobileqq/data/TroopInfo:mGroupClassExtText	Ljava/lang/String;
-    //   879: aload_0
-    //   880: aload_0
-    //   881: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   884: invokestatic 1705	com/tencent/mobileqq/activity/TroopInfoActivity:a	(Landroid/content/Context;Lcom/tencent/mobileqq/troopinfo/TroopInfoData;)Ljava/lang/String;
-    //   887: pop
-    //   888: aload 9
-    //   890: getfield 1709	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:group_geo_info	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo;
-    //   893: invokevirtual 1712	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   896: checkcast 1711	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo
-    //   899: astore 8
-    //   901: aload 8
-    //   903: getfield 1715	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:bytes_geocontent	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   906: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   909: invokevirtual 1643	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   912: astore 12
-    //   914: aload 8
-    //   916: getfield 1719	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:int64_latitude	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   919: invokevirtual 1722	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   922: l2i
-    //   923: istore 4
-    //   925: aload 8
-    //   927: getfield 1725	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:int64_longitude	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   930: invokevirtual 1722	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   933: l2i
-    //   934: istore 5
-    //   936: aload 12
-    //   938: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   941: ifne +12 -> 953
-    //   944: aload_0
-    //   945: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   948: aload 12
-    //   950: putfield 1285	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   873: getfield 1689	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_j_of_type_JavaLangString	Ljava/lang/String;
+    //   876: putfield 1692	com/tencent/mobileqq/data/TroopInfo:mGroupClassExtText	Ljava/lang/String;
+    //   879: aload 9
+    //   881: getfield 1696	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:group_geo_info	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo;
+    //   884: invokevirtual 1699	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   887: checkcast 1698	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo
+    //   890: astore 8
+    //   892: aload 8
+    //   894: getfield 1702	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:bytes_geocontent	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   897: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   900: invokevirtual 1635	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   903: astore 12
+    //   905: aload 8
+    //   907: getfield 1706	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:int64_latitude	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   910: invokevirtual 1709	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   913: l2i
+    //   914: istore 4
+    //   916: aload 8
+    //   918: getfield 1712	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupGeoInfo:int64_longitude	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   921: invokevirtual 1709	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   924: l2i
+    //   925: istore 5
+    //   927: aload 12
+    //   929: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   932: ifne +12 -> 944
+    //   935: aload_0
+    //   936: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   939: aload 12
+    //   941: putfield 1277	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   944: iload 4
+    //   946: ifeq +12 -> 958
+    //   949: aload_0
+    //   950: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   953: iload 4
-    //   955: ifeq +12 -> 967
-    //   958: aload_0
-    //   959: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   962: iload 4
-    //   964: putfield 1470	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_d_of_type_Int	I
+    //   955: putfield 1462	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_d_of_type_Int	I
+    //   958: iload 5
+    //   960: ifeq +12 -> 972
+    //   963: aload_0
+    //   964: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   967: iload 5
-    //   969: ifeq +12 -> 981
+    //   969: putfield 1466	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_e_of_type_Int	I
     //   972: aload_0
-    //   973: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   976: iload 5
-    //   978: putfield 1474	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_e_of_type_Int	I
-    //   981: aload_0
-    //   982: invokevirtual 1485	com/tencent/mobileqq/activity/ChatSettingForTroop:k	()V
-    //   985: aload 9
-    //   987: getfield 1728	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   990: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   993: ifeq +383 -> 1376
-    //   996: aload_0
-    //   997: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1000: aload 9
-    //   1002: getfield 1728	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   1005: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   1008: invokevirtual 1643	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   1011: putfield 1729	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
-    //   1014: aload 9
-    //   1016: getfield 1732	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_rich_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   1019: invokevirtual 1550	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   1022: ifeq +367 -> 1389
-    //   1025: aload_0
-    //   1026: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1029: aload 9
-    //   1031: getfield 1732	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_rich_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   1034: invokevirtual 1553	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   1037: invokevirtual 1643	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   1040: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1043: aload_0
-    //   1044: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1047: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1050: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1053: ifeq +349 -> 1402
-    //   1056: aload_0
-    //   1057: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1060: aload_0
-    //   1061: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1064: getfield 1729	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
-    //   1067: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1070: aload_0
-    //   1071: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
-    //   1074: bipush 15
-    //   1076: aaload
-    //   1077: astore 8
-    //   1079: aload 8
-    //   1081: ifnull +46 -> 1127
-    //   1084: aload_0
-    //   1085: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1088: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1091: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1094: ifne +345 -> 1439
-    //   1097: aload 8
-    //   1099: iconst_0
-    //   1100: invokevirtual 1232	android/view/View:setVisibility	(I)V
-    //   1103: aload_0
-    //   1104: bipush 15
-    //   1106: iconst_0
-    //   1107: aload 8
-    //   1109: aload_0
-    //   1110: ldc_w 1362
-    //   1113: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
-    //   1116: aload_0
-    //   1117: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1120: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1123: iconst_0
-    //   1124: invokevirtual 1364	com/tencent/mobileqq/activity/ChatSettingForTroop:b	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
-    //   1127: aload_0
-    //   1128: invokevirtual 1734	com/tencent/mobileqq/activity/ChatSettingForTroop:e	()V
-    //   1131: aload 9
-    //   1133: getfield 1670	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1136: invokevirtual 1735	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   1139: ifeq +18 -> 1157
-    //   1142: aload_0
-    //   1143: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1146: aload 9
-    //   1148: getfield 1670	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1151: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1154: putfield 1737	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_p_of_type_Int	I
-    //   1157: aload_0
-    //   1158: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1161: ifnull +31 -> 1192
-    //   1164: aload_0
-    //   1165: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1168: aload_0
-    //   1169: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1172: getfield 1729	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
-    //   1175: putfield 1740	com/tencent/mobileqq/data/TroopInfo:fingertroopmemo	Ljava/lang/String;
-    //   1178: aload_0
-    //   1179: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1182: aload_0
-    //   1183: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1186: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1189: putfield 1743	com/tencent/mobileqq/data/TroopInfo:mRichFingerMemo	Ljava/lang/String;
-    //   1192: aload 9
-    //   1194: getfield 1746	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1197: invokevirtual 1735	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   1200: ifeq +93 -> 1293
-    //   1203: aload 9
-    //   1205: getfield 1746	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1208: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1211: ifle +82 -> 1293
-    //   1214: aload 9
-    //   1216: getfield 1683	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1219: invokevirtual 1735	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   1222: ifeq +71 -> 1293
-    //   1225: aload 9
-    //   1227: getfield 1683	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1230: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1233: ifle +60 -> 1293
-    //   1236: aload_0
-    //   1237: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1240: ifnull +33 -> 1273
-    //   1243: aload_0
-    //   1244: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1247: aload 9
-    //   1249: getfield 1746	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1252: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1255: putfield 1749	com/tencent/mobileqq/data/TroopInfo:wMemberMax	I
-    //   1258: aload_0
-    //   1259: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1262: aload 9
-    //   1264: getfield 1683	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1267: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1270: putfield 1752	com/tencent/mobileqq/data/TroopInfo:wMemberNum	I
-    //   1273: aload_0
-    //   1274: aload 9
-    //   1276: getfield 1683	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1279: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1282: aload 9
-    //   1284: getfield 1746	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1287: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1290: invokevirtual 1753	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(II)V
-    //   1293: aload_0
-    //   1294: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1297: ifnull +19 -> 1316
-    //   1300: aload_0
-    //   1301: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1304: aload 9
-    //   1306: getfield 1670	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1309: invokevirtual 1582	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1312: i2l
-    //   1313: putfield 1756	com/tencent/mobileqq/data/TroopInfo:dwGroupFlagExt	J
-    //   1316: aload_0
-    //   1317: invokevirtual 1289	com/tencent/mobileqq/activity/ChatSettingForTroop:t	()V
-    //   1320: aload 9
-    //   1322: astore 8
-    //   1324: aload 9
-    //   1326: getfield 1759	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint64_group_owner	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1329: invokevirtual 1760	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   1332: ifeq -1190 -> 142
-    //   1335: aload_0
-    //   1336: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1339: new 314	java/lang/StringBuilder
-    //   1342: dup
-    //   1343: invokespecial 315	java/lang/StringBuilder:<init>	()V
-    //   1346: ldc_w 594
-    //   1349: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1352: aload 9
-    //   1354: getfield 1759	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint64_group_owner	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1357: invokevirtual 1631	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   1360: invokevirtual 592	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1363: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1366: putfield 1762	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_p_of_type_JavaLangString	Ljava/lang/String;
-    //   1369: aload 9
-    //   1371: astore 8
-    //   1373: goto -1231 -> 142
-    //   1376: aload_0
-    //   1377: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1380: ldc_w 594
-    //   1383: putfield 1729	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
-    //   1386: goto -372 -> 1014
-    //   1389: aload_0
-    //   1390: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1393: ldc_w 594
-    //   1396: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1399: goto -356 -> 1043
-    //   1402: aload_0
-    //   1403: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1406: aload_0
-    //   1407: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1410: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1413: invokestatic 1766	com/tencent/biz/common/util/HttpUtil:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   1416: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1419: aload_0
-    //   1420: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1423: aload_0
-    //   1424: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
-    //   1427: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1430: invokestatic 1768	com/tencent/biz/common/util/HttpUtil:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   1433: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
-    //   1436: goto -366 -> 1070
-    //   1439: aload 8
-    //   1441: bipush 8
-    //   1443: invokevirtual 1232	android/view/View:setVisibility	(I)V
-    //   1446: goto -319 -> 1127
-    //   1449: astore 8
-    //   1451: invokestatic 684	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1454: ifeq -1130 -> 324
-    //   1457: ldc_w 1593
-    //   1460: iconst_2
-    //   1461: aload 8
-    //   1463: invokevirtual 737	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1466: invokestatic 739	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1469: goto -1145 -> 324
-    //   1472: iload_2
-    //   1473: iconst_1
-    //   1474: iadd
-    //   1475: istore_2
-    //   1476: goto -1021 -> 455
-    //   1479: astore_1
-    //   1480: aload_1
-    //   1481: invokevirtual 1519	java/lang/Exception:printStackTrace	()V
-    //   1484: return
-    //   1485: iconst_0
-    //   1486: istore_3
-    //   1487: goto -1377 -> 110
+    //   973: invokevirtual 1477	com/tencent/mobileqq/activity/ChatSettingForTroop:k	()V
+    //   976: aload 9
+    //   978: getfield 1715	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   981: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   984: ifeq +383 -> 1367
+    //   987: aload_0
+    //   988: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   991: aload 9
+    //   993: getfield 1715	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   996: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   999: invokevirtual 1635	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   1002: putfield 1716	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
+    //   1005: aload 9
+    //   1007: getfield 1719	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_rich_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1010: invokevirtual 1542	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   1013: ifeq +367 -> 1380
+    //   1016: aload_0
+    //   1017: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1020: aload 9
+    //   1022: getfield 1719	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:string_group_rich_finger_memo	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1025: invokevirtual 1545	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   1028: invokevirtual 1635	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   1031: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1034: aload_0
+    //   1035: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1038: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1041: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1044: ifeq +349 -> 1393
+    //   1047: aload_0
+    //   1048: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1051: aload_0
+    //   1052: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1055: getfield 1716	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
+    //   1058: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1061: aload_0
+    //   1062: getfield 468	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ArrayOfAndroidViewView	[Landroid/view/View;
+    //   1065: bipush 15
+    //   1067: aaload
+    //   1068: astore 8
+    //   1070: aload 8
+    //   1072: ifnull +46 -> 1118
+    //   1075: aload_0
+    //   1076: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1079: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1082: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1085: ifne +345 -> 1430
+    //   1088: aload 8
+    //   1090: iconst_0
+    //   1091: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   1094: aload_0
+    //   1095: bipush 15
+    //   1097: iconst_0
+    //   1098: aload 8
+    //   1100: aload_0
+    //   1101: ldc_w 1354
+    //   1104: invokevirtual 636	com/tencent/mobileqq/activity/ChatSettingForTroop:getString	(I)Ljava/lang/String;
+    //   1107: aload_0
+    //   1108: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1111: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1114: iconst_0
+    //   1115: invokevirtual 1356	com/tencent/mobileqq/activity/ChatSettingForTroop:b	(IILandroid/view/View;Ljava/lang/String;Ljava/lang/CharSequence;Z)V
+    //   1118: aload_0
+    //   1119: invokevirtual 1721	com/tencent/mobileqq/activity/ChatSettingForTroop:e	()V
+    //   1122: aload 9
+    //   1124: getfield 1662	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1127: invokevirtual 1722	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   1130: ifeq +18 -> 1148
+    //   1133: aload_0
+    //   1134: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1137: aload 9
+    //   1139: getfield 1662	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1142: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1145: putfield 1724	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_p_of_type_Int	I
+    //   1148: aload_0
+    //   1149: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1152: ifnull +31 -> 1183
+    //   1155: aload_0
+    //   1156: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1159: aload_0
+    //   1160: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1163: getfield 1716	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
+    //   1166: putfield 1727	com/tencent/mobileqq/data/TroopInfo:fingertroopmemo	Ljava/lang/String;
+    //   1169: aload_0
+    //   1170: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1173: aload_0
+    //   1174: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1177: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1180: putfield 1730	com/tencent/mobileqq/data/TroopInfo:mRichFingerMemo	Ljava/lang/String;
+    //   1183: aload 9
+    //   1185: getfield 1733	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1188: invokevirtual 1722	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   1191: ifeq +93 -> 1284
+    //   1194: aload 9
+    //   1196: getfield 1733	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1199: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1202: ifle +82 -> 1284
+    //   1205: aload 9
+    //   1207: getfield 1675	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1210: invokevirtual 1722	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   1213: ifeq +71 -> 1284
+    //   1216: aload 9
+    //   1218: getfield 1675	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1221: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1224: ifle +60 -> 1284
+    //   1227: aload_0
+    //   1228: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1231: ifnull +33 -> 1264
+    //   1234: aload_0
+    //   1235: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1238: aload 9
+    //   1240: getfield 1733	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1243: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1246: putfield 1736	com/tencent/mobileqq/data/TroopInfo:wMemberMax	I
+    //   1249: aload_0
+    //   1250: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1253: aload 9
+    //   1255: getfield 1675	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1258: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1261: putfield 1739	com/tencent/mobileqq/data/TroopInfo:wMemberNum	I
+    //   1264: aload_0
+    //   1265: aload 9
+    //   1267: getfield 1675	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1270: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1273: aload 9
+    //   1275: getfield 1733	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_member_max_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1278: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1281: invokevirtual 1740	com/tencent/mobileqq/activity/ChatSettingForTroop:a	(II)V
+    //   1284: aload_0
+    //   1285: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1288: ifnull +19 -> 1307
+    //   1291: aload_0
+    //   1292: getfield 964	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqDataTroopInfo	Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1295: aload 9
+    //   1297: getfield 1662	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_group_flag_ext	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1300: invokevirtual 1574	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1303: i2l
+    //   1304: putfield 1743	com/tencent/mobileqq/data/TroopInfo:dwGroupFlagExt	J
+    //   1307: aload_0
+    //   1308: invokevirtual 1281	com/tencent/mobileqq/activity/ChatSettingForTroop:t	()V
+    //   1311: aload 9
+    //   1313: astore 8
+    //   1315: aload 9
+    //   1317: getfield 1746	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint64_group_owner	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1320: invokevirtual 1747	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
+    //   1323: ifeq -1181 -> 142
+    //   1326: aload_0
+    //   1327: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1330: new 314	java/lang/StringBuilder
+    //   1333: dup
+    //   1334: invokespecial 315	java/lang/StringBuilder:<init>	()V
+    //   1337: ldc_w 594
+    //   1340: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1343: aload 9
+    //   1345: getfield 1746	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint64_group_owner	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1348: invokevirtual 1623	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1351: invokevirtual 592	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1354: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1357: putfield 1749	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_p_of_type_JavaLangString	Ljava/lang/String;
+    //   1360: aload 9
+    //   1362: astore 8
+    //   1364: goto -1222 -> 142
+    //   1367: aload_0
+    //   1368: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1371: ldc_w 594
+    //   1374: putfield 1716	com/tencent/mobileqq/troopinfo/TroopInfoData:l	Ljava/lang/String;
+    //   1377: goto -372 -> 1005
+    //   1380: aload_0
+    //   1381: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1384: ldc_w 594
+    //   1387: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1390: goto -356 -> 1034
+    //   1393: aload_0
+    //   1394: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1397: aload_0
+    //   1398: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1401: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1404: invokestatic 1753	com/tencent/biz/common/util/HttpUtil:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   1407: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1410: aload_0
+    //   1411: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1414: aload_0
+    //   1415: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
+    //   1418: getfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1421: invokestatic 1755	com/tencent/biz/common/util/HttpUtil:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   1424: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
+    //   1427: goto -366 -> 1061
+    //   1430: aload 8
+    //   1432: bipush 8
+    //   1434: invokevirtual 1224	android/view/View:setVisibility	(I)V
+    //   1437: goto -319 -> 1118
+    //   1440: astore 8
+    //   1442: invokestatic 684	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1445: ifeq -1121 -> 324
+    //   1448: ldc_w 1585
+    //   1451: iconst_2
+    //   1452: aload 8
+    //   1454: invokevirtual 737	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1457: invokestatic 739	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1460: goto -1136 -> 324
+    //   1463: iload_2
+    //   1464: iconst_1
+    //   1465: iadd
+    //   1466: istore_2
+    //   1467: goto -1012 -> 455
+    //   1470: astore_1
+    //   1471: aload_1
+    //   1472: invokevirtual 1511	java/lang/Exception:printStackTrace	()V
+    //   1475: return
+    //   1476: iconst_0
+    //   1477: istore_3
+    //   1478: goto -1368 -> 110
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1490	0	this	ChatSettingForTroop
-    //   0	1490	1	paramBatchResponse	KQQ.BatchResponse
-    //   106	1370	2	i1	int
-    //   115	1372	3	i2	int
-    //   178	785	4	i3	int
-    //   934	43	5	i4	int
+    //   0	1481	0	this	ChatSettingForTroop
+    //   0	1481	1	paramBatchResponse	KQQ.BatchResponse
+    //   106	1361	2	i1	int
+    //   115	1363	3	i2	int
+    //   178	776	4	i3	int
+    //   925	43	5	i4	int
     //   411	68	6	l1	long
     //   77	137	8	localObject1	Object
     //   218	13	8	localException1	Exception
-    //   273	1167	8	localObject2	Object
-    //   1449	13	8	localException2	Exception
-    //   68	1302	9	localObject3	Object
+    //   273	1158	8	localObject2	Object
+    //   1440	13	8	localException2	Exception
+    //   68	1293	9	localObject3	Object
     //   19	330	10	localOIDBSSOPkg	tencent.im.oidb.oidb_sso.OIDBSSOPkg
     //   98	62	11	localList	List
-    //   131	818	12	localObject4	Object
+    //   131	809	12	localObject4	Object
     // Exception table:
     //   from	to	target	type
     //   21	34	153	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
@@ -2128,42 +3440,42 @@ public class ChatSettingForTroop
     //   618	642	218	java/lang/Exception
     //   651	717	218	java/lang/Exception
     //   717	879	218	java/lang/Exception
-    //   879	953	218	java/lang/Exception
-    //   958	967	218	java/lang/Exception
-    //   972	981	218	java/lang/Exception
-    //   981	1014	218	java/lang/Exception
-    //   1014	1043	218	java/lang/Exception
-    //   1043	1070	218	java/lang/Exception
-    //   1070	1079	218	java/lang/Exception
-    //   1084	1127	218	java/lang/Exception
-    //   1127	1157	218	java/lang/Exception
-    //   1157	1192	218	java/lang/Exception
-    //   1192	1273	218	java/lang/Exception
-    //   1273	1293	218	java/lang/Exception
-    //   1293	1316	218	java/lang/Exception
-    //   1316	1320	218	java/lang/Exception
-    //   1324	1369	218	java/lang/Exception
-    //   1376	1386	218	java/lang/Exception
-    //   1389	1399	218	java/lang/Exception
-    //   1402	1436	218	java/lang/Exception
-    //   1439	1446	218	java/lang/Exception
-    //   275	324	1449	java/lang/Exception
-    //   360	413	1479	java/lang/Exception
-    //   421	430	1479	java/lang/Exception
-    //   435	453	1479	java/lang/Exception
-    //   460	473	1479	java/lang/Exception
-    //   478	509	1479	java/lang/Exception
-    //   517	567	1479	java/lang/Exception
+    //   879	944	218	java/lang/Exception
+    //   949	958	218	java/lang/Exception
+    //   963	972	218	java/lang/Exception
+    //   972	1005	218	java/lang/Exception
+    //   1005	1034	218	java/lang/Exception
+    //   1034	1061	218	java/lang/Exception
+    //   1061	1070	218	java/lang/Exception
+    //   1075	1118	218	java/lang/Exception
+    //   1118	1148	218	java/lang/Exception
+    //   1148	1183	218	java/lang/Exception
+    //   1183	1264	218	java/lang/Exception
+    //   1264	1284	218	java/lang/Exception
+    //   1284	1307	218	java/lang/Exception
+    //   1307	1311	218	java/lang/Exception
+    //   1315	1360	218	java/lang/Exception
+    //   1367	1377	218	java/lang/Exception
+    //   1380	1390	218	java/lang/Exception
+    //   1393	1427	218	java/lang/Exception
+    //   1430	1437	218	java/lang/Exception
+    //   275	324	1440	java/lang/Exception
+    //   360	413	1470	java/lang/Exception
+    //   421	430	1470	java/lang/Exception
+    //   435	453	1470	java/lang/Exception
+    //   460	473	1470	java/lang/Exception
+    //   478	509	1470	java/lang/Exception
+    //   517	567	1470	java/lang/Exception
   }
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297735));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297736));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297737));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297738));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297739));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298572));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297731));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297732));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297733));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297734));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297735));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298528));
     this.jdField_b_of_type_JavaUtilList = new ArrayList(6);
     this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_b_of_type_JavaUtilList.add(this.jdField_b_of_type_AndroidWidgetImageView);
@@ -2175,8 +3487,8 @@ public class ChatSettingForTroop
   
   public void a(View paramView, int paramInt)
   {
-    View localView = paramView.findViewById(2131297881);
-    paramView = (TextView)paramView.findViewById(2131297882);
+    View localView = paramView.findViewById(2131297867);
+    paramView = (TextView)paramView.findViewById(2131297868);
     if ((this.al == 2) && (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean))
     {
       localView.setVisibility(8);
@@ -2204,7 +3516,7 @@ public class ChatSettingForTroop
     if (paramView == null) {
       return;
     }
-    TextView localTextView = (TextView)paramView.findViewById(2131297881);
+    TextView localTextView = (TextView)paramView.findViewById(2131297867);
     if (paramInt > 0)
     {
       localTextView.setVisibility(0);
@@ -2213,7 +3525,7 @@ public class ChatSettingForTroop
         paramView = "99+";
       }
       localTextView.setText(paramView);
-      localTextView.setBackgroundResource(2130838428);
+      localTextView.setBackgroundResource(2130838440);
       localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       return;
     }
@@ -2222,7 +3534,7 @@ public class ChatSettingForTroop
       localTextView.setVisibility(0);
       localTextView.setText("");
       localTextView.setBackgroundResource(0);
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130839371, 0, 0, 0);
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130839336, 0, 0, 0);
       return;
     }
     localTextView.setVisibility(4);
@@ -2255,7 +3567,7 @@ public class ChatSettingForTroop
           return;
           localObject = this.jdField_a_of_type_ArrayOfAndroidViewView[7];
         } while ((localObject == null) || (TextUtils.isEmpty(paramString)));
-        localObject = (TextView)((View)localObject).findViewById(2131298565);
+        localObject = (TextView)((View)localObject).findViewById(2131298520);
       } while (localObject == null);
       ((TextView)localObject).setText(paramString);
     } while (((TextView)localObject).isShown());
@@ -2267,7 +3579,7 @@ public class ChatSettingForTroop
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    new afg(this, paramString1, paramString2).start();
+    new afe(this, paramString1, paramString2).start();
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -2280,11 +3592,11 @@ public class ChatSettingForTroop
     if (paramList == null) {
       return;
     }
-    int i1 = getResources().getDimensionPixelOffset(2131493025);
-    int i3 = getResources().getDimensionPixelOffset(2131493026);
-    int i2 = getResources().getDimensionPixelOffset(2131493031);
+    int i1 = getResources().getDimensionPixelOffset(2131493020);
+    int i3 = getResources().getDimensionPixelOffset(2131493021);
+    int i2 = getResources().getDimensionPixelOffset(2131493026);
     i3 = this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - i1 - i3 - Utils.a(this, 10.0F) * 2;
-    int i4 = getResources().getDimensionPixelOffset(2131493030);
+    int i4 = getResources().getDimensionPixelOffset(2131493025);
     i1 = (int)Math.floor((i3 - i2 * 6) / i4);
     if (i1 > 6) {
       i1 = 6;
@@ -2338,9 +3650,9 @@ public class ChatSettingForTroop
       localImageView.setVisibility(0);
       if (this.al == 1)
       {
-        localImageView.setBackgroundResource(2130838386);
-        localImageView.setContentDescription(super.getString(2131362648));
-        localImageView.setOnClickListener(new aft(this));
+        localImageView.setBackgroundResource(2130838374);
+        localImageView.setContentDescription(super.getString(2131362656));
+        localImageView.setOnClickListener(new afr(this));
         label380:
         if (i2 <= 0) {
           break label504;
@@ -2353,7 +3665,7 @@ public class ChatSettingForTroop
         if (paramList == null) {
           break label528;
         }
-        paramList = (LinearLayout)paramList.findViewById(2131298571);
+        paramList = (LinearLayout)paramList.findViewById(2131298527);
         if (paramList == null) {
           break;
         }
@@ -2403,7 +3715,7 @@ public class ChatSettingForTroop
     if ((localView2 == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a())) {}
     for (;;)
     {
-      localView1.setBackgroundResource(2130837758);
+      localView1.setBackgroundResource(2130837754);
       localView1 = this.jdField_a_of_type_ArrayOfAndroidViewView[6];
       if (localView1 == null) {
         break;
@@ -2414,7 +3726,7 @@ public class ChatSettingForTroop
       if ((!localView1.isShown()) || (localView1.getVisibility() == 8)) {
         localView1.setVisibility(0);
       }
-      this.jdField_a_of_type_ArrayOfAndroidViewView[3].setBackgroundResource(2130837758);
+      this.jdField_a_of_type_ArrayOfAndroidViewView[3].setBackgroundResource(2130837754);
       return;
       localView2.setVisibility(8);
     }
@@ -2422,7 +3734,7 @@ public class ChatSettingForTroop
     if ((localView1.isShown()) || (localView1.getVisibility() == 0)) {
       localView1.setVisibility(8);
     }
-    this.jdField_a_of_type_ArrayOfAndroidViewView[3].setBackgroundResource(2130837758);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[3].setBackgroundResource(2130837754);
   }
   
   protected boolean a(View paramView)
@@ -2482,7 +3794,7 @@ public class ChatSettingForTroop
   protected void b(int paramInt1, int paramInt2, View paramView, String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
     a(paramInt1, paramInt2, paramView, paramString, paramBoolean);
-    paramView = (TextView)paramView.findViewById(2131296957);
+    paramView = (TextView)paramView.findViewById(2131296953);
     paramView.setEditableFactory(QQTextBuilder.a);
     paramView.setMovementMethod(LinkMovementMethod.getInstance());
     if (TextUtils.isEmpty(paramCharSequence)) {
@@ -2509,8 +3821,8 @@ public class ChatSettingForTroop
   
   protected void b(View paramView, int paramInt, boolean paramBoolean)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131297881);
-    paramView = (TextView)paramView.findViewById(2131297882);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131297867);
+    paramView = (TextView)paramView.findViewById(2131297868);
     if ((this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && ((this.al != 2) || (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean)))
     {
       paramView.setVisibility(8);
@@ -2536,7 +3848,7 @@ public class ChatSettingForTroop
   protected String c()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_e_of_type_JavaLangString)) {
-      return getString(2131363475);
+      return getString(2131363476);
     }
     return "";
   }
@@ -2553,12 +3865,12 @@ public class ChatSettingForTroop
     if (!this.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
     }
-    ThreadManager.a(new afs(this));
+    ThreadManager.a(new afq(this));
     if (this.jdField_i_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837906);
       this.jdField_i_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-      this.jdField_i_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(getResources().getDimensionPixelSize(2131493048));
+      this.jdField_i_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(getResources().getDimensionPixelSize(2131493043));
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
     }
     d();
@@ -2581,7 +3893,7 @@ public class ChatSettingForTroop
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, getString(2131362785), 1000);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, getString(2131362790), 1000);
   }
   
   /* Error */
@@ -2594,7 +3906,7 @@ public class ChatSettingForTroop
     //   5: ifeq +12 -> 17
     //   8: ldc 55
     //   10: iconst_2
-    //   11: ldc_w 1941
+    //   11: ldc_w 1928
     //   14: invokestatic 739	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   17: aload_0
     //   18: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -2608,31 +3920,31 @@ public class ChatSettingForTroop
     //   32: iconst_0
     //   33: putfield 195	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_Boolean	Z
     //   36: aload_0
-    //   37: invokevirtual 1945	com/tencent/mobileqq/activity/ChatSettingForTroop:getIntent	()Landroid/content/Intent;
-    //   40: invokevirtual 1460	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   37: invokevirtual 1932	com/tencent/mobileqq/activity/ChatSettingForTroop:getIntent	()Landroid/content/Intent;
+    //   40: invokevirtual 1452	android/content/Intent:getExtras	()Landroid/os/Bundle;
     //   43: astore 4
     //   45: aload_0
     //   46: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   49: aload 4
     //   51: ldc_w 892
-    //   54: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   54: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   57: putfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   60: aload_0
     //   61: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   64: aload 4
     //   66: ldc_w 894
-    //   69: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   69: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   72: putfield 896	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   75: aload_0
     //   76: aload 4
     //   78: ldc_w 733
     //   81: iconst_1
-    //   82: invokevirtual 1950	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   82: invokevirtual 1937	android/os/Bundle:getInt	(Ljava/lang/String;I)I
     //   85: putfield 203	com/tencent/mobileqq/activity/ChatSettingForTroop:al	I
     //   88: aload_0
     //   89: aload 4
-    //   91: ldc_w 1952
-    //   94: invokevirtual 1954	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   91: ldc_w 1939
+    //   94: invokevirtual 1941	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   97: putfield 371	com/tencent/mobileqq/activity/ChatSettingForTroop:an	I
     //   100: aload_0
     //   101: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
@@ -2646,68 +3958,68 @@ public class ChatSettingForTroop
     //   117: aload_0
     //   118: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   121: aload 4
-    //   123: ldc_w 1956
-    //   126: invokevirtual 1954	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   123: ldc_w 1943
+    //   126: invokevirtual 1941	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   129: putfield 338	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Int	I
     //   132: aload_0
     //   133: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   136: aload 4
-    //   138: ldc_w 1958
-    //   141: invokevirtual 1954	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   144: putfield 1960	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Int	I
+    //   138: ldc_w 1945
+    //   141: invokevirtual 1941	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   144: putfield 1947	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Int	I
     //   147: aload_0
     //   148: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   151: aload 4
-    //   153: ldc_w 1962
-    //   156: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   153: ldc_w 1949
+    //   156: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   159: putfield 373	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   162: aload_0
     //   163: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   166: aload 4
-    //   168: ldc_w 1964
-    //   171: invokevirtual 1968	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   168: ldc_w 1951
+    //   171: invokevirtual 1955	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   174: putfield 275	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Boolean	Z
     //   177: aload_0
     //   178: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   181: aload 4
-    //   183: ldc_w 1970
-    //   186: invokevirtual 1974	android/os/Bundle:getShort	(Ljava/lang/String;)S
+    //   183: ldc_w 1957
+    //   186: invokevirtual 1961	android/os/Bundle:getShort	(Ljava/lang/String;)S
     //   189: putfield 993	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Short	S
     //   192: aload_0
     //   193: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   196: aload 4
-    //   198: ldc_w 1976
-    //   201: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   198: ldc_w 1963
+    //   201: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   204: putfield 364	com/tencent/mobileqq/troopinfo/TroopInfoData:f	Ljava/lang/String;
     //   207: aload_0
     //   208: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   211: aload 4
-    //   213: ldc_w 1978
-    //   216: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   219: putfield 1762	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_p_of_type_JavaLangString	Ljava/lang/String;
+    //   213: ldc_w 1965
+    //   216: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   219: putfield 1749	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_p_of_type_JavaLangString	Ljava/lang/String;
     //   222: aload_0
     //   223: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   226: aload 4
-    //   228: ldc_w 1980
-    //   231: invokevirtual 1983	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   228: ldc_w 1967
+    //   231: invokevirtual 1970	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   234: putfield 991	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Long	J
     //   237: aload_0
     //   238: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   241: aload 4
-    //   243: ldc_w 1985
-    //   246: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   249: putfield 1285	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   243: ldc_w 1972
+    //   246: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   249: putfield 1277	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_k_of_type_JavaLangString	Ljava/lang/String;
     //   252: aload_0
     //   253: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   256: aload 4
-    //   258: ldc_w 1987
-    //   261: invokevirtual 1947	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   258: ldc_w 1974
+    //   261: invokevirtual 1934	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   264: putfield 997	com/tencent/mobileqq/troopinfo/TroopInfoData:m	Ljava/lang/String;
     //   267: aload_0
     //   268: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   271: aload 4
-    //   273: ldc_w 1989
-    //   276: invokevirtual 1993	android/os/Bundle:getByte	(Ljava/lang/String;)B
+    //   273: ldc_w 1976
+    //   276: invokevirtual 1980	android/os/Bundle:getByte	(Ljava/lang/String;)B
     //   279: i2s
     //   280: putfield 366	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_a_of_type_Short	S
     //   283: aload_0
@@ -2716,20 +4028,20 @@ public class ChatSettingForTroop
     //   288: aload_0
     //   289: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   292: getfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   295: invokestatic 1998	com/tencent/mobileqq/util/TroopSystemMsgUtil:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   295: invokestatic 1985	com/tencent/mobileqq/util/TroopSystemMsgUtil:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   298: putfield 381	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_r_of_type_JavaLangString	Ljava/lang/String;
     //   301: aload_0
     //   302: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   305: aload 4
-    //   307: ldc_w 2000
-    //   310: invokevirtual 1954	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   313: invokestatic 2002	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   316: putfield 1344	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   307: ldc_w 1987
+    //   310: invokevirtual 1941	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   313: invokestatic 1989	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   316: putfield 1336	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_h_of_type_JavaLangString	Ljava/lang/String;
     //   319: aload_0
     //   320: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   323: aload 4
-    //   325: ldc_w 2004
-    //   328: invokevirtual 1954	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   325: ldc_w 1991
+    //   328: invokevirtual 1941	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   331: putfield 1078	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_n_of_type_Int	I
     //   334: aload_0
     //   335: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
@@ -2737,20 +4049,20 @@ public class ChatSettingForTroop
     //   339: aload_0
     //   340: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   343: getfield 290	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   346: invokestatic 2006	com/tencent/mobileqq/util/TroopSystemMsgUtil:c	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   346: invokestatic 1993	com/tencent/mobileqq/util/TroopSystemMsgUtil:c	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   349: putfield 383	com/tencent/mobileqq/troopinfo/TroopInfoData:s	Ljava/lang/String;
     //   352: aload_0
     //   353: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   356: aload 4
-    //   358: ldc_w 2008
-    //   361: invokevirtual 1983	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   364: putfield 1672	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Long	J
+    //   358: ldc_w 1995
+    //   361: invokevirtual 1970	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   364: putfield 1664	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_b_of_type_Long	J
     //   367: aload_0
     //   368: getfield 193	com/tencent/mobileqq/activity/ChatSettingForTroop:jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData	Lcom/tencent/mobileqq/troopinfo/TroopInfoData;
     //   371: aload 4
-    //   373: ldc_w 2010
-    //   376: invokevirtual 1983	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   379: putfield 1677	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_Long	J
+    //   373: ldc_w 1997
+    //   376: invokevirtual 1970	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   379: putfield 1669	com/tencent/mobileqq/troopinfo/TroopInfoData:jdField_c_of_type_Long	J
     //   382: aload_0
     //   383: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   386: bipush 8
@@ -2782,12 +4094,12 @@ public class ChatSettingForTroop
     //   446: aload_0
     //   447: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   450: invokevirtual 286	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   453: invokevirtual 2013	com/tencent/mobileqq/troopinfo/TroopInfoData:a	(Lcom/tencent/mobileqq/data/TroopInfo;Landroid/content/res/Resources;Ljava/lang/String;)V
+    //   453: invokevirtual 2000	com/tencent/mobileqq/troopinfo/TroopInfoData:a	(Lcom/tencent/mobileqq/data/TroopInfo;Landroid/content/res/Resources;Ljava/lang/String;)V
     //   456: aload_0
     //   457: aload 4
     //   459: ldc 108
     //   461: iconst_m1
-    //   462: invokevirtual 1950	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   462: invokevirtual 1937	android/os/Bundle:getInt	(Ljava/lang/String;I)I
     //   465: putfield 226	com/tencent/mobileqq/activity/ChatSettingForTroop:ap	I
     //   468: iconst_1
     //   469: ireturn
@@ -2802,7 +4114,7 @@ public class ChatSettingForTroop
     //   489: aload_0
     //   490: getfield 281	com/tencent/mobileqq/activity/ChatSettingForTroop:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   493: bipush 69
-    //   495: invokestatic 2018	com/tencent/biz/common/report/BnrReport:a	(Lcom/tencent/common/app/AppInterface;I)V
+    //   495: invokestatic 2005	com/tencent/biz/common/report/BnrReport:a	(Lcom/tencent/common/app/AppInterface;I)V
     //   498: iload_1
     //   499: ireturn
     //   500: astore 4
@@ -2899,7 +4211,7 @@ public class ChatSettingForTroop
     }
     for (paramIntent = paramIntent.troopnick;; paramIntent = null)
     {
-      localObject = (TextView)((View)localObject).findViewById(2131296957);
+      localObject = (TextView)((View)localObject).findViewById(2131296953);
       if ((!TextUtils.isEmpty(paramIntent)) && (!((TextView)localObject).getText().equals(paramIntent)))
       {
         ((TextView)localObject).setText(new QQText(paramIntent, 3));
@@ -2936,14 +4248,14 @@ public class ChatSettingForTroop
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m = paramIntent;
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m)) {}
-        for (paramIntent = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m;; paramIntent = getResources().getString(2131362826))
+        for (paramIntent = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m;; paramIntent = getResources().getString(2131362830))
         {
           a(15, paramIntent, false);
           e(32);
           return;
         }
       }
-      b(2131362785, 1);
+      b(2131362790, 1);
       return;
       i(paramInt2, paramIntent);
       return;
@@ -3213,11 +4525,11 @@ public class ChatSettingForTroop
     }
     for (;;)
     {
-      TextView localTextView = (TextView)((View)localObject).findViewById(2131297877);
-      localObject = (ImageView)((View)localObject).findViewById(2131297879);
+      TextView localTextView = (TextView)((View)localObject).findViewById(2131297863);
+      localObject = (ImageView)((View)localObject).findViewById(2131297865);
       localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString);
       ((ImageView)localObject).setImageDrawable(a());
-      ((ImageView)localObject).setContentDescription(String.format(getResources().getString(2131363036), new Object[] { Integer.valueOf(i1) }));
+      ((ImageView)localObject).setContentDescription(String.format(getResources().getString(2131363040), new Object[] { Integer.valueOf(i1) }));
       return;
     }
   }
@@ -3322,7 +4634,7 @@ public class ChatSettingForTroop
       }
       localSharedPreferences.edit().putLong("key_last_update_time" + this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, System.currentTimeMillis()).commit();
     }
-    ThreadManager.a(new aev(this));
+    ThreadManager.a(new aet(this));
   }
   
   protected void g(int paramInt, Intent paramIntent)
@@ -3337,7 +4649,7 @@ public class ChatSettingForTroop
         l();
       }
     }
-    new afd(this).start();
+    new afb(this).start();
   }
   
   public int getPathNodeID()
@@ -3395,7 +4707,7 @@ public class ChatSettingForTroop
         if (localTroopMemberInfo != null) {
           paramIntent = localTroopMemberInfo.troopnick;
         }
-        localTextView = (TextView)localView.findViewById(2131296957);
+        localTextView = (TextView)localView.findViewById(2131296953);
         if ((TextUtils.isEmpty(paramIntent)) || (localTextView.getText().equals(paramIntent))) {
           break label262;
         }
@@ -3466,7 +4778,7 @@ public class ChatSettingForTroop
         if ((paramInt > 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.getCount())) {
           this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c(paramInt);
         }
-        QQToast.a(this, getString(2131363541), 1).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131363535), 1).b(getTitleBarHeight());
       }
     }
   }
@@ -3502,14 +4814,14 @@ public class ChatSettingForTroop
     if ((localView == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null)) {
       return;
     }
-    localView = localView.findViewById(2131297880);
+    localView = localView.findViewById(2131297866);
     if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString))
     {
       localView.setVisibility(8);
       return;
     }
     localView.setVisibility(0);
-    ((TextView)localView.findViewById(2131296936)).setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131296932)).setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString);
   }
   
   public void l()
@@ -3543,7 +4855,7 @@ public class ChatSettingForTroop
     if (localObject != null) {
       a((View)localObject, 0, false);
     }
-    new afi(this).start();
+    new afg(this).start();
     localObject = new Intent();
     ((Intent)localObject).putExtra("troopuin", this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString);
     if ((this.jdField_k_of_type_JavaLangString != null) && (!"".equals(this.jdField_k_of_type_JavaLangString.trim())))
@@ -3635,7 +4947,7 @@ public class ChatSettingForTroop
                 break;
                 if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean)
                 {
-                  QQToast.a(this, 2131362571, 1).b(getTitleBarHeight());
+                  QQToast.a(this, 2131362567, 1).b(getTitleBarHeight());
                   return;
                 }
                 if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_b_of_type_Boolean) {
@@ -3650,7 +4962,7 @@ public class ChatSettingForTroop
                   startActivity(localIntent);
                   this.jdField_e_of_type_Boolean = true;
                   ReportController.a(null, "P_CliOper", "Grp_bulletin", "", "Grp_data", "Clk_grpbulletin", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, "", "", "");
-                  ThreadManager.b(new aew(this));
+                  ThreadManager.b(new aeu(this));
                   a("Grp_Admin_data", "Clk_notice", "");
                   return;
                   if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_Boolean) {
@@ -3668,7 +4980,7 @@ public class ChatSettingForTroop
                 return;
                 if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean)
                 {
-                  QQToast.a(this, 2131362571, 1).b(getTitleBarHeight());
+                  QQToast.a(this, 2131362567, 1).b(getTitleBarHeight());
                   return;
                 }
                 n();
@@ -3733,7 +5045,7 @@ public class ChatSettingForTroop
             }
             while (!NetworkUtil.e(this))
             {
-              b(2131362912, 0);
+              b(2131362916, 0);
               return;
               if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Int == 19) {
                 ReportController.b(this.app, "P_CliOper", "Grp_nearby", "", "recom", "Clk_joingrp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_JavaLangString, "", "", "");
@@ -3767,7 +5079,7 @@ public class ChatSettingForTroop
         QLog.i("Q.chatopttroop", 2, paramView.toString());
         return;
       } while (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e());
-      a(12, 900, 2131363029, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m, true, 1, true);
+      a(12, 900, 2131363033, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m, true, 1, true);
       if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean)
       {
         a("Grp_Admin_data", "Clk_brief", "0");
@@ -3819,8 +5131,8 @@ public class ChatSettingForTroop
       try
       {
         localObject = new QQCustomMenu();
-        ((QQCustomMenu)localObject).a(2131298988, getString(2131363570));
-        this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = MenuPopupDialog.a(paramView, getString(2131363274), (QQCustomMenu)localObject, new aex(this), new aey(this));
+        ((QQCustomMenu)localObject).a(2131298937, getString(2131363564));
+        this.jdField_a_of_type_ComTencentWidgetMenuPopupDialog = MenuPopupDialog.a(paramView, getString(2131363277), (QQCustomMenu)localObject, new aev(this), new aew(this));
       }
       catch (WindowManager.BadTokenException paramView) {}
       if (QLog.isColorLevel()) {
@@ -3836,7 +5148,7 @@ public class ChatSettingForTroop
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363564);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363558);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(false);
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -3908,7 +5220,7 @@ public class ChatSettingForTroop
     for (;;)
     {
       return;
-      TextView localTextView = (TextView)((View)localObject1).findViewById(2131297606);
+      TextView localTextView = (TextView)((View)localObject1).findViewById(2131297602);
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f;
       Object localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -3918,7 +5230,7 @@ public class ChatSettingForTroop
       {
         localObject1 = null;
         if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_Long == 2L) {
-          localObject1 = getResources().getDrawable(2130838183);
+          localObject1 = getResources().getDrawable(2130838177);
         }
         while (localObject1 != null)
         {
@@ -3929,7 +5241,7 @@ public class ChatSettingForTroop
           localTextView.setText(localSpannableString);
           return;
           if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_c_of_type_Long == 1L) {
-            localObject1 = getResources().getDrawable(2130838246);
+            localObject1 = getResources().getDrawable(2130838238);
           }
         }
       }
@@ -3946,7 +5258,7 @@ public class ChatSettingForTroop
       for (;;)
       {
         return;
-        ImageView localImageView = (ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[12].findViewById(2131297604);
+        ImageView localImageView = (ImageView)this.jdField_a_of_type_ArrayOfAndroidViewView[12].findViewById(2131297600);
         Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(0);
         Object localObject3;
         if (localObject1 != null) {
@@ -4031,7 +5343,7 @@ public class ChatSettingForTroop
         }
         catch (NullPointerException localNullPointerException) {}
       }
-      localMalformedURLException.setURLDrawableListener(new afp(this, localImageView));
+      localMalformedURLException.setURLDrawableListener(new afn(this, localImageView));
     } while (localMalformedURLException.getStatus() != 1);
     try
     {
@@ -4052,26 +5364,26 @@ public class ChatSettingForTroop
     while (this.jdField_a_of_type_ArrayOfAndroidViewView[12] == null) {
       return;
     }
-    TextView localTextView = (TextView)findViewById(2131297878);
+    TextView localTextView = (TextView)findViewById(2131297864);
     localTextView.setVisibility(0);
     if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_Int == 1)
     {
-      localTextView.setText(2131362309);
+      localTextView.setText(2131362306);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_Int == 0)
     {
-      localTextView.setText(2131362310);
+      localTextView.setText(2131362307);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_Int == 2)
     {
-      localTextView.setText(2131362311);
+      localTextView.setText(2131362308);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_r_of_type_Int == 3)
     {
-      localTextView.setText(2131362311);
+      localTextView.setText(2131362308);
       return;
     }
     localTextView.setVisibility(8);

@@ -86,16 +86,16 @@ public abstract class AbsStructMsgItem
     default: 
       return;
     case 0: 
-      paramView.setBackgroundResource(2130837596);
+      paramView.setBackgroundResource(2130837598);
       return;
     case 1: 
-      paramView.setBackgroundResource(2130837597);
+      paramView.setBackgroundResource(2130837599);
       return;
     case 2: 
-      paramView.setBackgroundResource(2130837595);
+      paramView.setBackgroundResource(2130837597);
       return;
     }
-    paramView.setBackgroundResource(2130837594);
+    paramView.setBackgroundResource(2130837596);
   }
   
   public void a(AbsStructMsgElement paramAbsStructMsgElement)
@@ -433,16 +433,16 @@ public abstract class AbsStructMsgItem
       return;
       if (!TextUtils.isEmpty(this.b))
       {
-        this.k = 2130837598;
+        this.k = 2130837600;
       }
       else
       {
-        this.k = 2130837605;
+        this.k = 2130837607;
         continue;
         if (!TextUtils.isEmpty(this.b)) {
-          this.k = 2130837599;
+          this.k = 2130837601;
         } else {
-          this.k = 2130837606;
+          this.k = 2130837608;
         }
       }
     }

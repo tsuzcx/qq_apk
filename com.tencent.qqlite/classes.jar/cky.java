@@ -1,25 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class cky
-  implements View.OnClickListener
+  extends ContactBindObserver
 {
-  public cky(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public cky(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    this.a.a.unRegistObserver(this);
+    this.a.c = ContactsInnerFrame.a(this.a).b();
+    switch (this.a.c)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(2130968587, 2130968588);
+    case 5: 
+    case 6: 
+    default: 
+      ContactsInnerFrame.c(this.a);
       return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    case 0: 
+    case 4: 
+    case 7: 
+      ContactsInnerFrame.a(this.a);
+      return;
+    case 1: 
+    case 2: 
+      ContactsInnerFrame.b(this.a);
+      return;
     }
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    {
+      ContactsInnerFrame.a(this.a);
+      return;
+    }
+    ContactsInnerFrame.b(this.a);
   }
 }
 

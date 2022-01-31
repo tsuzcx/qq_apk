@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
-class blj
-  extends NightModeLogic.NightModeCallback
+public class blj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  blj(bli parambli) {}
+  public blj(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.finish();
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if (paramBundle.getInt("start_status") == 2) {}
+    switch (paramCompoundButton.getId())
+    {
+    default: 
+      return;
+    }
+    TroopAssistantManager.a().a(this.a.app, paramBoolean);
   }
 }
 

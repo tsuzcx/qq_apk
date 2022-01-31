@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity.NativeChromeClient;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class bck
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public bck(QQBrowserActivity.NativeChromeClient paramNativeChromeClient, String paramString) {}
+  public bck(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity$NativeChromeClient.a.setTitle(this.jdField_a_of_type_JavaLangString);
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

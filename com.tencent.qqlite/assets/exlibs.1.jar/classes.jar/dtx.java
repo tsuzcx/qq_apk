@@ -1,27 +1,26 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class dtx
-  extends WebViewClient
+  implements AdapterView.OnItemClickListener
 {
-  public dtx(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  public dtx(PhotoFileViewBase paramPhotoFileViewBase) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (PreviewingOfflineFileViewBase.a(this.a) == null) {
+    paramAdapterView = this.a;
+    if (!PhotoFileViewBase.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PhotoFileViewBase.a(paramAdapterView, bool);
+      if (PhotoFileViewBase.c(this.a) != null) {
+        PhotoFileViewBase.d(this.a).c(PhotoFileViewBase.a(this.a));
+      }
       return;
     }
-    PreviewingOfflineFileViewBase.c(this.a).runOnUiThread(new dtz(this));
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.e("PreviewingOfflineFileViewBase<FileAssistant>", 1, "load url[" + paramString2 + "] error! errCode[" + String.valueOf(paramInt) + "],description[" + String.valueOf(paramString1) + "]");
-    PreviewingOfflineFileViewBase.b(this.a).runOnUiThread(new dty(this, paramInt, paramString1));
   }
 }
 

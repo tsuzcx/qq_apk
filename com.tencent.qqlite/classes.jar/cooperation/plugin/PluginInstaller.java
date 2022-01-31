@@ -268,10 +268,10 @@ public class PluginInstaller
       i = 1;
       label137:
       if (!localFile.exists()) {
-        break label477;
+        break label479;
       }
     }
-    label477:
+    label479:
     for (boolean bool = a((PluginInfo)localObject);; bool = false)
     {
       if ((bool) && (i == 0))
@@ -328,7 +328,7 @@ public class PluginInstaller
       }
       try
       {
-        String str2 = PluginUtils.getLibPath(this.jdField_a_of_type_AndroidContentContext).getCanonicalPath();
+        String str2 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, str1).getCanonicalPath();
         PluginUtils.extractLibs(localFile.getCanonicalPath(), str2);
         if (paramOnPluginSetupListener != null) {
           paramOnPluginSetupListener.b(true, str1);
@@ -404,10 +404,10 @@ public class PluginInstaller
       i = 1;
       label152:
       if (!localFile.exists()) {
-        break label479;
+        break label480;
       }
     }
-    label479:
+    label480:
     for (boolean bool = a((PluginInfo)localObject1);; bool = false)
     {
       if ((bool) && (i == 0))
@@ -440,7 +440,7 @@ public class PluginInstaller
         {
           try
           {
-            localObject2 = PluginUtils.getLibPath(this.jdField_a_of_type_AndroidContentContext).getCanonicalPath();
+            localObject2 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, paramString).getCanonicalPath();
             PluginUtils.extractLibs(localFile.getCanonicalPath(), (String)localObject2);
             if (paramOnPluginSetupListener != null) {
               paramOnPluginSetupListener.b(true, paramString);

@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
 public class cxm
-  extends AutomatorObserver
+  extends FriendListObserver
 {
-  private cxm(RegisterProxy paramRegisterProxy) {}
+  private cxm(GetGeneralSettings paramGetGeneralSettings) {}
   
-  protected void a()
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a(10000L);
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      GetGeneralSettings.a(this.a).d = 3;
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 

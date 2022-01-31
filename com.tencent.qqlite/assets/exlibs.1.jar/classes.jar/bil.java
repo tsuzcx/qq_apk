@@ -1,24 +1,21 @@
-import android.os.Handler;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.util.Utils;
 
 public class bil
   implements Runnable
 {
-  public bil(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public bil(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null))
     {
-      RegisterVerifyCodeActivity.a(this.a).setText(2131363325);
-      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
-      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
-      return;
+      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText(str);
+      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setEnabled(true);
     }
-    RegisterVerifyCodeActivity.b(this.a);
-    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131363325) + "(" + RegisterVerifyCodeActivity.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
   }
 }
 

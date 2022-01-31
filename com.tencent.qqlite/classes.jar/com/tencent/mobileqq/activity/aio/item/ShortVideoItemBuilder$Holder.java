@@ -12,12 +12,13 @@ public class ShortVideoItemBuilder$Holder
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public RelativeLayout a;
+  public TextView a;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   private ChatThumbView jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  public TextView b;
   
   protected ShortVideoItemBuilder$Holder(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
 }

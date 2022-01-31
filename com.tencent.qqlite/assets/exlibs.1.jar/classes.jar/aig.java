@@ -1,10 +1,16 @@
-import android.os.Handler;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aig
-  extends Handler
+class aig
+  implements Runnable
 {
-  public aig(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  aig(aif paramaif, Drawable paramDrawable) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Aif.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+  }
 }
 
 

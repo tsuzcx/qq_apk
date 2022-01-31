@@ -1,32 +1,20 @@
+import android.widget.Button;
 import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class zd
   implements Runnable
 {
-  public zd(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public zd(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    try
+    String str = Utils.c(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity) != null))
     {
-      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        AuthDevVerifyCodeActivity.a(this.a).b(2131363564);
-        AuthDevVerifyCodeActivity.a(this.a).d(true);
-      }
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
-        AuthDevVerifyCodeActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setText(str);
+      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setEnabled(true);
     }
   }
 }

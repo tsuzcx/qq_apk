@@ -1,29 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.LBSHandler;
 
 public class awp
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public awp(NearbyActivity paramNearbyActivity, int paramInt) {}
+  public awp(NearbyActivity paramNearbyActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
-    {
-      paramAnimation = new Message();
-      paramAnimation.what = 1;
-      paramAnimation.arg1 = this.jdField_a_of_type_Int;
-      paramAnimation.arg2 = 1001;
-      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
-    }
+    com.tencent.mobileqq.activity.Leba.a = false;
+    NearbyActivity.a(this.a).a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

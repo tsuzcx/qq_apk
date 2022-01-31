@@ -1,24 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class efr
-  extends Handler
+  implements Runnable
 {
-  public efr(GroupSystemMsgController paramGroupSystemMsgController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public efr(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((GroupSystemMsgController.a(this.a)) && (GroupSystemMsgController.a(this.a) != null))
-    {
-      GroupSystemMsgController.a(this.a, false);
-      GroupSystemMsgController.a(this.a).a().a(3);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_friend_system_msg", this.jdField_a_of_type_Int).commit();
     }
   }
 }

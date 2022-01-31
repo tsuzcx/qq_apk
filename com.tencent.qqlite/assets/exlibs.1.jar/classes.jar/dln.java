@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 
 class dln
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  dln(dlm paramdlm) {}
+  dln(dll paramdll, View paramView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QfileBaseRecentFileTabView.a(this.a.a);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

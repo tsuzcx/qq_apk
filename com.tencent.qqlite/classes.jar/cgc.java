@@ -1,30 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class cgc
-  extends ContactBindObserver
+  implements DialogInterface.OnClickListener
 {
-  public cgc(BindNumberActivity paramBindNumberActivity) {}
+  public cgc(BaseActivityView paramBaseActivityView) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.b(paramBoolean);
-    BindNumberActivity localBindNumberActivity = this.a;
-    if (paramBoolean)
-    {
-      this.a.a.c();
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindNumberActivity.a(this.a));
-      BindNumberActivity.a(this.a, null);
-      return;
-      this.a.d();
-    }
+    this.a.f();
   }
 }
 

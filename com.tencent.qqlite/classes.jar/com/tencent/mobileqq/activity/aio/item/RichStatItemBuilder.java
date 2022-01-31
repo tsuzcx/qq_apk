@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bwq;
 import bwr;
 import bws;
-import bwt;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.ChatBackground;
@@ -131,7 +131,7 @@ public class RichStatItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramOnLongClickAndTouchListener = (MessageForRichState)paramMessageRecord;
-    paramLinearLayout = (bwt)paramViewHolder;
+    paramLinearLayout = (bws)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
@@ -207,7 +207,7 @@ public class RichStatItemBuilder
         break label842;
       }
       paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.MATRIX);
-      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bwr(this));
+      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bwq(this));
       paramLinearLayout.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap((Bitmap)paramViewHolder[0]);
     }
     label784:
@@ -251,7 +251,7 @@ public class RichStatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bwt(this);
+    return new bws(this);
   }
   
   public void a()
@@ -278,20 +278,20 @@ public class RichStatItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
-  void a(bwt parambwt, Bitmap paramBitmap, int paramInt)
+  void a(bws parambws, Bitmap paramBitmap, int paramInt)
   {
     if (paramBitmap == null) {
       return;
     }
     if (paramInt == 1)
     {
-      parambwt.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.MATRIX);
-      parambwt.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bws(this));
-      parambwt.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
+      parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.MATRIX);
+      parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setDisplayRuleDef(new bwr(this));
+      parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
       return;
     }
-    parambwt.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.FIT_START);
-    parambwt.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
+    parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setScaleType(ImageView.ScaleType.FIT_START);
+    parambws.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(paramBitmap);
   }
   
   public QQCustomMenuItem[] a(View paramView)

@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.GalleryManager;
 
 public class tr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tr(AbstractImageListScene paramAbstractImageListScene) {}
+  public tr(GalleryManager paramGalleryManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.k();
+    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
+    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
+    GalleryManager.a(this.a, true);
   }
 }
 

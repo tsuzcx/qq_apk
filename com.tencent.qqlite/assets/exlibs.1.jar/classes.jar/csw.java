@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.observer.AccountObserver;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class csw
-  extends AccountObserver
+  extends Handler
 {
-  public csw(FriendsManager paramFriendsManager) {}
-  
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public csw(FriendListHandler paramFriendListHandler, Looper paramLooper)
   {
-    ThreadManager.b(new csx(this, paramString2, paramString1));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FriendListHandler.a(this.a);
   }
 }
 

@@ -18,13 +18,13 @@ public class TroopListAdapter2$TroopListViewItemTag
   public TroopListAdapter2$TroopListViewItemTag(View paramView)
   {
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296453));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298917));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296851));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296854));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298866));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296847));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296850));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.c = ((ImageView)paramView.findViewById(2131298529));
+    this.c = ((ImageView)paramView.findViewById(2131298484));
     this.jdField_b_of_type_AndroidWidgetImageView.setClickable(false);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131298919));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131298868));
   }
 }
 

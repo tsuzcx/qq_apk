@@ -1,19 +1,22 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
 
-class ciz
-  implements Runnable
+public class ciz
+  extends Handler
 {
-  ciz(ciy paramciy) {}
+  public ciz(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ((PhotoListActivity.a(this.a.a)) && (this.a.a.a == null))
-    {
-      PhotoListActivity.a(this.a.a, false);
-      this.a.a.a = new cjc(this.a.a, null);
-      this.a.a.a.execute(new Object[0]);
+    if (-1 != paramMessage.what) {
+      return;
     }
+    paramMessage = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Int * 1.257D), (int)(this.b * 1.481D));
+    paramMessage.addRule(14);
+    paramMessage.topMargin = (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.a.getHeight() / 2 - (int)(this.b / 2 * 1.705D));
   }
 }
 

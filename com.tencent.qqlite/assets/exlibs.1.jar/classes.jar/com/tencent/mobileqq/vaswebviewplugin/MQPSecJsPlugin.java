@@ -193,7 +193,7 @@ public class MQPSecJsPlugin
       }
       this.smsContent = new SmsContent(null);
       this.smsContent.a(this.activity, this);
-      ((TextView)this.activity.findViewById(2131296901)).setOnClickListener(new MQPSecJsPlugin.1(this));
+      ((TextView)this.activity.findViewById(2131296897)).setOnClickListener(new MQPSecJsPlugin.1(this));
     }
     label166:
     while ((l & 0x200000) == 0L) {

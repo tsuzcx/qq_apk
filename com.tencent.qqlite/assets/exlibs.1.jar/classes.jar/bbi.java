@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.CardObserver;
 
-public class bbi
-  extends CardObserver
+class bbi
+  implements Runnable
 {
-  public bbi(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  bbi(bbh parambbh, int paramInt) {}
   
-  protected void onImpeach(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Bbh.a.b(2131363384, 2);
     }
-    this.a.h();
-    if (paramBoolean)
+    do
     {
-      this.a.a(2131363020, 2);
       return;
-    }
-    this.a.a(2131363019, 1);
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_Bbh.a.b(2131361796, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != -1);
+    this.jdField_a_of_type_Bbh.a.b(2131361795, 1);
   }
 }
 

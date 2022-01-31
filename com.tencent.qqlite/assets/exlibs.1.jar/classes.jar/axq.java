@@ -1,6 +1,6 @@
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 
 public class axq

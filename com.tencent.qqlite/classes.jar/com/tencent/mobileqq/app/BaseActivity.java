@@ -55,9 +55,9 @@ import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import cooperation.qqfav.widget.QfavJumpActivity;
-import cpv;
-import cpw;
-import cpx;
+import cqb;
+import cqc;
+import cqd;
 import java.io.File;
 import java.lang.reflect.Field;
 import mqq.app.AppActivity;
@@ -131,11 +131,6 @@ public class BaseActivity
     return false;
   }
   
-  public String a_()
-  {
-    return getString(2131363110);
-  }
-  
   public void addObserver(BusinessObserver paramBusinessObserver)
   {
     if (this.app != null) {
@@ -188,6 +183,11 @@ public class BaseActivity
   protected boolean b()
   {
     return true;
+  }
+  
+  public String b_()
+  {
+    return getString(2131363113);
   }
   
   public void b_() {}
@@ -280,14 +280,14 @@ public class BaseActivity
     }
     if (!jdField_a_of_type_Boolean)
     {
-      if (SettingCloneUtil.readValue(this, null, getString(2131363051), "qqsetting_screenshot_key", false)) {
+      if (SettingCloneUtil.readValue(this, null, getString(2131363054), "qqsetting_screenshot_key", false)) {
         turnOnShake();
       }
       jdField_a_of_type_Boolean = true;
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cpx(this, null);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cqd(this, null);
     try
     {
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
@@ -639,7 +639,7 @@ public class BaseActivity
     }
     String str = paramIntent.getStringExtra("selfSet_leftViewText");
     if (TextUtils.isEmpty(str)) {
-      paramIntent.putExtra("leftViewText", a_());
+      paramIntent.putExtra("leftViewText", b_());
     }
     for (;;)
     {
@@ -695,7 +695,7 @@ public class BaseActivity
   
   public void turnOnShake()
   {
-    ThreadManager.b().post(new cpv(this));
+    ThreadManager.b().post(new cqb(this));
   }
   
   public void w()
@@ -705,7 +705,7 @@ public class BaseActivity
     }
     startActivity(new Intent(getActivity(), GesturePWDUnlockActivity.class));
     u = true;
-    new Handler().postDelayed(new cpw(this), 1000L);
+    new Handler().postDelayed(new cqc(this), 1000L);
   }
 }
 

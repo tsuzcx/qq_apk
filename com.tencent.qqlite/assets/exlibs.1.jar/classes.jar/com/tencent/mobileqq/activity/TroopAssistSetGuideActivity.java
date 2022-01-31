@@ -8,8 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import blr;
-import bls;
+import blp;
+import blq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -24,7 +24,7 @@ public class TroopAssistSetGuideActivity
 {
   public static final String a = "troop_uin";
   public static final String b = "troop_name";
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new blr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new blp(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -35,8 +35,8 @@ public class TroopAssistSetGuideActivity
   private void d()
   {
     setTitle(this.d);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298951));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298953));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298900));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298902));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
     if (!TextUtils.isEmpty(this.c))
     {
@@ -45,8 +45,8 @@ public class TroopAssistSetGuideActivity
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298956));
-    this.b = ((Button)findViewById(2131298955));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298905));
+    this.b = ((Button)findViewById(2131298904));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     c();
@@ -91,21 +91,21 @@ public class TroopAssistSetGuideActivity
         if (i <= 99) {
           break label76;
         }
-        this.h.setText(getString(2131362946) + "(" + "99+" + ")");
+        this.h.setText(getString(2131362950) + "(" + "99+" + ")");
       }
     }
     return;
     label76:
-    this.h.setText(getString(2131362946) + "(" + i + ")");
+    this.h.setText(getString(2131362950) + "(" + i + ")");
     return;
     label117:
-    this.h.setText(getString(2131362946));
+    this.h.setText(getString(2131362950));
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903702);
+    setContentView(2130903685);
     paramBundle = getIntent();
     if (paramBundle != null)
     {
@@ -126,7 +126,7 @@ public class TroopAssistSetGuideActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new bls(this));
+      runOnUiThread(new blq(this));
     }
   }
 }

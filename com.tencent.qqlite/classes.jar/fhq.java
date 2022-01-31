@@ -1,21 +1,25 @@
-import com.tencent.widget.AdapterView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.widget.ActionSheet;
 
-public class fhq
-  implements Runnable
+class fhq
+  implements Animation.AnimationListener
 {
-  private fhq(AdapterView paramAdapterView) {}
+  fhq(fhp paramfhp) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.q)
+    try
     {
-      if (this.a.a() != null) {
-        this.a.post(this);
-      }
+      ActionSheet.b(this.a.a);
       return;
     }
-    AdapterView.b(this.a);
+    catch (Exception paramAnimation) {}
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

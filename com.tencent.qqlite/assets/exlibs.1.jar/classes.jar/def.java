@@ -1,34 +1,14 @@
-import android.view.ViewParent;
-import com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 
 public class def
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  
-  public def(ClassicEmoticonPanelView paramClassicEmoticonPanelView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = ClassicEmoticonPanelView.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView);
-  }
+  public def(BigEmoticonViewBinder paramBigEmoticonViewBinder, ProgressBar paramProgressBar, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.getParent() != null) && (this.jdField_a_of_type_Int == ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b != -1) && (ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView) != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.sendAccessibilityEvent(2);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b == 20)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.jdField_a_of_type_JavaLangRunnable.run();
-        return;
-      }
-      ClassicEmoticonPanelView.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewClassicEmoticonPanelView.b = -1;
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(this.jdField_a_of_type_Int);
   }
 }
 

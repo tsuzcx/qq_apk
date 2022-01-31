@@ -41,11 +41,11 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
+import od;
+import of;
 import oh;
+import oi;
 import oj;
-import ol;
-import om;
-import on;
 
 public class PublicAccountManager
 {
@@ -88,8 +88,8 @@ public class PublicAccountManager
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
     this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_JavaLangRunnable = new om(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new on(this);
+    this.jdField_a_of_type_JavaLangRunnable = new oi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new oj(this);
   }
   
   public static int a(String paramString, AppInterface paramAppInterface)
@@ -167,7 +167,7 @@ public class PublicAccountManager
       localIntent.putExtra("url", paramButtonInfo.toString());
       localIntent.putExtra("uin", paramQQAppInterface.a());
       localIntent.putExtra("puin", paramString);
-      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363110));
+      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363113));
       if (paramString.equalsIgnoreCase("2632129500")) {
         localIntent.putExtra("hide_operation_bar", true);
       }
@@ -194,7 +194,7 @@ public class PublicAccountManager
     localIntent.putExtra("click_from", paramString3);
     localIntent.putExtra("uin", paramQQAppInterface.a());
     localIntent.putExtra("puin", paramString2);
-    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363110));
+    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363113));
     paramContext.startActivity(localIntent);
   }
   
@@ -340,7 +340,7 @@ public class PublicAccountManager
       paramContext.seqno.set(i1);
       paramContext.uin.set((int)l1);
       localNewIntent.putExtra("data", paramContext.toByteArray());
-      localNewIntent.setObserver(new oj(this, localNewIntent, paramQQAppInterface, paramString, paramBusinessObserver));
+      localNewIntent.setObserver(new of(this, localNewIntent, paramQQAppInterface, paramString, paramBusinessObserver));
       paramContext = localNewIntent;
     } while (paramQQAppInterface == null);
     paramQQAppInterface.startServlet(localNewIntent);
@@ -360,7 +360,7 @@ public class PublicAccountManager
       a();
     }
     this.s = paramString1;
-    ThreadManager.b(new oh(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
+    ThreadManager.b(new od(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver)
@@ -381,7 +381,7 @@ public class PublicAccountManager
         localSendMenuEventRequest.longitude.set(paramDouble2);
       }
       localNewIntent.putExtra("data", localSendMenuEventRequest.toByteArray());
-      localNewIntent.setObserver(new ol(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
+      localNewIntent.setObserver(new oh(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
       if (paramQQAppInterface != null) {
         paramQQAppInterface.startServlet(localNewIntent);
       }

@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.util.file.SendInfo;
-
 public final class dx
-  implements Parcelable.Creator
 {
-  public SendInfo a(Parcel paramParcel)
+  private final byte[] a;
+  private final byte[] b;
+  
+  public dx(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return new SendInfo(paramParcel, null);
+    this.a = paramArrayOfByte1;
+    this.b = paramArrayOfByte2;
   }
   
-  public SendInfo[] a(int paramInt)
+  public byte[] a()
   {
-    return new SendInfo[paramInt];
+    return this.a;
+  }
+  
+  public byte[] b()
+  {
+    return this.b;
   }
 }
 

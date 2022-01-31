@@ -23,11 +23,11 @@ public class HttpContinueDownloadFileProcessor
   extends BaseTransProcessor
   implements IHttpCommunicatorListener
 {
-  private static final long jdField_a_of_type_Long = 50L;
   private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[^\\d]*(\\d+)\\-(\\d+)/(\\d+)[^\\d]*");
   private static final int ao = 100;
   private static final String jdField_c_of_type_JavaLangString = HttpContinueDownloadFileProcessor.class.getSimpleName();
   private static final String jdField_d_of_type_JavaLangString = "http://i.gtimg.cn";
+  private long jdField_a_of_type_Long;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private long jdField_b_of_type_Long;
@@ -38,8 +38,7 @@ public class HttpContinueDownloadFileProcessor
   private Map e = new HashMap();
   private Map f = new HashMap();
   private long h;
-  private long i;
-  private long j = -1L;
+  private long i = -1L;
   
   public HttpContinueDownloadFileProcessor(String paramString1, String paramString2, long paramLong, TransFileController paramTransFileController)
   {
@@ -55,9 +54,9 @@ public class HttpContinueDownloadFileProcessor
     if (paramLong % 2048L == 0L) {}
     for (paramLong /= 2048L;; paramLong = paramLong / 2048L + 1L)
     {
-      this.jdField_b_of_type_Long = (paramLong / 100L);
+      this.jdField_a_of_type_Long = (paramLong / 100L);
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeDownloadTrace", 2, "perPkgNum is:" + this.jdField_b_of_type_Long);
+        QLog.d("ThemeDownloadTrace", 2, "perPkgNum is:" + this.jdField_a_of_type_Long);
       }
       return;
     }
@@ -85,22 +84,22 @@ public class HttpContinueDownloadFileProcessor
     for (String str1 = "report_theme_file_download";; str1 = "report_copycat_theme_file_download")
     {
       HashMap localHashMap = new HashMap();
-      int m = this.aw;
+      int k = this.aw;
       String str3 = this.L;
       String str2 = str3;
-      int k = m;
+      int j = k;
       if (paramException != null)
       {
         str2 = str3;
-        k = m;
+        j = k;
         if ((paramException instanceof HttpContinueDownloadFileProcessor.ThemeDownloadException))
         {
           paramException = (HttpContinueDownloadFileProcessor.ThemeDownloadException)paramException;
-          k = HttpContinueDownloadFileProcessor.ThemeDownloadException.access$000(paramException);
+          j = HttpContinueDownloadFileProcessor.ThemeDownloadException.access$000(paramException);
           str2 = paramException.getMessage();
         }
       }
-      localHashMap.put("param_FailCode", String.valueOf(k));
+      localHashMap.put("param_FailCode", String.valueOf(j));
       localHashMap.put("param_FailMsg", str2);
       localHashMap.put("theme_url", this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.k);
       StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), str1, false, 0L, 0L, localHashMap, "");
@@ -135,17 +134,17 @@ public class HttpContinueDownloadFileProcessor
       localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
       localObject1 = localObject2;
     } while (!localMatcher.matches());
-    int m = localMatcher.groupCount();
-    paramString = new long[m];
-    int k = 1;
+    int k = localMatcher.groupCount();
+    paramString = new long[k];
+    int j = 1;
     for (;;)
     {
       localObject1 = paramString;
-      if (k > m) {
+      if (j > k) {
         break;
       }
-      paramString[(k - 1)] = Long.parseLong(localMatcher.group(k));
-      k += 1;
+      paramString[(j - 1)] = Long.parseLong(localMatcher.group(j));
+      j += 1;
     }
   }
   
@@ -161,14 +160,14 @@ public class HttpContinueDownloadFileProcessor
         paramString1 = paramString1.listFiles();
         if (paramString1.length > 0)
         {
-          int k = 0;
-          while (k < paramString1.length)
+          int j = 0;
+          while (j < paramString1.length)
           {
-            String str = paramString1[k].getName();
+            String str = paramString1[j].getName();
             if ((str.startsWith(paramString2)) && (str.endsWith(".tmp"))) {
-              paramString1[k].delete();
+              paramString1[j].delete();
             }
-            k += 1;
+            j += 1;
           }
         }
       }
@@ -272,7 +271,7 @@ public class HttpContinueDownloadFileProcessor
       }
       try
       {
-        if (this.j != -1L) {
+        if (this.i != -1L) {
           break label504;
         }
         if (paramHttpMsg2.c() != 206) {
@@ -295,20 +294,20 @@ public class HttpContinueDownloadFileProcessor
         throw new HttpContinueDownloadFileProcessor.ThemeDownloadException(89066, "fileSize not equal content length,content length is:" + localObject3[2] + ",fileSize is:" + this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long);
       }
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream = new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString + ".tmp", true));
-      this.j = (localObject3[2] - localObject3[0]);
+      this.i = (localObject3[2] - localObject3[0]);
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeDownloadTrace", 2, "totalLen is:" + this.j);
+        QLog.d("ThemeDownloadTrace", 2, "totalLen is:" + this.i);
       }
       label504:
       Object localObject2 = paramHttpMsg2.a();
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream.write((byte[])localObject2);
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
       ((FileMsg)localObject2).jdField_e_of_type_Long += paramHttpMsg2.a().length;
-      this.i += paramHttpMsg2.a().length;
+      this.h += paramHttpMsg2.a().length;
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeDownloadTrace", 2, "thisTimeReadByteNum is:" + this.i + ",totalLen is:" + this.j);
+        QLog.d("ThemeDownloadTrace", 2, "thisTimeReadByteNum is:" + this.h + ",totalLen is:" + this.i);
       }
-      if (this.i == this.j)
+      if (this.h == this.i)
       {
         a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream);
         paramHttpMsg2 = new File(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString);
@@ -326,31 +325,31 @@ public class HttpContinueDownloadFileProcessor
         return;
         label721:
         this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_Long = 0L;
-        this.j = paramHttpMsg2.a();
-        if (this.j != this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long) {
-          throw new HttpContinueDownloadFileProcessor.ThemeDownloadException(89066, "fileSize not equal content length,content length is:" + this.j + ",fileSize is:" + this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long);
+        this.i = paramHttpMsg2.a();
+        if (this.i != this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long) {
+          throw new HttpContinueDownloadFileProcessor.ThemeDownloadException(89066, "fileSize not equal content length,content length is:" + this.i + ",fileSize is:" + this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long);
         }
         this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream = new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString + ".tmp", false));
         break;
         throw new HttpContinueDownloadFileProcessor.ThemeDownloadException(89067, "rename file failed,file path is:" + this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString);
-        if (this.i > this.j)
+        if (this.h > this.i)
         {
           a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream);
           this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoFile.delete();
           if (QLog.isColorLevel()) {
-            QLog.d("ThemeDownloadTrace", 2, "thisTimeReadByteNum less than totalLen,thisTimeReadByteNum is:" + this.i + ",totalLen is:" + this.j);
+            QLog.d("ThemeDownloadTrace", 2, "thisTimeReadByteNum less than totalLen,thisTimeReadByteNum is:" + this.h + ",totalLen is:" + this.i);
           }
-          throw new HttpContinueDownloadFileProcessor.ThemeDownloadException(89068, "data that server send is wrong,thisTimeReadByteNum is:" + this.i + ",thisTimeTotalByteNum is:" + this.j);
+          throw new HttpContinueDownloadFileProcessor.ThemeDownloadException(89068, "data that server send is wrong,thisTimeReadByteNum is:" + this.h + ",thisTimeTotalByteNum is:" + this.i);
         }
-        if (this.jdField_b_of_type_Long < 2L)
+        if (this.jdField_a_of_type_Long < 2L)
         {
           this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream.flush();
           f();
         }
         else
         {
-          this.h += 1L;
-          if (this.h >= this.jdField_b_of_type_Long)
+          this.jdField_b_of_type_Long += 1L;
+          if (this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)
           {
             this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_JavaIoOutputStream.flush();
             f();

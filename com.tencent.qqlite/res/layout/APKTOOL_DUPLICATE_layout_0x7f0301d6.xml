@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907da" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204d8" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_centerVertical="true">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="45.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0907dc" android:layout_centerVertical="true">
-            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907dd" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飞翔的秋秋" android:singleLine="true" />
-            <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907e9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="一条为接听电话" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0907ea" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0907dd" />
-        </RelativeLayout>
-        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="下午 10:10" android:layout_alignParentRight="true" />
-            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907e1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0907de" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0907de" />
-        </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f090375" android:visibility="visible" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005b" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090538" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

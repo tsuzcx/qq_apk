@@ -22,10 +22,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
-import rc;
-import rd;
-import re;
-import rf;
+import qy;
+import qz;
+import ra;
+import rb;
 
 public class TroopMemberApiService
   extends AppService
@@ -43,12 +43,13 @@ public class TroopMemberApiService
   public static final int i = 9;
   public static final int j = 11;
   public static final int k = 12;
-  public static final int l = 1;
-  public static final int m = 2;
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new rf(this));
+  public static final int l = 13;
+  public static final int m = 1;
+  public static final int n = 2;
+  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new rb(this));
   QQMusicService jdField_a_of_type_ComTencentBizApiproxyQQMusicService;
   public BizTroopHandler a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new rc(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new qy(this);
   public FriendListObserver a;
   public LBSHandler a;
   public LBSObserver a;
@@ -57,8 +58,8 @@ public class TroopMemberApiService
   
   public TroopMemberApiService()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new rd(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new re(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new qz(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ra(this);
   }
   
   /* Error */
@@ -71,36 +72,36 @@ public class TroopMemberApiService
     //   4: astore_2
     //   5: aconst_null
     //   6: aload_1
-    //   7: invokestatic 84	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   7: invokestatic 86	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   10: astore_3
     //   11: aload_3
     //   12: ifnull +140 -> 152
-    //   15: new 86	java/io/ByteArrayOutputStream
+    //   15: new 88	java/io/ByteArrayOutputStream
     //   18: dup
-    //   19: invokespecial 87	java/io/ByteArrayOutputStream:<init>	()V
+    //   19: invokespecial 89	java/io/ByteArrayOutputStream:<init>	()V
     //   22: astore_2
     //   23: aload_2
     //   24: astore_1
     //   25: aload_3
-    //   26: getstatic 93	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   26: getstatic 95	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   29: bipush 60
     //   31: aload_2
-    //   32: invokevirtual 99	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   32: invokevirtual 101	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   35: pop
     //   36: aload_2
     //   37: astore_1
     //   38: aload_2
-    //   39: invokevirtual 102	java/io/ByteArrayOutputStream:flush	()V
+    //   39: invokevirtual 104	java/io/ByteArrayOutputStream:flush	()V
     //   42: aload_2
     //   43: astore_1
     //   44: aload_2
-    //   45: invokevirtual 105	java/io/ByteArrayOutputStream:close	()V
+    //   45: invokevirtual 107	java/io/ByteArrayOutputStream:close	()V
     //   48: aload_2
     //   49: astore_1
     //   50: aload_2
-    //   51: invokevirtual 109	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   51: invokevirtual 111	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   54: iconst_0
-    //   55: invokestatic 115	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   55: invokestatic 117	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
     //   58: astore_3
     //   59: aload_3
     //   60: astore_1
@@ -109,16 +110,16 @@ public class TroopMemberApiService
     //   63: aload_2
     //   64: ifnull +13 -> 77
     //   67: aload_2
-    //   68: invokevirtual 102	java/io/ByteArrayOutputStream:flush	()V
+    //   68: invokevirtual 104	java/io/ByteArrayOutputStream:flush	()V
     //   71: aload_2
-    //   72: invokevirtual 105	java/io/ByteArrayOutputStream:close	()V
+    //   72: invokevirtual 107	java/io/ByteArrayOutputStream:close	()V
     //   75: aload_1
     //   76: astore_3
     //   77: aload_3
     //   78: areturn
     //   79: astore_2
     //   80: aload_2
-    //   81: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   81: invokevirtual 120	java/io/IOException:printStackTrace	()V
     //   84: aload_1
     //   85: areturn
     //   86: astore_3
@@ -127,20 +128,20 @@ public class TroopMemberApiService
     //   89: aload_2
     //   90: astore_1
     //   91: aload_3
-    //   92: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   92: invokevirtual 120	java/io/IOException:printStackTrace	()V
     //   95: aload 4
     //   97: astore_3
     //   98: aload_2
     //   99: ifnull -22 -> 77
     //   102: aload_2
-    //   103: invokevirtual 102	java/io/ByteArrayOutputStream:flush	()V
+    //   103: invokevirtual 104	java/io/ByteArrayOutputStream:flush	()V
     //   106: aload_2
-    //   107: invokevirtual 105	java/io/ByteArrayOutputStream:close	()V
+    //   107: invokevirtual 107	java/io/ByteArrayOutputStream:close	()V
     //   110: aconst_null
     //   111: areturn
     //   112: astore_1
     //   113: aload_1
-    //   114: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   114: invokevirtual 120	java/io/IOException:printStackTrace	()V
     //   117: aconst_null
     //   118: areturn
     //   119: astore_2
@@ -149,14 +150,14 @@ public class TroopMemberApiService
     //   122: aload_1
     //   123: ifnull +11 -> 134
     //   126: aload_1
-    //   127: invokevirtual 102	java/io/ByteArrayOutputStream:flush	()V
+    //   127: invokevirtual 104	java/io/ByteArrayOutputStream:flush	()V
     //   130: aload_1
-    //   131: invokevirtual 105	java/io/ByteArrayOutputStream:close	()V
+    //   131: invokevirtual 107	java/io/ByteArrayOutputStream:close	()V
     //   134: aload_2
     //   135: athrow
     //   136: astore_1
     //   137: aload_1
-    //   138: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   138: invokevirtual 120	java/io/IOException:printStackTrace	()V
     //   141: goto -7 -> 134
     //   144: astore_2
     //   145: goto -23 -> 122

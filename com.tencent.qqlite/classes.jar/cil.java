@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-
 public class cil
-  implements DialogInterface.OnDismissListener
 {
-  public cil(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public int a;
+  public byte[] a;
+  public int b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private cil(int paramInt)
   {
-    this.a.a = null;
+    this.a = new byte[paramInt];
   }
 }
 

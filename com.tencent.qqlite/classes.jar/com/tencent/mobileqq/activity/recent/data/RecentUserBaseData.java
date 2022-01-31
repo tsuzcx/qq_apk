@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import android.content.Context;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
 public abstract class RecentUserBaseData
@@ -19,6 +21,13 @@ public abstract class RecentUserBaseData
     switch (this.a.type)
     {
     }
+    this.A &= 0xFFFFFF0F;
+    if (this.a.showUpTime == 0L)
+    {
+      this.A |= 0x10;
+      return;
+    }
+    this.A |= 0x20;
   }
   
   public int a()
@@ -39,6 +48,17 @@ public abstract class RecentUserBaseData
   public String a()
   {
     return this.a.uin;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    this.A &= 0xFFFFFF0F;
+    if (this.a.showUpTime == 0L)
+    {
+      this.A |= 0x10;
+      return;
+    }
+    this.A |= 0x20;
   }
   
   public void a(RecentUser paramRecentUser)

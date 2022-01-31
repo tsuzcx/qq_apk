@@ -9,8 +9,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import ell;
-import elm;
+import elq;
+import elr;
 
 public class TroopLocationModifyActivity
   extends TroopCreateMapViewSupportActivity
@@ -45,7 +45,7 @@ public class TroopLocationModifyActivity
     if (this.jdField_a_of_type_Long == 0L) {
       return;
     }
-    d(getString(2131363809));
+    d(getString(2131363800));
     Intent localIntent = new Intent(this, TroopCreateLogicActivity.class);
     localIntent.putExtra("type", 5);
     localIntent.putExtra("troop_location", paramString);
@@ -87,7 +87,7 @@ public class TroopLocationModifyActivity
     }
     if (!NetworkUtil.e(this))
     {
-      QQToast.a(this, 2131362912, 0).b(getTitleBarHeight());
+      QQToast.a(this, 2131362916, 0).b(getTitleBarHeight());
       return;
     }
     if (TextUtils.isEmpty(paramString))
@@ -101,7 +101,7 @@ public class TroopLocationModifyActivity
   public void b(String paramString)
   {
     if (!NetworkUtil.e(this)) {
-      QQToast.a(this, 2131362912, 0).b(getTitleBarHeight());
+      QQToast.a(this, 2131362916, 0).b(getTitleBarHeight());
     }
     while (TextUtils.isEmpty(paramString)) {
       return;
@@ -130,7 +130,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131363812, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131363803, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -141,20 +141,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131363810, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131363801, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131363814);
+      str = getString(2131363805);
     }
     for (;;)
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131363813);
+        str = getString(2131363804);
       } else {
-        str = getString(2131363811);
+        str = getString(2131363802);
       }
     }
   }
@@ -178,11 +178,11 @@ public class TroopLocationModifyActivity
   {
     y();
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
-    localActionSheet.a(2131363807);
-    localActionSheet.a(2131363808, 3);
-    localActionSheet.d(2131362790);
-    localActionSheet.setOnDismissListener(new ell(this));
-    localActionSheet.a(new elm(this));
+    localActionSheet.a(2131363798);
+    localActionSheet.a(2131363799, 3);
+    localActionSheet.d(2131362794);
+    localActionSheet.setOnDismissListener(new elq(this));
+    localActionSheet.a(new elr(this));
     this.b = localActionSheet;
     this.b.show();
   }

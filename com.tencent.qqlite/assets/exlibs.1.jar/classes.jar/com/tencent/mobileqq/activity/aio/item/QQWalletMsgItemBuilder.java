@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
@@ -16,10 +15,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bwq;
+import bwp;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
@@ -34,6 +31,7 @@ import com.tencent.mobileqq.data.QQWalletTransferMsg.QQWalletTransferMsgElem;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class QQWalletMsgItemBuilder
   extends BaseBubbleBuilder
@@ -58,7 +56,7 @@ public class QQWalletMsgItemBuilder
   public QQWalletMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.b = paramContext.getString(2131362771);
+    this.b = paramContext.getString(2131362776);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.l = ((int)(222.0F * f1 + 0.5F));
     this.m = ((int)(42.0F * f1 + 0.5F));
@@ -75,11 +73,11 @@ public class QQWalletMsgItemBuilder
     switch (paramInt)
     {
     default: 
-      return 2130839043;
+      return 2130839014;
     case 2: 
-      return 2130839040;
+      return 2130839011;
     }
-    return 2130839044;
+    return 2130839015;
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -89,7 +87,7 @@ public class QQWalletMsgItemBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramView = (bwq)paramViewHolder;
+    paramView = (bwp)paramViewHolder;
     if ((paramView.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramView.jdField_a_of_type_Long == paramChatMessage.uniseq)) {
       return paramView.jdField_a_of_type_AndroidWidgetRelativeLayout;
     }
@@ -124,7 +122,7 @@ public class QQWalletMsgItemBuilder
       if (!paramChatMessage.isSend())
       {
         bool = true;
-        localQQWalletTransferBubbleView.setBubbleBackground(2130839041, 0xFF000000 | i1, bool);
+        localQQWalletTransferBubbleView.setBubbleBackground(2130839012, 0xFF000000 | i1, bool);
         if (TextUtils.isEmpty(localQQWalletTransferMsgElem.blackStripe)) {
           break label427;
         }
@@ -195,7 +193,7 @@ public class QQWalletMsgItemBuilder
     localObject2 = new RelativeLayout.LayoutParams(this.l, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(3, 100001);
     ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((RelativeLayout)localObject1).setBackgroundResource(2130839042);
+    ((RelativeLayout)localObject1).setBackgroundResource(2130839013);
     ((RelativeLayout)localObject1).setId(100005);
     paramContext = new TextView(paramContext);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
@@ -228,7 +226,7 @@ public class QQWalletMsgItemBuilder
     localLayoutParams.addRule(14);
     paramContext.setLayoutParams(localLayoutParams);
     paramContext.setTextColor(-1);
-    paramContext.setBackgroundResource(2130838636);
+    paramContext.setBackgroundResource(2130838612);
     paramContext.setPadding(this.q, this.s, this.q, 0);
     paramContext.setClickable(false);
     paramContext.setVisibility(8);
@@ -242,7 +240,7 @@ public class QQWalletMsgItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new bwq(this, null);
+    return new bwp(this, null);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -269,17 +267,10 @@ public class QQWalletMsgItemBuilder
   
   public void onClick(View paramView)
   {
-    if (super.a()) {}
-    MessageForQQWalletMsg localMessageForQQWalletMsg;
-    do
-    {
+    if (super.a()) {
       return;
-      localMessageForQQWalletMsg = (MessageForQQWalletMsg)((bwq)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    } while ((localMessageForQQWalletMsg == null) || (localMessageForQQWalletMsg.mQQWalletTransferMsg == null) || (localMessageForQQWalletMsg.mQQWalletTransferMsg.elem == null) || (TextUtils.isEmpty(localMessageForQQWalletMsg.mQQWalletTransferMsg.elem.linkUrl)));
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", localMessageForQQWalletMsg.mQQWalletTransferMsg.elem.linkUrl);
-    paramView.getContext().startActivity(localIntent);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "transferaccountmsg", "click", 0, 0, "" + localMessageForQQWalletMsg.mQQWalletTransferMsg.templateId, "", "", "");
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131364486, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
   }
 }
 

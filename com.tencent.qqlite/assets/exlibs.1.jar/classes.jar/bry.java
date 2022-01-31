@@ -1,40 +1,32 @@
 import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bry
-  extends ContactBindObserver
+  implements Runnable
 {
   public bry(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
-    }
-    VerifyPhoneNumActivity.b(this.a);
-    VerifyPhoneNumActivity.e(this.a);
-    VerifyPhoneNumActivity.b(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.c();
-    if (paramBoolean1)
+    try
     {
-      if (paramBoolean2)
+      if ((VerifyPhoneNumActivity.a(this.a) == null) && (!this.a.isFinishing()))
       {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.d(this.a);
-        return;
+        VerifyPhoneNumActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        VerifyPhoneNumActivity.a(this.a).b(2131363558);
       }
-      VerifyPhoneNumActivity.d(this.a);
+      if ((VerifyPhoneNumActivity.a(this.a) != null) && (!VerifyPhoneNumActivity.a(this.a).isShowing())) {
+        VerifyPhoneNumActivity.a(this.a).show();
+      }
       return;
     }
-    VerifyPhoneNumActivity.d(this.a);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

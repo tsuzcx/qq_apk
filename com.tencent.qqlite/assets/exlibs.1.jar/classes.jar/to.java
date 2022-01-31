@@ -1,23 +1,15 @@
-import android.view.animation.Animation;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
 public class to
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public to(AbstractGalleryScene paramAbstractGalleryScene) {}
+  public to(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.a().b();
-    this.a.a.a().a();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().c();
+    this.a.l();
   }
 }
 

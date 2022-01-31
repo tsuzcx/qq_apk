@@ -1,17 +1,21 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import android.view.SurfaceHolder;
 import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
 
 public class erb
-  implements MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
   public erb(VideoViewX paramVideoViewX) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).i();
+    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
+    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
+    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
+    {
+      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
+      this.a.requestLayout();
     }
   }
 }

@@ -1,21 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.ImageCreator;
+import com.tencent.mobileqq.util.ImageWorker;
 
-public final class ese
-  implements Runnable
+public class ese
+  implements ImageCreator
 {
-  public ese(String paramString) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public ese(ImageWorker paramImageWorker, String paramString)
   {
-    File localFile = new File(this.a);
-    if ((localFile.exists()) && (localFile.isFile()))
-    {
-      boolean bool = localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,15 +1,23 @@
-import com.qq.jce.wup.UniAttribute;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class edt
-  implements Runnable
+public class edt
+  extends Handler
 {
-  public edt(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
+  public edt(AppLaucherHelper paramAppLaucherHelper) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 0)
+    {
+      AppLaucherHelper.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
+      }
+    }
   }
 }
 

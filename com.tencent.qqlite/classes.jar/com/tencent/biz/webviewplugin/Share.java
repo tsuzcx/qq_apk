@@ -43,12 +43,12 @@ import java.util.List;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
+import sg;
+import si;
 import sk;
-import sm;
-import so;
+import sl;
+import sn;
 import sp;
-import sr;
-import st;
 
 public class Share
   implements View.OnClickListener
@@ -96,8 +96,8 @@ public class Share
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = null;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new sr(this);
-    this.jdField_a_of_type_AndroidOsHandler = new st(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new sn(this);
+    this.jdField_a_of_type_AndroidOsHandler = new sp(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.k = paramAppInterface.getAccount();
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
@@ -203,7 +203,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("3.3.0");
+    localGetAppinfoRequest.qqv.set("3.4.0");
     localGetAppinfoRequest.setHasFlag(true);
     paramContext = new NewIntent(paramContext, ProtoServlet.class);
     paramContext.putExtra("uin", paramString);
@@ -239,7 +239,7 @@ public class Share
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363764);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363756);
     }
     return this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   }
@@ -267,7 +267,7 @@ public class Share
     if (paramInt == 1) {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity instanceof PublicAccountBrowser))
       {
-        str5 = ((PublicAccountBrowser)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).b_();
+        str5 = ((PublicAccountBrowser)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).a_();
         localResources = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources();
         str4 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getIntent().getStringExtra("source_name");
         if ((TextUtils.isEmpty(str5)) || (TextUtils.isEmpty(str4)))
@@ -276,7 +276,7 @@ public class Share
           str1 = null;
           str2 = null;
           str3 = null;
-          str4 = localResources.getString(2131362470);
+          str4 = localResources.getString(2131362467);
           localQQBrowserActivity = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity;
           if (!TextUtils.isEmpty(paramString4)) {
             break label220;
@@ -286,7 +286,7 @@ public class Share
             break label223;
           }
           paramString2 = paramString3;
-          ShareMsgHelper.a(localQQBrowserActivity, 1001, 1, "web_share", str5, paramString4, paramString1, paramString2, String.format(localResources.getString(2131362471), new Object[] { paramString1 }), paramString3, "web", null, null, null, paramBitmap, null, str1, str2, str3, str4, null);
+          ShareMsgHelper.a(localQQBrowserActivity, 1001, 1, "web_share", str5, paramString4, paramString1, paramString2, String.format(localResources.getString(2131362468), new Object[] { paramString1 }), paramString3, "web", null, null, null, paramBitmap, null, str1, str2, str3, str4, null);
         }
       }
     }
@@ -318,7 +318,7 @@ public class Share
       }
       for (;;)
       {
-        ShareMsgHelper.a(paramBitmap, 1001, 1, "web_share", "", paramString4, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getString(2131362471, new Object[] { paramString1 }), paramString3, "web", null, null, null, " ", null, null, null, null, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getString(2131362470), null);
+        ShareMsgHelper.a(paramBitmap, 1001, 1, "web_share", "", paramString4, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getString(2131362468, new Object[] { paramString1 }), paramString3, "web", null, null, null, " ", null, null, null, null, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getString(2131362467), null);
         return;
         break;
       }
@@ -326,7 +326,7 @@ public class Share
     label321:
     if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new so(this);
+      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new sk(this);
       WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
     }
     this.l = String.valueOf(System.currentTimeMillis());
@@ -481,15 +481,15 @@ public class Share
   {
     if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity))
     {
-      QRUtils.a(1, 2131363515);
+      QRUtils.a(1, 2131363516);
       return false;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131363765);
+      QRUtils.a(1, 2131363757);
       return false;
     }
-    a().b(2131363764);
+    a().b(2131363756);
     Bitmap localBitmap;
     boolean bool1;
     label88:
@@ -522,7 +522,7 @@ public class Share
         break label210;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      new sk(this, bool1, paramString, bool2, bool3, localBitmap, paramInt).start();
+      new sg(this, bool1, paramString, bool2, bool3, localBitmap, paramInt).start();
       return true;
       localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       break;
@@ -544,7 +544,7 @@ public class Share
     }
     label255:
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    new sm(this, paramString, paramBoolean, localBitmap, paramInt).start();
+    new si(this, paramString, paramBoolean, localBitmap, paramInt).start();
     return true;
   }
   
@@ -565,18 +565,18 @@ public class Share
   {
     if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity))
     {
-      QRUtils.a(1, 2131363515);
+      QRUtils.a(1, 2131363516);
       return false;
     }
     if (TextUtils.isEmpty(paramString4))
     {
-      QRUtils.a(1, 2131363765);
+      QRUtils.a(1, 2131363757);
       return false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363764);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363756);
     }
     boolean bool;
     int i1;
@@ -592,7 +592,7 @@ public class Share
         break label160;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      new sp(this, bool, paramString5, paramString1, paramString2, paramString3, paramString4, paramString6).start();
+      new sl(this, bool, paramString5, paramString1, paramString2, paramString3, paramString4, paramString6).start();
     }
     for (;;)
     {
@@ -605,7 +605,7 @@ public class Share
       label160:
       paramString7 = String.format("mqqapi://app/action?pkg=com.tencent.qqlite&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { paramString1 });
       paramString8 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { paramString1 });
-      String str = String.format(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131362471), new Object[] { paramString2 });
+      String str = String.format(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131362468), new Object[] { paramString2 });
       ShareMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 1001, 1, "struct_msg_from_h5", paramString1, paramString5, paramString2, paramString3, str, paramString4, "web", null, null, null, "plugin", null, paramString7, paramString8, "http://url.cn/JS8oE7", paramString6, null);
     }
   }

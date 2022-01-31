@@ -1,22 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.config.QQMapConstants;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.widget.SelectPicPopupWindow;
-import java.io.File;
 
-class bdq
-  implements Runnable
+public class bdq
+  implements View.OnClickListener
 {
-  bdq(bdo parambdo) {}
+  public bdq(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.r = null;
-    this.a.a.p = true;
-    this.a.a.a.a(this.a.a.getString(2131362615));
-    if (new File(QQMapConstants.i).exists()) {
-      UniformDownloadUtil.a(QQMapConstants.i);
-    }
+    this.a.onBackPressed();
   }
 }
 

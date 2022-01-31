@@ -1,16 +1,24 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-class cgu
-  implements Runnable
+public class cgu
+  implements Animation.AnimationListener
 {
-  cgu(cgt paramcgt) {}
+  public cgu(ContactListView paramContactListView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f();
-    this.a.a.jdField_a_of_type_Cgw.sendEmptyMessage(3);
+    ContactListView.a(this.a).show();
+    this.a.b.setAnimation(null);
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

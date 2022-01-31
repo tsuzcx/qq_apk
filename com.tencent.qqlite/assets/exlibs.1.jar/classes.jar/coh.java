@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class coh
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public coh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onGlobalLayout()
+  {
+    ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.a(this.a).getWidth());
+    ShortVideoPreviewActivity.b(this.a, ShortVideoPreviewActivity.a(this.a).getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + ShortVideoPreviewActivity.a(this.a) + ",mSurfaceViewHeight:" + ShortVideoPreviewActivity.b(this.a));
+    }
+    ShortVideoPreviewActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

@@ -17,8 +17,8 @@ public class ToastStyleDialog
     getWindow().setFlags(16, 16);
     getWindow().setFlags(8, 8);
     getWindow().setGravity(17);
-    setContentView(2130903562);
-    this.a = ((TextView)findViewById(2131297379));
+    setContentView(2130903548);
+    this.a = ((TextView)findViewById(2131297375));
     setCancelable(false);
   }
   

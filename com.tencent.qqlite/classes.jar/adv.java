@@ -1,40 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.Editable;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class adv
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public adv(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  public adv(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    int i = ((MessageSearchDialog)paramDialogInterface).b();
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onDismiss, recordCount : " + i);
-    }
-    if (i <= 0) {}
-    int j;
-    do
-    {
-      return;
-      j = (i - 1) / 8 + 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatHistory", 2, "onDismiss, pageIndex = " + j);
-      }
-    } while (j < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_Int = ((i - 1) % 8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(j));
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+    View localView = (View)paramView.getParent();
+    new adw(this, paramView.getTag(), localView).run();
   }
 }
 

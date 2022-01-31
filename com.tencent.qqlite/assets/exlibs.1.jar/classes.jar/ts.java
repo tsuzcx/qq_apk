@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class ts
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ts(AbstractImageListScene paramAbstractImageListScene) {}
+  public ts(GalleryPageView paramGalleryPageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.l();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.d()) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 

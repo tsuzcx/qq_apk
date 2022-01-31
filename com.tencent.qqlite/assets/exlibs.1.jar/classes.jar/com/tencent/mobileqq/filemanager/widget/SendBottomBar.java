@@ -17,22 +17,22 @@ import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import dvx;
-import dvy;
-import dwa;
-import dwb;
+import dwd;
+import dwe;
+import dwg;
+import dwh;
 
 public class SendBottomBar
   extends RelativeLayout
 {
   public ProgressDialog a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dvx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dwd(this);
   public TextView a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
   private IClickListener_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dvy(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dwe(this);
   private TextView jdField_b_of_type_AndroidWidgetTextView = null;
   private TextView c = null;
   private TextView d = null;
@@ -41,7 +41,7 @@ public class SendBottomBar
   public SendBottomBar(Context paramContext)
   {
     super(paramContext, null);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903434, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903424, this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     d();
   }
@@ -49,7 +49,7 @@ public class SendBottomBar
   public SendBottomBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903434, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903424, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     d();
   }
@@ -57,11 +57,11 @@ public class SendBottomBar
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
-    this.d = ((TextView)findViewById(2131298065));
-    this.e = ((TextView)findViewById(2131298066));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296945));
+    this.d = ((TextView)findViewById(2131298028));
+    this.e = ((TextView)findViewById(2131298029));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296941));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.c = ((TextView)findViewById(2131298064));
+    this.c = ((TextView)findViewById(2131298027));
     this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
   }
@@ -81,11 +81,11 @@ public class SendBottomBar
     boolean bool1;
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a() == 5)
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362195) + this.jdField_a_of_type_AndroidContentContext.getString(2131362022) + FMDataCache.a() + this.jdField_a_of_type_AndroidContentContext.getString(2131362023);
-      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131361970) + FileUtil.a(FMDataCache.c());
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362192) + this.jdField_a_of_type_AndroidContentContext.getString(2131362019) + FMDataCache.a() + this.jdField_a_of_type_AndroidContentContext.getString(2131362020);
+      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131361969) + FileUtil.a(FMDataCache.c());
       str1 = str2;
       if (FMDataCache.d() > 0L) {
-        str1 = str2 + this.jdField_a_of_type_AndroidContentContext.getString(2131361971) + FileUtil.a(FMDataCache.d());
+        str1 = str2 + this.jdField_a_of_type_AndroidContentContext.getString(2131361970) + FileUtil.a(FMDataCache.d());
       }
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.b();
       int i = this.c.getVisibility();
@@ -123,7 +123,7 @@ public class SendBottomBar
       ((TextView)localObject).setSelected(bool2);
       this.c.setSelected(bool1);
       return;
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131361964) + this.jdField_a_of_type_AndroidContentContext.getString(2131362022) + FMDataCache.a() + this.jdField_a_of_type_AndroidContentContext.getString(2131362023);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131361963) + this.jdField_a_of_type_AndroidContentContext.getString(2131362019) + FMDataCache.a() + this.jdField_a_of_type_AndroidContentContext.getString(2131362020);
       break;
       this.d.setVisibility(0);
       this.e.setVisibility(8);
@@ -153,7 +153,7 @@ public class SendBottomBar
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       this.jdField_a_of_type_AndroidAppProgressDialog.getWindow().setContentView(2130903271);
       this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903271);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131297435));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131297431));
     }
   }
   
@@ -161,7 +161,7 @@ public class SendBottomBar
   {
     if ((FileManagerUtil.a()) && (FMDataCache.a()) && (paramBoolean))
     {
-      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362021, 2131362019, new dwa(this));
+      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362018, 2131362016, new dwg(this));
       return;
     }
     b();
@@ -169,7 +169,7 @@ public class SendBottomBar
   
   public void b()
   {
-    new dwb(this).execute(new Void[0]);
+    new dwh(this).execute(new Void[0]);
   }
   
   public void c()

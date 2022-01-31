@@ -7,7 +7,10 @@ public class ada
 {
   public ada(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    new adb(this).start();
+  }
 }
 
 

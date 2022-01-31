@@ -1,18 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class buf
   implements Runnable
 {
-  public buf(RecordSoundPanel paramRecordSoundPanel, int paramInt, double paramDouble) {}
+  public buf(RecordSoundPanel paramRecordSoundPanel, int paramInt) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.c(i);
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel, this.jdField_a_of_type_Double);
+    if (RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).h())
+    {
+      RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).h(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.onClick(RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel));
+    }
   }
 }
 

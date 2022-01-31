@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class avm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   avm(avl paramavl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131363620)).setMessage(String.format(this.a.a.getString(2131363621), new Object[] { this.a.a.b })).setPositiveButton(2131363039, new avn(this));
-    localQQCustomDialog.setOnDismissListener(new avo(this));
-    localQQCustomDialog.show();
+    paramDialogInterface.dismiss();
   }
 }
 

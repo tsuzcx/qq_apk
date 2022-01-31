@@ -1,30 +1,71 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
 public class dof
-  extends doh
 {
-  public dof(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Thread jdField_a_of_type_JavaLangThread = null;
+  private boolean jdField_a_of_type_Boolean = false;
+  private Object jdField_b_of_type_JavaLangObject = new Object();
+  private boolean jdField_b_of_type_Boolean = true;
   
-  protected String a()
-  {
-    return "StateAcceptByPCWhenPause";
-  }
+  private dof(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
-  protected void a()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    if (!a())
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make pump thread is  running!!!");
       return;
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Doh.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Doh = new doe(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    a(false);
+    this.jdField_a_of_type_JavaLangThread = new Thread(new dog(this));
+    this.jdField_a_of_type_JavaLangThread.start();
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  boolean a()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      boolean bool = this.jdField_b_of_type_Boolean;
+      return bool;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangThread != null)
+    {
+      b(true);
+      this.jdField_a_of_type_JavaLangThread = null;
+    }
+  }
+  
+  void b(boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  boolean b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
   }
 }
 

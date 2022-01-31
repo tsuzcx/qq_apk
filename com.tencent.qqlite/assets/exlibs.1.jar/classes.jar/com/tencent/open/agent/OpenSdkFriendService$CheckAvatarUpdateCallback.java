@@ -7,7 +7,7 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.open.settings.OpensdkPreference;
-import fbm;
+import fbr;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +33,7 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
         localObject = paramJSONObject.getJSONArray("update_list");
         i = ((JSONArray)localObject).length();
         if (i > 0) {
-          ThreadManager.b(new fbm(this, i, (JSONArray)localObject));
+          ThreadManager.b(new fbr(this, i, (JSONArray)localObject));
         }
         localObject = OpensdkPreference.a(CommonDataAdapter.a().a(), "prefer_last_avatar_update_time").edit();
         ((SharedPreferences.Editor)localObject).putString(this.a.g, paramJSONObject.getString("time"));

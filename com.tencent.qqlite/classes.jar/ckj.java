@@ -1,27 +1,25 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteWifiphotoActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ckj
-  extends SearchResultDialog
+  implements View.OnClickListener
 {
-  public ckj(LocalSearchBar paramLocalSearchBar, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
-  }
+  public ckj(BannerManager paramBannerManager) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(a(paramContext, paramQQAppInterface));
-    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
-    return localArrayList;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = new Intent(BannerManager.a(this.a), LiteWifiphotoActivity.class);
+    paramView.putExtra("isFromStatusbar", true);
+    BannerManager.a(this.a).startActivity(paramView);
   }
 }
 

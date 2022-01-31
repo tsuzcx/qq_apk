@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import bbl;
-import bbm;
+import bbj;
+import bbk;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.MsgProxy;
@@ -21,11 +21,11 @@ public class QQBroadcastActivity
   static final int jdField_a_of_type_Int = 1010;
   static final long jdField_a_of_type_Long = 1000L;
   public Handler a;
-  public bbm a;
+  public bbk a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bbl(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bbj(this);
   }
   
   private void c()
@@ -45,10 +45,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131362946) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131362950) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131362946)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131362950)));
       return;
       label99:
       i = j;
@@ -62,15 +62,15 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Bbm == null) {
-      this.jdField_a_of_type_Bbm = new bbm(this, this, this.app.a(0).a(b(), 0));
+    if (this.jdField_a_of_type_Bbk == null) {
+      this.jdField_a_of_type_Bbk = new bbk(this, this, this.app.a(0).a(b(), 0));
     }
-    return this.jdField_a_of_type_Bbm;
+    return this.jdField_a_of_type_Bbk;
   }
   
   protected CharSequence a()
   {
-    return getString(2131363523);
+    return getString(2131363524);
   }
   
   protected void a()
@@ -94,8 +94,8 @@ public class QQBroadcastActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bbm != null) {
-      this.jdField_a_of_type_Bbm.changeCursor(null);
+    if (this.jdField_a_of_type_Bbk != null) {
+      this.jdField_a_of_type_Bbk.changeCursor(null);
     }
   }
   

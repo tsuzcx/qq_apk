@@ -1,18 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class btg
   implements Runnable
 {
-  public btg(CommonRecordSoundPanel paramCommonRecordSoundPanel, int paramInt, double paramDouble) {}
+  public btg(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d(i);
-    CommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.jdField_a_of_type_Double = this.jdField_a_of_type_Double;
+    this.a.h();
   }
 }
 

@@ -1,10 +1,16 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class yj
-  extends Handler
+  implements View.OnClickListener
 {
   public yj(AuthDevActivity paramAuthDevActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

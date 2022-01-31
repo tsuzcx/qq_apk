@@ -1,48 +1,23 @@
+import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.smtt.sdk.stat.DesUtils;
-import java.io.UnsupportedEncodingException;
 
 public class bcg
-  extends Thread
+  implements Runnable
 {
-  public bcg(QQBrowserActivity paramQQBrowserActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public bcg(QQBrowserActivity paramQQBrowserActivity, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = null;
-    label31:
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(true);
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.getWidth() < this.b)
     {
-      byte[] arrayOfByte2;
-      try
-      {
-        byte[] arrayOfByte1 = "65dRa93L".getBytes("utf-8");
-        if (arrayOfByte1 == null) {
-          return;
-        }
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          arrayOfByte2 = null;
-        }
-      }
-      try
-      {
-        byte[] arrayOfByte3 = "mqq|icon|13".getBytes("utf-8");
-        localObject = arrayOfByte3;
-      }
-      catch (Exception localException)
-      {
-        break label31;
-      }
-    } while (localObject == null);
-    arrayOfByte2 = DesUtils.DesEncrypt(arrayOfByte2, localObject, 1);
-    QQBrowserActivity.a(this.a, "http://p.mb.qq.com/sdk", arrayOfByte2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(false);
   }
 }
 

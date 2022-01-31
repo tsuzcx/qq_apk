@@ -1,20 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ahw
-  extends Handler
+  implements ConditionSearchManager.IConfigListener
 {
   public ahw(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((paramMessage.what == 1000) && ((this.a.s == 1) || (this.a.s == 2)))
+    if ((this.a.s == 1) || (this.a.s == 2))
     {
+      if (paramBoolean) {
+        break label55;
+      }
       this.a.a();
-      QQToast.a(this.a, 2131364412, 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
     }
+    label55:
+    while (paramInt != 2) {
+      return;
+    }
+    this.a.a();
+    this.a.b(this.a.s);
   }
 }
 

@@ -11,13 +11,13 @@ import android.util.TypedValue;
 
 @TargetApi(16)
 public class d
-  extends LongSparseArray<ColorStateList>
+  extends LongSparseArray
 {
   LongSparseArray<Integer> a;
   LongSparseArray<ColorStateList> b;
   SkinEngine c;
   
-  public d(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray<ColorStateList> paramLongSparseArray, Class paramClass, int paramInt)
+  public d(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray paramLongSparseArray, Class paramClass, int paramInt)
   {
     this.c = paramSkinEngine;
     this.b = paramLongSparseArray;
@@ -54,11 +54,11 @@ public class d
     }
   }
   
-  public ColorStateList a(long paramLong)
+  public Object get(long paramLong)
   {
     Integer localInteger = (Integer)this.a.get(paramLong);
     if (localInteger == null) {
-      return (ColorStateList)this.b.get(paramLong);
+      return this.b.get(paramLong);
     }
     return this.c.b(localInteger.intValue());
   }

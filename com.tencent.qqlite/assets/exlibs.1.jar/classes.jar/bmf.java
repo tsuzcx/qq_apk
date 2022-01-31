@@ -1,54 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class bmf
-  implements ActionSheet.OnButtonClickListener
+  extends Thread
 {
-  public bmf(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, ActionSheet paramActionSheet) {}
+  public bmf(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.a(2, 2131363515, 1500);
-    }
     try
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(17);
+      if (localTroopHandler != null)
+      {
+        long l = Long.parseLong(this.a.b);
+        localTroopHandler.a(l, 0L, 5, null, 6, 1);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Long.valueOf(l));
+        localTroopHandler.a(localArrayList);
       }
       return;
-      int i = -1;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
     }
-    catch (Exception paramView)
+    catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
+      QLog.i("Q.troopdisband.disband", 2, localException.toString());
     }
   }
 }

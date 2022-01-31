@@ -1,41 +1,56 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentTroopMenuOption;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cks
-  extends ContactBindObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public cks(ContactsInnerFrame paramContactsInnerFrame) {}
+  public cks(RecentTroopMenuOption paramRecentTroopMenuOption, int paramInt, String paramString, ActionSheet paramActionSheet) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(View paramView, int paramInt)
   {
-    this.a.a.unRegistObserver(this);
-    this.a.c = ContactsInnerFrame.a(this.a).b();
-    switch (this.a.c)
+    if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-    case 5: 
-    case 6: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 4: 
-    case 7: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 2: 
-      ContactsInnerFrame.b(this.a);
-      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(RecentTroopMenuOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363516, 1500);
     }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    try
     {
-      ContactsInnerFrame.a(this.a);
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
       return;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = -1;
+      }
+      while ((paramInt != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "data_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(paramInt - 1), "", "");
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
     }
-    ContactsInnerFrame.b(this.a);
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("RecentTroopMenuOption", 2, paramView.toString());
+    }
   }
 }
 

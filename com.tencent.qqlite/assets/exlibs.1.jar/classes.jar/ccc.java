@@ -1,18 +1,31 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class ccc
-  implements MessageQueue.IdleHandler
+  extends Handler
 {
-  public ccc(SearchContactsActivity paramSearchContactsActivity) {}
+  public ccc(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public boolean queueIdle()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    this.a.a.clearFocus();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.k();
+      return;
+    }
+    this.a.h();
   }
 }
 

@@ -1,19 +1,23 @@
-import android.app.Activity;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
 public class ffc
   implements Runnable
 {
-  public ffc(MyAppApi paramMyAppApi, Activity paramActivity) {}
+  public ffc(DownloadManager paramDownloadManager, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
+    try
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

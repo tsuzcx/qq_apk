@@ -18,13 +18,13 @@ class ah
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131362000));
+      FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131361997));
       FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_Ae.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
       this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
       this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a().c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
       return;
     }
-    FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131362000));
+    FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131361997));
     this.jdField_a_of_type_Ae.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
   

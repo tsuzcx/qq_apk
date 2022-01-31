@@ -1,19 +1,22 @@
-import android.app.Activity;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase.IControllProxyInterface;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
 
-public class duf
-  extends TimerTask
+class duf
+  implements Runnable
 {
-  public duf(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  duf(dud paramdud) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PreviewingOfflineFileViewBase<FileAssistant>", 4, "TimeoutTimer run");
+    if (PreviewingOfflineFileViewBase.a(this.a.a) == null) {}
+    while (PreviewingOfflineFileViewBase.a(this.a.a)) {
+      return;
     }
-    PreviewingOfflineFileViewBase.g(this.a).runOnUiThread(new dug(this));
+    PreviewingOfflineFileViewBase.a(this.a.a, true);
+    String str = this.a.a.a().d();
+    PreviewingOfflineFileViewBase.a(this.a.a).loadUrl(str);
+    PreviewingOfflineFileViewBase.a(this.a.a).loadUrl("javascript:add_more_page()");
   }
 }
 

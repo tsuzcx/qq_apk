@@ -7,10 +7,9 @@ import android.text.SpannableStringBuilder;
 import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dck;
+import dcq;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -149,19 +148,18 @@ public class MessageForGrayTips
       localObject1 = ((String)localObject2).substring(0, i);
       localObject2 = ((String)localObject2).substring(i + 1, ((String)localObject2).length());
       i2 = Integer.parseInt((String)localObject1);
-      new LinkedList();
       localArrayList = new ArrayList(i2);
       m = 0;
     }
     int n;
     int j;
     int k;
-    label231:
+    label223:
     Object localObject5;
     Object localObject4;
-    label364:
+    label356:
     int i1;
-    label462:
+    label454:
     long l2;
     long l1;
     if (m < i2)
@@ -186,7 +184,7 @@ public class MessageForGrayTips
           j = Integer.parseInt((String)localObject4);
           i = ((String)localObject1).indexOf(',');
           if (i == -1) {
-            break label528;
+            break label520;
           }
           localObject2 = ((String)localObject1).substring(0, i);
           localObject1 = ((String)localObject1).substring(i + 1, ((String)localObject1).length());
@@ -221,21 +219,21 @@ public class MessageForGrayTips
       try
       {
         l1 = Long.parseLong((String)localObject2);
-        localArrayList.add(new dck(i, j, l1, k, n, (String)localObject4, (String)localObject5));
+        localArrayList.add(new dcq(i, j, l1, k, n, (String)localObject4, (String)localObject5));
         m += 1;
         localObject2 = localObject1;
         break;
         k = 1;
-        break label231;
-        label528:
+        break label223;
+        label520:
         i = Integer.parseInt((String)localObject1);
-        break label364;
+        break label356;
         localObject4 = null;
         localObject2 = "";
         i1 = i;
         i = j;
         j = i1;
-        break label462;
+        break label454;
         k = ((String)localObject1).indexOf(',');
         localObject2 = ((String)localObject1).substring(0, k);
         localObject1 = ((String)localObject1).substring(k + 1, ((String)localObject1).length());
@@ -250,7 +248,7 @@ public class MessageForGrayTips
           i = j;
           j = k;
           k = i1;
-          break label462;
+          break label454;
         }
         localObject4 = null;
         localObject2 = localObject1;
@@ -258,10 +256,10 @@ public class MessageForGrayTips
         i = j;
         j = k;
         k = i1;
-        break label462;
+        break label454;
         i1 = ((String)localObject1).indexOf(',');
         if (i1 == -1) {
-          break label1498;
+          break label1490;
         }
         localObject2 = ((String)localObject1).substring(0, i1);
         localObject4 = ((String)localObject1).substring(i1 + 1, ((String)localObject1).length());
@@ -278,7 +276,7 @@ public class MessageForGrayTips
           i1 = i;
           i = j;
           j = i1;
-          break label462;
+          break label454;
         }
         localObject5 = localObject2;
         localObject4 = localObject1;
@@ -287,7 +285,7 @@ public class MessageForGrayTips
         i1 = i;
         i = j;
         j = i1;
-        break label462;
+        break label454;
         i = ((String)localObject1).indexOf(',');
         localObject2 = ((String)localObject1).substring(0, i);
         localObject1 = ((String)localObject1).substring(i + 1, ((String)localObject1).length());
@@ -306,7 +304,7 @@ public class MessageForGrayTips
           localObject2 = ((String)localObject1).substring(0, i1);
           localObject1 = ((String)localObject1).substring(i1 + 1, ((String)localObject1).length());
           localObject4 = null;
-          break label462;
+          break label454;
         }
         localObject4 = null;
         localObject2 = localObject1;
@@ -327,9 +325,9 @@ public class MessageForGrayTips
         j = i + 1;
         while (j < localArrayList.size())
         {
-          if (((dck)localArrayList.get(i)).jdField_a_of_type_Int > ((dck)localArrayList.get(j)).jdField_a_of_type_Int)
+          if (((dcq)localArrayList.get(i)).jdField_a_of_type_Int > ((dcq)localArrayList.get(j)).jdField_a_of_type_Int)
           {
-            localObject1 = (dck)localArrayList.get(i);
+            localObject1 = (dcq)localArrayList.get(i);
             localArrayList.add(i, localArrayList.get(j));
             localArrayList.add(j, localObject1);
           }
@@ -344,16 +342,16 @@ public class MessageForGrayTips
       i = 0;
       if (localIterator.hasNext())
       {
-        localObject4 = (dck)localIterator.next();
-        str2 = (String)localObject3 + ((String)localObject1).substring(0, ((dck)localObject4).jdField_a_of_type_Int - i);
-        String str3 = ((String)localObject1).substring(((dck)localObject4).jdField_a_of_type_Int - i, ((dck)localObject4).b - i);
-        localObject3 = ((String)localObject1).substring(((dck)localObject4).b - i, ((String)localObject1).length());
-        i = ((dck)localObject4).b;
-        ((dck)localObject4).jdField_a_of_type_Int = str2.length();
-        if (((dck)localObject4).jdField_a_of_type_Boolean) {}
-        for (localObject1 = str2 + ((FriendsManagerImp)localObject5).a(this.frienduin, new StringBuilder().append("").append(((dck)localObject4).jdField_a_of_type_Long).toString());; localObject1 = str2 + str3)
+        localObject4 = (dcq)localIterator.next();
+        str2 = (String)localObject3 + ((String)localObject1).substring(0, ((dcq)localObject4).jdField_a_of_type_Int - i);
+        String str3 = ((String)localObject1).substring(((dcq)localObject4).jdField_a_of_type_Int - i, ((dcq)localObject4).b - i);
+        localObject3 = ((String)localObject1).substring(((dcq)localObject4).b - i, ((String)localObject1).length());
+        i = ((dcq)localObject4).b;
+        ((dcq)localObject4).jdField_a_of_type_Int = str2.length();
+        if (((dcq)localObject4).jdField_a_of_type_Boolean) {}
+        for (localObject1 = str2 + ((FriendsManagerImp)localObject5).a(this.frienduin, new StringBuilder().append("").append(((dcq)localObject4).jdField_a_of_type_Long).toString());; localObject1 = str2 + str3)
         {
-          ((dck)localObject4).b = ((String)localObject1).length();
+          ((dcq)localObject4).b = ((String)localObject1).length();
           localObject4 = localObject1;
           localObject1 = localObject3;
           localObject3 = localObject4;
@@ -365,13 +363,13 @@ public class MessageForGrayTips
       localObject3 = localArrayList.iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (dck)((Iterator)localObject3).next();
+        localObject4 = (dcq)((Iterator)localObject3).next();
         if (localObject4 != null) {
-          ((SpannableStringBuilder)localObject1).setSpan(new MessageForGrayTips.HightlightClickableSpan(this, paramQQAppInterface, i, paramContext, (dck)localObject4), ((dck)localObject4).jdField_a_of_type_Int, ((dck)localObject4).b, 33);
+          ((SpannableStringBuilder)localObject1).setSpan(new MessageForGrayTips.HightlightClickableSpan(this, paramQQAppInterface, i, paramContext, (dcq)localObject4), ((dcq)localObject4).jdField_a_of_type_Int, ((dcq)localObject4).b, 33);
         }
       }
       return localObject1;
-      label1498:
+      label1490:
       localObject3 = localObject1;
       localObject1 = null;
     }

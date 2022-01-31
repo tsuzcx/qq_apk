@@ -1,27 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.app.AppConstants;
 
-public final class acb
-  implements Runnable
+public class acb
+  implements View.OnClickListener
 {
-  public acb(String paramString, QQAppInterface paramQQAppInterface) {}
+  public acb(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ChatBackgroundSettingActivity.j = ChatBackgroundSettingActivity.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString);
-    Message localMessage = ChatBackgroundSettingActivity.a.obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
-      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundSettingActivity.j);
-    }
-    ChatBackgroundSettingActivity.a.sendMessage(localMessage);
+    paramView = this.a.getIntent();
+    String str = AppConstants.as + this.a.c + "/" + "custom_background/";
+    str = str + System.currentTimeMillis() + ".jpg";
+    Rect localRect = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+    PhotoUtils.a(paramView, this.a, ChatBackgroundSettingActivity.class.getName(), localRect.width() / 5 * 4, localRect.height() / 5 * 4, localRect.width(), localRect.height(), str);
   }
 }
 

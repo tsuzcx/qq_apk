@@ -1,6 +1,12 @@
-public abstract interface ewc
+public final class ewc
+  implements ewh
 {
-  public abstract Object a(float paramFloat, Object paramObject1, Object paramObject2);
+  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
+  {
+    int i = paramInteger1.intValue();
+    float f = i;
+    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
+  }
 }
 
 

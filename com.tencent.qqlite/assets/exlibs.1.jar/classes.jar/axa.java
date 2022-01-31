@@ -1,40 +1,33 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class axa
   extends Handler
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public axa(NearbyPeopleListFrame paramNearbyPeopleListFrame1, NearbyPeopleListFrame paramNearbyPeopleListFrame2)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramNearbyPeopleListFrame2);
-  }
+  public axa(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    NearbyPeopleListFrame localNearbyPeopleListFrame = (NearbyPeopleListFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localNearbyPeopleListFrame == null) {}
+    switch (paramMessage.what)
+    {
+    }
     do
     {
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        NearbyPeopleListFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
-        localNearbyPeopleListFrame.a.B();
-      }
-    } while (paramMessage.arg1 != 1);
-    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, 2131363353);
-    return;
-    NearbyPeopleListFrame.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
-    localNearbyPeopleListFrame.a.B();
-    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, localNearbyPeopleListFrame.a(2131363515));
+      this.a.c();
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
+      return;
+      this.a.a.i();
+      return;
+      NearbyPeopleProfileActivity.a(this.a);
+      return;
+    } while (paramMessage.obj == null);
+    NearbyPeopleProfileActivity.a(this.a, (NearbyPeopleCard)paramMessage.obj);
+    NearbyPeopleProfileActivity.b(this.a);
   }
 }
 

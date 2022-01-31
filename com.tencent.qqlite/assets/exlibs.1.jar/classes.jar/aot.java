@@ -1,21 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class aot
-  implements View.OnClickListener
+  implements View.OnLayoutChangeListener
 {
   public aot(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a.finish();
-    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.a()))) {
-      this.a.app.a(this.a);
-    }
+    this.a.c();
   }
 }
 

@@ -10,7 +10,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.Adapter;
 import android.widget.EditText;
-import ckj;
+import ckp;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -39,15 +39,15 @@ public class LocalSearchBar
   
   public LocalSearchBar(XListView paramXListView, View paramView1, View paramView2, BaseActivity paramBaseActivity, OnRecentUserOpsListener paramOnRecentUserOpsListener)
   {
-    View localView = paramBaseActivity.getLayoutInflater().inflate(2130903617, paramXListView, false);
+    View localView = paramBaseActivity.getLayoutInflater().inflate(2130903601, paramXListView, false);
     paramXListView.a(localView);
     IphoneTitleBarActivity.setLayerType(localView);
     this.jdField_a_of_type_AndroidViewView = paramView1;
     this.jdField_b_of_type_AndroidViewView = paramView2;
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener = paramOnRecentUserOpsListener;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131297290);
-    paramXListView = (EditText)localView.findViewById(2131297994);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131297286);
+    paramXListView = (EditText)localView.findViewById(2131297957);
     paramXListView.setFocusableInTouchMode(false);
     paramXListView.setCursorVisible(false);
     paramXListView.setOnClickListener(this);
@@ -64,7 +64,7 @@ public class LocalSearchBar
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new ckj(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, 4, this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = new ckp(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, 4, this);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setCanceledOnTouchOutside(true);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.setOnDismissListener(this);
     }
@@ -80,7 +80,7 @@ public class LocalSearchBar
       this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(this);
     }
     if (this.jdField_c_of_type_AndroidViewView != null) {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130837633);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130837635);
     }
     this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     ThreadPriorityManager.a(true);
@@ -254,7 +254,7 @@ public class LocalSearchBar
     this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     if (this.jdField_c_of_type_AndroidViewView != null) {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130837633);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130837635);
     }
     this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = null;

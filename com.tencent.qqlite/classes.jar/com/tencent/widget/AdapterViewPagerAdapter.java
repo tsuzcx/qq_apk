@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import fhr;
+import fhw;
 
 public class AdapterViewPagerAdapter
   extends PagerAdapter
@@ -23,7 +23,7 @@ public class AdapterViewPagerAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper = new PagerBaseAdapterWrapper(paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.registerDataSetObserver(new fhr(this));
+    this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.registerDataSetObserver(new fhw(this));
   }
   
   public AdapterView a(int paramInt)

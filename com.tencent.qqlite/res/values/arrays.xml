@@ -46,9 +46,9 @@
         <item>设置头像挂件</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f080007">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0205</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0206</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0207</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0202</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0203</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0a0204</item>
         <item>取消</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f080008">
@@ -161,21 +161,12 @@
         <item>.mpe</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f080014">
-        <item>.apk</item>
-        <item>.jar</item>
-        <item>.zip</item>
-        <item>.rar</item>
-        <item>.gz</item>
-        <item>.tar</item>
-        <item>.img</item>
-    </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080015">
         <item>.htm</item>
         <item>.html</item>
         <item>.php</item>
         <item>.jsp</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080016">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f080015">
         <item>.txt</item>
         <item>.java</item>
         <item>.c</item>
@@ -185,41 +176,41 @@
         <item>.json</item>
         <item>.log</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080017">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f080016">
         <item>.doc</item>
         <item>.docx</item>
         <item>.dot</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080018">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f080017">
         <item>.xls</item>
         <item>.xlsx</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080019">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f080018">
         <item>.ppt</item>
         <item>.pptx</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001a">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f080019">
         <item>.pdf</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001b">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001a">
         <item>.chm</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001c">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001b">
         <item>删除所选记录</item>
         <item>删除所选文件</item>
         <item>转发</item>
         <item>存到微云</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001d">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001c">
         <item>中国 86 11 最常选择的国家地区</item>
         <item>澳门（中国） 853 8 最常选择的国家地区</item>
         <item>香港（中国） 852 8 最常选择的国家地区</item>
         <item>台湾（中国） 886 10 最常选择的国家地区</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001e">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001d">
         <item>最常选择的国家地区</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001f">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001e">
         <item>阿尔及利亚 213 6 A</item>
         <item>阿富汗 93 6 A</item>
         <item>阿根廷 54 7 A</item>
@@ -399,7 +390,7 @@
         <item>中非共和国 236 6 Z</item>
         <item>中国 86 11 Z</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080020">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f08001f">
         <item>A</item>
         <item>B</item>
         <item>C</item>
@@ -427,7 +418,7 @@
         <item>Y</item>
         <item>Z</item>
     </string-array>
-    <string-array name="APKTOOL_DUPLICATE_array_0x7f080021">
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f080020">
         <item>从本设备中删除</item>
         <item>从群文件中删除</item>
         <item>取消</item>

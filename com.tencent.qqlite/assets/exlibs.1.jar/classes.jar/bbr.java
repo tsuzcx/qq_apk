@@ -1,18 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
 public class bbr
+  implements Runnable
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public bbr(QQBrowserActivity paramQQBrowserActivity, String paramString) {}
+  
+  public void run()
+  {
+    QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_JavaLangString), 0);
+  }
 }
 
 

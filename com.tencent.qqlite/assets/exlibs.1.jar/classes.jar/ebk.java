@@ -1,19 +1,17 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.io.File;
 
 class ebk
-  implements Runnable
 {
-  ebk(ebj paramebj, ImageView paramImageView, TextView paramTextView) {}
+  private String a;
   
-  public void run()
+  public ebk(String paramString)
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setAnimationListener(new ebl(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
+    this.a = paramString;
+  }
+  
+  public File a(int paramInt, String paramString)
+  {
+    return null;
   }
 }
 

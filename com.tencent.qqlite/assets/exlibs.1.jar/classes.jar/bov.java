@@ -1,16 +1,43 @@
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
 
 class bov
   implements View.OnClickListener
 {
-  bov(bou parambou, Dialog paramDialog) {}
+  bov(bot parambot, String paramString, CheckBox paramCheckBox, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    paramView = (TroopHandler)this.jdField_a_of_type_Bot.a.app.a(17);
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = new ArrayList();
+      ((List)localObject).add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)));
+      paramView.a(Long.parseLong(this.jdField_a_of_type_Bot.a.i), (List)localObject, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+      localObject = this.jdField_a_of_type_Bot.a.p;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label184;
+      }
+    }
+    label184:
+    for (paramView = "0";; paramView = "1")
+    {
+      ReportController.b(this.jdField_a_of_type_Bot.a.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_Bot.a.i, (String)localObject, paramView, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      this.jdField_a_of_type_Bot.a.k();
+      this.jdField_a_of_type_Bot.a.jdField_a_of_type_AndroidAppDialog.show();
+      return;
     }
   }
 }

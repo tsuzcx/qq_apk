@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907bf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" android:dividerHeight="0.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c8" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0301d5" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c9" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0300c7" />
+</FrameLayout>

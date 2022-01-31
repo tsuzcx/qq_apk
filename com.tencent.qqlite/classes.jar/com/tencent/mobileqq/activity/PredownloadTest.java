@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import bay;
+import baw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.BaseStrategy;
@@ -28,13 +28,13 @@ public class PredownloadTest
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131298375));
-    this.b = ((EditText)findViewById(2131298376));
-    this.c = ((EditText)findViewById(2131298377));
-    this.d = ((EditText)findViewById(2131298378));
-    this.e = ((EditText)findViewById(2131298379));
-    this.f = ((EditText)findViewById(2131298380));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298381));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131298331));
+    this.b = ((EditText)findViewById(2131298332));
+    this.c = ((EditText)findViewById(2131298333));
+    this.d = ((EditText)findViewById(2131298334));
+    this.e = ((EditText)findViewById(2131298335));
+    this.f = ((EditText)findViewById(2131298336));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298337));
     PredownloadTest.ConfigInfo localConfigInfo = this.app.a().a.a();
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(localConfigInfo.a));
     this.b.setText(String.valueOf(localConfigInfo.b));
@@ -42,7 +42,7 @@ public class PredownloadTest
     this.d.setText(String.valueOf(localConfigInfo.d));
     this.e.setText(String.valueOf(localConfigInfo.e));
     this.f.setText(String.valueOf(localConfigInfo.f));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bay(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new baw(this));
   }
   
   public long a(EditText paramEditText)
@@ -59,7 +59,7 @@ public class PredownloadTest
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903528);
+    setContentView(2130903515);
     c();
   }
 }

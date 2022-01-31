@@ -1,17 +1,29 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.Thumbnail;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
 public class dqv
-  implements Runnable
+  implements IWyFileSystem.IWyCallback
 {
-  public dqv(FileManagerProxy paramFileManagerProxy, FileManagerEntity paramFileManagerEntity) {}
+  public dqv(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void run()
+  public void a(IWyFileSystem.Thumbnail paramThumbnail)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramThumbnail.filePath + "]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
+    this.a.a.a().a(true, 39, new Object[] { paramThumbnail });
+  }
+  
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
   }
 }
 

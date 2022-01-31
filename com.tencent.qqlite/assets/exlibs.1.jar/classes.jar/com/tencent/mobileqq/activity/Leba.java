@@ -17,24 +17,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import arz;
+import asa;
 import asb;
 import asc;
 import asd;
 import ase;
 import asf;
 import asg;
-import ash;
 import asi;
+import asj;
 import ask;
 import asl;
 import asm;
-import asn;
 import aso;
+import asp;
 import asq;
 import asr;
 import ass;
-import ast;
-import asu;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.lebasearch.SearchActivity;
 import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
@@ -111,13 +111,13 @@ public class Leba
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public SearchProtocol.SearchObserver a;
   public LebaListViewAdapter a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new asl(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ask(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new asj(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new asi(this);
   public DownloadIconsListener a;
-  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new asq(this);
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new asi(this);
-  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new ash(this);
-  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new asg(this);
+  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new aso(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new asg(this);
+  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new asf(this);
+  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new ase(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public AdapterView.OnItemClickListener a;
   public XListView a;
@@ -142,10 +142,10 @@ public class Leba
   public Leba()
   {
     this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqConfigDownloadIconsListener = new aso(this);
-    this.jdField_a_of_type_AndroidOsHandler = new asr(this);
-    this.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver = new ass(this);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new asc(this);
+    this.jdField_a_of_type_ComTencentMobileqqConfigDownloadIconsListener = new asm(this);
+    this.jdField_a_of_type_AndroidOsHandler = new asp(this);
+    this.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver = new asq(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new asa(this);
   }
   
   private void a(ImageView paramImageView, int paramInt, Drawable paramDrawable)
@@ -163,7 +163,7 @@ public class Leba
     if ((paramTextView == null) || (paramInt == 0)) {
       return;
     }
-    int i = a().getDimensionPixelSize(2131493091);
+    int i = a().getDimensionPixelSize(2131493075);
     switch (paramInt)
     {
     case 4: 
@@ -178,13 +178,13 @@ public class Leba
       }
       paramTextView.setMargins(paramInt, 0, 0, paramInt);
       return;
-      paramInt = a().getDimensionPixelSize(2131493091);
+      paramInt = a().getDimensionPixelSize(2131493075);
       continue;
-      paramInt = a().getDimensionPixelSize(2131493093);
+      paramInt = a().getDimensionPixelSize(2131493077);
       continue;
-      paramInt = a().getDimensionPixelSize(2131493092);
+      paramInt = a().getDimensionPixelSize(2131493076);
       continue;
-      paramInt = a().getDimensionPixelSize(2131493093);
+      paramInt = a().getDimensionPixelSize(2131493077);
     }
   }
   
@@ -202,7 +202,7 @@ public class Leba
         return;
       } while (paramLebaViewItem.a.isNew != 0);
       paramLebaViewItem.a.isNew = 1;
-      ThreadManager.b(new asf(this, paramLebaViewItem));
+      ThreadManager.b(new asd(this, paramLebaViewItem));
       paramLebaViewItem = paramViewGroup.findViewById(paramInt);
     } while (paramLebaViewItem == null);
     paramLebaViewItem.setVisibility(8);
@@ -251,12 +251,12 @@ public class Leba
   
   private void p()
   {
-    IphoneTitleBarActivity.setLayerType((ViewGroup)a(2131296894));
-    TextView localTextView = (TextView)a(2131296895);
-    localTextView.setText(2131362944);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131296905));
+    IphoneTitleBarActivity.setLayerType((ViewGroup)a(2131296890));
+    TextView localTextView = (TextView)a(2131296891);
+    localTextView.setText(2131362948);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131296901));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363190);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363193);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     localTextView.setFocusable(true);
     localTextView.setContentDescription("动态");
@@ -266,13 +266,13 @@ public class Leba
   private void q()
   {
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131297260));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131297256));
     }
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter = new LebaListViewAdapter(a(), this.jdField_a_of_type_JavaUtilList, 2130903172, 2130903173, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ast(this));
+      this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter = new LebaListViewAdapter(a(), this.jdField_a_of_type_JavaUtilList, 2130903172, 2130903173, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new asr(this));
     }
     for (;;)
     {
@@ -280,21 +280,21 @@ public class Leba
       {
         if (this.jdField_a_of_type_AndroidViewView == null)
         {
-          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2130903505, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-          View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131298245);
-          View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131298250);
+          this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2130903493, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+          View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131298205);
+          View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131298210);
           localView1.setOnClickListener(this);
           localView2.setOnClickListener(this);
-          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298246));
-          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298248));
-          this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298249));
-          this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298251));
-          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298253));
-          this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131298255));
-          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298256));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131298254));
+          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298206));
+          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298208));
+          this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298209));
+          this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298211));
+          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298213));
+          this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131298215));
+          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298216));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131298214));
           this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-          this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new asu(this));
+          this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new ass(this));
           this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_a_of_type_AndroidViewView);
           localView1.setContentDescription("好友动态");
           localView2.setContentDescription("附近");
@@ -375,7 +375,7 @@ public class Leba
     else
     {
       n();
-      j = 2130838741;
+      j = 2130838716;
       i = j;
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.n())
       {
@@ -393,7 +393,7 @@ public class Leba
         if ((l1 < 0L) || (l1 > 28800000L)) {
           break label457;
         }
-        i = 2130838742;
+        i = 2130838717;
         this.jdField_e_of_type_Boolean = true;
         jdField_a_of_type_Boolean = true;
       }
@@ -444,15 +444,15 @@ public class Leba
   
   protected String a()
   {
-    return a(2131362938);
+    return a(2131362942);
   }
   
   protected void a()
   {
     super.a();
     p();
-    ((ViewStub)a(2131297259)).setOnInflateListener(this);
-    ((CommonLoadingView)a(2131296840)).setOnFirstDrawListener(this);
+    ((ViewStub)a(2131297255)).setOnInflateListener(this);
+    ((CommonLoadingView)a(2131296836)).setOnFirstDrawListener(this);
   }
   
   public void a(View paramView, int paramInt, LebaViewItem paramLebaViewItem)
@@ -460,7 +460,7 @@ public class Leba
     if (this.g)
     {
       this.g = false;
-      this.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new asd(this), 500L);
+      this.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new asb(this), 500L);
       if ((paramInt != -1) || (paramLebaViewItem == null)) {
         break label68;
       }
@@ -507,7 +507,7 @@ public class Leba
           localObject1 = (WebProcessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
           localObject4 = String.valueOf(paramLebaViewItem.a.uiResId);
           if ((localAppInfo != null) && (localObject1 != null) && (((WebProcessManager)localObject1).a((String)localObject4))) {
-            ThreadManager.a().post(new ase(this, (String)localObject4, localAppInfo));
+            ThreadManager.a().post(new asc(this, (String)localObject4, localAppInfo));
           }
           if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0)) {
             if (localAppInfo.type.get() != 0) {
@@ -551,7 +551,7 @@ public class Leba
           if ((localObject3 != null) && (!"".equals(localObject3)))
           {
             if (paramLebaViewItem.a.cDataType == 0) {
-              a(paramLebaViewItem, 2131296765, (ViewGroup)paramView);
+              a(paramLebaViewItem, 2131296761, (ViewGroup)paramView);
             }
             if (paramInt != 0) {
               break label1211;
@@ -586,7 +586,7 @@ public class Leba
             label1211:
             do
             {
-              if ((paramLebaViewItem.a.strPkgName.equalsIgnoreCase("com.tx.gamecenter.android")) || (paramLebaViewItem.a.strResName.contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getString(2131363565)))) {
+              if ((paramLebaViewItem.a.strPkgName.equalsIgnoreCase("com.tx.gamecenter.android")) || (paramLebaViewItem.a.strResName.contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getString(2131363559)))) {
                 StatisticCollector.a(a()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Game_center", "Clk_game_in", 0, 1, "0", null, null, null, null);
               }
               this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
@@ -643,7 +643,7 @@ public class Leba
             localObject3 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), (String)localObject3);
             if (localObject3 != null)
             {
-              if ((paramLebaViewItem.a.strPkgName.equals("com.tx.gamecenter.android")) || (paramLebaViewItem.a.strResName.contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getString(2131363565)))) {
+              if ((paramLebaViewItem.a.strPkgName.equals("com.tx.gamecenter.android")) || (paramLebaViewItem.a.strResName.contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getResources().getString(2131363559)))) {
                 ((JumpAction)localObject3).c("platformId=qq_m");
               }
               ((JumpAction)localObject3).a("from_leba", "fromleba");
@@ -728,13 +728,13 @@ public class Leba
     for (;;)
     {
       WebProcessManager.b(true);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new asm(this), 100L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ask(this), 100L);
       if (jdField_a_of_type_Boolean != this.jdField_e_of_type_Boolean)
       {
         this.jdField_e_of_type_Boolean = jdField_a_of_type_Boolean;
-        int i = 2130838741;
+        int i = 2130838716;
         if (jdField_a_of_type_Boolean) {
-          i = 2130838742;
+          i = 2130838717;
         }
         this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(i);
       }
@@ -765,12 +765,12 @@ public class Leba
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new asb(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new arz(this));
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new asn(this, paramBoolean), 150L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new asl(this, paramBoolean), 150L);
   }
   
   protected void d()
@@ -940,9 +940,9 @@ public class Leba
     switch (paramView.getId())
     {
     default: 
-    case 2131298245: 
-    case 2131298250: 
-    case 2131298256: 
+    case 2131298205: 
+    case 2131298210: 
+    case 2131298216: 
       do
       {
         do

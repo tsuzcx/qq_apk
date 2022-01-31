@@ -1,42 +1,52 @@
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.widget.MenuPopupDialog;
 
 public class exy
-  extends Handler
+  implements View.OnLongClickListener, View.OnTouchListener
 {
-  private WeakReference a;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   
-  public exy(CustomedTabWidget paramCustomedTabWidget)
+  private exy(ContextMenuTextView paramContextMenuTextView) {}
+  
+  protected void a(View paramView)
   {
-    this.a = new WeakReference(paramCustomedTabWidget);
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
   }
   
-  public void handleMessage(Message arg1)
+  public boolean onLongClick(View paramView)
   {
-    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
-    if (localCustomedTabWidget == null) {
-      return;
-    }
-    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
-      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
-    }
-    synchronized (localCustomedTabWidget.jdField_a_of_type_Exy)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
+    if ((ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView) != null) && (ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).isShowing()))
     {
-      Rect localRect = localCustomedTabWidget.b;
-      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
-      localRect = localCustomedTabWidget.b;
-      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
-      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
-      {
-        sendEmptyMessage(0);
-        return;
-        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
-      }
+      a(paramView);
+      return false;
     }
-    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131298937, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131363564));
+    ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView, MenuPopupDialog.a(paramView, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131363277), localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.a, new exx(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView)));
+    a(paramView);
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

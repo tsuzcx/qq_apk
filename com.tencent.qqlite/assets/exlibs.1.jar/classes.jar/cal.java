@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
 
 class cal
-  implements Runnable
+  extends AsyncTask
 {
   cal(cak paramcak) {}
   
-  public void run()
+  protected TroopGagMgr.SelfGagInfo a(Void... paramVarArgs)
   {
-    FraudTipsBar.a(this.a.a, 2);
-    FraudTipsBar.a(this.a.a).a();
+    TroopChatPie.b(this.a.a);
+    return ((TroopGagMgr)TroopChatPie.j(this.a.a).getManager(42)).a(TroopChatPie.E(this.a.a).a, true);
+  }
+  
+  protected void a(TroopGagMgr.SelfGagInfo paramSelfGagInfo)
+  {
+    TroopChatPie.a(this.a.a, paramSelfGagInfo, true);
   }
 }
 

@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
+import bye;
 import byf;
 import byg;
 import byh;
 import byi;
-import byj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -48,7 +48,7 @@ public class AIOGalleryUtils
   {
     if (BaseApplicationImpl.a.getProcessName().endsWith(":peak"))
     {
-      a = new byj();
+      a = new byi();
       return;
     }
   }
@@ -105,18 +105,18 @@ public class AIOGalleryUtils
       {
         do
         {
-          QQToast.a(paramActivity, paramActivity.getString(2131363440), 0).a();
+          QQToast.a(paramActivity, paramActivity.getString(2131363441), 0).a();
         } while (!QLog.isColorLevel());
         QLog.e("AIOGalleryUtils", 2, "", paramFile);
         return;
       }
     }
-    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131363442)).setMessage(paramActivity.getString(2131363444)).setPositiveButton(paramActivity.getString(2131363443), new byg(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131362787), new byf()).show();
+    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131363443)).setMessage(paramActivity.getString(2131363445)).setPositiveButton(paramActivity.getString(2131363444), new byf(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131362791), new bye()).show();
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, int paramInt)
   {
-    new byi(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
+    new byh(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private static int b(Context paramContext, String paramString)
@@ -165,7 +165,7 @@ public class AIOGalleryUtils
   
   private static void b(Activity paramActivity, File paramFile1, File paramFile2)
   {
-    new byh(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
+    new byg(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
   }
   
   private static boolean b(Context paramContext, String paramString)

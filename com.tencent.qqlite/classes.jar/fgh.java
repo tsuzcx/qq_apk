@@ -1,43 +1,28 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
 import com.tencent.qqconnect.wtlogin.Login;
 
 public class fgh
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
   public fgh(Login paramLogin) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
-      this.a.d();
-    }
-    do
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
     {
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      }
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
       return;
-      if (paramView == Login.a(this.a))
-      {
-        this.a.setResult(0);
-        this.a.finish();
-        return;
-      }
-      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-        return;
-      }
-      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
-        return;
-      }
-    } while (paramView != this.a.jdField_a_of_type_AndroidWidgetTextView);
-    paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
-    paramView.putExtra("key_req_src", this.a.j);
-    this.a.startActivityForResult(paramView, 10000);
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

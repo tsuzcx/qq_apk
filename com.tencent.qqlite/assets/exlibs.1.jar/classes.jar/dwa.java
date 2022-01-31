@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
 
 public class dwa
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public dwa(SendBottomBar paramSendBottomBar) {}
+  public dwa(QfileHorizontalListView paramQfileHorizontalListView) {}
   
-  public void a()
+  public void run()
   {
-    this.a.b();
+    this.a.requestLayout();
   }
-  
-  public void b() {}
 }
 
 

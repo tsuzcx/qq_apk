@@ -1,19 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
 public class ewm
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public ewm(SDCardMountInforUtil paramSDCardMountInforUtil) {}
+  public ewm(HttpCommunicator paramHttpCommunicator) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.MEDIA_MOUNTED".equals(paramContext)) || ("android.intent.action.MEDIA_SCANNER_STARTED".equals(paramContext)) || ("android.intent.action.MEDIA_SCANNER_FINISHED".equals(paramContext)) || ("android.intent.action.MEDIA_REMOVED".equals(paramContext)) || ("android.intent.action.MEDIA_UNMOUNTED".equals(paramContext)) || ("android.intent.action.MEDIA_BAD_REMOVAL".equals(paramContext))) {
-      SDCardMountInforUtil.a(this.a, SDCardMountInforUtil.a(this.a));
-    }
+    this.a.c();
   }
 }
 

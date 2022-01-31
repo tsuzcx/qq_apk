@@ -1,26 +1,47 @@
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.widget.ActionSheet;
 
 public class ayo
-  implements IphonePickerView.IphonePickListener
+  implements IphonePickerView.PickerViewAdapter
 {
-  public ayo(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public ayo(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public int a()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    NearbyPeopleProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setTag(Byte.valueOf((byte)(i + 1)));
-    NearbyPeopleProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setText(NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).a(0, i));
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
+    return 1;
   }
   
-  public void a(int paramInt1, int paramInt2) {}
+  public int a(int paramInt)
+  {
+    return 4;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    int i = 3;
+    if (paramInt2 < 0) {}
+    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    {
+      if (paramInt1 > 3) {
+        paramInt1 = i;
+      }
+      for (;;)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return "";
+        case 0: 
+          return "保密";
+        case 1: 
+          return "单身";
+        case 2: 
+          return "恋爱中";
+        }
+        return "已婚";
+      }
+    }
+  }
 }
 
 

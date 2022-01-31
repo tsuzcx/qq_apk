@@ -36,8 +36,8 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.CustomWidgetUtil;
-import esl;
-import esm;
+import esq;
+import esr;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -68,8 +68,8 @@ public class QQSettingUtil
     if (paramInt == 0)
     {
       localObject = new SpannableString("*");
-      paramInt = (int)paramResources.getDimension(2131492939);
-      paramResources = paramResources.getDrawable(2130838915);
+      paramInt = (int)paramResources.getDimension(2131492935);
+      paramResources = paramResources.getDrawable(2130838862);
       paramResources.setBounds(0, 0, paramInt, paramInt);
       ((SpannableString)localObject).setSpan(new ImageSpan(paramResources), 0, 1, 33);
       return localObject;
@@ -118,14 +118,14 @@ public class QQSettingUtil
     for (;;)
     {
       SpannableString localSpannableString = new SpannableString(str1);
-      i = (int)paramResources.getDimension(2131492939);
+      i = (int)paramResources.getDimension(2131492935);
       paramInt = 0;
       if (paramInt < str1.length())
       {
         String str2 = str1.substring(paramInt, paramInt + 1);
         if ("!".equalsIgnoreCase(str2))
         {
-          localObject = paramResources.getDrawable(2130838913);
+          localObject = paramResources.getDrawable(2130838859);
           label345:
           if (localObject != null)
           {
@@ -142,22 +142,22 @@ public class QQSettingUtil
           break;
           if ("@".equalsIgnoreCase(str2))
           {
-            localObject = paramResources.getDrawable(2130838917);
+            localObject = paramResources.getDrawable(2130838891);
             break label345;
           }
           if ("#".equalsIgnoreCase(str2))
           {
-            localObject = paramResources.getDrawable(2130838914);
+            localObject = paramResources.getDrawable(2130838860);
             break label345;
           }
           if ("%".equalsIgnoreCase(str2))
           {
-            localObject = paramResources.getDrawable(2130838916);
+            localObject = paramResources.getDrawable(2130838864);
             break label345;
           }
           if ("$".equalsIgnoreCase(str2))
           {
-            localObject = paramResources.getDrawable(2130839482);
+            localObject = paramResources.getDrawable(2130839447);
             break label345;
           }
           localObject = null;
@@ -178,13 +178,13 @@ public class QQSettingUtil
     WeakReference localWeakReference = new WeakReference(paramView);
     SpannableString localSpannableString = new SpannableString("");
     paramView = null;
-    int i = (int)paramResources.getDimension(2131492939);
+    int i = (int)paramResources.getDimension(2131492935);
     Drawable localDrawable;
     if ((paramBoolean1) && (paramInt > 0))
     {
       localSpannableString = new SpannableString("sb");
       paramView = "http://i.gtimg.cn/club/mobile/profile/vipicon/android/svip_" + paramInt + ".png";
-      localDrawable = paramResources.getDrawable(2130838918);
+      localDrawable = paramResources.getDrawable(2130838892);
       paramView = URLDrawable.getDrawable(paramView, localDrawable, localDrawable);
       paramView.setBounds(0, 0, (int)(67.0D * (i / 27.0D)), i);
     }
@@ -193,10 +193,10 @@ public class QQSettingUtil
       if (paramView != null)
       {
         paramView.mutate();
-        ((URLDrawable)paramView).setURLDrawableListener(new esm(localWeakReference));
+        ((URLDrawable)paramView).setURLDrawableListener(new esr(localWeakReference));
         localSpannableString.setSpan(new ImageSpan(paramView), 0, 1, 33);
-        paramView = paramResources.getDrawable(2130838920);
-        paramView.setBounds(0, 0, (int)paramResources.getDimension(2131492940), i);
+        paramView = paramResources.getDrawable(2130838894);
+        paramView.setBounds(0, 0, (int)paramResources.getDimension(2131492936), i);
         localSpannableString.setSpan(new ImageSpan(paramView), 1, 2, 33);
       }
       if (QLog.isDevelopLevel()) {
@@ -207,7 +207,7 @@ public class QQSettingUtil
       {
         localSpannableString = new SpannableString("vb");
         paramView = "http://i.gtimg.cn/club/mobile/profile/vipicon/android/vip_" + paramInt + ".png";
-        localDrawable = paramResources.getDrawable(2130838919);
+        localDrawable = paramResources.getDrawable(2130838893);
         paramView = URLDrawable.getDrawable(paramView, localDrawable, localDrawable);
         paramView.setBounds(0, 0, (int)(58.0D * (i / 26.0D)), i);
       }
@@ -276,16 +276,16 @@ public class QQSettingUtil
       }
       if (paramLong == 11L)
       {
-        paramImageView.setImageResource(2130839391);
+        paramImageView.setImageResource(2130839356);
         return;
       }
       if (paramLong == 41L)
       {
-        paramImageView.setImageResource(2130839386);
+        paramImageView.setImageResource(2130839351);
         return;
       }
     } while (paramLong != 31L);
-    paramImageView.setImageResource(2130839388);
+    paramImageView.setImageResource(2130839353);
   }
   
   public static void a(TextView paramTextView, BusinessInfoCheckUpdate.AppInfo paramAppInfo, QQAppInterface paramQQAppInterface)
@@ -306,7 +306,7 @@ public class QQSettingUtil
     {
       if (i == 1)
       {
-        paramTextView.setCompoundDrawablesWithIntrinsicBounds(2130839061, 0, 0, 0);
+        paramTextView.setCompoundDrawablesWithIntrinsicBounds(2130839029, 0, 0, 0);
         paramTextView.setVisibility(0);
         paramTextView.setText("");
         paramTextView.setBackgroundResource(0);
@@ -348,14 +348,14 @@ public class QQSettingUtil
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface.a(new esl(paramQQAppInterface));
+    paramQQAppInterface.a(new esq(paramQQAppInterface));
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
   {
     Object localObject1 = new HashMap();
     Object localObject2 = paramQQAppInterface.a();
-    boolean bool = SettingCloneUtil.readValue((Context)localObject2, null, ((Context)localObject2).getString(2131363049), "qqsetting_auto_receive_pic_key", true);
+    boolean bool = SettingCloneUtil.readValue((Context)localObject2, null, ((Context)localObject2).getString(2131363052), "qqsetting_auto_receive_pic_key", true);
     int i;
     Object localObject3;
     if (bool)
@@ -378,13 +378,13 @@ public class QQSettingUtil
         i = 1;
         label105:
         ((Map)localObject1).put("Download_new", Integer.valueOf(i));
-        if (!SettingCloneUtil.readValue((Context)localObject2, null, ((Context)localObject2).getString(2131364002), "qqsetting_notify_icon_key", false)) {
+        if (!SettingCloneUtil.readValue((Context)localObject2, null, ((Context)localObject2).getString(2131363991), "qqsetting_notify_icon_key", false)) {
           break label821;
         }
         i = 1;
         label142:
         ((Map)localObject1).put("System_icon", Integer.valueOf(i));
-        if (!SettingCloneUtil.readValue((Context)localObject2, null, paramQQAppInterface.a().getString(2131363068), "qqsetting_enter_sendmsg_key", false)) {
+        if (!SettingCloneUtil.readValue((Context)localObject2, null, paramQQAppInterface.a().getString(2131363071), "qqsetting_enter_sendmsg_key", false)) {
           break label826;
         }
         i = 1;
@@ -485,7 +485,7 @@ public class QQSettingUtil
           ReportController.b(paramQQAppInterface, "CliStatus", "", "", "Setting_tab", (String)localObject3, 0, 0, String.valueOf(((Map)localObject1).get(localObject3)), "", "", "");
           continue;
         }
-        if (!SettingCloneUtil.readValue(paramQQAppInterface.a(), null, paramQQAppInterface.a().getString(2131363051), "qqsetting_screenshot_key", false)) {
+        if (!SettingCloneUtil.readValue(paramQQAppInterface.a(), null, paramQQAppInterface.a().getString(2131363054), "qqsetting_screenshot_key", false)) {
           break label901;
         }
         i = 1;

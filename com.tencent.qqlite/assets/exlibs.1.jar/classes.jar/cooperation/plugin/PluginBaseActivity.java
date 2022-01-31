@@ -24,7 +24,7 @@ public class PluginBaseActivity
   
   protected String b()
   {
-    return getString(2131363110);
+    return getString(2131363113);
   }
 }
 

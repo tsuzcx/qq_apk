@@ -33,16 +33,16 @@ public class LocalApkFileView
       }
       return;
     }
-    Object localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297648);
-    ((AsyncImageView)localObject).setDefaultImage(2130838532);
+    Object localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297644);
+    ((AsyncImageView)localObject).setDefaultImage(2130838509);
     ((AsyncImageView)localObject).setApkIconAsyncImage(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.c());
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298022)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298096)).setText(BaseApplicationImpl.getContext().getString(2131362011));
-    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298095);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298059)).setText(BaseApplicationImpl.getContext().getString(2131362008));
+    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298058);
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.d() == 16)
     {
-      ((TextView)localObject).setText(BaseApplicationImpl.getContext().getString(2131362031));
+      ((TextView)localObject).setText(BaseApplicationImpl.getContext().getString(2131362028));
       return;
     }
     ((TextView)localObject).setVisibility(8);
@@ -50,7 +50,7 @@ public class LocalApkFileView
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903442, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903432, paramViewGroup, false);
     e();
     return this.jdField_a_of_type_AndroidViewView;
   }

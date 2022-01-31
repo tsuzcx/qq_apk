@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020544" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020543" />
-</selector>
+<clip android:gravity="bottom" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02053a" android:clipOrientation="vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

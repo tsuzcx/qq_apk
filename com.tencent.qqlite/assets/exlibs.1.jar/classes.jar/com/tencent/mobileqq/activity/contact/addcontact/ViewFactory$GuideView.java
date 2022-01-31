@@ -74,9 +74,9 @@ public class ViewFactory$GuideView
     default: 
       return null;
     case 80000000: 
-      return new ViewFactory.GuideView.DataHolder(2131363359, 2130838627);
+      return new ViewFactory.GuideView.DataHolder(2131363362, 2130838603);
     }
-    return new ViewFactory.GuideView.DataHolder(2131363360, 2130838628);
+    return new ViewFactory.GuideView.DataHolder(2131363363, 2130838604);
   }
   
   public ViewFactory.GuideView.OnItemClickListener a()

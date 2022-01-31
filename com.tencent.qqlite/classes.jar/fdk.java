@@ -1,41 +1,30 @@
 import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.viareport.BatchReportInfo;
-import com.tencent.open.business.viareport.ReportDbHelper;
-import com.tencent.open.business.viareport.ReportManager;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.Statistic;
+import com.tencent.open.business.base.OpenConfig;
+import org.json.JSONObject;
 
 public class fdk
   implements Runnable
 {
-  public fdk(ReportManager paramReportManager, boolean paramBoolean, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, String paramString) {}
+  public fdk(OpenConfig paramOpenConfig, Bundle paramBundle) {}
   
   public void run()
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo == null)) {
-      if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.b(this.jdField_a_of_type_AndroidOsBundle.getString("appid_for_getting_config")))) {
-        this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, false);
-      }
-    }
-    do
+    try
     {
+      JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("http://cgi.connect.qq.com/qqconnectopen/openapi/policy_conf", "GET", this.jdField_a_of_type_AndroidOsBundle).a);
+      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a(localJSONObject);
+      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a = 0;
       return;
-      if ((this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo.a()) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.b(null))) {
-        ReportDbHelper.a().a("table_new_data", this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo);
-      }
-      if (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.jdField_a_of_type_Boolean)
-      {
-        LogUtility.b("viareport", "isUploading ---return");
-        return;
-      }
-    } while ((!this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a()));
-    ReportManager localReportManager = this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager;
-    String str = this.jdField_a_of_type_JavaLangString;
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) {
-      bool = true;
     }
-    localReportManager.a(str, localBundle, bool);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

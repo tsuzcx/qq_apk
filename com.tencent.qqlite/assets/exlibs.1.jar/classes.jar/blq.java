@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
 
 public class blq
   implements Runnable
 {
-  public blq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public blq(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
-      this.a.c();
-    }
+    this.a.c();
   }
 }
 

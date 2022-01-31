@@ -1,19 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
 public class efs
-  implements Runnable
+  extends Handler
 {
-  public efs(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
-  
-  public void run()
+  public efs(FriendSystemMsgController paramFriendSystemMsgController, Looper paramLooper)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("group_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((FriendSystemMsgController.a(this.a)) && (FriendSystemMsgController.a(this.a) != null))
+    {
+      FriendSystemMsgController.a(this.a, false);
+      FriendSystemMsgController.a(this.a).a().a(2);
     }
   }
 }

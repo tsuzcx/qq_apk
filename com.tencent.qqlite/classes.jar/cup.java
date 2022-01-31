@@ -1,11 +1,15 @@
-import java.util.List;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class cup
+class cup
+  implements Comparator
 {
-  public int a;
-  public long a;
-  public List a;
-  public boolean a;
+  cup(cuo paramcuo) {}
+  
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+  }
 }
 
 

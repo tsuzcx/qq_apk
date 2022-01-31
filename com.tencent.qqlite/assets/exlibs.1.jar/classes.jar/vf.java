@@ -1,27 +1,32 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public class vf
-  implements View.OnClickListener
+class vf
+  implements Runnable
 {
-  public vf(AccountManageActivity paramAccountManageActivity) {}
+  vf(ve paramve) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (View)paramView.getParent().getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    int i;
-    do
+    int i = 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = null;
+    int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    while (i < j)
     {
-      return;
-      i = ((Integer)paramView.getTag()).intValue();
-    } while ((i == 0) && (!PhoneNumLoginImpl.a().a(this.a.app, this.a)));
-    this.a.a(i);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
+      View localView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView.getTag() != null) {
+        localView.setTag(Integer.valueOf(i));
+      }
+      i += 2;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

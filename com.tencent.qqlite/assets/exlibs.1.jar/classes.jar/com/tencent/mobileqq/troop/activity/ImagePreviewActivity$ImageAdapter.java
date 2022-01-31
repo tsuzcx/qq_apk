@@ -46,7 +46,7 @@ public class ImagePreviewActivity$ImageAdapter
     {
       paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityImagePreviewActivity.getLayoutInflater().inflate(2130903268, null);
       paramViewGroup = new ImagePreviewActivity.ImageAdapter.ImagePhotoHolder(this);
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131297428));
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131297424));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

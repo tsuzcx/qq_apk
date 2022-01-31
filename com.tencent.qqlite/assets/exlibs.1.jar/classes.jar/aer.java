@@ -1,35 +1,45 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class aer
-  extends CardObserver
+  extends MessageObserver
 {
   public aer(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
-        {
-          String str = ((FriendManager)this.a.app.getManager(8)).b(ChatSettingActivity.a(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.e(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.a != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.a);
-        }
-      }
+    if (!ChatSettingActivity.b(this.a)) {
       return;
     }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.d(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.c(this.a)))) {
+        ChatSettingActivity.b(this.a, true);
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131363415, 1);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (!ChatSettingActivity.b(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.d(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.c(this.a)))) {
+        ChatSettingActivity.b(this.a, false);
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131363415, 1);
   }
 }
 

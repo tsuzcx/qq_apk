@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bzr;
 import bzs;
-import bzt;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -43,10 +43,9 @@ import java.util.Observable;
 public class StrangerChatPie
   extends BaseChatPie
 {
-  private final String G = "StrangerChatPie";
+  private final String H = "StrangerChatPie";
   protected MessageObserver a;
   private ShieldListObserver a;
-  private int bM = 0;
   boolean n = false;
   private boolean o = false;
   private boolean p = false;
@@ -54,8 +53,8 @@ public class StrangerChatPie
   public StrangerChatPie(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
     super(paramQQAppInterface, paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new bzs(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bzt(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new bzr(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bzs(this);
   }
   
   private void ab()
@@ -385,7 +384,6 @@ public class StrangerChatPie
     if (((paramObject instanceof MessageRecord)) && ((paramObject instanceof ChatMessage)))
     {
       paramObservable = (MessageRecord)paramObject;
-      this.bM = 0;
       if ((!paramObservable.isSendFromLocal()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramObservable.istroop) || ((MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) && (MsgProxyUtils.a(paramObservable.istroop)))) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) && (paramObservable.msgtype == -3001))
       {
         paramObservable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();

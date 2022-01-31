@@ -4,11 +4,11 @@ import com.tencent.mobileqq.widget.QQToast;
 class aue
   implements Runnable
 {
-  aue(aud paramaud) {}
+  aue(auc paramauc) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131364176), 0).b(this.a.a.a.getTitleBarHeight());
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131364161), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

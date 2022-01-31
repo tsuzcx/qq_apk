@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205c0" />
-    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205c1" />
-    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205c2" />
-</animation-list>
+<translate android:duration="@android:integer/config_longAnimTime" android:fromYDelta="100.0%p" android:toYDelta="0.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

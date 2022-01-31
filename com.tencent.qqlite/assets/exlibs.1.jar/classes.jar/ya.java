@@ -12,20 +12,15 @@ public class ya
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AssistantSettingActivity.a(this.a).setContentDescription("摇动手机截屏");
+    AssistantSettingActivity.c(this.a).setContentDescription("回车键发送消息");
     paramCompoundButton = this.a.app;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363051), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.turnOnShake();
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363071), "qqsetting_enter_sendmsg_key", paramBoolean);
       return;
     }
-    this.a.turnOffShake();
   }
 }
 

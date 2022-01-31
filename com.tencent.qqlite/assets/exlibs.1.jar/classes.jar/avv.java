@@ -1,16 +1,10 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.MusicSharePlayActivity;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class avv
   extends Handler
 {
-  public avv(MusicSharePlayActivity paramMusicSharePlayActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-  }
+  public avv(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
 }
 
 

@@ -1,30 +1,23 @@
-import android.os.Bundle;
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.Statistic;
-import com.tencent.open.business.base.OpenConfig;
-import org.json.JSONObject;
+import android.widget.Toast;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.ToastUtil;
 
 public class fdf
   implements Runnable
 {
-  public fdf(OpenConfig paramOpenConfig, Bundle paramBundle) {}
+  public fdf(ToastUtil paramToastUtil, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
     {
-      JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("http://cgi.connect.qq.com/qqconnectopen/openapi/policy_conf", "GET", this.jdField_a_of_type_AndroidOsBundle).a);
-      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a(localJSONObject);
-      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a = 0;
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.b);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
   }
 }
 

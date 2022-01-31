@@ -1,10 +1,10 @@
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -23,27 +23,23 @@ public class bpq
       return;
     }
     TroopRequestActivity.d = l;
-    Bundle localBundle = TroopInfoActivity.a(this.a.p, 4);
-    int i = TroopRequestActivity.a(this.a).msg.group_msg_type.get();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((i == 2) || (i == 10) || (i == 12))
-    {
-      i = 1;
-      localQQAppInterface = this.a.app;
-      str = TroopRequestActivity.a(this.a).msg.group_code.get() + "";
-      if (i == 0) {
-        break label172;
-      }
+    if (((FriendManager)this.a.app.getManager(8)).b(TroopRequestActivity.c(this.a))) {
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 1);
     }
-    label172:
-    for (paramView = "0";; paramView = "1")
+    for (;;)
     {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
-      ChatSettingForTroop.a(this.a, localBundle, 2);
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, TroopRequestActivity.a(this.a).msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
       return;
-      i = 0;
-      break;
+      if ((TroopRequestActivity.a(this.a).msg.group_msg_type.get() == 2) && (TroopRequestActivity.a(this.a).msg.sub_type.get() == 3))
+      {
+        paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 26);
+        paramView.d = 1;
+      }
+      else
+      {
+        paramView = new ProfileActivity.AllInOne(TroopRequestActivity.c(this.a), 19);
+      }
     }
   }
 }

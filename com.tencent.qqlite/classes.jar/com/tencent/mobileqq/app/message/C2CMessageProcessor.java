@@ -47,9 +47,9 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import cyd;
-import cye;
-import cyf;
+import cyj;
+import cyk;
+import cyl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -869,10 +869,10 @@ public class C2CMessageProcessor
     //   853: iconst_1
     //   854: if_icmple +15 -> 869
     //   857: aload_3
-    //   858: new 626	cyc
+    //   858: new 626	cyi
     //   861: dup
     //   862: aload_0
-    //   863: invokespecial 629	cyc:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   863: invokespecial 629	cyi:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
     //   866: invokestatic 635	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   869: aload_0
     //   870: getfield 33	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1624,7 +1624,7 @@ public class C2CMessageProcessor
       break label1420;
       if (!localArrayList.isEmpty())
       {
-        Collections.sort(localArrayList, new cyd(this));
+        Collections.sort(localArrayList, new cyj(this));
         l1 = ((MessageRecord)localArrayList.get(0)).time;
         long l2 = Math.min(paramToServiceMsg.extraData.getLong("lEndTime"), ((MessageRecord)localArrayList.get(localArrayList.size() - 1)).time + 5L);
         i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 0, l1, l2);
@@ -1769,7 +1769,7 @@ public class C2CMessageProcessor
     label457:
     if (paramObject.size() > 0)
     {
-      Collections.sort(paramObject, new cye(this));
+      Collections.sort(paramObject, new cyk(this));
       l1 = ((MessageRecord)paramObject.get(0)).time;
       paramToServiceMsg = paramObject;
       for (;;)
@@ -2373,7 +2373,7 @@ public class C2CMessageProcessor
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return;
     }
-    a(true, false, false, 0L, new cyf(this, paramArrayList));
+    a(true, false, false, 0L, new cyl(this, paramArrayList));
   }
 }
 

@@ -17,8 +17,8 @@ import com.tencent.mobileqq.jsbridge.JsBridge;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.widget.ProtectedWebView;
-import ebw;
-import ebx;
+import ecc;
+import ecd;
 import java.io.File;
 import mqq.app.AppRuntime;
 
@@ -68,7 +68,7 @@ public class MovieDetailActivity
   
   private void d()
   {
-    Object localObject = (RelativeLayout)findViewById(2131298961);
+    Object localObject = (RelativeLayout)findViewById(2131298910);
     this.jdField_a_of_type_ComTencentWidgetProtectedWebView = new ProtectedWebView(BaseApplicationImpl.a);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_ComTencentWidgetProtectedWebView, 0, new RelativeLayout.LayoutParams(-1, -1));
     this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setScrollBarStyle(0);
@@ -79,14 +79,14 @@ public class MovieDetailActivity
     ((WebSettings)localObject).setDatabasePath(getApplicationContext().getDir("database", 0).getPath());
     ((WebSettings)localObject).setDomStorageEnabled(true);
     ((WebSettings)localObject).setGeolocationEnabled(true);
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new ebx(this, null));
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new ebw(this, null));
+    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new ecd(this, null));
+    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new ecc(this, null));
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge = new JsBridge();
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler = new StatusJsHandler(this, this.jdField_a_of_type_ComTencentWidgetProtectedWebView, null);
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler, "statusJsHandler");
-    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131298962));
+    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131298911));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131298963));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131298912));
     this.b = findViewById(2131296648);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
@@ -112,7 +112,7 @@ public class MovieDetailActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetProtectedWebView.canGoBack())
     {
-      this.h.setText(2131363110);
+      this.h.setText(2131363113);
       return;
     }
     this.h.setText(getIntent().getStringExtra("leftViewText"));
@@ -121,7 +121,7 @@ public class MovieDetailActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903705);
+    setContentView(2130903688);
     d();
     e();
     return true;

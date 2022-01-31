@@ -1,8 +1,25 @@
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cin
+  implements View.OnClickListener
 {
-  URLImageView a;
+  public cin(CameraPreviewActivity paramCameraPreviewActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!CameraPreviewActivity.a(this.a))
+    {
+      if (this.a.b) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
+      }
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
+      paramView.setClickable(false);
+    }
+  }
 }
 
 

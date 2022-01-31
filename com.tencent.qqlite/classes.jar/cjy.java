@@ -1,62 +1,42 @@
+import android.content.ComponentName;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MusicSharePlayActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExpiredPushBanner;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.struct.PushBanner;
-import java.util.List;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class cjy
-  implements Runnable
+public class cjy
+  implements View.OnClickListener
 {
-  cjy(cjx paramcjx, int paramInt, List paramList) {}
+  public cjy(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int k = 0;
-    EntityManager localEntityManager = BannerManager.a(this.jdField_a_of_type_Cjx.a).app.a().createEntityManager();
-    Object localObject = localEntityManager.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
-    int j = k;
-    if (localObject != null)
+    paramView = QQPlayerService.a();
+    int i;
+    if (paramView != null)
     {
-      int m = ((List)localObject).size() + this.jdField_a_of_type_Int - 10;
-      j = k;
-      if (m > 0)
-      {
-        int i = 0;
-        for (;;)
-        {
-          j = k;
-          if (i >= m) {
-            break;
-          }
-          localEntityManager.b((ExpiredPushBanner)((List)localObject).get(i));
-          i += 1;
-        }
+      BannerManager.a(this.a).startActivity(paramView);
+      paramView = paramView.getComponent().getClassName();
+      if (!paramView.equals(MusicSharePlayActivity.class.getName())) {
+        break label92;
       }
+      i = 0;
     }
-    while (j < this.jdField_a_of_type_JavaUtilList.size())
+    for (;;)
     {
-      localObject = (PushBanner)this.jdField_a_of_type_JavaUtilList.get(j);
-      if (localObject != null)
-      {
-        long l2 = 0L;
-        long l1 = l2;
-        if (((PushBanner)localObject).c != null)
-        {
-          l1 = l2;
-          if (((PushBanner)localObject).c.contains("|")) {
-            l1 = Long.parseLong(((PushBanner)localObject).c.substring(((PushBanner)localObject).c.indexOf("|") + 1));
-          }
-        }
-        ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
-        localExpiredPushBanner.cid = Long.parseLong(((PushBanner)localObject).a);
-        localExpiredPushBanner.md5 = ((PushBanner)localObject).m;
-        localExpiredPushBanner.endtime = l1;
-        localEntityManager.a(localExpiredPushBanner);
+      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      return;
+      label92:
+      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
       }
-      j += 1;
     }
   }
 }

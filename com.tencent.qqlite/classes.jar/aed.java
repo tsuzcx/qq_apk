@@ -1,29 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.database.Cursor;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class aed
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aed(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
+  public aed(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString1, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((paramView != null) && ((paramView instanceof ImageView)))
+    try
     {
-      View localView = (View)paramView.getParent();
-      paramView = paramView.getTag();
-      String str = EmosmUtils.getEmoticonSoundPath(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
+      Cursor localCursor = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.obtainMessage(8);
+      localMessage.obj = localCursor;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.sendMessage(localMessage);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
     }
   }
 }

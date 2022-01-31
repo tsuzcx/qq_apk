@@ -13,18 +13,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import evd;
-import eve;
-import evf;
-import evg;
-import evh;
+import evi;
+import evj;
+import evk;
+import evl;
+import evm;
 
 public class QQCustomSplitDialog
   extends Dialog
 {
   public DialogInterface.OnClickListener a;
   public LayoutInflater a;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new evd(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new evi(this);
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   ListView jdField_a_of_type_AndroidWidgetListView;
@@ -124,7 +124,7 @@ public class QQCustomSplitDialog
     }
     this.c.setText(paramString);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new eve(this, paramOnClickListener));
+    this.c.setOnClickListener(new evj(this, paramOnClickListener));
     return this;
   }
   
@@ -154,7 +154,7 @@ public class QQCustomSplitDialog
     }
     this.c.setText(paramInt);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new evg(this, paramOnClickListener));
+    this.c.setOnClickListener(new evl(this, paramOnClickListener));
     return this;
   }
   
@@ -179,7 +179,7 @@ public class QQCustomSplitDialog
     }
     this.d.setText(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new evf(this, paramOnClickListener));
+    this.d.setOnClickListener(new evk(this, paramOnClickListener));
     return this;
   }
   
@@ -192,7 +192,7 @@ public class QQCustomSplitDialog
     }
     this.d.setText(paramInt);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new evh(this, paramOnClickListener));
+    this.d.setOnClickListener(new evm(this, paramOnClickListener));
     return this;
   }
   
@@ -209,16 +209,16 @@ public class QQCustomSplitDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296915));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296911));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296470));
-    this.c = ((TextView)findViewById(2131296918));
-    this.d = ((TextView)findViewById(2131296919));
+    this.c = ((TextView)findViewById(2131296914));
+    this.d = ((TextView)findViewById(2131296915));
     this.c.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296916));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296831));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296922));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296923));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296912));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296827));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296918));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296919));
   }
   
   public void setTitle(int paramInt)

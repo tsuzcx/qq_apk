@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class bol
-  implements DialogInterface.OnDismissListener
+class bol
+  implements Runnable
 {
-  public bol(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  bol(bok parambok) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.findViewById(2131298933).getHandler().postDelayed(new bom(this), 150L);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.e = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

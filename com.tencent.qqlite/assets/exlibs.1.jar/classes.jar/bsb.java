@@ -1,41 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
+import android.view.View;
 import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class bsb
-  extends Handler
+  implements TabBarView.OnTabChangeListener
 {
   public bsb(VisitorsActivity paramVisitorsActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
+    View localView = this.a.a.getChildAt(0);
+    if (paramInt2 == 0)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
-      return;
-    case 4: 
-      this.a.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.B();
-      return;
-    case 2: 
-      VisitorsActivity.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
-      this.a.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.B();
-      this.a.a(1, this.a.getString(2131363515));
-      return;
+      str = "已选中" + this.a.getString(2131363541);
+      localView.setContentDescription(str);
+      localView = this.a.a.getChildAt(1);
+      if (paramInt2 != 1) {
+        break label125;
+      }
     }
-    if (this.a.h == 0) {
-      this.a.jdField_a_of_type_Bsh.notifyDataSetChanged();
-    }
-    for (;;)
+    label125:
+    for (String str = "已选中" + this.a.getString(2131363542);; str = this.a.getString(2131363542))
     {
-      this.a.d = SystemClock.uptimeMillis();
+      localView.setContentDescription(str);
+      this.a.a(paramInt2);
       return;
-      this.a.jdField_b_of_type_Bsh.notifyDataSetChanged();
+      str = this.a.getString(2131363541);
+      break;
     }
   }
 }

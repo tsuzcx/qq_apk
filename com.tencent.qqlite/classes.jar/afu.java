@@ -1,42 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class afu
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public afu(ChatSettingForTroop paramChatSettingForTroop, QQCustomDialog paramQQCustomDialog) {}
+  public afu(ChatSettingForTroop paramChatSettingForTroop, int paramInt, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    }
-    paramDialogInterface = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(17);
-    if ((NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.getActivity())) && (paramDialogInterface != null))
+    if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      paramDialogInterface.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131363677, 0);
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363516, 1500);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
       return;
-      if (paramDialogInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363449, 1500);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363681, 1500);
+      switch (paramInt)
+      {
+      default: 
+        paramInt = -1;
       }
+      while (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g = paramInt;
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, Integer.valueOf(paramInt));
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "P_CliOper", "Grp_msg", "", "data_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, String.valueOf(paramInt - 1), "", "");
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.chatopttroop", 2, paramView.toString());
     }
   }
 }

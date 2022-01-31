@@ -1,39 +1,15 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import java.util.List;
 
-public class awv
-  implements OverScrollViewListener
+class awv
+  implements Runnable
 {
-  public awv(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
+  awv(awu paramawu, String paramString, List paramList) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Awu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, null);
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
-    if (NetworkUtil.e(NearbyPeopleListFrame.c(this.a)))
-    {
-      this.a.a(true, true);
-      return true;
-    }
-    paramView = NearbyPeopleListFrame.a(this.a).obtainMessage(1, 1, 0);
-    NearbyPeopleListFrame.a(this.a).sendMessageDelayed(paramView, 1000L);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

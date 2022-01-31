@@ -1,22 +1,31 @@
 import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
 public class awg
-  implements ConditionSearchManager.IConfigListener
+  implements IphonePickerView.PickerViewAdapter
 {
   public awg(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public int a()
   {
-    this.a.e();
-    if (!paramBoolean) {
-      QQToast.a(this.a, 2131364412, 0).b(this.a.getTitleBarHeight());
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.i == 0) {
+      return NearPeopleFilterActivity.NearPeopleFilters.a.length;
     }
-    while (paramInt != 2) {
-      return;
+    return NearPeopleFilterActivity.NearPeopleFilters.b.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (this.a.i == 0) {
+      return NearPeopleFilterActivity.NearPeopleFilters.a[paramInt2];
     }
-    this.a.d();
+    return NearPeopleFilterActivity.NearPeopleFilters.b[paramInt2];
   }
 }
 

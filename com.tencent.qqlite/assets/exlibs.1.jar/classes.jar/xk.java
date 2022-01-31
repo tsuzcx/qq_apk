@@ -1,15 +1,16 @@
-import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class xk
-  implements Runnable
+public class xk
+  implements DialogInterface.OnClickListener
 {
-  xk(xj paramxj) {}
+  public xk(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AddRequestActivity.a(this.a.a).dismiss();
-    this.a.a.finish();
+    this.a.a.cancel();
   }
 }
 

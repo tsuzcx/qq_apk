@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dfa;
-import dfb;
+import dfg;
+import dfh;
 
 public class FastImagePreviewLayout
   extends LinearLayout
@@ -69,7 +69,7 @@ public class FastImagePreviewLayout
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      localAlphaAnimation.setAnimationListener(new dfa(this));
+      localAlphaAnimation.setAnimationListener(new dfg(this));
       return;
     }
     removeAllViews();
@@ -77,7 +77,7 @@ public class FastImagePreviewLayout
   
   public void b()
   {
-    ThreadManager.b().post(new dfb(this));
+    ThreadManager.b().post(new dfh(this));
   }
   
   public void setHandler(Handler paramHandler)

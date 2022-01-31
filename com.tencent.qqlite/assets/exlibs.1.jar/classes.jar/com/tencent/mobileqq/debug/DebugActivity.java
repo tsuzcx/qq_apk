@@ -29,9 +29,9 @@ import com.tencent.mobileqq.pic.CircleCounter;
 import com.tencent.mobileqq.pic.PicPreDownloadUtils;
 import com.tencent.mobileqq.pic.PicPreDownloader;
 import com.tencent.mobileqq.vip.DownloaderFactory;
-import dcx;
-import dcz;
-import dda;
+import ddd;
+import ddf;
+import ddg;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -268,7 +268,7 @@ public class DebugActivity
   {
     System.gc();
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new dcz(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ddf(this);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
@@ -510,7 +510,7 @@ public class DebugActivity
       }
       localObject2 = (String[])((ArrayList)localObject1).toArray(new String[0]);
       Arrays.sort((Object[])localObject2, 0, ((ArrayList)localObject1).size());
-      this.jdField_a_of_type_AndroidAppAlertDialog = this.jdField_a_of_type_AndroidAppAlertDialog$Builder.setTitle("图片预下载信息").setItems((CharSequence[])localObject2, new dda(this, null)).create();
+      this.jdField_a_of_type_AndroidAppAlertDialog = this.jdField_a_of_type_AndroidAppAlertDialog$Builder.setTitle("图片预下载信息").setItems((CharSequence[])localObject2, new ddg(this, null)).create();
       this.jdField_a_of_type_AndroidAppAlertDialog.show();
     }
   }
@@ -573,7 +573,7 @@ public class DebugActivity
     setContentView(this.jdField_a_of_type_AndroidWidgetListView);
     paramBundle = new ArrayAdapter(this, 17367043, 16908308, jdField_a_of_type_ArrayOfJavaLangString);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new dcx(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ddd(this));
     return true;
   }
   

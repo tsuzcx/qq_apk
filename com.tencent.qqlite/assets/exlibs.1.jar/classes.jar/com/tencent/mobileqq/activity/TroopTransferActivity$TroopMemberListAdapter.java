@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bqs;
-import bqu;
+import bqr;
+import bqt;
 import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
 import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
 import com.tencent.mobileqq.util.Utils;
@@ -93,7 +93,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
       this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramContext);
     }
-    new bqs(this, paramTroopTransferActivity).start();
+    new bqr(this, paramTroopTransferActivity).start();
   }
   
   public TroopTransferActivity.TroopMemberItem a(String paramString)
@@ -176,7 +176,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
       if (paramView == null)
       {
         paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903225, paramViewGroup, false);
-        paramView = new bqu(null);
+        paramView = new bqt(null);
         paramView.b = null;
         paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup);
         paramViewGroup.setTag(paramView);
@@ -184,7 +184,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
         if ((localTroopMemberItem == null) || (localTroopMemberItem.jdField_b_of_type_Int != 1)) {
           break label135;
         }
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131362840);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131362844);
       }
     }
     label256:
@@ -194,14 +194,14 @@ public class TroopTransferActivity$TroopMemberListAdapter
         paramViewGroup.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
       return paramViewGroup;
-      Object localObject = (bqu)paramView.getTag();
+      Object localObject = (bqt)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       break;
       label135:
       if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 0))
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131363638);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131363632);
       }
       else
       {
@@ -211,12 +211,12 @@ public class TroopTransferActivity$TroopMemberListAdapter
         {
           if (paramView == null)
           {
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903698, paramViewGroup, false);
-            paramView.findViewById(2131298939).setVisibility(8);
-            paramView.findViewById(2131298901).setVisibility(8);
-            paramViewGroup = new bqu(null);
-            paramViewGroup.b = ((ImageView)paramView.findViewById(2131297015));
-            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296879));
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903681, paramViewGroup, false);
+            paramView.findViewById(2131298888).setVisibility(8);
+            paramView.findViewById(2131298850).setVisibility(8);
+            paramViewGroup = new bqt(null);
+            paramViewGroup.b = ((ImageView)paramView.findViewById(2131297011));
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
             paramView.setTag(paramViewGroup);
             paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
             if (localTroopMemberItem == null) {
@@ -243,7 +243,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
             paramView = paramViewGroup;
             paramViewGroup = (ViewGroup)localObject;
             break;
-            paramViewGroup = (bqu)paramView.getTag();
+            paramViewGroup = (bqt)paramView.getTag();
             break label256;
             localObject = null;
             break label274;

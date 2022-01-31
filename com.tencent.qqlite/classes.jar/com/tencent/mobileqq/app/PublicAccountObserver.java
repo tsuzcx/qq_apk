@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import com.tencent.mobileqq.data.PublicAccountInfo;
-import cuo;
-import cup;
+import cuu;
+import cuv;
 
 public class PublicAccountObserver
   implements BusinessObserver
@@ -27,7 +27,7 @@ public class PublicAccountObserver
   {
     if (100 == paramInt)
     {
-      paramObject = (cup)paramObject;
+      paramObject = (cuv)paramObject;
       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
     do
@@ -35,13 +35,13 @@ public class PublicAccountObserver
       return;
       if (101 == paramInt)
       {
-        paramObject = (cuo)paramObject;
+        paramObject = (cuu)paramObject;
         a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
         return;
       }
       if (102 == paramInt)
       {
-        paramObject = (cuo)paramObject;
+        paramObject = (cuu)paramObject;
         b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
         return;
       }

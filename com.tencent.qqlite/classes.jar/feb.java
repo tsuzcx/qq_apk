@@ -1,37 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public final class feb
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public DownloadInfo a(Parcel paramParcel)
-  {
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.d = paramParcel.readString();
-    localDownloadInfo.e = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.a = paramParcel.readInt();
-    localDownloadInfo.g = paramParcel.readString();
-    localDownloadInfo.h = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.j = paramParcel.readInt();
-    localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDownloadInfo.jdField_c_of_type_Boolean = bool;
-      return localDownloadInfo;
-    }
-  }
+  public feb(String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public DownloadInfo[] a(int paramInt)
+  public void run()
   {
-    return new DownloadInfo[paramInt];
+    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

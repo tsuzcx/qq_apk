@@ -11,13 +11,13 @@ import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import bba;
+import bbb;
 import bbc;
 import bbd;
 import bbe;
-import bbf;
 import bbg;
-import bbi;
-import bbj;
+import bbh;
 import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -70,10 +70,10 @@ public class ProfileCardMoreActivity
   long jdField_a_of_type_Long;
   public Intent a;
   public ProfileActivity.AllInOne a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bbi(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bbg(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bbe(this);
-  private ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new bbf(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bbg(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bbe(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bbc(this);
+  private ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new bbd(this);
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   public QQProgressDialog a;
@@ -1855,7 +1855,7 @@ public class ProfileCardMoreActivity
   
   void a(String paramString)
   {
-    DialogUtil.a(this, 230).setTitle(getString(2131363420)).setMessage(getString(2131363428)).setPositiveButton(2131362924, new bbd(this, paramString)).setNegativeButton(2131363111, new bbc(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131363423)).setMessage(getString(2131363431)).setPositiveButton(2131362928, new bbb(this, paramString)).setNegativeButton(2131363114, new bba(this)).show();
   }
   
   void a(boolean paramBoolean)
@@ -1932,16 +1932,16 @@ public class ProfileCardMoreActivity
       }
       label302:
       if (paramBoolean) {
-        a(2131363413, 1);
+        a(2131363416, 1);
       }
       for (;;)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
         return;
-        a(2131363412, 1);
+        a(2131363415, 1);
       }
     }
-    a(2131362785, 1);
+    a(2131362790, 1);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
   }
   
@@ -1956,7 +1956,7 @@ public class ProfileCardMoreActivity
       if (!paramBoolean2) {
         break label61;
       }
-      a(2131363414, 2);
+      a(2131363417, 2);
     }
     for (;;)
     {
@@ -1965,13 +1965,13 @@ public class ProfileCardMoreActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
       return;
       label61:
-      a(2131363410, 2);
+      a(2131363413, 2);
       continue;
       label72:
       if (paramBoolean2) {
-        a(2131363413, 1);
+        a(2131363416, 1);
       } else {
-        a(2131363412, 1);
+        a(2131363415, 1);
       }
     }
   }
@@ -2004,10 +2004,10 @@ public class ProfileCardMoreActivity
   
   void c()
   {
-    setContentViewB(2130903533);
-    setTitle(2131364387);
+    setContentViewB(2130903520);
+    setTitle(2131364369);
     this.j.setVisibility(8);
-    Object localObject1 = findViewById(2131296774);
+    Object localObject1 = findViewById(2131296770);
     label88:
     int i2;
     int i5;
@@ -2015,7 +2015,7 @@ public class ProfileCardMoreActivity
     {
       ((View)localObject1).setVisibility(0);
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = findViewById(2131296784);
+      localObject1 = findViewById(2131296780);
       if (this.jdField_a_of_type_ArrayOfInt[7] != 1) {
         break label189;
       }
@@ -2061,16 +2061,16 @@ public class ProfileCardMoreActivity
       ((View)localObject1).setVisibility(8);
       break label88;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298413));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298369));
     a(0, this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, null, i2, i5);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298415));
-    localObject1 = findViewById(2131298414);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298371));
+    localObject1 = findViewById(2131298370);
     a(1, this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, (View)localObject1, i2, i5);
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298417));
-    localObject1 = findViewById(2131298416);
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298373));
+    localObject1 = findViewById(2131298372);
     a(2, this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, (View)localObject1, i2, i5);
-    this.d = ((FormSimpleItem)findViewById(2131298419));
-    localObject1 = findViewById(2131298418);
+    this.d = ((FormSimpleItem)findViewById(2131298375));
+    localObject1 = findViewById(2131298374);
     if (BmqqSegmentUtil.a(getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
     {
       a(3, this.d, (View)localObject1, i2, i5);
@@ -2105,8 +2105,8 @@ public class ProfileCardMoreActivity
       this.d.setVisibility(8);
       ((View)localObject1).setVisibility(8);
       break;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131296772));
-      localObject1 = findViewById(2131298420);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131296768));
+      localObject1 = findViewById(2131298376);
       label503:
       Object localObject2;
       if (this.jdField_a_of_type_ArrayOfInt[4] == 1) {
@@ -2275,13 +2275,13 @@ public class ProfileCardMoreActivity
             b(paramIntent);
             return;
           }
-          a(2131363900, 1);
+          a(2131363890, 1);
           return;
         }
-        a(2131363899, 0);
+        a(2131363889, 0);
         return;
       }
-      a(2131363448, 1);
+      a(2131363449, 1);
       return;
     }
   }
@@ -2352,7 +2352,7 @@ public class ProfileCardMoreActivity
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           bool = false;
         }
-        ((Intent)localObject2).putExtra("title", 2131363027).putExtra("limit", 96).putExtra("current", (String)localObject1).putExtra("canPostNull", bool).putExtra("multiLine", false);
+        ((Intent)localObject2).putExtra("title", 2131363031).putExtra("limit", 96).putExtra("current", (String)localObject1).putExtra("canPostNull", bool).putExtra("multiLine", false);
         startActivityForResult((Intent)localObject2, 1003);
         return;
         localObject1 = ((FriendManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
@@ -2379,7 +2379,7 @@ public class ProfileCardMoreActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363378);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -2421,10 +2421,10 @@ public class ProfileCardMoreActivity
     switch (i1)
     {
     default: 
-    case 2131298413: 
-    case 2131298415: 
-    case 2131298417: 
-    case 2131298419: 
+    case 2131298369: 
+    case 2131298371: 
+    case 2131298373: 
+    case 2131298375: 
       do
       {
         long l1;
@@ -2447,9 +2447,9 @@ public class ProfileCardMoreActivity
         return;
       } while (this.jdField_b_of_type_Boolean);
       this.jdField_b_of_type_Boolean = true;
-      ThreadManager.a().post(new bbj(this));
+      ThreadManager.a().post(new bbh(this));
       return;
-    case 2131296774: 
+    case 2131296770: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) {}
       for (paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;; paramView = null)
       {

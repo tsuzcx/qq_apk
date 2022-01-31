@@ -1,32 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
 
 public class bto
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public bto(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public bto(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.g();
   }
 }
 

@@ -1,22 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xp
-  extends CardObserver
+  implements View.OnClickListener
 {
   public xp(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void onImpeach(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!AddRequestActivity.a(this.a).equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
     {
-      this.a.a(2130837989, this.a.getString(2131363020));
-      return;
+      if (this.a.d != -1011) {
+        break label111;
+      }
+      this.a.a(AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ArrayOfByte, this.a.q, AddRequestActivity.b(this.a), AddRequestActivity.c(this.a), AddRequestActivity.b(this.a));
     }
-    this.a.a(2130837979, this.a.getString(2131363019));
+    for (;;)
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
+      return;
+      label111:
+      this.a.a(AddRequestActivity.a(this.a), AddRequestActivity.b(this.a), null, AddRequestActivity.c(this.a), AddRequestActivity.b(this.a));
+    }
   }
 }
 

@@ -1,27 +1,40 @@
 import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class brx
-  extends WtloginObserver
+  extends ContactBindObserver
 {
   public brx(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  protected void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
     VerifyPhoneNumActivity.b(this.a);
-    VerifyPhoneNumActivity.c(this.a);
+    VerifyPhoneNumActivity.e(this.a);
+    VerifyPhoneNumActivity.b(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.c();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.d(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.d(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.d(this.a);
   }
 }
 

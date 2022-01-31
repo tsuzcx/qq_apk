@@ -1,17 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
+import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 
 public class crq
   implements Runnable
 {
-  public crq(DataLineHandler paramDataLineHandler, String paramString) {}
+  public crq(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList) {}
   
   public void run()
   {
-    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131361846));
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileOperate0x211(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

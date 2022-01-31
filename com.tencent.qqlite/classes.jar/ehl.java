@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.transfile.RichMediaUtil;
-import java.util.TimerTask;
+import android.os.Handler;
+import com.tencent.mobileqq.transfile.NetworkCenter;
 
-public final class ehl
-  extends TimerTask
+public class ehl
+  implements Runnable
 {
-  public ehl(String paramString) {}
+  public ehl(NetworkCenter paramNetworkCenter) {}
   
   public void run()
   {
-    RichMediaUtil.a(this.a, false, null);
+    this.a.b();
+    NetworkCenter.a(this.a).postDelayed(this, 120000L);
   }
 }
 

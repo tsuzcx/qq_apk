@@ -18,7 +18,7 @@ public class CompressOperator
   private static List a;
   public static final String b = "CompressOperatorPIC_QUALITY";
   private static final String c = "CompressOperator";
-  private static final String d = BaseApplication.getContext().getString(2131364322);
+  private static final String d = BaseApplication.getContext().getString(2131364307);
   
   public static int a(int paramInt)
   {

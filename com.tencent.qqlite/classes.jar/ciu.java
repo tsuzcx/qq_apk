@@ -1,105 +1,141 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
-import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
 
-public class ciu
-  implements GestureSelectGridView.OnSelectListener
+public final class ciu
+  implements Parcelable.Creator
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public ciu(PhotoListActivity paramPhotoListActivity) {}
-  
-  public void a()
+  public ImageInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {}
-    while (!QLog.isColorLevel()) {
-      return;
+    boolean bool2 = true;
+    ImageInfo localImageInfo = new ImageInfo();
+    if (paramParcel.readInt() == 0)
+    {
+      bool1 = false;
+      localImageInfo.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label412;
+      }
+      bool1 = false;
+      label35:
+      localImageInfo.jdField_b_of_type_Boolean = bool1;
+      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 0) {
+        break label417;
+      }
+      bool1 = false;
+      label59:
+      localImageInfo.jdField_c_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label422;
+      }
+      bool1 = false;
+      label74:
+      localImageInfo.jdField_d_of_type_Boolean = bool1;
+      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 0) {
+        break label427;
+      }
+      bool1 = false;
+      label116:
+      localImageInfo.jdField_e_of_type_Boolean = bool1;
+      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_e_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 0) {
+        break label432;
+      }
+      bool1 = false;
+      label176:
+      localImageInfo.jdField_f_of_type_Boolean = bool1;
+      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 0) {
+        break label437;
+      }
+      bool1 = false;
+      label200:
+      localImageInfo.jdField_h_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label442;
+      }
+      bool1 = false;
+      label215:
+      localImageInfo.i = bool1;
+      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
+      localImageInfo.g = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
+      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_j_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_m_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label447;
+      }
+      bool1 = true;
+      label321:
+      localImageInfo.jdField_o_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label452;
+      }
+      bool1 = true;
+      label337:
+      localImageInfo.n = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label457;
+      }
     }
-    QLog.d("OnSelectListener", 2, "onSelectEnd");
+    label412:
+    label417:
+    label422:
+    label427:
+    label432:
+    label437:
+    label442:
+    label447:
+    label452:
+    label457:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localImageInfo.q = bool1;
+      localImageInfo.jdField_e_of_type_Long = paramParcel.readLong();
+      localImageInfo.k = paramParcel.readString();
+      localImageInfo.l = paramParcel.readString();
+      localImageInfo.jdField_m_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_o_of_type_Int = paramParcel.readInt();
+      return localImageInfo;
+      bool1 = true;
+      break;
+      bool1 = true;
+      break label35;
+      bool1 = true;
+      break label59;
+      bool1 = true;
+      break label74;
+      bool1 = true;
+      break label116;
+      bool1 = true;
+      break label176;
+      bool1 = true;
+      break label200;
+      bool1 = true;
+      break label215;
+      bool1 = false;
+      break label321;
+      bool1 = false;
+      break label337;
+    }
   }
   
-  public void a(int paramInt)
+  public ImageInfo[] a(int paramInt)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {}
-    LocalMediaInfo localLocalMediaInfo;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = -2147483648;
-      this.b = 2147483647;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cja.a(paramInt);
-      if (localLocalMediaInfo.b == 2) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, localLocalMediaInfo, this.jdField_a_of_type_Boolean));
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
-    }
-    int i = Math.min(paramInt1, paramInt2);
-    int j = Math.max(paramInt1, paramInt2);
-    if (paramInt2 < paramInt1) {
-      this.b = Math.min(paramInt2, this.b);
-    }
-    for (;;)
-    {
-      paramInt1 = i;
-      while (paramInt1 <= j)
-      {
-        PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cja.a(paramInt1), this.jdField_a_of_type_Boolean);
-        paramInt1 += 1;
-      }
-      this.jdField_a_of_type_Int = Math.max(paramInt2, this.jdField_a_of_type_Int);
-    }
-    paramInt1 = this.b;
-    PhotoListActivity localPhotoListActivity;
-    LocalMediaInfo localLocalMediaInfo;
-    boolean bool;
-    if (paramInt1 < i)
-    {
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cja.a(paramInt1);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        PhotoListActivity.a(localPhotoListActivity, localLocalMediaInfo, bool);
-        paramInt1 += 1;
-        break;
-      }
-    }
-    paramInt1 = j + 1;
-    if (paramInt1 <= this.jdField_a_of_type_Int)
-    {
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Cja.a(paramInt1);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        PhotoListActivity.a(localPhotoListActivity, localLocalMediaInfo, bool);
-        paramInt1 += 1;
-        break;
-      }
-    }
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.n();
+    return new ImageInfo[paramInt];
   }
 }
 

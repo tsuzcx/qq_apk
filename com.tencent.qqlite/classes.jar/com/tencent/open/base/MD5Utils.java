@@ -2,8 +2,8 @@ package com.tencent.open.base;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.utils.HexUtil;
-import fcw;
-import fcx;
+import fdb;
+import fdc;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -22,8 +22,8 @@ public class MD5Utils
   
   static
   {
-    jdField_a_of_type_JavaUtilComparator = new fcx();
-    b = new fcw();
+    jdField_a_of_type_JavaUtilComparator = new fdc();
+    b = new fdb();
     jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   

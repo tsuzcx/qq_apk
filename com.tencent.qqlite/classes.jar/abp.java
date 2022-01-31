@@ -1,31 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class abp
-  implements FMDialogUtil.FMDialogInterface
+class abp
+  implements ActionSheet.OnButtonClickListener
 {
-  public abp(SessionInfo paramSessionInfo, ForwardFileInfo paramForwardFileInfo, QQAppInterface paramQQAppInterface) {}
+  abp(abo paramabo, ActionSheet paramActionSheet) {}
   
-  public void a()
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    switch (paramInt)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a()))
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ChatActivityFacade.b(this.jdField_a_of_type_Abo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Abo.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      if (!(this.jdField_a_of_type_Abo.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Abo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Abo.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      return;
+      ((ChatActivity)this.jdField_a_of_type_Abo.jdField_a_of_type_AndroidContentContext).a().a(this.jdField_a_of_type_Abo.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
   }
-  
-  public void b() {}
 }
 
 

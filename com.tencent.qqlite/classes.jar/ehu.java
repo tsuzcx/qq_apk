@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.trick.TrickHelper;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
 public class ehu
-  extends Handler
+  extends MessageObserver
 {
-  public ehu(TrickHelper paramTrickHelper) {}
+  public ehu(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    switch (paramMessage.what)
+    this.a.a("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
     {
+      this.a.e();
+      return;
     }
-    do
-    {
-      return;
-      this.a.a(false);
-      return;
-    } while (!GuardManager.a.b());
-    TrickHelper.a(this.a);
-    GuardManager.a.d();
+    this.a.d();
   }
 }
 

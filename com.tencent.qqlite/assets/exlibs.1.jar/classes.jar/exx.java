@@ -1,40 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
+@TargetApi(16)
 public class exx
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
-  public exx(CustomedTabWidget paramCustomedTabWidget) {}
+  exx(ContextMenuTextView paramContextMenuTextView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
+    }
+    for (;;)
     {
-      i = 0;
-      if (i < this.a.getChildCount())
-      {
-        if (this.a.getChildAt(i) != paramView) {
-          break label57;
-        }
-        this.a.jdField_a_of_type_Int = i;
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
+      ContextMenuTextView.a(this.a, null);
+      return;
+      ContextMenuTextView.b(this.a, null);
     }
-    label57:
-    while (paramMotionEvent.getAction() != 1) {
-      for (;;)
-      {
-        int i;
-        return false;
-        i += 1;
-      }
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.invalidate();
-    return false;
   }
 }
 

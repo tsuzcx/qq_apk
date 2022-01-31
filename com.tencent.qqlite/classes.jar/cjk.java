@@ -1,17 +1,15 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
 
 public class cjk
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public cjk(PhotoPreviewActivity paramPhotoPreviewActivity, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
+  public cjk(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    PhotoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoPreviewActivity, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentWidgetActionSheet, paramInt);
+    this.a.onBackPressed();
   }
 }
 

@@ -1,25 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.ImageAnimationView;
-import com.tencent.widget.Gallery;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class ekh
-  implements Animation.AnimationListener
+  implements AdapterView.OnItemLongClickListener
 {
   public ekh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
-    this.a.finish();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
+    if (this.a.c) {
+      TroopAvatarWallPreviewActivity.a(this.a);
+    }
+    return true;
   }
 }
 

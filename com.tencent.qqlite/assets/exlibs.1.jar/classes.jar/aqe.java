@@ -1,32 +1,18 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class aqe
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aqe(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public aqe(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramView.getId())
-    {
-    case 2131297166: 
-    case 2131297167: 
-    default: 
-      return;
-    case 2131297165: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.a(), 21);
-      this.a.a();
-      return;
+    if ((paramIntent != null) && (paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+      this.a.finish();
     }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2130968592, 2130968589);
   }
 }
 

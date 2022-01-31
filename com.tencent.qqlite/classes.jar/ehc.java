@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.ForwardImageProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class ehc
-  extends MessageObserver
+  extends TransProcessorHandler
 {
-  public ehc(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  public ehc(ForwardImageProcessor paramForwardImageProcessor) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
+    int i = paramMessage.what;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.m)) && (localFileMsg.e == 1) && (i != 2002)))
     {
-      this.a.e();
-      return;
+      if ((localFileMsg.o == null) || (!localFileMsg.o.equals(ForwardImageProcessor.b(this.a)))) {
+        return;
+      }
+      switch (i)
+      {
+      }
     }
-    this.a.d();
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      ForwardImageProcessor.a(this.a);
+      continue;
+      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
+      {
+        ForwardImageProcessor.a(this.a).a().b(this);
+        ForwardImageProcessor.b(this.a);
+      }
+      else
+      {
+        ForwardImageProcessor.a(this.a);
+      }
+    }
   }
 }
 

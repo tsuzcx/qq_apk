@@ -1,13 +1,41 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.util.FaceInfo;
 
-class erw
-  implements Runnable
+public class erw
+  extends FriendListObserver
 {
-  erw(erv paramerv, Drawable paramDrawable) {}
+  private erw(FaceDrawable paramFaceDrawable) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Erv.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    FaceDrawable.a(this.a, paramBoolean, 1, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    int i = 200;
+    if (paramInt == 3000) {}
+    while (i != FaceDrawable.a(this.a).d)
+    {
+      return;
+      if (paramInt == 3001) {
+        i = 202;
+      } else if (paramInt == 3002) {
+        i = 204;
+      }
+    }
+    FaceDrawable.a(this.a, paramBoolean1, 32, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 11, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 4, paramString, FaceDrawable.a(this.a));
   }
 }
 

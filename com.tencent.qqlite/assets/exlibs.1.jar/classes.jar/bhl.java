@@ -1,29 +1,22 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.CommonWebActivity;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bhl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bhl(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public bhl(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!RegisterPhoneNumActivity.a(this.a)) {
-      return;
-    }
-    RegisterPhoneNumActivity.a(this.a, false);
-    this.a.b.postDelayed(new bhm(this), 1000L);
-    paramView = new Intent(this.a, CommonWebActivity.class);
-    paramView.putExtra("uin", this.a.app.a());
-    paramView.putExtra("ba_is_login", false);
-    paramView.putExtra("url", "http://zc.qq.com/chs/agreement1_chs.html");
-    paramView.putExtra("hide_more_button", true);
-    this.a.startActivity(paramView);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    bhm localbhm = new bhm(this);
+    bhn localbhn = new bhn(this);
+    localQQCustomDialog.setPositiveButton(2131363346, localbhm);
+    localQQCustomDialog.setNegativeButton(2131362794, localbhn);
+    localQQCustomDialog.show();
   }
 }
 

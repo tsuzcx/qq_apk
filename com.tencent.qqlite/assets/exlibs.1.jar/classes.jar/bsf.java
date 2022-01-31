@@ -1,17 +1,12 @@
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class bsf
 {
-  int jdField_a_of_type_Int;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
 }
 
 

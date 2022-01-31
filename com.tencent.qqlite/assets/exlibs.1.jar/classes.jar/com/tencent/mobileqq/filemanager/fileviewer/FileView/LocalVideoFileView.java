@@ -27,13 +27,13 @@ import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import dsz;
-import dtb;
-import dtc;
-import dte;
 import dtf;
-import dtg;
-import dtj;
+import dth;
+import dti;
+import dtk;
+import dtl;
+import dtm;
+import dtp;
 import java.util.Timer;
 
 public class LocalVideoFileView
@@ -95,27 +95,27 @@ public class LocalVideoFileView
       String str = a(i);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838599);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838576);
       m();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838598);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838575);
     n();
   }
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298104));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298105));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131298111));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298102));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298067));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298068));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131298074));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298065));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new dtb(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297866));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dtc(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298112));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new dte(this));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new dtf(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new dth(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297852));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dti(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298075));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new dtk(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new dtl(this));
   }
   
   private void h()
@@ -172,8 +172,8 @@ public class LocalVideoFileView
       return;
     }
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.b();
-    new Handler().postDelayed(new dtg(this), 100L);
-    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298110));
+    new Handler().postDelayed(new dtm(this), 100L);
+    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298073));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService = FileViewMusicService.a();
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.b(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a(this);
@@ -223,7 +223,7 @@ public class LocalVideoFileView
   private void m()
   {
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new dtj(this), 0L, 1000L);
+    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new dtp(this), 0L, 1000L);
   }
   
   private void n()
@@ -237,14 +237,14 @@ public class LocalVideoFileView
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903453, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903443, paramViewGroup, false);
     g();
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public String a()
   {
-    return BaseApplicationImpl.getContext().getString(2131361986);
+    return BaseApplicationImpl.getContext().getString(2131361983);
   }
   
   public void a()
@@ -305,7 +305,7 @@ public class LocalVideoFileView
       this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
       int i = localDisplayMetrics.widthPixels;
       int j = localDisplayMetrics.heightPixels;
-      FileManagerUtil.a(this.jdField_b_of_type_JavaLangString, false, i, j, this.jdField_a_of_type_Int * 1000, new dsz(this));
+      FileManagerUtil.a(this.jdField_b_of_type_JavaLangString, false, i, j, this.jdField_a_of_type_Int * 1000, new dtf(this));
     }
   }
   
@@ -326,7 +326,7 @@ public class LocalVideoFileView
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a(this.jdField_a_of_type_AndroidAppActivity);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838597);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838574);
       if (this.jdField_a_of_type_Boolean) {
         break label56;
       }
@@ -336,7 +336,7 @@ public class LocalVideoFileView
     {
       this.jdField_a_of_type_Boolean = bool;
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838600);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838577);
       break;
     }
   }

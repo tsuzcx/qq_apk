@@ -1,36 +1,53 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class boz
+public class boz
   implements Runnable
 {
-  boz(boy paramboy, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
+  public boz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boy.a.b != null) && (this.jdField_a_of_type_Boy.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null))
+    for (;;)
     {
-      ((Animatable)this.jdField_a_of_type_Boy.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable).stop();
-      this.jdField_a_of_type_Boy.a.jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
-      ((TextView)this.jdField_a_of_type_Boy.a.b.findViewById(2131298946)).setCompoundDrawables(null, null, null, null);
-    }
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Boy.a.h))) {}
-    while ((this.jdField_a_of_type_Boy.a.b == null) || (this.jdField_a_of_type_Boy.a.b.getVisibility() == 8)) {
+      Object localObject3;
+      try
+      {
+        localObject3 = this.a.app.a().createEntityManager();
+        if (localObject3 == null) {
+          break label168;
+        }
+        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.i }, null, null, null, null);
+        ((EntityManager)localObject3).a();
+        if (localObject1 == null) {
+          break label165;
+        }
+        localObject3 = new ArrayList(((List)localObject1).size());
+        localObject1 = ((List)localObject1).iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
+          continue;
+        }
+        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      }
+      finally {}
+      localMessage.what = 8;
+      localMessage.obj = new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), localObject3 };
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      label165:
       return;
+      label168:
+      Message localMessage = null;
     }
-    this.jdField_a_of_type_Boy.a.b.setEnabled(true);
-    ((TextView)this.jdField_a_of_type_Boy.a.b.findViewById(2131296879)).setTextColor(this.jdField_a_of_type_Boy.a.getResources().getColor(2131427471));
-    this.jdField_a_of_type_Boy.a.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Boy.a.l = this.jdField_b_of_type_JavaLangString;
-    ((TextView)this.jdField_a_of_type_Boy.a.b.findViewById(2131298946)).setText(this.c);
-    String str = "@全体成员";
-    if (this.c != null) {
-      str = "@全体成员" + "," + this.c;
-    }
-    this.jdField_a_of_type_Boy.a.b.setContentDescription(str);
   }
 }
 

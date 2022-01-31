@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class cev
-  implements DialogInterface.OnDismissListener
+public class cev
+  extends FriendListObserver
 {
-  cev(ces paramces) {}
+  public cev(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.app == null)) {}
+  }
 }
 
 

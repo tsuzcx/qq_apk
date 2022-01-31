@@ -1,17 +1,17 @@
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageLoader;
+import com.tencent.mobileqq.util.ImageWorker;
 
 public class esa
+  implements Runnable
 {
-  ImageCreator a;
-  public ImageLoader a;
-  public erx a;
+  public esa(ImageWorker paramImageWorker, esd paramesd, String paramString, ImageCreator paramImageCreator) {}
   
-  public esa(ImageCreator paramImageCreator, ImageLoader paramImageLoader, erx paramerx)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator = paramImageCreator;
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageLoader = paramImageLoader;
-    this.jdField_a_of_type_Erx = paramerx;
+    Drawable localDrawable = this.jdField_a_of_type_Esd.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator, Boolean.valueOf(true) });
+    ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).post(new esb(this, localDrawable));
   }
 }
 

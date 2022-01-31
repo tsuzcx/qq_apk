@@ -1,67 +1,21 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.app.BizTroopObserver;
 
 public class cee
-  extends BaseAdapter
+  extends BizTroopObserver
 {
-  private cee(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
+  public cee(TroopView paramTroopView) {}
   
-  public int getCount()
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    return 4;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130903690, null);
+    if (paramInt2 == 0) {
+      this.a.a();
     }
-    int i;
-    int j;
-    switch (paramInt)
-    {
-    default: 
-      i = 2131363696;
-      j = 2130837665;
-      paramInt = 2131363717;
+    while (TextUtils.isEmpty(paramString2)) {
+      return;
     }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131297783);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131297784);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
-      return paramViewGroup;
-      i = 2131363693;
-      j = 2130837667;
-      paramInt = 2131363715;
-      continue;
-      i = 2131363691;
-      j = 2130837668;
-      paramInt = 2131363714;
-      continue;
-      i = 2131363690;
-      j = 2130837666;
-      paramInt = 2131363713;
-    }
+    this.a.a(paramString2);
   }
 }
 

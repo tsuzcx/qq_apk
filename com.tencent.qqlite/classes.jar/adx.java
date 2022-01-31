@@ -1,16 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adx
   implements View.OnClickListener
 {
-  public adx(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
+  public adx(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString) {}
   
   public void onClick(View paramView)
   {
-    View localView = (View)paramView.getParent();
-    new ady(this, paramView.getTag(), localView).run();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app.a(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

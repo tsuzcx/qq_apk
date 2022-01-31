@@ -1,17 +1,15 @@
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.DropdownView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
-class eyb
-  implements Runnable
+public class eyb
+  implements View.OnClickListener
 {
-  eyb(eya parameya, View paramView) {}
+  public eyb(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Eya.a.jdField_a_of_type_Eyd.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Eya.a.b);
-    this.jdField_a_of_type_Eya.a.jdField_a_of_type_Boolean = true;
+    this.a.setCurrentTab(this.a.indexOfChild(paramView));
   }
 }
 

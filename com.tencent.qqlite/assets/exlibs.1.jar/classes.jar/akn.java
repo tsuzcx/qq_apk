@@ -1,7 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class akn
@@ -11,10 +9,7 @@ public class akn
   
   public void onClick(View paramView)
   {
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    this.a.a();
+    DoodleActivity.a(this.a);
   }
 }
 

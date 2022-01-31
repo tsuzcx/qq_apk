@@ -1,14 +1,25 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public class eot
-  implements Runnable
+public final class eot
+  implements DialogInterface.OnClickListener
 {
-  public eot(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  public eot(long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, 210);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      TroopFileTransferManager.g();
+      continue;
+      TroopFileTransferManager.a(this.a);
+    }
   }
 }
 

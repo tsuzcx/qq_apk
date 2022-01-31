@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import cbu;
+import cca;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ public class ContactSearchFacade
   public static final int c = 80000002;
   private static int[] c = { 80000000, 80000001 };
   private ContactSearchFacade.ISearchListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cbu(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cca(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_b_of_type_JavaLangString;
   private int d;

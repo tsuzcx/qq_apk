@@ -1,25 +1,22 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class amh
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public amh(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public amh(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ForwardFriendListActivity.a(this.a).show();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    ForwardFriendListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

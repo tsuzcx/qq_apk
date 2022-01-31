@@ -1,21 +1,28 @@
-import android.os.Handler;
-import android.widget.TextView;
+import android.view.View;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase.IControllProxyInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
-class duc
-  implements Runnable
+public class duc
+  implements FileManagerUtil.TipsClickedInterface
 {
-  duc(dua paramdua) {}
+  public duc(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    PreviewingOfflineFileViewBase.a(this.a.a).removeCallbacksAndMessages(null);
-    String str = (String)PreviewingOfflineFileViewBase.a(this.a.a).getText();
-    if ((str == null) || (str.length() == 0)) {
-      return;
+    this.a.a().b();
+    PreviewingOfflineFileViewBase.a(this.a).a(false);
+    PreviewingOfflineFileViewBase.b(this.a).b(true);
+    PreviewingOfflineFileViewBase.a(this.a);
+    PreviewingOfflineFileViewBase.b(this.a);
+    PreviewingOfflineFileViewBase.c(this.a).c(false);
+    if (PreviewingOfflineFileViewBase.a(this.a) != null) {
+      PreviewingOfflineFileViewBase.b(this.a).c();
     }
-    PreviewingOfflineFileViewBase.a(this.a.a).clearAnimation();
-    PreviewingOfflineFileViewBase.a(this.a.a).setVisibility(0);
+    PreviewingOfflineFileViewBase.c(this.a).b(0);
+    PreviewingOfflineFileViewBase.a(this.a, false, 9037L, "User Click Cancel");
   }
 }
 

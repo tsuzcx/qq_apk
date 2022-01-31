@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class cho
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public cho(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public cho(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.f();
+    return paramInt == 4;
   }
 }
 

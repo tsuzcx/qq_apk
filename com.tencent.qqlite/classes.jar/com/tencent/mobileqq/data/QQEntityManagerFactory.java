@@ -16,7 +16,7 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.VersionUtils;
-import dcq;
+import dcw;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ import java.util.Map;
 public class QQEntityManagerFactory
   extends EntityManagerFactory
 {
-  static final int DB_VERSION = 98;
+  static final int DB_VERSION = 99;
   private static final int FLAG_CHECK_AUTHENTICATION = -1;
   protected static boolean isUpdateFromLowV74 = false;
   public String TAG = "QQEntityManagerFactory";
@@ -152,14 +152,14 @@ public class QQEntityManagerFactory
   
   public SQLiteOpenHelper build(String paramString)
   {
-    int i = 98;
+    int i = 99;
     if (this.dbHelper == null) {}
     try
     {
       Context localContext = BaseApplication.getContext();
       this.dbVersion = ((Integer)localContext.getPackageManager().getApplicationInfo(localContext.getPackageName(), 128).metaData.get("DBVersion")).intValue();
       if (this.dbVersion < 1) {
-        this.dbVersion = 98;
+        this.dbVersion = 99;
       }
       label63:
       int j = this.dbVersion;
@@ -169,7 +169,7 @@ public class QQEntityManagerFactory
         if (j < 1) {}
         for (;;)
         {
-          this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString, null, i, new dcq(this));
+          this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString, null, i, new dcw(this));
           this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
           return this.dbHelper;
           i = j;

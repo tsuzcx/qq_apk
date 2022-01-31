@@ -1,14 +1,12 @@
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomSplitDialog;
+
 public class evo
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  private evo(QQCustomSplitDialog paramQQCustomSplitDialog) {}
 }
 
 

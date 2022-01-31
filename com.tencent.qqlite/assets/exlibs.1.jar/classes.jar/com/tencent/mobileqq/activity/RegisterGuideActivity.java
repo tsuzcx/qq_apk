@@ -17,7 +17,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bhg;
+import bhe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppActivity;
 
@@ -35,7 +35,7 @@ public class RegisterGuideActivity
   private void a()
   {
     int i = (int)(getResources().getDisplayMetrics().heightPixels * 0.15F);
-    int j = getResources().getDimensionPixelSize(2131493141);
+    int j = getResources().getDimensionPixelSize(2131493095);
     this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = Math.max(i, j);
     this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
@@ -101,13 +101,13 @@ public class RegisterGuideActivity
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     super.doOnCreate(paramBundle);
     super.setContentView(2130903226);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297262));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297263);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297258));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297259);
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     a();
     b();
-    super.findViewById(2131297264).setOnClickListener(this);
-    super.findViewById(2131297265).setOnClickListener(this);
+    super.findViewById(2131297260).setOnClickListener(this);
+    super.findViewById(2131297261).setOnClickListener(this);
     return true;
   }
   
@@ -116,7 +116,7 @@ public class RegisterGuideActivity
     if ((paramBoolean) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      new Handler().post(new bhg(this));
+      new Handler().post(new bhe(this));
     }
   }
   
@@ -132,7 +132,7 @@ public class RegisterGuideActivity
     {
     default: 
       return;
-    case 2131297264: 
+    case 2131297260: 
       paramView = new Intent(this, LoginActivity.class);
       paramView.addFlags(67108864);
       paramView.putExtra("from_register_guide", true);
@@ -141,7 +141,7 @@ public class RegisterGuideActivity
       return;
     }
     paramView = new Intent(this, RegisterPhoneNumActivity.class);
-    paramView.putExtra("leftViewText", super.getString(2131363110));
+    paramView.putExtra("leftViewText", super.getString(2131363113));
     paramView.addFlags(67108864);
     super.startActivity(paramView);
   }

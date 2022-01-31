@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.ChatBackgroundManagerImp;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
 
 public class cqo
   implements Runnable
 {
-  public cqo(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
+  public cqo(ChatBackgroundManagerImp paramChatBackgroundManagerImp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_b_of_type_JavaUtilLinkedList != null)
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_b_of_type_JavaUtilLinkedList.iterator();
-      while (localIterator.hasNext()) {
-        ((ConditionSearchManager.IConfigListener)localIterator.next()).a(1, this.jdField_a_of_type_Boolean);
-      }
+      File localFile = new File(ChatBackgroundManagerImp.c);
+      HttpDownloadUtil.a(ChatBackgroundManagerImp.a(this.a), EmosmUtils.insertMtype("VIP_emosm", "http://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/xydata.js"), localFile);
+      return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a());
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

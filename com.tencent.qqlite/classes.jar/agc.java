@@ -1,14 +1,16 @@
 import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class agc
-  implements Runnable
+  extends CardObserver
 {
-  public agc(Contacts paramContacts) {}
+  private agc(Contacts paramContacts) {}
   
-  public void run()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.a.a.setSelection(0);
+    if ((paramBoolean) && (this.a.a)) {
+      this.a.a(1400L, true);
+    }
   }
 }
 

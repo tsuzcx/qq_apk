@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
 
 public class dvw
-  implements TabBarView.OnTabChangeListener
+  extends Handler
 {
-  public dvw(QfileTabBarView paramQfileTabBarView) {}
+  public dvw(FileWebView paramFileWebView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a(paramInt2) == null) {
-      return;
+    if ((this.a.getContentHeight() * this.a.getScale() - (this.a.getView().getHeight() + this.a.getWebScrollY()) < 2.5D) && (this.a.a != null) && (this.a.b == true))
+    {
+      this.a.b = false;
+      this.a.a.b();
     }
-    this.a.a.setSelected(true);
-    this.a.a(paramInt2);
+    super.handleMessage(paramMessage);
   }
 }
 

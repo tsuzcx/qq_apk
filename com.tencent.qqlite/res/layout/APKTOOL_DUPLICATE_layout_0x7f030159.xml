@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09067f" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0a0366" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0dip" android:textStyle="normal" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b001a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090680" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="6.0dip" android:singleLine="true" android:includeFontPadding="false">
-                <requestFocus />
-            </TextView>
-            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b005d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090681" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:ems="10" android:singleLine="true" android:includeFontPadding="false" />
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005b" />
+    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901e8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090673" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030157" />
+            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c001c" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0004" android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090674" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" />
+            <WebView android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="15.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b005b" android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09066a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="15.0dip" android:singleLine="true" android:includeFontPadding="false" />
         </LinearLayout>
-    </LinearLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0901fb" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203c8" android:scaleType="fitXY" />
+    </ScrollView>
 </LinearLayout>

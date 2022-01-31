@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:dslv="http://schemas.android.com/apk/res/com.tencent.qqlite">
-    <com.tencent.mobileqq.emosm.view.DragSortListView android:id="@android:id/list" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" dslv:collapsed_height="1.0dip" dslv:drag_scroll_start="0.33" dslv:remove_mode="APKTOOL_DUPLICATE_id_0x7f09000e" dslv:float_alpha="0.6" dslv:slide_shuffle_speed="0.3" dslv:drag_enabled="true" dslv:remove_enabled="true" dslv:drag_start_mode="APKTOOL_DUPLICATE_id_0x7f090010" dslv:drag_handle_id="@id/APKTOOL_DUPLICATE_id_0x7f09001e" dslv:click_remove_id="@id/APKTOOL_DUPLICATE_id_0x7f09001f" dslv:ignore_delete_enabled="true" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907b2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204bf" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_centerVertical="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="45.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0907b4" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907b5" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飞翔的秋秋" android:singleLine="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="一条为接听电话" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0907c2" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0907b5" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907b6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="下午 10:10" android:layout_alignParentRight="true" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b0019" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907b9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0907b6" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0907b6" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

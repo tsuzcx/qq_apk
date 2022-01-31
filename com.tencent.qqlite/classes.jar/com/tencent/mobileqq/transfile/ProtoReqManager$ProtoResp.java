@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import ehj;
+import eho;
 
 public class ProtoReqManager$ProtoResp
 {
@@ -12,7 +12,7 @@ public class ProtoReqManager$ProtoResp
   public ProtoReqManager.ProtoReq a;
   public FromServiceMsg a;
   boolean a;
-  public ehj[] a;
+  public eho[] a;
   
   public ProtoReqManager$ProtoResp()
   {

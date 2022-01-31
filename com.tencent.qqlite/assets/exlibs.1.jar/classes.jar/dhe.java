@@ -1,90 +1,42 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class dhe
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public dhe(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dhe(LocalFileBrowserActivity paramLocalFileBrowserActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    Object localObject1 = (LocalFileAdapter.LocalFileItemHolder)paramView.getTag();
-    paramView = ((LocalFileAdapter.LocalFileItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-    if (paramView.a()) {
-      LocalFileBrowserActivity.a(this.a, paramView.d(), true);
-    }
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if (this.a.j())
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b != -1)
       {
-        if (FMDataCache.a(paramView)) {
-          FMDataCache.b(paramView);
-        }
-        for (;;)
+        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+        if ((!FileUtil.a(paramView.d())) || (FileUtil.c(paramView.d())))
         {
-          this.a.m();
-          if (!this.a.j()) {
-            break;
-          }
-          ((LocalFileAdapter.LocalFileItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-          ((LocalFileAdapter.LocalFileItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(FMDataCache.a(paramView));
-          return;
-          if (this.a.b) {
-            FMDataCache.b();
-          }
-          FMDataCache.a(paramView);
-          if (this.a.b) {
-            LocalFileBrowserActivity.a(this.a);
-          }
+          FileManagerUtil.d(paramView.d());
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
+          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
         }
-        ((LocalFileAdapter.LocalFileItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        return;
+        else
+        {
+          FMToastUtil.a(2131361978);
+        }
       }
-      if (this.a.c()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(LocalFileBrowserActivity.c, 2, "click too fast , wait a minute.");
-    return;
-    this.a.g();
-    Object localObject2 = FileManagerUtil.a(paramView);
-    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-    localForwardFileInfo.b(((FileManagerEntity)localObject2).nSessionId);
-    localForwardFileInfo.c(3);
-    localForwardFileInfo.a(10000);
-    localForwardFileInfo.a(paramView.d());
-    localForwardFileInfo.d(paramView.e());
-    localForwardFileInfo.d(paramView.a());
-    localObject1 = new Intent(this.a.getApplicationContext(), FileBrowserActivity.class);
-    ((Intent)localObject1).putExtra("fileinfo", localForwardFileInfo);
-    if ((((FileManagerEntity)localObject2).nFileType == 0) || (((FileManagerEntity)localObject2).nFileType == 1))
-    {
-      FMDataCache.a(this.a.a);
-      ((Intent)localObject1).putExtra("clicked_file_hashcode", paramView.hashCode());
     }
-    localObject2 = new FileManagerReporter.fileAssistantReportData();
-    ((FileManagerReporter.fileAssistantReportData)localObject2).b = "file_viewer_in";
-    ((FileManagerReporter.fileAssistantReportData)localObject2).jdField_a_of_type_Int = 80;
-    ((FileManagerReporter.fileAssistantReportData)localObject2).c = FileUtil.a(paramView.e());
-    ((FileManagerReporter.fileAssistantReportData)localObject2).jdField_a_of_type_Long = paramView.a();
-    FileManagerReporter.a(this.a.app.a(), (FileManagerReporter.fileAssistantReportData)localObject2);
-    this.a.startActivityForResult((Intent)localObject1, 102);
   }
 }
 

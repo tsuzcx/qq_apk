@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.widget.XListView;
 
 class blx
   implements Runnable
 {
-  blx(blw paramblw) {}
+  blx(blu paramblu) {}
   
   public void run()
   {
-    if ((this.a.a.a.a() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.a()).notifyDataSetChanged();
-    }
+    this.a.a.a.removeMessages(1);
+    this.a.a.a.removeMessages(1);
+    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
   }
 }
 

@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.service.HttpNotify;
-import com.tencent.mobileqq.service.HttpRequestWifiphotoHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.search.ISearchable;
+import java.util.Comparator;
 
-public class edb
-  implements HttpNotify
+public final class edb
+  implements Comparator
 {
-  public edb(HttpRequestWifiphotoHandler paramHttpRequestWifiphotoHandler) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
+  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
   {
-    HashMap localHashMap;
-    if (this.a.a != null)
-    {
-      localHashMap = this.a.a;
-      if (!paramBoolean) {
-        break label45;
-      }
+    long l1 = paramISearchable1.d();
+    long l2 = paramISearchable2.d();
+    if (l1 < l2) {
+      return 1;
     }
-    label45:
-    for (String str = "0";; str = "3")
-    {
-      localHashMap.put("wifiphoto_qualityReport_ErrCode", str);
-      this.a.a();
-      return;
+    if (l1 > l2) {
+      return -1;
     }
+    return 0;
   }
 }
 

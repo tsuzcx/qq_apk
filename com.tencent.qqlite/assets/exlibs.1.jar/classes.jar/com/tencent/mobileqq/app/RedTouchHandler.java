@@ -100,7 +100,7 @@ public class RedTouchHandler
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.a.a()));
-    localReportReqBody.clientver.set("3.3.0.544");
+    localReportReqBody.clientver.set("3.4.0.607");
     localReportReqBody.platid.set(109);
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
     localReportReqBody.appid.set(RedTouchManager.a(paramString));

@@ -1,17 +1,13 @@
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
 
 public class vi
-  extends AccountObserver
+  implements Runnable
 {
   public vi(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onDeleteAccount(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
-    }
+    this.a.f();
   }
 }
 

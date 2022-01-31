@@ -9,7 +9,7 @@ import android.graphics.PaintFlagsDrawFilter;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import eyz;
+import eze;
 
 public class RotateableView
   extends View
@@ -19,7 +19,7 @@ public class RotateableView
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new eyz(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new eze(this);
   private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;

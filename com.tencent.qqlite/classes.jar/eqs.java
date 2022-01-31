@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
 
-public class eqs
-  implements View.OnClickListener
+class eqs
+  extends TroopFeedViewFactory.ViewHolder
 {
-  public eqs(VideoViewX paramVideoViewX) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onClick(View paramView)
+  eqs(eqr parameqr)
   {
-    if (VideoViewX.a(this.a) == -1) {
-      this.a.d = true;
-    }
-    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a) != 0) && (VideoViewX.a(this.a) != 1) && (VideoViewX.a(this.a) != null)) {
-      VideoViewX.a(this.a);
-    }
+    super(parameqr.a);
   }
 }
 

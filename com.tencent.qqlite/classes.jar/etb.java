@@ -1,11 +1,14 @@
-public abstract class etb
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
+public final class etb
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a;
-  public byte[] a;
-  
-  public abstract int a(int paramInt);
-  
-  public abstract boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.release();
+    com.tencent.mobileqq.utils.AudioUtil.a = null;
+  }
 }
 
 

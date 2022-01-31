@@ -1,16 +1,15 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class afr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
   public afr(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (this.a.ap >= 0) {
-      ChatSettingForTroop.a(this.a, this.a.ap);
-    }
+    this.a.g();
   }
 }
 

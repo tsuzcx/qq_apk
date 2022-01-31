@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import bsi;
+import bsh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -94,10 +94,10 @@ public class AIOInputTypeHelper
     //   90: monitorexit
     //   91: return
     //   92: invokestatic 94	com/tencent/mobileqq/app/ThreadManager:a	()Landroid/os/Handler;
-    //   95: new 96	bsj
+    //   95: new 96	bsi
     //   98: dup
     //   99: aload_0
-    //   100: invokespecial 99	bsj:<init>	(Landroid/content/SharedPreferences;)V
+    //   100: invokespecial 99	bsi:<init>	(Landroid/content/SharedPreferences;)V
     //   103: invokevirtual 105	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   106: pop
     //   107: goto -19 -> 88
@@ -145,7 +145,7 @@ public class AIOInputTypeHelper
         if (VersionUtils.c()) {
           paramQQAppInterface.edit().putInt("open_times", jdField_b_of_type_Int).apply();
         } else {
-          ThreadManager.a().post(new bsi(paramQQAppInterface));
+          ThreadManager.a().post(new bsh(paramQQAppInterface));
         }
       }
       finally {}

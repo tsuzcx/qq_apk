@@ -7,7 +7,7 @@ import android.content.pm.PackageInfo;
 
 public abstract interface IPluginBroadcastReceiver
 {
-  public abstract void IInit(String paramString1, String paramString2, BroadcastReceiver paramBroadcastReceiver, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean);
+  public abstract void IInit(String paramString1, String paramString2, BroadcastReceiver paramBroadcastReceiver, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt);
   
   public abstract void IOnReceive(Context paramContext, Intent paramIntent);
 }

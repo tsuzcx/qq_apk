@@ -1,58 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class chl
-  implements BaseActivityView.IPhoneContext
+  implements DialogInterface.OnClickListener
 {
-  public chl(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public chl(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public View a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return PhoneFrameActivity.a(this.a);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.jdField_b_of_type_AndroidViewView;
-  }
-  
-  public ImageView b()
-  {
-    return this.a.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return PhoneFrameActivity.c(this.a);
-  }
-  
-  public TextView c()
-  {
-    return PhoneFrameActivity.b(this.a);
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    this.a.finish();
   }
 }
 

@@ -1,15 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class cjn
-  implements MessageQueue.IdleHandler
+class cjn
+  implements FMDialogUtil.FMDialogInterface
 {
-  public cjn(SendPhotoActivity paramSendPhotoActivity) {}
+  cjn(cjm paramcjm) {}
   
-  public boolean queueIdle()
+  public void a()
   {
-    new cjo(this.a).execute(new Void[0]);
-    return false;
+    PhotoPreviewActivity.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    this.a.a.b.setClickable(true);
   }
 }
 

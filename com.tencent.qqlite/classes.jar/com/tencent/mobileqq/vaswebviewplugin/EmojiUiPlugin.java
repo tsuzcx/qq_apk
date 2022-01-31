@@ -122,7 +122,7 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131364098)).b(this.activity.getString(2131364097)).a(this.activity.getString(2131362791), new EmojiUiPlugin.5(this));
+    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131364085)).b(this.activity.getString(2131364084)).a(this.activity.getString(2131362795), new EmojiUiPlugin.5(this));
     localQQCustomDialogThreeBtns.setOnDismissListener(this);
     localQQCustomDialogThreeBtns.setCanceledOnTouchOutside(false);
     localQQCustomDialogThreeBtns.show();
@@ -155,13 +155,12 @@ public abstract class EmojiUiPlugin
       if ((this.mSrcFromType == 8) || (this.mSrcFromType == 4)) {
         if (!TextUtils.isEmpty(this.configUrl.detail))
         {
-          this.homePageUrlInfo.bUseConfigUrl = true;
           this.homePageUrlInfo.homePageUrl = this.configUrl.detail;
           this.homePageUrlInfo.isNeedKey = this.configUrl.detailSession;
           localObject = (TicketManager)this.mRuntime.a().getManager(2);
           str = this.mRuntime.a().getAccount();
           if ((!TextUtils.isEmpty(this.mSid)) || (!this.homePageUrlInfo.isNeedKey)) {
-            break label651;
+            break label595;
           }
           this.bNeedGetKey = true;
           if (QLog.isColorLevel()) {
@@ -185,14 +184,12 @@ public abstract class EmojiUiPlugin
         }
       }
     }
-    label651:
-    label956:
-    label959:
+    label900:
+    label903:
     for (;;)
     {
       uiSetCallBack();
       return;
-      this.homePageUrlInfo.bUseConfigUrl = false;
       if (bool3) {}
       for (this.homePageUrlInfo.homePageUrl = "http://imgcache.qq.com/club/themes/mobile/bq/html/qFaceDetail.html?id=[id]&type=[type]&uin=[uin]&adtag=[adtag]&client=[client]&version=[version]&sid=[sid]&platformId=2&device=[device]&system=[system]&systemInt=[systemInt]&updateTime=[updateTime]&updateFlag=[updateFlag]&_bid=102&_wv=3";; this.homePageUrlInfo.homePageUrl = "http://imgcache.qq.com/club/themes/mobile/bq/html/detail.html?id=[id]&type=[type]&uin=[uin]&adtag=[adtag]&client=[client]&version=[version]&sid=[sid]&platformId=2&device=[device]&system=[system]&systemInt=[systemInt]&updateTime=[updateTime]&updateFlag=[updateFlag]&_bid=102&_wv=3")
       {
@@ -201,7 +198,6 @@ public abstract class EmojiUiPlugin
       }
       if (this.mSrcFromType == 5)
       {
-        this.homePageUrlInfo.bUseConfigUrl = false;
         this.homePageUrlInfo.homePageUrl = "http://imgcache.qq.com/club/themes/mobile/bq/html/author.html?id=[id]&type=[type]&uin=[uin]&adtag=[adtag]&client=[client]&version=[version]&sid=[sid]&platformId=2&device=[device]&system=[system]&updateTime=[updateTime]&updateFlag=[updateFlag]&_bid=102&_wv=3";
         this.homePageUrlInfo.isNeedKey = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
         break;
@@ -211,27 +207,24 @@ public abstract class EmojiUiPlugin
         getConfigUrl(this.mSrcFromType);
         if (!TextUtils.isEmpty(this.configUrl.index))
         {
-          this.homePageUrlInfo.bUseConfigUrl = true;
           this.homePageUrlInfo.homePageUrl = this.configUrl.index;
           this.homePageUrlInfo.isNeedKey = this.configUrl.indexSession;
           break;
         }
-        this.homePageUrlInfo.bUseConfigUrl = false;
         this.homePageUrlInfo.homePageUrl = "http://imgcache.qq.com/club/themes/mobile/bq/html/index.html?uin=[uin]&adtag=[adtag]&client=[client]&version=[version]&sid=[sid]&platformId=2&device=[device]&system=[system]&systemInt=[systemInt]&updateTime=[updateTime]&updateFlag=[updateFlag]&updateId=[updateId]&_bid=102&_wv=1027";
         this.homePageUrlInfo.isNeedKey = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
         break;
       }
       if (!TextUtils.isEmpty(this.configUrl.index))
       {
-        this.homePageUrlInfo.bUseConfigUrl = true;
         this.homePageUrlInfo.homePageUrl = this.configUrl.index;
         this.homePageUrlInfo.isNeedKey = this.configUrl.indexSession;
         break;
       }
-      this.homePageUrlInfo.bUseConfigUrl = false;
       this.homePageUrlInfo.homePageUrl = "http://imgcache.qq.com/club/themes/mobile/bq/html/index.html?uin=[uin]&adtag=[adtag]&client=[client]&version=[version]&sid=[sid]&platformId=2&device=[device]&system=[system]&systemInt=[systemInt]&updateTime=[updateTime]&updateFlag=[updateFlag]&updateId=[updateId]&_bid=102&_wv=1027";
       this.homePageUrlInfo.isNeedKey = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
       break;
+      label595:
       if (TextUtils.isEmpty(this.mSid))
       {
         this.bNeedGetKey = true;
@@ -260,13 +253,13 @@ public abstract class EmojiUiPlugin
           localObject = ((TicketManager)localObject).getSkey(str);
           dismissProgressDialog();
           if ((TextUtils.isEmpty(this.mSid)) || (TextUtils.isEmpty((CharSequence)localObject))) {
-            break label956;
+            break label900;
           }
         }
         for (bool1 = loadHomePage(this.homePageUrlInfo, this.mSid);; bool1 = false)
         {
           if (bool1) {
-            break label959;
+            break label903;
           }
           showGetKeyErrorDialog();
           break;
@@ -448,7 +441,7 @@ public abstract class EmojiUiPlugin
       if (i == 0) {
         break;
       }
-      str1 = paramHomePageLoadInfo.replace("[client]", "androidQQ").replace("[version]", "5.3.1.544").replace("[adtag]", str1).replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
+      str1 = paramHomePageLoadInfo.replace("[client]", "androidQQ").replace("[version]", "5.3.1.607").replace("[adtag]", str1).replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
       paramHomePageLoadInfo = str1;
       if (str1.contains("[platformId]")) {
         paramHomePageLoadInfo = str1.replace("[platformId]", "2");
@@ -606,16 +599,16 @@ public abstract class EmojiUiPlugin
   {
     this.activity.b(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
     if ((this.mActivityType == 1) && ((this.mSrcFromType == 3) || (this.mSrcFromType == 1) || (this.mSrcFromType == 6))) {
-      this.activity.setRightButton(2131364099, new EmojiUiPlugin.2(this));
+      this.activity.setRightButton(2131364086, new EmojiUiPlugin.2(this));
     }
     for (;;)
     {
       if ((this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6))) {
-        this.activity.setLeftButton(2131363522, new EmojiUiPlugin.4(this));
+        this.activity.setLeftButton(2131363523, new EmojiUiPlugin.4(this));
       }
       return;
       if ((this.mSrcFromType != 3) && (this.mSrcFromType != 7) && (this.mSrcFromType != 8) && (this.mSrcFromType != 4) && (this.mSrcFromType != 2)) {
-        this.activity.setRightButton(2131363522, new EmojiUiPlugin.3(this));
+        this.activity.setRightButton(2131363523, new EmojiUiPlugin.3(this));
       }
     }
   }

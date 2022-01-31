@@ -47,35 +47,35 @@ public class FavoriteActionSheet
     {
       if ((this.g & 0x10) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363433, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363436, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(16));
       }
       if ((this.g & 0x20) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362770, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362775, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(32));
       }
       if ((this.g & 0x1) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363568, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363562, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
       }
       if ((this.g & 0x2) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362432, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362429, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
       }
       if ((this.g & 0x4) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362658, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362666, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(4));
       }
       if ((this.g & 0x8) != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362006, 5);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131362003, 5);
         this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(8));
       }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362790);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new fld(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new fle(this));
       return;

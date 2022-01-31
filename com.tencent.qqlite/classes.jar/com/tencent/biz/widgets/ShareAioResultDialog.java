@@ -6,9 +6,9 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.widget.ImageView;
 import android.widget.TextView;
-import tc;
-import td;
-import te;
+import sy;
+import sz;
+import ta;
 
 public class ShareAioResultDialog
   extends Dialog
@@ -23,23 +23,23 @@ public class ShareAioResultDialog
   public ShareAioResultDialog(Context paramContext)
   {
     super(paramContext, 2131624119);
-    super.setContentView(2130903363);
+    super.setContentView(2130903361);
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296918));
-    this.b = ((TextView)super.findViewById(2131296919));
-    this.c = ((TextView)super.findViewById(2131297112));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297843));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296914));
+    this.b = ((TextView)super.findViewById(2131296915));
+    this.c = ((TextView)super.findViewById(2131297108));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297827));
   }
   
   public void a(DialogInterface.OnClickListener paramOnClickListener)
   {
     Resources localResources = getContext().getResources();
-    this.b.setContentDescription(localResources.getString(2131364516, new Object[] { localResources.getString(2131362484) }));
-    this.b.setOnClickListener(new td(this, paramOnClickListener));
+    this.b.setContentDescription(localResources.getString(2131364495, new Object[] { localResources.getString(2131362481) }));
+    this.b.setOnClickListener(new sz(this, paramOnClickListener));
   }
   
   public void a(String paramString)
@@ -58,8 +58,8 @@ public class ShareAioResultDialog
     if (paramString == null) {
       str = "";
     }
-    localTextView.setContentDescription(localResources.getString(2131364516, new Object[] { str }));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tc(this, paramOnClickListener));
+    localTextView.setContentDescription(localResources.getString(2131364495, new Object[] { str }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new sy(this, paramOnClickListener));
   }
   
   public void a(boolean paramBoolean)
@@ -81,8 +81,8 @@ public class ShareAioResultDialog
     if (paramString == null) {
       str = "";
     }
-    localTextView.setContentDescription(localResources.getString(2131364516, new Object[] { str }));
-    this.b.setOnClickListener(new te(this, paramOnClickListener));
+    localTextView.setContentDescription(localResources.getString(2131364495, new Object[] { str }));
+    this.b.setOnClickListener(new ta(this, paramOnClickListener));
   }
   
   public void dismiss()

@@ -1,24 +1,14 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class ob
   implements Runnable
 {
-  public ob(CustomWebView paramCustomWebView, String paramString) {}
+  public ob(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a) {
-      return;
-    }
-    try
-    {
-      CustomWebView.a(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, "javascript:" + this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject, this.c);
   }
 }
 

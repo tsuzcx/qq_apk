@@ -1,29 +1,41 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
 
 public class ecq
-  extends FriendListObserver
+  implements Runnable
 {
-  public ecq(StatusManager paramStatusManager) {}
+  public ecq(StatusJsHandler paramStatusJsHandler, LocationManager paramLocationManager) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.set", 2, "onSetSelfSignatureResult " + paramBoolean);
-    }
-    StatusManager.a(this.a, null);
-    if (paramBoolean) {}
-    for (int i = 100; StatusManager.b(this.a) != null; i = -1)
+    Object localObject1 = new Criteria();
+    ((Criteria)localObject1).setAltitudeRequired(false);
+    ((Criteria)localObject1).setBearingRequired(false);
+    ((Criteria)localObject1).setCostAllowed(true);
+    ((Criteria)localObject1).setPowerRequirement(1);
+    try
     {
-      RichStatus localRichStatus = this.a.a();
-      Iterator localIterator = StatusManager.b(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((IStatusListener)localIterator.next()).a(i, localRichStatus);
+      ((Criteria)localObject1).setAccuracy(1);
+      Object localObject2 = this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)localObject1, true);
+      localObject2 = this.jdField_a_of_type_AndroidLocationLocationManager.getLastKnownLocation((String)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.b, ((Location)localObject2).getLongitude() + "," + ((Location)localObject2).getLatitude());
+      return;
+    }
+    catch (Exception localException2)
+    {
+      try
+      {
+        ((Criteria)localObject1).setAccuracy(2);
+        localObject1 = this.jdField_a_of_type_AndroidLocationLocationManager.getBestProvider((Criteria)localObject1, true);
+        localObject1 = this.jdField_a_of_type_AndroidLocationLocationManager.getLastKnownLocation((String)localObject1);
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.b, ((Location)localObject1).getLongitude() + "," + ((Location)localObject1).getLatitude());
+        return;
+      }
+      catch (Exception localException1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler.b, "0, 0");
       }
     }
   }

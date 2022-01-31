@@ -1,41 +1,44 @@
+import NearbyGroup.RspGetAreaList;
+import NearbyGroup.RspGetGroupInArea;
+import NearbyGroup.RspGetNearbyGroup;
 import android.os.Bundle;
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.LBSObserver;
 
-public final class qz
-  implements BusinessObserver
+public class qz
+  extends LBSObserver
 {
-  public qz(QRCodeEncodeCallback paramQRCodeEncodeCallback) {}
+  public qz(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, RspGetAreaList paramRspGetAreaList, boolean paramBoolean2)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
-    {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
-      return;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 12);
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putSerializable("data", new Object[] { Boolean.valueOf(paramBoolean2), paramRspGetAreaList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
+    localBundle.putSerializable("", paramRspGetAreaList);
+  }
+  
+  protected void a(boolean paramBoolean, RspGetGroupInArea paramRspGetGroupInArea)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 13);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramRspGetGroupInArea });
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, RspGetNearbyGroup paramRspGetNearbyGroup)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 8);
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putSerializable("data", new Object[] { Boolean.valueOf(paramBoolean2), paramRspGetNearbyGroup });
+    localBundle.putSerializable("observer_type", Integer.valueOf(1));
+    this.a.a(3, localBundle);
   }
 }
 

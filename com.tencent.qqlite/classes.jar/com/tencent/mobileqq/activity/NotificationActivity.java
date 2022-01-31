@@ -17,7 +17,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import ayu;
 import ayw;
+import ayx;
 import ayy;
 import ayz;
 import aza;
@@ -34,16 +36,14 @@ import azk;
 import azl;
 import azm;
 import azn;
-import azo;
 import azp;
+import azq;
 import azr;
 import azs;
 import azt;
 import azu;
 import azv;
 import azw;
-import azx;
-import azy;
 import com.tencent.ims.signature.SignatureKickData;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ConfigHandler;
@@ -77,7 +77,7 @@ public class NotificationActivity
   public static final int k = 10;
   public static final int l = 11;
   private Dialog jdField_a_of_type_AndroidAppDialog = null;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new azt(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new azr(this);
   public String a;
   private Constants.LogoutReason jdField_a_of_type_MqqAppConstants$LogoutReason = Constants.LogoutReason.tips;
   private boolean jdField_a_of_type_Boolean = false;
@@ -103,15 +103,15 @@ public class NotificationActivity
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
     ((Window)localObject).setContentView(2130903248);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131297368);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131297367);
-    localObject = (TextView)((Window)localObject).findViewById(2131297362);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131297364);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131297363);
+    localObject = (TextView)((Window)localObject).findViewById(2131297358);
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131363559) + "3.3.0" + getString(2131363560));
-    localButton1.setOnClickListener(new azp(this));
-    localButton2.setOnClickListener(new azr(this));
+    ((TextView)localObject).setText(getString(2131363553) + "3.4.0" + getString(2131363554));
+    localButton1.setOnClickListener(new azn(this));
+    localButton2.setOnClickListener(new azp(this));
     return localAlertDialog;
   }
   
@@ -138,20 +138,20 @@ public class NotificationActivity
           this.jdField_a_of_type_AndroidAppDialog.show();
         }
         return;
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(getString(2131363140)).setMessage(getString(2131363142)).setPositiveButton(2131363039, new azv(this)).setNegativeButton(2131363447, new azu(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(getString(2131363143)).setMessage(getString(2131363145)).setPositiveButton(2131363042, new azt(this)).setNegativeButton(2131363448, new azs(this));
         continue;
-        this.b = getString(2131363141);
-        this.c = getString(2131363143);
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(17039370, new azw(this));
+        this.b = getString(2131363144);
+        this.c = getString(2131363146);
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(17039370, new azu(this));
         continue;
         TextView localTextView = new TextView(this);
         localTextView.setLinksClickable(true);
         localTextView.setMovementMethod(LinkMovementMethod.getInstance());
         localTextView.setTextSize(getResources().getInteger(2131558400));
         localTextView.setTextColor(getResources().getColor(2131427332));
-        this.b = getString(2131363141);
-        localTextView.setText(2131362914);
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(this.c).addView(localTextView).setPositiveButton(2131363039, new azx(this));
+        this.b = getString(2131363144);
+        localTextView.setText(2131362918);
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(this.c).addView(localTextView).setPositiveButton(2131363042, new azv(this));
         continue;
         try
         {
@@ -166,9 +166,9 @@ public class NotificationActivity
       if (QQPlayerService.a()) {
         sendBroadcast(new Intent("qqplayer_exit_action"));
       }
-      paramInt = 2131362791;
+      paramInt = 2131362795;
       if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
-        paramInt = 2131364198;
+        paramInt = 2131364183;
       }
       if (this.c != null)
       {
@@ -189,34 +189,34 @@ public class NotificationActivity
         if ((i2 > 0) && (i1 > i2)) {
           ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(getResources().getColor(2131427372)), i2, i1, 33);
         }
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage((CharSequence)localObject1).setNegativeButton(paramInt, new azy(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage((CharSequence)localObject1).setNegativeButton(paramInt, new azw(this));
         if (this.jdField_a_of_type_MqqAppConstants$LogoutReason == Constants.LogoutReason.kicked) {
           break;
         }
-        ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131362927, new ayy(this));
+        ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131362931, new ayw(this));
         break;
       }
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(17039370, new ayz(this));
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(17039370, new ayx(this));
       break;
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(17039370, new aza(this));
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(17039370, new ayy(this));
       break;
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(getString(2131363601)).setMessage(getString(2131363604)).setPositiveButton(getString(2131363602), new azc(this)).setNegativeButton(getString(2131363603), new azb(this));
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(getString(2131363595)).setMessage(getString(2131363598)).setPositiveButton(getString(2131363596), new aza(this)).setNegativeButton(getString(2131363597), new ayz(this));
       break;
       if (this.n == 40)
       {
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(getActivity(), 231, getString(2131364190), this.c, 2131364189, 2131364188, new azd(this), new aze(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(getActivity(), 231, getString(2131364175), this.c, 2131364174, 2131364173, new azb(this), new azc(this));
         break;
       }
       switch (this.n)
       {
       default: 
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.b(this, 230).setMessageWithUrl(this.c).setTitle(getString(2131363174)).setPositiveButton(17039370, new azk(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.b(this, 230).setMessageWithUrl(this.c).setTitle(getString(2131363177)).setPositiveButton(17039370, new azi(this));
         break;
       case 41: 
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(getString(2131363605)).setTitle("温馨提示").setNegativeButton(2131363607, new azg(this)).setPositiveButton(2131363608, new azf(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(getString(2131363599)).setTitle("温馨提示").setNegativeButton(2131363601, new aze(this)).setPositiveButton(2131363602, new azd(this));
         break;
       case 116: 
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(getString(2131363606)).setTitle("温馨提示").setNegativeButton(2131363607, new azj(this)).setPositiveButton(2131363609, new azh(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(getString(2131363600)).setTitle("温馨提示").setNegativeButton(2131363601, new azh(this)).setPositiveButton(2131363603, new azf(this));
         break;
         Object localObject2 = getIntent().getExtras();
         localObject1 = ((Bundle)localObject2).getString("dlg_title");
@@ -224,13 +224,13 @@ public class NotificationActivity
         String str2 = ((Bundle)localObject2).getString("dlg_lbutton");
         String str3 = ((Bundle)localObject2).getString("dlg_rbutton");
         localObject2 = ((Bundle)localObject2).getString("dlg_url");
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str1).setPositiveButton(str3, new azm(this, (String)localObject2)).setNegativeButton(str2, new azl(this));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str1).setPositiveButton(str3, new azk(this, (String)localObject2)).setNegativeButton(str2, new azj(this));
         break;
-        localObject1 = getResources().getString(2131364335);
-        str1 = getResources().getString(2131364336);
-        str2 = getResources().getString(2131364339);
-        str3 = getResources().getString(2131364338);
-        Object localObject3 = getResources().getString(2131364337);
+        localObject1 = getResources().getString(2131364319);
+        str1 = getResources().getString(2131364320);
+        str2 = getResources().getString(2131364323);
+        str3 = getResources().getString(2131364322);
+        Object localObject3 = getResources().getString(2131364321);
         localObject2 = new CheckBox(this);
         ((CheckBox)localObject2).setText((CharSequence)localObject3);
         ((CheckBox)localObject2).setTextSize(getResources().getInteger(2131558400));
@@ -238,7 +238,7 @@ public class NotificationActivity
         localObject3 = this.app.a().getSharedPreferences(this.app.getAccount(), 0);
         boolean bool = ((SharedPreferences)localObject3).getBoolean("MemoryAlertAutoClear", false);
         ((CheckBox)localObject2).setChecked(bool);
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str1).setView((View)localObject2).setPositiveButton(str3, new azo(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str2, new azn(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str1).setView((View)localObject2).setPositiveButton(str3, new azm(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str2, new azl(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
         break;
       }
     }
@@ -347,7 +347,7 @@ public class NotificationActivity
             return false;
           }
           SecSigHandler.a(paramBundle.u32_check_result.get());
-          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(paramBundle.str_right_button.get(), new azs(this, paramBundle)).setNegativeButton(paramBundle.str_left_button.get(), new azi(this));
+          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.b).setMessage(this.c).setPositiveButton(paramBundle.str_right_button.get(), new azq(this, paramBundle)).setNegativeButton(paramBundle.str_left_button.get(), new azg(this));
           if (this.jdField_a_of_type_AndroidAppDialog != null)
           {
             this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
@@ -375,7 +375,7 @@ public class NotificationActivity
   {
     super.doOnResume();
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131364456, new ayw(this));
+      ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131364437, new ayu(this));
     }
   }
   

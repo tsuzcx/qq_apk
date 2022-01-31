@@ -1,27 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bmc
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
   public bmc(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(View paramView, int paramInt)
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
+    boolean bool = false;
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.d();
-      return;
     }
-    this.a.d();
+    for (;;)
+    {
+      TroopAssistantActivity.a(this.a).dismiss();
+      return;
+      paramView = this.a;
+      if (!TroopAssistantActivity.a(this.a)) {
+        bool = true;
+      }
+      TroopAssistantActivity.a(paramView, bool);
+      TroopAssistantManager.a().b(this.a.app, TroopAssistantActivity.a(this.a));
+      continue;
+      paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+      paramView.setFlags(67108864);
+      this.a.startActivity(paramView);
+      ReportController.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+      continue;
+      TroopAssistantManager.a().a(this.a.app, false);
+      this.a.finish();
+    }
   }
 }
 

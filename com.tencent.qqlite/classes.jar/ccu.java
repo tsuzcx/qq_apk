@@ -1,37 +1,58 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.widget.AbsListView;
 
 public class ccu
-  implements View.OnClickListener
+  implements SlideDetectListView.OnScrollToTopListener
 {
   public ccu(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (!NetworkUtil.e(SystemMsgListView.a(this.a)))
-    {
-      QQToast.a(SystemMsgListView.a(this.a), SystemMsgListView.a(this.a).getResources().getString(2131362912), 0).b(this.a.a());
-      return;
+    if ((SystemMsgListView.a(this.a) != null) && (paramInt == 0) && (SystemMsgListView.a(this.a) == SystemMsgListView.a(this.a).getCount())) {
+      SystemMsgListView.b(this.a);
     }
-    paramView = (SystemMsgListAdapter.ViewHolder)paramView.getTag();
-    SystemMsgListView.a(this.a, (structmsg.StructMsg)paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), paramView.c);
-    if (paramView.jdField_a_of_type_Int == -1011) {
-      this.a.a(paramView.jdField_a_of_type_JavaLangString, 0L, null, paramView.jdField_b_of_type_JavaLangString, paramView.jdField_b_of_type_Long, paramView.jdField_a_of_type_Long);
+    SystemMsgListView.a(this.a, paramInt);
+    if (paramInt != 0)
+    {
+      SystemMsgListView.a(this.a).c();
+      SystemMsgListView.a(this.a).a();
     }
     for (;;)
     {
-      ReportController.b(this.a.a, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
       return;
-      this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_b_of_type_Long, null, paramView.jdField_a_of_type_Long);
+      if (SystemMsgListView.a(this.a).a()) {
+        SystemMsgListView.a(this.a).b();
+      }
+      int i = SystemMsgListView.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramAbsListView = (SystemMsgListAdapter.ViewHolder)SystemMsgListView.a(this.a).getChildAt(paramInt).getTag();
+        SystemMsgListView.a(this.a, paramAbsListView);
+        paramInt += 1;
+      }
     }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    SystemMsgListView.b(this.a, paramInt1 + paramInt2 - 1);
+    if (paramInt1 > 1) {
+      FriendSystemMsgController.a().a();
+    }
+    while (!SystemMsgListView.c(this.a)) {
+      return;
+    }
+    FriendSystemMsgController.a().f();
   }
 }
 

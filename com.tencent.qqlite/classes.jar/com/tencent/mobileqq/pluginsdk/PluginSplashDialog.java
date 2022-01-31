@@ -55,7 +55,7 @@ public class PluginSplashDialog
     {
       getContext().registerReceiver(this.mReceiver, localIntentFilter);
       if (DebugHelper.sDebug) {
-        DebugHelper.log("PluginDebug", "PluginSplashDialog RegisterReceiver");
+        DebugHelper.log("plugin_tag", "PluginSplashDialog RegisterReceiver");
       }
       label74:
       super.show();

@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class cih
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cih(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cih(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      if (this.a.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-    }
+    AlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter, this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
   }
 }
 

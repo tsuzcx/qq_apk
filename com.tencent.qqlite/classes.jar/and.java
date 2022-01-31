@@ -1,17 +1,24 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class and
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  and(anc paramanc, Drawable paramDrawable) {}
+  and(anc paramanc) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((this.jdField_a_of_type_Anc.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_Anc.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_Anc.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(ForwardOperations.a(this.jdField_a_of_type_Anc.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-    }
+    paramURLDrawable.setBounds(ImageUtil.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable, 36, 100, ForwardOperations.a(this.a.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations)));
+    this.a.jdField_a_of_type_Ana.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(paramURLDrawable);
   }
 }
 

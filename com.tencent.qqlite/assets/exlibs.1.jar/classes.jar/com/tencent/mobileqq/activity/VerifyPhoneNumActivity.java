@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import brs;
 import brt;
 import bru;
 import brv;
@@ -16,7 +17,6 @@ import brw;
 import brx;
 import bry;
 import brz;
-import bsa;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
@@ -34,14 +34,14 @@ public class VerifyPhoneNumActivity
 {
   private static final String jdField_a_of_type_JavaLangString = "VerifyPhoneNumActivity";
   public Dialog a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new brt(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new brs(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new bry(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new brx(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   protected QQToastNotifier a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new brx(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new brw(this);
   private boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
@@ -55,17 +55,17 @@ public class VerifyPhoneNumActivity
   private void d()
   {
     this.h.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298972));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298921));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298973));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298922));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298971));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298920));
     try
     {
       if ((this.d != null) && (this.d.length() > 4))
       {
         String str = "***" + this.d.substring(this.d.length() - 4, this.d.length());
-        str = getString(2131363332, new Object[] { this.jdField_b_of_type_JavaLangString, str, this.e });
+        str = getString(2131363335, new Object[] { this.jdField_b_of_type_JavaLangString, str, this.e });
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       }
       return;
@@ -129,19 +129,19 @@ public class VerifyPhoneNumActivity
   
   private void j()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new brz(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new bry(this));
   }
   
   private void k()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new bsa(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new brz(this));
   }
   
   protected void a(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new brv(this, paramInt));
+      this.jdField_a_of_type_AndroidOsHandler.post(new bru(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -182,7 +182,7 @@ public class VerifyPhoneNumActivity
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new bru(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new brt(this));
       return;
     }
     catch (Exception localException)
@@ -208,7 +208,7 @@ public class VerifyPhoneNumActivity
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.app.a(new brw(this));
+      this.app.a(new brv(this));
       return;
     }
     LoginActivity.a(this.app, this.app.getAccount());
@@ -222,11 +222,11 @@ public class VerifyPhoneNumActivity
     {
     default: 
       return;
-    case 2131298972: 
+    case 2131298921: 
       j();
       f();
       return;
-    case 2131298973: 
+    case 2131298922: 
       j();
       g();
       return;
@@ -238,8 +238,8 @@ public class VerifyPhoneNumActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903707));
-    setTitle(2131363331);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903690));
+    setTitle(2131363334);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.c = getIntent().getStringExtra("key");
     this.d = getIntent().getStringExtra("key_register_binduin");
@@ -248,7 +248,7 @@ public class VerifyPhoneNumActivity
     this.f = getIntent().getStringExtra("key_register_password");
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     d();
-    setRightButton(2131362790, this);
+    setRightButton(2131362794, this);
   }
   
   protected void onDestroy()

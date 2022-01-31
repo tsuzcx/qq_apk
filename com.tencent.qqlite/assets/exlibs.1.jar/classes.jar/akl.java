@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
-class akl
-  implements DialogInterface.OnClickListener
+public class akl
+  implements View.OnClickListener
 {
-  akl(akj paramakj) {}
+  public akl(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+    this.a.a();
+  }
 }
 
 

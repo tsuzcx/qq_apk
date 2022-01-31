@@ -1,47 +1,58 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class aqt
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public aqt(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    if ((k & 0x2) != 0)
+    {
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label92;
+      }
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void b(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label97;
+      }
+      if (30 != this.a.a.size()) {
+        break label145;
+      }
+      paramView = new QQToast(this.a);
+      paramView.c(2000);
+      paramView.b(2131364167);
+      paramView.a();
+      return;
+      i = 0;
+      break;
+      label92:
+      j = 0;
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void c(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    label97:
+    if (16 == this.a.a.size())
+    {
+      paramView = new QQToast(this.a);
+      paramView.c(2000);
+      paramView.b(2131364166);
+      paramView.a();
+      return;
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void d(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onResortGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(true);
-    GroupManagerActivity.c(this.a, true);
+    label145:
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131363783, 2131363785, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 0);
   }
 }
 

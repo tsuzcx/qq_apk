@@ -67,37 +67,23 @@ public class PluginRecoverReceiver
   {
     if (("com.tencent.mobileqq.ACTION_PLUGIN_STARUP_FAILED".equals(paramIntent.getAction())) && (TextUtils.equals(paramContext.getPackageName(), paramIntent.getPackage())))
     {
-      paramIntent = paramIntent.getStringExtra("pluginId");
+      paramContext = paramIntent.getStringExtra("pluginId");
       if (QLog.isColorLevel()) {
-        QLog.d("PluginRecoverReceiver", 2, "onReceive =  pluginID = " + paramIntent + ", isQQMobileProcess = " + this.isMobileQQProcess + ", processName = " + this.processName);
+        QLog.d("PluginRecoverReceiver", 2, "onReceive =  pluginID = " + paramContext + ", isQQMobileProcess = " + this.isMobileQQProcess + ", processName = " + this.processName);
       }
       if (!this.isMobileQQProcess) {
-        break label210;
+        break label113;
       }
-      if (!sCarePluginIds.contains(paramIntent))
-      {
-        if (PluginUtils.verifyCrcCode(paramContext, paramIntent, "0")) {
-          break label166;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginRecoverReceiver", 2, "onReceive crcVerify failed then uninstall. kill Process =  pluginID = " + paramIntent + ", processName = " + this.processName);
-        }
-        onRecver(paramIntent);
+      if (!sCarePluginIds.contains(paramContext)) {
+        onRecver(paramContext);
       }
     }
-    label166:
-    label210:
-    while (!sCarePluginIds.contains(paramIntent))
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("PluginRecoverReceiver", 2, "onReceive crcVerify success,  pluginID = " + paramIntent + ", processName = " + this.processName);
+    label113:
+    while (!sCarePluginIds.contains(paramContext)) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("PluginRecoverReceiver", 2, "kill Process =  pluginID = " + paramIntent + ", ");
+      QLog.d("PluginRecoverReceiver", 2, "kill Process =  pluginID = " + paramContext + ", ");
     }
     Process.killProcess(Process.myPid());
   }

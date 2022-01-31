@@ -1,15 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 
 public class zk
-  implements MessageQueue.IdleHandler
+  implements View.OnClickListener
 {
   public zk(BaseChatPie paramBaseChatPie) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    this.a.N();
-    return false;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(230);
+    ProfileCardUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true);
   }
 }
 

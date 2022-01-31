@@ -57,19 +57,19 @@ public class LiteAdvanceActivity
   private void c()
   {
     setContentView(2130903151);
-    setTitle(2131362441);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131296960);
+    setTitle(2131362438);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131296956);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131296963);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131296959);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.c = findViewById(2131296964);
+    this.c = findViewById(2131296960);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296962));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296958));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(AppConstants.ay);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131296958));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131296954));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bb(this));
-    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131296959));
+    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131296955));
     this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
     this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bc(this));
   }
@@ -85,7 +85,7 @@ public class LiteAdvanceActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null, 2131624119);
     localActionSheet.a(str);
     localActionSheet.a(getResources().getString(2131361827), 3);
-    localActionSheet.d(2131362790);
+    localActionSheet.d(2131362794);
     localActionSheet.a(new bd(this, localActionSheet));
     localActionSheet.show();
   }
@@ -99,7 +99,7 @@ public class LiteAdvanceActivity
     while (localIntent == null)
     {
       return;
-      FMToastUtil.a(2131362004);
+      FMToastUtil.a(2131362001);
     }
     try
     {
@@ -128,7 +128,7 @@ public class LiteAdvanceActivity
   
   private void g()
   {
-    QQUtils.a(this.app, 2130838527, qfileJumpActivity.class.getName(), getString(2131361822), getTitleBarHeight(), this.jdField_a_of_type_AndroidOsHandler, 500);
+    QQUtils.a(this.app, 2130838504, qfileJumpActivity.class.getName(), getString(2131361822), getTitleBarHeight(), this.jdField_a_of_type_AndroidOsHandler, 500);
     DataLineReportUtil.q(this.app);
   }
   
@@ -159,15 +159,15 @@ public class LiteAdvanceActivity
   {
     switch (paramView.getId())
     {
-    case 2131296961: 
-    case 2131296962: 
+    case 2131296957: 
+    case 2131296958: 
     default: 
       return;
-    case 2131296960: 
+    case 2131296956: 
       StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.a(), "dl_ckviewrecvfile");
       e();
       return;
-    case 2131296963: 
+    case 2131296959: 
       g();
       return;
     }

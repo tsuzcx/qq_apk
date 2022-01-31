@@ -1,11 +1,13 @@
-public final class evx
-  implements ewc
+import com.tencent.mobileqq.utils.RoamSettingController;
+
+public class evx
+  implements Runnable
 {
-  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
+  public evx(RoamSettingController paramRoamSettingController) {}
+  
+  public void run()
   {
-    int i = paramInteger1.intValue();
-    float f = i;
-    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
+    RoamSettingController.a(this.a);
   }
 }
 

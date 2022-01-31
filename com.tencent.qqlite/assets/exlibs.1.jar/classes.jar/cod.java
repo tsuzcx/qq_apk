@@ -1,34 +1,22 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class cod
-  implements SurfaceHolder.Callback
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public cod(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public cod(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onGlobalLayout()
   {
+    ShortVideoPlayActivity.a(this.a, ShortVideoPlayActivity.c(this.a).getWidth());
+    ShortVideoPlayActivity.b(this.a, ShortVideoPlayActivity.c(this.a).getHeight());
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + ShortVideoPreviewActivity.c(this.a) + ",mSavedPlayState : " + ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.d(this.a)));
+      QLog.d("ShortVideoPlayActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + ShortVideoPlayActivity.b(this.a) + ",mSurfaceViewHeight:" + ShortVideoPlayActivity.c(this.a));
     }
-    if ((ShortVideoPreviewActivity.d(this.a) == 1) && (ShortVideoPreviewActivity.c(this.a) > 0))
-    {
-      ShortVideoPreviewActivity.a(this.a, ShortVideoPreviewActivity.c(this.a));
-      ShortVideoPreviewActivity.c(this.a, 0);
-      ShortVideoPreviewActivity.d(this.a, 0);
-    }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    ShortVideoPreviewActivity.b(this.a);
+    ShortVideoPlayActivity.c(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

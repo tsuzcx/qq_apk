@@ -1,19 +1,23 @@
+import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
+import java.util.List;
 
 public class ahl
-  extends BizTroopObserver
+  implements DragFrameLayout.OnDragModeChangedListener
 {
-  public ahl(Conversation paramConversation) {}
+  private int jdField_a_of_type_Int = -2147483648;
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  private ahl(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if (paramBoolean)
-    {
-      TroopAssistantManager.a().b(paramString1, this.a.a);
-      this.a.a(8, AppConstants.U, 5000);
+    if ((paramDragFrameLayout.a() == -1) && ((this.jdField_a_of_type_Int == -2147483648) || (Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation) != null))) {
+      Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).sendEmptyMessage(10);
     }
   }
 }

@@ -1,27 +1,27 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import cooperation.troop.TroopProxyActivity;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 public class bxl
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bxl(TroopFileItemBuilder paramTroopFileItemBuilder) {}
+  public bxl(TroopFileItemBuilder paramTroopFileItemBuilder, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatMessage localChatMessage = AIOUtils.a(paramView);
-    paramView = (Activity)paramView.getContext();
-    Intent localIntent = new Intent();
-    if (localIntent == null) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
       return;
     }
-    localIntent.putExtra(TroopProxyActivity.a, localChatMessage.frienduin);
-    TroopProxyActivity.a(paramView, localIntent);
+    new TroopFileItemOperation(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

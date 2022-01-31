@@ -1,29 +1,25 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import android.util.Pair;
+import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class eeb
-  extends MQLruCache
+  extends TimerTask
 {
-  public eeb(Integer paramInteger)
-  {
-    super(paramInteger.intValue());
-  }
+  public eeb(QZoneNotifyServlet paramQZoneNotifyServlet) {}
   
-  protected int a(String paramString, Object paramObject)
+  public void run()
   {
-    if ((paramObject instanceof Pair)) {
-      return ((Integer)((Pair)paramObject).second).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.QZoneNotifyServlet", 2, "QZONE GET UNREAD.QZoneFeedTimeTask run.");
     }
-    if ((paramObject instanceof Bitmap))
-    {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
-    }
-    return 12;
+    AppRuntime localAppRuntime = this.a.getAppRuntime();
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
+    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
+    localNewIntent.putExtra("bNotWorkInBackGround", true);
+    localAppRuntime.startServlet(localNewIntent);
   }
-  
-  public void a(String paramString, int paramInt) {}
 }
 
 

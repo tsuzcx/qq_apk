@@ -1,26 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
-public class dtr
-  implements AdapterView.OnItemClickListener
+class dtr
+  implements Runnable
 {
-  public dtr(PhotoFileViewBase paramPhotoFileViewBase) {}
+  dtr(dtq paramdtq) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = this.a;
-    if (!PhotoFileViewBase.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PhotoFileViewBase.a(paramAdapterView, bool);
-      if (PhotoFileViewBase.c(this.a) != null) {
-        PhotoFileViewBase.d(this.a).c(PhotoFileViewBase.a(this.a));
-      }
+    if ((LocalVideoFileView.a(this.a.a.a) == null) || (!LocalVideoFileView.a(this.a.a.a).b(LocalVideoFileView.a(this.a.a.a)))) {
       return;
     }
+    int i = LocalVideoFileView.a(this.a.a.a).b();
+    String str = LocalVideoFileView.a(this.a.a.a, i);
+    LocalVideoFileView.a(this.a.a.a).setProgress(i);
+    LocalVideoFileView.a(this.a.a.a).setText(str);
   }
 }
 

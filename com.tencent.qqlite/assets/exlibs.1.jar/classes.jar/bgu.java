@@ -1,21 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class bgu
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public bgu(RegisterActivity paramRegisterActivity, String paramString) {}
+  public bgu(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    {
+      RegisterActivity.b(this.a);
+      return true;
+    }
+    return false;
   }
 }
 

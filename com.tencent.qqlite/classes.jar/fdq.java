@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.viareport.ReportManager;
 
-public final class fdq
-  implements DialogInterface.OnClickListener
+public class fdq
+  implements Runnable
 {
-  public fdq(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
+  public fdq(ReportManager paramReportManager, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a) {
+      LogUtility.b("viareport", "isUploading ---return");
+    }
+    while (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString, null, true);
   }
 }
 

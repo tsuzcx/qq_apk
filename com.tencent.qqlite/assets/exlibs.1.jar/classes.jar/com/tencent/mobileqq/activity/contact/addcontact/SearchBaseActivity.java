@@ -25,12 +25,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cbv;
-import cbw;
-import cbx;
-import cby;
-import cbz;
-import cca;
+import ccb;
+import ccc;
+import ccd;
+import cce;
+import ccf;
+import ccg;
 import com.tencent.mobileqq.activity.AddFriendActivity;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
@@ -110,9 +110,9 @@ public class SearchBaseActivity
     this.jdField_c_of_type_Int = 64;
     this.jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("[^0-9]");
     this.jdField_c_of_type_JavaUtilRegexPattern = Pattern.compile("^1[0-9]{2}\\d{8}$");
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = new cbv(this);
-    this.jdField_a_of_type_AndroidOsHandler = new cbw(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new cca(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = new ccb(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ccc(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ccg(this);
   }
   
   protected int a()
@@ -166,12 +166,12 @@ public class SearchBaseActivity
       a(paramItemViewHolder, paramrecord.richStatus);
       localStringBuilder.append(paramItemViewHolder.d.getText().toString());
       return localStringBuilder.toString();
-      i1 = 2130838089;
-      n = 2130838759;
+      i1 = 2130838083;
+      n = 2130838734;
       localObject = "男";
       break;
-      i1 = 2130838084;
-      n = 2130838758;
+      i1 = 2130838078;
+      n = 2130838733;
       localObject = "女";
       break;
       paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -409,7 +409,7 @@ public class SearchBaseActivity
     paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(0);
     if ((paramrecord.flag.has()) && (paramrecord.flag.get() == 1L) && (paramrecord.class_index.has()) && (paramrecord.class_index.get() == 20))
     {
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838183, 0);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838177, 0);
       paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding((int)DisplayUtils.a(this, 6.0F));
       if ((!paramrecord.class_index.has()) || (paramrecord.class_index.get() != 1)) {
         break label242;
@@ -427,7 +427,7 @@ public class SearchBaseActivity
     }
     for (;;)
     {
-      int n = getResources().getColor(2131427498);
+      int n = getResources().getColor(2131427493);
       paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(n);
       return localStringBuilder.toString();
       paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -435,7 +435,7 @@ public class SearchBaseActivity
       label242:
       if ((paramrecord.class_index.has()) && (paramrecord.class_index.get() == 20))
       {
-        paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(2131362460);
+        paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(2131362457);
         localStringBuilder.append(paramItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.getText());
         if (paramrecord.brief.has())
         {
@@ -448,24 +448,24 @@ public class SearchBaseActivity
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296955));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298453));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131427474));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cbx(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getResources().getString(2131362790));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297994));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131363358));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296951));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298408));
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131427469));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ccd(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getResources().getString(2131362794));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297957));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131363361));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
     this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131492889));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new cby(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131297986));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new cbz(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new cce(this));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131297950));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ccf(this));
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2130839489);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2130839454);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
   }
@@ -483,7 +483,7 @@ public class SearchBaseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903543);
+    setContentView(2130903529);
     super.getWindow().setBackgroundDrawable(null);
     c();
     j();
@@ -512,7 +512,7 @@ public class SearchBaseActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    d(2130837633);
+    d(2130837635);
     if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a()) {
       this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.b();
     }

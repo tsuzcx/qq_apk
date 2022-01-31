@@ -1,9 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class azu
   implements DialogInterface.OnClickListener
@@ -12,9 +13,10 @@ public class azu
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.a.a + "&sid=" + this.a.app.getSid()));
-    this.a.startActivity(paramDialogInterface);
-    this.a.c();
+    this.a.app.logout(true);
+    SharedPreUtils.a(this.a.app.a(), this.a.app.a(), false);
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    this.a.finish();
   }
 }
 

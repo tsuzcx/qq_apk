@@ -19,7 +19,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.mobileqq.utils.ContactUtils;
-import eof;
+import eok;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -100,7 +100,7 @@ public class AtTroopMemberSpan
       return localStringBuffer.toString();
     }
     if (arrayOfAtTroopMemberSpan.length > 1) {
-      Arrays.sort(arrayOfAtTroopMemberSpan, new eof(paramEditable));
+      Arrays.sort(arrayOfAtTroopMemberSpan, new eok(paramEditable));
     }
     int j = 0;
     while (i < arrayOfAtTroopMemberSpan.length)

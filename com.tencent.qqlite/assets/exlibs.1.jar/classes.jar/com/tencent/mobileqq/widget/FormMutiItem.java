@@ -63,7 +63,7 @@ public class FormMutiItem
     ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131296408);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-    setCustomHeight(getResources().getDimensionPixelSize(2131493084));
+    setCustomHeight(getResources().getDimensionPixelSize(2131493069));
   }
   
   public void setFirstLineText(int paramInt)
@@ -133,7 +133,7 @@ public class FormMutiItem
     }
     label63:
     label69:
-    for (int m = getResources().getDimensionPixelSize(2131493084);; m = getResources().getDimensionPixelSize(2131493082))
+    for (int m = getResources().getDimensionPixelSize(2131493069);; m = getResources().getDimensionPixelSize(2131493067))
     {
       setCustomHeight(m);
       return;

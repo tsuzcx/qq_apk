@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import avv;
+import avu;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public class MusicSharePlayActivity
 {
   public static final int a = 1;
   public static final int b = 2;
-  private Handler jdField_a_of_type_AndroidOsHandler = new avv(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new avu(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -51,7 +51,7 @@ public class MusicSharePlayActivity
     while (!QLog.isColorLevel()) {
       try
       {
-        Object localObject = getResources().getDrawable(2130839404);
+        Object localObject = getResources().getDrawable(2130839369);
         localObject = URLDrawable.getDrawable(localSongInfo.d, (Drawable)localObject, (Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         return;
@@ -73,16 +73,16 @@ public class MusicSharePlayActivity
   
   void c()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297325));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297326));
-    this.b = ((TextView)findViewById(2131297327));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297328));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297321));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297322));
+    this.b = ((TextView)findViewById(2131297323));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297324));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131297328)
+    if (paramView.getId() == 2131297324)
     {
       QQPlayerService.c(getApplicationContext());
       finish();
@@ -93,8 +93,8 @@ public class MusicSharePlayActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903243);
-    setTitle(2131364131);
-    setLeftViewName(2131364513);
+    setTitle(2131364116);
+    setLeftViewName(2131364492);
     c();
     this.app.a(MusicSharePlayActivity.class, this.jdField_a_of_type_AndroidOsHandler);
     d();

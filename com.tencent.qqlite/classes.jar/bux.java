@@ -1,5 +1,4 @@
-import android.graphics.Color;
-import android.text.TextPaint;
+import android.app.Activity;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
@@ -9,11 +8,9 @@ public class bux
 {
   public bux(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(View paramView)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    ((Activity)GrayTipsItemBuilder.d(this.a)).showDialog(230);
   }
 }
 

@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cog
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
   public cog(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    new coj(this.a, null).execute(new Void[0]);
-    this.a.setResult(-1);
+    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
+      }
+      ShortVideoPreviewActivity.a(this.a);
+    }
   }
 }
 

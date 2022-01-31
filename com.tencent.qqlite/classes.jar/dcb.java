@@ -1,51 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.mobileqq.config.ConfigManager;
 
-public final class dcb
-  extends Thread
+public class dcb
 {
-  public dcb(QQAppInterface paramQQAppInterface) {}
+  public byte a;
+  public String a;
+  public byte b;
+  public String b;
   
-  public void run()
+  public dcb(ConfigManager paramConfigManager)
   {
-    Card localCard = ProfileCardUtil.a(this.a, this.a.a());
-    if (localCard != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SPLASH_ConfigServlet_birth", 2, "card!=null");
-      }
-      j = (int)localCard.lBirthday;
-      i = ProfileUtil.c(j);
-      j = ProfileUtil.d(j);
-      SharedPreUtils.b(this.a.a(), ConfigServlet.a(i, j));
-      i = ConfigServlet.a(new SimpleDateFormat("MM-dd").format(new Date()), ConfigServlet.a(i, j));
-      if ((i >= 0) && (i <= 3))
-      {
-        ConfigServlet.a(this.a, 3);
-        if (QLog.isColorLevel()) {
-          QLog.i("SPLASH_ConfigServlet_birth", 2, "birthday coming soon,date diff is " + i);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      int j;
-      int i;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("SPLASH_ConfigServlet_birth", 2, "not birthday date diff is " + i);
-      return;
-    }
-    QLog.i("SPLASH_ConfigServlet_birth", 2, "card===null");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 

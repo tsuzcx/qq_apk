@@ -1,25 +1,15 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
-import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
 
 public class cmf
-  implements ConversationSearchAdapter.SearchResultCallBack
+  implements View.OnClickListener
 {
   public cmf(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (1 == paramInt)
-    {
-      if (SelectMemberActivity.a(this.a).getCount() == 0) {
-        SelectMemberActivity.a(this.a).setVisibility(0);
-      }
-    }
-    else {
-      return;
-    }
-    SelectMemberActivity.a(this.a).setVisibility(8);
+    this.a.e();
   }
 }
 

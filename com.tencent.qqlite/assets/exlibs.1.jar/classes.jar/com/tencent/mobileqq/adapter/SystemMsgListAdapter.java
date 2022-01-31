@@ -76,23 +76,23 @@ public class SystemMsgListAdapter
     MessageRecord localMessageRecord;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903557, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903543, paramViewGroup, false);
       paramViewGroup = new SystemMsgListAdapter.ViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131297674));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297675));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298529));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131297670));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297671));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298484));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296532));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298531));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131298532));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131298533));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298530));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298535));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131298534));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298486));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131298487));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131298488));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298485));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298490));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131298489));
       paramViewGroup.jdField_c_of_type_Int = paramInt;
       paramView.setTag(paramViewGroup);
-      paramView.setBackgroundResource(2130837904);
+      paramView.setBackgroundResource(2130837757);
       if (paramInt < this.jdField_a_of_type_Int) {
-        paramView.setBackgroundResource(2130837905);
+        paramView.setBackgroundResource(2130837758);
       }
       localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(getCount() - paramInt - 1);
       if (localMessageRecord == null) {

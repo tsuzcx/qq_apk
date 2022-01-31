@@ -1,14 +1,27 @@
-import com.tencent.open.business.base.StaticAnalyz;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
 import com.tencent.open.downloadnew.MyAppApi;
 
 public class ffe
-  implements Runnable
+  implements TicketUtils.TicketCallback
 {
-  public ffe(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  public ffe(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void a()
   {
-    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    LogUtility.a("MyAppApi", "onGetA1Fail ---");
+    ThreadManager.b().post(new ffg(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.a("MyAppApi", "onGetA1 ---");
+    ThreadManager.b().post(new fff(this, paramArrayOfByte, paramString));
   }
 }
 

@@ -22,7 +22,7 @@ class DragSortAdapter$2
   
   public void onClick(View paramView)
   {
-    if (this.val$updateBtn.getText().toString().equals(this.this$0.mContext.getResources().getString(2131364044))) {}
+    if (this.val$updateBtn.getText().toString().equals(this.this$0.mContext.getResources().getString(2131364031))) {}
     do
     {
       do
@@ -45,14 +45,14 @@ class DragSortAdapter$2
             }
           }
           return;
-          if (this.val$updateBtn.getText().toString().equals(this.this$0.mContext.getResources().getString(2131364043))) {
+          if (this.val$updateBtn.getText().toString().equals(this.this$0.mContext.getResources().getString(2131364030))) {
             DragSortAdapter.access$002(this.this$0, "update");
           }
         }
       } while (!"down".equals(DragSortAdapter.access$000(this.this$0)));
       if (!NetworkUtil.b(this.this$0.mContext))
       {
-        DialogUtil.a(this.this$0.mContext, 230).setTitle(this.this$0.mContext.getString(2131362935)).setMessage(this.this$0.mContext.getString(2131364093)).setPositiveButton(this.this$0.mContext.getString(2131363272), new DragSortAdapter.2.2(this, paramView)).setNegativeButton(this.this$0.mContext.getString(2131363273), new DragSortAdapter.2.1(this)).show();
+        DialogUtil.a(this.this$0.mContext, 230).setTitle(this.this$0.mContext.getString(2131362939)).setMessage(this.this$0.mContext.getString(2131364080)).setPositiveButton(this.this$0.mContext.getString(2131363275), new DragSortAdapter.2.2(this, paramView)).setNegativeButton(this.this$0.mContext.getString(2131363276), new DragSortAdapter.2.1(this)).show();
         return;
       }
     } while (!NetworkUtil.b(this.this$0.mContext));

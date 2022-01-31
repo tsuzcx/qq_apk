@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 public class djx
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public djx(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public djx(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView, int paramInt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    QfileBaseLocalFileTabView.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,25 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.LoadedBack;
+import android.os.Bundle;
 import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
 public class nf
-  implements LoadedBack
+  implements TroopMemberApiClient.Callback
 {
   public nf(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a(Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("state");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.b = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
 }
 

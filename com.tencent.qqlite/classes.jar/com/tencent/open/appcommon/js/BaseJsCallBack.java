@@ -25,9 +25,9 @@ import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.business.cgireport.ReportManager;
 import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadManager;
-import fcn;
-import fco;
-import fcp;
+import fcs;
+import fct;
+import fcu;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -127,7 +127,7 @@ public class BaseJsCallBack
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.mHandler.post(new fcp(this, paramString));
+    this.mHandler.post(new fcu(this, paramString));
   }
   
   public void checkUpdateRes()
@@ -349,7 +349,7 @@ public class BaseJsCallBack
   
   public void onJsAlert(String paramString)
   {
-    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new fcn(this)).setCancelable(false).create().show();
+    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new fcs(this)).setCancelable(false).create().show();
   }
   
   public void onLoadResult(String paramString) {}
@@ -438,7 +438,7 @@ public class BaseJsCallBack
   public void setActionButton(String paramString)
   {
     LogUtility.c("TIME-STATISTIC", "JsCallBack--changeButtonStyle");
-    this.mHandler.post(new fco(this, paramString));
+    this.mHandler.post(new fct(this, paramString));
   }
   
   public void setAllowCallBackEvent(String paramString)

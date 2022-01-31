@@ -1,45 +1,75 @@
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.activity.JobSelectionActivity;
+import com.tencent.mobileqq.util.NearbyProfileUtil;
 
 public class arh
-  extends NightModeLogic.NightModeCallback
+  extends BaseAdapter
 {
-  public arh(IndividuationSetActivity paramIndividuationSetActivity) {}
+  private arh(JobSelectionActivity paramJobSelectionActivity) {}
   
-  public void a(Bundle paramBundle)
+  public int getCount()
   {
-    this.a.b();
+    if (JobSelectionActivity.a(this.a)) {
+      return NearbyProfileUtil.d.length;
+    }
+    return NearbyProfileUtil.d.length - 1;
   }
   
-  public void b(Bundle paramBundle)
+  public Object getItem(int paramInt)
   {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1)
-    {
-      IndividuationSetActivity.a(this.a).setClickable(false);
-      this.a.a.setText("");
+    if (JobSelectionActivity.a(this.a)) {
+      return NearbyProfileUtil.d[paramInt];
     }
-    do
+    return NearbyProfileUtil.d[(paramInt + 1)];
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      return;
-      if (i == 2)
-      {
-        this.a.b();
-        return;
+      localView = this.a.getLayoutInflater().inflate(2130903490, paramViewGroup, false);
+      paramView = new ari(null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298197));
+      paramView.b = ((TextView)localView.findViewById(2131296455));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298198));
+      localView.setTag(paramView);
+    }
+    paramView = (ari)localView.getTag();
+    int i = paramInt;
+    if (!JobSelectionActivity.a(this.a)) {
+      i = paramInt + 1;
+    }
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(NearbyProfileUtil.e[i]);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(NearbyProfileUtil.a[i]);
+    if (i < NearbyProfileUtil.d.length - 1) {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    for (;;)
+    {
+      if ((JobSelectionActivity.a(this.a)) && (i == 0)) {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
       }
-    } while (i != 3);
-    IndividuationSetActivity.a(this.a).setClickable(false);
-    i = paramBundle.getInt("percent");
-    paramBundle = this.a.getString(2131364540);
-    paramBundle = paramBundle + "  " + String.valueOf(i) + "%";
-    if (QLog.isDevelopLevel()) {
-      QLog.d("spooner", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+      paramView.b.setText(NearbyProfileUtil.d[i]);
+      if (JobSelectionActivity.a(this.a) != i) {
+        break;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return localView;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     }
-    this.a.a.setText(paramBundle);
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    return localView;
   }
 }
 

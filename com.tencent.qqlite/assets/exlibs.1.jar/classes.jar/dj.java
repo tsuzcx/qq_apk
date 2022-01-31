@@ -1,35 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.dataline.util.DataLineReportUtil;
-import com.dataline.util.DatalineFilesAdapter;
-import com.dataline.util.DatalineFilesAdapter.ItemHolder;
-import com.dataline.util.file.DLFileInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.dataline.util.HttpDownload.HttpDownloadListenerPack;
 
-class dj
-  implements DialogInterface.OnClickListener
+public class dj
+  implements Runnable
 {
-  dj(di paramdi, DataLineMsgRecord paramDataLineMsgRecord, DatalineFilesAdapter.ItemHolder paramItemHolder) {}
+  public dj(HttpDownload.HttpDownloadListenerPack paramHttpDownloadListenerPack, long paramLong1, String paramString, long paramLong2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = DatalineFilesAdapter.a(this.jdField_a_of_type_Di.a).a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.setPaused(false);
-    }
-    if (this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder.a.a != 1)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.fileMsgStatus == 1L) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
-        DataLineReportUtil.e(DatalineFilesAdapter.a(this.jdField_a_of_type_Di.a));
-      }
-      DatalineFilesAdapter.a(this.jdField_a_of_type_Di.a, this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-      return;
-    }
-    DatalineFilesAdapter.b(this.jdField_a_of_type_Di.a, this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    this.jdField_a_of_type_ComDatalineUtilHttpDownload$HttpDownloadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

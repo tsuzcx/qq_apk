@@ -1,17 +1,25 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
 public class dyr
   extends BroadcastReceiver
 {
-  public dyr(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public dyr(QQPlayerService paramQQPlayerService) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      MusicGeneWebViewPlugin.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
+    }
+    if (("com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) || ("qqplayer_exit_action".equals(paramIntent.getAction())))
+    {
+      if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
+        this.a.a.b = true;
+      }
+      QQPlayerService.c(this.a.getApplicationContext());
     }
   }
 }

@@ -1,4 +1,3 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class bub
@@ -8,8 +7,8 @@ public class bub
   
   public void run()
   {
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.g();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.h();
+    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel, this.jdField_a_of_type_JavaLangString);
   }
 }
 

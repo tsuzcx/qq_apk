@@ -1,13 +1,29 @@
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
 import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class btt
   implements Runnable
 {
-  public btt(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public btt(PressToSpeakPanel paramPressToSpeakPanel, int paramInt, double paramDouble) {}
   
   public void run()
   {
-    this.a.i();
+    int i = AudioPanel.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.c(i);
+    if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 1) {
+      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText("松手试听");
+    }
+    for (;;)
+    {
+      PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel, this.jdField_a_of_type_Double);
+      return;
+      if (PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel) == 2) {
+        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText("松手取消发送");
+      } else {
+        PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+      }
+    }
   }
 }
 

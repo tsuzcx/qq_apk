@@ -1,15 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
 public class ehg
   implements Runnable
 {
-  public ehg(NetworkCenter paramNetworkCenter) {}
+  public ehg(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
   public void run()
   {
-    this.a.b();
-    NetworkCenter.a(this.a).postDelayed(this, 120000L);
+    this.a.w();
   }
 }
 

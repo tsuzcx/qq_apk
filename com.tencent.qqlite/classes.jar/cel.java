@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.graphics.Matrix;
 
 public class cel
-  extends ConfigObserver
 {
-  public cel(MainAssistObserver paramMainAssistObserver) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public cel()
   {
-    MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
-    this.a.f();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

@@ -1,29 +1,45 @@
-import com.tencent.open.base.LogUtility;
+import android.text.TextUtils;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.open.downloadnew.common.AppNotificationManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class feu
   implements Runnable
 {
-  public feu(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public feu(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    try
+    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      localObject1 = AppNotificationManager.a().a();
+      if (localObject1 != null)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localNoticeIdentity != null)
+          {
+            Object localObject2 = this.a.a(localNoticeIdentity.b);
+            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
+            {
+              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
+              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                AppNotificationManager.a().a(localNoticeIdentity.a);
+              }
+            }
+          }
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
     }
   }
 }

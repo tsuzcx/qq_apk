@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.OfflineVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
 
 class dtn
-  extends FMObserver
+  implements FileManagerUtil.IGetVideoCallback
 {
   dtn(dtm paramdtm) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void a(Bitmap paramBitmap)
   {
-    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
-    {
-      paramThumbnailInfo = (FileManagerEntity)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.Uuid != null) && (paramThumbnailInfo.Uuid.equals(OfflineVideoFileView.a(this.a.a).d()))) {
-        this.a.a.e();
-      }
-    }
+    LocalVideoFileView.d(this.a.a).runOnUiThread(new dto(this, paramBitmap));
   }
 }
 

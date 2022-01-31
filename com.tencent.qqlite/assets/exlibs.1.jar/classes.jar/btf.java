@@ -1,43 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
 
 public class btf
-  extends Handler
+  implements Runnable
 {
-  public btf(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public btf(CommonRecordSoundPanel paramCommonRecordSoundPanel, int paramInt, double paramDouble) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.c(2);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      CommonRecordSoundPanel.a(this.a).a();
-      AudioUtil.b(2131165189, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      AudioUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    }
-    this.a.c(1);
-    this.a.g();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131362973), 1).a();
+    int i = AudioPanel.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d(i);
+    CommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.jdField_a_of_type_Double = this.jdField_a_of_type_Double;
   }
 }
 

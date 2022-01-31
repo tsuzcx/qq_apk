@@ -1,17 +1,26 @@
-import java.io.File;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.Entity;
 import java.util.Comparator;
 
-class cwz
+public class cwz
   implements Comparator
 {
-  cwz(cwy paramcwy) {}
+  public cwz(RecentUserCache paramRecentUserCache) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+    paramEntity1 = (RecentUser)paramEntity1;
+    paramEntity2 = (RecentUser)paramEntity2;
+    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
+    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
+    if (l1 < l2) {
       return 1;
     }
-    return 0;
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

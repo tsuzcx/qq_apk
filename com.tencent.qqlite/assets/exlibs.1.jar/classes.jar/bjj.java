@@ -1,104 +1,63 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
-import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class bjj
-  extends TroopObserver
+  implements View.OnClickListener
 {
   public bjj(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  protected void a(int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Grant_cancel_admin", 0, 1, SetTroopAdminsActivity.a(this.a), "", "", "");
-    if (SetTroopAdminsActivity.a(this.a) != null) {
-      SetTroopAdminsActivity.a(this.a).dismiss();
+    int j = paramView.getId();
+    Object localObject = paramView.getTag();
+    if (j == 2131298846) {
+      localObject = paramView.findViewById(2131298847).getTag();
     }
-    String str;
-    switch (paramInt)
+    if ((localObject != null) && ((localObject instanceof Integer))) {}
+    for (int i = ((Integer)localObject).intValue();; i = -1)
     {
-    case 5: 
-    case 6: 
-    default: 
-      str = this.a.getString(2131362860);
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (SetTroopAdminsActivity.a(this.a) > 0)
+      if (QLog.isColorLevel()) {
+        QLog.d("SetTroopAdminsActivity", 2, "mOnKickOutBtnClickListener:" + i);
+      }
+      if ((i < 0) || (i >= SetTroopAdminsActivity.a(this.a).size())) {}
+      do
       {
-        str = String.format(this.a.getString(2131362864), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) });
-      }
-      else
-      {
-        str = this.a.getString(2131362865);
-        continue;
-        str = this.a.getString(2131362866);
-      }
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2, byte paramByte)
-  {
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {}
-    TroopInfo localTroopInfo;
-    do
-    {
+        do
+        {
+          do
+          {
+            return;
+            paramView = (SetTroopAdminsActivity.TroopAdmin)SetTroopAdminsActivity.a(this.a).get(i);
+            if (j != 2131298847) {
+              break;
+            }
+            localObject = this.a.a(paramView.a);
+          } while (localObject == null);
+          ((bjn)localObject).a.a(true);
+          this.a.a.add(paramView.a);
+          return;
+          if (j != 2131298846) {
+            break;
+          }
+          localObject = this.a.a(paramView.a);
+        } while (localObject == null);
+        ((bjn)localObject).a.b(true);
+        this.a.a.remove(paramView.a);
+        return;
+      } while (j != 2131298850);
+      SetTroopAdminsActivity.a(this.a, 2131362865);
+      SetTroopAdminsActivity.a(this.a).put(paramView.a, paramView);
+      ((TroopHandler)this.a.app.a(17)).a((byte)0, SetTroopAdminsActivity.a(this.a), paramView.a);
       return;
-      paramString1 = (FriendsManagerImp)this.a.app.getManager(8);
-      localTroopInfo = paramString1.a(SetTroopAdminsActivity.a(this.a));
-    } while (localTroopInfo == null);
-    if (localTroopInfo.Administrator != null)
-    {
-      if (localTroopInfo.Administrator.startsWith("|")) {
-        localTroopInfo.Administrator = localTroopInfo.Administrator.substring(1);
-      }
-      if (!localTroopInfo.Administrator.endsWith("|")) {}
-    }
-    for (localTroopInfo.Administrator = localTroopInfo.Administrator.substring(0, localTroopInfo.Administrator.length() - 1); paramByte == 0; localTroopInfo.Administrator = "")
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Grant_cancel_admin", 0, 0, SetTroopAdminsActivity.a(this.a), "1", "", "");
-      localTroopInfo.Administrator = localTroopInfo.Administrator.replace(paramString2 + "|", "").replace("|" + paramString2, "").replace(paramString2, "");
-      int i = SetTroopAdminsActivity.a(this.a).size() - 1;
-      while (i >= 0)
-      {
-        if (((SetTroopAdminsActivity.TroopAdmin)SetTroopAdminsActivity.a(this.a).get(i)).a.equals(paramString2)) {
-          SetTroopAdminsActivity.a(this.a).remove(i);
-        }
-        i -= 1;
-      }
-    }
-    if (paramByte == 1)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Grant_cancel_admin", 0, 0, SetTroopAdminsActivity.a(this.a), "0", "", "");
-      localTroopInfo.Administrator = (localTroopInfo.Administrator + "|" + paramString2);
-      SetTroopAdminsActivity.a(this.a).add(SetTroopAdminsActivity.a(this.a).get(paramString2));
-    }
-    paramString1.b(localTroopInfo);
-    SetTroopAdminsActivity.a(this.a).remove(paramString2);
-    SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
-    SetTroopAdminsActivity.a(this.a);
-    if (SetTroopAdminsActivity.a(this.a) != null) {
-      SetTroopAdminsActivity.a(this.a).dismiss();
-    }
-    if (paramByte == 0) {
-      QQToast.a(this.a, 2, 2131362862, 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      this.a.setResult(-1);
-      return;
-      if (paramByte == 1) {
-        QQToast.a(this.a, 2, 2131362858, 0).b(this.a.getTitleBarHeight());
-      }
     }
   }
 }

@@ -20,8 +20,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import cpk;
-import cpl;
+import cpq;
+import cpr;
 import java.util.ArrayList;
 
 public class WebFacePreloadBaseAdapter
@@ -33,7 +33,7 @@ public class WebFacePreloadBaseAdapter
   public static final String b = "com.tencent.qqhead.getheadreq";
   public static final String c = "com.tencent.qqhead.getheadresp";
   protected float a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cpk(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cpq(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   protected Handler a;
@@ -51,7 +51,7 @@ public class WebFacePreloadBaseAdapter
   public WebFacePreloadBaseAdapter(Context paramContext, XListView paramXListView, int paramInt)
   {
     this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
-    this.jdField_a_of_type_AndroidOsHandler = new cpl(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cpr(this);
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;

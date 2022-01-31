@@ -1,18 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class dfz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dfz(FilePreviewActivity paramFilePreviewActivity) {}
+  public dfz(FMActivity paramFMActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setResult(0, new Intent());
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
     this.a.finish();
-    this.a.overridePendingTransition(2130968583, 2130968584);
   }
 }
 

@@ -1,8 +1,7 @@
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class eps
   implements View.OnClickListener
@@ -11,22 +10,10 @@ public class eps
   
   public void onClick(View paramView)
   {
-    if (!this.a.b)
-    {
-      this.a.b = true;
-      MediaControllerX.b(this.a).setBackgroundResource(2130838450);
-      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131362358));
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.onClick(paramView);
-      }
-      return;
-      this.a.b = false;
-      MediaControllerX.b(this.a).setBackgroundResource(2130838440);
-      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131362359));
-    }
+    int i = MediaControllerX.a(this.a).b();
+    MediaControllerX.a(this.a).a(i + 15000);
+    MediaControllerX.a(this.a);
+    this.a.a(5000);
   }
 }
 

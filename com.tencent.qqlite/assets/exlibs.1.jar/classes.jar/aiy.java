@@ -1,26 +1,27 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class aiy
+public class aiy
   implements DialogInterface.OnClickListener
 {
-  aiy(aix paramaix, String paramString) {}
+  public aiy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((FriendManager)this.jdField_a_of_type_Aix.a.app.getManager(8)).d(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aix.a.app.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Aix.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Aix.a.finish();
+    if (NetworkUtil.e(this.a.getActivity()))
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+      DiscussionInfoCardActivity.a(this.a).d(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue());
+      this.a.a(this.a.getString(2131363671));
+      DiscussionInfoCardActivity.a(this.a).show();
+      return;
+    }
+    this.a.a(1, this.a.getString(2131363450));
   }
 }
 

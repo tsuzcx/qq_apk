@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import sj;
+import sf;
 
 public class SSOWebviewPlugin
   extends WebViewPlugin
@@ -99,7 +99,7 @@ public class SSOWebviewPlugin
       paramString1.type.set(0);
       paramString1.data.set(str1);
       paramString2.putExtra("data", paramString1.toByteArray());
-      paramString2.setObserver(new sj(this, str2));
+      paramString2.setObserver(new sf(this, str2));
       this.mRuntime.a().startServlet(paramString2);
       return;
       label374:

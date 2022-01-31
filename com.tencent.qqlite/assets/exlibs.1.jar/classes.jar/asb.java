@@ -1,6 +1,4 @@
-import android.view.ViewStub;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
 public class asb
   implements Runnable
@@ -9,9 +7,7 @@ public class asb
   
   public void run()
   {
-    ViewStub localViewStub = (ViewStub)this.a.a(2131297259);
-    ((CommonLoadingView)this.a.a(2131296840)).setVisibility(8);
-    localViewStub.setVisibility(0);
+    Leba.a(this.a, true);
   }
 }
 

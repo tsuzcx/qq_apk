@@ -1,15 +1,16 @@
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public final class alp
   implements Runnable
 {
-  public alp(Context paramContext) {}
+  public alp(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131363403), 0).b(this.a.getResources().getDimensionPixelSize(2131492887));
+    EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_AndroidContentContext.getString(2131362939), this.jdField_a_of_type_JavaLangString);
   }
 }
 

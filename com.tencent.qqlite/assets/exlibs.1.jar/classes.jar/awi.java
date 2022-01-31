@@ -1,32 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
 import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.ActionSheet;
 
 public class awi
-  implements IphonePickerView.IphonePickListener
+  implements DialogInterface.OnDismissListener
 {
   public awi(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void a()
-  {
-    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (this.a.i == 0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[paramInt2]);
-      this.a.c = paramInt2;
+      this.a.a.setRightTextColor(2);
+      this.a.a.setContentDescription("年龄" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[this.a.c]);
       return;
     }
-    this.a.b.setRightText(com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[paramInt2]);
-    this.a.d = paramInt2;
+    this.a.b.setRightTextColor(2);
+    this.a.b.setContentDescription("星座" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[this.a.d]);
   }
 }
 

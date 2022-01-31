@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 class asy
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  asy(asx paramasx) {}
+  asy(asx paramasx, Bitmap paramBitmap) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
+      this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      return;
+    }
+    this.jdField_a_of_type_Asx.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838120);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

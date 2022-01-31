@@ -1,19 +1,16 @@
-import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class bek
-  implements IIconListener
+  extends Handler
 {
   public bek(QQSetting paramQQSetting) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void handleMessage(Message paramMessage)
   {
-    if ((QQSetting.d(this.a)) && (paramBitmap != null) && (QQSetting.a(this.a).a().b == paramInt1) && (paramInt2 == 201)) {
-      this.a.n();
-    }
+    ((View)paramMessage.obj).setVisibility(8);
   }
 }
 

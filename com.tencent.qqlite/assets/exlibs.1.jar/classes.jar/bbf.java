@@ -1,75 +1,19 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-public class bbf
-  extends ShieldListObserver
+class bbf
+  implements Runnable
 {
-  public bbf(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  bbf(bbe parambbe) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void run()
   {
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = ProfileCardMoreActivity.a(this.a);
-    }
-    for (;;)
+    FormSimpleItem localFormSimpleItem = this.a.a.c;
+    if (TextUtils.isEmpty(ProfileCardMoreActivity.b(this.a.a))) {}
+    for (String str = "";; str = ProfileCardMoreActivity.b(this.a.a))
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, false);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = ProfileCardMoreActivity.a(this.a);
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
+      localFormSimpleItem.setRightText(str);
       return;
     }
   }

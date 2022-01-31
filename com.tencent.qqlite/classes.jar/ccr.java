@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
 
 public class ccr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ccr(SystemMsgListView paramSystemMsgListView) {}
+  public ccr(NewFriendActivity paramNewFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.j();
+    this.a.d();
   }
 }
 

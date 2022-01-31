@@ -1,18 +1,16 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-class ajk
-  implements Runnable
+public class ajk
+  implements View.OnClickListener
 {
-  ajk(ajj paramajj) {}
+  public ajk(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
   }
 }
 

@@ -1,40 +1,29 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 
 public class cam
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cam(FraudTipsBar paramFraudTipsBar, int paramInt) {}
+  public cam(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar, 2);
-    FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a();
-    ReportController.b(FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar), "P_CliOper", "Safe_AntiFraud", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    Object localObject = AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
-    paramView = (View)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = "http://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
-    }
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (paramView = paramView.replace("$SUBAPP$", "notice");; paramView = paramView.replace("$SUBAPP$", "tips"))
+    if ((TroopChatPie.F(this.a).jdField_a_of_type_Int == 1) && (BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).getBoolean(TroopChatPie.G(this.a).jdField_a_of_type_JavaLangString, false))) {}
+    try
     {
-      paramView = paramView.replace("$SYSTEM$", "android").replace("$EVILUIN$", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a).replace("$USERUIN$", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).getAccount());
-      localObject = new Intent(FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar), QQBrowserDelegationActivity.class);
-      ((Intent)localObject).putExtra("injectrecommend", true);
-      ((Intent)localObject).putExtra("url", paramView);
-      FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).startActivity((Intent)localObject);
+      long l1 = Long.parseLong(TroopChatPie.H(this.a).jdField_a_of_type_JavaLangString);
+      long l2 = Long.parseLong(TroopChatPie.k(this.a).a());
+      TroopNotificationHelper.a(TroopChatPie.l(this.a), 0, l1, l1, l2, "", (int)System.currentTimeMillis(), "OidbSvc.0x852_48", (short)34, true, false);
       return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

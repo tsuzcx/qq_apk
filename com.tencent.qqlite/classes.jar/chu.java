@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
-class chu
-  extends ContactBindObserver
+public class chu
+  implements Runnable
 {
-  chu(cht paramcht) {}
+  public chu(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void run()
   {
-    super.b(paramBoolean);
-    this.a.a.d();
-    this.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.setResult(-1);
-      this.a.a.finish();
-    }
+    this.a.a.f();
   }
 }
 

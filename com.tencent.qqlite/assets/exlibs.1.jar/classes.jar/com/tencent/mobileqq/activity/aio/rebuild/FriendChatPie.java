@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.content.Intent;
+import bzk;
 import bzl;
 import bzm;
 import bzn;
-import bzo;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
@@ -15,7 +15,6 @@ import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.StrangerObserver;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.mobileqq.servlet.ReduFriendObserver;
 import com.tencent.mobileqq.utils.StartupTracker;
@@ -24,10 +23,10 @@ import java.util.Observable;
 public class FriendChatPie
   extends BaseChatPie
 {
-  private StrangerObserver jdField_a_of_type_ComTencentMobileqqAppStrangerObserver = new bzn(this);
-  private ReduFriendObserver jdField_a_of_type_ComTencentMobileqqServletReduFriendObserver = new bzm(this);
+  private StrangerObserver jdField_a_of_type_ComTencentMobileqqAppStrangerObserver = new bzm(this);
+  private ReduFriendObserver jdField_a_of_type_ComTencentMobileqqServletReduFriendObserver = new bzl(this);
   Runnable b;
-  protected MessageObserver c = new bzo(this);
+  protected MessageObserver c = new bzn(this);
   private boolean n = false;
   private boolean o = false;
   private boolean p = true;
@@ -35,7 +34,7 @@ public class FriendChatPie
   public FriendChatPie(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
     super(paramQQAppInterface, paramBaseActivity);
-    this.jdField_b_of_type_JavaLangRunnable = new bzl(this);
+    this.jdField_b_of_type_JavaLangRunnable = new bzk(this);
   }
   
   protected void A()
@@ -174,9 +173,6 @@ public class FriendChatPie
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof MessageForStructing)) && (!((MessageForStructing)paramObject).isread)) {
-      MessageForStructing localMessageForStructing = (MessageForStructing)paramObject;
-    }
     super.update(paramObservable, paramObject);
   }
   

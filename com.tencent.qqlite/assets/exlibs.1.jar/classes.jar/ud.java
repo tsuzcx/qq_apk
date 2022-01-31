@@ -1,13 +1,13 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class ud
   implements Runnable
 {
-  public ud(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong, int paramInt) {}
+  public ud(LiteTransferWrapper paramLiteTransferWrapper, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
-    LiteTransferListenerCallback.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

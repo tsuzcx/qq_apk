@@ -24,19 +24,17 @@ import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
 import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
 import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
-import fjr;
-import fjs;
-import fjt;
-import fju;
-import fjv;
+import fjw;
+import fjx;
 import fjy;
 import fjz;
 import fka;
-import fkb;
-import fkc;
+import fkd;
+import fke;
+import fkf;
+import fkg;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
@@ -45,15 +43,14 @@ public abstract class IPluginManager
   extends RemotePluginManager.Stub
   implements Manager
 {
-  public static final int a = 220357;
+  public static final int a = 266474;
   private static Dialog jdField_a_of_type_AndroidAppDialog = null;
   private static volatile PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
   private static PluginManagerHelper.OnPluginManagerLoadedListener jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener;
   private static QFavDownloadProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog = null;
-  public static final String a = "E53452856ABF6D72B0F7C49C5D14EC6E";
-  private static final HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public static final String a = "952C8C795C49A348C49D50D14234A97E";
   public static final boolean a = false;
-  public static final String b = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20150707.zip";
+  public static final String b = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20151110.zip";
   
   private static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
@@ -66,7 +63,7 @@ public abstract class IPluginManager
     {
       paramContext = new Dialog(paramContext, 2131624119);
       paramContext.setContentView(2130903135);
-      localObject = (TextView)paramContext.findViewById(2131296915);
+      localObject = (TextView)paramContext.findViewById(2131296911);
       if (localObject != null) {
         ((TextView)localObject).setText(str3);
       }
@@ -74,13 +71,13 @@ public abstract class IPluginManager
       if (localObject != null) {
         ((TextView)localObject).setText(paramString);
       }
-      paramString = (TextView)paramContext.findViewById(2131296918);
+      paramString = (TextView)paramContext.findViewById(2131296914);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)paramContext.findViewById(2131296919);
+      paramString = (TextView)paramContext.findViewById(2131296915);
       if (paramString != null)
       {
         paramString.setText(str1);
@@ -99,14 +96,14 @@ public abstract class IPluginManager
   {
     PluginInfo localPluginInfo = new PluginInfo();
     localPluginInfo.mID = "qqfav.apk";
-    localPluginInfo.mMD5 = "E53452856ABF6D72B0F7C49C5D14EC6E";
+    localPluginInfo.mMD5 = "952C8C795C49A348C49D50D14234A97E";
     localPluginInfo.mType = 0;
     localPluginInfo.mPackageName = "com.qqfav";
-    localPluginInfo.mLength = 220357L;
+    localPluginInfo.mLength = 266474L;
     localPluginInfo.mCurVersion = 10000L;
     localPluginInfo.mState = 0;
     localPluginInfo.mUpdateType = 1;
-    localPluginInfo.mURL = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20150707.zip";
+    localPluginInfo.mURL = "http://i.gtimg.cn/qqshow/admindata/comdata/vip_mobile_theme_lite_night/qqfav20151110.zip";
     return localPluginInfo;
   }
   
@@ -123,7 +120,7 @@ public abstract class IPluginManager
       ((Toast)localObject).setGravity(17, 0, 0);
       ((Toast)localObject).show();
     }
-    Object localObject = new fjr();
+    Object localObject = new fjw();
     if (paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) {
       new SplashDialogWrapper(paramActivity, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_Boolean, paramPluginParams.jdField_c_of_type_Int).show();
     }
@@ -133,7 +130,7 @@ public abstract class IPluginManager
       c(paramActivity, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
       return;
     }
-    ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(25)).a(paramActivity, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
+    ((IPluginManager)localAppRuntime.getManager(25)).a(paramActivity, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
   }
   
   public static void a(Context paramContext, IPluginManager.PluginParams paramPluginParams)
@@ -144,14 +141,14 @@ public abstract class IPluginManager
     {
       paramPluginParams.jdField_c_of_type_JavaLangString = ((File)localObject).getCanonicalPath();
       label21:
-      localObject = new fka();
+      localObject = new fkf();
       AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
       if (!(localAppRuntime instanceof QQAppInterface))
       {
         c(paramContext, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
         return;
       }
-      ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(25)).a(paramContext, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
+      ((IPluginManager)localAppRuntime.getManager(25)).a(paramContext, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
       return;
     }
     catch (IOException localIOException)
@@ -194,11 +191,6 @@ public abstract class IPluginManager
     }
   }
   
-  public static boolean a()
-  {
-    return PluginManagerV2.b();
-  }
-  
   public static boolean a(String paramString)
   {
     if (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient != null) {
@@ -210,7 +202,7 @@ public abstract class IPluginManager
   private static QFavDownloadProgressDialog b(Context paramContext, String paramString)
   {
     paramContext = new QFavDownloadProgressDialog(paramContext);
-    paramContext.a(new fjt(paramString, paramContext));
+    paramContext.a(new fjy(paramString, paramContext));
     return paramContext;
   }
   
@@ -248,36 +240,19 @@ public abstract class IPluginManager
     {
       paramPluginParams.jdField_c_of_type_JavaLangString = ((File)localObject).getCanonicalPath();
       label21:
-      localObject = new fkb();
+      localObject = new fkg();
       AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
       if (!(localAppRuntime instanceof QQAppInterface))
       {
         c(paramContext, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
         return;
       }
-      ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(25)).a(paramContext, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
+      ((IPluginManager)localAppRuntime.getManager(25)).a(paramContext, paramPluginParams, (IPluginManager.OnPluginReadyListener)localObject);
       return;
     }
     catch (IOException localIOException)
     {
       break label21;
-    }
-  }
-  
-  static void c(Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
-    {
-      fkc localfkc = (fkc)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
-      if (localfkc == null)
-      {
-        localfkc = new fkc(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localfkc);
-        localfkc.a(paramActivity, paramPluginParams);
-        localfkc.execute(new Void[0]);
-        return;
-      }
-      localfkc.a(paramActivity, paramPluginParams);
     }
   }
   
@@ -313,7 +288,7 @@ public abstract class IPluginManager
     }
     if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null) || (!jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful()))
     {
-      jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new fjs(paramContext, paramPluginParams, paramOnPluginReadyListener);
+      jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new fjx(paramContext, paramPluginParams, paramOnPluginReadyListener);
       PluginManagerHelper.getPluginInterface(paramContext, jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener);
       return;
     }
@@ -361,46 +336,12 @@ public abstract class IPluginManager
     }
     if (paramPluginParams.jdField_b_of_type_JavaLangString.equals("qqfav.apk"))
     {
-      jdField_a_of_type_AndroidAppDialog = a(paramContext, 2131363265, 2131363270, 2131362790, 2131363447, (float)Math.round(21.014881134033203D) / 100.0F + "", new fju(), new fjv(paramContext, paramPluginParams, paramOnPluginReadyListener));
-      jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new fjy());
+      jdField_a_of_type_AndroidAppDialog = a(paramContext, 2131363268, 2131363273, 2131362794, 2131363448, (float)Math.round(25.412940979003906D) / 100.0F + "", new fjz(), new fka(paramContext, paramPluginParams, paramOnPluginReadyListener));
+      jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new fkd());
       jdField_a_of_type_AndroidAppDialog.show();
       return;
     }
-    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new fjz(paramOnPluginReadyListener, paramContext, paramPluginParams));
-  }
-  
-  private static void e(Context paramContext, IPluginManager.PluginParams paramPluginParams)
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
-    {
-      fkc localfkc = (fkc)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
-      if (localfkc == null)
-      {
-        localfkc = new fkc(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localfkc);
-        localfkc.a(paramContext, paramPluginParams);
-        localfkc.execute(new Void[0]);
-        return;
-      }
-      localfkc.a(paramContext, paramPluginParams);
-    }
-  }
-  
-  private static void f(Context paramContext, IPluginManager.PluginParams paramPluginParams)
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
-    {
-      fkc localfkc = (fkc)jdField_a_of_type_JavaUtilHashMap.get(paramPluginParams.jdField_b_of_type_JavaLangString);
-      if (localfkc == null)
-      {
-        localfkc = new fkc(paramPluginParams.jdField_a_of_type_JavaLangString, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString);
-        jdField_a_of_type_JavaUtilHashMap.put(paramPluginParams.jdField_b_of_type_JavaLangString, localfkc);
-        localfkc.b(paramContext, paramPluginParams);
-        localfkc.execute(new Void[0]);
-        return;
-      }
-      localfkc.b(paramContext, paramPluginParams);
-    }
+    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new fke(paramOnPluginReadyListener, paramContext, paramPluginParams));
   }
   
   public abstract PluginInfo a(String paramString);
@@ -412,6 +353,8 @@ public abstract class IPluginManager
   public abstract void a(String paramString);
   
   public abstract void a(String paramString, boolean paramBoolean, OnPluginInstallListener paramOnPluginInstallListener);
+  
+  public abstract boolean a();
   
   public abstract boolean a(String paramString, IPluginManager.OnQueryPluginListener paramOnQueryPluginListener);
   

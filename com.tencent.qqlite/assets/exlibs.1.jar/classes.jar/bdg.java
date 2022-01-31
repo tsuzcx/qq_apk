@@ -10,9 +10,11 @@ public class bdg
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new bdh(this));
     if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.h) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
     }
   }
 }

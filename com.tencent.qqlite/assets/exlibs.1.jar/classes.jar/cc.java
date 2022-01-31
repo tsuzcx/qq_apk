@@ -1,15 +1,30 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.dataline.mpfile.LiteMpFileDownloadActivity;
-import com.dataline.mpfile.MpfileTaskListAdapter;
 
-class cc
-  implements Runnable
+public class cc
+  extends BroadcastReceiver
 {
-  cc(cb paramcb) {}
+  public cc(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    LiteMpFileDownloadActivity.a(this.a.a).a(LiteMpFileDownloadActivity.a(this.a.a));
-    LiteMpFileDownloadActivity.a(this.a.a).notifyDataSetChanged();
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+      } while (paramContext == null);
+      if (paramContext.equals("com.dataline.mpfile.download_progress"))
+      {
+        this.a.a();
+        return;
+      }
+    } while (!paramContext.equals("com.dataline.mpfile.download_completed"));
+    this.a.a();
   }
 }
 

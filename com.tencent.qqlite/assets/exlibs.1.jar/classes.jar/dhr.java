@@ -1,9 +1,37 @@
-import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class dhr
+  extends FMObserver
 {
-  private static final int a = 12;
-  public View[] a = new View[12];
+  public dhr(VerifyPwdView paramVerifyPwdView) {}
+  
+  protected void a(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      VerifyPwdView.a(this.a);
+      return;
+    }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void c()
+  {
+    VerifyPwdView.a(this.a);
+  }
 }
 
 

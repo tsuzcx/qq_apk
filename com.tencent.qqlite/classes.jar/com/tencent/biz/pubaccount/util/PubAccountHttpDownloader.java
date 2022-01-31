@@ -14,7 +14,7 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import mqq.app.AccountNotMatchException;
-import oo;
+import ok;
 import org.apache.http.Header;
 
 public class PubAccountHttpDownloader
@@ -87,7 +87,7 @@ public class PubAccountHttpDownloader
       }
       i += 1;
     }
-    paramOutputStream = new oo(this, paramOutputStream);
+    paramOutputStream = new ok(this, paramOutputStream);
     paramDownloadParams = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     if (str != null) {
       a(str, paramOutputStream.a);

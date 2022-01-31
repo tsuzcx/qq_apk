@@ -1,20 +1,27 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bbh
+public class bbh
   implements Runnable
 {
-  bbh(bbg parambbg) {}
+  public bbh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
   public void run()
   {
-    FormSimpleItem localFormSimpleItem = this.a.a.c;
-    if (TextUtils.isEmpty(ProfileCardMoreActivity.b(this.a.a))) {}
-    for (String str = "";; str = ProfileCardMoreActivity.b(this.a.a))
+    try
     {
-      localFormSimpleItem.setRightText(str);
+      i = ProfileCardMoreActivity.a(this.a, this.a.a.a);
+      ProfileCardMoreActivity.a(this.a, false);
+      this.a.app.runOnUiThread(new bbi(this, i));
       return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
     }
   }
 }

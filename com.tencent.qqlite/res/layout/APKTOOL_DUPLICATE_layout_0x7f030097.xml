@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09034a" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09034b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f9" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090346" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090347" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f3" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </ScrollView>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09034c" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="-4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201fa" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f09034a" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090348" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="-4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f4" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090346" />
 </RelativeLayout>

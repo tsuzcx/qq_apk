@@ -1,21 +1,25 @@
-import android.text.TextUtils;
+import com.tencent.biz.lebasearch.SearchProtocol;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import cooperation.qzone.QZoneHelper;
 
 public class ask
-  extends FriendListObserver
+  implements Runnable
 {
   public ask(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
-      return;
+    QZoneHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Leba.a(this.a);
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
+    if ((localWebProcessManager != null) && (localWebProcessManager.c())) {
+      localWebProcessManager.e();
     }
-    Leba.b(this.a);
+    SearchProtocol.a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    SearchProtocol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizLebasearchSearchProtocol$SearchObserver);
+    this.a.o();
   }
 }
 

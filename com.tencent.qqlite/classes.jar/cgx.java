@@ -1,23 +1,45 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.List;
 
 public class cgx
-  implements Animation.AnimationListener
+  extends BaseAdapter
 {
-  public cgx(CountryActivity paramCountryActivity) {}
+  private cgx(ContactListView paramContactListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int getCount()
   {
-    this.a.jdField_a_of_type_Che.show();
-    this.a.b.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.b == null) {
+      return 0;
+    }
+    return this.a.b.size();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public Object getItem(int paramInt)
+  {
+    return this.a.b.get(paramInt);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.a();
+      paramViewGroup.setOnClickListener(this.a);
+    }
+    paramView = (PhoneContact)this.a.b.get(paramInt);
+    ContactListView.a(this.a, paramViewGroup, paramView);
+    return paramViewGroup;
+  }
 }
 
 

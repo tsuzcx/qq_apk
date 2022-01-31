@@ -1,45 +1,11 @@
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.MyX509TrustManager;
-import com.tencent.qphone.base.util.QLog;
-import java.net.Socket;
-import java.security.KeyStore;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
+import java.util.Comparator;
 
 public class fdc
-  extends org.apache.http.conn.ssl.SSLSocketFactory
+  implements Comparator
 {
-  SSLContext a = SSLContext.getInstance("TLS");
-  
-  public fdc(KeyStore paramKeyStore)
+  public int a(String paramString1, String paramString2)
   {
-    super(paramKeyStore);
-    try
-    {
-      paramKeyStore = new HttpBaseUtil.MyX509TrustManager();
-      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
-      return;
-    }
-    catch (Exception paramKeyStore)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(HttpBaseUtil.a, 2, paramKeyStore.getMessage());
-        }
-        paramKeyStore = null;
-      }
-    }
-  }
-  
-  public Socket createSocket()
-  {
-    return this.a.getSocketFactory().createSocket();
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    return paramString1.compareTo(paramString2);
   }
 }
 

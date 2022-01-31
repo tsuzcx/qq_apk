@@ -1,20 +1,18 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public ayk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (NearbyPeopleProfileActivity.c(this.a).isShowing())) {
-      NearbyPeopleProfileActivity.c(this.a).dismiss();
+    NearbyPeopleProfileActivity.m(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dating", 2, "updateDateSig sig = " + NearbyPeopleProfileActivity.a(this.a).b);
     }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004829", "0X8004829", 2, 0, "", "", "", "");
   }
 }
 

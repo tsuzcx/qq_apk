@@ -76,7 +76,7 @@ public class BubbleInfo
   public BubbleInfo(int paramInt)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 2130839155;
+    this.jdField_b_of_type_Int = 2130839123;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
@@ -87,7 +87,7 @@ public class BubbleInfo
   public BubbleInfo(int paramInt1, int paramInt2, int paramInt3)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 2130839155;
+    this.jdField_b_of_type_Int = 2130839123;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
@@ -100,7 +100,7 @@ public class BubbleInfo
   public BubbleInfo(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, String[] paramArrayOfString, BubbleInfo.CommonAttrs paramCommonAttrs1, int paramInt4, int paramInt5, BubbleInfo.CommonAttrs paramCommonAttrs2, List paramList, HashMap paramHashMap)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 2130839155;
+    this.jdField_b_of_type_Int = 2130839123;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
@@ -525,7 +525,7 @@ public class BubbleInfo
       localObject3 = paramQQAppInterface.a().getResources();
       if (paramBoolean1)
       {
-        i1 = 2130839241;
+        i1 = 2130839209;
         label570:
         localObject2 = ((Resources)localObject3).getDrawable(i1);
         if (!paramBoolean1) {
@@ -533,14 +533,14 @@ public class BubbleInfo
         }
       }
       label647:
-      for (int i1 = 2130839240;; i1 = 2130839211)
+      for (int i1 = 2130839208;; i1 = 2130839179)
       {
         localObject4 = ((Resources)localObject3).getDrawable(i1);
         localObject3 = new StateListDrawable();
         ((StateListDrawable)localObject3).addState(new int[] { 16842919 }, (Drawable)localObject2);
         ((StateListDrawable)localObject3).addState(new int[] { 16842910 }, (Drawable)localObject4);
         break;
-        i1 = 2130839212;
+        i1 = 2130839180;
         break label570;
       }
       label655:

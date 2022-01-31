@@ -1,20 +1,23 @@
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class cgv
+  implements Animation.AnimationListener
 {
-  public int a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContact a;
-  public String a;
-  public Button b;
-  public TextView b;
+  public cgv(ContactListView paramContactListView, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.requestLayout();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,32 +1,49 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText.RichStatusEditListener;
-import com.tencent.mobileqq.widget.ClickableImageSpan;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class ebp
-  implements RichStatusEditText.RichStatusEditListener
+class ebp
+  implements Animation.AnimationListener
 {
-  public ebp(EditActivity paramEditActivity) {}
+  ebp(ebo paramebo) {}
   
-  public void a(ClickableImageSpan paramClickableImageSpan)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (EditActivity.a(this.a) == paramClickableImageSpan)
+    EditActivity.a(this.a.a).setVisibility(0);
+    paramAnimation = new ArrayList();
+    int i = 0;
+    while (i < 6)
     {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
-      }
-      EditActivity.a(this.a, null);
-      EditActivity.a(this.a).c = null;
-      EditActivity.a(this.a).d = null;
-      EditActivity.a(this.a).e = null;
-      if (EditActivity.a(this.a) != 1) {
-        EditActivity.c(this.a, true);
+      paramAnimation.add(Integer.valueOf(i));
+      i += 1;
+    }
+    Collections.shuffle(paramAnimation);
+    i = 0;
+    if (i < 6)
+    {
+      View localView = EditActivity.a(this.a.a).getChildAt(((Integer)paramAnimation.get(i)).intValue());
+      if (localView == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localView.postDelayed(new ebq(this, (ImageView)localView.findViewById(2131298195), (TextView)localView.findViewById(2131298196)), i * 100);
       }
     }
   }
   
-  public boolean a(ClickableImageSpan paramClickableImageSpan)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return paramClickableImageSpan != EditActivity.a(this.a);
+    EditActivity.a(this.a.a).setVisibility(4);
   }
 }
 

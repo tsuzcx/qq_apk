@@ -1,24 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class cgo
-  implements Animation.AnimationListener
+  extends FriendListObserver
 {
   public cgo(ContactListView paramContactListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    ContactListView.a(this.a).show();
-    this.a.b.setAnimation(null);
-    this.a.a.setVisibility(8);
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a_(String paramString) {}
 }
 
 

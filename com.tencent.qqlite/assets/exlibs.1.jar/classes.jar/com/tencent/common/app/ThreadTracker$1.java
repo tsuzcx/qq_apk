@@ -5,7 +5,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
-import tm;
+import ti;
 
 final class ThreadTracker$1
   extends ArrayList
@@ -21,7 +21,7 @@ final class ThreadTracker$1
     if (ThreadTracker.a())
     {
       paramWeakReference = (Thread)paramWeakReference.get();
-      ThreadTracker.a.add(new tm(paramWeakReference.getId(), paramWeakReference.getName(), SystemClock.uptimeMillis() - ThreadTracker.a(), new Exception()));
+      ThreadTracker.a.add(new ti(paramWeakReference.getId(), paramWeakReference.getName(), SystemClock.uptimeMillis() - ThreadTracker.a(), new Exception()));
     }
     return bool;
   }

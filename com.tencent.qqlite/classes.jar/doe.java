@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.service.message.MessageCache;
 
 public class doe
-  extends dop
 {
-  public doe(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  protected String a()
+  public doe(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
   {
-    return "StateAcceptByPC";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = MessageCache.a();
   }
 }
 

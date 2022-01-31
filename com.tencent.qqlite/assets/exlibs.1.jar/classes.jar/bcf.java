@@ -1,25 +1,18 @@
-import android.os.Message;
-import com.tencent.biz.common.util.HttpUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.widget.ActionSheet;
 
 public class bcf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bcf(QQBrowserActivity paramQQBrowserActivity, String paramString) {}
+  public bcf(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Thread.sleep(5000L);
-      String str = HttpUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_JavaLangString), "POST", null, null);
-      if ((str != null) && (!"".equals(str.trim()))) {
-        Message.obtain(QQBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity), 100, str).sendToTarget();
-      }
-      return;
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
     }
-    catch (Throwable localThrowable) {}
   }
 }
 

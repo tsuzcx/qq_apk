@@ -1,29 +1,65 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcHandler;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ym
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
   public ym(AuthDevActivity paramAuthDevActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    boolean bool = true;
+    paramBoolean = false;
+    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
     {
-      if ((AuthDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        AuthDevActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-      }
-      if ((AuthDevActivity.a(this.a) != null) && (!AuthDevActivity.a(this.a).isShowing())) {
-        AuthDevActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramCompoundButton = AuthDevActivity.a(this.a);
+      if (AuthDevActivity.a(this.a).a())
       {
-        localThrowable.printStackTrace();
+        paramBoolean = false;
+        paramCompoundButton.setChecked(paramBoolean);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        if (NetworkUtil.e(this.a)) {
+          break label118;
+        }
+        QQToast.a(this.a, this.a.getString(2131362790), 0).b(this.a.getTitleBarHeight());
       }
+    }
+    label118:
+    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          paramBoolean = true;
+        }
+        paramCompoundButton = (SecSvcHandler)this.a.app.a(33);
+      } while (paramCompoundButton == null);
+      if (!AuthDevActivity.a(this.a).a()) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramCompoundButton.a(paramBoolean);
+        return;
+      }
+    }
+    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+    paramCompoundButton = AuthDevActivity.b(this.a);
+    if (AuthDevActivity.b(this.a).a()) {}
+    for (;;)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      AuthDevActivity.a(this.a);
+      return;
+      paramBoolean = true;
     }
   }
 }

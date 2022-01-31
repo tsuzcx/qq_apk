@@ -1,38 +1,19 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class buw
   extends ClickableSpan
 {
-  public buw(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString) {}
+  public buw(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    ReportController.b(GrayTipsItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), "CliOper", "", GrayTipsItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
-    try
-    {
-      GrayTipsItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
+  public void onClick(View paramView) {}
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

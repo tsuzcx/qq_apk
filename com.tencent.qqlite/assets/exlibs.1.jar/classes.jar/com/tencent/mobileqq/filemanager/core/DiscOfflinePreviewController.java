@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.core;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import dne;
+import dnk;
 
 public class DiscOfflinePreviewController
   extends FilePreViewControllerBase
@@ -30,7 +30,7 @@ public class DiscOfflinePreviewController
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dne(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dnk(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

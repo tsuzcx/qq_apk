@@ -1,15 +1,20 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
 
 public class erj
-  extends WeakReference
+  implements DialogInterface.OnDismissListener
 {
-  private final String a;
+  public erj(TroopShareUtility paramTroopShareUtility) {}
   
-  public erj(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramObject, paramReferenceQueue);
-    this.a = paramString;
+    TroopShareUtility.a(this.a, false);
+    if ((!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) || (this.a.a)) {
+      return;
+    }
+    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
   }
 }
 

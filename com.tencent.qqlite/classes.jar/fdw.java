@@ -1,13 +1,17 @@
-import com.tencent.open.downloadnew.DownloadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.downloadnew.DownloadApi;
 
 public final class fdw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public fdw(String paramString1, String paramString2, boolean paramBoolean) {}
+  public fdw(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

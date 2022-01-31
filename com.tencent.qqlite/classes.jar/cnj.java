@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask;
 import java.util.Comparator;
 
 public class cnj
   implements Comparator
 {
-  private cnj(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  private cnj(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public int a(TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask1, TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask2)
   {
-    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
   }
 }
 

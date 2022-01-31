@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.book.ResizeLayout;
-import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 
 public class cav
   implements Runnable
 {
-  public cav(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public cav(TipsManager paramTipsManager, TipsBarTask paramTipsBarTask, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).a(localView);
+    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
   }
 }
 

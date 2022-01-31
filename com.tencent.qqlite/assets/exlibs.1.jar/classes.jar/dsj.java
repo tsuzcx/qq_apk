@@ -1,32 +1,31 @@
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerFacade;
 import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter;
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
 import com.tencent.widget.ActionSheet;
 
-public class dsj
+public final class dsj
   implements View.OnClickListener
 {
-  public dsj(BaseActionBar paramBaseActionBar, Activity paramActivity) {}
+  public dsj(String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidAppActivity, 2131624119);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2130903416, null));
-    paramView = (QfileHorizontalListView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131298012);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter = new HorizontalListViewAdapter(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.b());
-    paramView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.a("更多");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.d("取消");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.b();
+    String str = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
+    FileViewerFacade.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, str);
+    if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
+    {
+      paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+      if (paramView.a.isShowing()) {
+        paramView.a.dismiss();
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) && (FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str))) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.f();
     }
   }
 }

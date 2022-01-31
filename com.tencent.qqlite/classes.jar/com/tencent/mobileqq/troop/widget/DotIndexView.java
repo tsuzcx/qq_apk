@@ -21,7 +21,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130838427;
+    this.jdField_a_of_type_Int = 2130838439;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
   }
@@ -29,7 +29,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130838427;
+    this.jdField_a_of_type_Int = 2130838439;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
     a(0, paramInt);
@@ -38,7 +38,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130838427;
+    this.jdField_a_of_type_Int = 2130838439;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
   }
@@ -63,7 +63,7 @@ public class DotIndexView
     {
       for (;;)
       {
-        localImageView.setImageResource(2130838427);
+        localImageView.setImageResource(2130838439);
       }
     }
   }

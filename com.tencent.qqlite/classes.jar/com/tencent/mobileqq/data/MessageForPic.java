@@ -25,7 +25,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.ActionMsgUtil;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
-import dcl;
+import dcr;
 import java.io.File;
 import java.net.URL;
 import localpb.richMsg.RichMsg.ForwardExtra;
@@ -37,7 +37,7 @@ public class MessageForPic
   extends ChatMessage
   implements Parcelable, LoggerInterface, PicUiInterface
 {
-  public static final Parcelable.Creator CREATOR = new dcl();
+  public static final Parcelable.Creator CREATOR = new dcr();
   private static final String TAG = "MessageForPic";
   public static int defaultSuMsgId = -1;
   public long DSKey = 0L;

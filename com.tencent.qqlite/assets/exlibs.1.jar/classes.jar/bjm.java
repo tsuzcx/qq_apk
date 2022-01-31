@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
 
-public class bjm
-  extends Handler
+public final class bjm
+  implements Parcelable.Creator
 {
-  public bjm(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public SetTroopAdminsActivity.TroopAdmin a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return;
-        SetTroopAdminsActivity.a(this.a);
-        SetTroopAdminsActivity.a(this.a).clear();
-        SetTroopAdminsActivity.a(this.a).addAll((ArrayList)paramMessage.obj);
-        SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
-        SetTroopAdminsActivity.a(this.a);
-      } while (SetTroopAdminsActivity.b(this.a));
-      SetTroopAdminsActivity.c(this.a);
-      return;
-    }
-    SetTroopAdminsActivity.d(this.a);
+    return new SetTroopAdminsActivity.TroopAdmin(paramParcel, null);
+  }
+  
+  public SetTroopAdminsActivity.TroopAdmin[] a(int paramInt)
+  {
+    return new SetTroopAdminsActivity.TroopAdmin[paramInt];
   }
 }
 

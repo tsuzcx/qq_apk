@@ -1,39 +1,45 @@
-import android.content.Context;
-import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bmy
-  extends Thread
+  implements View.OnClickListener
 {
   public bmy(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    paramView = paramView.getTag();
+    if ((paramView instanceof Integer)) {}
+    switch (((Integer)paramView).intValue())
     {
-      Object localObject = BaseApplication.getContext();
-      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a);
-      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
-      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str))) {}
-      for (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = localGroupCatalogBean.a();; this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = ((GroupCatalogBean)localObject).a())
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-        return;
-        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
-      }
+    default: 
+      return;
+    case 10: 
+      this.a.j();
       return;
     }
-    catch (Exception localException)
+    paramView = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.k)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.m)) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Long == -1L) || (TextUtils.isEmpty(paramView)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, localException.toString());
-      }
+      this.a.e();
+      return;
     }
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.r == 3)) && (this.a.jdField_a_of_type_Long != -1L) && (this.a.jdField_a_of_type_Long <= this.a.b))
+    {
+      paramView = DialogUtil.a(this.a, 230);
+      paramView.setTitle(null);
+      paramView.setMessage(this.a.getString(2131362662));
+      paramView.setPositiveButton(this.a.getString(2131362663), new bmz(this, paramView));
+      paramView.setPositiveButtonContentDescription(this.a.getString(2131362663));
+      paramView.show();
+      return;
+    }
+    this.a.j();
   }
 }
 

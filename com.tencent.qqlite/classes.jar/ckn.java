@@ -1,19 +1,28 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
-import com.tencent.mobileqq.activity.recent.RecommendAdapter;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ckn
   implements View.OnClickListener
 {
-  public ckn(RecommendAdapter paramRecommendAdapter) {}
+  public ckn(BannerManager paramBannerManager) {}
   
   public void onClick(View paramView)
   {
-    String str = (String)paramView.getTag();
-    if (RecommendAdapter.a(this.a) != null) {
-      RecommendAdapter.a(this.a).a(paramView, str);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131297378: 
+      paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
+      paramView.putExtra("loginInfo", this.a.d);
+      BannerManager.a(this.a).startActivity(paramView);
+      return;
     }
+    this.a.a();
   }
 }
 

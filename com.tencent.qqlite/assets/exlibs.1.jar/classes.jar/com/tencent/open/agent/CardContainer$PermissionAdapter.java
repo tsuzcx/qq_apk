@@ -23,7 +23,7 @@ public class CardContainer$PermissionAdapter
     {
       paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903281, paramViewGroup, false);
       paramViewGroup = new BindGroupActivity.ViewHolder();
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131297489));
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131297485));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

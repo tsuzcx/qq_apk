@@ -1,24 +1,24 @@
-import android.text.Editable;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public final class eof
-  implements Comparator
+public class eof
+  implements TroopMemberApiClient.Callback
 {
-  public eof(Editable paramEditable) {}
+  public eof(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
+  public void a(Bundle paramBundle)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
-    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
-    if (j < k) {
-      i = -1;
+    if (paramBundle.getBoolean("ret"))
+    {
+      VideoPlayLogic.b(this.a);
+      return;
     }
-    while (j <= k) {
-      return i;
+    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+      VideoPlayLogic.a(this.a).dismiss();
     }
-    return 1;
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

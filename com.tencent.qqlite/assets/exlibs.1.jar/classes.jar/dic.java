@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.widget.ExpandableListView.OnGroupExpandListener;
 
-class dic
-  implements FMDialogUtil.FMDialogInterface
+public class dic
+  implements ExpandableListView.OnGroupExpandListener
 {
-  dic(dib paramdib, FileManagerEntity paramFileManagerEntity) {}
+  public dic(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Dib.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    {
+      if (!this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
-  
-  public void b() {}
 }
 
 

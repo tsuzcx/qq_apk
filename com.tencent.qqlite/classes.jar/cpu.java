@@ -1,58 +1,14 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
 
 public class cpu
-  extends ctc
 {
-  protected void a()
-  {
-    super.a();
-    if (this.b == 299L)
-    {
-      l = MemoryManager.a(Process.myPid());
-      localHashMap = new HashMap();
-      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
-      this.a.a("GM_reborn", localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 1, "suicide to free memory!");
-      }
-    }
-    while ((this.b != 301L) || (this.a.a(2)))
-    {
-      long l;
-      HashMap localHashMap;
-      return;
-    }
-    System.exit(-1);
-  }
+  public int a;
+  public String a;
   
-  protected void a(String paramString)
+  public cpu(AntiphingHandler paramAntiphingHandler)
   {
-    this.a.a(3, paramString);
-  }
-  
-  protected void b()
-  {
-    this.a.a(4, "fake_p_msg");
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.b(false);
-    this.a.a(false, new String[0]);
-    long l = MemoryManager.a(Process.myPid());
-    if (csy.a().a(l) != 2) {
-      this.a.f();
-    }
-    BaseApplicationImpl.a.a().onGuardEvent(2, csy.a().a, 0L);
-    CoreService.b();
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class dpk
-  extends dop
+  extends dov
 {
   public dpk(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -10,7 +10,7 @@ public class dpk
   
   protected String a()
   {
-    return "StateUploadoneWhenChangeToOff";
+    return "StateSenderCancelSend";
   }
 }
 

@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog.Callback;
 import cooperation.plugin.IPluginManager;
 
 public final class fjy
-  implements DialogInterface.OnDismissListener
+  implements QFavDownloadProgressDialog.Callback
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public fjy(String paramString, QFavDownloadProgressDialog paramQFavDownloadProgressDialog) {}
+  
+  public void a()
   {
-    IPluginManager.a(null);
+    IPluginManager.a().cancelInstall(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.dismiss();
+  }
+  
+  public void b()
+  {
+    IPluginManager.a().cancelInstall(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog.dismiss();
   }
 }
 

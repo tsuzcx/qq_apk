@@ -1,17 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class cfd
-  extends ResourcePluginListener
+  implements DialogInterface.OnClickListener
 {
   public cfd(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(byte paramByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramByte == 4) {}
-    while (paramByte != 5) {
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

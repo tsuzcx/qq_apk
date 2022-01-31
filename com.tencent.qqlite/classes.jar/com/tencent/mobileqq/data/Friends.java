@@ -323,10 +323,10 @@ public class Friends
   public int getVipIdentifyResId()
   {
     if (isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-      return 2130839406;
+      return 2130839371;
     }
     if (isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-      return 2130839483;
+      return 2130839448;
     }
     return 0;
   }

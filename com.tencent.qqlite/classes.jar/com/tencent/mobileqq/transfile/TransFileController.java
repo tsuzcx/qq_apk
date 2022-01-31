@@ -3,7 +3,6 @@ package com.tencent.mobileqq.transfile;
 import QQService.StreamData;
 import QQService.StreamInfo;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,7 +15,7 @@ import com.tencent.mobileqq.streamtransfile.StreamDataManager;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
-import ehr;
+import ehw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -37,7 +36,7 @@ public class TransFileController
   public static final int c = 2;
   public static final String c = "use";
   public QQAppInterface a;
-  public ehr a;
+  public ehw a;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public ConcurrentHashMap a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
@@ -47,7 +46,7 @@ public class TransFileController
   
   public TransFileController(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Ehr = null;
+    this.jdField_a_of_type_Ehw = null;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
@@ -55,7 +54,7 @@ public class TransFileController
       QLog.d("Q.richmedia.TransFileController", 2, "construct transfilecontroller:" + this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ehr = new ehr(ThreadManager.b());
+    this.jdField_a_of_type_Ehw = new ehw(ThreadManager.b());
   }
   
   public static String a(TransferRequest paramTransferRequest)
@@ -215,18 +214,7 @@ public class TransFileController
     finally {}
   }
   
-  public static void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putString(paramString1, paramString2).commit();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
+  public static void a(String paramString1, String paramString2) {}
   
   private boolean a(IHttpCommunicatorListener paramIHttpCommunicatorListener)
   {
@@ -575,8 +563,8 @@ public class TransFileController
             {
               this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramTransferRequest);
               paramTransferRequest.b(str);
-              if (this.jdField_a_of_type_Ehr != null) {
-                this.jdField_a_of_type_Ehr.a(paramTransferRequest);
+              if (this.jdField_a_of_type_Ehw != null) {
+                this.jdField_a_of_type_Ehw.a(paramTransferRequest);
               }
             }
             return;
@@ -1076,18 +1064,18 @@ public class TransFileController
     //   21: aload_0
     //   22: getfield 43	com/tencent/mobileqq/transfile/TransFileController:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   25: aload_1
-    //   26: invokevirtual 333	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   26: invokevirtual 320	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
     //   29: ifeq +31 -> 60
     //   32: aload_0
     //   33: getfield 43	com/tencent/mobileqq/transfile/TransFileController:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   36: aload_1
     //   37: invokevirtual 222	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   40: checkcast 400	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor
+    //   40: checkcast 387	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor
     //   43: astore_1
     //   44: aload_1
     //   45: ifnull +7 -> 52
     //   48: aload_1
-    //   49: invokevirtual 689	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:i	()V
+    //   49: invokevirtual 676	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:i	()V
     //   52: iconst_1
     //   53: istore 4
     //   55: aload_0
@@ -1265,18 +1253,18 @@ public class TransFileController
     //   21: aload_0
     //   22: getfield 43	com/tencent/mobileqq/transfile/TransFileController:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   25: aload_1
-    //   26: invokevirtual 333	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   26: invokevirtual 320	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
     //   29: ifeq +31 -> 60
     //   32: aload_0
     //   33: getfield 43	com/tencent/mobileqq/transfile/TransFileController:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   36: aload_1
     //   37: invokevirtual 222	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   40: checkcast 389	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor
+    //   40: checkcast 376	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor
     //   43: astore_1
     //   44: aload_1
     //   45: ifnull +7 -> 52
     //   48: aload_1
-    //   49: invokevirtual 707	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:i	()V
+    //   49: invokevirtual 694	com/tencent/mobileqq/transfile/ShortVideoUploadProcessor:i	()V
     //   52: iconst_1
     //   53: istore 4
     //   55: aload_0

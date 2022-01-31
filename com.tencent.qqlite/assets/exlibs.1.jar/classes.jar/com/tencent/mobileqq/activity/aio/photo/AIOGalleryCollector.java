@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.aio.photo;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import bxv;
 import bxw;
-import bxx;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ public class AIOGalleryCollector
   private static final String e = "view_again";
   private static final String f = "view_count";
   private static final String g = "view_image_counts";
-  private Handler jdField_a_of_type_AndroidOsHandler = new bxw(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new bxv(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
@@ -38,16 +38,16 @@ public class AIOGalleryCollector
     jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
-  private bxx a(String paramString)
+  private bxw a(String paramString)
   {
-    bxx localbxx2 = (bxx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    bxx localbxx1 = localbxx2;
-    if (localbxx2 == null)
+    bxw localbxw2 = (bxw)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    bxw localbxw1 = localbxw2;
+    if (localbxw2 == null)
     {
-      localbxx1 = new bxx(this, null);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbxx1);
+      localbxw1 = new bxw(this, null);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbxw1);
     }
-    return localbxx1;
+    return localbxw1;
   }
   
   private void a()
@@ -56,8 +56,8 @@ public class AIOGalleryCollector
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
     while (localIterator.hasNext())
     {
-      bxx localbxx = (bxx)localIterator.next();
-      if (bxx.a(localbxx) <= 0)
+      bxw localbxw = (bxw)localIterator.next();
+      if (bxw.a(localbxw) <= 0)
       {
         if (QLog.isDevelopLevel()) {
           QLog.i("AIOGalleryCollector", 4, "View count is 0!");
@@ -66,11 +66,11 @@ public class AIOGalleryCollector
       else
       {
         localHashMap.clear();
-        localHashMap.put("stay_seconds", String.valueOf(bxx.a(localbxx)));
-        localHashMap.put("gesture_double_click", String.valueOf(bxx.b(localbxx)));
-        localHashMap.put("view_count", String.valueOf(bxx.a(localbxx)));
+        localHashMap.put("stay_seconds", String.valueOf(bxw.a(localbxw)));
+        localHashMap.put("gesture_double_click", String.valueOf(bxw.b(localbxw)));
+        localHashMap.put("view_count", String.valueOf(bxw.a(localbxw)));
         localHashMap.put("view_image_counts", "1");
-        if (bxx.a(localbxx)) {
+        if (bxw.a(localbxw)) {
           localHashMap.put("view_again", "1");
         }
         StatisticCollector.a(BaseApplication.getContext()).a(null, "Pic.AioPreview", true, 0L, 0L, localHashMap, "");

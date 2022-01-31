@@ -1,7 +1,14 @@
+import com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor;
+
 public class ehs
+  implements Runnable
 {
-  public static final int a = 8;
-  public static final int b = 5;
+  public ehs(ShortVideoDownloadProcessor paramShortVideoDownloadProcessor) {}
+  
+  public void run()
+  {
+    this.a.c();
+  }
 }
 
 

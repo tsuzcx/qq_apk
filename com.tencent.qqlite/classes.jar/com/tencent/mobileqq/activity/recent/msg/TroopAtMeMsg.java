@@ -7,7 +7,7 @@ public class TroopAtMeMsg
 {
   public TroopAtMeMsg(Context paramContext)
   {
-    this.a = paramContext.getString(2131362495);
+    this.a = paramContext.getString(2131362492);
   }
 }
 

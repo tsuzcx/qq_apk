@@ -1,15 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class cus
-  implements Runnable
+  extends cti
 {
-  public cus(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  protected void a()
   {
-    QQToast.a(QQAppInterface.c(this.a).getApplicationContext(), 2131364193, 3000).a();
+    super.a();
+    if (this.b >= cte.a().a / 12000L)
+    {
+      CoreService.d();
+      this.a.f();
+      this.b = 0L;
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.qqlite".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.e();
+    CoreService.c();
   }
 }
 

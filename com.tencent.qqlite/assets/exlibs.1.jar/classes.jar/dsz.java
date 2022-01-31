@@ -1,16 +1,20 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
 
 public class dsz
-  implements FileManagerUtil.IGetVideoCallback
+  implements View.OnClickListener
 {
-  public dsz(LocalVideoFileView paramLocalVideoFileView) {}
+  public dsz(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.a).runOnUiThread(new dta(this, paramBitmap));
+    if (LocalMusicFileView.a(this.a))
+    {
+      LocalMusicFileView.a(this.a);
+      return;
+    }
+    LocalMusicFileView.b(this.a);
   }
 }
 

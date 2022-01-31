@@ -3,12 +3,11 @@ import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 public class buc
   implements Runnable
 {
-  public buc(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
+  public buc(RecordSoundPanel paramRecordSoundPanel) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.h();
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel, this.jdField_a_of_type_JavaLangString);
+    this.a.i();
   }
 }
 

@@ -1,10 +1,4 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.ChatBackgroundManagerImp;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
 
 public class aci
   implements Runnable
@@ -13,19 +7,7 @@ public class aci
   
   public void run()
   {
-    try
-    {
-      Object localObject = new File(ChatBackgroundManagerImp.c);
-      HttpDownloadUtil.a(this.a.app, EmosmUtils.insertMtype("VIP_other", "http://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/xydata.js"), (File)localObject);
-      localObject = new Message();
-      ((Message)localObject).what = 1;
-      this.a.b.sendMessage((Message)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.b();
   }
 }
 

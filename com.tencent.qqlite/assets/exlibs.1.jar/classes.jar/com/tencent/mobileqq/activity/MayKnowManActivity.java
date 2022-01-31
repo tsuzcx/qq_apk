@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import auz;
 import ava;
 import avb;
-import avc;
+import ave;
 import avf;
-import avg;
-import avi;
+import avh;
 import cannon.Visitor;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.LBSHandler;
@@ -50,8 +50,8 @@ public class MayKnowManActivity
   public View a;
   public LinearLayout a;
   public TextView a;
-  public avi a;
-  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new avc(this);
+  public avh a;
+  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new avb(this);
   public XListView a;
   public List a;
   public boolean a;
@@ -317,7 +317,7 @@ public class MayKnowManActivity
   {
     if (!NetworkUtil.e(this.app.getApplication()))
     {
-      QQToast.a(this.app.getApplication(), 2131362912, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131362916, 0).b(getTitleBarHeight());
       return false;
     }
     ((LBSHandler)this.app.a(3)).a(paramInt1, paramInt2);
@@ -328,16 +328,16 @@ public class MayKnowManActivity
   {
     int i = (int)DisplayUtils.a(this, 8.0F);
     ((RelativeLayout.LayoutParams)this.i.getLayoutParams()).setMargins(i, 0, i, 0);
-    setTitle(2131363211);
-    View localView = findViewById(2131297298);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131297300));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131297301));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131297299));
+    setTitle(2131363214);
+    View localView = findViewById(2131297294);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131297296));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131297297));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131297295));
     this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903239, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297315));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363193);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new avb(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297311));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363196);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ava(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
   }
   
@@ -345,17 +345,17 @@ public class MayKnowManActivity
   {
     d();
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, this.d);
-    localQQProgressDialog.a(getString(2131363783));
+    localQQProgressDialog.a(getString(2131363775));
     this.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new avf(this));
-    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new avg(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ave(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new avf(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Avi != null) {
-      this.jdField_a_of_type_Avi.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Avh != null) {
+      this.jdField_a_of_type_Avh.notifyDataSetChanged();
     }
   }
   
@@ -397,10 +397,10 @@ public class MayKnowManActivity
     this.c = i;
     if (a(10, i))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363212);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363215);
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
       ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131296558);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297314);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297310);
       localProgressBar.setVisibility(0);
       localImageView.setVisibility(8);
     }
@@ -422,18 +422,18 @@ public class MayKnowManActivity
     super.onCreate(paramBundle);
     this.d = getResources().getDimensionPixelSize(2131492887);
     setContentView(2130903232);
-    d(2130837633);
+    d(2130837635);
     e();
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    runOnUiThread(new ava(this));
+    runOnUiThread(new auz(this));
   }
   
   protected Dialog onCreateDialog(int paramInt)
   {
     ProgressDialog localProgressDialog = null;
     if (paramInt == 0) {
-      localProgressDialog = DialogUtil.a(this, 2131362814);
+      localProgressDialog = DialogUtil.a(this, 2131362818);
     }
     return localProgressDialog;
   }
@@ -441,8 +441,8 @@ public class MayKnowManActivity
   protected void onDestroy()
   {
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
-    if (this.jdField_a_of_type_Avi != null) {
-      this.jdField_a_of_type_Avi.b();
+    if (this.jdField_a_of_type_Avh != null) {
+      this.jdField_a_of_type_Avh.b();
     }
     super.onDestroy();
   }

@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.widget.TextView;
 
 public class chi
-  implements DialogInterface.OnKeyListener
 {
-  public chi(DialogBaseActivity paramDialogBaseActivity) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return paramInt == 4;
-  }
+  public TextView a;
+  public chh a;
+  public TextView b;
 }
 
 

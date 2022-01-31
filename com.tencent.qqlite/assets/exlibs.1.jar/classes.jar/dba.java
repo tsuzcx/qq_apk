@@ -1,15 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class dba
-  implements View.OnClickListener
+  implements ConditionSearchManager.ISearchListener
 {
-  public dba(LocationSelectActivity paramLocationSelectActivity) {}
+  public dba(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    this.a.a();
+    this.a.d();
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 2131364396, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QQToast.a(this.a, 2131364397, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(), paramList, paramBoolean2);
   }
 }
 

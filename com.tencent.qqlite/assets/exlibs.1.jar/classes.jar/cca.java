@@ -1,38 +1,55 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity.ItemViewHolder;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class cca
-  implements IIconListener
+  extends FriendListObserver
 {
-  public cca(SearchBaseActivity paramSearchBaseActivity) {}
+  public cca(ContactSearchFacade paramContactSearchFacade) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean, int paramInt1, Object paramObject, int paramInt2, String paramString)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
-    {
-      return;
-      if (this.a.g == 0)
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(ContactSearchFacade.a, 2, "onSearchFriendResult  searchType = " + paramInt1 + " isSuccess = " + paramBoolean);
+    }
+    this.a.b();
+    Object localObject;
+    if (paramInt1 == 86) {
+      if (ContactSearchFacade.a(this.a) != null)
       {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof SearchBaseActivity.ItemViewHolder)))
-          {
-            paramBitmap = (SearchBaseActivity.ItemViewHolder)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
+        localObject = ContactSearchFacade.a(this.a);
+        if (i == 0) {
+          break label203;
         }
       }
+    }
+    for (;;)
+    {
+      ((ContactSearchFacade.ISearchListener)localObject).a(paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      return;
+      if (paramInt1 == 87)
+      {
+        if (paramBoolean)
+        {
+          localObject = (ArrayList)paramObject;
+          if ((localObject != null) && (ContactSearchFacade.a(this.a) != 80000002) && (((ArrayList)localObject).size() == 1)) {
+            ContactSearchFacade.a(this.a, ((SearchResult)((ArrayList)localObject).get(0)).b);
+          }
+          i = 0;
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(ContactSearchFacade.a, 2, "search failed error msg = " + paramString);
+        }
+      }
+      i = 0;
+      break;
+      label203:
+      paramInt1 = ContactSearchFacade.a(this.a);
     }
   }
 }

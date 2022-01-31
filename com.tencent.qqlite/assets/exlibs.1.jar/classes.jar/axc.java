@@ -1,33 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.LinkedList;
 
 public class axc
-  extends Handler
+  implements View.OnClickListener
 {
   public axc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    paramView = this.a.getIntent();
+    if ((paramView != null) && (paramView.getIntExtra("param_mode", 0) == 1))
     {
+      NearbyPeopleProfileActivity.a(this.a, 2131364471);
+      return;
     }
-    do
+    NearbyPeopleProfileActivity.c(this.a);
+    if (NearbyPeopleProfileActivity.a(this.a) == 0) {
+      NearbyPeopleProfileActivity.a(this.a, 2131364471);
+    }
+    for (;;)
     {
+      NearbyPeopleProfileActivity.a(this.a).setOnClickListener(NearbyPeopleProfileActivity.a(this.a));
       return;
-      this.a.c();
-      QQToast.a(this.a, 2131364412, 0).b(this.a.getTitleBarHeight());
-      return;
-      this.a.a.i();
-      return;
-      NearbyPeopleProfileActivity.a(this.a);
-      return;
-    } while (paramMessage.obj == null);
-    NearbyPeopleProfileActivity.a(this.a, (NearbyPeopleCard)paramMessage.obj);
-    NearbyPeopleProfileActivity.b(this.a);
+      if ((NearbyPeopleProfileActivity.a(this.a).size() > 0) || (NearbyPeopleProfileActivity.a(this.a)) || (NearbyPeopleProfileActivity.b(this.a))) {
+        NearbyPeopleProfileActivity.a(this.a, 2131364472);
+      } else {
+        NearbyPeopleProfileActivity.d(this.a);
+      }
+    }
   }
 }
 

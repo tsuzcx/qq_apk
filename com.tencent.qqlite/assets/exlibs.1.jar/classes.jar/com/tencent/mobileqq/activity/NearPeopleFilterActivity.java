@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
+import awe;
 import awf;
 import awg;
 import awh;
 import awi;
-import awj;
 import com.tencent.mobileqq.app.ConditionSearchManager;
 import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -46,14 +46,14 @@ public class NearPeopleFilterActivity
   private static final int j = 0;
   private static final int k = 1;
   int jdField_a_of_type_Int = 0;
-  DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new awj(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new awf(this);
+  DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new awi(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new awe(this);
   View jdField_a_of_type_AndroidViewView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new awg(this);
+  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new awf(this);
   private ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = new awi(this);
-  IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = new awh(this);
+  IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = new awh(this);
+  IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = new awg(this);
   public IphonePickerView a;
   public FormSimpleItem a;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
@@ -87,7 +87,7 @@ public class NearPeopleFilterActivity
     this.i = paramInt;
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null, 2131624119));
     ((DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131296499)).a = true;
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2130903504, null));
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2130903492, null));
     this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter);
     if (paramInt == 0)
     {
@@ -156,14 +156,14 @@ public class NearPeopleFilterActivity
       this.jdField_a_of_type_AndroidViewView.setSelected(true);
       this.jdField_c_of_type_AndroidViewView.setSelected(false);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription("已选中" + getString(2131362869));
-      this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131363197));
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131363196));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427474));
+      this.jdField_a_of_type_AndroidViewView.setContentDescription("已选中" + getString(2131362873));
+      this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131363200));
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131363199));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427469));
       this.jdField_c_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427345));
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427345));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838087, 0, 0, 0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838085, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838081, 0, 0, 0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838079, 0, 0, 0);
       if (this.jdField_b_of_type_Int != 1) {
         break label848;
       }
@@ -171,11 +171,11 @@ public class NearPeopleFilterActivity
       this.jdField_d_of_type_AndroidWidgetTextView.setSelected(false);
       this.jdField_e_of_type_AndroidWidgetTextView.setSelected(false);
       this.f.setSelected(false);
-      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription("已选中" + getString(2131364445));
-      this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364446));
-      this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364447));
-      this.f.setContentDescription(getString(2131362869));
-      this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427474));
+      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription("已选中" + getString(2131364427));
+      this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364428));
+      this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364429));
+      this.f.setContentDescription(getString(2131362873));
+      this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427469));
       this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
       this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
       this.f.setBackgroundColor(getResources().getColor(2131427345));
@@ -196,14 +196,14 @@ public class NearPeopleFilterActivity
         this.jdField_a_of_type_AndroidViewView.setSelected(false);
         this.jdField_c_of_type_AndroidViewView.setSelected(false);
         this.jdField_b_of_type_AndroidViewView.setSelected(true);
-        this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131362869));
-        this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131363197));
-        this.jdField_b_of_type_AndroidViewView.setContentDescription("已选中" + getString(2131363196));
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838088, 0, 0, 0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838085, 0, 0, 0);
+        this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131362873));
+        this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131363200));
+        this.jdField_b_of_type_AndroidViewView.setContentDescription("已选中" + getString(2131363199));
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838082, 0, 0, 0);
+        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838079, 0, 0, 0);
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427345));
         this.jdField_c_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427345));
-        this.jdField_b_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427474));
+        this.jdField_b_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427469));
         break;
       }
       if (this.jdField_a_of_type_Int != 2) {
@@ -212,13 +212,13 @@ public class NearPeopleFilterActivity
       this.jdField_a_of_type_AndroidViewView.setSelected(false);
       this.jdField_c_of_type_AndroidViewView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131362869));
-      this.jdField_c_of_type_AndroidViewView.setContentDescription("已选中" + getString(2131363197));
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131363196));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838087, 0, 0, 0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838086, 0, 0, 0);
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131362873));
+      this.jdField_c_of_type_AndroidViewView.setContentDescription("已选中" + getString(2131363200));
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131363199));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838081, 0, 0, 0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838080, 0, 0, 0);
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427345));
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427474));
+      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427469));
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131427345));
       break;
       label848:
@@ -228,12 +228,12 @@ public class NearPeopleFilterActivity
         this.jdField_d_of_type_AndroidWidgetTextView.setSelected(true);
         this.jdField_e_of_type_AndroidWidgetTextView.setSelected(false);
         this.f.setSelected(false);
-        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364445));
-        this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription("已选中" + getString(2131364446));
-        this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364447));
-        this.f.setContentDescription(getString(2131362869));
+        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364427));
+        this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription("已选中" + getString(2131364428));
+        this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364429));
+        this.f.setContentDescription(getString(2131362873));
         this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
-        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427474));
+        this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427469));
         this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
         this.f.setBackgroundColor(getResources().getColor(2131427345));
       }
@@ -243,13 +243,13 @@ public class NearPeopleFilterActivity
         this.jdField_d_of_type_AndroidWidgetTextView.setSelected(false);
         this.jdField_e_of_type_AndroidWidgetTextView.setSelected(true);
         this.f.setSelected(false);
-        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364445));
-        this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364446));
-        this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription("已选中" + getString(2131364447));
-        this.f.setContentDescription(getString(2131362869));
+        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364427));
+        this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364428));
+        this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription("已选中" + getString(2131364429));
+        this.f.setContentDescription(getString(2131362873));
         this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
         this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
-        this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427474));
+        this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427469));
         this.f.setBackgroundColor(getResources().getColor(2131427345));
       }
       else if ((this.jdField_b_of_type_Int == 4) || (this.jdField_b_of_type_Int == 0))
@@ -258,14 +258,14 @@ public class NearPeopleFilterActivity
         this.jdField_d_of_type_AndroidWidgetTextView.setSelected(false);
         this.jdField_e_of_type_AndroidWidgetTextView.setSelected(false);
         this.f.setSelected(true);
-        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364445));
-        this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364446));
-        this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364447));
-        this.f.setContentDescription("已选中" + getString(2131362869));
+        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364427));
+        this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364428));
+        this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364429));
+        this.f.setContentDescription("已选中" + getString(2131362873));
         this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
         this.jdField_d_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
         this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131427345));
-        this.f.setBackgroundColor(getResources().getColor(2131427474));
+        this.f.setBackgroundColor(getResources().getColor(2131427469));
       }
     }
   }
@@ -283,16 +283,16 @@ public class NearPeopleFilterActivity
       }
       if (m == 2)
       {
-        QQToast.a(this, 2131363515, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131363516, 0).b(getTitleBarHeight());
         return;
       }
       if (m == 0)
       {
-        a(getString(2131364411));
+        a(getString(2131364393));
         this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener);
         return;
       }
-      a(getString(2131364411));
+      a(getString(2131364393));
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 20000L);
       return;
     }
@@ -347,27 +347,27 @@ public class NearPeopleFilterActivity
   {
     super.setTheme(2131624267);
     super.doOnCreate(paramBundle);
-    super.setContentView(2130903521);
-    super.setTitle(2131364488);
-    super.setRightButton(2131363430, this);
-    findViewById(2131296901).setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131298361);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131298359);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131298357);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298360));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298358));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298363));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298364));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298365));
-    this.f = ((TextView)findViewById(2131298366));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298140));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131297256));
+    super.setContentView(2130903508);
+    super.setTitle(2131364469);
+    super.setRightButton(2131363433, this);
+    findViewById(2131296897).setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131298317);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131298315);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131298313);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298316));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298314));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298319));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298320));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298321));
+    this.f = ((TextView)findViewById(2131298322));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298100));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131297252));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131297358));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298351));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131297354));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131298311));
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
     this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
@@ -423,15 +423,15 @@ public class NearPeopleFilterActivity
     {
     default: 
       return;
-    case 2131298140: 
+    case 2131298100: 
       this.i = 0;
       a(this.i);
       return;
-    case 2131297256: 
+    case 2131297252: 
       this.i = 1;
       a(this.i);
       return;
-    case 2131296905: 
+    case 2131296901: 
       paramView = new Intent();
       paramView.putExtra("gender", this.jdField_a_of_type_Int);
       paramView.putExtra("time", this.jdField_b_of_type_Int);
@@ -455,35 +455,35 @@ public class NearPeopleFilterActivity
       paramView.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
       NearPeopleFilterActivity.NearPeopleFilters.a(this, this.app.a(), paramView);
       return;
-    case 2131298361: 
+    case 2131298317: 
       this.jdField_a_of_type_Int = 0;
       c();
       return;
-    case 2131298359: 
+    case 2131298315: 
       this.jdField_a_of_type_Int = 1;
       c();
       return;
-    case 2131298357: 
+    case 2131298313: 
       this.jdField_a_of_type_Int = 2;
       c();
       return;
-    case 2131298363: 
+    case 2131298319: 
       this.jdField_b_of_type_Int = 1;
       c();
       return;
-    case 2131298364: 
+    case 2131298320: 
       this.jdField_b_of_type_Int = 2;
       c();
       return;
-    case 2131298365: 
+    case 2131298321: 
       this.jdField_b_of_type_Int = 3;
       c();
       return;
-    case 2131298366: 
+    case 2131298322: 
       this.jdField_b_of_type_Int = 4;
       c();
       return;
-    case 2131297358: 
+    case 2131297354: 
       paramView = new Intent(this, JobSelectionActivity.class);
       if ((this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) && ((this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.getTag() instanceof Integer))) {
         paramView.putExtra("param_id", (Integer)this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.getTag());

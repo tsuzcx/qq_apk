@@ -8,7 +8,7 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import eam;
+import eas;
 
 public class RemindJavascriptInterface
   extends WebViewPlugin
@@ -60,7 +60,7 @@ public class RemindJavascriptInterface
   public void a(String paramString, JsBridgeListener paramJsBridgeListener)
   {
     long l = RemindHelper.a(RemindHelper.a(paramString, "currentDate")).longValue();
-    RemindHelper.a(this.a, l * 1000L, new eam(this), paramJsBridgeListener);
+    RemindHelper.a(this.a, l * 1000L, new eas(this), paramJsBridgeListener);
   }
   
   public void b(String paramString)
@@ -86,7 +86,7 @@ public class RemindJavascriptInterface
       ReportController.b(null, "CliOper", "", "", "Time_reminder", "Rec_ckl_add", 0, 0, "", "", "", "");
       return;
     }
-    QQToast.a(this.a, this.a.getString(2131364325), 0).a();
+    QQToast.a(this.a, this.a.getString(2131364310), 0).a();
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

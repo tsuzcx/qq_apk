@@ -29,7 +29,6 @@ public final class R$anim
   public static final int Y = 2130968626;
   public static final int Z = 2130968627;
   public static final int a = 2130968576;
-  public static final int aA = 2130968654;
   public static final int aa = 2130968628;
   public static final int ab = 2130968629;
   public static final int ac = 2130968630;
@@ -55,7 +54,6 @@ public final class R$anim
   public static final int aw = 2130968650;
   public static final int ax = 2130968651;
   public static final int ay = 2130968652;
-  public static final int az = 2130968653;
   public static final int b = 2130968577;
   public static final int c = 2130968578;
   public static final int d = 2130968579;

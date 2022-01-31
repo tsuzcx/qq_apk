@@ -1,106 +1,59 @@
-import android.graphics.RectF;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.AlbumImageProxy;
-import com.tencent.mobileqq.widget.AlbumWorkSpace;
-import com.tencent.mobileqq.widget.ImageViewTouche;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.widget.ADView;
+import com.tencent.mobileqq.widget.WorkSpaceView.OnScreenChangeListener;
 
 public class exf
-  extends GestureDetector.SimpleOnGestureListener
+  implements WorkSpaceView.OnScreenChangeListener
 {
-  private exf(AlbumImageProxy paramAlbumImageProxy) {}
+  public exf(ADView paramADView, LinearLayout paramLinearLayout) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    AlbumImageProxy localAlbumImageProxy = this.a;
-    if (localAlbumImageProxy.getScale() > 2.0F) {
-      localAlbumImageProxy.zoomTo(1.0F);
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int i = 0;
+    View localView;
+    while (i < j)
+    {
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(false);
+      }
+      i += 1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a) {
+      if (paramInt == -1) {
+        i = j - 1;
+      }
     }
     for (;;)
     {
-      return true;
-      localAlbumImageProxy.zoomToPoint(3.0F, paramMotionEvent.getX(), paramMotionEvent.getY());
-    }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    boolean bool = true;
-    paramMotionEvent1 = this.a;
-    if (2 == paramMotionEvent2.getAction())
-    {
-      float f;
-      int i;
-      int k;
-      int m;
-      if (paramMotionEvent1.getScale() > 1.0F)
+      if ((i > -1) && (i < j))
       {
-        paramMotionEvent1.postTranslateCenter(-paramFloat1, -paramFloat2);
-        paramFloat2 = this.a.getShownRect().right;
-        f = this.a.getShownRect().left;
-        i = ((AlbumWorkSpace)paramMotionEvent1.getParent()).getScrollX();
-        int j = paramMotionEvent1.getLeft();
-        k = paramMotionEvent1.getRight();
-        m = this.a.getWidth();
-        if (paramFloat1 <= 0.0F) {
-          break label138;
-        }
-        if (j - i < 0) {
-          break label110;
+        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView != null) {
+          localView.setEnabled(true);
         }
       }
-      label110:
-      while (k - i <= m)
+      return;
+      i = paramInt;
+      if (paramInt == j)
       {
-        return false;
-        if ((paramFloat2 >= m) && (f <= 0.0F)) {}
-        for (bool = true;; bool = false) {
-          return bool;
+        i = 0;
+        continue;
+        if (paramInt == -1)
+        {
+          i = 0;
         }
-      }
-      label138:
-      if ((paramFloat2 >= m) && (f <= 0.0F)) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
+        else
+        {
+          i = paramInt;
+          if (paramInt == j) {
+            i = j - 1;
+          }
+        }
       }
     }
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    super.onSingleTapConfirmed(paramMotionEvent);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    super.onSingleTapUp(paramMotionEvent);
-    return false;
   }
 }
 

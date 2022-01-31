@@ -16,7 +16,7 @@ import android.widget.ListAdapter;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.widget.GridView;
-import epl;
+import epq;
 
 public class AvatarWallView
   extends GridView
@@ -71,7 +71,7 @@ public class AvatarWallView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new epl(this);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new epq(this);
     setOnItemLongClickListener(this);
     setChildrenDrawingOrderEnabled(true);
   }
@@ -177,7 +177,7 @@ public class AvatarWallView
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = this.jdField_e_of_type_Int;
       ImageView localImageView = new ImageView(getContext());
       localImageView.setImageBitmap(paramBitmap);
-      localImageView.setBackgroundResource(2130838248);
+      localImageView.setBackgroundResource(2130838240);
       this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
       this.jdField_a_of_type_AndroidViewWindowManager.addView(localImageView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
       this.jdField_a_of_type_AndroidWidgetImageView = localImageView;

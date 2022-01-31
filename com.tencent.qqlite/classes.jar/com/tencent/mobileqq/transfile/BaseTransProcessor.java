@@ -16,7 +16,7 @@ import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import egg;
+import egl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -126,7 +126,7 @@ public class BaseTransProcessor
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaLangObject = new Object();
     N = "param_reason";
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new egg();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new egl();
   }
   
   public BaseTransProcessor(TransFileController paramTransFileController)

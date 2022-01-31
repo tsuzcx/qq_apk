@@ -7,7 +7,7 @@ public class ui
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetDefaultPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbTempPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
   }
 }
 

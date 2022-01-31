@@ -1,28 +1,22 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class agz
-  extends SearchResultDialog
+  implements Animation.AnimationListener
 {
-  public agz(Conversation paramConversation, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
+  public agz(Conversation paramConversation, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(0);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(a(paramContext, paramQQAppInterface));
-    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
-    return localArrayList;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

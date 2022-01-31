@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 public class diy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public diy(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public diy(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      String str = QfileTimeUtils.a(localWeiYunFileInfo.b);
-      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
-      }
-      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localWeiYunFileInfo);
+    if (!QfileBaseCloudFileTabView.a(this.a)) {
+      return;
     }
-    this.a.i();
-    this.a.setSelect(0);
-    this.a.b(true);
+    QfileBaseCloudFileTabView.b(this.a);
+    this.a.f();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() > 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a().getCount() - 1);
+    this.a.h();
   }
 }
 

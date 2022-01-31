@@ -1,30 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
 
 public class ekp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ekp(TroopCreateBaseActivity paramTroopCreateBaseActivity, String paramString) {}
+  public ekp(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("result", paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_JavaLangString, paramDialogInterface.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.a.a.putExtra("isBack", 1);
+    this.a.setResult(-1, this.a.a);
+    this.a.finish();
   }
 }
 

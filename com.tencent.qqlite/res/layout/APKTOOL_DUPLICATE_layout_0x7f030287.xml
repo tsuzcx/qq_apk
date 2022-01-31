@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020081" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a5a" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip" android:text="选择禁言的时长" android:layout_alignParentTop="true" />
-    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a5c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:layout_below="@id/text1" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="确定" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f090a5c" android:layout_centerHorizontal="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e006f" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a5b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201ac" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a5c" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a054b" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0043" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f090a5d" android:padding="10.0dip" android:clickable="true" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201a9" />
+    </LinearLayout>
+</LinearLayout>

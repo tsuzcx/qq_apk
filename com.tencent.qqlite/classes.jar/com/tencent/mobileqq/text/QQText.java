@@ -22,8 +22,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 import com.tencent.mobileqq.utils.Patterns;
 import com.tencent.widget.ActionSheet;
-import egd;
-import ege;
+import egi;
+import egj;
 import java.lang.reflect.Array;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -71,7 +71,7 @@ public class QQText
     jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(f);
     jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
     jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
-    jdField_a_of_type_AndroidTextSpannable$Factory = new egd();
+    jdField_a_of_type_AndroidTextSpannable$Factory = new egi();
     try
     {
       StaticLayout.class.getDeclaredMethod("generate2", new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, Float.TYPE, Float.TYPE, Boolean.TYPE, Boolean.TYPE });
@@ -314,20 +314,20 @@ public class QQText
   public static void a(Context paramContext, String paramString, boolean paramBoolean)
   {
     ActionSheet localActionSheet = ActionSheet.a(paramContext, 2131624119);
-    localActionSheet.a(2131363569, 1);
-    localActionSheet.a(2131363570, 1);
+    localActionSheet.a(2131363563, 1);
+    localActionSheet.a(2131363564, 1);
     if (paramBoolean)
     {
-      localActionSheet.a(2131362798, 1);
       localActionSheet.a(2131362802, 1);
+      localActionSheet.a(2131362806, 1);
     }
-    localActionSheet.d(2131362790);
+    localActionSheet.d(2131362794);
     if (paramBoolean) {
-      localActionSheet.a(String.format(paramContext.getString(2131363584), new Object[] { paramString }));
+      localActionSheet.a(String.format(paramContext.getString(2131363578), new Object[] { paramString }));
     }
     for (;;)
     {
-      localActionSheet.a(new ege(paramString, paramContext, localActionSheet));
+      localActionSheet.a(new egj(paramString, paramContext, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.a(paramString);

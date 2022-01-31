@@ -1,29 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.plugin.IPluginManager;
 
 public final class fjz
-  extends OnPluginInstallListener.Stub
+  implements View.OnClickListener
 {
-  public fjz(IPluginManager.OnPluginReadyListener paramOnPluginReadyListener, Context paramContext, IPluginManager.PluginParams paramPluginParams) {}
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null) {
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    if ((IPluginManager.a() != null) && (IPluginManager.a().isShowing())) {
+      IPluginManager.a().dismiss();
     }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null) {
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-    }
+    IPluginManager.a(null);
   }
 }
 

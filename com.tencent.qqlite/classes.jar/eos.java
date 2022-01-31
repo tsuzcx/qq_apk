@@ -1,17 +1,18 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileError;
+import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorObserver;
+import java.lang.ref.WeakReference;
 
-class eos
-  implements FilenameFilter
+public final class eos
+  implements DialogInterface.OnClickListener
 {
-  eos(eor parameor) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {
-      return false;
+    if ((TroopFileError.a != null) && (TroopFileError.a.get() != null)) {
+      ((TroopFileError.TroopFileErrorObserver)TroopFileError.a.get()).a = 0;
     }
-    return paramString.startsWith("[Thumb]");
+    paramDialogInterface.dismiss();
   }
 }
 

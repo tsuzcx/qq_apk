@@ -35,7 +35,7 @@ public class ChatHistory$PlayingPttHistoryInfo
     }
     label187:
     label189:
-    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131296825);; localObject1 = null)
+    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131296821);; localObject1 = null)
     {
       if (localObject1 != null)
       {
@@ -52,8 +52,8 @@ public class ChatHistory$PlayingPttHistoryInfo
           ImageView localImageView;
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
-            localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296823);
-            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296822);
+            localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296819);
+            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296818);
           }
           for (;;)
           {
@@ -80,18 +80,18 @@ public class ChatHistory$PlayingPttHistoryInfo
     Object localObject1 = null;
     if (this.c == 0) {
       if (this.jdField_a_of_type_AndroidViewView == null) {
-        break label188;
+        break label182;
       }
     }
-    label186:
-    label188:
-    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131296825);; localObject1 = null)
+    label180:
+    label182:
+    for (localObject1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131296821);; localObject1 = null)
     {
       Object localObject2;
       if ((localObject1 != null) && (((Button)localObject1).getTag().equals(this.jdField_a_of_type_JavaLangObject)))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.stop();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130839228);
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getResources().getDrawable(2130839196);
         ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
         ((Button)localObject1).setCompoundDrawables((Drawable)localObject2, null, null, null);
       }
@@ -102,20 +102,19 @@ public class ChatHistory$PlayingPttHistoryInfo
         {
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
-            localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296823);
-            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296822);
+            localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296819);
+            localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296818);
           }
           for (;;)
           {
             if ((localObject2 == null) || (localObject1 == null)) {
-              break label186;
+              break label180;
             }
             Object localObject3 = ((ImageView)localObject2).getTag();
             if (!(localObject3 instanceof PicEmoticonInfo)) {
               break;
             }
             localObject3 = (PicEmoticonInfo)localObject3;
-            ((PicEmoticonInfo)localObject3).a(true);
             ChatHistory.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, (ImageView)localObject2);
             ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, (ImageView)localObject1, (PicEmoticonInfo)localObject3);
             return;

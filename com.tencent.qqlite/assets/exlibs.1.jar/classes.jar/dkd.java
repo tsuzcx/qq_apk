@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class dkd
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public dkd(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
+  public dkd(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    FileCategoryUtil.a(this.a.a, this.a);
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(AppConstants.ay, ".apk", "", localHashMap, this.a);
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileAppTabView.a(this.a, new dke(this));
+    QfileBaseLocalFileTabView.a(this.a);
   }
 }
 

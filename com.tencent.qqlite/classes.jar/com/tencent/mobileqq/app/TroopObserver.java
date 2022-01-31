@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.troopshare.TroopShareResp;
 import com.tencent.qphone.base.util.QLog;
-import cwp;
-import cwq;
+import cwv;
+import cww;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +68,8 @@ public class TroopObserver
   protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList) {}
   
   protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3) {}
   
   protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
@@ -153,7 +155,6 @@ public class TroopObserver
     case 39: 
     case 41: 
     case 42: 
-    case 47: 
     case 48: 
     case 53: 
     case 54: 
@@ -290,13 +291,13 @@ public class TroopObserver
                       } while (!QLog.isColorLevel());
                       QLog.d("Q.troopinfo", 2, paramObject.toString());
                       return;
-                      paramObject = (cwq)paramObject;
+                      paramObject = (cww)paramObject;
                       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.b, paramObject.jdField_a_of_type_JavaUtilList);
                       return;
-                      paramObject = (cwq)paramObject;
+                      paramObject = (cww)paramObject;
                       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.b, paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_JavaUtilList);
                       return;
-                      paramObject = (cwp)paramObject;
+                      paramObject = (cwv)paramObject;
                       a(paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.jdField_a_of_type_JavaLangString, paramObject.b, paramObject.c);
                       return;
                       paramObject = (Object[])paramObject;
@@ -445,6 +446,12 @@ public class TroopObserver
         }
         paramObject = (Object[])paramObject;
         a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+        return;
+        if (!(paramObject instanceof Object[])) {
+          break;
+        }
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1], ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), (String)paramObject[6]);
         return;
         if (!(paramObject instanceof Object[])) {
           break;

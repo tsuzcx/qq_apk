@@ -15,11 +15,11 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import erv;
-import erx;
-import ery;
-import erz;
 import esa;
+import esc;
+import esd;
+import ese;
+import esf;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
@@ -111,17 +111,17 @@ public class ImageWorker
     finally {}
   }
   
-  private ery a(View paramView)
+  private esd a(View paramView)
   {
     if (paramView != null)
     {
-      esa localesa = (esa)this.jdField_a_of_type_JavaUtilMap.get(paramView);
-      if (localesa != null) {
-        paramView = localesa.jdField_a_of_type_Erx;
+      esf localesf = (esf)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+      if (localesf != null) {
+        paramView = localesf.jdField_a_of_type_Esc;
       }
-      while ((paramView instanceof erx))
+      while ((paramView instanceof esc))
       {
-        return ((erx)paramView).a();
+        return ((esc)paramView).a();
         if ((paramView instanceof ImageView)) {
           paramView = ((ImageView)paramView).getDrawable();
         } else {
@@ -132,7 +132,7 @@ public class ImageWorker
     return null;
   }
   
-  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, esa paramesa)
+  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, esf paramesf)
   {
     Object localObject = paramDrawable;
     if (this.jdField_c_of_type_Boolean)
@@ -153,8 +153,8 @@ public class ImageWorker
       }
     }
     paramDrawable = null;
-    if (paramesa != null) {
-      paramDrawable = paramesa.jdField_a_of_type_ComTencentMobileqqUtilImageLoader;
+    if (paramesf != null) {
+      paramDrawable = paramesf.jdField_a_of_type_ComTencentMobileqqUtilImageLoader;
     }
     if (paramDrawable != null)
     {
@@ -202,7 +202,7 @@ public class ImageWorker
   {
     Object localObject3 = null;
     Object localObject1;
-    if (paramInt == 2130838042) {
+    if (paramInt == 2130838036) {
       localObject1 = ImageUtil.a();
     }
     for (;;)
@@ -258,16 +258,16 @@ public class ImageWorker
         paramView.setBackgroundDrawable((Drawable)localObject);
         return;
       } while (!a(paramString, paramView));
-      localObject = new ery(this, paramView);
-      erx localerx = new erx(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap, (ery)localObject);
+      localObject = new esd(this, paramView);
+      esc localesc = new esc(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap, (esd)localObject);
       paramBitmap = paramImageCreator;
       if (paramImageCreator == null) {
-        paramBitmap = new erz(this, paramString);
+        paramBitmap = new ese(this, paramString);
       }
       if (paramImageLoader != null)
       {
-        paramImageLoader.a(paramView, localerx);
-        this.jdField_a_of_type_JavaUtilMap.put(paramView, new esa(paramBitmap, paramImageLoader, localerx));
+        paramImageLoader.a(paramView, localesc);
+        this.jdField_a_of_type_JavaUtilMap.put(paramView, new esf(paramBitmap, paramImageLoader, localesc));
       }
       while (paramBoolean)
       {
@@ -276,17 +276,17 @@ public class ImageWorker
           this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
           this.jdField_a_of_type_AndroidOsHandler = new Handler();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new erv(this, (ery)localObject, paramString, paramBitmap));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new esa(this, (esd)localObject, paramString, paramBitmap));
         return;
         if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).setImageDrawable(localerx);
+          ((ImageView)paramView).setImageDrawable(localesc);
         } else {
-          paramView.setBackgroundDrawable(localerx);
+          paramView.setBackgroundDrawable(localesc);
         }
       }
-      paramBitmap = ((ery)localObject).a(new Object[] { paramString, paramBitmap, Boolean.valueOf(false) });
+      paramBitmap = ((esd)localObject).a(new Object[] { paramString, paramBitmap, Boolean.valueOf(false) });
     } while (paramBitmap == null);
-    ((ery)localObject).a(paramBitmap);
+    ((esd)localObject).a(paramBitmap);
   }
   
   public void a(View paramView)
@@ -307,7 +307,7 @@ public class ImageWorker
     paramView = a(paramView);
     if (paramView != null)
     {
-      Object localObject = ery.a(paramView);
+      Object localObject = esd.a(paramView);
       if ((localObject == null) || (!localObject.equals(paramObject))) {
         paramView.cancel(true);
       }

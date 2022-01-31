@@ -29,7 +29,7 @@ import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import dvs;
+import dvy;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,7 +65,7 @@ public class QfileEditBottomBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903415, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903405, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     b();
   }
@@ -74,11 +74,11 @@ public class QfileEditBottomBar
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298007));
-    this.b = ((Button)findViewById(2131298008));
-    this.c = ((Button)findViewById(2131298010));
-    this.d = ((Button)findViewById(2131298009));
-    this.e = ((Button)findViewById(2131298011));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297970));
+    this.b = ((Button)findViewById(2131297971));
+    this.c = ((Button)findViewById(2131297973));
+    this.d = ((Button)findViewById(2131297972));
+    this.e = ((Button)findViewById(2131297974));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -259,7 +259,7 @@ public class QfileEditBottomBar
       if (FMDataCache.a() <= 0L) {
         break label395;
       }
-      this.e.setTextColor(getResources().getColor(2131427518));
+      this.e.setTextColor(getResources().getColor(2131427513));
       this.e.setEnabled(true);
       this.d.setEnabled(true);
       return;
@@ -320,8 +320,8 @@ public class QfileEditBottomBar
     default: 
       return;
     case 0: 
+      ((List)localObject).add(Integer.valueOf(2131362057));
       ((List)localObject).add(Integer.valueOf(2131362060));
-      ((List)localObject).add(Integer.valueOf(2131362063));
     }
     for (;;)
     {
@@ -335,12 +335,12 @@ public class QfileEditBottomBar
         paramView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(localInteger.intValue()), 3);
         i += 1;
       }
-      ((List)localObject).add(Integer.valueOf(2131362061));
+      ((List)localObject).add(Integer.valueOf(2131362058));
       continue;
-      ((List)localObject).add(Integer.valueOf(2131362062));
+      ((List)localObject).add(Integer.valueOf(2131362059));
     }
-    paramView.a(new dvs(this, paramView));
-    paramView.d(2131362790);
+    paramView.a(new dvy(this, paramView));
+    paramView.d(2131362794);
     paramView.show();
   }
   
@@ -384,10 +384,10 @@ public class QfileEditBottomBar
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.get(0);
       if (paramView.size() > 1)
       {
-        FMToastUtil.b(FileManagerUtil.d(localFileManagerEntity.fileName) + "等" + paramView.size() + "个文件" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362001));
+        FMToastUtil.b(FileManagerUtil.d(localFileManagerEntity.fileName) + "等" + paramView.size() + "个文件" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361998));
         return;
       }
-      FMToastUtil.b(FileManagerUtil.d(localFileManagerEntity.fileName) + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362001));
+      FMToastUtil.b(FileManagerUtil.d(localFileManagerEntity.fileName) + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361998));
       return;
       c();
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 != null) {

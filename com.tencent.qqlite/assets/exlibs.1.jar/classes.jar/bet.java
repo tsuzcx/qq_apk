@@ -1,17 +1,19 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public class bet
+class bet
   implements View.OnClickListener
 {
-  public bet(QQSetting paramQQSetting) {}
+  bet(bes parambes) {}
   
   public void onClick(View paramView)
   {
-    this.a.o();
-    ReportController.b(this.a.a, "CliOper", "", "", "Setting_tab", "Clk_myalbum", 0, 0, "", "", "", "");
+    if ((QQSetting.a(this.a.a) != null) && (QQSetting.a(this.a.a).isShowing())) {
+      QQSetting.a(this.a.a).dismiss();
+    }
+    QQSetting.a(this.a.a, null);
   }
 }
 

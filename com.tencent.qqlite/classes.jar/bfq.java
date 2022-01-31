@@ -1,24 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavHelper;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class bfq
-  implements View.OnClickListener
+  implements IStatusListener
 {
   public bfq(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    QfavHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, -1);
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing()))
+    if (this.a.b)
     {
-      QQSettingMe.a(this.a).dismiss();
-      QQSettingMe.a(this.a, null);
+      if (paramInt != 100) {
+        this.a.a(2131363668);
+      }
+      this.a.q();
     }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

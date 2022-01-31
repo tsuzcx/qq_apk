@@ -1,12 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 class ceu
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  ceu(ces paramces) {}
+  ceu(ces paramces, String paramString) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Ces.a.a.startActivity(paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

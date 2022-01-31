@@ -1,99 +1,33 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.common.download.OfflineDownloader;
+import android.os.Handler;
+import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.config.QQMapConstants;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.SelectPicPopupWindow;
-import java.io.File;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bdm
-  implements View.OnClickListener
+  implements AsyncBack
 {
+  int jdField_a_of_type_Int = 0;
+  
   public bdm(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    int i = QQMapActivity.b(this.a).getDimensionPixelSize(2131492887);
-    int j = paramView.getId();
-    if (j == 2131297795) {
-      if (new File(QQMapConstants.i).exists())
-      {
-        this.a.p = true;
-        UniformDownloadUtil.a(QQMapConstants.i);
-      }
+    if (paramInt - this.jdField_a_of_type_Int >= 1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdn(this, paramInt));
     }
-    label409:
-    do
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramInt == 0)
     {
-      boolean bool;
-      do
-      {
-        return;
-        if (!NetworkUtil.e(this.a.getApplicationContext()))
-        {
-          QQToast.a(this.a, 1, this.a.getString(2131362607), 1).b(i);
-          return;
-        }
-        if (NetworkUtil.g(this.a.getApplicationContext()))
-        {
-          this.a.i();
-          return;
-        }
-        this.a.j();
-        return;
-        if (j != 2131297792) {
-          break;
-        }
-        if (this.a.a.a == null)
-        {
-          QQToast.a(this.a, 1, this.a.getString(2131362609), 1).b(i);
-          return;
-        }
-        paramView = (String)this.a.a.a.getTag();
-        this.a.b(paramView);
-        bool = QQMapActivity.a(this.a, paramView);
-        this.a.a.dismiss();
-      } while (bool);
-      QQToast.a(this.a, 1, this.a.getString(2131362606), 1).b(i);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdo(this));
+      ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_tx_download", 0, 0, "", "", "", "");
       return;
-      if (j == 2131297793)
-      {
-        if (this.a.a.a == null)
-        {
-          QQToast.a(this.a, 1, this.a.getString(2131362609), 1).b(i);
-          return;
-        }
-        if (!this.a.a(this.a.a(), true))
-        {
-          OfflineDownloader.d(this.a.r);
-          if (!new File(QQMapConstants.i).exists()) {
-            break label409;
-          }
-        }
-        for (paramView = this.a.getString(2131362615);; paramView = this.a.getString(2131362614))
-        {
-          this.a.a.a(paramView);
-          paramView = (String)this.a.a.a.getTag();
-          if (QQMapActivity.a(this.a, paramView)) {
-            break;
-          }
-          QQToast.a(this.a, 1, this.a.getString(2131362606), 1).b(i);
-          this.a.a.dismiss();
-          return;
-        }
-      }
-    } while ((!(paramView.getTag() instanceof Integer)) || (((Integer)paramView.getTag()).intValue() != 1));
-    paramView = (ImageView)paramView.findViewById(2131297796);
-    if (this.a.a.a != null) {
-      this.a.a.a.setVisibility(8);
     }
-    this.a.a.a = paramView;
-    this.a.a.a.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.a.post(new bdp(this));
+    ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_tx_download", 0, 1, "", "", "", "");
   }
 }
 

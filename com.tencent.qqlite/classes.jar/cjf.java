@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
-public class cjf
-  implements View.OnClickListener
+class cjf
+  implements Runnable
 {
-  public cjf(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  cjf(cje paramcje) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      PhotoPreviewActivity.a(this.a, PhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_Int, PhotoPreviewActivity.a(this.a));
+    if ((PhotoListActivity.a(this.a.a)) && (this.a.a.a == null))
+    {
+      PhotoListActivity.a(this.a.a, false);
+      this.a.a.a = new cji(this.a.a, null);
+      this.a.a.a.execute(new Object[0]);
     }
   }
 }

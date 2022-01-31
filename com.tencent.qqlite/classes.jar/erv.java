@@ -1,17 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageWorker;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.util.FaceDrawable;
 
 public class erv
-  implements Runnable
+  extends DiscussionObserver
 {
-  public erv(ImageWorker paramImageWorker, ery paramery, String paramString, ImageCreator paramImageCreator) {}
+  private erv(FaceDrawable paramFaceDrawable) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    Drawable localDrawable = this.jdField_a_of_type_Ery.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator, Boolean.valueOf(true) });
-    ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).post(new erw(this, localDrawable));
+    if (paramBoolean2)
+    {
+      FaceDrawable.a(this.a, paramBoolean1, 101, paramString, FaceDrawable.a(this.a));
+      return;
+    }
+    FaceDrawable.a(this.a, paramBoolean1, 101, paramString, null);
   }
 }
 

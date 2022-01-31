@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.app.ChatBackgroundManagerImp;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
 
-class acg
-  implements DialogInterface.OnClickListener
+public class acg
+  implements Runnable
 {
-  acg(ace paramace, ChatBackgroundInfo paramChatBackgroundInfo, View paramView, int paramInt) {}
+  public acg(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Ace.a.b = this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo;
-    this.jdField_a_of_type_Ace.a.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-    this.jdField_a_of_type_Ace.a.k = this.jdField_a_of_type_Int;
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Ace.a, "OPENVIP_SET", 3);
+    try
+    {
+      Object localObject = new File(ChatBackgroundManagerImp.c);
+      HttpDownloadUtil.a(this.a.app, EmosmUtils.insertMtype("VIP_other", "http://i.gtimg.cn/qqshow/admindata/comdata/backgroundMall_chat_1/xydata.js"), (File)localObject);
+      localObject = new Message();
+      ((Message)localObject).what = 1;
+      this.a.b.sendMessage((Message)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

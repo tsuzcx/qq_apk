@@ -1,13 +1,16 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class clq
-  extends TroopMemberListActivity.ViewHolder
 {
-  public CheckBox a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TextView b;
   
-  private clq(FriendListInnerFrame paramFriendListInnerFrame) {}
+  private clq(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
 }
 
 

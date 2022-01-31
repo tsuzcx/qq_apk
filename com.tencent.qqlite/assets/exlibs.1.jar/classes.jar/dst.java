@@ -1,20 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class dst
   implements View.OnClickListener
 {
-  public dst(LocalMusicFileView paramLocalMusicFileView) {}
+  public dst(FileBrowserActivity paramFileBrowserActivity) {}
   
   public void onClick(View paramView)
   {
-    if (LocalMusicFileView.a(this.a))
-    {
-      LocalMusicFileView.a(this.a);
-      return;
-    }
-    LocalMusicFileView.b(this.a);
+    this.a.onBackPressed();
   }
 }
 

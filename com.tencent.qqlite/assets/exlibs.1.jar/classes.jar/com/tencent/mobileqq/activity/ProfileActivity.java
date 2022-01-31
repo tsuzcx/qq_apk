@@ -50,7 +50,7 @@ public abstract class ProfileActivity
   public static final int Y = 52;
   public static final int Z = 55;
   private static final int a = 22578;
-  public static final int[][] a = { { 2130839418, 2131427368 }, { 2130839421, 2131427369 }, { 2130839424, 2131427370 } };
+  public static final int[][] a = { { 2130839383, 2131427368 }, { 2130839386, 2131427369 }, { 2130839389, 2131427370 } };
   public static final int aA = 65;
   public static final int aB = 66;
   public static final int aC = 67;

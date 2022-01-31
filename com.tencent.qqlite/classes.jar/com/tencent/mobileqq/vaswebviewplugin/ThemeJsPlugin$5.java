@@ -53,7 +53,7 @@ class ThemeJsPlugin$5
         ((ThemeUtil.ThemeInfo)localObject).version = this.val$version;
         ((ThemeUtil.ThemeInfo)localObject).status = "1";
         if (this.val$voiceFlag != 1) {
-          break label340;
+          break label328;
         }
       }
       for (;;)
@@ -61,7 +61,6 @@ class ThemeJsPlugin$5
         ((ThemeUtil.ThemeInfo)localObject).isVoiceTheme = bool;
         ThemeJsPlugin.access$300(this.this$0).put(this.val$id, localObject);
         ThemeJsPlugin.access$602(this.this$0, this.val$id);
-        ThemeJsPlugin.access$702(this.this$0, this.val$callbackId);
         paramDialogInterface = new Bundle();
         paramDialogInterface.putString("url", this.val$url);
         paramDialogInterface.putString("themeZipPath", str);
@@ -72,7 +71,7 @@ class ThemeJsPlugin$5
         paramDialogInterface = DataFactory.makeIPCRequestPacket("startDownloadTheme", this.val$callbackId, this.this$0.mOnRemoteResp.key, paramDialogInterface);
         this.this$0.sendRemoteReq(paramDialogInterface, true, true);
         return;
-        label340:
+        label328:
         bool = false;
       }
       return;

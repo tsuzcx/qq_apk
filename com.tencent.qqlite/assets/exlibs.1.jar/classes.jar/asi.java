@@ -1,34 +1,21 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.LebaUtil;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
 public class asi
-  extends GameCenterObserver
+  extends FriendListObserver
 {
   public asi(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
       return;
-      if (Leba.a(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        LebaUtil.a(localArrayList, LebaShowListManager.a().b());
-        this.a.b(new asj(this, localArrayList));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.b(this.a));
-        return;
-        LebaShowListManager.c |= 0x2;
-      }
     }
+    Leba.b(this.a);
   }
 }
 

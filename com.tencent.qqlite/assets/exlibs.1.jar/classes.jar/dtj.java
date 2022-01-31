@@ -1,15 +1,24 @@
-import android.app.Activity;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import java.util.TimerTask;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
 
-public class dtj
-  extends TimerTask
+class dtj
+  implements Runnable
 {
-  public dtj(LocalVideoFileView paramLocalVideoFileView) {}
+  dtj(dti paramdti) {}
   
   public void run()
   {
-    LocalVideoFileView.e(this.a).runOnUiThread(new dtk(this));
+    LocalVideoFileView.a(this.a.a).setVisibility(8);
+    if ((LocalVideoFileView.a(this.a.a) != null) && (LocalVideoFileView.b(this.a.a) != null))
+    {
+      LocalVideoFileView.a(this.a.a).setVisibility(8);
+      LocalVideoFileView.b(this.a.a).setVisibility(8);
+    }
+    if (LocalVideoFileView.a(this.a.a) != null) {
+      LocalVideoFileView.b(this.a.a).c(true);
+    }
   }
 }
 

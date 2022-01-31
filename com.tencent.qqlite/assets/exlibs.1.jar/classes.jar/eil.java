@@ -1,14 +1,18 @@
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
+import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
 
 public class eil
+  extends FriendListObserver
 {
-  public int a;
-  public Object a;
+  public eil(NearbyTroopsView paramNearbyTroopsView) {}
   
-  public eil(NearbyTroopsView paramNearbyTroopsView, int paramInt, Object paramObject)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if ((!paramBoolean) || (!this.a.d)) {
+      return;
+    }
+    this.a.a.a(paramString);
   }
 }
 

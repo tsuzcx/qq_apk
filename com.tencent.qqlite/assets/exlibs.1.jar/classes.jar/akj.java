@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akj
-  implements View.OnClickListener
+class akj
+  implements DialogInterface.OnClickListener
 {
-  public akj(DoodleActivity paramDoodleActivity) {}
+  akj(akh paramakh) {}
   
-  public void onClick(View paramView)
-  {
-    DialogUtil.a(this.a, this.a.getString(2131363452), 2131362790, 2131363453, new akk(this), new akl(this)).show();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

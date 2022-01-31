@@ -1,20 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.startup.step.NameProcess;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public class eef
-  extends Handler
+  implements Runnable
 {
-  public eef(NameProcess paramNameProcess) {}
+  public eef(StartupDirector paramStartupDirector, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
+      localObject = BaseApplicationImpl.a.a();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "0X8004842", "0X8004842", 0, 0, "" + this.jdField_a_of_type_Boolean, "" + this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.b, "" + StartupDirector.a(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector), "");
+      }
+    }
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      Log.i("AutoMonitor", "ActionLoginM, cost=" + this.b);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("cost", this.b + "");
+      StatisticCollector.a(BaseApplicationImpl.a).a(null, "actLoginM", true, this.b, 0L, (HashMap)localObject, null);
+    }
+    if (this.c < 0L)
+    {
+      Log.i("AutoMonitor", "ActionLoginS, cost=" + this.d);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("cost", this.d + "");
+      StatisticCollector.a(BaseApplicationImpl.a).a(null, "actLoginS", true, this.d, 0L, (HashMap)localObject, null);
+    }
+    QQAppInterface localQQAppInterface;
+    if (BaseApplicationImpl.h == 1)
+    {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.a.a();
+      localObject = localQQAppInterface.getAccount();
+      if ((localObject != null) && (((String)localObject).length() != 0)) {
+        break label372;
+      }
+      localObject = "0";
+    }
+    label372:
+    for (;;)
+    {
+      ReportController.a(localQQAppInterface, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.a, (String)localObject), "", "", "");
       return;
     }
-    com.tencent.common.app.BaseApplicationImpl.a = paramMessage.arg1;
   }
 }
 

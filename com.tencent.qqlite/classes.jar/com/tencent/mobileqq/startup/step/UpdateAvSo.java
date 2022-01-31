@@ -26,10 +26,10 @@ public class UpdateAvSo
   {
     long l = SystemClock.uptimeMillis();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.a.getSharedPreferences("so_sp", 0);
-    if (localSharedPreferences.getLong("first_av_lauch_107392", 0L) != 0L) {
+    if (localSharedPreferences.getLong("first_av_lauch_108074", 0L) != 0L) {
       return 0L;
     }
-    localSharedPreferences.edit().putLong("first_av_lauch_107392", l).commit();
+    localSharedPreferences.edit().putLong("first_av_lauch_108074", l).commit();
     return l - b();
   }
   
@@ -106,7 +106,7 @@ public class UpdateAvSo
   
   private static long b()
   {
-    long l2 = BaseApplicationImpl.a.getSharedPreferences("so_sp", 0).getLong("first_qq_lauch_107392", 0L);
+    long l2 = BaseApplicationImpl.a.getSharedPreferences("so_sp", 0).getLong("first_qq_lauch_108074", 0L);
     long l1 = l2;
     if (l2 == 0L) {
       l1 = BaseApplicationImpl.b;
@@ -129,7 +129,7 @@ public class UpdateAvSo
     if (BaseApplicationImpl.b > 0L) {}
     for (long l = BaseApplicationImpl.b;; l = SystemClock.uptimeMillis())
     {
-      ((SharedPreferences.Editor)localObject).putLong("first_qq_lauch_107392", l).commit();
+      ((SharedPreferences.Editor)localObject).putLong("first_qq_lauch_108074", l).commit();
       return;
     }
   }

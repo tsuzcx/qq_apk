@@ -1,41 +1,61 @@
-import android.os.Bundle;
-import com.tencent.biz.common.report.BnrReport;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
-import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public final class lq
-  implements BusinessObserver
+  implements Runnable
 {
-  public lq(AppInterface paramAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
+    int i = ImageUtil.a(ImageUtil.c, ImageUtil.d, ImageUtil.e);
     if (QLog.isColorLevel()) {
-      QLog.d("BnrReport", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.i(ImageUtil.b, 2, "type:" + i);
     }
-    if (paramBoolean) {}
-    try
+    if (!TextUtils.isEmpty(ImageUtil.c)) {
+      ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(ImageUtil.c);
+    }
+    Object localObject2;
+    switch (i)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+    default: 
+      localObject1 = null;
+      if (localObject1 != null)
       {
-        BnrReport.BNRConfigMsg localBNRConfigMsg = new BnrReport.BNRConfigMsg();
-        localBNRConfigMsg.mergeFrom(paramBundle);
-        BnrReport.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
-        BnrReport.a(this.a, 74);
+        localObject2 = ImageUtil.a((Bitmap)localObject1);
+        ((Bitmap)localObject1).recycle();
       }
+      break;
     }
-    catch (Exception paramBundle)
+    for (Object localObject1 = localObject2;; localObject1 = "")
     {
+      if (ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      localObject2 = ImageUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        ((Message)localObject2).arg1 = 0;
+        ((Message)localObject2).obj = localObject1;
+      }
       for (;;)
       {
-        paramBundle.printStackTrace();
+        ImageUtil.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+        ImageUtil.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ImageUtil.jdField_a_of_type_JavaLangRunnable);
+        return;
+        localObject1 = ImageUtil.a(ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap);
+        break;
+        localObject1 = ImageUtil.b(ImageUtil.jdField_a_of_type_AndroidGraphicsBitmap);
+        break;
+        localObject1 = ImageUtil.a();
+        break;
+        ((Message)localObject2).arg1 = 1;
       }
     }
-    BnrReport.a = false;
   }
 }
 

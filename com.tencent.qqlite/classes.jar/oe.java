@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import mqq.observer.BusinessObserver;
 
-public class oe
-  implements Runnable
+class oe
+  implements BusinessObserver
 {
-  public oe(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  oe(od paramod) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.a.a.a();
   }
 }
 

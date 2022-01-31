@@ -1,20 +1,19 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavHelper;
-import cooperation.qqfav.QfavReport;
 
 class aml
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aml(amk paramamk) {}
+  aml(ami paramami) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QfavHelper.b(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), new Intent().putExtra("is_share_flag", true), -1);
-    QfavReport.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
+    if ((this.a.a.a instanceof DirectForwardActivity)) {
+      this.a.a.a.finish();
+    }
   }
 }
 

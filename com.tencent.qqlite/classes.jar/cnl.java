@@ -1,13 +1,33 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import java.util.LinkedHashMap;
 
 public class cnl
-  extends TroopMemberListActivity.ViewHolder
+  extends Handler
 {
-  public CheckBox a;
+  public cnl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  private cnl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      Object[] arrayOfObject = (Object[])paramMessage.obj;
+      if (arrayOfObject.length == 3)
+      {
+        this.a.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
+        this.a.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
+        this.a.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
+      }
+      this.a.jdField_a_of_type_Cnq.notifyDataSetChanged();
+    } while ((paramMessage.what != 2) && ((paramMessage.what != 1) || (this.a.jdField_a_of_type_Boolean)));
+    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.i();
+  }
 }
 
 

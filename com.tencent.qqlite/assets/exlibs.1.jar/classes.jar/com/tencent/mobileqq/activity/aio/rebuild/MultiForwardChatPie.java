@@ -13,7 +13,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bzp;
+import bzo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -40,9 +40,9 @@ import java.util.List;
 public class MultiForwardChatPie
   extends BaseChatPie
 {
-  public static final String G = "MultiForwardActivity";
-  String H;
-  public String I;
+  public static final String H = "MultiForwardActivity";
+  String I;
+  public String J;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private ChatAdapter1 jdField_b_of_type_ComTencentMobileqqActivityAioChatAdapter1 = null;
@@ -81,7 +81,7 @@ public class MultiForwardChatPie
     {
       return;
       URLDrawable.pause();
-    } while (PicItemBuilder.f);
+    } while (PicItemBuilder.g);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
   }
@@ -89,19 +89,19 @@ public class MultiForwardChatPie
   protected boolean a(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setContentView(2130903064);
-    this.H = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("multi_url");
+    this.I = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("multi_url");
     this.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getLongExtra("multi_uniseq", 0L);
-    this.I = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("multi_source");
+    this.J = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("multi_source");
     if (QLog.isDevelopLevel()) {
-      QLog.d("MultiMsg", 4, "MultiForwardActivity.doOnCreate ResID = " + this.H + "  msg.uniseq = " + this.jdField_e_of_type_Long);
+      QLog.d("MultiMsg", 4, "MultiForwardActivity.doOnCreate ResID = " + this.I + "  msg.uniseq = " + this.jdField_e_of_type_Long);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296894));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296901));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296906));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296890));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296897));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296902));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131363670));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296936));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296937));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131363664));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296932));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().findViewById(2131296933));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     a(false);
     this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131296548));
@@ -136,7 +136,7 @@ public class MultiForwardChatPie
       this.jdField_b_of_type_ComTencentMobileqqActivityAioChatAdapter1.a = Boolean.valueOf(false);
       this.jdField_b_of_type_ComTencentMobileqqBubbleChatXListView.setAdapter(this.jdField_b_of_type_ComTencentMobileqqActivityAioChatAdapter1);
       localObject = LayoutInflater.from(a()).inflate(2130903115, null);
-      this.jdField_b_of_type_ComTencentMobileqqBubbleChatXListView.setOverscrollHeader(a().getResources().getDrawable(2130838640));
+      this.jdField_b_of_type_ComTencentMobileqqBubbleChatXListView.setOverscrollHeader(a().getResources().getDrawable(2130838616));
       this.jdField_b_of_type_ComTencentMobileqqBubbleChatXListView.setOverScrollHeader((View)localObject);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground = new ChatBackground();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(BaseApplicationImpl.getContext());
@@ -144,7 +144,7 @@ public class MultiForwardChatPie
         this.jdField_e_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
       this.jdField_b_of_type_JavaUtilList = MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_e_of_type_Long);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.I);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.J);
       if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() != 0)) {
         break label856;
       }
@@ -153,7 +153,7 @@ public class MultiForwardChatPie
         QLog.d("MultiMsg", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
       }
       j();
-      MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.H, this.jdField_e_of_type_Long, new bzp(this));
+      MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.I, this.jdField_e_of_type_Long, new bzo(this));
     }
     label856:
     do
@@ -181,7 +181,7 @@ public class MultiForwardChatPie
     boolean bool = false;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130837914);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130837910);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.bN = this.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);

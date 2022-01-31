@@ -1,9 +1,5 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class bfx
   implements Runnable
@@ -12,13 +8,8 @@ class bfx
   
   public void run()
   {
-    this.a.a.app.a().k();
-    this.a.a.app.a().g();
+    this.a.a.c();
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    Handler localHandler = this.a.a.app.a(Conversation.class);
-    if (localHandler != null) {
-      localHandler.sendEmptyMessage(1009);
-    }
   }
 }
 

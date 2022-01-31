@@ -1,186 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Activity;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarManager;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter;
+import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import com.tencent.widget.ActionSheet;
 
 public class dsp
-  implements IFileViewListener
+  implements View.OnClickListener
 {
-  public dsp(FileBrowserActivity paramFileBrowserActivity) {}
+  public dsp(BaseActionBar paramBaseActionBar, Activity paramActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FileViewMusicService.a().a(FileBrowserActivity.a(this.a), FileBrowserActivity.a(this.a));
-    Handler localHandler = this.a.app.a(Conversation.class);
-    if (localHandler != null) {
-      localHandler.obtainMessage(1134026, null).sendToTarget();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidAppActivity, 2131624119);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2130903406, null));
+    paramView = (QfileHorizontalListView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297975);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter = new HorizontalListViewAdapter(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.b());
+    paramView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.a("更多");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.d("取消");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.b();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == FileBrowserActivity.a(this.a)) {
-      return;
-    }
-    FileBrowserActivity.a(this.a, paramInt);
-    FileBrowserActivity.b(this.a);
-    FileBrowserActivity.a(this.a).c();
-    FileBrowserActivity.c(this.a);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    boolean bool = true;
-    if (!FileBrowserActivity.b(this.a)) {
-      return;
-    }
-    FileBrowserActivity.b(this.a);
-    IFileViewerAdapter localIFileViewerAdapter = this.a.a();
-    localIFileViewerAdapter.d(paramBoolean);
-    if (FileBrowserActivity.a(this.a) > 0)
-    {
-      paramBoolean = true;
-      if (FileBrowserActivity.a(this.a) >= FileBrowserActivity.a(this.a).size() - 1) {
-        break label143;
-      }
-    }
-    for (;;)
-    {
-      localIFileViewerAdapter.e(paramBoolean);
-      localIFileViewerAdapter.f(bool);
-      FileBrowserActivity.a(this.a).a(this.a.a());
-      FileBrowserActivity.a(this.a).b();
-      FileBrowserActivity.b(this.a);
-      FileBrowserActivity.a(this.a).c();
-      FileBrowserActivity.c(this.a);
-      return;
-      paramBoolean = false;
-      break;
-      label143:
-      bool = false;
-    }
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    String str = null;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (str != null) {
-        FileManagerReporter.a(str);
-      }
-      return;
-      if (FileBrowserActivity.e(this.a))
-      {
-        str = "0X8004BB5";
-      }
-      else
-      {
-        str = "0X8004BCA";
-        continue;
-        if (FileBrowserActivity.e(this.a)) {
-          str = "0X8004BB4";
-        } else {
-          str = "0X8004BC9";
-        }
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    if (!FileBrowserActivity.c(this.a)) {
-      return;
-    }
-    FileBrowserActivity.c(this.a);
-    IFileViewerAdapter localIFileViewerAdapter = this.a.a();
-    boolean bool1;
-    if (FileBrowserActivity.a(this.a) > 0)
-    {
-      bool1 = true;
-      if (FileBrowserActivity.a(this.a) >= FileBrowserActivity.a(this.a).size() - 1) {
-        break label142;
-      }
-    }
-    for (;;)
-    {
-      localIFileViewerAdapter.e(bool1);
-      localIFileViewerAdapter.f(bool2);
-      localIFileViewerAdapter.d(paramBoolean);
-      FileBrowserActivity.a(this.a).a(localIFileViewerAdapter);
-      FileBrowserActivity.a(this.a).b();
-      FileBrowserActivity.b(this.a);
-      FileBrowserActivity.a(this.a).c();
-      FileBrowserActivity.c(this.a);
-      return;
-      bool1 = false;
-      break;
-      label142:
-      bool2 = false;
-    }
-  }
-  
-  public void c()
-  {
-    FileBrowserActivity.a(this.a, true);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    FileBrowserActivity.a(this.a, paramBoolean);
-    View localView = this.a.findViewById(2131298099);
-    if (!FileBrowserActivity.d(this.a)) {
-      localView.setVisibility(0);
-    }
-    while (FileBrowserActivity.a(this.a) == null)
-    {
-      return;
-      localView.setVisibility(8);
-    }
-    if (paramBoolean)
-    {
-      FileBrowserActivity.a(this.a).b();
-      return;
-    }
-    FileBrowserActivity.a(this.a).a();
-  }
-  
-  public void d()
-  {
-    FileBrowserActivity.a(this.a);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    TextView localTextView = (TextView)this.a.findViewById(2131296901);
-    if (paramBoolean)
-    {
-      FileManagerUtil.a(this.a, localTextView);
-      return;
-    }
-    FileManagerUtil.a(localTextView);
-  }
-  
-  public void e()
-  {
-    FileBrowserActivity.b(this.a);
   }
 }
 

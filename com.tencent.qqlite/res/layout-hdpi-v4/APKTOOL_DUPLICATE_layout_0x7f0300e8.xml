@@ -4,7 +4,7 @@
     <TextView android:id="@id/title" android:layout_width="80.0sp" android:layout_height="wrap_content" android:text="" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0011" />
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
         <TextView android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0004" />
-        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09049c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090498" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
     </LinearLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09049d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090499" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
 </LinearLayout>

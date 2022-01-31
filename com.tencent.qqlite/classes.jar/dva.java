@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class dva
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public dva(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  public dva(String paramString) {}
   
-  public void a()
+  public void run()
   {
-    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
   }
-  
-  public void b() {}
 }
 
 

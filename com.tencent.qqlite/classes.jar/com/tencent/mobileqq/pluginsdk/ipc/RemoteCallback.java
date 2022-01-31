@@ -11,7 +11,7 @@ import android.os.RemoteException;
 public abstract interface RemoteCallback
   extends IInterface
 {
-  public abstract void onCallback(Bundle paramBundle)
+  public abstract void onRemoteCallback(Bundle paramBundle)
     throws RemoteException;
   
   public static abstract class Stub
@@ -19,7 +19,7 @@ public abstract interface RemoteCallback
     implements RemoteCallback
   {
     private static final String DESCRIPTOR = "com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback";
-    static final int TRANSACTION_onCallback = 1;
+    static final int TRANSACTION_onRemoteCallback = 1;
     
     public Stub()
     {
@@ -58,7 +58,7 @@ public abstract interface RemoteCallback
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        onCallback(paramParcel1);
+        onRemoteCallback(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -85,7 +85,7 @@ public abstract interface RemoteCallback
       }
       
       /* Error */
-      public void onCallback(Bundle paramBundle)
+      public void onRemoteCallback(Bundle paramBundle)
         throws RemoteException
       {
         // Byte code:

@@ -1,61 +1,42 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListAdapter;
 import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.MultiChoiceModeListener;
 
-@SuppressLint({"NewApi"})
 public class fha
-  implements AbsListView.MultiChoiceModeListener
+  extends fhk
+  implements Runnable
 {
-  private AbsListView.MultiChoiceModeListener jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener;
-  
-  public fha(AbsListView paramAbsListView) {}
-  
-  public void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean)
+  private fha(AbsListView paramAbsListView)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.a(paramActionMode, paramInt, paramLong, paramBoolean);
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.c() == 0) {
-      paramActionMode.finish();
-    }
+    super(paramAbsListView, null);
   }
   
-  public void a(AbsListView.MultiChoiceModeListener paramMultiChoiceModeListener)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener = paramMultiChoiceModeListener;
-  }
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onActionItemClicked(paramActionMode, paramMenuItem);
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onCreateActionMode(paramActionMode, paramMenu))
+    int i = this.a.W;
+    View localView = this.a.getChildAt(i - this.a.ao);
+    long l;
+    if (localView != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(false);
-      bool = true;
+      i = this.a.W;
+      l = this.a.a.getItemId(this.a.W);
+      if ((!a()) || (this.a.q)) {
+        break label126;
+      }
     }
-    return bool;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode)
-  {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onDestroyActionMode(paramActionMode);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.a = null;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.e();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.q = true;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.q();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.requestLayout();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(true);
-  }
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onPrepareActionMode(paramActionMode, paramMenu);
+    label126:
+    for (boolean bool = this.a.b(localView, i, l);; bool = false)
+    {
+      if (bool)
+      {
+        this.a.ab = -1;
+        this.a.setPressed(false);
+        localView.setPressed(false);
+        return;
+      }
+      this.a.ab = 2;
+      return;
+    }
   }
 }
 

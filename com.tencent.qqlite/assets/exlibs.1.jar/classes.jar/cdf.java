@@ -1,22 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 
 public class cdf
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public cdf(NotificationView paramNotificationView) {}
+  public cdf(BaseTroopView paramBaseTroopView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if (paramView.a.msg_type.get() == 2) {
-      this.a.a(paramView);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.c.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

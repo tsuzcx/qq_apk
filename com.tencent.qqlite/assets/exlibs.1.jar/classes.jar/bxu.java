@@ -1,14 +1,15 @@
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
 class bxu
   implements Runnable
 {
-  bxu(bxs parambxs, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2) {}
+  bxu(bxr parambxr, AIOImageData[] paramArrayOfAIOImageData, int paramInt) {}
   
   public void run()
   {
-    if (bxr.c(this.jdField_a_of_type_Bxs.a) != null) {
-      ((AIOGalleryScene)bxr.d(this.jdField_a_of_type_Bxs.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long);
+    if (bxq.e(this.jdField_a_of_type_Bxr.a) != null) {
+      ((AIOGalleryScene)bxq.f(this.jdField_a_of_type_Bxr.a)).a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Int);
     }
   }
 }

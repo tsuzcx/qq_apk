@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class uy
-  implements View.OnClickListener
+  extends ConfigObserver
 {
   public uy(AboutActivity paramAboutActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null)) {
-      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
-    }
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.app.a();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
 }
 

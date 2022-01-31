@@ -20,10 +20,10 @@ import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.util.InputMethodUtil;
-import euo;
-import eup;
-import euq;
-import eur;
+import eut;
+import euu;
+import euv;
+import euw;
 import java.lang.ref.SoftReference;
 import java.lang.reflect.Field;
 
@@ -56,13 +56,13 @@ public class QQCustomDialogWtihEmoticonInput
   
   protected void a(Context paramContext)
   {
-    eup localeup = new eup(this);
+    euu localeuu = new euu(this);
     if (this.jdField_a_of_type_Int == 7)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemAndEmojiEmoticonPanel(paramContext, localeup);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemAndEmojiEmoticonPanel(paramContext, localeuu);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemEmoticonPanel(paramContext, localeup);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemEmoticonPanel(paramContext, localeuu);
   }
   
   public void a(String paramString)
@@ -91,16 +91,16 @@ public class QQCustomDialogWtihEmoticonInput
         if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
         {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839067);
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new euq(this), 200L);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839035);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new euv(this), 200L);
         }
       }
       else {
         return;
       }
       InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839068);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new eur(this), 200L);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839036);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new euw(this), 200L);
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)) {
@@ -108,7 +108,7 @@ public class QQCustomDialogWtihEmoticonInput
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839067);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839035);
       return;
       InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
     }
@@ -118,7 +118,7 @@ public class QQCustomDialogWtihEmoticonInput
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    Object localObject1 = (RelativeLayout)findViewById(2131296914);
+    Object localObject1 = (RelativeLayout)findViewById(2131296910);
     paramInt = 0;
     while (paramInt < ((RelativeLayout)localObject1).getChildCount())
     {
@@ -130,7 +130,7 @@ public class QQCustomDialogWtihEmoticonInput
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QQTextBuilder.a);
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new euo(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new eut(this));
     Object localObject2 = Build.MODEL;
     localObject1 = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
     if (localObject1 == null) {
@@ -146,7 +146,7 @@ public class QQCustomDialogWtihEmoticonInput
       a((Context)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setBackgroundResource(2130837526);
       localObject1 = new RelativeLayout.LayoutParams(-1, (int)(((Context)localObject1).getResources().getDisplayMetrics().density * 150.0F));
-      ((FrameLayout)findViewById(2131296933)).addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel, (ViewGroup.LayoutParams)localObject1);
+      ((FrameLayout)findViewById(2131296929)).addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel, (ViewGroup.LayoutParams)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
       return;
     }

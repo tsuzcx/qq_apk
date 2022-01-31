@@ -1,19 +1,18 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOfflineFile.BaseActionBarOfflineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalOtherFile;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 class drt
   implements FMDialogUtil.FMDialogInterface
 {
-  drt(drs paramdrs) {}
+  drt(drs paramdrs, long paramLong) {}
   
   public void a()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.a.a.h();
+    this.jdField_a_of_type_Drs.a.a.a().a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Drs.a.h();
   }
   
   public void b() {}

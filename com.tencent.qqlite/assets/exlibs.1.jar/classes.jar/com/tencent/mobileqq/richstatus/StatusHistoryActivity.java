@@ -38,12 +38,12 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import ece;
-import ecf;
-import ecg;
-import ech;
-import eci;
-import ecj;
+import eck;
+import ecl;
+import ecm;
+import ecn;
+import eco;
+import ecp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -74,7 +74,7 @@ public class StatusHistoryActivity
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ech(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ecn(this);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -84,9 +84,9 @@ public class StatusHistoryActivity
   private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private SlideDetectListView.OnSlideListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener = new ecg(this);
+  private SlideDetectListView.OnSlideListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener = new ecm(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
-  private eci jdField_a_of_type_Eci;
+  private eco jdField_a_of_type_Eco;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   public boolean a;
   private long jdField_b_of_type_Long;
@@ -109,7 +109,7 @@ public class StatusHistoryActivity
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839389);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839354);
     if (paramInt == 3)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("暂无个性签名历史记录");
@@ -137,7 +137,7 @@ public class StatusHistoryActivity
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       return;
     }
-    a(1, 2131363353);
+    a(1, 2131363356);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.B();
   }
   
@@ -195,7 +195,7 @@ public class StatusHistoryActivity
       {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
         a(3);
-        this.jdField_a_of_type_Eci.notifyDataSetChanged();
+        this.jdField_a_of_type_Eco.notifyDataSetChanged();
       }
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
     }
@@ -221,7 +221,7 @@ public class StatusHistoryActivity
     {
       this.s = paramInt;
       if (this.s == 0) {
-        this.jdField_a_of_type_Eci.notifyDataSetChanged();
+        this.jdField_a_of_type_Eco.notifyDataSetChanged();
       }
     }
   }
@@ -308,7 +308,7 @@ public class StatusHistoryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentViewNoBackground(2130903661);
+    setContentViewNoBackground(2130903645);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.app.getManager(14));
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null)
     {
@@ -321,7 +321,7 @@ public class StatusHistoryActivity
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra(jdField_b_of_type_JavaLangString);
     this.e = getIntent().getIntExtra("key_profile_entry_type", 999);
     this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)getIntent().getParcelableExtra("key_allinone_pa"));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ecj(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ecp(this, null);
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver);
     setTitle("历史签名");
     if (this.app.a().equals(this.jdField_c_of_type_JavaLangString))
@@ -333,25 +333,25 @@ public class StatusHistoryActivity
       this.f = 23;
     }
     ReportController.b(this.app, "CliOper", "", "", "Modify_signature", "Clk_signature_list", this.f, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131298865));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837633);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903659, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297907));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131298815));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837635);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903643, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298810));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298860));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837914);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298809));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130903274, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollListener(this);
-    this.jdField_a_of_type_Eci = new eci(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Eci);
+    this.jdField_a_of_type_Eco = new eco(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Eco);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new ece(this, getResources().getDisplayMetrics().widthPixels / 6));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new eck(this, getResources().getDisplayMetrics().widthPixels / 6));
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
-    this.jdField_b_of_type_AndroidOsHandler = new ecf(this, Looper.myLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new ecl(this, Looper.myLooper());
     a(true, false);
     return true;
   }
@@ -391,7 +391,7 @@ public class StatusHistoryActivity
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
       a(2);
     }
-    a(1, 2131363353);
+    a(1, 2131363356);
     return true;
   }
   
@@ -411,7 +411,7 @@ public class StatusHistoryActivity
       return;
     }
     this.o = 1;
-    this.jdField_a_of_type_Eci.notifyDataSetChanged();
+    this.jdField_a_of_type_Eco.notifyDataSetChanged();
   }
 }
 

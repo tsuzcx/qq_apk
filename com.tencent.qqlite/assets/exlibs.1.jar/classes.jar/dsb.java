@@ -1,45 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.DataLineHandler.EFILETYPE;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOnlineFile.BaseActionBarOnlineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
-public final class dsb
+public class dsb
   implements View.OnClickListener
 {
-  public dsb(String paramString, DataLineHandler paramDataLineHandler, BaseActivity paramBaseActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
+  public dsb(BaseActionBarOnlineFile paramBaseActionBarOnlineFile) {}
   
   public void onClick(View paramView)
   {
-    int i = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
-    DataLineHandler.EFILETYPE localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_FILE;
-    switch (i)
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.h();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, localEFILETYPE);
-      if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
-      {
-        paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
-        if (paramView.a.isShowing()) {
-          paramView.a.dismiss();
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.e();
-      }
+      FileManagerReporter.a("0X8004BBC");
       return;
-      localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_IMAGE;
-      continue;
-      localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_VIDEO;
-      continue;
-      localEFILETYPE = DataLineHandler.EFILETYPE.FILE_TYPE_AUDIO;
     }
+    FileManagerReporter.a("0X8004BD2");
   }
 }
 

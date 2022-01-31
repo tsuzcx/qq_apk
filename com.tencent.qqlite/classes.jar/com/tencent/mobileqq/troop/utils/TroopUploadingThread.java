@@ -225,8 +225,8 @@ public class TroopUploadingThread
     {
       localDataOutputStream = new DataOutputStream(paramHttpURLConnection.getOutputStream());
       m = paramArrayOfByte.length;
-      i = 0;
       j = 0;
+      i = 0;
     }
     catch (IOException paramArrayOfByte)
     {
@@ -258,23 +258,23 @@ public class TroopUploadingThread
           return -1;
         }
         label89:
-        if (m - j <= 10240) {
+        if (m - i <= 10240) {
           break label186;
         }
         label186:
-        for (int k = 10240;; k = m - j)
+        for (int k = 10240;; k = m - i)
         {
-          localDataOutputStream.write(paramArrayOfByte, j, k);
-          j += k;
-          if (j * 100 / m - i > 0)
+          localDataOutputStream.write(paramArrayOfByte, i, k);
+          i += k;
+          if (i * 100 / m - j > 0)
           {
-            paramUploadItem.jdField_a_of_type_Int = i;
+            paramUploadItem.jdField_a_of_type_Int = j;
             TroopUploadingThread.UploadState localUploadState = new TroopUploadingThread.UploadState();
             localUploadState.jdField_a_of_type_Int = 0;
-            localUploadState.b = i;
+            localUploadState.b = j;
             this.jdField_a_of_type_ComTencentMobileqqTroopUtilsUploadingTask.notifyObservers(localUploadState);
           }
-          i = j * 100 / m;
+          j = i * 100 / m;
           break;
         }
         try
@@ -309,7 +309,7 @@ public class TroopUploadingThread
         return 103;
       }
     }
-    if (j < m) {}
+    if (i < m) {}
     return -1;
   }
   

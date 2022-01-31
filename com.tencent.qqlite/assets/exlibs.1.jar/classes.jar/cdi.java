@@ -1,44 +1,100 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class cdi
-  implements SlideDetectListView.OnScrollToTopListener
+  extends DiscussionObserver
 {
-  public cdi(NotificationView paramNotificationView) {}
+  private cdi(DiscussionView paramDiscussionView) {}
   
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  protected void a()
   {
-    if ((NotificationView.a(this.a) != null) && (paramInt == 0) && (NotificationView.a(this.a) == NotificationView.a(this.a).getCount())) {
-      NotificationView.b(this.a);
-    }
-    NotificationView.a(this.a, paramInt);
-    if (paramInt != 0)
-    {
-      NotificationView.a(this.a).c();
-      NotificationView.a(this.a).a();
-    }
-    while (!NotificationView.a(this.a).a()) {
-      return;
-    }
-    NotificationView.a(this.a).b();
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(boolean paramBoolean)
   {
-    NotificationView.b(this.a, paramInt1 + paramInt2 - 1);
-    if (paramInt1 > 1) {
-      GroupSystemMsgController.a().a();
+    if (paramBoolean) {
+      this.a.a();
     }
-    while (!this.a.b) {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (paramBoolean)
+      {
+        DiscussionView.a(this.a).a(0);
+        this.a.a(100, 800L);
+      }
+    }
+    else
+    {
       return;
     }
-    GroupSystemMsgController.a().f();
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.B();
+    this.a.b(2131363356);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,29 +1,15 @@
-import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.biz.webviewplugin.Share;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.sdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
-public class so
-  implements WXShareHelper.WXShareListener
+class so
+  implements Runnable
 {
-  public so(Share paramShare) {}
+  so(sn paramsn, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.l == null) || (!this.a.l.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131363695);
-      return;
-    }
-    QRUtils.a(2, 2131363694);
+    this.jdField_a_of_type_Sn.a.a(this.jdField_a_of_type_Sn.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 

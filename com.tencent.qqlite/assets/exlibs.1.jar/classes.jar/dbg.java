@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class dbg
-  implements ConditionSearchManager.ISearchListener
+  implements View.OnClickListener
 {
-  public dbg(SearchResultActivity paramSearchResultActivity) {}
+  public dbg(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean1)
-    {
-      this.a.b = 3;
-      this.a.jdField_a_of_type_Dbi.notifyDataSetChanged();
-      return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    paramList = this.a;
-    if (paramBoolean2) {}
-    for (int i = 1;; i = 0)
-    {
-      paramList.b = i;
-      break;
-    }
+    this.a.a();
   }
 }
 

@@ -1,39 +1,61 @@
-import android.view.View;
-import android.widget.Button;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class atl
-  implements InputMethodRelativeLayout.onSizeChangedListenner
+  implements TextWatcher
 {
   public atl(LoginActivity paramLoginActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "onSizeChange isOpen:" + paramBoolean + " preH:" + paramInt1 + " curH:" + paramInt2);
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      LoginActivity.a(this.a, null);
     }
-    if (paramBoolean)
+    do
     {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_AndroidWidgetButton.getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[1];
-      paramInt2 = paramInt1 - i + this.a.jdField_a_of_type_AndroidWidgetButton.getHeight() - paramInt2;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity", 2, "onSizeChange btnY:" + paramInt1 + " layoutY:" + i + " paddingY:" + paramInt2);
+      do
+      {
+        return;
+      } while (paramCharSequence == null);
+      paramCharSequence = paramCharSequence.toString();
+    } while ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null));
+    paramInt1 = 0;
+    label51:
+    SimpleAccount localSimpleAccount;
+    if (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+      if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+        break label105;
       }
-      if (paramInt2 > 0) {
-        this.a.c.setPadding(this.a.c.getPaddingLeft(), this.a.c.getPaddingTop() - paramInt2, this.a.c.getPaddingRight(), this.a.c.getPaddingBottom());
-      }
-      this.a.b.setVisibility(8);
-      return;
     }
-    this.a.b.setVisibility(0);
-    this.a.c.setPadding(0, 0, 0, 0);
+    label105:
+    while (!paramCharSequence.equals(this.a.app.b(localSimpleAccount.getUin())))
+    {
+      paramInt1 += 1;
+      break label51;
+      break;
+    }
+    if ((localSimpleAccount != null) && (localSimpleAccount.isLogined()))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonVisible(false);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+    }
   }
 }
 

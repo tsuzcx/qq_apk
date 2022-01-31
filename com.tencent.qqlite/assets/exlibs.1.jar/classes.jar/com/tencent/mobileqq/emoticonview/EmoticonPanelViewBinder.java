@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawableDownListener;
 import com.tencent.qphone.base.util.QLog;
-import deu;
+import dfa;
 
 public abstract class EmoticonPanelViewBinder
   extends EmoticonViewBinder
@@ -24,7 +24,7 @@ public abstract class EmoticonPanelViewBinder
   public EmoticonPanelViewBinder(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramInt1);
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new deu(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new dfa(this);
     if (paramContext == null) {
       throw new IllegalArgumentException("Context MUST NOT be null!!!");
     }
@@ -85,7 +85,7 @@ public abstract class EmoticonPanelViewBinder
       View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903199, null);
       try
       {
-        ((ImageView)localView.findViewById(2131297131)).setImageResource(2130837528);
+        ((ImageView)localView.findViewById(2131297127)).setImageResource(2130837528);
         localObject = localView;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -97,11 +97,11 @@ public abstract class EmoticonPanelViewBinder
         QLog.e("EmoticonPanelViewBinder", 2, "load image error: " + localOutOfMemoryError.getMessage());
         localObject = localView;
         continue;
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903594, null);
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903581, null);
         continue;
         localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903184, null);
         continue;
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903591, null);
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903578, null);
         continue;
         localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
         ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);

@@ -1,29 +1,40 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class dau
-  implements ConditionSearchManager.ISearchListener
+  implements Runnable
 {
   public dau(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public void run()
   {
-    this.a.d();
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 2131364414, 0).b(this.a.getTitleBarHeight());
-      return;
+    Object localObject = ((FriendManager)this.a.app.getManager(8)).a(this.a.app.a());
+    if (localObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        localObject = ((Card)localObject).strLocationCodes.split("-");
+        localObject[3] = "0";
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b((String[])localObject);
+        Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
+        localMessage.obj = new Object[] { localObject, str };
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        return;
+      }
+      catch (Exception localException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(ConditionSearchFriendActivity.c(), 2, "fillLocationData | exception: ", localException);
+        return;
+      }
     }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      QQToast.a(this.a, 2131364415, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(), paramList, paramBoolean2);
+    QLog.d(ConditionSearchFriendActivity.c(), 2, "fillLocationData | card is null");
   }
 }
 

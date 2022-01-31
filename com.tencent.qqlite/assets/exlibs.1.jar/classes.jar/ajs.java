@@ -1,15 +1,22 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
 
 public class ajs
-  implements Comparator
+  implements TextWatcher
 {
   private ajs(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public int a(ajq paramajq1, ajq paramajq2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    return paramajq1.c.compareToIgnoreCase(paramajq2.c);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

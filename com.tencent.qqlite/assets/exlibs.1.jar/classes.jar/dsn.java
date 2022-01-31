@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarWeiYunFile.BaseActionBarWeiyunFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class dsn
-  implements View.OnClickListener
+class dsn
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dsn(FileBrowserActivity paramFileBrowserActivity) {}
+  dsn(dsm paramdsm) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.onBackPressed();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.a.h();
   }
+  
+  public void b() {}
 }
 
 

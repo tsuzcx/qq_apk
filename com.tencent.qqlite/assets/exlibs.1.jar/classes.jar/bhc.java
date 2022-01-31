@@ -1,19 +1,25 @@
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bhc
   implements Runnable
 {
-  public bhc(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  public bhc(RegisterBaseActivity paramRegisterBaseActivity) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131364125, new bhd(this));
-    localQQCustomDialog.show();
+    try
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

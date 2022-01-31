@@ -1,63 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
 
 public class cfc
-  extends GameCenterObserver
+  implements DialogInterface.OnClickListener
 {
   public cfc(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-      i = this.a.b() + this.a.c();
-      this.a.a(34, 16, Integer.valueOf(i));
-    }
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 1: 
-    case 4: 
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (i <= 0);
-              this.a.a(34, 17, Boolean.valueOf(false));
-              this.a.a(34, 18, Boolean.valueOf(false));
-              return;
-            } while (i != 0);
-            paramBoolean1 = MainAssistObserver.a(this.a);
-            this.a.a(34, 17, Boolean.valueOf(paramBoolean1));
-          } while (!paramBoolean1);
-          this.a.a(34, 18, Boolean.valueOf(false));
-          this.a.a(34, 16, Integer.valueOf(0));
-          return;
-        } while (i != 0);
-        paramBoolean1 = MainAssistObserver.b(this.a);
-        this.a.a(34, 18, Boolean.valueOf(paramBoolean1));
-      } while (!paramBoolean1);
-      this.a.a(34, 17, Boolean.valueOf(false));
-      this.a.a(34, 16, Integer.valueOf(0));
-      return;
-    }
-    this.a.g();
-    this.a.f();
+    Intent localIntent = new Intent(this.a.a, GesturePWDSettingActivity.class);
+    localIntent.putExtra("key_reset", true);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

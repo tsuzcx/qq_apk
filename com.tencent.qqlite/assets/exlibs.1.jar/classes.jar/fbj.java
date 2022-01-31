@@ -1,20 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import com.tencent.open.agent.FriendChooser;
 
 public class fbj
-  implements View.OnTouchListener
+  extends Handler
 {
-  public fbj(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public fbj(FriendChooser paramFriendChooser) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.e();
+    switch (paramMessage.what)
+    {
     }
-    return true;
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+    }
   }
 }
 

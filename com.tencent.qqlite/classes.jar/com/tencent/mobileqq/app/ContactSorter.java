@@ -7,8 +7,8 @@ import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.utils.ChnToSpell;
-import cqz;
-import cra;
+import crf;
+import crg;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,8 +22,8 @@ public class ContactSorter
   
   static
   {
-    a = new cqz();
-    b = new cra();
+    a = new crf();
+    b = new crg();
   }
   
   private static int a(char paramChar)

@@ -1,20 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class ws
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public ws(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (AddFriendLogicActivity.c(this.a) == 1)
-    {
-      this.a.finish();
-      return;
-    }
-    AddFriendLogicActivity.a(this.a);
+    this.a.finish();
   }
 }
 

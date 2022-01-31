@@ -1,13 +1,36 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileWeiYunImageExpandableListAdapter.ImageHolder;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-class dig
-  implements Runnable
+public class dig
+  implements View.OnClickListener
 {
-  dig(dif paramdif) {}
+  public dig(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QfileBaseCloudFileTabView.a(this.a.a);
+    Object localObject = paramView.getTag();
+    WeiYunFileInfo localWeiYunFileInfo = null;
+    int i = 0;
+    if ((localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
+    {
+      paramView = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
+      i = paramView.c;
+      localWeiYunFileInfo = (WeiYunFileInfo)paramView.a;
+    }
+    for (;;)
+    {
+      this.a.a(localWeiYunFileInfo, i);
+      return;
+      if ((localObject instanceof QfileWeiYunImageExpandableListAdapter.ImageHolder))
+      {
+        localWeiYunFileInfo = (WeiYunFileInfo)((QfileWeiYunImageExpandableListAdapter.ImageHolder)paramView.getTag()).a;
+        i = -1;
+      }
+    }
   }
 }
 

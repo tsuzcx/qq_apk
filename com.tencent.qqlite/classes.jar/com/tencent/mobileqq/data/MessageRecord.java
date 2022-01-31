@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.app.message.MsgProxyUtils;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -382,6 +383,9 @@ public class MessageRecord
   
   public boolean isSend()
   {
+    if ((AnonymousChatHelper.a(this)) && (AnonymousChatHelper.b(this))) {
+      return true;
+    }
     return MsgUtils.a(this.issend);
   }
   

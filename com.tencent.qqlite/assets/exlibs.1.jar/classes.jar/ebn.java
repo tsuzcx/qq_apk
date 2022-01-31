@@ -1,25 +1,34 @@
+import PersonalState.HotRishState;
+import android.os.Handler;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ebn
-  implements IStatusListener
+  extends StatusObserver
 {
   public ebn(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus)
+  protected void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if (paramInt != 100)
-    {
-      EditActivity.a(this.a, null);
-      EditActivity.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("get_hot_rich_status", 2, "EditActivity.mHotRichStatusObserver.onGetHotStatus, isSuccess:" + paramBoolean);
     }
-    EditActivity.b(this.a, true);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (!EditActivity.c(this.a)))
+    {
+      EditActivity.a(this.a).removeMessages(1);
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        localArrayList.add(Integer.valueOf(((HotRishState)paramArrayList.next()).iActId));
+      }
+      EditActivity.a(this.a).clear();
+      EditActivity.a(this.a).addAll(localArrayList);
+      EditActivity.b(this.a);
+    }
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

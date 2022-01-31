@@ -27,8 +27,8 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dxi;
-import dxj;
+import dxo;
+import dxp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -157,7 +157,7 @@ public class TroopAssistantManager
     {
       localObject1 = ???.a(TroopAssistantData.class, false, null, null, null, null, "lastmsgtime desc", null);
       if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        Collections.sort((List)localObject1, new dxj(this));
+        Collections.sort((List)localObject1, new dxp(this));
       }
     }
     catch (Exception ???)
@@ -264,7 +264,7 @@ public class TroopAssistantManager
         if (b())
         {
           ((RecentUser)localObject).lastmsgtime = 9223372036854775805L;
-          label148:
+          ((RecentUser)localObject).showUpTime = 9223372036854775805L;
           localRecentUserProxy.a((RecentUser)localObject);
         }
       }
@@ -280,17 +280,18 @@ public class TroopAssistantManager
       bool = false;
       break;
       paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface == null)
-      {
-        if ((((RecentUser)localObject).lastmsgtime != 9223372036854775805L) && (((RecentUser)localObject).lastmsgtime > 0L)) {
-          break label148;
+      if (paramQQAppInterface == null) {
+        if ((((RecentUser)localObject).lastmsgtime == 9223372036854775805L) || (((RecentUser)localObject).lastmsgtime <= 0L)) {
+          ((RecentUser)localObject).lastmsgtime = (System.currentTimeMillis() / 1000L);
         }
-        ((RecentUser)localObject).lastmsgtime = (System.currentTimeMillis() / 1000L);
-        break label148;
       }
-      ((RecentUser)localObject).lastmsgtime = paramQQAppInterface.lastmsgtime;
-      ((RecentUser)localObject).lastmsgdrafttime = paramQQAppInterface.lastdrafttime;
-      break label148;
+      for (;;)
+      {
+        ((RecentUser)localObject).showUpTime = 0L;
+        break;
+        ((RecentUser)localObject).lastmsgtime = paramQQAppInterface.lastmsgtime;
+        ((RecentUser)localObject).lastmsgdrafttime = paramQQAppInterface.lastdrafttime;
+      }
       if (paramInt != 3)
       {
         paramQQAppInterface = localRecentUserProxy.b(AppConstants.U, 5000);
@@ -365,7 +366,7 @@ public class TroopAssistantManager
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.b(new dxi(this, paramQQAppInterface));
+    ThreadManager.b(new dxo(this, paramQQAppInterface));
   }
   
   private void l(QQAppInterface paramQQAppInterface)

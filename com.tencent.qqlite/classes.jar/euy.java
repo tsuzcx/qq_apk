@@ -1,24 +1,19 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import java.lang.ref.SoftReference;
+import java.util.TimerTask;
 
 public class euy
-  implements View.OnClickListener
+  extends TimerTask
 {
-  int jdField_a_of_type_Int;
+  public euy(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
   
-  public euy(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
+    if (localContext != null) {
+      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
     }
   }
 }

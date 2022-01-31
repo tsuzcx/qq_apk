@@ -1,26 +1,43 @@
-import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Executor;
 
 public class cwt
-  implements Comparator
+  implements Executor
 {
-  public cwt(RecentUserCache paramRecentUserCache) {}
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  protected void a()
   {
-    paramEntity1 = (RecentUser)paramEntity1;
-    paramEntity2 = (RecentUser)paramEntity2;
-    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
-    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
-    if (l1 < l2) {
-      return 1;
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null) {
+        ThreadManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
     }
-    if (l1 == l2) {
-      return 0;
+    finally {}
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilQueue.offer(new cwu(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        a();
+      }
+      return;
     }
-    return -1;
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 

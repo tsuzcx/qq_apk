@@ -1,22 +1,46 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dks
-  implements Runnable
+  extends IClickListener_Ver51
 {
-  public dks(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView) {}
+  public dks(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
   
-  public void run()
+  public void a()
   {
-    HashMap localHashMap1 = new HashMap();
-    FileCategoryUtil.a(AppConstants.ay, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
-    FileCategoryUtil.a(localHashMap1);
-    HashMap localHashMap2 = new HashMap();
-    FileCategoryUtil.a(AppConstants.ay, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4a|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
-    FileCategoryUtil.a(localHashMap2);
-    QfileLocalFileMediaTabView.a(this.a, new dkt(this, localHashMap1, localHashMap2));
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

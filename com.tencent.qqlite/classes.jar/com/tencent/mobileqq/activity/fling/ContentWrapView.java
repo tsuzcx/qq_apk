@@ -5,13 +5,13 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import cef;
+import cel;
 
 public class ContentWrapView
   extends RelativeLayout
 {
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private cef jdField_a_of_type_Cef;
+  private cel jdField_a_of_type_Cel;
   
   public ContentWrapView(Context paramContext)
   {
@@ -32,13 +32,13 @@ public class ContentWrapView
   
   private void a()
   {
-    cef localcef = this.jdField_a_of_type_Cef;
-    if (localcef == null) {}
-    while (!localcef.jdField_a_of_type_Boolean) {
+    cel localcel = this.jdField_a_of_type_Cel;
+    if (localcel == null) {}
+    while (!localcel.jdField_a_of_type_Boolean) {
       return;
     }
-    cef.a(localcef).setTranslate(localcef.jdField_a_of_type_Float, localcef.b);
-    localcef.jdField_a_of_type_Boolean = false;
+    cel.a(localcel).setTranslate(localcel.jdField_a_of_type_Float, localcel.b);
+    localcel.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
@@ -48,34 +48,34 @@ public class ContentWrapView
   
   public void draw(Canvas paramCanvas)
   {
-    cef localcef = this.jdField_a_of_type_Cef;
-    if (localcef != null)
+    cel localcel = this.jdField_a_of_type_Cel;
+    if (localcel != null)
     {
       a();
-      paramCanvas.concat(cef.a(localcef));
+      paramCanvas.concat(cel.a(localcel));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_Cef == null) {
-      this.jdField_a_of_type_Cef = new cef();
+    if (this.jdField_a_of_type_Cel == null) {
+      this.jdField_a_of_type_Cel = new cel();
     }
   }
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_Cef != null) {
-      return this.jdField_a_of_type_Cef.jdField_a_of_type_Float;
+    if (this.jdField_a_of_type_Cel != null) {
+      return this.jdField_a_of_type_Cel.jdField_a_of_type_Float;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_Cef != null) {
-      return this.jdField_a_of_type_Cef.b;
+    if (this.jdField_a_of_type_Cel != null) {
+      return this.jdField_a_of_type_Cel.b;
     }
     return 0.0F;
   }
@@ -83,11 +83,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    cef localcef = this.jdField_a_of_type_Cef;
-    if (localcef.jdField_a_of_type_Float != paramFloat)
+    cel localcel = this.jdField_a_of_type_Cel;
+    if (localcel.jdField_a_of_type_Float != paramFloat)
     {
-      localcef.jdField_a_of_type_Float = paramFloat;
-      localcef.jdField_a_of_type_Boolean = true;
+      localcel.jdField_a_of_type_Float = paramFloat;
+      localcel.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }
@@ -102,11 +102,11 @@ public class ContentWrapView
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    cef localcef = this.jdField_a_of_type_Cef;
-    if (localcef.b != paramFloat)
+    cel localcel = this.jdField_a_of_type_Cel;
+    if (localcel.b != paramFloat)
     {
-      localcef.b = paramFloat;
-      localcef.jdField_a_of_type_Boolean = true;
+      localcel.b = paramFloat;
+      localcel.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }

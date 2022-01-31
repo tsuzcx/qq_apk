@@ -1,20 +1,42 @@
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class cct
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
+  private float jdField_a_of_type_Float;
+  private float b;
+  
   public cct(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (SystemMsgListAdapter.ViewHolder)paramView.getTag();
-    if (paramView.a.msg_type.get() == 1) {
-      this.a.a(paramView);
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a(paramMotionEvent.getRawY()))
+      {
+        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+        this.b = paramMotionEvent.getRawY();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.sendEmptyMessageDelayed(1013, 500L);
+      }
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+      continue;
+      if (paramMotionEvent.getAction() == 2)
+      {
+        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+        }
+      }
+      else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+      }
     }
   }
 }

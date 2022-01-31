@@ -4,14 +4,14 @@ import android.content.Context;
 import android.os.Build;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
-import fgm;
+import fgr;
 
 public class BadgeUtils
 {
   public static void a(Context paramContext, int paramInt)
   {
     if (Build.MANUFACTURER.equalsIgnoreCase("samsung")) {
-      ThreadManager.b(new fgm(paramContext, paramInt));
+      ThreadManager.b(new fgr(paramContext, paramInt));
     }
     while (!Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
       return;

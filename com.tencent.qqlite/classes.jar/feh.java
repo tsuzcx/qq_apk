@@ -1,39 +1,19 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class feh
   implements Runnable
 {
-  public feh(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public feh(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    try
+    if (!this.a.a)
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
-      if (localTMAssistantDownloadTaskInfo != null)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+      if (!MyAppApi.a().b()) {
+        this.a.a(true);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
-      }
-    }
-    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      this.a.a = true;
     }
   }
 }

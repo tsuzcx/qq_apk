@@ -1,76 +1,37 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class etv
-  extends BaseAdapter
+  extends FriendListObserver
 {
-  public etv(QQCustomDialog paramQQCustomDialog) {}
+  private final JumpAction b;
   
-  public int getCount()
+  public etv(JumpAction paramJumpAction1, JumpAction paramJumpAction2)
   {
-    if (this.a.items != null) {
-      return this.a.items.length;
-    }
-    return 0;
+    this.b = paramJumpAction2;
   }
   
-  public Object getItem(int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.inflater == null) {
-      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if ((!paramBoolean) || (JumpAction.a(this.a) == null) || (!JumpAction.a(this.a).containsKey(paramString))) {}
+    do
     {
-      paramViewGroup = this.a.inflater.inflate(this.a.getDialogListItemLayout(), null);
-      paramView = new euc(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131296920));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (euc)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.items[paramInt]);
-      paramView.a.setOnClickListener(new eub(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.items.length != 1) {
-        break label212;
+      return;
+      JumpAction.a(this.a).remove(paramString);
+      if (JumpAction.a(this.a).size() == 0) {
+        JumpAction.a(this.a).c(JumpAction.a(this.a));
       }
-      paramView.a.setBackgroundResource(2130837962);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label212:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130837963);
-      } else if (paramInt == this.a.items.length - 1) {
-        paramView.a.setBackgroundResource(2130837961);
-      }
-    }
+      Object localObject = Uri.parse(JumpAction.a(this.a) + "&uin=" + paramString);
+      localObject = new Intent(this.b.ck, (Uri)localObject);
+      JumpAction.a(this.a).sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+    } while (!QLog.isColorLevel());
+    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.ck);
   }
 }
 

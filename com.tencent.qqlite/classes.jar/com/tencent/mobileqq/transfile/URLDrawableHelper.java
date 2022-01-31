@@ -153,7 +153,7 @@ public class URLDrawableHelper
     if (localBitmap1 == null) {}
     try
     {
-      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130837909);
+      localBitmap1 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130837905);
       localBitmap3 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -200,7 +200,7 @@ public class URLDrawableHelper
       }
       paramString.setAutoDownload(true);
     }
-    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131363049), "qqsetting_auto_receive_pic_key", true);
+    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131363052), "qqsetting_auto_receive_pic_key", true);
     boolean bool1 = bool2;
     if (NetworkUtil.b(BaseApplication.getContext()) != 1) {
       if (!bool3) {
@@ -549,7 +549,7 @@ public class URLDrawableHelper
   public static boolean a(Context paramContext)
   {
     boolean bool1 = NetworkUtil.c(BaseApplication.getContext());
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131363049), "qqsetting_auto_receive_pic_key", true);
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131363052), "qqsetting_auto_receive_pic_key", true);
     return (bool1) && (!bool2);
   }
   

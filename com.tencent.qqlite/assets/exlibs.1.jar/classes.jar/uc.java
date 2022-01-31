@@ -1,13 +1,13 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class uc
   implements Runnable
 {
-  public uc(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong1, long paramLong2, long paramLong3) {}
+  public uc(LiteTransferWrapper paramLiteTransferWrapper, long paramLong1, long paramLong2, int paramInt1, int paramInt2, short paramShort) {}
   
   public void run()
   {
-    LiteTransferListenerCallback.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.b, this.c);
+    LiteTransferWrapper.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Short);
   }
 }
 

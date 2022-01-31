@@ -1,27 +1,17 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bnp
-  extends Handler
+  implements View.OnClickListener
 {
   public bnp(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (this.a.o != 1)
-    {
-      paramMessage = new Intent();
-      paramMessage.putExtra("finish_chat_setting", true);
-      this.a.a.setResult(-1, paramMessage);
-    }
-    this.a.a.finish();
+    ReportController.b(this.a.app, "P_CliOper", "Grp_mber", "", "mber_card", "Clk_set", 0, 0, this.a.c, "", "", "");
+    this.a.k();
   }
 }
 

@@ -1,72 +1,23 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.search.ContactsSearchableRecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class ant
-  extends SearchResultDialog
+  implements Animation.AnimationListener
 {
-  public ant(ForwardRecentActivity paramForwardRecentActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
+  public ant(ForwardRecentActivity paramForwardRecentActivity, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.requestLayout();
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (ForwardRecentActivity.a(this.a) != null)
-    {
-      Iterator localIterator = ForwardRecentActivity.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        RecentUser localRecentUser = (RecentUser)localIterator.next();
-        long l = 0L;
-        switch (localRecentUser.type)
-        {
-        }
-        for (;;)
-        {
-          localArrayList.add(new ContactsSearchableRecentUser(paramContext, paramQQAppInterface, localRecentUser, l, a()));
-          break;
-          l = 38654705664L;
-          continue;
-          l = 12884901888L;
-          continue;
-          l = 21474836480L;
-          continue;
-          l = 21474836480L;
-        }
-      }
-    }
-    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
-      return localArrayList;
-    }
-    if (ForwardRecentActivity.a(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 34359738368L, paramInt, false, null));
-    }
-    if (ForwardRecentActivity.b(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 30064771072L));
-    }
-    if (ForwardRecentActivity.c(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 25769803776L, paramInt, null, a()));
-    }
-    if (ForwardRecentActivity.d(this.a)) {
-      localArrayList.addAll(b(paramContext, paramQQAppInterface, 17179869184L, paramInt));
-    }
-    if (ForwardRecentActivity.e(this.a)) {
-      localArrayList.addAll(a(paramContext, paramQQAppInterface, 17179869184L, paramInt));
-    }
-    return localArrayList;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

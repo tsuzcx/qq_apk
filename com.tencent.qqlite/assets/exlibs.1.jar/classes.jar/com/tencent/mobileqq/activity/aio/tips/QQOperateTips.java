@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.tips;
 
 import android.app.Activity;
 import android.view.View;
-import can;
+import cat;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
@@ -26,7 +26,6 @@ public class QQOperateTips
   private static final String jdField_a_of_type_JavaLangString = QQOperateTips.class.getSimpleName();
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = -1L;
-  private Activity jdField_a_of_type_AndroidAppActivity;
   private ChatAdapter1 jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
@@ -42,13 +41,12 @@ public class QQOperateTips
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new can(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cat(this));
   }
   
   private void b()

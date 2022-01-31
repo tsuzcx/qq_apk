@@ -1,31 +1,15 @@
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class cuy
-  implements SosoInterface.OnLocationListener
+  implements Runnable
 {
   public cuy(QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo, byte[] paramArrayOfByte, SosoInterface paramSosoInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBS", 2, "onLocationFinish result:" + paramInt);
-    }
-    com.tencent.mobileqq.app.LBSHandler.A = paramInt;
-    paramSosoInterface = QQAppInterface.a(this.a);
-    if (paramInt == 0) {}
-    try
-    {
-      QQAppInterface.a(this.a, paramArrayOfByte);
-      QQAppInterface.a(this.a, paramSosoLbsInfo);
-      QQAppInterface.a(this.a, QQAppInterface.a(paramSosoLbsInfo));
-      QQAppInterface.a(this.a).notifyAll();
-      return;
-    }
-    finally {}
+    QQToast.a(QQAppInterface.c(this.a).getApplicationContext(), 2131364178, 3000).a();
   }
 }
 

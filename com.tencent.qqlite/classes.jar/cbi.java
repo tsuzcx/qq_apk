@@ -1,34 +1,18 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class cbi
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public cbi(SearchResultDialog paramSearchResultDialog) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = SearchResultDialog.a(this.a).getText().toString();
-    String str = paramEditable.trim();
-    if (TextUtils.isEmpty(str)) {
-      this.a.a(paramEditable, paramEditable);
-    }
-    while (paramEditable.equals(""))
-    {
-      this.a.findViewById(2131297986).setVisibility(8);
-      return;
-      this.a.a(str, paramEditable);
-    }
-    this.a.findViewById(2131297986).setVisibility(0);
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

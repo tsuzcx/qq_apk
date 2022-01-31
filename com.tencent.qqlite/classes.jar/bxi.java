@@ -1,18 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
 
 public class bxi
   implements DialogInterface.OnClickListener
 {
-  public bxi(TextItemBuilder paramTextItemBuilder, MessageForText paramMessageForText) {}
+  public bxi(TextItemBuilder paramTextItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

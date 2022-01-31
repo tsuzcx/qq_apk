@@ -1,15 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class awr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public awr(NearbyActivity paramNearbyActivity) {}
+  public awr(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.Leba.a = false;
-    NearbyActivity.a(this.a).a();
+    if (!NetworkUtil.e(NearbyPeopleListFrame.a(this.a)))
+    {
+      NearbyPeopleListFrame.a(this.a, 1, NearbyPeopleListFrame.b(this.a).getString(2131363516));
+      return;
+    }
+    this.a.a(false, true);
   }
 }
 

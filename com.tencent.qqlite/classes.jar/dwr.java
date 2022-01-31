@@ -1,51 +1,72 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.io.IOException;
-import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class dwr
-  implements Runnable
+  extends Thread
 {
-  public dwr(QQApiPlugin paramQQApiPlugin, String paramString, Map paramMap, Runnable paramRunnable) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int c;
+  int d;
+  
+  public dwr(MediaApiPlugin paramMediaApiPlugin, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
   
   public void run()
   {
-    label143:
     try
     {
-      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label115;
+      JSONObject localJSONObject = MediaApiPlugin.a(this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      if (isInterrupted()) {
+        throw new InterruptedException();
       }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label143;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      Object localObject;
-      break label115;
+      System.gc();
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "{}" });
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
+      return;
     }
     catch (IOException localIOException)
     {
-      label115:
-      for (;;) {}
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
+      return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    catch (JSONException localJSONException)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
+      if ((localActivity != null) && (!localActivity.isFinishing())) {
+        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "{}" });
+      }
+      return;
+    }
+    finally
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
+      }
+    }
   }
 }
 

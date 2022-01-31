@@ -19,7 +19,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import yw;
+import yu;
 
 public class AuthDevEnableCompleteActivity
   extends IphoneTitleBarActivity
@@ -53,7 +53,7 @@ public class AuthDevEnableCompleteActivity
       }
       return null;
     }
-    View localView = getLayoutInflater().inflate(2130903493, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    View localView = getLayoutInflater().inflate(2130903481, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     if ((localView == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -61,11 +61,11 @@ public class AuthDevEnableCompleteActivity
       }
       return null;
     }
-    localView.setOnClickListener(new yw(this));
+    localView.setOnClickListener(new yu(this));
     ImageView localImageView = (ImageView)localView.findViewById(2131296457);
     TextView localTextView1 = (TextView)localView.findViewById(2131296455);
-    TextView localTextView2 = (TextView)localView.findViewById(2131298210);
-    TextView localTextView3 = (TextView)localView.findViewById(2131296957);
+    TextView localTextView2 = (TextView)localView.findViewById(2131298170);
+    TextView localTextView3 = (TextView)localView.findViewById(2131296953);
     if ((localImageView == null) || (localTextView1 == null) || (localTextView2 == null) || (localTextView3 == null))
     {
       if (QLog.isColorLevel()) {
@@ -75,17 +75,17 @@ public class AuthDevEnableCompleteActivity
     }
     localImageView.setVisibility(0);
     localTextView1.setText(paramString1);
-    localTextView2.setText(getString(2131364255));
+    localTextView2.setText(getString(2131364240));
     localTextView3.setText(paramString2);
     return localView;
   }
   
   private void c()
   {
-    setContentView(2130903488);
-    setTitle(2131364204);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298214));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298213));
+    setContentView(2130903476);
+    setTitle(2131364189);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298174));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298173));
     if ((this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -134,7 +134,7 @@ public class AuthDevEnableCompleteActivity
           i1 += 1;
           localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131296449);
           if (i3 == 1) {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130837928);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130837924);
           }
           for (;;)
           {
@@ -143,11 +143,11 @@ public class AuthDevEnableCompleteActivity
             bool1 = false;
             break label148;
             if (i1 == 1) {
-              ((RelativeLayout)localObject2).setBackgroundResource(2130837931);
+              ((RelativeLayout)localObject2).setBackgroundResource(2130837927);
             } else if (i2 == i3 - 1) {
-              ((RelativeLayout)localObject2).setBackgroundResource(2130837930);
+              ((RelativeLayout)localObject2).setBackgroundResource(2130837926);
             } else {
-              ((RelativeLayout)localObject2).setBackgroundResource(2130837931);
+              ((RelativeLayout)localObject2).setBackgroundResource(2130837927);
             }
           }
         }
@@ -190,7 +190,7 @@ public class AuthDevEnableCompleteActivity
     {
     default: 
       return;
-    case 2131298214: 
+    case 2131298174: 
       if (QLog.isColorLevel()) {
         QLog.d("devlock.AuthDevEnableCompleteActivity", 2, "click confirm mobile phone button! ");
       }

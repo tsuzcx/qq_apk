@@ -1,30 +1,37 @@
-import com.tencent.open.base.LogUtility;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
-public class feg
-  implements Runnable
+public final class feg
+  implements Parcelable.Creator
 {
-  public feg(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
-  
-  public void run()
+  public DownloadInfo a(Parcel paramParcel)
   {
-    try
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.d = paramParcel.readString();
+    localDownloadInfo.e = paramParcel.readString();
+    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.a = paramParcel.readInt();
+    localDownloadInfo.g = paramParcel.readString();
+    localDownloadInfo.h = paramParcel.readString();
+    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.j = paramParcel.readInt();
+    localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
+    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      }
-      return;
+      localDownloadInfo.jdField_c_of_type_Boolean = bool;
+      return localDownloadInfo;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
-    }
+  }
+  
+  public DownloadInfo[] a(int paramInt)
+  {
+    return new DownloadInfo[paramInt];
   }
 }
 

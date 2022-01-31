@@ -64,6 +64,7 @@ public class RecentItemNewFriendMsgData
     if (QLog.isColorLevel()) {
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
+    super.a(paramQQAppInterface, paramContext);
     NewFriendManager localNewFriendManager = (NewFriendManager)paramQQAppInterface.getManager(31);
     NewFriendMessage localNewFriendMessage = localNewFriendManager.a();
     this.jdField_a_of_type_JavaLangString = paramContext.getString(this.B);

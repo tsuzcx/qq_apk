@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ayb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  ayb(aya paramaya) {}
+  ayb(axw paramaxw, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.app.a(this.a.a.a.app.a(), 3000, true);
-    EntityManager localEntityManager = this.a.a.a.app.a().createEntityManager();
-    if (localEntityManager != null)
-    {
-      NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.a.a.app.a() });
-      if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-        this.a.a.a.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 3001, true);
-      }
-      localEntityManager.a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

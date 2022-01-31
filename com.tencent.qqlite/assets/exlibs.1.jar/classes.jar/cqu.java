@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import protocol.KQQConfig.GetResourceRespInfo;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class cqu
   implements Runnable
 {
-  public cqu(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public cqu(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
   
   public void run()
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
+    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_b_of_type_JavaUtilLinkedList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_b_of_type_JavaUtilLinkedList.iterator();
+      while (localIterator.hasNext()) {
+        ((ConditionSearchManager.IConfigListener)localIterator.next()).a(1, this.jdField_a_of_type_Boolean);
+      }
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_b_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a());
+    }
   }
 }
 

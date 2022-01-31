@@ -1,31 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.CheckBox;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bks
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bks(SplashActivity paramSplashActivity, CheckBox paramCheckBox) {}
+  public bks(SplashActivity paramSplashActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.e()) {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.a();
-    }
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).edit();
-    localEditor.putBoolean("notToastPushMsg" + paramDialogInterface, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363276) + paramDialogInterface, true);
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363277) + paramDialogInterface, true);
-    localEditor.putBoolean("discussion_msg_notify" + paramDialogInterface, true);
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131363280) + paramDialogInterface, true);
-    localEditor.commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.finish();
+    ((Conversation)SplashActivity.a(this.a, Conversation.class)).a(SplashActivity.a(this.a));
   }
 }
 

@@ -1,14 +1,12 @@
 import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class cyw
+public final class cyw
+  implements Comparator
 {
-  public MessageRecord a;
-  public boolean a;
-  
-  public cyw(MessageRecord paramMessageRecord, boolean paramBoolean)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

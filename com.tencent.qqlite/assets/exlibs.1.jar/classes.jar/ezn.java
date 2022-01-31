@@ -1,23 +1,40 @@
-import android.graphics.Paint;
-import com.tencent.mobileqq.widget.UnderlinePageIndicator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.SlideTabWidget;
 
 public class ezn
-  implements Runnable
+  extends Handler
 {
-  public ezn(UnderlinePageIndicator paramUnderlinePageIndicator) {}
+  public ezn(SlideTabWidget paramSlideTabWidget) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.a) {}
-    int i;
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      i = Math.max(UnderlinePageIndicator.a(this.a).getAlpha() - UnderlinePageIndicator.a(this.a), 0);
-      UnderlinePageIndicator.a(this.a).setAlpha(i);
+    case 0: 
+      SlideTabWidget.a(this.a, 0.0F);
+      SlideTabWidget.a(this.a, 0.1D);
       this.a.invalidate();
-    } while (i <= 0);
-    this.a.postDelayed(this, 30L);
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (SlideTabWidget.a(this.a) < 1.0F)
+      {
+        SlideTabWidget.a(this.a, 0.1D);
+        if (SlideTabWidget.a(this.a) >= 1.0F) {
+          SlideTabWidget.a(this.a, false);
+        }
+        this.a.invalidate();
+        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    SlideTabWidget.a(this.a, 1.0F);
+    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
   }
 }
 

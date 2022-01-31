@@ -7,9 +7,7 @@ class bfe
   
   public void run()
   {
-    if (this.a.a.b) {
-      this.a.a.l();
-    }
+    this.a.a.h();
   }
 }
 

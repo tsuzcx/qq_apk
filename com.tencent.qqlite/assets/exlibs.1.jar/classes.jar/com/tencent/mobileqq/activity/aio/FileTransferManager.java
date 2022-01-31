@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.aio;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
+import bsq;
 import bsr;
-import bss;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
 import com.tencent.mobileqq.transfile.C2CPicDownloadProcessor;
@@ -32,7 +32,7 @@ public class FileTransferManager
 {
   public static final String a = "FileTransferManager";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new bsr(this, Looper.getMainLooper());
+  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new bsq(this, Looper.getMainLooper());
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public FileTransferManager(QQAppInterface paramQQAppInterface)
@@ -76,9 +76,9 @@ public class FileTransferManager
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (bss)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((bss)localObject).a();
-      localObject = ((bss)localObject).a();
+      Object localObject = (bsr)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((bsr)localObject).a();
+      localObject = ((bsr)localObject).a();
       if ((localView != null) && (localObject != null)) {
         ((FileTransferManager.Callback)localObject).a(localView, (FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
       }
@@ -97,14 +97,14 @@ public class FileTransferManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      bss localbss = (bss)localIterator.next();
-      if (localbss.a() == paramView)
+      bsr localbsr = (bsr)localIterator.next();
+      if (localbsr.a() == paramView)
       {
-        localbss.b = new WeakReference(paramCallback);
+        localbsr.b = new WeakReference(paramCallback);
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new bss(this, paramView, paramCallback));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new bsr(this, paramView, paramCallback));
   }
   
   public void b()

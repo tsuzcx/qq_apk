@@ -1,21 +1,21 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.RoamInfoListWrapper;
+import java.util.ArrayList;
 
-public class cvu
-  implements View.OnClickListener
+public final class cvu
+  implements Parcelable.Creator
 {
-  public cvu(ScreenShot paramScreenShot) {}
-  
-  public void onClick(View paramView)
+  public RoamInfoListWrapper a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_Cvy.a(false);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
-    }
+    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
+    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+    return localRoamInfoListWrapper;
+  }
+  
+  public RoamInfoListWrapper[] a(int paramInt)
+  {
+    return new RoamInfoListWrapper[paramInt];
   }
 }
 

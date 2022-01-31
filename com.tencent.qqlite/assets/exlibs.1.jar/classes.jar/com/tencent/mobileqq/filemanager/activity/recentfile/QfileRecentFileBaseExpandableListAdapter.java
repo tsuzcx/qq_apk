@@ -25,8 +25,8 @@ import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.utils.FileUtils;
-import dmk;
-import dml;
+import dmq;
+import dmr;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -91,16 +91,16 @@ public class QfileRecentFileBaseExpandableListAdapter
         break;
       }
     }
-    for (Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361972);; localObject2 = localObject1)
+    for (Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361971);; localObject2 = localObject1)
     {
       localObject1 = str;
       if (localObject2 != null)
       {
         localObject1 = str;
-        if (!((String)localObject2).equals(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361965)))
+        if (!((String)localObject2).equals(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361964)))
         {
           localObject1 = str;
-          if (!((String)localObject2).equals(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361973))) {
+          if (!((String)localObject2).equals(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361972))) {
             localObject1 = paramFileManagerEntity.peerNick;
           }
         }
@@ -113,24 +113,30 @@ public class QfileRecentFileBaseExpandableListAdapter
         }
       }
       label559:
-      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362059) + ((TroopInfo)localObject1).troopname;; localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362058) + ((TroopInfo)localObject1).troopname)
+      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362056) + ((TroopInfo)localObject1).troopname;; localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362055) + ((TroopInfo)localObject1).troopname)
       {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361978);
+        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361977);
         return QfileTimeUtils.b(paramFileManagerEntity.srvTime) + a(str, (String)localObject2) + a("", (String)localObject1);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361972);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361971);
         break;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361965);
-        break;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361974);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361964);
         break;
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361973);
         break;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361972);
+        break;
         if (paramFileManagerEntity.bSend)
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361974);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361973);
           break;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361972);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361971);
+        break;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362039);
+        break;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362040);
+        break;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362041);
         break;
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362042);
         break;
@@ -139,12 +145,6 @@ public class QfileRecentFileBaseExpandableListAdapter
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362044);
         break;
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362045);
-        break;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362046);
-        break;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362047);
-        break;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131362048);
         break;
       }
     }
@@ -160,7 +160,7 @@ public class QfileRecentFileBaseExpandableListAdapter
   
   private void a(AsyncImageView paramAsyncImageView, String paramString)
   {
-    paramAsyncImageView.setDefaultImage(2130838550);
+    paramAsyncImageView.setDefaultImage(2130838527);
     paramAsyncImageView.setAsyncImage(paramString);
   }
   
@@ -173,7 +173,7 @@ public class QfileRecentFileBaseExpandableListAdapter
     {
     default: 
       localObject = null;
-      String str3 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361978);
+      String str3 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361977);
       str2 = FileUtil.a(paramFileManagerEntity.fileSize) + a(str3, (String)localObject) + a(str3, str1);
       localObject = FileUtil.a(paramFileManagerEntity.fileSize) + a(str3, str1);
       if ((paramFileManagerEntity.cloudType == 2) && (3 == paramFileManagerEntity.nOpType)) {
@@ -184,11 +184,11 @@ public class QfileRecentFileBaseExpandableListAdapter
     while (paramFileManagerEntity.TroopUin == 0L)
     {
       return localObject;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361946);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361945);
       str1 = FileManagerUtil.a(paramFileManagerEntity.srvTime, paramFileManagerEntity.peerType, false);
-      str1 = str1 + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361975);
+      str1 = str1 + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361974);
       break;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361947);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131361946);
       break;
       localObject = null;
       break;
@@ -205,13 +205,13 @@ public class QfileRecentFileBaseExpandableListAdapter
   
   public void a(View paramView, int paramInt)
   {
-    Object localObject = (dml)paramView.getTag();
+    Object localObject = (dmr)paramView.getTag();
     if (localObject == null)
     {
-      localObject = new dml();
-      paramView.findViewById(2131296847).setVisibility(0);
-      ((dml)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296848));
-      ((dml)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296849));
+      localObject = new dmr();
+      paramView.findViewById(2131296843).setVisibility(0);
+      ((dmr)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296844));
+      ((dmr)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296845));
       paramView.setTag(localObject);
     }
     for (paramView = (View)localObject;; paramView = (View)localObject)
@@ -239,11 +239,11 @@ public class QfileRecentFileBaseExpandableListAdapter
           if (!((Iterator)localObject3).hasNext()) {
             break;
           }
-          localObject2 = (dmk)((Iterator)localObject3).next();
-          if (((dmk)localObject2).jdField_a_of_type_Int != paramInt2) {
+          localObject2 = (dmq)((Iterator)localObject3).next();
+          if (((dmq)localObject2).jdField_a_of_type_Int != paramInt2) {
             break label1524;
           }
-          localObject1 = (FileManagerEntity)getChild(paramInt1, ((dmk)localObject2).jdField_b_of_type_Int);
+          localObject1 = (FileManagerEntity)getChild(paramInt1, ((dmq)localObject2).jdField_b_of_type_Int);
         }
       }
     }
@@ -261,9 +261,9 @@ public class QfileRecentFileBaseExpandableListAdapter
       {
         localObject3 = new QfileRecentFileBaseExpandableListAdapter.RecentItemHolder(this);
         localObject1 = paramView;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903418, paramViewGroup, false);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903408, paramViewGroup, false);
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131298015));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131297978));
         localObject1 = paramView;
         ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.c);
         localObject1 = paramView;
@@ -271,21 +271,21 @@ public class QfileRecentFileBaseExpandableListAdapter
         localObject1 = paramView;
         ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject3);
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131298020));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131297983));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131298016));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131297979));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131298018));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131297981));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131298019));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297982));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298022));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297985));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131296954));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131296950));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298023));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297986));
         localObject1 = paramView;
-        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).d = ((TextView)paramView.findViewById(2131297255));
+        ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).d = ((TextView)paramView.findViewById(2131297251));
         localObject1 = paramView;
         ((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)localObject3).jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131296442));
         localObject1 = paramView;
@@ -344,7 +344,7 @@ public class QfileRecentFileBaseExpandableListAdapter
               paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
               paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
               paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-              paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837904);
+              paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837757);
               paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
               paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(FMDataCache.a((FileManagerEntity)localObject2));
               return paramView;
@@ -375,14 +375,14 @@ public class QfileRecentFileBaseExpandableListAdapter
         ((FileManagerEntity)localObject2).cloudType = 2;
         ((FileManagerEntity)localObject2).status = -1;
         continue;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362078);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362075);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 2;
         paramViewGroup.d.setVisibility(4);
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(((FileManagerEntity)localObject2).fProgress * 100.0F));
         continue;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362079);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362076);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 3;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
@@ -390,53 +390,53 @@ public class QfileRecentFileBaseExpandableListAdapter
         paramBoolean = FileUtil.a(((FileManagerEntity)localObject2).strFilePath);
         if ((((FileManagerEntity)localObject2).cloudType == 3) || (paramBoolean))
         {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362074);
           paramViewGroup.jdField_a_of_type_Int = 0;
           paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
           paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
           continue;
         }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362080);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
         paramViewGroup.jdField_a_of_type_Int = 1;
         continue;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362079);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362076);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 3;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
         continue;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362074);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 0;
         continue;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362080);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
         paramViewGroup.jdField_a_of_type_Int = 1;
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         continue;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362074);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 0;
         continue;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362074);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 0;
         continue;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362080);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 1;
         continue;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362074);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 0;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(((FileManagerEntity)localObject2).fProgress * 100.0F));
         continue;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362080);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setText(2131362077);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramViewGroup.jdField_a_of_type_Int = 1;
         paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
@@ -480,10 +480,10 @@ public class QfileRecentFileBaseExpandableListAdapter
             j = i;
             i = k;
             break;
-            dmk localdmk = new dmk(this);
-            localdmk.jdField_a_of_type_Int = i;
-            localdmk.jdField_b_of_type_Int = (i + j);
-            localArrayList.add(localdmk);
+            dmq localdmq = new dmq(this);
+            localdmq.jdField_a_of_type_Int = i;
+            localdmq.jdField_b_of_type_Int = (i + j);
+            localArrayList.add(localdmq);
             k = i + 1;
             i = j;
             j = k;
@@ -511,7 +511,7 @@ public class QfileRecentFileBaseExpandableListAdapter
     Object localObject;
     if (paramView != null)
     {
-      localObject = (dml)paramView.getTag();
+      localObject = (dmr)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       localObject = (String)getGroup(paramInt);
@@ -528,9 +528,9 @@ public class QfileRecentFileBaseExpandableListAdapter
       paramViewGroup.setFocusableInTouchMode(true);
       return paramViewGroup;
       paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903119, paramViewGroup, false);
-      paramView = new dml();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296848));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296849));
+      paramView = new dmr();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296844));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296845));
       paramViewGroup.setTag(paramView);
       break;
       label150:

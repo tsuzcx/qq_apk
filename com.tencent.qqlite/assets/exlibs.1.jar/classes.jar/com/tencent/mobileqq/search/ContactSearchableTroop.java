@@ -32,7 +32,7 @@ public class ContactSearchableTroop
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
     this.y = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362940);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362944);
     ChnToSpell.a(paramContext);
     if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopname != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopname.length() != 0))
     {
@@ -47,7 +47,7 @@ public class ContactSearchableTroop
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != 3) {
       return 0;
     }
-    return 2130839394;
+    return 2130839359;
   }
   
   protected long a()

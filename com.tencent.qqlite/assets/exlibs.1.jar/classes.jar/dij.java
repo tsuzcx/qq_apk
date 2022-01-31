@@ -1,14 +1,20 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class dij
-  implements Runnable
+class dij
+  implements FMDialogUtil.FMDialogInterface
 {
-  public dij(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  dij(dih paramdih, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    QfileBaseCloudFileTabView.a(this.a);
+    QfileBaseCloudFileTabView.g(this.jdField_a_of_type_Dih.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

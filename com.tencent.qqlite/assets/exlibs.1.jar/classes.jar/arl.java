@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
-public class arl
-  implements View.OnClickListener
+class arl
+  implements Runnable
 {
-  public arl(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  arl(ark paramark, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a();
+    this.jdField_a_of_type_Ark.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

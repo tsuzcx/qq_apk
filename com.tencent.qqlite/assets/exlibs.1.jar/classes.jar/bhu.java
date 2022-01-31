@@ -1,27 +1,15 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.widget.MenuPopupDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
-class bhu
-  implements View.OnClickListener
+public class bhu
+  implements Runnable
 {
-  bhu(bht parambht) {}
+  public bhu(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  @SuppressLint({"NewApi"})
-  public void onClick(View paramView)
+  public void run()
   {
-    if (RegisterQQNumberActivity.a(this.a.a) != null) {
-      RegisterQQNumberActivity.a(this.a.a).dismiss();
-    }
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      ((android.text.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
-      return;
-    }
-    ((android.content.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
+    ((PhoneContactManager)this.a.app.getManager(10)).f();
   }
 }
 

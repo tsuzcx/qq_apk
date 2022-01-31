@@ -1,33 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import java.util.LinkedHashMap;
 
 public class cnf
-  extends Handler
+  implements TextWatcher
 {
-  public cnf(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  private cnf(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      Object[] arrayOfObject = (Object[])paramMessage.obj;
-      if (arrayOfObject.length == 3)
-      {
-        this.a.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
-        this.a.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
-        this.a.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
-      }
-      this.a.jdField_a_of_type_Cnk.notifyDataSetChanged();
-    } while ((paramMessage.what != 2) && ((paramMessage.what != 1) || (this.a.jdField_a_of_type_Boolean)));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.i();
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

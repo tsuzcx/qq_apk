@@ -1,39 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-public class asw
-  extends Handler
+class asw
+  implements Animation.AnimationListener
 {
-  public asw(LoginActivity paramLoginActivity) {}
+  asw(asv paramasv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 20140107: 
-      do
-      {
-        return;
-      } while (this.a.isFinishing());
-      try
-      {
-        this.a.dismissDialog(0);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
-    }
-    this.a.finish();
+    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

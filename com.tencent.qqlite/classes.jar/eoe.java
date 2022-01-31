@@ -1,37 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
 import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class eoe
-  implements View.OnClickListener
+  implements Runnable
 {
-  public eoe(VideoPlayLogic paramVideoPlayLogic) {}
+  public eoe(VideoPlayLogic paramVideoPlayLogic, CharSequence paramCharSequence1, CharSequence paramCharSequence2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (VideoPlayLogic.a(this.a).a()) {
-      if (VideoPlayLogic.a(this.a) != null)
-      {
-        VideoPlayLogic.a(this.a).setVisibility(0);
-        VideoPlayLogic.a(this.a, false);
-        if (VideoPlayLogic.a(this.a)) {
-          ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
-        }
-      }
+    if (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) {
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).a(this.jdField_a_of_type_JavaLangCharSequence, this.b);
     }
-    while (VideoPlayLogic.a(this.a) == null) {
-      return;
-    }
-    if (VideoPlayLogic.a(this.a)) {
-      ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
-    }
-    VideoPlayLogic.a(this.a).setVisibility(8);
-    VideoPlayLogic.a(this.a, true);
   }
 }
 

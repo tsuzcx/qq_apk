@@ -1,10 +1,21 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class dhm
 {
   public int a;
-  public TextView a;
-  public TextView b;
+  public int b;
+  
+  public dhm(LocalFileBrowserActivity paramLocalFileBrowserActivity)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public dhm(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

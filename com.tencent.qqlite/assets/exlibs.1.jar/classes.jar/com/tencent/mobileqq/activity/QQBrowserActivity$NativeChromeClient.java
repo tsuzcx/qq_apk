@@ -9,7 +9,7 @@ import android.webkit.ValueCallback;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bck;
+import bci;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
@@ -36,7 +36,7 @@ public class QQBrowserActivity$NativeChromeClient
     if (paramBoolean)
     {
       this.jdField_a_of_type_JavaLangString = QQBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).getText().toString();
-      QQBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).setText(2131364513);
+      QQBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).setText(2131364492);
       return;
     }
     QQBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).setText(this.jdField_a_of_type_JavaLangString);
@@ -50,7 +50,7 @@ public class QQBrowserActivity$NativeChromeClient
   public View getVideoLoadingProgressView()
   {
     if (this.b == null) {
-      this.b = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).inflate(2130903708, null);
+      this.b = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).inflate(2130903691, null);
     }
     return this.b;
   }
@@ -123,7 +123,7 @@ public class QQBrowserActivity$NativeChromeClient
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.i)
     {
-      QQBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).postDelayed(new bck(this, paramString), 50L);
+      QQBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity).postDelayed(new bci(this, paramString), 50L);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.setTitle(paramString);
@@ -155,7 +155,7 @@ public class QQBrowserActivity$NativeChromeClient
     paramValueCallback = new Intent("android.intent.action.GET_CONTENT");
     paramValueCallback.addCategory("android.intent.category.OPENABLE");
     paramValueCallback.setType("*/*");
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.startActivityForResult(Intent.createChooser(paramValueCallback, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131363554)), 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.startActivityForResult(Intent.createChooser(paramValueCallback, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131363548)), 0);
   }
   
   public void openFileChooser(ValueCallback paramValueCallback, String paramString1, String paramString2)

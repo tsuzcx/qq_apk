@@ -1,13 +1,23 @@
-import java.util.Iterator;
+import android.view.animation.Animation;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public final class tk
-  implements Iterable
+public class tk
+  extends AnimateUtils.AnimationAdapter
 {
-  public tk(Iterable paramIterable, boolean paramBoolean) {}
+  public tk(AbstractGalleryScene paramAbstractGalleryScene) {}
   
-  public Iterator iterator()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new tl(this);
+    this.a.a.a().b();
+    this.a.a.a().a();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.a().c();
   }
 }
 

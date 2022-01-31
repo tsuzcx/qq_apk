@@ -1,19 +1,19 @@
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class cbh
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public cbh(SearchResultDialog paramSearchResultDialog, int paramInt) {}
+  public cbh(SearchResultDialog paramSearchResultDialog, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setText(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog));
-    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setSelection(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).length());
-    ReportController.b(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog), "CliOper", "", "", "Search", "Last_search", this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.b(this.jdField_a_of_type_Int), 0, "", "", "", "");
+    ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class TroopWebviewPlugin
   extends WebViewPlugin
 {
-  public static final String a = "3.3.0.544";
+  public static final String a = "3.4.0.607";
   public static final String b = "Troop";
   public static final String c = "searchTroop";
   public static final String d = "showTroopProfile";
@@ -170,9 +170,9 @@ public class TroopWebviewPlugin
         localIntent.putExtra("param_type", 1);
         localIntent.putExtra("param_subtype", 0);
         localIntent.putExtra("param_only_friends", true);
-        localIntent.putExtra("param_title", this.mRuntime.a().getString(2131363090));
-        localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131362791));
-        localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131363556));
+        localIntent.putExtra("param_title", this.mRuntime.a().getString(2131363093));
+        localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131362795));
+        localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131363550));
         localIntent.putExtra("param_only_friends", true);
         localIntent.putExtra("param_exit_animation", 1);
         localIntent.putExtra("param_max", 10);
@@ -215,7 +215,7 @@ public class TroopWebviewPlugin
           if (!TextUtils.isEmpty(paramString))
           {
             paramString = TroopInfoActivity.a(paramString, 9);
-            paramString.putString("troop_info_title", localActivity.getString(2131362326));
+            paramString.putString("troop_info_title", localActivity.getString(2131362323));
             TroopInfoActivity.a(localActivity, paramString, 5);
           }
           if (m == 0) {
@@ -517,7 +517,7 @@ public class TroopWebviewPlugin
         }
         else if (paramString3.equals("getVersion"))
         {
-          paramJsBridgeListener.a("3.3.0.544");
+          paramJsBridgeListener.a("3.4.0.607");
         }
         else if (paramString3.equals("isNetworkConnected"))
         {

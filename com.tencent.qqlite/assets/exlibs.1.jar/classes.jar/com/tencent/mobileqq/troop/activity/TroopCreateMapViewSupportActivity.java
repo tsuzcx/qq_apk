@@ -17,7 +17,6 @@ public class TroopCreateMapViewSupportActivity
   extends TroopCreateBaseActivity
 {
   private static final String jdField_a_of_type_JavaLangString = "LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ";
-  private static final String b = "73dfcdeff8636c1d3501fa9a2860ebb7";
   int B = 0;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   AutoLocationMapView jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView;
@@ -27,8 +26,8 @@ public class TroopCreateMapViewSupportActivity
     Object localObject = (ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getParent();
     ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     getLayoutInflater().inflate(2130903301, (ViewGroup)localObject, true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297594));
-    this.B = ((int)getResources().getDimension(2131493056));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297590));
+    this.B = ((int)getResources().getDimension(2131493046));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView = new AutoLocationMapView(this);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setId(2131296369);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setBuiltInZoomControls(false);

@@ -23,7 +23,7 @@ import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFile
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import dvw;
+import dwc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,7 +38,7 @@ public class QfileTabBarView
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = null;
   QfileBaseTabView jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileBaseTabView = null;
-  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new dvw(this);
+  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new dwc(this);
   public TabBarView a;
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public int b;
@@ -56,10 +56,10 @@ public class QfileTabBarView
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903435, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903425, this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131298067));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298068));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131298030));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298031));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
   }
   

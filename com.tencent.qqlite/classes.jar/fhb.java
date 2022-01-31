@@ -1,43 +1,64 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.view.View;
-import android.widget.ListAdapter;
+import android.view.ViewConfiguration;
 import com.tencent.widget.AbsListView;
 
-public class fhb
-  extends fhf
+public final class fhb
   implements Runnable
 {
-  public int a;
-  
-  private fhb(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public fhb(AbsListView paramAbsListView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.q) {}
-    ListAdapter localListAdapter;
+    Object localObject;
     int i;
     boolean bool;
-    View localView;
-    do
+    if (this.a.ab == 0)
     {
-      do
+      this.a.ab = 1;
+      localObject = this.a.getChildAt(this.a.W - this.a.ao);
+      if ((localObject != null) && (!((View)localObject).hasFocusable()))
       {
-        return;
-        localListAdapter = this.jdField_a_of_type_ComTencentWidgetAbsListView.a;
-        i = this.jdField_a_of_type_Int;
-        bool = AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, i, this.jdField_a_of_type_ComTencentWidgetAbsListView.a.getCount());
-      } while ((localListAdapter == null) || ((!bool) && (!AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView))) || (!a()));
-      localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetAbsListView.ao);
-    } while ((localView == null) && (!AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView)));
-    AbsListView localAbsListView = this.jdField_a_of_type_ComTencentWidgetAbsListView;
-    if (bool) {}
-    for (long l = localListAdapter.getItemId(i);; l = 0L)
-    {
-      localAbsListView.a(localView, i, l);
-      return;
+        this.a.P = 0;
+        if (this.a.q) {
+          break label249;
+        }
+        ((View)localObject).setPressed(true);
+        this.a.setPressed(true);
+        this.a.i();
+        this.a.a(this.a.W, (View)localObject);
+        this.a.refreshDrawableState();
+        i = ViewConfiguration.getLongPressTimeout();
+        bool = this.a.isLongClickable();
+        if (this.a.c != null)
+        {
+          localObject = this.a.c.getCurrent();
+          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
+          {
+            if (!bool) {
+              break label230;
+            }
+            ((TransitionDrawable)localObject).startTransition(i);
+          }
+        }
+      }
     }
+    while (bool)
+    {
+      if (AbsListView.a(this.a) == null) {
+        AbsListView.a(this.a, new fha(this.a, null));
+      }
+      AbsListView.a(this.a).a();
+      this.a.postDelayed(AbsListView.a(this.a), i);
+      return;
+      label230:
+      ((TransitionDrawable)localObject).resetTransition();
+    }
+    this.a.ab = 2;
+    return;
+    label249:
+    this.a.ab = 2;
   }
 }
 

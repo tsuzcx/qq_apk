@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.app.TroopObserver;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-public class bmp
-  extends TroopObserver
+class bmp
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public bmp(TroopGagActivity paramTroopGagActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  private bmp(bmo parambmo) {}
 }
 
 

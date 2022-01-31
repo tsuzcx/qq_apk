@@ -28,14 +28,14 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import wo;
+import wp;
 import wq;
 import wr;
 import ws;
 import wt;
 import wu;
 import wv;
-import ww;
-import wx;
 
 public class AddFriendLogicActivity
   extends BaseActivity
@@ -56,7 +56,7 @@ public class AddFriendLogicActivity
   protected OpenIdObserver a;
   protected QQCustomDialog a;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private wx jdField_a_of_type_Wx;
+  private wv jdField_a_of_type_Wv;
   public boolean a;
   public DialogInterface.OnClickListener b;
   private QQCustomDialog b;
@@ -74,11 +74,11 @@ public class AddFriendLogicActivity
   
   public AddFriendLogicActivity()
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new ws(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new wt(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new wu(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new wq(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new wr(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new ws(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new ww(this);
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new wu(this);
   }
   
   public static Intent a(Activity paramActivity, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -156,7 +156,7 @@ public class AddFriendLogicActivity
     case 1: 
       if (paramString.equals(this.app.a()))
       {
-        QQToast.a(this, 2131363362, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131363365, 0).b(getTitleBarHeight());
         finish();
         return false;
       }
@@ -173,7 +173,7 @@ public class AddFriendLogicActivity
             if ((paramString == null) || (paramString.groupid < 0)) {
               break;
             }
-            QQToast.a(this.app.getApplication(), 2131363363, 0).b(getTitleBarHeight());
+            QQToast.a(this.app.getApplication(), 2131363366, 0).b(getTitleBarHeight());
             finish();
             return false;
           }
@@ -195,7 +195,7 @@ public class AddFriendLogicActivity
     }
     while (!NetworkUtil.e(this))
     {
-      QQToast.a(this.app.getApplication(), 2131363515, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131363516, 0).b(getTitleBarHeight());
       finish();
       return false;
       if (this.h == 10004)
@@ -215,8 +215,8 @@ public class AddFriendLogicActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     }
     ((FriendListHandler)this.app.a(1)).a(this.f, this.h, this.jdField_g_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363366);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new wq(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363369);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new wo(this));
     if (!isFinishing()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -242,8 +242,8 @@ public class AddFriendLogicActivity
       }
       ((EntityManager)localObject1).a();
     }
-    this.jdField_a_of_type_Wx = new wx(this, null);
-    addObserver(this.jdField_a_of_type_Wx);
+    this.jdField_a_of_type_Wv = new wv(this, null);
+    addObserver(this.jdField_a_of_type_Wv);
     if (this.jdField_g_of_type_Int == 1) {
       ((FriendListHandler)this.app.a(1)).a("OidbSvc.0x476_147", Long.parseLong(this.f), 147);
     }
@@ -269,10 +269,10 @@ public class AddFriendLogicActivity
       localOpenID = this.app.a().a(this.jdField_g_of_type_JavaLangString);
       if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363366);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363369);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new wr(this), 3000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new wp(this), 3000L);
         this.app.a(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
         this.app.a().e(this.jdField_g_of_type_JavaLangString);
       }
@@ -296,7 +296,7 @@ public class AddFriendLogicActivity
     int j = ((Intent)localObject).getShortExtra("group_option", (short)2);
     if (((FriendManager)this.app.getManager(8)).a(str) != null)
     {
-      QQToast.a(this.app.getApplication(), 2131363364, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131363367, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -304,9 +304,9 @@ public class AddFriendLogicActivity
     {
       localObject = getIntent().getStringExtra("nick_name");
       if ((localObject == null) || (((String)localObject).length() == 0)) {
-        getString(2131362802);
+        getString(2131362806);
       }
-      QQToast.a(this.app.getApplication(), 2131363365, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131363368, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -343,7 +343,7 @@ public class AddFriendLogicActivity
       if (this.i != 1) {
         break label263;
       }
-      j = 2131362773;
+      j = 2131362778;
       str2 = getString(j);
     }
     label263:
@@ -354,7 +354,7 @@ public class AddFriendLogicActivity
       if (localObject2 == null)
       {
         if (this.i == 1) {
-          localObject1 = getString(2131362775);
+          localObject1 = getString(2131362780);
         }
       }
       else
@@ -375,7 +375,7 @@ public class AddFriendLogicActivity
         if (this.i != 1) {
           break label369;
         }
-        str1 = getString(2131362779);
+        str1 = getString(2131362784);
       }
       for (;;)
       {
@@ -384,29 +384,29 @@ public class AddFriendLogicActivity
         this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton((String)localObject2, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
         this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(str1, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
         if ((this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) || (this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-          this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131296930).setVisibility(8);
+          this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131296926).setVisibility(8);
         }
         return;
-        j = 2131362774;
+        j = 2131362779;
         break;
         if (this.i == 2)
         {
-          localObject1 = getString(2131362776);
+          localObject1 = getString(2131362781);
           break label145;
         }
         if (this.i == 3)
         {
-          localObject1 = getString(2131362777);
+          localObject1 = getString(2131362782);
           break label145;
         }
         localObject1 = localObject2;
         if (this.i != 4) {
           break label145;
         }
-        localObject1 = getString(2131362778);
+        localObject1 = getString(2131362783);
         break label145;
         label330:
-        localObject2 = getString(2131362780);
+        localObject2 = getString(2131362785);
         break label167;
         label342:
         localObject2 = str3;
@@ -417,7 +417,7 @@ public class AddFriendLogicActivity
         localObject2 = str3;
         break label167;
         label369:
-        str1 = getString(2131362781);
+        str1 = getString(2131362786);
         continue;
         label380:
         if (TextUtils.isEmpty(str1.trim())) {
@@ -435,11 +435,11 @@ public class AddFriendLogicActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362447);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362490);
-    wv localwv = new wv(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362790, localwv);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362448, localwv);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362444);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362487);
+    wt localwt = new wt(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362794, localwt);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362445, localwt);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -460,12 +460,12 @@ public class AddFriendLogicActivity
     startActivityForResult(paramClass, 1);
   }
   
-  protected String a_()
+  protected String b_()
   {
     if (this.e != null) {
       return this.e;
     }
-    return super.a_();
+    return super.b_();
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -486,8 +486,8 @@ public class AddFriendLogicActivity
   
   protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Wx != null) {
-      removeObserver(this.jdField_a_of_type_Wx);
+    if (this.jdField_a_of_type_Wv != null) {
+      removeObserver(this.jdField_a_of_type_Wv);
     }
     if (this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver != null) {
       removeObserver(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);

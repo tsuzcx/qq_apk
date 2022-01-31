@@ -12,8 +12,8 @@ import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
-import ern;
-import ero;
+import ers;
+import ert;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -32,8 +32,8 @@ public class FaceDecoder
   public static final byte f = 32;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = null;
-  private ern jdField_a_of_type_Ern;
-  private ero jdField_a_of_type_Ero;
+  private ers jdField_a_of_type_Ers;
+  private ert jdField_a_of_type_Ert;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private boolean jdField_a_of_type_Boolean = false;
@@ -148,10 +148,10 @@ public class FaceDecoder
       {
         try
         {
-          if ((localFaceInfo.jdField_a_of_type_Int == 101) && (this.jdField_a_of_type_Ern == null))
+          if ((localFaceInfo.jdField_a_of_type_Int == 101) && (this.jdField_a_of_type_Ers == null))
           {
-            this.jdField_a_of_type_Ern = new ern(this, null);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ern);
+            this.jdField_a_of_type_Ers = new ers(this, null);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ers);
           }
           this.jdField_b_of_type_Int += 1;
           FaceDecodeTask.a(new FaceDecodeTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFaceInfo, this));
@@ -241,10 +241,10 @@ public class FaceDecoder
     }
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramFaceInfo.a()))
     {
-      if (this.jdField_a_of_type_Ero == null)
+      if (this.jdField_a_of_type_Ert == null)
       {
-        this.jdField_a_of_type_Ero = new ero(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ero);
+        this.jdField_a_of_type_Ert = new ert(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ert);
       }
       b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFaceInfo);
     }
@@ -289,10 +289,10 @@ public class FaceDecoder
       if (this.jdField_b_of_type_JavaUtilHashMap.get(str) == null) {
         this.jdField_b_of_type_JavaUtilHashMap.put(str, localFaceInfo);
       }
-      if (this.jdField_a_of_type_Ero == null)
+      if (this.jdField_a_of_type_Ert == null)
       {
-        this.jdField_a_of_type_Ero = new ero(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ero);
+        this.jdField_a_of_type_Ert = new ert(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ert);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString, paramInt, paramLong);
       return;
@@ -457,13 +457,13 @@ public class FaceDecoder
       QLog.d("Q.qqhead.FaceDecoder", 2, "destory ");
     }
     c();
-    if (this.jdField_a_of_type_Ern != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Ern);
+    if (this.jdField_a_of_type_Ers != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Ers);
     }
-    if (this.jdField_a_of_type_Ero != null)
+    if (this.jdField_a_of_type_Ert != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Ero);
-      this.jdField_a_of_type_Ero = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Ert);
+      this.jdField_a_of_type_Ert = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = null;
     this.jdField_b_of_type_Int = 0;

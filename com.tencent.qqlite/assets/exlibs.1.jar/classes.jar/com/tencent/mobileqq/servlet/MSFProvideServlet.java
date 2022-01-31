@@ -17,7 +17,7 @@ public class MSFProvideServlet
   {
     AppConstants.Action localAction = (AppConstants.Action)paramIntent.getSerializableExtra("action");
     Bundle localBundle = paramIntent.getExtras();
-    switch (edu.a[localAction.ordinal()])
+    switch (eea.a[localAction.ordinal()])
     {
     }
     do
@@ -31,7 +31,7 @@ public class MSFProvideServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     paramPacket = (AppConstants.Action)paramIntent.getSerializableExtra("action");
-    switch (edu.a[paramPacket.ordinal()])
+    switch (eea.a[paramPacket.ordinal()])
     {
     default: 
       return;

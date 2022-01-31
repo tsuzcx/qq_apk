@@ -1,22 +1,15 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
 
-public class aal
-  implements Runnable
+class aal
+  implements View.OnTouchListener
 {
-  public aal(BaseChatPie paramBaseChatPie, FrameLayout paramFrameLayout) {}
+  aal(aak paramaak) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setVisibility(0);
-    }
+    return true;
   }
 }
 

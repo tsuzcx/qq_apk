@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class epy
-  implements Runnable
+  extends Handler
 {
-  public epy(MessageSubtitleView paramMessageSubtitleView) {}
+  public epy(MediaControllerX paramMediaControllerX) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    MessageSubtitleView.b(this.a);
+    switch (paramMessage.what)
+    {
+    }
+    int i;
+    do
+    {
+      return;
+      this.a.c();
+      return;
+      i = MediaControllerX.a(this.a);
+    } while ((MediaControllerX.b(this.a)) || (!MediaControllerX.a(this.a)) || (!MediaControllerX.a(this.a).a()));
+    sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
   }
 }
 

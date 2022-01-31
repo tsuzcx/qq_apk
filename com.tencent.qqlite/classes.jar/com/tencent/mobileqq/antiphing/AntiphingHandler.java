@@ -29,9 +29,9 @@ import com.tencent.mobileqq.widget.AntiphingToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import cpm;
-import cpn;
-import cpo;
+import cps;
+import cpt;
+import cpu;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -109,7 +109,7 @@ public class AntiphingHandler
       }
       this.jdField_a_of_type_Boolean = true;
     } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(2131364192, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(2131364177, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(paramString);
     return true;
   }
@@ -182,7 +182,7 @@ public class AntiphingHandler
     }
   }
   
-  private boolean a(String paramString, cpo paramcpo)
+  private boolean a(String paramString, cpu paramcpu)
   {
     if (paramString == null) {
       return false;
@@ -235,13 +235,13 @@ public class AntiphingHandler
         } while (localObject == null);
         if (((String)localObject).equalsIgnoreCase(str))
         {
-          paramcpo.jdField_a_of_type_JavaLangString = ((String)localObject);
-          paramcpo.jdField_a_of_type_Int = 1;
+          paramcpu.jdField_a_of_type_JavaLangString = ((String)localObject);
+          paramcpu.jdField_a_of_type_Int = 1;
           return true;
         }
       } while ((i != 1) || (!str.contains((CharSequence)localObject)));
-      paramcpo.jdField_a_of_type_JavaLangString = ((String)localObject);
-      paramcpo.jdField_a_of_type_Int = 2;
+      paramcpu.jdField_a_of_type_JavaLangString = ((String)localObject);
+      paramcpu.jdField_a_of_type_Int = 2;
       return true;
     }
   }
@@ -331,11 +331,11 @@ public class AntiphingHandler
       }
     }
     label121:
-    for (Object localObject2 = null;; localObject2 = new cpn(this))
+    for (Object localObject2 = null;; localObject2 = new cpt(this))
     {
       DialogUtil.a(localActivity, 230, paramString1, paramString2, paramString3, paramString4, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
       return;
-      localObject1 = new cpm(this);
+      localObject1 = new cps(this);
       break;
     }
   }
@@ -394,15 +394,15 @@ public class AntiphingHandler
         a(this.jdField_d_of_type_JavaLangString, 2, "Already Shown Tips!!");
       }
     }
-    cpo localcpo;
+    cpu localcpu;
     do
     {
       return false;
       if (QLog.isColorLevel()) {
         a(this.jdField_d_of_type_JavaLangString, 2, "Js is call back!");
       }
-      localcpo = new cpo(this);
-      if (a(paramString1, localcpo)) {
+      localcpu = new cpu(this);
+      if (a(paramString1, localcpu)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -410,12 +410,12 @@ public class AntiphingHandler
     return false;
     try
     {
-      long l = Long.parseLong(localcpo.jdField_a_of_type_JavaLangString);
+      long l = Long.parseLong(localcpu.jdField_a_of_type_JavaLangString);
       int i = Integer.parseInt(paramString3);
       int j = Integer.parseInt(paramString4);
       int k = Integer.parseInt(paramString5);
       int m = Integer.parseInt(paramString6);
-      a(i, j, k, m, paramString2, Long.valueOf(l), localcpo.jdField_a_of_type_Int);
+      a(i, j, k, m, paramString2, Long.valueOf(l), localcpu.jdField_a_of_type_Int);
       return true;
     }
     catch (Exception paramString1) {}
@@ -499,10 +499,10 @@ public class AntiphingHandler
         return;
       } while ((!paramBoolean) || (this.mRuntime.a() == null));
       localContext = this.mRuntime.a().getApplicationContext();
-      str = localContext.getString(2131364202);
-      localObject1 = localContext.getString(2131364199);
-      localObject3 = localContext.getString(2131364200);
-      localObject2 = localContext.getString(2131364201);
+      str = localContext.getString(2131364187);
+      localObject1 = localContext.getString(2131364184);
+      localObject3 = localContext.getString(2131364185);
+      localObject2 = localContext.getString(2131364186);
     } while ((!paramBoolean) || (paramBundle == null));
     antiphishingAlertQuery.ResponsePack localResponsePack = new antiphishingAlertQuery.ResponsePack();
     for (;;)

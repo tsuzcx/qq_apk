@@ -1,38 +1,69 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.MessageQueue;
+import com.tencent.widget.TraceUtils;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class cws
-  implements Runnable
+  extends HandlerThread
 {
-  public cws(RecentUserCache paramRecentUserCache, long paramLong) {}
-  
-  public void run()
+  public cws(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | start");
-    }
-    try
+    super(paramString);
+  }
+  
+  protected void onLooperPrepared()
+  {
+    for (;;)
     {
-      int i = RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a().a("recent", "_id=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | RecentUser delCount = " + i);
+      Message localMessage;
+      try
+      {
+        Method localMethod = MessageQueue.class.getDeclaredMethod("next", new Class[0]);
+        localMethod.setAccessible(true);
+        MessageQueue localMessageQueue = Looper.myQueue();
+        Binder.clearCallingIdentity();
+        Binder.clearCallingIdentity();
+        localMessage = (Message)localMethod.invoke(localMessageQueue, new Object[0]);
+        if (localMessage == null) {
+          return;
+        }
+        if (localMessage.getCallback() != null)
+        {
+          TraceUtils.a(localMessage.getCallback().getClass().getName() + "." + "run");
+          localMessage.getCallback().run();
+          TraceUtils.a();
+          Binder.clearCallingIdentity();
+          localMessage.recycle();
+          continue;
+        }
+        localHandler = localMessage.getTarget();
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | delete recommend error~");
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
       }
-      return;
-    }
-    finally
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | end");
+      Handler localHandler;
+      Object localObject = Handler.class.getDeclaredField("mCallback");
+      ((Field)localObject).setAccessible(true);
+      localObject = (Handler.Callback)((Field)localObject).get(localHandler);
+      if (localObject != null)
+      {
+        TraceUtils.a(localObject.getClass().getName() + "." + "dispatchMsg");
+        ((Handler.Callback)localObject).handleMessage(localMessage);
+        TraceUtils.a();
+      }
+      else
+      {
+        TraceUtils.a(localHandler + "." + "dispatchMsg");
+        localHandler.handleMessage(localMessage);
+        TraceUtils.a();
       }
     }
   }

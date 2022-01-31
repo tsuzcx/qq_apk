@@ -1,102 +1,68 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import android.text.TextUtils;
-import android.widget.ProgressBar;
+import android.os.Bundle;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.util.QQSettingUtil;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
 
 public class ys
-  extends FriendListObserver
+  extends SecSvcObserver
 {
   public ys(AuthDevActivity paramAuthDevActivity) {}
   
-  protected void a(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  protected void a(int paramInt, Bundle paramBundle)
   {
-    AuthDevActivity.a(this.a).setVisibility(8);
-    if (!AuthDevActivity.a(this.a)) {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBundle == null) {
       return;
     }
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    paramInt = paramBundle.getInt("cmd", 1);
+    int i = paramBundle.getInt("opt", 2);
+    int j = paramBundle.getInt("ret", -1);
+    paramBundle = (String)paramBundle.get("wording");
+    FormSwitchItem localFormSwitchItem;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.success");
-      }
-      AuthDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo);
-      if (QLog.isColorLevel())
+    default: 
+      return;
+    case 1: 
+      if (j == 0)
       {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = AuthDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
+        AuthDevActivity.a(this.a).setVisibility(0);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+        localFormSwitchItem = AuthDevActivity.a(this.a);
+        if (i == 1) {}
+        for (;;)
         {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.AuthDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-      }
-      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label304;
-      }
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data is null");
-    }
-    for (;;)
-    {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131364228), 0).b(this.a.getTitleBarHeight());
-      return;
-      label304:
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onDelAuthDevResult.isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    AuthDevActivity.c(this.a);
-    if (paramBoolean)
-    {
-      if (paramInt > -1)
-      {
-        paramString = (SvcDevLoginInfo)AuthDevActivity.a(this.a).get(paramInt);
-        if (Arrays.equals(NetConnInfoCenter.GUID, paramString.vecGuid))
-        {
-          this.a.app.updateSubAccountLogin(this.a.app.getAccount(), false);
-          this.a.app.getApplication().refreAccountList();
-          QQSettingUtil.a(this.a, this.a.app, true);
+          localFormSwitchItem.setChecked(bool1);
+          AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+          AuthDevActivity.b(this.a).setVisibility(0);
+          AuthDevActivity.b(this.a).setText(paramBundle);
           return;
-        }
-        if (paramInt < AuthDevActivity.a(this.a).size())
-        {
-          AuthDevActivity.a(this.a).remove(paramInt);
-          AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+          bool1 = false;
         }
       }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364230), 0).b(this.a.getTitleBarHeight());
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
       return;
     }
-    if (TextUtils.isEmpty(paramString))
+    if (j == 0)
     {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364229), 0).b(this.a.getTitleBarHeight());
-      return;
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = AuthDevActivity.a(this.a);
+      if (i == 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        localFormSwitchItem.setChecked(bool1);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        AuthDevActivity.b(this.a).setText(paramBundle);
+        return;
+      }
     }
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+    AuthDevActivity.a(this.a).setVisibility(8);
+    AuthDevActivity.b(this.a).setVisibility(8);
+    QQToast.a(this.a, paramBundle, 0).b(this.a.getTitleBarHeight());
   }
 }
 

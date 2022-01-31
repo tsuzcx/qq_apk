@@ -1,26 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.PredownloadTest;
 
 public class yf
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public yf(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    AssistantSettingActivity.f(this.a).setContentDescription("系统通知栏显示QQ图标");
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131364002), "qqsetting_notify_icon_key", paramBoolean);
-      return;
-    }
+    paramView = new Intent(this.a, PredownloadTest.class);
+    this.a.startActivity(paramView);
   }
 }
 

@@ -27,9 +27,9 @@ import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthItem;
 import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
 import com.tencent.qphone.base.util.QLog;
-import fay;
-import faz;
-import fba;
+import fbd;
+import fbe;
+import fbf;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -78,8 +78,8 @@ public class CardContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new fay(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new faz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fbd(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new fbe(this);
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
     this.jdField_e_of_type_Int = paramAttributeSet.widthPixels;
@@ -133,7 +133,7 @@ public class CardContainer
   
   public void a(int paramInt)
   {
-    ThreadManager.b(new fba(this));
+    ThreadManager.b(new fbf(this));
     if (paramInt == this.jdField_d_of_type_Int) {
       return;
     }
@@ -180,7 +180,7 @@ public class CardContainer
       if (paramBoolean) {
         break label93;
       }
-      paramString1 = String.format(super.getContext().getString(2131362152), new Object[] { paramString1 });
+      paramString1 = String.format(super.getContext().getString(2131362149), new Object[] { paramString1 });
       this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString1);
       this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString1);
     }
@@ -269,30 +269,30 @@ public class CardContainer
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131297474));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131297462));
-    this.jdField_a_of_type_ComTencentOpenAgentCardLargeView = ((CardLargeView)super.findViewById(2131297463));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131297479));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131297467));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297464);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297477));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297481));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297478));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297482));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297483));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297465));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297469));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297466));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297471));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297472));
-    this.g = ((TextView)super.findViewById(2131297473));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131297486));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131297470));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131297458));
+    this.jdField_a_of_type_ComTencentOpenAgentCardLargeView = ((CardLargeView)super.findViewById(2131297459));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131297475));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131297463));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297460);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297473));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297477));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297474));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297478));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297479));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297461));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297465));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297462));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297467));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297468));
+    this.g = ((TextView)super.findViewById(2131297469));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131297482));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    float f1 = super.getResources().getDimension(2131493155);
+    float f1 = super.getResources().getDimension(2131493109);
     f1 = this.jdField_e_of_type_Int - f1 * 2.0F;
     float f2 = f1 / 0.9375F;
     super.setMeasuredDimension((int)f1, (int)f2);

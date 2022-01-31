@@ -1,25 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
+import android.view.View;
+import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class sb
-  implements AsyncCallBack
+  implements ActionSheet.OnButtonClickListener
 {
-  public sb(OfflinePlugin paramOfflinePlugin, long paramLong) {}
+  public sb(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(OfflinePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin), 2, "transToLocalUrl loadMode:" + paramInt + "," + " time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(PubAccountMailJsPlugin.jdField_a_of_type_JavaLangString, 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      PubAccountMailJsPlugin.a(this.a);
+      return;
+    case 1: 
+      PubAccountMailJsPlugin.b(this.a);
+      return;
+    case 2: 
+      PubAccountMailJsPlugin.c(this.a);
+      return;
     }
-    if (QLog.isDevelopLevel()) {}
-    Message localMessage = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a.obtainMessage();
-    localMessage.arg1 = 1;
-    localMessage.arg2 = paramInt;
-    localMessage.obj = paramString;
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a.sendMessage(localMessage);
+    PubAccountMailJsPlugin.d(this.a);
   }
 }
 

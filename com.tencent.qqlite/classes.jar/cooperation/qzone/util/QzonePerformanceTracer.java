@@ -171,16 +171,16 @@ public class QzonePerformanceTracer
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 51;
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -2;
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903604, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298708);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903588, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298657);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298709);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298658);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298710);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298659);
       this.jdField_d_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131298712).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131298661).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298711);
+      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131298660);
       this.jdField_e_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       if (b())
       {

@@ -13,9 +13,9 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import dhh;
-import dhj;
-import dhk;
+import dhn;
+import dhp;
+import dhq;
 
 public class UniformDownloadActivity
   extends BaseActivity
@@ -52,27 +52,27 @@ public class UniformDownloadActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130903440);
-    paramBundle = (TextView)findViewById(2131298089);
-    Object localObject = (TextView)findViewById(2131298090);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298082));
+    super.setContentView(2130903430);
+    paramBundle = (TextView)findViewById(2131298052);
+    Object localObject = (TextView)findViewById(2131298053);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298045));
     if (localObject != null)
     {
       if (getIntent().getLongExtra(c, 0L) == 1L) {
-        ((TextView)localObject).setText(2131363543);
+        ((TextView)localObject).setText(2131363537);
       }
-      ((TextView)localObject).setOnClickListener(new dhh(this));
+      ((TextView)localObject).setOnClickListener(new dhn(this));
     }
     if (paramBundle != null) {
-      paramBundle.setOnClickListener(new dhj(this));
+      paramBundle.setOnClickListener(new dhp(this));
     }
     Intent localIntent = getIntent();
     this.i = localIntent.getStringExtra(b);
     this.j = localIntent.getStringExtra(d);
     this.jdField_a_of_type_Long = localIntent.getLongExtra(e, 0L);
-    TextView localTextView1 = (TextView)findViewById(2131298085);
-    TextView localTextView2 = (TextView)findViewById(2131298086);
-    ImageView localImageView = (ImageView)findViewById(2131298083);
+    TextView localTextView1 = (TextView)findViewById(2131298048);
+    TextView localTextView2 = (TextView)findViewById(2131298049);
+    ImageView localImageView = (ImageView)findViewById(2131298046);
     localObject = localIntent.getStringExtra(h);
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
@@ -90,11 +90,11 @@ public class UniformDownloadActivity
       if (paramBundle != null)
       {
         paramBundle = URLDrawable.getDrawable(paramBundle);
-        paramBundle.setURLDrawableListener(new dhk(this, localImageView));
+        paramBundle.setURLDrawableListener(new dhq(this, localImageView));
         localImageView.setImageDrawable(paramBundle);
       }
       return true;
-      localImageView.setImageResource(2130838575);
+      localImageView.setImageResource(2130838552);
     }
   }
 }

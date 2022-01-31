@@ -123,8 +123,8 @@ public class PublicAccountInfo
   {
     PublicAccountInfo localPublicAccountInfo = new PublicAccountInfo();
     localPublicAccountInfo.uin = 0L;
-    localPublicAccountInfo.name = paramContext.getString(2131363774);
-    localPublicAccountInfo.displayNumber = paramContext.getString(2131363774);
+    localPublicAccountInfo.name = paramContext.getString(2131363766);
+    localPublicAccountInfo.displayNumber = paramContext.getString(2131363766);
     localPublicAccountInfo.summary = "";
     localPublicAccountInfo.extendType = 1;
     return localPublicAccountInfo;

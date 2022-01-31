@@ -1,121 +1,128 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.inputmethod.InputMethodManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSUnlockActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ActionMsgUtil;
+import com.tencent.widget.CustomWidgetUtil;
+import com.tencent.widget.XBaseAdapter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class bcq
-  extends Handler
+  extends XBaseAdapter
 {
-  public bcq(QQLSActivity paramQQLSActivity, Looper paramLooper)
+  CharSequence jdField_a_of_type_JavaLangCharSequence = "";
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public bcq(QQLSActivity paramQQLSActivity) {}
+  
+  public void a(ArrayList paramArrayList)
   {
-    super(paramLooper);
+    if (paramArrayList != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList.addAll((List)paramArrayList.clone());
+      notifyDataSetChanged();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public int getCount()
   {
-    switch (paramMessage.what)
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 40;
+    System.currentTimeMillis();
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130903498, null);
+      paramView = new bcs();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131298229));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131298241));
+      paramView.c = ((TextView)paramViewGroup.findViewById(2131298230));
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramViewGroup.findViewById(2131298233));
+      paramViewGroup.setTag(paramView);
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a);
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
     }
-    do
+    bcs localbcs = (bcs)paramViewGroup.getTag();
+    RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    localbcs.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+    int i = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(localRecentBaseData.a(), localRecentBaseData.a());
+    if (localRecentBaseData.a() == 0)
     {
-      do
-      {
-        do
+      paramView = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(localRecentBaseData.a(), localRecentBaseData.a());
+      if (paramView != null) {
+        if (ActionMsgUtil.b(paramView.msgtype))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                } while (QQLSActivity.b(this.a));
-                if (hasMessages(5)) {
-                  removeMessages(5);
-                }
-                QQLSActivity.c(this.a);
-                if (QQLSActivity.a(this.a) != null) {
-                  ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
-                }
-                QQLSActivity.b(this.a).setVisibility(0);
-                paramMessage = obtainMessage(3);
-                if (hasMessages(3)) {
-                  removeMessages(3);
-                }
-                sendMessageDelayed(paramMessage, 1200L);
-                return;
-              } while (QQLSActivity.b(this.a));
-              if (hasMessages(6)) {
-                removeMessages(6);
-              }
-              QQLSActivity.c(this.a);
-              if (QQLSActivity.a(this.a) != null) {
-                ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
-              }
-              QQLSActivity.a(this.a).setVisibility(0);
-              paramMessage = obtainMessage(4);
-              if (hasMessages(4)) {
-                removeMessages(4);
-              }
-              sendMessageDelayed(paramMessage, 1200L);
-              return;
-              QQLSActivity.a(this.a).setVisibility(4);
-              return;
-              QQLSActivity.b(this.a).setVisibility(4);
-              return;
-              this.a.b();
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message send finish");
-              }
-              this.a.finish();
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message finish activity finish");
-              }
-              this.a.finish();
-              return;
-            } while ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a)));
-            if (QLog.isColorLevel()) {
-              QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
-            }
-            QQLSActivity.d(this.a);
-            return;
-          } while (this.a.a == null);
-          this.a.a.b();
-          this.a.a = null;
-          return;
-        } while (QQLSActivity.a(this.a));
-        ReportController.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
-        paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
-        this.a.startActivity(paramMessage);
-        return;
-        paramMessage = ((ActivityManager)this.a.getSystemService("activity")).getRunningTasks(1);
-      } while ((paramMessage == null) || (paramMessage.size() <= 0));
-      paramMessage = ((ActivityManager.RunningTaskInfo)paramMessage.get(0)).topActivity.getClassName();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "qqlsActivity onpause by :" + paramMessage);
+          localbcs.jdField_a_of_type_AndroidWidgetTextView.setText(localRecentBaseData.a);
+          localbcs.b.setText(new QQText(this.jdField_a_of_type_JavaLangCharSequence, 5, 16, localRecentBaseData.a()));
+          localbcs.c.setText(localRecentBaseData.jdField_b_of_type_JavaLangString);
+          if (localRecentBaseData.a() != 4000) {
+            break label585;
+          }
+        }
       }
-    } while (!paramMessage.equals("com.tencent.mobileqq.activity.GesturePWDUnlockActivity"));
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "qqlsActivity onpause by locking activity need to front");
     }
-    paramMessage = new Intent(this.a, QQLSActivity.class);
-    paramMessage.addFlags(131072);
-    this.a.startActivity(paramMessage);
+    label585:
+    for (paramInt = ((NewFriendManager)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getManager(31)).a();; paramInt = i)
+    {
+      localbcs.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
+      CustomWidgetUtil.a(localbcs.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, 3, paramInt, 0);
+      return paramViewGroup;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity;
+      Object localObject1 = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a();
+      Object localObject2 = localRecentBaseData.a();
+      int k = localRecentBaseData.a();
+      if (localRecentBaseData.b() > 40) {}
+      for (paramInt = j;; paramInt = localRecentBaseData.b())
+      {
+        if (paramView.a(((QQMessageFacade)localObject1).a((String)localObject2, k, paramInt))) {}
+        this.jdField_a_of_type_JavaLangCharSequence = localRecentBaseData.jdField_b_of_type_JavaLangCharSequence;
+        localbcs.b.setTextColor(-4210755);
+        break;
+      }
+      localbcs.b.setTextColor(-4210755);
+      break;
+      if (localRecentBaseData.a() == 1001)
+      {
+        localObject2 = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(localRecentBaseData.a(), localRecentBaseData.a());
+        localObject1 = ((FriendManager)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).getManager(8)).a(((MessageRecord)localObject2).senderuin);
+        paramView = (View)localObject1;
+        if (localObject1 == null) {
+          paramView = "";
+        }
+        this.jdField_a_of_type_JavaLangCharSequence = (paramView + ": " + QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, (MessageRecord)localObject2, false));
+        localbcs.b.setTextColor(-4210755);
+        break;
+      }
+      this.jdField_a_of_type_JavaLangCharSequence = localRecentBaseData.jdField_b_of_type_JavaLangCharSequence;
+      localbcs.b.setTextColor(-4210755);
+      break;
+    }
   }
 }
 

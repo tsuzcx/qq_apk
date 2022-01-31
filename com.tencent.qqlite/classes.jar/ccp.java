@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class ccp
+class ccp
   implements Runnable
 {
-  public ccp(QQAppInterface paramQQAppInterface) {}
+  ccp(cco paramcco) {}
   
   public void run()
   {
-    FriendSystemMsgController.a().c(this.a);
+    if (NewFriendActivity.a(this.a.a) != null) {
+      NewFriendActivity.a(this.a.a).k();
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.a.app, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
+      return;
+      SystemMsgListView.a(this.a.a.app);
+    }
   }
 }
 

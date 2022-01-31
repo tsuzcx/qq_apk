@@ -1,42 +1,41 @@
-import android.content.Context;
-import com.tencent.biz.common.download.OfflineDownloader;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.util.LoadedBack;
+import android.os.Bundle;
+import com.tencent.biz.common.report.BnrReport;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
+import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public final class lm
-  implements AsyncBack
+  implements BusinessObserver
 {
-  public lm(long paramLong, Context paramContext, String paramString, LoadedBack paramLoadedBack) {}
+  public lm(AppInterface paramAppInterface) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(paramInt);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     if (QLog.isColorLevel()) {
-      QLog.i("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+      QLog.d("BnrReport", 2, "success:" + String.valueOf(paramBoolean));
     }
-    if (paramInt == 0)
+    if (paramBoolean) {}
+    try
     {
-      HtmlOffline.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (HtmlOffline.c(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(0, null);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        BnrReport.BNRConfigMsg localBNRConfigMsg = new BnrReport.BNRConfigMsg();
+        localBNRConfigMsg.mergeFrom(paramBundle);
+        BnrReport.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
+        BnrReport.a(this.a, 74);
       }
     }
-    for (;;)
+    catch (Exception paramBundle)
     {
-      HtmlOffline.b(this.jdField_a_of_type_JavaLangString);
-      HtmlOffline.a(this.jdField_a_of_type_JavaLangString, paramInt, l, OfflineDownloader.a(this.jdField_a_of_type_AndroidContentContext));
-      return;
-      this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(6, null);
-      continue;
-      this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(2, null);
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
     }
+    BnrReport.a = false;
   }
 }
 

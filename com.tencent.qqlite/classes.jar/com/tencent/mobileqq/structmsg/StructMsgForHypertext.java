@@ -24,8 +24,8 @@ import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
-import eff;
-import efg;
+import efk;
+import efl;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -46,9 +46,9 @@ public class StructMsgForHypertext
   public int mHypertextContentLayout = 0;
   public String mSourceIcon = null;
   public String mSourceName = null;
-  protected View.OnClickListener mSourceOnClickListener = new efg(this);
+  protected View.OnClickListener mSourceOnClickListener = new efl(this);
   public String mSourceUrl = null;
-  private URLDrawableDownListener.Adapter mUrlAdapter = new eff(this);
+  private URLDrawableDownListener.Adapter mUrlAdapter = new efk(this);
   
   StructMsgForHypertext() {}
   
@@ -155,7 +155,7 @@ public class StructMsgForHypertext
       localLinearLayout.setLayoutParams(paramView);
       paramView = new StructMsgForHypertext.HyperTextView(paramContext);
       Resources localResources = paramContext.getResources();
-      paramView.setPadding((int)localResources.getDimension(2131492991), (int)localResources.getDimension(2131492993), (int)localResources.getDimension(2131492992), (int)localResources.getDimension(2131492994));
+      paramView.setPadding((int)localResources.getDimension(2131492986), (int)localResources.getDimension(2131492988), (int)localResources.getDimension(2131492987), (int)localResources.getDimension(2131492989));
       paramView.setText(getSpannableString(false));
       paramView.setMaxLines(10);
       paramView.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
@@ -179,18 +179,18 @@ public class StructMsgForHypertext
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(paramContext).inflate(2130903668, null);
+      localView = LayoutInflater.from(paramContext).inflate(2130903652, null);
     }
     Object localObject2 = paramContext.getResources();
-    Object localObject1 = (TextView)localView.findViewById(2131298883);
-    paramView = (URLImageView)localView.findViewById(2131298882);
+    Object localObject1 = (TextView)localView.findViewById(2131298833);
+    paramView = (URLImageView)localView.findViewById(2131298832);
     ((TextView)localObject1).setText(this.mSourceName);
     boolean bool;
     if (!TextUtils.isEmpty(this.mSourceIcon))
     {
       paramView.setVisibility(0);
       localObject1 = this.mSourceIcon;
-      localObject2 = ((Resources)localObject2).getDrawable(2130839401);
+      localObject2 = ((Resources)localObject2).getDrawable(2130839366);
       localObject2 = URLDrawable.getDrawable((String)localObject1, (Drawable)localObject2, (Drawable)localObject2);
       if ((AbsDownloader.a((String)localObject1)) || (!URLDrawableHelper.a(paramContext)))
       {
@@ -251,7 +251,7 @@ public class StructMsgForHypertext
     paramView = (ViewGroup)super.getView(paramContext, paramView, paramOnLongClickAndTouchListener);
     paramOnLongClickAndTouchListener = new StructMsgForHypertext.HyperTextView(paramContext);
     Resources localResources = paramContext.getResources();
-    paramOnLongClickAndTouchListener.setPadding((int)localResources.getDimension(2131492991), (int)localResources.getDimension(2131492993), (int)localResources.getDimension(2131492992), (int)localResources.getDimension(2131492994));
+    paramOnLongClickAndTouchListener.setPadding((int)localResources.getDimension(2131492986), (int)localResources.getDimension(2131492988), (int)localResources.getDimension(2131492987), (int)localResources.getDimension(2131492989));
     paramOnLongClickAndTouchListener.setText(getSpannableString(true));
     paramOnLongClickAndTouchListener.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
     paramOnLongClickAndTouchListener.setTextColor(paramContext.getResources().getColor(2131427348));

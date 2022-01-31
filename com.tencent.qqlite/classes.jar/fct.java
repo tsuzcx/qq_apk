@@ -1,21 +1,28 @@
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Bundle;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class fct
   implements Runnable
 {
-  public fct(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString1, String paramString2, WebView paramWebView) {}
+  public fct(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
   public void run()
   {
-    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
     try
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("iconType", localJSONObject.optString("iconType"));
+      localBundle.putString("visible", localJSONObject.optString("visible"));
+      localBundle.putString("callBackKey", localJSONObject.optString("callBackKey"));
       return;
     }
-    catch (Exception localException) {}
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

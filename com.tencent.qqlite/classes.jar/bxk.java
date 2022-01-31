@@ -1,26 +1,28 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TextSignatureItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import cooperation.troop.TroopProxyActivity;
 
 public class bxk
-  extends AbstractChatItemBuilder.ViewHolder
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  AnyScaleTypeImageView jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public bxk(TroopFileItemBuilder paramTroopFileItemBuilder) {}
   
-  public bxk(TextSignatureItemBuilder paramTextSignatureItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    ChatMessage localChatMessage = AIOUtils.a(paramView);
+    paramView = (Activity)paramView.getContext();
+    Intent localIntent = new Intent();
+    if (localIntent == null) {
+      return;
+    }
+    localIntent.putExtra(TroopProxyActivity.a, localChatMessage.frienduin);
+    TroopProxyActivity.a(paramView, localIntent);
+  }
 }
 
 

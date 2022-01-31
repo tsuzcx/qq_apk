@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import arl;
+import arj;
+import ark;
 import arm;
-import aro;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -31,8 +31,8 @@ public class JoinDiscussionActivity
   public ImageView a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
+  private ark jdField_a_of_type_Ark;
   private arm jdField_a_of_type_Arm;
-  private aro jdField_a_of_type_Aro;
   public DiscussionHandler a;
   public String a;
   public ArrayList a;
@@ -57,20 +57,20 @@ public class JoinDiscussionActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297229));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297230));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297231));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297232));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297233));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297235));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297225));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297226));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297227));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297228));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297229));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297231));
   }
   
   private void d()
   {
     setTitle("加入讨论组");
-    setRightButton(2131362790, this);
+    setRightButton(2131362794, this);
     this.h.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new arl(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new arj(this));
   }
   
   private void e()
@@ -150,10 +150,10 @@ public class JoinDiscussionActivity
     super.onCreate(paramBundle);
     setContentView(2130903215);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Aro = new aro(this, null);
     this.jdField_a_of_type_Arm = new arm(this, null);
-    addObserver(this.jdField_a_of_type_Aro);
+    this.jdField_a_of_type_Ark = new ark(this, null);
     addObserver(this.jdField_a_of_type_Arm);
+    addObserver(this.jdField_a_of_type_Ark);
     this.jdField_b_of_type_Int = paramBundle.getInt(ScannerActivity.o);
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -176,8 +176,8 @@ public class JoinDiscussionActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    removeObserver(this.jdField_a_of_type_Aro);
     removeObserver(this.jdField_a_of_type_Arm);
+    removeObserver(this.jdField_a_of_type_Ark);
   }
   
   protected void onPause()

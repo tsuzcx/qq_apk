@@ -166,7 +166,7 @@ public class QWalletOpenJsPlugin
     } while (!QLog.isColorLevel());
     QLog.i("QWalletOpenJsPlugin", 2, "can not handle method:" + paramString3);
     return false;
-    QQToast.a(this.mRuntime.a().getApplicationContext(), 2131364506, 0).a();
+    QQToast.a(this.mRuntime.a().getApplicationContext(), 2131364486, 0).a();
     return true;
   }
   

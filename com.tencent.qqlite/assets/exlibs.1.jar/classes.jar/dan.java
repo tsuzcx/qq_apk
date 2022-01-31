@@ -1,21 +1,69 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import java.util.concurrent.Executor;
 
 public class dan
-  extends LBSObserver
+  implements Executor
 {
-  public dan(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  final dap jdField_a_of_type_Dap = new dap(30);
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  protected int a()
   {
-    if (paramBoolean) {
-      this.a.c = paramLBSInfo.a();
+    try
+    {
+      int i = this.jdField_a_of_type_Dap.a();
+      return i;
     }
-    if ((this.a.c == null) || (this.a.c.length != 4)) {
-      this.a.c = new String[] { "-1", "-1", "-1", "-1" };
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    this.a.c();
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Dap.a();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null) {
+        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Dap.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      this.jdField_a_of_type_Dap.a(new dao(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 

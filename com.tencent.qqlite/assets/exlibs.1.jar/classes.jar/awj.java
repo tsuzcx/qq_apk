@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class awj
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public awj(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
+  public awj(NearbyActivity paramNearbyActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.a.i == 0)
-    {
-      this.a.a.setRightTextColor(2);
-      this.a.a.setContentDescription("年龄" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.a[this.a.c]);
-      return;
+    if ((NearbyActivity.a(this.a) != null) && (NearbyActivity.a(this.a).isShowing())) {
+      NearbyActivity.a(this.a).dismiss();
     }
-    this.a.b.setRightTextColor(2);
-    this.a.b.setContentDescription("星座" + com.tencent.mobileqq.activity.NearPeopleFilterActivity.NearPeopleFilters.b[this.a.d]);
   }
 }
 

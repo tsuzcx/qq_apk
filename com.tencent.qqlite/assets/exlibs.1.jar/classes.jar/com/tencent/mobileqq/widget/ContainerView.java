@@ -13,8 +13,8 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.widget.ScrollView;
-import exn;
-import exo;
+import exs;
+import ext;
 
 @SuppressLint({"NewApi", "ResourceAsColor", "Override"})
 @TargetApi(11)
@@ -76,7 +76,7 @@ public class ContainerView
     if (i == 0) {}
     for (i = -localLayout.getTopPadding();; i = localLayout.getLineTop(i))
     {
-      new Handler().post(new exo(this, i - j));
+      new Handler().post(new ext(this, i - j));
       return;
     }
   }
@@ -86,7 +86,7 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView = new ContainerView.SelectableTextView(this, paramContext);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView, paramContext);
-    getViewTreeObserver().addOnGlobalLayoutListener(new exn(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new exs(this));
   }
   
   public boolean a()

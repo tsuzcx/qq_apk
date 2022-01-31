@@ -381,12 +381,12 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838081);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838075);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.c)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838080);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838074);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;

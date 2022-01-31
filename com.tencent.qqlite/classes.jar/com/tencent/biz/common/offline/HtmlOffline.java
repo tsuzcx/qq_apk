@@ -34,11 +34,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import le;
+import lf;
+import lg;
+import lh;
 import li;
-import lj;
-import lk;
-import ll;
-import lm;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -617,7 +617,7 @@ public class HtmlOffline
     if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
-    a(paramContext, paramString1, paramString2, true, new lj());
+    a(paramContext, paramString1, paramString2, true, new lf());
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, LoadedBack paramLoadedBack)
@@ -671,7 +671,7 @@ public class HtmlOffline
     a(paramString1);
     str = str + paramString1 + ".zip";
     long l1 = System.currentTimeMillis();
-    OfflineDownloader.a(paramContext, MsfSdkUtils.insertMtype("qb_offline", paramString2), paramInt, paramString1, str, new lm(l1, paramContext, paramString1, paramLoadedBack));
+    OfflineDownloader.a(paramContext, MsfSdkUtils.insertMtype("qb_offline", paramString2), paramInt, paramString1, str, new li(l1, paramContext, paramString1, paramLoadedBack));
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, LoadedBack paramLoadedBack)
@@ -766,7 +766,7 @@ public class HtmlOffline
       return;
     }
     a(paramString1);
-    new lk(paramInt, paramString1, paramContext, paramString2, paramLoadedBack, paramBoolean).start();
+    new lg(paramInt, paramString1, paramContext, paramString2, paramLoadedBack, paramBoolean).start();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, LoadedCallBack paramLoadedCallBack)
@@ -890,7 +890,7 @@ public class HtmlOffline
       a(str, 4, 0L, OfflineDownloader.a(paramContext), "lixian_cover", "0");
       return false;
     }
-    new li(paramContext, paramString, paramAsyncCallBack).start();
+    new le(paramContext, paramString, paramAsyncCallBack).start();
     return true;
   }
   
@@ -1094,7 +1094,7 @@ public class HtmlOffline
     }
     for (;;)
     {
-      new ll(a(paramString1), paramContext, paramString1, paramString2, paramLoadedCallBack).start();
+      new lh(a(paramString1), paramContext, paramString1, paramString2, paramLoadedCallBack).start();
       return;
     }
   }

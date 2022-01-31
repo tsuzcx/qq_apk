@@ -31,9 +31,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import mqq.app.NewIntent;
-import su;
-import sv;
-import sw;
+import sq;
+import sr;
+import ss;
 
 public class SosoPlugin
   extends WebViewPlugin
@@ -70,7 +70,7 @@ public class SosoPlugin
   private void a()
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new su(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new sq(this);
     }
     try
     {
@@ -494,7 +494,7 @@ public class SosoPlugin
             }
           }
           if (HttpUtil.a() == 1) {
-            HtmlOffline.b(this.mRuntime.a(), "1004", this.mRuntime.a().getAccount(), true, new sv(this));
+            HtmlOffline.b(this.mRuntime.a(), "1004", this.mRuntime.a().getAccount(), true, new sr(this));
           }
           jdField_c_of_type_Boolean = true;
         }
@@ -574,7 +574,7 @@ public class SosoPlugin
         ((NewIntent)localObject1).setWithouLogin(true);
         ((NewIntent)localObject1).putExtra("cmd", "SafeSvr.check_url");
         ((NewIntent)localObject1).putExtra("data", paramString2.toByteArray());
-        ((NewIntent)localObject1).setObserver(new sw(this, paramString1));
+        ((NewIntent)localObject1).setObserver(new ss(this, paramString1));
         if (this.mRuntime.a() != null)
         {
           if (QLog.isColorLevel()) {

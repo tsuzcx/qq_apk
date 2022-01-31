@@ -1,46 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileObserver;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Collection;
 
 public class afj
-  implements TroopFileObserver
+  implements URLDrawable.URLDrawableListener
 {
-  public afj(ChatSettingForTroop paramChatSettingForTroop) {}
+  public afj(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView, URLDrawable paramURLDrawable) {}
   
-  public void a(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramInt > 0)
-    {
-      View localView = this.a.jdField_a_of_type_ArrayOfAndroidViewView[1];
-      this.a.a(localView, paramInt);
-    }
-  }
-  
-  public void a(TroopFileInfo paramTroopFileInfo) {}
-  
-  public void a(Collection paramCollection, boolean paramBoolean) {}
-  
-  public void b(TroopFileInfo paramTroopFileInfo) {}
-  
-  public void c(TroopFileInfo paramTroopFileInfo)
-  {
-    if ((paramTroopFileInfo != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 7;
-      localMessage.obj = paramTroopFileInfo;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-    }
-    if (ChatSettingForTroop.a(this.a).a() > 0)
-    {
-      paramTroopFileInfo = this.a.jdField_a_of_type_ArrayOfAndroidViewView[1];
-      this.a.a(paramTroopFileInfo, ChatSettingForTroop.a(this.a).a());
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

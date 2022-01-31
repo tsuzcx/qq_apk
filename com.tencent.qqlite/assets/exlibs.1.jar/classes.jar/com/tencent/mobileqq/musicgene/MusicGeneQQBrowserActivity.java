@@ -15,13 +15,13 @@ import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import dyo;
+import dyu;
 
 public class MusicGeneQQBrowserActivity
   extends QQBrowserActivity
 {
   private static final String jdField_a_of_type_JavaLangString = MusicGeneQQBrowserActivity.class.getSimpleName();
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dyo(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dyu(this);
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {

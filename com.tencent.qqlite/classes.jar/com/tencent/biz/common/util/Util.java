@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import lz;
+import lv;
 
 public class Util
 {
@@ -159,7 +159,7 @@ public class Util
   
   public static final void a(QQAppInterface paramQQAppInterface, LoadedCallBack paramLoadedCallBack)
   {
-    new Thread(new lz(paramQQAppInterface, paramLoadedCallBack)).start();
+    new Thread(new lv(paramQQAppInterface, paramLoadedCallBack)).start();
   }
   
   public static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)

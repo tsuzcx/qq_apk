@@ -8,8 +8,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dfn;
-import dfo;
+import dft;
+import dfu;
 import mqq.observer.WtloginObserver;
 
 public class EquipLockWebImpl
@@ -29,9 +29,9 @@ public class EquipLockWebImpl
   public static final String h = "checkDevLockSms_ret";
   private static final String i = "EquipLockWebImpl";
   private Messenger jdField_a_of_type_AndroidOsMessenger = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dfn(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dft(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dfo(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dfu(this);
   
   public static EquipLockWebImpl a()
   {

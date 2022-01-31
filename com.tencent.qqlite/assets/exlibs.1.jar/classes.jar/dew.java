@@ -1,26 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
 
-public class dew
-  extends Handler
+class dew
+  implements Runnable
 {
-  public dew(EmotionPreviewLayout paramEmotionPreviewLayout) {}
+  dew(dev paramdev, int paramInt, MagicFaceViewBinder paramMagicFaceViewBinder) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (EmoticonMainPanel.g == 2)
     {
-    default: 
-      return;
-    case 10000: 
-      this.a.setVisibility(8);
-      return;
-    case 10001: 
-      this.a.a(true);
-      return;
+      this.jdField_a_of_type_Dev.a.a = this.jdField_a_of_type_Dev.a.c;
+      if (EmoticonMainPanel.i == this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.d();
+      }
     }
-    this.a.b();
   }
 }
 

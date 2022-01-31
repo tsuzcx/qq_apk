@@ -1,20 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-public class bhi
-  extends Handler
+class bhi
+  implements Runnable
 {
-  public bhi(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  bhi(bhh parambhh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    RegisterPhoneNumActivity.a(this.a.a, true);
   }
 }
 

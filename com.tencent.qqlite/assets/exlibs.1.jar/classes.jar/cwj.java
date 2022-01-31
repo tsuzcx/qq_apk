@@ -1,21 +1,23 @@
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
 
-public class cwj
+public final class cwj
+  implements Parcelable.Creator
 {
-  public int a;
-  public long a;
-  signature.SignatureReport jdField_a_of_type_ComTencentImsSignature$SignatureReport;
-  cwi jdField_a_of_type_Cwi;
-  public String a;
-  String b;
-  String c;
-  String d;
-  
-  public cwj(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
+  public ShieldOperationItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    return localShieldOperationItem;
+  }
+  
+  public ShieldOperationItem[] a(int paramInt)
+  {
+    return null;
   }
 }
 

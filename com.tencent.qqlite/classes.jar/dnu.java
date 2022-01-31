@@ -1,25 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class dnu
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public dnu(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
+  public dnu(FileManagerRSWorker paramFileManagerRSWorker) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent != null)
+    if (this.a.b == 0)
     {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
+      if (this.a.f != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
-        }
-        this.a.a();
+        this.a.i = 0L;
+        this.a.a(this.a.f, 0L);
+        return;
+      }
+      this.a.b();
+      return;
+    }
+    if (this.a.f.equalsIgnoreCase(""))
+    {
+      this.a.a();
+      return;
+    }
+    this.a.g = System.currentTimeMillis();
+    try
+    {
+      if (this.a.jdField_a_of_type_JavaIoOutputStream != null) {
+        this.a.jdField_a_of_type_JavaIoOutputStream.flush();
+      }
+      this.a.jdField_a_of_type_Long = FileManagerUtil.a(this.a.d);
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.a.c + "]retry request Httpmsg,rd[" + String.valueOf(this.a.jdField_a_of_type_Long) + "]");
+      FileManagerRSWorker.a(this.a, this.a.jdField_a_of_type_Long, this.a.h);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
       }
     }
   }

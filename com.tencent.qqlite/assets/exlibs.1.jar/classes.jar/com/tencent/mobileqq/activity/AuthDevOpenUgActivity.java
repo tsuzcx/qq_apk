@@ -20,7 +20,7 @@ import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yx;
+import yv;
 
 public class AuthDevOpenUgActivity
   extends IphoneTitleBarActivity
@@ -44,7 +44,7 @@ public class AuthDevOpenUgActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new yx(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new yv(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private boolean jdField_a_of_type_Boolean = false;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -109,24 +109,24 @@ public class AuthDevOpenUgActivity
         break label265;
         label144:
         if (TextUtils.isEmpty(this.s)) {
-          this.s = getString(2131364254);
+          this.s = getString(2131364239);
         }
         if (TextUtils.isEmpty(this.v)) {
-          this.v = getString(2131364245);
+          this.v = getString(2131364230);
         }
         if (TextUtils.isEmpty(this.w)) {
-          this.w = getString(2131364246);
+          this.w = getString(2131364231);
         }
         if (TextUtils.isEmpty(this.x)) {
-          this.x = getString(2131364247);
+          this.x = getString(2131364232);
         }
         if (TextUtils.isEmpty(this.y)) {
-          this.y = getString(2131364248);
+          this.y = getString(2131364233);
         }
         if (!TextUtils.isEmpty(this.u)) {
           continue;
         }
-        this.u = getString(2131364244);
+        this.u = getString(2131364229);
         return;
       }
       label265:
@@ -136,15 +136,15 @@ public class AuthDevOpenUgActivity
   
   private void b(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131296901);
-    localTextView = (TextView)findViewById(2131298219);
+    TextView localTextView = (TextView)findViewById(2131296897);
+    localTextView = (TextView)findViewById(2131298179);
     if (TextUtils.isEmpty(paramString)) {
       localTextView.setVisibility(8);
     }
     for (;;)
     {
-      this.b.setText(getString(2131364243));
-      this.b.setContentDescription(getString(2131364207));
+      this.b.setText(getString(2131364228));
+      this.b.setContentDescription(getString(2131364192));
       ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.app.a(), "UserBehavior", "Manually", 0, 1, "", "", "", "");
       return;
       localTextView.setText(paramString);
@@ -256,7 +256,7 @@ public class AuthDevOpenUgActivity
           }
           for (;;)
           {
-            QQToast.a(getApplicationContext(), 2, getString(2131364209), 0).b(getTitleBarHeight());
+            QQToast.a(getApplicationContext(), 2, getString(2131364194), 0).b(getTitleBarHeight());
             paramIntent = new Intent();
             paramIntent.putExtra("auth_dev_open", true);
             paramIntent.putExtra("allow_set", true);
@@ -299,7 +299,7 @@ public class AuthDevOpenUgActivity
     {
     default: 
       return;
-    case 2131298228: 
+    case 2131298188: 
       if (this.app != null) {
         this.app.sendWirelessMeibaoReq(1);
       }
@@ -399,9 +399,9 @@ public class AuthDevOpenUgActivity
       }
     }
     super.onCreate(paramBundle);
-    super.setContentView(2130903490);
-    super.setTitle(2131364204);
-    this.b = ((Button)findViewById(2131298220));
+    super.setContentView(2130903478);
+    super.setTitle(2131364189);
+    this.b = ((Button)findViewById(2131298180));
     this.b.setOnClickListener(this);
     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
       a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.ProtectIntro);

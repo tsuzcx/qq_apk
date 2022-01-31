@@ -1,41 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class bjg
-  implements View.OnClickListener
+  implements Runnable
 {
   public bjg(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_JavaUtilHashSet.clear();
-    paramView = this.a;
-    boolean bool;
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label91;
-      }
-      SetTroopAdminsActivity.a(this.a).setText(2131363430);
-      SetTroopAdminsActivity.a(this.a).setEnabled(false);
-    }
-    for (;;)
-    {
-      if (SetTroopAdminsActivity.a(this.a) != null) {
-        SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
-      }
-      return;
-      bool = false;
-      break;
-      label91:
-      SetTroopAdminsActivity.b(this.a).setText(2131363433);
-      SetTroopAdminsActivity.a(this.a).setEnabled(true);
-    }
+    ArrayList localArrayList = this.a.a();
+    this.a.a.sendMessage(this.a.a.obtainMessage(2, localArrayList));
   }
 }
 

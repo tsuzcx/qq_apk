@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.conditionsearch.data.AddressHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.data.Card;
+import java.util.ArrayList;
 
 public class cql
-  implements Runnable
+  extends Thread
 {
-  public cql(ConditionSearchManager paramConditionSearchManager, File paramFile) {}
+  public cql(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, AddressHelper.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaIoFile));
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (System.currentTimeMillis() - l) / 1000L + " seconds");
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.a();
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.getManager(43);
+    Card localCard = localFriendsManager.a(str);
+    if (localCard != null)
+    {
+      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
+      localFriendsManager.a(localCard);
     }
-    ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).runOnUiThread(new cqm(this));
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
+    }
   }
 }
 

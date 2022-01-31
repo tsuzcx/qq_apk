@@ -1,10 +1,15 @@
-import android.widget.TextView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class dit
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  public dit(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.d();
+  }
 }
 
 

@@ -28,17 +28,17 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.VersionUtils;
-import eqs;
-import eqt;
-import equ;
-import eqv;
-import eqw;
 import eqx;
 import eqy;
 import eqz;
 import era;
 import erb;
 import erc;
+import erd;
+import ere;
+import erf;
+import erg;
+import erh;
 import java.io.IOException;
 import java.util.Map;
 
@@ -59,24 +59,24 @@ public class VideoViewX
   private MediaPlayer.OnCompletionListener jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener;
   private MediaPlayer.OnErrorListener jdField_a_of_type_AndroidMediaMediaPlayer$OnErrorListener;
   private MediaPlayer.OnInfoListener jdField_a_of_type_AndroidMediaMediaPlayer$OnInfoListener;
-  MediaPlayer.OnPreparedListener jdField_a_of_type_AndroidMediaMediaPlayer$OnPreparedListener = new eqy(this);
-  private MediaPlayer.OnSeekCompleteListener jdField_a_of_type_AndroidMediaMediaPlayer$OnSeekCompleteListener = new erb(this);
-  MediaPlayer.OnVideoSizeChangedListener jdField_a_of_type_AndroidMediaMediaPlayer$OnVideoSizeChangedListener = new eqw(this);
+  MediaPlayer.OnPreparedListener jdField_a_of_type_AndroidMediaMediaPlayer$OnPreparedListener = new erd(this);
+  private MediaPlayer.OnSeekCompleteListener jdField_a_of_type_AndroidMediaMediaPlayer$OnSeekCompleteListener = new erg(this);
+  MediaPlayer.OnVideoSizeChangedListener jdField_a_of_type_AndroidMediaMediaPlayer$OnVideoSizeChangedListener = new erb(this);
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = null;
   private Uri jdField_a_of_type_AndroidNetUri;
-  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new eqt(this);
+  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new eqy(this);
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder = null;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
   private MediaControllerX jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX;
   private VideoViewX.OnPlayListener jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX$OnPlayListener = null;
   private VideoViewX.OnSeekListener jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX$OnSeekListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new equ(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new eqz(this);
   private String jdField_a_of_type_JavaLangString = "VideoView";
   private Map jdField_a_of_type_JavaUtilMap;
   public boolean a;
-  private MediaPlayer.OnBufferingUpdateListener jdField_b_of_type_AndroidMediaMediaPlayer$OnBufferingUpdateListener = new erc(this);
-  private MediaPlayer.OnCompletionListener jdField_b_of_type_AndroidMediaMediaPlayer$OnCompletionListener = new eqz(this);
-  private MediaPlayer.OnErrorListener jdField_b_of_type_AndroidMediaMediaPlayer$OnErrorListener = new era(this);
+  private MediaPlayer.OnBufferingUpdateListener jdField_b_of_type_AndroidMediaMediaPlayer$OnBufferingUpdateListener = new erh(this);
+  private MediaPlayer.OnCompletionListener jdField_b_of_type_AndroidMediaMediaPlayer$OnCompletionListener = new ere(this);
+  private MediaPlayer.OnErrorListener jdField_b_of_type_AndroidMediaMediaPlayer$OnErrorListener = new erf(this);
   private MediaPlayer.OnPreparedListener jdField_b_of_type_AndroidMediaMediaPlayer$OnPreparedListener;
   public boolean b;
   public boolean c = false;
@@ -102,7 +102,7 @@ public class VideoViewX
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new eqx(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new erc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     h();
   }
@@ -119,7 +119,7 @@ public class VideoViewX
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new eqx(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new erc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     h();
   }
@@ -155,8 +155,8 @@ public class VideoViewX
     requestFocus();
     this.jdField_i_of_type_Int = 0;
     this.jdField_j_of_type_Int = 0;
-    setOnClickListener(new eqs(this));
-    setOnFocusChangeListener(new eqv(this));
+    setOnClickListener(new eqx(this));
+    setOnFocusChangeListener(new era(this));
   }
   
   @TargetApi(14)

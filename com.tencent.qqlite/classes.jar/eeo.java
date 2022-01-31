@@ -1,17 +1,60 @@
-import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class eeo
-  implements PluginRuntime.IClickEventReportor
+public class eeo
+  extends Handler
 {
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    ReportController.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
+  public eeo(MainAcitivityReportHelper paramMainAcitivityReportHelper) {}
   
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  public void handleMessage(Message paramMessage)
   {
-    ReportController.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    SplashActivity localSplashActivity = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localSplashActivity == null) {}
+    do
+    {
+      QQAppInterface localQQAppInterface;
+      do
+      {
+        return;
+        localQQAppInterface = localSplashActivity.app;
+      } while ((localQQAppInterface == null) || (!localQQAppInterface.isLogin()));
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      MainAcitivityReportHelper.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.e("MainActivityReportHandler", 2, "handleMessage count:" + MainAcitivityReportHelper.b(this.a));
+      }
+      if (!"0".equals(localQQAppInterface.a()))
+      {
+        long l = System.currentTimeMillis();
+        if (l - this.a.jdField_a_of_type_Long > 300000L)
+        {
+          this.a.jdField_a_of_type_Long = l;
+          paramMessage = (FriendListHandler)localQQAppInterface.a(1);
+          if (paramMessage != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("MainActivityReportHandler", 2, "handleMessage requst online friens");
+            }
+            paramMessage.d(localQQAppInterface.a(), (byte)0);
+          }
+        }
+      }
+    } while ((localSplashActivity == null) || (!localSplashActivity.isResume()) || (MainAcitivityReportHelper.b(this.a) >= 1));
+    MainAcitivityReportHelper.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.e("MainActivityReportHandler", 2, "handleMessage sand msg count:" + MainAcitivityReportHelper.b(this.a));
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 300000L);
   }
 }
 

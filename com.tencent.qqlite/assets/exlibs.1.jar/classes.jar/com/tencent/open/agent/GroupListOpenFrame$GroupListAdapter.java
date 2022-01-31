@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.open.agent.datamodel.AgentBaseAdapter;
 import com.tencent.open.agent.datamodel.FriendDataManager;
-import fbk;
+import fbp;
 
 public class GroupListOpenFrame$GroupListAdapter
   extends AgentBaseAdapter
@@ -27,9 +27,9 @@ public class GroupListOpenFrame$GroupListAdapter
     {
       paramViewGroup = new GroupListOpenFrame.GroupListAdapter.ViewHolder(this);
       paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903288, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297534));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131297535));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131297533));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297530));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131297531));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131297529));
       paramView.setTag(paramViewGroup);
       str = this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
@@ -38,20 +38,20 @@ public class GroupListOpenFrame$GroupListAdapter
       if (paramInt != 0) {
         break label194;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837931);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
     }
     for (;;)
     {
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new fbk(this, paramInt, str));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new fbp(this, paramInt, str));
       return paramView;
       paramViewGroup = (GroupListOpenFrame.GroupListAdapter.ViewHolder)paramView.getTag();
       break;
       label194:
       if (paramInt == getCount() - 1) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837930);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837926);
       } else {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837931);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130837927);
       }
     }
   }

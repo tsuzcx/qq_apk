@@ -1,34 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.IndividuationSetActivity.EmojiJsBridgeListener;
-import com.tencent.mobileqq.emoji.EmojiJsHandler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.automator.Automator;
 
-public class dde
-  implements DialogInterface.OnClickListener
+class dde
+  implements Runnable
 {
-  public dde(EmojiJsHandler paramEmojiJsHandler, IndividuationSetActivity.EmojiJsBridgeListener paramEmojiJsBridgeListener) {}
+  dde(ddd paramddd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Emoji.EmojiJsHandler", 2, "not wifi network cancel download");
-    }
-    try
-    {
-      paramDialogInterface = new JSONObject();
-      paramDialogInterface.put("result", 2);
-      paramDialogInterface.put("message", "user cancel download emoji in not wifi network");
-      paramDialogInterface.put("what", 1014);
-      this.jdField_a_of_type_ComTencentMobileqqActivityIndividuationSetActivity$EmojiJsBridgeListener.a(paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
-  }
+  public void run() {}
 }
 
 

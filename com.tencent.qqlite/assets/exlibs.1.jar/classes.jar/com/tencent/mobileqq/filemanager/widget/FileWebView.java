@@ -10,8 +10,8 @@ import android.widget.ZoomButtonsController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
-import dvq;
-import dvr;
+import dvw;
+import dvx;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Timer;
@@ -65,7 +65,7 @@ public class FileWebView
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilTimerTask = new dvr(this, new dvq(this));
+      this.jdField_a_of_type_JavaUtilTimerTask = new dvx(this, new dvw(this));
       return;
       getSettings().setDisplayZoomControls(false);
     }

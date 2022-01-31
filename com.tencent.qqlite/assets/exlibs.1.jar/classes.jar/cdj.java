@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.List;
 
 public class cdj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cdj(NotificationView paramNotificationView) {}
+  public cdj(NotificationAdapter paramNotificationAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a().a().c();
+    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
+    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+    paramView = (View)paramView.getParent();
+    if ((paramView instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)paramView).c();
+    }
+    NotificationAdapter.a(this.a, localViewHolder.a);
+    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
+    this.a.notifyDataSetChanged();
   }
 }
 

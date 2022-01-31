@@ -10,13 +10,9 @@ public class bjb
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.b = true;
-      SendMultiPictureHelper.a(this.a);
-      this.a.b();
-    }
+    this.a.a.show();
+    this.a.b = false;
+    SendMultiPictureHelper.c(this.a);
   }
 }
 

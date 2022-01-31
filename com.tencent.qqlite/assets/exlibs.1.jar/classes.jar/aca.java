@@ -1,13 +1,18 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import java.util.ArrayList;
 
-class aca
-  implements Runnable
+public class aca
+  extends Handler
 {
-  aca(abz paramabz) {}
+  public aca(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a();
+    if ((paramMessage.what == 1) && (this.a.a.size() == 0)) {
+      this.a.b();
+    }
   }
 }
 

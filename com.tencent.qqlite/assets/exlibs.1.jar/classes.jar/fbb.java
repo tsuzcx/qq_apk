@@ -1,29 +1,48 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.FriendChooser.GridViewAdapter;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.agent.datamodel.FriendDataManager;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import mqq.observer.BusinessObserver;
 
 public class fbb
-  implements AdapterView.OnItemClickListener
+  implements BusinessObserver
 {
-  public fbb(FriendChooser paramFriendChooser) {}
+  public fbb(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser$GridViewAdapter.getItem(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.app.a().equals(localObject)) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b(paramAdapterView.a);
-      this.a.b.remove(paramAdapterView);
-      this.a.g();
-      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).f();
-      this.a.b(false);
+      return;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      if (paramBoolean)
+      {
+        localObject = new GetAppInfoProto.GetAppinfoResponse();
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle != null)
+          {
+            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
+            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
+            {
+              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              paramBundle.what = 3;
+              paramBundle.obj = localObject;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      }
     }
   }
 }

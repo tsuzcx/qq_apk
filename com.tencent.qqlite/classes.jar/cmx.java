@@ -1,67 +1,18 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.FaceDecoder;
-import java.util.ArrayList;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class cmx
-  extends BaseAdapter
+class cmx
+  implements DialogInterface.OnClickListener
 {
-  private cmx(SelectMemberActivity paramSelectMemberActivity) {}
+  cmx(cmw paramcmw) {}
   
-  public int getCount()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.c.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.c.size())) {
-      return this.a.c.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    SelectMemberActivity.ResultRecord localResultRecord = (SelectMemberActivity.ResultRecord)getItem(paramInt);
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903214, null);
-    }
-    paramViewGroup.setTag(localResultRecord);
-    paramView = this.a.app.b(localResultRecord.jdField_a_of_type_JavaLangString);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131296439);
-    localImageView.setImageDrawable(paramView);
-    if (localResultRecord.jdField_a_of_type_Int == 4)
-    {
-      paramInt = 11;
-      paramView = this.a.a.a(paramInt, localResultRecord.jdField_a_of_type_JavaLangString);
-      if (paramView != null) {
-        break label169;
-      }
-      this.a.a.a(localResultRecord.jdField_a_of_type_JavaLangString, paramInt, true);
-      paramView = this.a.b;
-    }
-    label169:
-    for (;;)
-    {
-      localImageView.setImageBitmap(paramView);
-      localImageView.setContentDescription(localResultRecord.b + " 已选中");
-      return paramViewGroup;
-      paramInt = 1;
-      break;
-    }
+    this.a.a.d();
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.a.app, "CliOper", "", "", "Multi_call", "Clk_join_discuss_next", 0, 0, "", "", "", "");
   }
 }
 

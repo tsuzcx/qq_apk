@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import cdb;
-import cdc;
+import cdh;
+import cdi;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
@@ -37,7 +37,7 @@ public class DiscussionView
   static final int c = 102;
   static final int d = 1000;
   Button jdField_a_of_type_AndroidWidgetButton;
-  private cdc jdField_a_of_type_Cdc = new cdc(this, null);
+  private cdi jdField_a_of_type_Cdi = new cdi(this, null);
   public DiscussionListAdapter2 a;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   public XListView a;
@@ -77,14 +77,14 @@ public class DiscussionView
   
   private void k()
   {
-    this.e = findViewById(2131297597);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131297599));
+    this.e = findViewById(2131297593);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131297595));
     this.e.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131297600));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131297596));
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130903274, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837633);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837635);
     this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
@@ -104,7 +104,7 @@ public class DiscussionView
   
   protected Dialog a()
   {
-    return new cdb(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
+    return new cdh(this, a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a());
   }
   
   public void a()
@@ -130,7 +130,7 @@ public class DiscussionView
     k();
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2 = new DiscussionListAdapter2(a(), this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2);
-    a(this.jdField_a_of_type_Cdc);
+    a(this.jdField_a_of_type_Cdi);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a())
     {
       this.jdField_a_of_type_Int = 7;
@@ -172,7 +172,7 @@ public class DiscussionView
       this.jdField_a_of_type_ComTencentWidgetXListView.B();
       continue;
       this.jdField_a_of_type_ComTencentWidgetXListView.B();
-      b(2131363353);
+      b(2131363356);
     }
   }
   
@@ -191,7 +191,7 @@ public class DiscussionView
   protected void h()
   {
     super.h();
-    b(this.jdField_a_of_type_Cdc);
+    b(this.jdField_a_of_type_Cdi);
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.a();
   }
   
@@ -201,7 +201,7 @@ public class DiscussionView
     {
     default: 
       return;
-    case 2131297994: 
+    case 2131297957: 
       j();
       return;
     }

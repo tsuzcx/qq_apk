@@ -1,18 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class bri
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
   public bri(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    this.a.finish();
-    this.a.d();
+    if (paramInt == 4)
+    {
+      this.a.finish();
+      this.a.d();
+    }
+    return false;
   }
 }
 

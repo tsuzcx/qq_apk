@@ -1,20 +1,38 @@
-import android.app.Dialog;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class vu
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new vv(this);
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  View jdField_a_of_type_AndroidViewView;
+  
   public vu(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
     }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
+    if (i == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
+      }
+    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
+    }
+    return false;
   }
 }
 

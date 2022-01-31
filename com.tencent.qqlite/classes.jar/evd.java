@@ -1,93 +1,24 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSplitDialog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
 
 public class evd
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public evd(QQCustomSplitDialog paramQQCustomSplitDialog) {}
+  int jdField_a_of_type_Int;
   
-  public int getCount()
+  public evd(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public Object getItem(int paramInt)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a != null)
     {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903147, null);
-      paramView = new evj(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131296940));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131296920));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (evj)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.b != null)
-    {
-      if ((this.a.jdField_a_of_type_ArrayOfJavaLangString.length <= 1) || (paramInt != this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1)) {
-        break label266;
-      }
-      paramView.a.setVisibility(0);
-      paramView.b.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.b.setOnClickListener(new evi(this.a, paramInt));
-      i = paramView.b.getPaddingTop();
-      j = paramView.b.getPaddingLeft();
-      k = paramView.b.getPaddingRight();
-      m = paramView.b.getPaddingBottom();
-      if ((this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) && (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 2)) {
-        break label278;
-      }
-      paramView.b.setBackgroundResource(2130837962);
-    }
-    for (;;)
-    {
-      paramView.b.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label266:
-      paramView.a.setVisibility(8);
-      break;
-      label278:
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length == 3) {
-        switch (paramInt)
-        {
-        default: 
-          break;
-        case 0: 
-          paramView.b.setBackgroundResource(2130837963);
-          break;
-        case 1: 
-          paramView.b.setBackgroundResource(2130837961);
-          break;
-        case 2: 
-          paramView.b.setBackgroundResource(2130837962);
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
     }
   }
 }

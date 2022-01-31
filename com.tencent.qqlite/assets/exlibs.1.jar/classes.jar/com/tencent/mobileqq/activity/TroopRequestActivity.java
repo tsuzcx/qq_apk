@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bpl;
 import bpm;
 import bpn;
 import bpo;
@@ -33,7 +34,6 @@ import bpt;
 import bpu;
 import bpv;
 import bpw;
-import bpx;
 import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -109,14 +109,14 @@ public class TroopRequestActivity
   public int a;
   public long a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bpt(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bps(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   public TextView a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bpp(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bpo(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bpo(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bpn(this);
   public TroopHandler a;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bpn(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bpm(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = null;
@@ -124,7 +124,7 @@ public class TroopRequestActivity
   public boolean a;
   public byte[] a;
   public long b;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bpu(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new bpt(this);
   private Button jdField_b_of_type_AndroidWidgetButton;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   private QQProgressDialog jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog;
@@ -155,7 +155,7 @@ public class TroopRequestActivity
   
   public TroopRequestActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bpx(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bpw(this);
   }
   
   private void a(Card paramCard)
@@ -171,7 +171,7 @@ public class TroopRequestActivity
     {
       if (i1 == 0)
       {
-        str = getString(2131363196);
+        str = getString(2131363199);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
         if (paramCard == null) {
           break label168;
@@ -182,12 +182,12 @@ public class TroopRequestActivity
       {
         if (i1 > 0)
         {
-          paramCard = i1 + getString(2131363198);
+          paramCard = i1 + getString(2131363201);
           this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCard);
           return;
           if (i1 == 1)
           {
-            str = getString(2131363197);
+            str = getString(2131363200);
             break;
           }
           this.jdField_a_of_type_AndroidWidgetTextView.setText("");
@@ -269,8 +269,8 @@ public class TroopRequestActivity
       finish();
       return;
     }
-    Object localObject2 = (TextView)findViewById(2131298542);
-    Object localObject1 = (LinearLayout)findViewById(2131298544);
+    Object localObject2 = (TextView)findViewById(2131298497);
+    Object localObject1 = (LinearLayout)findViewById(2131298499);
     ((LinearLayout)localObject1).setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this, this.app);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
@@ -285,9 +285,9 @@ public class TroopRequestActivity
     ImageView localImageView2;
     Object localObject3;
     int i1;
-    if (this.v.startsWith(getString(2131362888)))
+    if (this.v.startsWith(getString(2131362892)))
     {
-      this.v = this.v.replace(getString(2131362888), "");
+      this.v = this.v.replace(getString(2131362892), "");
       this.jdField_b_of_type_Long = getIntent().getLongExtra("infotime", 0L);
       ((TextView)localObject2).setText(TimeFormatterUtils.a(this, 3, this.jdField_b_of_type_Long * 1000L));
       this.jdField_a_of_type_Long = getIntent().getLongExtra("troopMsgId", 0L);
@@ -295,12 +295,12 @@ public class TroopRequestActivity
       setTitle(a(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get()));
       localImageView1 = (ImageView)findViewById(2131296439);
       localTextView = (TextView)findViewById(2131296532);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298538));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298539));
-      localObject2 = (TextView)findViewById(2131298546);
-      localImageView2 = (ImageView)findViewById(2131298529);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298545));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298522));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298493));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298494));
+      localObject2 = (TextView)findViewById(2131298501);
+      localImageView2 = (ImageView)findViewById(2131298484);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298500));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131298477));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
       ((TextView)localObject2).setVisibility(8);
@@ -326,10 +326,10 @@ public class TroopRequestActivity
       ((LinearLayout)localObject1).setVisibility(0);
       i1 += 1;
       break label481;
-      if (!this.v.startsWith(getString(2131362889))) {
+      if (!this.v.startsWith(getString(2131362893))) {
         break;
       }
-      this.v = this.v.replace(getString(2131362889), "");
+      this.v = this.v.replace(getString(2131362893), "");
       break;
       label594:
       if (i1 == 1)
@@ -353,13 +353,13 @@ public class TroopRequestActivity
       ((TextView)localObject2).setTextAppearance(this, 2131624047);
       ((TextView)localObject2).setText(((structmsg.SystemMsgAction)((List)localObject3).get(0)).detail_name.get());
       ((TextView)localObject2).setContentDescription(((structmsg.SystemMsgAction)((List)localObject3).get(0)).detail_name.get());
-      ((TextView)localObject2).setBackgroundResource(2130837722);
+      ((TextView)localObject2).setBackgroundResource(2130837720);
       ((TextView)localObject2).setVisibility(0);
       label759:
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298460));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297356));
-      this.e = ((TextView)findViewById(2131298541));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298543));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298415));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297352));
+      this.e = ((TextView)findViewById(2131298496));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298498));
       localObject1 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
       localObject5 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
       if (localObject1 != null)
@@ -394,7 +394,7 @@ public class TroopRequestActivity
         break label2068;
       }
       this.jdField_b_of_type_AndroidWidgetButton.setTextAppearance(this, 2131624051);
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130837727);
+      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(2130837725);
       if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 1) || ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 22))) {
         break label2056;
       }
@@ -402,16 +402,16 @@ public class TroopRequestActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get());
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get());
       label1130:
-      localObject1 = new bpm(this, (TextView)localObject2);
+      localObject1 = new bpl(this, (TextView)localObject2);
       if ((localObject3 != null) && (((List)localObject3).size() == 1)) {
         ((TextView)localObject2).setOnClickListener((View.OnClickListener)localObject1);
       }
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener((View.OnClickListener)localObject1);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener((View.OnClickListener)localObject1);
       this.j.setOnClickListener((View.OnClickListener)localObject1);
-      localObject2 = new bpq(this);
-      localObject3 = new bpr(this);
-      localObject5 = new bps(this);
+      localObject2 = new bpp(this);
+      localObject3 = new bpq(this);
+      localObject5 = new bpr(this);
       localObject1 = null;
       if (TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_actor_describe.get())) {
         break label2101;
@@ -423,13 +423,13 @@ public class TroopRequestActivity
         break label2164;
       }
       this.e.setText("");
-      this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131298536));
+      this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131298491));
       switch (TroopNotificationUtils.a(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get()))
       {
       default: 
-        getString(2131362891);
+        getString(2131362895);
         localObject3 = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
-        localObject1 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_name.get() + getString(2131362480);
+        localObject1 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_name.get() + getString(2131362477);
         localObject5 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_name.get();
         if ((localObject5 == null) || (((String)localObject5).equals("")))
         {
@@ -471,7 +471,7 @@ public class TroopRequestActivity
           break label2746;
         }
         localImageView2.setVisibility(0);
-        localImageView2.setBackgroundResource(2130838183);
+        localImageView2.setBackgroundResource(2130838177);
         localObject5 = localObject2;
         i1 = 4;
         localObject2 = localObject1;
@@ -480,14 +480,14 @@ public class TroopRequestActivity
         localImageView1.setOnClickListener((View.OnClickListener)localObject1);
         localImageView1.setContentDescription((CharSequence)localObject2);
         this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)localObject1);
-        this.m = ((TextView)findViewById(2131298527));
-        this.l = ((TextView)findViewById(2131298526));
-        this.g = ((TextView)findViewById(2131298525));
+        this.m = ((TextView)findViewById(2131298482));
+        this.l = ((TextView)findViewById(2131298481));
+        this.g = ((TextView)findViewById(2131298480));
         this.m.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         this.g.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = super.getString(2131363491);
+        localObject1 = super.getString(2131363492);
         this.g.setText(Html.fromHtml("<u>" + (String)localObject1 + "</u>"));
-        localObject1 = super.getString(2131363490);
+        localObject1 = super.getString(2131363491);
         this.m.setText(Html.fromHtml("<u>" + (String)localObject1 + "</u>"));
         i2 = 0;
         this.m.setVisibility(8);
@@ -502,7 +502,7 @@ public class TroopRequestActivity
           }
           this.z = this.u;
           this.A = "1";
-          this.jdField_f_of_type_Int = 2131363495;
+          this.jdField_f_of_type_Int = 2131363496;
           i1 = 1;
         }
       }
@@ -536,13 +536,13 @@ public class TroopRequestActivity
             this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
             break label1130;
             this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(this, 2131624047);
-            this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837722);
+            this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130837720);
             this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
             break label1130;
             if (TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get())) {
               break label1264;
             }
-            localObject1 = getResources().getString(2131362887) + this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get();
+            localObject1 = getResources().getString(2131362891) + this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get();
             break label1264;
             if (a(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_actor_describe.get())) {
               this.e.setMovementMethod(LinkMovementMethod.getInstance());
@@ -550,9 +550,9 @@ public class TroopRequestActivity
             this.e.setTextAppearance(getApplicationContext(), 2131623989);
             this.e.setText((CharSequence)localObject1);
             break label1289;
-            getString(2131362888);
+            getString(2131362892);
             localObject1 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "";
-            localObject2 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get() + getString(2131362481);
+            localObject2 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get() + getString(2131362478);
             localObject5 = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
             if ((localObject5 == null) || (((String)localObject5).equals(""))) {
               localTextView.setText((CharSequence)localObject1);
@@ -594,9 +594,9 @@ public class TroopRequestActivity
               localObject3 = localObject6;
             }
           }
-          getString(2131362889);
+          getString(2131362893);
           localObject1 = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin.get());
-          localObject2 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin_nick.get() + getString(2131362482);
+          localObject2 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin_nick.get() + getString(2131362479);
           localObject3 = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin_nick.get());
           if ((localObject3 == null) || (((String)localObject3).equals(""))) {
             localTextView.setText((CharSequence)localObject1);
@@ -647,7 +647,7 @@ public class TroopRequestActivity
         if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.group_auth_type.get() == 1)
         {
           localImageView2.setVisibility(0);
-          localImageView2.setBackgroundResource(2130838246);
+          localImageView2.setBackgroundResource(2130838238);
           i1 = 4;
           localObject6 = localObject1;
           localObject1 = localObject2;
@@ -671,7 +671,7 @@ public class TroopRequestActivity
         {
           this.z = this.t;
           this.A = "0";
-          this.jdField_f_of_type_Int = 2131363496;
+          this.jdField_f_of_type_Int = 2131363497;
           i1 = 1;
         }
       }
@@ -689,7 +689,7 @@ public class TroopRequestActivity
     if (!localMatcher.find()) {
       return null;
     }
-    boolean bool1 = paramString3.equals(getString(2131362891));
+    boolean bool1 = paramString3.equals(getString(2131362895));
     int i2 = 0;
     int i3 = -1;
     int i1;
@@ -699,7 +699,7 @@ public class TroopRequestActivity
         if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.group_auth_type.get() == 2)
         {
           i2 = 1;
-          i3 = 2130838183;
+          i3 = 2130838177;
           i1 = 4;
           paramString3 = new DisplayMetrics();
           getWindowManager().getDefaultDisplay().getMetrics(paramString3);
@@ -733,7 +733,7 @@ public class TroopRequestActivity
       if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.group_auth_type.get() == 1)
       {
         i2 = 1;
-        i3 = 2130838246;
+        i3 = 2130838238;
         i1 = 4;
         break;
       }
@@ -767,30 +767,30 @@ public class TroopRequestActivity
           do
           {
             return null;
-            if (!paramString.contains(getString(2131362888))) {
+            if (!paramString.contains(getString(2131362892))) {
               break;
             }
             str = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get();
           } while (TextUtils.isEmpty(str));
-          return a(paramString, str, getString(2131362888), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", paramBoolean);
-          if (!paramString.contains(getString(2131362889))) {
+          return a(paramString, str, getString(2131362892), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", paramBoolean);
+          if (!paramString.contains(getString(2131362893))) {
             break;
           }
           str = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin_nick.get();
         } while (TextUtils.isEmpty(str));
-        return a(paramString, str, getString(2131362889), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin.get() + "", paramBoolean);
-        if (!paramString.contains(getString(2131362890))) {
+        return a(paramString, str, getString(2131362893), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin.get() + "", paramBoolean);
+        if (!paramString.contains(getString(2131362894))) {
           break;
         }
         str = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.actor_uin_nick.get();
       } while (TextUtils.isEmpty(str));
-      return a(paramString, str, getString(2131362890), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.actor_uin.get() + "", paramBoolean);
-      if (!paramString.contains(getString(2131362891))) {
+      return a(paramString, str, getString(2131362894), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.actor_uin.get() + "", paramBoolean);
+      if (!paramString.contains(getString(2131362895))) {
         break;
       }
       str = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_name.get();
     } while (TextUtils.isEmpty(str));
-    return a(paramString, str, getString(2131362891), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramBoolean);
+    return a(paramString, str, getString(2131362895), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramBoolean);
     return new SpannableString(paramString);
   }
   
@@ -810,28 +810,28 @@ public class TroopRequestActivity
     case 20: 
     case 21: 
     default: 
-      return getString(2131362595);
+      return getString(2131362591);
     case 1: 
     case 22: 
-      return getString(2131362586);
+      return getString(2131362582);
     case 2: 
-      return getString(2131362587);
+      return getString(2131362583);
     case 11: 
-      return getString(2131362590);
+      return getString(2131362586);
     case 12: 
-      return getString(2131362589);
+      return getString(2131362585);
     case 10: 
-      return getString(2131362588);
+      return getString(2131362584);
     case 3: 
-      return getString(2131362591);
+      return getString(2131362587);
     case 15: 
     case 16: 
-      return getString(2131362592);
+      return getString(2131362588);
     case 6: 
     case 7: 
-      return getString(2131362593);
+      return getString(2131362589);
     }
-    return getString(2131362594);
+    return getString(2131362590);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -869,7 +869,7 @@ public class TroopRequestActivity
       break;
       label163:
       if (!TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get())) {
-        paramString = getResources().getString(2131362887) + this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get();
+        paramString = getResources().getString(2131362891) + this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get();
       }
     }
     label225:
@@ -897,7 +897,7 @@ public class TroopRequestActivity
   
   boolean a(String paramString)
   {
-    return (paramString.contains(getString(2131362888))) || (paramString.contains(getString(2131362890))) || (paramString.contains(getString(2131362891))) || (paramString.contains(getString(2131362889)));
+    return (paramString.contains(getString(2131362892))) || (paramString.contains(getString(2131362894))) || (paramString.contains(getString(2131362895))) || (paramString.contains(getString(2131362893)));
   }
   
   public void c()
@@ -906,13 +906,13 @@ public class TroopRequestActivity
     if (this.jdField_f_of_type_Int != 0) {
       str = getString(this.jdField_f_of_type_Int);
     }
-    DialogUtil.a(this, 230, getString(2131363494), str, new bpv(this), new bpw(this)).show();
+    DialogUtil.a(this, 230, getString(2131363495), str, new bpu(this), new bpv(this)).show();
   }
   
   void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363378));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363381));
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -926,8 +926,8 @@ public class TroopRequestActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903559);
-    d(2130837633);
+    setContentView(2130903545);
+    d(2130837635);
     this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.app.a(17));
     g();
     if (getIntent().getExtras().getBoolean("groupman_refuse", false))
@@ -965,7 +965,7 @@ public class TroopRequestActivity
       if (this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getTitleBarHeight());
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363564);
+        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363558);
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(false);
       }
       this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();

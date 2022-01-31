@@ -1,32 +1,50 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class bph
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public bph(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
+  public static final String a = "right";
+  public static final int b = 0;
+  public static final String b = "left";
+  public static final int c = 1;
+  public static final int d = 2;
+  public static final int e = 3;
+  public static final int f = 4;
+  public static final int g = 5;
+  public static final int h = 6;
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onClick(View paramView)
+  public bph(TroopMemberListActivity paramTroopMemberListActivity, View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.c)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new bpi(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
-      paramView.putExtra("member_uin", "0");
-      paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, paramView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
-      return;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.l))
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.l, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
-      return;
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, "现在无法发送@All消息", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
   }
 }
 

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import boe;
+import bod;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
@@ -50,10 +50,10 @@ public class TroopMemberGagActivity$TroopGagDurationSettingDialog
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagDurationSettingPannel = ((TroopGagDurationSettingPannel)this.jdField_a_of_type_AndroidViewView.findViewById(2131297671));
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagDurationSettingPannel = ((TroopGagDurationSettingPannel)this.jdField_a_of_type_AndroidViewView.findViewById(2131297667));
       this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagDurationSettingPannel.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.g, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity.e);
-      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131297667);
-      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131297669);
+      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131297663);
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131297665);
       this.b.setClickable(true);
       this.c.setClickable(true);
       this.b.setOnClickListener(this);
@@ -61,8 +61,8 @@ public class TroopMemberGagActivity$TroopGagDurationSettingDialog
       this.b.setFocusable(true);
       this.c.setFocusable(true);
     } while (this.jdField_a_of_type_AndroidContentContext == null);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131362345) + this.jdField_a_of_type_AndroidContentContext.getString(2131362347);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131362346) + this.jdField_a_of_type_AndroidContentContext.getString(2131362347);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131362342) + this.jdField_a_of_type_AndroidContentContext.getString(2131362344);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131362343) + this.jdField_a_of_type_AndroidContentContext.getString(2131362344);
     this.b.setContentDescription(str1);
     this.c.setContentDescription(str2);
   }

@@ -58,8 +58,8 @@ public class PhoneLaunchActivity
     }
     setContentView(2130903262);
     setTitle("启用通讯录");
-    setLeftButton(2131363522, this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297413));
+    setLeftButton(2131363523, this);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297409));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (getIntent().getBooleanExtra("k_start_number", false)) {
       c();
@@ -70,7 +70,7 @@ public class PhoneLaunchActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130968589, 2130968639);
+    overridePendingTransition(2130968589, 2130968637);
   }
   
   public void onClick(View paramView)

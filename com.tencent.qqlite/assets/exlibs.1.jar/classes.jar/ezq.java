@@ -1,31 +1,39 @@
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.struct.PushBanner;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class ezq
   extends Handler
 {
-  public ezq(WorkSpaceView paramWorkSpaceView) {}
+  public ezq(TabBarView paramTabBarView) {}
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+    default: 
       return;
-      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
+    case 0: 
+      TabBarView.a(this.a, 0.0F);
+      TabBarView.a(this.a, 0.1D);
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (TabBarView.a(this.a) < 1.0F)
+      {
+        TabBarView.a(this.a, 0.1D);
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
       }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
     }
+    TabBarView.a(this.a, 1.0F);
+    TabBarView.a(this.a, TabBarView.a(this.a), TabBarView.b(this.a));
+    TabBarView.a(this.a, TabBarView.b(this.a));
+    this.a.invalidate();
   }
 }
 

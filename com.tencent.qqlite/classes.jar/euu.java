@@ -1,77 +1,89 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class euu
-  extends BaseAdapter
+  implements EmoticonCallback
 {
-  public euu(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog) {}
+  public euu(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public int getCount()
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903136, null);
-      paramView = new euz(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131296920));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (euz)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new euy(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label207;
-      }
-      paramView.a.setBackgroundResource(2130837962);
-    }
+    if (QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart() == 0) {}
     for (;;)
     {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label207:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130837963);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130837961);
+      return;
+      try
+      {
+        Editable localEditable = QQCustomDialogWtihEmoticonInput.a(this.a).getText();
+        int i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
+        int j = android.text.TextUtils.getOffsetBefore(QQCustomDialogWtihEmoticonInput.a(this.a).getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
   }
+  
+  public void a(EmoticonInfo paramEmoticonInfo)
+  {
+    int i;
+    int j;
+    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    {
+      i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
+      j = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
+    }
+    int k;
+    int m;
+    do
+    {
+      QQCustomDialogWtihEmoticonInput.a(this.a).getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.b(((SystemEmoticonInfo)paramEmoticonInfo).a));
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
+      paramEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
+      j = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionEnd();
+      k = paramEmoticonInfo.e;
+      m = paramEmoticonInfo.f;
+    } while ((i < 0) || (j < 0) || (j < i) || ((k == 2) && (m == -1)));
+    if (k == 1) {}
+    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.b(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.a(m))
+    {
+      QQCustomDialogWtihEmoticonInput.a(this.a).getEditableText().replace(i, j, paramEmoticonInfo);
+      QQCustomDialogWtihEmoticonInput.a(this.a).requestFocus();
+      return;
+    }
+  }
+  
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

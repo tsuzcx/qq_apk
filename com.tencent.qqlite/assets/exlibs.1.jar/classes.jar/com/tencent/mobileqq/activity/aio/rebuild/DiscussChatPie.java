@@ -8,13 +8,11 @@ import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import bzg;
 import bzh;
-import bzi;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -34,15 +32,15 @@ import com.tencent.widget.XPanelContainer;
 public class DiscussChatPie
   extends BaseChatPie
 {
-  private final String G = "DiscussChatPie";
+  private final String H = "DiscussChatPie";
   private DiscussionObserver a;
   protected MessageObserver a;
   
   public DiscussChatPie(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
     super(paramQQAppInterface, paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new bzh(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bzi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new bzg(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bzh(this);
   }
   
   private void aa()
@@ -99,7 +97,6 @@ public class DiscussChatPie
       return;
     }
     int j = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().widthPixels;
-    paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
     int k = AIOUtils.a(207.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
     TextPaint localTextPaint = this.b.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().density;
@@ -207,7 +204,7 @@ public class DiscussChatPie
   
   protected void n()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839304);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839270);
   }
 }
 

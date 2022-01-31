@@ -1,40 +1,34 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.Frame;
-import com.tencent.mobileqq.app.FrameActivity.TabInfo;
-import java.util.List;
+import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class aws
-  extends PagerAdapter
+  implements IIconListener
 {
-  private aws(NearbyActivity paramNearbyActivity) {}
+  public aws(NearbyPeopleListFrame paramNearbyPeopleListFrame) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramObject != null) {
-      ((ViewPager)paramView).removeView((View)paramObject);
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      int i = this.a.a.getChildCount();
+      paramInt2 = 0;
+      while (paramInt2 < i)
+      {
+        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
+        {
+          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
+          if ((paramBitmap.jdField_b_of_type_Int == paramInt1) && (paramBitmap.jdField_b_of_type_AndroidWidgetTextView != null)) {
+            NearbyPeopleListFrame.a(this.a, paramBitmap.jdField_b_of_type_AndroidWidgetTextView, paramInt1);
+          }
+        }
+        paramInt2 += 1;
+      }
     }
-  }
-  
-  public int getCount()
-  {
-    return NearbyActivity.a(this.a).size();
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    View localView = ((FrameActivity.TabInfo)NearbyActivity.a(this.a).get(paramInt)).a.a();
-    if ((localView.getParent() != paramView) && (paramInt < getCount())) {
-      ((ViewPager)paramView).addView(localView);
-    }
-    return localView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 

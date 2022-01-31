@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.servlet.ReportServlet;
 import com.tencent.qphone.base.util.QLog;
-import eeo;
+import eet;
 import mqq.app.NewIntent;
 
 public class ReportController
@@ -177,7 +177,7 @@ public class ReportController
   
   public static void a(PluginRuntime paramPluginRuntime)
   {
-    paramPluginRuntime.setClickEventReportor(new eeo());
+    paramPluginRuntime.setClickEventReportor(new eet());
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)

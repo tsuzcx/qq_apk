@@ -1,27 +1,38 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.base.FileUtils;
+import com.tencent.open.base.LogUtility;
+import java.io.File;
 
-public class fco
+public final class fco
   implements Runnable
 {
-  public fco(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
-  
   public void run()
   {
-    try
+    File localFile1 = new File(Common.a());
+    if (localFile1.exists())
     {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("iconType", localJSONObject.optString("iconType"));
-      localBundle.putString("visible", localJSONObject.optString("visible"));
-      localBundle.putString("callBackKey", localJSONObject.optString("callBackKey"));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      File[] arrayOfFile = localFile1.listFiles();
+      int j = arrayOfFile.length;
+      int i = 0;
+      if (i < j)
+      {
+        File localFile2 = arrayOfFile[i];
+        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.o())) && (!localFile2.getName().equals(Common.o()))))
+        {
+          if (!FileUtils.a(new File(localFile1 + File.separator + localFile2.getName()))) {
+            break label179;
+          }
+          LogUtility.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label179:
+          LogUtility.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
+        }
+      }
     }
   }
 }

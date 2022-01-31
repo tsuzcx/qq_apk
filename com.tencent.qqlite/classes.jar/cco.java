@@ -1,58 +1,26 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cco
-  implements SlideDetectListView.OnScrollToTopListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public cco(SystemMsgListView paramSystemMsgListView) {}
+  public cco(NewFriendActivity paramNewFriendActivity, ActionSheet paramActionSheet) {}
   
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    if ((SystemMsgListView.a(this.a) != null) && (paramInt == 0) && (SystemMsgListView.a(this.a) == SystemMsgListView.a(this.a).getCount())) {
-      SystemMsgListView.b(this.a);
-    }
-    SystemMsgListView.a(this.a, paramInt);
-    if (paramInt != 0)
+    switch (paramInt)
     {
-      SystemMsgListView.a(this.a).c();
-      SystemMsgListView.a(this.a).a();
     }
     for (;;)
     {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if (SystemMsgListView.a(this.a).a()) {
-        SystemMsgListView.a(this.a).b();
-      }
-      int i = SystemMsgListView.a(this.a).getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramAbsListView = (SystemMsgListAdapter.ViewHolder)SystemMsgListView.a(this.a).getChildAt(paramInt).getTag();
-        SystemMsgListView.a(this.a, paramAbsListView);
-        paramInt += 1;
-      }
+      paramView = new ccp(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity.app.a(paramView);
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    SystemMsgListView.b(this.a, paramInt1 + paramInt2 - 1);
-    if (paramInt1 > 1) {
-      FriendSystemMsgController.a().a();
-    }
-    while (!SystemMsgListView.c(this.a)) {
-      return;
-    }
-    FriendSystemMsgController.a().f();
   }
 }
 

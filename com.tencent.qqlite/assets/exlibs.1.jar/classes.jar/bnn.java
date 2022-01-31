@@ -1,47 +1,46 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.data.TroopMemberCard.CustomEntry;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bnn
   implements View.OnClickListener
 {
-  public bnn(TroopManageActivity paramTroopManageActivity) {}
+  public bnn(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = "";
-    try
-    {
-      if (1L == this.a.a.dwAdditionalFlag) {
-        localObject = "0";
-      }
-      for (;;)
-      {
-        ReportController.b(this.a.app, "P_CliOper", "Grp_manage", "", "manage_grp", "Clk_data", 0, 0, this.a.a.troopuin, (String)localObject, "", "");
-        paramView = (String)paramView.getTag();
-        paramView = paramView + "&gc=" + this.a.a.troopuin;
-        paramView = paramView + "&src=2";
-        localObject = new Intent(this.a, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramView);
-        this.a.startActivity((Intent)localObject);
-        return;
-        if (1L == this.a.a.dwCmdUinUinFlag) {
-          localObject = "1";
-        }
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
+    if ((this.a.a == null) || (this.a.a.customEntryList == null)) {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.troopmanage", 2, "go to statics h5 url error");
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnCustomItemClickListener: mTroopMemberCard == null || mTroopMemberCard.customEntryList == null");
       }
     }
+    int i;
+    int j;
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        localObject = paramView.getTag();
+      } while ((localObject == null) || (!(localObject instanceof TroopMemberCardActivity.ViewHolder)));
+      i = ((TroopMemberCardActivity.ViewHolder)paramView.getTag()).a;
+      j = this.a.a.customEntryList.size();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnCustomItemClickListener, index:" + i + " size:" + j);
+      }
+    } while ((i < 0) || (i >= j));
+    paramView = (TroopMemberCard.CustomEntry)this.a.a.customEntryList.get(i);
+    this.a.d(paramView.linkUrl);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnCustomItemClickListener, linkUrl:" + paramView.linkUrl + " reportId:" + paramView.reportId);
+    }
+    this.a.d("Clk_dynamic", paramView.reportId + "");
   }
 }
 

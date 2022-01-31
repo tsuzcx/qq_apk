@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.widget.QQToast;
-import eog;
+import eol;
 
 public class AddTroopHelper
 {
@@ -26,7 +26,7 @@ public class AddTroopHelper
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new eog(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new eol(this);
   }
   
   private final void a(TroopInfo paramTroopInfo)
@@ -36,7 +36,7 @@ public class AddTroopHelper
     }
     if (paramTroopInfo.cGroupOption == 3)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131363365, 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131363368, 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
       return;
     }
     paramTroopInfo = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, paramTroopInfo.troopuin, paramTroopInfo.troopname, paramTroopInfo.cGroupOption, this.jdField_a_of_type_Int, null, null, null, "群组");

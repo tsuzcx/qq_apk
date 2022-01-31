@@ -1,26 +1,109 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.PerformanceReportUtils;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.ServerConfigManager.ConfigType;
 
-public class etx
-  implements View.OnClickListener
+public final class etx
+  extends AsyncTask
 {
-  public etx(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public etx(int paramInt, long paramLong, String paramString) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
+    int i = 1;
+    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.b());
+    if (QLog.isDevelopLevel()) {
+      QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch openStr ：" + paramVarArgs);
     }
-    try
+    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      return null;
+      try
+      {
+        HashMap localHashMap = new HashMap();
+        if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000))
+        {
+          if (QQAppInterface.c) {
+            i = 0;
+          }
+          localHashMap.put("actloginTypt", String.valueOf(i));
+          if (!QQAppInterface.c) {
+            QQAppInterface.c = true;
+          }
+        }
+        switch (this.jdField_a_of_type_Int)
+        {
+        }
+        long l1;
+        for (;;)
+        {
+          SharedPreferences localSharedPreferences = PerformanceReportUtils.a();
+          if ((paramVarArgs == null) || (this.jdField_a_of_type_Long <= 0L)) {
+            break;
+          }
+          long l2 = localSharedPreferences.getLong(paramVarArgs, 0L);
+          l1 = PerformanceReportUtils.a();
+          String str = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.l());
+          if (str != null) {
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch  server time：" + str);
+            }
+          }
+          try
+          {
+            l1 = Long.valueOf(str).longValue();
+            l1 *= 1000L;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              l1 = PerformanceReportUtils.a();
+            }
+            paramVarArgs = null;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2 + ",aioBusiness=" + PerformanceReportUtils.a());
+          }
+          if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
+            break;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + PerformanceReportUtils.a());
+          }
+          localHashMap.put("aioBusiness", PerformanceReportUtils.a());
+          StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.m());
+          localSharedPreferences.edit().putLong(paramVarArgs, SystemClock.uptimeMillis()).commit();
+          return null;
+          paramVarArgs = PerformanceReportUtils.d();
+          continue;
+          paramVarArgs = PerformanceReportUtils.e();
+          continue;
+          paramVarArgs = PerformanceReportUtils.f();
+          continue;
+          paramVarArgs = PerformanceReportUtils.g();
+          continue;
+          paramVarArgs = PerformanceReportUtils.h();
+          continue;
+          paramVarArgs = PerformanceReportUtils.i();
+          continue;
+          paramVarArgs = PerformanceReportUtils.j();
+          continue;
+          paramVarArgs = PerformanceReportUtils.k();
+        }
+        return null;
       }
-      return;
+      catch (Exception paramVarArgs) {}
     }
-    catch (Exception paramView) {}
   }
 }
 

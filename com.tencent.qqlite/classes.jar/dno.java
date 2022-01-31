@@ -1,50 +1,38 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.OutputStream;
 
 public class dno
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public dno(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public dno(FileManagerDataCenter paramFileManagerDataCenter) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.b == 0)
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
     {
-      if (this.a.f != null)
-      {
-        this.a.i = 0L;
-        this.a.a(this.a.f, 0L);
-        return;
+      localBundle = paramIntent.getBundleExtra("extraBundle");
+      if (localBundle != null) {
+        break label46;
       }
-      this.a.b();
-      return;
-    }
-    if (this.a.f.equalsIgnoreCase(""))
-    {
-      this.a.a();
-      return;
-    }
-    this.a.g = System.currentTimeMillis();
-    try
-    {
-      if (this.a.jdField_a_of_type_JavaIoOutputStream != null) {
-        this.a.jdField_a_of_type_JavaIoOutputStream.flush();
-      }
-      this.a.jdField_a_of_type_Long = FileManagerUtil.a(this.a.d);
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.a.c + "]retry request Httpmsg,rd[" + String.valueOf(this.a.jdField_a_of_type_Long) + "]");
-      FileManagerRSWorker.a(this.a, this.a.jdField_a_of_type_Long, this.a.h);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
       }
     }
+    return;
+    label46:
+    paramContext = localBundle.getString("peerUin");
+    int i = localBundle.getInt("peerType");
+    paramIntent = localBundle.getString("sourceStr");
+    String str = localBundle.getString("filePath");
+    long l = localBundle.getLong("dataLength");
+    int j = localBundle.getInt("fileSourceId");
+    Bundle localBundle = localBundle.getBundle("otherData");
+    this.a.a(paramContext, i, str, l, j, paramIntent, localBundle);
   }
 }
 

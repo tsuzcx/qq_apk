@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import eex;
+import efc;
 
 public class StructMsgClickHandler
   implements StructMsgOnClickListener
@@ -47,11 +47,11 @@ public class StructMsgClickHandler
     if ((jdField_a_of_type_ComTencentWidgetActionSheet == null) || (!jdField_a_of_type_ComTencentWidgetActionSheet.getContext().equals(paramContext)))
     {
       jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(paramContext, 2131624119);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363569, 1);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363570, 1);
-      jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362790);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131363585), new Object[] { paramString }));
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(new eex(paramString, paramContext));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363563, 1);
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131363564, 1);
+      jdField_a_of_type_ComTencentWidgetActionSheet.d(2131362794);
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131363579), new Object[] { paramString }));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(new efc(paramString, paramContext));
     }
     if (!jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       jdField_a_of_type_ComTencentWidgetActionSheet.show();

@@ -1,20 +1,31 @@
-import android.view.MotionEvent;
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class atp
-  implements View.OnTouchListener
+  implements View.OnFocusChangeListener
 {
   public atp(LoginActivity paramLoginActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.a.a.isPopupShowing()) {
-      this.a.a.dismissDropDown();
+    if (true == paramBoolean)
+    {
+      if (this.a.a.isPopupShowing()) {
+        this.a.a.dismissDropDown();
+      }
+      if ((this.a.b != null) && (this.a.a.getText().length() > 0)) {
+        this.a.b.setVisibility(0);
+      }
+      this.a.a.setSelection(this.a.a.getText().length());
     }
-    return false;
+    while ((this.a.b == null) || (!this.a.b.isShown())) {
+      return;
+    }
+    this.a.b.setVisibility(8);
   }
 }
 

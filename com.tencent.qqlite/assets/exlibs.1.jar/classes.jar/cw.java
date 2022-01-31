@@ -1,5 +1,8 @@
 import com.dataline.mpfile.LiteMpFileMainActivity;
-import com.dataline.mpfile.MpfileMenuListAdapter;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
 public class cw
   implements Runnable
@@ -8,9 +11,16 @@ public class cw
   
   public void run()
   {
-    LiteMpFileMainActivity.a(this.a).a(LiteMpFileMainActivity.a(this.a));
-    LiteMpFileMainActivity.a(this.a).notifyDataSetChanged();
-    this.a.a();
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 253;
+    localMpfileDataReportInfo.jdField_a_of_type_Int = 1;
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.b();
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileMainActivity.b(this.a);
+    localMpfileDataReportInfo.c = LiteMpFileMainActivity.c(this.a);
+    MpFileDataReportCenter.a(this.a.app, localMpfileDataReportInfo);
+    this.a.a(MpfileDataCenter.t);
   }
 }
 

@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.app.LebaHelper;
+import com.tencent.mobileqq.app.GuardManager;
+import java.util.TimerTask;
 
 public class ctg
-  implements Runnable
+  extends TimerTask
 {
-  public ctg(LebaHelper paramLebaHelper) {}
+  private ctg(GuardManager paramGuardManager) {}
   
   public void run()
   {
-    LebaHelper.c(this.a);
-    LebaHelper.a(this.a);
-    LebaHelper.b(this.a);
+    if (GuardManager.b(this.a)) {
+      this.a.b(2, null);
+    }
   }
 }
 

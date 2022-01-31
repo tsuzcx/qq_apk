@@ -1,51 +1,38 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class diu
-  extends IClickListener_Ver51
+  implements View.OnClickListener
 {
-  public diu(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public diu(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.a().a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().g();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.a, 2, "wy saveto wy?" + FileManagerUtil.a());
+    if (paramView == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseCloudFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+      return;
     }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().j();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().k();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().F();
+    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
+    if (localWeiYunFileInfo != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
+      }
+      QfileBaseCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
+    paramView.setVisibility(4);
+    this.a.setListFooter();
+    QfileBaseCloudFileTabView.a(this.a);
   }
 }
 

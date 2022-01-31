@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import java.util.TimerTask;
 
 public class dtc
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public dtc(LocalVideoFileView paramLocalVideoFileView) {}
+  public dtc(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (LocalVideoFileView.a(this.a))
-    {
-      LocalVideoFileView.a(this.a);
-      return;
-    }
-    LocalVideoFileView.b(this.a);
-    new Handler().postDelayed(new dtd(this), 2000L);
+    LocalMusicFileView.a(this.a).runOnUiThread(new dtd(this));
   }
 }
 

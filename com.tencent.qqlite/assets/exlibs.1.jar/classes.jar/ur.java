@@ -1,23 +1,16 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
-import com.tencent.litetransfersdk.LiteTransferOperatorCallback;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.litetransfersdk.Session;
+import java.util.ArrayList;
 
 public class ur
   implements Runnable
 {
-  public ur(LiteTransferWrapper paramLiteTransferWrapper) {}
+  public ur(LiteTransferWrapper paramLiteTransferWrapper, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    if (LiteTransferWrapper.access$300(this.a) == 0L)
-    {
-      this.a.initGlobalFuncCallback();
-      LiteTransferWrapper.access$402(this.a, new LiteTransferOperatorCallback(LiteTransferWrapper.access$500(this.a)));
-      LiteTransferWrapper.access$602(this.a, new LiteTransferListenerCallback(LiteTransferWrapper.access$500(this.a)));
-      LiteTransferWrapper.access$302(this.a, this.a.createOperator(LiteTransferWrapper.access$400(this.a), LiteTransferWrapper.access$600(this.a)));
-      this.a.checkPathExist();
-      this.a.SetProxyToJni();
-    }
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SendGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), (Session[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new Session[this.jdField_a_of_type_JavaUtilArrayList.size()]), this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

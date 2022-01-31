@@ -1,21 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
 
 public class bll
-  implements CompoundButton.OnCheckedChangeListener
+  implements ExpandableListView.OnGroupClickListener
 {
   public bll(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramCompoundButton.getId())
-    {
-    default: 
-      return;
-    }
-    TroopAssistantManager.a().a(this.a.app, paramBoolean);
+    return true;
   }
 }
 

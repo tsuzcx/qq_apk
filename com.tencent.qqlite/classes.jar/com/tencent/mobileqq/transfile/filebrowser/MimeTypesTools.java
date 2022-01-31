@@ -48,7 +48,7 @@ public class MimeTypesTools
     if ((paramString != null) && (paramString.size() > 0)) {
       return ((ResolveInfo)paramString.get(0)).loadIcon(localPackageManager);
     }
-    return paramContext.getResources().getDrawable(2130839478);
+    return paramContext.getResources().getDrawable(2130839443);
   }
   
   private static MimeTypes a(Context paramContext)

@@ -1,28 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
 
-class bzk
-  implements DialogInterface.OnClickListener
+public class bzk
+  implements Runnable
 {
-  bzk(bzi parambzi, String paramString) {}
+  public bzk(FriendChatPie paramFriendChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((DiscussionManager)DiscussChatPie.g(this.jdField_a_of_type_Bzi.a).getManager(45)).a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = DiscussChatPie.h(this.jdField_a_of_type_Bzi.a).a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if (FriendChatPie.a(this.a) == null) {}
+    while (FriendChatPie.b(this.a).a == 0) {
+      return;
     }
-    ((DiscussionHandler)DiscussChatPie.i(this.jdField_a_of_type_Bzi.a).a(6)).c();
-    this.jdField_a_of_type_Bzi.a.t();
   }
 }
 

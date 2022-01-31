@@ -1,16 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.adapter.WebBaseFacePreloadExpandableListAdapter;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
 
 public class cpj
-  extends Handler
+  implements Runnable
 {
-  public cpj(WebBaseFacePreloadExpandableListAdapter paramWebBaseFacePreloadExpandableListAdapter) {}
+  public cpj(LebaListViewAdapter paramLebaListViewAdapter, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder, Drawable paramDrawable, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1) {
-      this.a.c();
+    boolean bool = true;
+    LebaListViewAdapter localLebaListViewAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter;
+    ImageView localImageView1 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.f;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ImageView localImageView2 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.g;
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (;;)
+    {
+      LebaListViewAdapter.a(localLebaListViewAdapter, localImageView1, localDrawable, localImageView2, bool);
+      return;
+      bool = false;
     }
   }
 }

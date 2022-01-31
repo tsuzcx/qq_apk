@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Set;
-import jp;
+import jl;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -1203,7 +1203,7 @@ public class AuthorizeConfig
         break;
       }
       jdField_b_of_type_Int = 1;
-      ThreadManager.a(new jp(this));
+      ThreadManager.a(new jl(this));
       return;
       bool = false;
     }

@@ -1,36 +1,25 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class bge
-  extends SecSvcObserver
+  implements AdapterView.OnItemClickListener
 {
-  public bge(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public bge(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    boolean bool = true;
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      if (paramBoolean)
-      {
-        paramString = this.a;
-        if (paramInt == 1) {}
-        for (paramBoolean = bool;; paramBoolean = false)
-        {
-          paramString.a(paramBoolean);
-          return;
-        }
-      }
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    } while (!this.a.isResume());
-    paramString = this.a.getString(2131364234);
-    QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
+    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
   }
 }
 

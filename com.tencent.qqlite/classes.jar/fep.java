@@ -1,45 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class fep
   implements Runnable
 {
-  public fep(DownloadManager paramDownloadManager) {}
+  public fep(DownloadManager paramDownloadManager, Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
   
   public void run()
   {
-    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
-    {
-      localObject1 = AppNotificationManager.a().a();
-      if (localObject1 != null)
-      {
-        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localNoticeIdentity != null)
-          {
-            Object localObject2 = this.a.a(localNoticeIdentity.b);
-            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
-            {
-              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
-              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                AppNotificationManager.a().a(localNoticeIdentity.a);
-              }
-            }
-          }
-        }
-      }
+    Object localObject = new feq(this);
+    fer localfer = new fer(this);
+    LogUtility.b(DownloadManager.a, "dialog create and show");
+    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131362108)).setPositiveButton(2131362106, localfer).setNegativeButton(2131362107, (DialogInterface.OnClickListener)localObject).create();
+    ((Dialog)localObject).setCanceledOnTouchOutside(false);
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      ((Dialog)localObject).show();
     }
   }
 }

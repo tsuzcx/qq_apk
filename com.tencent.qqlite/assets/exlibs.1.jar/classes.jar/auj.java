@@ -1,19 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class auj
-  extends ClickableSpan
+  extends Handler
 {
-  private auj(LoginInfoActivity paramLoginInfoActivity) {}
+  public auj(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void handleMessage(Message paramMessage)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2014: 
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
   }
 }
 

@@ -1,32 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ebr
-  implements ActionSheet.OnButtonClickListener
+class ebr
+  implements Animation.AnimationListener
 {
-  public ebr(EditActivity paramEditActivity) {}
+  ebr(ebq paramebq) {}
   
-  public void a(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        this.a.c = 0;
-      } while (System.currentTimeMillis() - this.a.jdField_a_of_type_Long <= 1300L);
-      this.a.d();
-      return;
-    }
-    this.a.c = 1;
-    EditActivity.a(this.a).e = null;
-    EditActivity.c(this.a, true);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

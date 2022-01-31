@@ -1,30 +1,18 @@
-import android.content.res.Resources;
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.DrawableContainer;
-import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
-import com.tencent.mobileqq.widget.XfermodeDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.widget.UnderlinePageIndicator.SavedState;
 
-public class ezu
-  extends DrawableContainer.ContainerState
+public final class ezu
+  implements Parcelable.Creator
 {
-  public Xfermode a;
-  
-  public ezu(Drawable paramDrawable, DrawableContainer paramDrawableContainer, Xfermode paramXfermode)
+  public UnderlinePageIndicator.SavedState a(Parcel paramParcel)
   {
-    super(paramDrawable, paramDrawableContainer);
-    this.a = paramXfermode;
+    return new UnderlinePageIndicator.SavedState(paramParcel, null);
   }
   
-  ezu(ezu paramezu, DrawableContainer paramDrawableContainer, Resources paramResources)
+  public UnderlinePageIndicator.SavedState[] a(int paramInt)
   {
-    super(paramezu, paramDrawableContainer, paramResources);
-    this.a = paramezu.a;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new XfermodeDrawable(this, null, null);
+    return new UnderlinePageIndicator.SavedState[paramInt];
   }
 }
 

@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView.LeftEventListener;
 
 public class aqs
-  implements DialogInterface.OnDismissListener
+  implements DragSortListView.LeftEventListener
 {
   public aqs(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    GroupManagerActivity.b(this.a, null);
-  }
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt) {}
 }
 
 

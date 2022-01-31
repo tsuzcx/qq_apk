@@ -1,65 +1,55 @@
+import android.os.Bundle;
 import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistantsdk.openSDK.BaseQQDownloaderOpenSDK;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
 
-public class ffp
+class ffp
   implements Runnable
 {
-  public ffp(MyAppApi.QQDownloadListener paramQQDownloadListener, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, int paramInt1, int paramInt2, String paramString) {}
+  ffp(ffm paramffm) {}
   
   public void run()
   {
-    int i;
-    DownloadManager localDownloadManager;
-    DownloadInfo localDownloadInfo;
-    if (this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam != null)
+    boolean bool2 = false;
+    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
+    DownloadInfo localDownloadInfo = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, this.a.jdField_a_of_type_AndroidOsBundle);
+    DownloadManager.a().e(localDownloadInfo);
+    for (;;)
     {
-      LogUtility.a("State_Log", "OpenSDK OnDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.via);
-      i = DownloadManager.a(this.jdField_a_of_type_Int);
-      LogUtility.c("State_Log", "OnDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
-      localDownloadManager = DownloadManager.a();
-      localDownloadInfo = localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId, i);
-      if ((localDownloadInfo != null) || (this.jdField_a_of_type_Int == 6)) {
-        break label383;
-      }
-      localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, null);
-      localDownloadManager.e(localDownloadInfo);
-      localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId, i);
-    }
-    while (localDownloadInfo != null)
-    {
-      LogUtility.c("State_Log", "OnDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
-      localDownloadManager.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
-      return;
-      LogUtility.a("State_Log", "OpenSDK OnDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
-      return;
-      label383:
-      if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a != null) && ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3)) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.e())) {
-        try
+      boolean bool3;
+      try
+      {
+        LogUtility.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId + " apkId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskApkId + " taskAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskAppId + " packageName=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskPackageName + " version=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskVersion + " uin=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin + " via=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.via);
+        LogUtility.c("TIME-STATISTIC", "downloadSdk.startToAppDetail");
+        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c();
+        if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
         {
-          localDownloadManager.a(localDownloadInfo);
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a.getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam);
-          if (localTMAssistantDownloadTaskInfo != null)
-          {
-            long l1 = localTMAssistantDownloadTaskInfo.mReceiveDataLen;
-            long l2 = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-            int j = (int)((float)l1 * 100.0F / (float)l2);
-            localDownloadInfo.k = j;
-            LogUtility.a("MyAppApi", "OnDownloadTaskStateChanged info progress = " + j);
-          }
+          ((TMQQDownloaderOpenSDK)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).startToAppDetail(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, this.a.jdField_a_of_type_Boolean, this.a.b);
+          return;
         }
-        catch (Exception localException)
+        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
+        int j = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        boolean bool1 = this.a.jdField_a_of_type_Boolean;
+        bool3 = this.a.b;
+        if (i == 3)
         {
-          LogUtility.c("MyAppApi", "getDownloadTaskState>>>", localException);
+          bool1 = false;
+          ((TMQQDownloaderOpenSDK_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).startToAppDetail(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, bool1, bool2, j);
+          return;
         }
       }
+      catch (Exception localException)
+      {
+        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
+        return;
+      }
+      bool2 = bool3;
     }
-    LogUtility.c("MyAppApi", "OnDownloadTaskStateChanged notifyListener error dlInfo == null");
   }
 }
 

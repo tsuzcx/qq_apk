@@ -1,34 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.qphone.base.util.QLog;
 
 public class bwu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bwu(ShakeItemBuilder paramShakeItemBuilder) {}
+  public bwu(ShakeItemBuilder paramShakeItemBuilder, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
-    }
-    if (ShakeItemBuilder.a(this.a)) {
-      return;
-    }
-    paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
-    {
-      ((ChatActivity)this.a.jdField_a_of_type_AndroidContentContext).a().T();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

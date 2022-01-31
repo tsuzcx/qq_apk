@@ -1,14 +1,24 @@
-import android.widget.TextView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
-class dtk
-  implements Runnable
+public class dtk
+  implements View.OnClickListener
 {
-  dtk(dtj paramdtj) {}
+  public dtk(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.a.a).post(new dtl(this));
+    if (LocalVideoFileView.b(this.a).getRequestedOrientation() != 0)
+    {
+      LocalVideoFileView.b(this.a).setRequestedOrientation(0);
+      LocalVideoFileView.a(this.a).setBackgroundResource(2130838574);
+      return;
+    }
+    LocalVideoFileView.b(this.a).setRequestedOrientation(1);
+    LocalVideoFileView.a(this.a).setBackgroundResource(2130838577);
   }
 }
 

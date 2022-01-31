@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
+import com.tencent.mobileqq.transfile.ServerAddr;
 
 public class ehp
-  extends MessageObserver
+  extends ServerAddr
 {
-  public ehp(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  public int a;
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void a() {}
+  
+  public void b()
   {
-    this.a.a("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    FMTSrvAddrProvider.a().a(this.jdField_a_of_type_Int, "http://" + this.jdField_a_of_type_JavaLangString + ":" + this.b);
   }
 }
 

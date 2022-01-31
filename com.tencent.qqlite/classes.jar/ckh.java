@@ -1,28 +1,33 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 
 public class ckh
   implements View.OnClickListener
 {
-  public ckh(BannerManager paramBannerManager) {}
+  public ckh(BannerManager paramBannerManager, View paramView) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (!FileUtil.a(FileViewMusicService.a().b()))
     {
-    default: 
-      return;
-    case 2131297382: 
-      paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
-      paramView.putExtra("loginInfo", this.a.d);
-      BannerManager.a(this.a).startActivity(paramView);
+      FileViewMusicService.a().c();
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131297317).setVisibility(8);
       return;
     }
-    this.a.a();
+    paramView = new ForwardFileInfo();
+    paramView.a(10008);
+    Intent localIntent = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), FileBrowserActivity.class);
+    localIntent.putExtra("fileinfo", paramView);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(localIntent);
+    FileManagerReporter.a("0X8004BFE");
   }
 }
 

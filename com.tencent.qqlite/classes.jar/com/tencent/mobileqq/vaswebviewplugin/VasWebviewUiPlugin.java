@@ -57,9 +57,9 @@ public abstract class VasWebviewUiPlugin
     String str1 = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ");
     paramString = str1;
     if (paramBoolean) {
-      paramString = str1.replace("[version]", "5.3.1.544");
+      paramString = str1.replace("[version]", "5.3.1.607");
     }
-    str1 = paramString.replace("[version]", "3.3.0.544").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    str1 = paramString.replace("[version]", "3.4.0.607").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
     Intent localIntent = this.activity.getIntent();
     String str2 = localIntent.getStringExtra("updateTime");
     paramString = str1;

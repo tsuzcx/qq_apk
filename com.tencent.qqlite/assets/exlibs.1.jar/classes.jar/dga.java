@@ -1,36 +1,52 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class dga
-  implements Runnable
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public dga(FilePreviewActivity paramFilePreviewActivity) {}
+  public dga(FMActivity paramFMActivity) {}
   
-  public void run()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
-      this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(2131363572);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-    localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eAlphaAnim;
-    localFilePreviewAnim.jdField_a_of_type_Int = 1000;
-    this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
-    this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 2, "showGetmore(1000)");
+    this.a.i();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
+      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
     }
+    if (paramInt == 2131297996)
+    {
+      this.a.a().f();
+      FMActivity.c(this.a);
+    }
+    do
+    {
+      return;
+      if (paramInt == 2131297997)
+      {
+        this.a.a().e();
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        FMActivity.d(this.a);
+        return;
+      }
+    } while (paramInt != 2131297998);
+    this.a.a().d();
+    this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+    FMActivity.a(this.a, 2);
   }
 }
 

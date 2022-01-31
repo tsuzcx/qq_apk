@@ -18,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.graphics.drawable.DrawableContainer;
 import android.os.AsyncTask;
+import android.os.Build.VERSION;
 import android.os.Process;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -61,20 +62,21 @@ public class SkinEngine
   public static final String TAG_SWITCH = "SkinEngine.switch";
   public static final int TYPE_FILE = 16777215;
   public static final int TYPE_RESOURCES = 3;
-  static final String[][] b;
-  static final int[][] c = { { 320, 240, 160, 160 }, { 240, 320, 160, 160 }, { 160, 160, 240, 320 }, { 120, 160, 240, 320, 160 }, { 480, 320, 240, 160, 160 } };
-  static int d = 0;
-  static int e = 1;
-  static int f = 2;
-  static int g = 3;
-  static int h = 4;
-  private static SkinEngine k;
+  static boolean a;
+  static final String[][] c;
+  static final int[][] d;
+  static int e;
+  static int f;
+  static int g;
+  static int h;
+  static int i;
+  private static SkinEngine l;
   public static Field mComposedIconInfoOfCM;
   public static Integer mIconResourceID;
   public static Field mIconsOfCM;
-  final TypedValue a = new TypedValue();
-  SkinEngineHandler i;
-  BroadcastReceiver j = new BroadcastReceiver()
+  final TypedValue b = new TypedValue();
+  SkinEngineHandler j;
+  BroadcastReceiver k = new BroadcastReceiver()
   {
     public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
@@ -89,31 +91,44 @@ public class SkinEngine
       catch (RejectedExecutionException paramAnonymousContext) {}
     }
   };
-  private boolean l = false;
-  private boolean m = true;
+  private boolean m = false;
   public Resources mResources;
-  private final LongSparseArray<WeakReference<b>> n = new LongSparseArray();
-  private final LongSparseArray<WeakReference<SkinnableColorStateList>> o = new LongSparseArray();
-  private String p;
+  private boolean n = true;
+  private final LongSparseArray<WeakReference<b>> o = new LongSparseArray();
+  private final LongSparseArray<WeakReference<SkinnableColorStateList>> p = new LongSparseArray();
   private String q;
-  private int r = f;
-  private f s;
-  private d t;
-  private e u;
-  private HashMap<String, Object> v;
+  private String r;
+  private int s = g;
+  private g t;
+  private d u;
+  private e v;
   private HashMap<String, Object> w;
+  private HashMap<String, Object> x;
   
   static
   {
-    IS_PROBLEM_MIUI = false;
-    mIconsOfCM = null;
-    mComposedIconInfoOfCM = null;
-    IS_PROBLEM_CM11 = false;
-    mIconResourceID = null;
-    String[] arrayOfString1 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
-    String[] arrayOfString2 = { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" };
-    String[] arrayOfString3 = { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
-    b = new String[][] { { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" }, arrayOfString1, arrayOfString2, arrayOfString3 };
+    if (("MNC".equals(Build.VERSION.CODENAME)) || (Build.VERSION.SDK_INT >= 23)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a = bool;
+      IS_PROBLEM_MIUI = false;
+      mIconsOfCM = null;
+      mComposedIconInfoOfCM = null;
+      IS_PROBLEM_CM11 = false;
+      mIconResourceID = null;
+      String[] arrayOfString1 = { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
+      String[] arrayOfString2 = { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" };
+      String[] arrayOfString3 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
+      String[] arrayOfString4 = { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
+      c = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, arrayOfString4 };
+      d = new int[][] { { 320, 240, 160, 160 }, { 240, 320, 160, 160 }, { 160, 160, 240, 320 }, { 120, 160, 240, 320, 160 }, { 480, 320, 240, 160, 160 } };
+      e = 0;
+      f = 1;
+      g = 2;
+      h = 3;
+      i = 4;
+      return;
+    }
   }
   
   private static int a(Resources paramResources)
@@ -121,15 +136,15 @@ public class SkinEngine
     switch (paramResources.getDisplayMetrics().densityDpi)
     {
     default: 
-      return f;
-    case 320: 
-      return d;
-    case 240: 
-      return e;
-    case 120: 
       return g;
+    case 320: 
+      return e;
+    case 240: 
+      return f;
+    case 120: 
+      return h;
     }
-    return h;
+    return i;
   }
   
   private XmlResourceParser a(int paramInt, TypedValue paramTypedValue)
@@ -143,55 +158,55 @@ public class SkinEngine
   }
   
   /* Error */
-  private b a(int paramInt, Resources paramResources, i parami)
+  private b a(int paramInt, Resources paramResources, j paramj)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 154	com/tencent/theme/SkinEngine:a	Landroid/util/TypedValue;
+    //   1: getfield 171	com/tencent/theme/SkinEngine:b	Landroid/util/TypedValue;
     //   4: astore 8
     //   6: aload 8
     //   8: monitorenter
-    //   9: new 253	android/graphics/Rect
+    //   9: new 270	android/graphics/Rect
     //   12: dup
-    //   13: invokespecial 254	android/graphics/Rect:<init>	()V
+    //   13: invokespecial 271	android/graphics/Rect:<init>	()V
     //   16: astore 9
     //   18: aload_3
-    //   19: getfield 258	com/tencent/theme/i:b	Ljava/lang/String;
+    //   19: getfield 275	com/tencent/theme/j:b	Ljava/lang/String;
     //   22: astore 7
     //   24: aload 7
     //   26: ifnull +252 -> 278
     //   29: aload 7
-    //   31: ldc_w 260
-    //   34: invokevirtual 264	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   31: ldc_w 277
+    //   34: invokevirtual 281	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   37: istore 4
     //   39: iload 4
     //   41: ifne +237 -> 278
     //   44: aload_0
     //   45: aload_2
     //   46: aload 7
-    //   48: invokespecial 267	com/tencent/theme/SkinEngine:b	(Landroid/content/res/Resources;Ljava/lang/String;)Ljava/io/InputStream;
+    //   48: invokespecial 284	com/tencent/theme/SkinEngine:b	(Landroid/content/res/Resources;Ljava/lang/String;)Ljava/io/InputStream;
     //   51: astore 6
-    //   53: new 269	android/graphics/BitmapFactory$Options
+    //   53: new 286	android/graphics/BitmapFactory$Options
     //   56: dup
-    //   57: invokespecial 270	android/graphics/BitmapFactory$Options:<init>	()V
+    //   57: invokespecial 287	android/graphics/BitmapFactory$Options:<init>	()V
     //   60: astore 10
     //   62: aload 10
     //   64: aload_3
-    //   65: getfield 272	com/tencent/theme/i:c	I
-    //   68: putfield 275	android/graphics/BitmapFactory$Options:inDensity	I
+    //   65: getfield 289	com/tencent/theme/j:c	I
+    //   68: putfield 292	android/graphics/BitmapFactory$Options:inDensity	I
     //   71: aload_2
     //   72: aconst_null
     //   73: aload 6
     //   75: aload_3
-    //   76: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   76: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   79: aload 10
     //   81: aload 9
     //   83: aload_0
-    //   84: getfield 158	com/tencent/theme/SkinEngine:m	Z
-    //   87: invokestatic 282	com/tencent/theme/h:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
+    //   84: getfield 175	com/tencent/theme/SkinEngine:n	Z
+    //   87: invokestatic 299	com/tencent/theme/i:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
     //   90: astore 5
     //   92: aload 6
-    //   94: invokevirtual 287	java/io/InputStream:close	()V
+    //   94: invokevirtual 304	java/io/InputStream:close	()V
     //   97: aload 5
     //   99: ifnull +179 -> 278
     //   102: aload 8
@@ -200,124 +215,124 @@ public class SkinEngine
     //   107: areturn
     //   108: astore 5
     //   110: aload_0
-    //   111: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   111: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   114: ifnull +842 -> 956
     //   117: aload_0
-    //   118: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   118: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   121: aload 5
     //   123: aload_3
-    //   124: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   124: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   127: iconst_1
-    //   128: invokeinterface 295 4 0
+    //   128: invokeinterface 312 4 0
     //   133: ifeq +823 -> 956
     //   136: aload 6
-    //   138: invokevirtual 287	java/io/InputStream:close	()V
+    //   138: invokevirtual 304	java/io/InputStream:close	()V
     //   141: aload_0
     //   142: aload_2
     //   143: aload 7
-    //   145: invokespecial 267	com/tencent/theme/SkinEngine:b	(Landroid/content/res/Resources;Ljava/lang/String;)Ljava/io/InputStream;
+    //   145: invokespecial 284	com/tencent/theme/SkinEngine:b	(Landroid/content/res/Resources;Ljava/lang/String;)Ljava/io/InputStream;
     //   148: astore 6
     //   150: aload_2
     //   151: aconst_null
     //   152: aload 6
     //   154: aload_3
-    //   155: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   155: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   158: aload 10
     //   160: aload 9
     //   162: aload_0
-    //   163: getfield 158	com/tencent/theme/SkinEngine:m	Z
-    //   166: invokestatic 282	com/tencent/theme/h:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
+    //   163: getfield 175	com/tencent/theme/SkinEngine:n	Z
+    //   166: invokestatic 299	com/tencent/theme/i:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
     //   169: astore 5
     //   171: goto -79 -> 92
     //   174: astore 5
     //   176: aload_0
-    //   177: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   177: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   180: aload 5
     //   182: aload_3
-    //   183: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   183: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   186: iconst_1
-    //   187: invokeinterface 298 4 0
+    //   187: invokeinterface 315 4 0
     //   192: ifeq +42 -> 234
     //   195: aload 10
     //   197: iconst_1
-    //   198: putfield 301	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   198: putfield 318	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   201: aload_0
     //   202: aload_2
     //   203: aload 7
-    //   205: invokespecial 267	com/tencent/theme/SkinEngine:b	(Landroid/content/res/Resources;Ljava/lang/String;)Ljava/io/InputStream;
+    //   205: invokespecial 284	com/tencent/theme/SkinEngine:b	(Landroid/content/res/Resources;Ljava/lang/String;)Ljava/io/InputStream;
     //   208: astore 6
     //   210: aload_2
     //   211: aconst_null
     //   212: aload 6
     //   214: aload_3
-    //   215: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   215: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   218: aload 10
     //   220: aload 9
     //   222: aload_0
-    //   223: getfield 158	com/tencent/theme/SkinEngine:m	Z
-    //   226: invokestatic 282	com/tencent/theme/h:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
+    //   223: getfield 175	com/tencent/theme/SkinEngine:n	Z
+    //   226: invokestatic 299	com/tencent/theme/i:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
     //   229: astore 5
     //   231: goto -139 -> 92
     //   234: aload 5
     //   236: athrow
     //   237: astore 5
-    //   239: getstatic 98	com/tencent/theme/SkinEngine:DEBUG	Z
+    //   239: getstatic 99	com/tencent/theme/SkinEngine:DEBUG	Z
     //   242: ifeq +36 -> 278
     //   245: ldc 43
-    //   247: new 224	java/lang/StringBuilder
+    //   247: new 241	java/lang/StringBuilder
     //   250: dup
-    //   251: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   254: ldc_w 303
-    //   257: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   254: ldc_w 320
+    //   257: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   260: aload 7
-    //   262: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: ldc_w 305
-    //   268: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   274: invokestatic 310	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   262: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: ldc_w 322
+    //   268: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokestatic 327	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
     //   277: pop
     //   278: aload_3
-    //   279: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
-    //   282: ldc_w 260
-    //   285: invokevirtual 264	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   279: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
+    //   282: ldc_w 277
+    //   285: invokevirtual 281	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   288: istore 4
     //   290: iload 4
     //   292: ifeq +190 -> 482
     //   295: aload_0
     //   296: iload_1
     //   297: aload_0
-    //   298: getfield 154	com/tencent/theme/SkinEngine:a	Landroid/util/TypedValue;
-    //   301: invokespecial 312	com/tencent/theme/SkinEngine:a	(ILandroid/util/TypedValue;)Landroid/content/res/XmlResourceParser;
+    //   298: getfield 171	com/tencent/theme/SkinEngine:b	Landroid/util/TypedValue;
+    //   301: invokespecial 329	com/tencent/theme/SkinEngine:a	(ILandroid/util/TypedValue;)Landroid/content/res/XmlResourceParser;
     //   304: astore 6
     //   306: aload 7
     //   308: ifnull +86 -> 394
     //   311: aload_0
-    //   312: getfield 158	com/tencent/theme/SkinEngine:m	Z
+    //   312: getfield 175	com/tencent/theme/SkinEngine:n	Z
     //   315: ifeq +71 -> 386
-    //   318: new 314	com/tencent/theme/a
+    //   318: new 331	com/tencent/theme/a
     //   321: dup
-    //   322: invokespecial 315	com/tencent/theme/a:<init>	()V
+    //   322: invokespecial 332	com/tencent/theme/a:<init>	()V
     //   325: astore 5
-    //   327: new 317	java/io/FileInputStream
+    //   327: new 334	java/io/FileInputStream
     //   330: dup
     //   331: aload 7
-    //   333: invokespecial 318	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   333: invokespecial 335	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   336: astore 7
     //   338: aload 5
     //   340: aload 7
-    //   342: ldc_w 320
-    //   345: invokeinterface 326 3 0
+    //   342: ldc_w 337
+    //   345: invokeinterface 343 3 0
     //   350: aload_2
     //   351: aload 6
     //   353: aload 5
     //   355: aload_0
-    //   356: getfield 158	com/tencent/theme/SkinEngine:m	Z
-    //   359: invokestatic 329	com/tencent/theme/h:a	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/b;
+    //   356: getfield 175	com/tencent/theme/SkinEngine:n	Z
+    //   359: invokestatic 346	com/tencent/theme/i:a	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/b;
     //   362: astore_2
     //   363: aload 7
-    //   365: invokevirtual 330	java/io/FileInputStream:close	()V
+    //   365: invokevirtual 347	java/io/FileInputStream:close	()V
     //   368: aload 6
-    //   370: invokeinterface 333 1 0
+    //   370: invokeinterface 350 1 0
     //   375: aload 8
     //   377: monitorexit
     //   378: aload_2
@@ -327,46 +342,46 @@ public class SkinEngine
     //   383: monitorexit
     //   384: aload_2
     //   385: athrow
-    //   386: invokestatic 339	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
+    //   386: invokestatic 356	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
     //   389: astore 5
     //   391: goto -64 -> 327
     //   394: aload_2
     //   395: aload 6
     //   397: aconst_null
     //   398: aload_0
-    //   399: getfield 158	com/tencent/theme/SkinEngine:m	Z
-    //   402: invokestatic 329	com/tencent/theme/h:a	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/b;
+    //   399: getfield 175	com/tencent/theme/SkinEngine:n	Z
+    //   402: invokestatic 346	com/tencent/theme/i:a	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;Lorg/xmlpull/v1/XmlPullParser;Z)Lcom/tencent/theme/b;
     //   405: astore_2
     //   406: aload 6
-    //   408: invokeinterface 333 1 0
+    //   408: invokeinterface 350 1 0
     //   413: aload 8
     //   415: monitorexit
     //   416: aload_2
     //   417: areturn
     //   418: astore_2
-    //   419: getstatic 98	com/tencent/theme/SkinEngine:DEBUG	Z
+    //   419: getstatic 99	com/tencent/theme/SkinEngine:DEBUG	Z
     //   422: ifeq +55 -> 477
-    //   425: new 222	android/content/res/Resources$NotFoundException
+    //   425: new 239	android/content/res/Resources$NotFoundException
     //   428: dup
-    //   429: new 224	java/lang/StringBuilder
+    //   429: new 241	java/lang/StringBuilder
     //   432: dup
-    //   433: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   436: ldc_w 341
-    //   439: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   436: ldc_w 358
+    //   439: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   442: aload_3
-    //   443: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
-    //   446: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   449: ldc_w 343
-    //   452: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
+    //   446: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: ldc_w 360
+    //   452: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   455: iload_1
-    //   456: invokestatic 237	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   459: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   462: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   465: invokespecial 245	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   456: invokestatic 254	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   459: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   465: invokespecial 262	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
     //   468: astore_3
     //   469: aload_3
     //   470: aload_2
-    //   471: invokevirtual 347	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   471: invokevirtual 364	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
     //   474: pop
     //   475: aload_3
     //   476: athrow
@@ -374,41 +389,41 @@ public class SkinEngine
     //   479: monitorexit
     //   480: aconst_null
     //   481: areturn
-    //   482: getstatic 108	com/tencent/theme/SkinEngine:IS_PROBLEM_CM11	Z
+    //   482: getstatic 127	com/tencent/theme/SkinEngine:IS_PROBLEM_CM11	Z
     //   485: istore 4
     //   487: iload 4
     //   489: ifeq +100 -> 589
-    //   492: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   492: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
     //   495: iconst_1
-    //   496: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   499: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   496: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   499: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
     //   502: aload_0
-    //   503: getfield 190	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
+    //   503: getfield 207	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
     //   506: aconst_null
-    //   507: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   510: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   507: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   510: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
     //   513: iconst_1
-    //   514: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   517: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   514: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   517: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
     //   520: aload_0
-    //   521: getfield 190	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
+    //   521: getfield 207	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
     //   524: aconst_null
-    //   525: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   528: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   525: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   528: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
     //   531: iconst_1
-    //   532: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   535: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   532: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   535: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
     //   538: iconst_1
-    //   539: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   542: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   539: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   542: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
     //   545: aload_0
-    //   546: getfield 190	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
-    //   549: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   546: getfield 207	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
+    //   549: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   552: ifnull +37 -> 589
-    //   555: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   555: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
     //   558: aload_0
-    //   559: getfield 190	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
-    //   562: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   559: getfield 207	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
+    //   562: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   565: astore 5
     //   567: aload 5
     //   569: ifnull +20 -> 589
@@ -427,22 +442,22 @@ public class SkinEngine
     //   587: aconst_null
     //   588: areturn
     //   589: aload_0
-    //   590: getfield 154	com/tencent/theme/SkinEngine:a	Landroid/util/TypedValue;
+    //   590: getfield 171	com/tencent/theme/SkinEngine:b	Landroid/util/TypedValue;
     //   593: astore 10
     //   595: aload_2
     //   596: iload_1
     //   597: aload 10
-    //   599: invokevirtual 365	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
+    //   599: invokevirtual 382	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
     //   602: astore 6
     //   604: aload 10
-    //   606: getfield 208	android/util/TypedValue:string	Ljava/lang/CharSequence;
-    //   609: invokeinterface 214 1 0
+    //   606: getfield 225	android/util/TypedValue:string	Ljava/lang/CharSequence;
+    //   609: invokeinterface 231 1 0
     //   614: astore 11
     //   616: aload 6
     //   618: astore 5
-    //   620: new 269	android/graphics/BitmapFactory$Options
+    //   620: new 286	android/graphics/BitmapFactory$Options
     //   623: dup
-    //   624: invokespecial 270	android/graphics/BitmapFactory$Options:<init>	()V
+    //   624: invokespecial 287	android/graphics/BitmapFactory$Options:<init>	()V
     //   627: astore 12
     //   629: aload 6
     //   631: astore 5
@@ -453,29 +468,29 @@ public class SkinEngine
     //   640: aload 12
     //   642: aload 9
     //   644: iconst_1
-    //   645: invokestatic 282	com/tencent/theme/h:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
+    //   645: invokestatic 299	com/tencent/theme/i:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
     //   648: astore 7
     //   650: aload 7
     //   652: astore_2
     //   653: aload 6
     //   655: astore 5
     //   657: aload 6
-    //   659: invokevirtual 287	java/io/InputStream:close	()V
+    //   659: invokevirtual 304	java/io/InputStream:close	()V
     //   662: aload_2
     //   663: ifnonnull +33 -> 696
     //   666: aload 6
     //   668: astore 5
     //   670: aload_0
-    //   671: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   671: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   674: ifnull +22 -> 696
     //   677: aload 6
     //   679: astore 5
     //   681: aload_0
-    //   682: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   682: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   685: aload_3
-    //   686: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   686: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   689: iconst_0
-    //   690: invokeinterface 369 3 0
+    //   690: invokeinterface 386 3 0
     //   695: pop
     //   696: aload 8
     //   698: monitorexit
@@ -490,28 +505,28 @@ public class SkinEngine
     //   709: aload 6
     //   711: astore 5
     //   713: aload_0
-    //   714: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   714: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   717: ifnull +234 -> 951
     //   720: aload 6
     //   722: astore 5
     //   724: aload_0
-    //   725: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   725: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   728: aload 7
     //   730: aload_3
-    //   731: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   731: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   734: iconst_0
-    //   735: invokeinterface 295 4 0
+    //   735: invokeinterface 312 4 0
     //   740: ifeq +211 -> 951
     //   743: aload 6
     //   745: astore 5
     //   747: aload 6
-    //   749: invokevirtual 287	java/io/InputStream:close	()V
+    //   749: invokevirtual 304	java/io/InputStream:close	()V
     //   752: aload 6
     //   754: astore 5
     //   756: aload_2
     //   757: iload_1
     //   758: aload 10
-    //   760: invokevirtual 365	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
+    //   760: invokevirtual 382	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
     //   763: astore 6
     //   765: aload 6
     //   767: astore 5
@@ -522,7 +537,7 @@ public class SkinEngine
     //   776: aload 12
     //   778: aload 9
     //   780: iconst_1
-    //   781: invokestatic 282	com/tencent/theme/h:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
+    //   781: invokestatic 299	com/tencent/theme/i:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
     //   784: astore 7
     //   786: aload 7
     //   788: astore_2
@@ -531,24 +546,24 @@ public class SkinEngine
     //   794: aload 6
     //   796: astore 5
     //   798: aload_0
-    //   799: getfield 289	com/tencent/theme/SkinEngine:i	Lcom/tencent/theme/SkinEngineHandler;
+    //   799: getfield 306	com/tencent/theme/SkinEngine:j	Lcom/tencent/theme/SkinEngineHandler;
     //   802: aload 7
     //   804: aload_3
-    //   805: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
+    //   805: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
     //   808: iconst_0
-    //   809: invokeinterface 298 4 0
+    //   809: invokeinterface 315 4 0
     //   814: ifeq +49 -> 863
     //   817: aload 6
     //   819: astore 5
     //   821: aload 12
     //   823: iconst_1
-    //   824: putfield 301	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   824: putfield 318	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   827: aload 6
     //   829: astore 5
     //   831: aload_2
     //   832: iload_1
     //   833: aload 10
-    //   835: invokevirtual 365	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
+    //   835: invokevirtual 382	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
     //   838: astore 6
     //   840: aload 6
     //   842: astore 5
@@ -559,7 +574,7 @@ public class SkinEngine
     //   851: aload 12
     //   853: aload 9
     //   855: iconst_1
-    //   856: invokestatic 282	com/tencent/theme/h:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
+    //   856: invokestatic 299	com/tencent/theme/i:a	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Rect;Z)Lcom/tencent/theme/b;
     //   859: astore_2
     //   860: goto -207 -> 653
     //   863: aload 6
@@ -567,35 +582,35 @@ public class SkinEngine
     //   867: aload 7
     //   869: athrow
     //   870: astore_2
-    //   871: getstatic 98	com/tencent/theme/SkinEngine:DEBUG	Z
+    //   871: getstatic 99	com/tencent/theme/SkinEngine:DEBUG	Z
     //   874: ifeq +72 -> 946
-    //   877: new 222	android/content/res/Resources$NotFoundException
+    //   877: new 239	android/content/res/Resources$NotFoundException
     //   880: dup
-    //   881: new 224	java/lang/StringBuilder
+    //   881: new 241	java/lang/StringBuilder
     //   884: dup
-    //   885: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   888: ldc_w 341
-    //   891: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   885: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   888: ldc_w 358
+    //   891: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   894: aload_3
-    //   895: getfield 277	com/tencent/theme/i:d	Ljava/lang/String;
-    //   898: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   901: ldc_w 343
-    //   904: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   895: getfield 294	com/tencent/theme/j:d	Ljava/lang/String;
+    //   898: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   901: ldc_w 360
+    //   904: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   907: iload_1
-    //   908: invokestatic 237	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   911: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   914: ldc_w 371
-    //   917: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   908: invokestatic 254	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   911: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   914: ldc_w 388
+    //   917: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   920: aload 5
-    //   922: invokevirtual 375	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   925: invokevirtual 380	java/lang/Class:getName	()Ljava/lang/String;
-    //   928: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   931: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   934: invokespecial 245	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   922: invokevirtual 392	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   925: invokevirtual 397	java/lang/Class:getName	()Ljava/lang/String;
+    //   928: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   931: invokevirtual 259	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   934: invokespecial 262	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
     //   937: astore_3
     //   938: aload_3
     //   939: aload_2
-    //   940: invokevirtual 347	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   940: invokevirtual 364	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
     //   943: pop
     //   944: aload_3
     //   945: athrow
@@ -614,7 +629,7 @@ public class SkinEngine
     //   0	962	0	this	SkinEngine
     //   0	962	1	paramInt	int
     //   0	962	2	paramResources	Resources
-    //   0	962	3	parami	i
+    //   0	962	3	paramj	j
     //   37	451	4	bool	boolean
     //   90	16	5	localb1	b
     //   108	14	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
@@ -723,7 +738,7 @@ public class SkinEngine
   
   private String a(Resources paramResources, String paramString)
   {
-    paramString = this.p + "color/" + paramString;
+    paramString = this.q + "color/" + paramString;
     try
     {
       if (paramString.startsWith("/asset/"))
@@ -812,7 +827,7 @@ public class SkinEngine
     while (i1 < paramArrayOfInt.length) {
       try
       {
-        String str = this.p + paramArrayOfString[i1] + paramString;
+        String str = this.q + paramArrayOfString[i1] + paramString;
         if (str.startsWith("/asset/"))
         {
           paramResources.getAssets().open(str.substring("/asset/".length())).close();
@@ -850,366 +865,389 @@ public class SkinEngine
     //   5: ifnull +90 -> 95
     //   8: iload 4
     //   10: ifeq +85 -> 95
-    //   13: ldc 176
-    //   15: ldc_w 515
-    //   18: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   13: ldc 193
+    //   15: ldc_w 528
+    //   18: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   21: astore 8
     //   23: aload 8
     //   25: iconst_1
-    //   26: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
+    //   26: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
     //   29: aload 8
     //   31: aload_1
-    //   32: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   32: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   35: astore 9
     //   37: aload 9
-    //   39: instanceof 167
-    //   42: ifeq +284 -> 326
+    //   39: instanceof 184
+    //   42: ifeq +292 -> 334
     //   45: aload_3
-    //   46: ifnull +237 -> 283
+    //   46: ifnull +245 -> 291
     //   49: aload_0
-    //   50: new 521	com/tencent/theme/f
+    //   50: new 534	com/tencent/theme/g
     //   53: dup
     //   54: aload_0
     //   55: aload_1
     //   56: aload_3
     //   57: aload 7
     //   59: iconst_1
-    //   60: anewarray 167	android/util/LongSparseArray
+    //   60: anewarray 184	android/util/LongSparseArray
     //   63: dup
     //   64: iconst_0
     //   65: aload 9
-    //   67: checkcast 167	android/util/LongSparseArray
+    //   67: checkcast 184	android/util/LongSparseArray
     //   70: aastore
-    //   71: invokespecial 524	com/tencent/theme/f:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;[ILjava/io/File;[Landroid/util/LongSparseArray;)V
-    //   74: putfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
+    //   71: invokespecial 537	com/tencent/theme/g:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;[ILjava/io/File;[Landroid/util/LongSparseArray;)V
+    //   74: putfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
     //   77: aload 8
     //   79: aload_1
-    //   80: new 528	com/tencent/theme/g
+    //   80: new 541	com/tencent/theme/h
     //   83: dup
     //   84: iconst_0
     //   85: aload_0
-    //   86: getfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   89: invokespecial 531	com/tencent/theme/g:<init>	(ILcom/tencent/theme/f;)V
-    //   92: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   86: getfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   89: invokespecial 544	com/tencent/theme/h:<init>	(ILcom/tencent/theme/g;)V
+    //   92: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   95: aload 5
-    //   97: ifnull +56 -> 153
+    //   97: ifnull +64 -> 161
     //   100: iload 6
-    //   102: ifeq +51 -> 153
-    //   105: ldc 176
-    //   107: ldc_w 533
-    //   110: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   102: ifeq +59 -> 161
+    //   105: ldc 193
+    //   107: ldc_w 546
+    //   110: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   113: astore_2
     //   114: aload_2
     //   115: iconst_1
-    //   116: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   119: aload_0
-    //   120: new 535	com/tencent/theme/d
-    //   123: dup
-    //   124: aload_0
-    //   125: aload_1
-    //   126: aload_2
-    //   127: aload_1
-    //   128: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   131: checkcast 167	android/util/LongSparseArray
-    //   134: aload 5
-    //   136: iload 6
-    //   138: invokespecial 538	com/tencent/theme/d:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/LongSparseArray;Ljava/lang/Class;I)V
-    //   141: putfield 540	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/d;
-    //   144: aload_2
-    //   145: aload_1
-    //   146: aload_0
-    //   147: getfield 540	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/d;
-    //   150: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   116: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   119: aload_2
+    //   120: aload_1
+    //   121: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   124: checkcast 184	android/util/LongSparseArray
+    //   127: astore_3
+    //   128: getstatic 119	com/tencent/theme/SkinEngine:a	Z
+    //   131: ifeq +314 -> 445
+    //   134: aload_0
+    //   135: new 548	com/tencent/theme/f
+    //   138: dup
+    //   139: aload_0
+    //   140: aload_1
+    //   141: aload_3
+    //   142: aload 5
+    //   144: iload 6
+    //   146: invokespecial 551	com/tencent/theme/f:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/LongSparseArray;Ljava/lang/Class;I)V
+    //   149: putfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   152: aload_2
     //   153: aload_1
-    //   154: invokevirtual 375	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   157: astore_2
-    //   158: aload_2
-    //   159: invokevirtual 380	java/lang/Class:getName	()Ljava/lang/String;
-    //   162: ldc_w 542
-    //   165: invokevirtual 431	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   168: ifeq +40 -> 208
-    //   171: aload_2
-    //   172: ldc_w 544
-    //   175: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   178: astore_2
+    //   154: aload_0
+    //   155: getfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   158: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   161: aload_1
+    //   162: invokevirtual 392	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   165: astore_2
+    //   166: aload_2
+    //   167: invokevirtual 397	java/lang/Class:getName	()Ljava/lang/String;
+    //   170: ldc_w 555
+    //   173: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   176: ifeq +40 -> 216
     //   179: aload_2
-    //   180: iconst_1
-    //   181: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   184: aload_2
-    //   185: aload_1
-    //   186: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   189: ifnonnull +19 -> 208
+    //   180: ldc_w 557
+    //   183: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   186: astore_2
+    //   187: aload_2
+    //   188: iconst_1
+    //   189: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
     //   192: aload_2
     //   193: aload_1
-    //   194: new 546	android/util/SparseArray
-    //   197: dup
-    //   198: invokespecial 547	android/util/SparseArray:<init>	()V
-    //   201: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   204: iconst_1
-    //   205: putstatic 102	com/tencent/theme/SkinEngine:IS_PROBLEM_MIUI	Z
-    //   208: aload_1
-    //   209: invokevirtual 375	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   212: ldc_w 549
-    //   215: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   218: putstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
-    //   221: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
-    //   224: iconst_1
-    //   225: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   228: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
-    //   231: aload_1
-    //   232: aconst_null
-    //   233: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   236: getstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
-    //   239: iconst_0
-    //   240: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   243: aload_1
-    //   244: invokevirtual 375	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   247: ldc_w 551
-    //   250: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   253: putstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
-    //   256: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
-    //   259: iconst_1
-    //   260: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   263: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
-    //   266: aload_1
-    //   267: aconst_null
-    //   268: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   271: getstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
-    //   274: iconst_0
-    //   275: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
-    //   278: iconst_1
-    //   279: putstatic 108	com/tencent/theme/SkinEngine:IS_PROBLEM_CM11	Z
-    //   282: return
-    //   283: aload_0
-    //   284: new 521	com/tencent/theme/f
-    //   287: dup
-    //   288: aload_0
-    //   289: aload_1
-    //   290: aload_2
-    //   291: iload 4
-    //   293: aload 7
-    //   295: iconst_1
-    //   296: anewarray 167	android/util/LongSparseArray
-    //   299: dup
-    //   300: iconst_0
-    //   301: aload 9
-    //   303: checkcast 167	android/util/LongSparseArray
-    //   306: aastore
-    //   307: invokespecial 554	com/tencent/theme/f:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Ljava/lang/Class;ILjava/io/File;[Landroid/util/LongSparseArray;)V
-    //   310: putfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   313: goto -236 -> 77
-    //   316: astore_1
-    //   317: new 507	com/tencent/theme/UnSupportPlatformException
-    //   320: dup
-    //   321: aload_1
-    //   322: invokespecial 557	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
-    //   325: athrow
-    //   326: aload 9
-    //   328: instanceof 559
-    //   331: ifeq -236 -> 95
+    //   194: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   197: ifnonnull +19 -> 216
+    //   200: aload_2
+    //   201: aload_1
+    //   202: new 559	android/util/SparseArray
+    //   205: dup
+    //   206: invokespecial 560	android/util/SparseArray:<init>	()V
+    //   209: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   212: iconst_1
+    //   213: putstatic 121	com/tencent/theme/SkinEngine:IS_PROBLEM_MIUI	Z
+    //   216: aload_1
+    //   217: invokevirtual 392	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   220: ldc_w 562
+    //   223: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   226: putstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   229: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   232: iconst_1
+    //   233: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   236: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   239: aload_1
+    //   240: aconst_null
+    //   241: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   244: getstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   247: iconst_0
+    //   248: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   251: aload_1
+    //   252: invokevirtual 392	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   255: ldc_w 564
+    //   258: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   261: putstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   264: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   267: iconst_1
+    //   268: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   271: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   274: aload_1
+    //   275: aconst_null
+    //   276: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   279: getstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   282: iconst_0
+    //   283: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   286: iconst_1
+    //   287: putstatic 127	com/tencent/theme/SkinEngine:IS_PROBLEM_CM11	Z
+    //   290: return
+    //   291: aload_0
+    //   292: new 534	com/tencent/theme/g
+    //   295: dup
+    //   296: aload_0
+    //   297: aload_1
+    //   298: aload_2
+    //   299: iload 4
+    //   301: aload 7
+    //   303: iconst_1
+    //   304: anewarray 184	android/util/LongSparseArray
+    //   307: dup
+    //   308: iconst_0
+    //   309: aload 9
+    //   311: checkcast 184	android/util/LongSparseArray
+    //   314: aastore
+    //   315: invokespecial 567	com/tencent/theme/g:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Ljava/lang/Class;ILjava/io/File;[Landroid/util/LongSparseArray;)V
+    //   318: putfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   321: goto -244 -> 77
+    //   324: astore_1
+    //   325: new 520	com/tencent/theme/UnSupportPlatformException
+    //   328: dup
+    //   329: aload_1
+    //   330: invokespecial 570	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
+    //   333: athrow
     //   334: aload 9
-    //   336: checkcast 559	[Landroid/util/LongSparseArray;
-    //   339: checkcast 559	[Landroid/util/LongSparseArray;
-    //   342: astore 8
-    //   344: aload_3
-    //   345: ifnull +59 -> 404
-    //   348: aload_0
-    //   349: new 521	com/tencent/theme/f
-    //   352: dup
-    //   353: aload_0
-    //   354: aload_1
-    //   355: aload_3
-    //   356: aload 7
-    //   358: aload 8
-    //   360: invokespecial 524	com/tencent/theme/f:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;[ILjava/io/File;[Landroid/util/LongSparseArray;)V
-    //   363: putfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   366: goto +230 -> 596
-    //   369: iload 4
-    //   371: aload 8
-    //   373: arraylength
-    //   374: if_icmpge -279 -> 95
-    //   377: aload 8
-    //   379: iload 4
-    //   381: new 528	com/tencent/theme/g
-    //   384: dup
-    //   385: iload 4
-    //   387: aload_0
-    //   388: getfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   391: invokespecial 531	com/tencent/theme/g:<init>	(ILcom/tencent/theme/f;)V
-    //   394: aastore
-    //   395: iload 4
-    //   397: iconst_1
-    //   398: iadd
-    //   399: istore 4
-    //   401: goto -32 -> 369
-    //   404: aload_0
-    //   405: new 521	com/tencent/theme/f
-    //   408: dup
-    //   409: aload_0
-    //   410: aload_1
-    //   411: aload_2
-    //   412: iload 4
-    //   414: aload 7
-    //   416: aload 8
-    //   418: invokespecial 554	com/tencent/theme/f:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Ljava/lang/Class;ILjava/io/File;[Landroid/util/LongSparseArray;)V
-    //   421: putfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   424: goto +172 -> 596
-    //   427: astore_1
-    //   428: new 507	com/tencent/theme/UnSupportPlatformException
-    //   431: dup
-    //   432: aload_1
-    //   433: invokespecial 557	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
-    //   436: athrow
-    //   437: astore_2
-    //   438: ldc 176
-    //   440: ldc_w 561
-    //   443: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   446: astore_3
-    //   447: aload_3
-    //   448: iconst_1
-    //   449: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
+    //   336: instanceof 572
+    //   339: ifeq -244 -> 95
+    //   342: aload 9
+    //   344: checkcast 572	[Landroid/util/LongSparseArray;
+    //   347: checkcast 572	[Landroid/util/LongSparseArray;
+    //   350: astore 8
+    //   352: aload_3
+    //   353: ifnull +59 -> 412
+    //   356: aload_0
+    //   357: new 534	com/tencent/theme/g
+    //   360: dup
+    //   361: aload_0
+    //   362: aload_1
+    //   363: aload_3
+    //   364: aload 7
+    //   366: aload 8
+    //   368: invokespecial 537	com/tencent/theme/g:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;[ILjava/io/File;[Landroid/util/LongSparseArray;)V
+    //   371: putfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   374: goto +251 -> 625
+    //   377: iload 4
+    //   379: aload 8
+    //   381: arraylength
+    //   382: if_icmpge -287 -> 95
+    //   385: aload 8
+    //   387: iload 4
+    //   389: new 541	com/tencent/theme/h
+    //   392: dup
+    //   393: iload 4
+    //   395: aload_0
+    //   396: getfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   399: invokespecial 544	com/tencent/theme/h:<init>	(ILcom/tencent/theme/g;)V
+    //   402: aastore
+    //   403: iload 4
+    //   405: iconst_1
+    //   406: iadd
+    //   407: istore 4
+    //   409: goto -32 -> 377
+    //   412: aload_0
+    //   413: new 534	com/tencent/theme/g
+    //   416: dup
+    //   417: aload_0
+    //   418: aload_1
+    //   419: aload_2
+    //   420: iload 4
+    //   422: aload 7
+    //   424: aload 8
+    //   426: invokespecial 567	com/tencent/theme/g:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Ljava/lang/Class;ILjava/io/File;[Landroid/util/LongSparseArray;)V
+    //   429: putfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   432: goto +193 -> 625
+    //   435: astore_1
+    //   436: new 520	com/tencent/theme/UnSupportPlatformException
+    //   439: dup
+    //   440: aload_1
+    //   441: invokespecial 570	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
+    //   444: athrow
+    //   445: aload_0
+    //   446: new 574	com/tencent/theme/d
+    //   449: dup
+    //   450: aload_0
+    //   451: aload_1
     //   452: aload_3
-    //   453: aload_1
-    //   454: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   457: astore 7
-    //   459: aload 7
-    //   461: instanceof 546
-    //   464: ifeq +47 -> 511
-    //   467: aload_0
-    //   468: new 563	com/tencent/theme/e
-    //   471: dup
-    //   472: aload_0
-    //   473: aload_1
-    //   474: aload 7
-    //   476: checkcast 546	android/util/SparseArray
-    //   479: aload 5
-    //   481: iload 6
-    //   483: invokespecial 566	com/tencent/theme/e:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/SparseArray;Ljava/lang/Class;I)V
-    //   486: putfield 568	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/e;
-    //   489: aload_3
-    //   490: aload_1
-    //   491: aload_0
-    //   492: getfield 568	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/e;
-    //   495: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   498: goto -345 -> 153
-    //   501: astore_1
-    //   502: new 507	com/tencent/theme/UnSupportPlatformException
-    //   505: dup
-    //   506: aload_1
-    //   507: invokespecial 557	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
-    //   510: athrow
-    //   511: aload 7
-    //   513: instanceof 167
-    //   516: ifeq +37 -> 553
-    //   519: aload_0
-    //   520: new 535	com/tencent/theme/d
-    //   523: dup
-    //   524: aload_0
-    //   525: aload_1
-    //   526: aload 7
-    //   528: checkcast 167	android/util/LongSparseArray
-    //   531: aload 5
-    //   533: iload 6
-    //   535: invokespecial 538	com/tencent/theme/d:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/LongSparseArray;Ljava/lang/Class;I)V
-    //   538: putfield 540	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/d;
-    //   541: aload_3
-    //   542: aload_1
-    //   543: aload_0
-    //   544: getfield 540	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/d;
-    //   547: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   550: goto -397 -> 153
-    //   553: new 507	com/tencent/theme/UnSupportPlatformException
-    //   556: dup
-    //   557: aload_2
-    //   558: invokespecial 557	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
-    //   561: athrow
-    //   562: astore_2
-    //   563: getstatic 98	com/tencent/theme/SkinEngine:DEBUG	Z
-    //   566: ifeq +13 -> 579
-    //   569: ldc 43
-    //   571: ldc_w 570
-    //   574: aload_2
-    //   575: invokestatic 573	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   578: pop
-    //   579: iconst_0
-    //   580: putstatic 102	com/tencent/theme/SkinEngine:IS_PROBLEM_MIUI	Z
-    //   583: goto -375 -> 208
-    //   586: astore_1
-    //   587: aconst_null
-    //   588: putstatic 104	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
-    //   591: aconst_null
-    //   592: putstatic 106	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
-    //   595: return
-    //   596: iconst_0
-    //   597: istore 4
-    //   599: goto -230 -> 369
+    //   453: aload 5
+    //   455: iload 6
+    //   457: invokespecial 575	com/tencent/theme/d:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/LongSparseArray;Ljava/lang/Class;I)V
+    //   460: putfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   463: goto -311 -> 152
+    //   466: astore_2
+    //   467: ldc 193
+    //   469: ldc_w 577
+    //   472: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   475: astore_3
+    //   476: aload_3
+    //   477: iconst_1
+    //   478: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
+    //   481: aload_3
+    //   482: aload_1
+    //   483: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   486: astore 7
+    //   488: aload 7
+    //   490: instanceof 559
+    //   493: ifeq +47 -> 540
+    //   496: aload_0
+    //   497: new 579	com/tencent/theme/e
+    //   500: dup
+    //   501: aload_0
+    //   502: aload_1
+    //   503: aload 7
+    //   505: checkcast 559	android/util/SparseArray
+    //   508: aload 5
+    //   510: iload 6
+    //   512: invokespecial 582	com/tencent/theme/e:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/SparseArray;Ljava/lang/Class;I)V
+    //   515: putfield 584	com/tencent/theme/SkinEngine:v	Lcom/tencent/theme/e;
+    //   518: aload_3
+    //   519: aload_1
+    //   520: aload_0
+    //   521: getfield 584	com/tencent/theme/SkinEngine:v	Lcom/tencent/theme/e;
+    //   524: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   527: goto -366 -> 161
+    //   530: astore_1
+    //   531: new 520	com/tencent/theme/UnSupportPlatformException
+    //   534: dup
+    //   535: aload_1
+    //   536: invokespecial 570	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
+    //   539: athrow
+    //   540: aload 7
+    //   542: instanceof 184
+    //   545: ifeq +37 -> 582
+    //   548: aload_0
+    //   549: new 574	com/tencent/theme/d
+    //   552: dup
+    //   553: aload_0
+    //   554: aload_1
+    //   555: aload 7
+    //   557: checkcast 184	android/util/LongSparseArray
+    //   560: aload 5
+    //   562: iload 6
+    //   564: invokespecial 575	com/tencent/theme/d:<init>	(Lcom/tencent/theme/SkinEngine;Landroid/content/res/Resources;Landroid/util/LongSparseArray;Ljava/lang/Class;I)V
+    //   567: putfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   570: aload_3
+    //   571: aload_1
+    //   572: aload_0
+    //   573: getfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   576: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   579: goto -418 -> 161
+    //   582: new 520	com/tencent/theme/UnSupportPlatformException
+    //   585: dup
+    //   586: aload_2
+    //   587: invokespecial 570	com/tencent/theme/UnSupportPlatformException:<init>	(Ljava/lang/Throwable;)V
+    //   590: athrow
+    //   591: astore_2
+    //   592: getstatic 99	com/tencent/theme/SkinEngine:DEBUG	Z
+    //   595: ifeq +13 -> 608
+    //   598: ldc 43
+    //   600: ldc_w 586
+    //   603: aload_2
+    //   604: invokestatic 589	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   607: pop
+    //   608: iconst_0
+    //   609: putstatic 121	com/tencent/theme/SkinEngine:IS_PROBLEM_MIUI	Z
+    //   612: goto -396 -> 216
+    //   615: astore_1
+    //   616: aconst_null
+    //   617: putstatic 123	com/tencent/theme/SkinEngine:mIconsOfCM	Ljava/lang/reflect/Field;
+    //   620: aconst_null
+    //   621: putstatic 125	com/tencent/theme/SkinEngine:mComposedIconInfoOfCM	Ljava/lang/reflect/Field;
+    //   624: return
+    //   625: iconst_0
+    //   626: istore 4
+    //   628: goto -251 -> 377
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	602	0	this	SkinEngine
-    //   0	602	1	paramResources	Resources
-    //   0	602	2	paramClass1	Class
-    //   0	602	3	paramArrayOfInt	int[]
-    //   0	602	4	paramInt1	int
-    //   0	602	5	paramClass2	Class
-    //   0	602	6	paramInt2	int
-    //   0	602	7	paramFile	File
-    //   21	396	8	localObject1	Object
-    //   35	300	9	localObject2	Object
+    //   0	631	0	this	SkinEngine
+    //   0	631	1	paramResources	Resources
+    //   0	631	2	paramClass1	Class
+    //   0	631	3	paramArrayOfInt	int[]
+    //   0	631	4	paramInt1	int
+    //   0	631	5	paramClass2	Class
+    //   0	631	6	paramInt2	int
+    //   0	631	7	paramFile	File
+    //   21	404	8	localObject1	Object
+    //   35	308	9	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   13	45	316	java/lang/IllegalArgumentException
-    //   49	77	316	java/lang/IllegalArgumentException
-    //   77	95	316	java/lang/IllegalArgumentException
-    //   105	153	316	java/lang/IllegalArgumentException
-    //   283	313	316	java/lang/IllegalArgumentException
-    //   326	344	316	java/lang/IllegalArgumentException
-    //   348	366	316	java/lang/IllegalArgumentException
-    //   369	395	316	java/lang/IllegalArgumentException
-    //   404	424	316	java/lang/IllegalArgumentException
-    //   438	498	316	java/lang/IllegalArgumentException
-    //   511	550	316	java/lang/IllegalArgumentException
-    //   553	562	316	java/lang/IllegalArgumentException
-    //   13	45	427	java/lang/NoSuchFieldException
-    //   49	77	427	java/lang/NoSuchFieldException
-    //   77	95	427	java/lang/NoSuchFieldException
-    //   105	153	427	java/lang/NoSuchFieldException
-    //   283	313	427	java/lang/NoSuchFieldException
-    //   326	344	427	java/lang/NoSuchFieldException
-    //   348	366	427	java/lang/NoSuchFieldException
-    //   369	395	427	java/lang/NoSuchFieldException
-    //   404	424	427	java/lang/NoSuchFieldException
-    //   438	498	427	java/lang/NoSuchFieldException
-    //   511	550	427	java/lang/NoSuchFieldException
-    //   553	562	427	java/lang/NoSuchFieldException
-    //   105	153	437	java/lang/Exception
-    //   13	45	501	java/lang/IllegalAccessException
-    //   49	77	501	java/lang/IllegalAccessException
-    //   77	95	501	java/lang/IllegalAccessException
-    //   105	153	501	java/lang/IllegalAccessException
-    //   283	313	501	java/lang/IllegalAccessException
-    //   326	344	501	java/lang/IllegalAccessException
-    //   348	366	501	java/lang/IllegalAccessException
-    //   369	395	501	java/lang/IllegalAccessException
-    //   404	424	501	java/lang/IllegalAccessException
-    //   438	498	501	java/lang/IllegalAccessException
-    //   511	550	501	java/lang/IllegalAccessException
-    //   553	562	501	java/lang/IllegalAccessException
-    //   153	208	562	java/lang/Exception
-    //   208	282	586	java/lang/Exception
+    //   13	45	324	java/lang/IllegalArgumentException
+    //   49	77	324	java/lang/IllegalArgumentException
+    //   77	95	324	java/lang/IllegalArgumentException
+    //   105	152	324	java/lang/IllegalArgumentException
+    //   152	161	324	java/lang/IllegalArgumentException
+    //   291	321	324	java/lang/IllegalArgumentException
+    //   334	352	324	java/lang/IllegalArgumentException
+    //   356	374	324	java/lang/IllegalArgumentException
+    //   377	403	324	java/lang/IllegalArgumentException
+    //   412	432	324	java/lang/IllegalArgumentException
+    //   445	463	324	java/lang/IllegalArgumentException
+    //   467	527	324	java/lang/IllegalArgumentException
+    //   540	579	324	java/lang/IllegalArgumentException
+    //   582	591	324	java/lang/IllegalArgumentException
+    //   13	45	435	java/lang/NoSuchFieldException
+    //   49	77	435	java/lang/NoSuchFieldException
+    //   77	95	435	java/lang/NoSuchFieldException
+    //   105	152	435	java/lang/NoSuchFieldException
+    //   152	161	435	java/lang/NoSuchFieldException
+    //   291	321	435	java/lang/NoSuchFieldException
+    //   334	352	435	java/lang/NoSuchFieldException
+    //   356	374	435	java/lang/NoSuchFieldException
+    //   377	403	435	java/lang/NoSuchFieldException
+    //   412	432	435	java/lang/NoSuchFieldException
+    //   445	463	435	java/lang/NoSuchFieldException
+    //   467	527	435	java/lang/NoSuchFieldException
+    //   540	579	435	java/lang/NoSuchFieldException
+    //   582	591	435	java/lang/NoSuchFieldException
+    //   105	152	466	java/lang/Exception
+    //   152	161	466	java/lang/Exception
+    //   445	463	466	java/lang/Exception
+    //   13	45	530	java/lang/IllegalAccessException
+    //   49	77	530	java/lang/IllegalAccessException
+    //   77	95	530	java/lang/IllegalAccessException
+    //   105	152	530	java/lang/IllegalAccessException
+    //   152	161	530	java/lang/IllegalAccessException
+    //   291	321	530	java/lang/IllegalAccessException
+    //   334	352	530	java/lang/IllegalAccessException
+    //   356	374	530	java/lang/IllegalAccessException
+    //   377	403	530	java/lang/IllegalAccessException
+    //   412	432	530	java/lang/IllegalAccessException
+    //   445	463	530	java/lang/IllegalAccessException
+    //   467	527	530	java/lang/IllegalAccessException
+    //   540	579	530	java/lang/IllegalAccessException
+    //   582	591	530	java/lang/IllegalAccessException
+    //   161	216	591	java/lang/Exception
+    //   216	290	615	java/lang/Exception
   }
   
   private void a(b paramb)
   {
     Object localObject1 = paramb.f;
-    Object localObject2 = ((i)localObject1).b;
-    if (this.p != null)
+    Object localObject2 = ((j)localObject1).b;
+    if (this.q != null)
     {
-      a(this.mResources, this.a, ((i)localObject1).d, b[this.r], c[this.r]);
-      if (this.a.string != null)
+      a(this.mResources, this.b, ((j)localObject1).d, c[this.s], d[this.s]);
+      if (this.b.string != null)
       {
-        ((i)localObject1).b = this.a.string.toString();
-        ((i)localObject1).c = this.a.density;
-        if ((localObject2 != null) || (((i)localObject1).b != null) || (((i)localObject1).d.endsWith(".xml"))) {
+        ((j)localObject1).b = this.b.string.toString();
+        ((j)localObject1).c = this.b.density;
+        if ((localObject2 != null) || (((j)localObject1).b != null) || (((j)localObject1).d.endsWith(".xml"))) {
           break label127;
         }
       }
@@ -1224,22 +1262,22 @@ public class SkinEngine
           do
           {
             return;
-            ((i)localObject1).b = null;
+            ((j)localObject1).b = null;
             break;
-            ((i)localObject1).b = null;
+            ((j)localObject1).b = null;
             break;
             if (!(paramb instanceof SkinnableBitmapDrawable.a)) {
               break label345;
             }
             paramb = (SkinnableBitmapDrawable.a)paramb;
-            localObject2 = a(((i)localObject1).a, this.mResources, (i)localObject1);
+            localObject2 = a(((j)localObject1).a, this.mResources, (j)localObject1);
             if (localObject2 != null) {
               break label207;
             }
           } while (!DEBUG);
-          throw new NullPointerException("loadImage failed, file path: " + ((i)localObject1).b + " , resource name:" + ((i)localObject1).d);
+          throw new NullPointerException("loadImage failed, file path: " + ((j)localObject1).b + " , resource name:" + ((j)localObject1).d);
           if ((DEBUG) && ((localObject2 instanceof SkinnableNinePatchDrawable.a))) {
-            throw new IllegalArgumentException("error image, the resource Image is Bitmap, but the skin Image is 9-path, file path: " + ((i)localObject1).b + " , resource name:" + ((i)localObject1).d);
+            throw new IllegalArgumentException("error image, the resource Image is Bitmap, but the skin Image is 9-path, file path: " + ((j)localObject1).b + " , resource name:" + ((j)localObject1).d);
           }
           localObject1 = (SkinnableBitmapDrawable.a)localObject2;
           paramb.i = ((SkinnableBitmapDrawable.a)localObject1).i;
@@ -1254,17 +1292,17 @@ public class SkinEngine
         return;
       } while (!(paramb instanceof SkinnableNinePatchDrawable.a));
       paramb = (SkinnableNinePatchDrawable.a)paramb;
-      localObject2 = a(((i)localObject1).a, this.mResources, (i)localObject1);
+      localObject2 = a(((j)localObject1).a, this.mResources, (j)localObject1);
       if (localObject2 != null) {
         break label425;
       }
     } while (!DEBUG);
     label207:
     label345:
-    throw new NullPointerException("loadImage failed, file path: " + ((i)localObject1).b + " , resource name:" + ((i)localObject1).d);
+    throw new NullPointerException("loadImage failed, file path: " + ((j)localObject1).b + " , resource name:" + ((j)localObject1).d);
     label425:
     if ((DEBUG) && ((localObject2 instanceof SkinnableBitmapDrawable.a))) {
-      throw new IllegalArgumentException("error image, the resource Image is 9-path, but the skin Image is Bitmap, did you compiled the 9-pathflie to apk and un-zip it? file path: " + ((i)localObject1).b + " , resource name:" + ((i)localObject1).d);
+      throw new IllegalArgumentException("error image, the resource Image is 9-path, but the skin Image is Bitmap, did you compiled the 9-pathflie to apk and un-zip it? file path: " + ((j)localObject1).b + " , resource name:" + ((j)localObject1).d);
     }
     localObject1 = (SkinnableNinePatchDrawable.a)localObject2;
     paramb.h = ((SkinnableNinePatchDrawable.a)localObject1).h;
@@ -1277,16 +1315,16 @@ public class SkinEngine
   
   private void a(boolean paramBoolean)
   {
-    if (this.v == null) {}
+    if (this.w == null) {}
     try
     {
       XmlResourceParser localXmlResourceParser = this.mResources.getAssets().openXmlResourceParser("res/xml/theme_config.xml");
-      this.v = a(localXmlResourceParser);
+      this.w = a(localXmlResourceParser);
       localXmlResourceParser.close();
-      if (this.w == null)
+      if (this.x == null)
       {
-        if (this.p == null) {
-          this.w = new HashMap();
+        if (this.q == null) {
+          this.x = new HashMap();
         }
       }
       else {
@@ -1304,15 +1342,15 @@ public class SkinEngine
       Object localObject;
       for (;;)
       {
-        this.v = new HashMap();
+        this.w = new HashMap();
       }
       if (paramBoolean) {}
       try
       {
         a locala = new a();
-        localObject = new FileInputStream(new File(this.p, "xml/theme_config.xml"));
+        localObject = new FileInputStream(new File(this.q, "xml/theme_config.xml"));
         locala.setInput((InputStream)localObject, "UTF-8");
-        this.w = a(locala);
+        this.x = a(locala);
         ((FileInputStream)localObject).close();
         return;
       }
@@ -1328,17 +1366,17 @@ public class SkinEngine
       }
       catch (IOException localIOException2)
       {
-        this.w = new HashMap();
+        this.x = new HashMap();
       }
     }
   }
   
-  private SkinnableColorStateList b(int paramInt, Resources paramResources, i parami)
+  private SkinnableColorStateList b(int paramInt, Resources paramResources, j paramj)
   {
     Object localObject;
-    synchronized (this.a)
+    synchronized (this.b)
     {
-      localObject = parami.b;
+      localObject = paramj.b;
       if (localObject != null)
       {
         bool = ((String)localObject).endsWith(".xml");
@@ -1346,7 +1384,7 @@ public class SkinEngine
         {
           try
           {
-            SkinnableColorStateList localSkinnableColorStateList = h.a(this, paramResources, new File((String)localObject), this.m);
+            SkinnableColorStateList localSkinnableColorStateList = i.a(this, paramResources, new File((String)localObject), this.n);
             return localSkinnableColorStateList;
           }
           catch (Exception localException)
@@ -1362,24 +1400,24 @@ public class SkinEngine
       }
     }
     label126:
-    parami = parami.d;
-    boolean bool = parami.endsWith(".xml");
+    paramj = paramj.d;
+    boolean bool = paramj.endsWith(".xml");
     if (bool) {
       try
       {
-        localObject = a(paramInt, this.a);
+        localObject = a(paramInt, this.b);
         paramResources = SkinnableColorStateList.createFromXml(this, paramResources, (XmlPullParser)localObject, true);
         ((XmlResourceParser)localObject).close();
         return paramResources;
       }
       catch (Exception paramResources)
       {
-        parami = new Resources.NotFoundException("File " + parami + " from Skin ColorList list resource ID #0x" + Integer.toHexString(paramInt));
-        parami.initCause(paramResources);
-        throw parami;
+        paramj = new Resources.NotFoundException("File " + paramj + " from Skin ColorList list resource ID #0x" + Integer.toHexString(paramInt));
+        paramj.initCause(paramResources);
+        throw paramj;
       }
     }
-    throw new Resources.NotFoundException("File " + parami + " from Skin ColorList resource ID #0x" + Integer.toHexString(paramInt) + ": .xml extension required");
+    throw new Resources.NotFoundException("File " + paramj + " from Skin ColorList resource ID #0x" + Integer.toHexString(paramInt) + ": .xml extension required");
   }
   
   private InputStream b(Resources paramResources, String paramString)
@@ -1396,42 +1434,42 @@ public class SkinEngine
   @TargetApi(16)
   private void b(Context paramContext)
   {
-    paramContext = this.a;
+    paramContext = this.b;
     int i1 = 0;
     for (;;)
     {
-      i locali;
+      j localj;
       try
       {
-        if (i1 >= this.o.size()) {
+        if (i1 >= this.p.size()) {
           break label150;
         }
-        SkinnableColorStateList localSkinnableColorStateList = (SkinnableColorStateList)((WeakReference)this.o.valueAt(i1)).get();
+        SkinnableColorStateList localSkinnableColorStateList = (SkinnableColorStateList)((WeakReference)this.p.valueAt(i1)).get();
         if (localSkinnableColorStateList == null) {
           break label153;
         }
-        locali = localSkinnableColorStateList.skinData;
-        String str1 = locali.b;
-        if (this.p != null)
+        localj = localSkinnableColorStateList.skinData;
+        String str1 = localj.b;
+        if (this.q != null)
         {
-          String str2 = a(this.mResources, locali.d);
+          String str2 = a(this.mResources, localj.d);
           if (str2 != null)
           {
-            locali.b = str2;
-            if ((str1 != null) || (locali.b != null)) {
+            localj.b = str2;
+            if ((str1 != null) || (localj.b != null)) {
               break label128;
             }
             break label153;
           }
-          locali.b = null;
+          localj.b = null;
           continue;
         }
-        locali.b = null;
+        localj.b = null;
       }
       finally {}
       continue;
       label128:
-      localObject.a(b(locali.a, this.mResources, locali));
+      localObject.a(b(localj.a, this.mResources, localj));
       break label153;
       label150:
       return;
@@ -1446,13 +1484,13 @@ public class SkinEngine
     for (;;)
     {
       int i1;
-      synchronized (this.a)
+      synchronized (this.b)
       {
         ArrayList localArrayList = new ArrayList();
         i1 = 0;
-        if (i1 < this.n.size())
+        if (i1 < this.o.size())
         {
-          b localb = (b)((WeakReference)this.n.valueAt(i1)).get();
+          b localb = (b)((WeakReference)this.o.valueAt(i1)).get();
           if (localb == null) {
             break label126;
           }
@@ -1477,10 +1515,10 @@ public class SkinEngine
   {
     try
     {
-      if (k == null) {
-        k = new SkinEngine();
+      if (l == null) {
+        l = new SkinEngine();
       }
-      SkinEngine localSkinEngine = k;
+      SkinEngine localSkinEngine = l;
       return localSkinEngine;
     }
     finally {}
@@ -1493,12 +1531,12 @@ public class SkinEngine
     Resources localResources = paramContext.getResources();
     localSkinEngine.mResources = localResources;
     isSupportPlatform(paramContext, localResources);
-    localSkinEngine.r = a(localSkinEngine.mResources);
-    paramContext.getApplicationContext().registerReceiver(localSkinEngine.j, new IntentFilter("com.tencent.qqlite.qplus.THEME_UPDATE"), "com.tencent.msg.permission.pushnotify", null);
+    localSkinEngine.s = a(localSkinEngine.mResources);
+    paramContext.getApplicationContext().registerReceiver(localSkinEngine.k, new IntentFilter("com.tencent.qqlite.qplus.THEME_UPDATE"), "com.tencent.msg.permission.pushnotify", null);
     localSkinEngine.a(localResources, paramClass1, null, paramInt1, paramClass2, paramInt2, paramFile);
     paramContext = paramContext.getSharedPreferences("theme", 4);
-    localSkinEngine.p = paramContext.getString("theme_root", null);
-    localSkinEngine.m = paramContext.getBoolean("complied", true);
+    localSkinEngine.q = paramContext.getString("theme_root", null);
+    localSkinEngine.n = paramContext.getBoolean("complied", true);
   }
   
   public static void init(Context paramContext, int[] paramArrayOfInt, Class paramClass, int paramInt, File paramFile)
@@ -1508,12 +1546,12 @@ public class SkinEngine
     Resources localResources = paramContext.getResources();
     localSkinEngine.mResources = localResources;
     isSupportPlatform(paramContext, localResources);
-    localSkinEngine.r = a(localSkinEngine.mResources);
-    paramContext.getApplicationContext().registerReceiver(localSkinEngine.j, new IntentFilter("com.tencent.qqlite.qplus.THEME_UPDATE"), "com.tencent.msg.permission.pushnotify", null);
+    localSkinEngine.s = a(localSkinEngine.mResources);
+    paramContext.getApplicationContext().registerReceiver(localSkinEngine.k, new IntentFilter("com.tencent.qqlite.qplus.THEME_UPDATE"), "com.tencent.msg.permission.pushnotify", null);
     localSkinEngine.a(localResources, null, paramArrayOfInt, 0, paramClass, paramInt, paramFile);
     paramContext = paramContext.getSharedPreferences("theme", 4);
-    localSkinEngine.p = paramContext.getString("theme_root", null);
-    localSkinEngine.m = paramContext.getBoolean("complied", true);
+    localSkinEngine.q = paramContext.getString("theme_root", null);
+    localSkinEngine.n = paramContext.getBoolean("complied", true);
   }
   
   public static void invalidateAll(View paramView)
@@ -1648,7 +1686,7 @@ public class SkinEngine
         paramResources = localField.get(paramResources);
         boolean bool = paramResources instanceof SparseArray;
         if (bool) {}
-        while (k.a(paramContext, "ro.lewa.version").equalsIgnoreCase("LeWa_OS6.0_14.10.22"))
+        while (l.a(paramContext, "ro.lewa.version").equalsIgnoreCase("LeWa_OS6.0_14.10.22"))
         {
           throw new UnSupportPlatformException("lewa is not supported");
           if (!(paramResources instanceof LongSparseArray)) {
@@ -1670,16 +1708,16 @@ public class SkinEngine
   @TargetApi(16)
   Drawable.ConstantState a(int paramInt)
   {
-    synchronized (this.a)
+    synchronized (this.b)
     {
-      Object localObject1 = (WeakReference)this.n.get(paramInt);
+      Object localObject1 = (WeakReference)this.o.get(paramInt);
       if (localObject1 != null)
       {
         localObject1 = (Drawable.ConstantState)((WeakReference)localObject1).get();
         if (localObject1 != null) {
           return localObject1;
         }
-        this.n.delete(paramInt);
+        this.o.delete(paramInt);
       }
       boolean bool = IS_PROBLEM_CM11;
       if (bool) {
@@ -1689,7 +1727,7 @@ public class SkinEngine
           mIconsOfCM.set(this.mResources, null);
           mComposedIconInfoOfCM.setAccessible(true);
           mComposedIconInfoOfCM.set(this.mResources, null);
-          this.mResources.getValue(paramInt, this.a, true);
+          this.mResources.getValue(paramInt, this.b, true);
         }
         catch (Exception localException1)
         {
@@ -1715,24 +1753,24 @@ public class SkinEngine
         }
       }
       label159:
-      Object localObject3 = this.a.string.toString();
-      i locali = new i();
-      locali.a = paramInt;
-      locali.d = ((String)localObject3).substring(((String)localObject3).lastIndexOf("/") + 1);
-      if (this.p != null)
+      Object localObject3 = this.b.string.toString();
+      j localj = new j();
+      localj.a = paramInt;
+      localj.d = ((String)localObject3).substring(((String)localObject3).lastIndexOf("/") + 1);
+      if (this.q != null)
       {
-        a(this.mResources, this.a, locali.d, b[this.r], c[this.r]);
-        if (this.a.string != null)
+        a(this.mResources, this.b, localj.d, c[this.s], d[this.s]);
+        if (this.b.string != null)
         {
-          locali.b = this.a.string.toString();
-          locali.c = this.a.density;
+          localj.b = this.b.string.toString();
+          localj.c = this.b.density;
         }
       }
-      localObject3 = a(paramInt, this.mResources, locali);
+      localObject3 = a(paramInt, this.mResources, localj);
       if (localObject3 != null)
       {
-        ((b)localObject3).f = locali;
-        this.n.put(paramInt, new WeakReference(localObject3));
+        ((b)localObject3).f = localj;
+        this.o.put(paramInt, new WeakReference(localObject3));
       }
       return localObject3;
     }
@@ -1744,22 +1782,22 @@ public class SkinEngine
     if (SWITCH_DEBUG) {
       Log.d("SkinEngine.switch", "update start");
     }
-    this.l = true;
+    this.m = true;
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("theme", 4);
     String str = localSharedPreferences.getString("pending_theme_root", null);
     if (str != null) {
       bool = localSharedPreferences.getBoolean("pending_theme_resources_complied", true);
     }
-    synchronized (this.a)
+    synchronized (this.b)
     {
-      this.q = this.p;
-      this.p = str;
-      this.m = bool;
+      this.r = this.q;
+      this.q = str;
+      this.n = bool;
       c(paramContext);
       b(paramContext);
-      localSharedPreferences.edit().putString("theme_root", str).putBoolean("complied", this.m).commit();
-      this.l = false;
-      this.q = null;
+      localSharedPreferences.edit().putString("theme_root", str).putBoolean("complied", this.n).commit();
+      this.m = false;
+      this.r = null;
       if (SWITCH_DEBUG) {
         Log.d("SkinEngine.switch", "update done");
       }
@@ -1769,36 +1807,36 @@ public class SkinEngine
   
   public final void addDrawableResource(int paramInt)
   {
-    this.s.a(this.mResources, paramInt);
+    this.t.a(this.mResources, paramInt);
   }
   
   @TargetApi(16)
   SkinnableColorStateList b(int paramInt)
   {
-    synchronized (this.a)
+    synchronized (this.b)
     {
-      Object localObject1 = (WeakReference)this.o.get(paramInt);
+      Object localObject1 = (WeakReference)this.p.get(paramInt);
       if (localObject1 != null)
       {
         localObject1 = (SkinnableColorStateList)((WeakReference)localObject1).get();
         if (localObject1 != null) {
           return localObject1;
         }
-        this.o.delete(paramInt);
+        this.p.delete(paramInt);
       }
-      this.mResources.getValue(paramInt, this.a, true);
-      Object localObject3 = this.a.string.toString();
+      this.mResources.getValue(paramInt, this.b, true);
+      Object localObject3 = this.b.string.toString();
       if (((String)localObject3).endsWith(".xml"))
       {
-        localObject1 = new i();
-        ((i)localObject1).a = paramInt;
-        ((i)localObject1).d = ((String)localObject3).substring(((String)localObject3).lastIndexOf("/") + 1);
-        if (this.p != null) {
-          ((i)localObject1).b = a(this.mResources, ((i)localObject1).d);
+        localObject1 = new j();
+        ((j)localObject1).a = paramInt;
+        ((j)localObject1).d = ((String)localObject3).substring(((String)localObject3).lastIndexOf("/") + 1);
+        if (this.q != null) {
+          ((j)localObject1).b = a(this.mResources, ((j)localObject1).d);
         }
-        localObject3 = b(paramInt, this.mResources, (i)localObject1);
-        ((SkinnableColorStateList)localObject3).skinData = ((i)localObject1);
-        this.o.put(paramInt, new WeakReference(localObject3));
+        localObject3 = b(paramInt, this.mResources, (j)localObject1);
+        ((SkinnableColorStateList)localObject3).skinData = ((j)localObject1);
+        this.p.put(paramInt, new WeakReference(localObject3));
         return localObject3;
       }
     }
@@ -1807,9 +1845,9 @@ public class SkinEngine
   
   public int getColor(int paramInt)
   {
-    synchronized (this.a)
+    synchronized (this.b)
     {
-      TypedValue localTypedValue2 = this.a;
+      TypedValue localTypedValue2 = this.b;
       this.mResources.getValue(paramInt, localTypedValue2, true);
       if ((localTypedValue2.type >= 16) && (localTypedValue2.type <= 31))
       {
@@ -1827,10 +1865,10 @@ public class SkinEngine
   
   public String getSkinRootPath()
   {
-    if (this.l) {
-      return this.q;
+    if (this.m) {
+      return this.r;
     }
-    return this.p;
+    return this.q;
   }
   
   public Object getThemeConfig(String paramString, Object paramObject)
@@ -1838,14 +1876,14 @@ public class SkinEngine
     for (;;)
     {
       Object localObject1;
-      synchronized (this.a)
+      synchronized (this.b)
       {
-        a(this.m);
-        Object localObject2 = this.w.get(paramString);
+        a(this.n);
+        Object localObject2 = this.x.get(paramString);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = this.v.get(paramString);
+          localObject1 = this.w.get(paramString);
           break label63;
           return paramObject;
         }
@@ -1864,9 +1902,9 @@ public class SkinEngine
   {
     this.mResources.getValue(paramInt, paramTypedValue, true);
     Object localObject;
-    if (this.p != null)
+    if (this.q != null)
     {
-      localObject = (WeakReference)this.n.get(paramInt);
+      localObject = (WeakReference)this.o.get(paramInt);
       if (localObject == null) {
         break label83;
       }
@@ -1886,11 +1924,11 @@ public class SkinEngine
     do
     {
       return;
-      this.n.delete(paramInt);
+      this.o.delete(paramInt);
       localObject = paramTypedValue.string.toString();
       localObject = ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1);
       localTypedValue = new TypedValue();
-      a(this.mResources, localTypedValue, (String)localObject, b[this.r], c[this.r]);
+      a(this.mResources, localTypedValue, (String)localObject, c[this.s], d[this.s]);
     } while (localTypedValue.string == null);
     paramTypedValue.type = 16777215;
     paramTypedValue.string = localTypedValue.string;
@@ -1898,7 +1936,7 @@ public class SkinEngine
   
   public void setSkinEngineHandler(SkinEngineHandler paramSkinEngineHandler)
   {
-    this.i = paramSkinEngineHandler;
+    this.j = paramSkinEngineHandler;
   }
   
   public boolean setSkinRootPath(Context paramContext, String paramString)
@@ -1908,7 +1946,7 @@ public class SkinEngine
   
   public boolean setSkinRootPath(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (this.l)
+    if (this.m)
     {
       if (SWITCH_DEBUG) {
         Log.d("SkinEngine.switch", "[setSkinRootPath] mSkinUpdating is true");
@@ -1962,95 +2000,95 @@ public class SkinEngine
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
+    //   1: getfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
     //   4: ifnull +39 -> 43
-    //   7: ldc 176
-    //   9: ldc_w 515
-    //   12: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   7: ldc 193
+    //   9: ldc_w 528
+    //   12: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   15: astore_1
     //   16: aload_1
     //   17: iconst_1
-    //   18: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
+    //   18: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
     //   21: aload_1
-    //   22: invokevirtual 1001	java/lang/reflect/Field:getDeclaringClass	()Ljava/lang/Class;
-    //   25: invokevirtual 1004	java/lang/Class:isArray	()Z
+    //   22: invokevirtual 1017	java/lang/reflect/Field:getDeclaringClass	()Ljava/lang/Class;
+    //   25: invokevirtual 1020	java/lang/Class:isArray	()Z
     //   28: ifeq +54 -> 82
     //   31: aload_1
     //   32: aconst_null
     //   33: aload_0
-    //   34: getfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   37: getfield 1006	com/tencent/theme/f:b	[Landroid/util/LongSparseArray;
-    //   40: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   43: ldc 176
-    //   45: ldc_w 533
-    //   48: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   34: getfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   37: getfield 1022	com/tencent/theme/g:b	[Landroid/util/LongSparseArray;
+    //   40: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   43: ldc 193
+    //   45: ldc_w 546
+    //   48: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   51: astore_1
     //   52: aload_1
     //   53: iconst_1
-    //   54: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
+    //   54: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
     //   57: aload_1
     //   58: aload_0
-    //   59: getfield 190	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
-    //   62: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   65: checkcast 167	android/util/LongSparseArray
+    //   59: getfield 207	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
+    //   62: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   65: checkcast 184	android/util/LongSparseArray
     //   68: astore_2
     //   69: aload_1
     //   70: aconst_null
     //   71: aload_0
-    //   72: getfield 540	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/d;
-    //   75: getfield 1008	com/tencent/theme/d:b	Landroid/util/LongSparseArray;
-    //   78: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   72: getfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   75: getfield 1024	com/tencent/theme/d:b	Landroid/util/LongSparseArray;
+    //   78: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   81: return
     //   82: aload_1
     //   83: aconst_null
     //   84: aload_0
-    //   85: getfield 526	com/tencent/theme/SkinEngine:s	Lcom/tencent/theme/f;
-    //   88: getfield 1006	com/tencent/theme/f:b	[Landroid/util/LongSparseArray;
+    //   85: getfield 539	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/g;
+    //   88: getfield 1022	com/tencent/theme/g:b	[Landroid/util/LongSparseArray;
     //   91: iconst_0
     //   92: aaload
-    //   93: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   93: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   96: goto -53 -> 43
     //   99: astore_1
-    //   100: getstatic 98	com/tencent/theme/SkinEngine:DEBUG	Z
+    //   100: getstatic 99	com/tencent/theme/SkinEngine:DEBUG	Z
     //   103: ifeq -22 -> 81
     //   106: ldc 43
-    //   108: ldc_w 1010
+    //   108: ldc_w 1026
     //   111: aload_1
-    //   112: invokestatic 573	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   112: invokestatic 589	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   115: pop
     //   116: return
     //   117: astore_1
-    //   118: ldc 176
-    //   120: ldc_w 561
-    //   123: invokevirtual 519	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   118: ldc 193
+    //   120: ldc_w 577
+    //   123: invokevirtual 532	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   126: astore_1
     //   127: aload_1
     //   128: iconst_1
-    //   129: invokevirtual 353	java/lang/reflect/Field:setAccessible	(Z)V
+    //   129: invokevirtual 370	java/lang/reflect/Field:setAccessible	(Z)V
     //   132: aload_1
     //   133: aload_0
-    //   134: getfield 190	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
-    //   137: invokevirtual 361	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   134: getfield 207	com/tencent/theme/SkinEngine:mResources	Landroid/content/res/Resources;
+    //   137: invokevirtual 378	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   140: astore_2
     //   141: aload_2
-    //   142: instanceof 546
+    //   142: instanceof 559
     //   145: ifeq +16 -> 161
     //   148: aload_1
     //   149: aconst_null
     //   150: aload_0
-    //   151: getfield 568	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/e;
-    //   154: getfield 1013	com/tencent/theme/e:b	Landroid/util/SparseArray;
-    //   157: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   151: getfield 584	com/tencent/theme/SkinEngine:v	Lcom/tencent/theme/e;
+    //   154: getfield 1029	com/tencent/theme/e:b	Landroid/util/SparseArray;
+    //   157: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   160: return
     //   161: aload_2
-    //   162: instanceof 167
+    //   162: instanceof 184
     //   165: ifeq -84 -> 81
     //   168: aload_1
     //   169: aconst_null
     //   170: aload_0
-    //   171: getfield 540	com/tencent/theme/SkinEngine:t	Lcom/tencent/theme/d;
-    //   174: getfield 1008	com/tencent/theme/d:b	Landroid/util/LongSparseArray;
-    //   177: invokevirtual 357	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   171: getfield 553	com/tencent/theme/SkinEngine:u	Lcom/tencent/theme/d;
+    //   174: getfield 1024	com/tencent/theme/d:b	Landroid/util/LongSparseArray;
+    //   177: invokevirtual 374	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   180: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -2072,7 +2110,7 @@ public class SkinEngine
   public void writeCacheFile(File paramFile)
     throws IOException
   {
-    this.s.a(paramFile);
+    this.t.a(paramFile);
   }
   
   private class a

@@ -1,22 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class aju
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  private aju(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aju(DoodleActivity paramDoodleActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    this.a.b.setVisibility(0);
+    this.a.a.setVisibility(8);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

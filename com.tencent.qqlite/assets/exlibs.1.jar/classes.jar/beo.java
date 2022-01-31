@@ -1,13 +1,11 @@
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class beo
   implements View.OnClickListener
@@ -16,20 +14,11 @@ public class beo
   
   public void onClick(View paramView)
   {
-    int i = this.a.a.getPreferences().getInt("nearby_people_profile_ok_new", -1);
-    boolean bool = this.a.a.getPreferences().getBoolean("nearby_people_skip_guide", false);
-    if ((i == -1) && (!bool))
-    {
-      QQSetting.a(this.a, new QQProgressDialog(this.a.a(), (int)this.a.a().getResources().getDimension(2131492887)));
-      QQSetting.a(this.a).a("正在检查资料");
-      QQSetting.a(this.a).show();
-      paramView = (CardHandler)this.a.a.a(2);
-      if (paramView != null) {
-        paramView.g();
-      }
-      return;
-    }
-    NearbyActivity.a(this.a.a(), 0, 0);
+    ((RedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(32)).b(String.valueOf(100005));
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramView = new Intent(this.a.a(), IndividuationSetActivity.class);
+    this.a.a(paramView);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Trends_tab", "Personality_setting_native", 0, 0, "", "", "", "");
   }
 }
 

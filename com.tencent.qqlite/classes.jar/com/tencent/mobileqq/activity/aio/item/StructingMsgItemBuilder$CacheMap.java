@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bxe;
+import bxd;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,12 +9,12 @@ class StructingMsgItemBuilder$CacheMap
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(bxe parambxe)
+  public void add(bxd parambxd)
   {
-    if (parambxe == null) {
+    if (parambxd == null) {
       return;
     }
-    get(parambxe.a).add(parambxe);
+    get(parambxd.a).add(parambxd);
   }
   
   public ArrayList get(String paramString)
@@ -29,17 +29,17 @@ class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(bxe parambxe)
+  public void remove(bxd parambxd)
   {
-    if ((parambxe == null) || (parambxe.a == null)) {}
+    if ((parambxd == null) || (parambxd.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(parambxe.a);
-      localArrayList.remove(parambxe);
+      localArrayList = get(parambxd.a);
+      localArrayList.remove(parambxd);
     } while (!localArrayList.isEmpty());
-    remove(parambxe.a);
+    remove(parambxd.a);
   }
 }
 

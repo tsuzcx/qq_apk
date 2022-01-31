@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.view.View;
 import android.view.ViewGroup;
-import bxe;
+import bxd;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,26 +10,25 @@ import java.util.Set;
 
 public class StructingMsgItemBuilder$ViewCache
 {
-  private static final String jdField_a_of_type_JavaLangString = ViewCache.class.getSimpleName();
-  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
+  private StructingMsgItemBuilder.CacheMap a = new StructingMsgItemBuilder.CacheMap(null);
   private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
   
   private int a(HashMap paramHashMap)
   {
     paramHashMap = paramHashMap.keySet().iterator();
     String str;
-    for (int i = 0; paramHashMap.hasNext(); i = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(str).size() + i) {
+    for (int i = 0; paramHashMap.hasNext(); i = this.a.get(str).size() + i) {
       str = (String)paramHashMap.next();
     }
     return i;
   }
   
-  private bxe a(String paramString, ViewGroup paramViewGroup)
+  private bxd a(String paramString, ViewGroup paramViewGroup)
   {
     Iterator localIterator = this.b.get(paramString).iterator();
     while (localIterator.hasNext())
     {
-      paramString = (bxe)localIterator.next();
+      paramString = (bxd)localIterator.next();
       if (paramString != null) {
         paramString.a(paramViewGroup);
       }
@@ -37,7 +36,7 @@ public class StructingMsgItemBuilder$ViewCache
     for (;;)
     {
       this.b.remove(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
+      this.a.add(paramString);
       return paramString;
       paramString = null;
     }
@@ -64,30 +63,30 @@ public class StructingMsgItemBuilder$ViewCache
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
+    this.a.clear();
     this.b.clear();
   }
   
   public void a(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new bxe(paramString, paramView, paramViewGroup));
+    this.a.add(new bxd(paramString, paramView, paramViewGroup));
   }
   
   public void a(String paramString, ViewGroup paramViewGroup)
   {
     if (paramViewGroup == null) {}
-    bxe localbxe;
+    bxd localbxd;
     do
     {
       return;
       while (!paramString.hasNext()) {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
+        paramString = this.a.get(paramString).iterator();
       }
-      localbxe = (bxe)paramString.next();
-    } while ((localbxe == null) || ((localbxe.a() != paramViewGroup) && (localbxe.a() != null)));
-    localbxe.a().removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localbxe);
-    this.b.add(localbxe);
+      localbxd = (bxd)paramString.next();
+    } while ((localbxd == null) || ((localbxd.a() != paramViewGroup) && (localbxd.a() != null)));
+    localbxd.a().removeAllViews();
+    this.a.remove(localbxd);
+    this.b.add(localbxd);
   }
 }
 

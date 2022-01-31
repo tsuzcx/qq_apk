@@ -1,51 +1,41 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
+import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.Iterator;
+import java.util.List;
 
-class dgd
-  implements Runnable
+public class dgd
+  extends AsyncTask
 {
-  dgd(dgc paramdgc) {}
+  public dgd(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void run()
+  protected Integer a(Void... paramVarArgs)
   {
-    if ((this.a.a.e == null) || (this.a.a.e.length() == 0))
+    return Integer.valueOf(FileCategoryUtil.e(this.a));
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    FMLocalFileActivity.b(this.a);
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.a.b = false;
-      FilePreviewActivity.b(this.a.a);
-      return;
-    }
-    String str1;
-    if (this.a.a.jdField_a_of_type_Boolean)
-    {
-      str1 = "javascript:show_file_list()";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:show_file_list()");
-    }
-    for (;;)
-    {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str1 + ")");
-      FileManagerReporter.fileAssistantReportData localfileAssistantReportData = new FileManagerReporter.fileAssistantReportData();
-      localfileAssistantReportData.b = "sf_preview_again";
-      localfileAssistantReportData.c = FileUtil.a(this.a.a.c);
-      localfileAssistantReportData.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
-      FileManagerReporter.a(this.a.a.app.a(), localfileAssistantReportData);
-      try
+      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
+      if (localFileCategoryEntity.E == 4)
       {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str1);
-        return;
+        localFileCategoryEntity.D = paramInteger.intValue();
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      String str2 = "javascript:add_more_page()";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:add_more_page()");
     }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    FMLocalFileActivity.a(this.a);
   }
 }
 

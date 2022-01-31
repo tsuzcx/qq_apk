@@ -1,15 +1,20 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public final class abv
-  implements View.OnClickListener
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public abv(Handler paramHandler, Runnable paramRunnable) {}
+  public abv(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

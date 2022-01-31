@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090188" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09044f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <TextView android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0907f2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204e2" android:paddingLeft="10.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="头像" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906e2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="62.0dip" android:layout_marginRight="62.0dip" android:maxHeight="4.0dip" android:max="10000" android:progress="30" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020028" android:minHeight="4.0dip" android:layout_centerInParent="true" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090822" android:paddingTop="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0906e2" android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,53 +1,49 @@
-import android.app.ProgressDialog;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.log.ReportLog;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 
-public final class dwz
-  extends Handler
+public class dwz
+  extends BroadcastReceiver
 {
-  public dwz(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public dwz(UiApiPlugin paramUiApiPlugin) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMessage.what == 10000001)
+    if (paramIntent == null) {}
+    int i;
+    do
     {
-      paramMessage = (ProgressBar)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131296469);
-      localDrawable = ReportLog.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130837989);
-      paramMessage.setIndeterminateDrawable(localDrawable);
-      paramMessage.setBackgroundDrawable(localDrawable);
-      ((TextView)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131296470)).setText(2131363563);
-      ReportLog.a().sendEmptyMessageDelayed(10000002, 2000L);
-    }
-    while ((paramMessage.what != 10000002) || (ReportLog.jdField_a_of_type_AndroidAppProgressDialog == null))
-    {
-      Drawable localDrawable;
+      do
+      {
+        boolean bool;
+        int j;
+        do
+        {
+          do
+          {
+            return;
+            i = paramIntent.getIntExtra("mode", 0);
+            bool = paramIntent.getBooleanExtra("exclude", false);
+            j = paramIntent.getIntExtra("sender", 0);
+            paramContext = this.a.mRuntime.a();
+          } while ((paramContext == null) || (paramContext.isFinishing()));
+          if (j != this.a.d) {
+            break;
+          }
+        } while (bool);
+        paramContext.finish();
+        return;
+        if (j <= this.a.d) {
+          break;
+        }
+      } while ((i != 0) && (i != 2));
+      paramContext.finish();
       return;
-    }
-    try
-    {
-      ReportLog.jdField_a_of_type_Boolean = false;
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      return;
-    }
-    finally
-    {
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog = null;
-    }
+    } while ((i != 0) && (i != 1));
+    paramContext.finish();
   }
 }
 

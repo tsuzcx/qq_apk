@@ -34,11 +34,11 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import elq;
-import elr;
-import els;
-import elt;
-import elu;
+import elv;
+import elw;
+import elx;
+import ely;
+import elz;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -230,15 +230,15 @@ public class VideoRecordActivity
   private void d()
   {
     super.requestWindowFeature(1);
-    super.setContentView(2130903369);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297867));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297868));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297869));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297450));
-    this.c = ((ImageView)findViewById(2131297866));
-    this.jdField_a_of_type_AndroidWidgetChronometer = ((Chronometer)findViewById(2131297863));
-    this.d = ((ImageView)findViewById(2131297862));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297861));
+    super.setContentView(2130903368);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297853));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297854));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297855));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297446));
+    this.c = ((ImageView)findViewById(2131297852));
+    this.jdField_a_of_type_AndroidWidgetChronometer = ((Chronometer)findViewById(2131297849));
+    this.d = ((ImageView)findViewById(2131297848));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297847));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -246,7 +246,7 @@ public class VideoRecordActivity
     this.d.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = ((SurfaceView)findViewById(2131297865)).getHolder();
+    this.jdField_a_of_type_AndroidViewSurfaceHolder = ((SurfaceView)findViewById(2131297851)).getHolder();
     this.jdField_a_of_type_AndroidViewSurfaceHolder.setKeepScreenOn(true);
     this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
     if (Build.VERSION.SDK_INT < 11) {
@@ -300,7 +300,7 @@ public class VideoRecordActivity
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setVideoSize(this.w, this.x);
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setMaxFileSize(this.jdField_a_of_type_Long);
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setMaxDuration(this.y);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new els(this));
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new elx(this));
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFile(this.jdField_e_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setPreviewDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface());
       return;
@@ -437,7 +437,7 @@ public class VideoRecordActivity
     if (this.app.d()) {}
     do
     {
-      QQToast.a(this, 0, 2131364442, 0).a();
+      QQToast.a(this, 0, 2131364424, 0).a();
       do
       {
         return;
@@ -453,10 +453,10 @@ public class VideoRecordActivity
         this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
         this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
         this.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new elt(this));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ely(this));
         this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(this.jdField_e_of_type_JavaLangString);
         this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new elu(this));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new elz(this));
         return;
       }
       catch (Exception localException) {}
@@ -702,7 +702,7 @@ public class VideoRecordActivity
     {
     default: 
       return;
-    case 2131297867: 
+    case 2131297853: 
       switch (this.t)
       {
       default: 
@@ -713,21 +713,21 @@ public class VideoRecordActivity
       }
       j();
       return;
-    case 2131297868: 
+    case 2131297854: 
       new File(this.jdField_e_of_type_JavaLangString).delete();
       k();
       return;
-    case 2131297869: 
-      DialogUtil.a(this, 232, null, getString(2131362626, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(new File(this.jdField_e_of_type_JavaLangString).length() / 1024.0D / 1024.0D) }) }), new elq(this), new elr(this)).show();
+    case 2131297855: 
+      DialogUtil.a(this, 232, null, getString(2131362634, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(new File(this.jdField_e_of_type_JavaLangString).length() / 1024.0D / 1024.0D) }) }), new elv(this), new elw(this)).show();
       return;
-    case 2131297450: 
+    case 2131297446: 
       this.jdField_a_of_type_Boolean = true;
       super.finish();
       return;
-    case 2131297862: 
+    case 2131297848: 
       n();
       return;
-    case 2131297861: 
+    case 2131297847: 
       e();
       if (this.s == 0) {}
       for (;;)

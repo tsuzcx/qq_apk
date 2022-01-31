@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class cfb
-  extends QZoneObserver
+class cfb
+  implements DialogInterface.OnDismissListener
 {
-  public cfb(MainAssistObserver paramMainAssistObserver) {}
+  cfb(cey paramcey) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
-    }
-    else
-    {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if (!GuardManager.a.a()) {
-      QZoneHelper.a(localQQAppInterface);
-    }
-    this.a.g();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

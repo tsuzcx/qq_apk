@@ -1,14 +1,12 @@
-import java.util.concurrent.ThreadFactory;
-
-class evw
-  implements ThreadFactory
+public class evw
 {
-  public Thread newThread(Runnable paramRunnable)
+  public int a;
+  public String a;
+  
+  public evw()
   {
-    evv.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + evv.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

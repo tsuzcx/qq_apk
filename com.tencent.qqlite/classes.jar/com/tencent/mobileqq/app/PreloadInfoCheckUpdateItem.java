@@ -74,7 +74,7 @@ public class PreloadInfoCheckUpdateItem
     Object localObject2 = new PreloadInfoCheckUpdate.ControlReqHead();
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).protocol_ver.set(1);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_plat_id.set(109);
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("3.3.0");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("3.4.0");
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set(Build.VERSION.SDK);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).uin.set(this.a.getLongAccountUin());
     ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject1).head.set((MessageMicro)localObject2);

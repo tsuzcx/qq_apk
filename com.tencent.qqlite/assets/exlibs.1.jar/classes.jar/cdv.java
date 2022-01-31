@@ -1,21 +1,17 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class cdv
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
   public cdv(TroopActivity paramTroopActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    TroopActivity.b(this.a);
-    this.a.d();
+    ((BaseTroopView)this.a.a.get(this.a.i)).j();
   }
 }
 

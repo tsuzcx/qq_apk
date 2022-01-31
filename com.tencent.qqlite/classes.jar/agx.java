@@ -1,26 +1,27 @@
+import android.annotation.SuppressLint;
+import android.content.Context;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agx
-  implements Comparator
+  extends SearchResultDialog
 {
-  public agx(Conversation paramConversation) {}
-  
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public agx(Conversation paramConversation, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
-    {
-      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-      if ((paramRecentBaseData1.a.lastmsgtime >= 9223372036854775803L) || (paramRecentBaseData2.a.lastmsgtime >= 9223372036854775803L)) {
-        return Conversation.a(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
-      }
-      return Conversation.a(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
-    }
-    return 0;
+    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(a(paramContext, paramQQAppInterface));
+    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
+    return localArrayList;
   }
 }
 

@@ -1,82 +1,131 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.IOException;
-import org.json.JSONArray;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.jsp.DataApiPlugin;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.OutputStream;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class dwj
-  extends Thread
+  extends Client.onRemoteRespObserver
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int b;
-  int c;
-  int d;
+  public dwj(DataApiPlugin paramDataApiPlugin) {}
   
-  public dwj(MediaApiPlugin paramMediaApiPlugin, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
+  public void onBindedToClient() {}
   
-  public void run()
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    int i = 0;
-    JSONArray localJSONArray = new JSONArray();
-    try
+    Object localObject;
+    String str1;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver.key))
     {
-      int j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      if (i < j) {
-        if (isInterrupted()) {
-          throw new InterruptedException();
-        }
+      localObject = paramBundle.getString("cmd");
+      str1 = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response");
+      if (QLog.isColorLevel()) {
+        QLog.i(DataApiPlugin.jdField_a_of_type_JavaLangString, 2, "response:" + (String)localObject);
+      }
+      if ((localObject != null) && (!"getUserVipType".equals(localObject))) {
+        break label221;
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    for (;;)
     {
-      for (;;)
+      int i;
+      JSONObject localJSONObject;
+      label221:
+      try
       {
-        System.gc();
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "[]" });
+        localObject = new JSONObject();
+        i = paramBundle.getInt("type");
+        ((JSONObject)localObject).put("result", 0);
+        ((JSONObject)localObject).put("message", "ok");
+        localJSONObject = new JSONObject();
+        localJSONObject.put("uin", paramBundle.getString("uin"));
+        localJSONObject.put("type", i);
+        ((JSONObject)localObject).put("data", localJSONObject);
+        if (!TextUtils.isEmpty(str1)) {
+          this.a.callJs(str1 + "(" + ((JSONObject)localObject).toString() + ");");
+        }
         return;
-        localOutOfMemoryError.put(MediaApiPlugin.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], this.c, this.d, this.jdField_a_of_type_Int, this.b));
-        i += 1;
       }
-      if (isInterrupted()) {
-        throw new InterruptedException();
-      }
-    }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localIOException.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
-      if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "[]" });
-      }
-      return;
-    }
-    finally
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
+      catch (JSONException paramBundle) {}
+      if ("getFaceFilePath".equals(localObject))
+      {
+        int j;
+        try
+        {
+          localJSONObject = new JSONObject();
+          if (paramBundle == null) {
+            continue;
+          }
+          paramBundle = paramBundle.getString("faceFilePath");
+          if (!new File(paramBundle).exists()) {
+            continue;
+          }
+          localObject = ImageUtil.a(new BitmapFactory.Options(), paramBundle, 200);
+        }
+        catch (Exception paramBundle) {}
+        try
+        {
+          paramBundle = BitmapFactory.decodeFile(paramBundle, (BitmapFactory.Options)localObject);
+          i = paramBundle.getWidth();
+          j = paramBundle.getHeight();
+          localObject = ImageUtil.a(paramBundle, i, i, j);
+          paramBundle = (Bundle)localObject;
+          if (localObject != null)
+          {
+            paramBundle = (Bundle)localObject;
+            if (((Bitmap)localObject).getWidth() > 200) {
+              paramBundle = ImageUtil.b((Bitmap)localObject, 200);
+            }
+          }
+        }
+        catch (OutOfMemoryError paramBundle)
+        {
+          paramBundle = null;
+          continue;
+        }
+        if (paramBundle == null)
+        {
+          localJSONObject.put("result", 1002);
+          if (!TextUtils.isEmpty(str1))
+          {
+            this.a.callJs(str1 + "(" + localJSONObject.toString() + ");");
+            return;
+            if (QLog.isColorLevel())
+            {
+              QLog.i(DataApiPlugin.jdField_a_of_type_JavaLangString, 2, "response IPC_FUNC_CMD_GET_FACE_FILE_PATH error: " + paramBundle.getMessage());
+              return;
+              paramBundle = ImageUtil.a();
+            }
+          }
+        }
+        else
+        {
+          localObject = new ByteArrayOutputStream();
+          paramBundle.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
+          String str2 = Base64Util.a(((ByteArrayOutputStream)localObject).toByteArray(), 2);
+          localJSONObject.put("result", 0);
+          localJSONObject.put("file", "data:image/png;base64," + str2);
+          localJSONObject.put("size", paramBundle.getWidth());
+          ((ByteArrayOutputStream)localObject).close();
+          continue;
+          localJSONObject.put("result", 1002);
+        }
       }
     }
   }

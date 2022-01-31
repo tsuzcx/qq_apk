@@ -1,14 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.HashMap;
 
 public class dkj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public dkj(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
+  public dkj(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.a.n();
+    FileCategoryUtil.a(this.a.a, this.a);
+    HashMap localHashMap = new HashMap();
+    FileCategoryUtil.a(AppConstants.ay, ".apk", "", localHashMap, this.a);
+    FileCategoryUtil.a(localHashMap);
+    QfileLocalFileAppTabView.a(this.a, new dkk(this));
   }
 }
 

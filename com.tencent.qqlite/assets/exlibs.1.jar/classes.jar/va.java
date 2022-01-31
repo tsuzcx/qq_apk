@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class va
-  extends ConfigObserver
+  extends Handler
 {
-  public va(AboutActivity paramAboutActivity) {}
+  public va(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
-  {
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
-    paramUpgradeDetailWrapper = this.a.app.a();
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
-  }
+  public void handleMessage(Message paramMessage) {}
 }
 
 

@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
-class bhd
-  implements DialogInterface.OnClickListener
+public class bhd
+  implements Runnable
 {
-  bhd(bhc parambhc) {}
+  public bhd(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624119);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130903049);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131296470)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
   }
 }
 

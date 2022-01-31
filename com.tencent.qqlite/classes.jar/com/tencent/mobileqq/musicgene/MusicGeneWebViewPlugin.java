@@ -26,12 +26,12 @@ import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import dyp;
-import dyq;
-import dyr;
-import dys;
-import dyt;
-import dyu;
+import dyv;
+import dyw;
+import dyx;
+import dyy;
+import dyz;
+import dza;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -128,11 +128,11 @@ public class MusicGeneWebViewPlugin
   private static final String y = "data";
   private static final String z = "list";
   private int jdField_a_of_type_Int = 0;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dyr(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dyx(this);
   private Context jdField_a_of_type_AndroidContentContext = null;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new dyp(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new dys(this, Looper.getMainLooper());
-  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new dyq(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new dyv(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new dyy(this, Looper.getMainLooper());
+  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new dyw(this);
   private IQQPlayerService jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService = null;
   private SongInfo jdField_a_of_type_ComTencentMobileqqMusicSongInfo = null;
   private Timer jdField_a_of_type_JavaUtilTimer = new Timer();
@@ -258,8 +258,8 @@ public class MusicGeneWebViewPlugin
   
   private void a()
   {
-    dyu localdyu = new dyu(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(localdyu, 1000L, 1000L);
+    dza localdza = new dza(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(localdza, 1000L, 1000L);
   }
   
   private void a(Bitmap paramBitmap)
@@ -956,7 +956,7 @@ public class MusicGeneWebViewPlugin
                 paramString2 = new File(new File(AppConstants.as + File.separator + "diskcache"), paramString2);
                 if ((paramString2 == null) || (!paramString2.exists()))
                 {
-                  ThreadManager.a(new dyt(this, paramString1, paramString2));
+                  ThreadManager.a(new dyz(this, paramString1, paramString2));
                   paramString1 = new JSONObject();
                   paramString1.put("code", "0");
                   paramJsBridgeListener.a(paramString1);

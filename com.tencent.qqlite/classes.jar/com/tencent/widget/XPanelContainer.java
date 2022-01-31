@@ -18,8 +18,8 @@ import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.AnimateUtils;
 import com.tencent.util.VersionUtils;
-import fjc;
-import fjd;
+import fjh;
+import fji;
 
 public class XPanelContainer
   extends FrameLayout
@@ -183,7 +183,7 @@ public class XPanelContainer
                 paramInt = getHeight();
                 localObject = ValueAnimator.ofInt(new int[] { paramInt, paramInt - this.jdField_c_of_type_Int });
                 ((ValueAnimator)localObject).setDuration(150L);
-                ((ValueAnimator)localObject).addUpdateListener(new fjc(this, paramInt));
+                ((ValueAnimator)localObject).addUpdateListener(new fjh(this, paramInt));
                 ((ValueAnimator)localObject).start();
                 return;
               }
@@ -261,7 +261,7 @@ public class XPanelContainer
         int m = getHeight();
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { m - this.jdField_c_of_type_Int, m });
         localValueAnimator.setDuration(150L);
-        localValueAnimator.addUpdateListener(new fjd(this, m));
+        localValueAnimator.addUpdateListener(new fji(this, m));
         localValueAnimator.start();
       }
       else

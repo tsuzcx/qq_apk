@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-class bqt
-  implements Runnable
+public class bqt
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  bqt(bqs parambqs) {}
-  
-  public void run()
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public TextView a;
+  public TroopTransferActivity.TroopMemberItem a;
 }
 
 

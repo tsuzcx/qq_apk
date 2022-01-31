@@ -1,42 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class axm
-  implements Runnable
+  implements View.OnClickListener
 {
   public axm(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearbyPeopleProfileActivity.a(this.a, (ayu)NearbyPeopleProfileActivity.a(this.a).poll());
-    if (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
-    CompressInfo localCompressInfo = new CompressInfo();
-    localCompressInfo.c = NearbyPeopleProfileActivity.a(this.a).a;
-    localCompressInfo.g = 0;
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.uploadPhoto(), img_path = " + localCompressInfo.e);
-    }
-    if (!StringUtil.b(localCompressInfo.e))
+    if (NearbyPeopleProfileActivity.a(this.a) == 0)
     {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.h = localCompressInfo.e;
-      localTransferRequest.b = 8;
-      this.a.app.a().a(localTransferRequest);
+      NearbyPeopleProfileActivity.i(this.a);
       return;
     }
-    this.a.runOnUiThread(new axn(this));
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004B38", "0X8004B38", 0, 0, "", "", "", "");
+    NearbyPeopleProfileActivity.h(this.a);
   }
 }
 

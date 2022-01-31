@@ -29,10 +29,10 @@ public class TroopCreateActivity
   {
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      QQToast.a(this, 2131362912, 0).b(getTitleBarHeight());
+      QQToast.a(this, 2131362916, 0).b(getTitleBarHeight());
       return;
     }
-    d(getString(2131363802));
+    d(getString(2131363794));
     Intent localIntent = new Intent(this, TroopCreateLogicActivity.class);
     localIntent.putExtra("type", 1);
     localIntent.putExtra("cfg", paramString);

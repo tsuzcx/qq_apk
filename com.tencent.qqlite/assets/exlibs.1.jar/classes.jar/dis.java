@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 public class dis
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public dis(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (!QfileBaseCloudFileTabView.a(this.a)) {
-      return;
-    }
-    QfileBaseCloudFileTabView.b(this.a);
-    this.a.f();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a().getCount() - 1);
-    this.a.h();
+    this.a.d();
   }
 }
 

@@ -13,7 +13,7 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
-import ews;
+import ewx;
 import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +67,7 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new ews(BaseApplication.getContext().getMainLooper());
+      reportHandler = new ewx(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
@@ -78,7 +78,7 @@ public class ThemeUiPlugin
   void OnActivityCreate()
   {
     super.OnActivityCreate();
-    this.activity.setTitle(2131363264);
+    this.activity.setTitle(2131363267);
     this.activity.K = super.decodeUrl(this.activity.K, false);
     String str = super.getInfoIntent().getStringExtra("pageUrl");
     if ((str != null) && (str.length() > 0)) {

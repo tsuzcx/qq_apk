@@ -1,49 +1,26 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class vz
-  implements Animation.AnimationListener
+  extends AccountObserver
 {
-  public static final String a = "right";
-  public static final int b = 0;
-  public static final String b = "left";
-  public static final int c = 1;
-  public static final int d = 2;
-  public static final int e = 3;
-  public static final int f = 4;
-  public static final int g = 5;
-  public static final int h = 6;
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = false;
   
-  public vz(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
+  public vz(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).postDelayed(new wa(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
     }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+    if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

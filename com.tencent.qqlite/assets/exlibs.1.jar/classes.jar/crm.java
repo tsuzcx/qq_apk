@@ -1,14 +1,23 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.service.message.MessageCache;
 
 public class crm
-  extends TimerTask
+  extends MessageObserver
 {
   public crm(DataLineHandler paramDataLineHandler) {}
   
-  public void run()
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.a.a();
+    if ((paramInt1 == 1) && (this.a.b()))
+    {
+      this.a.a(true);
+      DataLineHandler.a(this.a, MessageCache.a());
+      this.a.a.a().a().a();
+    }
   }
 }
 

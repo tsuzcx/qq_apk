@@ -4,14 +4,14 @@ import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.uncompress.UncompressSo;
-import eef;
+import eel;
 
 public class NameProcess
   extends Step
 {
   private static final String b = "unknown";
   private static final int y = 3;
-  private Handler a = new eef(this);
+  private Handler a = new eel(this);
   
   protected boolean a()
   {

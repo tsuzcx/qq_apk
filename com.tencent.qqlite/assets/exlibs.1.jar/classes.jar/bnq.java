@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bnq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bnq(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public bnq(TroopMemberCardActivity paramTroopMemberCardActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.a.app, "P_CliOper", "Grp_mber", "", "mber_card", "Clk_set", 0, 0, this.a.c, "", "", "");
-    this.a.k();
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.app.a(this.jdField_a_of_type_JavaLangString, (byte)3, true);
+    if (localBitmap != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.runOnUiThread(new bnr(this, localBitmap));
+    }
   }
 }
 

@@ -116,8 +116,8 @@ public class ContactOperation
     this.jdField_a_of_type_AndroidContentContentValues.clear();
     this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mobileqq.zchat");
     this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    this.jdField_a_of_type_AndroidContentContentValues.put("data2", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364347));
-    this.jdField_a_of_type_AndroidContentContentValues.put("data3", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364348));
+    this.jdField_a_of_type_AndroidContentContentValues.put("data2", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364331));
+    this.jdField_a_of_type_AndroidContentContentValues.put("data3", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131364332));
     a();
     return this;
   }

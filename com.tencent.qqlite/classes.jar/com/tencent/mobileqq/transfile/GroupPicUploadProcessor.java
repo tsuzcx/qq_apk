@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -49,12 +50,12 @@ import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import egy;
-import egz;
-import eha;
-import ehb;
-import ehc;
-import ehr;
+import ehd;
+import ehe;
+import ehf;
+import ehg;
+import ehh;
+import ehw;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
@@ -89,7 +90,7 @@ public class GroupPicUploadProcessor
   {
     super(paramTransFileController, paramTransferRequest);
     this.jdField_b_of_type_ComTencentWsttSSCMSSCM = new SSCM();
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehc(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehh(this);
   }
   
   public static int a(String paramString)
@@ -167,7 +168,7 @@ public class GroupPicUploadProcessor
       if (QLog.isColorLevel()) {
         QLog.d("GroupPicUploadProcessor", 2, "HighSpeedTest");
       }
-      new egz(this, localPicReq).execute(new Void[0]);
+      new ehe(this, localPicReq).execute(new Void[0]);
       return;
       i = 0;
       break;
@@ -1179,8 +1180,8 @@ public class GroupPicUploadProcessor
       return;
       this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
       byte[] arrayOfByte = HexUtil.a(this.V);
-      eha localeha = new eha(this);
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.h, (int)this.jdField_b_of_type_Long, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, localeha);
+      ehf localehf = new ehf(this);
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.h, (int)this.jdField_b_of_type_Long, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, localehf);
       i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       if (QLog.isColorLevel()) {
         QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.U + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 2);
@@ -1357,7 +1358,7 @@ public class GroupPicUploadProcessor
             {
               a(9072, str, a(str), null);
               d();
-              new Handler(Looper.getMainLooper()).post(new egy(this));
+              new Handler(Looper.getMainLooper()).post(new ehd(this));
               return -1;
             }
             this.jdField_e_of_type_JavaLangString = str;
@@ -1422,7 +1423,7 @@ public class GroupPicUploadProcessor
       this.aw = 0;
       this.L = "";
       this.jdField_b_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehb(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehg(this));
     }
     return 0;
   }
@@ -1616,6 +1617,7 @@ public class GroupPicUploadProcessor
       if ((localObject1 instanceof MessageForPtt)) {
         ((MessageForPtt)localObject1).richText = ((im_msg_body.RichText)localObject2);
       }
+      AnonymousChatHelper.a().a((MessageRecord)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
       return;
     }
@@ -1659,14 +1661,14 @@ public class GroupPicUploadProcessor
     {
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack.a((im_msg_body.RichText)localObject2);
       if ((localObject1 != null) && (((localObject1 instanceof MessageForPic)) || ((localObject1 instanceof MessageForStructing)))) {
-        break label562;
+        break label569;
       }
       localObject2 = new StringBuilder().append("Mr_");
       if (localObject1 != null) {
-        break label535;
+        break label542;
       }
     }
-    label535:
+    label542:
     for (Object localObject1 = "null";; localObject1 = "" + ((MessageRecord)localObject1).msgtype)
     {
       a(9368, "msgtypeError", (String)localObject1, this.jdField_c_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo);
@@ -1680,7 +1682,7 @@ public class GroupPicUploadProcessor
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
       break;
     }
-    label562:
+    label569:
     if ((localObject1 instanceof MessageForPic)) {
       ((MessageForPic)localObject1).richText = ((im_msg_body.RichText)localObject2);
     }

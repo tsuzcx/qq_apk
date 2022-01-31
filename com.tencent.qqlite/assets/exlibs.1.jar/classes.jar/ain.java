@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ain
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ain(DialogActivity paramDialogActivity) {}
+  public ain(DialogActivity paramDialogActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.cancel();
+    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
   }
 }
 

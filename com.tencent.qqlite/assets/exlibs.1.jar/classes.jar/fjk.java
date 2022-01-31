@@ -1,66 +1,27 @@
-import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import android.support.v4.util.LruCache;
+import common.qzone.component.cache.common.ExtendLruCache;
 
 public class fjk
-  extends AbstractSet
+  extends LruCache
 {
-  public fjk(SoftHashMap paramSoftHashMap) {}
-  
-  public void clear()
+  public fjk(ExtendLruCache paramExtendLruCache, int paramInt)
   {
-    this.a.clear();
+    super(paramInt);
   }
   
-  public boolean contains(Object paramObject)
+  protected Object create(Object paramObject)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    fji localfji;
-    do
-    {
-      return false;
-      paramObject = (Map.Entry)paramObject;
-      localfji = SoftHashMap.a(this.a, paramObject.getKey());
-    } while ((localfji == null) || (!localfji.equals(paramObject)));
-    return true;
+    return this.a.c(paramObject);
   }
   
-  public Iterator iterator()
+  protected void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    return new fjj(this.a);
+    this.a.a(paramBoolean, paramObject1, paramObject2, paramObject3);
   }
   
-  public boolean remove(Object paramObject)
+  protected int sizeOf(Object paramObject1, Object paramObject2)
   {
-    return SoftHashMap.b(this.a, paramObject) != null;
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Object[] toArray()
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new fjo((Map.Entry)localIterator.next()));
-    }
-    return localArrayList.toArray();
-  }
-  
-  public Object[] toArray(Object[] paramArrayOfObject)
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new fjo((Map.Entry)localIterator.next()));
-    }
-    return localArrayList.toArray(paramArrayOfObject);
+    return this.a.a(paramObject1, paramObject2);
   }
 }
 

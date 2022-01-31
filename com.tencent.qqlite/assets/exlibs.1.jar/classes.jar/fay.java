@@ -1,29 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.BindGroupConfirmActivity;
 
-public class fay
-  extends Handler
+class fay
+  implements Runnable
 {
-  public fay(CardContainer paramCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  fay(fax paramfax, Bitmap paramBitmap) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.a.b.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
+    this.jdField_a_of_type_Fax.a.b.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

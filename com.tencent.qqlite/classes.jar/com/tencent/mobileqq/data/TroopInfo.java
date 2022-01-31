@@ -210,7 +210,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131362882);
+      return paramContext.getString(2131362886);
     }
     return this.adminNameShow;
   }
@@ -241,7 +241,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131362881);
+      return paramContext.getString(2131362885);
     }
     return this.ownerNameShow;
   }

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import chw;
+import cic;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.util.VersionUtils;
@@ -56,7 +56,7 @@ public class TosActivity
     }
     for (;;)
     {
-      this.a.setOnLongClickListener(new chw(this));
+      this.a.setOnLongClickListener(new cic(this));
       return true;
       this.a.loadUrl("file:///android_asset/phone_tos.html");
       continue;

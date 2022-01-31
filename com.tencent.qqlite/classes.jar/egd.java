@@ -1,21 +1,20 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import com.tencent.mobileqq.text.QQText;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class egd
-  extends Spannable.Factory
+public class egd
+  implements Runnable
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  public egd(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  
+  public void run()
   {
-    if ((!QQText.b) && ((paramCharSequence instanceof QQText))) {
-      try
-      {
-        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
-        return localQQText;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("delete_system_msg_item", this.jdField_a_of_type_Boolean).commit();
     }
-    return super.newSpannable(paramCharSequence);
   }
 }
 

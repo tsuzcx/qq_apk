@@ -1,17 +1,18 @@
 import android.app.Dialog;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class bru
   implements Runnable
 {
-  public bru(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public bru(VerifyPhoneNumActivity paramVerifyPhoneNumActivity, int paramInt) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
-    }
-    this.a.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity, 2131624119);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.setContentView(2130903049);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.findViewById(2131296470)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.show();
   }
 }
 

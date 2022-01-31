@@ -3037,12 +3037,12 @@ public class DownloaderFactory
     //   74: iconst_0
     //   75: invokespecial 784	com/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig:<init>	(Z)V
     //   78: astore_2
-    //   79: new 786	ewt
+    //   79: new 786	ewy
     //   82: dup
     //   83: aload_0
     //   84: getfield 48	com/tencent/mobileqq/vip/DownloaderFactory:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   87: aload_2
-    //   88: invokespecial 789	ewt:<init>	(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
+    //   88: invokespecial 789	ewy:<init>	(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
     //   91: astore_2
     //   92: getstatic 53	com/tencent/mobileqq/vip/DownloaderFactory:b	Ljava/util/concurrent/ConcurrentHashMap;
     //   95: iload_1
@@ -3073,12 +3073,12 @@ public class DownloaderFactory
     //   146: iconst_0
     //   147: invokespecial 784	com/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig:<init>	(Z)V
     //   150: astore_2
-    //   151: new 786	ewt
+    //   151: new 786	ewy
     //   154: dup
     //   155: aload_0
     //   156: getfield 48	com/tencent/mobileqq/vip/DownloaderFactory:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   159: aload_2
-    //   160: invokespecial 789	ewt:<init>	(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
+    //   160: invokespecial 789	ewy:<init>	(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
     //   163: astore_2
     //   164: getstatic 53	com/tencent/mobileqq/vip/DownloaderFactory:b	Ljava/util/concurrent/ConcurrentHashMap;
     //   167: iload_1

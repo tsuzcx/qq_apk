@@ -1,32 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 
 public class cde
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public cde(NotificationView paramNotificationView) {}
+  public cde(BaseTroopView paramBaseTroopView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (NotificationView.a(this.a) == null);
-      this.a.k();
-      NotificationView.a(this.a).a = GroupSystemMsgController.a().a(this.a.a);
-      NotificationView.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    this.a.l();
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.c.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.a.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

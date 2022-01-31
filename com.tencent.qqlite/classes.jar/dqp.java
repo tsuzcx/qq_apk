@@ -3,7 +3,6 @@ import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
 import com.tencent.qphone.base.util.QLog;
 import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.Thumbnail;
 import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
 public class dqp
@@ -11,19 +10,20 @@ public class dqp
 {
   public dqp(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void a(IWyFileSystem.Thumbnail paramThumbnail)
+  public void a(Boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramThumbnail.filePath + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramBoolean + "]");
     }
-    this.a.a.a().a(true, 39, new Object[] { paramThumbnail });
+    this.a.a.a().a(true, 44, new Object[] { Integer.valueOf(0), null, paramBoolean });
   }
   
   public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
     }
+    this.a.a.a().a(false, 44, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, null });
   }
 }
 

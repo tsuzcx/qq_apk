@@ -223,7 +223,7 @@ public class BizTroopObserver
           return;
           a((String)arrayOfObject[0], (List)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
           return;
-          b(paramBoolean, ((Boolean)paramObject).booleanValue());
+          a(paramBoolean, ((Boolean)paramObject).booleanValue());
           return;
           c(paramBoolean, ((Boolean)paramObject).booleanValue());
           return;
@@ -235,7 +235,7 @@ public class BizTroopObserver
           return;
           a(paramBoolean, ((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
           return;
-          a(paramBoolean, ((Boolean)arrayOfObject[1]).booleanValue());
+          b(paramBoolean, ((Boolean)arrayOfObject[1]).booleanValue());
           return;
           k(paramBoolean, paramObject);
           return;

@@ -1,24 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.log.ReportLogHelper;
+import java.util.Timer;
 
-public class dxi
-  implements Runnable
+class dxi
+  implements View.OnClickListener
 {
-  public dxi(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
+  dxi(dxh paramdxh, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized (TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager))
-    {
-      Object[] arrayOfObject = TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager).toArray();
-      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", arrayOfObject).commit();
-      return;
-    }
+    paramView = ReportLogHelper.a(this.jdField_a_of_type_Dxh.a, 2131363558);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    paramView.show();
+    new Timer().schedule(new dxj(this, paramView), 100L);
   }
 }
 

@@ -27,7 +27,7 @@ import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneVipInfoManager;
 import cooperation.qzone.WNSStream;
 import cooperation.qzone.util.ProtocolUtils;
-import edt;
+import edz;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
@@ -92,7 +92,7 @@ public class QZoneFeedCountPackeger
         ((UniAttribute)localObject2).setEncodeName("utf-8");
         ((UniAttribute)localObject2).decode(((QmfDownstream)localObject1).BusiBuff);
         paramString = (JceStruct)((UniAttribute)localObject2).get(paramString);
-        ThreadManager.b(new edt(paramArrayOfByte, paramQQAppInterface));
+        ThreadManager.b(new edz(paramArrayOfByte, paramQQAppInterface));
         return paramString;
       }
       if (localObject1 != null)

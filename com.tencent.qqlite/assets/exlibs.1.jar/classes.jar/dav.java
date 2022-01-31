@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ConditionSearchManager;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class dav
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
   public dav(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if ((paramInt == 2) && (paramBoolean)) {
-      this.a.d = true;
-    }
-    if ((this.a.h == 1) || (this.a.h == 2)) {
-      if (!paramBoolean) {
-        this.a.d();
-      }
-    }
-    while ((!this.a.c) || (paramInt != 2) || (!paramBoolean))
+    try
     {
-      QQToast.a(this.a, 2131364412, 0).b(this.a.getTitleBarHeight());
-      do
-      {
-        return;
-      } while (paramInt != 2);
-      this.a.d();
-      this.a.a(this.a.h);
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(this.a.c);
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
+      localMessage.obj = new Object[] { this.a.c, str };
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
       return;
     }
-    this.a.c();
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(ConditionSearchFriendActivity.c(), 2, "fillLocationData | exception ", localException);
+    }
   }
 }
 

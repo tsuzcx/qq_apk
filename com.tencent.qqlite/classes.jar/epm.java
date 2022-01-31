@@ -1,19 +1,37 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
-public class epm
-  implements View.OnLayoutChangeListener
+class epm
+  implements Runnable
 {
-  public epm(MediaControllerX paramMediaControllerX) {}
+  epm(epl paramepl, TroopUploadingThread.UploadState paramUploadState) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void run()
   {
-    MediaControllerX.a(this.a);
-    if ((MediaControllerX.a(this.a)) && (MediaControllerX.a(this.a) != null)) {
-      MediaControllerX.a(this.a).updateViewLayout(MediaControllerX.a(this.a), MediaControllerX.a(this.a));
-    }
+    AvatarWallAdapter.m = 0;
+    this.jdField_a_of_type_Epl.a.n = 0;
+    int i = this.jdField_a_of_type_Epl.a.b - this.jdField_a_of_type_Epl.a.j;
+    if (i >= 8) {}
+    String str;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 1) {
+            break;
+          }
+          this.jdField_a_of_type_Epl.a.a(i, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.c);
+        } while (this.jdField_a_of_type_Epl.a.a(this.jdField_a_of_type_Epl.a.g));
+        this.jdField_a_of_type_Epl.a.d = false;
+        this.jdField_a_of_type_Epl.a.b();
+        return;
+      } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
+      str = this.jdField_a_of_type_Epl.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b);
+    } while (str == null);
+    this.jdField_a_of_type_Epl.a.a(str, i);
   }
 }
 

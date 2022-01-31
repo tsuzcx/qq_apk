@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class bfp
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public bfp(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing())) {
-      QQSettingMe.a(this.a).dismiss();
-    }
     QQSettingMe.a(this.a, null);
   }
 }

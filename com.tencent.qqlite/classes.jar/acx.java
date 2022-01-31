@@ -1,31 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acx
-  implements View.OnClickListener
+  implements Runnable
 {
   public acx(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = this.a.a(this.a.b, this.a.a, localStringBuilder);
-    Object localObject = null;
-    paramView = localObject;
-    if (localStringBuilder != null)
-    {
-      paramView = localObject;
-      if (localStringBuilder.length() > 0) {
-        paramView = localStringBuilder.toString();
-      }
-    }
-    if (i > 0)
-    {
-      this.a.a(paramView);
-      return;
-    }
-    this.a.b(this.a.getString(2131363397));
+    this.a.i();
   }
 }
 

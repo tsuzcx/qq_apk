@@ -5,8 +5,8 @@ import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import cqi;
-import cqj;
+import cqo;
+import cqp;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -76,13 +76,13 @@ public class ChatBackgroundManagerImp
   
   public void a(ChatBackgroundInfo paramChatBackgroundInfo)
   {
-    ThreadManager.a(new cqj(this, paramChatBackgroundInfo));
+    ThreadManager.a(new cqp(this, paramChatBackgroundInfo));
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      ThreadManager.a(new cqi(this));
+      ThreadManager.a(new cqo(this));
     }
   }
   

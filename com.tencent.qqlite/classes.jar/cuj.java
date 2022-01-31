@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 class cuj
-  implements Comparator
+  implements Runnable
 {
   cuj(cui paramcui) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.a.a.a();
   }
 }
 

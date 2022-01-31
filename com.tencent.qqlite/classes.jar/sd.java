@@ -1,51 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.LoadedBack2;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.biz.webviewplugin.QzonePlugin;
 import com.tencent.smtt.sdk.WebView;
 
 public class sd
-  implements LoadedBack2
+  implements Runnable
 {
-  public sd(OfflinePlugin paramOfflinePlugin) {}
+  public sd(QzonePlugin paramQzonePlugin, byte[] paramArrayOfByte) {}
   
-  public void a()
+  public void run()
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    CustomWebView localCustomWebView;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(localObject instanceof QQBrowserActivity));
-        localObject = (QQBrowserActivity)localObject;
-      } while (QQBrowserActivity.sTopActivity == localObject);
-      localCustomWebView = this.a.mRuntime.a();
-    } while (localCustomWebView == null);
-    localCustomWebView.loadUrl(((QQBrowserActivity)localObject).K);
-  }
-  
-  public void a(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
+    if (QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin) != null) {
+      QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin).postUrl(QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin), this.jdField_a_of_type_ArrayOfByte);
+    }
   }
 }
 

@@ -6,14 +6,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
+import azx;
+import azy;
 import azz;
 import baa;
 import bab;
 import bac;
 import bad;
 import bae;
-import baf;
-import bag;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -83,7 +83,7 @@ public class NotifyPushSettingActivity
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface.a(new bag(paramQQAppInterface, paramString));
+    paramQQAppInterface.a(new bae(paramQQAppInterface, paramString));
   }
   
   public static int b(Context paramContext, String paramString)
@@ -109,27 +109,27 @@ public class NotifyPushSettingActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131297375);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131297370));
-    this.e = ((FormSwitchItem)findViewById(2131297374));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131297369);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131297372));
-    this.c = ((FormSwitchItem)findViewById(2131297373));
-    this.d = ((FormSwitchItem)findViewById(2131297371));
-    boolean bool1 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363278), "qqsetting_notify_showcontent_key", true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131297371);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131297366));
+    this.e = ((FormSwitchItem)findViewById(2131297370));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131297365);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131297368));
+    this.c = ((FormSwitchItem)findViewById(2131297369));
+    this.d = ((FormSwitchItem)findViewById(2131297367));
+    boolean bool1 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363281), "qqsetting_notify_showcontent_key", true);
     boolean bool2 = SettingCloneUtil.readValue(this, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", false);
-    boolean bool3 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363279), "qqsetting_notify_blncontrol_key", true);
-    boolean bool4 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363744), "qqsetting_receivemsg_whenexit_key", true);
-    boolean bool5 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363745), "qqsetting_lock_screen_whenexit_key", true);
+    boolean bool3 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363282), "qqsetting_notify_blncontrol_key", true);
+    boolean bool4 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363737), "qqsetting_receivemsg_whenexit_key", true);
+    boolean bool5 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131363738), "qqsetting_lock_screen_whenexit_key", true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new azz(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new azx(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("通知内显示消息内容");
     this.e.setChecked(bool2);
-    this.e.setOnCheckedChangeListener(new baa(this));
+    this.e.setOnCheckedChangeListener(new azy(this));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool3);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bab(this));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new azz(this));
     this.c.setChecked(bool4);
-    this.c.setOnCheckedChangeListener(new bac(this));
+    this.c.setOnCheckedChangeListener(new baa(this));
     CardHandler localCardHandler = (CardHandler)this.app.a(2);
     this.d.setChecked(bool5);
     if (bool1) {
@@ -137,10 +137,10 @@ public class NotifyPushSettingActivity
     }
     for (;;)
     {
-      this.d.setOnCheckedChangeListener(new bad(this));
+      this.d.setOnCheckedChangeListener(new bab(this));
       this.d.setContentDescription("锁屏显示消息弹框");
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bae(this));
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new baf(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bac(this));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new bad(this));
       this.jdField_b_of_type_AndroidViewView.setContentDescription("声音");
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("通知内显示消息内容");
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("通知时指示灯闪烁");
@@ -152,16 +152,16 @@ public class NotifyPushSettingActivity
     }
   }
   
-  protected String a_()
+  protected String b_()
   {
-    return getString(2131363253);
+    return getString(2131363256);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903249);
-    setTitle(2131363253);
+    setTitle(2131363256);
     if (this.app != null) {
       this.jdField_a_of_type_JavaLangString = this.app.a();
     }

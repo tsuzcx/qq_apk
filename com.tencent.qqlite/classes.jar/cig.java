@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import java.util.List;
 
 public class cig
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cig(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cig(AlbumListAdapter paramAlbumListAdapter, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
-    }
-    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
-    paramView.setClickable(false);
+    AlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

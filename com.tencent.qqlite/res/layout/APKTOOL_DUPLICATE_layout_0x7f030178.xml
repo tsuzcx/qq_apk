@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906c8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906dc" android:layout_width="fill_parent" android:layout_height="115.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906d9" android:background="@drawable/skin_group_list_sub_entry" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c001a" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0b00a5" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906da" android:background="@drawable/search_box" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+            <FrameLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0b0011" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906db" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@android:color/transparent" android:divider="@null" />
+                <com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0906dc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

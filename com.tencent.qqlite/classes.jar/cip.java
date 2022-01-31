@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropAction;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class cip
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cip(PhotoCropAction paramPhotoCropAction, ActionSheet paramActionSheet) {}
+  public cip(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.c();
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.a = null;
   }
 }
 

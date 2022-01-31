@@ -1,19 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class ajo
-  implements View.OnTouchListener
 {
-  public ajo(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
+  public String a;
+  public short a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  private ajo(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 

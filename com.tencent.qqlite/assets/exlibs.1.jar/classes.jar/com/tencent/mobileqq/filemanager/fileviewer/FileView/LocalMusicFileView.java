@@ -20,11 +20,11 @@ import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import dss;
-import dst;
-import dsu;
-import dsv;
-import dsw;
+import dsy;
+import dsz;
+import dta;
+import dtb;
+import dtc;
 import java.util.Timer;
 
 public class LocalMusicFileView
@@ -61,28 +61,28 @@ public class LocalMusicFileView
       localObject = ((Time)localObject).format("%M:%S");
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838594);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838571);
       k();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838595);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838572);
     l();
   }
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298102));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298065));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new dss(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297866));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dst(this));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131298106));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new dsu(this));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131298107));
-    this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new dsv(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298105));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298104));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298103));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new dsy(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131297852));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dsz(this));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131298069));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new dta(this));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131298070));
+    this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new dtb(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298068));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298067));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298066));
   }
   
   private void h()
@@ -94,8 +94,8 @@ public class LocalMusicFileView
       }
       return;
     }
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298022)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a())
     {
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
@@ -201,7 +201,7 @@ public class LocalMusicFileView
   {
     l();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new dsw(this), 0L, 1000L);
+    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new dtc(this), 0L, 1000L);
   }
   
   private void l()
@@ -215,14 +215,14 @@ public class LocalMusicFileView
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903447, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903437, paramViewGroup, false);
     g();
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public String a()
   {
-    return BaseApplicationImpl.getContext().getString(2131361986);
+    return BaseApplicationImpl.getContext().getString(2131361983);
   }
   
   public void a()

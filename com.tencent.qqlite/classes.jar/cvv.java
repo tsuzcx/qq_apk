@@ -1,21 +1,15 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteDatabase;
 
 public class cvv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cvv(ScreenShot paramScreenShot) {}
+  cvv(SQLiteDatabase paramSQLiteDatabase) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_Cvy.a(true);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
-    }
+    Toast.makeText(BaseApplicationImpl.getContext(), "transaction exception!", 1).show();
   }
 }
 

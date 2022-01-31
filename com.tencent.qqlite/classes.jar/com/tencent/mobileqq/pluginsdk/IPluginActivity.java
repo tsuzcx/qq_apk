@@ -25,7 +25,7 @@ public abstract interface IPluginActivity
   
   public abstract Resources IGetResource();
   
-  public abstract void IInit(String paramString1, String paramString2, Activity paramActivity, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void IInit(String paramString1, String paramString2, Activity paramActivity, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean, int paramInt);
   
   public abstract boolean IIsWrapContent();
   

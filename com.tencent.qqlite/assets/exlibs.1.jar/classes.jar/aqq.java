@@ -1,35 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class aqq
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aqq(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
+  public aqq(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    if (paramInt == 0)
-    {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-      if (QLog.isColorLevel()) {
-        QLog.d(GroupManagerActivity.a, 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
-      }
-      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-        break label111;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131363798);
-    }
-    label111:
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
-      return;
-    }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

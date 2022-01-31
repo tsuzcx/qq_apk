@@ -1,13 +1,15 @@
-import com.tencent.open.downloadnew.DownloadManager;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public final class fdy
   implements Runnable
 {
-  public fdy(String paramString) {}
+  public fdy(Activity paramActivity, Bundle paramBundle) {}
   
   public void run()
   {
-    DownloadManager.a().a(this.a);
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -12,12 +12,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import bfv;
+import bft;
+import bfu;
 import bfw;
 import bfy;
 import bga;
-import bgc;
-import bgd;
+import bgb;
 import com.dataline.util.file.FileUtil;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -49,6 +49,7 @@ import cooperation.qqfav.QfavHelper;
 import cooperation.qzone.QZoneHelper;
 import java.io.File;
 import java.util.Vector;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class QQSettingMsgHistoryActivity
@@ -63,7 +64,7 @@ public class QQSettingMsgHistoryActivity
   private long jdField_a_of_type_Long = 0L;
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bgd(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bgb(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   public QQProgressDialog a;
@@ -79,7 +80,7 @@ public class QQSettingMsgHistoryActivity
   
   public QQSettingMsgHistoryActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bfv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bft(this);
   }
   
   private void b(String paramString)
@@ -114,10 +115,10 @@ public class QQSettingMsgHistoryActivity
       if ((localObject instanceof BaseApplicationImpl))
       {
         BaseApplicationImpl localBaseApplicationImpl = (BaseApplicationImpl)localObject;
-        if (BaseApplicationImpl.a != null)
+        if (BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)
         {
           localObject = (BaseApplicationImpl)localObject;
-          BaseApplicationImpl.a.evictAll();
+          BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
         }
       }
     }
@@ -175,9 +176,9 @@ public class QQSettingMsgHistoryActivity
     b(CardHandler.jdField_a_of_type_JavaLangString + "voice" + "/");
   }
   
-  protected String a_()
+  protected String b_()
   {
-    return getString(2131363050);
+    return getString(2131363053);
   }
   
   public void c()
@@ -203,19 +204,19 @@ public class QQSettingMsgHistoryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903551);
-    setTitle(2131364306);
+    setContentView(2130903537);
+    setTitle(2131364291);
     this.jdField_a_of_type_JavaLangString = this.app.a();
     setVolumeControlStream(3);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298481));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131298436));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     if (this.app.f() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       paramBundle.setChecked(bool);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131298482);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131298483);
-      this.c = findViewById(2131298484);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131298437);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131298438);
+      this.c = findViewById(2131298439);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
@@ -247,7 +248,7 @@ public class QQSettingMsgHistoryActivity
       g();
       i();
       MusicCacheManager.a();
-      if (!IPluginManager.a()) {
+      if (!((IPluginManager)BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.a().getManager(25)).a()) {
         QfavHelper.a(this, this.app.a());
       }
       PublicAccountJavascriptInterface.deleteAllH5Data(this.app);
@@ -305,7 +306,7 @@ public class QQSettingMsgHistoryActivity
     int j = 1;
     if (!NetworkUtil.e(this.app.getApplication().getApplicationContext()))
     {
-      QQToast.a(getApplicationContext(), 2131363515, 1).a();
+      QQToast.a(getApplicationContext(), 2131363516, 1).a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       paramBoolean = bool;
@@ -321,7 +322,7 @@ public class QQSettingMsgHistoryActivity
     {
       i = 1;
       ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Latest_chatlog_syn", 0, i, "", "", "", "");
-      a(getApplication().getResources().getString(2131364086));
+      a(getApplication().getResources().getString(2131364073));
       if (!paramBoolean) {
         break label156;
       }
@@ -345,30 +346,30 @@ public class QQSettingMsgHistoryActivity
       return;
     }
     this.jdField_a_of_type_Long = l1;
-    bgc localbgc = null;
+    bga localbga = null;
     int j;
     switch (paramView.getId())
     {
     default: 
       j = 0;
-      paramView = localbgc;
+      paramView = localbga;
     }
     for (;;)
     {
-      localbgc = new bgc(this);
-      DialogUtil.a(this, 230, getString(j), getString(i), paramView, localbgc).show();
+      localbga = new bga(this);
+      DialogUtil.a(this, 230, getString(j), getString(i), paramView, localbga).show();
       return;
-      i = 2131363754;
+      i = 2131363746;
+      paramView = new bfu(this);
+      j = 2131363739;
+      continue;
+      i = 2131363745;
       paramView = new bfw(this);
-      j = 2131363747;
+      j = 2131363741;
       continue;
-      i = 2131363753;
+      i = 2131364292;
       paramView = new bfy(this);
-      j = 2131363749;
-      continue;
-      i = 2131364307;
-      paramView = new bga(this);
-      j = 2131363748;
+      j = 2131363740;
     }
   }
   
@@ -381,7 +382,7 @@ public class QQSettingMsgHistoryActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363249));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131363252));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);

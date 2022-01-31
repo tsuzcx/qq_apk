@@ -1,59 +1,49 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView.OnScreenChangeListener;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class exa
-  implements WorkSpaceView.OnScreenChangeListener
+class exa
+  implements Runnable
 {
-  public exa(ADView paramADView, LinearLayout paramLinearLayout) {}
+  exa(ewy paramewy) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    View localView;
-    while (i < j)
-    {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView != null) {
-        localView.setEnabled(false);
-      }
-      i += 1;
+    DownloadTask localDownloadTask = ewy.a(this.a);
+    if (localDownloadTask == null) {
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
-    }
-    for (;;)
+    do
     {
-      if ((i > -1) && (i < j))
-      {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
-      }
       return;
-      i = paramInt;
-      if (paramInt == j)
-      {
-        i = 0;
-        continue;
-        if (paramInt == -1)
-        {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d(ewy.jdField_a_of_type_JavaLangString, 2, "doTask | run() downloadLimitCount=" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",task=" + localDownloadTask);
       }
+      DownloadListener localDownloadListener = localDownloadTask.a();
+      if ((!localDownloadTask.c) || (!DownloaderFactory.a(localDownloadTask.jdField_a_of_type_JavaLangString))) {
+        break;
+      }
+      if (localDownloadListener != null)
+      {
+        localDownloadTask.z = -101;
+        localDownloadTask.a(-1);
+        localDownloadListener.onDone(localDownloadTask);
+      }
+      this.a.a(localDownloadTask);
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1);
+      this.a.c();
+    } while (!QLog.isColorLevel());
+    QLog.d(ewy.jdField_a_of_type_JavaLangString, 2, "doTask | run() task is limit of failTime, task=" + localDownloadTask);
+    return;
+    int i = DownloaderFactory.a(localDownloadTask, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d(ewy.jdField_a_of_type_JavaLangString, 2, "doTask | run() download task result=" + i + ",task=" + localDownloadTask);
     }
+    this.a.a(localDownloadTask);
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1);
+    this.a.c();
   }
 }
 

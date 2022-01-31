@@ -1,46 +1,46 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dlb
-  implements Runnable
+  extends IClickListener_Ver51
 {
-  public dlb(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public dlb(QfileLocalFileOtherTabView paramQfileLocalFileOtherTabView) {}
   
-  public void run()
+  public void a()
   {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put("已下载图片", new ArrayList());
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
-    {
-      FileInfo localFileInfo = (FileInfo)localIterator.next();
-      String str = localFileInfo.a();
-      if ((str != null) && (str.length() != 0))
-      {
-        localObject = str;
-        if (!str.equalsIgnoreCase("QQfile_recv")) {}
-      }
-      else
-      {
-        localObject = "已下载图片";
-      }
-      if (!localLinkedHashMap.containsKey(localObject)) {
-        localLinkedHashMap.put(localObject, new ArrayList());
-      }
-      ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
-    }
-    Object localObject = localLinkedHashMap.keySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (((List)localLinkedHashMap.get((String)((Iterator)localObject).next())).size() == 0) {
-        ((Iterator)localObject).remove();
-      }
-    }
-    QfileLocalFilePicTabView.a(this.a, new dlc(this, localLinkedHashMap));
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

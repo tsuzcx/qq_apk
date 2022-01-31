@@ -1,60 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity.ItemViewHolder;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 
 public class ecm
-  implements BusinessObserver
+  implements SlideDetectListView.OnSlideListener
 {
-  public ecm(StatusJsHandler paramStatusJsHandler) {}
+  public ecm(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.a(2131362453);
-    }
-    for (;;)
+    if ((StatusHistoryActivity.b(this.a) == 23) && (paramView != null))
     {
-      this.a.a(this.a.c, "false");
-      return;
-      if (paramBoolean) {}
-      try
+      paramView = paramView.getTag();
+      if ((paramView != null) && ((paramView instanceof StatusHistoryActivity.ItemViewHolder)))
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null)) {
-              continue;
-            }
-            paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
-            this.a.a(localBaseActivity, paramBundle);
-            StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-            return;
-          }
-          this.a.a(2131362453);
-          continue;
-        }
-        this.a.a(2131362453);
+        paramView = (StatusHistoryActivity.ItemViewHolder)paramView;
+        Button localButton = (Button)paramView.jdField_a_of_type_AndroidViewView;
+        localButton.setTag(Integer.valueOf(paramInt));
+        localButton.setOnClickListener(StatusHistoryActivity.a(this.a));
+        paramSlideDetectListView.setDeleteAreaDim(paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.getLayoutParams().width, paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.getLayoutParams().height);
+        paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.a();
+        this.a.a(false);
       }
-      catch (Exception paramBundle) {}
-      this.a.a(2131362453);
+    }
+  }
+  
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    if (paramView != null)
+    {
+      paramSlideDetectListView = paramView.getTag();
+      if ((paramSlideDetectListView != null) && ((paramSlideDetectListView instanceof StatusHistoryActivity.ItemViewHolder)))
+      {
+        paramSlideDetectListView = (StatusHistoryActivity.ItemViewHolder)paramSlideDetectListView;
+        paramSlideDetectListView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.d();
+        paramSlideDetectListView.jdField_a_of_type_AndroidViewView.setTag(null);
+        paramSlideDetectListView.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+        this.a.a(true);
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
 import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.smtt.sdk.CookieManager;
-import dwd;
+import dwj;
 import java.util.Map;
 
 public class DataApiPlugin
@@ -23,7 +23,7 @@ public class DataApiPlugin
   
   public DataApiPlugin()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new dwd(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new dwj(this);
   }
   
   protected boolean handleEvent(String paramString, int paramInt, Map paramMap)
@@ -439,7 +439,7 @@ public class DataApiPlugin
     //   830: ldc_w 264
     //   833: aload 11
     //   835: invokevirtual 192	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   838: new 266	dwe
+    //   838: new 266	dwk
     //   841: dup
     //   842: aload_0
     //   843: aload_3
@@ -447,7 +447,7 @@ public class DataApiPlugin
     //   845: aload_1
     //   846: aload 5
     //   848: aload 4
-    //   850: invokespecial 269	dwe:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;Ljava/lang/String;)V
+    //   850: invokespecial 269	dwk:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;Ljava/lang/String;)V
     //   853: invokestatic 274	com/tencent/mobileqq/app/ThreadManager:a	(Ljava/lang/Runnable;)V
     //   856: goto +1058 -> 1914
     //   859: ldc_w 276

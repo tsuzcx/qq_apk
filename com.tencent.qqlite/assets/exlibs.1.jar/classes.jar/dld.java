@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
 import java.util.LinkedHashMap;
-import java.util.List;
 
-public class dld
+class dld
   implements Runnable
 {
-  public dld(QfileLocalFilePicTabView paramQfileLocalFilePicTabView, FileInfo paramFileInfo) {}
+  dld(dlc paramdlc, LinkedHashMap paramLinkedHashMap) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a();
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a());
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {
-      return;
-    }
-    int j = FileManagerUtil.a((List)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.b());
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    ((List)localObject).add(i, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.i();
+    this.jdField_a_of_type_Dlc.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Dlc.a.i();
+    this.jdField_a_of_type_Dlc.a.setSelect(0);
   }
 }
 

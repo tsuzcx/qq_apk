@@ -1,27 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase.IControllProxyInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewerGalleryAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
-public class dtq
-  implements AdapterView.OnItemSelectedListener
+class dtq
+  implements Runnable
 {
-  public dtq(PhotoFileViewBase paramPhotoFileViewBase) {}
+  dtq(dtp paramdtp) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    PhotoFileViewBase.a(this.a, paramInt);
-    if (PhotoFileViewBase.a(this.a) != null) {
-      PhotoFileViewBase.b(this.a).a(paramInt);
-    }
-    paramAdapterView = (IFileViewerAdapter)PhotoFileViewBase.a(this.a).getItem(paramInt);
-    this.a.a().a(paramAdapterView);
+    LocalVideoFileView.a(this.a.a).post(new dtr(this));
   }
 }
 

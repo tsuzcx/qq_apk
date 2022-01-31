@@ -1,49 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
 
 public class xw
-  implements View.OnClickListener
+  implements IphonePickerView.IphonePickListener
 {
-  public xw(AddRequestActivity paramAddRequestActivity) {}
+  public xw(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    ReportController.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
-    Object localObject = (FriendManager)this.a.app.getManager(8);
-    boolean bool = ((FriendManager)localObject).b(AddRequestActivity.a(this.a));
-    paramView = new Intent(this.a, ChatActivity.class);
-    paramView.putExtra("uin", AddRequestActivity.a(this.a));
-    paramView.putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
-    if (bool)
+    switch (paramInt1)
     {
-      localObject = ((FriendManager)localObject).c(AddRequestActivity.a(this.a));
-      if (localObject != null)
-      {
-        paramView.putExtra("cSpecialFlag", ((Friends)localObject).cSpecialFlag);
-        paramView.putExtra("uinname", ContactUtils.a((Friends)localObject));
-      }
-      if (!bool) {
-        break label193;
-      }
     }
     for (;;)
     {
-      paramView.putExtra("uintype", i);
-      this.a.startActivity(paramView);
+      AgeSelectionActivity.a(this.a);
+      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        AgeSelectionActivity.a(this.a).a(2);
+      }
       return;
-      paramView.putExtra("uinname", this.a.q);
-      break;
-      label193:
-      i = 1022;
+      this.a.f = paramInt2;
+      continue;
+      this.a.g = paramInt2;
+      continue;
+      this.a.h = paramInt2;
     }
   }
 }

@@ -1,49 +1,27 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class cxk
-  extends MessageObserver
+  extends ResourcePluginListener
 {
-  private cxk(GetTroopAssisMsg paramGetTroopAssisMsg) {}
+  private cxk(GetConfig paramGetConfig) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public void a(byte paramByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
-    }
-    if (paramLong2 == 1L) {
-      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1; i == 0; i = 0)
+    if (GetConfig.a(this.a) == 36)
     {
-      this.a.a(6);
-      return;
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      GetConfig.a(this.a).a.c(GetConfig.a(this.a));
+      this.a.a(7);
     }
-    this.a.a(7);
   }
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  public void b(byte paramByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
-    }
-    MsgAutoMonitorUtil.a().h();
-    this.a.a(7);
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      this.a.a(6);
-    }
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    GetConfig.b(this.a).a.d(this);
   }
 }
 

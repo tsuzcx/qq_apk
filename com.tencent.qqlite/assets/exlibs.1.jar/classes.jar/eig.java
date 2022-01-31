@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsBaseView;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
-import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
 
 public class eig
-  extends FriendListObserver
+  implements Runnable
 {
-  public eig(NearbyTroopsView paramNearbyTroopsView) {}
+  public eig(NearbyTroopsActivity paramNearbyTroopsActivity, boolean paramBoolean) {}
   
-  protected void c(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((!paramBoolean) || (!this.a.d)) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.c(0);
+    NearbyTroopsBaseView localNearbyTroopsBaseView = NearbyTroopsActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity, 0);
+    if ((localNearbyTroopsBaseView != null) && ((localNearbyTroopsBaseView instanceof NearbyTroopsView))) {
+      ((NearbyTroopsView)localNearbyTroopsBaseView).setHasHotTroopRedDot(this.jdField_a_of_type_Boolean);
     }
-    this.a.a.a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.e();
+    if (NearbyTroopsActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity) != null) {
+      NearbyTroopsActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity).a();
+    }
   }
 }
 

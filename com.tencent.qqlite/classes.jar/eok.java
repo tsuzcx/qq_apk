@@ -1,19 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.Editable;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import java.util.Comparator;
 
 public final class eok
-  implements Runnable
+  implements Comparator
 {
-  public eok(boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  public eok(Editable paramEditable) {}
   
-  public void run()
+  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
+    int i = 0;
+    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
+    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
+    if (j < k) {
+      i = -1;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130837991, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    while (j <= k) {
+      return i;
+    }
+    return 1;
   }
 }
 

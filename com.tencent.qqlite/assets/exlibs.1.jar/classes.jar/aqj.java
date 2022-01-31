@@ -1,14 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 public class aqj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   public aqj(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,18 +1,46 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
 
-class cxz
-  implements Runnable
+public class cxz
+  extends FriendListObserver
 {
-  cxz(cxy paramcxy) {}
+  private cxz(UpdateFriend paramUpdateFriend) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if ((UpdateFriend.a(this.a) == 7) || (UpdateFriend.b(this.a) == 3))
+    {
+      if (paramBoolean1) {
+        break label37;
+      }
+      this.a.a(6);
     }
+    label37:
+    while ((!paramBoolean1) || (!paramBoolean2)) {
+      return;
+    }
+    UpdateFriend.a(this.a).a.edit().putBoolean("isFriendlistok", true).commit();
+    UpdateFriend.b(this.a).a(3, true, Integer.valueOf(1));
+    this.a.a(7);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (UpdateFriend.c(this.a) == 8)
+    {
+      if (paramBoolean1) {
+        break label26;
+      }
+      this.a.a(6);
+    }
+    label26:
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.a(7);
   }
 }
 

@@ -1,32 +1,36 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.EmoticonManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class cso
-  extends ctc
+  extends EmoticonPackageDownloadListener
 {
-  private String a;
+  public cso(EmoticonManagerImp paramEmoticonManagerImp) {}
   
-  public cso()
+  public void onJsonComplete(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.f();
-  }
-  
-  protected void d(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EmoticonManagerImp", 2, "json is complete,result ok: " + paramEmoticonPackage.epId);
+      }
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.get(paramEmoticonPackage.epId);
+      if (localEmoticonPackage != null)
+      {
+        localEmoticonPackage.name = paramEmoticonPackage.name;
+        localEmoticonPackage.mark = paramEmoticonPackage.mark;
+        localEmoticonPackage.mobileFeetype = paramEmoticonPackage.mobileFeetype;
+        localEmoticonPackage.downloadCount = paramEmoticonPackage.downloadCount;
+        localEmoticonPackage.type = paramEmoticonPackage.type;
+        this.a.a(localEmoticonPackage);
+        this.a.a(localEmoticonPackage.epId);
+        ((EmojiManager)EmoticonManagerImp.a(this.a).getManager(39)).b(paramEmoticonPackage);
+      }
+    }
   }
 }
 

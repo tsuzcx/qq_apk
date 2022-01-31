@@ -66,8 +66,8 @@ public class QfavPluginProxyActivity
     for (QfavLoadingDialog localQfavLoadingDialog = new QfavLoadingDialog(paramActivity);; localQfavLoadingDialog = null)
     {
       String str = a(paramIntent);
-      paramIntent.putExtra("useSkinEngine", false);
-      paramIntent.putExtra("userQqResources", 1);
+      paramIntent.putExtra("useSkinEngine", true);
+      paramIntent.putExtra("userQqResources", 2);
       IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
       localPluginParams.jdField_b_of_type_JavaLangString = "qqfav.apk";
       localPluginParams.d = "qqfav.apk";

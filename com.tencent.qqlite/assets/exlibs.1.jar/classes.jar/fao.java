@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.CardContainer;
 
 public class fao
   implements Runnable
 {
-  public fao(BindGroupActivity paramBindGroupActivity) {}
+  public fao(AuthorityActivity paramAuthorityActivity, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId timeout.");
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c = true;
-    this.a.b.hide();
-    this.a.c();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a.a("", "", this.jdField_a_of_type_AndroidGraphicsBitmap, true);
   }
 }
 

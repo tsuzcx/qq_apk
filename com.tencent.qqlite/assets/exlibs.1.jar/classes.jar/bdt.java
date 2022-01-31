@@ -9,14 +9,7 @@ public class bdt
   
   public void onClick(View paramView)
   {
-    if (this.a.i)
-    {
-      this.a.o();
-      return;
-    }
-    this.a.setResult(-1, this.a.a());
-    this.a.finish();
-    this.a.d();
+    this.a.k();
   }
 }
 

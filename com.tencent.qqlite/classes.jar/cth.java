@@ -1,52 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.LebaHelper;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class cth
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public cth(LebaHelper paramLebaHelper, URL paramURL, File paramFile, String paramString) {}
+  private cth(GuardManager paramGuardManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
-    {
-      if (!HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile)) {
-        break label199;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LebaHelper", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
-      }
-      Bitmap localBitmap = LebaHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaIoFile);
-      if (localBitmap != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LebaHelper", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
-        }
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.d.iterator();
-        while (localIterator.hasNext()) {
-          ((DownloadIconsListener)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
-        }
-      }
-      LebaHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, "received with " + paramContext);
     }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
-      LebaHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
+      if (GuardManager.a(this.a) > 0L) {
+        this.a.a(false);
+      }
+    }
+    while ((!"android.intent.action.SCREEN_ON".equals(paramContext)) || (GuardManager.a(this.a) != 0L) || (!GuardManager.a(this.a))) {
       return;
     }
-    return;
-    label199:
-    this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
-    LebaHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
+    GuardManager.a(this.a, SystemClock.uptimeMillis());
   }
 }
 

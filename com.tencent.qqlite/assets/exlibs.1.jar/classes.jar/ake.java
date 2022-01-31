@@ -1,50 +1,17 @@
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.StatFs;
-import android.widget.Toast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.DoodleTextView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
 
 public class ake
-  extends Handler
+  implements View.OnClickListener
 {
   public ake(DoodleActivity paramDoodleActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return;
-    case 0: 
-      this.a.a.c();
-      return;
-    case 1: 
-      QQToast.a(this.a, "已达到上限，无法输入", 0).b(this.a.getTitleBarHeight());
-      return;
-    case 2: 
-      this.a.a.b();
-      sendEmptyMessageDelayed(2, 600L);
-      return;
-    }
-    if (Environment.getExternalStorageState().equals("mounted"))
-    {
-      if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
-      {
-        this.a.c();
-        return;
-      }
-      Toast.makeText(this.a.app.a(), 2131363003, 0).show();
-      return;
-    }
-    Toast.makeText(this.a.app.a(), 2131363002, 0).show();
+    this.a.a.setVisibility(0);
+    this.a.b.setVisibility(8);
   }
 }
 

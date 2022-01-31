@@ -17,7 +17,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cse;
+import csk;
 import java.lang.reflect.Method;
 
 public class DragBaseActivity
@@ -39,7 +39,7 @@ public class DragBaseActivity
   
   public DragBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new cse(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new csk(this);
   }
   
   public static void a(View paramView)
@@ -58,7 +58,7 @@ public class DragBaseActivity
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
     return this.jdField_a_of_type_AndroidWidgetTextView;
@@ -87,10 +87,10 @@ public class DragBaseActivity
     {
       super.setContentView(2130903293);
       this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131297559);
-      localFrameLayout.setForeground(getResources().getDrawable(2130839291));
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131297555);
+      localFrameLayout.setForeground(getResources().getDrawable(2130839259));
       this.jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131296894));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131296890));
       IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidViewViewGroup);
       a();
       b();
@@ -115,17 +115,9 @@ public class DragBaseActivity
     return false;
   }
   
-  protected String a_()
-  {
-    if ((this.b == null) || (this.b.getText() == null) || (this.b.getText().length() == 0)) {
-      return getString(2131363110);
-    }
-    return this.b.getText().toString();
-  }
-  
   protected View b()
   {
-    this.b = ((TextView)findViewById(2131296895));
+    this.b = ((TextView)findViewById(2131296891));
     return this.b;
   }
   
@@ -134,7 +126,7 @@ public class DragBaseActivity
     setContentView(paramInt);
     try
     {
-      findViewById(2131297145).setVisibility(8);
+      findViewById(2131297141).setVisibility(8);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -142,10 +134,18 @@ public class DragBaseActivity
   
   public void b(Intent paramIntent) {}
   
+  protected String b_()
+  {
+    if ((this.b == null) || (this.b.getText() == null) || (this.b.getText().length() == 0)) {
+      return getString(2131363113);
+    }
+    return this.b.getText().toString();
+  }
+  
   protected View c()
   {
-    this.c = ((TextView)findViewById(2131296905));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296906));
+    this.c = ((TextView)findViewById(2131296901));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131296902));
     IphoneTitleBarActivity.setLayerType(this.c);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.c;
@@ -177,7 +177,7 @@ public class DragBaseActivity
     boolean bool = false;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837914);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);

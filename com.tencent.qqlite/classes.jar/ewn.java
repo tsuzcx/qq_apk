@@ -1,24 +1,102 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
-import mqq.app.AppRuntime;
-import mqq.manager.ServerConfigManager.ConfigType;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import java.net.HttpURLConnection;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ewn
-  implements Runnable
+  extends Handler
 {
-  public ewn(VipPathTracker paramVipPathTracker, AppRuntime paramAppRuntime) {}
+  public static final int b = 0;
+  public static final int c = 1;
+  public int a;
+  public HttpMsg a;
+  public AtomicBoolean a;
+  public AtomicBoolean b = new AtomicBoolean();
   
-  public void run()
+  public ewn(HttpCommunicator paramHttpCommunicator, Looper paramLooper)
   {
-    String str = ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(ServerConfigManager.ConfigType.common, "PathTrack");
-    VipPathTracker localVipPathTracker = this.jdField_a_of_type_ComTencentMobileqqUtilsPathtrackerVipPathTracker;
-    if ((!TextUtils.isEmpty(str)) && (str.equals("0"))) {}
-    for (boolean bool = true;; bool = false)
+    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+  }
+  
+  public void a()
+  {
+    try
     {
-      VipPathTracker.a(localVipPathTracker, Boolean.valueOf(bool));
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, "requeustInterupt", "msgId:" + this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.ae + " thread id:" + this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.b.set(true);
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.jdField_a_of_type_JavaNetHttpURLConnection != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+          getLooper().getThread().interrupt();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9361, 0, "preempted by higher msg");
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a().b(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+      }
       return;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a(HttpMsg paramHttpMsg)
+  {
+    sendMessage(obtainMessage(0, paramHttpMsg));
+  }
+  
+  public void handleMessage(Message arg1)
+  {
+    if (???.what == 0) {
+      if ((???.obj != null) && ((???.obj instanceof HttpMsg)))
+      {
+        localHttpMsg = (HttpMsg)???.obj;
+        if (localHttpMsg.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+          break label179;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(localHttpMsg, this, false);
+        if (localHttpMsg.jdField_a_of_type_JavaLangObject != null) {
+          localHttpMsg.c.set(true);
+        }
+      }
+    }
+    label179:
+    while (???.what != 1)
+    {
+      synchronized (localHttpMsg.jdField_a_of_type_JavaLangObject)
+      {
+        HttpMsg localHttpMsg;
+        localHttpMsg.jdField_a_of_type_JavaLangObject.notify();
+        if (this.b.get())
+        {
+          getLooper().quit();
+          return;
+        }
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+      ???.obj = null;
+      synchronized (HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator))
+      {
+        HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a("handleMsgFin thread index:" + this.jdField_a_of_type_Int);
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+      ???.obj = null;
+      return;
+    }
+    getLooper().quit();
   }
 }
 

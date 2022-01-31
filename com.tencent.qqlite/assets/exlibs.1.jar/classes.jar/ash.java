@@ -1,14 +1,23 @@
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import java.util.List;
 
-public class ash
-  extends GetRedPointExObserver
+class ash
+  implements Runnable
 {
-  public ash(Leba paramLeba) {}
+  ash(asg paramasg, List paramList) {}
   
-  protected void a()
+  public void run()
   {
-    Leba.b(this.a);
+    if (Leba.a(this.jdField_a_of_type_Asg.a) != null)
+    {
+      Leba.a(this.jdField_a_of_type_Asg.a).clear();
+      Leba.a(this.jdField_a_of_type_Asg.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Asg.a.a != null) {
+        this.jdField_a_of_type_Asg.a.a.notifyDataSetChanged();
+      }
+      Leba.b(this.jdField_a_of_type_Asg.a);
+    }
   }
 }
 

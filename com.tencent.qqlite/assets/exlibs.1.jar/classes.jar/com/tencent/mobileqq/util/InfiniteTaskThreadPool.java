@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import esb;
+import esg;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
@@ -17,7 +17,7 @@ public class InfiniteTaskThreadPool
   
   public InfiniteTaskThreadPool(int paramInt, long paramLong)
   {
-    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new esb(), new ThreadPoolExecutor.CallerRunsPolicy());
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new esg(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
   
   public static final InfiniteTaskThreadPool a()

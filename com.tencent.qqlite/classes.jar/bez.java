@@ -1,45 +1,25 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.VipInfoObserver;
 
 public class bez
-  extends DownloadListener
+  extends VipInfoObserver
 {
   public bez(QQSettingMe paramQQSettingMe) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.z == 0))
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQSettingRedesign", 2, "-->download success!");
+      SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("key_selfvip_growthvalue", paramInt).commit();
       }
-      this.a.a.getPreferences().edit().putLong("vip_center_last_update_time", NetConnInfoCenter.getServerTimeMillis()).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new bfa(this));
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("QQSettingRedesign", 2, "-->download failed!");
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingRedesign", 2, "-->download progress!");
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingRedesign", 2, "-->download start!");
-    }
-    return true;
   }
 }
 

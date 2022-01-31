@@ -1,21 +1,71 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadQueryListener;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class fgb
-  implements TextView.OnEditorActionListener
+  implements DownloadQueryListener
 {
-  public fgb(Login paramLogin) {}
+  public fgb(VipDownloadInterface paramVipDownloadInterface) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt == 6)
+    LogUtility.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.a.d();
-      return true;
+      localJSONObject.put("errCode", paramInt);
+      localJSONObject.put("errMsg", paramString);
+      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
+      this.a.a(paramString);
+      return;
     }
-    return false;
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(List paramList)
+  {
+    LogUtility.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.b);
+          localJSONObject.put("pro", localDownloadInfo.k);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.h);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
+    LogUtility.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
+    this.a.a(paramList);
   }
 }
 

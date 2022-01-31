@@ -1,27 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.profile.view.helper.ShakeEffectGenerator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
 public class ead
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public ead(VipTagView paramVipTagView) {}
+  public ead(CircularProgressBar paramCircularProgressBar) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
-    }
-    VipTagView.a(this.a, false);
     this.a.invalidate();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    VipTagView.a(this.a, 0.0F);
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a));
+      if (CircularProgressBar.b(this.a) > 360) {
+        CircularProgressBar.b(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
   }
 }
 

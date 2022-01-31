@@ -1,32 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.activity.TrafficStatActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class ye
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public ye(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    AssistantSettingActivity.e(this.a).setContentDescription("WiFi下自动在后台下载新版本");
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
-      ConfigHandler.b(this.a.app, paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      UpgradeController.a().a();
-      return;
-    }
-    UpgradeController.a().b();
+    paramView = new Intent(this.a, TrafficStatActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_traffic_statistics", 0, 0, "", "", "", "");
   }
 }
 

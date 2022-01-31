@@ -1,87 +1,94 @@
-import android.app.Dialog;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.mobileim.structmsg.structmsg.FriendInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class xo
-  extends MessageObserver
+  implements View.OnClickListener
 {
   public xo(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
+    paramView = (FriendManager)this.a.app.getManager(8);
+    if (paramView != null) {}
+    for (boolean bool = paramView.b(AddRequestActivity.a(this.a));; bool = false)
     {
-      AddRequestActivity.a(this.a).dismiss();
-      paramString = this.a.getString(2131362892);
-      QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.dismissDialog(2);
-    }
-    this.a.a(2130837989, this.a.getString(2131363410));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    if (paramInt1 == 0) {
-      return;
-    }
-    long l2 = FriendSystemMsgController.a().b();
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      l1 = Long.parseLong(paramString1);
-      if (!paramBoolean)
+      if (bool)
       {
-        if (AddRequestActivity.a(this.a) != null) {
-          AddRequestActivity.a(this.a).dismiss();
-        }
-        if (SystemMsgUtils.a(FriendSystemMsgController.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
-          this.a.finish();
-        }
-        AddRequestActivity.a(this.a, false);
+        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 1);
+        ProfileActivity.b(this.a, paramView);
         return;
       }
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
+      switch (this.a.jdField_d_of_type_Int)
       {
-        paramString1.printStackTrace();
-        l1 = l2;
-        continue;
-        if (AddRequestActivity.a(this.a) != null) {
-          AddRequestActivity.a(this.a).dismiss();
+      default: 
+        if ((AddRequestActivity.a(this.a) != 3007) && (AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2007) && (AddRequestActivity.a(this.a) != 2019)) {
+          break label710;
         }
-        this.a.finish();
-        SystemMsgUtils.a(FriendSystemMsgController.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
-        if (AddRequestActivity.b(this.a)) {
-          FriendSystemMsgController.a().a(Long.valueOf(l1)).msg.friend_info.msg_blacklist.setHasFlag(false);
+        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
+        if ((AddRequestActivity.a(this.a) != 3007) && (AddRequestActivity.a(this.a) != 2007)) {
+          break;
         }
       }
+      for (paramView.g = 14;; paramView.g = 15) {
+        do
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putInt("param_mode", 3);
+          NearbyPeopleProfileActivity.a(this.a, paramView, localBundle);
+          return;
+          if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 3019) || (AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 2019))
+          {
+            paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
+            if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 2007)) {}
+            for (paramView.g = 14;; paramView.g = 15) {
+              do
+              {
+                localBundle = new Bundle();
+                localBundle.putInt("param_mode", 3);
+                NearbyPeopleProfileActivity.a(this.a, paramView, localBundle);
+                return;
+              } while ((AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2019));
+            }
+          }
+          paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
+          paramView.h = AddRequestActivity.a(this.a);
+          paramView.jdField_d_of_type_JavaLangString = String.valueOf(AddRequestActivity.a(this.a));
+          ProfileActivity.b(this.a, paramView);
+          return;
+          if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 3019) || (AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 2019))
+          {
+            paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
+            if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 2007)) {}
+            for (paramView.g = 14;; paramView.g = 15) {
+              do
+              {
+                localBundle = new Bundle();
+                localBundle.putInt("param_mode", 3);
+                NearbyPeopleProfileActivity.a(this.a, paramView, localBundle);
+                return;
+              } while ((AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2019));
+            }
+          }
+          paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
+          paramView.h = AddRequestActivity.a(this.a);
+          paramView.jdField_d_of_type_JavaLangString = String.valueOf(AddRequestActivity.a(this.a));
+          paramView.jdField_d_of_type_Int = 1;
+          ProfileActivity.b(this.a, paramView);
+          return;
+        } while ((AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2019));
+      }
+      label710:
+      paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
+      ProfileActivity.b(this.a, paramView);
+      return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.dismissDialog(2);
-    }
-    this.a.a(2130837989, this.a.getString(2131363411));
   }
 }
 

@@ -1,16 +1,19 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import com.tencent.open.agent.OpenSdkFriendService;
+import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback;
+import java.util.ArrayList;
 
 public class fbs
-  implements Comparator
+  implements Runnable
 {
-  public fbs(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
+  public fbs(OpenSdkFriendService.GetFriendListCallback paramGetFriendListCallback, ArrayList paramArrayList, String paramString) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void run()
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
+    if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.i))
+    {
+      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

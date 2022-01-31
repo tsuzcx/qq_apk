@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class bur
-  implements Runnable
+public class bur
+  implements ActionSheet.OnButtonClickListener
 {
-  bur(buq parambuq) {}
+  public bur(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, BaseChatItemLayout paramBaseChatItemLayout, bus parambus, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    ChatActivityUtils.a(this.a.a.a, 2131363129, 1);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null) {
+      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Bus, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status, false);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 

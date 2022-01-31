@@ -1,47 +1,44 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.filemanager.data.WeiYunClassificationType;
 import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.CommonFtnFile;
 import com.weiyun.sdk.IWyFileSystem.IWyCallback;
 import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import com.weiyun.sdk.data.WyCategoryInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class dqo
   implements IWyFileSystem.IWyCallback
 {
-  public dqo(WeiYunLogicCenter paramWeiYunLogicCenter, FileManagerEntity paramFileManagerEntity, TroopFileTransferManager paramTroopFileTransferManager, TroopFileStatusInfo paramTroopFileStatusInfo) {}
+  public dqo(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void a(IWyFileSystem.CommonFtnFile paramCommonFtnFile)
+  public void a(List paramList)
   {
-    paramCommonFtnFile = paramCommonFtnFile.guid;
-    if ((paramCommonFtnFile == null) || (paramCommonFtnFile.length() < 1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onSucceed,But uuid is null!!!");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, -1, null, "转存失败,请稍后重试");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onSucceed, num[" + paramList.size() + "]");
     }
-    do
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onSucceed, Uuid[" + paramCommonFtnFile + "]");
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, 0, paramCommonFtnFile, null);
+      WyCategoryInfo localWyCategoryInfo = (WyCategoryInfo)paramList.next();
+      WeiYunClassificationType localWeiYunClassificationType = new WeiYunClassificationType();
+      localWeiYunClassificationType.jdField_a_of_type_JavaLangString = localWyCategoryInfo.categoryId;
+      localWeiYunClassificationType.b = localWyCategoryInfo.name;
+      localWeiYunClassificationType.jdField_a_of_type_Long = localWyCategoryInfo.timestamp;
+      localWeiYunClassificationType.jdField_a_of_type_Int = localWyCategoryInfo.totalNum;
+      this.a.b.add(localWeiYunClassificationType);
+    }
+    this.a.a.a().a(true, 30, this.a.b);
   }
   
   public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, paramWyErrorStatus.errorCode, null, paramWyErrorStatus.errorMsg);
+    this.a.a.a().a(false, 30, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
   }
 }
 

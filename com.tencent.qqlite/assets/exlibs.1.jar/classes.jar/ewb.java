@@ -1,13 +1,14 @@
-import android.graphics.PointF;
+import java.util.concurrent.ThreadFactory;
 
-public final class ewb
-  implements ewc
+class ewb
+  implements ThreadFactory
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public Thread newThread(Runnable paramRunnable)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    ewa.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + ewa.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 

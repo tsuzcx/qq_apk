@@ -32,12 +32,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableView;
 import com.tencent.util.VersionUtils;
-import fgt;
-import fhd;
-import fih;
-import fii;
-import fij;
-import fik;
+import fgy;
+import fhi;
+import fim;
+import fin;
+import fio;
+import fip;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -69,9 +69,9 @@ public class ListView
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener;
-  private final fih jdField_a_of_type_Fih = new fih(null);
-  private fii jdField_a_of_type_Fii;
-  private fik jdField_a_of_type_Fik;
+  private final fim jdField_a_of_type_Fim = new fim(null);
+  private fin jdField_a_of_type_Fin;
+  private fip jdField_a_of_type_Fip;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = null;
@@ -219,7 +219,7 @@ public class ListView
       {
         bool1 = paramView.isSelected();
         boolean bool2 = paramView.isPressed();
-        this.jdField_a_of_type_Fhd.a(paramView, paramInt1);
+        this.jdField_a_of_type_Fhi.a(paramView, paramInt1);
         if (this.ai != 0) {
           localView.setDrawingCacheBackgroundColor(this.ai);
         }
@@ -268,7 +268,7 @@ public class ListView
           localView.jumpDrawablesToCurrentState();
         }
         return localView.getHeight() - i1;
-        localView = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt1, this.jdField_a_of_type_Fhd.b(paramInt1), this);
+        localView = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt1, this.jdField_a_of_type_Fhi.b(paramInt1), this);
         break;
         if ((getContext().getApplicationInfo().targetSdkVersion < 11) || (!VersionUtils.e())) {
           break label221;
@@ -368,7 +368,7 @@ public class ListView
     {
       if (!this.q)
       {
-        localView = this.jdField_a_of_type_Fhd.a(paramInt1);
+        localView = this.jdField_a_of_type_Fhi.a(paramInt1);
         if (localView != null)
         {
           a(localView, paramInt1, paramInt2, paramBoolean1, paramInt3, paramBoolean2, true);
@@ -451,7 +451,7 @@ public class ListView
     return paramView1;
   }
   
-  private fih a(int paramInt)
+  private fim a(int paramInt)
   {
     int i2 = 1;
     int i1 = 1;
@@ -536,14 +536,14 @@ public class ListView
     if (i2 < i3)
     {
       localView.requestFocus(paramInt);
-      this.jdField_a_of_type_Fih.a(i1, i2);
-      return this.jdField_a_of_type_Fih;
+      this.jdField_a_of_type_Fim.a(i1, i2);
+      return this.jdField_a_of_type_Fim;
     }
     if (b(localView) < i3)
     {
       localView.requestFocus(paramInt);
-      this.jdField_a_of_type_Fih.a(i1, i3);
-      return this.jdField_a_of_type_Fih;
+      this.jdField_a_of_type_Fim.a(i1, i3);
+      return this.jdField_a_of_type_Fim;
     }
     label376:
     return null;
@@ -1563,10 +1563,10 @@ public class ListView
     if ((this.ab == 5) && (getScrollY() != 0))
     {
       int i1 = getScrollY();
-      if ((i1 < 0) && (this.jdField_a_of_type_Fik != null) && (i1 > -t()) && ((this.jdField_m_of_type_Int == 0) || (this.jdField_m_of_type_Int == 2)))
+      if ((i1 < 0) && (this.jdField_a_of_type_Fip != null) && (i1 > -t()) && ((this.jdField_m_of_type_Int == 0) || (this.jdField_m_of_type_Int == 2)))
       {
         if (this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(0, this.jdField_a_of_type_Fik.getChildAt(0), this);
+          this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(0, this.jdField_a_of_type_Fip.getChildAt(0), this);
         }
         this.jdField_m_of_type_Int = 1;
       }
@@ -1600,8 +1600,8 @@ public class ListView
       localObject = a(paramInt);
       if (localObject != null)
       {
-        i1 = ((fih)localObject).a();
-        i2 = ((fih)localObject).b();
+        i1 = ((fim)localObject).a();
+        i2 = ((fim)localObject).b();
       }
       if (localObject == null) {
         break label306;
@@ -1753,11 +1753,11 @@ public class ListView
   {
     int i1 = getScrollY();
     paramView.getHeight();
-    if ((paramView == this.jdField_a_of_type_Fik) && (this.jdField_m_of_type_Int == 1) && (i1 <= -t()))
+    if ((paramView == this.jdField_a_of_type_Fip) && (this.jdField_m_of_type_Int == 1) && (i1 <= -t()))
     {
       this.jdField_m_of_type_Int = 2;
       if (this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.b(0, this.jdField_a_of_type_Fik.getChildAt(0), this);
+        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.b(0, this.jdField_a_of_type_Fip.getChildAt(0), this);
       }
     }
   }
@@ -1870,7 +1870,7 @@ public class ListView
     offsetChildrenTopAndBottom(paramInt);
     int i1 = getHeight() - this.jdField_c_of_type_AndroidGraphicsRect.bottom;
     int i2 = this.jdField_c_of_type_AndroidGraphicsRect.top;
-    fhd localfhd = this.jdField_a_of_type_Fhd;
+    fhi localfhi = this.jdField_a_of_type_Fhi;
     View localView;
     if (paramInt < 0)
     {
@@ -1891,10 +1891,10 @@ public class ListView
       localView = getChildAt(0);
       if (localView.getBottom() < i2)
       {
-        if (localfhd.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
+        if (localfhi.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
         {
           detachViewFromParent(localView);
-          localfhd.a(localView, this.ao);
+          localfhi.a(localView, this.ao);
         }
         for (;;)
         {
@@ -1920,10 +1920,10 @@ public class ListView
       localView = getChildAt(paramInt);
       if (localView.getTop() > i1)
       {
-        if (localfhd.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
+        if (localfhi.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
         {
           detachViewFromParent(localView);
-          localfhd.a(localView, this.ao + paramInt);
+          localfhi.a(localView, this.ao + paramInt);
         }
         for (;;)
         {
@@ -2012,7 +2012,7 @@ public class ListView
     scrollTo(0, -t() - 1);
     if (this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener != null)
     {
-      if (!this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(-t() - 1, this.jdField_a_of_type_Fik.getChildAt(0), this)) {
+      if (!this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(-t() - 1, this.jdField_a_of_type_Fip.getChildAt(0), this)) {
         B();
       }
     }
@@ -2072,7 +2072,7 @@ public class ListView
       if (paramInt3 == -1) {
         i2 = ((ListAdapter)localObject).getCount() - 1;
       }
-      localObject = this.jdField_a_of_type_Fhd;
+      localObject = this.jdField_a_of_type_Fhi;
       bool = o();
       boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
       paramInt3 = paramInt2;
@@ -2091,8 +2091,8 @@ public class ListView
     label267:
     for (;;)
     {
-      if ((bool) && (((fhd)localObject).a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
-        ((fhd)localObject).a(localView, -1);
+      if ((bool) && (((fhi)localObject).a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
+        ((fhi)localObject).a(localView, -1);
       }
       paramInt2 = localView.getMeasuredHeight() + paramInt2;
       if (paramInt2 >= paramInt4)
@@ -2198,9 +2198,9 @@ public class ListView
     return this.jdField_a_of_type_AndroidWidgetListAdapter;
   }
   
-  protected fgt a()
+  protected fgy a()
   {
-    return new fij(this);
+    return new fio(this);
   }
   
   void a(Canvas paramCanvas, Rect paramRect, int paramInt)
@@ -2277,8 +2277,8 @@ public class ListView
     localFixedViewInfo.jdField_a_of_type_JavaLangObject = paramObject;
     localFixedViewInfo.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaUtilArrayList.add(localFixedViewInfo);
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgt != null)) {
-      this.jdField_a_of_type_Fgt.onChanged();
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgy != null)) {
+      this.jdField_a_of_type_Fgy.onChanged();
     }
   }
   
@@ -2289,8 +2289,8 @@ public class ListView
       if ((this.jdField_a_of_type_AndroidWidgetListAdapter == null) || (!((HeaderViewListAdapter)this.jdField_a_of_type_AndroidWidgetListAdapter).a(paramView))) {
         break label60;
       }
-      if (this.jdField_a_of_type_Fgt != null) {
-        this.jdField_a_of_type_Fgt.onChanged();
+      if (this.jdField_a_of_type_Fgy != null) {
+        this.jdField_a_of_type_Fgy.onChanged();
       }
     }
     label60:
@@ -2324,8 +2324,8 @@ public class ListView
     localFixedViewInfo.jdField_a_of_type_JavaLangObject = paramObject;
     localFixedViewInfo.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_b_of_type_JavaUtilArrayList.add(localFixedViewInfo);
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgt != null)) {
-      this.jdField_a_of_type_Fgt.onChanged();
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgy != null)) {
+      this.jdField_a_of_type_Fgy.onChanged();
     }
   }
   
@@ -2367,8 +2367,8 @@ public class ListView
       if ((this.jdField_a_of_type_AndroidWidgetListAdapter == null) || (!((HeaderViewListAdapter)this.jdField_a_of_type_AndroidWidgetListAdapter).b(paramView))) {
         break label60;
       }
-      if (this.jdField_a_of_type_Fgt != null) {
-        this.jdField_a_of_type_Fgt.onChanged();
+      if (this.jdField_a_of_type_Fgy != null) {
+        this.jdField_a_of_type_Fgy.onChanged();
       }
     }
     label60:
@@ -2431,7 +2431,7 @@ public class ListView
   
   public View c()
   {
-    return this.jdField_a_of_type_Fik;
+    return this.jdField_a_of_type_Fip;
   }
   
   public void c(int paramInt)
@@ -2485,7 +2485,7 @@ public class ListView
     }
     int i5 = this.aF;
     Drawable localDrawable1 = this.jdField_e_of_type_AndroidGraphicsDrawableDrawable;
-    fik localfik = this.jdField_a_of_type_Fik;
+    fip localfip = this.jdField_a_of_type_Fip;
     Drawable localDrawable2 = this.jdField_f_of_type_AndroidGraphicsDrawableDrawable;
     Drawable localDrawable3 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     int i1;
@@ -2501,7 +2501,7 @@ public class ListView
     label258:
     Paint localPaint;
     int i14;
-    if ((localDrawable1 != null) || (localfik != null) || (localDrawable3 != null))
+    if ((localDrawable1 != null) || (localfip != null) || (localDrawable3 != null))
     {
       i2 = 1;
       if (localDrawable2 == null) {
@@ -2562,7 +2562,7 @@ public class ListView
         {
           localRect.bottom = (0 - this.aF);
           localRect.top = i14;
-          a(paramCanvas, localfik, localDrawable3, localDrawable1, localRect);
+          a(paramCanvas, localfip, localDrawable3, localDrawable1, localRect);
         }
         if (i4 != 0)
         {
@@ -2875,18 +2875,18 @@ public class ListView
     }
     e(this.ay);
     int i7 = this.ao;
-    fhd localfhd = this.jdField_a_of_type_Fhd;
+    fhi localfhi = this.jdField_a_of_type_Fhi;
     Object localObject4 = null;
     if (bool2)
     {
       i3 = 0;
       while (i3 < i6)
       {
-        localfhd.a(getChildAt(i3), i7 + i3);
+        localfhi.a(getChildAt(i3), i7 + i3);
         i3 += 1;
       }
     }
-    localfhd.a(i6, i7);
+    localfhi.a(i6, i7);
     Object localObject6 = getFocusedChild();
     label585:
     label602:
@@ -2918,7 +2918,7 @@ public class ListView
             localObject3 = a(i2);
             label705:
             b();
-            localfhd.c();
+            localfhi.c();
             if (localObject3 == null) {
               break label1400;
             }
@@ -3142,7 +3142,7 @@ public class ListView
     int i3 = getScrollY();
     int i1 = i2;
     boolean bool;
-    if (this.jdField_a_of_type_Fik != null)
+    if (this.jdField_a_of_type_Fip != null)
     {
       i1 = i2;
       if (i3 < 0)
@@ -3156,7 +3156,7 @@ public class ListView
         if (this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener == null) {
           break label144;
         }
-        bool = this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(0, this.jdField_a_of_type_Fik.getChildAt(0), this);
+        bool = this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(0, this.jdField_a_of_type_Fip.getChildAt(0), this);
         this.jdField_m_of_type_Int = 3;
       }
     }
@@ -3165,7 +3165,7 @@ public class ListView
       if (bool)
       {
         i1 = i2;
-        if (this.jdField_a_of_type_Fik != null) {
+        if (this.jdField_a_of_type_Fip != null) {
           i1 = -t();
         }
       }
@@ -3178,7 +3178,7 @@ public class ListView
         i1 = i2;
       } while (this.jdField_m_of_type_Int >= 2);
       if (this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.c(0, this.jdField_a_of_type_Fik.getChildAt(0), this);
+        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.c(0, this.jdField_a_of_type_Fip.getChildAt(0), this);
       }
       this.jdField_m_of_type_Int = 0;
       return 0;
@@ -3326,10 +3326,10 @@ public class ListView
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Fik != null)
+    if (this.jdField_a_of_type_Fip != null)
     {
-      this.jdField_a_of_type_Fik.layout(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_Fik.getMeasuredWidth(), this.jdField_a_of_type_Fik.getMeasuredHeight());
-      this.ak = this.jdField_a_of_type_Fik.getHeight();
+      this.jdField_a_of_type_Fip.layout(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_Fip.getMeasuredWidth(), this.jdField_a_of_type_Fip.getMeasuredHeight());
+      this.ak = this.jdField_a_of_type_Fip.getHeight();
     }
   }
   
@@ -3359,8 +3359,8 @@ public class ListView
       }
       paramInt2 = combineMeasuredStates(0, localView.getMeasuredState());
       label109:
-      if ((o()) && (this.jdField_a_of_type_Fhd.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
-        this.jdField_a_of_type_Fhd.a(localView, -1);
+      if ((o()) && (this.jdField_a_of_type_Fhi.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
+        this.jdField_a_of_type_Fhi.a(localView, -1);
       }
     }
     for (;;)
@@ -3380,11 +3380,11 @@ public class ListView
         }
         setMeasuredDimension(paramInt2, i2);
         this.V = paramInt1;
-        if (this.jdField_a_of_type_Fik != null)
+        if (this.jdField_a_of_type_Fip != null)
         {
           paramInt1 = ViewGroup.getChildMeasureSpec(this.V, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_c_of_type_AndroidGraphicsRect.right, -1);
           paramInt2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-          this.jdField_a_of_type_Fik.measure(paramInt1, paramInt2);
+          this.jdField_a_of_type_Fip.measure(paramInt1, paramInt2);
         }
         return;
         paramInt2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
@@ -3407,13 +3407,13 @@ public class ListView
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt2 < 0) && (paramInt4 == 0) && (this.jdField_a_of_type_Fik != null)) {
-      f(this.jdField_a_of_type_Fik);
+    if ((paramInt2 < 0) && (paramInt4 == 0) && (this.jdField_a_of_type_Fip != null)) {
+      f(this.jdField_a_of_type_Fip);
     }
-    while ((paramInt2 != 0) || (paramInt4 >= 0) || (this.jdField_a_of_type_Fik == null)) {
+    while ((paramInt2 != 0) || (paramInt4 >= 0) || (this.jdField_a_of_type_Fip == null)) {
       return;
     }
-    g(this.jdField_a_of_type_Fik);
+    g(this.jdField_a_of_type_Fip);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -3427,10 +3427,10 @@ public class ListView
         int i2 = indexOfChild(localView);
         int i3 = Math.max(0, localView.getBottom() - (paramInt2 - this.mPaddingTop));
         int i4 = localView.getTop();
-        if (this.jdField_a_of_type_Fii == null) {
-          this.jdField_a_of_type_Fii = new fii(this, null);
+        if (this.jdField_a_of_type_Fin == null) {
+          this.jdField_a_of_type_Fin = new fin(this, null);
         }
-        post(this.jdField_a_of_type_Fii.a(i1 + i2, i4 - i3));
+        post(this.jdField_a_of_type_Fin.a(i1 + i2, i4 - i3));
       }
       D();
     }
@@ -3439,7 +3439,7 @@ public class ListView
   
   public void onThemeChanged()
   {
-    this.jdField_a_of_type_Fhd.b();
+    this.jdField_a_of_type_Fhi.b();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
       SkinEngine.invalidateAll(((ListView.FixedViewInfo)localIterator.next()).jdField_a_of_type_AndroidViewView);
@@ -3471,7 +3471,7 @@ public class ListView
   
   public boolean q()
   {
-    return (this.mScrollY < 0) && (this.jdField_a_of_type_Fik != null);
+    return (this.mScrollY < 0) && (this.jdField_a_of_type_Fip != null);
   }
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
@@ -3547,11 +3547,11 @@ public class ListView
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgt != null)) {
-      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Fgt);
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgy != null)) {
+      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Fgy);
     }
     h();
-    this.jdField_a_of_type_Fhd.b();
+    this.jdField_a_of_type_Fhi.b();
     int i1;
     if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) || (this.jdField_b_of_type_JavaUtilArrayList.size() > 0))
     {
@@ -3566,9 +3566,9 @@ public class ListView
       this.aB = this.aA;
       this.aA = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
       w();
-      this.jdField_a_of_type_Fgt = new fij(this);
-      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_Fgt);
-      this.jdField_a_of_type_Fhd.a(this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount());
+      this.jdField_a_of_type_Fgy = new fio(this);
+      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_Fgy);
+      this.jdField_a_of_type_Fhi.a(this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount());
       if (!this.i) {
         break label234;
       }
@@ -3628,7 +3628,7 @@ public class ListView
       return;
     }
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838119);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838113);
   }
   
   public void setDelAnimationDuration(long paramLong)
@@ -3700,11 +3700,11 @@ public class ListView
   public void setOverScrollHeader(View paramView)
   {
     if (paramView == null) {
-      if (this.jdField_a_of_type_Fik != null)
+      if (this.jdField_a_of_type_Fip != null)
       {
-        this.jdField_a_of_type_Fik.removeAllViewsInLayout();
-        fik.a(this.jdField_a_of_type_Fik, null);
-        this.jdField_a_of_type_Fik = null;
+        this.jdField_a_of_type_Fip.removeAllViewsInLayout();
+        fip.a(this.jdField_a_of_type_Fip, null);
+        this.jdField_a_of_type_Fip = null;
       }
     }
     for (;;)
@@ -3712,13 +3712,13 @@ public class ListView
       this.jdField_m_of_type_Int = 0;
       this.mScrollY = 0;
       return;
-      if (this.jdField_a_of_type_Fik == null)
+      if (this.jdField_a_of_type_Fip == null)
       {
-        this.jdField_a_of_type_Fik = new fik(getContext());
-        fik.a(this.jdField_a_of_type_Fik, this);
+        this.jdField_a_of_type_Fip = new fip(getContext());
+        fip.a(this.jdField_a_of_type_Fip, this);
       }
-      this.jdField_a_of_type_Fik.removeAllViewsInLayout();
-      this.jdField_a_of_type_Fik.addView(paramView);
+      this.jdField_a_of_type_Fip.removeAllViewsInLayout();
+      this.jdField_a_of_type_Fip.addView(paramView);
     }
   }
   
@@ -3834,8 +3834,8 @@ public class ListView
   
   public int t()
   {
-    if ((this.aG == 0) && (this.jdField_a_of_type_Fik != null)) {
-      return this.jdField_a_of_type_Fik.getHeight();
+    if ((this.aG == 0) && (this.jdField_a_of_type_Fip != null)) {
+      return this.jdField_a_of_type_Fip.getHeight();
     }
     return this.aG;
   }

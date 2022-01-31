@@ -1,19 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
+import java.io.FilterOutputStream;
+import java.io.OutputStream;
 
-class ok
-  implements Runnable
+public class ok
+  extends FilterOutputStream
 {
-  ok(oj paramoj, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public int a;
   
-  public void run()
+  public ok(PubAccountHttpDownloader paramPubAccountHttpDownloader, OutputStream paramOutputStream)
   {
-    this.jdField_a_of_type_Oj.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_Oj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Oj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
-    if (this.jdField_a_of_type_Oj.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-      this.jdField_a_of_type_Oj.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
-    }
+    super(paramOutputStream);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void write(int paramInt)
+  {
+    this.jdField_a_of_type_Int += 1;
+    this.out.write(paramInt);
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int += paramInt2;
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 

@@ -1,28 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class chs
-  implements ActionSheet.OnButtonClickListener
+  extends ContactBindObserver
 {
-  public chs(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  public chs(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (paramInt == 0)
+    if (this.a.a)
     {
-      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363449);
-      }
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
   }
 }
 

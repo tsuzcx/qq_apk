@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_width="fill_parent" android:layout_height="54.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/textView1" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c011a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0004" />
+<RelativeLayout android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.qqlite">
+    <com.tencent.widget.FadeIconImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09028c" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="20.0dip" android:scaleType="centerInside" android:includeFontPadding="false" android:layout_toLeftOf="@id/ivTitleBtnRightImage" android:layout_centerVertical="true" />
+    <com.tencent.widget.FadeIconImageView android:gravity="center" android:id="@id/ivTitleBtnRightImage" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <com.tencent.mobileqq.widget.RedDotTextView android:gravity="center" android:id="@id/ivTitleBtnRightText" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/TitleBtn" />
 </RelativeLayout>

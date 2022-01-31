@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-class diw
-  implements View.OnClickListener
+public class diw
+  implements DialogInterface.OnDismissListener
 {
-  diw(div paramdiv) {}
+  public diw(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.h();
+    QfileBaseCloudFileTabView.a(this.a);
   }
 }
 

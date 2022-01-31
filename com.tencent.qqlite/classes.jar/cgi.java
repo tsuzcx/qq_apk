@@ -1,20 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class cgi
-  extends FriendListObserver
+  extends ContactBindObserver
 {
-  public cgi(ContactListView paramContactListView) {}
+  public cgi(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  protected void b(boolean paramBoolean)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
+    super.b(paramBoolean);
+    BindNumberActivity localBindNumberActivity = this.a;
+    if (paramBoolean)
+    {
+      this.a.a.c();
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindNumberActivity.a(this.a));
+      BindNumberActivity.a(this.a, null);
+      return;
+      this.a.d();
     }
   }
-  
-  protected void a_(String paramString) {}
 }
 
 

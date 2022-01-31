@@ -1,41 +1,15 @@
-import SummaryCard.RespSearch;
-import SummaryCard.SearchInfo;
-import android.text.TextUtils;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
 
 public class wh
-  implements ContactSearchFacade.ISearchListener
+  implements Runnable
 {
-  public wh(AddFriendActivity paramAddFriendActivity) {}
+  public wh(AddFriendActivity paramAddFriendActivity, int paramInt) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void run()
   {
-    AddFriendActivity.b(this.a);
-    if ((!paramBoolean) || (paramInt2 != 0))
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.a.a(paramString);
-        return;
-      }
-      this.a.a(2131363377);
-      return;
-    }
-    paramObject = (RespSearch)paramObject;
-    if ((paramObject.vRecords == null) || (paramObject.vRecords.isEmpty()))
-    {
-      this.a.a(2131363504);
-      return;
-    }
-    if (paramObject.vRecords.size() == 1)
-    {
-      AddFriendActivity.a(this.a, (SearchInfo)paramObject.vRecords.get(0), this.a.app.a(), paramObject.vSecureSig, false);
-      return;
-    }
-    this.a.a(paramObject);
+    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setText(this.jdField_a_of_type_Int);
+    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setVisibility(0);
   }
 }
 

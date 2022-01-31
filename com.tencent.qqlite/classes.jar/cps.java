@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.antiphing.UinFraudInfo;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
 
 public class cps
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
+  public cps(AntiphingHandler paramAntiphingHandler) {}
   
-  public cps(UinFraudInfo paramUinFraudInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d(AntiphingHandler.a(this.a), 2, "On Click Left Button! ");
+    }
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().finish();
+    }
+    for (;;)
+    {
+      AntiphingHandler.a(this.a, 1);
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d(AntiphingHandler.a(this.a), 4, "Call back object is null!");
+      }
+    }
   }
 }
 

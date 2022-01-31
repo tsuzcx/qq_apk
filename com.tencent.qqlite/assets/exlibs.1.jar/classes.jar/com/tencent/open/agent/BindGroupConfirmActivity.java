@@ -37,12 +37,12 @@ import com.tencent.open.base.http.HttpCgiAsyncTask;
 import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoRequest;
 import com.tencent.qphone.base.util.QLog;
-import fap;
-import faq;
-import fas;
 import fau;
 import fav;
-import faw;
+import fax;
+import faz;
+import fba;
+import fbb;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -93,20 +93,20 @@ public class BindGroupConfirmActivity
   
   public BindGroupConfirmActivity()
   {
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = new fap(this);
-    this.jdField_a_of_type_AndroidOsHandler = new faq(this);
-    this.jdField_a_of_type_JavaLangRunnable = new fav(this);
+    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = new fau(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fav(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fba(this);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296905));
-    this.c = ((TextView)super.findViewById(2131296895));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296897));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
+    this.c = ((TextView)super.findViewById(2131296891));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297784));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.d = ((TextView)super.findViewById(2131297787));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297604));
+    this.d = ((TextView)super.findViewById(2131297783));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297600));
     if (!TextUtils.isEmpty(this.g))
     {
       Bitmap localBitmap = ImageLoader.a().a(this.g);
@@ -116,7 +116,7 @@ public class BindGroupConfirmActivity
     }
     else
     {
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297606));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297602));
       if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
         break label247;
       }
@@ -124,9 +124,9 @@ public class BindGroupConfirmActivity
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297783));
-      ThreadManager.b(new fas(this, BitmapFactory.decodeResource(super.getResources(), 2130838338)));
-      this.e = ((TextView)super.findViewById(2131297784));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297779));
+      ThreadManager.b(new fax(this, BitmapFactory.decodeResource(super.getResources(), 2130838330)));
+      this.e = ((TextView)super.findViewById(2131297780));
       this.e.setText(this.j);
       if (!TextUtils.isEmpty(this.h)) {
         a(Long.valueOf(this.h).longValue());
@@ -155,7 +155,7 @@ public class BindGroupConfirmActivity
       ((NewIntent)localObject).putExtra("uin", this.app.a());
       ((NewIntent)localObject).putExtra("data", localGetAppinfoRequest.toByteArray());
       ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_app_info");
-      ((NewIntent)localObject).setObserver(new faw(this));
+      ((NewIntent)localObject).setObserver(new fbb(this));
       super.getAppRuntime().startServlet((NewIntent)localObject);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -171,7 +171,7 @@ public class BindGroupConfirmActivity
   public void a(String paramString, Bitmap paramBitmap)
   {
     LogUtility.c("BindGroupConfirmActivity", "-->onImageLoaded() url = " + paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(new fau(this, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new faz(this, paramBitmap));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -215,7 +215,7 @@ public class BindGroupConfirmActivity
     catch (Exception paramJSONObject)
     {
       if (this.d != null) {
-        this.d.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362158));
+        this.d.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362155));
       }
       a(paramJSONObject);
       return;
@@ -228,7 +228,7 @@ public class BindGroupConfirmActivity
       QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
     }
     if (this.d != null) {
-      this.d.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362158));
+      this.d.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362155));
     }
     QQToast.a(this, paramJSONObject.getString("msg"), 0).a(getTitleBarHeight()).show();
   }
@@ -303,7 +303,7 @@ public class BindGroupConfirmActivity
     {
     default: 
       return;
-    case 2131296901: 
+    case 2131296897: 
       finish();
       return;
     }
@@ -345,10 +345,10 @@ public class BindGroupConfirmActivity
   {
     super.onStart();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362155));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362152));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.c.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362155));
+    this.c.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362152));
   }
 }
 

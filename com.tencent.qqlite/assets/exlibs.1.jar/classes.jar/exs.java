@@ -1,25 +1,17 @@
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
-@TargetApi(16)
 public class exs
-  implements DialogInterface.OnDismissListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  exs(ContextMenuTextView paramContextMenuTextView) {}
+  public exs(ContainerView paramContainerView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onGlobalLayout()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
+    if (!ContainerView.a(this.a))
     {
-      ContextMenuTextView.a(this.a, null);
-      return;
-      ContextMenuTextView.b(this.a, null);
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
     }
   }
 }

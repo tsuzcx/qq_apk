@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import android.util.Pair;
-import eso;
+import est;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,7 +18,7 @@ public class SortUtils
       arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
       i += 1;
     }
-    Arrays.sort(arrayOfObject, new eso());
+    Arrays.sort(arrayOfObject, new est());
     paramArrayList.clear();
     i = 0;
     while (i < arrayOfObject.length)

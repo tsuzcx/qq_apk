@@ -1,20 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.VideoRecordActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity;
 
 public class elq
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public elq(VideoRecordActivity paramVideoRecordActivity) {}
+  public elq(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoRecordActivity.a(this.a);
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("output_path", VideoRecordActivity.a(this.a));
-    this.a.setResult(-1, paramDialogInterface);
-    VideoRecordActivity.b(this.a);
+    if (paramDialogInterface == this.a.b) {
+      this.a.b = null;
+    }
   }
 }
 

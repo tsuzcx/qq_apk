@@ -1,18 +1,29 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class aek
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aek(ChatSettingActivity paramChatSettingActivity) {}
+  public aek(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    Message localMessage = null;
+    Object localObject = localMessage;
+    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
+    {
+      localObject = localMessage;
+      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
+        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+      }
+    }
+    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
+    {
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
+      localMessage.what = 18;
+      localMessage.obj = localObject;
+      localMessage.sendToTarget();
     }
   }
 }

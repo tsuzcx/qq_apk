@@ -1,28 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase.IControllProxyInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase.IControllProxyInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewerGalleryAdapter;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class dtw
-  implements FileManagerUtil.TipsClickedInterface
+  implements AdapterView.OnItemSelectedListener
 {
-  public dtw(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  public dtw(PhotoFileViewBase paramPhotoFileViewBase) {}
   
-  public void a(View paramView)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a().b();
-    PreviewingOfflineFileViewBase.a(this.a).a(false);
-    PreviewingOfflineFileViewBase.b(this.a).b(true);
-    PreviewingOfflineFileViewBase.a(this.a);
-    PreviewingOfflineFileViewBase.b(this.a);
-    PreviewingOfflineFileViewBase.c(this.a).c(false);
-    if (PreviewingOfflineFileViewBase.a(this.a) != null) {
-      PreviewingOfflineFileViewBase.b(this.a).c();
+    PhotoFileViewBase.a(this.a, paramInt);
+    if (PhotoFileViewBase.a(this.a) != null) {
+      PhotoFileViewBase.b(this.a).a(paramInt);
     }
-    PreviewingOfflineFileViewBase.c(this.a).b(0);
-    PreviewingOfflineFileViewBase.a(this.a, false, 9037L, "User Click Cancel");
+    paramAdapterView = (IFileViewerAdapter)PhotoFileViewBase.a(this.a).getItem(paramInt);
+    this.a.a().a(paramAdapterView);
   }
 }
 

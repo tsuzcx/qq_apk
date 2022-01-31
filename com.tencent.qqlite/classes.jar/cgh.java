@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class cgh
+public class cgh
   implements Runnable
 {
-  cgh(cgg paramcgg) {}
+  public cgh(BindNumberActivity paramBindNumberActivity) {}
   
   public void run()
   {
-    this.a.a.a.a.f();
+    if (!this.a.isFinishing())
+    {
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.a.a.setSelection(this.a.a.getText().toString().length());
+    }
   }
 }
 

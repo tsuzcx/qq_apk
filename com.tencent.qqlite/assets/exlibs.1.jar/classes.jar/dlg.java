@@ -1,28 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileRecentImageExpandableListAdapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
-class dlg
-  implements View.OnClickListener
+public class dlg
+  extends IClickListener_Ver51
 {
-  dlg(dlf paramdlf, View paramView) {}
+  public dlg(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((paramView instanceof QfileRecentImageExpandableListAdapter.ImageHolder)) {}
-    for (paramView = (FileManagerEntity)((QfileRecentImageExpandableListAdapter.ImageHolder)paramView).a;; paramView = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView).a)
-    {
-      if (QfileBaseRecentFileTabView.d(this.jdField_a_of_type_Dlf.a).a().b(paramView.nSessionId)) {}
-      this.jdField_a_of_type_Dlf.a.a(paramView);
-      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_Dlf.a);
-      return;
-    }
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

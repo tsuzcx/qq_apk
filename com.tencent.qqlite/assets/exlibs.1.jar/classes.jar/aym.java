@@ -1,19 +1,26 @@
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.widget.ActionSheet;
 
 public class aym
-  implements Runnable
+  implements IphonePickerView.IphonePickListener
 {
-  public aym(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aym(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a()
   {
-    NearbyPeopleProfileActivity.m(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dating", 2, "updateDateSig sig = " + NearbyPeopleProfileActivity.a(this.a).b);
+    int i = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    NearbyPeopleProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setTag(Byte.valueOf((byte)(i + 1)));
+    NearbyPeopleProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setText(NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).a(0, i));
+    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
   }
+  
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 

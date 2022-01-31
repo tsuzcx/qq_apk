@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import etk;
+import etp;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -49,7 +49,7 @@ public class FileSystemTool
       for (;;)
       {
         e += 1;
-        paramString1 = new etk(e, paramString2, jdField_a_of_type_JavaIoFileInputStream, jdField_a_of_type_JavaIoFileOutputStream);
+        paramString1 = new etp(e, paramString2, jdField_a_of_type_JavaIoFileInputStream, jdField_a_of_type_JavaIoFileOutputStream);
         jdField_a_of_type_JavaUtilVector.addElement(paramString1);
         return e;
         localFile.createNewFile();
@@ -78,11 +78,11 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localetk.a() == paramInt) {
+      etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localetp.a() == paramInt) {
         try
         {
-          int j = localetk.jdField_a_of_type_JavaIoFileInputStream.available();
+          int j = localetp.jdField_a_of_type_JavaIoFileInputStream.available();
           return j;
         }
         catch (IOException localIOException) {}
@@ -100,9 +100,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localetk.a() == paramInt) {
-        return localetk.a();
+      etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localetp.a() == paramInt) {
+        return localetp.a();
       }
       i += 1;
     }
@@ -122,9 +122,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localetk.a() == paramInt) {
-        return localetk.a(paramLong);
+      etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localetp.a() == paramInt) {
+        return localetp.a(paramLong);
       }
       i += 1;
     }
@@ -139,9 +139,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localetk.a() == paramInt) {
-        return localetk.b();
+      etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localetp.a() == paramInt) {
+        return localetp.b();
       }
       i += 1;
     }
@@ -167,7 +167,7 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      ((etk)jdField_a_of_type_JavaUtilVector.elementAt(i)).a();
+      ((etp)jdField_a_of_type_JavaUtilVector.elementAt(i)).a();
       jdField_a_of_type_JavaUtilVector.removeElementAt(i);
       i += 1;
     }
@@ -180,10 +180,10 @@ public class FileSystemTool
     {
       if (i < jdField_a_of_type_JavaUtilVector.size())
       {
-        etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-        if (localetk.a() == paramInt)
+        etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+        if (localetp.a() == paramInt)
         {
-          localetk.a();
+          localetp.a();
           jdField_a_of_type_JavaUtilVector.removeElementAt(i);
         }
       }
@@ -209,12 +209,12 @@ public class FileSystemTool
       int i = 0;
       while (i < jdField_a_of_type_JavaUtilVector.size())
       {
-        etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-        if (localetk.a() == paramInt) {}
+        etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+        if (localetp.a() == paramInt) {}
         try
         {
-          localetk.b();
-          jdField_a_of_type_JavaUtilVector.removeElement(localetk);
+          localetp.b();
+          jdField_a_of_type_JavaUtilVector.removeElement(localetp);
           return true;
         }
         catch (Exception localException) {}
@@ -235,7 +235,7 @@ public class FileSystemTool
       if (i >= jdField_a_of_type_JavaUtilVector.size()) {
         break label51;
       }
-      if (((etk)jdField_a_of_type_JavaUtilVector.elementAt(i)).a().equals(paramString)) {
+      if (((etp)jdField_a_of_type_JavaUtilVector.elementAt(i)).a().equals(paramString)) {
         break;
       }
       i += 1;
@@ -266,9 +266,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localetk.a() == paramInt) {
-        return localetk.c();
+      etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localetp.a() == paramInt) {
+        return localetp.c();
       }
       i += 1;
     }
@@ -284,7 +284,7 @@ public class FileSystemTool
       int i = 0;
       while (i < jdField_a_of_type_JavaUtilVector.size())
       {
-        if (((etk)jdField_a_of_type_JavaUtilVector.elementAt(i)).a() == paramInt) {
+        if (((etp)jdField_a_of_type_JavaUtilVector.elementAt(i)).a() == paramInt) {
           return true;
         }
         i += 1;
@@ -300,9 +300,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      etk localetk = (etk)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localetk.a() == paramInt) {
-        return localetk.a();
+      etp localetp = (etp)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localetp.a() == paramInt) {
+        return localetp.a();
       }
       i += 1;
     }

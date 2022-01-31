@@ -1,15 +1,16 @@
-import android.content.Context;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class ahg
+class ahg
   implements Runnable
 {
-  public ahg(Conversation paramConversation, Context paramContext) {}
+  ahg(ahf paramahf, String paramString) {}
   
   public void run()
   {
-    ((OnDrawCompleteListener)this.jdField_a_of_type_AndroidContentContext).d();
+    if (Conversation.a(this.jdField_a_of_type_Ahf.a) != null) {
+      Conversation.a(this.jdField_a_of_type_Ahf.a).a(this.jdField_a_of_type_JavaLangString, false);
+    }
   }
 }
 

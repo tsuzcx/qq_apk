@@ -1,38 +1,13 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.Util;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
 
 public class zj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public zj(BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg, Context paramContext) {}
+  public zj(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivity", 2, "qbShowShareResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "choose", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, "back");
-        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, true, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid);
-      }
-      Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.t();
-      return;
-    } while (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null);
-    Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "choose", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, "stay");
+    this.a.a(131072);
   }
 }
 

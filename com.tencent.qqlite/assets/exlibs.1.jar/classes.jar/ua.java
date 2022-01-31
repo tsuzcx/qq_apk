@@ -1,16 +1,13 @@
-import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.LiteTransferListenerCallback;
-import com.tencent.litetransfersdk.NFCInfo;
-import com.tencent.litetransfersdk.Session;
 
 public class ua
   implements Runnable
 {
-  public ua(LiteTransferListenerCallback paramLiteTransferListenerCallback, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
+  public ua(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong, String paramString) {}
   
   public void run()
   {
-    LiteTransferListenerCallback.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
+    LiteTransferListenerCallback.access$400(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
 }
 

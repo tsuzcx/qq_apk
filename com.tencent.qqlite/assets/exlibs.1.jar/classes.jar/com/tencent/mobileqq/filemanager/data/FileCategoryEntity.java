@@ -47,27 +47,27 @@ public class FileCategoryEntity
     {
     case 1: 
     default: 
-      return 2131361953;
+      return 2131361952;
     case 2: 
-      return 2131361954;
+      return 2131361953;
     case 3: 
-      return 2131361956;
-    case 4: 
       return 2131361955;
+    case 4: 
+      return 2131361954;
     case 5: 
-      return 2131361957;
+      return 2131361956;
     case 6: 
-      return 2131361948;
+      return 2131361947;
     case 7: 
-      return 2131361958;
+      return 2131361957;
     case 8: 
-      return 2131361959;
+      return 2131361958;
     case 11: 
-      return 2131361960;
+      return 2131361959;
     case 9: 
-      return 2131361945;
+      return 2131361944;
     }
-    return 2131361961;
+    return 2131361960;
   }
 }
 

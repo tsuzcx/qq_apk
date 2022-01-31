@@ -1,62 +1,47 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.FriendInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import java.util.Calendar;
 
 public class xx
-  extends FriendListObserver
+  implements IphonePickerView.PickerViewAdapter
 {
-  public xx(AddRequestActivity paramAddRequestActivity) {}
+  private xx(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public int a()
   {
-    Card localCard;
-    if ((paramBoolean) && (AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).equals(paramString)))
-    {
-      localCard = ((FriendManager)this.a.app.getManager(8)).a(paramString);
-      if (localCard != null)
-      {
-        if ((AddRequestActivity.a(this.a) == null) || (AddRequestActivity.a(this.a).msg == null) || (!AddRequestActivity.a(this.a).msg.friend_info.has()) || (AddRequestActivity.a(this.a).msg.friend_info.msg_joint_friend.has() != true)) {
-          break label215;
-        }
-        AddRequestActivity.b(this.a).setText(AddRequestActivity.a(this.a).msg.friend_info.msg_joint_friend.get());
-        AddRequestActivity.b(this.a).setVisibility(0);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.AddRequestActivity", 2, "Card find Uin :" + paramString + "age:" + localCard.age + "gender:" + localCard.shGender);
-      }
-      return;
-      label215:
-      AddRequestActivity.b(this.a).setVisibility(8);
-      this.a.a();
-    }
+    return 3;
   }
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt)
+  public int a(int paramInt)
   {
-    if (!paramBoolean)
+    switch (paramInt)
     {
-      if (AddRequestActivity.a(this.a) != null) {
-        AddRequestActivity.a(this.a).dismiss();
-      }
-      this.a.a(2130837979, this.a.getString(2131363385));
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return this.a.a - 1895 + 1;
+    case 1: 
+      return 12;
     }
-    if (AddRequestActivity.a(this.a) != null) {
-      AddRequestActivity.a(this.a).dismiss();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.f + 1895);
+    localCalendar.set(2, this.a.g);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1895 + "年";
+    case 1: 
+      return paramInt2 + 1 + "月";
     }
-    this.a.a(2130837989, this.a.getString(2131362822));
+    return paramInt2 + 1 + "日";
   }
 }
 

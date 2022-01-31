@@ -1,19 +1,48 @@
 import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
 
-public final class fkb
-  implements IPluginManager.OnPluginReadyListener
+class fkb
+  extends OnPluginInstallListener.Stub
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  fkb(fka paramfka) {}
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    if ((IPluginManager.a() != null) && (IPluginManager.a().isShowing()))
+    {
+      IPluginManager.a().c(paramInt2);
+      IPluginManager.a().b(paramInt1);
     }
-    if (paramBoolean) {
-      IPluginManager.d(paramContext, paramPluginParams);
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null) {
+      this.a.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(false, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    }
+    if (IPluginManager.a() != null) {
+      IPluginManager.a().dismiss();
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (this.a.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null)
+    {
+      this.a.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      if (!this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e.equals("com.qqfav.activity.FavoritesListActivity")) {
+        new fkc(this, this.a.jdField_a_of_type_AndroidContentContext.getMainLooper()).sendEmptyMessage(1);
+      }
+    }
+    if (IPluginManager.a() != null) {
+      IPluginManager.a().dismiss();
     }
   }
 }

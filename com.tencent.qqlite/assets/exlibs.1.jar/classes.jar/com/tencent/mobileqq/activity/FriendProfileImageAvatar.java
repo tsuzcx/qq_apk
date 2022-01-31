@@ -4,10 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import apn;
+import apo;
 import app;
 import apq;
-import apr;
-import aps;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -40,10 +40,10 @@ public class FriendProfileImageAvatar
   public FriendProfileImageAvatar(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new apr(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new app(this);
     this.jdField_a_of_type_JavaNetURL = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new app(this);
+    this.jdField_a_of_type_AndroidOsHandler = new apn(this);
   }
   
   public int a()
@@ -100,7 +100,7 @@ public class FriendProfileImageAvatar
     if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && ((paramProfileImageInfo.h == 0) || (paramProfileImageInfo.h == 3)))
     {
       this.jdField_a_of_type_Boolean = true;
-      ThreadManager.b(new apq(this, paramProfileImageInfo));
+      ThreadManager.b(new apo(this, paramProfileImageInfo));
     }
     if (paramProfileImageInfo.h == 0) {
       paramProfileImageInfo.h = 1;
@@ -161,7 +161,7 @@ public class FriendProfileImageAvatar
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.jdField_a_of_type_Boolean = true;
     c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    new aps(this, "FriendProfileImageAvatar", paramByte, paramString2, paramString1).start();
+    new apq(this, "FriendProfileImageAvatar", paramByte, paramString2, paramString1).start();
   }
   
   public void a(String paramString, int paramInt)

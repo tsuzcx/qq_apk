@@ -1,20 +1,17 @@
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
 
 class bzq
   implements Runnable
 {
-  bzq(bzp parambzp, MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
+  bzq(bzo parambzo, MultiForwardChatPie paramMultiForwardChatPie) {}
   
   public void run()
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
     MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.I);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
+    MultiForwardChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131362997);
+    MultiForwardChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.J);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.k();
   }
 }

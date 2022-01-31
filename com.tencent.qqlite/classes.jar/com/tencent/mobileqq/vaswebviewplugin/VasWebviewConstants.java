@@ -68,13 +68,13 @@ public class VasWebviewConstants
   static
   {
     StringBuilder localStringBuilder = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/font/index.html");
-    localStringBuilder.append("?client=androidQQ").append("&version=").append("3.3.0.544").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=182").append("&_wv=3");
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("3.4.0.607").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=182").append("&_wv=3");
     CHAT_FONT_MARKET_HOME_URL = localStringBuilder.toString();
     localStringBuilder = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/individuation/html/index.html");
-    localStringBuilder.append("?client=androidQQ").append("&uin=[uin]").append("&version=").append("3.3.0.544").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&platformId=2").append("&systemInt=").append(Integer.toString(Build.VERSION.SDK_INT)).append("&updateFlag=[updateFlag]").append("&adtag=mvip.gongneng.anroid.individuation.web").append("&_bid=236").append("&_wv=1027");
+    localStringBuilder.append("?client=androidQQ").append("&uin=[uin]").append("&version=").append("3.4.0.607").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&platformId=2").append("&systemInt=").append(Integer.toString(Build.VERSION.SDK_INT)).append("&updateFlag=[updateFlag]").append("&adtag=mvip.gongneng.anroid.individuation.web").append("&_bid=236").append("&_wv=1027");
     PERSONALITY_QQ_INDIVIDUATION_URL = localStringBuilder.toString();
     localStringBuilder = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/font/switch.html");
-    localStringBuilder.append("?client=androidQQ").append("&version=").append("3.3.0.544").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=182").append("&_wv=3");
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("3.4.0.607").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=182").append("&_wv=3");
     CHAT_FONT_SWITCH_URL = localStringBuilder.toString();
   }
 }

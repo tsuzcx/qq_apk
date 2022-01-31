@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class asx
   implements Runnable
 {
-  public asx(LoginActivity paramLoginActivity) {}
+  public asx(LoginActivity paramLoginActivity, String paramString) {}
   
   public void run()
   {
-    this.a.a.setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setDuration(500L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new asy(this));
-    this.a.a.startAnimation(localTranslateAnimation);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new asy(this, localBitmap));
   }
 }
 

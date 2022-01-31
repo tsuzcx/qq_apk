@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.res.Resources;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class bzx
+class bzx
   implements Runnable
 {
-  public bzx(TroopChatPie paramTroopChatPie, TroopTipsMsgMgr paramTroopTipsMsgMgr) {}
+  bzx(bzw parambzw, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTipsMsgMgr.a(TroopChatPie.n(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie), TroopChatPie.N(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie).a);
+    TroopChatPie.d(this.jdField_a_of_type_Bzw.a).setText(TroopChatPie.k(this.jdField_a_of_type_Bzw.a).getResources().getString(2131362615) + this.jdField_a_of_type_JavaLangString);
   }
 }
 

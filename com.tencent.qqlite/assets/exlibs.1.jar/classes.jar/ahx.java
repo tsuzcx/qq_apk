@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ahx
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
   public ahx(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    return false;
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {
+      this.a.a.dismiss();
+    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004920", "0X8004920", 0, 0, "", "", "", "");
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130968584);
   }
 }
 

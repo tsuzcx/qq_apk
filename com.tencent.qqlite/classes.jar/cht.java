@@ -1,31 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class cht
-  implements ActionSheet.OnButtonClickListener
+  extends ContactBindObserver
 {
-  public cht(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  public cht(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2))
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363449);
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+    }
+    this.a.d();
+    if (paramBoolean)
+    {
+      if (this.a.a != null)
+      {
+        this.a.app.unRegistObserver(this.a.a);
+        this.a.a = null;
+      }
+      this.a.finish();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b = new chu(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.a.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131363378, 0L);
+    this.a.a("更新失败，请稍后重试。");
   }
 }
 

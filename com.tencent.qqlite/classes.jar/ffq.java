@@ -1,14 +1,28 @@
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 
 public class ffq
-  implements Runnable
+  implements TicketUtils.TicketCallback
 {
-  public ffq(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
+  public ffq(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void a()
   {
-    DownloadManager.a().d();
+    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
+    ThreadManager.b().post(new ffs(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.c("TIME-STATISTIC", "onGetA1");
+    ThreadManager.b().post(new ffr(this, paramArrayOfByte, paramString));
   }
 }
 

@@ -18,9 +18,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import dfk;
-import dfl;
-import dfm;
+import dfq;
+import dfr;
+import dfs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,8 +45,8 @@ public class EnterpriseQQManager
   
   private EnterpriseQQManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new dfk(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new dfl(this);
+    this.jdField_a_of_type_JavaLangRunnable = new dfq(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new dfr(this);
     if (paramQQAppInterface != null) {
       a(paramQQAppInterface);
     }
@@ -79,7 +79,7 @@ public class EnterpriseQQManager
       localIntent.putExtra("url", paramButtonInfo.toString());
       localIntent.putExtra("uin", paramQQAppInterface.a());
       localIntent.putExtra("puin", paramString);
-      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363110));
+      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131363113));
       if (paramString.equalsIgnoreCase("2632129500")) {
         localIntent.putExtra("hide_operation_bar", true);
       }
@@ -252,7 +252,7 @@ public class EnterpriseQQManager
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
           this.jdField_a_of_type_AndroidContentContext = paramContext;
-          paramContext = new dfm(this);
+          paramContext = new dfs(this);
           paramContext.a = paramString2;
           paramContext.b = ???;
           synchronized (jdField_b_of_type_ArrayOfByte)

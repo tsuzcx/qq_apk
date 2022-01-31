@@ -1,21 +1,19 @@
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.widget.ActionSheet;
+import com.tencent.widget.AbsListView;
 
 public class fhk
-  implements Runnable
 {
-  public fhk(ActionSheet paramActionSheet) {}
+  private int a;
   
-  public void run()
+  private fhk(AbsListView paramAbsListView) {}
+  
+  public void a()
   {
-    ActionSheet.a(this.a, new TranslateAnimation(0.0F, 0.0F, 0.0F, -ActionSheet.a(this.a).getHeight()));
-    ActionSheet.a(this.a).setInterpolator(AnimationUtils.loadInterpolator(ActionSheet.a(this.a), 17432582));
-    ActionSheet.a(this.a).setDuration(200L);
-    ActionSheet.a(this.a).setFillAfter(true);
-    ActionSheet.a(this.a).startAnimation(ActionSheet.a(this.a));
-    ActionSheet.a(this.a).setAnimationListener(new fhl(this));
+    this.a = AbsListView.a(this.b);
+  }
+  
+  public boolean a()
+  {
+    return (this.b.hasWindowFocus()) && (AbsListView.b(this.b) == this.a);
   }
 }
 

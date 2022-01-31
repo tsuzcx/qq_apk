@@ -9,7 +9,7 @@ import mqq.manager.Manager;
 public class PluginRuntime
   extends AppRuntime
 {
-  private static final String CRASH_ACTION = "com.tencent.qqlite.ACTION_PLUGIN_CRASH";
+  private static final String CRASH_ACTION = "com.tencent.mobileqq.ACTION_PLUGIN_CRASH";
   private static final String INDEX_PLUGINID = "pluginsdk_carsh_pluginID";
   private static final String INDEX_THROWABLE = "pluginsdk_carsh_throwable";
   private static final boolean SUPPORT_CRASH_REPORT = false;

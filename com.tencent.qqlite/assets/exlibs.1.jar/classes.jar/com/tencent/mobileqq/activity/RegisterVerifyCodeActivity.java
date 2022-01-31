@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import bij;
+import bik;
 import bil;
-import bim;
-import bin;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
 import com.tencent.mobileqq.app.utils.SmsContent;
@@ -34,8 +34,8 @@ public class RegisterVerifyCodeActivity
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private SmsContent jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new bil(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new bim(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new bij(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new bik(this);
   private int c;
   private int g = 60;
   
@@ -63,20 +63,20 @@ public class RegisterVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363325) + "(" + this.jdField_c_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363328) + "(" + this.jdField_c_of_type_Int + ")");
     this.b.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
   private void e()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298230)).setText(getString(2131363324, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298232));
+    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298190)).setText(getString(2131363327, new Object[] { this.jdField_c_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298192));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363325) + "(" + this.jdField_c_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131363328) + "(" + this.jdField_c_of_type_Int + ")");
     this.b.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298261));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298221));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297386));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297382));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
   }
   
@@ -85,7 +85,7 @@ public class RegisterVerifyCodeActivity
     try
     {
       ((AccountManager)this.app.getManager(0)).sendRegistByResendSms(this.jdField_a_of_type_MqqObserverAccountObserver);
-      a(2131363296);
+      a(2131363299);
       return;
     }
     catch (Exception localException)
@@ -112,7 +112,7 @@ public class RegisterVerifyCodeActivity
         try
         {
           ((AccountManager)this.app.getManager(0)).sendRegisterByCommitSmsVerifycode((String)localObject1, this.jdField_a_of_type_MqqObserverAccountObserver);
-          a(2131363300);
+          a(2131363303);
           return;
         }
         catch (Exception localException)
@@ -121,7 +121,7 @@ public class RegisterVerifyCodeActivity
           return;
         }
       }
-      a(2131363323, 0);
+      a(2131363326, 0);
       return;
     }
   }
@@ -161,21 +161,21 @@ public class RegisterVerifyCodeActivity
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new bin(this, paramString1, paramString2));
+    runOnUiThread(new bil(this, paramString1, paramString2));
   }
   
   public void onClick(View paramView)
   {
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      a(2131362785, 0);
+      a(2131362790, 0);
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131298232: 
+    case 2131298192: 
       f();
       return;
     }
@@ -185,8 +185,8 @@ public class RegisterVerifyCodeActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903586));
-    setTitle(2131363322);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903573));
+    setTitle(2131363325);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.d = getIntent().getStringExtra("key");
     this.e = getIntent().getStringExtra("key_register_now_account");

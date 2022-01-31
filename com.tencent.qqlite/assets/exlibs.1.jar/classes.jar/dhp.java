@@ -1,10 +1,17 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class dhp
+  implements View.OnClickListener
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  public dhp(UniformDownloadActivity paramUniformDownloadActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+  }
 }
 
 

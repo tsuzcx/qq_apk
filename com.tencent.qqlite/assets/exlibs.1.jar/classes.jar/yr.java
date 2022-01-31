@@ -1,50 +1,116 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcHandler;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class yr
-  implements ActionSheet.OnButtonClickListener
+  extends WtloginObserver
 {
-  public yr(AuthDevActivity paramAuthDevActivity, String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean, long paramLong) {}
+  public yr(AuthDevActivity paramAuthDevActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    switch (paramInt)
+    if (this.a.isFinishing()) {}
+    do
     {
-    }
-    for (;;)
-    {
-      if ((AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
-      {
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
-      }
       return;
-      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131362785), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
+      AuthDevActivity.a(this.a, true);
+      AuthDevActivity.c(this.a);
+      if (paramInt != 0) {
+        break;
       }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.begin to delAuthDev");
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_delete", 0, 0, "", "", "", "");
-        if (EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long)) {
-          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-        } else if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.delAuthDev fail");
-        }
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+      AuthDevActivity.b(this.a).setChecked(true);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      paramWUserSigInfo = (SecSvcHandler)this.a.app.a(33);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.success");
+      }
+      AuthDevActivity.b(this.a, true);
+      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.a(), true);
+      AuthDevActivity.c(this.a, true);
+      AuthDevActivity.b(this.a).setText(this.a.getString(2131364191));
+      AuthDevActivity.b(this.a).setContentDescription(this.a.getString(2131364191));
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364194), 0).b(this.a.getTitleBarHeight());
+      AuthDevActivity.d(this.a);
+      paramWUserSigInfo = this.a.app.a(LoginInfoActivity.class);
+    } while (paramWUserSigInfo == null);
+    paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+    return;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail errMsg=" + paramErrMsg.getMessage());
       }
     }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364218), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AuthDevActivity.a(this.a, true);
+    AuthDevActivity.c(this.a);
+    if (paramInt == 0)
+    {
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+      AuthDevActivity.b(this.a).setChecked(false);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.success");
+      }
+      AuthDevActivity.b(this.a, false);
+      AuthDevActivity.a(this.a).setVisibility(8);
+      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.a(), false);
+      AuthDevActivity.b(this.a).setText(this.a.getString(2131364192));
+      AuthDevActivity.b(this.a).setContentDescription(this.a.getString(2131364192));
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131364216), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.a(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
+      }
+      AuthDevActivity.a(this.a, null);
+      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131364217), 0).b(this.a.getTitleBarHeight());
   }
 }
 

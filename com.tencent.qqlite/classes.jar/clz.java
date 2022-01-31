@@ -1,15 +1,19 @@
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class clz
+class clz
   implements View.OnClickListener
 {
-  public clz(SelectMemberActivity paramSelectMemberActivity) {}
+  clz(cly paramcly) {}
   
   public void onClick(View paramView)
   {
-    this.a.e();
+    this.a.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(5, new Bundle());
+    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Friends_select", "Fs_tab_clk", 0, 0, "4", "", "", "");
   }
 }
 

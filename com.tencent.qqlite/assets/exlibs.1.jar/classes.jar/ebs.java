@@ -1,16 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.StatableBitmapDrawable;
 
 public class ebs
-  implements DialogInterface.OnDismissListener
+  implements IIconListener
 {
   public ebs(EditActivity paramEditActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (this.a.c != 0) {
-      this.a.f();
+    if ((EditActivity.a(this.a).b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      EditActivity.a(this.a, false);
+    }
+    for (;;)
+    {
+      return;
+      if ((paramBitmap != null) && (paramInt2 == 201) && (EditActivity.a(this.a) != null))
+      {
+        int i = EditActivity.a(this.a).getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          View localView = EditActivity.a(this.a).getChildAt(paramInt2);
+          if (paramInt1 == ((Integer)localView.getTag()).intValue()) {
+            ((ImageView)localView.findViewById(2131298195)).setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), paramBitmap, false, false));
+          }
+          paramInt2 += 1;
+        }
+      }
     }
   }
 }

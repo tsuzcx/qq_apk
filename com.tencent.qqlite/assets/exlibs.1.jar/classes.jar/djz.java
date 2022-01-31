@@ -1,25 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
 
 public class djz
-  implements View.OnLongClickListener
+  implements Runnable
 {
   public djz(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363247));
-    QfileBaseLocalFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363274), localQQCustomMenu, new dka(this, paramView), new dkb(this, paramView)));
-    return true;
+    this.a.a.notifyDataSetChanged();
   }
 }
 

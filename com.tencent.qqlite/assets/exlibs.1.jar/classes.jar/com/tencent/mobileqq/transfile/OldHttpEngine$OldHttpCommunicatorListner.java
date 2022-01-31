@@ -8,8 +8,8 @@ import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import ehh;
-import ehi;
+import ehm;
+import ehn;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -58,7 +58,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
         }
         if ((this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramLong != 0L))
         {
-          ThreadManager.a().schedule(new ehh(this), paramLong);
+          ThreadManager.a().schedule(new ehm(this), paramLong);
           return;
         }
       } while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
@@ -66,7 +66,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
-        ThreadManager.a().schedule(new ehi(this), paramLong);
+        ThreadManager.a().schedule(new ehn(this), paramLong);
         return;
       }
     } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
@@ -221,7 +221,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       if (!this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a()) {
         break label507;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_c_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_b_of_type_Long) && (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_c_of_type_Long != 220357L)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_c_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_b_of_type_Long) && (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_c_of_type_Long != 266474L)) {
         break label318;
       }
       this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_d_of_type_Int = 0;
@@ -307,7 +307,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_d_of_type_Int = 0;
       this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.e = 0;
       this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_JavaLangString = "";
-    } while (((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte.length == this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_b_of_type_Long)) && ((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte != null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_b_of_type_Long == 0L) || ((((String)this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a()).equals("qqfav.apk")) && (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte.length == 220357))));
+    } while (((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte.length == this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_b_of_type_Long)) && ((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte != null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_b_of_type_Long == 0L) || ((((String)this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a()).equals("qqfav.apk")) && (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte.length == 266474))));
     this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.a(1, -9527, null, null);
     paramHttpMsg2 = BaseTransProcessor.a("Q", -9533L);
     this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_JavaUtilHashMap.put("netresp_param_reason", paramHttpMsg2);

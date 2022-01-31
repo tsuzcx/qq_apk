@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.BaseApplication;
-import dzj;
+import dzp;
 
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new dzj();
+  public static final Parcelable.Creator CREATOR = new dzp();
   public int a;
   public String a;
   public boolean a;
@@ -57,7 +57,7 @@ public class CompressInfo
     this.jdField_b_of_type_Boolean = true;
     Context localContext = BaseApplication.getContext();
     if (paramBoolean) {}
-    for (int i = 2131364314;; i = 2131364316)
+    for (int i = 2131364299;; i = 2131364301)
     {
       this.jdField_b_of_type_JavaLangString = localContext.getString(i);
       return;

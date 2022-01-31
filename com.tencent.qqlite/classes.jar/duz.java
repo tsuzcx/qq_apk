@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class duz
-  implements Comparator
+  implements Runnable
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public duz(int paramInt) {}
+  
+  public void run()
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
   }
 }
 

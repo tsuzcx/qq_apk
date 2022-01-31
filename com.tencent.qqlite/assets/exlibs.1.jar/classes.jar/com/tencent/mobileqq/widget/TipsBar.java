@@ -51,9 +51,9 @@ public class TipsBar
     super(paramContext, paramAttributeSet);
     Resources localResources = getResources();
     this.jdField_a_of_type_Float = localResources.getDisplayMetrics().density;
-    this.e = localResources.getDimensionPixelSize(2131493109);
-    this.f = localResources.getDimensionPixelSize(2131493110);
-    this.g = localResources.getDimensionPixelSize(2131493111);
+    this.e = localResources.getDimensionPixelSize(2131493089);
+    this.f = localResources.getDimensionPixelSize(2131493090);
+    this.g = localResources.getDimensionPixelSize(2131493091);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.x);
     this.jdField_a_of_type_JavaLangString = paramContext.getString(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2);
@@ -70,13 +70,13 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131427483);
+      return paramResources.getColorStateList(2131427478);
     case 1: 
-      return paramResources.getColorStateList(2131427483);
+      return paramResources.getColorStateList(2131427478);
     case 2: 
-      return paramResources.getColorStateList(2131427488);
+      return paramResources.getColorStateList(2131427483);
     }
-    return paramResources.getColorStateList(2131427483);
+    return paramResources.getColorStateList(2131427478);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
@@ -84,13 +84,13 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130837728);
+      return paramResources.getDrawable(2130837726);
     case 1: 
-      return paramResources.getDrawable(2130837734);
+      return paramResources.getDrawable(2130837732);
     case 2: 
-      return paramResources.getDrawable(2130837734);
+      return paramResources.getDrawable(2130837732);
     }
-    return paramResources.getDrawable(2130837728);
+    return paramResources.getDrawable(2130837726);
   }
   
   private void a()
@@ -143,13 +143,13 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131427474);
+      return paramResources.getColorStateList(2131427469);
     case 1: 
-      return paramResources.getColorStateList(2131427471);
+      return paramResources.getColorStateList(2131427466);
     case 2: 
-      return paramResources.getColorStateList(2131427474);
+      return paramResources.getColorStateList(2131427469);
     }
-    return paramResources.getColorStateList(2131427474);
+    return paramResources.getColorStateList(2131427469);
   }
   
   public static Drawable b(Resources paramResources, int paramInt)
@@ -157,13 +157,13 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130837935);
+      return paramResources.getDrawable(2130837931);
     case 1: 
-      return paramResources.getDrawable(2130837936);
+      return paramResources.getDrawable(2130837932);
     case 2: 
-      return paramResources.getDrawable(2130837935);
+      return paramResources.getDrawable(2130837931);
     }
-    return paramResources.getDrawable(2130837934);
+    return paramResources.getDrawable(2130837930);
   }
   
   private void b()
@@ -196,13 +196,13 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130837933);
+      return paramResources.getDrawable(2130837929);
     case 1: 
-      return paramResources.getDrawable(2130837933);
+      return paramResources.getDrawable(2130837929);
     case 2: 
-      return paramResources.getDrawable(2130837932);
+      return paramResources.getDrawable(2130837928);
     }
-    return paramResources.getDrawable(2130837932);
+    return paramResources.getDrawable(2130837928);
   }
   
   public int a()

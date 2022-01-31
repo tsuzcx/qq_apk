@@ -1,6 +1,6 @@
 package common.qzone.component.cache.common;
 
-import fjh;
+import fjm;
 import java.lang.ref.ReferenceQueue;
 import java.util.HashMap;
 
@@ -22,8 +22,8 @@ public class FastLruCache
   
   private void a()
   {
-    for (fjh localfjh = (fjh)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localfjh != null; localfjh = (fjh)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
-      this.b.remove(localfjh.a);
+    for (fjm localfjm = (fjm)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localfjm != null; localfjm = (fjm)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
+      this.b.remove(localfjm.a);
     }
   }
   
@@ -52,7 +52,7 @@ public class FastLruCache
     //   26: getfield 19	common/qzone/component/cache/common/FastLruCache:b	Ljava/util/HashMap;
     //   29: aload_1
     //   30: invokevirtual 60	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 48	fjh
+    //   33: checkcast 48	fjm
     //   36: astore_1
     //   37: aload_1
     //   38: ifnonnull +8 -> 46
@@ -60,7 +60,7 @@ public class FastLruCache
     //   42: astore_1
     //   43: goto -22 -> 21
     //   46: aload_1
-    //   47: invokevirtual 63	fjh:get	()Ljava/lang/Object;
+    //   47: invokevirtual 63	fjm:get	()Ljava/lang/Object;
     //   50: astore_1
     //   51: goto -30 -> 21
     //   54: astore_1
@@ -97,15 +97,15 @@ public class FastLruCache
     //   16: aload_0
     //   17: getfield 19	common/qzone/component/cache/common/FastLruCache:b	Ljava/util/HashMap;
     //   20: aload_1
-    //   21: new 48	fjh
+    //   21: new 48	fjm
     //   24: dup
     //   25: aload_1
     //   26: aload_2
     //   27: aload_0
     //   28: getfield 24	common/qzone/component/cache/common/FastLruCache:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   31: invokespecial 70	fjh:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   31: invokespecial 70	fjm:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   34: invokevirtual 67	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   37: checkcast 48	fjh
+    //   37: checkcast 48	fjm
     //   40: astore_1
     //   41: aload_1
     //   42: ifnonnull +9 -> 51
@@ -116,7 +116,7 @@ public class FastLruCache
     //   49: aload_1
     //   50: areturn
     //   51: aload_1
-    //   52: invokevirtual 63	fjh:get	()Ljava/lang/Object;
+    //   52: invokevirtual 63	fjm:get	()Ljava/lang/Object;
     //   55: astore_1
     //   56: goto -9 -> 47
     //   59: astore_1

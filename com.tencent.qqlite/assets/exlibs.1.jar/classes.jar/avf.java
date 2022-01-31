@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
 
 public class avf
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
   public avf(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
     this.a.a = null;
+    if (!this.a.isFinishing()) {
+      this.a.finish();
+    }
   }
 }
 

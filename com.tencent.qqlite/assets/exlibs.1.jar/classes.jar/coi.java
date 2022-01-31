@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class coi
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public coi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onGlobalLayout()
+  {
+    ShortVideoPreviewActivity.a(this.a, ShortVideoUtils.a(this.a, ShortVideoPreviewActivity.a(this.a)));
+    ShortVideoPreviewActivity.a(this.a).setImageBitmap(ShortVideoPreviewActivity.a(this.a));
+    ShortVideoPreviewActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
 }
 
 

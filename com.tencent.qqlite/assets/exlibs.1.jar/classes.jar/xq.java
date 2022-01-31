@@ -1,12 +1,10 @@
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class xq
   implements View.OnClickListener
@@ -15,80 +13,31 @@ public class xq
   
   public void onClick(View paramView)
   {
-    paramView = (FriendManager)this.a.app.getManager(8);
-    if (paramView != null) {}
-    for (boolean bool = paramView.b(AddRequestActivity.a(this.a));; bool = false)
-    {
-      if (bool)
-      {
-        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 1);
-        ProfileActivity.b(this.a, paramView);
-        return;
-      }
-      switch (this.a.jdField_d_of_type_Int)
-      {
-      default: 
-        if ((AddRequestActivity.a(this.a) != 3007) && (AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2007) && (AddRequestActivity.a(this.a) != 2019)) {
-          break label710;
-        }
-        paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-        if ((AddRequestActivity.a(this.a) != 3007) && (AddRequestActivity.a(this.a) != 2007)) {
-          break;
-        }
-      }
-      for (paramView.g = 14;; paramView.g = 15) {
-        do
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putInt("param_mode", 3);
-          NearbyPeopleProfileActivity.a(this.a, paramView, localBundle);
-          return;
-          if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 3019) || (AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 2019))
-          {
-            paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-            if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 2007)) {}
-            for (paramView.g = 14;; paramView.g = 15) {
-              do
-              {
-                localBundle = new Bundle();
-                localBundle.putInt("param_mode", 3);
-                NearbyPeopleProfileActivity.a(this.a, paramView, localBundle);
-                return;
-              } while ((AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2019));
-            }
-          }
-          paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-          paramView.h = AddRequestActivity.a(this.a);
-          paramView.jdField_d_of_type_JavaLangString = String.valueOf(AddRequestActivity.a(this.a));
-          ProfileActivity.b(this.a, paramView);
-          return;
-          if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 3019) || (AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 2019))
-          {
-            paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-            if ((AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 2007)) {}
-            for (paramView.g = 14;; paramView.g = 15) {
-              do
-              {
-                localBundle = new Bundle();
-                localBundle.putInt("param_mode", 3);
-                NearbyPeopleProfileActivity.a(this.a, paramView, localBundle);
-                return;
-              } while ((AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2019));
-            }
-          }
-          paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-          paramView.h = AddRequestActivity.a(this.a);
-          paramView.jdField_d_of_type_JavaLangString = String.valueOf(AddRequestActivity.a(this.a));
-          paramView.jdField_d_of_type_Int = 1;
-          ProfileActivity.b(this.a, paramView);
-          return;
-        } while ((AddRequestActivity.a(this.a) != 3019) && (AddRequestActivity.a(this.a) != 2019));
-      }
-      label710:
-      paramView = new ProfileActivity.AllInOne(AddRequestActivity.a(this.a), 25);
-      ProfileActivity.b(this.a, paramView);
-      return;
+    if (!NetworkUtil.e(this.a)) {
+      QQToast.a(this.a, this.a.getString(2131362916), 0).b(this.a.getTitleBarHeight());
     }
+    do
+    {
+      return;
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
+      {
+        if (this.a.d == -1011) {
+          this.a.a(AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ArrayOfByte, this.a.q, AddRequestActivity.b(this.a), AddRequestActivity.c(this.a), AddRequestActivity.b(this.a));
+        }
+        for (;;)
+        {
+          ReportController.b(this.a.app, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
+          return;
+          this.a.a(AddRequestActivity.a(this.a), AddRequestActivity.b(this.a), null, AddRequestActivity.c(this.a), AddRequestActivity.b(this.a));
+        }
+      }
+    } while (paramView != this.a.b);
+    if (AddRequestActivity.a(this.a, 1))
+    {
+      AddRequestActivity.a(this.a).b(2131363381);
+      AddRequestActivity.a(this.a).show();
+    }
+    ReportController.b(this.a.app, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "0", "", "", "");
   }
 }
 

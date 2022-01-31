@@ -1,18 +1,88 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
-class bzr
-  implements Runnable
+public class bzr
+  extends ShieldListObserver
 {
-  bzr(bzp parambzp, MultiForwardChatPie paramMultiForwardChatPie) {}
+  public bzr(StrangerChatPie paramStrangerChatPie) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, List paramList)
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131362993);
-    MultiForwardChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.I);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.k();
+    
+    if (StrangerChatPie.a(this.a) == null) {
+      return;
+    }
+    String str = StrangerChatPie.b(this.a).jdField_a_of_type_JavaLangString;
+    if (StrangerChatPie.c(this.a).jdField_a_of_type_Int == 1006) {
+      str = StrangerChatPie.d(this.a).f;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a(StrangerChatPie.a(this.a), paramBoolean, false);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.h();
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.a();
+    if (StrangerChatPie.e(this.a) == null) {
+      return;
+    }
+    String str = StrangerChatPie.f(this.a).jdField_a_of_type_JavaLangString;
+    if (StrangerChatPie.g(this.a).jdField_a_of_type_Int == 1006) {
+      str = StrangerChatPie.h(this.a).f;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a();
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.h();
+      return;
+    }
   }
 }
 

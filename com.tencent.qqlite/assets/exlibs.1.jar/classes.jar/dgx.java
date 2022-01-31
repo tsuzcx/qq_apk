@@ -1,29 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.eAnimType;
 
 public class dgx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dgx(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dgx(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+    if (!this.a.c) {
+      return;
     }
-    paramView = (Button)paramView.findViewById(2131297127);
-    if (paramView.getTag() != null)
-    {
-      this.a.b = ((Integer)paramView.getTag()).intValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
     }
-    this.a.n();
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
+    localFilePreviewAnim.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$eAnimType = FilePreviewAnimQueue.eAnimType.eTranslateAnim;
+    localFilePreviewAnim.jdField_a_of_type_Int = 250;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+    this.a.c = false;
   }
 }
 

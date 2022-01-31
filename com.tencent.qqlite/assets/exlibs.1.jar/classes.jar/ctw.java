@@ -1,18 +1,15 @@
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 
 public class ctw
+  extends SendMessageHandler.SendMessageRunnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  public ctw(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, long paramLong) {}
   
-  public ctw(MessageHandler paramMessageHandler) {}
-  
-  public ctw(MessageHandler paramMessageHandler, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Long, this.c, this.jdField_a_of_type_Int);
   }
 }
 

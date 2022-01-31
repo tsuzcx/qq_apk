@@ -17,7 +17,7 @@ public class TroopQQBrowserHelper
   
   public static void a(Context paramContext)
   {
-    String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.3.0", Integer.valueOf(0) });
+    String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.4.0", Integer.valueOf(0) });
     Intent localIntent = new Intent(paramContext, TroopCreateActivity.class);
     localIntent.putExtra("url", str);
     localIntent.putExtra("isShowAd", false);
@@ -28,7 +28,7 @@ public class TroopQQBrowserHelper
   public static void a(Context paramContext, int paramInt)
   {
     if ((paramInt == 1) || (paramInt == 2)) {}
-    for (String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.3.0", Integer.valueOf(1) });; str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.3.0", Integer.valueOf(0) }))
+    for (String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.4.0", Integer.valueOf(1) });; str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.4.0", Integer.valueOf(0) }))
     {
       Intent localIntent = new Intent(paramContext, TroopCreateActivity.class);
       localIntent.putExtra("url", str);
@@ -129,7 +129,7 @@ public class TroopQQBrowserHelper
   
   public static void b(Context paramContext, String paramString)
   {
-    Object localObject = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.3.0", Integer.valueOf(0) });
+    Object localObject = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s", new Object[] { "1", "3.4.0", Integer.valueOf(0) });
     paramString = (String)localObject + String.format("&initgrouptype=%s", new Object[] { paramString });
     localObject = new Intent(paramContext, TroopCreateActivity.class);
     ((Intent)localObject).putExtra("url", paramString);

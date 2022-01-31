@@ -1,21 +1,72 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.ContactFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.model.FriendManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class anl
-  implements Runnable
+  extends AutomatorObserver
 {
   public anl(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  protected void a(int paramInt)
   {
-    if (this.a.isFinishing()) {}
+    Object localObject1 = (ContactFacade)this.a.app.getManager(46);
+    if (localObject1 == null) {}
     do
     {
       return;
-      this.a.d = true;
-      ForwardRecentActivity.a(this.a).d();
-    } while ((!this.a.b) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362375));
+      switch (paramInt)
+      {
+      default: 
+        ForwardRecentActivity.c(this.a);
+        return;
+      case 1: 
+        localObject2 = (FriendManager)this.a.app.getManager(8);
+      }
+    } while (localObject2 == null);
+    Object localObject2 = ((FriendManager)localObject2).c();
+    if (localObject2 != null)
+    {
+      localObject2 = ((ArrayList)localObject2).iterator();
+      ArrayList localArrayList;
+      do
+      {
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        localArrayList = ((ContactFacade)localObject1).a(String.valueOf(((Groups)((Iterator)localObject2).next()).group_id));
+      } while ((localArrayList == null) || (localArrayList.size() <= 0));
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0)
+      {
+        ForwardRecentActivity.a(this.a, false);
+        break;
+      }
+      ForwardRecentActivity.a(this.a, true);
+      break;
+      localObject1 = ((ContactFacade)localObject1).a("-1004");
+      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+      {
+        ForwardRecentActivity.b(this.a, false);
+        break;
+      }
+      ForwardRecentActivity.b(this.a, true);
+      break;
+      localObject1 = ((ContactFacade)localObject1).a("-1003");
+      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+      {
+        ForwardRecentActivity.c(this.a, false);
+        break;
+      }
+      ForwardRecentActivity.c(this.a, true);
+      break;
+    }
   }
 }
 

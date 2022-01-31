@@ -1,144 +1,147 @@
 import android.content.Context;
-import android.os.Environment;
-import java.io.File;
-import java.io.IOException;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.os.Bundle;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.http.HttpCgiAsyncTask;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.business.base.appreport.AppReport;
+import com.tencent.open.business.base.appreport.AppReport.FullReportCallback;
+import com.tencent.open.business.base.appreport.AppUpdate;
+import com.tencent.smtt.sdk.WebView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
-public class fdm
+public final class fdm
+  implements Runnable
 {
-  protected static final File a;
-  public static String a;
-  protected static File b;
-  protected static File c;
+  public fdm(Context paramContext, String paramString1, WebView paramWebView, String paramString2) {}
   
-  static
+  public void run()
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
-    jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString + File.separator + "Android" + File.separator + "data");
-  }
-  
-  public static File a(Context paramContext)
-  {
-    try
+    for (;;)
     {
-      paramContext = a(paramContext.getPackageName());
-      boolean bool = paramContext.exists();
-      if (!bool) {
-        try
+      try
+      {
+        LogUtility.b("AppReport", "<AppReport> begin doFullReport ...");
+        if (this.jdField_a_of_type_AndroidContentContext == null)
         {
-          new File(jdField_a_of_type_JavaIoFile, ".nomedia").createNewFile();
-          if (!paramContext.mkdirs()) {
-            return null;
-          }
+          LogUtility.e("AppReport", "<AppReport> fullReport context is null !");
+          return;
         }
-        catch (IOException localIOException)
+        if (AppReport.a)
         {
-          for (;;)
+          if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
           {
-            localIOException.printStackTrace();
+            boolean bool = AppReport.a;
+            if (bool)
+            {
+              try
+              {
+                LogUtility.c("AppReport", "<AppReport>Wait 100 milliseconds for another full report finished,before getUpdateAppRequest");
+                Thread.sleep(new Random().nextInt(50) + 50L);
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                LogUtility.e("AppReport", "<AppReport> fullReport context is null !");
+              }
+              continue;
+            }
+            if (this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false))
+            {
+              AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, true, this.b);
+              return;
+            }
+            AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, this.b);
+            return;
+          }
+          LogUtility.c("AppReport", "<AppReport>Another full report running, fullReport will not continue !!!");
+          return;
+        }
+        AppReport.a = true;
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+        {
+          LogUtility.c("AppReport", "<AppReport> onResult get app update list without full report");
+          if ((!AppReport.a()) || (!AppReport.a(this.jdField_a_of_type_AndroidContentContext)))
+          {
+            LogUtility.c("AppReport", "doFullReport get app update list without full report, because : full report switch off, or Over max full report times a day");
+            AppReport.a = false;
+            AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, this.b);
+            return;
+          }
+          if (!AppUtil.a(this.jdField_a_of_type_AndroidContentContext))
+          {
+            LogUtility.c("AppReport", "<AppReport> doFullReport get app update list without full report, because : packageScan is not allowed");
+            AppReport.a = false;
+            AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, true, this.b);
           }
         }
+        else if (!AppUtil.a(this.jdField_a_of_type_AndroidContentContext))
+        {
+          LogUtility.c("AppReport", "<AppReport> doFullReport will not continue , because : packageScan is not allowed");
+          AppReport.a = false;
+          return;
+        }
+        Object localObject2 = AppUtil.a(this.jdField_a_of_type_AndroidContentContext);
+        if ((localObject2 != null) && (((List)localObject2).size() > 0))
+        {
+          Object localObject1 = new HashMap();
+          localObject2 = ((List)localObject2).iterator();
+          if (((Iterator)localObject2).hasNext())
+          {
+            PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject2).next();
+            if ((localPackageInfo.applicationInfo.flags & 0x1) != 0) {
+              break label635;
+            }
+            if ((localPackageInfo.applicationInfo.flags & 0x80) != 0)
+            {
+              break label635;
+              ((Map)localObject1).put(localPackageInfo.packageName, AppReport.a(localPackageInfo.packageName, localPackageInfo.versionCode, localPackageInfo.versionName, i));
+            }
+          }
+          else
+          {
+            localObject1 = AppReport.a(this.jdField_a_of_type_AndroidContentContext, (Map)localObject1, "ALL", this.b);
+            LogUtility.b("AppReport", "<AppReport> incremental report params : " + ((Bundle)localObject1).toString());
+            if ((!APNUtil.b(this.jdField_a_of_type_AndroidContentContext)) || (((Bundle)localObject1).getString("sid").equals("")))
+            {
+              localObject1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("appcenter_app_report", 0).edit();
+              ((SharedPreferences.Editor)localObject1).putBoolean("is_app_last_fullReport_success", false);
+              ((SharedPreferences.Editor)localObject1).commit();
+              LogUtility.b("AppReport", "<AppReport> full report stoped !!! because network is unavaliable or get sid error");
+              AppReport.a = false;
+              return;
+            }
+            LogUtility.b("AppReport", "<AppReport> do full report to server !!!");
+            new HttpCgiAsyncTask("http://appsupport.qq.com/cgi-bin/appstage/sdk_update", "POST", new AppReport.FullReportCallback(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject1 });
+          }
+        }
+        else
+        {
+          if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_ComTencentSmttSdkWebView == null)) {
+            continue;
+          }
+          AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, true, this.b);
+          AppReport.a = false;
+          return;
+        }
+        i = 0;
+        continue;
+        return;
       }
+      catch (Throwable localThrowable)
+      {
+        return;
+      }
+      label635:
+      int i = 1;
     }
-    finally {}
-    return paramContext;
-  }
-  
-  /* Error */
-  public static File a(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokevirtual 59	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   7: invokestatic 83	fdm:b	(Ljava/lang/String;)Ljava/io/File;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: invokevirtual 66	java/io/File:exists	()Z
-    //   15: istore_2
-    //   16: iload_2
-    //   17: ifne +31 -> 48
-    //   20: new 19	java/io/File
-    //   23: dup
-    //   24: getstatic 49	fdm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   27: ldc 68
-    //   29: invokespecial 71	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   32: invokevirtual 74	java/io/File:createNewFile	()Z
-    //   35: pop
-    //   36: aload_0
-    //   37: invokevirtual 77	java/io/File:mkdirs	()Z
-    //   40: ifne +8 -> 48
-    //   43: ldc 2
-    //   45: monitorexit
-    //   46: aconst_null
-    //   47: areturn
-    //   48: aload_1
-    //   49: ifnonnull +8 -> 57
-    //   52: ldc 2
-    //   54: monitorexit
-    //   55: aload_0
-    //   56: areturn
-    //   57: new 19	java/io/File
-    //   60: dup
-    //   61: aload_0
-    //   62: aload_1
-    //   63: invokespecial 71	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   66: astore_0
-    //   67: aload_0
-    //   68: invokevirtual 66	java/io/File:exists	()Z
-    //   71: ifne +21 -> 92
-    //   74: aload_0
-    //   75: invokevirtual 77	java/io/File:mkdirs	()Z
-    //   78: ifne +14 -> 92
-    //   81: ldc 2
-    //   83: monitorexit
-    //   84: aconst_null
-    //   85: areturn
-    //   86: astore_0
-    //   87: ldc 2
-    //   89: monitorexit
-    //   90: aload_0
-    //   91: athrow
-    //   92: ldc 2
-    //   94: monitorexit
-    //   95: aload_0
-    //   96: areturn
-    //   97: astore_3
-    //   98: goto -62 -> 36
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	paramContext	Context
-    //   0	101	1	paramString	String
-    //   15	2	2	bool	boolean
-    //   97	1	3	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   3	16	86	finally
-    //   20	36	86	finally
-    //   36	46	86	finally
-    //   52	55	86	finally
-    //   57	84	86	finally
-    //   87	90	86	finally
-    //   92	95	86	finally
-    //   20	36	97	java/io/IOException
-  }
-  
-  public static File a(String paramString)
-  {
-    if (b != null) {
-      return b;
-    }
-    b = new File(jdField_a_of_type_JavaIoFile, paramString + File.separator + "qzone" + File.separator + "cache");
-    return b;
-  }
-  
-  public static File b(String paramString)
-  {
-    if (c != null) {
-      return c;
-    }
-    c = new File(jdField_a_of_type_JavaIoFile, paramString + File.separator + "qzone" + File.separator + "files");
-    return c;
   }
 }
 

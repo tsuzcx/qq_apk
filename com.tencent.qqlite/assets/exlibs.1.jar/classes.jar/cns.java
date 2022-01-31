@@ -1,24 +1,29 @@
-import android.media.MediaPlayer;
 import android.os.Handler;
-import android.widget.SeekBar;
+import android.os.Message;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class cns
-  implements Runnable
+  extends Handler
 {
   public cns(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ((ShortVideoPlayActivity.a(this.a) != null) && (ShortVideoPlayActivity.a(this.a).isPlaying()))
+    switch (paramMessage.what)
     {
-      if (ShortVideoPlayActivity.a(this.a) <= 0) {
-        ShortVideoPlayActivity.a(this.a);
-      }
-      int i = ShortVideoPlayActivity.a(this.a).getCurrentPosition();
-      ShortVideoPlayActivity.a(this.a).setProgress(i);
+    default: 
+      return;
+    case 1: 
+      QQToast.a(this.a, 2131364409, 0).a();
+      return;
+    case 2: 
+      String str = this.a.getString(2131364410);
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(this.a, str + paramMessage, 0).a();
+      return;
     }
-    ShortVideoPlayActivity.a(this.a).postDelayed(ShortVideoPlayActivity.a(this.a), 500L);
+    QQToast.a(this.a, 2131364411, 0).a();
   }
 }
 

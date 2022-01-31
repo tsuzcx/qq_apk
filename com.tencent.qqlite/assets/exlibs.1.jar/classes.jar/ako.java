@@ -2,25 +2,35 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class ako
   implements View.OnClickListener
 {
-  public ako(DoodleActivity paramDoodleActivity) {}
+  public ako(EditActivity paramEditActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
+    paramView = this.a;
+    if (!EditActivity.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.b.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      EditActivity.a(paramView, bool);
+      if (!EditActivity.a(this.a)) {
+        break;
+      }
+      this.a.f();
+      EditActivity.a(this.a).setImageResource(2130837556);
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(0);
+      }
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839161);
-    this.a.c.setVisibility(0);
+    if (EditActivity.a(this.a) != null) {
+      EditActivity.a(this.a).setVisibility(4);
+    }
+    EditActivity.a(this.a).setImageResource(2130839035);
+    this.a.e();
   }
 }
 

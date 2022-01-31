@@ -2,7 +2,7 @@ import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
 
 public class dpf
-  extends doh
+  extends don
 {
   public dpf(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -11,7 +11,7 @@ public class dpf
   
   protected String a()
   {
-    return "StateSenderCancelSendWhenPause";
+    return "StateRefuseByPCWhenToOffFailed";
   }
   
   protected void a()
@@ -21,10 +21,10 @@ public class dpf
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
       return;
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Doh.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Doh = new dpe(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Don.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Don = new dpd(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

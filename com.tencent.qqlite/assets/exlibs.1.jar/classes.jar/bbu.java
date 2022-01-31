@@ -1,43 +1,27 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webviewplugin.WebViewPluginEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 
-public class bbu
-  implements View.OnTouchListener
+class bbu
+  implements Animation.AnimationListener
 {
-  public bbu(QQBrowserActivity paramQQBrowserActivity) {}
+  bbu(bbt parambbt, View paramView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramView != QQBrowserActivity.a(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("QQBrowser", 2, "vg onTouch");
-      }
-      bool1 = bool2;
-    } while (this.a.a == null);
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a.a(this.a.K, 22, paramView);
-    return true;
+    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimation.leftMargin = this.jdField_a_of_type_Bbt.jdField_a_of_type_Int;
+    paramAnimation.topMargin = this.jdField_a_of_type_Bbt.b;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Bbt.jdField_a_of_type_Boolean = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

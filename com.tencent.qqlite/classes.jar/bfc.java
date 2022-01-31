@@ -1,5 +1,4 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class bfc
   implements Runnable
@@ -8,10 +7,9 @@ class bfc
   
   public void run()
   {
-    String str = this.a.a.a.a();
-    QQSettingMe.a(this.a.a).setLength(0);
-    QQSettingMe.a(this.a.a).append(QQSettingMe.a(this.a.a));
-    this.a.a.a(str, QQSettingMe.a(this.a.a));
+    if (this.a.a.b) {
+      this.a.a.l();
+    }
   }
 }
 

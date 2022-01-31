@@ -1,24 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelViewBinder;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class dfa
-  implements Animation.AnimationListener
+  implements URLDrawableDownListener
 {
-  public dfa(FastImagePreviewLayout paramFastImagePreviewLayout) {}
+  public dfa(EmoticonPanelViewBinder paramEmoticonPanelViewBinder) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
+    if ((((Boolean)paramView.getTag()).booleanValue()) && (paramURLDrawable != null) && (paramURLDrawable.getIntrinsicWidth() > 0))
+    {
+      paramURLDrawable = ImageUtil.a(paramURLDrawable);
+      if ((paramURLDrawable != null) && (paramURLDrawable.getWidth() > 0)) {
+        ((ImageView)paramView).setImageBitmap(ImageUtil.a(paramURLDrawable));
+      }
     }
-    this.a.removeAllViews();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,28 @@
-import android.os.Message;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class blt
-  extends TransProcessorHandler
+  extends MessageObserver
 {
   public blt(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
+    if (!paramBoolean) {
       this.a.d();
     }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b()
+  {
+    this.a.d();
+  }
+  
+  protected void d(boolean paramBoolean, String paramString)
+  {
+    this.a.d();
   }
 }
 

@@ -30,10 +30,10 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import drc;
-import drf;
-import drg;
-import drh;
+import dri;
+import drl;
+import drm;
+import drn;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +57,7 @@ public abstract class BaseActionBarDataLineFile
   
   private View.OnClickListener a()
   {
-    return new drh(this);
+    return new drn(this);
   }
   
   private void i()
@@ -85,7 +85,7 @@ public abstract class BaseActionBarDataLineFile
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new drf(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new drl(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.dataline.mpfile.download_progress");
       localIntentFilter.addAction("com.dataline.mpfile.download_completed");
@@ -106,7 +106,7 @@ public abstract class BaseActionBarDataLineFile
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new drg(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new drm(this);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
     }
   }
@@ -124,7 +124,7 @@ public abstract class BaseActionBarDataLineFile
     long l = ((float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize * this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity();
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType != 8) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType != 1)) {}
-    for (localObject = ((Activity)localObject).getString(2131361995) + "(" + FileUtil.a(l) + "/" + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize) + ")";; localObject = ((Activity)localObject).getString(2131361996) + "(" + FileUtil.a(l) + "/" + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize) + ")")
+    for (localObject = ((Activity)localObject).getString(2131361992) + "(" + FileUtil.a(l) + "/" + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize) + ")";; localObject = ((Activity)localObject).getString(2131361993) + "(" + FileUtil.a(l) + "/" + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize) + ")")
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       return;
@@ -190,26 +190,26 @@ public abstract class BaseActionBarDataLineFile
   {
     if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend)
     {
-      Object localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298097);
+      Object localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298060);
       if (localObject != null) {
         ((TextView)localObject).setVisibility(0);
       }
-      localObject = (Button)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131297866);
+      localObject = (Button)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131297852);
       if (localObject != null) {
         ((Button)localObject).setEnabled(true);
       }
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298104);
+      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298067);
       if (localObject != null) {
         ((TextView)localObject).setVisibility(0);
       }
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298105);
+      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298068);
       if (localObject != null) {
         ((TextView)localObject).setVisibility(0);
       }
     }
     j();
     if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType == 7) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 1) && (!this.jdField_b_of_type_Boolean)) {
-      b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "重新下载", 2130838519, 2130838520, a());
+      b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "重新下载", 2130838496, 2130838497, a());
     }
   }
   
@@ -217,12 +217,12 @@ public abstract class BaseActionBarDataLineFile
   {
     DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a(8);
     if ((localDataLineHandler != null) && (this.jdField_a_of_type_JavaLangString != null)) {
-      b(paramActivity, "发送到电脑", 2130838511, 2130838512, ActionBarUtil.a(localDataLineHandler, (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+      b(paramActivity, "发送到电脑", 2130838488, 2130838489, ActionBarUtil.a(localDataLineHandler, (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a() == 0) {
-      b(paramActivity, "保存到手机", 2130838513, 2130838514, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+      b(paramActivity, "保存到手机", 2130838490, 2130838491, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
     }
-    b(paramActivity, "存到微云", 2130838521, 2130838522, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+    b(paramActivity, "存到微云", 2130838498, 2130838499, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
     super.a(paramActivity);
   }
   
@@ -241,7 +241,7 @@ public abstract class BaseActionBarDataLineFile
       this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath;
       a(2, "收藏", ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
       a(2, FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
-      a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "发给好友", 2130838515, 2130838516, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 10000, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+      a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "发给好友", 2130838492, 2130838493, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 10000, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
       b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity());
       a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity());
       i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().d();
@@ -261,7 +261,7 @@ public abstract class BaseActionBarDataLineFile
         }
         h();
       } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298097);
+      paramObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298060);
     } while (paramObject == null);
     paramObject.setVisibility(8);
     return;
@@ -320,13 +320,13 @@ public abstract class BaseActionBarDataLineFile
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298097);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().findViewById(2131298060);
         if (localObject1 != null) {
           ((View)localObject1).setVisibility(8);
         }
         i();
       }
-      a(0, (String)localObject2, new drc(this));
+      a(0, (String)localObject2, new dri(this));
       return;
     }
   }

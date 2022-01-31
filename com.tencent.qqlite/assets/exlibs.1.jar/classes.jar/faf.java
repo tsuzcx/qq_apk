@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.agent.AuthorityActivity;
 
-class faf
-  implements DialogInterface.OnClickListener
+public class faf
+  implements Runnable
 {
-  faf(fae paramfae) {}
+  public faf(AuthorityActivity paramAuthorityActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    if (this.a.w == 0) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131363828);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.a(this.a.getResources().getString(2131363825), new fag(this));
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.x);
+    }
   }
 }
 

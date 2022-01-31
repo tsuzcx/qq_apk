@@ -34,7 +34,7 @@ public class FormSimpleItem
   private int n;
   private int o;
   private int p;
-  private int q = getResources().getDimensionPixelSize(2131493083);
+  private int q = getResources().getDimensionPixelSize(2131493068);
   private int r;
   private int s;
   private int t;
@@ -47,7 +47,7 @@ public class FormSimpleItem
   public FormSimpleItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i1 = getResources().getDimensionPixelSize(2131493082);
+    int i1 = getResources().getDimensionPixelSize(2131493067);
     this.s = ((int)(getResources().getDisplayMetrics().density * 35.0F + 0.5D));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.e);
     this.p = paramContext.getDimensionPixelSize(3, i1);
@@ -73,18 +73,18 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131427471);
+      return paramResources.getColorStateList(2131427466);
     case 0: 
-      return paramResources.getColorStateList(2131427471);
+      return paramResources.getColorStateList(2131427466);
     case 2: 
-      return paramResources.getColorStateList(2131427498);
+      return paramResources.getColorStateList(2131427493);
     }
-    return paramResources.getColorStateList(2131427474);
+    return paramResources.getColorStateList(2131427469);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return paramResources.getDrawable(2130837758);
+    return paramResources.getDrawable(2130837754);
   }
   
   private void b()

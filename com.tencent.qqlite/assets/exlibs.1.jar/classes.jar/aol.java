@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class aol
-  implements DialogInterface.OnClickListener
+class aol
+  implements Runnable
 {
-  public aol(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  aol(aok paramaok) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.p();
+    Card localCard = ((FriendsManager)this.a.a.app.getManager(43)).a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
+    if (localCard != null) {
+      this.a.a.runOnUiThread(new aom(this));
+    }
   }
 }
 

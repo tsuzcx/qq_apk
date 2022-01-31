@@ -1,16 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class bjq
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
   public bjq(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramDialogInterface.dismiss();
     this.a.finish();
-    return true;
   }
 }
 

@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import ckr;
+import ckx;
 import com.tencent.qphone.base.util.QLog;
 
 public class DragTextView
@@ -18,7 +18,7 @@ public class DragTextView
 {
   private final float jdField_a_of_type_Float = 12.0F * getResources().getDisplayMetrics().density;
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final TouchDelegate jdField_a_of_type_AndroidViewTouchDelegate = new ckr(this, this.jdField_a_of_type_AndroidGraphicsRect, this);
+  private final TouchDelegate jdField_a_of_type_AndroidViewTouchDelegate = new ckx(this, this.jdField_a_of_type_AndroidGraphicsRect, this);
   private IDragView.OnChangeModeListener jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener;
   private boolean jdField_a_of_type_Boolean;
   private int f = -1;

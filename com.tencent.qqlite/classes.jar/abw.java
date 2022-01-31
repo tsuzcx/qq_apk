@@ -1,20 +1,10 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class abw
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public abw(Handler paramHandler, Runnable paramRunnable, long paramLong) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Long);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

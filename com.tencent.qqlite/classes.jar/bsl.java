@@ -1,32 +1,46 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
-import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bsl
-  extends Handler
+  implements View.OnLongClickListener
 {
-  public bsl(AudioPlayer paramAudioPlayer) {}
+  public bsl(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
+    switch (paramView.getId())
     {
-      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
-      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
-      if (i / j <= 0.1F) {
-        break label126;
+    default: 
+      return false;
+    }
+    Object localObject = (ChatActivity)paramView.getContext();
+    String str = (String)paramView.getTag(2131296298);
+    paramView = (ChatMessage)paramView.getTag();
+    if (paramView != null)
+    {
+      localObject = ((ChatActivity)localObject).a();
+      if (!(localObject instanceof TroopChatPie)) {
+        break label124;
       }
-      AudioPlayer.a(this.a, 1);
-      if (AudioPlayer.a(this.a) != null) {
-        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
+      if (((TroopChatPie)localObject).a(paramView.senderuin, str, false)) {
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
       }
     }
-    return;
-    label126:
-    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
+    for (;;)
+    {
+      return true;
+      label124:
+      if ((localObject instanceof DiscussChatPie)) {
+        ((DiscussChatPie)localObject).a(paramView.senderuin, str, false);
+      }
+    }
   }
 }
 

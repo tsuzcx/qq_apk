@@ -1,13 +1,13 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class ue
   implements Runnable
 {
-  public ue(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong, String paramString) {}
+  public ue(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
   public void run()
   {
-    LiteTransferListenerCallback.access$400(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetDefaultPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
   }
 }
 

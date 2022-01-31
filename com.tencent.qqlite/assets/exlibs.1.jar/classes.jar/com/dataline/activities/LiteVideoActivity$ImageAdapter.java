@@ -92,14 +92,14 @@ public class LiteVideoActivity$ImageAdapter
     {
       paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903166, null);
       localObject = new bt(this);
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131296961));
-      ((bt)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296995));
-      ((bt)localObject).b = ((ImageView)paramViewGroup.findViewById(2131296996));
+      ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131296957));
+      ((bt)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131296991));
+      ((bt)localObject).b = ((ImageView)paramViewGroup.findViewById(2131296992));
       paramViewGroup.setTag(localObject);
       paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.a, this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.b));
       ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(false);
       ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.getResources().getDrawable(2130839066);
+      paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.getResources().getDrawable(2130839034);
       paramView = URLDrawable.getDrawable(a(localImageInfo.a()), paramView, paramView, false);
       ((bt)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
       ((bt)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localImageInfo.d());

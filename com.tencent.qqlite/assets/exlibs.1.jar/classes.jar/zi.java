@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
 
 public class zi
-  implements View.OnFocusChangeListener
+  implements MessageQueue.IdleHandler
 {
   public zi(BaseChatPie paramBaseChatPie) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean queueIdle()
   {
-    if ((paramBoolean) && (BaseChatPie.a(this.a) != null) && (BaseChatPie.a(this.a).getVisibility() == 0)) {
-      BaseChatPie.a(this.a, true);
-    }
+    this.a.N();
+    return false;
   }
 }
 

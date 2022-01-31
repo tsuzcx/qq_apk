@@ -1,13 +1,13 @@
-import com.dataline.util.HttpDownload.HttpDownloadListenerPack;
+import com.dataline.util.HttpUpload.HttpUploadListenerPack;
 
 public class dn
   implements Runnable
 {
-  public dn(HttpDownload.HttpDownloadListenerPack paramHttpDownloadListenerPack, long paramLong1, String paramString, long paramLong2) {}
+  public dn(HttpUpload.HttpUploadListenerPack paramHttpUploadListenerPack, long paramLong1, String paramString, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComDatalineUtilHttpDownload$HttpDownloadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_ComDatalineUtilHttpUpload$HttpUploadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

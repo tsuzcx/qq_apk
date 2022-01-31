@@ -1,51 +1,231 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.mobileqq.music.IQQPlayerService;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import com.tencent.mobileqq.music.IQQPlayerCallback;
 import com.tencent.mobileqq.music.IQQPlayerService.Stub;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class dyp
-  implements ServiceConnection
+  extends IQQPlayerService.Stub
 {
-  public dyp(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public dyp(QQPlayerService paramQQPlayerService) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public int a()
   {
-    MusicGeneWebViewPlugin.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
-    try
-    {
-      paramComponentName = MusicGeneWebViewPlugin.a(this.a).a(3, MusicGeneWebViewPlugin.a());
-      paramIBinder = MusicGeneWebViewPlugin.a(this.a).a();
-      if ((paramIBinder != null) && (paramIBinder.equals(paramComponentName))) {
-        MusicGeneWebViewPlugin.a(this.a).a(MusicGeneWebViewPlugin.a(this.a));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public Intent a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public Bundle a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public SongInfo a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public String a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getToken=" + QQPlayerService.a());
+    }
+    return QQPlayerService.a();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : generateToken : callerType=" + paramInt + ",id=" + paramString);
+    }
+    return QQPlayerService.a(paramInt, paramString);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : pause");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayMode");
+    }
+    QQPlayerService.a(paramInt);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayBarIntent: " + paramIntent.toString());
+    }
+    QQPlayerService.a(paramIntent);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setExtras ");
+    }
+    QQPlayerService.a(paramBundle);
+  }
+  
+  public void a(IQQPlayerCallback paramIQQPlayerCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : registerCallback");
+    }
+    if (paramIQQPlayerCallback == null) {
       return;
     }
-    catch (RemoteException paramComponentName)
+    if (QQPlayerService.a(this.a) == null) {}
+    try
     {
-      paramComponentName.printStackTrace();
+      if (QQPlayerService.a(this.a) == null) {
+        QQPlayerService.a(this.a, new RemoteCallbackList());
+      }
+      QQPlayerService.a(this.a).register(paramIQQPlayerCallback);
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : startPlay sCallback = " + QQPlayerService.a() + ",startIndex" + paramInt);
+    }
+    if (QQPlayerService.a() != null)
+    {
+      QQPlayerService.a(QQPlayerService.a());
+      QQPlayerService.b(null);
+    }
+    QQPlayerService.a(this.a, paramString, paramArrayOfSongInfo, paramInt);
+  }
+  
+  public boolean a()
+  {
+    return QQPlayerService.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : isPlayingMySong : token=" + paramString);
+    }
+    return QQPlayerService.a(paramString);
+  }
+  
+  public SongInfo[] a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
+    }
+    return QQPlayerService.b();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : resume");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public void b(IQQPlayerCallback paramIQQPlayerCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : unRegisterCallback");
+    }
+    if ((paramIQQPlayerCallback != null) && (QQPlayerService.a(this.a) != null)) {
+      QQPlayerService.a(this.a).unregister(paramIQQPlayerCallback);
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public int c()
   {
-    try
-    {
-      if (MusicGeneWebViewPlugin.a(this.a) != null) {
-        MusicGeneWebViewPlugin.a(this.a).b(MusicGeneWebViewPlugin.a(this.a));
-      }
-      MusicGeneWebViewPlugin.a(this.a, null);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
     }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
+    return QQPlayerService.d();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : stop");
     }
+    QQPlayerService.c(this.a);
+  }
+  
+  public int d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
+    }
+    return QQPlayerService.e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playNext");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public int e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
+    }
+    return QQPlayerService.f();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playPrev");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public int f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
+    }
+    return QQPlayerService.c();
   }
 }
 

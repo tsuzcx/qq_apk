@@ -1,20 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class cmt
-  implements Handler.Callback
+  implements View.OnClickListener
 {
   public cmt(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage != null) && (paramMessage.what == 1))
-    {
-      this.a.s = 2;
-      this.a.finish();
-    }
-    return false;
+    this.a.finish();
   }
 }
 

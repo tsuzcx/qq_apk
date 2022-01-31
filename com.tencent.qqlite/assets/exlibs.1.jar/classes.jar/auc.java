@@ -1,33 +1,35 @@
 import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-public class auc
-  implements View.OnClickListener
+class auc
+  extends SubAccountObserver
 {
-  public auc(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
+  auc(aub paramaub, SvcDevLoginInfo paramSvcDevLoginInfo) {}
   
-  public void onClick(View paramView)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack mainAccount=" + paramString1 + " subAccount=" + paramString2 + " key=" + paramString3);
+    }
+    if ((paramString3 == null) || (paramString3.length() > 0))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131362785), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack begin to kickOutDev");
+      }
+      if (EquipmentLockImpl.a().a(this.jdField_a_of_type_Aub.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.iAppId, (byte)1, HexUtil.a(paramString3), this.jdField_a_of_type_Aub.jdField_a_of_type_Int))
+      {
+        LoginInfoActivity.a(this.jdField_a_of_type_Aub.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, 1);
+        return;
+      }
+      LoginInfoActivity.a(this.jdField_a_of_type_Aub.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new aud(this));
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new aud(this, paramView));
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131364176), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+    LoginInfoActivity.a(this.jdField_a_of_type_Aub.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new aue(this));
   }
 }
 

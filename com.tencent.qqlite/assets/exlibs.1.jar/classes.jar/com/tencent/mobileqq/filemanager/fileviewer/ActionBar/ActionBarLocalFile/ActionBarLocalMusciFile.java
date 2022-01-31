@@ -5,7 +5,7 @@ import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarUtil;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import drk;
+import drq;
 
 public class ActionBarLocalMusciFile
   extends BaseActionBarLocalFile
@@ -18,7 +18,7 @@ public class ActionBarLocalMusciFile
   public void a()
   {
     a(0, "用QQ音乐打开", ActionBarUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
-    b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "用其他应用打开", 2130838517, 2130838518, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
+    b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), "用其他应用打开", 2130838494, 2130838495, ActionBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent));
   }
   
   public void a(Object paramObject)
@@ -44,7 +44,7 @@ public class ActionBarLocalMusciFile
   
   public void c()
   {
-    a(0, "恢复上传", new drk(this));
+    a(0, "恢复上传", new drq(this));
   }
 }
 

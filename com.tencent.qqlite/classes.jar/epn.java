@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
+import android.util.SparseArray;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
 public class epn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public epn(MediaControllerX paramMediaControllerX) {}
+  public epn(AvatarWallAdapter paramAvatarWallAdapter, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = MediaControllerX.a(this.a).b();
-    MediaControllerX.a(this.a).a(i + 15000);
-    MediaControllerX.a(this.a);
-    this.a.a(5000);
+    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.get(this.jdField_a_of_type_Int);
+    if (localProgressBar != null)
+    {
+      AvatarWallAdapter localAvatarWallAdapter = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter;
+      int i = localAvatarWallAdapter.n + 1;
+      localAvatarWallAdapter.n = i;
+      localProgressBar.setProgress(100 - i);
+    }
   }
 }
 

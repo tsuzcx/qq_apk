@@ -1,18 +1,31 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AlbumImageProxy;
-import com.tencent.mobileqq.widget.RotateBitmap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class exd
-  extends Handler
+  extends BroadcastReceiver
 {
-  public exd(AlbumImageProxy paramAlbumImageProxy) {}
+  public exd(WebProcessManager paramWebProcessManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramMessage = (Bitmap)paramMessage.obj;
-    this.a.setImageRotateBitmapResetBase(new RotateBitmap(paramMessage, 0), true);
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "action=" + paramContext);
+      }
+      if (paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process"))
+      {
+        this.a.h();
+        return;
+      }
+    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
+    this.a.i();
   }
 }
 

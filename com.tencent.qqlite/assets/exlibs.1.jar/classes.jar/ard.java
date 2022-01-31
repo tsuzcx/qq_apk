@@ -1,29 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.NightModeLogic;
+import com.tencent.qphone.base.util.QLog;
 
 public class ard
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
   public ard(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if (!BaseApplicationImpl.a)
-    {
-      Toast.makeText(this.a, this.a.getString(2131363261), 0).show();
-      return;
+    int i = (int)(35.0F * this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
     }
-    if (IndividuationSetActivity.a(this.a))
-    {
-      IndividuationSetActivity.a(this.a).startNightMode(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "QQLite_Trends_tab", "Neight_theme", 0, 0, "", "", "", "");
+    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
+    if (localBitmap != null) {
+      this.a.runOnUiThread(new are(this, localBitmap));
     }
-    IndividuationSetActivity.a(this.a, true);
   }
 }
 

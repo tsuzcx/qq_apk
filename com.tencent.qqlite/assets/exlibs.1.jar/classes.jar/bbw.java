@@ -1,27 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-class bbw
-  implements Animation.AnimationListener
+public class bbw
+  implements View.OnClickListener
 {
-  bbw(bbv parambbv, View paramView) {}
+  public bbw(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Bbv.jdField_a_of_type_Int;
-    paramAnimation.topMargin = this.jdField_a_of_type_Bbv.b;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Bbv.jdField_a_of_type_Boolean = false;
+    QQBrowserActivity.b(this.a).setVisibility(8);
+    this.a.b.setVisibility(8);
+    this.a.l();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

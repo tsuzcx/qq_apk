@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
 
-public final class ewq
-  implements Runnable
+public class ewq
 {
-  public ewq(String paramString, File paramFile) {}
-  
-  public void run()
-  {
-    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_other", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentJsonTask", 2, "downloadAllIfNotExists, " + this.jdField_a_of_type_JavaLangString + ",ret=" + bool);
-    }
-  }
+  public static final KapalaiAdapterUtil a = new KapalaiAdapterUtil(null);
 }
 
 

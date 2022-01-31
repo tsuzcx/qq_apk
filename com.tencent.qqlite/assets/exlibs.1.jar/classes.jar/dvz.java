@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
 
-class dvz
-  implements DialogInterface.OnClickListener
+public class dvz
+  extends DataSetObserver
 {
-  dvz(dvy paramdvy) {}
+  public dvz(QfileHorizontalListView paramQfileHorizontalListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    if (paramInt == 1) {
-      this.a.a.b();
+    synchronized (this.a)
+    {
+      QfileHorizontalListView.a(this.a, true);
+      this.a.invalidate();
+      this.a.requestLayout();
+      return;
     }
-    paramDialogInterface.dismiss();
+  }
+  
+  public void onInvalidated()
+  {
+    QfileHorizontalListView.a(this.a);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
 }
 

@@ -1,6 +1,6 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bon
@@ -10,7 +10,7 @@ public class bon
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    this.a.b.cancel();
   }
 }
 

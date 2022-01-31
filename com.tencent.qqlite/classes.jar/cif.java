@@ -1,12 +1,16 @@
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.utils.LogTag;
+
 public class cif
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
-  public int b;
+  public cif(AlbumListAdapter paramAlbumListAdapter) {}
   
-  private cif(int paramInt)
+  public void run()
   {
-    this.a = new byte[paramInt];
+    LogTag.a();
+    AlbumListAdapter.a(this.a, 100);
+    LogTag.a("PEAK", "queryAlbumList");
   }
 }
 

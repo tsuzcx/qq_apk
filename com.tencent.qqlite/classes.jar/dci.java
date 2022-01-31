@@ -1,22 +1,51 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class dci
+  extends ContactBindObserver
 {
-  public static final int a = 0;
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final int b = 1;
-  public static final String[] b = { "sync1", "sync2", "sync3" };
-  public static final int c = 2;
-  private static final int d = 0;
-  private static final int e = 1;
-  private static final int f = 2;
+  public dci(ContactSyncManager paramContactSyncManager) {}
   
-  public static final Uri a(String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
+    PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.a.a.getManager(10);
+    int i = localPhoneContactManager.b();
+    String str1 = this.a.a.a();
+    String str2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i + " | syncUin = " + ContactSyncManager.b(str2) + " | currentUin = " + ContactSyncManager.b(str1));
+    }
+    if (localPhoneContactManager.g()) {
+      if (!TextUtils.isEmpty(str2)) {}
+    }
+    do
+    {
+      do
+      {
+        ContactSyncManager.a(this.a);
+        do
+        {
+          return;
+        } while (str1.equals(str2));
+        ContactSyncManager.a(this.a);
+        ContactSyncManager.a(this.a);
+        return;
+      } while ((i != 2) && (i != 1));
+      ContactSyncManager.b(this.a);
+    } while ((TextUtils.isEmpty(str2)) || (!str2.equals(this.a.a.a())));
+    ContactSyncManager.a(this.a);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean1 + " | hasUpdate = " + paramBoolean2);
+    }
+    this.a.b();
   }
 }
 

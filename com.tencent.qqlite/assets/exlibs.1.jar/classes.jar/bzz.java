@@ -1,19 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.ChatBackground;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.widget.XPanelContainer;
 
 public class bzz
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public bzz(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(TroopChatPie.a(this.a), TroopChatPie.a(this.a), TroopChatPie.a(this.a), TroopChatPie.a(this.a), TroopChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a();
+    this.a.e.setVisibility(8);
+    this.a.f.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.e.setVisibility(0);
+    this.a.f.setVisibility(0);
+    TroopChatPie.b(this.a).setBackgroundDrawable(TroopChatPie.O(this.a).a.a);
+    TroopChatPie.b(this.a).setBackgroundResource(2130839257);
+    TroopChatPie.a(this.a).setBackgroundResource(2130839181);
   }
 }
 

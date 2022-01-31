@@ -1,19 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbz
-  implements View.OnTouchListener
+  implements Runnable
 {
   public bbz(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    QQBrowserActivity.a(this.a).setVisibility(8);
-    QQBrowserActivity.b(this.a).setVisibility(8);
-    this.a.b.setVisibility(8);
-    return true;
+    QLog.doReportLogSelf(AppSetting.a, "FeedbackReport", "");
   }
 }
 

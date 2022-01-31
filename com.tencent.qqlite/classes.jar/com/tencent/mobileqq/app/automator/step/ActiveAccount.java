@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -33,6 +34,9 @@ public class ActiveAccount
       localQQAppInterface.a().d("last_group_seq", 0L);
       TroopNotificationUtils.a(localQQAppInterface.a(), false);
       localQQAppInterface.a().d("last_friend_seq_47", 0L);
+    }
+    if (AnonymousChatHelper.a != null) {
+      AnonymousChatHelper.a().a();
     }
     return 7;
   }

@@ -26,13 +26,13 @@ import com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate;
 import com.tencent.mobileqq.utils.ReflectedMethods;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cxc;
+import cxi;
 import java.util.HashMap;
 
 public class GetCheckUpdate
   extends AsyncStep
 {
-  cxc a;
+  cxi a;
   
   private void a(QQAppInterface paramQQAppInterface)
   {
@@ -136,10 +136,10 @@ public class GetCheckUpdate
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(115, (CheckUpdateItemInterface)localObject);
       a(localQQAppInterface);
       b(localQQAppInterface);
-      if (this.jdField_a_of_type_Cxc == null)
+      if (this.jdField_a_of_type_Cxi == null)
       {
-        this.jdField_a_of_type_Cxc = new cxc(this, null);
-        localQQAppInterface.a(this.jdField_a_of_type_Cxc);
+        this.jdField_a_of_type_Cxi = new cxi(this, null);
+        localQQAppInterface.a(this.jdField_a_of_type_Cxi);
       }
       return;
     }
@@ -147,10 +147,10 @@ public class GetCheckUpdate
   
   public void b()
   {
-    if (this.jdField_a_of_type_Cxc != null)
+    if (this.jdField_a_of_type_Cxi != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.c(this.jdField_a_of_type_Cxc);
-      this.jdField_a_of_type_Cxc = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.c(this.jdField_a_of_type_Cxi);
+      this.jdField_a_of_type_Cxi = null;
     }
   }
 }

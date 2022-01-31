@@ -1,55 +1,32 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class aqc
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public aqc(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public aqc(GesturePWDCreateActivity paramGesturePWDCreateActivity, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (paramInt >= 0)) {
-      return Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt]);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903206, null);
-    }
-    paramView = paramViewGroup.findViewById(2131297163);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt] > 0))
+    switch (paramView.getId())
     {
-      paramView.setBackgroundResource(2130838725);
-      return paramViewGroup;
+    case 2131297162: 
+    case 2131297163: 
+    default: 
+      return;
+    case 2131297161: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.a(), 21);
+      this.a.a();
+      return;
     }
-    paramView.setBackgroundResource(2130839486);
-    return paramViewGroup;
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 11);
+    this.a.overridePendingTransition(2130968592, 2130968589);
   }
 }
 

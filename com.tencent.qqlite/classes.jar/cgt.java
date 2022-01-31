@@ -1,67 +1,48 @@
-import android.widget.ImageView;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.search.ContactsSearchablePhoneContact;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class cgt
-  extends ContactBindObserver
+  extends SearchResultDialog
 {
-  private cgt(ContactListView paramContactListView) {}
-  
-  protected void a(boolean paramBoolean)
+  public cgt(ContactListView paramContactListView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    if ((!paramBoolean) || (!NetworkUtil.e(this.a.getContext())))
-    {
-      this.a.i();
-      this.a.g();
-    }
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b();
-    if (!paramBoolean1)
-    {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 4)) && (this.a.l == 0)) {
-        this.a.a(2131363380, 3000L);
-      }
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.b.setEnabled(true);
-      if (i == 4)
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
+    if ((this.a.jdField_a_of_type_Int == 0) || (this.a.jdField_a_of_type_Int == 2)) {
+      if (this.a.jdField_a_of_type_JavaUtilList != null)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c())
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cgu(this));
-          return;
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext()) {
+          ((ArrayList)localObject).addAll((List)localIterator.next());
         }
-        this.a.i();
-        this.a.jdField_a_of_type_Cgw.sendEmptyMessageDelayed(1, 0L);
-        return;
       }
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h());
-    this.a.a(2131363378, 0L, false);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      this.a.i();
-      ContactListView.a(this.a, true);
-      if (!paramBoolean2) {
-        this.a.g();
-      }
-      return;
     }
-    this.a.g();
+    for (;;)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(new ContactsSearchablePhoneContact(paramContext, paramQQAppInterface, (PhoneContact)((Iterator)localObject).next(), 30064771072L));
+      }
+      if ((this.a.jdField_a_of_type_Int == 3) && (this.a.b != null)) {
+        ((ArrayList)localObject).addAll(this.a.b);
+      }
+    }
+    return localArrayList;
   }
 }
 

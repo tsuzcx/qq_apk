@@ -1,14 +1,16 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 
-public class dlu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class dlu
+  implements Runnable
 {
-  public dlu(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  dlu(dls paramdls, long paramLong) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.a.e();
+    QfileBaseRecentFileTabView.a(this.jdField_a_of_type_Dls.a);
+    QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Dls.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,13 +1,26 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class aaq
-  implements Runnable
+  implements Comparator
 {
   public aaq(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.a.U();
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      if (paramChatMessage1.getId() <= paramChatMessage2.getId()) {}
+    }
+    while (paramChatMessage1.time > paramChatMessage2.time)
+    {
+      return 1;
+      if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
+        return -1;
+      }
+      return 0;
+    }
+    return -1;
   }
 }
 

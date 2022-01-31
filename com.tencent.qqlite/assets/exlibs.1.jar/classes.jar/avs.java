@@ -1,34 +1,28 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class avs
   extends FriendListObserver
 {
-  public avs(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public avs(MoveToGroupActivity paramMoveToGroupActivity) {}
   
   protected void a(String paramString, byte paramByte1, byte paramByte2)
   {
-    if ((paramString != null) && (paramString.equals(this.a.jdField_a_of_type_JavaLangString)))
-    {
-      this.a.jdField_a_of_type_Int = paramByte1;
+    if (this.a.isFinishing()) {
       return;
     }
-    this.a.c();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean)
-    {
-      this.a.c = paramString2;
-      paramString1 = (FriendManager)this.a.app.getManager(8);
-      this.a.jdField_b_of_type_JavaLangString = paramString1.a(this.a.jdField_a_of_type_JavaLangString);
-      return;
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131363422), 0).b(this.a.getTitleBarHeight());
     }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.c);
+    for (;;)
+    {
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      QQToast.a(this.a, 2, this.a.getString(2131363420), 0).b(this.a.getTitleBarHeight());
+    }
   }
 }
 

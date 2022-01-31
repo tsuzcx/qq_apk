@@ -1,14 +1,13 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aaw
   implements Runnable
 {
-  public aaw(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
+  public aaw(BaseChatPie paramBaseChatPie, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, this.jdField_a_of_type_AndroidContentIntent);
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Int, this.b, "");
   }
 }
 

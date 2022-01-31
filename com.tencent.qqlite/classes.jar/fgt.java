@@ -1,29 +1,23 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import com.tencent.widget.FastScroller;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
 public class fgt
-  extends AdapterView.AdapterDataSetObserver
+  implements Comparator
 {
-  public fgt(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView);
-  }
+  public fgt(DumpMemInfoHandler paramDumpMemInfoHandler) {}
   
-  public void onChanged()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    super.onChanged();
-    if (this.a.a != null) {
-      this.a.a.c();
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
     }
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    if (this.a.a != null) {
-      this.a.a.c();
+    if (i < j) {
+      return 2;
     }
+    return -1;
   }
 }
 

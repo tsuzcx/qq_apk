@@ -1,18 +1,26 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
 
 public class bfd
-  extends ConfigObserver
+  extends CardObserver
 {
   public bfd(QQSettingMe paramQQSettingMe) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
-    if (this.a.b) {
-      this.a.a.runOnUiThread(new bfe(this));
+    if ((paramBoolean) && (this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(((Card)paramObject).uin))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new bfe(this));
+    }
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {
+      this.a.a(paramString);
     }
   }
 }

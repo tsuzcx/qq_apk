@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
-public class egk
-  implements Runnable
+public final class egk
+  extends Editable.Factory
 {
-  public egk(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
-  
-  public void run()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    switch (this.a.aM)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
-      return;
-    case 2: 
-      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
-      this.a.s();
-      return;
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
-    {
-      this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().resumeTransactionTask(this.a.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-      return;
-    }
-    this.a.c("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
+    return new QQTextBuilder(paramCharSequence, 3);
   }
 }
 

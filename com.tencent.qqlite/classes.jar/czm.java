@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 public class czm
-  implements Runnable
+  implements ProtoReqManager.IProtoRespBack
 {
-  public czm(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public czm(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void run()
+  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    try
+    {
+      paramProtoResp = paramProtoResp.a.getWupBuffer();
+      paramProtoReq = new structmsg.RspSystemMsgRead();
+      paramProtoReq.mergeFrom(paramProtoResp);
+      int i = paramProtoReq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      }
+      return;
+    }
+    catch (Exception paramProtoResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
+    }
   }
 }
 

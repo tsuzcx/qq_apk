@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aif
   implements Runnable
 {
-  public aif(DevlockPushActivity paramDevlockPushActivity) {}
+  public aif(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
   public void run()
   {
-    try
-    {
-      if ((DevlockPushActivity.a(this.a) != null) && (DevlockPushActivity.a(this.a).isShowing()))
-      {
-        DevlockPushActivity.a(this.a).dismiss();
-        DevlockPushActivity.a(this.a).cancel();
-      }
-      DevlockPushActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    Object localObject = this.a.app.a();
+    localObject = this.a.app.b((String)localObject);
+    this.a.runOnUiThread(new aig(this, (Drawable)localObject));
   }
 }
 

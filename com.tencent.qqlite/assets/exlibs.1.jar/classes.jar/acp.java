@@ -1,12 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class acp
-  implements DialogInterface.OnClickListener
+public class acp
+  extends Handler
 {
-  acp(aco paramaco) {}
+  public acp() {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public acp(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
+    {
+      if (ChatBackgroundSettingActivity.l < 3)
+      {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        ChatBackgroundSettingActivity.a((QQAppInterface)localObject, paramMessage, StatisticCollector.a(BaseApplication.getContext()));
+        ChatBackgroundSettingActivity.l += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundSettingActivity.l);
+        }
+        Message localMessage = ChatBackgroundSettingActivity.a.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ChatBackgroundSettingActivity.a.sendMessageDelayed(localMessage, 120000L);
+      }
+    }
+    else {
+      return;
+    }
+    ChatBackgroundSettingActivity.l = 0;
+  }
 }
 
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.mobileqq.service.message.PBDecodeContext;
-import cyw;
+import czc;
 import java.util.List;
 import msf.msgcomm.msg_comm.Msg;
 
@@ -33,7 +33,7 @@ public class FileSlaveMasterMessageProcessor
     return false;
   }
   
-  public cyw a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public czc a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     boolean bool = false;
     switch (paramInt)
@@ -41,7 +41,7 @@ public class FileSlaveMasterMessageProcessor
     }
     for (;;)
     {
-      return new cyw(null, bool);
+      return new czc(null, bool);
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
         bool = a(paramMsgInfo);
       } else {

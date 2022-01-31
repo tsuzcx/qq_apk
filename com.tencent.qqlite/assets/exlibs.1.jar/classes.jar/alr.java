@@ -1,17 +1,10 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class alr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public alr(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
-  
-  public void run()
-  {
-    EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_AndroidContentContext.getString(2131362935), this.jdField_a_of_type_JavaLangString);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

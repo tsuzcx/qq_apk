@@ -12,8 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bwg;
 import bwh;
-import bwi;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -40,7 +40,7 @@ public class PATextItemBuilder
   public PATextItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bwh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bwg(this);
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -52,7 +52,7 @@ public class PATextItemBuilder
     }
     Object localObject2 = (MessageForPubAccount)paramMessageRecord;
     PAMessage localPAMessage = ((MessageForPubAccount)localObject2).mPAMessage;
-    paramMessageRecord = (bwi)paramViewHolder;
+    paramMessageRecord = (bwh)paramViewHolder;
     Object localObject3 = localPAMessage.items;
     paramViewHolder = (ViewGroup)paramLinearLayout.findViewById(2131296725);
     Object localObject1 = (ImageView)paramLinearLayout.findViewById(2131296727);
@@ -138,7 +138,7 @@ public class PATextItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bwi(this);
+    return new bwh(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -170,7 +170,7 @@ public class PATextItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131298983, this.jdField_a_of_type_AndroidContentContext.getString(2131363073));
+    paramView.a(2131298932, this.jdField_a_of_type_AndroidContentContext.getString(2131363076));
     return paramView.a();
   }
 }

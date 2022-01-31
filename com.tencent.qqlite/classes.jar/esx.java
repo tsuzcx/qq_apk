@@ -1,13 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public final class esx
-  implements MediaPlayer.OnCompletionListener
+class esx
+  implements Runnable
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  esx(esw paramesw, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  
+  public void run()
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    this.jdField_a_of_type_Esw.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.a(AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Esw.a, this.jdField_a_of_type_JavaLangString));
+    if (!this.b.equalsIgnoreCase(str))
+    {
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Esw.a, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      return;
+    }
+    this.jdField_a_of_type_Esw.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 

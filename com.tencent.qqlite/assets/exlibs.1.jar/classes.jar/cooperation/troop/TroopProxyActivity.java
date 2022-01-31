@@ -5,12 +5,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 import fma;
-import java.io.File;
 import java.util.ArrayList;
 
 public class TroopProxyActivity
@@ -36,20 +34,10 @@ public class TroopProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    if (!PluginUtils.isPluginInstalled(paramActivity, "troop_plugin.apk", "107392"))
-    {
-      paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131492887));
-      paramActivity.a("正在加载...");
-      paramActivity.setOnDismissListener(new fma());
-      return paramActivity;
-    }
-    try
-    {
-      PluginUtils.getInstallPath(paramActivity, "troop_plugin.apk").getCanonicalPath();
-      return null;
-    }
-    catch (Exception paramActivity) {}
-    return null;
+    paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131492887));
+    paramActivity.a("正在加载...");
+    paramActivity.setOnDismissListener(new fma());
+    return paramActivity;
   }
   
   public static Class a(String paramString)

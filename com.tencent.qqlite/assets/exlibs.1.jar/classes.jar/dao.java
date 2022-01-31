@@ -1,40 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class dao
+class dao
   implements Runnable
 {
-  public dao(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  dao(dan paramdan, Runnable paramRunnable) {}
   
   public void run()
   {
-    Object localObject = ((FriendManager)this.a.app.getManager(8)).a(this.a.app.a());
-    if (localObject != null) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        localObject = ((Card)localObject).strLocationCodes.split("-");
-        localObject[3] = "0";
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b((String[])localObject);
-        Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-        localMessage.obj = new Object[] { localObject, str };
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(ConditionSearchFriendActivity.c(), 2, "fillLocationData | exception: ", localException);
-        return;
-      }
+    try
+    {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+      return;
     }
-    QLog.d(ConditionSearchFriendActivity.c(), 2, "fillLocationData | card is null");
+    finally
+    {
+      this.jdField_a_of_type_Dan.a();
+    }
   }
 }
 

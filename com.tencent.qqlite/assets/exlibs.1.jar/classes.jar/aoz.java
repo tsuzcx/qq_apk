@@ -1,17 +1,19 @@
+import android.os.AsyncTask;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aoz
   implements Animation.AnimationListener
 {
-  public aoz(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public aoz(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.a.execute(new Void[0]);
+    this.a.c = false;
+    FriendProfileImageActivity.a(this.a).setVisibility(0);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

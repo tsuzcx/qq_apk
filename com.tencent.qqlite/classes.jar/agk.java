@@ -1,29 +1,14 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 class agk
   implements Runnable
 {
-  agk(agj paramagj, boolean paramBoolean) {}
+  agk(agh paramagh) {}
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_Agj.a, true);
-    PullRefreshHeader localPullRefreshHeader;
-    if (Conversation.b(this.jdField_a_of_type_Agj.a))
-    {
-      Conversation.a(this.jdField_a_of_type_Agj.a, 800L);
-      localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Agj.a);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label63;
-      }
-    }
-    label63:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    this.a.a.a.a();
   }
 }
 

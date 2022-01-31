@@ -1,13 +1,22 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSetting;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class ben
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ben(QQSetting paramQQSetting, boolean paramBoolean) {}
+  public ben(QQSetting paramQQSetting) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQSetting.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting, this.jdField_a_of_type_Boolean);
+    paramView = new Intent(this.a.a(), NearbyTroopsActivity.class);
+    paramView.putExtra("from", 4);
+    paramView.putExtra("mode", 0);
+    this.a.a(paramView);
+    ReportController.b(this.a.a, "CliOper", "", "", "Open_group", "Around_grp", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class awx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  awx(aww paramaww, String paramString, List paramList) {}
+  awx(awu paramawu, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aww.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, null);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

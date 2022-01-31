@@ -32,17 +32,17 @@ import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
-import dfz;
-import dga;
-import dgb;
-import dgc;
-import dge;
 import dgf;
+import dgg;
 import dgh;
-import dgm;
-import dgp;
-import dgq;
-import dgr;
+import dgi;
+import dgk;
+import dgl;
+import dgn;
+import dgs;
+import dgv;
+import dgw;
+import dgx;
 
 @SuppressLint({"NewApi"})
 public class FilePreviewActivity
@@ -136,7 +136,7 @@ public class FilePreviewActivity
       if (!c()) {
         break label310;
       }
-      setContentViewForImage(2130903439);
+      setContentViewForImage(2130903429);
       label192:
       c();
       if (this.jdField_a_of_type_Int != 0) {
@@ -168,11 +168,11 @@ public class FilePreviewActivity
       return;
       this.jdField_a_of_type_Boolean = FileManagerUtil.a(this.jdField_c_of_type_Int);
       break;
-      setContentView(2130903439);
+      setContentView(2130903429);
       break label192;
       this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("offline_file_url");
       this.h.setVisibility(0);
-      this.h.setText(2131364513);
+      this.h.setText(2131364492);
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_d_of_type_Boolean = true;
       }
@@ -210,14 +210,14 @@ public class FilePreviewActivity
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dgc(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dgi(this);
   }
   
   private void j()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback = new dge(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback = new dgk(this);
       return;
     }
     finally
@@ -229,7 +229,7 @@ public class FilePreviewActivity
   
   public void a(int paramInt)
   {
-    runOnUiThread(new dgb(this, paramInt));
+    runOnUiThread(new dgh(this, paramInt));
   }
   
   protected boolean a()
@@ -249,7 +249,7 @@ public class FilePreviewActivity
   
   void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298074));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131298037));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView = new FileWebView(getApplicationContext());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView);
     Object localObject = new DisplayMetrics();
@@ -262,10 +262,10 @@ public class FilePreviewActivity
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     removeWebViewLayerType();
     d();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setWebViewClient(new dgf(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setWebViewClient(new dgl(this));
     localObject = new Handler();
     if (c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setOnCustomScroolChangeListener(new dgh(this, (Handler)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setOnCustomScroolChangeListener(new dgn(this, (Handler)localObject));
     }
     for (;;)
     {
@@ -286,7 +286,7 @@ public class FilePreviewActivity
         FileWebView.enablePlatformNotifications();
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setOnCustomScroolChangeListener(new dgm(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.setOnCustomScroolChangeListener(new dgs(this));
     }
   }
   
@@ -310,18 +310,18 @@ public class FilePreviewActivity
   {
     super.doOnCreate(paramBundle);
     a(getIntent());
-    setRightButton(2131363522, new dfz(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131296894));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298078));
+    setRightButton(2131363523, new dgf(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131296890));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298041));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298081));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298044));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298076));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298077));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298039));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298040));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131298079));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298080));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298075));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131298042));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298043));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131298038));
     setTitle(this.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 0) {
       f();
@@ -333,12 +333,12 @@ public class FilePreviewActivity
   
   public void e()
   {
-    runOnUiThread(new dgp(this));
+    runOnUiThread(new dgv(this));
   }
   
   public void f()
   {
-    runOnUiThread(new dgq(this));
+    runOnUiThread(new dgw(this));
   }
   
   public void finish()
@@ -400,12 +400,12 @@ public class FilePreviewActivity
   
   public void g()
   {
-    runOnUiThread(new dgr(this));
+    runOnUiThread(new dgx(this));
   }
   
   public void h()
   {
-    runOnUiThread(new dga(this));
+    runOnUiThread(new dgg(this));
   }
 }
 

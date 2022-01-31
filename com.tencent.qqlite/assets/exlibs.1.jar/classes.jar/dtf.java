@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
 
 public class dtf
-  implements View.OnClickListener
+  implements FileManagerUtil.IGetVideoCallback
 {
   public dtf(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void onClick(View paramView)
+  public void a(Bitmap paramBitmap)
   {
-    LocalVideoFileView.c(this.a);
+    LocalVideoFileView.a(this.a).runOnUiThread(new dtg(this, paramBitmap));
   }
 }
 

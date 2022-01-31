@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.phone.TosActivity;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class chw
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public chw(TosActivity paramTosActivity) {}
+  public chw(PhoneMatchView paramPhoneMatchView) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    return true;
+    this.a.a.f();
   }
 }
 

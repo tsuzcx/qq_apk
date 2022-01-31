@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import java.util.TimerTask;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.startup.step.NameProcess;
 
 public class eel
-  extends TimerTask
+  extends Handler
 {
-  public eel(MainAcitivityReportHelper paramMainAcitivityReportHelper, QQAppInterface paramQQAppInterface) {}
+  public eel(NameProcess paramNameProcess) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    MainAcitivityReportHelper.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    com.tencent.common.app.BaseApplicationImpl.a = paramMessage.arg1;
   }
 }
 

@@ -36,26 +36,26 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bcw;
+import bcu;
+import bcx;
 import bcz;
+import bda;
 import bdb;
 import bdc;
 import bdd;
 import bde;
-import bdf;
 import bdg;
+import bdh;
 import bdi;
 import bdj;
 import bdk;
 import bdl;
 import bdm;
-import bdn;
-import bdo;
+import bdq;
+import bdr;
 import bds;
 import bdt;
 import bdu;
-import bdv;
-import bdw;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.biz.common.download.OfflineDownloader;
 import com.tencent.biz.common.offline.AsyncBack;
@@ -115,11 +115,11 @@ public class QQMapActivity
   protected static final int i = 0;
   protected static final String i = "com.tencent.process.exit";
   public double a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bdj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bdh(this);
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
   Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  bdw jdField_a_of_type_Bdw = new bdw(this, 1, 1, 1, 8);
+  bdu jdField_a_of_type_Bdu = new bdu(this, 1, 1, 1, 8);
   protected AsyncBack a;
   protected QQMapView a;
   public SelectPicPopupWindow a;
@@ -129,7 +129,7 @@ public class QQMapActivity
   public ActionSheet a;
   public double b;
   float jdField_b_of_type_Float;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new bdk(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new bdi(this);
   public View.OnClickListener b;
   Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   public ImageView b;
@@ -184,13 +184,13 @@ public class QQMapActivity
     this.jdField_o_of_type_Boolean = false;
     this.jdField_p_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = null;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new bdm(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new bdk(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new bds(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new bdt(this);
-    this.jdField_e_of_type_AndroidViewView$OnClickListener = new bdu(this);
-    this.jdField_f_of_type_AndroidViewView$OnClickListener = new bdv(this);
-    this.jdField_g_of_type_AndroidViewView$OnClickListener = new bcz(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new bdq(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new bdr(this);
+    this.jdField_e_of_type_AndroidViewView$OnClickListener = new bds(this);
+    this.jdField_f_of_type_AndroidViewView$OnClickListener = new bdt(this);
+    this.jdField_g_of_type_AndroidViewView$OnClickListener = new bcx(this);
   }
   
   static String a(Context paramContext)
@@ -263,7 +263,7 @@ public class QQMapActivity
         if ((this.jdField_h_of_type_AndroidViewView != null) && (!this.jdField_l_of_type_Boolean))
         {
           this.jdField_h_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_h_of_type_AndroidViewView.setOnClickListener(new bcw(this));
+          this.jdField_h_of_type_AndroidViewView.setOnClickListener(new bcu(this));
         }
       } while (this.jdField_c_of_type_AndroidWidgetTextView.getText().length() <= 0);
       if (this.jdField_d_of_type_AndroidWidgetImageView != null) {
@@ -485,19 +485,19 @@ public class QQMapActivity
   
   private void f()
   {
-    findViewById(2131297524).setVisibility(8);
-    this.jdField_k_of_type_AndroidViewView = findViewById(2131298582);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView = ((QQMapView)findViewById(2131298583));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298589));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298587));
-    this.jdField_h_of_type_AndroidViewView = findViewById(2131298586);
-    Object localObject = BitmapManager.a(getResources(), 2130839127);
+    findViewById(2131297520).setVisibility(8);
+    this.jdField_k_of_type_AndroidViewView = findViewById(2131298538);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView = ((QQMapView)findViewById(2131298539));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298545));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298543));
+    this.jdField_h_of_type_AndroidViewView = findViewById(2131298542);
+    Object localObject = BitmapManager.a(getResources(), 2130839095);
     this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, ((Bitmap)localObject).getHeight());
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298588));
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839129);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298544));
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839097);
     this.jdField_c_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, ((Bitmap)localObject).getHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setContentDescription(getString(2131362628));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setContentDescription(getString(2131362636));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setLogoMarginRate(0, 0.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setLogoMarginRate(1, 0.8F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setLogoMarginRate(2, 0.0F);
@@ -526,16 +526,16 @@ public class QQMapActivity
         localObject = new MapView.LayoutParams(-2, -2, null, 81);
         ((MapView.LayoutParams)localObject).point = new GeoPoint((int)(this.jdField_a_of_type_Double * 1000000.0D), (int)(this.jdField_b_of_type_Double * 1000000.0D));
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.addView(this.jdField_f_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297247));
+        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297243));
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(4);
-        this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297248));
+        this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297244));
         this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(4);
-        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297245));
-        this.jdField_i_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131297244);
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297246));
+        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297241));
+        this.jdField_i_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131297240);
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131297242));
         this.jdField_c_of_type_AndroidWidgetTextView.setText("");
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_j_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131297249);
+        this.jdField_j_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131297245);
         if (!TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString))
         {
           this.jdField_j_of_type_AndroidViewView.setVisibility(0);
@@ -565,22 +565,22 @@ public class QQMapActivity
     {
       ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "call_googlemap", 0, 0, "", "", "", "");
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.setGoogleMapEnable(true);
-      findViewById(2131298584).setVisibility(0);
+      findViewById(2131298540).setVisibility(0);
       this.jdField_o_of_type_Boolean = true;
     }
   }
   
   private void s()
   {
-    Object localObject = (ViewGroup)findViewById(2131296894);
+    Object localObject = (ViewGroup)findViewById(2131296890);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
-    localObject = findViewById(2131296936);
+    localObject = findViewById(2131296932);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
-    localObject = (TextView)findViewById(2131296901);
+    localObject = (TextView)findViewById(2131296897);
     if (localObject != null) {
       IphoneTitleBarActivity.setLayerType((View)localObject);
     }
@@ -588,9 +588,9 @@ public class QQMapActivity
   
   private void t()
   {
-    ((ImageView)findViewById(2131298592)).setOnClickListener(new bdb(this));
-    ((ImageView)findViewById(2131298593)).setOnClickListener(new bdc(this));
-    ((ImageView)findViewById(2131298594)).setOnClickListener(new bdd(this));
+    ((ImageView)findViewById(2131298548)).setOnClickListener(new bcz(this));
+    ((ImageView)findViewById(2131298549)).setOnClickListener(new bda(this));
+    ((ImageView)findViewById(2131298550)).setOnClickListener(new bdb(this));
   }
   
   public Dialog a(int paramInt1, int paramInt2, DialogInterface.OnDismissListener paramOnDismissListener)
@@ -613,7 +613,7 @@ public class QQMapActivity
   {
     Dialog localDialog = new Dialog(this, 2131624119);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296915);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
@@ -621,13 +621,13 @@ public class QQMapActivity
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296918);
+    paramString1 = (TextView)localDialog.findViewById(2131296914);
     if (paramString1 != null) {
-      paramString1.setText(2131363354);
+      paramString1.setText(2131363357);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131296919);
+    paramString1 = (TextView)localDialog.findViewById(2131296915);
     if (paramString1 != null) {
-      paramString1.setText(2131363110);
+      paramString1.setText(2131363113);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
@@ -643,8 +643,8 @@ public class QQMapActivity
     localBundle.putString("latitude", String.valueOf(d1));
     localBundle.putString("longitude", String.valueOf(d2));
     localBundle.putString("description", this.jdField_j_of_type_JavaLangString);
-    if ((TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)) || (this.jdField_o_of_type_JavaLangString.equals(getString(2131364340)))) {
-      this.jdField_o_of_type_JavaLangString = getString(2131363209);
+    if ((TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)) || (this.jdField_o_of_type_JavaLangString.equals(getString(2131364324)))) {
+      this.jdField_o_of_type_JavaLangString = getString(2131363212);
     }
     if (TextUtils.isEmpty(this.jdField_p_of_type_JavaLangString)) {
       this.jdField_p_of_type_JavaLangString = "Unknown Address";
@@ -703,16 +703,16 @@ public class QQMapActivity
     {
       this.jdField_g_of_type_AndroidViewView = getLayoutInflater().inflate(2130903221, null);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.addView(this.jdField_g_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131297246));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131297242));
       this.jdField_d_of_type_AndroidWidgetTextView.setClickable(false);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_g_of_type_AndroidViewView.findViewById(2131297247).setVisibility(8);
-      this.jdField_g_of_type_AndroidViewView.findViewById(2131297248).setVisibility(8);
-      this.jdField_g_of_type_AndroidViewView.findViewById(2131297244).setVisibility(4);
-      paramGeoPoint = (ImageView)this.jdField_g_of_type_AndroidViewView.findViewById(2131297251);
-      paramGeoPoint.setImageResource(2130837623);
+      this.jdField_g_of_type_AndroidViewView.findViewById(2131297243).setVisibility(8);
+      this.jdField_g_of_type_AndroidViewView.findViewById(2131297244).setVisibility(8);
+      this.jdField_g_of_type_AndroidViewView.findViewById(2131297240).setVisibility(4);
+      paramGeoPoint = (ImageView)this.jdField_g_of_type_AndroidViewView.findViewById(2131297247);
+      paramGeoPoint.setImageResource(2130837625);
       paramGeoPoint.setBackgroundDrawable(null);
-      paramGeoPoint = (ImageView)this.jdField_g_of_type_AndroidViewView.findViewById(2131297250);
+      paramGeoPoint = (ImageView)this.jdField_g_of_type_AndroidViewView.findViewById(2131297246);
       localObject = AnimationUtils.loadAnimation(this, 17432576);
       ((Animation)localObject).setDuration(800L);
       ((Animation)localObject).setRepeatCount(2);
@@ -881,10 +881,10 @@ public class QQMapActivity
   public void h()
   {
     this.jdField_i_of_type_Boolean = false;
-    findViewById(2131298590).setVisibility(0);
+    findViewById(2131298546).setVisibility(0);
     if (!this.jdField_h_of_type_Boolean)
     {
-      TextView localTextView = (TextView)findViewById(2131296905);
+      TextView localTextView = (TextView)findViewById(2131296901);
       localTextView.setVisibility(0);
       localTextView.setText(localTextView.getTag().toString());
     }
@@ -895,7 +895,7 @@ public class QQMapActivity
     int i2 = a(this).getDimensionPixelSize(2131492887);
     if (Utils.b() < 31457280L)
     {
-      QQToast.a(this, 1, getString(2131362617), 1).b(i2);
+      QQToast.a(this, 1, getString(2131362612), 1).b(i2);
       return;
     }
     int i1 = 0;
@@ -918,7 +918,7 @@ public class QQMapActivity
     }
     if (this.r == null)
     {
-      QQToast.a(this, 1, getString(2131362608), 1).b(i2);
+      QQToast.a(this, 1, getString(2131362603), 1).b(i2);
       this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.dismiss();
       return;
     }
@@ -929,7 +929,7 @@ public class QQMapActivity
       ((ProgressBar)localObject1).setVisibility(0);
       ((TextView)localObject2).setVisibility(0);
       ((TextView)localObject2).setBackgroundDrawable(null);
-      ((TextView)localObject2).setText(getString(2131362616));
+      ((TextView)localObject2).setText(getString(2131362611));
     }
     localObject1 = "QQMAP" + QQMapConstants.h;
     localObject2 = getSharedPreferences("QQMAP", 0);
@@ -949,9 +949,9 @@ public class QQMapActivity
   public void j()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.d(super.getString(2131362790));
-    localActionSheet.a(super.getString(2131362618), 1);
-    localActionSheet.a(new bdl(this, localActionSheet));
+    localActionSheet.d(super.getString(2131362794));
+    localActionSheet.a(super.getString(2131362613), 1);
+    localActionSheet.a(new bdj(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -960,7 +960,7 @@ public class QQMapActivity
     Object localObject2 = a();
     String str1;
     Object localObject1;
-    if ((this.jdField_o_of_type_JavaLangString != null) && (!this.jdField_o_of_type_JavaLangString.equals(super.getString(2131363209))))
+    if ((this.jdField_o_of_type_JavaLangString != null) && (!this.jdField_o_of_type_JavaLangString.equals(super.getString(2131363212))))
     {
       str1 = this.jdField_o_of_type_JavaLangString;
       if (localObject2 == null) {
@@ -1010,23 +1010,23 @@ public class QQMapActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow = new SelectPicPopupWindow(getApplicationContext(), null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.a(getString(2131362609), 0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.a(getString(2131362610), 0, this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.b(getString(2131362611), 0, this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.a(getString(2131362604), 0);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.a(getString(2131362605), 0, this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.b(getString(2131362606), 0, this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.a(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.setOnDismissListener(new bdn(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.setOnDismissListener(new bdl(this));
       if (!bool1)
       {
-        localDrawable = super.getResources().getDrawable(2130838377);
-        localObject3 = super.getString(2131362612);
-        localObject4 = super.getString(2131362613);
+        localDrawable = super.getResources().getDrawable(2130838366);
+        localObject3 = super.getString(2131362607);
+        localObject4 = super.getString(2131362608);
         if (!new File(QQMapConstants.i).exists()) {
           break label844;
         }
-        localObject1 = super.getString(2131362615);
+        localObject1 = super.getString(2131362610);
         localObject5 = "sosogeo://?q=" + this.jdField_a_of_type_Double + "," + this.jdField_b_of_type_Double + "(" + str1 + ")";
         this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.a(localDrawable, 1, (String)localObject3, (String)localObject4, 0, (String)localObject5, (String)localObject1);
-        this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new bdo(this);
+        this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new bdm(this);
       }
       localObject3 = ((List)localObject2).iterator();
     }
@@ -1044,7 +1044,7 @@ public class QQMapActivity
       localObject4 = ((ResolveInfo)localObject5).activityInfo.applicationInfo.loadLabel(localPackageManager);
       if (str2.equals(QQMapConstants.d))
       {
-        localObject2 = getString(2131362613);
+        localObject2 = getString(2131362608);
         localObject1 = "sosogeo://?q=" + this.jdField_a_of_type_Double + "," + this.jdField_b_of_type_Double + "(" + str1 + ")";
       }
       for (;;)
@@ -1057,13 +1057,13 @@ public class QQMapActivity
         break label629;
         if (bool2)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.showAtLocation(findViewById(2131298581), 17, 0, 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.showAtLocation(findViewById(2131298537), 17, 0, 0);
           return;
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow = new SelectPicPopupWindow(getApplicationContext(), null);
         break;
         label844:
-        localObject1 = super.getString(2131362614);
+        localObject1 = super.getString(2131362609);
         break label535;
         if (str2.equals(QQMapConstants.e))
         {
@@ -1087,7 +1087,7 @@ public class QQMapActivity
       }
     }
     label1082:
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.showAtLocation(findViewById(2131298581), 17, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSelectPicPopupWindow.showAtLocation(findViewById(2131298537), 17, 0, 0);
   }
   
   public void l()
@@ -1101,15 +1101,15 @@ public class QQMapActivity
   
   protected void m()
   {
-    Object localObject = (TextView)findViewById(2131296901);
+    Object localObject = (TextView)findViewById(2131296897);
     ((TextView)localObject).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
-    TextView localTextView = (TextView)findViewById(2131296895);
+    TextView localTextView = (TextView)findViewById(2131296891);
     if (this.jdField_h_of_type_Boolean)
     {
-      ((TextView)localObject).setText(2131363166);
-      ((TextView)localObject).setContentDescription(getString(2131363166));
-      localTextView.setText(2131363166);
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296905));
+      ((TextView)localObject).setText(2131363169);
+      ((TextView)localObject).setContentDescription(getString(2131363169));
+      localTextView.setText(2131363169);
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
       if (!this.jdField_h_of_type_Boolean) {
         break label216;
       }
@@ -1117,27 +1117,27 @@ public class QQMapActivity
         break label162;
       }
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_f_of_type_AndroidWidgetTextView.setText(2131363069);
+      this.jdField_f_of_type_AndroidWidgetTextView.setText(2131363072);
       this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_e_of_type_AndroidViewView$OnClickListener);
     }
     for (;;)
     {
       this.jdField_f_of_type_AndroidWidgetTextView.setTag(this.jdField_f_of_type_AndroidWidgetTextView.getText());
       return;
-      ((TextView)localObject).setText(2131363191);
-      ((TextView)localObject).setContentDescription(getString(2131363191));
-      localTextView.setText(2131363191);
+      ((TextView)localObject).setText(2131363194);
+      ((TextView)localObject).setContentDescription(getString(2131363194));
+      localTextView.setText(2131363194);
       break;
       label162:
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
-      localObject = (ImageView)findViewById(2131296906);
+      localObject = (ImageView)findViewById(2131296902);
       ((ImageView)localObject).setVisibility(0);
-      ((ImageView)localObject).setImageResource(2130838044);
-      ((ImageView)localObject).setContentDescription(getString(2131363193));
+      ((ImageView)localObject).setImageResource(2130838038);
+      ((ImageView)localObject).setContentDescription(getString(2131363196));
       ((ImageView)localObject).setOnClickListener(this.jdField_g_of_type_AndroidViewView$OnClickListener);
       continue;
       label216:
-      this.jdField_f_of_type_AndroidWidgetTextView.setText(2131363069);
+      this.jdField_f_of_type_AndroidWidgetTextView.setText(2131363072);
       this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
     }
   }
@@ -1194,7 +1194,7 @@ public class QQMapActivity
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser = new SkinnableActivityProcesser(this, this);
-    setContentView(2130903579);
+    setContentView(2130903566);
     this.jdField_n_of_type_JavaLangString = super.getIntent().getStringExtra("uin");
     sendBroadcast(new Intent("com.tencent.qqlite.addLbsObserver"));
     SOSOMapLBSApi.getInstance().verifyRegCode("QQ2013", "LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ");
@@ -1231,16 +1231,16 @@ public class QQMapActivity
     do
     {
       return localObject;
-      return a(getString(2131363192));
-      localDialog = a(2131363204, 2131363205, new bdf(this));
-      localObject = localDialog.findViewById(2131296918);
+      return a(getString(2131363195));
+      localDialog = a(2131363207, 2131363208, new bdd(this));
+      localObject = localDialog.findViewById(2131296914);
       if (localObject != null) {
-        ((View)localObject).setOnClickListener(new bdg(this, localDialog));
+        ((View)localObject).setOnClickListener(new bde(this, localDialog));
       }
-      localView = localDialog.findViewById(2131296919);
+      localView = localDialog.findViewById(2131296915);
       localObject = localDialog;
     } while (localView == null);
-    localView.setOnClickListener(new bdi(this, localDialog));
+    localView.setOnClickListener(new bdg(this, localDialog));
     return localDialog;
   }
   
@@ -1320,7 +1320,7 @@ public class QQMapActivity
   
   public void p()
   {
-    DialogUtil.a(this, 230).setTitle(getString(2131363374)).setMessage(2131362785).setPositiveButton(getString(2131363109), new bde(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131363377)).setMessage(2131362790).setPositiveButton(getString(2131363112), new bdc(this)).show();
   }
   
   public void q()
@@ -1328,13 +1328,13 @@ public class QQMapActivity
     if (!NetworkUtil.e(this))
     {
       p();
-      SOSOMapLBSApi.getInstance().requestLocationUpdate(this, this.jdField_a_of_type_Bdw);
+      SOSOMapLBSApi.getInstance().requestLocationUpdate(this, this.jdField_a_of_type_Bdu);
     }
     do
     {
       return;
       super.showDialog(0);
-      SOSOMapLBSApi.getInstance().requestLocationUpdate(this, this.jdField_a_of_type_Bdw);
+      SOSOMapLBSApi.getInstance().requestLocationUpdate(this, this.jdField_a_of_type_Bdu);
     } while (!QLog.isColorLevel());
     QLog.d("get_location", 2, "start get lacation");
   }
@@ -1345,10 +1345,10 @@ public class QQMapActivity
     super.showDialog(1);
     if (!this.jdField_h_of_type_Boolean)
     {
-      findViewById(2131298590).setVisibility(4);
-      TextView localTextView = (TextView)findViewById(2131296905);
+      findViewById(2131298546).setVisibility(4);
+      TextView localTextView = (TextView)findViewById(2131296901);
       localTextView.setVisibility(0);
-      localTextView.setText(2131363354);
+      localTextView.setText(2131363357);
     }
   }
 }

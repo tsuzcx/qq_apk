@@ -1,47 +1,26 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import java.util.Calendar;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class xz
-  implements IphonePickerView.PickerViewAdapter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private xz(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public xz(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public int a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    AssistantSettingActivity.b(this.a).setContentDescription("2G/3G/4G下自动接收图片");
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363052), "qqsetting_auto_receive_pic_key", paramBoolean);
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.a - 1895 + 1;
-    case 1: 
-      return 12;
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      return;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.f + 1895);
-    localCalendar.set(2, this.a.g);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1895 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
-    }
-    return paramInt2 + 1 + "日";
   }
 }
 

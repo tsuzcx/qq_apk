@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 
 public class egv
 {
-  public int a;
-  public long a;
-  public String a;
+  public LocalMediaInfo a;
   public boolean a;
-  public int b;
-  public long b;
-  public boolean b = false;
-  public boolean c = false;
   
-  public egv(FileAssistantDownloader paramFileAssistantDownloader)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public egv(DataLineDownloader paramDataLineDownloader) {}
 }
 
 

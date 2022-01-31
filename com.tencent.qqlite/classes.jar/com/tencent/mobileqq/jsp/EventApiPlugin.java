@@ -13,7 +13,7 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import dwg;
+import dwm;
 import java.util.ArrayList;
 import java.util.Map;
 import org.json.JSONArray;
@@ -34,7 +34,7 @@ public class EventApiPlugin
   static final String i = "url";
   static final String j = "options";
   static final String k = "com.tencent.msg.permission.pushnotify";
-  BroadcastReceiver a = new dwg(this);
+  BroadcastReceiver a = new dwm(this);
   public String l;
   
   public static void a(String paramString1, JSONObject paramJSONObject, ArrayList paramArrayList, String paramString2)

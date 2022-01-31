@@ -1,23 +1,28 @@
-import com.tencent.util.DumpMemInfoHandler;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.os.Bundle;
+import com.tencent.qqconnect.wtlogin.LoginHelper;
+import com.tencent.qqconnect.wtlogin.LoginHelper.Callback;
+import mqq.observer.SSOAccountObserver;
 
 public class fgo
-  implements Comparator
+  extends SSOAccountObserver
 {
-  public fgo(DumpMemInfoHandler paramDumpMemInfoHandler) {}
+  public fgo(LoginHelper paramLoginHelper) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
-    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
-    if (i == j) {
-      return 0;
+    this.a.a.a();
+    this.a.a = null;
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt == 4096) {}
+    for (paramArrayOfByte = new String(paramArrayOfByte);; paramArrayOfByte = null)
+    {
+      this.a.a.a(paramString, paramArrayOfByte);
+      this.a.a = null;
+      return;
     }
-    if (i < j) {
-      return 2;
-    }
-    return -1;
   }
 }
 

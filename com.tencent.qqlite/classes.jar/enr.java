@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView.FlingGestureListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class enr
-  extends TroopAioFeedsCenterView.FlingGestureListener
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public enr(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
+  public enr(TroopMessageProcessor paramTroopMessageProcessor, long paramLong1, long paramLong2) {}
   
-  public void a()
+  public ToServiceMsg a()
   {
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_fold", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "1", "", "");
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.TroopMessageProcessor", 2, "<ReadReport><S>_Group_gprUin:" + this.jdField_a_of_type_Long + " lastReadSeq:" + this.b);
+    }
+    ToServiceMsg localToServiceMsg = TroopMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageProcessor).a("MessageSvc.GroupMsgReadConfirm");
+    localToServiceMsg.extraData.putLong("groupuin", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("lastReadSeq", this.b);
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

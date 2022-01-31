@@ -1,23 +1,40 @@
-import android.view.animation.Animation;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.AnimationLister;
 import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class tp
-  extends AnimateUtils.AnimationAdapter
+  implements AnimationLister
 {
-  public tp(AbstractGalleryScene paramAbstractGalleryScene) {}
+  public tp(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void b()
   {
-    this.a.a.a().e();
-    this.a.a.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
+    }
+    if (this.a.a.a() != this.a) {
+      this.a.i();
+    }
+    this.a.b();
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void c()
   {
-    this.a.a.a().d();
+    this.a.c();
+  }
+  
+  public void d()
+  {
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    }
+    this.a.e();
   }
 }
 

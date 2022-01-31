@@ -1,14 +1,30 @@
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aay
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public aay(BaseChatPie paramBaseChatPie, int paramInt1, int paramInt2) {}
+  public aay(BaseChatPie paramBaseChatPie, ArrayList paramArrayList, Intent paramIntent) {}
   
-  public void run()
+  public void a()
   {
-    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Int, this.b, "");
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)localIterator.next();
+        ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentIntent, localForwardFileInfo.a(), localForwardFileInfo, true);
+      }
+    }
   }
+  
+  public void b() {}
 }
 
 

@@ -1,105 +1,92 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.ArrayList;
 
 public class bqd
   extends Thread
 {
-  public bqd(TroopTransferActivity paramTroopTransferActivity, ArrayList paramArrayList) {}
+  public bqd(TroopTransferActivity paramTroopTransferActivity, Friends paramFriends, TroopTransferActivity.TroopMemberItem paramTroopMemberItem) {}
   
   public void run()
   {
-    int i = 0;
-    boolean bool = false;
-    Object localObject;
-    TroopTransferActivity.TroopMemberItem localTroopMemberItem;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    label166:
+    String str;
+    label187:
+    boolean bool;
+    if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j))
     {
-      localObject = (TroopMemberCardInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localTroopMemberItem = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a.a(((TroopMemberCardInfo)localObject).memberuin);
-      if (localTroopMemberItem != null) {}
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.k = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m, 2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.l = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m, 1);
+      }
+    }
+    else
+    {
+      if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g)) {
+          break label290;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.h = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g, 2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.i = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g, 1);
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j)) {
+        break label311;
+      }
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j;
+      if (Utils.a(str, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b)) {
+        break label412;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b = str;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b)) {
+        break label389;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.c = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b, 2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.d = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b, 1);
+      bool = true;
     }
     for (;;)
     {
-      i += 1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a(bool);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.k = "";
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.l = "";
       break;
-      if (!Utils.a(((TroopMemberCardInfo)localObject).name, localTroopMemberItem.m))
+      label290:
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.h = "";
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.i = "";
+      break label166;
+      label311:
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
       {
-        localTroopMemberItem.m = ((TroopMemberCardInfo)localObject).name;
-        if (!TextUtils.isEmpty(localTroopMemberItem.m))
-        {
-          localTroopMemberItem.n = ChnToSpell.a(localTroopMemberItem.m, 2);
-          localTroopMemberItem.o = ChnToSpell.a(localTroopMemberItem.m, 1);
-        }
+        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m;
+        break label187;
       }
-      else
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
       {
-        label118:
-        if (!Utils.a(((TroopMemberCardInfo)localObject).nick, localTroopMemberItem.g))
-        {
-          localTroopMemberItem.g = ((TroopMemberCardInfo)localObject).nick;
-          if (TextUtils.isEmpty(localTroopMemberItem.g)) {
-            break label277;
-          }
-          localTroopMemberItem.h = ChnToSpell.a(localTroopMemberItem.g, 2);
-          localTroopMemberItem.i = ChnToSpell.a(localTroopMemberItem.g, 1);
-        }
-        label181:
-        if (TextUtils.isEmpty(localTroopMemberItem.j)) {
-          break label294;
-        }
-        localObject = localTroopMemberItem.j;
+        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g;
+        break label187;
       }
-      for (;;)
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a))
       {
-        if (!Utils.a(localObject, localTroopMemberItem.b))
-        {
-          localTroopMemberItem.b = ((String)localObject);
-          if (!TextUtils.isEmpty(localTroopMemberItem.b))
-          {
-            localTroopMemberItem.c = ChnToSpell.a(localTroopMemberItem.b, 2);
-            localTroopMemberItem.d = ChnToSpell.a(localTroopMemberItem.b, 1);
-            bool = true;
-            break;
-            localTroopMemberItem.n = "";
-            localTroopMemberItem.o = "";
-            break label118;
-            label277:
-            localTroopMemberItem.h = "";
-            localTroopMemberItem.i = "";
-            break label181;
-            label294:
-            if (!TextUtils.isEmpty(localTroopMemberItem.m))
-            {
-              localObject = localTroopMemberItem.m;
-              continue;
-            }
-            if (!TextUtils.isEmpty(localTroopMemberItem.g))
-            {
-              localObject = localTroopMemberItem.g;
-              continue;
-            }
-            if (!TextUtils.isEmpty(localTroopMemberItem.a))
-            {
-              localObject = localTroopMemberItem.a;
-              continue;
-            }
-            localObject = "";
-            continue;
-          }
-          localTroopMemberItem.c = "";
-          localTroopMemberItem.d = "";
-          bool = true;
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a(bool);
-          return;
-        }
+        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a;
+        break label187;
       }
+      str = "";
+      break label187;
+      label389:
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.c = "";
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.d = "";
+      bool = true;
+      continue;
+      label412:
+      bool = false;
     }
   }
 }

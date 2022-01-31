@@ -4,7 +4,6 @@ public final class R$menu
 {
   public static final int a = 2131755008;
   public static final int b = 2131755009;
-  public static final int c = 2131755010;
 }
 
 

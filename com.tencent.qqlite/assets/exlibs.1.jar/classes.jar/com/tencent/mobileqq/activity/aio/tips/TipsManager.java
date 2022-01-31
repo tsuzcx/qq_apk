@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import cap;
-import caq;
+import cav;
+import caw;
 import com.tencent.mobileqq.activity.aio.AIOTipsController;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -233,8 +233,8 @@ public class TipsManager
       }
       return;
     }
-    caq localcaq = new caq(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(localcaq);
+    caw localcaw = new caw(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(localcaw);
   }
   
   public void a(int paramInt, Object... paramVarArgs)
@@ -314,7 +314,7 @@ public class TipsManager
           QLog.d(jdField_a_of_type_JavaLangString, 2, "showTipsBar() success: from " + a(paramTipsBarTask.a()));
         }
         return true;
-        paramVarArgs = new cap(this, paramTipsBarTask, paramVarArgs);
+        paramVarArgs = new cav(this, paramTipsBarTask, paramVarArgs);
         this.jdField_a_of_type_AndroidOsHandler.post(paramVarArgs);
       }
     }

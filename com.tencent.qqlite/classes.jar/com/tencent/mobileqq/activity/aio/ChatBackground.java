@@ -89,13 +89,13 @@ public class ChatBackground
       if (("".equals(paramString1)) || ("null".equals(paramString1)))
       {
         paramChatBackground.jdField_a_of_type_JavaLangString = "null";
-        paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131427482);
+        paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131427477);
       }
       for (;;)
       {
         try
         {
-          paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837674);
+          paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837676);
           return true;
         }
         catch (Exception paramString1)
@@ -103,14 +103,14 @@ public class ChatBackground
           if (QLog.isColorLevel()) {
             paramString1.printStackTrace();
           }
-          paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839253);
+          paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839221);
           continue;
         }
         if ("none".equals(paramString1))
         {
           paramChatBackground.jdField_a_of_type_JavaLangString = "none";
           paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-10395552);
-          paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837670);
+          paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837672);
         }
         else
         {
@@ -136,17 +136,17 @@ public class ChatBackground
           else
           {
             paramChatBackground.jdField_a_of_type_JavaLangString = "null";
-            paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131427482);
+            paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131427477);
             try
             {
-              paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837674);
+              paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837676);
             }
             catch (Exception paramString1)
             {
               if (QLog.isColorLevel()) {
                 paramString1.printStackTrace();
               }
-              paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839253);
+              paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839221);
             }
           }
         }

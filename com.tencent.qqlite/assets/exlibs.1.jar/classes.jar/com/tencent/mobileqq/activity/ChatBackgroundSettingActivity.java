@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
+import abx;
 import abz;
+import aca;
 import acb;
 import acc;
-import acd;
-import ace;
+import acf;
+import acg;
 import ach;
 import aci;
 import acj;
 import ack;
 import acl;
-import acm;
-import acn;
-import acr;
+import acp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -91,7 +91,7 @@ public class ChatBackgroundSettingActivity
   private static final int q = 1;
   public float a;
   public int a;
-  public acn a;
+  public acl a;
   public Activity a;
   private Uri jdField_a_of_type_AndroidNetUri;
   public View a;
@@ -99,11 +99,11 @@ public class ChatBackgroundSettingActivity
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public SVIPHandler a;
-  UniPayHandler.UniPayUpdateListener jdField_a_of_type_ComTencentMobileqqAppUniPayHandler$UniPayUpdateListener = new abz(this);
+  UniPayHandler.UniPayUpdateListener jdField_a_of_type_ComTencentMobileqqAppUniPayHandler$UniPayUpdateListener = new abx(this);
   private UniPayHandler jdField_a_of_type_ComTencentMobileqqAppUniPayHandler;
   public ChatBackgroundInfo a;
   public ChatBackgroundManager a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new acm(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ack(this);
   public MyGridView a;
   public ArrayList a;
   public HashMap a;
@@ -125,7 +125,7 @@ public class ChatBackgroundSettingActivity
   static
   {
     jdField_a_of_type_JavaLangString = ChatBackgroundSettingActivity.class.getSimpleName();
-    jdField_a_of_type_AndroidOsHandler = new acr(BaseApplication.getContext().getMainLooper());
+    jdField_a_of_type_AndroidOsHandler = new acp(BaseApplication.getContext().getMainLooper());
   }
   
   public ChatBackgroundSettingActivity()
@@ -135,7 +135,7 @@ public class ChatBackgroundSettingActivity
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_AndroidOsHandler = new acc(this);
+    this.jdField_b_of_type_AndroidOsHandler = new aca(this);
   }
   
   public static int a(Context paramContext, String paramString)
@@ -252,7 +252,7 @@ public class ChatBackgroundSettingActivity
     l = 0;
     jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     j = null;
-    paramQQAppInterface.a(new acb(paramString, paramQQAppInterface));
+    paramQQAppInterface.a(new abz(paramString, paramQQAppInterface));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, StatisticCollector paramStatisticCollector)
@@ -362,23 +362,23 @@ public class ChatBackgroundSettingActivity
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("uin");
     ((TextView)findViewById(2131296680)).requestFocus();
     this.jdField_a_of_type_AndroidAppActivity = this;
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new acd(this));
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new acb(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)findViewById(2131296681));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setTranscriptMode(0);
-    this.jdField_a_of_type_Acn = new acn(this, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(this.jdField_a_of_type_Acn);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setOnItemClickListener(new ace(this));
+    this.jdField_a_of_type_Acl = new acl(this, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(this.jdField_a_of_type_Acl);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setOnItemClickListener(new acc(this));
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { HttpDownloadFileProcessor.class });
     this.app.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
     this.jdField_b_of_type_AndroidViewView = ((ViewGroup)findViewById(2131296675)).getChildAt(0);
-    this.jdField_b_of_type_AndroidViewView.findViewById(2131296797).setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.findViewById(2131296799).setVisibility(8);
-    ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131296795)).setImageResource(2130839252);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new ach(this));
+    this.jdField_b_of_type_AndroidViewView.findViewById(2131296793).setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.findViewById(2131296795).setVisibility(8);
+    ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131296791)).setImageResource(2130839220);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new acf(this));
     b();
     a();
     if (!new File(ChatBackgroundManagerImp.jdField_c_of_type_JavaLangString).exists()) {
-      ThreadManager.a(new aci(this));
+      ThreadManager.a(new acg(this));
     }
   }
   
@@ -424,42 +424,42 @@ public class ChatBackgroundSettingActivity
     for (;;)
     {
       a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetButton);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new acj(this, i3));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ach(this, i3));
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131364284);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364082);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131364269);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364069);
       this.h = 0;
       continue;
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363602);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364069);
+      this.h = 1;
+      continue;
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131364270);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364070);
+      this.h = 2;
+      continue;
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363603);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364070);
+      this.h = 2;
+      continue;
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363605);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364072);
+      this.h = 2;
+      continue;
       this.jdField_a_of_type_AndroidWidgetButton.setText(2131363608);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364082);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364072);
+      this.h = 2;
+      continue;
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363606);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364070);
+      this.h = 2;
+      continue;
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363604);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364071);
       this.h = 1;
       continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131364285);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364083);
-      this.h = 2;
-      continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363609);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364083);
-      this.h = 2;
-      continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363611);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364085);
-      this.h = 2;
-      continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363614);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364085);
-      this.h = 2;
-      continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363612);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364083);
-      this.h = 2;
-      continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363610);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364084);
-      this.h = 1;
-      continue;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363613);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364084);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131363607);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131364071);
       this.h = 1;
       continue;
       label506:
@@ -522,7 +522,7 @@ public class ChatBackgroundSettingActivity
     }
     for (;;)
     {
-      runOnUiThread(new acl(this, a()));
+      runOnUiThread(new acj(this, a()));
       return;
       this.d = localSharedPreferences.getString(this.jdField_c_of_type_JavaLangString, null);
       if (this.d == null) {
@@ -536,10 +536,10 @@ public class ChatBackgroundSettingActivity
     int i1 = 0;
     while (i1 < this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildCount())
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i1).findViewById(2131296796).setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i1).findViewById(2131296792).setVisibility(8);
       i1 += 1;
     }
-    this.jdField_b_of_type_AndroidViewView.findViewById(2131296796).setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.findViewById(2131296792).setVisibility(8);
   }
   
   public void d()
@@ -567,7 +567,7 @@ public class ChatBackgroundSettingActivity
   {
     super.doOnCreate(paramBundle);
     setContentViewB(2130903081);
-    setTitle(getString(2131363539));
+    setTitle(getString(2131363533));
     ReportController.b(this.app, "CliOper", "", "", "chatbackground", "BjFanwen", 0, 0, "", "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler = ((SVIPHandler)this.app.a(12));
     this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager = ((ChatBackgroundManager)this.app.getManager(50));
@@ -590,7 +590,7 @@ public class ChatBackgroundSettingActivity
       {
         this.d = paramIntent;
         d();
-        QQToast.a(this, 2131363541, 0).a();
+        QQToast.a(this, 2131363535, 0).a();
         ReportController.b(this.app, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "DIY", "", "", "");
       }
     }
@@ -603,8 +603,8 @@ public class ChatBackgroundSettingActivity
       return;
     }
     this.jdField_a_of_type_Boolean = false;
-    ack localack = new ack(this);
-    this.app.a(localack);
+    aci localaci = new aci(this);
+    this.app.a(localaci);
   }
   
   public void e()
@@ -628,14 +628,14 @@ public class ChatBackgroundSettingActivity
       localLayoutParams.width = this.jdField_a_of_type_Int;
       localLayoutParams.height = this.jdField_a_of_type_Int;
       localView1.setLayoutParams(localLayoutParams);
-      View localView2 = localView1.findViewById(2131296799);
+      View localView2 = localView1.findViewById(2131296795);
       i1 = (localLayoutParams.height - (int)(this.jdField_a_of_type_Float * 8.0F)) * 31 / 132;
       localView2.setPadding((int)(this.jdField_a_of_type_Float * 4.0F), localLayoutParams.height - i1 - (int)(this.jdField_a_of_type_Float * 4.0F), (int)(this.jdField_a_of_type_Float * 4.0F), (int)(this.jdField_a_of_type_Float * 4.0F));
       if (SkinEngine.getInstances().getSkinRootPath() != null)
       {
         findViewById(2131296674).setVisibility(0);
         findViewById(2131296675).setVisibility(0);
-        localView1 = localView1.findViewById(2131296796);
+        localView1 = localView1.findViewById(2131296792);
         if ((this.d != null) && (this.d.length() != 0) && (!"null".equals(this.d))) {
           break;
         }

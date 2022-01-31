@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import java.lang.ref.WeakReference;
 
 public class cib
-  implements Runnable
+  extends Handler
 {
-  public cib(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  private WeakReference a;
   
-  public void run()
+  public cib(SettingActivity2 paramSettingActivity2)
   {
-    AlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter, this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    this.a = new WeakReference(paramSettingActivity2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((SettingActivity2)this.a.get() == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    throw new RuntimeException("Unknown message: " + paramMessage.what);
   }
 }
 

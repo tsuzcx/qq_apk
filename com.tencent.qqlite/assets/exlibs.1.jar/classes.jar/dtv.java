@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 
 class dtv
-  implements Runnable
+  extends FMObserver
 {
-  dtv(dtt paramdtt, int paramInt, String paramString) {}
+  dtv(dtu paramdtu) {}
   
-  public void run()
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    this.jdField_a_of_type_Dtt.a.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    IFileViewerAdapter localIFileViewerAdapter;
+    if ((paramThumbnailInfo.a instanceof IFileViewerAdapter))
+    {
+      localIFileViewerAdapter = (IFileViewerAdapter)paramThumbnailInfo.a;
+      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() >= 1)) {}
+    }
+    else
+    {
+      return;
+    }
+    this.a.a.a(localIFileViewerAdapter, paramThumbnailInfo.b);
   }
 }
 

@@ -1,34 +1,21 @@
 import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class aru
   implements View.OnClickListener
 {
-  public aru(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public aru(LbsBaseActivity paramLbsBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.app, "CliOper", "", "", "0X8004444", "0X8004444", 0, 0, "", "", "", "");
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.app.e(false);
-      if ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) != null) && (LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing())) {
-        LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
-      }
+    this.a.startActivityForResult(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"), 10);
+    this.a.b();
+    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
+      LbsBaseActivity.b(this.a).dismiss();
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a(1, 2131362912);
-    } while ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) == null) || (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing()));
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
   }
 }
 

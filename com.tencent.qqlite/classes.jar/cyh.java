@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class cyh
-  implements Runnable
+  implements Comparator
 {
-  public cyh(DatalineMessageManager paramDatalineMessageManager, DataLineMsgSet paramDataLineMsgSet) {}
+  public cyh(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

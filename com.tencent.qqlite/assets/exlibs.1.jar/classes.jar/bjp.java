@@ -1,15 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class bjp
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements DialogInterface.OnDismissListener
 {
-  public View a;
-  public TextView a;
-  public TroopMemberListSlideItem a;
-  public View b;
+  public bjp(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

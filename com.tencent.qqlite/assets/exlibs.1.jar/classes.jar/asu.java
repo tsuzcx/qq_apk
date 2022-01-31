@@ -1,20 +1,38 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.lebasearch.SearchActivity;
-import com.tencent.mobileqq.activity.Leba;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class asu
-  implements View.OnFocusChangeListener
+  extends Handler
 {
-  public asu(Leba paramLeba) {}
+  public asu(LoginActivity paramLoginActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      paramView.clearFocus();
-      SearchActivity.a(this.a.a());
+    default: 
+    case 20140107: 
+      do
+      {
+        return;
+      } while (this.a.isFinishing());
+      try
+      {
+        this.a.dismissDialog(0);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
+    }
+    this.a.finish();
   }
 }
 

@@ -1,56 +1,34 @@
-import android.os.Handler.Callback;
+import android.os.Handler;
 import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class awm
-  implements Handler.Callback
+  implements Animation.AnimationListener
 {
-  public awm(NearbyActivity paramNearbyActivity) {}
+  public awm(NearbyActivity paramNearbyActivity, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMessage == null) {
-      return false;
-    }
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Boolean)
     {
-    }
-    for (;;)
-    {
-      return true;
-      int i = paramMessage.arg1;
-      switch (i)
+      if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
       {
-      default: 
-        break;
-      case 0: 
-      case 1: 
-        NearbyActivity.a(this.a, i);
-        break;
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-        NearbyActivity.a(this.a, i);
-        break;
-      case 6: 
-        NearbyActivity.a(this.a, i);
-        break;
-      case 7: 
-        int j = paramMessage.arg2;
-        if (j == 1001) {
-          NearbyActivity.a(this.a, i);
-        } else if (j == 1002) {
-          NearbyActivity.a(this.a, i, 7, 70L);
-        } else if (j == 1003) {
-          NearbyActivity.b(this.a, i, 7, 70L);
-        }
-        break;
-      case 8: 
-        NearbyActivity.a(this.a, i);
+        paramAnimation = new Message();
+        paramAnimation.what = 1;
+        paramAnimation.arg1 = this.jdField_a_of_type_Int;
+        paramAnimation.arg2 = 1003;
+        NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
       }
+      return;
     }
+    NearbyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,29 +1,60 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.emoticon.ReqInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class alk
-  implements DragSortListView.DropListener
+  extends DownloadListener
 {
-  public alk(EmosmActivity paramEmosmActivity) {}
-  
-  public void a_(int paramInt1, int paramInt2)
+  public alk(EmosmDetailActivity paramEmosmDetailActivity, String paramString1, String paramString2)
   {
-    if (paramInt1 != paramInt2)
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    EmojiManager localEmojiManager;
+    Object localObject1;
+    EmoticonPackage localEmoticonPackage;
+    Object localObject2;
+    int i;
+    ReqInfo localReqInfo;
+    if (paramDownloadTask.a() == 3)
     {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
-      this.a.a.remove(localEmoticonPackage);
-      this.a.a.setNotifyOnChange(true);
-      this.a.a.insert(localEmoticonPackage, paramInt2);
-      ((EmojiManager)this.a.app.getManager(39)).a.a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.c = true;
-      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      localEmojiManager = (EmojiManager)this.a.app.getManager(39);
+      localObject1 = paramDownloadTask.a();
+      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
+      localObject2 = EmosmUtils.getEmosmJsonUrl(localEmoticonPackage.epId);
+      i = ((Bundle)localObject1).getInt("jsonType", EmojiManager.c);
+      paramDownloadTask = (File)paramDownloadTask.a.get(localObject2);
+      localObject1 = new ArrayList();
+      localObject2 = new ArrayList();
+      localReqInfo = new ReqInfo();
+      if (!paramDownloadTask.exists()) {
+        break label135;
+      }
     }
+    label135:
+    for (paramDownloadTask = FileUtils.a(paramDownloadTask); localEmojiManager.a(localEmoticonPackage, i, paramDownloadTask, (ArrayList)localObject1, (ArrayList)localObject2, localReqInfo) != null; paramDownloadTask = null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "json is complete,result ok: " + EmosmDetailActivity.a(this.a));
+    }
+    this.a.app.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
+    this.a.runOnUiThread(new all(this, localEmoticonPackage));
   }
 }
 

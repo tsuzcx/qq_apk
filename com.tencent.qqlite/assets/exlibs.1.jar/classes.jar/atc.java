@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class atc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public atc(LoginActivity paramLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a, paramDialogInterface, true, false, false);
+    LoginActivity.a(this.a, true);
   }
 }
 

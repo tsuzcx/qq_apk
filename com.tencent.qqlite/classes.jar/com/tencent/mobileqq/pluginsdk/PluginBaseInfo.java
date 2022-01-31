@@ -36,8 +36,10 @@ public class PluginBaseInfo
   public static final int UPDATE_TYPE_OPTIONAL = 0;
   public long mCurVersion = 0L;
   public float mDownloadProgress;
+  public int mForceUrl;
   public String mID = "";
   public int mInstallType = 0;
+  public String mInstalledPath;
   public long mLength = 0L;
   public String mMD5 = "";
   public String mName = "";
@@ -67,6 +69,7 @@ public class PluginBaseInfo
     this.mDownloadProgress = paramParcel.readFloat();
     this.mUpdateType = paramParcel.readInt();
     this.mInstallType = paramParcel.readInt();
+    this.mInstalledPath = paramParcel.readString();
   }
   
   public PluginBaseInfo clone()
@@ -85,6 +88,11 @@ public class PluginBaseInfo
     return 0;
   }
   
+  public String toString()
+  {
+    return "" + this.mID + ", " + this.mPackageName + ", " + super.hashCode();
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeStringArray(this.mProcesses);
@@ -101,6 +109,7 @@ public class PluginBaseInfo
     paramParcel.writeFloat(this.mDownloadProgress);
     paramParcel.writeInt(this.mUpdateType);
     paramParcel.writeInt(this.mInstallType);
+    paramParcel.writeString(this.mInstalledPath);
   }
 }
 

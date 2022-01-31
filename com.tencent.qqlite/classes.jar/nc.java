@@ -1,17 +1,31 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.LoadedCallBack;
 import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nc
-  implements SoundPool.OnLoadCompleteListener
+  implements LoadedCallBack
 {
   public nc(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Message localMessage = new Message();
+      localMessage.what = 0;
+      localMessage.obj = ("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + paramString.toString() + ")");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.sendMessage(localMessage);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

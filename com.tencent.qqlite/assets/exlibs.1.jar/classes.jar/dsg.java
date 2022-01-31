@@ -1,32 +1,29 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarWeiYunFile.BaseActionBarWeiyunFile;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
+import com.tencent.widget.ActionSheet;
 
-public class dsg
+public final class dsg
   implements View.OnClickListener
 {
-  public dsg(BaseActionBarWeiyunFile paramBaseActionBarWeiyunFile) {}
+  public dsg(Activity paramActivity, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
   public void onClick(View paramView)
   {
-    if ((FileManagerUtil.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L)) {
-      FMDialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131362021, 2131362019, new dsh(this));
-    }
-    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+    FileManagerUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
     {
-      FileManagerReporter.a("0X8004BBA");
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      this.a.h();
+      paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+      if (paramView.a.isShowing()) {
+        paramView.a.dismiss();
+      }
     }
-    FileManagerReporter.a("0X8004BD0");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.g();
+    }
   }
 }
 

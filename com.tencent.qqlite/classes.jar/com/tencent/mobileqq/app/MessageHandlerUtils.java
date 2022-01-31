@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
 import com.tencent.mobileqq.app.message.MsgProxyUtils;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.Card;
@@ -15,7 +18,9 @@ import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.OpenTroopInfo;
 import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
@@ -29,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import msf.msgsvc.msg_svc.PbSendMsgReq;
+import tencent.im.msg.im_msg_body.AnonymousGroupMsg;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.PubGroup;
 import tencent.im.msg.im_msg_body.RichText;
@@ -136,41 +142,57 @@ public class MessageHandlerUtils
       else
       {
         Object localObject2;
-        Object localObject1;
-        im_msg_body.PubGroup localPubGroup;
-        PBUInt32Field localPBUInt32Field;
-        if (paramMessageRecord.istroop == 1)
+        if (AnonymousChatHelper.a(paramMessageRecord))
         {
-          localObject2 = (FriendsManagerImp)paramQQAppInterface.getManager(8);
-          localObject1 = ((FriendsManagerImp)localObject2).a(paramMessageRecord.frienduin);
-          if (localObject1 != null)
+          localObject1 = new im_msg_body.Elem();
+          localObject2 = new im_msg_body.AnonymousGroupMsg();
+          localObject3 = AnonymousChatHelper.a(paramMessageRecord);
+          ((im_msg_body.AnonymousGroupMsg)localObject2).uint32_flags.set(((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_a_of_type_Int);
+          if (!TextUtils.isEmpty(((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_a_of_type_JavaLangString)) {
+            ((im_msg_body.AnonymousGroupMsg)localObject2).str_anon_id.set(ByteStringMicro.copyFrom(((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_a_of_type_JavaLangString.getBytes()));
+          }
+          if (!TextUtils.isEmpty(((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_b_of_type_JavaLangString)) {
+            ((im_msg_body.AnonymousGroupMsg)localObject2).str_anon_nick.set(ByteStringMicro.copyFrom(((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_b_of_type_JavaLangString.getBytes()));
+          }
+          ((im_msg_body.AnonymousGroupMsg)localObject2).uint32_head_portrait.set(((AnonymousChatHelper.AnonymousExtInfo)localObject3).jdField_b_of_type_Int);
+          ((im_msg_body.AnonymousGroupMsg)localObject2).uint32_expire_time.set(((AnonymousChatHelper.AnonymousExtInfo)localObject3).c);
+          ((im_msg_body.AnonymousGroupMsg)localObject2).uint32_bubble_id.set((int)paramMessageRecord.vipBubbleID);
+          ((im_msg_body.Elem)localObject1).anon_group_msg.set((MessageMicro)localObject2);
+          localRichText.elems.add((MessageMicro)localObject1);
+        }
+        do
+        {
+          do
           {
-            localPubGroup = new im_msg_body.PubGroup();
-            localObject2 = ((FriendsManagerImp)localObject2).a(paramQQAppInterface.a());
-            localPBUInt32Field = localPubGroup.uint32_age;
-            if (localObject2 != null) {
-              break label356;
-            }
-            j = 0;
-            localPBUInt32Field.set(j);
-            localPBUInt32Field = localPubGroup.uint32_gender;
-            if (localObject2 != null) {
-              break label365;
-            }
+            return MessageProtoCodec.a(paramQQAppInterface, MessageProtoCodec.b(paramMessageRecord.istroop), paramMessageRecord, localRichText, null, i);
+          } while (paramMessageRecord.istroop != 1);
+          localObject3 = (FriendsManagerImp)paramQQAppInterface.getManager(8);
+          localObject2 = ((FriendsManagerImp)localObject3).a(paramMessageRecord.frienduin);
+        } while (localObject2 == null);
+        Object localObject1 = new im_msg_body.PubGroup();
+        Object localObject3 = ((FriendsManagerImp)localObject3).a(paramQQAppInterface.a());
+        PBUInt32Field localPBUInt32Field = ((im_msg_body.PubGroup)localObject1).uint32_age;
+        if (localObject3 == null)
+        {
+          j = 0;
+          label451:
+          localPBUInt32Field.set(j);
+          localPBUInt32Field = ((im_msg_body.PubGroup)localObject1).uint32_gender;
+          if (localObject3 != null) {
+            break label531;
           }
         }
-        label356:
-        label365:
-        for (int j = 2;; j = ((Card)localObject2).shGender)
+        label531:
+        for (int j = 2;; j = ((Card)localObject3).shGender)
         {
           localPBUInt32Field.set(j);
-          localPubGroup.uint32_distance.set(((OpenTroopInfo)localObject1).troopDistance);
-          localObject1 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject1).pub_group.set(localPubGroup);
-          localRichText.elems.add((MessageMicro)localObject1);
-          return MessageProtoCodec.a(paramQQAppInterface, MessageProtoCodec.b(paramMessageRecord.istroop), paramMessageRecord, localRichText, null, i);
-          j = ((Card)localObject2).age;
+          ((im_msg_body.PubGroup)localObject1).uint32_distance.set(((OpenTroopInfo)localObject2).troopDistance);
+          localObject2 = new im_msg_body.Elem();
+          ((im_msg_body.Elem)localObject2).pub_group.set((MessageMicro)localObject1);
+          localRichText.elems.add((MessageMicro)localObject2);
           break;
+          j = ((Card)localObject3).age;
+          break label451;
         }
       }
       i = 0;
@@ -226,10 +248,10 @@ public class MessageHandlerUtils
     {
       paramString1 = new StringBuilder().append("------->msgFilter :msgIsTroop:").append(paramInt).append(",peerUin:").append(paramString1).append(",list size:");
       if (paramQQAppInterface != null) {
-        break label180;
+        break label183;
       }
     }
-    label180:
+    label183:
     for (paramInt = 0;; paramInt = paramQQAppInterface.size())
     {
       QLog.d("Q.msg.MessageHandlerUtils", 2, paramInt);

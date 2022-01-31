@@ -1,37 +1,49 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ccb
-  implements TextWatcher
+  implements ContactSearchFacade.ISearchListener
 {
-  public ccb(SearchContactsActivity paramSearchContactsActivity) {}
+  public ccb(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    ImageButton localImageButton = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (paramEditable.equals("")) {}
-    for (int i = 8;; i = 0)
+    this.a.n();
+    if (paramBoolean)
     {
-      localImageButton.setVisibility(i);
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
+      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      {
+        paramObject = (ArrayList)paramObject;
+        if (paramObject.size() != 0) {
+          break label81;
+        }
+        paramObject = this.a.a;
+        if (!this.a.b) {
+          break label76;
+        }
+        paramInt1 = 3;
+        paramObject.sendEmptyMessage(paramInt1);
+        if (QLog.isColorLevel()) {
+          QLog.d(SearchBaseActivity.c(), 2, "error! SearchResult is null!");
+        }
       }
-      this.a.g();
-      this.a.b(paramEditable);
+      label76:
+      label81:
+      while (!this.a.a(paramObject)) {
+        for (;;)
+        {
+          return;
+          paramInt1 = 2;
+        }
+      }
+      this.a.a.sendEmptyMessage(0);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

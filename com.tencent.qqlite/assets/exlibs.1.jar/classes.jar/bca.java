@@ -1,19 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class bca
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public bca(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    QQBrowserActivity.a(this.a).setVisibility(8);
-    QQBrowserActivity.b(this.a).setVisibility(8);
-    this.a.b.setVisibility(8);
-    return true;
+    this.a.finish();
   }
 }
 

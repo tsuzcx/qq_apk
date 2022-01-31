@@ -1,19 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
 public class efq
-  implements Runnable
+  extends CountDownTimer.CountDownTimerListener
 {
-  public efq(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void run()
+  public efq(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putString("group_display", this.jdField_a_of_type_JavaLangString).commit();
+    super(paramLong);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+  }
+  
+  public void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
     }
   }
 }

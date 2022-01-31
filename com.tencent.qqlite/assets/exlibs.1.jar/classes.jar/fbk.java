@@ -1,21 +1,16 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.FriendChooser.GridViewAdapter;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
 public class fbk
-  implements View.OnClickListener
+  implements ImageLoader.ImageLoadListener
 {
-  public fbk(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
+  public fbk(FriendChooser.GridViewAdapter paramGridViewAdapter, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    paramView = new Bundle();
-    paramView.putInt("group_index", this.jdField_a_of_type_Int);
-    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

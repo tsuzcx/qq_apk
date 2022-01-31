@@ -1,140 +1,42 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RemoteViews;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class dqh
+  implements Runnable
 {
-  float jdField_a_of_type_Float = 14.0F;
-  int jdField_a_of_type_Int = 0;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  final String jdField_a_of_type_JavaLangString = "SearchForText";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  public dqh(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
-  public dqh(UniformDownloadNfn paramUniformDownloadNfn, Context paramContext)
+  public void run()
   {
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    a(paramContext, false);
-  }
-  
-  private boolean a(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_AndroidOsBundle == null))
     {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  private boolean b(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    }
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {}
-    while (this.jdField_a_of_type_Int > 3) {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] onDownloadNotificationBeClean. param error!!");
       return;
     }
-    this.jdField_a_of_type_Int += 1;
-    try
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("_notify_param_Id");
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onDownloadNotificationBeClean. URL:" + this.jdField_a_of_type_JavaLangString + " nofiyid:" + i);
+    dqj localdqj = UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
+    if ((localdqj != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a != null))
     {
-      Notification localNotification = new Notification();
-      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
-      LinearLayout localLinearLayout = new LinearLayout(paramContext);
-      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, localLinearLayout);
-      if (!a(paramContext)) {
-        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTitleGroup failed");
+      if (localdqj.a != 1) {
+        break label175;
       }
-      if (!b(paramContext)) {
-        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTextGroup, failed");
-      }
-      localLinearLayout.removeAllViews();
-      return;
+      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.a(), "Stop_download_2-1_3-0");
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. extractColors, exception");
-      paramContext.printStackTrace();
+      UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
+      UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.b(this.jdField_a_of_type_JavaLangString);
+      UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
       return;
+      label175:
+      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.a(), "Stop_download_2-1_3-1");
     }
-    catch (NoSuchFieldError paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
   }
 }
 

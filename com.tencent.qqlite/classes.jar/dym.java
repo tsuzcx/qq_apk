@@ -1,20 +1,14 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
 
-public final class dym
-  extends Handler
+public class dym
+  implements Runnable
 {
-  public dym(QQPlayerService paramQQPlayerService, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public dym(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    QQPlayerService.a(this.a, (Intent)paramMessage.obj);
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 

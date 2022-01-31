@@ -1,14 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public class dlt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class dlt
+  implements Runnable
 {
-  public dlt(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  dlt(dls paramdls) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.a.e();
+    QfileBaseRecentFileTabView.a(this.a.a);
   }
 }
 

@@ -1,23 +1,14 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
-import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
+import com.tencent.mobileqq.widget.DoodlePicView;
 
 public class eye
-  extends DataSetObserver
+  implements Runnable
 {
-  public eye(GridListView paramGridListView) {}
+  public eye(DoodlePicView paramDoodlePicView) {}
   
-  public void onChanged()
+  public void run()
   {
-    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
+    DoodlePicView.a(this.a, this.a.a);
+    this.a.postInvalidate();
   }
 }
 

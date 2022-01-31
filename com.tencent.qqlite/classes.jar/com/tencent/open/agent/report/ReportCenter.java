@@ -13,12 +13,12 @@ import com.tencent.open.business.base.OpenConfig;
 import com.tencent.open.business.cgireport.ReportComm;
 import com.tencent.open.business.viareport.ReportConfig;
 import com.tencent.qphone.base.util.QLog;
-import fcc;
-import fcd;
-import fce;
-import fcf;
-import fcg;
 import fch;
+import fci;
+import fcj;
+import fck;
+import fcl;
+import fcm;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -64,7 +64,7 @@ public class ReportCenter
   
   private ReportCenter()
   {
-    this.jdField_b_of_type_AndroidOsHandler = new fcc(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new fch(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaUtilRandom = new Random();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -100,7 +100,7 @@ public class ReportCenter
         if ((!a("report_via", paramString1)) && (!paramBoolean)) {
           continue;
         }
-        this.jdField_a_of_type_AndroidOsHandler.post(new fcd(this, paramString2, paramBundle, paramBoolean));
+        this.jdField_a_of_type_AndroidOsHandler.post(new fci(this, paramString2, paramBundle, paramBoolean));
         return;
       }
       catch (Exception localException)
@@ -202,7 +202,7 @@ public class ReportCenter
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new fcf(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new fck(this));
   }
   
   public void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3, boolean paramBoolean)
@@ -213,12 +213,12 @@ public class ReportCenter
     if ((!a("report_cgi", "" + paramInt)) && (!paramBoolean)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new fce(this, paramLong1, paramString2, paramString1, paramString3, paramInt, paramLong2, paramLong3, paramLong4, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fcj(this, paramLong1, paramString2, paramString1, paramString3, paramInt, paramLong2, paramLong3, paramLong4, paramBoolean));
   }
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new fch(this, paramBundle, paramString1, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new fcm(this, paramBundle, paramString1, paramBoolean));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean)
@@ -407,7 +407,7 @@ public class ReportCenter
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new fcg(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new fcl(this));
   }
 }
 

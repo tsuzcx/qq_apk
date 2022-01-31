@@ -1,19 +1,27 @@
+import android.app.Dialog;
 import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
 
 public final class fka
-  implements IPluginManager.OnPluginReadyListener
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public fka(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IPluginManager.c(paramContext, paramPluginParams);
+    IPluginManager.a(IPluginManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b));
+    IPluginManager.a().show();
+    IPluginManager.a().installPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, new fkb(this));
+    if ((IPluginManager.a() != null) && (IPluginManager.a().isShowing()))
+    {
+      IPluginManager.a().dismiss();
+      IPluginManager.a(null);
     }
   }
 }

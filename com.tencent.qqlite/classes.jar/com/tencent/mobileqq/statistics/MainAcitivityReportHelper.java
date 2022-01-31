@@ -27,11 +27,11 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
-import eej;
-import eek;
-import eel;
-import eem;
-import een;
+import eeo;
+import eep;
+import eeq;
+import eer;
+import ees;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +52,7 @@ public class MainAcitivityReportHelper
   private int jdField_a_of_type_Int = 0;
   public long a;
   public Handler a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new eek(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new eep(this);
   public WeakReference a;
   
   static
@@ -64,7 +64,7 @@ public class MainAcitivityReportHelper
   public MainAcitivityReportHelper(SplashActivity paramSplashActivity)
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsHandler = new eej(this);
+    this.jdField_a_of_type_AndroidOsHandler = new eeo(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSplashActivity);
   }
   
@@ -119,7 +119,7 @@ public class MainAcitivityReportHelper
   
   public static void a(Context paramContext, String paramString, long paramLong)
   {
-    new eem(paramContext, paramLong, paramString).execute(new Void[0]);
+    new eer(paramContext, paramLong, paramString).execute(new Void[0]);
   }
   
   private void a(StatisticCollector paramStatisticCollector)
@@ -205,7 +205,7 @@ public class MainAcitivityReportHelper
   
   private static void d(String paramString)
   {
-    new een(paramString).execute(new Void[0]);
+    new ees(paramString).execute(new Void[0]);
   }
   
   private static void e(QQAppInterface paramQQAppInterface)
@@ -298,7 +298,7 @@ public class MainAcitivityReportHelper
       if (QLog.isDevelopLevel()) {
         QLog.d("MainAcitivityReportHelper", 4, "start");
       }
-      ThreadManager.a().schedule(new eel(this, paramQQAppInterface), 60000L);
+      ThreadManager.a().schedule(new eeq(this, paramQQAppInterface), 60000L);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 180000L);
       return;
     }

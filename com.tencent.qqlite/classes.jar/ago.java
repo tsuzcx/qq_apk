@@ -1,68 +1,26 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class ago
-  extends DiscussionObserver
+  extends FMObserver
 {
   public ago(Conversation paramConversation) {}
   
-  protected void a()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.a.a(9, null, -2147483648);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    if (QLog.isDevelopLevel()) {
+      QLog.i("silasBug", 4, "OnFileTransferProgress");
     }
+    this.a.a(8, paramString, -2147483648);
   }
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a.a(8, Long.toString(paramLong), 3000);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
-      }
-      this.a.a(8, paramString, 3000);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("silasBug", 4, "OnFileTransferEnd");
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
-    }
-    if (paramBoolean1) {
-      this.a.b(new agp(this, paramString));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    if ((paramBoolean) && (bool))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
-      }
-      this.a.a(0L);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
-      }
-      this.a.a(8, paramString, 3000);
-    }
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 

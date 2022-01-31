@@ -9,11 +9,9 @@ class dgo
   
   public void run()
   {
-    this.a.a.a.c = System.currentTimeMillis();
     try
     {
-      this.a.a.a.a.loadUrl("javascript:add_more_page()");
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:add_more_page()");
+      this.a.a.a.loadUrl("javascript:add_more_page()");
       return;
     }
     catch (Exception localException)

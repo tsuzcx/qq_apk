@@ -3,7 +3,7 @@ package com.tencent.widget;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import fio;
+import fit;
 
 public class PagerBaseAdapterWrapper
   extends BaseAdapter
@@ -20,7 +20,7 @@ public class PagerBaseAdapterWrapper
     {
       this.jdField_a_of_type_Int = paramInt;
       if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new fio(this));
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new fit(this));
       }
       return;
       paramInt = 1;

@@ -26,8 +26,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
-import evp;
-import evq;
+import evu;
+import evv;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -535,7 +535,7 @@ public class QQUtils
   {
     if (a(paramQQAppInterface.a(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.a().getString(2131363664);
+      paramString1 = paramQQAppInterface.a().getString(2131363658);
       if (paramString1 != null) {
         QQToast.a(paramQQAppInterface.a(), paramString1, 0).b(paramInt2);
       }
@@ -565,7 +565,7 @@ public class QQUtils
       localIntent.putExtra("duplicate", false);
       localIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
       paramQQAppInterface.a().sendOrderedBroadcast(localIntent, null);
-      paramHandler.postDelayed(new evq(paramQQAppInterface, paramString2, paramInt2), paramInt3);
+      paramHandler.postDelayed(new evv(paramQQAppInterface, paramString2, paramInt2), paramInt3);
       return;
     }
   }
@@ -799,7 +799,7 @@ public class QQUtils
     }
     if (a(paramQQAppInterface.a(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.a().getString(2131363664);
+      paramString1 = paramQQAppInterface.a().getString(2131363658);
       if (paramString1 != null) {
         QQToast.a(paramQQAppInterface.a(), paramString1, 0).b(paramInt1);
       }
@@ -809,7 +809,7 @@ public class QQUtils
       QLog.d(c, 2, "createShortcutWhihTips.no shortcut.");
     }
     a(paramQQAppInterface, paramString1, paramString2, paramInt3);
-    paramHandler.postDelayed(new evp(paramQQAppInterface, paramString2, paramInt1, paramString3), paramInt2);
+    paramHandler.postDelayed(new evu(paramQQAppInterface, paramString2, paramInt1, paramString3), paramInt2);
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, ArrayList paramArrayList)

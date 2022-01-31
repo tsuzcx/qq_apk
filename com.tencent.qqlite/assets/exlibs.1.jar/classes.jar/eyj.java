@@ -1,37 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
+import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
 
 public class eyj
-  implements View.OnTouchListener
+  extends DataSetObserver
 {
-  public eyj(IphoneTreeView paramIphoneTreeView) {}
+  public eyj(GridListView paramGridListView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onChanged()
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      bool = false;
-    }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
   }
 }
 

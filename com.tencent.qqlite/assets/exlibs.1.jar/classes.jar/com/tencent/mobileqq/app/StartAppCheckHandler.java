@@ -24,12 +24,12 @@ import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cwe;
-import cwf;
-import cwg;
-import cwh;
-import cwi;
-import cwj;
+import cwk;
+import cwl;
+import cwm;
+import cwn;
+import cwo;
+import cwp;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -52,13 +52,13 @@ public class StartAppCheckHandler
   private Handler a;
   public AppInterface a;
   public BrowserAppInterface a;
-  public cwh a;
-  public cwj a;
+  public cwn a;
+  public cwp a;
   public Runnable a;
   public Queue a;
   public boolean a;
   final int jdField_b_of_type_Int = 1;
-  private Handler jdField_b_of_type_AndroidOsHandler = new cwf(this, Looper.getMainLooper());
+  private Handler jdField_b_of_type_AndroidOsHandler = new cwl(this, Looper.getMainLooper());
   final int c = 2;
   final int d = 3;
   
@@ -70,8 +70,8 @@ public class StartAppCheckHandler
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_AndroidOsHandler = new cwe(this, Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new cwg(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cwk(this, Looper.getMainLooper());
+    this.jdField_a_of_type_JavaLangRunnable = new cwm(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
   }
   
@@ -126,30 +126,30 @@ public class StartAppCheckHandler
         }
         paramArrayOfByte = ((signature.SignatureResult)localObject1).str_packname.get();
         long l = System.currentTimeMillis();
-        this.jdField_a_of_type_Cwh.jdField_b_of_type_Long = Long.valueOf(l).longValue();
+        this.jdField_a_of_type_Cwn.jdField_b_of_type_Long = Long.valueOf(l).longValue();
         if (((signature.SignatureResult)localObject1).u32_timeout.has()) {
-          this.jdField_a_of_type_Cwh.jdField_a_of_type_Long = ((signature.SignatureResult)localObject1).u32_timeout.get();
+          this.jdField_a_of_type_Cwn.jdField_a_of_type_Long = ((signature.SignatureResult)localObject1).u32_timeout.get();
         }
         if (((signature.SignatureResult)localObject1).u32_check_result.has()) {
-          this.jdField_a_of_type_Cwh.jdField_a_of_type_Int = ((signature.SignatureResult)localObject1).u32_check_result.get();
+          this.jdField_a_of_type_Cwn.jdField_a_of_type_Int = ((signature.SignatureResult)localObject1).u32_check_result.get();
         }
         if (((signature.SignatureResult)localObject1).str_title.has()) {
-          this.jdField_a_of_type_Cwh.jdField_c_of_type_JavaLangString = ((signature.SignatureResult)localObject1).str_title.get();
+          this.jdField_a_of_type_Cwn.jdField_c_of_type_JavaLangString = ((signature.SignatureResult)localObject1).str_title.get();
         }
         if (((signature.SignatureResult)localObject1).str_content.has()) {
-          this.jdField_a_of_type_Cwh.d = ((signature.SignatureResult)localObject1).str_content.get();
+          this.jdField_a_of_type_Cwn.d = ((signature.SignatureResult)localObject1).str_content.get();
         }
         if (((signature.SignatureResult)localObject1).str_left_button.has()) {
-          this.jdField_a_of_type_Cwh.e = ((signature.SignatureResult)localObject1).str_left_button.get();
+          this.jdField_a_of_type_Cwn.e = ((signature.SignatureResult)localObject1).str_left_button.get();
         }
         if (((signature.SignatureResult)localObject1).str_right_button.has()) {
-          this.jdField_a_of_type_Cwh.f = ((signature.SignatureResult)localObject1).str_right_button.get();
+          this.jdField_a_of_type_Cwn.f = ((signature.SignatureResult)localObject1).str_right_button.get();
         }
         if (((signature.SignatureResult)localObject1).str_url.has()) {
-          this.jdField_a_of_type_Cwh.g = ((signature.SignatureResult)localObject1).str_url.get();
+          this.jdField_a_of_type_Cwn.g = ((signature.SignatureResult)localObject1).str_url.get();
         }
-        this.jdField_a_of_type_Cwh.b();
-        this.jdField_a_of_type_Cwh = null;
+        this.jdField_a_of_type_Cwn.b();
+        this.jdField_a_of_type_Cwn = null;
         switch (((signature.SignatureResult)localObject1).u32_check_result.get())
         {
         default: 
@@ -160,8 +160,8 @@ public class StartAppCheckHandler
       Object localObject3;
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (cwi)((Iterator)localObject1).next();
-        if (((cwi)localObject2).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
+        localObject2 = (cwo)((Iterator)localObject1).next();
+        if (((cwo)localObject2).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
         {
           this.jdField_a_of_type_JavaUtilQueue.remove(localObject2);
           localObject3 = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(2, localObject2);
@@ -173,8 +173,8 @@ public class StartAppCheckHandler
       Object localObject2 = this.jdField_a_of_type_JavaUtilQueue.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (cwi)((Iterator)localObject2).next();
-        if (((cwi)localObject3).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
+        localObject3 = (cwo)((Iterator)localObject2).next();
+        if (((cwo)localObject3).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
         {
           this.jdField_a_of_type_JavaUtilQueue.remove(localObject3);
           this.jdField_b_of_type_AndroidOsHandler.removeMessages(2, localObject3);
@@ -239,19 +239,19 @@ public class StartAppCheckHandler
       paramContext.startActivity(paramIntent);
       return;
     }
-    this.jdField_a_of_type_Cwj = new cwj(this, paramString);
-    this.jdField_a_of_type_Cwh = new cwh(this, paramString);
+    this.jdField_a_of_type_Cwp = new cwp(this, paramString);
+    this.jdField_a_of_type_Cwn = new cwn(this, paramString);
     long l;
-    if (Long.valueOf(System.currentTimeMillis()).longValue() < this.jdField_a_of_type_Cwh.jdField_b_of_type_Long + 86400000L)
+    if (Long.valueOf(System.currentTimeMillis()).longValue() < this.jdField_a_of_type_Cwn.jdField_b_of_type_Long + 86400000L)
     {
-      PackageInfo localPackageInfo = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_Cwj.jdField_a_of_type_JavaLangString);
+      PackageInfo localPackageInfo = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_Cwp.jdField_a_of_type_JavaLangString);
       if (localPackageInfo != null)
       {
         String str = SecUtil.b(localPackageInfo.signatures[0].toByteArray());
         l = new File(localPackageInfo.applicationInfo.sourceDir).lastModified();
-        if ((this.jdField_a_of_type_Cwh.jdField_c_of_type_Long == l) && (this.jdField_a_of_type_Cwh.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)))
+        if ((this.jdField_a_of_type_Cwn.jdField_c_of_type_Long == l) && (this.jdField_a_of_type_Cwn.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)))
         {
-          if (this.jdField_a_of_type_Cwh.jdField_a_of_type_Int != 2)
+          if (this.jdField_a_of_type_Cwn.jdField_a_of_type_Int != 2)
           {
             paramContext.startActivity(paramIntent);
             return;
@@ -259,17 +259,17 @@ public class StartAppCheckHandler
           paramString = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), NotificationActivity.class);
           paramString.putExtra("type", 9);
           paramContext = new Bundle();
-          paramContext.putString("dlg_title", this.jdField_a_of_type_Cwh.jdField_c_of_type_JavaLangString);
-          paramContext.putString("dlg_content", this.jdField_a_of_type_Cwh.d);
-          paramContext.putString("dlg_lbutton", this.jdField_a_of_type_Cwh.e);
-          paramContext.putString("dlg_rbutton", this.jdField_a_of_type_Cwh.f);
-          paramContext.putString("dlg_url", this.jdField_a_of_type_Cwh.g);
+          paramContext.putString("dlg_title", this.jdField_a_of_type_Cwn.jdField_c_of_type_JavaLangString);
+          paramContext.putString("dlg_content", this.jdField_a_of_type_Cwn.d);
+          paramContext.putString("dlg_lbutton", this.jdField_a_of_type_Cwn.e);
+          paramContext.putString("dlg_rbutton", this.jdField_a_of_type_Cwn.f);
+          paramContext.putString("dlg_url", this.jdField_a_of_type_Cwn.g);
           paramString.putExtras(paramContext);
           paramString.setFlags(872415232);
           this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().startActivity(paramString);
           try
           {
-            ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "startAppByCheckValid", this.jdField_a_of_type_Cwh.jdField_b_of_type_JavaLangString, 0, 0, "", "", "", "");
+            ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "startAppByCheckValid", this.jdField_a_of_type_Cwn.jdField_b_of_type_JavaLangString, 0, 0, "", "", "", "");
             return;
           }
           catch (Exception paramString)
@@ -284,20 +284,20 @@ public class StartAppCheckHandler
     {
       try
       {
-        this.jdField_a_of_type_Cwj.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).longValue();
-        this.jdField_a_of_type_Cwj.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_Cwj.jdField_a_of_type_JavaLangString = paramString;
-        paramString = new cwi(this, paramString, paramContext, paramIntent);
+        this.jdField_a_of_type_Cwp.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).longValue();
+        this.jdField_a_of_type_Cwp.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Cwp.jdField_a_of_type_JavaLangString = paramString;
+        paramString = new cwo(this, paramString, paramContext, paramIntent);
         this.jdField_a_of_type_JavaUtilQueue.offer(paramString);
         paramContext = new Message();
         paramContext.what = 2;
         paramContext.obj = paramString;
         this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
         paramString = this.jdField_a_of_type_AndroidOsHandler;
-        if (this.jdField_a_of_type_Cwh.jdField_a_of_type_Long <= 0L) {
+        if (this.jdField_a_of_type_Cwn.jdField_a_of_type_Long <= 0L) {
           break label527;
         }
-        l = this.jdField_a_of_type_Cwh.jdField_a_of_type_Long;
+        l = this.jdField_a_of_type_Cwn.jdField_a_of_type_Long;
         paramString.sendEmptyMessageDelayed(3, l);
         this.jdField_a_of_type_Boolean = true;
         return;

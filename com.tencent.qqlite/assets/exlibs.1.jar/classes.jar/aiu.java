@@ -1,83 +1,72 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.MyGridView;
 import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class aiu
-  extends Handler
+  extends FriendListObserver
 {
   public aiu(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
-    {
+    int i;
+    if ((paramBoolean) && (3000 == DiscussionInfoCardActivity.a(this.a))) {
+      i = 0;
     }
-    label419:
-    do
+    for (;;)
     {
-      do
+      if (i < DiscussionInfoCardActivity.a(this.a).getChildCount())
       {
-        do
+        ImageView localImageView = (ImageView)DiscussionInfoCardActivity.a(this.a).getChildAt(i).findViewById(2131296453);
+        String str = (String)localImageView.getTag();
+        if ((str != null) && (str.equals(paramString))) {
+          localImageView.setBackgroundDrawable(this.a.app.b(paramString));
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if (paramBoolean)
+    {
+      this.a.a();
+      DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
+      localIterator = DiscussionInfoCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        localHashMap = (HashMap)localIterator.next();
+        str = (String)localHashMap.get("memberUin");
+        if ((str != null) && (str.compareTo(paramString1) == 0))
         {
-          do
-          {
-            do
-            {
-              return;
-              if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
-                DiscussionInfoCardActivity.a(this.a).dismiss();
-              }
-              paramMessage = new Intent();
-              paramMessage.putExtra("isNeedFinish", true);
-              this.a.setResult(-1, paramMessage);
-              this.a.finish();
-              return;
-            } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-            DiscussionInfoCardActivity.a(this.a).dismiss();
-            return;
-            if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a) == 3000)) {
-              DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
-            }
-          } while (DiscussionInfoCardActivity.a(this.a) == null);
-          int i = DiscussionInfoCardActivity.a(this.a).size();
-          if (i + 1 > DiscussionInfoCardActivity.b(this.a) * 3)
-          {
-            DiscussionInfoCardActivity.a(this.a).setRightText(i + "人");
-            DiscussionInfoCardActivity.a(this.a).setOnClickListener(new aiv(this));
-            DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a), DiscussionInfoCardActivity.f(this.a));
-            if (DiscussionInfoCardActivity.a(this.a) != null) {
-              break label419;
-            }
-            DiscussionInfoCardActivity.a(this.a, new aje(this.a));
-            DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
-          }
-          for (;;)
-          {
-            removeMessages(0);
-            return;
-            if (DiscussionInfoCardActivity.a(this.a) == null) {
-              break;
-            }
-            DiscussionInfoCardActivity.a(this.a).setVisibility(8);
-            DiscussionInfoCardActivity.a(this.a).setVisibility(8);
-            break;
+          localHashMap.put("memberName", paramString2);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
             DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
           }
-        } while (DiscussionInfoCardActivity.a(this.a) != 0);
-        paramMessage = (String)paramMessage.obj;
-      } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
-      this.a.finish();
+        }
+      }
+    }
+    while ((this.a.a == null) || (!this.a.a.isShowing()) || (this.a.isFinishing()))
+    {
+      Iterator localIterator;
+      HashMap localHashMap;
+      String str;
       return;
-    } while (paramMessage.obj == null);
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage);
+    }
+    this.a.a.dismiss();
   }
 }
 

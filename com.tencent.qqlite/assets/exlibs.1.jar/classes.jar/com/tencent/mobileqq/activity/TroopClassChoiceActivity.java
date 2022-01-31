@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import bmg;
+import bme;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
 import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
@@ -17,7 +17,7 @@ public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
   implements AdapterView.OnItemClickListener
 {
-  private bmg jdField_a_of_type_Bmg;
+  private bme jdField_a_of_type_Bme;
   public GroupCatalogBean a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private String jdField_a_of_type_JavaLangString;
@@ -54,11 +54,11 @@ public class TroopClassChoiceActivity
   
   private void d()
   {
-    d(2130837633);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298904));
+    d(2130837635);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131298853));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Bmg = new bmg(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bmg);
+    this.jdField_a_of_type_Bme = new bme(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bme);
   }
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -91,8 +91,8 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903684);
-    setTitle(2131363086);
+    setContentView(2130903667);
+    setTitle(2131363089);
     c();
     d();
   }

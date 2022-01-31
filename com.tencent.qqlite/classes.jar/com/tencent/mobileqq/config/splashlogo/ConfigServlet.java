@@ -36,11 +36,11 @@ import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dbx;
-import dby;
-import dbz;
-import dca;
-import dcb;
+import dcd;
+import dce;
+import dcf;
+import dcg;
+import dch;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.text.ParseException;
@@ -1169,7 +1169,7 @@ public class ConfigServlet
       {
         localObject2 = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + paramString;
         if (!a(paramString)) {
-          ThreadManager.a(new dby(this, str1));
+          ThreadManager.a(new dce(this, str1));
         }
         Config.a.a(Config.a.a(l1, str2, (byte)3, str1, (String)localObject1, (String)localObject2, l3 + "|" + l2, (short)k, paramString));
         break label691;
@@ -1266,7 +1266,7 @@ public class ConfigServlet
             if (f1 < 0.0F) {
               f5 = 50.0F;
             }
-            new dbz(this, str2, (String)localObject, paramInt, paramString, f2, f3, f5, str1, f4).start();
+            new dcf(this, str2, (String)localObject, paramInt, paramString, f2, f3, f5, str1, f4).start();
           }
           return;
         }
@@ -1342,7 +1342,7 @@ public class ConfigServlet
           if (QLog.isColorLevel()) {
             QLog.i("SPLASH_ConfigServlet", 2, "begin a thread try to download");
           }
-          ThreadManager.a(new dca(this, (File)localObject1, str3, paramString, (File)localObject2, str4, str2, str1, str3));
+          ThreadManager.a(new dcg(this, (File)localObject1, str3, paramString, (File)localObject2, str4, str2, str1, str3));
           return;
         }
       }
@@ -1376,7 +1376,7 @@ public class ConfigServlet
     if ((paramQQAppInterface != null) && (paramQQAppInterface.a() != null))
     {
       e = paramQQAppInterface.c();
-      new dcb(paramQQAppInterface).start();
+      new dch(paramQQAppInterface).start();
     }
   }
   
@@ -1589,7 +1589,7 @@ public class ConfigServlet
             i = 0;
             while (i < j)
             {
-              ThreadManager.a(new dbx(this, paramFromServiceMsg[i], paramIntent));
+              ThreadManager.a(new dcd(this, paramFromServiceMsg[i], paramIntent));
               i += 1;
             }
             if (QLog.isColorLevel()) {

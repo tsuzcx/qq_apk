@@ -69,7 +69,7 @@ public class MsgSummary
         {
           if (this.f == 2)
           {
-            paramContext = ((Resources)localObject).getDrawable(2130839093);
+            paramContext = ((Resources)localObject).getDrawable(2130839061);
             if ((TextUtils.isEmpty(this.b)) || (!(this.b instanceof Spannable))) {
               continue;
             }
@@ -91,7 +91,7 @@ public class MsgSummary
           if (this.f != 1) {
             break label370;
           }
-          paramContext = ((Resources)localObject).getDrawable(2130839097);
+          paramContext = ((Resources)localObject).getDrawable(2130839065);
           continue;
         }
         catch (Exception localException)
@@ -139,11 +139,11 @@ public class MsgSummary
       {
         if (this.f == 2)
         {
-          localObject1 = localResources.getDrawable(2130839093);
+          localObject1 = localResources.getDrawable(2130839061);
           if (paramInt <= 0) {
             break label616;
           }
-          paramInt = paramContext.getResources().getColor(2131427514);
+          paramInt = paramContext.getResources().getColor(2131427509);
           if (!(this.b instanceof QQText)) {
             break label367;
           }
@@ -186,7 +186,7 @@ public class MsgSummary
         if (this.f != 1) {
           continue;
         }
-        localObject1 = localResources.getDrawable(2130839097);
+        localObject1 = localResources.getDrawable(2130839065);
         continue;
         localObject2 = null;
       }

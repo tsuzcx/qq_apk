@@ -1,20 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class asa
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public asa(LbsBaseActivity paramLbsBaseActivity) {}
+  public asa(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.app.e(true);
-    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
-      LbsBaseActivity.c(this.a).dismiss();
-    }
+    this.a.a(paramView, paramInt, null);
   }
 }
 

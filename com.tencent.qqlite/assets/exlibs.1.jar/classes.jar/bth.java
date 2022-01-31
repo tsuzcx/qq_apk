@@ -1,4 +1,7 @@
+import android.view.Window;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bth
   implements Runnable
@@ -7,7 +10,9 @@ public class bth
   
   public void run()
   {
-    this.a.h();
+    this.a.setRequestedOrientation4Recording(true);
+    this.a.a.getWindow().clearFlags(128);
+    QQToast.a(this.a.a, 2131363139, 1).b(this.a.a.getTitleBarHeight());
   }
 }
 

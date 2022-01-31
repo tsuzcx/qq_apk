@@ -12,7 +12,7 @@ import android.view.SurfaceView;
 import android.view.WindowManager;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import dul;
+import dur;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -182,7 +182,7 @@ public class FileViewMusicService
         this.jdField_a_of_type_AndroidViewSurfaceHolder.setType(3);
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnVideoSizeChangedListener(new dul(this, paramActivity));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnVideoSizeChangedListener(new dur(this, paramActivity));
     }
   }
   

@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import ezl;
-import ezm;
+import ezq;
+import ezr;
 
 public class TabBarView
   extends LinearLayout
@@ -31,7 +31,7 @@ public class TabBarView
   private float jdField_a_of_type_Float;
   public long a;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ezl(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ezq(this);
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public TabBarView.OnTabChangeListener a;
   private int e = -1;
@@ -59,7 +59,7 @@ public class TabBarView
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130839366));
+    setBackgroundDrawable(getResources().getDrawable(2130839331));
   }
   
   public static int a(Context paramContext, int paramInt)
@@ -67,11 +67,11 @@ public class TabBarView
     switch (paramInt)
     {
     default: 
-      return paramContext.getResources().getColor(2131427474);
+      return paramContext.getResources().getColor(2131427469);
     case 1: 
-      return paramContext.getResources().getColor(2131427474);
+      return paramContext.getResources().getColor(2131427469);
     }
-    return paramContext.getResources().getColor(2131427498);
+    return paramContext.getResources().getColor(2131427493);
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -133,7 +133,7 @@ public class TabBarView
     localRedDotTextView.setFocusable(true);
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
-    localRedDotTextView.setOnClickListener(new ezm(this, paramInt));
+    localRedDotTextView.setOnClickListener(new ezr(this, paramInt));
     addView(localRedDotTextView, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
   }
   

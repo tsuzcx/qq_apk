@@ -10,8 +10,8 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.smtt.sdk.WebView;
 import java.util.Map;
-import sh;
-import si;
+import sd;
+import se;
 
 public class QzonePlugin
   extends WebViewPlugin
@@ -24,7 +24,7 @@ public class QzonePlugin
   
   private void a()
   {
-    new Handler().post(new si(this));
+    new Handler().post(new se(this));
   }
   
   private void a(byte[] paramArrayOfByte)
@@ -33,7 +33,7 @@ public class QzonePlugin
     while ((this.c != null) && (this.b != null) && (this.b.equals(this.c))) {
       return;
     }
-    new Handler().post(new sh(this, paramArrayOfByte));
+    new Handler().post(new sd(this, paramArrayOfByte));
     this.b = this.c;
   }
   

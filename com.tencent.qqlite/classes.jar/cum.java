@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class cum
-  extends ctc
+  implements Comparator
 {
-  protected void a()
-  {
-    super.a();
-    if (this.b >= csy.a().a / 12000L)
-    {
-      CoreService.d();
-      this.a.f();
-      this.b = 0L;
-    }
-  }
+  public cum(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  protected void a(String paramString)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.qqlite".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.e();
-    CoreService.c();
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    return i;
   }
 }
 

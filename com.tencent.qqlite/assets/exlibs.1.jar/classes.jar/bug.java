@@ -1,18 +1,17 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bug
   implements Runnable
 {
-  public bug(RecordSoundPanel paramRecordSoundPanel, int paramInt) {}
+  public bug(RecordSoundPanel paramRecordSoundPanel) {}
   
   public void run()
   {
-    if (RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).h())
-    {
-      RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).h(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.onClick(RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel));
-    }
+    this.a.g();
+    QQToast.a(RecordSoundPanel.a(this.a).a(), RecordSoundPanel.a(this.a).a().getString(2131362978), 0).a();
   }
 }
 

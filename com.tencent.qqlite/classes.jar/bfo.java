@@ -1,15 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qqfav.QfavHelper;
 
-class bfo
-  implements Runnable
+public class bfo
+  implements View.OnClickListener
 {
-  bfo(bfn parambfn, Drawable paramDrawable) {}
+  public bfo(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bfn.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    QfavHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, -1);
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing()))
+    {
+      QQSettingMe.a(this.a).dismiss();
+      QQSettingMe.a(this.a, null);
+    }
   }
 }
 

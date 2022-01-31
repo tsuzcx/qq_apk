@@ -7,7 +7,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import eeh;
+import een;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -663,7 +663,7 @@ public class SetSplashImpl
   
   private static void a()
   {
-    ThreadManager.a().postDelayed(new eeh(), 5000L);
+    ThreadManager.a().postDelayed(new een(), 5000L);
   }
   
   public static boolean a()

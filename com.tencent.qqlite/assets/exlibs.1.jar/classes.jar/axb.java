@@ -1,56 +1,60 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class axb
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public axb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public axb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    EntityManager localEntityManager = this.a.app.a().createEntityManager();
-    if (localEntityManager != null) {
-      if (NearbyPeopleProfileActivity.a(this.a) <= 0L) {
-        break label289;
-      }
-    }
-    label289:
-    for (Object localObject2 = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(NearbyPeopleProfileActivity.a(this.a)) });; localObject2 = null)
+    switch (paramInt)
     {
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = localObject2;
-        if (!StringUtil.b(NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_JavaLangString)) {
-          localObject1 = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_JavaLangString });
-        }
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = new NearbyPeopleCard();
-        ((NearbyPeopleCard)localObject2).tinyId = NearbyPeopleProfileActivity.a(this.a);
-        ((NearbyPeopleCard)localObject2).uin = NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_JavaLangString;
-      }
-      ((NearbyPeopleCard)localObject2).nickname = NearbyPeopleProfileActivity.a(this.a).h;
-      ((NearbyPeopleCard)localObject2).age = NearbyPeopleProfileActivity.a(this.a).jdField_b_of_type_Int;
-      ((NearbyPeopleCard)localObject2).gender = NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_Byte;
-      ((NearbyPeopleCard)localObject2).maritalStatus = NearbyPeopleProfileActivity.a(this.a).jdField_b_of_type_Byte;
-      ((NearbyPeopleCard)localObject2).job = NearbyPeopleProfileActivity.a(this.a).jdField_c_of_type_Int;
-      ((NearbyPeopleCard)localObject2).constellation = NearbyPeopleProfileActivity.a(this.a).jdField_c_of_type_Byte;
-      ((NearbyPeopleCard)localObject2).xuanYan = NearbyPeopleProfileActivity.a(this.a).jdField_a_of_type_ArrayOfByte;
-      ((NearbyPeopleCard)localObject2).distance = NearbyPeopleProfileActivity.a(this.a).jdField_b_of_type_JavaLangString;
-      ((NearbyPeopleCard)localObject2).timeDiff = null;
-      this.a.a.obtainMessage(101, localObject2).sendToTarget();
-      localEntityManager.a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a();
       return;
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, 5));
+      continue;
+      paramView = new ArrayList();
+      paramInt = 0;
+      while (paramInt < NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size() - 1)
+      {
+        localObject = (ays)NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).get(paramInt);
+        if (!StringUtil.b(((ays)localObject).a)) {
+          paramView.add(((ays)localObject).a);
+        }
+        paramInt += 1;
+      }
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, PhotoListActivity.class);
+      paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.getClass().getName());
+      paramView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.qqlite");
+      paramView.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
+      paramView.putExtra("PhotoConst.IS_SINGLE_MODE", true);
+      paramView.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
+      paramView.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
+      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      Object localObject = AppConstants.as + this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.app.a() + "/" + "nearby_people_photo/";
+      paramView.putExtra("PhotoConst.TARGET_PATH", (String)localObject + System.currentTimeMillis() + ".jpg");
+      paramView.putExtra("PhotoConst.CLIP_WIDTH", 640);
+      paramView.putExtra("PhotoConst.CLIP_HEIGHT", 640);
+      paramView.putExtra("PhotoConst.TARGET_WIDTH", 640);
+      paramView.putExtra("PhotoConst.TARGET_HEIGHT", 640);
+      this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.startActivity(paramView);
+      AlbumUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, false, true);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.app, "CliOper", "", "", "0X800481F", "0X800481F", 1, 0, "", "", "", "");
     }
   }
 }

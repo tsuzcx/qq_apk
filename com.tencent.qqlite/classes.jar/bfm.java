@@ -1,26 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
 
-public class bfm
-  extends BroadcastReceiver
+class bfm
+  implements Runnable
 {
-  public bfm(QQSettingMe paramQQSettingMe) {}
+  bfm(bfl parambfl, Drawable paramDrawable) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.p();
-    }
+    this.jdField_a_of_type_Bfl.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

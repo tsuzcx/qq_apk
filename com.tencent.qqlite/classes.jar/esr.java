@@ -1,31 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-public class esr
-  extends SecSvcObserver
+public final class esr
+  implements URLDrawable.URLDrawableListener
 {
-  public esr(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
+  public esr(WeakReference paramWeakReference) {}
   
-  protected void b(int paramInt, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localQQAppInterface != null) {
-      localQQAppInterface.c(AntiFraudConfigFileUtil.a(this.a));
-    }
-    if (paramInt != 1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SecSvcObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+    if (this.a != null)
+    {
+      paramURLDrawable = (View)this.a.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.postInvalidate();
       }
     }
-    while (paramBundle == null) {
-      return;
-    }
-    ThreadManager.a(new ess(this, paramBundle.getString("config_name"), paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")));
   }
 }
 

@@ -1,27 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
 
 public class cpe
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cpe(LebaListViewAdapter paramLebaListViewAdapter, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder, Drawable paramDrawable, int paramInt) {}
+  public cpe(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    LebaListViewAdapter localLebaListViewAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter;
-    ImageView localImageView1 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.d;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ImageView localImageView2 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.g;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
+    paramView = paramView.getTag();
+    if (!(paramView instanceof cpf)) {}
+    do
     {
-      LebaListViewAdapter.b(localLebaListViewAdapter, localImageView1, localDrawable, localImageView2, bool);
       return;
-      bool = false;
-    }
+      paramView = (cpf)paramView;
+    } while (paramView.a == null);
+    this.a.a.a(paramView.a);
   }
 }
 

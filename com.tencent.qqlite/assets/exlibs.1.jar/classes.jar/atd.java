@@ -9,12 +9,9 @@ public class atd
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
+    if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
-      return;
     }
-    catch (Exception paramDialogInterface) {}
   }
 }
 

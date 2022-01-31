@@ -1,17 +1,17 @@
-import android.graphics.Bitmap;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class aej
-  implements IIconListener
+  implements DialogInterface.OnClickListener
 {
   public aej(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetTextView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.a.jdField_a_of_type_AndroidWidgetTextView);
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
   }
 }

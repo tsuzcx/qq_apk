@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
-import cxp;
+import cxv;
 import mqq.observer.AccountObserver;
 
 public class RegisterPush
@@ -17,7 +17,7 @@ public class RegisterPush
   {
     if (this.jdField_a_of_type_MqqObserverAccountObserver == null)
     {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new cxp(this, null);
+      this.jdField_a_of_type_MqqObserverAccountObserver = new cxv(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.a().e();

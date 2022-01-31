@@ -28,11 +28,11 @@ import com.tencent.mobileqq.troop.widget.AvatarWallView;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import ekj;
-import ekk;
-import ekl;
-import ekm;
-import ekn;
+import eko;
+import ekp;
+import ekq;
+import ekr;
+import eks;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -55,11 +55,11 @@ public class TroopCreateAvatarActivity
   public Intent a;
   public Handler a;
   protected TextView a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ekn(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new eks(this);
   public AvatarWallAdapter a;
   public AvatarWallView a;
   public ArrayList a;
-  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new ekm(this);
+  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new ekr(this);
   public boolean a;
   protected TextView b;
   public String b;
@@ -75,7 +75,7 @@ public class TroopCreateAvatarActivity
     this.jdField_c_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new ekj(this);
+    this.jdField_a_of_type_AndroidOsHandler = new eko(this);
   }
   
   public static String a(AppInterface paramAppInterface)
@@ -147,11 +147,11 @@ public class TroopCreateAvatarActivity
     boolean bool = ((Intent)localObject).getBooleanExtra("isShowCommit", false);
     this.jdField_a_of_type_Boolean = ((Intent)localObject).getBooleanExtra("isAstrict", false);
     if (bool == true) {}
-    for (int i = 2131362333;; i = 2131362331)
+    for (int i = 2131362330;; i = 2131362328)
     {
       setContentView(2130903337);
-      setTitle(2131362330);
-      setRightButton(i, new ekk(this));
+      setTitle(2131362327);
+      setRightButton(i, new ekp(this));
       localObject = (TroopCreateLogic)this.app.getManager(29);
       if (localObject == null) {
         break label158;
@@ -174,8 +174,8 @@ public class TroopCreateAvatarActivity
     {
       localObject = new DisplayMetrics();
       getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-      i = (((DisplayMetrics)localObject).widthPixels - getResources().getDimensionPixelSize(2131493046)) / 4;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView = ((AvatarWallView)findViewById(2131296994));
+      i = (((DisplayMetrics)localObject).widthPixels - getResources().getDimensionPixelSize(2131493041)) / 4;
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView = ((AvatarWallView)findViewById(2131296990));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView.setColumnWidth(i);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter = new AvatarWallAdapter(new WeakReference(this), this.app, this.jdField_b_of_type_JavaLangString, true, this.jdField_a_of_type_AndroidOsHandler, true, "Grp_Admin_data");
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
@@ -183,12 +183,12 @@ public class TroopCreateAvatarActivity
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(i);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallView);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296993));
-      localObject = getString(2131362332);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296989));
+      localObject = getString(2131362329);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297762));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ekl(this));
-      this.h.setText(getString(2131363110));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297758));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ekq(this));
+      this.h.setText(getString(2131363113));
       return;
       this.j.setEnabled(true);
     }

@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.RotateableView;
 
 public class eze
-  extends Animation
+  extends Handler
 {
-  public eze(ShaderAnimLayout paramShaderAnimLayout) {}
+  public eze(RotateableView paramRotateableView) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_Boolean == true) {}
-    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
-    {
-      this.a.invalidate();
-      return;
+    RotateableView.a(this.a, 8.0F);
+    if (RotateableView.a(this.a) >= 360.0F) {
+      RotateableView.b(this.a, 360.0F);
     }
+    this.a.invalidate();
   }
 }
 

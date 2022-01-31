@@ -1,14 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.BuddyListAdapter.ViewTag;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
 
 public class cow
-  extends BuddyListAdapter.ViewTag
+  implements DialogInterface.OnDismissListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public cow(BuddyListAdapter paramBuddyListAdapter) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

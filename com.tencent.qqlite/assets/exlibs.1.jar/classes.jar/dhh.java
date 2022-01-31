@@ -1,35 +1,33 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.MenuPopupDialog;
 
 public class dhh
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public dhh(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public dhh(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    if (NetworkUtil.e(this.a.getActivity()))
-    {
-      UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (FileManagerUtil.a())
-      {
-        FMDialogUtil.a(this.a.getActivity(), 2131362021, 2131362041, new dhi(this));
-        return;
-      }
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
+    if (paramView == null) {
+      return false;
     }
-    FMToastUtil.a(2131363449);
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (!this.a.f())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+      return false;
+    }
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
+    LocalFileBrowserActivity.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new dhi(this, paramView), new dhj(this, paramView)));
+    return true;
   }
 }
 

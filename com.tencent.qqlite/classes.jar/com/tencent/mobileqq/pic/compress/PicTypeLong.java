@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic.compress;
 
 import com.tencent.mobileqq.pic.CompressInfo;
-import dzs;
+import dzy;
 
 public class PicTypeLong
   extends PicType
@@ -19,7 +19,7 @@ public class PicTypeLong
       return null;
     case 0: 
     case 1: 
-      return new dzs(this, this);
+      return new dzy(this, this);
     }
     return new PicQualityOriginal(this);
   }

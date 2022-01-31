@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="@drawable/skin_group_list_sub_entry" android:layout_width="fill_parent" android:layout_height="18.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020309" android:layout_width="18.0dip" android:layout_height="8.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <Button android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020301" android:layout_width="18.0dip" android:layout_height="8.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
 </RelativeLayout>

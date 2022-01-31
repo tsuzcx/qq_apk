@@ -1,35 +1,14 @@
-import QQService.SvcDevLoginInfo;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aud
-  extends SubAccountObserver
+  implements Runnable
 {
-  aud(auc paramauc, SvcDevLoginInfo paramSvcDevLoginInfo) {}
+  aud(auc paramauc) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack mainAccount=" + paramString1 + " subAccount=" + paramString2 + " key=" + paramString3);
-    }
-    if ((paramString3 == null) || (paramString3.length() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack begin to kickOutDev");
-      }
-      if (EquipmentLockImpl.a().a(this.jdField_a_of_type_Auc.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.iAppId, (byte)1, HexUtil.a(paramString3), this.jdField_a_of_type_Auc.jdField_a_of_type_Int))
-      {
-        LoginInfoActivity.a(this.jdField_a_of_type_Auc.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, 1);
-        return;
-      }
-      LoginInfoActivity.a(this.jdField_a_of_type_Auc.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new aue(this));
-      return;
-    }
-    LoginInfoActivity.a(this.jdField_a_of_type_Auc.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new auf(this));
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131364161), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

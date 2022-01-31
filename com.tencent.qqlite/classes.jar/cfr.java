@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
-class cfr
-  implements DialogInterface.OnDismissListener
+public class cfr
+  implements View.OnClickListener
 {
-  cfr(cfq paramcfq, View paramView) {}
+  public cfr(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.dismiss();
   }
 }
 

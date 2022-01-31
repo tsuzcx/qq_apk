@@ -1,17 +1,38 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.open.agent.RecommendListManager;
-import java.util.HashMap;
+import com.tencent.open.agent.OpenSdkFriendService;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
+import com.tencent.open.agent.datamodel.ImageLoader;
+import com.tencent.open.agent.datamodel.QZonePortraitData;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class fbr
   implements Runnable
 {
-  public fbr(RecommendListManager paramRecommendListManager, String paramString, Bitmap paramBitmap) {}
+  public fbr(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    ((ImageView)((View)this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131296453)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    int i = 0;
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_Int) {
+        try
+        {
+          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
+          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.f, str);
+          ImageLoader.a().a(str);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

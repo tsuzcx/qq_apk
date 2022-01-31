@@ -1,24 +1,16 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class zq
   implements Runnable
 {
-  public zq(BaseChatPie paramBaseChatPie) {}
+  public zq(BaseChatPie paramBaseChatPie, MessageForShakeWindow paramMessageForShakeWindow) {}
   
   public void run()
   {
-    if (this.a.a.e)
-    {
-      if (this.a.a.g)
-      {
-        this.a.a(131078);
-        return;
-      }
-      this.a.a(131077);
-      return;
-    }
-    this.a.a(131075);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.T();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, false);
   }
 }
 

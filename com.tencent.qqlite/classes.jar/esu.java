@@ -1,8 +1,28 @@
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.ThreadPriorityManager;
 
-public class esu
+public final class esu
+  extends Handler
 {
-  public static AntiFraudConfigFileUtil a = new AntiFraudConfigFileUtil(null);
+  public esu(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ThreadPriorityManager.a();
+      return;
+    }
+    ThreadPriorityManager.b();
+  }
 }
 
 

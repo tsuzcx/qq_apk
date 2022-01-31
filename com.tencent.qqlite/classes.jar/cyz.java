@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.app.message.OfflineFileMessageProcessor;
+import com.tencent.mobileqq.service.message.MessageProtoCodec;
+import com.tencent.mobileqq.service.message.TransMsgContext;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
 public class cyz
-  implements Comparator
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public cyz(SystemMessageProcessor paramSystemMessageProcessor) {}
+  public cyz(OfflineFileMessageProcessor paramOfflineFileMessageProcessor, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  public ToServiceMsg a()
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
-    }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    TransMsgContext localTransMsgContext = new TransMsgContext();
+    localTransMsgContext.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 9, this.jdField_a_of_type_JavaLangString, localTransMsgContext, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
 }
 

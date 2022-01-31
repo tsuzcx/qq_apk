@@ -12,8 +12,8 @@ import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.service.message.PBDecodeContext;
 import com.tencent.qphone.base.util.QLog;
-import cyw;
-import cyx;
+import czc;
+import czd;
 import java.util.Iterator;
 import java.util.List;
 import msf.msgcomm.msg_comm.Msg;
@@ -73,7 +73,7 @@ public class ProfileCardMessageProcessor
             paramMsgInfo.b(this.a.getAccount());
           }
           if (i != 0) {
-            BaseApplicationImpl.a.postDelayed(new cyx(this), 150L);
+            BaseApplicationImpl.a.postDelayed(new czd(this), 150L);
           }
         }
         do
@@ -91,14 +91,14 @@ public class ProfileCardMessageProcessor
     }
   }
   
-  public cyw a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public czc a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      return new cyw(null, false);
+      return new czc(null, false);
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
         a(paramMsgInfo);
       } else {

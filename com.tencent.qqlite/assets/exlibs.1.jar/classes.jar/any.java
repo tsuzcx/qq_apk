@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 
-public class any
-  implements Runnable
+class any
+  implements DialogInterface.OnDismissListener
 {
-  public any(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  any(anx paramanx, View paramView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = (FriendManager)this.a.app.getManager(8);
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((FriendManager)localObject).c(this.a.a.a.a);
-    } while ((localObject == null) || ((((Friends)localObject).abilityBits & 0x2) == 0L));
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "mReportPCCameraAblibityRunnable-->report");
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

@@ -13,7 +13,7 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.util.DisplayMetrics;
 import android.util.StateSet;
 import com.tencent.mobileqq.utils.ImageUtil;
-import dad;
+import daj;
 
 public class DecorationVipBubbleDrawable
   extends Drawable
@@ -22,7 +22,7 @@ public class DecorationVipBubbleDrawable
   private static int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
   private int jdField_a_of_type_Int = 160;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private dad jdField_a_of_type_Dad;
+  private daj jdField_a_of_type_Daj;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -31,32 +31,32 @@ public class DecorationVipBubbleDrawable
   
   public DecorationVipBubbleDrawable(Resources paramResources, Bitmap paramBitmap1, Bitmap paramBitmap2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this(paramResources, new dad(new NinePatch(paramBitmap1, paramArrayOfByte1, null), new NinePatch(paramBitmap2, paramArrayOfByte2, null)));
+    this(paramResources, new daj(new NinePatch(paramBitmap1, paramArrayOfByte1, null), new NinePatch(paramBitmap2, paramArrayOfByte2, null)));
   }
   
   public DecorationVipBubbleDrawable(Resources paramResources, Bitmap paramBitmap, byte[] paramArrayOfByte)
   {
-    this(paramResources, new dad(new NinePatch(paramBitmap, paramArrayOfByte, null)));
+    this(paramResources, new daj(new NinePatch(paramBitmap, paramArrayOfByte, null)));
   }
   
-  public DecorationVipBubbleDrawable(Resources paramResources, dad paramdad)
+  public DecorationVipBubbleDrawable(Resources paramResources, daj paramdaj)
   {
-    this.jdField_a_of_type_Dad = paramdad;
+    this.jdField_a_of_type_Daj = paramdaj;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     if (paramResources != null) {
       this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
     }
-    int i = paramdad.a.getDensity();
+    int i = paramdaj.a.getDensity();
     int j = this.jdField_a_of_type_Int;
     if (i == j)
     {
-      this.jdField_b_of_type_Int = paramdad.a.getWidth();
-      this.jdField_c_of_type_Int = paramdad.a.getHeight();
+      this.jdField_b_of_type_Int = paramdaj.a.getWidth();
+      this.jdField_c_of_type_Int = paramdaj.a.getHeight();
       return;
     }
-    this.jdField_b_of_type_Int = ImageUtil.a(paramdad.a.getWidth(), i, j);
-    this.jdField_c_of_type_Int = ImageUtil.a(paramdad.a.getHeight(), i, j);
+    this.jdField_b_of_type_Int = ImageUtil.a(paramdaj.a.getWidth(), i, j);
+    this.jdField_c_of_type_Int = ImageUtil.a(paramdaj.a.getHeight(), i, j);
   }
   
   public void a(int paramInt)
@@ -91,19 +91,19 @@ public class DecorationVipBubbleDrawable
       paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
     if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_Dad.a.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_Daj.a.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     for (;;)
     {
       paramCanvas.restoreToCount(i);
       return;
-      this.jdField_a_of_type_Dad.b.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_Daj.b.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.jdField_a_of_type_Dad;
+    return this.jdField_a_of_type_Daj;
   }
   
   public int getIntrinsicHeight()
@@ -118,7 +118,7 @@ public class DecorationVipBubbleDrawable
   
   public int getOpacity()
   {
-    if ((this.jdField_a_of_type_Dad.a.hasAlpha()) || ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))) {
+    if ((this.jdField_a_of_type_Daj.a.hasAlpha()) || ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))) {
       return -3;
     }
     return -1;

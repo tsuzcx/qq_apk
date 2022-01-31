@@ -1,36 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class bpu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public bpu(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.e(BaseApplication.getContext())) {}
-    try
-    {
-      paramView = this.a.app.a();
-      ProfileCardUtil.a(this.a, "", TroopRequestActivity.d(this.a), paramView, false);
-      for (;;)
-      {
-        label38:
-        ReportController.b(this.a.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.a.p, TroopRequestActivity.e(this.a), "", "");
-        return;
-        QQToast.a(this.a, 2131363515, 0).b(this.a.getTitleBarHeight());
-      }
+    if (NetworkUtil.e(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.a);
     }
-    catch (Exception paramView)
+    for (;;)
     {
-      break label38;
+      ReportController.b(this.a.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.a.p, TroopRequestActivity.e(this.a), "", "");
+      return;
+      QQToast.a(this.a, 2131363516, 0).b(this.a.getTitleBarHeight());
     }
   }
 }

@@ -1,35 +1,53 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.ContactSearchableTroop;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.RecentManagerFor3rdPart;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cdx
-  extends SearchResultDialog
+  implements ActionSheet.OnButtonClickListener
 {
-  public cdx(TroopView paramTroopView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public cdx(TroopActivity paramTroopActivity, ActionSheet paramActionSheet) {}
   
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    Object localObject = this.a.a.a();
-    ArrayList localArrayList = new ArrayList();
-    if (localObject != null)
+    int j = 0;
+    int i;
+    switch (paramInt)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(new ContactSearchableTroop(paramContext, paramQQAppInterface, (TroopInfo)((Iterator)localObject).next(), 0L, 17179869184L));
-      }
+    default: 
+      i = 0;
+      paramInt = j;
     }
-    return localArrayList;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a().b(AppConstants.aj, 9000, -paramInt);
+      paramView = (RecentManagerFor3rdPart)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(30);
+      if (i == 0) {
+        break;
+      }
+      paramView.b(AppConstants.aj, 9000);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a(Conversation.class);
+      if (paramView != null) {
+        paramView.sendMessage(paramView.obtainMessage(1009));
+      }
+      return;
+      paramInt = GroupSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a(NotificationView.class);
+      if (paramView != null) {
+        paramView.sendEmptyMessage(1014);
+      }
+      i = 1;
+    }
+    paramView.a(AppConstants.aj, 9000, 0L);
   }
 }
 

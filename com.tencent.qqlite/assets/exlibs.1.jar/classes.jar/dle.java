@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class dle
   implements Runnable
 {
-  public dle(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dle(QfileLocalFileOtherTabView paramQfileLocalFileOtherTabView, FileInfo paramFileInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB thread start");
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileOtherTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.e());
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileOtherTabView.a.containsKey(localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileOtherTabView.a.put(localObject, new ArrayList());
     }
-    List localList = QfileBaseRecentFileTabView.a(this.a).a().a();
-    if (localList != null) {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
+    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileOtherTabView.a.get(localObject);
+    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB end size[" + this.a.jdField_a_of_type_JavaUtilList.size() + "]");
-    }
-    this.a.a();
+    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileOtherTabView.i();
   }
 }
 

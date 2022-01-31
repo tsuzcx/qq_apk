@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.service.message;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -400,6 +401,9 @@ public class MessageRecordFactory
     paramMessageRecord1.msgUid = paramMessageRecord2.msgUid;
     paramMessageRecord1.extStr = paramMessageRecord2.extStr;
     paramMessageRecord1.extLong = paramMessageRecord2.extLong;
+    if (AnonymousChatHelper.a(paramMessageRecord2)) {
+      paramMessageRecord1.vipBubbleID = paramMessageRecord2.vipBubbleID;
+    }
     paramMessageRecord1.time = ((int)MessageCache.a());
   }
   

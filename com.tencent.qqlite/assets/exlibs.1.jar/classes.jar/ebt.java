@@ -1,17 +1,25 @@
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ebt
-  implements Runnable
+  implements IStatusListener
 {
   public ebt(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    EditActivity.a(this.a).requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(EditActivity.a(this.a), 2);
+    if (paramInt != 100)
+    {
+      EditActivity.a(this.a, null);
+      EditActivity.a(this.a, null);
+    }
+    EditActivity.b(this.a, true);
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

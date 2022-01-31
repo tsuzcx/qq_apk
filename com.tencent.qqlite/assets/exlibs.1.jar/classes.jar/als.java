@@ -1,29 +1,73 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public final class als
-  implements DialogInterface.OnClickListener
+public class als
+  implements URLDrawable.URLDrawableListener
 {
-  public als(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, int paramInt) {}
+  public als(EmosmDetailActivity paramEmosmDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSid(), false);
-    if (7 == this.jdField_a_of_type_Int) {
-      EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
+    this.a.a(false);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    EmosmDetailActivity.a(this.a.app, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_ep_download", 0);
+    if (EmosmDetailActivity.e != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.h != 3)
+      {
+        int i = paramURLDrawable.getIntrinsicWidth();
+        int j = paramURLDrawable.getIntrinsicHeight();
+        this.a.f = ((i * this.a.i + (this.a.h >> 1)) / this.a.h);
+        this.a.g = ((j * this.a.i + (this.a.h >> 1)) / this.a.h);
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)EmosmDetailActivity.e.getLayoutParams();
+        localLayoutParams.height = this.a.g;
+        localLayoutParams.width = this.a.f;
+        localLayoutParams.addRule(14, -1);
+        EmosmDetailActivity.e.setLayoutParams(localLayoutParams);
+      }
+      EmosmDetailActivity.e.setImageDrawable(paramURLDrawable);
     }
-    while (6 != this.jdField_a_of_type_Int) {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "bigImage load successed");
+    }
+    this.a.a(false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isSound)
+    {
+      if (!this.a.app.d()) {
+        break label287;
+      }
+      QQToast.a(this.a.app.a(), 2131363140, 0).b(this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
+    }
+    for (;;)
+    {
+      this.a.b = true;
+      if (this.a.c == true) {
+        this.a.d();
+      }
       return;
+      label287:
+      MediaPlayerManager.a(this.a.app).a(MarketFaceItemBuilder.a);
     }
-    EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 

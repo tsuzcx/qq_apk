@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.config.Config;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.config.struct.PicAndAdConf;
 
 public class dce
   implements Runnable
 {
-  public dce(ContactSyncManager paramContactSyncManager) {}
+  public dce(ConfigServlet paramConfigServlet, String paramString) {}
   
   public void run()
   {
-    this.a.b();
+    Config.a.b_(this.jdField_a_of_type_JavaLangString);
   }
 }
 

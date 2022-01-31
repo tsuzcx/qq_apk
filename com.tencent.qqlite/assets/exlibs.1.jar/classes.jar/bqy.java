@@ -9,7 +9,6 @@ public class bqy
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UpgradeActivity.a(this.a);
     this.a.finish();
   }
 }

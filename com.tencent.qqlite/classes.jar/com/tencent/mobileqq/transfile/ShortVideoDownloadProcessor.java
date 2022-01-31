@@ -13,8 +13,8 @@ import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.Short
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ehn;
-import ehr;
+import ehs;
+import ehw;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -465,7 +465,7 @@ public class ShortVideoDownloadProcessor
       localStringBuilder.append(localServerAddr.jdField_b_of_type_Int);
     }
     localStringBuilder.append("/qqdownload?ver=");
-    localStringBuilder.append("544");
+    localStringBuilder.append("607");
     localStringBuilder.append("&rkey=");
     localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
     localStringBuilder.append("&filetype=");
@@ -664,7 +664,7 @@ public class ShortVideoDownloadProcessor
       d(2001);
       this.aw = 0;
       this.L = "";
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehn(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new ehs(this));
     }
     return 0;
   }

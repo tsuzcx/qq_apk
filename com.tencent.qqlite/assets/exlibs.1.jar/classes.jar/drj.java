@@ -1,21 +1,34 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarLocalFile.ActionBarLocalAppFile;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarDataLineFile.BaseActionBarDataLineFile;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 class drj
-  implements FMDialogUtil.FMDialogInterface
+  implements DialogInterface.OnClickListener
 {
-  drj(dri paramdri, long paramLong) {}
+  drj(dri paramdri) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Dri.a.a.a().a().a(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Dri.a.h();
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.setPaused(false);
+    }
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend) {
+      BaseActionBarDataLineFile.a(this.a.a);
+    }
+    for (;;)
+    {
+      this.a.a.h();
+      return;
+      BaseActionBarDataLineFile.b(this.a.a);
+    }
   }
-  
-  public void b() {}
 }
 
 

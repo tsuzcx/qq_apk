@@ -1,18 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
 public class arz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public arz(LbsBaseActivity paramLbsBaseActivity) {}
+  public arz(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
-      LbsBaseActivity.c(this.a).dismiss();
-    }
+    ViewStub localViewStub = (ViewStub)this.a.a(2131297255);
+    ((CommonLoadingView)this.a.a(2131296836)).setVisibility(8);
+    localViewStub.setVisibility(0);
   }
 }
 

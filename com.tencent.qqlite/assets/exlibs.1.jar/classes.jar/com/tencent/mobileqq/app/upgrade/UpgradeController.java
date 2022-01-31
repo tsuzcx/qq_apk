@@ -23,7 +23,7 @@ import com.tencent.open.downloadnew.DownloadQueryListener;
 import com.tencent.open.downloadnew.UpdateManager;
 import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
 import com.tencent.qphone.base.util.QLog;
-import czy;
+import dae;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -176,7 +176,7 @@ public final class UpgradeController
       {
         BaseActivity localBaseActivity = BaseActivity.sTopActivity;
         if ((localBaseActivity != null) && (str != null) && (!str.startsWith("com.tencent.av.")) && (!str.equals("com.tencent.mobileqq.activity.UserguideActivity")) && (!str.equals("com.tencent.mobileqq.activity.UpgradeDetailActivity"))) {
-          localBaseActivity.runOnUiThread(new czy(this, localBaseActivity, (QQAppInterface)localObject));
+          localBaseActivity.runOnUiThread(new dae(this, localBaseActivity, (QQAppInterface)localObject));
         }
         localObject = ((QQAppInterface)localObject).a(Conversation.class);
         if (localObject != null) {

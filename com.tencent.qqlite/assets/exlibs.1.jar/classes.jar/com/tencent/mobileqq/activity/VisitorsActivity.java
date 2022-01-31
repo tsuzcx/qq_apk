@@ -14,11 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bsa;
 import bsb;
 import bsc;
 import bsd;
-import bse;
-import bsh;
+import bsg;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -44,7 +44,6 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -78,26 +77,26 @@ public class VisitorsActivity
   static final int v = 4;
   public long a;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new bsb(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new bsa(this);
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public bsh a;
+  public bsg a;
   protected CardHandler a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bse(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bsd(this);
   protected FriendManager a;
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new bsd(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new bsc(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public GridListView a;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new bsc(this);
+  TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new bsb(this);
   public TabBarView a;
   public ArrayList a;
   public HashMap a;
   public boolean a;
   public long b;
   View jdField_b_of_type_AndroidViewView;
-  public bsh b;
+  public bsg b;
   public GridListView b;
   private PullRefreshHeader jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   protected String b;
@@ -158,36 +157,17 @@ public class VisitorsActivity
     localAllInOne.b = paramCardProfile.getBAge();
     localAllInOne.jdField_a_of_type_Byte = paramCardProfile.getBSex();
     localAllInOne.jdField_a_of_type_Short = paramCardProfile.getWFace();
-    if (paramCardProfile.getVIntroContent() != null) {}
-    try
+    paramCardProfile = this.jdField_a_of_type_ComTencentMobileqqModelFriendManager.c(localAllInOne.jdField_a_of_type_JavaLangString);
+    if ((paramCardProfile != null) && (paramCardProfile.isFriend()))
     {
-      new String(paramCardProfile.getVIntroContent(), "utf-8");
-      paramCardProfile = this.jdField_a_of_type_ComTencentMobileqqModelFriendManager.c(localAllInOne.jdField_a_of_type_JavaLangString);
-      if ((paramCardProfile != null) && (paramCardProfile.isFriend()))
-      {
-        localAllInOne.jdField_a_of_type_Int = 1;
-        ProfileActivity.b(this, localAllInOne);
-        return;
-      }
+      localAllInOne.jdField_a_of_type_Int = 1;
+      ProfileActivity.b(this, localAllInOne);
+      return;
     }
-    catch (UnsupportedEncodingException paramCardProfile)
-    {
-      for (;;)
-      {
-        paramCardProfile.printStackTrace();
-      }
-    }
-    catch (NullPointerException paramCardProfile)
-    {
-      for (;;)
-      {
-        paramCardProfile.printStackTrace();
-      }
-      localAllInOne.g = 16;
-      paramCardProfile = new Bundle();
-      paramCardProfile.putInt("param_mode", 3);
-      NearbyPeopleProfileActivity.a(this, localAllInOne, paramCardProfile);
-    }
+    localAllInOne.g = 16;
+    paramCardProfile = new Bundle();
+    paramCardProfile.putInt("param_mode", 3);
+    NearbyPeopleProfileActivity.a(this, localAllInOne, paramCardProfile);
   }
   
   private long b()
@@ -202,22 +182,22 @@ public class VisitorsActivity
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131297596));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131297116));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131363547));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131363548));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131297592));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131297112));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131363541));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131363542));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131298975));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setContentBackground(2130837633);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_a_of_type_Bsh);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131298924));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setContentBackground(2130837635);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_a_of_type_Bsg);
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setMode(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)getLayoutInflater().inflate(2130903274, this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOverScrollListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131298976));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setContentBackground(2130837633);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_b_of_type_Bsh);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131298925));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setContentBackground(2130837635);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_b_of_type_Bsg);
     this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setMode(0);
     this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(this);
     this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)getLayoutInflater().inflate(2130903274, this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView, false));
@@ -230,10 +210,10 @@ public class VisitorsActivity
   {
     this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a();
     this.jdField_b_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b();
-    this.jdField_a_of_type_Bsh = new bsh(this, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_b_of_type_Bsh = new bsh(this, this.jdField_b_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Bsh.jdField_a_of_type_JavaLangString = getString(2131364452);
-    this.jdField_b_of_type_Bsh.jdField_a_of_type_JavaLangString = getString(2131364453);
+    this.jdField_a_of_type_Bsg = new bsg(this, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_b_of_type_Bsg = new bsg(this, this.jdField_b_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Bsg.jdField_a_of_type_JavaLangString = getString(2131364434);
+    this.jdField_b_of_type_Bsg.jdField_a_of_type_JavaLangString = getString(2131364435);
     d();
     if (!NetworkUtil.e(this))
     {
@@ -245,8 +225,8 @@ public class VisitorsActivity
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903709, null);
-    this.jdField_b_of_type_AndroidViewView = getLayoutInflater().inflate(2130903520, null);
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130903692, null);
+    this.jdField_b_of_type_AndroidViewView = getLayoutInflater().inflate(2130903507, null);
   }
   
   protected View a()
@@ -296,10 +276,10 @@ public class VisitorsActivity
       this.d = SystemClock.uptimeMillis();
       if (this.h == 0)
       {
-        this.jdField_a_of_type_Bsh.notifyDataSetChanged();
+        this.jdField_a_of_type_Bsg.notifyDataSetChanged();
         return;
       }
-      this.jdField_b_of_type_Bsh.notifyDataSetChanged();
+      this.jdField_b_of_type_Bsg.notifyDataSetChanged();
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 800L - l1);
@@ -326,25 +306,25 @@ public class VisitorsActivity
   {
     if (paramAdapterView == this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView)
     {
-      switch (this.jdField_a_of_type_Bsh.getItemViewType(paramInt))
+      switch (this.jdField_a_of_type_Bsg.getItemViewType(paramInt))
       {
       default: 
         return;
       case 0: 
         ReportController.a(this.app, "CliOper", "", "", "0X8004447", "0X8004447", 0, 0, "", "", "", "");
-        a((CardProfile)this.jdField_a_of_type_Bsh.getItem(paramInt));
+        a((CardProfile)this.jdField_a_of_type_Bsg.getItem(paramInt));
         return;
       }
       c();
       return;
     }
-    switch (this.jdField_b_of_type_Bsh.getItemViewType(paramInt))
+    switch (this.jdField_b_of_type_Bsg.getItemViewType(paramInt))
     {
     default: 
       return;
     case 0: 
       ReportController.a(this.app, "CliOper", "", "", "0X800444A", "0X800444A", 0, 0, "", "", "", "");
-      a((CardProfile)this.jdField_b_of_type_Bsh.getItem(paramInt));
+      a((CardProfile)this.jdField_b_of_type_Bsg.getItem(paramInt));
       return;
     }
     d();
@@ -384,13 +364,13 @@ public class VisitorsActivity
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_a_of_type_Bsh.a(paramArrayList);
-      this.jdField_a_of_type_Bsh.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bsg.a(paramArrayList);
+      this.jdField_a_of_type_Bsg.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Boolean = false;
       if (paramLong == 0L) {
         a(true);
       }
-      this.jdField_a_of_type_Bsh.notifyDataSetChanged();
+      this.jdField_a_of_type_Bsg.notifyDataSetChanged();
       return;
       localTextView.setClickable(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setEmptyView(this.jdField_a_of_type_AndroidViewView);
@@ -411,17 +391,17 @@ public class VisitorsActivity
     else {
       return;
     }
-    a(1, getString(2131363353));
+    a(1, getString(2131363356));
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
   }
   
   protected boolean a()
   {
-    if ((this.jdField_a_of_type_Bsh != null) && (this.jdField_a_of_type_Bsh.jdField_a_of_type_Int > 0)) {
-      ReportController.a(this.app, "CliOper", "", "", "0X8004446", "0X8004446", 0, 0, String.valueOf(this.jdField_a_of_type_Bsh.jdField_a_of_type_Int), "", "", "");
+    if ((this.jdField_a_of_type_Bsg != null) && (this.jdField_a_of_type_Bsg.jdField_a_of_type_Int > 0)) {
+      ReportController.a(this.app, "CliOper", "", "", "0X8004446", "0X8004446", 0, 0, String.valueOf(this.jdField_a_of_type_Bsg.jdField_a_of_type_Int), "", "", "");
     }
-    if ((this.jdField_b_of_type_Bsh != null) && (this.jdField_b_of_type_Bsh.jdField_a_of_type_Int > 0)) {
-      ReportController.a(this.app, "CliOper", "", "", "0X8004449", "0X8004449", 0, 0, String.valueOf(this.jdField_b_of_type_Bsh.jdField_a_of_type_Int), "", "", "");
+    if ((this.jdField_b_of_type_Bsg != null) && (this.jdField_b_of_type_Bsg.jdField_a_of_type_Int > 0)) {
+      ReportController.a(this.app, "CliOper", "", "", "0X8004449", "0X8004449", 0, 0, String.valueOf(this.jdField_b_of_type_Bsg.jdField_a_of_type_Int), "", "", "");
     }
     return super.a();
   }
@@ -478,7 +458,7 @@ public class VisitorsActivity
   protected View a_()
   {
     super.a_();
-    setTitle(2131363546);
+    setTitle(2131363540);
     return this.jdField_i_of_type_AndroidWidgetTextView;
   }
   
@@ -498,13 +478,13 @@ public class VisitorsActivity
       this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.setEmptyView(this.jdField_b_of_type_AndroidViewView);
     }
     this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_b_of_type_Bsh.a(paramArrayList);
-    this.jdField_b_of_type_Bsh.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Bsg.a(paramArrayList);
+    this.jdField_b_of_type_Bsg.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     if (paramLong == 0L) {
       b(true);
     }
-    this.jdField_b_of_type_Bsh.notifyDataSetChanged();
+    this.jdField_b_of_type_Bsg.notifyDataSetChanged();
   }
   
   void b(boolean paramBoolean)
@@ -521,7 +501,7 @@ public class VisitorsActivity
     else {
       return;
     }
-    a(1, getString(2131363353));
+    a(1, getString(2131363356));
     this.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.B();
   }
   
@@ -545,12 +525,12 @@ public class VisitorsActivity
   {
     if (!NetworkUtil.e(this))
     {
-      a(1, getString(2131363515));
+      a(1, getString(2131363516));
       return;
     }
     a(false);
-    this.jdField_a_of_type_Bsh.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bsh.notifyDataSetChanged();
+    this.jdField_a_of_type_Bsg.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bsg.notifyDataSetChanged();
   }
   
   public void c(int paramInt, View paramView, ListView paramListView) {}
@@ -559,12 +539,12 @@ public class VisitorsActivity
   {
     if (!NetworkUtil.e(this))
     {
-      a(1, getString(2131363515));
+      a(1, getString(2131363516));
       return;
     }
     b(false);
-    this.jdField_b_of_type_Bsh.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Bsh.notifyDataSetChanged();
+    this.jdField_b_of_type_Bsg.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Bsg.notifyDataSetChanged();
   }
   
   public void doOnConfigurationChanged(Configuration paramConfiguration)
@@ -582,7 +562,7 @@ public class VisitorsActivity
     this.jdField_b_of_type_JavaLangString = String.valueOf(getIntent().getLongExtra("toUin", 0L));
     if ((this.jdField_b_of_type_JavaLangString != null) && (!paramBundle.equals(this.jdField_b_of_type_JavaLangString))) {}
     this.jdField_a_of_type_Long = getIntent().getLongExtra("nextMidVoter", -1L);
-    setContentView(2130903710);
+    setContentView(2130903693);
     i();
     h();
     g();
@@ -607,24 +587,24 @@ public class VisitorsActivity
   public void e()
   {
     this.jdField_a_of_type_Boolean = false;
-    QQToast.a(this, 1, 2131363353, 0).b(getTitleBarHeight());
+    QQToast.a(this, 1, 2131363356, 0).b(getTitleBarHeight());
     a(false);
-    if (this.jdField_a_of_type_Bsh.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Bsg.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bsh.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bsh.notifyDataSetChanged();
+      this.jdField_a_of_type_Bsg.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bsg.notifyDataSetChanged();
     }
   }
   
   public void f()
   {
     this.jdField_b_of_type_Boolean = false;
-    QQToast.a(this, 1, 2131363353, 0).b(getTitleBarHeight());
+    QQToast.a(this, 1, 2131363356, 0).b(getTitleBarHeight());
     b(false);
-    if (this.jdField_b_of_type_Bsh.jdField_a_of_type_Boolean)
+    if (this.jdField_b_of_type_Bsg.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_Bsh.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Bsh.notifyDataSetChanged();
+      this.jdField_b_of_type_Bsg.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Bsg.notifyDataSetChanged();
     }
   }
 }

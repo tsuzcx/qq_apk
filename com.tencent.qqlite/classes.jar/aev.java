@@ -1,59 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class aev
-  implements Runnable
+  implements View.OnClickListener
 {
   public aev(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  @SuppressLint({"ServiceCast"})
+  @TargetApi(11)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
-    }
-    for (;;)
+    try
     {
-      Object localObject3;
-      try
+      paramView = String.format(this.a.getString(2131363641), new Object[] { this.a.a.f, this.a.a.c });
+      if (Build.VERSION.SDK_INT < 11)
       {
-        localObject3 = this.a.app.a().createEntityManager();
-        if (localObject3 == null) {
-          break label182;
-        }
-        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c }, null, null, null, null);
-        ((EntityManager)localObject3).a();
-        if (localObject1 == null) {
-          break label179;
-        }
-        localObject3 = new ArrayList(((List)localObject1).size());
-        localObject1 = ((List)localObject1).iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
-          continue;
-        }
-        if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
-          break label179;
-        }
+        ((android.text.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
+        return;
       }
-      finally {}
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 13;
-      localMessage.obj = localObject3;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      label179:
-      return;
-      label182:
-      localMessage = null;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        paramView = "";
+      }
+      ((android.content.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
     }
   }
 }

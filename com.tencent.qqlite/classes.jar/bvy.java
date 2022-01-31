@@ -1,21 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
 
 public class bvy
-  implements AnimationTextView.OnDoubleClick
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public bvy(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  public TextView b;
   
-  public void a(View paramView)
-  {
-    if (MixedMsgItemBuilder.b(this.a)) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (ChatActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public bvy(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
 }
 
 

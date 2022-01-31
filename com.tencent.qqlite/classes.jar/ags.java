@@ -1,17 +1,46 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.provider.Settings.System;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ags
-  extends GameCenterObserver
+  extends BroadcastReceiver
 {
   public ags(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2) && (Conversation.d(this.a))) {
-      VipBannerInfo.a(this.a);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext)))
+    {
+      paramContext = Settings.System.getString(this.a.a().getContentResolver(), "date_format");
+      if (Conversation.a(this.a) != null)
+      {
+        TimeManager.a().a();
+        if (paramContext != null)
+        {
+          TimeManager.a().a(paramContext);
+          TimeManager.a().a();
+        }
+        if (Conversation.a(this.a))
+        {
+          Conversation.a(this.a, 1014, 0L, false);
+          this.a.m();
+        }
+      }
+      if (this.a.a != null)
+      {
+        paramContext = this.a.a.a(TroopAssistantActivity.class);
+        if (paramContext != null) {
+          paramContext.sendEmptyMessage(2);
+        }
+      }
     }
   }
 }

@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
 
 public class ahv
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnKeyListener
 {
   public ahv(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a(this.a.a, false);
+    return false;
   }
 }
 

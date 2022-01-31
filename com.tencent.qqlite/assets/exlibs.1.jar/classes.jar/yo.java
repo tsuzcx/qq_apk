@@ -1,65 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class yo
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public yo(AuthDevActivity paramAuthDevActivity) {}
+  public yo(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    paramBoolean = false;
-    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
+    boolean bool2 = true;
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = AuthDevActivity.a(this.a);
-      if (AuthDevActivity.a(this.a).a())
+      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
+      String str1 = paramView.strDeviceName;
+      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+      int i = this.jdField_a_of_type_Int;
+      if (paramView.iLoginPlatform == 3L) {}
+      for (;;)
       {
-        paramBoolean = false;
-        paramCompoundButton.setChecked(paramBoolean);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-        if (NetworkUtil.e(this.a)) {
-          break label118;
-        }
-        QQToast.a(this.a, this.a.getString(2131362785), 0).b(this.a.getTitleBarHeight());
-      }
-    }
-    label118:
-    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
-    {
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramBoolean = true;
-        }
-        paramCompoundButton = (SecSvcHandler)this.a.app.a(33);
-      } while (paramCompoundButton == null);
-      if (!AuthDevActivity.a(this.a).a()) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramCompoundButton.a(paramBoolean);
+        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
         return;
+        bool2 = false;
       }
-    }
-    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-    paramCompoundButton = AuthDevActivity.b(this.a);
-    if (AuthDevActivity.b(this.a).a()) {}
-    for (;;)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-      AuthDevActivity.a(this.a);
-      return;
-      paramBoolean = true;
     }
   }
 }

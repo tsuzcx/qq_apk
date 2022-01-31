@@ -1,20 +1,36 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.TrafficStatActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class yg
-  implements View.OnClickListener
+  extends Handler
 {
   public yg(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = new Intent(this.a, TrafficStatActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_traffic_statistics", 0, 0, "", "", "", "");
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363253));
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839124);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131363252));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
   }
 }
 

@@ -47,7 +47,7 @@ public class MenuPopupDialog
   {
     paramMenuPopupDialog = (RelativeLayout)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903234, null);
     Resources localResources = paramContext.getResources();
-    Object localObject1 = (TextView)paramMenuPopupDialog.findViewById(2131296915);
+    Object localObject1 = (TextView)paramMenuPopupDialog.findViewById(2131296911);
     if ((paramString != null) && (!"".equals(paramString)))
     {
       ((TextView)localObject1).setText(paramString);
@@ -55,21 +55,21 @@ public class MenuPopupDialog
     }
     for (;;)
     {
-      float f = localResources.getDimension(2131493143);
-      paramString = (LinearLayout)paramMenuPopupDialog.findViewById(2131297306);
+      float f = localResources.getDimension(2131493097);
+      paramString = (LinearLayout)paramMenuPopupDialog.findViewById(2131297302);
       int j = paramQQCustomMenu.a();
       int i = 0;
       while (i < j)
       {
         Object localObject2 = paramQQCustomMenu.a(i);
         localObject1 = new TextView(paramContext);
-        ((TextView)localObject1).setTextColor(localResources.getColor(2131427516));
+        ((TextView)localObject1).setTextColor(localResources.getColor(2131427511));
         ((TextView)localObject1).setSingleLine(true);
         ((TextView)localObject1).setTextSize(0, localResources.getDimension(2131492871));
         ((TextView)localObject1).setText(((QQCustomMenuItem)localObject2).a());
         ((TextView)localObject1).setContentDescription(((QQCustomMenuItem)localObject2).a() + "操作");
         ((TextView)localObject1).setId(((QQCustomMenuItem)localObject2).a());
-        ((TextView)localObject1).setBackgroundResource(2130838136);
+        ((TextView)localObject1).setBackgroundResource(2130838130);
         ((TextView)localObject1).setGravity(17);
         ((TextView)localObject1).setOnClickListener(paramOnClickListener);
         localObject2 = new LinearLayout.LayoutParams(-1, (int)f);
@@ -78,12 +78,12 @@ public class MenuPopupDialog
         if (i != j - 1)
         {
           localObject1 = new View(paramContext);
-          ((View)localObject1).setBackgroundResource(2130837995);
+          ((View)localObject1).setBackgroundResource(2130837991);
           paramString.addView((View)localObject1, -1, 1);
         }
         i += 1;
       }
-      ((TextView)localObject1).setText(localResources.getString(2131363512));
+      ((TextView)localObject1).setText(localResources.getString(2131363513));
     }
     return paramMenuPopupDialog;
   }

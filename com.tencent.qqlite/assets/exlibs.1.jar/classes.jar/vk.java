@@ -1,13 +1,16 @@
+import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class vk
+class vk
   implements Runnable
 {
-  public vk(AccountManageActivity paramAccountManageActivity) {}
+  vk(vj paramvj, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.a.f();
+    Drawable localDrawable = this.jdField_a_of_type_Vj.a.app.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Vj.a.runOnUiThread(new vl(this, localDrawable));
   }
 }
 

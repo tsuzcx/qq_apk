@@ -1,19 +1,10 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DetailProfileActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
 
 public class aia
-  implements View.OnClickListener
+  extends Handler
 {
-  public aia(DetailProfileActivity paramDetailProfileActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {
-      this.a.a.dismiss();
-    }
-  }
+  public aia(DevlockPushActivity paramDevlockPushActivity) {}
 }
 
 

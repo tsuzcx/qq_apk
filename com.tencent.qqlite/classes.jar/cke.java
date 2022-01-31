@@ -1,55 +1,62 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExpiredPushBanner;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.struct.PushBanner;
+import java.util.List;
 
-public class cke
-  implements View.OnClickListener
+class cke
+  implements Runnable
 {
-  public cke(BannerManager paramBannerManager, VipBannerInfo paramVipBannerInfo, RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  cke(ckd paramckd, int paramInt, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    BusinessInfoCheckUpdateItem.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "200001", false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d)))
+    int k = 0;
+    EntityManager localEntityManager = BannerManager.a(this.jdField_a_of_type_Ckd.a).app.a().createEntityManager();
+    Object localObject = localEntityManager.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
+    int j = k;
+    if (localObject != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.c;
-      if (paramView == null)
+      int m = ((List)localObject).size() + this.jdField_a_of_type_Int - 10;
+      j = k;
+      if (m > 0)
       {
-        paramView = "";
-        switch (this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.e)
+        int i = 0;
+        for (;;)
         {
+          j = k;
+          if (i >= m) {
+            break;
+          }
+          localEntityManager.b((ExpiredPushBanner)((List)localObject).get(i));
+          i += 1;
         }
       }
     }
-    for (;;)
+    while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.a, 3);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).removeMessages(9);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendEmptyMessage(9);
-      return;
-      paramView = paramView.replace(" ", "_");
-      break;
-      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
+      localObject = (PushBanner)this.jdField_a_of_type_JavaUtilList.get(j);
+      if (localObject != null)
+      {
+        long l2 = 0L;
+        long l1 = l2;
+        if (((PushBanner)localObject).c != null)
+        {
+          l1 = l2;
+          if (((PushBanner)localObject).c.contains("|")) {
+            l1 = Long.parseLong(((PushBanner)localObject).c.substring(((PushBanner)localObject).c.indexOf("|") + 1));
+          }
+        }
+        ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
+        localExpiredPushBanner.cid = Long.parseLong(((PushBanner)localObject).a);
+        localExpiredPushBanner.md5 = ((PushBanner)localObject).m;
+        localExpiredPushBanner.endtime = l1;
+        localEntityManager.a(localExpiredPushBanner);
+      }
+      j += 1;
     }
   }
 }

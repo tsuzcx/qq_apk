@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.emoticonview.EmotionPreviewLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09011f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205de" android:visibility="gone" android:layout_marginLeft="5.0dip" android:layout_alignParentLeft="true"
+<com.tencent.mobileqq.emoticonview.EmotionPreviewLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09011f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205c1" android:visibility="gone" android:layout_marginLeft="5.0dip" android:layout_alignParentLeft="true"
   xmlns:android="http://schemas.android.com/apk/res/android" />

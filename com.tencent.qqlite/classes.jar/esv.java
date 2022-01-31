@@ -1,13 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import java.util.Comparator;
 
 public final class esv
-  implements MediaPlayer.OnCompletionListener
+  implements Comparator
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
+    }
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 

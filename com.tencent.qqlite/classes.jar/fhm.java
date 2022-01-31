@@ -1,29 +1,41 @@
-import android.content.Context;
 import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.widget.AbsSpinner;
 
 public class fhm
-  implements View.OnClickListener
 {
-  public fhm(ActionSheet paramActionSheet) {}
+  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void onClick(View paramView)
+  public fhm(AbsSpinner paramAbsSpinner) {}
+  
+  public View a(int paramInt)
   {
-    int i = paramView.getId();
-    if ((ActionSheet.a(this.a)) && (ActionSheet.b(this.a) != -1) && (i != ActionSheet.b(this.a)))
+    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localView != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
+    }
+    return localView;
+  }
+  
+  public void a()
+  {
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int j = localSparseArray.size();
+    int i = 0;
+    while (i < j)
     {
-      ((View)ActionSheet.a(this.a).get(ActionSheet.b(this.a))).findViewById(2131296506).setVisibility(8);
-      View localView = (View)ActionSheet.a(this.a).get(i);
-      localView.findViewById(2131296506).setVisibility(0);
-      localView.findViewById(2131296506).setContentDescription(ActionSheet.a(this.a).getString(2131364374));
-      ActionSheet.a(this.a, i);
+      View localView = (View)localSparseArray.valueAt(i);
+      if (localView != null) {
+        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+      }
+      i += 1;
     }
-    if (ActionSheet.a(this.a) != null) {
-      ActionSheet.a(this.a).a(paramView, i);
-    }
+    localSparseArray.clear();
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
   }
 }
 

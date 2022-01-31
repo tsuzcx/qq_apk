@@ -1,48 +1,26 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class bip
-  extends BaseAdapter
+  implements AbsListView.OnScrollListener
 {
-  private bip(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public bip(SearchTroopListActivity paramSearchTroopListActivity) {}
   
-  public int getCount()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    return SearchFriendListActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SearchFriendListActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_Boolean))
     {
-      localView = this.a.getLayoutInflater().inflate(2130903618, paramViewGroup, false);
-      paramView = new biq();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131298132));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131298133));
-      paramView.b = ((TextView)localView.findViewById(2131298753));
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.a);
+      paramInt = this.a.jdField_a_of_type_ComTencentWidgetXListView.r();
+      if (this.a.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
+        this.a.e();
+      }
     }
-    this.a.a(localView, paramInt);
-    return localView;
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

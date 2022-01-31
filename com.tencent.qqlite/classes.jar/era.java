@@ -1,40 +1,18 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.util.Log;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.VersionUtils;
 
 public class era
-  implements MediaPlayer.OnErrorListener
+  implements View.OnFocusChangeListener
 {
   public era(VideoViewX paramVideoViewX) {}
   
-  @TargetApi(8)
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    Log.d(VideoViewX.a(this.a), "Error: " + paramInt1 + "," + paramInt2);
-    VideoViewX.b(this.a);
-    VideoViewX.c(this.a, -1);
-    VideoViewX.d(this.a, -1);
-    VideoViewX.b(this.a, true);
-    if (VideoViewX.a(this.a) != null)
-    {
-      VideoViewX.a(this.a).d();
-      VideoViewX.a(this.a).c();
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onClick(paramView);
     }
-    if (VersionUtils.b()) {
-      ((AudioManager)BaseApplication.getContext().getSystemService("audio")).abandonAudioFocus(this.a.a);
-    }
-    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a).onError(VideoViewX.a(this.a), paramInt1, paramInt2))) {}
-    while (this.a.getWindowToken() == null) {
-      return true;
-    }
-    return true;
   }
 }
 

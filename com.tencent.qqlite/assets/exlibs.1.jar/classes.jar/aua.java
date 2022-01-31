@@ -4,41 +4,26 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 public class aua
   implements Runnable
 {
-  public aua(LoginInfoActivity paramLoginInfoActivity, int paramInt) {}
+  public aua(LoginInfoActivity paramLoginInfoActivity) {}
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.isFinishing())
-        {
-          if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing()))
-          {
-            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).dismiss();
-            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).cancel();
-            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, null);
-          }
-          LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight()));
-          int i = this.jdField_a_of_type_Int;
-          switch (i)
-          {
-          }
-        }
+        LoginInfoActivity.a(this.a).dismiss();
+        LoginInfoActivity.a(this.a).cancel();
       }
-      catch (Throwable localThrowable)
+      LoginInfoActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
         localThrowable.printStackTrace();
-        continue;
-        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).b(2131363564);
-        continue;
       }
-      if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (!LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing())) {
-        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).show();
-      }
-      return;
-      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).b(2131362784);
     }
   }
 }

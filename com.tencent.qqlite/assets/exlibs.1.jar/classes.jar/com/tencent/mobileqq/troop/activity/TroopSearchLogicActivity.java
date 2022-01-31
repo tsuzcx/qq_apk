@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import elo;
-import elp;
+import elt;
+import elu;
 
 public class TroopSearchLogicActivity
   extends BaseActivity
@@ -33,8 +33,8 @@ public class TroopSearchLogicActivity
   public TroopSearchLogicActivity()
   {
     this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new elo(this);
-    this.jdField_a_of_type_AndroidOsHandler = new elp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new elt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new elu(this);
   }
   
   private boolean a(String paramString, int paramInt1, int paramInt2)
@@ -43,13 +43,13 @@ public class TroopSearchLogicActivity
     this.jdField_d_of_type_Int = paramInt1;
     if (this.jdField_d_of_type_JavaLangString.trim().equals(""))
     {
-      b(2131363503);
+      b(2131363504);
       finish();
       return false;
     }
     if (!NetworkUtil.e(this))
     {
-      b(2131363515);
+      b(2131363516);
       finish();
       return false;
     }

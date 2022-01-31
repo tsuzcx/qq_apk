@@ -1,13 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aoj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   public aoj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.n();
+    this.a.p();
   }
 }
 

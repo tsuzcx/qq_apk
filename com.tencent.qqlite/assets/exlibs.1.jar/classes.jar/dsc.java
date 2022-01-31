@@ -2,32 +2,53 @@ import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerFacade;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
 import com.tencent.widget.ActionSheet;
+import java.io.FileNotFoundException;
 
 public final class dsc
   implements View.OnClickListener
 {
-  public dsc(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
+  public dsc(IFileBrowser paramIFileBrowser, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-    FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName) + this.jdField_a_of_type_AndroidAppActivity.getString(2131362001));
-    if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
-    {
-      paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
-      if (paramView.a.isShowing()) {
-        paramView.a.dismiss();
-      }
+    FileManagerEntity localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a();
+    if (localFileManagerEntity2 == null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.d();
+    FileManagerEntity localFileManagerEntity1 = localFileManagerEntity2;
+    if (localFileManagerEntity2 == null) {}
+    try
+    {
+      localFileManagerEntity1 = FileManagerUtil.a(new FileInfo(this.jdField_a_of_type_JavaLangString));
+      FileViewerFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localFileManagerEntity1, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity1.nSessionId);
+      if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
+      {
+        paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
+        if (paramView.a.isShowing()) {
+          paramView.a.dismiss();
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.h();
+      }
+      return;
+    }
+    catch (FileNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+      FMToastUtil.a(2131361995);
     }
   }
 }

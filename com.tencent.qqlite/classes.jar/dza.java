@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.util.TimerTask;
 
 public class dza
-  implements DialogInterface.OnClickListener
+  extends TimerTask
 {
-  public dza(PhoneNumLoginImpl paramPhoneNumLoginImpl) {}
+  public dza(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    MusicGeneWebViewPlugin.a(this.a);
   }
 }
 

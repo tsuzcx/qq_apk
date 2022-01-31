@@ -1,14 +1,26 @@
 import com.tencent.mobileqq.activity.QQSetting;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class beh
-  implements Runnable
+public class beh
+  implements IStatusListener
 {
-  beh(bef parambef) {}
+  public beh(QQSetting paramQQSetting) {}
   
-  public void run()
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    this.a.a.b();
+    if (QQSetting.c(this.a))
+    {
+      if (paramInt != 100) {
+        this.a.a(2131363668);
+      }
+      this.a.n();
+    }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

@@ -1,29 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class cbr
-  implements TextWatcher
+class cbr
+  extends AnimateUtils.AnimationAdapter
 {
-  public cbr(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  cbr(cbp paramcbp) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    ImageButton localImageButton = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (paramEditable.equals("")) {}
-    for (int i = 8;; i = 0)
-    {
-      localImageButton.setVisibility(i);
-      return;
-    }
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

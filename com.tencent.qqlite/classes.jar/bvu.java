@@ -1,20 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bvu
-  extends DownloadListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  private bvu(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  public FrameLayout a;
+  public ImageView a;
+  public ProgressBar a;
+  public PicEmoticonInfo a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, PicEmoticonInfo paramPicEmoticonInfo, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo) {}
-  
-  public void onDone(DownloadTask paramDownloadTask) {}
+  public bvu(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
 }
 
 

@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
-class aap
-  implements Runnable
+public class aap
+  implements Comparator
 {
-  aap(aao paramaao) {}
+  public aap(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if ((BaseChatPie.b(this.a.a.a) != null) && (BaseChatPie.b(this.a.a.a).getParent() != null)) {
-      ((ViewGroup)BaseChatPie.b(this.a.a.a).getParent()).removeView(BaseChatPie.b(this.a.a.a));
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      if (paramChatMessage1.getId() <= paramChatMessage2.getId()) {}
     }
-    BaseChatPie.b(this.a.a.a, null);
+    while (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq)
+    {
+      return 1;
+      if (paramChatMessage1.getId() < paramChatMessage2.getId()) {
+        return -1;
+      }
+      return 0;
+    }
+    return -1;
   }
 }
 

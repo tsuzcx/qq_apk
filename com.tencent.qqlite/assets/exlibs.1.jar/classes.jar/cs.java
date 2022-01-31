@@ -1,13 +1,27 @@
 import com.dataline.mpfile.LiteMpFileMainActivity;
+import com.dataline.mpfile.MpfileFileListDownloader.MpFileHttpDownloadListener;
 
 public class cs
-  implements Runnable
+  implements MpfileFileListDownloader.MpFileHttpDownloadListener
 {
   public cs(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    this.a.a(false);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    LiteMpFileMainActivity.a(this.a, System.currentTimeMillis());
+    this.a.runOnUiThread(new ct(this));
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    LiteMpFileMainActivity.a(this.a, System.currentTimeMillis());
+    LiteMpFileMainActivity.b(this.a, paramString2);
   }
 }
 

@@ -10,14 +10,12 @@ public class auw
   {
     try
     {
-      if ((LoginVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (LoginVerifyCodeActivity2.a(this.a).isShowing()))
       {
-        LoginVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        LoginVerifyCodeActivity2.a(this.a).b(2131363564);
+        LoginVerifyCodeActivity2.a(this.a).dismiss();
+        LoginVerifyCodeActivity2.a(this.a).cancel();
       }
-      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (!LoginVerifyCodeActivity2.a(this.a).isShowing())) {
-        LoginVerifyCodeActivity2.a(this.a).show();
-      }
+      LoginVerifyCodeActivity2.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

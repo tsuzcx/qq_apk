@@ -1,30 +1,21 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import java.util.ArrayList;
 
 public class bgh
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public bgh(QuickLoginActivity paramQuickLoginActivity) {}
+  public bgh(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt)
+  public void onClick(View paramView)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
   }
 }
 

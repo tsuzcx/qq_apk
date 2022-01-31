@@ -269,10 +269,10 @@ public class TroopFileUtils
     paramLong = 1000L * paramLong;
     long l = System.currentTimeMillis();
     if (paramLong <= l) {
-      return paramContext.getString(2131362199);
+      return paramContext.getString(2131362196);
     }
     paramLong = (paramLong - l) / 86400000L;
-    return paramLong + 1L + paramContext.getString(2131362198);
+    return paramLong + 1L + paramContext.getString(2131362195);
   }
   
   public static String a(String paramString)

@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bio
-  extends FriendListObserver
 {
-  public bio(SearchFriendListActivity paramSearchFriendListActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

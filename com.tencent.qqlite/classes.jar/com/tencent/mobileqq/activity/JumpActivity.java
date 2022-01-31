@@ -8,8 +8,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import arr;
-import ars;
+import arp;
+import arq;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -80,12 +80,12 @@ public class JumpActivity
   
   private void a(Intent paramIntent, Bundle paramBundle)
   {
-    new arr(this, paramIntent, paramBundle).run();
+    new arp(this, paramIntent, paramBundle).run();
   }
   
   private void a(Bundle paramBundle)
   {
-    new ars(this, paramBundle).run();
+    new arq(this, paramBundle).run();
   }
   
   private void a(String paramString)
@@ -172,7 +172,7 @@ public class JumpActivity
     if (localBundle.getBoolean("qqfav_extra_from_system_share", false))
     {
       if (a(localBundle) != 0) {
-        QfavUtil.a(this, 2131362748, 1);
+        QfavUtil.a(this, 2131362754, 1);
       }
       finish();
       return;
@@ -218,10 +218,7 @@ public class JumpActivity
       QLog.d("qqfav|QfavJumpActivity", 4, "startSystemShareToQQFav|beg");
     }
     String str1 = paramBundle.getString("android.intent.extra.TITLE");
-    paramBundle.getString("android.intent.extra.SUBJECT");
     Object localObject1 = paramBundle.getString("android.intent.extra.TEXT");
-    paramBundle.getString("image_url");
-    paramBundle.getString("detail_url");
     Object localObject2 = getIntent().getType();
     int i;
     if (TextUtils.isEmpty((CharSequence)localObject2))
@@ -241,18 +238,18 @@ public class JumpActivity
       str1 = "";
       localHashMap.put("title", str1);
       if ((!((String)localObject2).startsWith("text")) || (paramBundle.containsKey("android.intent.extra.STREAM"))) {
-        break label420;
+        break label396;
       }
       localHashMap.put("req_type", Base64Util.a("6".getBytes(), 0));
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label407;
+        break label383;
       }
     }
-    label407:
+    label210:
+    label383:
     for (paramBundle = "";; paramBundle = Base64Util.a(((String)localObject1).getBytes(), 0))
     {
       localHashMap.put("description", paramBundle);
-      label234:
       localObject1 = localHashMap.keySet();
       localObject2 = ((Set)localObject1).iterator();
       i = 0;
@@ -272,7 +269,7 @@ public class JumpActivity
       str1 = Base64Util.a(str1.getBytes(), 0);
       break;
     }
-    label420:
+    label396:
     if (((String)localObject2).startsWith("image"))
     {
       localHashMap.put("req_type", Base64Util.a("5".getBytes(), 0));
@@ -299,7 +296,7 @@ public class JumpActivity
         {
           return 1;
           if (!(paramBundle instanceof String)) {
-            break label1062;
+            break label1038;
           }
           paramBundle = Uri.parse((String)paramBundle);
         }
@@ -389,7 +386,7 @@ public class JumpActivity
         }
         localHashMap.put("file_data", Base64Util.a(paramBundle.getBytes(), 0));
       }
-      break label234;
+      break label210;
       if (QLog.isColorLevel()) {
         QLog.d("qqfav|QfavJumpActivity", 2, "startSystemShareToQQFav|unknown type. type=" + (String)localObject2);
       }
@@ -409,7 +406,7 @@ public class JumpActivity
       }
       QLog.d("qqfav|QfavJumpActivity", 4, "startSystemShareToQQFav|end");
       return 0;
-      label1062:
+      label1038:
       paramBundle = null;
     }
   }

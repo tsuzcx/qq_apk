@@ -1,39 +1,31 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class ekg
-  extends AsyncTask
+  implements AdapterView.OnItemSelectedListener
 {
-  public ekg(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public ekg(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  protected String a(Void... paramVarArgs)
-  {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363439) + " " + paramVarArgs;
-      }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363440);
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363440);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131363440);
-  }
+  public void a(AdapterView paramAdapterView) {}
   
-  protected void a(String paramString)
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
+    if (paramView == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.j, "0", "", "");
+      return;
+    }
+    ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.j, "1", "", "");
   }
 }
 

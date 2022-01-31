@@ -1,16 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class dhj
-  implements View.OnClickListener
+class dhj
+  implements DialogInterface.OnDismissListener
 {
-  public dhj(UniformDownloadActivity paramUniformDownloadActivity) {}
+  dhj(dhh paramdhh, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

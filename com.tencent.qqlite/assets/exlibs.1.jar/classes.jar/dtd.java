@@ -1,7 +1,5 @@
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
 
 class dtd
   implements Runnable
@@ -10,15 +8,7 @@ class dtd
   
   public void run()
   {
-    LocalVideoFileView.a(this.a.a).setVisibility(8);
-    if ((LocalVideoFileView.a(this.a.a) != null) && (LocalVideoFileView.b(this.a.a) != null))
-    {
-      LocalVideoFileView.a(this.a.a).setVisibility(8);
-      LocalVideoFileView.b(this.a.a).setVisibility(8);
-    }
-    if (LocalVideoFileView.a(this.a.a) != null) {
-      LocalVideoFileView.b(this.a.a).c(true);
-    }
+    LocalMusicFileView.a(this.a.a).post(new dte(this));
   }
 }
 

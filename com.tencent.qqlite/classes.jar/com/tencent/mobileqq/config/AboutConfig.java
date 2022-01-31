@@ -15,9 +15,9 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
-import dbr;
-import dbs;
-import dbt;
+import dbx;
+import dby;
+import dbz;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
@@ -40,7 +40,7 @@ public class AboutConfig
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Hashtable jdField_a_of_type_JavaUtilHashtable;
   private List jdField_a_of_type_JavaUtilList;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new dbs(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new dby(this);
   private boolean b = true;
   
   public AboutConfig(QQAppInterface paramQQAppInterface)
@@ -55,7 +55,7 @@ public class AboutConfig
     Hashtable localHashtable = new Hashtable();
     ResourcePluginInfo localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.aboutfunction";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363739);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363732);
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -70,7 +70,7 @@ public class AboutConfig
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.aboutimage";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363740);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363733);
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -85,7 +85,7 @@ public class AboutConfig
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.abouthelp";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363741);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131363734);
     localResourcePluginInfo.strResDesc = "";
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
@@ -107,10 +107,10 @@ public class AboutConfig
   {
     AboutConfig localAboutConfig = paramQQAppInterface.a();
     String str = paramResourcePluginInfo.strGotoUrl;
-    Object localObject2 = "&version=3.3.0.544&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
+    Object localObject2 = "&version=3.4.0.607&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
     Object localObject1 = localObject2;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp")) {
-      localObject1 = (String)localObject2 + "&adtag=544";
+      localObject1 = (String)localObject2 + "&adtag=607";
     }
     str = str + (String)localObject1;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp"))
@@ -153,7 +153,7 @@ public class AboutConfig
           if (paramResourcePluginInfo.isNew == 0)
           {
             paramResourcePluginInfo.isNew = 1;
-            ThreadManager.b(new dbt(localAboutConfig, paramResourcePluginInfo));
+            ThreadManager.b(new dbz(localAboutConfig, paramResourcePluginInfo));
           }
           return;
           localObject1 = "";
@@ -330,7 +330,7 @@ public class AboutConfig
     QLog.d("AboutConfig", 2, "there has about data in memory cache, do not need load from DB");
     return;
     this.jdField_a_of_type_JavaUtilHashtable = a();
-    ThreadManager.b(new dbr(this));
+    ThreadManager.b(new dbx(this));
   }
   
   public boolean a()

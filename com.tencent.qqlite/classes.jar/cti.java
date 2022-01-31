@@ -1,50 +1,88 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
 import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
 
 public class cti
-  extends ctc
 {
+  static final int a = 0;
+  public static final String[] a;
+  static final int jdField_b_of_type_Int = 1;
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
+  static final int c = 2;
+  static final int d = 3;
+  static final int e = 4;
+  static final int f = 5;
+  static final int g = 6;
+  static final int h = 7;
+  static final int i = 8;
+  static final int j = 9;
+  public static final int k = 0;
+  public static final int l = 1;
+  public static final int m = 2;
+  protected static final int n = 3;
+  public static final int o = 3;
+  public static final int p = 4;
+  protected static final int q = 5;
+  public static final int r = 6;
+  protected long a;
+  public GuardManager a;
+  protected long b;
+  public int s = 0;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+  }
+  
   protected void a()
   {
-    super.a();
-    if (this.jdField_a_of_type_Long >= csy.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b, MemoryManager.a(Process.myPid())) / 12000L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(7, null);
-    }
-    while (this.b != 1L) {
-      return;
-    }
-    MemoryManager.a().a();
+    this.jdField_a_of_type_Long += 1L;
+    this.jdField_b_of_type_Long += 1L;
   }
   
-  protected void a(String paramString)
+  public final void a(int paramInt, Object paramObject)
   {
-    GuardManager localGuardManager = this.jdField_a_of_type_ComTencentMobileqqAppGuardManager;
-    if ("com.tencent.qqlite".equals(paramString)) {}
-    for (int i = 2;; i = 3)
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.s] + " onEvent " + jdField_b_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject + ", " + this.jdField_a_of_type_Long + ", " + this.jdField_b_of_type_Long);
+    }
+    switch (paramInt)
     {
-      localGuardManager.a(i, paramString);
+    default: 
+      return;
+    case 2: 
+      a();
+      return;
+    case 0: 
+      b();
+      return;
+    case 3: 
+      a((String)paramObject);
+      return;
+    case 4: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
       return;
     }
+    c((String)paramObject);
   }
   
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Long > 2L) {
-      this.jdField_a_of_type_Long -= 2L;
-    }
-  }
+  protected void a(String paramString) {}
+  
+  protected void b() {}
   
   protected void b(String paramString)
   {
-    super.b(paramString);
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.e();
-    BaseApplicationImpl.a.a().onGuardEvent(3, 0L, 0L);
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
   }
+  
+  protected void c(String paramString) {}
+  
+  protected void d(String paramString) {}
 }
 
 

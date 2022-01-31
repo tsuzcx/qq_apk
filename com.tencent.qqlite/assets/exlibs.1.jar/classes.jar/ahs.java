@@ -1,26 +1,27 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
 public class ahs
-  implements ActionSheet.OnButtonClickListener
+  implements IphonePickerView.PickerViewAdapter
 {
-  public ahs(DetailProfileActivity paramDetailProfileActivity, ActionSheet paramActionSheet) {}
+  public ahs(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte != paramInt) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Boolean = true;
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131363199);
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity;
-    if (paramInt == 0) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      paramView.a(paramInt, true);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
+    return this.a.getString(2131363200);
   }
 }
 

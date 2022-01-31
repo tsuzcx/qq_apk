@@ -1,21 +1,92 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.mobileqq.util.ImageCache;
+import com.tencent.mobileqq.util.ImageCreator;
+import com.tencent.mobileqq.util.ImageLoader;
+import com.tencent.mobileqq.util.ImageWorker;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
-public final class esd
-  extends Thread
+public class esd
+  extends AsyncTask
 {
-  public esd(String paramString1, String paramString2) {}
+  private Object jdField_a_of_type_JavaLangObject;
+  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public esd(ImageWorker paramImageWorker, View paramView)
   {
-    String str1 = CardHandler.a(this.a, CardHandler.b(BaseApplication.getContext()));
-    int i = CardHandler.c(BaseApplication.getContext());
-    String str2 = CardHandler.a(this.a, i);
-    ImageUtil.a(this.b, str1);
-    ImageUtil.a(this.b, str2, i, i);
-    FileUtils.a(this.b, true);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  private View a()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (this == ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker, localView)) {
+      return localView;
+    }
+    return null;
+  }
+  
+  public Drawable a(Object... paramVarArgs)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
+    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
+    ImageCreator localImageCreator = (ImageCreator)paramVarArgs[1];
+    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
+    if (((ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) == null) || (isCancelled()) || (a() == null) || (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker)))) {}
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = localImageCreator.a();
+        if ((ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) && (paramVarArgs != null)) {
+          ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).a(str, paramVarArgs);
+        }
+        return paramVarArgs;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        if (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) {
+          ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).a();
+        }
+        System.gc();
+        Thread.yield();
+        try
+        {
+          paramVarArgs = localImageCreator.a();
+        }
+        catch (OutOfMemoryError paramVarArgs)
+        {
+          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
+        }
+      }
+      paramVarArgs = null;
+    }
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    View localView = a();
+    esf localesf = (esf)ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).remove(localView);
+    if ((isCancelled()) || (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker))) {
+      paramDrawable = null;
+    }
+    if (localView != null)
+    {
+      if (paramDrawable != null) {
+        break label72;
+      }
+      if ((localesf != null) && (localesf.a != null)) {
+        localesf.a.a(localView, null);
+      }
+    }
+    return;
+    label72:
+    ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker, this.jdField_a_of_type_Boolean, localView, paramDrawable, localesf);
   }
 }
 

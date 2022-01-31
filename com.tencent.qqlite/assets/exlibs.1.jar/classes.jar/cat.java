@@ -1,26 +1,80 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.config.operation.QQOperateManager;
+import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class cat
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cat(TroopAssistTipsBar paramTroopAssistTipsBar) {}
+  public cat(QQOperateTips paramQQOperateTips) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TroopAssistTipsBar.a(this.a).a(TroopAssistTipsBar.a(this.a).a, Integer.valueOf(4));
-    TroopAssistTipsBar.a(this.a).a();
-    TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-    QQToast.a(TroopAssistTipsBar.a(this.a).a(), 2, 2131364161, 0).b(TroopAssistTipsBar.a(this.a).getTitleBarHeight());
-    ReportController.b(TroopAssistTipsBar.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).a, "", "", "");
+    Object localObject1 = QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, false);
+    int j = ((List)localObject1).size();
+    Object localObject2;
+    int i;
+    if ((localObject1 != null) && (j > 0))
+    {
+      localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
+      if (localObject2 != null)
+      {
+        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 0) {
+          break label329;
+        }
+        QQOperateTips.a(this.a, ((ChatMessage)localObject2).time);
+        QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
+      }
+      if (QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int) <= 0) {
+        break label361;
+      }
+      i = 1;
+      label146:
+      if (i != 0) {
+        i = j;
+      }
+    }
+    for (;;)
+    {
+      if (i > 0)
+      {
+        localObject2 = (ChatMessage)((List)localObject1).get(i - 1);
+        if ((localObject2 == null) || (!((ChatMessage)localObject2).isread)) {}
+      }
+      else
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + QQOperateTips.a(this.a));
+        }
+        localObject2 = QQOperateManager.a(QQOperateTips.a(this.a));
+        localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, QQOperateTips.a(this.a), (List)localObject1, true, QQOperateTips.a(this.a));
+        if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
+        {
+          localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
+          ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.a));
+        }
+        QQOperateTips.a(this.a, -1);
+        return;
+        label329:
+        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 3000) {
+          break;
+        }
+        QQOperateTips.a(this.a, ((ChatMessage)localObject2).shmsgseq);
+        break;
+        label361:
+        i = 0;
+        break label146;
+      }
+      QQOperateTips.a(this.a, i - 1);
+      i -= 1;
+    }
   }
 }
 

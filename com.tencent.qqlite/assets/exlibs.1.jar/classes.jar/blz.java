@@ -1,16 +1,26 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
-class blz
-  implements Runnable
+public class blz
+  implements View.OnClickListener
 {
-  blz(blw paramblw) {}
+  public blz(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
+    if (TroopAssistantActivity.a(this.a) != null)
+    {
+      TroopAssistantActivity.a(this.a).a(4);
+      this.a.e();
+      this.a.d();
+    }
+    if (TroopAssistantManager.a().c()) {
+      TroopAssistantManager.a().f(this.a.app);
+    }
+    TroopAssistantActivity.a(this.a);
   }
 }
 

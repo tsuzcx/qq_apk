@@ -1,44 +1,25 @@
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class afz
-  extends Handler
+  extends ContactBindObserver
 {
   public afz(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramMessage.what == 1000)
+    if (paramBoolean1)
     {
-      if (this.a.c()) {
-        break label142;
-      }
-      i = paramMessage.arg1 - 1;
-      if (i != 0) {
-        break label32;
-      }
-    }
-    label32:
-    while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2))
-    {
-      int i;
-      return;
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+      int i = ContactSyncJumpActivity.a(this.a).b();
+      if ((i == 1) || (i == 2))
       {
-        paramMessage = "(" + i + ")";
-        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131298197)).setText(String.format(this.a.getResources().getString(2131364359), new Object[] { paramMessage }));
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
       }
-      paramMessage = obtainMessage(1000);
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 1000L);
-      return;
     }
-    label142:
-    ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131298197)).setText(String.format(this.a.getResources().getString(2131364359), new Object[] { "" }));
   }
 }
 

@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
-class fel
-  implements DialogInterface.OnClickListener
+public class fel
+  implements Runnable
 {
-  fel(fek paramfek) {}
+  public fel(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(DownloadConstants.q, false);
-    DownloadApi.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.b);
-    paramDialogInterface.dismiss();
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
+        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

@@ -1,29 +1,63 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.LBSHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
-public class om
-  implements Runnable
+public final class om
+  implements ActionSheet.OnButtonClickListener
 {
-  public om(PublicAccountManager paramPublicAccountManager) {}
+  public om(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((this.a.jdField_a_of_type_AndroidContentContext != null) && (localQQAppInterface != null))
+    switch (paramInt)
     {
-      localQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
-      arrayOfByte = localQQAppInterface.b();
-      ((LBSHandler)localQQAppInterface.a(3)).a(arrayOfByte);
     }
-    while (localQQAppInterface == null)
+    do
     {
-      byte[] arrayOfByte;
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Boolean) {
+        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        break;
+        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+      }
+    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (paramView != null)
+    {
+      paramView = XMLMessageUtils.a(paramView);
+      if (paramView != null)
+      {
+        paramView = (PAMessage.Item)paramView.items.get(0);
+        if (paramView.url != null) {
+          PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
+        }
+      }
     }
-    this.a.a(this.a.jdField_a_of_type_AndroidContentContext, localQQAppInterface, this.a.q, this.a.r, false, 0.0D, 0.0D, (BusinessObserver)PublicAccountManager.a(this.a).get());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Boolean) {
+      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      break;
+      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+    }
   }
 }
 

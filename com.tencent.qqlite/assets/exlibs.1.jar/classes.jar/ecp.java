@@ -1,45 +1,134 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class ecp
-  extends ConfigObserver
+  extends StatusObserver
 {
-  public ecp(StatusManager paramStatusManager) {}
+  private ecp(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
-    }
-    StatusManager.a(this.a, 0L);
-    if (paramBoolean)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (paramInt == 100)
-      {
-        StatusManager.b(this.a, System.currentTimeMillis());
-        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
+      localObject = new StringBuilder().append("onGetHistory.issuccess=").append(paramBoolean1).append(",start=").append(paramInt1).append(",end=").append(paramInt2).append(",over=").append(paramBoolean2).append(",datasize=");
+      if (paramArrayList != null) {
+        break label299;
       }
-      this.a.a(true);
     }
-    if (StatusManager.a(this.a) != null)
+    label299:
+    for (int i = 0;; i = paramArrayList.size())
     {
-      Iterator localIterator = StatusManager.a(this.a).iterator();
-      if (localIterator.hasNext())
+      QLog.d("Q.richstatus.history", 2, i + ",isaddfromcard=" + paramBoolean3);
+      StatusHistoryActivity.a(this.a, paramBoolean1);
+      if (!paramBoolean1) {
+        break label399;
+      }
+      if ((paramBoolean3) && (paramArrayList != null) && (paramArrayList.size() == 1)) {
+        StatusHistoryActivity.a(this.a, true);
+      }
+      this.a.app.c(true, true);
+      if (paramInt1 != 0) {
+        break label352;
+      }
+      if ((paramInt2 == 2147483647) && (StatusHistoryActivity.a(this.a).size() > 0)) {
+        StatusHistoryActivity.a(this.a).clear();
+      }
+      if (StatusHistoryActivity.a(this.a).size() <= 0) {
+        break;
+      }
+      localObject = paramArrayList.iterator();
+      RichStatus localRichStatus1 = (RichStatus)StatusHistoryActivity.a(this.a).get(StatusHistoryActivity.a(this.a).size() - 1);
+      while (((Iterator)localObject).hasNext())
       {
-        IActionListener localIActionListener = (IActionListener)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localIActionListener.a(paramInt, i);
+        RichStatus localRichStatus2 = (RichStatus)((Iterator)localObject).next();
+        if ((localRichStatus2.jdField_a_of_type_Long <= localRichStatus1.jdField_a_of_type_Long) && ((localRichStatus2.jdField_a_of_type_Long != localRichStatus1.jdField_a_of_type_Long) || (!Arrays.equals(localRichStatus2.a(), localRichStatus1.a())))) {
           break;
         }
+        ((Iterator)localObject).remove();
       }
+    }
+    StatusHistoryActivity.a(this.a).addAll(StatusHistoryActivity.a(this.a).size(), paramArrayList);
+    paramArrayList = this.a;
+    if (!paramBoolean2)
+    {
+      paramInt1 = 1;
+      StatusHistoryActivity.a(paramArrayList, paramInt1);
+      label352:
+      if (StatusHistoryActivity.a(this.a).size() != 0) {
+        break label420;
+      }
+      paramArrayList = this.a;
+      if (!paramBoolean1) {
+        break label415;
+      }
+      paramInt1 = 3;
+      label377:
+      StatusHistoryActivity.a(paramArrayList, paramInt1);
+    }
+    for (;;)
+    {
+      StatusHistoryActivity.a(this.a).notifyDataSetChanged();
+      return;
+      paramInt1 = 0;
+      break;
+      label399:
+      if (paramInt1 != 0) {
+        break label352;
+      }
+      StatusHistoryActivity.a(this.a, 3);
+      break label352;
+      label415:
+      paramInt1 = 2;
+      break label377;
+      label420:
+      StatusHistoryActivity.a(this.a).setVisible(false, false);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.history", 2, "onDeleteStatus. isSuccess=" + paramBoolean + ",key=" + paramArrayOfByte + ",errorCode=" + paramInt);
+    }
+    if ((StatusHistoryActivity.a(this.a) != null) && (StatusHistoryActivity.a(this.a).isShowing())) {
+      StatusHistoryActivity.a(this.a).dismiss();
+    }
+    if (paramBoolean) {
+      if (paramArrayOfByte != null)
+      {
+        Iterator localIterator = StatusHistoryActivity.a(this.a).iterator();
+        while (localIterator.hasNext())
+        {
+          RichStatus localRichStatus = (RichStatus)localIterator.next();
+          if ((localRichStatus != null) && (Arrays.equals(localRichStatus.jdField_a_of_type_ArrayOfByte, paramArrayOfByte))) {
+            localIterator.remove();
+          }
+        }
+        if (StatusHistoryActivity.a(this.a).size() == 0) {
+          StatusHistoryActivity.a(this.a, 3);
+        }
+        if (StatusHistoryActivity.a(this.a) != null) {
+          StatusHistoryActivity.a(this.a).notifyDataSetChanged();
+        }
+      }
+    }
+    for (;;)
+    {
+      StatusHistoryActivity.a(this.a, null);
+      StatusHistoryActivity.b(this.a, false);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 2131364330, 0).b(this.a.getTitleBarHeight());
     }
   }
 }

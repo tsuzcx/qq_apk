@@ -58,7 +58,7 @@ public class QfavBuilder
     {
       paramActivity = new Dialog(paramActivity, 2131624119);
       paramActivity.setContentView(2130903135);
-      localObject = (TextView)paramActivity.findViewById(2131296915);
+      localObject = (TextView)paramActivity.findViewById(2131296911);
       if (localObject != null) {
         ((TextView)localObject).setText(str3);
       }
@@ -66,13 +66,13 @@ public class QfavBuilder
       if (localObject != null) {
         ((TextView)localObject).setText(paramString);
       }
-      paramString = (TextView)paramActivity.findViewById(2131296918);
+      paramString = (TextView)paramActivity.findViewById(2131296914);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)paramActivity.findViewById(2131296919);
+      paramString = (TextView)paramActivity.findViewById(2131296915);
       if (paramString != null)
       {
         paramString.setText(str1);
@@ -163,10 +163,10 @@ public class QfavBuilder
       if (paramIntent.getBooleanExtra("bFirstAdd", false)) {
         QfavUtil.a(paramActivity, false, null, null);
       }
-      QfavUtil.a(paramActivity, 2131362663, 2);
+      QfavUtil.a(paramActivity, 2131362670, 2);
       return;
     }
-    QfavUtil.a(paramActivity, 2131362670, 1);
+    QfavUtil.a(paramActivity, 2131362677, 1);
   }
   
   public static QfavBuilder b(Entity paramEntity)
@@ -474,41 +474,38 @@ public class QfavBuilder
   
   public void a(Activity paramActivity, String paramString)
   {
-    int j = 0;
     AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
+    IPluginManager localIPluginManager = (IPluginManager)localAppRuntime.getManager(25);
     int i;
-    if (((localAppRuntime instanceof QQAppInterface)) && (IPluginManager.a()))
-    {
+    if (((localAppRuntime instanceof QQAppInterface)) && (localIPluginManager.a())) {
       i = 1;
-      if (a(paramActivity, paramString, -1, null)) {
-        break label90;
-      }
-      if (0 != 0) {
-        break label109;
-      }
     }
-    label90:
-    label109:
-    for (paramString = this.jdField_a_of_type_AndroidContentIntent;; paramString = null)
+    for (;;)
     {
-      QfavUtil.a(paramActivity, paramString.getIntExtra("nReasonInt", 2131362670), 1);
-      do
+      if (!a(paramActivity, paramString, -1, null)) {
+        if (0 != 0) {
+          break label114;
+        }
+      }
+      label114:
+      for (paramString = this.jdField_a_of_type_AndroidContentIntent;; paramString = null)
       {
+        QfavUtil.a(paramActivity, paramString.getIntExtra("nReasonInt", 2131362677), 1);
+        do
+        {
+          return;
+          if (((localAppRuntime instanceof QQAppInterface)) || (IPluginManager.a("qqfav.apk"))) {
+            break label119;
+          }
+          i = 2;
+          break;
+        } while (i != 0);
+        QfavUtil.a(paramActivity, 2131362670, 2);
+        QfavUtil.a(paramActivity, paramString, true);
         return;
-        i = j;
-        if ((localAppRuntime instanceof QQAppInterface)) {
-          break;
-        }
-        i = j;
-        if (IPluginManager.a("qqfav.apk")) {
-          break;
-        }
-        i = 2;
-        break;
-      } while (i != 0);
-      QfavUtil.a(paramActivity, 2131362663, 2);
-      QfavUtil.a(paramActivity, paramString, true);
-      return;
+      }
+      label119:
+      i = 0;
     }
   }
   
@@ -528,7 +525,7 @@ public class QfavBuilder
     }
     while (paramFileManagerEntity.fileName.getBytes().length >= 256)
     {
-      QfavUtil.a(paramActivity, 2131362673, 1);
+      QfavUtil.a(paramActivity, 2131362680, 1);
       QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80010, m, i, str, null);
       return;
       if (3000 == paramFileManagerEntity.peerType)
@@ -549,13 +546,13 @@ public class QfavBuilder
     {
     case 3: 
     default: 
-      QfavUtil.a(paramActivity, 2131362671, 1);
+      QfavUtil.a(paramActivity, 2131362678, 1);
       QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80003, m, i, str, null);
       return;
     case 1: 
       if ((paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
       {
-        QfavUtil.a(paramActivity, 2131362672, 1);
+        QfavUtil.a(paramActivity, 2131362679, 1);
         QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80011, m, i, str, null);
         return;
       }
@@ -563,7 +560,7 @@ public class QfavBuilder
     case 4: 
       if ((104 == paramFileManagerEntity.busId) && (paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
       {
-        QfavUtil.a(paramActivity, 2131362672, 1);
+        QfavUtil.a(paramActivity, 2131362679, 1);
         QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80011, m, i, str, null);
         return;
       }
@@ -651,16 +648,19 @@ public class QfavBuilder
     }
     this.jdField_a_of_type_AndroidContentIntent.putExtra("nOperation", 0);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("lCollectTime", System.currentTimeMillis());
+    label72:
+    Object localObject;
     if (paramIntent != null)
     {
       paramIntent.putExtras(this.jdField_a_of_type_AndroidContentIntent);
       switch (paramIntent.getIntExtra("nType", 0))
       {
       default: 
-        label72:
-        if (((BaseApplicationImpl.a.a() instanceof QQAppInterface)) && (IPluginManager.a()))
+        localObject = BaseApplicationImpl.a.a();
+        IPluginManager localIPluginManager = (IPluginManager)((AppRuntime)localObject).getManager(25);
+        if (((localObject instanceof QQAppInterface)) && (localIPluginManager.a()))
         {
-          this.jdField_a_of_type_AndroidAppDialog = a(paramActivity, 2131363265, 2131363270, 2131362790, 2131363447, (float)Math.round(21.014881134033203D) / 100.0F + "", new fkt(this), new fku(this, paramActivity, paramString, paramInt));
+          this.jdField_a_of_type_AndroidAppDialog = a(paramActivity, 2131363268, 2131363273, 2131362794, 2131363448, (float)Math.round(25.412940979003906D) / 100.0F + "", new fkt(this), new fku(this, paramActivity, paramString, paramInt));
           this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new fkv(this));
           this.jdField_a_of_type_AndroidAppDialog.show();
         }
@@ -672,13 +672,13 @@ public class QfavBuilder
       return true;
       paramIntent = this.jdField_a_of_type_AndroidContentIntent;
       break;
-      String str = paramIntent.getStringExtra("sPath");
-      if ((paramIntent.getIntExtra("nPicType", 1) != 1) || (!QfavUtil.a(str, paramIntent.getLongExtra("lSize", -1L)))) {
+      localObject = paramIntent.getStringExtra("sPath");
+      if ((paramIntent.getIntExtra("nPicType", 1) != 1) || (!QfavUtil.a((String)localObject, paramIntent.getLongExtra("lSize", -1L)))) {
         break label72;
       }
-      paramIntent.putExtra("nReasonInt", 2131362718);
+      paramIntent.putExtra("nReasonInt", 2131362725);
       if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "QfavBuilder.add: picture too big [" + str + "]");
+        QLog.i("qqfav", 2, "QfavBuilder.add: picture too big [" + (String)localObject + "]");
       }
       QfavReport.a(null, "Net_AddFav", 3, 3, -3);
       return false;
@@ -699,23 +699,25 @@ public class QfavBuilder
   
   public void b(Activity paramActivity, String paramString)
   {
-    if (((BaseApplicationImpl.a.a() instanceof QQAppInterface)) && (IPluginManager.a())) {}
+    AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
+    IPluginManager localIPluginManager = (IPluginManager)localAppRuntime.getManager(25);
+    if (((localAppRuntime instanceof QQAppInterface)) && (localIPluginManager.a())) {}
     for (int i = 1;; i = 0)
     {
       if (!a(paramActivity, paramString, -1, null)) {
         if (0 != 0) {
-          break label84;
+          break label102;
         }
       }
-      label84:
+      label102:
       for (paramString = this.jdField_a_of_type_AndroidContentIntent;; paramString = null)
       {
-        QQToast.a(paramActivity, 1, paramString.getIntExtra("nReasonInt", 2131362670), 2000).b(0);
+        QQToast.a(paramActivity, 1, paramString.getIntExtra("nReasonInt", 2131362677), 2000).b(0);
         do
         {
           return;
         } while (i == 1);
-        QQToast.a(paramActivity, 2, 2131362663, 2000).b(0);
+        QQToast.a(paramActivity, 2, 2131362670, 2000).b(0);
         return;
       }
     }

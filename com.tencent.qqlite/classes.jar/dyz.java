@@ -1,52 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.musicgene.BitmapBlur;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.io.File;
 
 public class dyz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public dyz(PhoneNumLoginImpl paramPhoneNumLoginImpl, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public dyz(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, String paramString, File paramFile) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
+    Object localObject1 = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, this.jdField_a_of_type_JavaLangString);
+    if (localObject1 != null)
     {
-      paramDialogInterface.dismiss();
-      paramDialogInterface = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-      paramDialogInterface.append("?");
-      paramDialogInterface.append("uin=");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.append("&plat=1");
-      paramDialogInterface.append("&app=1");
-      paramDialogInterface.append("&version=3.3.0.544");
-      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
-      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
-      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-      paramDialogInterface = paramDialogInterface.toString();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("portraitOnly", true);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      VasWebviewUtil.a(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+      Object localObject2 = BitmapBlur.a((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), true);
+      MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, (Bitmap)localObject2);
+      localObject1 = Message.obtain(MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin));
+      ((Message)localObject1).obj = localObject2;
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("BUNDLE_KEY_FILE_PATH", this.jdField_a_of_type_JavaIoFile.getPath());
+      ((Message)localObject1).setData((Bundle)localObject2);
+      ((Message)localObject1).sendToTarget();
     }
   }
 }

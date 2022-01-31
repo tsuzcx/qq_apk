@@ -1,93 +1,29 @@
-import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
 
 public class cmv
-  extends DiscussionObserver
+  implements AdapterView.OnItemClickListener
 {
   public cmv(SelectMemberActivity paramSelectMemberActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!paramBoolean) {
-      SelectMemberActivity.jdField_a_of_type_Boolean = false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    paramAdapterView = ((SelectMemberActivity.ResultRecord)paramView.getTag()).a;
+    if (this.a.a(paramAdapterView))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + SelectMemberActivity.a(this.a) + ", mEntrance: " + this.a.q);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-          QQToast.a(this.a, 2131364507, 0).a();
-        }
-        this.a.finish();
+      this.a.a(paramAdapterView);
+      this.a.c();
+      paramInt = this.a.a.a();
+      if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5) || (paramInt == 2)) {
+        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
       }
+      this.a.a(false);
     }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "create discussion fail");
-    }
-    QQToast.a(this.a, this.a.getString(2131363213), 2000).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-          QQToast.a(this.a, 2131364507, 0).a();
-        }
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
-    }
-    QQToast.a(this.a, this.a.getString(2131363216), 2000).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-  }
-  
-  protected void a(Object[] paramArrayOfObject)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (paramArrayOfObject == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)paramArrayOfObject[0];
-    } while (!this.a.F.equals(str));
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
-    }
-    QQToast.a(this.a, this.a.getString(2131363216), 0).b(this.a.getTitleBarHeight());
   }
 }
 

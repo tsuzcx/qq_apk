@@ -1,24 +1,14 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class ape
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  ape(apd paramapd, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
+  ape(apd paramapd) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_Apd.a.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    if ((this.a.a != null) && (!this.a.a.isFinishing())) {
+      this.a.a.a(2131363446, 1);
     }
   }
 }

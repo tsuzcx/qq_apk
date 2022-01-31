@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import eyv;
+import eza;
 
 public class QQToast
 {
@@ -38,9 +38,9 @@ public class QQToast
     {
     case 1: 
     default: 
-      return 2130837717;
+      return 2130837715;
     }
-    return 2130839156;
+    return 2130839124;
   }
   
   public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
@@ -102,21 +102,21 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    eyv localeyv = new eyv(this.jdField_a_of_type_AndroidContentContext);
+    eza localeza = new eza(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903251, null);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      ((ImageView)localView.findViewById(2131297378)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((ImageView)localView.findViewById(2131297374)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        ((TextView)localView.findViewById(2131297379)).setText(this.jdField_a_of_type_JavaLangCharSequence);
+        ((TextView)localView.findViewById(2131297375)).setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      localeyv.setGravity(55, 0, paramInt);
-      localeyv.setView(localView);
-      localeyv.setDuration(this.e);
-      return localeyv;
-      ImageView localImageView = (ImageView)localView.findViewById(2131297378);
+      localeza.setGravity(55, 0, paramInt);
+      localeza.setView(localView);
+      localeza.setDuration(this.e);
+      return localeza;
+      ImageView localImageView = (ImageView)localView.findViewById(2131297374);
     }
   }
   

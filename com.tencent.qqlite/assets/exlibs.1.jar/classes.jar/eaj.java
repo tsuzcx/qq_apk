@@ -1,16 +1,27 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profile.view.helper.ShakeEffectGenerator;
 
-public final class eaj
-  implements Runnable
+public class eaj
+  implements Animation.AnimationListener
 {
-  public eaj(RedTouchManager paramRedTouchManager, SharedPreferences paramSharedPreferences, Conversation paramConversation, Handler paramHandler) {}
+  public eaj(VipTagView paramVipTagView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(new eak(this));
+    if (VipTagView.a(this.a)) {
+      VipTagView.a(this.a).a();
+    }
+    VipTagView.a(this.a, false);
+    this.a.invalidate();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    VipTagView.a(this.a, 0.0F);
   }
 }
 

@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.text.TextUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.export.js.VipDownloadInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class fgc
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  public fgc(Login paramLogin) {}
+  public fgc(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
+    try
     {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
       }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    catch (Exception localException)
+    {
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
+    }
   }
 }
 

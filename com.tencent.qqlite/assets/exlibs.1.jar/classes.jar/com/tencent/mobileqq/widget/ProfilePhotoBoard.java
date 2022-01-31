@@ -60,22 +60,22 @@ public class ProfilePhotoBoard
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new LinearInterpolator());
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838912);
-      paramInt = getResources().getDimensionPixelSize(2131492999);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838855);
+      paramInt = getResources().getDimensionPixelSize(2131492994);
       if (paramInt <= 0)
       {
         this.x = ((int)(this.x * this.jdField_b_of_type_Float));
-        paramInt = getResources().getDimensionPixelSize(2131493000);
+        paramInt = getResources().getDimensionPixelSize(2131492995);
         if (paramInt > 0) {
           break label251;
         }
         this.y = ((int)(this.y * this.jdField_b_of_type_Float));
-        paramInt = getResources().getDimensionPixelSize(2131493001);
+        paramInt = getResources().getDimensionPixelSize(2131492996);
         if (paramInt > 0) {
           break label259;
         }
         this.z = ((int)(this.z * this.jdField_b_of_type_Float));
-        paramInt = getResources().getDimensionPixelSize(2131493002);
+        paramInt = getResources().getDimensionPixelSize(2131492997);
         if (paramInt > 0) {
           break label267;
         }
@@ -132,7 +132,7 @@ public class ProfilePhotoBoard
         if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && ((paramInt == 1) || (paramInt == 2) || (paramInt == 5) || (paramInt == 3) || (paramInt == 4))) {}
         try
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838912);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838855);
           if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
             this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
           }
@@ -282,7 +282,7 @@ public class ProfilePhotoBoard
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#4CFFFFFF"));
         this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * f);
       }
-      this.jdField_a_of_type_JavaLangString = getResources().getString(2131364282);
+      this.jdField_a_of_type_JavaLangString = getResources().getString(2131364267);
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint = null;

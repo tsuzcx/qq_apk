@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import bsp;
+import bso;
 import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -28,7 +28,7 @@ public class ChatAdapter1
   @Deprecated
   public static String a;
   private Context jdField_a_of_type_AndroidContentContext;
-  bsp jdField_a_of_type_Bsp = new bsp(this, null);
+  bso jdField_a_of_type_Bso = new bso(this, null);
   AIOTimeReporter jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   public ItemBuilderFactory a;
@@ -228,8 +228,8 @@ public class ChatAdapter1
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bsp.a != null) {
-      this.jdField_a_of_type_Bsp.a.dismiss();
+    if (this.jdField_a_of_type_Bso.a != null) {
+      this.jdField_a_of_type_Bso.a.dismiss();
     }
   }
   
@@ -275,7 +275,7 @@ public class ChatAdapter1
         localChatMessage1.mNeedTimeStamp = true;
       }
     }
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Bsp);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Bso);
     if (paramView != null) {
       paramView.setTag(2131296295, localChatMessage1);
     }
@@ -289,7 +289,7 @@ public class ChatAdapter1
   
   public int getViewTypeCount()
   {
-    return 30;
+    return 29;
   }
   
   public boolean hasStableIds()

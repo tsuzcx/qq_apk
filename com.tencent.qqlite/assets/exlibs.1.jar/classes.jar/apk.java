@@ -1,32 +1,31 @@
-import android.os.AsyncTask;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
 import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
-import com.tencent.widget.Gallery;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class apk
-  extends AsyncTask
+  implements ActionSheet.OnButtonClickListener
 {
-  public apk(FriendProfileImageActivity paramFriendProfileImageActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
+  public apk(FriendProfileImageActivity paramFriendProfileImageActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter.notifyDataSetChanged();
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    switch (paramInt)
+    {
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.post(new apl(this));
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.e);
+      continue;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      }
+    }
   }
 }
 

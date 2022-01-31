@@ -16,9 +16,7 @@ public class QQBrowserDelegationActivity
   public static final String b = "动态";
   public static final int c = 10012122;
   private static final String c = "QQBrowserDelegationActivity";
-  private long jdField_a_of_type_Long = -1L;
-  private Intent jdField_a_of_type_AndroidContentIntent = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Intent a = null;
   
   private void c()
   {
@@ -33,14 +31,12 @@ public class QQBrowserDelegationActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidContentIntent = getIntent();
-    if (this.jdField_a_of_type_AndroidContentIntent.getExtras() == null)
+    this.a = getIntent();
+    if (this.a.getExtras() == null)
     {
       finish();
       return false;
     }
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("appShareID", -1L);
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isAppShare", false);
     c();
     return false;
   }

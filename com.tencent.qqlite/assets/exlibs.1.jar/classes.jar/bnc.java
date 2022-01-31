@@ -10,7 +10,6 @@ public class bnc
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
     }

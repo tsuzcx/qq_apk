@@ -1,19 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.activity.ForwardOperations;
 
 class amn
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  amn(amk paramamk) {}
+  amn(amm paramamm) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if ((this.a.a.a instanceof DirectForwardActivity)) {
-      this.a.a.a.finish();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(1004, 0, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b);
   }
 }
 

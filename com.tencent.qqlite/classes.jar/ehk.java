@@ -1,16 +1,106 @@
-import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
-import com.tencent.mobileqq.transfile.ServerAddr;
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.transfile.BaseTransProcessor.StepInfo;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
 
 public class ehk
-  extends ServerAddr
+  implements ITransactionCallback
 {
-  public int a;
+  public ehk(NearbyPeoplePhotoUploadProcessor paramNearbyPeoplePhotoUploadProcessor, long paramLong) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
   {
-    FMTSrvAddrProvider.a().a(this.jdField_a_of_type_Int, "http://" + this.jdField_a_of_type_JavaLangString + ":" + this.b);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.a(l2, l3, l4, l5);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.b);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.d();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
+  {
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    String str1 = (String)paramHashMap.get("tc_p:");
+    String str2 = (String)paramHashMap.get("rep_bdhTrans");
+    String str3 = (String)paramHashMap.get("segspercnt");
+    String str4 = (String)paramHashMap.get("param_conf_segSize");
+    String str5 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms" + " ,fileSize:" + this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long + " transInfo:" + str2);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.b.b();
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.b.a = 1;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_h_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_Long;
+    paramHashMap = ByteBuffer.wrap(paramArrayOfByte);
+    int i = paramHashMap.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(), business result code = " + i);
+    }
+    if (i == 0)
+    {
+      NearbyPeoplePhotoUploadProcessor.aN = Integer.parseInt(new String(paramArrayOfByte, 2, paramHashMap.get()));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.e();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.a(l2, l3, l4, l5);
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.d(1005);
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.c("<BDH_LOG> onTransStart()");
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.b.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    NearbyPeoplePhotoUploadProcessor localNearbyPeoplePhotoUploadProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor;
+    FileMsg localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
+    long l = paramInt;
+    localFileMsg.e = l;
+    localNearbyPeoplePhotoUploadProcessor.jdField_h_of_type_Long = l;
+    if ((paramInt < this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_a_of_type_Long) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.jdField_h_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.d)) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNearbyPeoplePhotoUploadProcessor.f();
+    }
   }
 }
 

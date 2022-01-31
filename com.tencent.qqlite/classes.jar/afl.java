@@ -1,24 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-public class afl
-  implements URLDrawable.URLDrawableListener
+class afl
+  implements Animation.AnimationListener
 {
-  public afl(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView, URLDrawable paramURLDrawable) {}
+  afl(afk paramafk, LinearLayout paramLinearLayout) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    paramAnimation = new TranslateAnimation(-this.jdField_a_of_type_Afk.a.ao, 0.0F, 0.0F, 0.0F);
+    paramAnimation.setDuration(800L);
+    paramAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

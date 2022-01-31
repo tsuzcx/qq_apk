@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aty
-  implements View.OnClickListener
+public class aty
+  extends Handler
 {
-  aty(atw paramatw, int paramInt) {}
+  public aty(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Atw.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Atw.a.b);
-    paramView = (SimpleAccount)this.jdField_a_of_type_Atw.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-    LoginActivity.a(this.jdField_a_of_type_Atw.a, paramView);
-    this.jdField_a_of_type_Atw.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Atw.a.b);
-    this.jdField_a_of_type_Atw.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-    this.jdField_a_of_type_Atw.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.clearFocus();
-    this.jdField_a_of_type_Atw.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonVisible(false);
-    this.jdField_a_of_type_Atw.a.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.a().setVisibility(8);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+      }
+    } while (LoginInfoActivity.a(this.a) == null);
+    LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
+    LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
   }
 }
 

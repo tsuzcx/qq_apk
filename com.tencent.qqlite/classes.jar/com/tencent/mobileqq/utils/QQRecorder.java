@@ -14,7 +14,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import evm;
+import evr;
 import java.io.File;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -52,7 +52,7 @@ public class QQRecorder
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord = null;
   private AmrInputStreamWrapper jdField_a_of_type_ComTencentMobileqqUtilsAmrInputStreamWrapper = null;
   private QQRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener;
-  public evm a;
+  public evr a;
   private PipedInputStream jdField_a_of_type_JavaIoPipedInputStream = null;
   private PipedOutputStream jdField_a_of_type_JavaIoPipedOutputStream = null;
   private String jdField_c_of_type_JavaLangString;
@@ -480,7 +480,7 @@ public class QQRecorder
   
   public int a()
   {
-    if (this.jdField_a_of_type_Evm == null) {
+    if (this.jdField_a_of_type_Evr == null) {
       return 0;
     }
     return this.v;
@@ -489,10 +489,10 @@ public class QQRecorder
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Evm + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Evr + ",time is:" + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Evm != null) {
-      this.jdField_a_of_type_Evm.a = false;
+    if (this.jdField_a_of_type_Evr != null) {
+      this.jdField_a_of_type_Evr.a = false;
     }
   }
   
@@ -504,12 +504,12 @@ public class QQRecorder
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Evm + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Evr + ",time is:" + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Evm == null)
+    if (this.jdField_a_of_type_Evr == null)
     {
-      this.jdField_a_of_type_Evm = new evm(this, paramString);
-      this.jdField_a_of_type_Evm.start();
+      this.jdField_a_of_type_Evr = new evr(this, paramString);
+      this.jdField_a_of_type_Evr.start();
       d = paramString;
     }
     while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener == null) {
@@ -570,12 +570,12 @@ public class QQRecorder
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Evm != null;
+    return this.jdField_a_of_type_Evr != null;
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Evm == null) || (!this.jdField_a_of_type_Evm.a);
+    return (this.jdField_a_of_type_Evr == null) || (!this.jdField_a_of_type_Evr.a);
   }
 }
 

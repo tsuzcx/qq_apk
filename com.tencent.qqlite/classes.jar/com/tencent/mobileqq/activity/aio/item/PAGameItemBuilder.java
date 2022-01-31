@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import bvz;
 import bwa;
 import bwb;
-import bwc;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder;
@@ -27,14 +27,14 @@ public class PAGameItemBuilder
 {
   private static final long jdField_b_of_type_Long = 1000L;
   private long jdField_a_of_type_Long = 0L;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bwa(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bvz(this);
   private final int[] jdField_a_of_type_ArrayOfInt = { 2130837562, 2130837563, 2130837564 };
   View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
   
   public PAGameItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.b = new bwb(this);
+    this.b = new bwa(this);
   }
   
   private void a(Bundle paramBundle) {}
@@ -236,10 +236,10 @@ public class PAGameItemBuilder
     //   57: aload 9
     //   59: invokevirtual 198	java/util/ArrayList:size	()I
     //   62: if_icmpge +886 -> 948
-    //   65: new 200	bwc
+    //   65: new 200	bwb
     //   68: dup
     //   69: aload_0
-    //   70: invokespecial 201	bwc:<init>	(Lcom/tencent/mobileqq/activity/aio/item/PAGameItemBuilder;)V
+    //   70: invokespecial 201	bwb:<init>	(Lcom/tencent/mobileqq/activity/aio/item/PAGameItemBuilder;)V
     //   73: astore 11
     //   75: aload 9
     //   77: iload 6
@@ -248,30 +248,30 @@ public class PAGameItemBuilder
     //   85: astore 12
     //   87: aload 11
     //   89: iconst_5
-    //   90: putfield 208	bwc:jdField_a_of_type_Int	I
+    //   90: putfield 208	bwb:jdField_a_of_type_Int	I
     //   93: aload 11
     //   95: aload 12
     //   97: getfield 211	com/tencent/mobileqq/data/PAMessage$Item:url	Ljava/lang/String;
-    //   100: putfield 213	bwc:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   100: putfield 213	bwb:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   103: aload 11
     //   105: aload 4
     //   107: getfield 216	com/tencent/mobileqq/data/PAMessage:type	I
-    //   110: putfield 218	bwc:jdField_b_of_type_Int	I
+    //   110: putfield 218	bwb:jdField_b_of_type_Int	I
     //   113: aload 11
     //   115: aload 12
     //   117: getfield 221	com/tencent/mobileqq/data/PAMessage$Item:actionUrl	Ljava/lang/String;
-    //   120: putfield 222	bwc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   120: putfield 222	bwb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   123: aload 11
     //   125: aload 12
     //   127: getfield 225	com/tencent/mobileqq/data/PAMessage$Item:nativeJumpString	Ljava/lang/String;
-    //   130: putfield 226	bwc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   130: putfield 226	bwb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   133: aload 11
     //   135: aload_3
     //   136: getfield 229	com/tencent/mobileqq/data/MessageForPubAccount:uniseq	J
-    //   139: putfield 230	bwc:jdField_a_of_type_Long	J
+    //   139: putfield 230	bwb:jdField_a_of_type_Long	J
     //   142: aload 11
     //   144: iload 6
-    //   146: putfield 232	bwc:jdField_c_of_type_Int	I
+    //   146: putfield 232	bwb:jdField_c_of_type_Int	I
     //   149: iload 6
     //   151: ifne +12 -> 163
     //   154: iload 6
@@ -640,7 +640,7 @@ public class PAGameItemBuilder
     //   37	711	8	k	int
     //   44	548	9	localArrayList	java.util.ArrayList
     //   50	466	10	localViewGroup	android.view.ViewGroup
-    //   73	466	11	localbwc	bwc
+    //   73	466	11	localbwb	bwb
     //   85	753	12	localItem	PAMessage.Item
     //   850	1	12	localException1	Exception
     //   868	63	12	localLayoutParams	android.view.ViewGroup.LayoutParams
@@ -662,7 +662,7 @@ public class PAGameItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new bwc(this);
+    return new bwb(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -694,7 +694,7 @@ public class PAGameItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131298983, this.jdField_a_of_type_AndroidContentContext.getString(2131363073));
+    paramView.a(2131298932, this.jdField_a_of_type_AndroidContentContext.getString(2131363076));
     return paramView.a();
   }
 }

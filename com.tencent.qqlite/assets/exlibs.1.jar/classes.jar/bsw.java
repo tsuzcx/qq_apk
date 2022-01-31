@@ -1,22 +1,14 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
 public class bsw
-  implements MediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public bsw(MediaPlayerManager paramMediaPlayerManager) {}
+  public bsw(MediaPlayerManager paramMediaPlayerManager, AudioPlayer paramAudioPlayer, int paramInt) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
-      return;
-    }
-    this.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_Int);
   }
 }
 

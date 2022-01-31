@@ -1,47 +1,23 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.search.ContactSearchableFriend;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class amg
-  extends SearchResultDialog
+  implements Animation.AnimationListener
 {
-  public amg(ForwardFriendListActivity paramForwardFriendListActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
+  public amg(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.requestLayout();
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    HashMap localHashMap = ForwardFriendListActivity.a(this.a).a();
-    Iterator localIterator = localHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (ArrayList)localHashMap.get((Integer)localIterator.next());
-      if (localObject != null)
-      {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Friends localFriends = (Friends)((Iterator)localObject).next();
-          localArrayList.add(new ContactSearchableFriend(paramContext, paramQQAppInterface, localFriends, ForwardFriendListActivity.a(this.a).a(localFriends.groupid), 0L, 34359738368L));
-        }
-      }
-    }
-    return localArrayList;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

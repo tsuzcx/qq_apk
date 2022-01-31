@@ -1,25 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.common.galleryactivity.AnimationLister;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class coe
-  implements MediaPlayer.OnPreparedListener
+  implements AnimationLister
 {
-  public coe(ShortVideoPreviewActivity paramShortVideoPreviewActivity, int paramInt) {}
+  public coe(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + ShortVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity));
+      QLog.d("ShortVideoPlayActivity", 2, "RectAnimation : onEnterAnimationEnd ");
     }
-    ShortVideoPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity);
-    ShortVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity).start();
-    if (this.jdField_a_of_type_Int > 0) {
-      ShortVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity).seekTo(this.jdField_a_of_type_Int);
-    }
-    ShortVideoPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, 1);
+    ShortVideoPlayActivity.d(this.a);
   }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

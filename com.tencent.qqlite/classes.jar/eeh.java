@@ -1,25 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import android.util.Pair;
 
-public final class eeh
-  implements Runnable
+public class eeh
+  extends MQLruCache
 {
-  public void run()
+  public eeh(Integer paramInteger)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    long l = localCalendar.getTimeInMillis();
-    BaseApplicationImpl.a().getSharedPreferences("banner_and_splash", 0).edit().putLong("splashshowtime", l).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("SetSplash", 2, "显示了一个非默认闪屏时间是" + localCalendar.toString());
-    }
+    super(paramInteger.intValue());
   }
+  
+  protected int a(String paramString, Object paramObject)
+  {
+    if ((paramObject instanceof Pair)) {
+      return ((Integer)((Pair)paramObject).second).intValue();
+    }
+    if ((paramObject instanceof Bitmap))
+    {
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
+    }
+    return 12;
+  }
+  
+  public void a(String paramString, int paramInt) {}
 }
 
 

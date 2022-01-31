@@ -1,26 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.SearchTroopListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
-import java.util.List;
 
 public class bir
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnCancelListener
 {
   public bir(SearchTroopListActivity paramSearchTroopListActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_Boolean))
-    {
-      paramInt = this.a.jdField_a_of_type_ComTencentWidgetXListView.r();
-      if (this.a.jdField_a_of_type_JavaUtilList.size() <= paramInt) {
-        this.a.e();
-      }
+    this.a.a = null;
+    if (!this.a.isFinishing()) {
+      this.a.finish();
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

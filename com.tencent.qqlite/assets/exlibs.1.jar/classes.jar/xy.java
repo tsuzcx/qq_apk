@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class xy
-  implements IphonePickerView.IphonePickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public xy(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public xy(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt1)
+    AssistantSettingActivity.a(this.a).setContentDescription("摇动手机截屏");
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    }
-    for (;;)
-    {
-      AgeSelectionActivity.a(this.a);
-      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        AgeSelectionActivity.a(this.a).a(2);
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131363054), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break;
       }
+      this.a.turnOnShake();
       return;
-      this.a.f = paramInt2;
-      continue;
-      this.a.g = paramInt2;
-      continue;
-      this.a.h = paramInt2;
     }
+    this.a.turnOffShake();
   }
 }
 

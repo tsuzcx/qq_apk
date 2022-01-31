@@ -1,13 +1,42 @@
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class dfi
-  implements Runnable
+class dfi
+  implements URLDrawable.URLDrawableListener
 {
-  public dfi(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt) {}
+  dfi(dfh paramdfh) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.scrollBy(this.jdField_a_of_type_Int, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadCanceled");
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable Successed, is to call showFastImage");
+    }
+    this.a.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.a.jdField_a_of_type_AndroidOsHandler, 31));
   }
 }
 

@@ -1,81 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class dlj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dlj(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dlj(QfileLocalFilePicTabView paramQfileLocalFilePicTabView, FileInfo paramFileInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    switch (paramView.jdField_a_of_type_Int)
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a();
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.containsKey(localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.put(localObject, new ArrayList());
     }
-    for (;;)
-    {
-      this.a.i();
+    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a());
+    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {
       return;
-      this.a.a.a().ad();
-      if (!NetworkUtil.e(BaseApplication.getContext()))
-      {
-        FMToastUtil.a(2131363449);
-        return;
-      }
-      if ((FileManagerUtil.a()) && (localFileManagerEntity.fileSize > 5242880L))
-      {
-        FMDialogUtil.a(this.a.getContext(), 2131362021, 2131362019, new dlk(this, localFileManagerEntity));
-      }
-      else if (localFileManagerEntity.cloudType == 0)
-      {
-        QfileBaseRecentFileTabView.g(this.a).a().a(localFileManagerEntity.nSessionId);
-      }
-      else
-      {
-        QfileBaseRecentFileTabView.h(this.a).a().a(localFileManagerEntity);
-        continue;
-        this.a.a.a().ac();
-        this.a.c(localFileManagerEntity);
-        continue;
-        this.a.a.a().ae();
-        if (localFileManagerEntity.cloudType == 0)
-        {
-          QfileBaseRecentFileTabView.i(this.a).a().a(localFileManagerEntity.nSessionId);
-        }
-        else
-        {
-          QfileBaseRecentFileTabView.j(this.a).a().a(localFileManagerEntity.nSessionId);
-          continue;
-          this.a.a.a().af();
-          if (!NetworkUtil.e(BaseApplication.getContext()))
-          {
-            FMToastUtil.a(2131363449);
-            return;
-          }
-          if ((FileManagerUtil.a()) && (localFileManagerEntity.fileSize > 5242880L)) {
-            FMDialogUtil.a(this.a.getContext(), 2131362021, 2131362019, new dll(this, localFileManagerEntity));
-          } else if (localFileManagerEntity.cloudType == 0) {
-            QfileBaseRecentFileTabView.m(this.a).a().b(localFileManagerEntity.nSessionId);
-          } else {
-            QfileBaseRecentFileTabView.n(this.a).a().a(localFileManagerEntity.nSessionId);
-          }
-        }
-      }
     }
+    int j = FileManagerUtil.a((List)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.b());
+    int i = j;
+    if (j < 0) {
+      i = 0;
+    }
+    ((List)localObject).add(i, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.i();
   }
 }
 

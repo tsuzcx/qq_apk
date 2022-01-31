@@ -1,23 +1,21 @@
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class fcz
   implements Runnable
 {
-  public fcz(ToastUtil paramToastUtil, String paramString, int paramInt) {}
+  public fcz(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString, WebView paramWebView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
+    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
+    try
     {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+    catch (Exception localException) {}
   }
 }
 

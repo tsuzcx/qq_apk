@@ -172,7 +172,6 @@ public class StructMsgForGeneralShare$GeneralClickHandler
   
   public boolean b(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString3)) {}
     paramString3 = (ChatActivity)this.jdField_a_of_type_AndroidContentContext;
     int i = paramString3.a().a();
     paramString2 = paramString3.a().b();

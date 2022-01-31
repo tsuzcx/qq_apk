@@ -1,23 +1,17 @@
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.DataLineReportUtil;
-import com.tencent.mobileqq.activity.qfileJumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 public class cjq
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public cjq(qfileJumpActivity paramqfileJumpActivity) {}
+  public cjq(PhotoPreviewActivity paramPhotoPreviewActivity, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    DataLineReportUtil.r(this.a.app);
-    Intent localIntent = new Intent(this.a, LiteActivity.class);
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("leftViewText", this.a.app.a().getString(2131363110));
-    this.a.startActivity(localIntent);
-    this.a.finish();
+    PhotoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoPreviewActivity, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentWidgetActionSheet, paramInt);
   }
 }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.mobileqq.pluginsdk.PluginManageHandler;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class PluginRemoteService
 {
@@ -26,6 +27,7 @@ public class PluginRemoteService
         QLog.i("plugin_tag", 2, "PluginRemoteService$Sub1.onCreate");
       }
       super.onCreate();
+      MobileQQ.sMobileQQ.waitAppRuntime(null);
     }
     
     public void onDestroy()
@@ -60,6 +62,7 @@ public class PluginRemoteService
         QLog.i("plugin_tag", 2, "PluginRemoteService$Sub2.onCreate");
       }
       super.onCreate();
+      MobileQQ.sMobileQQ.waitAppRuntime(null);
     }
     
     public void onDestroy()

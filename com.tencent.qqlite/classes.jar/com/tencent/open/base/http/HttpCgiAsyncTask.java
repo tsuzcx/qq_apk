@@ -12,7 +12,7 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.OpenConfig;
 import com.tencent.open.business.cgireport.ReportManager;
 import com.tencent.qphone.base.remote.SimpleAccount;
-import fde;
+import fdj;
 import java.io.CharConversionException;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
@@ -228,7 +228,7 @@ public class HttpCgiAsyncTask
   protected void a(HashMap paramHashMap)
   {
     if (!isCancelled()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new fde(this, paramHashMap));
+      this.jdField_a_of_type_AndroidOsHandler.post(new fdj(this, paramHashMap));
     }
   }
   

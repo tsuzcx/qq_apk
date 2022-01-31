@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.activity.EditActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class akt
-  implements Runnable
+  extends Handler
 {
-  public akt(EditActivity paramEditActivity) {}
-  
-  public void run()
-  {
-    this.a.e();
-  }
+  public akt(EditInfoActivity paramEditInfoActivity) {}
 }
 
 

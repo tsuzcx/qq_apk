@@ -19,7 +19,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import eqj;
+import eqo;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,7 +46,7 @@ public class TroopAvatarBigPhotoAdapter
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131492908));
+    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131492904));
   }
   
   public void a()
@@ -107,7 +107,7 @@ public class TroopAvatarBigPhotoAdapter
             if (((localSetting != null) && (localSetting.bHeadType != 0)) || (str == null) || (!str.equals("-5"))) {
               break label335;
             }
-            localURLImageView.setImageResource(2130838298);
+            localURLImageView.setImageResource(2130838290);
             return;
           }
           catch (MalformedURLException paramViewHolder) {}
@@ -142,7 +142,7 @@ public class TroopAvatarBigPhotoAdapter
         return;
         localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject1, URLDrawableHelper.d, null, true));
         a(paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-        localURLImageView.setURLDrawableDownListener(new eqj(this, paramViewHolder));
+        localURLImageView.setURLDrawableDownListener(new eqo(this, paramViewHolder));
         return;
       }
     }

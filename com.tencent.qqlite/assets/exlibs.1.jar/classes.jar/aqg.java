@@ -1,18 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class aqg
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
   public aqg(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && (paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-      this.a.finish();
-    }
+    this.a.c();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 0);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.a(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
   }
 }
 

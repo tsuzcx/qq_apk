@@ -38,7 +38,7 @@ public class RecentFaceDecoder
   public static Pair a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     int k = -2147483648;
-    int m = 2130838057;
+    int m = 2130838051;
     int i = m;
     int j = k;
     switch (paramInt)
@@ -59,12 +59,12 @@ public class RecentFaceDecoder
         if (!String.valueOf(AppConstants.aa).equals(paramString)) {
           if (String.valueOf(AppConstants.S).equals(paramString))
           {
-            i = 2130838059;
+            i = 2130838053;
             j = k;
           }
           else if (AppConstants.W.equals(paramString))
           {
-            i = 2130838109;
+            i = 2130838103;
             j = k;
           }
           else
@@ -74,7 +74,7 @@ public class RecentFaceDecoder
             continue;
             if (String.valueOf(AppConstants.Z).equals(paramString))
             {
-              i = 2130838055;
+              i = 2130838049;
               j = k;
             }
             else
@@ -83,7 +83,7 @@ public class RecentFaceDecoder
               i = -2147483648;
               continue;
               j = 102;
-              i = 2130838527;
+              i = 2130838504;
               continue;
               j = 11;
               i = -2147483648;
@@ -94,13 +94,13 @@ public class RecentFaceDecoder
               j = 4;
               i = -2147483648;
               continue;
-              i = 2130838054;
+              i = 2130838048;
               j = k;
               continue;
-              i = 2130838058;
+              i = 2130838052;
               j = k;
               continue;
-              i = 2130838056;
+              i = 2130838050;
               j = k;
             }
           }

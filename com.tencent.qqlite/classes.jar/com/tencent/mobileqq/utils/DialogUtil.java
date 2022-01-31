@@ -24,8 +24,8 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
 import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import eth;
-import eti;
+import etm;
+import etn;
 
 public class DialogUtil
 {
@@ -45,7 +45,7 @@ public class DialogUtil
     String str1 = ((Resources)localObject2).getString(paramInt4);
     paramContext = new Dialog(paramContext, 2131624119);
     paramContext.setContentView(2130903135);
-    Object localObject3 = (TextView)paramContext.findViewById(2131296915);
+    Object localObject3 = (TextView)paramContext.findViewById(2131296911);
     TextView localTextView = (TextView)paramContext.findViewById(2131296470);
     if (paramInt1 <= 0)
     {
@@ -65,14 +65,14 @@ public class DialogUtil
         localTextView.setText((CharSequence)localObject1);
         localTextView.setContentDescription((CharSequence)localObject1);
       }
-      localObject1 = (TextView)paramContext.findViewById(2131296918);
+      localObject1 = (TextView)paramContext.findViewById(2131296914);
       if (localObject1 != null)
       {
         ((TextView)localObject1).setText(str2);
         ((TextView)localObject1).setContentDescription(str2);
         ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
       }
-      paramOnClickListener1 = (TextView)paramContext.findViewById(2131296919);
+      paramOnClickListener1 = (TextView)paramContext.findViewById(2131296915);
       if (paramOnClickListener1 != null)
       {
         paramOnClickListener1.setText(str1);
@@ -92,11 +92,11 @@ public class DialogUtil
   public static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
     paramContext = new Dialog(paramContext, 2131624119);
-    paramContext.setContentView(2130903484);
-    ((TextView)paramContext.findViewById(2131298194)).setVisibility(8);
-    TextView localTextView1 = (TextView)paramContext.findViewById(2131298195);
-    TextView localTextView2 = (TextView)paramContext.findViewById(2131298196);
-    TextView localTextView3 = (TextView)paramContext.findViewById(2131298197);
+    paramContext.setContentView(2130903472);
+    ((TextView)paramContext.findViewById(2131298154)).setVisibility(8);
+    TextView localTextView1 = (TextView)paramContext.findViewById(2131298155);
+    TextView localTextView2 = (TextView)paramContext.findViewById(2131298156);
+    TextView localTextView3 = (TextView)paramContext.findViewById(2131298157);
     localTextView1.setText(paramInt1);
     localTextView1.setGravity(3);
     if (paramInt2 == 0) {
@@ -117,7 +117,7 @@ public class DialogUtil
     Dialog localDialog = new Dialog(paramContext, paramInt1);
     localDialog.setContentView(paramInt2);
     ((TextView)localDialog.findViewById(2131296470)).setText(paramInt3);
-    ((ProgressBar)localDialog.findViewById(2131296469)).setIndeterminateDrawable(paramContext.getResources().getDrawable(2130839133));
+    ((ProgressBar)localDialog.findViewById(2131296469)).setIndeterminateDrawable(paramContext.getResources().getDrawable(2130839101));
     localDialog.setCancelable(paramBoolean);
     return localDialog;
   }
@@ -130,18 +130,18 @@ public class DialogUtil
     ImageView localImageView = (ImageView)paramContext.findViewById(2131296283);
     localTextView.setText(paramInt1);
     localImageView.setImageResource(paramInt2);
-    new Handler().postDelayed(new eth(paramContext), paramLong);
+    new Handler().postDelayed(new etm(paramContext), paramLong);
     return paramContext;
   }
   
   public static Dialog a(Context paramContext, String paramString, CharSequence paramCharSequence, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, ClickableColorSpanTextView.SpanClickListener paramSpanClickListener)
   {
     paramContext = new Dialog(paramContext, 2131624119);
-    paramContext.setContentView(2130903484);
-    TextView localTextView3 = (TextView)paramContext.findViewById(2131298194);
-    ClickableColorSpanTextView localClickableColorSpanTextView = (ClickableColorSpanTextView)paramContext.findViewById(2131298195);
-    TextView localTextView1 = (TextView)paramContext.findViewById(2131298196);
-    TextView localTextView2 = (TextView)paramContext.findViewById(2131298197);
+    paramContext.setContentView(2130903472);
+    TextView localTextView3 = (TextView)paramContext.findViewById(2131298154);
+    ClickableColorSpanTextView localClickableColorSpanTextView = (ClickableColorSpanTextView)paramContext.findViewById(2131298155);
+    TextView localTextView1 = (TextView)paramContext.findViewById(2131298156);
+    TextView localTextView2 = (TextView)paramContext.findViewById(2131298157);
     if (paramString == null)
     {
       localTextView3.setVisibility(8);
@@ -158,7 +158,7 @@ public class DialogUtil
     }
     for (;;)
     {
-      paramString = new eti(paramOnClickListener1, paramContext, paramOnClickListener2);
+      paramString = new etn(paramOnClickListener1, paramContext, paramOnClickListener2);
       localTextView1.setOnClickListener(paramString);
       localTextView2.setOnClickListener(paramString);
       localClickableColorSpanTextView.setSpanClickListener(paramSpanClickListener);
@@ -175,7 +175,7 @@ public class DialogUtil
   
   public static ProgressDialog a(Context paramContext, int paramInt)
   {
-    return a(paramContext, paramContext.getResources().getDrawable(2130839133), paramInt);
+    return a(paramContext, paramContext.getResources().getDrawable(2130839101), paramInt);
   }
   
   public static ProgressDialog a(Context paramContext, Drawable paramDrawable, int paramInt)
@@ -199,17 +199,17 @@ public class DialogUtil
     paramContext.setContentView(2130903139);
     paramContext.a(paramQQCustomMenu, paramOnClickListener);
     paramContext.a(2130903138);
-    ((LinearLayout)paramContext.findViewById(2131296917)).setLayoutParams(new RelativeLayout.LayoutParams(-1, 0));
-    paramQQCustomMenu = (ListView)paramContext.findViewById(2131296922);
+    ((LinearLayout)paramContext.findViewById(2131296913)).setLayoutParams(new RelativeLayout.LayoutParams(-1, 0));
+    paramQQCustomMenu = (ListView)paramContext.findViewById(2131296918);
     paramOnClickListener = new RelativeLayout.LayoutParams(-1, -2);
-    paramOnClickListener.addRule(3, 2131296915);
+    paramOnClickListener.addRule(3, 2131296911);
     paramQQCustomMenu.setLayoutParams(paramOnClickListener);
     return paramContext;
   }
   
   public static QQCustomDialog a(Activity paramActivity, String paramString)
   {
-    return a(paramActivity, paramString, 2131362790, 2131362791, null, null);
+    return a(paramActivity, paramString, 2131362794, 2131362795, null, null);
   }
   
   public static QQCustomDialog a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -217,7 +217,7 @@ public class DialogUtil
     paramString = a(paramActivity, 230, null, paramString, paramInt1, paramInt2, paramOnClickListener1, paramOnClickListener2);
     if (paramString != null)
     {
-      ((TextView)paramString.findViewById(2131296929)).setVisibility(8);
+      ((TextView)paramString.findViewById(2131296925)).setVisibility(8);
       paramOnClickListener1 = (TextView)paramString.findViewById(2131296470);
       paramOnClickListener2 = new LinearLayout.LayoutParams(-2, -2);
       paramOnClickListener2.gravity = 17;
@@ -230,7 +230,7 @@ public class DialogUtil
   
   public static QQCustomDialog a(Context paramContext, int paramInt)
   {
-    return a(paramContext, paramInt, null, null, 2131362790, 2131362791, null, null);
+    return a(paramContext, paramInt, null, null, 2131362794, 2131362795, null, null);
   }
   
   public static QQCustomDialog a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -259,7 +259,7 @@ public class DialogUtil
   
   public static QQCustomDialog a(Context paramContext, int paramInt, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    return a(paramContext, paramInt, paramString1, paramString2, 2131362790, 2131362791, paramOnClickListener1, paramOnClickListener2);
+    return a(paramContext, paramInt, paramString1, paramString2, 2131362794, 2131362795, paramOnClickListener1, paramOnClickListener2);
   }
   
   public static QQCustomDialog a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -301,8 +301,8 @@ public class DialogUtil
     paramContext.setCanceledOnTouchOutside(false);
     paramContext.setCancelable(true);
     paramContext.a(paramString3);
-    paramContext.setNegativeButton(2131362790, paramOnClickListener2);
-    paramContext.setPositiveButton(2131363069, paramOnClickListener1);
+    paramContext.setNegativeButton(2131362794, paramOnClickListener2);
+    paramContext.setPositiveButton(2131363072, paramOnClickListener1);
     paramContext.show();
     return paramContext;
   }
@@ -316,8 +316,8 @@ public class DialogUtil
     paramContext.setCanceledOnTouchOutside(false);
     paramContext.setCancelable(true);
     paramContext.a(paramString);
-    paramContext.setNegativeButton(2131362790, paramOnClickListener2);
-    paramContext.setPositiveButton(2131362791, paramOnClickListener1);
+    paramContext.setNegativeButton(2131362794, paramOnClickListener2);
+    paramContext.setPositiveButton(2131362795, paramOnClickListener1);
     paramContext.show();
     return paramContext;
   }
@@ -328,7 +328,7 @@ public class DialogUtil
     paramContext.setContentView(2130903140);
     paramContext.a(paramString1.replace("/得意", TextUtils.b(21)).replace("/可爱", TextUtils.b(18)).replace("/鼓掌", TextUtils.b(86)).replace("/胜利", TextUtils.b(55)).replace("\\U0001f60f", String.valueOf(Character.toChars(128527))).replace("\\U0001f60c", String.valueOf(Character.toChars(128524))));
     paramContext.a(paramString2.replace("/得意", TextUtils.b(21)).replace("/可爱", TextUtils.b(18)).replace("/鼓掌", TextUtils.b(86)).replace("/胜利", TextUtils.b(55)).replace("\\U0001f60f", String.valueOf(Character.toChars(128527))).replace("\\U0001f60c", String.valueOf(Character.toChars(128524))), 2.0F);
-    paramContext.a(2130837978, 2131362790, paramOnClickListener2);
+    paramContext.a(2130837974, 2131362794, paramOnClickListener2);
     paramContext.a(paramString3.replace("/得意", TextUtils.b(21)).replace("/可爱", TextUtils.b(18)).replace("/鼓掌", TextUtils.b(86)).replace("/胜利", TextUtils.b(55)).replace("\\U0001f60f", String.valueOf(Character.toChars(128527))).replace("\\U0001f60c", String.valueOf(Character.toChars(128524))), paramOnClickListener1);
     paramContext.setCanceledOnTouchOutside(false);
     return paramContext;
@@ -336,7 +336,7 @@ public class DialogUtil
   
   public static QQCustomSplitDialog a(Context paramContext, int paramInt)
   {
-    return a(paramContext, paramInt, null, null, 2131362790, 2131362791, null, null);
+    return a(paramContext, paramInt, null, null, 2131362794, 2131362795, null, null);
   }
   
   public static QQCustomSplitDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -353,7 +353,7 @@ public class DialogUtil
   
   public static QQCustomDialog b(Context paramContext, int paramInt)
   {
-    return b(paramContext, paramInt, null, null, 2131362790, 2131362791, null, null);
+    return b(paramContext, paramInt, null, null, 2131362794, 2131362795, null, null);
   }
   
   public static QQCustomDialog b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -378,8 +378,8 @@ public class DialogUtil
     paramContext.setCanceledOnTouchOutside(false);
     paramContext.setCancelable(true);
     paramContext.a(paramString3);
-    paramContext.setNegativeButton(2131362790, paramOnClickListener2);
-    paramContext.setPositiveButton(2131363069, paramOnClickListener1);
+    paramContext.setNegativeButton(2131362794, paramOnClickListener2);
+    paramContext.setPositiveButton(2131363072, paramOnClickListener1);
     paramContext.show();
     return paramContext;
   }

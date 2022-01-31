@@ -1,152 +1,65 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DetailProfileActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aib
-  implements TextWatcher
+  extends WtloginObserver
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  public boolean a;
-  int b;
-  public boolean b;
-  int c;
+  public aib(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public aib(DetailProfileActivity paramDetailProfileActivity, int paramInt, EditText paramEditText)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    Object localObject1 = str1;
-    Object localObject3;
-    String str3;
-    String str2;
-    Object localObject2;
-    if (str1.getBytes().length > this.jdField_a_of_type_Int)
+    if (!this.a.isResume())
     {
-      localObject3 = "";
-      str3 = "";
-      localObject1 = "";
-      str2 = str1;
-      paramEditable = (Editable)localObject1;
-      localObject2 = str3;
+      DevlockPushActivity.a(this.a);
+      return;
     }
-    try
+    if (((DevlockPushActivity.a(this.a) == null) || (!DevlockPushActivity.a(this.a).isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
     {
-      String str4 = str1.substring(0, this.jdField_b_of_type_Int);
-      str2 = str1;
-      paramEditable = (Editable)localObject1;
-      localObject2 = str3;
-      localObject3 = str4;
-      String str5 = str1.substring(this.jdField_b_of_type_Int + this.c, str1.length());
-      str2 = str1;
-      paramEditable = (Editable)localObject1;
-      localObject2 = str5;
-      localObject3 = str4;
-      str3 = str1.substring(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.c);
-      localObject1 = str1;
-      str2 = str1;
-      paramEditable = str3;
-      localObject2 = str5;
-      localObject3 = str4;
-      if (str4.getBytes().length + str5.getBytes().length <= this.jdField_a_of_type_Int)
+      DevlockPushActivity.a(this.a, paramDevlockInfo);
+      return;
+    }
+    DevlockPushActivity.a(this.a);
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      if (QLog.isColorLevel())
       {
-        localObject1 = str3;
-        for (;;)
-        {
-          str2 = str1;
-          paramEditable = (Editable)localObject1;
-          localObject2 = str5;
-          localObject3 = str4;
-          if (str1.getBytes().length <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          str2 = str1;
-          paramEditable = (Editable)localObject1;
-          localObject2 = str5;
-          localObject3 = str4;
-          if (((String)localObject1).length() <= 0) {
-            break;
-          }
-          str2 = str1;
-          paramEditable = (Editable)localObject1;
-          localObject2 = str5;
-          localObject3 = str4;
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
-          str2 = str1;
-          paramEditable = (Editable)localObject1;
-          localObject2 = str5;
-          localObject3 = str4;
-          str1 = str4 + (String)localObject1 + str5;
-        }
-        str2 = str1;
-        paramEditable = (Editable)localObject1;
-        localObject2 = str5;
-        localObject3 = str4;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
-        str2 = str1;
-        paramEditable = (Editable)localObject1;
-        localObject2 = str5;
-        localObject3 = str4;
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str4.length() + ((String)localObject1).length());
-        localObject1 = str1;
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+      }
+      DevlockPushActivity.a(this.a, paramDevlockInfo);
+      DevlockPushActivity.a(this.a, DevlockPushActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      }
+      if (paramDevlockInfo == null) {
+        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
       }
     }
-    catch (Throwable localThrowable)
+    paramDevlockInfo = this.a.getString(2131364212);
+    paramWUserSigInfo = paramDevlockInfo;
+    if (paramErrMsg != null)
     {
-      label470:
-      do
-      {
-        for (;;)
-        {
-          localObject1 = str2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("DetailProfileActivity", 2, "afterTextChanged, headStr:" + (String)localObject3 + ", tailStr = " + (String)localObject2 + ", insert = " + paramEditable, localThrowable);
-            localObject1 = str2;
-            continue;
-            this.jdField_b_of_type_Boolean = true;
-            DetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity, true);
-          }
-        }
-        if (this.jdField_a_of_type_AndroidWidgetEditText == DetailProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(DetailProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), DetailProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.getString(2131364471), (String)localObject1);
-          return;
-        }
-        if (this.jdField_a_of_type_AndroidWidgetEditText == DetailProfileActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(DetailProfileActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), DetailProfileActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.getString(2131364473), (String)localObject1);
-          return;
-        }
-      } while (this.jdField_a_of_type_AndroidWidgetEditText != DetailProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity));
-      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(DetailProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), DetailProfileActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.getString(2131364479), (String)localObject1);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_AndroidWidgetEditText != DetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity)) {
-        break label470;
+      paramWUserSigInfo = paramDevlockInfo;
+      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
+        paramWUserSigInfo = paramErrMsg.getMessage();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(DetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), DetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity), this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.getString(2131364461), (String)localObject1);
     }
+    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

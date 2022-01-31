@@ -1,19 +1,11 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aof
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public aof(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if ((FriendProfileCardActivity.a(this.a) != null) && (FriendProfileCardActivity.a(this.a).isShowing())) {
-      FriendProfileCardActivity.a(this.a).dismiss();
-    }
-  }
+  public void run() {}
 }
 
 

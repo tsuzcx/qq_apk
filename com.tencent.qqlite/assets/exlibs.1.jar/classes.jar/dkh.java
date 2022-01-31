@@ -1,16 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class dkh
-  implements AdapterView.OnItemClickListener
+class dkh
+  implements DialogInterface.OnDismissListener
 {
-  public dkh(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
+  dkh(dkf paramdkf, View paramView) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QfileLocalFileCategoryBrowserActivity.a(this.a, paramView);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

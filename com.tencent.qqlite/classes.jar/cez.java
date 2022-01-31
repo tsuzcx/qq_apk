@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
-import java.util.TimerTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class cez
-  extends TimerTask
+class cez
+  implements DialogInterface.OnClickListener
 {
-  public cez(MainAssistObserver paramMainAssistObserver) {}
+  cez(cey paramcey) {}
   
-  public void run()
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.l);
-    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.b(localQQAppInterface);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,16 +1,18 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bop
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public bop(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public bop(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b.dismiss();
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

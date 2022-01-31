@@ -1,15 +1,21 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.database.DataSetObserver;
+import com.tencent.widget.XCursorAdapter;
 
 public class fjg
-  extends WeakReference
+  extends DataSetObserver
 {
-  public Object a;
+  private fjg(XCursorAdapter paramXCursorAdapter) {}
   
-  public fjg(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
+  public void onChanged()
   {
-    super(paramObject2, paramReferenceQueue);
-    this.a = paramObject1;
+    this.a.a = true;
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.a = false;
+    this.a.notifyDataSetInvalidated();
   }
 }
 

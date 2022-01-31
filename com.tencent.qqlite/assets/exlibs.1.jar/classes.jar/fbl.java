@@ -1,17 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.OpenSdkFriendService;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
 public class fbl
-  implements Runnable
+  implements ImageLoader.ImageLoadListener
 {
-  public fbl(OpenSdkFriendService paramOpenSdkFriendService, Handler paramHandler) {}
+  public fbl(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 888802, localArrayList).sendToTarget();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

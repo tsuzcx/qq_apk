@@ -1,43 +1,37 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.business.base.appreport.AppReport;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.io.File;
 
 public class fev
   implements Runnable
 {
-  public fev(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public fev(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    try
+    Context localContext = CommonDataAdapter.a().a();
+    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
+    SimpleAccount localSimpleAccount = BaseApplicationImpl.a().getFirstSimpleAccount();
+    String str = "";
+    if (localSimpleAccount != null) {
+      str = localSimpleAccount.getUin();
+    }
+    if (!bool)
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
-      if (localTMAssistantDownloadTaskInfo != null)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        if (!this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b.equals("1101070898"))
-        {
-          long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
-        }
-      }
+      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
+      AppReport.a(localContext, null, null, str);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
-      }
+    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
+      return;
     }
-    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    }
+    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
+    AppReport.a(localContext, null, 0, null, null, str);
   }
 }
 

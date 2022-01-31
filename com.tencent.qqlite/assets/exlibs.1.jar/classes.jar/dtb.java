@@ -1,44 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class dtb
-  implements SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener
 {
-  public dtb(LocalVideoFileView paramLocalVideoFileView) {}
+  public dtb(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.a, paramInt);
-    if (paramBoolean)
-    {
-      paramSeekBar = LocalVideoFileView.a(this.a, paramInt);
-      LocalVideoFileView.a(this.a).setText(paramSeekBar);
-      if ((LocalVideoFileView.a(this.a) != null) && (LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {}
+    FileManagerReporter.a("0X8004BE2");
+    if (LocalMusicFileView.c(this.a) != null) {
+      LocalMusicFileView.d(this.a).b(LocalMusicFileView.a(this.a));
     }
-    else
-    {
-      return;
-    }
-    LocalVideoFileView.a(this.a).a(paramInt);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((LocalVideoFileView.a(this.a) == null) || (!LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {
-      return;
-    }
-    LocalVideoFileView.a(this.a).d();
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((LocalVideoFileView.a(this.a) == null) || (!LocalVideoFileView.a(this.a).b(LocalVideoFileView.a(this.a)))) {
-      return;
-    }
-    LocalVideoFileView.a(this.a).e();
+    LocalMusicFileView.a(this.a).setProgress(0);
   }
 }
 

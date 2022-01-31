@@ -1,16 +1,13 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class asz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public asz(LoginActivity paramLoginActivity, String paramString) {}
+  public asz(LoginActivity paramLoginActivity) {}
   
-  public void run()
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new ata(this, localBitmap));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

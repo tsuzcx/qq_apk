@@ -1,31 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.VideoThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
 public class eht
-  implements BitmapDecoder
+  implements Runnable
 {
-  public eht(VideoThumbDownloader paramVideoThumbDownloader) {}
+  public eht(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public Bitmap a(URL paramURL)
+  public void run()
   {
-    String str = paramURL.getPath();
-    try
-    {
-      Bitmap localBitmap = VideoThumbDownloader.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = VideoThumbDownloader.b(this.a, str);
-      }
-      return paramURL;
-    }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
+    this.a.a();
   }
 }
 

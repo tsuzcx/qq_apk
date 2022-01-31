@@ -1,59 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class acv
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public acv(ChatHistory paramChatHistory) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {}
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = this.a.a(this.a.b, this.a.a, localStringBuilder);
+    Object localObject = null;
+    paramView = localObject;
+    if (localStringBuilder != null)
     {
-      paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
-      paramCharSequence = this.a;
-      if (paramInt1 < this.a.jdField_b_of_type_Int)
-      {
-        paramCharSequence.c = paramInt1;
-        if (this.a.c < this.a.jdField_b_of_type_Int) {
-          break label193;
-        }
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839124);
-        if (this.a.c > 1) {
-          break label219;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838096);
-        this.a.e = ((this.a.c - 1) * 8);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      paramView = localObject;
+      if (localStringBuilder.length() > 0) {
+        paramView = localStringBuilder.toString();
       }
     }
-    catch (Exception paramCharSequence)
+    if (i > 0)
     {
-      for (;;)
-      {
-        paramInt1 = this.a.jdField_b_of_type_Int;
-        continue;
-        paramInt1 = this.a.jdField_b_of_type_Int;
-        continue;
-        label193:
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837680);
-        continue;
-        label219:
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837679);
-      }
+      this.a.a(paramView);
+      return;
     }
+    this.a.b(this.a.getString(2131363400));
   }
 }
 

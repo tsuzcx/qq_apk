@@ -1,85 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.richstatus.StatusServlet;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.ArrayList;
-import mqq.app.NewIntent;
+import PersonalState.UserProfile;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.richstatus.SameStatusActivity;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class ech
-  implements View.OnClickListener
+  extends CardObserver
 {
-  public ech(StatusHistoryActivity paramStatusHistoryActivity) {}
+  public ech(SameStatusActivity paramSameStatusActivity) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    boolean bool;
-    if ((paramView != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof Integer)))
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      if (!NetworkUtil.e(this.a)) {
-        QQToast.a(this.a, this.a.getString(2131362785), 0).b(this.a.getTitleBarHeight());
-      }
-      int j;
-      do
+      UserProfile localUserProfile;
+      if ((paramBoolean) && (paramObject != null) && (SameStatusActivity.a(this.a).containsKey(paramObject.uin)))
       {
-        return;
-        j = ((Integer)paramView.getTag()).intValue();
-      } while ((StatusHistoryActivity.a(this.a) == null) || (j < 0) || (j >= StatusHistoryActivity.a(this.a).size()));
-      StatusHistoryActivity.a(this.a, (RichStatus)StatusHistoryActivity.a(this.a).get(j));
-      paramView = this.a;
-      if (j != 0) {
-        break label264;
+        localUserProfile = (UserProfile)SameStatusActivity.a(this.a).get(paramObject.uin);
+        localUserProfile.nPicNum = paramObject.iFaceNum;
+        localUserProfile.bAge = paramObject.age;
+        if (paramObject.shGender != 0) {
+          break label113;
+        }
+        localUserProfile.bSex = 0;
       }
-      bool = true;
-      StatusHistoryActivity.b(paramView, bool);
-      StatusHistoryActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      StatusHistoryActivity.a(this.a).a("正在删除");
-      StatusHistoryActivity.a(this.a).show();
-      if ((!StatusHistoryActivity.b(this.a)) || (StatusHistoryActivity.a(this.a).size() != 1)) {
-        break label270;
-      }
-      paramView = (StatusManager)this.a.app.getManager(14);
-      if (paramView != null) {
-        paramView.a(RichStatus.a(), -1);
-      }
-    }
-    label264:
-    label270:
-    for (;;)
-    {
-      label243:
-      if (StatusHistoryActivity.a(this.a) != null)
+      for (;;)
       {
-        StatusHistoryActivity.a(this.a).d();
+        SameStatusActivity.a(this.a).add(Long.valueOf(localUserProfile.lEctID));
+        SameStatusActivity.a(this.a).notifyDataSetChanged();
         return;
-        bool = false;
-        break;
-        if ((StatusHistoryActivity.a(this.a) != null) && (this.a.app != null) && (StatusHistoryActivity.a(this.a).a != null))
-        {
-          paramView = new NewIntent(this.a.app.a(), StatusServlet.class);
-          paramView.putExtra("k_cmd", 5);
-          paramView.putExtra("k_status_key", StatusHistoryActivity.a(this.a).a);
-          if (!StatusHistoryActivity.c(this.a)) {
-            break label380;
-          }
+        label113:
+        if (paramObject.shGender == 1) {
+          localUserProfile.bSex = 1;
+        } else {
+          localUserProfile.bSex = 2;
         }
       }
-    }
-    for (;;)
-    {
-      paramView.putExtra("k_status_flag", i);
-      this.a.app.startServlet(paramView);
-      break label243;
-      break;
-      label380:
-      i = 0;
     }
   }
 }

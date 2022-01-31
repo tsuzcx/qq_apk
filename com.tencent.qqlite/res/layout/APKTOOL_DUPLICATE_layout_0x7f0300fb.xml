@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:background="#ffffffff" android:paddingLeft="15.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02045e" />
-    <TextView android:textSize="16.0sp" android:textColor="#ff00a5e0" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f090513" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0350" />
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020447" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff00a5e0" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09050f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0358" />
 </LinearLayout>

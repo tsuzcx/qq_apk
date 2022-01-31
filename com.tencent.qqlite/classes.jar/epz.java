@@ -1,24 +1,17 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-import java.util.Queue;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class epz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public epz(MessageSubtitleView paramMessageSubtitleView) {}
+  public epz(MediaControllerX paramMediaControllerX) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((MessageSubtitleView.a(this.a, paramAnimation)) && (!this.a.a.isEmpty())) {
-      MessageSubtitleView.a(this.a).post(MessageSubtitleView.a(this.a));
-    }
+    MediaControllerX.b(this.a);
+    this.a.a(5000);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

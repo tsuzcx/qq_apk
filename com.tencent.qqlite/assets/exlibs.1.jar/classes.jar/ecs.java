@@ -1,49 +1,61 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.richstatus.ISameStatusListener;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class ecs
-  extends AsyncTask
+  implements BusinessObserver
 {
-  public ecs(StatusManager paramStatusManager) {}
+  public ecs(StatusJsHandler paramStatusJsHandler) {}
   
-  protected ArrayList a(Void... paramVarArgs)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.a.a();
-  }
-  
-  protected void a(ArrayList paramArrayList)
-  {
-    StatusManager.b(this.a, paramArrayList);
-    StatusManager.b(this.a, null);
-    if (StatusManager.c(this.a) != null)
-    {
-      paramArrayList = this.a.a(StatusManager.b(this.a), StatusManager.c(this.a), StatusManager.b(this.a));
-      StatusManager.a(this.a, null);
-      if (StatusManager.c(this.a) != null)
-      {
-        Iterator localIterator = StatusManager.c(this.a).iterator();
-        if (localIterator.hasNext())
-        {
-          ISameStatusListener localISameStatusListener = (ISameStatusListener)localIterator.next();
-          int i = StatusManager.b(this.a);
-          if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 1)) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localISameStatusListener.a(true, true, i, paramArrayList, bool);
-            break;
-          }
-        }
-      }
+    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
+      return;
     }
-  }
-  
-  protected void onCancelled()
-  {
-    StatusManager.b(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.a.a(2131362450);
+    }
+    for (;;)
+    {
+      this.a.a(this.a.c, "false");
+      return;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null)) {
+              continue;
+            }
+            paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
+            this.a.a(localBaseActivity, paramBundle);
+            StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+            return;
+          }
+          this.a.a(2131362450);
+          continue;
+        }
+        this.a.a(2131362450);
+      }
+      catch (Exception paramBundle) {}
+      this.a.a(2131362450);
+    }
   }
 }
 

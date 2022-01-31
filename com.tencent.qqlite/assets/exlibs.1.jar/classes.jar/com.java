@@ -1,14 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class com
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public com(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, String paramString, int paramInt, coo paramcoo) {}
+  public com(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BaseWhatASmoothAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Coo);
+    new coq(this.a, null).execute(new Void[0]);
+    this.a.setResult(-1);
   }
 }
 

@@ -1,14 +1,20 @@
 import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgSCBody;
 
 public class uo
   implements Runnable
 {
-  public uo(LiteTransferWrapper paramLiteTransferWrapper, int paramInt, MsgSCBody paramMsgSCBody) {}
+  public uo(LiteTransferWrapper paramLiteTransferWrapper, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.DoPbMsgReplyToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentLitetransfersdkMsgSCBody);
+    if (LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L)
+    {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.destryOperator(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Boolean);
+      LiteTransferWrapper.access$302(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, 0L);
+    }
+    LiteTransferWrapper.access$402(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
+    LiteTransferWrapper.access$602(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.releaseGlobalFuncCallback();
   }
 }
 

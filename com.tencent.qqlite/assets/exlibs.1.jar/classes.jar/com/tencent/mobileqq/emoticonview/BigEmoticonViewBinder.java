@@ -28,11 +28,11 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.ClubContentJsonTask;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import ddz;
-import dea;
-import deb;
-import dec;
-import dev;
+import def;
+import deg;
+import deh;
+import dei;
+import dfb;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,30 +94,30 @@ public class BigEmoticonViewBinder
   
   private void a(View paramView)
   {
-    Object localObject1 = paramView.findViewById(2131297073);
-    EmoticonLinearLayout localEmoticonLinearLayout = (EmoticonLinearLayout)paramView.findViewById(2131298653);
+    Object localObject1 = paramView.findViewById(2131297069);
+    EmoticonLinearLayout localEmoticonLinearLayout = (EmoticonLinearLayout)paramView.findViewById(2131298609);
     localEmoticonLinearLayout.setPanelViewType(2006);
     localEmoticonLinearLayout.setVisibility(8);
-    View localView3 = ((View)localObject1).findViewById(2131297057);
-    Object localObject2 = (Button)((View)localObject1).findViewById(2131297060);
-    View localView1 = ((View)localObject1).findViewById(2131297062);
-    ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131297063);
-    ImageButton localImageButton = (ImageButton)((View)localObject1).findViewById(2131297064);
-    View localView2 = ((View)localObject1).findViewById(2131297053);
-    paramView = (ImageView)((View)localObject1).findViewById(2131297052);
-    TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131297058);
-    TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131297059);
-    Button localButton1 = (Button)((View)localObject1).findViewById(2131297051);
-    Button localButton3 = (Button)((View)localObject1).findViewById(2131297056);
-    Button localButton2 = (Button)((View)localObject1).findViewById(2131297061);
-    TextView localTextView3 = (TextView)((View)localObject1).findViewById(2131297054);
-    TextView localTextView4 = (TextView)((View)localObject1).findViewById(2131297055);
+    View localView3 = ((View)localObject1).findViewById(2131297053);
+    Object localObject2 = (Button)((View)localObject1).findViewById(2131297056);
+    View localView1 = ((View)localObject1).findViewById(2131297058);
+    ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131297059);
+    ImageButton localImageButton = (ImageButton)((View)localObject1).findViewById(2131297060);
+    View localView2 = ((View)localObject1).findViewById(2131297049);
+    paramView = (ImageView)((View)localObject1).findViewById(2131297048);
+    TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131297054);
+    TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131297055);
+    Button localButton1 = (Button)((View)localObject1).findViewById(2131297047);
+    Button localButton3 = (Button)((View)localObject1).findViewById(2131297052);
+    Button localButton2 = (Button)((View)localObject1).findViewById(2131297057);
+    TextView localTextView3 = (TextView)((View)localObject1).findViewById(2131297050);
+    TextView localTextView4 = (TextView)((View)localObject1).findViewById(2131297051);
     localButton3.setOnClickListener(this);
     localButton2.setOnClickListener(this);
     ((Button)localObject2).setOnClickListener(this);
     localImageButton.setOnClickListener(this);
-    localButton3.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364048));
-    localButton2.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131363543));
+    localButton3.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131364035));
+    localButton2.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131363537));
     if (QLog.isColorLevel()) {
       QLog.d("log_greverye", 2, "func updateDownloadView, pkgStatus:" + this.q);
     }
@@ -158,7 +158,7 @@ public class BigEmoticonViewBinder
       }
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dev(this, 2006);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dfb(this, 2006);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.d(false);
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);
@@ -238,12 +238,12 @@ public class BigEmoticonViewBinder
   
   private void b(View paramView)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131297083);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131297084);
-    Button localButton = (Button)paramView.findViewById(2131297085);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131297052);
-    ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131297063);
-    paramView = paramView.findViewById(2131297086);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131297079);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131297080);
+    Button localButton = (Button)paramView.findViewById(2131297081);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131297048);
+    ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131297059);
+    paramView = paramView.findViewById(2131297082);
     localTextView1.setText(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.name);
     localTextView2.setText(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.updateTip);
     localButton.setOnClickListener(this);
@@ -280,7 +280,7 @@ public class BigEmoticonViewBinder
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dev(this, 2006);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new dfb(this, 2006);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.d(false);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);
@@ -444,9 +444,9 @@ public class BigEmoticonViewBinder
     Object localObject = c(0);
     if (localObject != null)
     {
-      localObject = (ProgressBar)((View)localObject).findViewById(2131297063);
+      localObject = (ProgressBar)((View)localObject).findViewById(2131297059);
       if (localObject != null) {
-        ((ProgressBar)localObject).post(new ddz(this, (ProgressBar)localObject, paramInt));
+        ((ProgressBar)localObject).post(new def(this, (ProgressBar)localObject, paramInt));
       }
     }
   }
@@ -535,7 +535,7 @@ public class BigEmoticonViewBinder
   public void b()
   {
     View localView = c(0);
-    localView.post(new dea(this, localView));
+    localView.post(new deg(this, localView));
   }
   
   public void c()
@@ -543,9 +543,9 @@ public class BigEmoticonViewBinder
     Object localObject = c(0);
     if (localObject != null)
     {
-      localObject = (ImageView)((View)localObject).findViewById(2131297052);
+      localObject = (ImageView)((View)localObject).findViewById(2131297048);
       if ((localObject != null) && (((ImageView)localObject).getVisibility() == 0)) {
-        ((ImageView)localObject).post(new deb(this, (ImageView)localObject));
+        ((ImageView)localObject).post(new deh(this, (ImageView)localObject));
       }
     }
   }
@@ -556,7 +556,7 @@ public class BigEmoticonViewBinder
     {
       this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.hasReadUpdatePage = true;
       this.jdField_a_of_type_Int = 1;
-      ThreadManager.b(new dec(this));
+      ThreadManager.b(new dei(this));
     }
   }
   
@@ -566,10 +566,10 @@ public class BigEmoticonViewBinder
     switch (paramView.getId())
     {
     default: 
-    case 2131297085: 
+    case 2131297081: 
+    case 2131297052: 
+    case 2131297057: 
     case 2131297056: 
-    case 2131297061: 
-    case 2131297060: 
       do
       {
         do
@@ -580,9 +580,9 @@ public class BigEmoticonViewBinder
           } while (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null);
           ((EmojiManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, true);
           localObject3 = c(0);
-          paramView = (Button)((View)localObject3).findViewById(2131297085);
-          localObject2 = (ProgressBar)((View)localObject3).findViewById(2131297063);
-          localObject3 = ((View)localObject3).findViewById(2131297086);
+          paramView = (Button)((View)localObject3).findViewById(2131297081);
+          localObject2 = (ProgressBar)((View)localObject3).findViewById(2131297059);
+          localObject3 = ((View)localObject3).findViewById(2131297082);
           ((View)localObject3).setVisibility(0);
           f = ((EmojiManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
           if (f >= 0.0F)
@@ -615,10 +615,10 @@ public class BigEmoticonViewBinder
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Ep_endoffer_click", 0, 0, "", "", "", "");
       }
       paramView = c(0);
-      Object localObject2 = (ImageButton)paramView.findViewById(2131297064);
-      localObject2 = (Button)paramView.findViewById(2131297060);
-      Object localObject3 = (ProgressBar)paramView.findViewById(2131297063);
-      paramView = paramView.findViewById(2131297062);
+      Object localObject2 = (ImageButton)paramView.findViewById(2131297060);
+      localObject2 = (Button)paramView.findViewById(2131297056);
+      Object localObject3 = (ProgressBar)paramView.findViewById(2131297059);
+      paramView = paramView.findViewById(2131297058);
       float f = ((EmojiManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
       ((Button)localObject2).setVisibility(8);
       paramView.setVisibility(0);
@@ -631,8 +631,8 @@ public class BigEmoticonViewBinder
       ((EmojiManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
     }
     paramView = c(0);
-    localObject1 = (Button)paramView.findViewById(2131297060);
-    paramView.findViewById(2131297062).setVisibility(8);
+    localObject1 = (Button)paramView.findViewById(2131297056);
+    paramView.findViewById(2131297058).setVisibility(8);
     ((Button)localObject1).setVisibility(0);
     this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("QQLite", 0).edit().remove("LAST_ADD_EMO_PACKAGE").commit();
   }

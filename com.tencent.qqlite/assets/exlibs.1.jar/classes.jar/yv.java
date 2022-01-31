@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class yv
-  implements DialogInterface.OnDismissListener
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public yv(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
-      AuthDevActivity.a(this.a, null);
-    }
-  }
+  public yv(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 

@@ -1,38 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class bwz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bwz(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public bwz(StructingMsgItemBuilder paramStructingMsgItemBuilder, View.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
-    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2) {
-      bool = true;
+    if (StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
-    }
-    if (bool)
-    {
-      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
-      ShortVideoUtils.a("", true);
-    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

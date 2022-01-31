@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
-public final class dqy
-  implements Parcelable.Creator
+public class dqy
+  implements IWyFileSystem.IWyCallback
 {
-  public ForwardFileInfo a(Parcel paramParcel)
+  public dqy(WeiYunLogicCenter paramWeiYunLogicCenter, WeiYunFileInfo paramWeiYunFileInfo) {}
+  
+  public void a(Void paramVoid)
   {
-    return new ForwardFileInfo(paramParcel, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.b) + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.b, Boolean.valueOf(false) });
   }
   
-  public ForwardFileInfo[] a(int paramInt)
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
   {
-    return new ForwardFileInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.b) + "]errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(false, 20, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.b, Boolean.valueOf(false) });
   }
 }
 

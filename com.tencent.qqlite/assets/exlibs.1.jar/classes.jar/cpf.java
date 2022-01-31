@@ -1,23 +1,14 @@
-import EncounterSvc.RespEncounterInfo;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class cpf
-  implements Runnable
 {
-  public cpf(PeopleAroundAdapter paramPeopleAroundAdapter, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
-  
-  public void run()
-  {
-    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.a;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
-    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
-    {
-      localFaceDecoder.a(str, 3001, l);
-      return;
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public String a;
+  public TextView b;
 }
 
 

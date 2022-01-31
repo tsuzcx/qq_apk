@@ -57,9 +57,9 @@ public class AudioPanelAdapter
     if (paramInt == 0)
     {
       localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-      localObject1 = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903475, null);
+      localObject1 = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903463, null);
       ((PressToSpeakPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.b, this.c);
-      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903474, null);
+      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903462, null);
       ((ListenPanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.b, 1);
       localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
       localFrameLayout.addView((View)localObject2, new FrameLayout.LayoutParams(-1, -1));
@@ -87,9 +87,9 @@ public class AudioPanelAdapter
         break;
       }
       localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-      localObject1 = (RecordSoundPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903476, null);
+      localObject1 = (RecordSoundPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903464, null);
       ((RecordSoundPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.b, this.c);
-      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903474, null);
+      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130903462, null);
       ((ListenPanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.b, 2);
       localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
       localFrameLayout.addView((View)localObject2, new FrameLayout.LayoutParams(-1, -1));

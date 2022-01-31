@@ -9,6 +9,7 @@ public class bqz
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    UpgradeActivity.b(this.a);
     this.a.finish();
   }
 }

@@ -1,124 +1,77 @@
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareResp;
 import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class eri
-  extends TroopObserver
+  implements AdapterView.OnItemClickListener
 {
   public eri(TroopShareUtility paramTroopShareUtility) {}
   
-  public void a(boolean paramBoolean, TroopShareResp paramTroopShareResp)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopShareUtility", 2, "onTroopShareLink start");
-    }
-    if ((TroopShareUtility.a(this.a).c == null) || (!TroopShareUtility.a(this.a).c.equals(paramTroopShareResp.jdField_a_of_type_JavaLangString))) {
-      if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-        ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+    TroopShareUtility.a(this.a).dismiss();
+    int i;
+    if ((paramLong == 1L) || (paramLong == 2L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131363697;
       }
     }
-    label236:
-    do
+    for (;;)
     {
-      do
+      if (i != -1)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if ((TroopShareUtility.a(this.a) == null) || (!TroopShareUtility.a(this.a).isShowing()) || (TroopShareUtility.a(this.a) == -1) || (TroopShareUtility.b(this.a) == -1)) {
-                  break label618;
-                }
-                if ((!paramBoolean) || (paramTroopShareResp.jdField_a_of_type_Int != 0)) {
-                  break label439;
-                }
-                if (!paramTroopShareResp.jdField_a_of_type_Boolean) {
-                  break;
-                }
-                TroopShareUtility.a(this.a, paramTroopShareResp.b);
-                if (TroopShareUtility.b(this.a) == 0) {
-                  break label236;
-                }
-              } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
-              ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
-              return;
-              TroopShareUtility.b(this.a, paramTroopShareResp.b);
-              if (TroopShareUtility.b(this.a) == 1) {
-                break;
-              }
-            } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
-            ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
-            return;
-            switch (TroopShareUtility.a(this.a))
-            {
-            default: 
-              return;
-            case 0: 
-              QQAppInterface localQQAppInterface = (QQAppInterface)TroopShareUtility.a(this.a).getAppRuntime();
-              String str = localQQAppInterface.a(4, 3000, TroopShareUtility.a(this.a).c);
-              Setting localSetting = localQQAppInterface.a(str);
-              paramTroopShareResp = localSetting;
-              if (localSetting == null) {
-                paramTroopShareResp = localQQAppInterface.b(str);
-              }
-              if (paramTroopShareResp != null) {
-                TroopShareUtility.c(this.a, paramTroopShareResp.url);
-              }
-              if (TroopShareUtility.a(this.a) == null) {
-                ((FriendListHandler)localQQAppInterface.a(1)).c(TroopShareUtility.a(this.a).c);
-              }
-              this.a.b();
-              TroopShareUtility.d(this.a);
-              return;
-            case 2: 
-              this.a.b();
-              TroopShareUtility.b(this.a);
-              return;
-            case 1: 
-              this.a.b();
-              TroopShareUtility.c(this.a);
-              return;
-            }
-            this.a.b();
-            TroopShareUtility.e(this.a);
-            return;
-            if ((!paramTroopShareResp.jdField_a_of_type_Boolean) || (TroopShareUtility.b(this.a) == 0)) {
-              break;
-            }
-          } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
-          ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
-          return;
-          if ((paramTroopShareResp.jdField_a_of_type_Boolean) || (TroopShareUtility.b(this.a) == 1)) {
-            break;
-          }
-        } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
-        ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
-        return;
-        this.a.b();
-        QQToast.a(TroopShareUtility.a(this.a), 1, TroopShareUtility.a(this.a).getString(2131363711), 0).b(TroopShareUtility.a(this.a).getTitleBarHeight());
+        QQToast.a(TroopShareUtility.a(this.a), TroopShareUtility.a(this.a).getString(i), 0).b(TroopShareUtility.a(this.a).getTitleBarHeight());
         TroopShareUtility.a(this.a, -1);
         TroopShareUtility.b(this.a, -1);
+        if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+          ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+        }
+      }
+      do
+      {
+        return;
+        if (WXShareHelper.a().b()) {
+          break label333;
+        }
+        i = 2131363698;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+        }
+        TroopShareUtility.a(this.a, (int)paramLong);
+        if ((TroopShareUtility.a(this.a) != 4) || (!TroopShareUtility.a(this.a).a)) {
+          break label253;
+        }
+        this.a.g();
       } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
       ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
       return;
-    } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
-    label439:
-    label618:
-    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+      label253:
+      if (TroopShareUtility.a(this.a).e())
+      {
+        if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+          this.a.a = true;
+        }
+        this.a.d();
+        return;
+      }
+      if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
+        this.a.a = false;
+      }
+      TroopShareUtility.b(this.a, 0);
+      TroopShareUtility.a(this.a);
+      return;
+      label333:
+      i = -1;
+    }
   }
 }
 

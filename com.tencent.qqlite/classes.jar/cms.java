@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 class cms
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   cms(cmq paramcmq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      if (!this.a.a.isFinishing()) {
+        this.a.a.a.dismiss();
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

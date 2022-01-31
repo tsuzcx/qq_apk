@@ -1,26 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 
-public class dwu
-  implements DialogInterface.OnClickListener
+class dwu
+  implements Runnable
 {
-  public dwu(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  dwu(dwt paramdwt, String paramString1, String paramString2, String paramString3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    Activity localActivity = this.jdField_a_of_type_Dwt.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {}
     do
     {
       return;
-      if (paramInt == 0)
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
+        if ((!"2".equals(this.jdField_a_of_type_Dwt.d)) && (!"3".equals(this.jdField_a_of_type_Dwt.d))) {
+          break;
+        }
+        QQApiPlugin.a(this.jdField_a_of_type_Dwt.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin, this.jdField_a_of_type_Dwt.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Dwt.d, this.jdField_a_of_type_Dwt.e, this.jdField_a_of_type_Dwt.f, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Dwt.g, this.c);
         return;
       }
-    } while (paramInt != 1);
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
+      catch (JSONException localJSONException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QQApi", 2, "shareMsg error: " + localJSONException.toString());
+    return;
+    QQApiPlugin.b(this.jdField_a_of_type_Dwt.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin, this.jdField_a_of_type_Dwt.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Dwt.d, this.jdField_a_of_type_Dwt.e, this.jdField_a_of_type_Dwt.f, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Dwt.g, this.c);
   }
 }
 

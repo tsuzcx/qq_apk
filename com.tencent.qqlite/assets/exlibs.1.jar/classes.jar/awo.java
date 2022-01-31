@@ -7,23 +7,17 @@ import com.tencent.mobileqq.activity.NearbyActivity;
 public class awo
   implements Animation.AnimationListener
 {
-  public awo(NearbyActivity paramNearbyActivity, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong) {}
+  public awo(NearbyActivity paramNearbyActivity, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
     {
-      if (NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity) != null)
-      {
-        paramAnimation = new Message();
-        paramAnimation.what = 1;
-        paramAnimation.arg1 = this.jdField_a_of_type_Int;
-        paramAnimation.arg2 = 1003;
-        NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 400L);
-      }
-      return;
+      paramAnimation = new Message();
+      paramAnimation.what = 1;
+      paramAnimation.arg1 = (this.jdField_a_of_type_Int + 1);
+      NearbyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity).sendMessageDelayed(paramAnimation, 200L);
     }
-    NearbyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

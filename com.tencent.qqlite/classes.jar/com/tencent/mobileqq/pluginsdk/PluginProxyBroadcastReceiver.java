@@ -12,11 +12,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PluginProxyBroadcastReceiver
   extends BroadcastReceiver
 {
+  private int mPluginResoucesType;
+  
   public static void sendBroadcastReceiver(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, Intent paramIntent)
   {
     paramIntent.putExtra("pluginsdk_pluginName", paramString1);
     paramIntent.putExtra("pluginsdk_pluginLocation", paramString2);
     paramIntent.putExtra("pluginsdk_launchReceiver", paramString4);
+    paramIntent.putExtra("pluginsdk_pluginpath", paramString3);
     try
     {
       paramContext.sendBroadcast(paramIntent);
@@ -33,14 +36,15 @@ public class PluginProxyBroadcastReceiver
       return null;
       String str1 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
       String str2 = paramIntent.getStringExtra("pluginsdk_launchReceiver");
-      Object localObject1 = null;
+      this.mPluginResoucesType = paramIntent.getIntExtra("userQqResources", 0);
+      Object localObject1 = paramIntent.getStringExtra("pluginsdk_pluginpath");
       paramIntent = (Intent)localObject1;
-      if (TextUtils.isEmpty(null)) {}
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {}
       try
       {
-        paramIntent = PluginUtils.getInstallPath(paramContext, str1).getCanonicalPath();
+        paramIntent = PluginUtils.getInstalledPluginPath(paramContext, str1).getCanonicalPath();
         if (DebugHelper.sDebug) {
-          DebugHelper.log("PluginDebug", "PluginProxyBroadcastReceiver.startPluginIfNeccessary Params:" + str1 + ", " + str2);
+          DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver.startPluginIfNeccessary Params:" + str1 + ", " + str2);
         }
         Object localObject3 = null;
         if ((str1 == null) || (str1.length() <= 0)) {
@@ -65,7 +69,7 @@ public class PluginProxyBroadcastReceiver
           localObject2 = localObject3;
           paramContext = (IPluginBroadcastReceiver)localClassLoader.loadClass(str2).newInstance();
           localObject2 = paramContext;
-          paramContext.IInit(str1, paramIntent, this, localClassLoader, (PackageInfo)localObject1, false);
+          paramContext.IInit(str1, paramIntent, this, localClassLoader, (PackageInfo)localObject1, this.mPluginResoucesType);
           return paramContext;
         }
         catch (Exception paramContext)
@@ -86,12 +90,12 @@ public class PluginProxyBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginProxyBroadcastReceiver.onReceive: " + paramIntent);
+      DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver.onReceive: " + paramIntent);
     }
     IPluginProxyComponent.registerAccountReceiverIfNeccessary();
     IPluginBroadcastReceiver localIPluginBroadcastReceiver = startPluginIfNeccessary(paramContext, paramIntent);
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginProxyBroadcastReceiver.startPluginIfNeccessary: " + localIPluginBroadcastReceiver);
+      DebugHelper.log("plugin_tag", "PluginProxyBroadcastReceiver.startPluginIfNeccessary: " + localIPluginBroadcastReceiver);
     }
     if (localIPluginBroadcastReceiver != null) {
       localIPluginBroadcastReceiver.IOnReceive(paramContext, paramIntent);

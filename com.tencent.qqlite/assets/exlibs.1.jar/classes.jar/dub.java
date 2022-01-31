@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
 
 class dub
   implements Runnable
 {
-  dub(dua paramdua) {}
+  dub(dtz paramdtz, int paramInt, String paramString) {}
   
   public void run()
   {
-    PreviewingOfflineFileViewBase.e(this.a.a);
+    this.jdField_a_of_type_Dtz.a.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,39 +1,25 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.net.Uri;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity.SoundStyle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class bjz
-  implements Runnable
+public class bjz
+  implements View.OnClickListener
 {
-  bjz(bjy parambjy, File paramFile) {}
+  public bjz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bjy.jdField_a_of_type_Boolean)
+    this.a.a(SoundAndVibrateActivity.SoundStyle.classic);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.a(), "sound_type", "qqsetting_notify_soundtype_key", 2131165184);
+    if (this.a.a().booleanValue())
     {
-      this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.k = this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.f;
-      this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.a(false);
-      this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.invalidate();
-      this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.scheduleDrawable(null, new bka(this), SystemClock.uptimeMillis() + 1000L);
-      String str = this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.jdField_a_of_type_AndroidContentContext.getString(2131363182).replace("${path}", SnapScreenActivity.jdField_a_of_type_JavaLangString);
-      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.jdField_a_of_type_AndroidContentContext).edit();
-      localEditor.putString("LastScreenShotUri", Uri.fromFile(this.jdField_a_of_type_JavaIoFile).toString());
-      localEditor.commit();
-      this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.jdField_a_of_type_AndroidContentContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      Toast.makeText(this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.jdField_a_of_type_AndroidContentContext, str, 1).show();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.a();
-      return;
-      Toast.makeText(this.jdField_a_of_type_Bjy.jdField_a_of_type_Bjw.a.jdField_a_of_type_AndroidContentContext, 2131363183, 1).show();
+      this.a.d();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131165184));
     }
   }
 }

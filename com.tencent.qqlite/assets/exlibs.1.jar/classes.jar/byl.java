@@ -1,29 +1,15 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class byl
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public byl(AIOImageListScene paramAIOImageListScene, ActionSheet paramActionSheet) {}
+  public byl(AIOImageListScene paramAIOImageListScene) {}
   
-  public void a(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramView != null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (paramView == null) {
-        return;
-      }
-      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131364264)))) {
-        AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
-      }
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    AIOImageListScene.a(this.a, null);
   }
 }
 

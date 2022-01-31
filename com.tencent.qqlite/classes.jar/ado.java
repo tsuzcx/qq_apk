@@ -1,28 +1,19 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.image.Utils;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ado
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ado(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
+  public ado(ChatHistory paramChatHistory) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    long l = System.currentTimeMillis();
+    if (l - this.a.a > this.a.b)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramView = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).obtainMessage(1);
-      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new adp(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+      this.a.a = l;
+      this.a.a();
     }
   }
 }

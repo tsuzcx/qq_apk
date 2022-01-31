@@ -1,14 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
-class bgs
-  implements Runnable
+public class bgs
+  implements DialogInterface.OnClickListener
 {
-  bgs(bgr parambgr) {}
+  public bgs(RegisterActivity paramRegisterActivity, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, "请重新发送短信");
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
   }
 }
 

@@ -1,26 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import android.view.View;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bdj
-  extends BroadcastReceiver
+  implements ActionSheet.OnButtonClickListener
 {
-  public bdj(QQMapActivity paramQQMapActivity) {}
+  public bdj(QQMapActivity paramQQMapActivity, ActionSheet paramActionSheet) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(View paramView, int paramInt)
   {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.m) && (!this.a.jdField_n_of_type_Boolean) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.jdField_n_of_type_JavaLangString) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.jdField_n_of_type_JavaLangString) == 21))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
       }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.b(this.a, paramContext);
-      this.a.jdField_n_of_type_Boolean = true;
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.i();
     }
   }
 }

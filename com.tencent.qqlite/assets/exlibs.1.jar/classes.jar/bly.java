@@ -1,11 +1,30 @@
-class bly
-  implements Runnable
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+
+public class bly
+  extends TroopObserver
 {
-  bly(blw paramblw, String paramString) {}
+  public bly(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  protected void a(int paramInt, byte paramByte, String paramString)
   {
-    this.jdField_a_of_type_Blw.a(this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 6) {
+      if (paramByte == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt != 2) || (paramByte != 0)) {
+      return;
+    }
+    TroopAssistantManager.a().b(paramString, this.a.app);
+    this.a.d();
+  }
+  
+  protected void a(String paramString)
+  {
+    this.a.d();
   }
 }
 

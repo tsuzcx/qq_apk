@@ -1,31 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class cbw
-  extends Handler
+  implements MessageQueue.IdleHandler
 {
-  public cbw(SearchBaseActivity paramSearchBaseActivity) {}
+  public cbw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean queueIdle()
   {
-    this.a.a.clearFocus();
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.k();
-      return;
-    }
-    this.a.h();
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

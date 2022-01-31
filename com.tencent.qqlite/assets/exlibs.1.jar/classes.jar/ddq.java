@@ -1,69 +1,67 @@
-import com.tencent.mobileqq.app.EmosmHandler;
-import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
-import com.tencent.mobileqq.data.EmosmResp;
-import com.tencent.mobileqq.data.Emoticon;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
 import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.ReqInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ddq
-  implements EmosmHandler.EmosmHandlerListener
+  extends DownloadListener
 {
-  public ddq(EmojiManager paramEmojiManager, ReqInfo paramReqInfo, EmosmHandler paramEmosmHandler, boolean paramBoolean, ArrayList paramArrayList, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
+  public ddq(EmojiManager paramEmojiManager, String paramString1, String paramString2)
   {
-    int i = paramEmosmResp.epId;
-    int j = paramEmosmResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmosmResp.data;
-    Object localObject3;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString.equals(paramEmosmResp.keySeq)))
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    Object localObject = paramDownloadTask.a();
+    int j = ((Bundle)localObject).getInt(paramDownloadTask.b);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + paramDownloadTask + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
+    }
+    int i = 0;
+    if (paramDownloadTask.a() != 3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaUtilArrayList.remove(this);
-      if (!paramBoolean) {
-        break label281;
+      i = EmosmUtils.checkResultCode(paramDownloadTask.z);
+      if (this.a.a(j)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, -1, i);
       }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        ??? = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)???).hasNext())
-        {
-          localObject3 = (Emoticon)((Iterator)???).next();
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a().a((Emoticon)localObject3);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Int = paramEmosmResp.resultcode;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.b = paramEmosmResp.timeoutReason;
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (QLog.isColorLevel())
-        {
-          ??? = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaLangString;
-          localObject3 = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-          if (localObject1 == null)
-          {
-            localObject1 = "null";
-            QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmosmResp.resultcode);
-          }
-        }
-        else
-        {
-          return;
-          label281:
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = false;
-        }
-      }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      long l1 = paramDownloadTask.h;
+      long l2 = paramDownloadTask.g;
+      this.a.a((EmoticonPackage)localObject, i);
+      this.a.a((EmoticonPackage)localObject, i, l1 - l2);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, 0, 0);
     }
+  }
+  
+  public void onDoneFile(DownloadTask paramDownloadTask)
+  {
+    Object localObject = paramDownloadTask.a();
+    int i = ((Bundle)localObject).getInt(paramDownloadTask.b);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + paramDownloadTask);
+    }
+    if (this.a.a(i))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
+      this.a.a("param_step", String.valueOf(i));
+    }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return super.onStart(paramDownloadTask);
   }
 }
 

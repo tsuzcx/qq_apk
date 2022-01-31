@@ -5,14 +5,14 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
-import eag;
+import eam;
 
 public class ShakeEffectGenerator
 {
   private static final int jdField_a_of_type_Int = 50;
   private static final int b = 80;
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new eag(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new eam(this);
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
   private boolean jdField_a_of_type_Boolean = false;
   private final int c;

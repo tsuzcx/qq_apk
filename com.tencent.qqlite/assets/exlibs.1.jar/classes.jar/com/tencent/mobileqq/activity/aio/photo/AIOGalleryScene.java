@@ -25,13 +25,13 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+import bxx;
 import bxy;
 import bxz;
 import bya;
 import byb;
 import byc;
 import byd;
-import bye;
 import com.tencent.common.galleryactivity.AbstractGalleryPageView;
 import com.tencent.common.galleryactivity.AbstractGalleryScene;
 import com.tencent.common.galleryactivity.AbstractImageAdapter;
@@ -69,7 +69,7 @@ public class AIOGalleryScene
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bye a;
+  public byd a;
   public AIOGalleryAdapter a;
   public AIOImageListModel a;
   public IAIOImageProvider a;
@@ -136,28 +136,28 @@ public class AIOGalleryScene
         if (this.jdField_g_of_type_Boolean) {
           break label131;
         }
-        localActionSheet.c(2131363941);
-        localActionSheet.c(2131363945);
-        localActionSheet.c(2131363944);
+        localActionSheet.c(2131363930);
+        localActionSheet.c(2131363934);
+        localActionSheet.c(2131363933);
       }
       for (;;)
       {
         if ((!this.jdField_c_of_type_Boolean) && (!this.jdField_g_of_type_Boolean)) {
-          localActionSheet.c(2131363946);
+          localActionSheet.c(2131363935);
         }
-        localActionSheet.d(2131362790);
-        localActionSheet.a(new byd(this, localActionSheet, localAIOImageInfo, localFile));
+        localActionSheet.d(2131362794);
+        localActionSheet.a(new byc(this, localActionSheet, localAIOImageInfo, localFile));
         localActionSheet.show();
         return;
         label131:
-        localActionSheet.c(2131363945);
+        localActionSheet.c(2131363934);
       }
     }
   }
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903526, null);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903513, null);
   }
   
   protected AbstractGalleryPageView a(Context paramContext)
@@ -213,7 +213,7 @@ public class AIOGalleryScene
       }
     }
     label91:
-    while ((paramInt2 != 4) || (this.jdField_a_of_type_Bye == null) || (this.jdField_a_of_type_Bye.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Bye.jdField_a_of_type_Int != paramInt1) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null)) {
+    while ((paramInt2 != 4) || (this.jdField_a_of_type_Byd == null) || (this.jdField_a_of_type_Byd.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Byd.jdField_a_of_type_Int != paramInt1) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null)) {
       for (;;)
       {
         return;
@@ -257,7 +257,7 @@ public class AIOGalleryScene
         }
       }
     }
-    while ((paramInt2 != 4) || (this.jdField_a_of_type_Bye == null) || (this.jdField_a_of_type_Bye.jdField_a_of_type_Long != paramLong) || (this.jdField_a_of_type_Bye.jdField_a_of_type_Int != paramInt1)) {
+    while ((paramInt2 != 4) || (this.jdField_a_of_type_Byd == null) || (this.jdField_a_of_type_Byd.jdField_a_of_type_Long != paramLong) || (this.jdField_a_of_type_Byd.jdField_a_of_type_Int != paramInt1)) {
       for (;;)
       {
         return;
@@ -279,23 +279,23 @@ public class AIOGalleryScene
     for (;;)
     {
       paramString.setTag(Integer.valueOf(1));
-      paramString.setURLDrawableListener(this.jdField_a_of_type_Bye);
+      paramString.setURLDrawableListener(this.jdField_a_of_type_Byd);
       paramString.startDownload();
-      this.jdField_a_of_type_Bye.jdField_a_of_type_ComTencentImageURLDrawable = paramString;
+      this.jdField_a_of_type_Byd.jdField_a_of_type_ComTencentImageURLDrawable = paramString;
       return;
       paramString = "I:E";
       break;
-      this.jdField_a_of_type_Bye.onLoadSuccessed(paramString);
+      this.jdField_a_of_type_Byd.onLoadSuccessed(paramString);
       return;
-      this.jdField_a_of_type_Bye.onLoadFialed(paramString, null);
+      this.jdField_a_of_type_Byd.onLoadFialed(paramString, null);
       return;
-      this.jdField_a_of_type_Bye.onLoadCanceled(paramString);
+      this.jdField_a_of_type_Byd.onLoadCanceled(paramString);
     }
     label318:
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131364062), 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131364049), 0).a();
     c(true);
     a(false);
-    this.jdField_a_of_type_Bye = null;
+    this.jdField_a_of_type_Byd = null;
   }
   
   public void a(Configuration paramConfiguration)
@@ -323,7 +323,7 @@ public class AIOGalleryScene
       if (!paramView.exists()) {
         break;
       }
-      new byc(this, paramView, paramInt2).execute(new Void[0]);
+      new byb(this, paramView, paramInt2).execute(new Void[0]);
       return;
       i = 3;
       continue;
@@ -343,9 +343,9 @@ public class AIOGalleryScene
     localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, 13.0F, this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics()));
     localLayoutParams.leftMargin = ((int)TypedValue.applyDimension(1, 14.0F, this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics()));
     this.jdField_a_of_type_AndroidWidgetImageButton = new ImageButton(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130838763);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130838738);
     this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131364055));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131364042));
     paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetImageButton, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
     this.jdField_b_of_type_AndroidWidgetImageButton = new ImageButton(this.jdField_a_of_type_AndroidAppActivity);
@@ -357,15 +357,15 @@ public class AIOGalleryScene
     localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, 13.0F, this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics()));
     localLayoutParams.rightMargin = ((int)TypedValue.applyDimension(1, 18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics()));
     paramViewGroup.addView(this.jdField_b_of_type_AndroidWidgetImageButton, localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(new bxy(this));
+    this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(new bxx(this));
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903529, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903516, null);
     paramViewGroup.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298055));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298382));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131298018));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298338));
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bxz(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bya(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bxy(this));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bxz(this));
     if ((ProGallery.OnProGalleryListener.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter)) && (ProGallery.class.isInstance(this.jdField_a_of_type_ComTencentWidgetGallery))) {
       ((ProGallery)this.jdField_a_of_type_ComTencentWidgetGallery).setOnNoBlankListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter);
     }
@@ -431,7 +431,7 @@ public class AIOGalleryScene
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() == 0)
     {
       PicReporter.b(false);
-      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131363948, 0).show();
+      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131363937, 0).show();
       this.jdField_a_of_type_AndroidAppActivity.finish();
     }
     for (;;)
@@ -489,7 +489,7 @@ public class AIOGalleryScene
       localAIOImageInfo.jdField_a_of_type_Boolean = true;
     }
     this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-    Looper.myQueue().addIdleHandler(new byb(this));
+    Looper.myQueue().addIdleHandler(new bya(this));
   }
   
   public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -599,10 +599,10 @@ public class AIOGalleryScene
   
   public void m()
   {
-    if (this.jdField_a_of_type_Bye != null)
+    if (this.jdField_a_of_type_Byd != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.b(this.jdField_a_of_type_Bye.jdField_a_of_type_Long, this.jdField_a_of_type_Bye.jdField_a_of_type_Int, 4);
-      this.jdField_a_of_type_Bye = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.b(this.jdField_a_of_type_Byd.jdField_a_of_type_Long, this.jdField_a_of_type_Byd.jdField_a_of_type_Int, 4);
+      this.jdField_a_of_type_Byd = null;
     }
     c(false);
     a(false);
@@ -622,7 +622,7 @@ public class AIOGalleryScene
     else {
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131363405, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131363408, 0).a();
   }
 }
 

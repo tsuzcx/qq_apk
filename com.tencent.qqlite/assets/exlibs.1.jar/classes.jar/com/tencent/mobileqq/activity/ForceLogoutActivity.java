@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import amf;
+import amd;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -26,12 +26,12 @@ public class ForceLogoutActivity
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("msg");
     if ((paramBundle != null) && (paramBundle.length() > 0)) {
-      ((TextView)findViewById(2131297138)).setText(paramBundle);
+      ((TextView)findViewById(2131297134)).setText(paramBundle);
     }
     if ((str != null) && (str.length() > 0)) {
-      ((TextView)findViewById(2131297139)).setText(str);
+      ((TextView)findViewById(2131297135)).setText(str);
     }
-    ((Button)findViewById(2131297140)).setOnClickListener(new amf(this));
+    ((Button)findViewById(2131297136)).setOnClickListener(new amd(this));
     return true;
   }
 }

@@ -17,14 +17,14 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
-import csf;
-import csg;
-import csh;
-import csi;
-import csj;
-import csk;
 import csl;
 import csm;
+import csn;
+import cso;
+import csp;
+import csq;
+import csr;
+import css;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,12 +40,12 @@ public class EmoticonManagerImp
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public EmoticonPackageDownloadListener a;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new csf(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new csl(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
   private LRULinkedHashMap jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(100);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public Map a;
   private int jdField_b_of_type_Int = -1;
-  private DownloadListener jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new csj(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+  private DownloadListener jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new csp(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
   private LRULinkedHashMap jdField_b_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(250);
   private int jdField_c_of_type_Int = -1;
   private LRULinkedHashMap jdField_c_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(1000);
@@ -55,7 +55,7 @@ public class EmoticonManagerImp
   {
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.d = new LRULinkedHashMap(9000);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new csi(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new cso(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
     g();
@@ -71,7 +71,7 @@ public class EmoticonManagerImp
   
   private void a(boolean paramBoolean, long paramLong)
   {
-    ThreadManager.a(new csl(this, paramLong, paramBoolean));
+    ThreadManager.a(new csr(this, paramLong, paramBoolean));
   }
   
   private void d(String paramString)
@@ -108,7 +108,7 @@ public class EmoticonManagerImp
   
   private void e(String paramString)
   {
-    ThreadManager.a(new csm(this, paramString));
+    ThreadManager.a(new css(this, paramString));
   }
   
   private void g()
@@ -992,7 +992,7 @@ public class EmoticonManagerImp
   public void a()
   {
     EmosmHandler localEmosmHandler = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    localEmosmHandler.a(new csg(this, localEmosmHandler));
+    localEmosmHandler.a(new csm(this, localEmosmHandler));
     localEmosmHandler.a(0, 0);
   }
   
@@ -1168,7 +1168,7 @@ public class EmoticonManagerImp
   public void b()
   {
     EmosmHandler localEmosmHandler = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    localEmosmHandler.a(new csh(this, localEmosmHandler));
+    localEmosmHandler.a(new csn(this, localEmosmHandler));
     localEmosmHandler.a(0, 0);
   }
   
@@ -1559,7 +1559,7 @@ public class EmoticonManagerImp
   
   public void f()
   {
-    ThreadManager.a(new csk(this));
+    ThreadManager.a(new csq(this));
   }
   
   public void onDestroy() {}

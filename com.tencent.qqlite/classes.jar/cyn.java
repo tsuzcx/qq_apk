@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.data.DataLineMsgSet;
 
 public class cyn
   implements Runnable
 {
-  public cyn(MsgProxy paramMsgProxy, boolean paramBoolean) {}
+  public cyn(DatalineMessageManager paramDatalineMessageManager, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    String str = MsgProxy.f(this.jdField_a_of_type_ComTencentMobileqqAppMessageMsgProxy).a();
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
   }
 }
 

@@ -1,26 +1,47 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import QQWalletPay.RespCheckChangePwdAuth;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QWalletAuthObserver;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.qphone.base.util.QLog;
 
 public class etw
-  implements View.OnClickListener
+  extends Handler
 {
-  public etw(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  private etw(JumpAction paramJumpAction) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      }
+    if (paramMessage.what != 1) {
       return;
     }
-    catch (Exception paramView) {}
+    if (JumpAction.a(this.a) != null)
+    {
+      JumpAction.a(this.a).a();
+      JumpAction.a(this.a).c(JumpAction.a(this.a));
+    }
+    if (paramMessage.arg1 != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "msf return error ");
+      }
+      JumpAction.a(this.a, 1);
+      return;
+    }
+    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
+    {
+      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
+      if (paramMessage.retCode == 0)
+      {
+        JumpAction.b(this.a);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      }
+    }
+    JumpAction.a(this.a, 1);
   }
 }
 

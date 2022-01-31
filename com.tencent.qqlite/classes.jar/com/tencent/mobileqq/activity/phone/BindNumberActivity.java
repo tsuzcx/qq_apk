@@ -19,9 +19,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import cgb;
-import cgc;
-import cgd;
+import cgh;
+import cgi;
+import cgj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -67,23 +67,23 @@ public class BindNumberActivity
     for (;;)
     {
       if (this.jdField_a_of_type_Boolean) {
-        setLeftButton(2131362790, null);
+        setLeftButton(2131362794, null);
       }
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297384));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297385));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297380));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297381));
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.d + " " + this.jdField_b_of_type_JavaLangString);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297386));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297382));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
       this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131297388);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131297384);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297389));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297385));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription("已同意");
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297390));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297386));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297387));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297383));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       return;
@@ -96,7 +96,7 @@ public class BindNumberActivity
     this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
     if ((this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("+86")) && (this.jdField_c_of_type_JavaLangString.length() != 11))
     {
-      b(2131362086);
+      b(2131362083);
       return;
     }
     f();
@@ -106,7 +106,7 @@ public class BindNumberActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363449);
+      b(2131363450);
       return;
     }
     if (this.jdField_b_of_type_Boolean)
@@ -172,7 +172,7 @@ public class BindNumberActivity
     setContentView(2130903253);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_is_first_activity", true);
-    this.j = (getResources().getDimensionPixelSize(2131493153) - getResources().getDimensionPixelSize(2131493154));
+    this.j = (getResources().getDimensionPixelSize(2131493107) - getResources().getDimensionPixelSize(2131493108));
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("kNeedUnbind", false);
     c();
     return true;
@@ -196,14 +196,14 @@ public class BindNumberActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new cgb(this), 300L);
+    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new cgh(this), 300L);
   }
   
   public void finish()
   {
     super.finish();
     if (this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130968589, 2130968639);
+      overridePendingTransition(2130968589, 2130968637);
     }
   }
   
@@ -215,10 +215,10 @@ public class BindNumberActivity
     default: 
       throw new RuntimeException("Unknown message: " + paramMessage.what);
     case 0: 
-      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgc(this);
+      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgi(this);
       this.app.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       paramMessage = (PhoneContactManager)this.app.getManager(10);
-      b(2131363378, 1000L);
+      b(2131363381, 1000L);
       paramMessage.d();
     }
     for (;;)
@@ -226,13 +226,13 @@ public class BindNumberActivity
       return true;
       if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgd(this);
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgj(this);
         this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
       if (3 != paramMessage.what) {
-        b(2131363378, 1000L);
+        b(2131363381, 1000L);
       }
     }
   }
@@ -257,17 +257,17 @@ public class BindNumberActivity
   {
     switch (paramView.getId())
     {
-    case 2131297386: 
-    case 2131297389: 
+    case 2131297382: 
+    case 2131297385: 
     default: 
       return;
-    case 2131297385: 
+    case 2131297381: 
       g();
       return;
-    case 2131297387: 
+    case 2131297383: 
       e();
       return;
-    case 2131297390: 
+    case 2131297386: 
       h();
       return;
     }

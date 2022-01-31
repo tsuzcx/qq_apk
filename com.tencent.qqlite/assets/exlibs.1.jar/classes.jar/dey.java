@@ -1,96 +1,64 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.EmosmHandler;
-import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
-import com.tencent.mobileqq.data.EmosmResp;
-import com.tencent.mobileqq.data.EmoticonKeywordForCloud;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.emosm.EmosmPb.BqAssocInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public class dey
-  implements EmosmHandler.EmosmHandlerListener
+  implements Runnable
 {
-  public dey(EmotionPreviewLayout paramEmotionPreviewLayout, EmosmHandler paramEmosmHandler) {}
+  public dey(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong, HashMap paramHashMap) {}
   
-  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
+  public void run()
   {
-    if (paramInt == 9)
+    String str;
+    SharedPreferences localSharedPreferences;
+    int i;
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_JavaUtilList.size() > 0)) {}
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_b_of_type_JavaUtilList = new ArrayList();
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString())) && (paramBoolean))
+      str = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext != null) && (str != null))
       {
-        Iterator localIterator = paramEmosmResp.data.iterator();
-        paramInt = 1;
-        EmosmPb.BqAssocInfo localBqAssocInfo;
-        EmoticonKeywordForCloud localEmoticonKeywordForCloud;
-        do
-        {
-          i = paramInt;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localBqAssocInfo = (EmosmPb.BqAssocInfo)localIterator.next();
-          localEmoticonKeywordForCloud = new EmoticonKeywordForCloud();
-          localEmoticonKeywordForCloud.loadedType = 0;
-          localEmoticonKeywordForCloud.epId = String.valueOf(localBqAssocInfo.u32_tab_id.get());
-          localEmoticonKeywordForCloud.eId = localBqAssocInfo.str_item_id.get();
-          localEmoticonKeywordForCloud.name = localBqAssocInfo.str_item_name.get();
-          localEmoticonKeywordForCloud.encryptKey = localBqAssocInfo.str_item_key.get();
-        } while ((TextUtils.isEmpty(localEmoticonKeywordForCloud.epId)) || (TextUtils.isEmpty(localEmoticonKeywordForCloud.eId)) || (TextUtils.isEmpty(localEmoticonKeywordForCloud.encryptKey)));
-        paramEmosmResp = localBqAssocInfo.rpt_str_item_keyword.get();
-        if ((paramEmosmResp != null) && (paramEmosmResp.size() > 0))
-        {
-          paramEmosmResp = paramEmosmResp.toString();
-          label261:
-          localEmoticonKeywordForCloud.keyword = paramEmosmResp;
-          localEmoticonKeywordForCloud.keywords = paramEmosmResp;
-          if (localBqAssocInfo.i32_tab_ringtype.get() <= 3) {
-            break label374;
-          }
+        localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext.getSharedPreferences("emoticon_panel_" + str, 0);
+        long l = localSharedPreferences.getLong("sp_key_emoticon_panel_last_report_time", 0L);
+        i = localSharedPreferences.getInt("sp_key_emoticon_panel_report_count", 0);
+        if (System.currentTimeMillis() - l <= 86400000L) {
+          break label270;
         }
-        label374:
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          localEmoticonKeywordForCloud.isSound = paramBoolean;
-          localEmoticonKeywordForCloud.jobType = 0;
-          localEmoticonKeywordForCloud.width = 200;
-          localEmoticonKeywordForCloud.height = 200;
-          localEmoticonKeywordForCloud._index = (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.e + paramInt);
-          localEmoticonKeywordForCloud.valid = true;
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_b_of_type_JavaUtilList.add(localEmoticonKeywordForCloud);
-          paramInt += 1;
-          break;
-          paramEmosmResp = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-          break label261;
-        }
-      }
-      int i = 1;
-      if (1 != i) {
-        break label451;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.e > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidOsHandler, 10000), 3000L);
+        localObject = localSharedPreferences.edit();
+        ((SharedPreferences.Editor)localObject).putLong("sp_key_emoticon_panel_last_report_time", System.currentTimeMillis());
+        ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", 0);
+        ((SharedPreferences.Editor)localObject).commit();
+        i = 0;
       }
     }
-    else
+    label270:
+    for (;;)
     {
-      return;
+      if (i < 10)
+      {
+        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInProcess";
+        switch (this.jdField_a_of_type_Int)
+        {
+        }
+      }
+      for (;;)
+      {
+        StatisticCollector.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+        localObject = localSharedPreferences.edit();
+        ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", i + 1);
+        ((SharedPreferences.Editor)localObject).commit();
+        return;
+        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInProcess";
+        continue;
+        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInAIO";
+        continue;
+        localObject = "report_AIOEmoticonPanel_ReopenInAIO";
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidOsHandler, 10000));
-    return;
-    label451:
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPreviewLayout.jdField_a_of_type_AndroidOsHandler, 10001));
   }
 }
 

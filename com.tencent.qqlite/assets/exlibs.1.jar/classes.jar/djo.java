@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class djo
-  implements Runnable
+public final class djo
+  implements DialogInterface.OnClickListener
 {
-  djo(djm paramdjm, long paramLong) {}
-  
-  public void run()
-  {
-    QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Djm.a);
-    QfileBaseLocalFileTabView.c(this.jdField_a_of_type_Djm.a).a().a(this.jdField_a_of_type_Long);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

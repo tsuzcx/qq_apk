@@ -4,8 +4,6 @@
     <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0001">14</integer>
     <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0002">12</integer>
     <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0003">400</integer>
-    <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0004">1800</integer>
-    <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0005">2100</integer>
-    <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0006">300</integer>
-    <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0007">400</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0004">300</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0d0005">400</integer>
 </resources>

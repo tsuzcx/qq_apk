@@ -1,28 +1,29 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.image.AbstractGifImage;
+import android.os.AsyncTask;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class adn
-  implements AbsListView.OnScrollListener
+class adn
+  extends AsyncTask
 {
-  public adn(ChatHistory paramChatHistory) {}
+  adn(adm paramadm) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    this.a.v = paramInt;
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      return;
+    this.a.a.app.a().a(paramVarArgs[0], true);
+    return null;
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    ChatHistory.a(this.a.a).removeMessages(1);
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
     }
-    if ((this.a.a != null) && (this.a.a.c == 1) && (!this.a.a.a)) {
-      this.a.a.b();
-    }
-    AbstractGifImage.pauseAll();
   }
 }
 

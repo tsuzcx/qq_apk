@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.util.MQLruCache;
-import asv;
+import ast;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
@@ -182,7 +182,7 @@ public class LebaIconDownloader
     while ((paramString == null) || ("".equals(paramString)) || (paramQQAppInterface == null)) {
       return;
     }
-    new asv(paramContext, paramString, paramQQAppInterface, paramHttpDownloadListener).start();
+    new ast(paramContext, paramString, paramQQAppInterface, paramHttpDownloadListener).start();
   }
   
   public static void a(String paramString, Drawable paramDrawable)

@@ -3,11 +3,11 @@ import com.tencent.mobileqq.activity.QQSettingMe;
 class bfi
   implements Runnable
 {
-  bfi(bfh parambfh) {}
+  bfi(bff parambff) {}
   
   public void run()
   {
-    this.a.a.h();
+    this.a.a.q();
   }
 }
 

@@ -1,22 +1,21 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
 
-public class dui
+class dui
   implements Runnable
 {
-  public dui(PreviewingOfflineFileViewBase paramPreviewingOfflineFileViewBase) {}
+  dui(dug paramdug) {}
   
   public void run()
   {
-    ((ProgressBar)PreviewingOfflineFileViewBase.a(this.a).findViewById(2131298079)).setVisibility(8);
-    ((TextView)PreviewingOfflineFileViewBase.a(this.a).findViewById(2131298080)).setText(2131363576);
-    if (PreviewingOfflineFileViewBase.a(this.a) == null) {
-      PreviewingOfflineFileViewBase.a(this.a, (LinearLayout)PreviewingOfflineFileViewBase.a(this.a).findViewById(2131298078));
+    PreviewingOfflineFileViewBase.a(this.a.a).removeCallbacksAndMessages(null);
+    String str = (String)PreviewingOfflineFileViewBase.a(this.a.a).getText();
+    if ((str == null) || (str.length() == 0)) {
+      return;
     }
-    PreviewingOfflineFileViewBase.a(this.a).setVisibility(0);
+    PreviewingOfflineFileViewBase.a(this.a.a).clearAnimation();
+    PreviewingOfflineFileViewBase.a(this.a.a).setVisibility(0);
   }
 }
 

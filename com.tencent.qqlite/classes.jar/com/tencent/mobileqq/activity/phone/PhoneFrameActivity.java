@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import chk;
-import chl;
+import chq;
+import chr;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,18 +37,18 @@ public class PhoneFrameActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131296894).getParent());
+    this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131296890).getParent());
     this.jdField_b_of_type_AndroidViewView = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296901));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296897));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("通讯录");
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364541));
-    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296905));
-    this.j.setText(2131364391);
-    this.j.setOnClickListener(new chk(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296912));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296913));
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364516));
+    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296901));
+    this.j.setText(2131364373);
+    this.j.setOnClickListener(new chq(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296908));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296909));
     if (this.e == 2) {
-      findViewById(2131296911).setVisibility(0);
+      findViewById(2131296907).setVisibility(0);
     }
     for (;;)
     {
@@ -57,9 +57,9 @@ public class PhoneFrameActivity
       IphoneTitleBarActivity.setLayerType(this.j);
       IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
       IphoneTitleBarActivity.setLayerType(this.jdField_b_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131297410));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131297406));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new chl(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new chr(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_req_type", this.e);
@@ -67,9 +67,9 @@ public class PhoneFrameActivity
       return;
       if (this.e != 1) {
         if (this.e == 0) {
-          findViewById(2131296911).setVisibility(0);
+          findViewById(2131296907).setVisibility(0);
         } else {
-          findViewById(2131296911).setVisibility(8);
+          findViewById(2131296907).setVisibility(8);
         }
       }
     }

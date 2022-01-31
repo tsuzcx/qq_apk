@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class cuu
-  implements Runnable
 {
-  public cuu(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.a.getManager(10);
-    if (localPhoneContactManager != null) {
-      localPhoneContactManager.a(false);
-    }
-  }
+  public int a;
+  public PublicAccountInfo a;
 }
 
 

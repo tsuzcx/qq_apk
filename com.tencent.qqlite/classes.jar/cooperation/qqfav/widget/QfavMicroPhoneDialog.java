@@ -46,17 +46,17 @@ public class QfavMicroPhoneDialog
     this.jdField_a_of_type_AndroidOsHandler = new fli(this);
     this.jdField_a_of_type_CooperationQqfavWidgetQfavMicroPhoneDialog$Listener = paramListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    super.setContentView(2130903379);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131297897));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297905).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress = ((OvalProgress)super.findViewById(2131297898));
+    super.setContentView(2130903378);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131297883));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297891).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress = ((OvalProgress)super.findViewById(2131297884));
     this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297899));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297900));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297904));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131297885));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297886));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297890));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131297902));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131297888));
     this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QQTextBuilder.a);
   }
   
@@ -73,7 +73,7 @@ public class QfavMicroPhoneDialog
       this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a();
       this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this);
       this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838905);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838841);
       return;
     }
     switch (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a())
@@ -82,11 +82,11 @@ public class QfavMicroPhoneDialog
       return;
     case 2: 
       this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838904);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838831);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838905);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838841);
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)

@@ -1,9 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class bkt
   implements View.OnClickListener
@@ -12,22 +11,19 @@ public class bkt
   
   public void onClick(View paramView)
   {
-    Object localObject = null;
-    switch (paramView.getId())
+    if (SplashActivity.a(this.a) == null)
     {
-    default: 
-      paramView = localObject;
+      SplashActivity.a(this.a, (ActionSheet)ActionSheetHelper.a(this.a, null));
+      SplashActivity.a(this.a).c(this.a.getString(2131363969));
+      SplashActivity.a(this.a).c(this.a.getString(2131363359));
+      SplashActivity.a(this.a).c(this.a.getString(2131363762));
+      SplashActivity.a(this.a).c(this.a.getString(2131364075));
+      if (SplashActivity.c()) {
+        SplashActivity.a(this.a).c(this.a.getString(2131363734));
+      }
     }
-    for (;;)
-    {
-      this.a.onTabChanged(paramView);
-      return;
-      paramView = Conversation.class.getName();
-      continue;
-      paramView = Contacts.class.getName();
-      continue;
-      paramView = QQSetting.class.getName();
-    }
+    SplashActivity.a(this.a).a(new bku(this));
+    SplashActivity.a(this.a).show();
   }
 }
 

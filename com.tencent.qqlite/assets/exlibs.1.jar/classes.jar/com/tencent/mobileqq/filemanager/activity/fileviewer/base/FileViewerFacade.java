@@ -20,11 +20,11 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dje;
-import djf;
-import djg;
-import djh;
-import dji;
+import djk;
+import djl;
+import djm;
+import djn;
+import djo;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -58,7 +58,7 @@ public class FileViewerFacade
       return;
       if ((paramString1 == null) || (!FileUtil.a(paramString1)))
       {
-        FMToastUtil.a(2131361998);
+        FMToastUtil.a(2131361995);
         return;
       }
       if (FileManagerUtil.b(paramQQAppInterface, paramString2) == true)
@@ -83,7 +83,7 @@ public class FileViewerFacade
       if (QLog.isColorLevel()) {
         QLog.i("<FileAssistant>FileViewerFacade", 1, "file maybe renmaed,realName[" + str2 + "]");
       }
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131361987), 2131361988, new dje(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131361984), 2131361985, new djk(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
       return;
     }
     FileManagerUtil.b(paramActivity, paramFileManagerEntity.strFilePath);
@@ -117,7 +117,7 @@ public class FileViewerFacade
       paramString1.c = str;
       paramString1.a = l;
       FileManagerReporter.a(paramQQAppInterface.a(), paramString1);
-      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131363274), paramActivity.getString(2131363580), new djf(str, l, paramQQAppInterface, paramActivity), new djg()).show();
+      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131363277), paramActivity.getString(2131363574), new djl(str, l, paramQQAppInterface, paramActivity), new djm()).show();
       return;
     }
     paramString2 = new FileManagerReporter.fileAssistantReportData();
@@ -153,7 +153,7 @@ public class FileViewerFacade
       paramString1.c = str;
       paramString1.a = l;
       FileManagerReporter.a(paramQQAppInterface.a(), paramString1);
-      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131363543), paramActivity.getString(2131363581), new djh(str, l, paramQQAppInterface, paramActivity), new dji()).show();
+      DialogUtil.a(paramActivity, 233, paramActivity.getString(2131363537), paramActivity.getString(2131363575), new djn(str, l, paramQQAppInterface, paramActivity), new djo()).show();
       return;
     }
     paramString2 = new FileManagerReporter.fileAssistantReportData();

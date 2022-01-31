@@ -1,31 +1,21 @@
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.lebasearch.SearchActivity;
 import com.tencent.mobileqq.activity.Leba;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
 
 public class ass
-  implements SearchProtocol.SearchObserver
+  implements View.OnFocusChangeListener
 {
   public ass(Leba paramLeba) {}
   
-  public void a(int paramInt, SearchProtocol.WordItem paramWordItem)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramWordItem.a)))
+    if (paramBoolean)
     {
-      Leba.a(this.a).setHint(paramWordItem.a);
-      Leba.a(this.a).setTag(paramWordItem.b);
+      paramView.clearFocus();
+      SearchActivity.a(this.a.a());
     }
   }
-  
-  public void a(int paramInt, ArrayList paramArrayList) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(int paramInt, JSONArray paramJSONArray) {}
 }
 
 

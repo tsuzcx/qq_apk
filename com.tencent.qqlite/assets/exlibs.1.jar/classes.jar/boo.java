@@ -10,7 +10,7 @@ public class boo
   
   public void onClick(View paramView)
   {
-    this.a.b.cancel();
+    this.a.b.dismiss();
   }
 }
 

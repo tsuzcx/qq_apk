@@ -1,23 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 
-public class blh
-  implements View.OnClickListener
+class blh
+  extends NightModeLogic.NightModeCallback
 {
-  public blh(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
+  blh(blg paramblg) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
-    {
-      ThemeSwitchDlgActivity.a(this.a).dismiss();
-      ThemeSwitchDlgActivity.a(this.a, null);
-    }
-    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "0", "", "", "");
-    this.a.finish();
+    this.a.a.finish();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (paramBundle.getInt("start_status") == 2) {}
   }
 }
 

@@ -21,7 +21,7 @@ import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import duz;
+import dvf;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
@@ -44,7 +44,7 @@ public class FileCategoryUtil
   
   static
   {
-    a = new duz();
+    a = new dvf();
   }
   
   public static int a(Context paramContext)

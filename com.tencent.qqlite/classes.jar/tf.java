@@ -1,20 +1,10 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareResultDialog;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class tf
-  implements View.OnClickListener
+  extends Handler
 {
-  public tf(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -2);
-    }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
-  }
+  public tf(BaseApplicationImpl paramBaseApplicationImpl) {}
 }
 
 

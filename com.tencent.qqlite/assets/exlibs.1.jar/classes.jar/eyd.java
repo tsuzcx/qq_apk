@@ -1,112 +1,42 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.widget.DropdownView;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.lang.ref.WeakReference;
 
 public class eyd
-  extends AutoCompleteTextView
+  extends Handler
 {
-  private boolean jdField_a_of_type_Boolean;
+  private WeakReference a;
   
-  public eyd(DropdownView paramDropdownView, Context paramContext)
+  public eyd(CustomedTabWidget paramCustomedTabWidget)
   {
-    super(paramContext);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
+    this.a = new WeakReference(paramCustomedTabWidget);
   }
   
-  public eyd(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet)
+  public void handleMessage(Message arg1)
   {
-    super(paramContext, paramAttributeSet);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public eyd(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-  {
-    super(paramContext, paramAttributeSet, paramInt);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean enoughToFilter()
-  {
-    return true;
-  }
-  
-  public boolean isPopupShowing()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return super.isPopupShowing();
-    }
-    return false;
-  }
-  
-  public void onEditorAction(int paramInt)
-  {
-    if (paramInt == 5)
-    {
-      View localView = focusSearch(130);
-      if ((localView != null) && (!localView.requestFocus(130))) {
-        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-      }
-    }
-    else
-    {
-      super.onEditorAction(paramInt);
-    }
-  }
-  
-  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    try
-    {
-      if (isPopupShowing()) {
-        dismissDropDown();
-      }
+    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
+    if (localCustomedTabWidget == null) {
       return;
     }
-    catch (Exception paramCharSequence) {}
-  }
-  
-  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
-  
-  public void showDropDown()
-  {
-    super.showDropDown();
-    if (Build.VERSION.SDK_INT <= 8) {
-      return;
+    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
+      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
     }
-    try
+    synchronized (localCustomedTabWidget.jdField_a_of_type_Eyd)
     {
-      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
-      ((Field)localObject1).setAccessible(true);
-      localObject1 = ((Field)localObject1).get(this);
-      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
-      return;
-    }
-    catch (Exception localException1)
-    {
-      try
+      Rect localRect = localCustomedTabWidget.b;
+      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
+      localRect = localCustomedTabWidget.b;
+      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
+      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
       {
-        Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(this);
-        Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
-        ((Field)localObject3).setAccessible(true);
-        localObject3 = ((Field)localObject3).get(localObject2);
-        localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
-        ((PopupWindow)localObject2).setAnimationStyle(2130968638);
+        sendEmptyMessage(0);
         return;
+        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
       }
-      catch (Exception localException2) {}
     }
+    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
   }
 }
 

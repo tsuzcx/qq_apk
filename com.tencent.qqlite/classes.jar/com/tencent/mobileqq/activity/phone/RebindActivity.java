@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import chr;
+import chx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -32,11 +32,11 @@ public class RebindActivity
   private void c()
   {
     setTitle("验证手机号");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297418));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362085, new Object[] { this.d, getIntent().getStringExtra("k_uin"), this.app.a() }));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297419));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297414));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362082, new Object[] { this.d, getIntent().getStringExtra("k_uin"), this.app.a() }));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297415));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.b = ((Button)findViewById(2131297420));
+    this.b = ((Button)findViewById(2131297416));
     this.b.setOnClickListener(this);
   }
   
@@ -44,16 +44,16 @@ public class RebindActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363449);
+      b(2131363450);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chr(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new chx(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.b(this.e, this.d, this.f);
-    b(2131363378, 1000L);
+    b(2131363381, 1000L);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

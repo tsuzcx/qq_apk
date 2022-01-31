@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import java.util.List;
 
 public class bls
   implements Runnable
 {
-  public bls(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
+  public bls(TroopAssistantActivity paramTroopAssistantActivity, List paramList) {}
   
   public void run()
   {
-    this.a.c();
+    if ((TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a() == -1) && (TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity) != null))
+    {
+      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a(4);
+      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e();
+    }
   }
 }
 

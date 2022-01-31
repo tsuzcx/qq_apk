@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.emosm.view.DragSortAdapter;
 import java.util.List;
@@ -11,20 +12,29 @@ import java.util.List;
 public class GroupEditeDragSortAdapter
   extends DragSortAdapter
 {
+  private Context a;
+  
   public GroupEditeDragSortAdapter(Context paramContext, List paramList)
   {
     super(paramContext, paramList);
+    this.a = paramContext;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = View.inflate(this.mContext, 2130903499, null);
+      paramViewGroup = View.inflate(this.a, 2130903487, null);
     }
     paramViewGroup.setVisibility(0);
     paramViewGroup.findViewById(2131296441).setVisibility(8);
-    ((TextView)paramViewGroup.findViewById(2131298234)).setText(((Groups)this.mData.get(paramInt)).group_name);
+    paramView = (TextView)paramViewGroup.findViewById(2131298194);
+    Groups localGroups = (Groups)this.mData.get(paramInt);
+    paramView.setText(localGroups.group_name);
+    paramView.setTag(localGroups);
+    if ((this.a instanceof GroupManagerActivity)) {
+      paramView.setOnClickListener(((GroupManagerActivity)this.a).a);
+    }
     return paramViewGroup;
   }
 }

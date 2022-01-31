@@ -55,7 +55,7 @@ public class AppSharePicItemBuilder
         paramHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
       }
-      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363600);
+      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131363594);
       String str1;
       if (((MessageForPic)localObject).shareAppID != 0L)
       {
@@ -65,7 +65,7 @@ public class AppSharePicItemBuilder
         {
           str1 = str2;
           if (localAppShareID.messagetail != null) {
-            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363599) + localAppShareID.messagetail;
+            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363593) + localAppShareID.messagetail;
           }
         }
       }
@@ -83,7 +83,7 @@ public class AppSharePicItemBuilder
           continue;
           str1 = str2;
           if (((MessageForPic)localObject).msgtype == -3001) {
-            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363825);
+            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131363816);
           }
         }
       }
@@ -110,8 +110,10 @@ public class AppSharePicItemBuilder
       paramViewHolder = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       paramViewHolder.setOrientation(1);
       paramView = new ChatThumbView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131297050);
-      paramView.setAdjustViewBounds(true);
+      paramView.setId(2131297046);
+      if (!jdField_a_of_type_Boolean) {
+        paramView.setAdjustViewBounds(true);
+      }
       paramView.setMaxWidth((int)(this.jdField_a_of_type_Float * 224.0F + 0.5F));
       paramView.setMaxHeight((int)(this.jdField_a_of_type_Float * 224.0F + 0.5F));
       Object localObject = new LinearLayout.LayoutParams(-2, -2);
@@ -163,7 +165,7 @@ public class AppSharePicItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131298983) {
+    if (paramInt == 2131298932) {
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     }
   }

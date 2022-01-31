@@ -1,81 +1,114 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.pcpush.PCPushDBHelper;
-import com.tencent.open.pcpush.PCPushProxy;
-import com.tencent.open.pcpush.PCPushProxy.PkgEntry;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.common.DownloadReceiver;
+import com.tencent.open.downloadnew.common.IntentFactory;
+import com.tencent.open.downloadnew.common.NoticeParam;
 
 public class ffy
-  extends Handler
+  implements Runnable
 {
-  public ffy(PCPushProxy paramPCPushProxy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ffy(DownloadReceiver paramDownloadReceiver, String paramString1, NoticeParam paramNoticeParam, String paramString2, Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    String str1 = null;
-    LogUtility.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
-    String str2;
-    PCPushProxy.PkgEntry localPkgEntry;
-    switch (paramMessage.what)
-    {
-    default: 
-      str2 = (String)paramMessage.obj;
-      if (str2 != null)
+    DownloadInfo localDownloadInfo = DownloadManager.a().a(this.jdField_a_of_type_JavaLangString);
+    boolean bool;
+    if (localDownloadInfo == null) {
+      if ((this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d != null) && (!this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d.trim().equals("")))
       {
-        localPkgEntry = (PCPushProxy.PkgEntry)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
-        if (localPkgEntry == null) {
-          LogUtility.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
+        bool = true;
+        localDownloadInfo = new DownloadInfo(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.e, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.b, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.a, 0, bool);
+        if (!IntentFactory.c.equals(this.b)) {
+          break label296;
         }
+        localObject1 = DownloadManager.a().a(this.jdField_a_of_type_JavaLangString);
+        if ((localObject1 != null) && (((DownloadInfo)localObject1).a() != 2) && (((DownloadInfo)localObject1).a() != 20))
+        {
+          localDownloadInfo.a(3);
+          DownloadManager.a().a(3, localDownloadInfo);
+        }
+        DownloadManager.a().a(this.jdField_a_of_type_JavaLangString);
       }
-      break;
     }
+    label187:
+    label210:
+    label233:
     do
     {
-      do
-      {
-        return;
-        StaticAnalyz.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        if (localPkgEntry.jdField_b_of_type_Int != 1) {
-          str1 = localPkgEntry.jdField_b_of_type_JavaLangString.substring(localPkgEntry.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
-        }
-        for (;;)
-        {
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1: 
-            this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-            return;
-            str1 = localPkgEntry.jdField_b_of_type_JavaLangString;
-            continue;
-            LogUtility.e("PCPushProxy", "handleMessage get key = null");
-            localPkgEntry = null;
-          }
-        }
-      } while (localPkgEntry == null);
-      if (localPkgEntry.c.startsWith("ANDROIDQQ.PCPUSH.")) {
-        StaticAnalyz.a("100", localPkgEntry.c, str1);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(localPkgEntry);
-        return;
-        StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH." + localPkgEntry.c, str1);
-      }
-      this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(str2);
       return;
-    } while (localPkgEntry == null);
-    StaticAnalyz.a("500", localPkgEntry.c, str1);
+      bool = false;
+      break;
+      if (TextUtils.isEmpty(localDownloadInfo.c))
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.e;
+        localDownloadInfo.c = ((String)localObject1);
+        if (!TextUtils.isEmpty(localDownloadInfo.d)) {
+          break label272;
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d;
+        localDownloadInfo.d = ((String)localObject1);
+        if (!TextUtils.isEmpty(localDownloadInfo.jdField_g_of_type_JavaLangString)) {
+          break label280;
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_g_of_type_JavaLangString;
+        localDownloadInfo.jdField_g_of_type_JavaLangString = ((String)localObject1);
+        if (!TextUtils.isEmpty(localDownloadInfo.e)) {
+          break label288;
+        }
+      }
+      for (localObject1 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.b;; localObject1 = localDownloadInfo.e)
+      {
+        localDownloadInfo.e = ((String)localObject1);
+        break;
+        localObject1 = localDownloadInfo.c;
+        break label187;
+        localObject1 = localDownloadInfo.d;
+        break label210;
+        localObject1 = localDownloadInfo.jdField_g_of_type_JavaLangString;
+        break label233;
+      }
+      if (IntentFactory.b.equals(this.b))
+      {
+        DownloadManager.a().a(localDownloadInfo);
+        return;
+      }
+      if (IntentFactory.d.equals(this.b))
+      {
+        DownloadManager.a().a(localDownloadInfo);
+        return;
+      }
+      if (IntentFactory.e.equals(this.b))
+      {
+        AppUtil.a(this.jdField_a_of_type_AndroidContentContext, DownloadManager.a().a(this.jdField_a_of_type_JavaLangString));
+        return;
+      }
+    } while ((!IntentFactory.jdField_g_of_type_JavaLangString.equals(this.b)) || (!MyAppApi.a().c()) || (localDownloadInfo == null) || (localDownloadInfo.h != 1));
+    label272:
+    label280:
+    label288:
+    label296:
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.a == null) {}
+    for (Object localObject1 = new Bundle();; localObject1 = this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.a.getExtras())
+    {
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new Bundle();
+      }
+      ((Bundle)localObject2).putString(DownloadConstants.jdField_a_of_type_JavaLangString, localDownloadInfo.b);
+      ((Bundle)localObject2).putString(DownloadConstants.b, localDownloadInfo.i);
+      ((Bundle)localObject2).putString(DownloadConstants.c, localDownloadInfo.j);
+      ((Bundle)localObject2).putString(DownloadConstants.e, localDownloadInfo.d);
+      ((Bundle)localObject2).putInt(DownloadConstants.d, localDownloadInfo.jdField_g_of_type_Int);
+      MyAppApi.a().a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), (Bundle)localObject2, true, true);
+      return;
+    }
   }
 }
 

@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class bha
-  extends TimerTask
+  implements Runnable
 {
-  public bha(RegisterActivity paramRegisterActivity, long paramLong) {}
+  public bha(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "reQuerySms schedule");
-    }
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, this.jdField_a_of_type_Long);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131364110, new bhb(this));
+    localQQCustomDialog.show();
   }
 }
 

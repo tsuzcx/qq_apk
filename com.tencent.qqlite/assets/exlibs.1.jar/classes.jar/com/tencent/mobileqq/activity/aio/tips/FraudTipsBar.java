@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import cak;
-import cam;
+import caq;
+import cas;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.antiphing.UinFraudInfo;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -48,12 +48,12 @@ public class FraudTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903587, null);
-    TextView localTextView = (TextView)localView.findViewById(2131298645);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903574, null);
+    TextView localTextView = (TextView)localView.findViewById(2131298601);
     String str = (String)paramVarArgs[0];
     int i = ((Integer)paramVarArgs[1]).intValue();
     localTextView.setText(str);
-    localView.setOnClickListener(new cam(this, i));
+    localView.setOnClickListener(new cas(this, i));
     return localView;
   }
   
@@ -106,7 +106,7 @@ public class FraudTipsBar
         this.jdField_a_of_type_Int = 1;
         ReportController.b(null, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "banner", "display", i, 0, "", "", "", "");
         localObject = new Timer();
-        cak localcak = new cak(this);
+        caq localcaq = new caq(this);
         String str = AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerTTL", 146, i);
         l = 15L;
         try
@@ -125,7 +125,7 @@ public class FraudTipsBar
         if (l <= 0L) {
           continue;
         }
-        ((Timer)localObject).schedule(localcak, l);
+        ((Timer)localObject).schedule(localcaq, l);
         return;
       }
       catch (Throwable localThrowable1)

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.Utils;
-import dnl;
+import dnr;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ public class FileManagerRSCenter
   private static final int jdField_a_of_type_Int = 2;
   private static final String jdField_a_of_type_JavaLangString = "FileManagerRSCenter<FileAssistant>";
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dnl(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dnr(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   
   public FileManagerRSCenter(QQAppInterface paramQQAppInterface)

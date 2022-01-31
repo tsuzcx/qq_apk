@@ -1,28 +1,60 @@
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class oo
-  extends FilterOutputStream
+public final class oo
+  implements BusinessObserver
 {
-  public int a;
+  public oo(Context paramContext, AppInterface paramAppInterface) {}
   
-  public oo(PubAccountHttpDownloader paramPubAccountHttpDownloader, OutputStream paramOutputStream)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramOutputStream);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void write(int paramInt)
-  {
-    this.jdField_a_of_type_Int += 1;
-    this.out.write(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int += paramInt2;
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362450);
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          Object localObject = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          ((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).mergeFrom(paramBundle);
+          if ((((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).ret_info.has()) && (((mobileqq_mp.RetInfo)((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.get() == 0))
+          {
+            paramBundle = new AccountDetail((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject);
+            localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).createEntityManager();
+            if (localObject != null) {
+              ((EntityManager)localObject).b(paramBundle);
+            }
+          }
+          else
+          {
+            PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362450);
+          }
+        }
+        else
+        {
+          PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362450);
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
   }
 }
 

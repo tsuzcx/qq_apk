@@ -3,22 +3,22 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 
 public class efw
   extends Handler
 {
-  public efw(SystemMsgController paramSystemMsgController, Looper paramLooper)
+  public efw(GroupSystemMsgController paramGroupSystemMsgController, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if ((SystemMsgController.a(this.a)) && (SystemMsgController.a(this.a) != null))
+    if ((GroupSystemMsgController.a(this.a)) && (GroupSystemMsgController.a(this.a) != null))
     {
-      SystemMsgController.a(this.a, false);
-      SystemMsgController.a(this.a).a().a(3);
+      GroupSystemMsgController.a(this.a, false);
+      GroupSystemMsgController.a(this.a).a().a(3);
     }
   }
 }

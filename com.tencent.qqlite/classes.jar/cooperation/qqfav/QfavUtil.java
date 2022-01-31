@@ -419,11 +419,11 @@ public final class QfavUtil
     }
     try
     {
-      String str = paramContext1.getString(2131362682);
+      String str = paramContext1.getString(2131362689);
       if (paramBoolean) {}
-      for (paramContext2 = paramContext1.getString(2131362684);; paramContext2 = paramContext1.getString(2131362683))
+      for (paramContext2 = paramContext1.getString(2131362691);; paramContext2 = paramContext1.getString(2131362690))
       {
-        paramContext1 = DialogUtil.a(paramContext1, 230, str, paramContext2, 2131362790, 2131362685, new fky(), null);
+        paramContext1 = DialogUtil.a(paramContext1, 230, str, paramContext2, 2131362794, 2131362692, new fky(), null);
         paramContext1.setMessageCount(null);
         paramContext1.setOnDismissListener(paramOnDismissListener);
         paramContext1.show();

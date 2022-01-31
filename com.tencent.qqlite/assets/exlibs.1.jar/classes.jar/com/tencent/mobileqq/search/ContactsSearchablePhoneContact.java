@@ -188,7 +188,7 @@ public class ContactsSearchablePhoneContact
   
   public String b()
   {
-    return this.jdField_a_of_type_AndroidContentContext.getString(2131364184);
+    return this.jdField_a_of_type_AndroidContentContext.getString(2131364169);
   }
   
   public String c()

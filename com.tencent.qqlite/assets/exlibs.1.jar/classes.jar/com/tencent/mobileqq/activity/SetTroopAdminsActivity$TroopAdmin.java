@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjo;
+import bjm;
 
 public class SetTroopAdminsActivity$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new bjo();
+  public static final Parcelable.Creator CREATOR = new bjm();
   public String a;
   public short a;
   public String b;

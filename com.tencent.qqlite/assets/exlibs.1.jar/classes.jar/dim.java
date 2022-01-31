@@ -1,14 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-public class dim
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class dim
+  implements Runnable
 {
-  public dim(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  dim(dil paramdil) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.a.d();
+    QfileBaseCloudFileTabView.a(this.a.a);
   }
 }
 

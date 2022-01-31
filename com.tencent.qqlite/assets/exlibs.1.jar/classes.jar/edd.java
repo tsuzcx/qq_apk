@@ -1,197 +1,69 @@
-import com.dataline.util.DBNetworkUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.mobileqq.service.HttpNotify;
-import com.tencent.mobileqq.service.HttpRequestWifiphotoHandler;
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.io.PrintStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import org.apache.http.HttpServerConnection;
-import org.apache.http.impl.DefaultConnectionReuseStrategy;
-import org.apache.http.impl.DefaultHttpResponseFactory;
-import org.apache.http.impl.DefaultHttpServerConnection;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.BasicHttpProcessor;
-import org.apache.http.protocol.HttpRequestHandlerRegistry;
-import org.apache.http.protocol.HttpService;
-import org.apache.http.protocol.ResponseConnControl;
-import org.apache.http.protocol.ResponseContent;
-import org.apache.http.protocol.ResponseDate;
-import org.apache.http.protocol.ResponseServer;
 
 public class edd
-  extends Thread
+  implements HttpNotify
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HttpNotify jdField_a_of_type_ComTencentMobileqqServiceHttpNotify = null;
-  private String jdField_a_of_type_JavaLangString;
-  private ServerSocket jdField_a_of_type_JavaNetServerSocket;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HttpParams jdField_a_of_type_OrgApacheHttpParamsHttpParams;
-  private boolean jdField_a_of_type_Boolean = false;
+  private long jdField_a_of_type_Long = 0L;
+  private HttpNotify jdField_a_of_type_ComTencentMobileqqServiceHttpNotify;
   
-  public edd(String paramString, HttpNotify paramHttpNotify, QQAppInterface paramQQAppInterface)
+  public edd(HttpNotify paramHttpNotify)
   {
     this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify = paramHttpNotify;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private String a()
+  public void a(long paramLong1, long paramLong2)
   {
-    return DBNetworkUtil.b();
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaNetServerSocket != null) {
-      return this.jdField_a_of_type_JavaNetServerSocket.getLocalPort();
-    }
-    return 0;
-  }
-  
-  public InetAddress a()
-  {
-    try
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
     {
-      InetAddress localInetAddress = InetAddress.getByName(a());
-      return localInetAddress;
-    }
-    catch (UnknownHostException localUnknownHostException)
-    {
-      localUnknownHostException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    try
-    {
-      this.jdField_a_of_type_JavaNetServerSocket.close();
-      label12:
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        ((Thread)this.jdField_a_of_type_JavaUtilArrayList.get(i)).interrupt();
-        i += 1;
-      }
-      interrupt();
-      this.jdField_a_of_type_JavaNetServerSocket = null;
+      new Handler(localLooper).post(new ede(this, paramLong1, paramLong2));
       return;
     }
-    catch (Exception localException)
-    {
-      break label12;
+    b(paramLong1, paramLong2);
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {
+      return;
     }
-  }
-  
-  public void a(Thread paramThread)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramThread);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-  }
-  
-  public boolean b()
-  {
-    try
+    this.jdField_a_of_type_Long = l;
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
     {
-      this.jdField_a_of_type_JavaNetServerSocket = new ServerSocket(0, 20);
-      if (this.jdField_a_of_type_JavaNetServerSocket.isClosed())
-      {
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      }
-      this.jdField_a_of_type_OrgApacheHttpParamsHttpParams = new BasicHttpParams();
-      this.jdField_a_of_type_OrgApacheHttpParamsHttpParams.setIntParameter("http.socket.timeout", 30000).setIntParameter("http.socket.buffer-size", 8192).setBooleanParameter("http.connection.stalecheck", false).setBooleanParameter("http.tcp.nodelay", true).setParameter("http.origin-server", "HttpComponents/1.1");
-      start();
-      this.jdField_a_of_type_Boolean = true;
-      return true;
+      new Handler(localLooper).post(new edf(this, paramLong1, paramLong2, paramLong3));
+      return;
     }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    return false;
+    b(paramLong1, paramLong2, paramLong3);
   }
   
-  public boolean c()
+  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaNetServerSocket != null) && (!this.jdField_a_of_type_JavaNetServerSocket.isClosed());
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new edg(this, paramLong1, paramBoolean, paramLong2));
+      return;
+    }
+    b(paramLong1, paramBoolean, paramLong2);
   }
   
-  public void run()
+  public void b(long paramLong1, long paramLong2)
   {
-    for (;;)
-    {
-      if (!Thread.interrupted()) {}
-      label43:
-      do
-      {
-        try
-        {
-          if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaNetServerSocket != null))
-          {
-            boolean bool = this.jdField_a_of_type_JavaNetServerSocket.isClosed();
-            if (!bool) {
-              break label43;
-            }
-          }
-        }
-        catch (InterruptedIOException localInterruptedIOException)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            Object localObject1;
-            BasicHttpProcessor localBasicHttpProcessor;
-            HttpRequestHandlerRegistry localHttpRequestHandlerRegistry;
-            this.jdField_a_of_type_JavaNetServerSocket = null;
-            this.jdField_a_of_type_Boolean = false;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_JavaNetServerSocket = null;
-            this.jdField_a_of_type_Boolean = false;
-            System.err.println("I/O error initialising connection thread: " + localIOException.getMessage());
-          }
-        }
-        this.jdField_a_of_type_JavaNetServerSocket = null;
-        this.jdField_a_of_type_Boolean = false;
-        return;
-        localObject2 = this.jdField_a_of_type_JavaNetServerSocket.accept();
-      } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaNetServerSocket == null) || (this.jdField_a_of_type_JavaNetServerSocket.isClosed()) || (Thread.interrupted()));
-      localObject1 = new DefaultHttpServerConnection();
-      ((DefaultHttpServerConnection)localObject1).bind((Socket)localObject2, this.jdField_a_of_type_OrgApacheHttpParamsHttpParams);
-      localBasicHttpProcessor = new BasicHttpProcessor();
-      localBasicHttpProcessor.addInterceptor(new ResponseDate());
-      localBasicHttpProcessor.addInterceptor(new ResponseServer());
-      localBasicHttpProcessor.addInterceptor(new ResponseContent());
-      localBasicHttpProcessor.addInterceptor(new ResponseConnControl());
-      localHttpRequestHandlerRegistry = new HttpRequestHandlerRegistry();
-      localHttpRequestHandlerRegistry.register("/wifiphoto*", new HttpRequestWifiphotoHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      localHttpRequestHandlerRegistry.register("*", new edc(this.jdField_a_of_type_JavaLangString, (Socket)localObject2));
-      localObject2 = new HttpService(localBasicHttpProcessor, new DefaultConnectionReuseStrategy(), new DefaultHttpResponseFactory());
-      ((HttpService)localObject2).setParams(this.jdField_a_of_type_OrgApacheHttpParamsHttpParams);
-      ((HttpService)localObject2).setHandlerResolver(localHttpRequestHandlerRegistry);
-      localObject1 = new ede((HttpService)localObject2, (HttpServerConnection)localObject1, this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify, localHttpRequestHandlerRegistry, this);
-      ((ede)localObject1).setDaemon(true);
-      ((ede)localObject1).start();
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2);
+  }
+  
+  public void b(long paramLong1, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2, paramLong3);
+  }
+  
+  public void b(long paramLong1, boolean paramBoolean, long paramLong2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramBoolean, paramLong2);
   }
 }
 

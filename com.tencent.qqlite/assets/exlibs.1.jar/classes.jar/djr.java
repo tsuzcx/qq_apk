@@ -1,17 +1,29 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class djr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public djr(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView, int paramInt) {}
+  public djr(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.jdField_a_of_type_Int);
+    paramView = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.a;
+    switch (paramView.c)
+    {
+    }
+    for (;;)
+    {
+      this.a.i();
+      return;
+      this.a.a.a().ac();
+      this.a.c(localFileInfo);
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
+import akt;
+import aku;
 import akv;
 import akw;
 import akx;
-import aky;
-import akz;
-import alc;
+import ala;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -55,28 +55,28 @@ public class EditInfoActivity
     this.jdField_b_of_type_JavaLangString = "0/0";
     this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new akv(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new alc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new akt(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ala(this);
   }
   
   private void a(EditText paramEditText)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297066));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297062));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    paramEditText.addTextChangedListener(new akz(this));
+    paramEditText.addTextChangedListener(new akx(this));
   }
   
   private void a(boolean paramBoolean)
   {
     if (this.i == null) {
-      this.i = ((TextView)findViewById(2131296895));
+      this.i = ((TextView)findViewById(2131296891));
     }
     if (paramBoolean)
     {
       c(false);
       if ((this.e != null) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null))
       {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837906);
         this.i.setCompoundDrawablesWithIntrinsicBounds(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
         ((Animatable)this.jdField_b_of_type_AndroidGraphicsDrawableDrawable).start();
       }
@@ -94,8 +94,8 @@ public class EditInfoActivity
   private void e()
   {
     setContentView(2130903182);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131297065));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTextClearedListener(new aky(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131297061));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTextClearedListener(new akw(this));
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(this.jdField_a_of_type_JavaLangString);
@@ -123,7 +123,7 @@ public class EditInfoActivity
   private void f()
   {
     setContentView(2130903181);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297065));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297061));
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
@@ -190,7 +190,7 @@ public class EditInfoActivity
     for (;;)
     {
       setTitle(this.e);
-      a(2131363430, new akx(this));
+      a(2131363433, new akv(this));
       c(true);
       return;
       e();
@@ -217,8 +217,8 @@ public class EditInfoActivity
     super.onCreate(paramBundle);
     d();
     c();
-    d(2130837633);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akw(this), 500L);
+    d(2130837635);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aku(this), 500L);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
   }
   

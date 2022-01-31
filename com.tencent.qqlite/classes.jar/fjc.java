@@ -1,18 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.widget.XPanelContainer;
-
-public class fjc
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface fjc
 {
-  public fjc(XPanelContainer paramXPanelContainer, int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
-  }
+  public abstract void a(int... paramVarArgs);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c(int paramInt1, int paramInt2);
 }
 
 

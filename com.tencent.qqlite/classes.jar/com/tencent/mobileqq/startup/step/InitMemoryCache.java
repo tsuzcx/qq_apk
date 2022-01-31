@@ -3,7 +3,7 @@ package com.tencent.mobileqq.startup.step;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.qphone.base.util.QLog;
-import eeb;
+import eeh;
 
 public class InitMemoryCache
   extends Step
@@ -12,12 +12,8 @@ public class InitMemoryCache
   {
     if (BaseApplicationImpl.h == 1)
     {
-      long l = 5242880L;
-      if (MemoryManager.a() > 268435456L) {
-        l = 10485760L;
-      }
-      BaseApplicationImpl.a = new eeb(Integer.valueOf((int)l));
-      BaseApplicationImpl.b = (int)l;
+      BaseApplicationImpl.a = new eeh(Integer.valueOf((int)5242880L));
+      BaseApplicationImpl.b = (int)5242880L;
     }
     int i;
     do
@@ -34,7 +30,7 @@ public class InitMemoryCache
       if (i > 4194304) {
         j = i;
       }
-      BaseApplicationImpl.a = new eeb(Integer.valueOf(j));
+      BaseApplicationImpl.a = new eeh(Integer.valueOf(j));
       BaseApplicationImpl.b = i;
     } while (!QLog.isColorLevel());
     QLog.d("MemoryCache", 2, "memory size:" + i);

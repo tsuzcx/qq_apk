@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import ezp;
+import ezu;
 
 public class UnderlinePageIndicator$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new ezp();
+  public static final Parcelable.Creator CREATOR = new ezu();
   int a;
   
   private UnderlinePageIndicator$SavedState(Parcel paramParcel)

@@ -1,17 +1,17 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bfa
-  extends GameCenterObserver
+class bfa
+  implements Runnable
 {
-  public bfa(QQSettingMe paramQQSettingMe) {}
+  bfa(bez parambez) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (this.a.b) {
-      this.a.g();
-    }
+    String str = this.a.a.a.a();
+    QQSettingMe.a(this.a.a).setLength(0);
+    QQSettingMe.a(this.a.a).append(QQSettingMe.a(this.a.a));
+    this.a.a.a(str, QQSettingMe.a(this.a.a));
   }
 }
 

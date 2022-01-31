@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.troop.data.TroopMessageManager;
+import java.util.Map;
 
-public class enp
+class enp
   implements Runnable
 {
-  public enp(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
+  enp(eno parameno) {}
   
   public void run()
   {
-    try
-    {
-      JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
-      int i = 0;
-      int j = localJSONArray.length();
-      while (i < j)
-      {
-        String str = localJSONArray.get(i).toString();
-        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(str);
-        i += 1;
-      }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+    if (TroopMessageManager.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager).b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      TroopMessageManager.c(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager).b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }

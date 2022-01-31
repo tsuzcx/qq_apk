@@ -1,64 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.SSOWebviewPlugin;
-import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class sj
-  implements BusinessObserver
+class sj
+  implements Runnable
 {
-  public sj(SSOWebviewPlugin paramSSOWebviewPlugin, String paramString) {}
+  sj(si paramsi, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (paramBoolean) {}
-    try
+    if ((this.jdField_a_of_type_Si.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Si.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject == null) {
-        return;
+      if ((this.jdField_a_of_type_Si.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Si.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_Si.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      paramBundle = new WebSsoBody.WebSsoResponseBody();
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("data", paramBundle.data.get());
-      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
-      ((JSONObject)localObject).put("cret", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
-        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.a = ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get();
-      }
-      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.b = ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get();
-      return;
+      this.jdField_a_of_type_Si.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_Si.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("cret", 2);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
-    paramBundle = new JSONObject();
-    paramBundle.put("cret", 1);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-    return;
   }
 }
 

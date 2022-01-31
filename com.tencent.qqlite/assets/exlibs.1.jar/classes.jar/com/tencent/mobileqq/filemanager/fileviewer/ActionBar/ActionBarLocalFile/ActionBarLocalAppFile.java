@@ -5,7 +5,7 @@ import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarUtil;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import dri;
+import dro;
 
 public class ActionBarLocalAppFile
   extends BaseActionBarLocalFile
@@ -43,7 +43,7 @@ public class ActionBarLocalAppFile
   
   public void c()
   {
-    a(0, "恢复上传", new dri(this));
+    a(0, "恢复上传", new dro(this));
   }
 }
 

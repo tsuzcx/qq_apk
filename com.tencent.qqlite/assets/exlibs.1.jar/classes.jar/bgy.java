@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
 public class bgy
-  implements DialogInterface.OnClickListener
+  extends TimerTask
 {
-  public bgy(RegisterActivity paramRegisterActivity) {}
+  public bgy(RegisterActivity paramRegisterActivity, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "reQuerySms schedule");
+    }
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, this.jdField_a_of_type_Long);
   }
 }
 

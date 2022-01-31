@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import cwy;
+import cxe;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class CleanCache
   {
     this.a.a.a().getSharedPreferences("HEAD", 0).edit().clear().commit();
     c();
-    new Thread(new cwy(this)).start();
+    new Thread(new cxe(this)).start();
     return 7;
   }
   

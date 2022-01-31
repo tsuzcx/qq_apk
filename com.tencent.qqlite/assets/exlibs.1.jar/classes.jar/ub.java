@@ -1,16 +1,16 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
-import com.tencent.litetransfersdk.Session;
+import com.tencent.litetransfersdk.FileControl;
+import com.tencent.litetransfersdk.LiteTransferOperatorCallback;
 import com.tencent.mobileqq.app.DataLineHandler;
+import java.util.TimerTask;
 
 public class ub
-  implements Runnable
+  extends TimerTask
 {
-  public ub(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong) {}
+  public ub(LiteTransferOperatorCallback paramLiteTransferOperatorCallback, int paramInt, FileControl paramFileControl) {}
   
   public void run()
   {
-    Session localSession = LiteTransferListenerCallback.access$100(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback).a(this.jdField_a_of_type_Long);
-    LiteTransferListenerCallback.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, localSession, null, null, true);
+    LiteTransferOperatorCallback.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferOperatorCallback).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentLitetransfersdkFileControl.uint64_sessionid, 1005, this.jdField_a_of_type_ComTencentLitetransfersdkFileControl.uint32_operate, this.jdField_a_of_type_ComTencentLitetransfersdkFileControl.uint32_seq, this.jdField_a_of_type_ComTencentLitetransfersdkFileControl.uint32_group_id, this.jdField_a_of_type_ComTencentLitetransfersdkFileControl.uint32_batchID);
   }
 }
 

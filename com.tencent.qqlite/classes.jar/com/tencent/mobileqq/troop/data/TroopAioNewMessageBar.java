@@ -25,8 +25,8 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.utils.MsgUtils;
-import eme;
-import emf;
+import emj;
+import emk;
 
 public class TroopAioNewMessageBar
   extends TroopAioAgent
@@ -40,7 +40,7 @@ public class TroopAioNewMessageBar
   private static int i = 3;
   private static int j = 0;
   private float jdField_a_of_type_Float = 0.0F;
-  private Handler jdField_a_of_type_AndroidOsHandler = new eme(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new emj(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation = null;
   public LinearLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
@@ -69,8 +69,8 @@ public class TroopAioNewMessageBar
     Object localObject;
     if (paramInt == e)
     {
-      paramTextView.setText(2131362499);
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838218, 0);
+      paramTextView.setText(2131362496);
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838212, 0);
       paramTextView.setCompoundDrawablePadding(4);
       paramTextView.setGravity(17);
       localObject = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
@@ -152,7 +152,7 @@ public class TroopAioNewMessageBar
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setId(2131296355);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130837676);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130837678);
       localObject = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
       setChanged();
@@ -168,14 +168,14 @@ public class TroopAioNewMessageBar
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427496));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427491));
       this.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_b_of_type_AndroidWidgetTextView.setId(2131296357);
       this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       this.jdField_b_of_type_AndroidWidgetTextView.setGravity(16);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427496));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131427491));
       localObject = new RelativeLayout.LayoutParams(-1, this.m);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
@@ -183,7 +183,7 @@ public class TroopAioNewMessageBar
       ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131296356);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new emf(this));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new emk(this));
     }
   }
   

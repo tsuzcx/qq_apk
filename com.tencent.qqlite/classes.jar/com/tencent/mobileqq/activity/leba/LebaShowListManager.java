@@ -150,7 +150,7 @@ public class LebaShowListManager
         {
           if (localObject1 == null)
           {
-            localObject3 = paramContext.getResources().getDrawable(2130838739);
+            localObject3 = paramContext.getResources().getDrawable(2130838714);
             localLebaViewItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject3);
             if ((!localFile.exists()) || (localObject1 == null))
             {

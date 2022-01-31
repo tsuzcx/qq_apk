@@ -1,79 +1,24 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qqfav.QfavUtil;
+import mqq.app.AppRuntime;
 
-public class fkc
-  extends AsyncTask
+class fkc
+  extends Handler
 {
-  public String a;
-  public final ArrayList a;
-  public String b;
-  public String c;
-  private String d;
-  
-  public fkc(String paramString1, String paramString2, String paramString3)
+  fkc(fkb paramfkb, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.c = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
+    super(paramLooper);
   }
   
-  protected Boolean a(Void... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    paramVarArgs = PluginUtils.installPlugin(BaseApplication.getContext(), this.b, "107392");
-    if (paramVarArgs != null) {
-      PluginStatisticsCollector.a(BaseApplication.getContext(), this.c, this.b, paramVarArgs);
-    }
-    this.d = paramVarArgs;
-    if (paramVarArgs == null) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
-  }
-  
-  public void a(Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
-  {
-    paramActivity = new fkd(this, paramActivity, paramPluginParams);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramActivity);
-  }
-  
-  public void a(Context paramContext, IPluginManager.PluginParams paramPluginParams)
-  {
-    paramContext = new fkf(this, paramContext, paramPluginParams);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    synchronized ()
-    {
-      IPluginManager.a().remove(this.b);
-      if (!paramBoolean.booleanValue())
-      {
-        IPluginManager.a(this.d, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    }
-    paramBoolean = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (paramBoolean.hasNext()) {
-      ((fke)paramBoolean.next()).a();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b(Context paramContext, IPluginManager.PluginParams paramPluginParams)
-  {
-    paramContext = new fkg(this, paramContext, paramPluginParams);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+    super.handleMessage(paramMessage);
+    QfavUtil.a(this.a.a.a, 2131362670, 2);
+    paramMessage = BaseApplicationImpl.a.a();
+    QfavUtil.a(this.a.a.a, paramMessage.getAccount(), true);
   }
 }
 

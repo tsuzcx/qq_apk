@@ -30,8 +30,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lt;
-import lu;
+import lp;
+import lq;
 
 public class ImageUtil
 {
@@ -60,8 +60,8 @@ public class ImageUtil
     jdField_a_of_type_Int = 7;
     jdField_b_of_type_Int = 10;
     jdField_b_of_type_JavaLangString = "ImageUtil";
-    jdField_a_of_type_AndroidOsHandler = new lt();
-    jdField_a_of_type_JavaLangRunnable = new lu();
+    jdField_a_of_type_AndroidOsHandler = new lp();
+    jdField_a_of_type_JavaLangRunnable = new lq();
   }
   
   public static final int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)

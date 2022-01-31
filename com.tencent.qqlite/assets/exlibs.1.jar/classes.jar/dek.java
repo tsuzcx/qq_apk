@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelView;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 
-class dek
+public class dek
   implements Runnable
 {
-  dek(dej paramdej) {}
+  public dek(ClassicEmoticonPanelView paramClassicEmoticonPanelView) {}
   
   public void run()
   {
-    if ((this.a.a.getVisibility() == 0) && (EmoticonMainPanel.g == 2))
+    if (this.a.a != null)
     {
-      this.a.a.b = false;
-      this.a.a.a(2, EmoticonMainPanel.i);
+      this.a.a.a();
+      this.a.postDelayed(this, 100L);
     }
   }
 }

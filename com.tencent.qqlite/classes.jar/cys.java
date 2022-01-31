@@ -1,46 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.message.OfflineFileMessageProcessor;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.service.message.TransMsgContext;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.mobileqq.app.message.DiscMessageProcessor;
+import java.util.TimerTask;
 
 public class cys
-  implements BaseMessageProcessor.RequestBuilder
+  extends TimerTask
 {
-  public cys(OfflineFileMessageProcessor paramOfflineFileMessageProcessor, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
+  private cys(DiscMessageProcessor paramDiscMessageProcessor) {}
   
-  public ToServiceMsg a()
+  public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
-    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
-    localToServiceMsg.extraData.putInt("random", MessageUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
-    TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    msg_svc.PbSendMsgReq localPbSendMsgReq = MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 13, this.jdField_a_of_type_JavaLangString, localTransMsgContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, MessageUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
-    OfflineFileMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localTransMsgContext);
-    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong(FileTransferObserver.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
-    return localToServiceMsg;
+    this.a.a.cancel();
   }
 }
 

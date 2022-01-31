@@ -24,18 +24,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import cax;
-import cay;
-import caz;
-import cba;
-import cbb;
-import cbc;
 import cbd;
 import cbe;
 import cbf;
 import cbg;
 import cbh;
 import cbi;
+import cbj;
+import cbk;
+import cbl;
+import cbm;
+import cbn;
+import cbo;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.adapter.CircleSearchResultAdapter;
@@ -45,7 +45,6 @@ import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.DiscussionInfo;
@@ -107,14 +106,13 @@ public class SearchResultDialog
   private ForwardOperations jdField_a_of_type_ComTencentMobileqqActivityForwardOperations;
   private ContactsSearchResultAdapter jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QQMessageFacade jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade;
   private SearchAdapterInterface jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap;
-  private AdapterView.OnItemClickListener jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new cba(this);
+  private AdapterView.OnItemClickListener jdField_b_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new cbg(this);
   private XListView jdField_b_of_type_ComTencentWidgetXListView;
   private List jdField_b_of_type_JavaUtilList;
   private String jdField_d_of_type_JavaLangString;
@@ -129,7 +127,6 @@ public class SearchResultDialog
       QLog.d("SearchResultDialog", 2, "SearchResultDialog() from = " + paramInt);
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade = paramQQAppInterface.a();
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_e_of_type_Int = paramInt;
@@ -144,13 +141,13 @@ public class SearchResultDialog
     ((WindowManager.LayoutParams)localObject).width = -1;
     ((WindowManager.LayoutParams)localObject).windowAnimations = 16973824;
     ((WindowManager.LayoutParams)localObject).gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296871));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296872));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new cax(this), false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new cbb(this, paramContext));
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296870));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296867));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296868));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new cbd(this), false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new cbh(this, paramContext));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131296866));
     if (4 == paramInt) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ConversationSearchAdapter(paramContext, paramQQAppInterface, this.jdField_b_of_type_ComTencentWidgetXListView, new cbc(this), false);
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ConversationSearchAdapter(paramContext, paramQQAppInterface, this.jdField_b_of_type_ComTencentWidgetXListView, new cbi(this), false);
     }
     for (;;)
     {
@@ -162,9 +159,9 @@ public class SearchResultDialog
         ((Message)localObject).what = 2;
         this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject);
       }
-      new Thread(new cbf(this)).start();
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298453));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cbg(this));
+      new Thread(new cbl(this)).start();
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131298408));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cbm(this));
       b();
       c();
       a(paramContext, paramQQAppInterface);
@@ -173,15 +170,15 @@ public class SearchResultDialog
         this.jdField_e_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
         {
-          findViewById(2131296869).setVisibility(0);
+          findViewById(2131296865).setVisibility(0);
           paramContext = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903124, null);
-          paramContext.setOnClickListener(new cbh(this, paramInt));
-          ((TextView)paramContext.findViewById(2131296874)).setText(this.jdField_e_of_type_JavaLangString);
+          paramContext.setOnClickListener(new cbn(this, paramInt));
+          ((TextView)paramContext.findViewById(2131296870)).setText(this.jdField_e_of_type_JavaLangString);
           this.jdField_a_of_type_ComTencentWidgetXListView.a(paramContext);
           if (this.jdField_b_of_type_JavaUtilList.size() > 0)
           {
             paramContext = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903118, null);
-            ((TextView)paramContext.findViewById(2131296845)).setText("你可能想找");
+            ((TextView)paramContext.findViewById(2131296841)).setText("你可能想找");
             this.jdField_a_of_type_ComTencentWidgetXListView.a(paramContext);
           }
           this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter);
@@ -190,12 +187,12 @@ public class SearchResultDialog
       return;
       if ((13 == paramInt) || (14 == paramInt))
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new CircleSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, new cbd(this));
-        ((EditText)findViewById(2131297994)).setHint(2131362953);
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new CircleSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, new cbj(this));
+        ((EditText)findViewById(2131297957)).setHint(2131362957);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, null, new cbe(this), false);
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface = new ContactsSearchResultAdapter(paramQQAppInterface, paramContext, this.jdField_b_of_type_ComTencentWidgetXListView, null, new cbk(this), false);
       }
     }
   }
@@ -250,7 +247,6 @@ public class SearchResultDialog
       for (;;)
       {
         String str = paramQQAppInterface.a();
-        paramQQAppInterface.a();
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
@@ -377,11 +373,11 @@ public class SearchResultDialog
   
   private void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (TextView)findViewById(2131296871);
+    paramQQAppInterface = (TextView)findViewById(2131296867);
     paramQQAppInterface.setCompoundDrawables(null, null, null, null);
-    paramQQAppInterface.setText(2131363152);
+    paramQQAppInterface.setText(2131363155);
     this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter((BaseAdapter)this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface);
-    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new caz(this, paramContext));
+    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new cbf(this, paramContext));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -404,39 +400,38 @@ public class SearchResultDialog
   
   public static Object[] a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = null;
+    Object localObject = null;
     DiscussionManager localDiscussionManager = (DiscussionManager)paramQQAppInterface.getManager(45);
-    Object localObject2 = (ContactFacade)paramQQAppInterface.getManager(46);
-    if ((localDiscussionManager != null) && (localObject2 != null))
+    paramQQAppInterface = (ContactFacade)paramQQAppInterface.getManager(46);
+    if ((localDiscussionManager != null) && (paramQQAppInterface != null))
     {
-      paramQQAppInterface.a();
-      paramQQAppInterface = ((ContactFacade)localObject2).a("-1004");
-      localObject2 = new String[paramQQAppInterface.size()];
+      paramQQAppInterface = paramQQAppInterface.a("-1004");
+      String[] arrayOfString = new String[paramQQAppInterface.size()];
       paramQQAppInterface = paramQQAppInterface.iterator();
       int i = 0;
       while (paramQQAppInterface.hasNext())
       {
-        localObject1 = (DiscussionInfo)paramQQAppInterface.next();
-        if ((localObject1 == null) || (((DiscussionInfo)localObject1).uin == null) || (((DiscussionInfo)localObject1).uin.length() <= 0)) {
-          break label193;
+        localObject = (DiscussionInfo)paramQQAppInterface.next();
+        if ((localObject == null) || (((DiscussionInfo)localObject).uin == null) || (((DiscussionInfo)localObject).uin.length() <= 0)) {
+          break label185;
         }
-        localObject2[i] = ((DiscussionInfo)localObject1).uin;
+        arrayOfString[i] = ((DiscussionInfo)localObject).uin;
         i += 1;
       }
-      paramQQAppInterface = localDiscussionManager.a((String[])localObject2);
-      localObject1 = new ArrayList();
-      int j = localObject2.length;
+      paramQQAppInterface = localDiscussionManager.a(arrayOfString);
+      localObject = new ArrayList();
+      int j = arrayOfString.length;
       i = 0;
       while (i < j)
       {
-        ((List)localObject1).add((ArrayList)paramQQAppInterface.get(localObject2[i]));
+        ((List)localObject).add((ArrayList)paramQQAppInterface.get(arrayOfString[i]));
         i += 1;
       }
     }
     for (;;)
     {
-      return new Object[] { paramQQAppInterface, localObject1 };
-      label193:
+      return new Object[] { paramQQAppInterface, localObject };
+      label185:
       break;
       paramQQAppInterface = null;
     }
@@ -504,8 +499,8 @@ public class SearchResultDialog
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297994));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cbi(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297957));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new cbo(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -520,7 +515,6 @@ public class SearchResultDialog
       if ((paramInt == 0) || (paramInt == 3)) {}
       for (;;)
       {
-        paramQQAppInterface.a();
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
@@ -548,7 +542,7 @@ public class SearchResultDialog
   
   private void c()
   {
-    ((ImageButton)findViewById(2131297986)).setOnClickListener(new cay(this));
+    ((ImageButton)findViewById(2131297950)).setOnClickListener(new cbe(this));
   }
   
   private void d()
@@ -745,12 +739,12 @@ public class SearchResultDialog
   
   public void a(int paramInt)
   {
-    findViewById(2131296869).setVisibility(0);
+    findViewById(2131296865).setVisibility(0);
     if (1 == paramInt) {
       if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface.getCount() == 0)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363151);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363154);
       }
     }
     for (;;)
@@ -844,7 +838,7 @@ public class SearchResultDialog
     if (paramString1.equals(""))
     {
       if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-        findViewById(2131296869).setVisibility(8);
+        findViewById(2131296865).setVisibility(8);
       }
       for (;;)
       {
@@ -920,162 +914,162 @@ public class SearchResultDialog
   protected List b(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 376	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   3: lstore 6
-    //   5: new 878	java/util/HashSet
+    //   5: new 872	java/util/HashSet
     //   8: dup
-    //   9: invokespecial 879	java/util/HashSet:<init>	()V
+    //   9: invokespecial 873	java/util/HashSet:<init>	()V
     //   12: astore 10
     //   14: iconst_4
     //   15: iload 5
     //   17: if_icmpne +68 -> 85
     //   20: aload_2
-    //   21: invokevirtual 667	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/proxy/ProxyManager;
-    //   24: invokevirtual 672	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;
-    //   27: invokevirtual 675	com/tencent/mobileqq/app/proxy/RecentUserProxy:b	()Ljava/util/List;
+    //   21: invokevirtual 661	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/proxy/ProxyManager;
+    //   24: invokevirtual 666	com/tencent/mobileqq/app/proxy/ProxyManager:a	()Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;
+    //   27: invokevirtual 669	com/tencent/mobileqq/app/proxy/RecentUserProxy:b	()Ljava/util/List;
     //   30: astore 8
     //   32: aload 8
     //   34: ifnull +44 -> 78
     //   37: aload 8
-    //   39: invokeinterface 394 1 0
+    //   39: invokeinterface 388 1 0
     //   44: astore 9
     //   46: aload 9
-    //   48: invokeinterface 399 1 0
+    //   48: invokeinterface 393 1 0
     //   53: ifeq +25 -> 78
     //   56: aload 10
     //   58: aload 9
-    //   60: invokeinterface 405 1 0
-    //   65: checkcast 677	com/tencent/mobileqq/data/RecentUser
-    //   68: getfield 880	com/tencent/mobileqq/data/RecentUser:uin	Ljava/lang/String;
-    //   71: invokevirtual 881	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   60: invokeinterface 399 1 0
+    //   65: checkcast 671	com/tencent/mobileqq/data/RecentUser
+    //   68: getfield 874	com/tencent/mobileqq/data/RecentUser:uin	Ljava/lang/String;
+    //   71: invokevirtual 875	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   74: pop
     //   75: goto -29 -> 46
     //   78: aload 8
-    //   80: invokeinterface 737 1 0
-    //   85: new 378	java/util/ArrayList
+    //   80: invokeinterface 731 1 0
+    //   85: new 372	java/util/ArrayList
     //   88: dup
-    //   89: invokespecial 379	java/util/ArrayList:<init>	()V
+    //   89: invokespecial 373	java/util/ArrayList:<init>	()V
     //   92: astore 11
     //   94: aload_2
     //   95: bipush 46
-    //   97: invokevirtual 383	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   100: checkcast 489	com/tencent/mobileqq/app/ContactFacade
+    //   97: invokevirtual 377	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   100: checkcast 483	com/tencent/mobileqq/app/ContactFacade
     //   103: astore 8
     //   105: aload 8
     //   107: ifnull +328 -> 435
     //   110: aload 8
-    //   112: ldc_w 552
-    //   115: invokevirtual 506	com/tencent/mobileqq/app/ContactFacade:a	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   112: ldc_w 546
+    //   115: invokevirtual 500	com/tencent/mobileqq/app/ContactFacade:a	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   118: astore 13
     //   120: aload 13
     //   122: ifnull +313 -> 435
     //   125: iload 5
     //   127: iconst_2
     //   128: if_icmpne +263 -> 391
-    //   131: new 883	java/util/HashMap
+    //   131: new 877	java/util/HashMap
     //   134: dup
-    //   135: invokespecial 884	java/util/HashMap:<init>	()V
+    //   135: invokespecial 878	java/util/HashMap:<init>	()V
     //   138: astore 12
     //   140: aconst_null
     //   141: astore 9
     //   143: aload_2
-    //   144: invokevirtual 887	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   147: new 65	java/lang/StringBuilder
+    //   144: invokevirtual 881	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   147: new 64	java/lang/StringBuilder
     //   150: dup
-    //   151: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   154: ldc_w 889
-    //   157: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: new 429	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   151: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   154: ldc_w 883
+    //   157: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: new 423	com/tencent/mobileqq/data/DiscussionMemberInfo
     //   163: dup
-    //   164: invokespecial 890	com/tencent/mobileqq/data/DiscussionMemberInfo:<init>	()V
-    //   167: invokevirtual 893	com/tencent/mobileqq/data/DiscussionMemberInfo:getTableName	()Ljava/lang/String;
-    //   170: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   173: ldc_w 895
-    //   176: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokespecial 884	com/tencent/mobileqq/data/DiscussionMemberInfo:<init>	()V
+    //   167: invokevirtual 887	com/tencent/mobileqq/data/DiscussionMemberInfo:getTableName	()Ljava/lang/String;
+    //   170: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: ldc_w 889
+    //   176: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   182: aconst_null
-    //   183: invokevirtual 900	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   183: invokevirtual 894	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   186: astore 8
     //   188: aload 8
     //   190: astore 9
     //   192: aload 8
-    //   194: invokeinterface 905 1 0
+    //   194: invokeinterface 899 1 0
     //   199: ifeq +203 -> 402
     //   202: aload 8
     //   204: astore 9
     //   206: aload 12
     //   208: aload 8
     //   210: iconst_0
-    //   211: invokeinterface 907 2 0
+    //   211: invokeinterface 901 2 0
     //   216: aload 8
     //   218: iconst_1
-    //   219: invokeinterface 910 2 0
-    //   224: invokestatic 915	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   227: invokevirtual 919	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   219: invokeinterface 904 2 0
+    //   224: invokestatic 909	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   227: invokevirtual 913	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   230: pop
     //   231: goto -43 -> 188
     //   234: astore 8
     //   236: aload 9
     //   238: ifnull +10 -> 248
     //   241: aload 9
-    //   243: invokeinterface 922 1 0
+    //   243: invokeinterface 916 1 0
     //   248: aload 13
-    //   250: invokeinterface 394 1 0
+    //   250: invokeinterface 388 1 0
     //   255: astore 13
     //   257: aload 13
-    //   259: invokeinterface 399 1 0
+    //   259: invokeinterface 393 1 0
     //   264: ifeq +171 -> 435
     //   267: aload 13
-    //   269: invokeinterface 405 1 0
-    //   274: checkcast 496	com/tencent/mobileqq/persistence/Entity
-    //   277: checkcast 554	com/tencent/mobileqq/data/DiscussionInfo
+    //   269: invokeinterface 399 1 0
+    //   274: checkcast 490	com/tencent/mobileqq/persistence/Entity
+    //   277: checkcast 548	com/tencent/mobileqq/data/DiscussionInfo
     //   280: astore 14
     //   282: iconst_4
     //   283: iload 5
     //   285: if_icmpne +16 -> 301
     //   288: aload 10
     //   290: aload 14
-    //   292: getfield 555	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
-    //   295: invokevirtual 923	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   292: getfield 549	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   295: invokevirtual 917	java/util/HashSet:contains	(Ljava/lang/Object;)Z
     //   298: ifne -41 -> 257
     //   301: aload 12
     //   303: aload 14
-    //   305: getfield 555	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
-    //   308: invokevirtual 924	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   311: checkcast 912	java/lang/Integer
+    //   305: getfield 549	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   308: invokevirtual 918	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   311: checkcast 906	java/lang/Integer
     //   314: astore 8
     //   316: aload 8
     //   318: ifnonnull +179 -> 497
     //   321: iconst_0
-    //   322: invokestatic 915	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   322: invokestatic 909	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   325: astore 8
     //   327: aconst_null
     //   328: astore 9
     //   330: aload_0
-    //   331: invokevirtual 685	com/tencent/mobileqq/activity/contact/SearchResultDialog:a	()Ljava/util/Map;
+    //   331: invokevirtual 679	com/tencent/mobileqq/activity/contact/SearchResultDialog:a	()Ljava/util/Map;
     //   334: astore 15
     //   336: aload 15
     //   338: ifnull +20 -> 358
     //   341: aload 15
     //   343: aload 14
-    //   345: getfield 555	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
-    //   348: invokeinterface 566 2 0
-    //   353: checkcast 295	java/util/List
+    //   345: getfield 549	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   348: invokeinterface 560 2 0
+    //   353: checkcast 287	java/util/List
     //   356: astore 9
     //   358: aload 11
-    //   360: new 926	com/tencent/mobileqq/search/ContactSearchableDiscussion
+    //   360: new 920	com/tencent/mobileqq/search/ContactSearchableDiscussion
     //   363: dup
     //   364: aload_1
     //   365: aload_2
     //   366: aload 14
     //   368: aload 8
-    //   370: invokevirtual 929	java/lang/Integer:intValue	()I
+    //   370: invokevirtual 923	java/lang/Integer:intValue	()I
     //   373: lconst_0
     //   374: lload_3
     //   375: iload 5
     //   377: aload 9
-    //   379: invokespecial 932	com/tencent/mobileqq/search/ContactSearchableDiscussion:<init>	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/DiscussionInfo;IJJILjava/util/List;)V
-    //   382: invokeinterface 414 2 0
+    //   379: invokespecial 926	com/tencent/mobileqq/search/ContactSearchableDiscussion:<init>	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/DiscussionInfo;IJJILjava/util/List;)V
+    //   382: invokeinterface 408 2 0
     //   387: pop
     //   388: goto -131 -> 257
     //   391: iload 5
@@ -1085,7 +1079,7 @@ public class SearchResultDialog
     //   402: aload 8
     //   404: ifnull -156 -> 248
     //   407: aload 8
-    //   409: invokeinterface 922 1 0
+    //   409: invokeinterface 916 1 0
     //   414: goto -166 -> 248
     //   417: astore_1
     //   418: aconst_null
@@ -1093,31 +1087,31 @@ public class SearchResultDialog
     //   421: aload 8
     //   423: ifnull +10 -> 433
     //   426: aload 8
-    //   428: invokeinterface 922 1 0
+    //   428: invokeinterface 916 1 0
     //   433: aload_1
     //   434: athrow
-    //   435: invokestatic 376	java/lang/System:currentTimeMillis	()J
+    //   435: invokestatic 370	java/lang/System:currentTimeMillis	()J
     //   438: lstore_3
-    //   439: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   439: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   442: ifeq +48 -> 490
     //   445: ldc 14
     //   447: iconst_2
-    //   448: new 65	java/lang/StringBuilder
+    //   448: new 64	java/lang/StringBuilder
     //   451: dup
-    //   452: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   455: ldc_w 934
-    //   458: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   452: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   455: ldc_w 928
+    //   458: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   461: lload_3
     //   462: lload 6
     //   464: lsub
-    //   465: invokevirtual 419	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   468: ldc_w 421
-    //   471: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   465: invokevirtual 413	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   468: ldc_w 415
+    //   471: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: aload 11
-    //   476: invokeinterface 299 1 0
-    //   481: invokevirtual 77	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   484: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   487: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   476: invokeinterface 291 1 0
+    //   481: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   484: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   487: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   490: aload 11
     //   492: areturn
     //   493: astore_1

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.widget.XListView;
-import fbj;
+import fbo;
 
 public class GroupListOpenFrame
   extends OpenFrame
@@ -40,20 +40,20 @@ public class GroupListOpenFrame
   {
     super.a(paramBundle);
     LogUtility.c("GroupListOpenFrame", "-->onCreate()");
-    super.setContentView(2130903647);
+    super.setContentView(2130903631);
     this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter = new GroupListOpenFrame.GroupListAdapter(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131297776));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131297772));
     paramBundle = (LinearLayout)super.a().getLayoutInflater().inflate(2130903287, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131297525));
-    this.b = ((TextView)paramBundle.findViewById(2131297532));
-    this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager = ((RecommendListManager)paramBundle.findViewById(2131297526));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131297521));
+    this.b = ((TextView)paramBundle.findViewById(2131297528));
+    this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager = ((RecommendListManager)paramBundle.findViewById(2131297522));
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.setActivity(this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser);
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a();
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131427345);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramBundle);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131297994));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new fbj(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131297957));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new fbo(this));
   }
   
   public void a(String paramString)
@@ -65,7 +65,7 @@ public class GroupListOpenFrame
   {
     super.b(paramBundle);
     LogUtility.c("GroupListOpenFrame", "-->onStart()");
-    this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.a(false, true, "", this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.getString(2131362125));
+    this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.a(false, true, "", this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.getString(2131362122));
   }
   
   public void f()

@@ -1,16 +1,37 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog.Callback;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.IphoneTreeView;
 
 public class eyo
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public eyo(QFavDownloadProgressDialog paramQFavDownloadProgressDialog) {}
+  public eyo(IphoneTreeView paramIphoneTreeView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QFavDownloadProgressDialog.a(this.a).b();
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 

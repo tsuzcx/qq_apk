@@ -1,19 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class amf
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public amf(ForceLogoutActivity paramForceLogoutActivity) {}
+  public amf(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    ForwardFriendListActivity.a(this.a).show();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -15,7 +15,7 @@ import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ry;
+import ru;
 
 public class AdWebviewPlugin
   extends WebViewPlugin
@@ -44,7 +44,7 @@ public class AdWebviewPlugin
         if (this.jdField_a_of_type_MqqAppNewIntent == null)
         {
           this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, ProtoServlet.class);
-          this.jdField_a_of_type_MqqObserverBusinessObserver = new ry(this, (String)localObject);
+          this.jdField_a_of_type_MqqObserverBusinessObserver = new ru(this, (String)localObject);
           this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         }
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "QQMobileGdtSvr.GdtReport");

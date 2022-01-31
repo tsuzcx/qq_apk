@@ -1,22 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
-class ebl
-  implements Animation.AnimationListener
+public class ebl
+  implements IActionListener
 {
-  ebl(ebk paramebk) {}
+  public ebl(EditActivity paramEditActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
+    {
+      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
+      if (localActionInfo != null)
+      {
+        EditActivity.a(this.a).c = localActionInfo.d;
+        EditActivity.a(this.a, false);
+      }
+    }
+    if (EditActivity.a(this.a) != null)
+    {
+      EditActivity.a(this.a, true);
+      EditActivity.a(this.a).notifyDataSetChanged();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

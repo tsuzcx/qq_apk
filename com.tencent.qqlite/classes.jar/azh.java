@@ -1,8 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class azh
   implements DialogInterface.OnClickListener
@@ -11,10 +9,6 @@ public class azh
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = "http://haoma.qq.com/m/expire.html?num=" + NotificationActivity.a(this.a);
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.a.startActivity(localIntent);
     this.a.finish();
   }
 }

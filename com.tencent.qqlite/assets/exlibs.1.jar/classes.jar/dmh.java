@@ -1,12 +1,12 @@
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class dmh
   extends IClickListener_Ver51
 {
-  public dmh(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  public dmh(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
   
   public void a()
   {

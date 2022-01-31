@@ -1,5 +1,5 @@
+import com.tencent.biz.anonymous.QQAnonymousDialog;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class caa
   implements Runnable
@@ -8,7 +8,9 @@ public class caa
   
   public void run()
   {
-    this.a.a.E();
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 

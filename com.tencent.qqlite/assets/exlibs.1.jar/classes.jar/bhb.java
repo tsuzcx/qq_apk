@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhb
-  extends Handler
+class bhb
+  implements DialogInterface.OnClickListener
 {
-  public bhb(RegisterBaseActivity paramRegisterBaseActivity) {}
+  bhb(bha parambha) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.g();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131363517);
-    }
-    this.a.a(paramMessage, 1);
+    paramDialogInterface.dismiss();
   }
 }
 

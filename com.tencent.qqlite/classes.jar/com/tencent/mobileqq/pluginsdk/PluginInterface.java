@@ -6,6 +6,7 @@ import android.os.RemoteException;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationChannel;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationChannel.Stub;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteResultCallback;
+import mqq.app.MobileQQ;
 
 public class PluginInterface
 {
@@ -98,6 +99,9 @@ public class PluginInterface
     if (this.mClient == null) {
       return null;
     }
+    if (paramBundle != null) {
+      paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+    }
     try
     {
       paramString = this.mClient.transfer(paramString, paramBundle);
@@ -111,6 +115,9 @@ public class PluginInterface
   {
     if (this.mClient == null) {
       return;
+    }
+    if (paramBundle != null) {
+      paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
     }
     try
     {

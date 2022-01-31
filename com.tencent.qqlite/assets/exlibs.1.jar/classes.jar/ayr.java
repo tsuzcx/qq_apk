@@ -1,36 +1,141 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class ayr
-  implements IphonePickerView.PickerViewAdapter
+  extends BaseAdapter
 {
-  public ayr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public int a()
+  public ayr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, int paramInt1, int paramInt2)
   {
-    return 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public int a(int paramInt)
+  public int getCount()
   {
-    return 2;
+    if (this.b == 0)
+    {
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size() > 6) {
+        return 6;
+      }
+      return NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size();
+    }
+    if (this.b == 1)
+    {
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size() > 6) {
+        return Math.min(6, NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size() - 6);
+      }
+      return 0;
+    }
+    return 0;
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public Object getItem(int paramInt)
   {
-    if (paramInt2 >= 0)
+    if (this.b == 0) {
+      return NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).get(paramInt);
+    }
+    if (this.b == 1) {
+      return NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).get(paramInt + 6);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.getLayoutInflater().inflate(2130903504, paramViewGroup, false);
+    paramViewGroup = (URLImageView)paramView.findViewById(2131297355);
+    paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n, this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n));
+    Object localObject = (ays)getItem(paramInt);
+    if (localObject == NearbyPeopleProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity))
     {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+      paramViewGroup.setBackgroundResource(2130838748);
+      paramViewGroup.setContentDescription("添加照片");
     }
-    else
+    label354:
+    do
     {
-      paramInt1 = 0;
+      do
+      {
+        return paramView;
+        if ((this.jdField_a_of_type_Int == 0) && (this.b == 0) && (paramInt == 0)) {
+          paramView.findViewById(2131298250).setVisibility(0);
+        }
+        if (this.b == 0) {
+          paramView.setContentDescription("照片" + (paramInt + 1));
+        }
+        for (;;)
+        {
+          try
+          {
+            if ((((ays)localObject).a == null) || (((ays)localObject).a.length() <= 0)) {
+              break label354;
+            }
+            LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+            localLocalMediaInfo.a = ((ays)localObject).a;
+            localLocalMediaInfo.f = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n;
+            localLocalMediaInfo.g = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n;
+            localObject = new URL("albumthumb", "", LocalMediaInfo.a(localLocalMediaInfo));
+            if (localObject == null) {
+              break;
+            }
+            paramViewGroup.setImageDrawable(URLDrawable.getDrawable((URL)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n, this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n, NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity), NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity)));
+            return paramView;
+          }
+          catch (MalformedURLException paramViewGroup) {}
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("NearbyPeopleProfileActivity", 2, "GridAdapter.getView() new URL(). " + paramViewGroup.getMessage(), paramViewGroup);
+          return paramView;
+          if (this.b == 1) {
+            paramView.setContentDescription("照片" + (paramInt + 1 + 6));
+          }
+        }
+      } while (StringUtil.b(((ays)localObject).b));
+      localObject = new URL(((ays)localObject).b);
+    } while (localObject == null);
+    paramViewGroup.setImageDrawable(URLDrawable.getDrawable((URL)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n, this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.n, NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity), NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity)));
+    return paramView;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size() > 1) {
+        break label33;
+      }
+      NearbyPeopleProfileActivity.u(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity);
     }
-    if (paramInt1 == 0) {
-      return "男";
+    for (;;)
+    {
+      super.notifyDataSetChanged();
+      return;
+      label33:
+      NearbyPeopleProfileActivity.v(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity);
     }
-    return "女";
   }
 }
 

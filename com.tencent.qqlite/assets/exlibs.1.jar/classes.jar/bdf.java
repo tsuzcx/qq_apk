@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class bdf
-  implements DialogInterface.OnDismissListener
+class bdf
+  implements Runnable
 {
-  public bdf(QQMapActivity paramQQMapActivity) {}
+  bdf(bde parambde) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if ((this.a.i) && (!this.a.j) && (!this.a.h)) {
-      this.a.finish();
-    }
-    this.a.j = false;
+    this.a.a.j = true;
+    this.a.a.o();
   }
 }
 

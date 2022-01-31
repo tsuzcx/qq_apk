@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 
 public class cdp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cdp(TroopActivity paramTroopActivity) {}
+  public cdp(NotificationView paramNotificationView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ((BaseTroopView)this.a.a.get(this.a.i)).j();
+    this.a.a.a().a().c();
   }
 }
 

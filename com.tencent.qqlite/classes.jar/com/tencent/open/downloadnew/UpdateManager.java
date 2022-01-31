@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.StaticAnalyz;
-import ffr;
+import ffw;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -128,7 +128,7 @@ public class UpdateManager
         DownloadManager.a().c(paramDownloadInfo);
       }
       StaticAnalyz.a("300", paramDownloadInfo.g, paramDownloadInfo.b);
-      ThreadManager.b().post(new ffr(this, str1, paramDownloadInfo));
+      ThreadManager.b().post(new ffw(this, str1, paramDownloadInfo));
       return;
     }
     LogUtility.e(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>合成失败 errcode = " + i);

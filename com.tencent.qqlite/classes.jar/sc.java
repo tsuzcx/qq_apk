@@ -1,50 +1,39 @@
-import android.app.Activity;
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import java.util.HashMap;
+import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class sc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public sc(OfflinePlugin paramOfflinePlugin) {}
+  public sc(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    OfflineUpdateStatus localOfflineUpdateStatus;
-    do
+    if (!TextUtils.isEmpty(this.a.c))
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.b(this.a))));
-        localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.b(this.a));
-      } while (localOfflineUpdateStatus == null);
-      if (localOfflineUpdateStatus.b() == 3)
-      {
-        localOfflineUpdateStatus.a();
-        this.a.a();
-        localOfflineUpdateStatus.b(4);
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.remove(OfflinePlugin.b(this.a));
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d(PubAccountMailJsPlugin.a, 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.c, Integer.valueOf(paramInt) }));
       }
-    } while (localOfflineUpdateStatus.b() != 0);
-    HtmlOffline.a(paramView.getApplicationContext(), OfflinePlugin.b(this.a), localOfflineUpdateStatus.jdField_f_of_type_JavaLangString, localOfflineUpdateStatus.jdField_f_of_type_Int, localOfflineUpdateStatus);
-    localOfflineUpdateStatus.b(1);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(OfflinePlugin.a(this.a), 2000L);
+      switch (paramInt)
+      {
+      default: 
+        if (QLog.isColorLevel()) {
+          QLog.d(PubAccountMailJsPlugin.a, 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
+        }
+        break;
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      PubAccountMailJsPlugin.e(this.a);
+      return;
+      PubAccountMailJsPlugin.f(this.a);
+      return;
+    }
+    QLog.d(PubAccountMailJsPlugin.a, 2, "phone is empty");
   }
 }
 

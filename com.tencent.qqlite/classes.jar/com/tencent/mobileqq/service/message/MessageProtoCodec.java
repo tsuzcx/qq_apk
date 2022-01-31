@@ -73,7 +73,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlite.data.MarkFaceMessage;
-import eds;
+import edy;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -1637,7 +1637,7 @@ public class MessageProtoCodec
       {
         localObject1 = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
         paramMsg = null;
-        localObject2 = BaseApplication.getContext().getString(2131364118);
+        localObject2 = BaseApplication.getContext().getString(2131364105);
         Iterator localIterator = ((List)localObject1).iterator();
         paramBoolean = false;
         localObject3 = null;
@@ -1872,7 +1872,7 @@ public class MessageProtoCodec
       if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
         break label48;
       }
-      paramMsg = BaseApplication.getContext().getString(2131363597);
+      paramMsg = BaseApplication.getContext().getString(2131363591);
       localObject1 = ((List)localObject1).iterator();
       if (!((Iterator)localObject1).hasNext()) {
         break label48;
@@ -2166,7 +2166,7 @@ public class MessageProtoCodec
           if ((BaseApplication.getContext().getSharedPreferences("share", 0).getString("no_auto_reply" + paramMessageHandler.a.a(), "").contains("NAR" + paramDecodeProtoPkgContext.e + ",")) || (paramDecodeProtoPkgContext.b)) {
             break;
           }
-          paramMessageHandler = BaseApplication.getContext().getString(2131363597) + " " + paramMsg.str.get().toStringUtf8();
+          paramMessageHandler = BaseApplication.getContext().getString(2131363591) + " " + paramMsg.str.get().toStringUtf8();
           paramMsg = MessageRecordFactory.a(-10000);
           paramMsg.msgtype = -10000;
           paramMsg.msg = paramMessageHandler;
@@ -5763,7 +5763,7 @@ public class MessageProtoCodec
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new eds(paramMessageHandler, paramMsg));
+      new Handler(localLooper).post(new edy(paramMessageHandler, paramMsg));
       return;
     }
     ((DataLineHandler)paramMessageHandler.a.a(8)).a(paramMsg);

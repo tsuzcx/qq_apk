@@ -23,7 +23,7 @@ import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.TraceUtils;
-import csw;
+import ctc;
 import friendlist.GetOnlineInfoResp;
 import friendlist.SimpleOnlineFriendInfo;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class FriendsManager
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(6);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new csw(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new ctc(this);
   private boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;

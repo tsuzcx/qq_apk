@@ -1,15 +1,15 @@
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.QQSetting;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
 
-public class bdz
-  extends AccountObserver
+class bdz
+  implements Runnable
 {
-  public bdz(QQSetting paramQQSetting) {}
+  bdz(bdy parambdy, Drawable paramDrawable) {}
   
-  protected void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2)
+  public void run()
   {
-    this.a.m();
+    this.jdField_a_of_type_Bdy.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

@@ -21,7 +21,7 @@ public class CrmIvrText$CrmIvrLinkSpan
     if (CrmUtils.a.matcher(this.jdField_a_of_type_JavaLangString).find())
     {
       this.jdField_a_of_type_ComTencentBizEqqCrmIvrText.a.getApplication();
-      QQToast.a(MobileQQ.getContext(), 2131364507, 0).a();
+      QQToast.a(MobileQQ.getContext(), 2131364487, 0).a();
       return;
     }
     super.onClick(paramView);

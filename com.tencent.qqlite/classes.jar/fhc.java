@@ -1,309 +1,279 @@
-import android.graphics.Rect;
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.ViewConfiguration;
+import android.widget.EdgeEffect;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.OverScroller;
 
 public class fhc
   implements Runnable
 {
-  private static final int jdField_a_of_type_Int = 400;
-  private static final int b = 1;
-  private static final int c = 2;
-  private static final int d = 3;
-  private static final int e = 4;
-  private static final int f = 5;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private final int l;
-  private int m;
+  private static final int b = 40;
+  private int jdField_a_of_type_Int;
+  private final OverScroller jdField_a_of_type_ComTencentWidgetOverScroller;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new fhd(this);
   
   public fhc(AbsListView paramAbsListView)
   {
-    this.l = ViewConfiguration.get(paramAbsListView.getContext()).getScaledFadingEdgeLength();
+    this.jdField_a_of_type_ComTencentWidgetOverScroller = new OverScroller(paramAbsListView.getContext());
   }
   
   public void a()
   {
-    this.a.removeCallbacks(this);
-    if (AbsListView.a(this.a) != null) {
-      AbsListView.a(this.a).b();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.removeCallbacks(this);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.a(0);
+    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView);
+    this.jdField_a_of_type_ComTencentWidgetOverScroller.a();
+    if (AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView) != null) {
+      AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, AbsListView.b(this.jdField_a_of_type_ComTencentWidgetAbsListView, AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView)));
     }
   }
   
   public void a(int paramInt)
   {
-    a();
-    int n = this.a.ao;
-    int i1 = this.a.getChildCount() + n - 1;
-    if (paramInt <= n)
+    if (paramInt < 0) {}
+    for (int i = 2147483647;; i = 0)
     {
-      n = n - paramInt + 1;
-      this.g = 2;
-      if (n <= 0) {
-        break label97;
+      this.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_ComTencentWidgetOverScroller.a(0, i, 0, paramInt, 0, 2147483647, 0, 2147483647);
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = 4;
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
+      if (AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView) == null) {
+        AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, "AbsListView-fling"));
       }
-    }
-    label97:
-    for (this.k = (400 / n);; this.k = 400)
-    {
-      this.h = paramInt;
-      this.i = -1;
-      this.j = -1;
-      this.a.post(this);
-      do
-      {
-        return;
-      } while (paramInt < i1);
-      n = paramInt - i1 + 1;
-      this.g = 1;
-      break;
+      return;
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    a();
-    if (paramInt2 == -1) {
-      a(paramInt1);
-    }
-    int i1;
-    do
+    if (paramInt1 < 0) {}
+    for (int i = 2147483647;; i = 0)
     {
+      this.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_ComTencentWidgetOverScroller.a(0, i, 0, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = 4;
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
       return;
-      n = this.a.ao;
-      i1 = this.a.getChildCount() + n - 1;
-      if (paramInt1 > n) {
-        break;
-      }
-      i1 -= paramInt2;
-    } while (i1 < 1);
-    int n = n - paramInt1 + 1;
-    i1 -= 1;
-    if (i1 < n)
-    {
-      this.g = 4;
-      n = i1;
-      label79:
-      if (n <= 0) {
-        break label180;
-      }
-    }
-    label178:
-    label180:
-    for (this.k = (400 / n);; this.k = 400)
-    {
-      this.h = paramInt1;
-      this.i = paramInt2;
-      this.j = -1;
-      this.a.post(this);
-      return;
-      for (this.g = 2;; this.g = 1)
-      {
-        break label79;
-        if (paramInt1 < i1) {
-          break label178;
-        }
-        int i2 = paramInt2 - n;
-        if (i2 < 1) {
-          break;
-        }
-        n = paramInt1 - i1 + 1;
-        i1 = i2 - 1;
-        if (i1 < n)
-        {
-          this.g = 3;
-          n = i1;
-          break label79;
-        }
-      }
-      break;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void b()
   {
-    a();
-    this.h = paramInt1;
-    this.m = paramInt2;
-    this.i = -1;
-    this.j = -1;
-    this.g = 5;
-    int i1 = this.a.ao;
-    int n = this.a.getChildCount();
-    int i2 = i1 + n - 1;
-    if (paramInt1 < i1) {
-      paramInt1 = i1 - paramInt1;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 40L);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetOverScroller.a(0, this.jdField_a_of_type_ComTencentWidgetAbsListView.getScrollY(), paramInt, paramInt, paramInt, paramInt))
+    {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = 6;
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.a(0);
+  }
+  
+  void c(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentWidgetOverScroller.a(0, this.jdField_a_of_type_ComTencentWidgetAbsListView.getScrollY(), 0, paramInt, 0, 0, -2147483648, 2147483647, 0, this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight());
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = 6;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
+  }
+  
+  @TargetApi(9)
+  void d(int paramInt)
+  {
+    OverScroller localOverScroller = this.jdField_a_of_type_ComTencentWidgetOverScroller;
+    int i;
+    if (paramInt > 0)
+    {
+      i = this.jdField_a_of_type_ComTencentWidgetAbsListView.ak;
+      localOverScroller.b(paramInt, 0, i);
+      i = this.jdField_a_of_type_ComTencentWidgetAbsListView.getOverScrollMode();
+      if ((i != 0) && ((i != 1) || (AbsListView.b(this.jdField_a_of_type_ComTencentWidgetAbsListView)))) {
+        break label136;
+      }
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = 6;
+      i = (int)this.jdField_a_of_type_ComTencentWidgetOverScroller.a();
+      if (AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView) != null)
+      {
+        if (paramInt <= 0) {
+          break label122;
+        }
+        AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView).onAbsorb(i);
+      }
     }
     for (;;)
     {
-      float f1 = paramInt1 / n;
-      this.k = ((int)(paramInt3 / f1));
-      this.j = -1;
-      this.a.post(this);
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
       return;
-      if (paramInt1 <= i2) {
-        break;
+      i = this.jdField_a_of_type_ComTencentWidgetAbsListView.al;
+      break;
+      label122:
+      AbsListView.b(this.jdField_a_of_type_ComTencentWidgetAbsListView).onAbsorb(i);
+      continue;
+      label136:
+      this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
+      if (this.jdField_a_of_type_ComTencentWidgetAbsListView.a != null) {
+        this.jdField_a_of_type_ComTencentWidgetAbsListView.a.a();
       }
-      paramInt1 -= i2;
+      if (AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView) != null) {
+        AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView).b();
+      }
     }
-    paramInt1 = this.a.getChildAt(paramInt1 - i1).getTop();
-    this.a.e(paramInt1 - paramInt2, paramInt3);
   }
   
-  public void b(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2, 400);
-  }
-  
+  @TargetApi(9)
   public void run()
   {
-    int n = 0;
-    if ((this.a.ab != 4) && (this.j != -1)) {}
-    do
+    int k = 1;
+    int i;
+    int j;
+    switch (this.jdField_a_of_type_ComTencentWidgetAbsListView.ab)
     {
+    case 5: 
+    default: 
+      a();
+    case 3: 
       do
       {
-        do
+        return;
+      } while (this.jdField_a_of_type_ComTencentWidgetOverScroller.a());
+    case 4: 
+      AdapterView.a("AbsListView.FlingRunable.onfling");
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentWidgetAbsListView.q) {
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.i();
+        }
+        if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.aA == 0) || (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() == 0))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                i2 = this.a.getHeight();
-                i1 = this.a.ao;
-                switch (this.g)
-                {
-                default: 
-                  return;
-                case 1: 
-                  n = this.a.getChildCount() - 1;
-                  i1 += n;
-                }
-              } while (n < 0);
-              if (i1 == this.j)
-              {
-                this.a.post(this);
-                return;
-              }
-              localView = this.a.getChildAt(n);
-              i3 = localView.getHeight();
-              i4 = localView.getTop();
-              if (i1 < this.a.aA - 1) {}
-              for (n = this.l;; n = this.a.c.bottom)
-              {
-                this.a.e(n + (i3 - (i2 - i4)), this.k);
-                this.j = i1;
-                if (i1 >= this.h) {
-                  break;
-                }
-                this.a.post(this);
-                return;
-              }
-              n = this.a.getChildCount();
-            } while ((i1 == this.i) || (n <= 1) || (n + i1 >= this.a.aA));
-            n = i1 + 1;
-            if (n == this.j)
-            {
-              this.a.post(this);
-              return;
-            }
-            localView = this.a.getChildAt(1);
-            i1 = localView.getHeight();
-            i2 = localView.getTop();
-            i3 = this.l;
-            if (n < this.i)
-            {
-              this.a.e(Math.max(0, i2 + i1 - i3), this.k);
-              this.j = n;
-              this.a.post(this);
-              return;
-            }
-          } while (i2 <= i3);
-          this.a.e(i2 - i3, this.k);
-          return;
-          if (i1 == this.j)
-          {
-            this.a.post(this);
-            return;
-          }
-          localView = this.a.getChildAt(0);
-        } while (localView == null);
-        i2 = localView.getTop();
-        if (i1 > 0) {}
-        for (n = this.l;; n = this.a.c.top)
-        {
-          this.a.e(i2 - n, this.k);
-          this.j = i1;
-          if (i1 <= this.h) {
-            break;
-          }
-          this.a.post(this);
+          a();
           return;
         }
-        i3 = this.a.getChildCount() - 2;
-      } while (i3 < 0);
-      n = i1 + i3;
-      if (n == this.j)
-      {
-        this.a.post(this);
-        return;
+        Object localObject1 = this.jdField_a_of_type_ComTencentWidgetOverScroller;
+        boolean bool = ((OverScroller)localObject1).b();
+        int m = ((OverScroller)localObject1).b();
+        i = this.jdField_a_of_type_Int - m;
+        if (i > 0)
+        {
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.W = this.jdField_a_of_type_ComTencentWidgetAbsListView.ao;
+          localObject1 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0);
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.X = ((View)localObject1).getTop();
+        }
+        for (i = Math.min(this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - AbsListView.f(this.jdField_a_of_type_ComTencentWidgetAbsListView) - AbsListView.g(this.jdField_a_of_type_ComTencentWidgetAbsListView) - 1, i);; i = Math.max(-(this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - AbsListView.h(this.jdField_a_of_type_ComTencentWidgetAbsListView) - AbsListView.i(this.jdField_a_of_type_ComTencentWidgetAbsListView) - 1), i))
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.W - this.jdField_a_of_type_ComTencentWidgetAbsListView.ao);
+          if (localObject1 == null) {
+            break label597;
+          }
+          j = ((View)localObject1).getTop();
+          if ((!this.jdField_a_of_type_ComTencentWidgetAbsListView.a(i, i)) || (i == 0)) {
+            break label602;
+          }
+          label254:
+          if (k == 0) {
+            break;
+          }
+          if (localObject1 != null)
+          {
+            j = -(i - (((View)localObject1).getTop() - j));
+            i = j;
+            if (bool)
+            {
+              d(j);
+              i = this.jdField_a_of_type_ComTencentWidgetOverScroller.b();
+            }
+            this.jdField_a_of_type_ComTencentWidgetAbsListView.overScrollBy(0, i, 0, this.jdField_a_of_type_ComTencentWidgetAbsListView.getScrollY(), 0, 0, 0, this.jdField_a_of_type_ComTencentWidgetAbsListView.aj, false);
+          }
+          return;
+          j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1;
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.W = (this.jdField_a_of_type_ComTencentWidgetAbsListView.ao + j);
+          localObject1 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(j);
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.X = ((View)localObject1).getTop();
+        }
+        if ((bool) && (k == 0))
+        {
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
+          this.jdField_a_of_type_Int = m;
+          this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
+        }
+        for (;;)
+        {
+          return;
+          a();
+        }
+        try
+        {
+          localOverScroller = this.jdField_a_of_type_ComTencentWidgetOverScroller;
+          if (localOverScroller.b())
+          {
+            j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getScrollY();
+            k = localOverScroller.b();
+            if (this.jdField_a_of_type_ComTencentWidgetAbsListView.overScrollBy(0, k - j, 0, j, 0, 0, 0, this.jdField_a_of_type_ComTencentWidgetAbsListView.aj, false)) {
+              if ((j <= 0) && (k > 0))
+              {
+                i = 1;
+                break label607;
+              }
+            }
+          }
+        }
+        finally {}
       }
-      View localView = this.a.getChildAt(i3);
-      i1 = localView.getHeight();
-      i3 = localView.getTop();
-      this.j = n;
-      if (n > this.i)
+      finally
       {
-        this.a.e(-(i2 - i3 - this.l), this.k);
-        this.a.post(this);
-        return;
+        AdapterView.A();
       }
-      n = i2 - this.l;
-      i1 = i3 + i1;
-    } while (n <= i1);
-    this.a.e(-(n - i1), this.k);
-    return;
-    if (this.j == i1)
-    {
-      this.a.post(this);
-      return;
     }
-    this.j = i1;
-    int i2 = this.a.getChildCount();
-    int i3 = this.h;
-    int i4 = i1 + i2 - 1;
-    if (i3 < i1) {
-      n = i1 - i3 + 1;
-    }
-    float f1;
     for (;;)
     {
-      f1 = Math.min(Math.abs(n / i2), 1.0F);
-      if (i3 >= i1) {
+      OverScroller localOverScroller;
+      label527:
+      k = (int)localOverScroller.a();
+      i = k;
+      if (j != 0) {
+        i = -k;
+      }
+      localOverScroller.a();
+      a(i);
+      return;
+      i = 0;
+      break label607;
+      label564:
+      j = 0;
+      label597:
+      label602:
+      label607:
+      do
+      {
+        b(0);
+        return;
+        this.jdField_a_of_type_ComTencentWidgetAbsListView.invalidate();
+        this.jdField_a_of_type_ComTencentWidgetAbsListView.post(this);
+        return;
+        a();
+        return;
+        j = 0;
         break;
-      }
-      this.a.e((int)(f1 * -this.a.getHeight()), this.k);
-      this.a.post(this);
-      return;
-      if (i3 > i4) {
-        n = i3 - i4;
-      }
+        k = 0;
+        break label254;
+        if ((j < 0) || (k >= 0)) {
+          break label564;
+        }
+        j = 1;
+        if (i != 0) {
+          break label527;
+        }
+      } while (j == 0);
     }
-    if (i3 > i4)
-    {
-      this.a.e((int)(f1 * this.a.getHeight()), this.k);
-      this.a.post(this);
-      return;
-    }
-    n = this.a.getChildAt(i3 - i1).getTop() - this.m;
-    int i1 = Math.abs((int)(this.k * (n / this.a.getHeight())));
-    this.a.e(n, i1);
   }
 }
 

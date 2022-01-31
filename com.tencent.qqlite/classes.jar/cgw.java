@@ -1,53 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
 public class cgw
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference a;
+  public cgw(ContactListView paramContactListView, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public cgw(ContactListView paramContactListView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramContactListView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ContactListView localContactListView = (ContactListView)this.a.get();
-    if (localContactListView == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      case 4: 
-      default: 
-        throw new RuntimeException("Unknown message: " + paramMessage.what);
-      case 1: 
-        localContactListView.l();
-        return;
-      case 2: 
-        if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h()))
-        {
-          localContactListView.g();
-          ContactListView.a(localContactListView, false);
-        }
-        localContactListView.j();
-        return;
-      case 3: 
-        localContactListView.j();
-      }
-    } while (NetworkUtil.e(localContactListView.getContext()));
-    localContactListView.i();
-    localContactListView.b("网络不可用，请稍候重试.");
-    return;
-    localContactListView.b = ((List)paramMessage.obj);
-    localContactListView.jdField_a_of_type_Cgr.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    ContactListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView, null);
   }
 }
 

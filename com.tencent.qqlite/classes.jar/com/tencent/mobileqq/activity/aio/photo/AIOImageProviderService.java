@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.aio.photo;
 
 import android.content.Intent;
 import android.os.Handler;
+import byr;
 import bys;
 import byt;
-import byu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -96,7 +96,7 @@ public class AIOImageProviderService
   
   public void a(long paramLong, int paramInt)
   {
-    ThreadManager.a().post(new byu(this, paramLong, paramInt));
+    ThreadManager.a().post(new byt(this, paramLong, paramInt));
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
@@ -124,7 +124,7 @@ public class AIOImageProviderService
         localPicReq.a(localMessageForPic.getPicDownloadInfo());
         localPicReq.a(localMessageForPic);
         String str = AbsDownloader.d(URLDrawableHelper.a(localMessageForPic, i, null).toString().toString());
-        localPicReq.a(new bys(this, paramLong, paramInt1, paramInt2, localMessageForPic.size, str));
+        localPicReq.a(new byr(this, paramLong, paramInt1, paramInt2, localMessageForPic.size, str));
         PicBusiManager.a(localPicReq, (QQAppInterface)localObject);
         return;
       }
@@ -147,7 +147,7 @@ public class AIOImageProviderService
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null) {
       return;
     }
-    ThreadManager.a().post(new byt(this));
+    ThreadManager.a().post(new bys(this));
   }
   
   public void b(long paramLong, int paramInt1, int paramInt2)

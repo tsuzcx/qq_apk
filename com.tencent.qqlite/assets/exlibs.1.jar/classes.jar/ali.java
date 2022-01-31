@@ -1,28 +1,29 @@
 import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageChangedListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ali
-  implements EmoticonPackageChangedListener
+  implements DragSortListView.DropListener
 {
   public ali(EmosmActivity paramEmosmActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage)
+  public void a_(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    if (paramInt1 != paramInt2)
     {
-      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.remove(localEmoticonPackage);
+      this.a.a.setNotifyOnChange(true);
+      this.a.a.insert(localEmoticonPackage, paramInt2);
+      ((EmojiManager)this.a.app.getManager(39)).a.a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.c = true;
+      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

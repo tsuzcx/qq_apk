@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import avs;
 import avt;
-import avu;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -27,8 +27,8 @@ public class MoveToGroupActivity
   public static final int a = 0;
   public static final String a = "PARAM_EXECUTE_IMMEDIATELY";
   public byte a;
-  private avu jdField_a_of_type_Avu = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new avt(this);
+  private avt jdField_a_of_type_Avt = null;
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new avs(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   public List a;
@@ -78,14 +78,14 @@ public class MoveToGroupActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903240);
-    setTitle(getString(2131363432));
+    setTitle(getString(2131363435));
     this.jdField_b_of_type_JavaLangString = getIntent().getExtras().getString("friendUin");
     this.jdField_b_of_type_Byte = getIntent().getExtras().getByte("mgid");
     this.jdField_a_of_type_Byte = this.jdField_b_of_type_Byte;
     f();
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131297316));
-    this.jdField_a_of_type_Avu = new avu(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Avu);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131297312));
+    this.jdField_a_of_type_Avt = new avt(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Avt);
     return true;
   }
   
@@ -100,8 +100,8 @@ public class MoveToGroupActivity
   {
     int i = ((Integer)paramView.getTag()).intValue();
     this.jdField_a_of_type_Byte = ((byte)((Groups)this.jdField_a_of_type_JavaUtilList.get(i)).group_id);
-    if (this.jdField_a_of_type_Avu != null) {
-      this.jdField_a_of_type_Avu.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Avt != null) {
+      this.jdField_a_of_type_Avt.notifyDataSetChanged();
     }
     if (getIntent().getBooleanExtra("PARAM_EXECUTE_IMMEDIATELY", true))
     {
@@ -115,12 +115,12 @@ public class MoveToGroupActivity
           c();
           return;
         }
-        QQToast.a(this.app.a(), getString(2131363448), 1).b(getTitleBarHeight());
+        QQToast.a(this.app.a(), getString(2131363449), 1).b(getTitleBarHeight());
         finish();
         return;
       }
       if (this.jdField_a_of_type_Byte == this.jdField_b_of_type_Byte) {
-        QQToast.a(this, getString(2131363418), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131363421), 0).b(getTitleBarHeight());
       }
     }
     e();

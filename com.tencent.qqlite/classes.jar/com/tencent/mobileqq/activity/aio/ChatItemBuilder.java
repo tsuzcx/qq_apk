@@ -8,8 +8,8 @@ public abstract interface ChatItemBuilder
   extends ContextMenuBuilder
 {
   public static final String a = ChatItemBuilder.class.getSimpleName();
-  public static final boolean a = true;
   public static final boolean b = true;
+  public static final boolean c = true;
   
   public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener);
 }

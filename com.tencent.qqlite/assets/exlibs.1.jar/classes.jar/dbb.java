@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class dbb
-  implements Runnable
+  implements ConditionSearchManager.IConfigListener
 {
-  public dbb(LocationSelectActivity paramLocationSelectActivity) {}
+  public dbb(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    LocationSelectActivity.a(this.a);
+    if ((paramInt == 2) && (paramBoolean)) {
+      this.a.d = true;
+    }
+    if ((this.a.h == 1) || (this.a.h == 2)) {
+      if (!paramBoolean) {
+        this.a.d();
+      }
+    }
+    while ((!this.a.c) || (paramInt != 2) || (!paramBoolean))
+    {
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
+      do
+      {
+        return;
+      } while (paramInt != 2);
+      this.a.d();
+      this.a.a(this.a.h);
+      return;
+    }
+    this.a.c();
   }
 }
 

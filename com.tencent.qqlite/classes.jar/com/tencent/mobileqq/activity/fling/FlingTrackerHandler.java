@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import ceg;
+import cem;
 import com.tencent.mobileqq.utils.OSBuilderVersion;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,7 +30,7 @@ public class FlingTrackerHandler
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ContentWrapView jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
   private TopLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ceg(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new cem(this);
   
   public FlingTrackerHandler(Activity paramActivity)
   {

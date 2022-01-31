@@ -18,25 +18,25 @@ public class GroupAreaWrapper$ActivityInfo
   
   protected void a(View paramView)
   {
-    ((NearbyTroops.ActivityAndTopicViewHolder)paramView.getTag()).a.setTextColor(paramView.getContext().getResources().getColor(2131427434));
-    paramView.findViewById(2131297684).setBackgroundResource(2130838280);
+    ((NearbyTroops.ActivityAndTopicViewHolder)paramView.getTag()).a.setTextColor(paramView.getContext().getResources().getColor(2131427431));
+    paramView.findViewById(2131297680).setBackgroundResource(2130838272);
   }
   
   protected void a(TextView paramTextView)
   {
     paramTextView.setText("" + this.b + "人报名");
     paramTextView.setCompoundDrawablePadding(8);
-    paramTextView.setCompoundDrawablesWithIntrinsicBounds(2130838334, 0, 0, 0);
+    paramTextView.setCompoundDrawablesWithIntrinsicBounds(2130838326, 0, 0, 0);
   }
   
   public void onClick(View paramView)
   {
     super.onClick(paramView);
     int i = paramView.getId();
-    if (i == 2131297678) {
+    if (i == 2131297674) {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_nearby", "", "ac", "Clk_list", 0, 0, "", "", "", "");
     }
-    while (i != 2131297682) {
+    while (i != 2131297678) {
       return;
     }
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_nearby", "", "ac", "Clk_detail", 0, 0, "", "", "", "");

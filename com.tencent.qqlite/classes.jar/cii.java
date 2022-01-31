@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class cii
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cii(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public cii(AlbumListAdapter paramAlbumListAdapter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    this.a.finish();
-    AlbumUtil.a(this.a, true, false);
+    LogTag.a();
+    AlbumListAdapter.a(this.a);
+    LogTag.a("PEAK", "queryAllAlbumList");
   }
 }
 

@@ -8,10 +8,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,11 +25,30 @@ public class TroopMemberApiPlugin
   
   private void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    this.mRuntime.a().getApplication();
-    QQToast.a(MobileQQ.getContext(), 2131364509, 0).a();
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          Object localObject = new JSONObject(paramString);
+          paramString = ((JSONObject)localObject).optString("gcode");
+          localObject = ((JSONObject)localObject).optString("id");
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString)))
+          {
+            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString, (String)localObject);
+            return;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(this.TAG, 2, "anonymousReport exception" + paramString.getMessage());
   }
   
   void a()

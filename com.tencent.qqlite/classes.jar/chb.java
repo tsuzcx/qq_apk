@@ -1,29 +1,20 @@
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+
 public class chb
 {
+  public int a;
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContact a;
   public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  
-  public chb(String paramString)
-  {
-    paramString = paramString.split(" ");
-    if (paramString.length == 1)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString[0];
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (paramString.length == 4)
-    {
-      this.b = paramString[0];
-      this.c = paramString[1];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = paramString[3];
-      return;
-    }
-    throw new RuntimeException("format error!");
-  }
+  public Button b;
+  public TextView b;
 }
 
 

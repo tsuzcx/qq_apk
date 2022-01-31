@@ -1,20 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class cce
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  cce(SearchContactsActivity paramSearchContactsActivity) {}
+  public cce(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ccf)))
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramInt != 3)
     {
-      paramView = (ccf)paramView;
-      this.a.a(paramView.b);
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (paramKeyEvent.getKeyCode() != 66) {}
+      }
     }
+    else
+    {
+      if (!TextUtils.isEmpty(this.a.a.getText().toString()))
+      {
+        this.a.b = false;
+        this.a.f();
+      }
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 

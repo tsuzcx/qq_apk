@@ -1,43 +1,101 @@
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.Setting;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class apr
-  extends FriendListObserver
+  extends TransProcessorHandler
 {
-  public apr(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
+  public apr(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
   
-  protected void a(boolean paramBoolean, Setting paramSetting)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
-    do
+    int i = 0;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    Object localObject = localFileMsg.c;
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (FriendProfileImagePortraits.a(this.a) != null)) {}
+    for (localObject = (FriendProfileImageModel.ProfileImageInfo)FriendProfileImagePortraits.a(this.a).get(HexUtil.b((String)localObject));; localObject = null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      if (localObject == null) {
+        label56:
+        return;
       }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
-    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.b.equals(paramString)) {
-      return;
+      if (Utils.a(localFileMsg.jdField_e_of_type_JavaLangString, ((FriendProfileImageModel.ProfileImageInfo)localObject).d)) {
+        switch (localFileMsg.B)
+        {
+        case 0: 
+        default: 
+        case 2001: 
+        case 2002: 
+          label128:
+          while (QLog.isColorLevel())
+          {
+            QLog.d("Q.profilecard.PhotoWall", 2, "transfer:" + ((FriendProfileImageModel.ProfileImageInfo)localObject).b + ", status:" + paramMessage.what + ", picScale = " + localFileMsg.ab);
+            return;
+            ((FriendProfileImageModel.ProfileImageInfo)localObject).i = 0;
+            ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 4;
+            this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+            continue;
+            if (localFileMsg.a <= 0L) {
+              break label476;
+            }
+          }
+        }
+      }
+      label476:
+      for (i = (int)(localFileMsg.jdField_e_of_type_Long * 100L / localFileMsg.a);; i = 0)
+      {
+        ((FriendProfileImageModel.ProfileImageInfo)localObject).i = i;
+        ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 4;
+        this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+        break label128;
+        ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 6;
+        ((FriendProfileImageModel.ProfileImageInfo)localObject).a = false;
+        this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+        break label128;
+        ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 5;
+        this.a.d((FriendProfileImageModel.ProfileImageInfo)localObject);
+        break label128;
+        if (!Utils.a(localFileMsg.jdField_e_of_type_JavaLangString, ((FriendProfileImageModel.ProfileImageInfo)localObject).c)) {
+          break label128;
+        }
+        switch (localFileMsg.B)
+        {
+        case 0: 
+        default: 
+          break;
+        case 2001: 
+          ((FriendProfileImageModel.ProfileImageInfo)localObject).i = 0;
+          ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 1;
+          this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+          break;
+        case 2002: 
+          if (localFileMsg.a > 0L) {
+            i = (int)(localFileMsg.jdField_e_of_type_Long * 100L / localFileMsg.a);
+          }
+          ((FriendProfileImageModel.ProfileImageInfo)localObject).i = i;
+          ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 1;
+          this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+          break;
+        case 2003: 
+          ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 3;
+          this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+          this.a.e((FriendProfileImageModel.ProfileImageInfo)localObject);
+          break;
+        case 2005: 
+          ((FriendProfileImageModel.ProfileImageInfo)localObject).h = 2;
+          this.a.c((FriendProfileImageModel.ProfileImageInfo)localObject);
+          break;
+          break label56;
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
-    }
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    if (paramBoolean)
-    {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
-      this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.h = 2;
-    this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
   }
 }
 

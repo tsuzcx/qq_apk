@@ -48,8 +48,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.widget.MotionViewSetter;
-import cpa;
-import cpb;
+import cpg;
+import cph;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -83,7 +83,7 @@ public class ForwardRecentListAdapter
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = null;
-  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener = new cpa(this);
+  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener = new cpg(this);
   private String jdField_b_of_type_JavaLangString;
   private HashMap jdField_b_of_type_JavaUtilHashMap;
   private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
@@ -120,22 +120,22 @@ public class ForwardRecentListAdapter
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     b();
     c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839387);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839381);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839392);
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838057));
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838055));
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838058));
-    this.i = paramContext.getResources().getDrawable(2130839095);
-    this.j = paramContext.getResources().getDrawable(2130839096);
-    this.h = paramContext.getResources().getDrawable(2130839094);
-    this.k = paramContext.getResources().getDrawable(2130839093);
-    this.l = paramContext.getResources().getDrawable(2130839097);
-    this.g = paramContext.getResources().getDrawable(2130838109);
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131363818);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131363819);
-    this.jdField_c_of_type_JavaLangString = paramContext.getString(2131363820);
-    this.jdField_d_of_type_JavaLangString = paramContext.getString(2131363821);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839352);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839346);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839357);
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838051));
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838049));
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramQQAppInterface.a(BitmapFactory.decodeResource(paramContext.getResources(), 2130838052));
+    this.i = paramContext.getResources().getDrawable(2130839063);
+    this.j = paramContext.getResources().getDrawable(2130839064);
+    this.h = paramContext.getResources().getDrawable(2130839062);
+    this.k = paramContext.getResources().getDrawable(2130839061);
+    this.l = paramContext.getResources().getDrawable(2130839065);
+    this.g = paramContext.getResources().getDrawable(2130838103);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131363809);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131363810);
+    this.jdField_c_of_type_JavaLangString = paramContext.getString(2131363811);
+    this.jdField_d_of_type_JavaLangString = paramContext.getString(2131363812);
     this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)paramQQAppInterface.a(2));
   }
   
@@ -320,7 +320,7 @@ public class ForwardRecentListAdapter
     {
       str = paramString2;
     }
-    return DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(str).setItems(2131230720, new cpb(this, paramString2));
+    return DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(str).setItems(2131230720, new cph(this, paramString2));
   }
   
   public void a()
@@ -416,7 +416,7 @@ public class ForwardRecentListAdapter
     }
     localView.setTag(-1, Integer.valueOf(paramInt));
     RecentUser localRecentUser = (RecentUser)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localView.setTag(2131296883, Integer.valueOf(paramInt));
+    localView.setTag(2131296879, Integer.valueOf(paramInt));
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
@@ -438,7 +438,7 @@ public class ForwardRecentListAdapter
     for (;;)
     {
       localView.setTag(2131296439, null);
-      localView.setTag(2131298496, Integer.valueOf(n));
+      localView.setTag(2131298451, Integer.valueOf(n));
       paramViewGroup = null;
       Object localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
@@ -468,7 +468,7 @@ public class ForwardRecentListAdapter
         }
         else
         {
-          localObject3 = (ImageView)localView.findViewById(2131298917);
+          localObject3 = (ImageView)localView.findViewById(2131298866);
           switch (n)
           {
           default: 
@@ -574,13 +574,13 @@ public class ForwardRecentListAdapter
               if (!String.valueOf(AppConstants.Y).equals(str)) {
                 break label1340;
               }
-              paramViewGroup = BaseApplicationImpl.getContext().getString(2131363525);
+              paramViewGroup = BaseApplicationImpl.getContext().getString(2131363526);
               paramView = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
               label960:
               if (!String.valueOf(AppConstants.Z).equals(str)) {
                 break label1404;
               }
-              paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131363238);
+              paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131363241);
               paramViewGroup = this.jdField_e_of_type_AndroidGraphicsDrawableDrawable;
               if (((QQMessageFacade.Message)localObject2).senderuin == null) {
                 break label1975;
@@ -671,7 +671,7 @@ public class ForwardRecentListAdapter
               if (!String.valueOf(AppConstants.aa).equals(str)) {
                 break label960;
               }
-              paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363523);
+              paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363524);
               paramView = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
               break label960;
               label1376:
@@ -681,7 +681,7 @@ public class ForwardRecentListAdapter
               label1404:
               if (AppConstants.W.equals(str))
               {
-                paramViewGroup = ((Activity)this.jdField_a_of_type_AndroidContentContext).getResources().getString(2131363537);
+                paramViewGroup = ((Activity)this.jdField_a_of_type_AndroidContentContext).getResources().getString(2131363532);
                 paramView = this.g;
               }
             }
@@ -692,7 +692,7 @@ public class ForwardRecentListAdapter
               if (localObject3 != null)
               {
                 ((ImageView)localObject3).setVisibility(0);
-                ((ImageView)localObject3).setImageResource(2130839394);
+                ((ImageView)localObject3).setImageResource(2130839359);
               }
               label1518:
               localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(str);
@@ -745,14 +745,14 @@ public class ForwardRecentListAdapter
             {
               if ((paramView == null) || (paramView.length() == 0))
               {
-                paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363221);
+                paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363224);
                 paramViewGroup = ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6)).a(str, true);
                 break label477;
                 paramView = paramView.discussionName;
                 continue;
                 if (String.valueOf(AppConstants.V).equals(str))
                 {
-                  paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363645);
+                  paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363639);
                   paramView = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
                   localObject1 = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
                   localObject1 = paramView;
@@ -762,7 +762,7 @@ public class ForwardRecentListAdapter
                   if (!String.valueOf(AppConstants.U).equals(str)) {
                     break;
                   }
-                  localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363624);
+                  localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363618);
                   paramViewGroup = this.jdField_f_of_type_AndroidGraphicsDrawableDrawable;
                   if (localObject2 != null)
                   {

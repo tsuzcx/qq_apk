@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<account-authenticator android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a09fb" android:icon="@drawable/icon" android:accountType="com.tencent.mobileqq.account" android:smallIcon="@drawable/icon" android:accountPreferences="@xml/APKTOOL_DUPLICATE_xml_0x7f060001"
+<account-authenticator android:label="@string/APKTOOL_DUPLICATE_string_0x7f0a09eb" android:icon="@drawable/icon" android:accountType="com.tencent.mobileqq.account" android:smallIcon="@drawable/icon" android:accountPreferences="@xml/APKTOOL_DUPLICATE_xml_0x7f060001"
   xmlns:android="http://schemas.android.com/apk/res/android" />

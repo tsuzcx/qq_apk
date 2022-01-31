@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public class axv
-  implements View.OnClickListener
+class axv
+  implements Runnable
 {
-  public axv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  axv(axu paramaxu) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    NearbyPeopleProfileActivity.l(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800482D", "0X800482D", 0, 0, "", "", "", "");
+    NearbyPeopleProfileActivity.m(this.a.a);
   }
 }
 

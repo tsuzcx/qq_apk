@@ -1,13 +1,44 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileViewBase.IControllProxyInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
 
-class dtu
-  implements Runnable
+public class dtu
+  implements PhotoFileViewBase.IControllProxyInterface
 {
-  dtu(dtt paramdtt, int paramInt, String paramString) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver;
   
-  public void run()
+  public dtu(PhotoFileView paramPhotoFileView, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Dtt.a.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dtv(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+  }
+  
+  public void a(IFileViewerAdapter paramIFileViewerAdapter)
+  {
+    if (1 == paramIFileViewerAdapter.c()) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramIFileViewerAdapter.d(), 5, paramIFileViewerAdapter.c(), paramIFileViewerAdapter);
+    }
+    while (2 != paramIFileViewerAdapter.c()) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramIFileViewerAdapter.e(), paramIFileViewerAdapter.a(), 5, paramIFileViewerAdapter);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    }
   }
 }
 

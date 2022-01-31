@@ -1,31 +1,41 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 public class cmh
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public cmh(SelectMemberActivity paramSelectMemberActivity, TranslateAnimation paramTranslateAnimation, AlphaAnimation paramAlphaAnimation, long paramLong) {}
   
-  public cmh(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+      SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).setVisibility(8);
+      new Thread(new cmi(this)).start();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.PerfTrace", 2, "selectmember search up anim time: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      }
     }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,24 +1,47 @@
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-class fet
+public class fet
   implements Runnable
 {
-  fet(fer paramfer, long paramLong1, long paramLong2, String paramString) {}
+  public fet(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Fer.a.c(this.jdField_a_of_type_JavaLangString, i);
-    if (localDownloadInfo == null) {
-      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
-    }
-    for (;;)
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
+    try
     {
-      this.jdField_a_of_type_Fer.a.a(2, localDownloadInfo);
-      return;
-      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.k);
+      DownloadInfo localDownloadInfo = this.a.b("com.tencent.qqlite");
+      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_h_of_type_Int == 0))
+      {
+        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
+        if (localDownloadInfo.f == 0) {
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.c);
+        }
+        for (String str = localTMAssistantDownloadTaskInfo.mSavePath; localTMAssistantDownloadTaskInfo == null; str = localDownloadInfo.k)
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.jdField_h_of_type_JavaLangString);
+        }
+        if ((localTMAssistantDownloadTaskInfo.mState == 4) && (AppUtil.b(str) <= CommonDataAdapter.a().a()))
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
     }
   }
 }

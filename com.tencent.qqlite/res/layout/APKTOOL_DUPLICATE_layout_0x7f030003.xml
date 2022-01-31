@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900c1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020675" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c0118"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0900c1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020655" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c00ea"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
         <ImageView android:focusable="false" android:clickable="false" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020012" />
-        <TextView android:textSize="15.0sp" android:textColor="@color/skin_blue" android:layout_gravity="center_vertical" android:id="@id/new_account" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a0468" android:singleLine="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0a0468" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_blue" android:layout_gravity="center_vertical" android:id="@id/new_account" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a046c" android:singleLine="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0a046c" />
     </LinearLayout>
 </RelativeLayout>

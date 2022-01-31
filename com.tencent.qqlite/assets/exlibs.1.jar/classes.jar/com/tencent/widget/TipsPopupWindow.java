@@ -18,9 +18,9 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import fir;
-import fis;
-import fit;
+import fiw;
+import fix;
+import fiy;
 
 public class TipsPopupWindow
   extends PopupWindow
@@ -34,7 +34,7 @@ public class TipsPopupWindow
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TipsLinearLayout jdField_a_of_type_ComTencentWidgetTipsLinearLayout;
-  private fit jdField_a_of_type_Fit;
+  private fiy jdField_a_of_type_Fiy;
   private boolean jdField_a_of_type_Boolean = false;
   public int b;
   private boolean b;
@@ -84,9 +84,9 @@ public class TipsPopupWindow
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903116, null));
-    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout = ((TipsLinearLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131296841));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131296843));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131296842));
+    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout = ((TipsLinearLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131296837));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131296839));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131296838));
     Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     localDisplay.getMetrics(new DisplayMetrics());
     int i = localDisplay.getWidth();
@@ -102,7 +102,7 @@ public class TipsPopupWindow
     }
     j = (int)paramContext.getResources().getDimension(2131492869);
     ((FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.getLayoutParams()).width = (i - j * 2);
-    paramContext = paramContext.getResources().getDrawable(2130839450);
+    paramContext = paramContext.getResources().getDrawable(2130839415);
     this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.setBackgroundDrawable(paramContext);
     this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.requestLayout();
     setWindowLayoutMode(-2, -2);
@@ -111,13 +111,13 @@ public class TipsPopupWindow
     setAnimationStyle(2131624079);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.setmTipsLayoutAnimListener(this);
-    this.jdField_a_of_type_Fit = new fit(this);
+    this.jdField_a_of_type_Fiy = new fiy(this);
   }
   
   private void d()
   {
     if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Fit, 1000L);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Fiy, 1000L);
     }
     while ((!this.jdField_a_of_type_Boolean) || (this.d)) {
       return;
@@ -135,7 +135,7 @@ public class TipsPopupWindow
       this.d = false;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Fit);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Fiy);
   }
   
   private void f()
@@ -170,7 +170,7 @@ public class TipsPopupWindow
     }
     showAtLocation(this.jdField_a_of_type_AndroidWidgetFrameLayout, 48, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new fir(this), paramInt);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new fiw(this), paramInt);
     }
   }
   
@@ -203,7 +203,7 @@ public class TipsPopupWindow
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new fis(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new fix(this));
   }
   
   public void b(int paramInt)
@@ -226,7 +226,7 @@ public class TipsPopupWindow
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Fit);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Fiy);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.d = false;
@@ -238,8 +238,8 @@ public class TipsPopupWindow
     if (QLog.isColorLevel()) {
       QLog.d("TipsPopupWindow", 2, "dismiss");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Fit);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Fit, 300L);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Fiy);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Fiy, 300L);
   }
   
   public void showAsDropDown(View paramView)

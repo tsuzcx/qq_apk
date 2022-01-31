@@ -1,101 +1,140 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.app.Notification;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RemoteViews;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
 import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.CommonFtnFile;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
 public class dqn
-  implements IWyFileSystem.IWyCallback
 {
-  public dqn(WeiYunLogicCenter paramWeiYunLogicCenter, FileManagerEntity paramFileManagerEntity, int paramInt) {}
+  float jdField_a_of_type_Float = 14.0F;
+  int jdField_a_of_type_Int = 0;
+  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+  Integer jdField_a_of_type_JavaLangInteger = null;
+  final String jdField_a_of_type_JavaLangString = "SearchForText";
+  float jdField_b_of_type_Float = 16.0F;
+  Integer jdField_b_of_type_JavaLangInteger = null;
+  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
   
-  public void a(IWyFileSystem.CommonFtnFile paramCommonFtnFile)
+  public dqn(UniformDownloadNfn paramUniformDownloadNfn, Context paramContext)
   {
-    paramCommonFtnFile = paramCommonFtnFile.guid;
-    if ((paramCommonFtnFile == null) || (paramCommonFtnFile.length() < 1))
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    a(paramContext, false);
+  }
+  
+  private boolean a(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onSucceed,But uuid is null!!!");
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForTitle".equals(localTextView.getText().toString()))
+        {
+          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_b_of_type_Float = localTextView.getTextSize();
+          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(false, 33, new Object[] { Integer.valueOf(13), "", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileWy2Of", 0L, "", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, "", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9001L, "onSucceed but guid null", 0L, 0L, 0L, "", "", 0, "onSucceed but guid null", null);
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  private boolean b(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForText".equals(localTextView.getText().toString()))
+        {
+          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_a_of_type_Float = localTextView.getTextSize();
+          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_a_of_type_JavaLangInteger;
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    }
+    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {}
+    while (this.jdField_a_of_type_Int > 3) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onSucceed, Uuid[" + paramCommonFtnFile + "]");
-    }
-    int i;
-    String str;
-    if (!FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath))
+    this.jdField_a_of_type_Int += 1;
+    try
     {
-      i = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      if (i != 0) {
-        break label465;
+      Notification localNotification = new Notification();
+      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
+      LinearLayout localLinearLayout = new LinearLayout(paramContext);
+      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, localLinearLayout);
+      if (!a(paramContext)) {
+        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTitleGroup failed");
       }
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a(paramCommonFtnFile, 3, true, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (str != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath = str;
+      if (!b(paramContext)) {
+        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTextGroup, failed");
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = paramCommonFtnFile;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType = 2;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend = true;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = paramCommonFtnFile;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-    FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 8, "");
-    if (this.jdField_a_of_type_Int == 3000) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, null);
-    }
-    for (;;)
-    {
-      paramCommonFtnFile = new FileManagerReporter.fileAssistantReportData();
-      paramCommonFtnFile.b = "send_file_suc";
-      paramCommonFtnFile.jdField_a_of_type_Int = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a(), paramCommonFtnFile);
+      localLinearLayout.removeAllViews();
       return;
-      label465:
-      if (i != 2) {
-        break;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 2);
-      if (str == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath = str;
-      break;
-      paramCommonFtnFile = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin.replace("+", "");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(paramCommonFtnFile, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
+    }
+    catch (Exception paramContext)
+    {
+      QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. extractColors, exception");
+      paramContext.printStackTrace();
+      return;
+    }
+    catch (NoSuchFieldError paramContext)
+    {
+      paramContext.printStackTrace();
     }
   }
   
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  public float b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, 1005);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(false, 33, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileWy2Of", 0L, "", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, "", "", paramWyErrorStatus.errorCode, paramWyErrorStatus.errorMsg, 0L, 0L, 0L, "", "", 0, paramWyErrorStatus.errorMsg, null);
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public Integer b()
+  {
+    return this.jdField_b_of_type_JavaLangInteger;
   }
 }
 

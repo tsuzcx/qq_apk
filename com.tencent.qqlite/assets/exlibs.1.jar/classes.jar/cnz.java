@@ -1,5 +1,5 @@
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cnz
   implements Runnable
@@ -8,7 +8,10 @@ public class cnz
   
   public void run()
   {
-    ShortVideoPlayActivity.a(this.a).removeView(ShortVideoPlayActivity.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
+    }
+    ShortVideoPlayActivity.b(this.a);
   }
 }
 

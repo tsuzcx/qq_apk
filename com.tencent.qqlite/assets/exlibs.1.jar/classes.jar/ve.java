@@ -1,63 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class ve
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ve(AccountManageActivity paramAccountManageActivity) {}
+  public ve(AccountManageActivity paramAccountManageActivity, boolean paramBoolean, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    View localView1 = AccountManageActivity.a(this.a, paramView);
-    View localView2 = AccountManageActivity.b(this.a, paramView);
-    if (this.a.a == null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a.a = paramView;
-      this.a.a(paramView, 2130968580, 2);
-      localObject = localView2.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
-      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (localView1 != null) {
-        ((ShaderAnimLayout)localView1).a();
+      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a();
+      if (localProxyManager != null)
+      {
+        localProxyManager.c();
+        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
+        DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a(), this.jdField_a_of_type_JavaLangString, false);
       }
-      paramView.setContentDescription(this.a.getString(2131364374));
-      return;
     }
-    if (this.a.a == paramView)
-    {
-      this.a.a(this.a.a, 2130968579, 3);
-      localObject = localView2.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
-      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (localView1 != null) {
-        ((ShaderAnimLayout)localView1).d();
-      }
-      this.a.a = null;
-      paramView.setContentDescription(this.a.getString(2131364375));
-      return;
-    }
-    this.a.a(this.a.a, 2130968579, 3);
-    Object localObject = AccountManageActivity.b(this.a, this.a.a);
-    ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
-    localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    this.a.a(paramView, 2130968580, 2);
-    localObject = localView2.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
-    localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    paramView.setContentDescription(this.a.getString(2131364374));
-    this.a.a.setContentDescription(this.a.getString(2131364375));
-    if (localView1 != null) {
-      ((ShaderAnimLayout)localView1).a();
-    }
-    localView1 = AccountManageActivity.a(this.a, this.a.a);
-    if (localView1 != null) {
-      ((ShaderAnimLayout)localView1).d();
-    }
-    this.a.a = paramView;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.runOnUiThread(new vf(this));
   }
 }
 

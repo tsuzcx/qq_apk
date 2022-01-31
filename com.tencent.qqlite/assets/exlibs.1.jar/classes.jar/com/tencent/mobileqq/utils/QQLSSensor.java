@@ -6,8 +6,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.Looper;
-import evk;
-import evl;
+import evp;
+import evq;
 
 public class QQLSSensor
 {
@@ -16,7 +16,7 @@ public class QQLSSensor
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   public SensorEventListener a;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new evl(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new evq(this, Looper.getMainLooper());
   private QQLSSensor.ProximitySensorChangeListener jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener;
   public boolean a;
   private boolean b;
@@ -24,7 +24,7 @@ public class QQLSSensor
   public QQLSSensor(Context paramContext, QQLSSensor.ProximitySensorChangeListener paramProximitySensorChangeListener)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new evk(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new evp(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener = paramProximitySensorChangeListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }

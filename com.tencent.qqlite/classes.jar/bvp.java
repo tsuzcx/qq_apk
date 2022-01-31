@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 class bvp
   implements Runnable
 {
-  bvp(bvn parambvn) {}
+  bvp(bvm parambvm, bvu parambvu) {}
   
   public void run()
   {
-    ((ChatActivity)this.a.a.b).a().H();
+    this.jdField_a_of_type_Bvu.a.setVisibility(8);
+    this.jdField_a_of_type_Bvu.f.setVisibility(8);
   }
 }
 

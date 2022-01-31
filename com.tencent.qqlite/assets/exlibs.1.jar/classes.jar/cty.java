@@ -1,24 +1,41 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.qphone.base.util.QLog;
 
 public class cty
+  extends FriendListObserver
 {
-  public static final int a = 1;
-  public static final int b = 2;
-  public static final int c = 3;
-  public static final int d = 4;
-  public static final int e = 5;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public int f;
+  public cty(MessageHandler paramMessageHandler) {}
   
-  public cty(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.f = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "onUpdateAnswerAddedFriend isSuccess = " + paramBoolean + ", uin = " + paramString + ", flag = " + paramInt);
+    }
+    if (paramBoolean) {
+      this.a.a.a().k();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "onUpdateFriendList isSuccess = " + paramBoolean1 + ", isComplete = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a.a().k();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3) && (!TextUtils.isEmpty(paramString))) {
+      this.a.a.a().k();
+    }
   }
 }
 

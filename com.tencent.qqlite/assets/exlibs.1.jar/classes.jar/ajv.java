@@ -1,10 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ajv
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements View.OnClickListener
 {
-  public TextView a;
+  public ajv(DoodleActivity paramDoodleActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    DialogUtil.a(this.a, this.a.getString(2131363453), 2131362794, 2131363454, new ajw(this), new ajx(this)).show();
+  }
 }
 
 

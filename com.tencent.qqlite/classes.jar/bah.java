@@ -3,48 +3,46 @@ import android.os.Message;
 import com.tencent.mobileqq.activity.OpenTroopChatLogic;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForMyEnterTroop;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bah
-  extends Handler
+  extends MessageObserver
 {
   public bah(OpenTroopChatLogic paramOpenTroopChatLogic) {}
   
-  void a(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a().a(paramMessageRecord, str);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a();
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1002: 
-      do
-      {
-        return;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      paramMessage = Message.obtain();
-      paramMessage.what = 1003;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMessage);
-      OpenTroopChatLogic.a(this.a);
-      return;
+    int k = 0;
+    int j = k;
+    int i;
+    if (paramArrayOfString != null) {
+      i = 0;
     }
-    paramMessage = (MessageForMyEnterTroop)MessageRecordFactory.a(-4004);
-    paramMessage.init(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, str, "", MessageCache.a(), -4004, 1, 0L);
-    paramMessage.iMemberCount = 0;
-    a(paramMessage, false, false, false);
-    OpenTroopChatLogic.a(this.a);
+    for (;;)
+    {
+      j = k;
+      if (i < paramArrayOfString.length)
+      {
+        if (paramArrayOfString[i].equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j != 0)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在重发消息");
+          paramArrayOfString = Message.obtain();
+          paramArrayOfString.what = 1003;
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayOfString);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

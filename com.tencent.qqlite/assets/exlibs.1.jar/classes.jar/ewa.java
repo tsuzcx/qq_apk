@@ -1,13 +1,17 @@
-import android.graphics.Point;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
 
-public final class ewa
-  implements ewc
+public class ewa
+  extends ThreadPoolExecutor
 {
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  private static int a = 0;
+  public static final String a = "InfiniteTaskThread_";
+  
+  public ewa(int paramInt, long paramLong)
   {
-    float f1 = paramPoint1.x;
-    float f2 = paramPoint1.y;
-    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new ewb(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
 }
 

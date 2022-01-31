@@ -1,6 +1,6 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 
 public class axr
@@ -11,7 +11,7 @@ public class axr
   public void onAnimationEnd(Animation paramAnimation)
   {
     NearbyPeopleProfileActivity.a(this.a).setVisibility(0);
-    NearbyPeopleProfileActivity.j(this.a);
+    NearbyPeopleProfileActivity.b(this.a);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

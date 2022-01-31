@@ -53,7 +53,7 @@ public abstract class FacePreloadBaseAdapter
   protected Bitmap a(int paramInt, String paramString)
   {
     if (AppConstants.am.equals(paramString)) {
-      return BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130839063);
+      return BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130839031);
     }
     return a(paramString, paramInt, (byte)0);
   }

@@ -1,22 +1,15 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aqn
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public aqn(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aqn(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.a()))) {}
-    while (this.a.a == null) {
-      return;
-    }
-    paramString = GesturePWDUnlockActivity.a(this.a, this.a.app.a(), true);
-    this.a.a.setImageBitmap(paramString);
+    this.a.finish();
   }
 }
 

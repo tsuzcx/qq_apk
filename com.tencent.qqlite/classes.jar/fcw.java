@@ -1,12 +1,26 @@
-import java.io.File;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.DownloadInterface;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class fcw
-  implements Comparator
+  implements Runnable
 {
-  public int a(File paramFile1, File paramFile2)
+  public fcw(DownloadInterface paramDownloadInterface, String paramString) {}
+  
+  public void run()
   {
-    return paramFile1.getName().compareTo(paramFile2.getName());
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "webview loadUrl>>> ", localException);
+    }
   }
 }
 

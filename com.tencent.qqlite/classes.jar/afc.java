@@ -1,63 +1,173 @@
+import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import java.util.Map;
+import com.tencent.mobileqq.activity.TroopNotificationCache;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.data.pb.CommunityForumLatestPost.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.oidb_0x8cf.oidb_0x8cf.AppBrief;
 
 public class afc
-  extends FriendListObserver
+  extends BizTroopObserver
 {
   public afc(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
-    try
+    if (((paramObject instanceof TroopNotificationCache)) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
     {
-      l = Long.valueOf(paramString).longValue();
-      if (l != 0L) {
-        this.a.a(l);
+      paramObject = (TroopNotificationCache)paramObject;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && (!TextUtils.isEmpty(paramObject.title))) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e = paramObject.title;
       }
-      return;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(12);
     }
-    catch (NumberFormatException paramString)
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, List paramList)
+  {
+    if (this.a.isFinishing()) {}
+    TroopInfoManager localTroopInfoManager;
+    do
     {
-      for (;;)
+      return;
+      localTroopInfoManager = (TroopInfoManager)this.a.app.getManager(33);
+      if ((!paramBoolean) || (paramList == null))
       {
-        paramString.printStackTrace();
-        long l = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "onGetTroopAppBriefList failed, troopUin : " + paramString + ",isSuccess : " + paramBoolean + ",appBriefList : " + paramList);
+        }
+        ChatSettingForTroop.c(this.a);
+        ChatSettingForTroop.d(this.a);
+        return;
+      }
+      if (paramList.size() != 0) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "onGetTroopAppBriefList, size of appBriefList is 0");
+    return;
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    if (localTroopInfoManager != null)
+    {
+      paramString = localTroopInfoManager.a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (oidb_0x8cf.AppBrief)paramList.next();
+        Long localLong = Long.valueOf(((oidb_0x8cf.AppBrief)localObject).opt_uint64_appid.get());
+        int j = ((oidb_0x8cf.AppBrief)localObject).opt_uint32_time_stamp.get();
+        localObject = localTroopInfoManager.a(localLong);
+        int i = -1;
+        if (localObject != null) {
+          i = ((TroopAppInfo)localObject).appUpdateTime;
+        }
+        if (i != j) {
+          localArrayList.add(localLong);
+        }
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, Map paramMap)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f == this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g) {
-      return;
-    }
-    if (paramBoolean)
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g;
-      return;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.chatopttroop", 2, "appIdsFromLocal : " + paramString);
+        QLog.d("Q.chatopttroop", 2, "appIdsToRefresh : " + localArrayList);
+      }
+      paramString = (BizTroopHandler)this.a.app.a(19);
+      if ((paramString != null) && (localArrayList.size() > 0))
+      {
+        paramString.a(localArrayList);
+        return;
+        paramString = paramList.iterator();
+      }
+      while (paramString.hasNext())
+      {
+        localArrayList.add(Long.valueOf(((oidb_0x8cf.AppBrief)paramString.next()).opt_uint64_appid.get()));
+        continue;
+        ChatSettingForTroop.c(this.a);
+        ChatSettingForTroop.d(this.a);
+        return;
+      }
+      paramString = null;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131363416, 1500);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f;
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while ((!paramBoolean) || (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c))) {
+    if (this.a.isFinishing()) {
       return;
     }
-    this.a.u();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.notifyDataSetChanged();
+    ChatSettingForTroop.c(this.a);
+    ChatSettingForTroop.d(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    label193:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (!paramBoolean) {
+            break label193;
+          }
+          try
+          {
+            localRspBody = new CommunityForumLatestPost.RspBody();
+            localRspBody.mergeFrom((byte[])paramObject);
+            if ((localRspBody.troop_type.has()) && (localRspBody.troop_type.get() == 0))
+            {
+              if (!QLog.isDevelopLevel()) {
+                continue;
+              }
+              QLog.d("Q.chatopttroop", 4, "no need to show community");
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramObject)
+          {
+            CommunityForumLatestPost.RspBody localRspBody;
+            if (QLog.isDevelopLevel())
+            {
+              QLog.e("Q.chatopttroop", 4, "invalid pb micro exception");
+              return;
+              paramObject = localRspBody.troop_type_name.get().toStringUtf8();
+              ChatSettingForTroop.a(this.a, localRspBody.latest_post.get().toStringUtf8());
+              if ((paramObject != null) && (ChatSettingForTroop.a(this.a) != null))
+              {
+                ChatSettingForTroop.b(this.a, localRspBody.request_params.get().toStringUtf8());
+                this.a.a(paramObject, ChatSettingForTroop.a(this.a));
+                if (QLog.isDevelopLevel())
+                {
+                  QLog.d("Q.chatopttroop", 4, "show community");
+                  return;
+                }
+              }
+            }
+          }
+          catch (Exception paramObject) {}
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.e("Q.chatopttroop", 4, "data from server is wrong");
+      return;
+    } while (!QLog.isDevelopLevel());
+    QLog.e("Q.chatopttroop", 4, "pull form server error");
   }
 }
 

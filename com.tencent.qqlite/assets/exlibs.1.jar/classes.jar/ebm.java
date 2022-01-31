@@ -1,39 +1,50 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.GridView;
-import android.widget.ImageView;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ebm
-  implements IIconListener
+  extends Handler
 {
   public ebm(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void handleMessage(Message paramMessage)
   {
-    if ((EditActivity.a(this.a).b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      EditActivity.a(this.a, false);
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      return;
-      if ((paramBitmap != null) && (paramInt2 == 201) && (EditActivity.a(this.a) != null))
+    }
+    do
+    {
+      do
       {
-        int i = EditActivity.a(this.a).getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
+        do
         {
-          View localView = EditActivity.a(this.a).getChildAt(paramInt2);
-          if (paramInt1 == ((Integer)localView.getTag()).intValue()) {
-            ((ImageView)localView.findViewById(2131298235)).setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), paramBitmap, false, false));
-          }
-          paramInt2 += 1;
+          return;
+          EditActivity.b(this.a, true);
+        } while (!EditActivity.a(this.a));
+        paramMessage = this.a.app.getPreferences().getString(this.a.app.a() + "sp_hot_status", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("get_hot_rich_status", 2, "old_hot_action_ids: " + paramMessage);
+        }
+      } while ((paramMessage == null) || (paramMessage.length() <= 0));
+      paramMessage = paramMessage.split(";");
+    } while ((paramMessage == null) || (paramMessage.length <= 0));
+    int i = 0;
+    while ((i < 6) && (i < paramMessage.length))
+    {
+      if ((paramMessage[i] != null) && (paramMessage[i].length() > 0))
+      {
+        String[] arrayOfString = paramMessage[i].split(":");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
+          EditActivity.a(this.a).add(Integer.valueOf(Integer.parseInt(arrayOfString[0])));
         }
       }
+      i += 1;
     }
+    EditActivity.b(this.a);
   }
 }
 

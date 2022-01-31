@@ -20,9 +20,9 @@ import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import com.tencent.util.VersionUtils;
-import fgt;
-import fhc;
-import fhd;
+import fgy;
+import fhh;
+import fhi;
 
 public class GridView
   extends AbsListView
@@ -258,7 +258,7 @@ public class GridView
   {
     if (!this.q)
     {
-      localView = this.jdField_a_of_type_Fhd.a(paramInt1);
+      localView = this.jdField_a_of_type_Fhi.a(paramInt1);
       if (localView != null)
       {
         a(localView, paramInt1, paramInt2, paramBoolean1, paramInt3, paramBoolean2, true, paramInt4);
@@ -1359,8 +1359,8 @@ public class GridView
   void d(int paramInt)
   {
     int k = this.ay;
-    if (this.jdField_a_of_type_Fhc != null) {
-      this.jdField_a_of_type_Fhc.a();
+    if (this.jdField_a_of_type_Fhh != null) {
+      this.jdField_a_of_type_Fhh.a();
     }
     f(paramInt);
     i();
@@ -1528,7 +1528,7 @@ public class GridView
   
   protected void i()
   {
-    fhd localfhd = null;
+    fhi localfhi = null;
     int n = -1;
     boolean bool1 = this.r;
     if (!bool1) {
@@ -1571,7 +1571,7 @@ public class GridView
           j = 0;
           localObject3 = localObject1;
           localObject1 = localObject4;
-          localObject4 = localfhd;
+          localObject4 = localfhi;
           bool2 = this.q;
           if (bool2) {
             p();
@@ -1600,24 +1600,24 @@ public class GridView
           localObject1 = null;
           localObject3 = null;
           j -= m;
-          localObject4 = localfhd;
+          localObject4 = localfhi;
           continue;
           e(this.ay);
           int i3 = this.ao;
-          localfhd = this.jdField_a_of_type_Fhd;
+          localfhi = this.jdField_a_of_type_Fhi;
           if (bool2)
           {
             m = 0;
             if (m < i2)
             {
-              localfhd.a(getChildAt(m), i3 + m);
+              localfhi.a(getChildAt(m), i3 + m);
               m += 1;
               continue;
             }
           }
           else
           {
-            localfhd.a(i2, i3);
+            localfhi.a(i2, i3);
           }
           detachAllViewsFromParent();
           switch (this.P)
@@ -1641,7 +1641,7 @@ public class GridView
             label436:
             e(j);
             localObject1 = a(k);
-            localfhd.c();
+            localfhi.c();
             if (localObject1 == null) {
               break label804;
             }
@@ -1748,13 +1748,13 @@ public class GridView
       localView = null;
       localObject3 = null;
       j = 0;
-      localObject4 = localfhd;
+      localObject4 = localfhi;
       break label180;
       break;
       localView = null;
       localObject3 = null;
       j = 0;
-      localObject4 = localfhd;
+      localObject4 = localfhi;
       break label180;
       break label404;
       label909:
@@ -1884,9 +1884,9 @@ public class GridView
           localView.measure(getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.jdField_f_of_type_Int, 1073741824), 0, localLayoutParams1.width), j);
           j = localView.getMeasuredHeight();
           m = j;
-          if (this.jdField_a_of_type_Fhd.a(localLayoutParams1.jdField_a_of_type_Int))
+          if (this.jdField_a_of_type_Fhi.a(localLayoutParams1.jdField_a_of_type_Int))
           {
-            this.jdField_a_of_type_Fhd.a(localView, -1);
+            this.jdField_a_of_type_Fhi.a(localView, -1);
             m = j;
           }
         }
@@ -1957,11 +1957,11 @@ public class GridView
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgt != null)) {
-      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Fgt);
+    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_Fgy != null)) {
+      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Fgy);
     }
     h();
-    this.jdField_a_of_type_Fhd.b();
+    this.jdField_a_of_type_Fhi.b();
     this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
     this.aD = -1;
     this.jdField_f_of_type_Long = -9223372036854775808L;
@@ -1973,9 +1973,9 @@ public class GridView
       this.aA = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
       this.q = true;
       w();
-      this.jdField_a_of_type_Fgt = new fgt(this);
-      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_Fgt);
-      this.jdField_a_of_type_Fhd.a(this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount());
+      this.jdField_a_of_type_Fgy = new fgy(this);
+      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_Fgy);
+      this.jdField_a_of_type_Fhi.a(this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount());
       if (this.jdField_i_of_type_Boolean)
       {
         j = a(this.aA - 1, false);
@@ -2039,8 +2039,8 @@ public class GridView
     for (;;)
     {
       this.P = 2;
-      if (this.jdField_a_of_type_Fhc != null) {
-        this.jdField_a_of_type_Fhc.a();
+      if (this.jdField_a_of_type_Fhh != null) {
+        this.jdField_a_of_type_Fhh.a();
       }
       requestLayout();
       return;

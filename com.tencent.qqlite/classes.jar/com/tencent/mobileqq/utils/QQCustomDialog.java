@@ -21,19 +21,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.kapalaiadapter.ReflecterHelper;
-import etv;
-import etw;
-import etx;
-import ety;
-import etz;
 import eua;
+import eub;
+import euc;
+import eud;
+import eue;
+import euf;
 
 public class QQCustomDialog
   extends Dialog
 {
   public static final int WHICH_NEGATIVE = 0;
   public static final int WHICH_POSITIVE = 1;
-  private BaseAdapter adapter = new etv(this);
+  private BaseAdapter adapter = new eua(this);
   LinearLayout bodyLayout;
   TextView countText;
   TextView dummyFirstPreviewImage;
@@ -125,7 +125,7 @@ public class QQCustomDialog
   
   public TextView getMessageTextView_Plain_Text()
   {
-    return (TextView)findViewById(2131296924);
+    return (TextView)findViewById(2131296920);
   }
   
   public Object getTag()
@@ -136,19 +136,19 @@ public class QQCustomDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131296915));
+    this.title = ((TextView)findViewById(2131296911));
     this.text = ((TextView)findViewById(2131296470));
-    this.countText = ((TextView)findViewById(2131296929));
-    this.dummyFirstPreviewImage = ((TextView)findViewById(2131296925));
-    this.previewImage = ((TextView)findViewById(2131296926));
-    this.framePreviewImage = ((ImageView)findViewById(2131296928));
-    this.framePreview = findViewById(2131296927);
-    this.lBtn = ((TextView)findViewById(2131296918));
-    this.rBtn = ((TextView)findViewById(2131296919));
+    this.countText = ((TextView)findViewById(2131296925));
+    this.dummyFirstPreviewImage = ((TextView)findViewById(2131296921));
+    this.previewImage = ((TextView)findViewById(2131296922));
+    this.framePreviewImage = ((ImageView)findViewById(2131296924));
+    this.framePreview = findViewById(2131296923);
+    this.lBtn = ((TextView)findViewById(2131296914));
+    this.rBtn = ((TextView)findViewById(2131296915));
     this.lBtn.setVisibility(8);
     this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131296831));
-    this.list = ((ListView)findViewById(2131296922));
+    this.bodyLayout = ((LinearLayout)findViewById(2131296827));
+    this.list = ((ListView)findViewById(2131296918));
   }
   
   public QQCustomDialog setFirstDummyPreviewImage(Drawable paramDrawable)
@@ -282,7 +282,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramInt);
     this.lBtn.setContentDescription(getContext().getString(paramInt));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new etz(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new eue(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -297,7 +297,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramString);
     this.lBtn.setContentDescription(paramString);
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new etw(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new eub(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -317,7 +317,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new eua(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new euf(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -332,7 +332,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new ety(this, paramOnClickListener, paramBoolean));
+    this.rBtn.setOnClickListener(new eud(this, paramOnClickListener, paramBoolean));
     setSeperatorState();
     return this;
   }
@@ -347,7 +347,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramString);
     this.rBtn.setContentDescription(paramString);
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new etx(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new euc(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -379,10 +379,10 @@ public class QQCustomDialog
       }
       if (paramInt == 2)
       {
-        this.framePreview.setBackgroundResource(2130838037);
+        this.framePreview.setBackgroundResource(2130838031);
         return this;
       }
-      this.framePreview.setBackgroundResource(2130838038);
+      this.framePreview.setBackgroundResource(2130838032);
       return this;
     }
     this.framePreview.setVisibility(8);

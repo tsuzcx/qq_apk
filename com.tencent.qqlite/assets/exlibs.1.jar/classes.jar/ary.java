@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ary
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public ary(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public ary(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.d();
-      return;
+    this.a.app.e(true);
+    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
+      LbsBaseActivity.c(this.a).dismiss();
     }
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

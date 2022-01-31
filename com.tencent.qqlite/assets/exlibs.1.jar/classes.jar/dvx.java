@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import java.util.TimerTask;
 
 public class dvx
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public dvx(SendBottomBar paramSendBottomBar) {}
+  public dvx(FileWebView paramFileWebView, Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (SendBottomBar.a(this.a) != null) {
-      SendBottomBar.a(this.a).a();
-    }
-    FileManagerUtil.a(SendBottomBar.a(this.a));
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 

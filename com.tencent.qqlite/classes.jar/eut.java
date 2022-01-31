@@ -1,20 +1,20 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import java.lang.ref.SoftReference;
-import java.util.TimerTask;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class eut
-  extends TimerTask
+  implements View.OnTouchListener
 {
-  public eut(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
+  public eut(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
-    if (localContext != null) {
-      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839035);
+    return false;
   }
 }
 

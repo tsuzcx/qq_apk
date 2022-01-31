@@ -1,39 +1,44 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class dqc
   implements Runnable
 {
-  public dqc(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public dqc(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (UniformDownloadMgr.a(this.a))
+    long l = 0L;
+    for (;;)
     {
-      Iterator localIterator = UniformDownloadMgr.a(this.a).values().iterator();
-      while (localIterator.hasNext())
+      try
       {
-        dqd localdqd2 = (dqd)localIterator.next();
-        if ((localdqd2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localdqd2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b()) && (2 == localdqd2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.g())) {
-          localArrayList.add(localdqd2);
-        }
+        localURL = new URL(this.jdField_a_of_type_JavaLangString);
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        URL localURL;
+        int i;
+        localMalformedURLException.printStackTrace();
+        continue;
+      }
+      try
+      {
+        i = localURL.openConnection().getContentLength();
+        l = i;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
       }
     }
-    ??? = localObject2.iterator();
-    while (((Iterator)???).hasNext())
-    {
-      dqd localdqd1 = (dqd)((Iterator)???).next();
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> pauseSlienceRuningGenDownloadOfOldApp, url:[" + localdqd1.jdField_a_of_type_JavaLangString + "]");
-      localdqd1.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.e();
-    }
-    UniformDownloadMgr.b(this.a);
+    this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", l);
+    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

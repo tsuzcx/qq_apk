@@ -12,7 +12,6 @@ import java.util.List;
 public class PublicAccountBrowser$ActionSheetItemAdapter
   extends ArrayAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private List jdField_a_of_type_JavaUtilList;
   
@@ -20,7 +19,6 @@ public class PublicAccountBrowser$ActionSheetItemAdapter
   {
     super(paramContext, paramInt, paramList);
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
@@ -40,8 +38,8 @@ public class PublicAccountBrowser$ActionSheetItemAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903192, null);
       paramViewGroup = new PublicAccountBrowser.ActionSheetItemViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297101));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297102));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297097));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131297098));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

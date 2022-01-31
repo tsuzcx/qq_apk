@@ -1,19 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
 public class bch
-  implements View.OnClickListener
+  extends Client.onRemoteRespObserver
 {
   public bch(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void onBindedToClient()
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
+    QQBrowserActivity.a(this.a);
+    WebIPCOperator.getInstance().unRegisterObserver(this);
+    QQBrowserActivity.a(this.a, null);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

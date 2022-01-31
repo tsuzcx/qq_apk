@@ -1,19 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class dxw
-  extends Handler
+  extends Thread
 {
-  public dxw(TroopInfoManager paramTroopInfoManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public dxw(RoamSearchDialog paramRoamSearchDialog, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    TroopInfoManager.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

@@ -1,31 +1,25 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 public class cua
-  extends Handler
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public cua(MessageHandler paramMessageHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public cua(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = paramMessage.getData();
-    } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
-    this.a.a.a().a(paramMessage.getString("update_unread_uin"), paramMessage.getInt("update_unread_type", 0), paramMessage.getLong("update_unread_time"));
-    MessageHandler.a(this.a, 2002, true, null);
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    localToServiceMsg.extraData.putLong("timeOut", this.c);
+    localToServiceMsg.extraData.putLong("startTime", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgSeq", this.b);
+    localToServiceMsg.setEnableFastResend(true);
+    localToServiceMsg.setTimeout(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
   }
 }
 

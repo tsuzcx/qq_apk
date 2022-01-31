@@ -1,26 +1,38 @@
-import com.tencent.biz.common.util.HttpUtil;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.common.util.ImageUtil;
 import com.tencent.biz.webviewplugin.Share;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 
 public class sp
-  extends Thread
+  extends Handler
 {
-  public sp(Share paramShare, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public sp(Share paramShare) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = new HashMap();
-    if (this.jdField_a_of_type_Boolean) {
-      ((HashMap)localObject).put("url", this.jdField_a_of_type_JavaLangString);
-    }
-    localObject = HttpUtil.a((HashMap)localObject);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = (String)((HashMap)localObject).get("url");; localObject = this.jdField_a_of_type_JavaLangString)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a.runOnUiThread(new sq(this, (String)localObject));
-      return;
     }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!(paramMessage.obj instanceof Bitmap)) || (this.jdField_a_of_type_Boolean));
+      paramMessage = ImageUtil.a((Bitmap)paramMessage.obj, (int)(34.0F * this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_Float));
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+    } while (!QLog.isColorLevel());
+    QLog.d(Share.b(), 2, "QQBrowserActivity VISIBLE -----------------------");
   }
 }
 

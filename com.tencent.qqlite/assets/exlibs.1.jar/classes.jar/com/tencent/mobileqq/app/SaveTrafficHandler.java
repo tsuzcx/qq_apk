@@ -9,9 +9,9 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cvr;
-import cvs;
-import cvt;
+import cvx;
+import cvy;
+import cvz;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -53,15 +53,15 @@ public class SaveTrafficHandler
   {
     super(paramQQAppInterface);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new cvr(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new cvx(this, Looper.getMainLooper());
     this.d = false;
   }
   
   private void a(int paramInt)
   {
-    cvt localcvt = (cvt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-    if (localcvt != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localcvt);
+    cvz localcvz = (cvz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    if (localcvz != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localcvz);
     }
   }
   
@@ -157,7 +157,7 @@ public class SaveTrafficHandler
   {
     if (this.d)
     {
-      localObject = (cvt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+      localObject = (cvz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
       if (localObject != null) {
         break label78;
       }
@@ -169,8 +169,8 @@ public class SaveTrafficHandler
     label78:
     if (paramInt2 == 0)
     {
-      new cvs(this, "SaveTrafficPrefThread", paramInt1).start();
-      ((cvt)localObject).b = true;
+      new cvy(this, "SaveTrafficPrefThread", paramInt1).start();
+      ((cvz)localObject).b = true;
     }
     int i;
     if (paramBoolean)

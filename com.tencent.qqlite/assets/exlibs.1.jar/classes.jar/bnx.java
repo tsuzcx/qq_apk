@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
 
-class bnx
-  implements DialogInterface.OnClickListener
+public class bnx
+  implements View.OnClickListener
 {
-  bnx(bnv parambnv, QQCustomDialog paramQQCustomDialog) {}
+  public bnx(TroopMemberCardActivity paramTroopMemberCardActivity, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

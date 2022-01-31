@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class axo
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public axo(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (NearbyPeopleProfileActivity.a(this.a) == 0)
-    {
-      NearbyPeopleProfileActivity.i(this.a);
-      return;
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004B38", "0X8004B38", 0, 0, "", "", "", "");
-    NearbyPeopleProfileActivity.h(this.a);
+    NearbyPeopleProfileActivity.a(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

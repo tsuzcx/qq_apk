@@ -1,12 +1,15 @@
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class cfe
-  extends ResourcePluginListener
+  extends GetRedPointExObserver
 {
   public cfe(MainAssistObserver paramMainAssistObserver) {}
   
-  public void b(byte paramByte) {}
+  protected void a()
+  {
+    this.a.g();
+  }
 }
 
 

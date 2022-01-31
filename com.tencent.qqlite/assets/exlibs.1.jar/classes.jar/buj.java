@@ -1,24 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.activity.aio.audiopanel.ViewPagerRadioGroup;
 
 public class buj
-  implements Runnable
+  extends RadioButton
 {
-  public buj(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
-  
-  public void run()
+  public buj(ViewPagerRadioGroup paramViewPagerRadioGroup, Context paramContext)
   {
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).b(this.jdField_a_of_type_JavaLangString);
-    ListenPanel localListenPanel = (ListenPanel)RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).findViewById(2131298154);
-    localListenPanel.setVisibility(0);
-    localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel));
-    localListenPanel.setJumpSource(ListenPanel.d);
-    RecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel).setStatus(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.setClickable(true);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

@@ -1,92 +1,56 @@
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseQfileActionBar;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class dsq
-  implements BaseActionBar.IActionBarClickEvent
+  implements View.OnClickListener
 {
-  public dsq(FileBrowserActivity paramFileBrowserActivity) {}
+  public dsq(BaseQfileActionBar paramBaseQfileActionBar) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (FileBrowserActivity.e(this.a))
+    Object localObject = null;
+    paramView = localObject;
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType)
     {
-      FileManagerReporter.a("0X8004BBE");
-      return;
+    default: 
+      paramView = localObject;
     }
-    FileManagerReporter.a("0X8004BD4");
-  }
-  
-  public void b()
-  {
-    if (FileBrowserActivity.e(this.a))
+    for (;;)
     {
-      FileManagerReporter.a("0X8004BC2");
+      if (paramView != null) {
+        FileManagerReporter.a(paramView);
+      }
+      this.a.d();
+      this.a.g();
       return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+      {
+        paramView = "0X8004BB7";
+      }
+      else
+      {
+        paramView = "0X8004BCD";
+        continue;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g())
+        {
+          paramView = "0X8004BB8";
+        }
+        else
+        {
+          paramView = "0X8004BCE";
+          continue;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.g()) {
+            paramView = "0X8004BB9";
+          } else {
+            paramView = "0X8004BCF";
+          }
+        }
+      }
     }
-    FileManagerReporter.a("0X8004BD8");
-  }
-  
-  public void c()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BBF");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD5");
-  }
-  
-  public void d()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC6");
-      return;
-    }
-    FileManagerReporter.a("0X8004BDC");
-  }
-  
-  public void e()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC3");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD9");
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC4");
-      return;
-    }
-    FileManagerReporter.a("0X8004BDA");
-  }
-  
-  public void h()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BBD");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD3");
-  }
-  
-  public void i()
-  {
-    if (FileBrowserActivity.e(this.a))
-    {
-      FileManagerReporter.a("0X8004BC1");
-      return;
-    }
-    FileManagerReporter.a("0X8004BD7");
   }
 }
 

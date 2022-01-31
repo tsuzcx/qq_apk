@@ -44,7 +44,7 @@ public class ContactSearchableDiscussion
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362942);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131362946);
     ChnToSpell.a(paramContext);
     if ((paramDiscussionInfo.discussionName != null) && (paramDiscussionInfo.discussionName.length() != 0))
     {

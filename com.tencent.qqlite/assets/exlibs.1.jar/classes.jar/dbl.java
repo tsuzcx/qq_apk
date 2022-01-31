@@ -1,20 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.conditionsearch.data.AddressData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class dbl
-  implements Runnable
+  extends LBSObserver
 {
-  public dbl(AddressData paramAddressData, String paramString) {}
+  public dbl(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    int i = 0;
-    while (i < 3)
+    if (paramLBSInfo != null) {}
+    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
     {
-      QQToast.a(BaseApplicationImpl.a, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.jdField_a_of_type_JavaLangString, 1).a();
-      i += 1;
+      this.a.a(paramBoolean, paramLBSInfo);
+      return;
     }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
   }
 }
 

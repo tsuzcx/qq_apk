@@ -1,108 +1,65 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.PerformanceReportUtils;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ReportHandler;
+import com.tencent.mobileqq.data.PushBannerReportLog;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.utils.JumpAction;
+import java.util.ArrayList;
 import java.util.HashMap;
-import mqq.manager.ServerConfigManager.ConfigType;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class ets
-  extends AsyncTask
+public class ets
+  extends Thread
 {
-  public ets(int paramInt, long paramLong, String paramString) {}
+  public ets(JumpAction paramJumpAction) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    int i = 1;
-    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.b());
-    if (QLog.isDevelopLevel()) {
-      QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch openStr ：" + paramVarArgs);
+    Object localObject1 = (String)JumpAction.a(this.a).get("version");
+    Object localObject3 = ReportHandler.a(this.a.ce, this.a.cf, (String)localObject1, "");
+    localObject1 = JumpAction.a(this.a).a().createEntityManager();
+    Object localObject4 = ((EntityManager)localObject1).a(PushBannerReportLog.class);
+    Object localObject2;
+    if ((localObject4 != null) && (((List)localObject4).size() >= 9))
+    {
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put(localObject3, Integer.valueOf(1));
+      localObject3 = ((List)localObject4).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (PushBannerReportLog)((Iterator)localObject3).next();
+        if (((HashMap)localObject2).containsKey(((PushBannerReportLog)localObject4).getLog())) {
+          ((HashMap)localObject2).put(((PushBannerReportLog)localObject4).getLog(), Integer.valueOf(((Integer)((HashMap)localObject2).get(((PushBannerReportLog)localObject4).getLog())).intValue() + 1));
+        } else {
+          ((HashMap)localObject2).put(((PushBannerReportLog)localObject4).getLog(), Integer.valueOf(1));
+        }
+      }
+      localObject3 = new ArrayList();
+      localObject4 = ((HashMap)localObject2).entrySet().iterator();
+      while (((Iterator)localObject4).hasNext())
+      {
+        Object localObject5 = (Map.Entry)((Iterator)localObject4).next();
+        String str = (String)((Map.Entry)localObject5).getKey();
+        localObject5 = (Integer)((Map.Entry)localObject5).getValue();
+        ((List)localObject3).add(str + "|" + localObject5);
+      }
+      localObject4 = JumpAction.a(this.a);
+      JumpAction.a(this.a);
+      ((ReportHandler)((QQAppInterface)localObject4).a(5)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
+      ((EntityManager)localObject1).a(PushBannerReportLog.class);
+      ((HashMap)localObject2).clear();
     }
-    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
     for (;;)
     {
-      return null;
-      try
-      {
-        HashMap localHashMap = new HashMap();
-        if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000))
-        {
-          if (QQAppInterface.c) {
-            i = 0;
-          }
-          localHashMap.put("actloginTypt", String.valueOf(i));
-          if (!QQAppInterface.c) {
-            QQAppInterface.c = true;
-          }
-        }
-        switch (this.jdField_a_of_type_Int)
-        {
-        }
-        long l1;
-        for (;;)
-        {
-          SharedPreferences localSharedPreferences = PerformanceReportUtils.a();
-          if ((paramVarArgs == null) || (this.jdField_a_of_type_Long <= 0L)) {
-            break;
-          }
-          long l2 = localSharedPreferences.getLong(paramVarArgs, 0L);
-          l1 = PerformanceReportUtils.a();
-          String str = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.l());
-          if (str != null) {
-            if (QLog.isDevelopLevel()) {
-              QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch  server time：" + str);
-            }
-          }
-          try
-          {
-            l1 = Long.valueOf(str).longValue();
-            l1 *= 1000L;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              l1 = PerformanceReportUtils.a();
-            }
-            paramVarArgs = null;
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2 + ",aioBusiness=" + PerformanceReportUtils.a());
-          }
-          if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
-            break;
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d(PerformanceReportUtils.c(), 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + PerformanceReportUtils.a());
-          }
-          localHashMap.put("aioBusiness", PerformanceReportUtils.a());
-          StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.m());
-          localSharedPreferences.edit().putLong(paramVarArgs, SystemClock.uptimeMillis()).commit();
-          return null;
-          paramVarArgs = PerformanceReportUtils.d();
-          continue;
-          paramVarArgs = PerformanceReportUtils.e();
-          continue;
-          paramVarArgs = PerformanceReportUtils.f();
-          continue;
-          paramVarArgs = PerformanceReportUtils.g();
-          continue;
-          paramVarArgs = PerformanceReportUtils.h();
-          continue;
-          paramVarArgs = PerformanceReportUtils.i();
-          continue;
-          paramVarArgs = PerformanceReportUtils.j();
-          continue;
-          paramVarArgs = PerformanceReportUtils.k();
-        }
-        return null;
-      }
-      catch (Exception paramVarArgs) {}
+      ((EntityManager)localObject1).a();
+      return;
+      localObject2 = new PushBannerReportLog();
+      ((PushBannerReportLog)localObject2).setLog((String)localObject3);
+      ((EntityManager)localObject1).a((Entity)localObject2);
     }
   }
 }

@@ -1,60 +1,21 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentDataListManager;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-public class agj
-  extends MessageObserver
+class agj
+  implements Runnable
 {
-  public agj(Conversation paramConversation) {}
+  agj(agh paramagh, boolean paramBoolean) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == 0) {
-      this.a.b(new agm(this));
+    Conversation.a(this.jdField_a_of_type_Agh.a, 800L);
+    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Agh.a);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      return;
     }
-  }
-  
-  protected void b()
-  {
-    TroopAssistantManager.a().c(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
-    }
-    this.a.a(0L);
-  }
-  
-  protected void c()
-  {
-    this.a.a(0L);
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetOfflineMsgFinished|isSuc = " + paramBoolean);
-    }
-    if (this.a.b != 1000L) {
-      this.a.b = 1000L;
-    }
-    this.a.b(new agk(this, paramBoolean));
-  }
-  
-  public void c(boolean paramBoolean, String paramString)
-  {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void d(boolean paramBoolean)
-  {
-    this.a.b(new agl(this, paramBoolean));
-  }
-  
-  protected void d(boolean paramBoolean, String paramString)
-  {
-    paramString = RecentDataListManager.a(paramString, -2147483648);
-    this.a.a(2, 9, paramString);
   }
 }
 

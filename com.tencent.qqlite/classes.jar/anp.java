@@ -1,40 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.ForwardOperations;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 public class anp
-  extends OpenIdObserver
+  implements View.OnClickListener
 {
   public anp(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onClick(View paramView)
   {
-    if ((this.a.isFinishing()) || (this.a.d)) {}
-    do
-    {
-      return;
-      ForwardRecentActivity.a(this.a).d();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.w)) {
-          this.a.a();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
-      }
-    } while ((!this.a.b) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362375));
+    int i = ForwardRecentActivity.a(this.a).k();
+    int j = ((Integer)paramView.getTag(-1)).intValue();
+    this.a.a(ForwardRecentActivity.a(this.a), paramView, Integer.valueOf(j + i).intValue(), paramView.getId());
   }
 }
 

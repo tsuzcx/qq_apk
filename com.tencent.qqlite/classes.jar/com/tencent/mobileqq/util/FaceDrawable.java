@@ -13,8 +13,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import erq;
-import err;
+import erv;
+import erw;
 
 public class FaceDrawable
   extends Drawable
@@ -40,8 +40,8 @@ public class FaceDrawable
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = null;
-  private erq jdField_a_of_type_Erq;
-  private err jdField_a_of_type_Err;
+  private erv jdField_a_of_type_Erv;
+  private erw jdField_a_of_type_Erw;
   private Drawable b = null;
   private Drawable c = null;
   private int j = 0;
@@ -70,8 +70,8 @@ public class FaceDrawable
       paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString1);
       if (paramInt1 == 101)
       {
-        this.jdField_a_of_type_Erq = new erq(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Erq);
+        this.jdField_a_of_type_Erv = new erv(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Erv);
       }
       if (paramString1 != null) {
         break label296;
@@ -250,10 +250,10 @@ public class FaceDrawable
     }
     if ((paramFaceInfo.jdField_a_of_type_Int == 1) || (paramFaceInfo.jdField_a_of_type_Int == 11) || (paramFaceInfo.jdField_a_of_type_Int == 4) || (paramFaceInfo.jdField_a_of_type_Int == 32))
     {
-      if (this.jdField_a_of_type_Err == null)
+      if (this.jdField_a_of_type_Erw == null)
       {
-        this.jdField_a_of_type_Err = new err(this, null);
-        paramQQAppInterface.a(this.jdField_a_of_type_Err);
+        this.jdField_a_of_type_Erw = new erw(this, null);
+        paramQQAppInterface.a(this.jdField_a_of_type_Erw);
       }
       paramQQAppInterface = (FriendListHandler)paramQQAppInterface.a(1);
       if (paramFaceInfo.jdField_a_of_type_Int == 1) {

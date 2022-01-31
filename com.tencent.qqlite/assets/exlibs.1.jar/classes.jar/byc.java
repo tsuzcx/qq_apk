@@ -1,50 +1,81 @@
-import android.media.ExifInterface;
-import android.os.AsyncTask;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qqfav.QfavBuilder;
+import cooperation.qqfav.QfavReport;
 import java.io.File;
-import java.io.IOException;
 
 public class byc
-  extends AsyncTask
+  implements ActionSheet.OnButtonClickListener
 {
-  public byc(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
+  public byc(AIOGalleryScene paramAIOGalleryScene, ActionSheet paramActionSheet, AIOImageInfo paramAIOImageInfo, File paramFile) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void a(View paramView, int paramInt)
   {
-    try
+    if (paramView != null)
     {
-      paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-      if (this.jdField_a_of_type_Int == 0) {
-        paramVarArgs.setAttribute("Orientation", String.valueOf(1));
+      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+      if (paramView == null) {
+        return;
       }
-      for (;;)
+      if (!TextUtils.isEmpty(paramView))
       {
-        paramVarArgs.saveAttributes();
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
-        paramVarArgs.c += 1;
-        break label138;
-        if (this.jdField_a_of_type_Int != 1) {
-          break;
+        if (!paramView.equals(AIOGalleryScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131363930))) {
+          break label159;
         }
-        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo);
+        if (!paramView.equals(AIOGalleryScene.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131363933))) {
+          break label285;
+        }
       }
     }
-    catch (IOException paramVarArgs)
+    for (;;)
     {
-      while (QLog.isColorLevel())
+      try
       {
-        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.d);
+        if (paramView != null) {
+          continue;
+        }
+        QfavBuilder.b(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()).a(AIOGalleryScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b);
+        QfavReport.a(null, 40, 3);
+      }
+      catch (RemoteException paramView)
+      {
+        label159:
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("AIOGalleryScene", 2, "", paramView);
+        QQToast.a(AIOGalleryScene.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getApplicationContext(), AIOGalleryScene.j(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131363407), 0).a();
+        continue;
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (!paramView.equals(AIOGalleryScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131363934))) {
         break;
-        if (this.jdField_a_of_type_Int == 2) {
-          paramVarArgs.setAttribute("Orientation", String.valueOf(3));
-        } else if (this.jdField_a_of_type_Int == 3) {
-          paramVarArgs.setAttribute("Orientation", String.valueOf(8));
-        }
+      }
+      AIOGalleryUtils.a(AIOGalleryScene.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+      break;
+      new QfavBuilder(paramView).a(AIOGalleryScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b);
+      continue;
+      label285:
+      if (paramView.equals(AIOGalleryScene.k(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131363935))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.q();
       }
     }
-    label138:
-    return null;
   }
 }
 

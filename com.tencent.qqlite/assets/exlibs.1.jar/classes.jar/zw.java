@@ -1,20 +1,21 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class zw
-  implements Runnable
+  implements ClickableColorSpanTextView.SpanClickListener
 {
   public zw(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if (this.a.f != null) {
-      this.a.f.setVisibility(8);
-    }
-    if (BaseChatPie.a(this.a) != null) {
-      BaseChatPie.a(this.a).setVisibility(8);
-    }
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

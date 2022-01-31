@@ -1,55 +1,17 @@
-import android.content.Context;
-import android.os.Environment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.BaseApplication;
 
 class aco
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aco(acn paramacn) {}
+  aco(acm paramacm, ChatBackgroundInfo paramChatBackgroundInfo) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!Environment.getExternalStorageState().equals("mounted"))
-    {
-      Toast.makeText(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.getBaseContext().getString(2131363510), 0).show();
-      return;
-    }
-    paramView = (ChatBackgroundInfo)((View)paramView.getParent()).getTag();
-    if (paramView.type.equals("1"))
-    {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.c() >= 1)
-      {
-        str = AppConstants.bb + paramView.id + ".png";
-        if (!NetworkUtil.e(BaseApplication.getContext()))
-        {
-          Toast.makeText(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.getBaseContext().getString(2131363373), 0).show();
-          return;
-        }
-        this.a.a.app.a().a(paramView.url, str);
-        return;
-      }
-      DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131362935)).setMessage(this.a.a.getString(2131364081)).setPositiveButton(this.a.a.getString(2131364308), new acq(this, paramView)).setNegativeButton(this.a.a.getString(2131362790), new acp(this)).show();
-      return;
-    }
-    String str = AppConstants.bb + paramView.id + ".png";
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      Toast.makeText(this.a.a.jdField_a_of_type_AndroidAppActivity, this.a.a.getBaseContext().getString(2131363373), 0).show();
-      return;
-    }
-    this.a.a.app.a().a(paramView.url, str);
+    this.jdField_a_of_type_Acm.a.a.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo = this.jdField_a_of_type_ComTencentMobileqqDataChatBackgroundInfo;
+    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Acm.a.a, "OPENVIP_DOWN", 3);
   }
 }
 

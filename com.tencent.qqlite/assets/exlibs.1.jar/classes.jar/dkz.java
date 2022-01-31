@@ -1,44 +1,61 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
-public class dkz
+class dkz
   implements Runnable
 {
-  public dkz(QfileLocalFilePicTabView paramQfileLocalFilePicTabView, Context paramContext) {}
+  dkz(dky paramdky, HashMap paramHashMap1, HashMap paramHashMap2) {}
   
   public void run()
   {
-    HashMap localHashMap = (HashMap)FileCategoryUtil.a(this.jdField_a_of_type_AndroidContentContext);
-    if (localHashMap == null) {
-      localHashMap = new HashMap();
-    }
-    for (;;)
+    this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject;
+    while (localIterator.hasNext())
     {
-      FileCategoryUtil.a(AppConstants.ay, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-      FileCategoryUtil.a(localHashMap);
-      if (localHashMap != null)
-      {
-        Iterator localIterator = localHashMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (String)localIterator.next();
-          if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
-          {
-            localObject = (List)localHashMap.get(localObject);
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.addAll((Collection)localObject);
-          }
-        }
+      localObject = (String)localIterator.next();
+      if (!this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的音乐")) {
+        this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的音乐", new ArrayList());
       }
-      return;
+      ((List)this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的音乐")).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
+      if (!this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_a_of_type_JavaUtilHashMap.get(localObject))) {
+        this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
+      }
     }
+    localIterator = this.b.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (String)localIterator.next();
+      if (!this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的视频")) {
+        this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的视频", new ArrayList());
+      }
+      ((List)this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的视频")).addAll((Collection)this.b.get(localObject));
+      if (!this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilArrayList.contains(this.b.get(localObject))) {
+        this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)this.b.get(localObject));
+      }
+    }
+    localIterator = this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (FileInfo)localIterator.next();
+      String str = ((FileInfo)localObject).a();
+      if ((str != null) && (str.length() != 0))
+      {
+        if (!this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
+          this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
+        }
+        ((List)this.jdField_a_of_type_Dky.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localObject);
+      }
+    }
+    this.jdField_a_of_type_Dky.a.i();
+    this.jdField_a_of_type_Dky.a.setSelect(0);
   }
 }
 

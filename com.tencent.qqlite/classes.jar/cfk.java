@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class cfk
-  implements View.OnClickListener
+  extends ResourcePluginListener
 {
-  public cfk(MessageSearchDialog paramMessageSearchDialog) {}
+  public cfk(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public void b(byte paramByte) {}
 }
 
 

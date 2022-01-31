@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
-public class bib
-  implements View.OnClickListener
+class bib
+  implements DialogInterface.OnKeyListener
 {
-  public bib(RegisterSendUpSms paramRegisterSendUpSms) {}
+  bib(bia parambia) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    RegisterSendUpSms.a(this.a, this.a.getString(2131363339));
-    RegisterSendUpSms.a(this.a);
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    {
+      RegisterSendUpSms.b(this.a.a);
+      return true;
+    }
+    return false;
   }
 }
 

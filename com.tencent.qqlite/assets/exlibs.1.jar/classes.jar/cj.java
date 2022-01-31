@@ -1,17 +1,27 @@
 import com.dataline.mpfile.LiteMpFileFileListActivity;
-import com.dataline.mpfile.MpfileDataCenter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.dataline.mpfile.MpfileFileListDownloader.MpFileHttpDownloadListener;
 
 public class cj
-  implements Runnable
+  implements MpfileFileListDownloader.MpFileHttpDownloadListener
 {
   public cj(LiteMpFileFileListActivity paramLiteMpFileFileListActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)((QQAppInterface)this.a.getAppRuntime()).a(8);
-    LiteMpFileFileListActivity.a(this.a, localDataLineHandler.a().a(false));
+    if (this.a.isFinishing()) {
+      return;
+    }
+    LiteMpFileFileListActivity.b(this.a, System.currentTimeMillis());
+    this.a.runOnUiThread(new ck(this));
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    LiteMpFileFileListActivity.b(this.a, System.currentTimeMillis());
+    LiteMpFileFileListActivity.b(this.a, paramString2);
   }
 }
 

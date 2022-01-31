@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import tj;
+import tf;
 
 public class BaseApplicationImpl
   extends MobileQQ
@@ -66,7 +66,7 @@ public class BaseApplicationImpl
   
   public BaseApplicationImpl()
   {
-    this.jdField_b_of_type_AndroidOsHandler = new tj(this);
+    this.jdField_b_of_type_AndroidOsHandler = new tf(this);
   }
   
   public static BaseApplicationImpl a()

@@ -1,14 +1,20 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
 
-class axn
-  implements Runnable
+public class axn
+  implements TextWatcher
 {
-  axn(axm paramaxm) {}
+  public axn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    NearbyPeopleProfileActivity.f(this.a.a);
+    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.a(this.a), 36);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

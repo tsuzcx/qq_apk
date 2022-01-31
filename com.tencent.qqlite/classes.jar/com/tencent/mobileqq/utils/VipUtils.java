@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import ewd;
+import ewi;
 import org.json.JSONObject;
 
 public class VipUtils
@@ -94,9 +94,9 @@ public class VipUtils
     return "0";
   }
   
-  public static void a(Activity paramActivity, ewd paramewd)
+  public static void a(Activity paramActivity, ewi paramewi)
   {
-    if ((paramewd == null) || (paramActivity == null) || (TextUtils.isEmpty(paramewd.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramewd.d)) || (TextUtils.isEmpty(paramewd.e)) || (TextUtils.isEmpty(paramewd.b)) || (TextUtils.isEmpty(paramewd.c)) || (paramewd.jdField_a_of_type_Int < 1)) {
+    if ((paramewi == null) || (paramActivity == null) || (TextUtils.isEmpty(paramewi.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramewi.d)) || (TextUtils.isEmpty(paramewi.e)) || (TextUtils.isEmpty(paramewi.b)) || (TextUtils.isEmpty(paramewi.c)) || (paramewi.jdField_a_of_type_Int < 1)) {
       return;
     }
     Object localObject = new JSONObject();
@@ -104,18 +104,18 @@ public class VipUtils
     {
       try
       {
-        ((JSONObject)localObject).put("serviceCode", paramewd.b);
-        ((JSONObject)localObject).put("aid", paramewd.d);
-        ((JSONObject)localObject).put("openMonth", String.valueOf(paramewd.jdField_a_of_type_Int));
-        ((JSONObject)localObject).put("offerId", paramewd.e);
-        ((JSONObject)localObject).put("serviceName", paramewd.c);
-        ((JSONObject)localObject).put("userId", paramewd.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject).put("serviceCode", paramewi.b);
+        ((JSONObject)localObject).put("aid", paramewi.d);
+        ((JSONObject)localObject).put("openMonth", String.valueOf(paramewi.jdField_a_of_type_Int));
+        ((JSONObject)localObject).put("offerId", paramewi.e);
+        ((JSONObject)localObject).put("serviceName", paramewi.c);
+        ((JSONObject)localObject).put("userId", paramewi.jdField_a_of_type_JavaLangString);
         localObject = ((JSONObject)localObject).toString();
-        if (paramewd.f == null) {
+        if (paramewi.f == null) {
           break label210;
         }
-        paramewd = paramewd.f;
-        PayBridgeActivity.a(paramActivity, (String)localObject, 4, paramewd);
+        paramewi = paramewi.f;
+        PayBridgeActivity.a(paramActivity, (String)localObject, 4, paramewi);
         return;
       }
       catch (Exception paramActivity)
@@ -128,7 +128,7 @@ public class VipUtils
       QLog.e("VipUtils", 2, "openRechargeDialog exception : " + paramActivity.getMessage());
       return;
       label210:
-      paramewd = "";
+      paramewi = "";
     }
   }
   
@@ -136,15 +136,15 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      ewd localewd = new ewd();
-      localewd.jdField_a_of_type_JavaLangString = paramBaseActivity.app.a();
-      localewd.d = paramString;
-      localewd.e = "1450000515";
-      localewd.b = "LTMCLUB";
-      localewd.c = paramBaseActivity.getString(2131364280);
-      localewd.jdField_a_of_type_Int = paramInt;
-      localewd.f = "vip";
-      a(paramBaseActivity, localewd);
+      ewi localewi = new ewi();
+      localewi.jdField_a_of_type_JavaLangString = paramBaseActivity.app.a();
+      localewi.d = paramString;
+      localewi.e = "1450000515";
+      localewi.b = "LTMCLUB";
+      localewi.c = paramBaseActivity.getString(2131364265);
+      localewi.jdField_a_of_type_Int = paramInt;
+      localewi.f = "vip";
+      a(paramBaseActivity, localewi);
     }
   }
   
@@ -187,15 +187,15 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      ewd localewd = new ewd();
-      localewd.jdField_a_of_type_JavaLangString = paramBaseActivity.app.a();
-      localewd.d = paramString;
-      localewd.e = "1450000516";
-      localewd.b = "CJCLUBT";
-      localewd.c = paramBaseActivity.getString(2131364327);
-      localewd.jdField_a_of_type_Int = paramInt;
-      localewd.f = "svip";
-      a(paramBaseActivity, localewd);
+      ewi localewi = new ewi();
+      localewi.jdField_a_of_type_JavaLangString = paramBaseActivity.app.a();
+      localewi.d = paramString;
+      localewi.e = "1450000516";
+      localewi.b = "CJCLUBT";
+      localewi.c = paramBaseActivity.getString(2131364312);
+      localewi.jdField_a_of_type_Int = paramInt;
+      localewi.f = "svip";
+      a(paramBaseActivity, localewi);
     }
   }
   

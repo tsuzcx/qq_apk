@@ -1,28 +1,52 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
-public final class fjv
-  implements View.OnClickListener
+public class fjv
+  extends AbstractCollection
 {
-  public fjv(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener) {}
+  public fjv(SoftHashMap paramSoftHashMap) {}
   
-  public void onClick(View paramView)
+  public void clear()
   {
-    IPluginManager.a(IPluginManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b));
-    IPluginManager.a().show();
-    IPluginManager.a().installPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, new fjw(this));
-    if ((IPluginManager.a() != null) && (IPluginManager.a().isShowing()))
-    {
-      IPluginManager.a().dismiss();
-      IPluginManager.a(null);
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsValue(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new fju(this.a);
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
     }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 

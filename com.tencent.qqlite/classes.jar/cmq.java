@@ -1,33 +1,57 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
+import java.util.List;
 
 public class cmq
-  implements View.OnClickListener
+  extends Handler
 {
   public cmq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
+    switch (paramMessage.what)
     {
-      QQToast.a(this.a, this.a.getString(2131362785), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-      return;
     }
-    if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("ShowJoinDiscTips", false)))
+    do
     {
-      DialogUtil.a(this.a, 230, this.a.getString(2131362935), this.a.getString(2131363217), 2131362790, 2131362788, new cmr(this), new cms(this)).show();
-      ReportController.b(this.a.app, "CliOper", "", "", "Multi_call", "Show_join_discuss_tips", 0, 0, "", "", "", "");
+      do
+      {
+        do
+        {
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+          return;
+        } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131363987));
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837985);
+        postDelayed(new cmr(this), 1500L);
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
+      String str = (String)paramMessage.obj;
+      paramMessage = str;
+      if (str == null) {
+        paramMessage = this.a.getString(2131363988);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837975);
+      postDelayed(new cms(this), 1500L);
       return;
-    }
-    this.a.d();
+      paramMessage = (List)paramMessage.obj;
+    } while ((paramMessage == null) || (SelectMemberActivity.a(this.a) == null));
+    SelectMemberActivity.a(this.a).a(paramMessage);
   }
 }
 

@@ -1,25 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import common.qzone.component.cache.common.SoftHashMap;
 
-public final class fjr
-  implements IPluginManager.OnPluginReadyListener
+public class fjr
+  extends fjq
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  fjr(SoftHashMap paramSoftHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      IPluginManager.b((Activity)paramContext, paramPluginParams);
-      return;
-    }
-    Toast.makeText(paramContext, "加载失败", 0).show();
+    super(paramSoftHashMap);
+  }
+  
+  public Object next()
+  {
+    return a().getKey();
   }
 }
 

@@ -1,16 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
 
-public class cne
-  extends FacePreloadBaseAdapter.ViewHolder
+public final class cne
+  implements Parcelable.Creator
 {
-  public int a;
-  public TextView a;
-  public TroopInfo a;
+  public SelectMemberActivity.ResultRecord a(Parcel paramParcel)
+  {
+    return new SelectMemberActivity.ResultRecord(paramParcel, null);
+  }
   
-  private cne(TroopListInnerFrame paramTroopListInnerFrame) {}
+  public SelectMemberActivity.ResultRecord[] a(int paramInt)
+  {
+    return new SelectMemberActivity.ResultRecord[paramInt];
+  }
 }
 
 

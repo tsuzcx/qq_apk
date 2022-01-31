@@ -1,29 +1,26 @@
 import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bma
-  extends TroopObserver
+  extends Handler
 {
   public bma(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(int paramInt, byte paramByte, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 6) {
-      if (paramByte == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
-    }
-    while ((paramInt != 2) || (paramByte != 0)) {
+    if (!this.a.app.isLogin()) {
       return;
     }
-    TroopAssistantManager.a().b(paramString, this.a.app);
-    this.a.d();
-  }
-  
-  protected void a(String paramString)
-  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.d();
+      return;
+    }
     this.a.d();
   }
 }

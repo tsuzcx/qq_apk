@@ -59,10 +59,10 @@ public class PluginIphoneTitleBarActivity
   
   private void b(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130839291));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130839259));
     if (this.l == null)
     {
-      this.b = ((ViewGroup)findViewById(2131296894));
+      this.b = ((ViewGroup)findViewById(2131296890));
       a(this.b);
       b();
       c();
@@ -73,8 +73,8 @@ public class PluginIphoneTitleBarActivity
   
   protected View a()
   {
-    this.n = ((TextView)findViewById(2131296905));
-    this.k = ((ImageView)findViewById(2131296906));
+    this.n = ((TextView)findViewById(2131296901));
+    this.k = ((ImageView)findViewById(2131296902));
     a(this.n);
     a(this.k);
     return this.n;
@@ -136,7 +136,7 @@ public class PluginIphoneTitleBarActivity
   
   protected View b()
   {
-    this.l = ((TextView)findViewById(2131296901));
+    this.l = ((TextView)findViewById(2131296897));
     this.l.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     a(this.l);
     return this.l;
@@ -145,7 +145,7 @@ public class PluginIphoneTitleBarActivity
   protected String b()
   {
     if ((this.m == null) || (this.m.getText() == null) || (this.m.getText().length() == 0)) {
-      return getString(2131363110);
+      return getString(2131363113);
     }
     return this.m.getText().toString();
   }
@@ -170,9 +170,24 @@ public class PluginIphoneTitleBarActivity
     }
   }
   
+  protected void b(boolean paramBoolean)
+  {
+    if ((this.o == null) || (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.n.setVisibility(8);
+      this.o.setVisibility(0);
+      return;
+    }
+    this.n.setVisibility(0);
+    this.o.setVisibility(8);
+  }
+  
   protected View c()
   {
-    this.m = ((TextView)findViewById(2131296895));
+    this.m = ((TextView)findViewById(2131296891));
     return this.m;
   }
   
@@ -206,26 +221,11 @@ public class PluginIphoneTitleBarActivity
     }
   }
   
-  protected void c(boolean paramBoolean)
-  {
-    if ((this.o == null) || (!this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.n.setVisibility(8);
-      this.o.setVisibility(0);
-      return;
-    }
-    this.n.setVisibility(0);
-    this.o.setVisibility(8);
-  }
-  
   protected boolean c()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837914);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837910);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.m.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.m.getCompoundDrawablePadding();
       this.m.setCompoundDrawablePadding(10);

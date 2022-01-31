@@ -1,15 +1,24 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-class apg
-  implements Runnable
+public class apg
+  implements AdapterView.OnItemSelectedListener
 {
-  apg(apf paramapf) {}
+  public apg(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.a.a != null) && (!this.a.a.isFinishing())) {
-      this.a.a.a(2131363445, 1);
+    if (paramView == null) {
+      return;
     }
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
 }
 

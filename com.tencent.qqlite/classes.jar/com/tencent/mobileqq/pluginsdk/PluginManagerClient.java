@@ -2,6 +2,7 @@ package com.tencent.mobileqq.pluginsdk;
 
 import android.os.IBinder;
 import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
 
 public class PluginManagerClient
 {
@@ -82,24 +83,34 @@ public class PluginManagerClient
   
   public boolean useful()
   {
-    boolean bool = false;
+    bool2 = false;
+    bool1 = bool2;
     if (this.mRemote != null) {}
-    try
+    for (;;)
     {
-      IBinder localIBinder = this.mRemote.asBinder();
-      if (localIBinder != null)
+      try
       {
-        bool = localIBinder.isBinderAlive();
-        if (bool)
-        {
-          bool = true;
-          return bool;
+        IBinder localIBinder = this.mRemote.asBinder();
+        if ((localIBinder == null) || (!localIBinder.isBinderAlive())) {
+          continue;
         }
+        bool1 = localIBinder.pingBinder();
+        if (!bool1) {
+          continue;
+        }
+        bool1 = true;
       }
-      return false;
+      catch (Exception localException)
+      {
+        bool1 = bool2;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("plugin_tag", 2, " useful: " + bool1);
+      }
+      return bool1;
+      bool1 = false;
     }
-    catch (Exception localException) {}
-    return false;
   }
 }
 

@@ -1,20 +1,14 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.biz.common.download.OfflineDownloader;
 import com.tencent.mobileqq.activity.QQMapActivity;
 import com.tencent.mobileqq.widget.SelectPicPopupWindow;
 
-public class bdn
-  implements PopupWindow.OnDismissListener
+class bdn
+  implements Runnable
 {
-  public bdn(QQMapActivity paramQQMapActivity) {}
+  bdn(bdm parambdm, int paramInt) {}
   
-  public void onDismiss()
+  public void run()
   {
-    if (this.a.r != null)
-    {
-      OfflineDownloader.d(this.a.r);
-      this.a.a.a(this.a.getString(2131362614));
-    }
+    this.jdField_a_of_type_Bdm.a.a.a(0, this.jdField_a_of_type_Int);
   }
 }
 

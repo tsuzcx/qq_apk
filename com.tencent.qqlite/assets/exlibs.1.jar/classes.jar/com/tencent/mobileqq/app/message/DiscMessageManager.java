@@ -23,7 +23,7 @@ public class DiscMessageManager
   public String a(String paramString1, String paramString2)
   {
     if (this.a.a().equals(paramString1)) {
-      return this.a.a().getResources().getString(2131363558);
+      return this.a.a().getResources().getString(2131363552);
     }
     FriendManager localFriendManager = (FriendManager)this.a.getManager(8);
     if (localFriendManager != null) {

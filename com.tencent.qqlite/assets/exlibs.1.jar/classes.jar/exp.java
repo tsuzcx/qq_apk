@@ -1,56 +1,31 @@
-import android.app.Activity;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.CharJumpAnimView;
 
 public class exp
-  implements ActionMode.Callback
+  implements Runnable
 {
-  exp(ContainerView.SelectableTextView paramSelectableTextView, ContainerView paramContainerView) {}
+  public exp(CharJumpAnimView paramCharJumpAnimView) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void run()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMenuItem.getItemId() == 2131298982)
+    if (CharJumpAnimView.a(this.a) == 0L)
     {
-      paramActionMode = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getContext();
-      bool1 = bool2;
-      if (paramActionMode != null)
-      {
-        bool1 = bool2;
-        if ((paramActionMode instanceof TextPreviewActivity))
-        {
-          paramMenuItem = (TextPreviewActivity)paramActionMode;
-          CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getText().subSequence(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionStart(), this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionEnd());
-          if (localCharSequence != null) {
-            TextPreviewActivity.a(localCharSequence.toString(), (Activity)paramActionMode, paramMenuItem.app, paramMenuItem.g, paramMenuItem.jdField_a_of_type_Int, TextPreviewActivity.jdField_a_of_type_Long, false);
-          }
-          ReportController.b(paramMenuItem.app, "CliOper", "", "", "0X8004065", "0X8004065", 0, 0, "", "", "", "");
-          bool1 = true;
-        }
+      if (CharJumpAnimView.a(this.a) != null) {
+        CharJumpAnimView.a(this.a).onAnimationStart(null);
       }
+      CharJumpAnimView.a(this.a, System.currentTimeMillis());
     }
-    return bool1;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode.getMenuInflater().inflate(2131755008, paramMenu);
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return true;
+    this.a.a(CharJumpAnimView.a(this.a), 3500L);
+    this.a.invalidate();
+    if (this.a.a())
+    {
+      this.a.postDelayed(this, 20L);
+      return;
+    }
+    if (CharJumpAnimView.a(this.a) != null) {
+      CharJumpAnimView.a(this.a).onAnimationEnd(null);
+    }
+    CharJumpAnimView.a(this.a, null);
   }
 }
 

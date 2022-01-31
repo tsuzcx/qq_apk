@@ -12,7 +12,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import eln;
+import els;
 
 public class TroopNewcomerNoticeActivity
   extends QQBrowserActivity
@@ -27,7 +27,7 @@ public class TroopNewcomerNoticeActivity
   protected boolean a()
   {
     this.a = true;
-    ThreadManager.b(new eln(this));
+    ThreadManager.b(new els(this));
     finish();
     return super.a();
   }
@@ -44,7 +44,7 @@ public class TroopNewcomerNoticeActivity
     }
     try
     {
-      ((View)findViewById(2131296894).getParent()).setVisibility(8);
+      ((View)findViewById(2131296890).getParent()).setVisibility(8);
       return true;
       super.finish();
       return false;
@@ -73,13 +73,13 @@ public class TroopNewcomerNoticeActivity
   {
     RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131296633);
     if (this.d == null) {
-      this.d = LayoutInflater.from(this).inflate(2130903378, null);
+      this.d = LayoutInflater.from(this).inflate(2130903377, null);
     }
-    this.d.findViewById(2131297896).setOnClickListener(this);
+    this.d.findViewById(2131297882).setOnClickListener(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     localRelativeLayout.addView(this.d, localLayoutParams);
-    ((RelativeLayout.LayoutParams)findViewById(2131296640).getLayoutParams()).addRule(2, 2131297895);
+    ((RelativeLayout.LayoutParams)findViewById(2131296640).getLayoutParams()).addRule(2, 2131297881);
   }
 }
 

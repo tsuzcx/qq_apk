@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.widget.UnderlinePageIndicator;
+import com.tencent.mobileqq.widget.SlideTabWidget;
+import com.tencent.mobileqq.widget.SlideTabWidget.OnTabSlideCompleteListener;
 
 public class ezo
   implements Runnable
 {
-  public ezo(UnderlinePageIndicator paramUnderlinePageIndicator) {}
+  public ezo(SlideTabWidget paramSlideTabWidget) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.post(this.a.jdField_a_of_type_JavaLangRunnable);
+    if (SlideTabWidget.a(this.a) != null) {
+      SlideTabWidget.a(this.a).a();
     }
   }
 }

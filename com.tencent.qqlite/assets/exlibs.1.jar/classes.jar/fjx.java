@@ -1,24 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qqfav.QfavUtil;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-class fjx
-  extends Handler
+public final class fjx
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  fjx(fjw paramfjw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fjx(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    super.handleMessage(paramMessage);
-    QfavUtil.a(this.a.a.a, 2131362663, 2);
-    paramMessage = BaseApplicationImpl.a.a();
-    QfavUtil.a(this.a.a.a, paramMessage.getAccount(), true);
+    IPluginManager.a(paramPluginManagerClient);
+    IPluginManager.a(null);
+    IPluginManager.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
   }
 }
 

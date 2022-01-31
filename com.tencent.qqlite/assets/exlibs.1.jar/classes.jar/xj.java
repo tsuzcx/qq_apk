@@ -1,42 +1,14 @@
 import android.app.Dialog;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class xj
-  extends Handler
+class xj
+  implements Runnable
 {
-  public xj(AddRequestActivity paramAddRequestActivity) {}
+  xj(xh paramxh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
-      {
-        AddRequestActivity.a(this.a).setText(this.a.getString(2131363384));
-        AddRequestActivity.a(this.a).setVisibility(8);
-        AddRequestActivity.a(this.a).setVisibility(0);
-        AddRequestActivity.a(this.a).setImageResource(2130837989);
-        postDelayed(new xk(this), 1500L);
-        return;
-      }
-      this.a.finish();
-      return;
-      this.a.a(true);
-    } while ((AddRequestActivity.a(this.a) == null) || (!AddRequestActivity.a(this.a).isShowing()));
-    AddRequestActivity.a(this.a).setText(this.a.getString(2131363385));
-    AddRequestActivity.a(this.a).setVisibility(8);
-    AddRequestActivity.a(this.a).setVisibility(0);
-    AddRequestActivity.a(this.a).setImageResource(2130837979);
-    postDelayed(new xl(this), 1500L);
+    AddRequestActivity.a(this.a.a).dismiss();
   }
 }
 

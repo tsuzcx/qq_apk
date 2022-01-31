@@ -10,7 +10,7 @@ public class btl
   public void run()
   {
     this.a.g();
-    QQToast.a(this.a.a, this.a.a.getString(2131362973), 0).a();
+    QQToast.a(this.a.a, this.a.a.getString(2131362978), 0).a();
   }
 }
 

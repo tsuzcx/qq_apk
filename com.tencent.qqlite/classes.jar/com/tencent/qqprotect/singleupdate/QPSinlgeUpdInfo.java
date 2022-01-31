@@ -1,12 +1,12 @@
 package com.tencent.qqprotect.singleupdate;
 
-import fgl;
+import fgq;
 
 public class QPSinlgeUpdInfo
 {
   public int a;
   public String a;
-  public fgl[] a;
+  public fgq[] a;
   public int b;
   public String b;
   public int c = 0;
@@ -17,7 +17,7 @@ public class QPSinlgeUpdInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfFgl = null;
+    this.jdField_a_of_type_ArrayOfFgq = null;
   }
   
   public void a(int paramInt)
@@ -26,11 +26,11 @@ public class QPSinlgeUpdInfo
     for (;;)
     {
       return;
-      this.jdField_a_of_type_ArrayOfFgl = new fgl[paramInt];
+      this.jdField_a_of_type_ArrayOfFgq = new fgq[paramInt];
       int i = 0;
       while (i < paramInt)
       {
-        this.jdField_a_of_type_ArrayOfFgl[i] = new fgl(this);
+        this.jdField_a_of_type_ArrayOfFgq[i] = new fgq(this);
         i += 1;
       }
     }

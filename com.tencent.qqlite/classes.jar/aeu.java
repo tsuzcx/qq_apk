@@ -1,36 +1,23 @@
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class aeu
   implements Runnable
 {
-  public aeu(ChatSettingForTroop paramChatSettingForTroop, int paramInt) {}
+  public aeu(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ArrayOfAndroidViewView[this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.ap];
-    if ((localView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentWidgetXListView != null))
-    {
-      Object localObject = new DisplayMetrics();
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.getWindow().getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-      int[] arrayOfInt = new int[2];
-      localView.getLocationOnScreen(arrayOfInt);
-      if (arrayOfInt[1] + localView.getMeasuredHeight() >= ((DisplayMetrics)localObject).heightPixels)
-      {
-        localView.getBottom();
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_Int);
-      }
-      localObject = new AlphaAnimation(0.1F, 1.0F);
-      ((AlphaAnimation)localObject).setDuration(1500L);
-      localView.startAnimation((Animation)localObject);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l == 0) {
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l = 0;
+    DBUtils.a(this.a.app.a(), "troop_notification_new", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.l);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
   }
 }
 

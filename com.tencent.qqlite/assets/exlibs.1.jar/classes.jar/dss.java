@@ -1,42 +1,21 @@
-import android.text.format.Time;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewBase;
 
 public class dss
-  implements SeekBar.OnSeekBarChangeListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public dss(LocalMusicFileView paramLocalMusicFileView) {}
+  public dss(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {}
-    while (!paramBoolean) {
-      return;
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    if ((paramFloat1 <= -this.jdField_a_of_type_Int) && (paramFloat2 < 0.5F) && (FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).a())) {
+      return FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity);
     }
-    LocalMusicFileView.a(this.a).a(paramInt);
-    paramSeekBar = new Time();
-    paramSeekBar.set(paramInt);
-    paramSeekBar = paramSeekBar.format("%M:%S");
-    LocalMusicFileView.a(this.a).setText(paramSeekBar);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {
-      return;
-    }
-    LocalMusicFileView.a(this.a).d();
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((LocalMusicFileView.a(this.a) == null) || (!LocalMusicFileView.a(this.a).b(LocalMusicFileView.a(this.a)))) {
-      return;
-    }
-    LocalMusicFileView.a(this.a).e();
+    return false;
   }
 }
 

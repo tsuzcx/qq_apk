@@ -1,52 +1,45 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class ckr
-  extends TouchDelegate
+  implements View.OnClickListener
 {
-  public ckr(DragTextView paramDragTextView, Rect paramRect, View paramView)
-  {
-    super(paramRect, paramView);
-  }
+  public ckr(RecentAdapter paramRecentAdapter) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "DragTouchDelegate.onTouchEvent:" + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY());
-    }
-    if (this.a.getVisibility() != 0) {
-      return false;
-    }
-    if (DragTextView.a(this.a) == -1) {
-      return false;
-    }
-    Object localObject = (ViewGroup)this.a.getParent();
-    if (localObject == null) {
-      return false;
-    }
-    Rect localRect = new Rect();
-    ((ViewGroup)localObject).getGlobalVisibleRect(localRect);
-    localObject = new Rect();
-    this.a.getGlobalVisibleRect((Rect)localObject);
-    if (DragTextView.a(this.a) == 2)
+    if (paramView == null) {}
+    Object localObject1;
+    RecentBaseData localRecentBaseData;
+    do
     {
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a) * 0.5D));
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a) * 1.5D));
-      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a) * 1.5D));
-    }
-    for (((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a) * 0.5D)); ((Rect)localObject).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()); ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom - localRect.top + DragTextView.a(this.a))))
-    {
-      return this.a.onTouchEvent(paramMotionEvent);
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - localRect.left - DragTextView.a(this.a)));
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - localRect.top - DragTextView.a(this.a)));
-      ((Rect)localObject).right = ((int)(((Rect)localObject).right - localRect.left + DragTextView.a(this.a)));
-    }
-    return false;
+      do
+      {
+        int i;
+        do
+        {
+          return;
+          i = paramView.getId();
+        } while ((i < 0) || (i >= this.a.getCount()));
+        localObject1 = this.a.getItem(i);
+      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
+      localRecentBaseData = (RecentBaseData)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if ((paramView instanceof TextView))
+      {
+        paramView = ((TextView)paramView).getText();
+        localObject1 = localObject2;
+        if (paramView != null) {
+          localObject1 = paramView.toString();
+        }
+      }
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    this.a.a(localRecentBaseData, (String)localObject1, "1");
   }
 }
 

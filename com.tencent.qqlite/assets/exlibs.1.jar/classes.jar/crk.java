@@ -1,16 +1,20 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.List;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
+import com.tencent.qphone.base.util.QLog;
+import wifiphoto.WifiPhotoDataCenter;
 
 public class crk
-  implements Runnable
+  extends Thread
 {
-  public crk(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList) {}
+  public crk(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileOperate0x211(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList);
+    DataLineHandler.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("wifiphoto", 2, "openWifiPhoto begin sendWifiPhotoBasicInfo");
+    }
+    DataLineHandler.b(this.a);
+    DataLineHandler.c(this.a);
   }
 }
 

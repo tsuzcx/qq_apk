@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import java.io.File;
+import java.util.Comparator;
 
-public class cxg
-  extends FriendListObserver
+class cxg
+  implements Comparator
 {
-  private cxg(GetGeneralSettings paramGetGeneralSettings) {}
+  cxg(cxe paramcxe) {}
   
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      GetGeneralSettings.a(this.a).d = 3;
-      this.a.a(7);
-      return;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    this.a.a(6);
+    return 0;
   }
 }
 

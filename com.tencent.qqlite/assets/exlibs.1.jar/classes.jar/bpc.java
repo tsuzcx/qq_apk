@@ -9,9 +9,8 @@ public class bpc
   
   public void onClick(View paramView)
   {
-    this.a.l();
-    paramView = this.a.p;
-    this.a.a("Clk_find", paramView, "");
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

@@ -1,20 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
 
 public class ccd
-  implements ViewFactory.GuideView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public ccd(SearchContactsActivity paramSearchContactsActivity) {}
+  public ccd(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsActivity", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    this.a.setResult(0);
+    if ((this.a instanceof SearchContactsActivity))
+    {
+      this.a.l();
+      return;
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.f();
+    SearchBaseActivity.a(this.a);
   }
 }
 

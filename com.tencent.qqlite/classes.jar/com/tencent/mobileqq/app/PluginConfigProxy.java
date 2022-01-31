@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Handler;
-import cul;
+import cur;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,7 +51,7 @@ public class PluginConfigProxy
         while (localIterator.hasNext())
         {
           ServerConfigObserver localServerConfigObserver = (ServerConfigObserver)localIterator.next();
-          ThreadManager.b().post(new cul(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
+          ThreadManager.b().post(new cur(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
         }
       }
     }

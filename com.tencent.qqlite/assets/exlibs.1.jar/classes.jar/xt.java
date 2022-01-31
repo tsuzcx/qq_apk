@@ -1,37 +1,15 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class xt
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public xt(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
+  public xt(AddRequestActivity paramAddRequestActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.a()).longValue();
-      AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity);
-    }
-    for (;;)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131363515, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
-    }
+    this.a.c();
   }
 }
 

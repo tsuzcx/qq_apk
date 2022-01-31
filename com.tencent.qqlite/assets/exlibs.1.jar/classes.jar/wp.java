@@ -1,11 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class wp
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public wp(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  
+  public void run()
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a = true;
+    AddFriendLogicActivity.a(this.a).hide();
+    AddFriendLogicActivity.a(this.a);
+  }
 }
 
 

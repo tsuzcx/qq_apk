@@ -1,10 +1,23 @@
-public abstract interface egt
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
+
+public class egt
+  extends MessageObserver
 {
-  public static final int a = 1;
-  public static final int b = 2;
-  public static final int c = 3;
-  public static final int d = 7;
-  public static final int e = 4;
+  public egt(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
+  
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  {
+    this.a.a("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
 }
 
 

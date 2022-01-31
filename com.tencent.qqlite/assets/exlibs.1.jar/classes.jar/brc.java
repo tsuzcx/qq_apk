@@ -9,7 +9,7 @@ public class brc
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
+    UpgradeActivity.a(this.a, true);
   }
 }
 

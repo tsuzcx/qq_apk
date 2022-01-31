@@ -1,25 +1,24 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.MenuPopupDialog;
+import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 public class cor
-  implements View.OnClickListener
+  implements Comparator
 {
-  public cor(BuddyListAdapter paramBuddyListAdapter) {}
+  public cor(AllBuddyListAdapter paramAllBuddyListAdapter) {}
   
-  public void onClick(View paramView)
+  private String a(Entity paramEntity)
   {
-    GroupManagerActivity.a((Activity)BuddyListAdapter.a(this.a));
-    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    if (BuddyListAdapter.a(this.a) != null)
-    {
-      BuddyListAdapter.a(this.a).dismiss();
-      BuddyListAdapter.a(this.a, null);
-    }
+    paramEntity = (Friends)paramEntity;
+    return ContactUtils.a(paramEntity) + paramEntity.uin;
+  }
+  
+  public int a(Entity paramEntity1, Entity paramEntity2)
+  {
+    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
   }
 }
 

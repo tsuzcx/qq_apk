@@ -4,7 +4,7 @@ import com.tencent.mobileqq.gesturelock.LockPatternView;
 class apz
   implements Runnable
 {
-  apz(apx paramapx) {}
+  apz(apv paramapv) {}
   
   public void run()
   {

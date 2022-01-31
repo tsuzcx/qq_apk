@@ -6,8 +6,8 @@ import android.content.IntentFilter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cvj;
-import cvk;
+import cvp;
+import cvq;
 import mqq.app.AccountNotMatchException;
 
 public class QQMapActivityProxy
@@ -23,9 +23,9 @@ public class QQMapActivityProxy
   private static final String i = "com.tencent.mobileqq.removeLbsObserver";
   private static final String j = "com.tencent.mobileqq.getStreetViewUrl";
   private static final String k = "com.tencent.mobileqq.unregisterReceiver";
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cvj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cvp(this);
   private Context jdField_a_of_type_AndroidContentContext;
-  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new cvk(this);
+  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new cvq(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QQMapActivityProxy(String paramString)

@@ -1,39 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StatFs;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.DoodleTextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
 
 public class akc
-  implements View.OnClickListener
+  extends Handler
 {
   public akc(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int j = 0;
-    int i = 0;
-    while (i < 6)
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
-      i += 1;
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.c();
+      return;
+    case 1: 
+      QQToast.a(this.a, "已达到上限，无法输入", 0).b(this.a.getTitleBarHeight());
+      return;
+    case 2: 
+      this.a.a.b();
+      sendEmptyMessageDelayed(2, 600L);
+      return;
     }
-    paramView.setBackgroundResource(2130839170);
-    int k = paramView.getId();
-    i = j;
-    for (;;)
+    if (Environment.getExternalStorageState().equals("mounted"))
     {
-      if (i < 6)
+      if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
       {
-        if (this.a.jdField_a_of_type_ArrayOfInt[i] == k) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintThickness(this.a.c[i]);
-        }
-      }
-      else {
+        this.a.c();
         return;
       }
-      i += 1;
+      Toast.makeText(this.a.app.a(), 2131363007, 0).show();
+      return;
     }
+    Toast.makeText(this.a.app.a(), 2131363006, 0).show();
   }
 }
 

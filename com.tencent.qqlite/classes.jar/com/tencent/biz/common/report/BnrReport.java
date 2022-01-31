@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import lq;
+import lm;
 import mqq.app.NewIntent;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -682,7 +682,7 @@ public class BnrReport
         localObject = a((String)localObject);
       } while (localObject == null);
       localNewIntent.putExtra("data", ((BnrReport.BNRConfigMsg)localObject).toByteArray());
-      localNewIntent.setObserver(new lq(paramAppInterface));
+      localNewIntent.setObserver(new lm(paramAppInterface));
       paramAppInterface.startServlet(localNewIntent);
     } while (!QLog.isDevelopLevel());
     QLog.d("BnrReport", 4, "sendGetReportConfig exit");

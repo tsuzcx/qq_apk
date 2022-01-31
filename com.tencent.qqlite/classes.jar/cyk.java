@@ -1,22 +1,15 @@
-import OnlinePushPack.MsgInfo;
-import android.util.Pair;
-import com.tencent.mobileqq.app.message.DiscMessageProcessor;
-import java.util.ArrayList;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class cyk
-  extends TimerTask
+  implements Comparator
 {
-  public cyk(DiscMessageProcessor paramDiscMessageProcessor, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
+  public cyk(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (this.jdField_a_of_type_Long != this.jdField_b_of_type_Long)
-    {
-      DiscMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_b_of_type_Long, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
-      return;
-    }
-    DiscMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Long, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e, false);
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

@@ -1,21 +1,16 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
 
 class cjh
-  implements FMDialogUtil.FMDialogInterface
 {
-  cjh(cjg paramcjg) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  ImageView b;
+  ImageView c;
   
-  public void a()
-  {
-    PhotoPreviewActivity.b(this.a.a);
-  }
-  
-  public void b()
-  {
-    this.a.a.b.setClickable(true);
-  }
+  private cjh(cjg paramcjg) {}
 }
 
 

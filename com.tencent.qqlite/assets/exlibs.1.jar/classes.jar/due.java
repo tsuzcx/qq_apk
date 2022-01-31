@@ -1,20 +1,14 @@
+import android.app.Activity;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.PreviewingOfflineFileViewBase;
 
 class due
   implements Runnable
 {
-  due(dud paramdud) {}
+  due(dud paramdud, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (PreviewingOfflineFileViewBase.a(this.a.a) >= 90)
-    {
-      PreviewingOfflineFileViewBase.a(this.a.a);
-      PreviewingOfflineFileViewBase.f(this.a.a);
-      return;
-    }
-    PreviewingOfflineFileViewBase.b(this.a.a);
-    PreviewingOfflineFileViewBase.g(this.a.a);
+    this.jdField_a_of_type_Dud.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, PreviewingOfflineFileViewBase.a(this.jdField_a_of_type_Dud.a).getString(2131363570));
   }
 }
 

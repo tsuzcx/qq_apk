@@ -1,33 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.app.Dialog;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
 
-class abr
-  implements ActionSheet.OnButtonClickListener
+public final class abr
+  implements Runnable
 {
-  abr(abq paramabq, ActionSheet paramActionSheet) {}
+  public abr(Dialog paramDialog) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if (this.a.isShowing())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ChatActivityFacade.b(this.jdField_a_of_type_Abq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Abq.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      if (!(this.jdField_a_of_type_Abq.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
-      {
-        this.jdField_a_of_type_Abq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Abq.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
-        return;
-      }
-      ((ChatActivity)this.jdField_a_of_type_Abq.jdField_a_of_type_AndroidContentContext).a().a(this.jdField_a_of_type_Abq.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      TextView localTextView = (TextView)this.a.findViewById(2131296580);
+      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.9F, 0.0F);
+      localAlphaAnimation.setDuration(500L);
+      localAlphaAnimation.setAnimationListener(new abs(this));
+      localTextView.startAnimation(localAlphaAnimation);
     }
   }
 }

@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.QQLSRecentManager;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class dxm
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public dxm(RoamLocalSearchBar paramRoamLocalSearchBar) {}
+  public dxm(QQLSRecentManager paramQQLSRecentManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog = null;
-    paramDialogInterface = AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidContentContext, 2130968605);
-    this.a.startAnimation(paramDialogInterface);
+    if ((!QQLSRecentManager.b) && (this.jdField_a_of_type_ComTencentMobileqqManagersQQLSRecentManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int)))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), QQLSActivity.class);
+      localIntent.addFlags(67108864);
+      localIntent.addFlags(268435456);
+      localIntent.addFlags(262144);
+      localIntent.addFlags(1073741824);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().startActivity(localIntent);
+    }
   }
 }
 

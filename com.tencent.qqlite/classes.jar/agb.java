@@ -1,23 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.view.View;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class agb
   extends ContactBindObserver
 {
-  public agb(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public agb(Contacts paramContacts) {}
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramBoolean1)
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
+    if (!((PhoneContactManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).e())
     {
-      int i = ContactSyncJumpActivity.a(this.a).b();
-      if ((i == 1) || (i == 2))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
+      if (this.a.b != null) {
+        this.a.b.setVisibility(8);
+      }
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
       }
     }
   }

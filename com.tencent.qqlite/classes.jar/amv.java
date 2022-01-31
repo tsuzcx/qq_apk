@@ -1,13 +1,46 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class amv
-  implements Runnable
+public class amv
+  implements BusinessObserver
 {
-  amv(amt paramamt) {}
+  public amv(ForwardOperations paramForwardOperations) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.a(1005, 1, null, 0, null);
+    if (!paramBoolean) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
+          {
+            try
+            {
+              this.a.a = localGetAppinfoResponse;
+              if (QLog.isColorLevel()) {
+                QLog.d("ForwardOperations", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.b));
+              }
+              return;
+            }
+            finally {}
+            if (!QLog.isColorLevel()) {}
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
+    QLog.d("ForwardOperations", 2, paramBundle.getMessage());
   }
 }
 

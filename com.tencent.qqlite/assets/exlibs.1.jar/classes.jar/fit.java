@@ -1,13 +1,19 @@
-import com.tencent.widget.TipsPopupWindow;
+import android.database.DataSetObserver;
+import com.tencent.widget.PagerBaseAdapterWrapper;
 
 public class fit
-  implements Runnable
+  extends DataSetObserver
 {
-  public fit(TipsPopupWindow paramTipsPopupWindow) {}
+  public fit(PagerBaseAdapterWrapper paramPagerBaseAdapterWrapper) {}
   
-  public void run()
+  public void onChanged()
   {
-    TipsPopupWindow.b(this.a);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.notifyDataSetInvalidated();
   }
 }
 

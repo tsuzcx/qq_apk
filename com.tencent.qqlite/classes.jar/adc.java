@@ -7,10 +7,7 @@ public class adc
 {
   public adc(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    new add(this).start();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

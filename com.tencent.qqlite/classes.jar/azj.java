@@ -1,6 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class azj
   implements DialogInterface.OnClickListener
@@ -9,7 +10,19 @@ public class azj
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    try
+    {
+      ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
+      this.a.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 

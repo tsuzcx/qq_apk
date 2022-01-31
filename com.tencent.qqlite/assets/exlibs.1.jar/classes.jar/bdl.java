@@ -1,30 +1,19 @@
-import android.view.View;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.common.download.OfflineDownloader;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.widget.SelectPicPopupWindow;
 
 public class bdl
-  implements ActionSheet.OnButtonClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public bdl(QQMapActivity paramQQMapActivity, ActionSheet paramActionSheet) {}
+  public bdl(QQMapActivity paramQQMapActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onDismiss()
   {
-    switch (paramInt)
+    if (this.a.r != null)
     {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.i();
+      OfflineDownloader.d(this.a.r);
+      this.a.a.a(this.a.getString(2131362609));
     }
   }
 }

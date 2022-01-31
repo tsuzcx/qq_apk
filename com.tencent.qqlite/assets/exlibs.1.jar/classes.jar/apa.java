@@ -1,15 +1,21 @@
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class apa
-  implements Runnable
+  implements Animation.AnimationListener
 {
   public apa(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.startAnimation(this.a.b);
+    this.a.c = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

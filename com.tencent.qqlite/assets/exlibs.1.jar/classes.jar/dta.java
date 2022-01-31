@@ -1,16 +1,22 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.SurfaceView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.SeekBar;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
-class dta
-  implements Runnable
+public class dta
+  implements View.OnClickListener
 {
-  dta(dsz paramdsz, Bitmap paramBitmap) {}
+  public dta(LocalMusicFileView paramLocalMusicFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.jdField_a_of_type_Dsz.a).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
+    FileManagerReporter.a("0X8004BE3");
+    if (LocalMusicFileView.a(this.a) != null) {
+      LocalMusicFileView.b(this.a).a(LocalMusicFileView.a(this.a));
+    }
+    LocalMusicFileView.a(this.a).setProgress(0);
   }
 }
 

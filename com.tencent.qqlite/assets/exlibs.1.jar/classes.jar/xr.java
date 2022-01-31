@@ -1,28 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class xr
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public xr(AddRequestActivity paramAddRequestActivity) {}
+  public xr(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
+    switch (paramInt)
     {
-      if (this.a.d != -1011) {
-        break label111;
-      }
-      this.a.a(AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ArrayOfByte, this.a.q, AddRequestActivity.b(this.a), AddRequestActivity.c(this.a), AddRequestActivity.b(this.a));
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    if (NetworkUtil.e(BaseApplication.getContext())) {
+      AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity);
     }
     for (;;)
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
-      return;
-      label111:
-      this.a.a(AddRequestActivity.a(this.a), AddRequestActivity.b(this.a), null, AddRequestActivity.c(this.a), AddRequestActivity.b(this.a));
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131363516, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
     }
   }
 }

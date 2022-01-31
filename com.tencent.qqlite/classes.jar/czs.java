@@ -1,22 +1,15 @@
-import android.content.ContentValues;
 import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class czs
   implements Runnable
 {
-  public czs(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
+  public czs(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    if (localDataLineMsgRecord != null)
-    {
-      localDataLineMsgRecord.issuc = false;
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("issuc", Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
   }
 }
 

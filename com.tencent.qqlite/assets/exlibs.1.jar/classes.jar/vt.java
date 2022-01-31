@@ -1,11 +1,10 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import mqq.app.AppRuntime.Status;
 
 public class vt
   implements View.OnClickListener
@@ -14,38 +13,14 @@ public class vt
   
   public void onClick(View paramView)
   {
-    AppRuntime.Status localStatus = AppRuntime.Status.online;
-    int i = paramView.getId();
-    if (i == 2131296459)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800403A", "0X800403A", 0, 0, "", "", "", "");
-      paramView = AppRuntime.Status.online;
+    ReportController.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
     }
-    for (;;)
-    {
-      this.a.a(paramView);
-      if (((paramView == AppRuntime.Status.online) || (paramView == AppRuntime.Status.invisiable) || (paramView == AppRuntime.Status.away)) && (paramView != this.a.app.getOnlineStatus()))
-      {
-        if (!NetworkUtil.e(this.a.getApplication())) {
-          break;
-        }
-        this.a.app.a(this.a.a(paramView), true);
-      }
-      return;
-      if (i == 2131296460)
-      {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X800403B", "0X800403B", 0, 0, "", "", "", "");
-        paramView = AppRuntime.Status.invisiable;
-      }
-      else
-      {
-        paramView = localStatus;
-        if (i == 2131296461) {
-          paramView = AppRuntime.Status.away;
-        }
-      }
+    this.a.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
-    Toast.makeText(this.a, 2131362931, 0).show();
   }
 }
 

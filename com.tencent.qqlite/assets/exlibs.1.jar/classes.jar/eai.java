@@ -1,14 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
-public final class eai
-  implements Runnable
+public class eai
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public eai(SharedPreferences paramSharedPreferences) {}
+  public eai(VipTagView paramVipTagView) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.a.edit().putBoolean("new_red_point_received", true).commit();
+    VipTagView.a(this.a, paramFloat1.floatValue());
+    this.a.invalidate();
   }
 }
 

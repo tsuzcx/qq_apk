@@ -1,25 +1,33 @@
 import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.open.agent.BindGroupActivity.ViewHolder;
 
-class far
+public class far
   implements Runnable
 {
-  far(faq paramfaq, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public far(BindGroupActivity paramBindGroupActivity, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
-    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
-    if (localBitmap != null)
+    int j = this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildCount();
+    int i = 0;
+    for (;;)
     {
-      Message localMessage = new Message();
-      localMessage.obj = localBitmap;
-      localMessage.what = 4;
-      this.jdField_a_of_type_Faq.a.a.sendMessage(localMessage);
+      if (i < j)
+      {
+        BindGroupActivity.ViewHolder localViewHolder = (BindGroupActivity.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildAt(i).getTag();
+        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_a_of_type_JavaLangString))) {
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
 }

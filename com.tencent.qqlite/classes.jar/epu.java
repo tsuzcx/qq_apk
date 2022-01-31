@@ -1,16 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class epu
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public epu(MediaControllerX paramMediaControllerX) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    MediaControllerX.b(this.a);
-    this.a.a(5000);
+    if ((paramMotionEvent.getAction() == 0) && (MediaControllerX.a(this.a))) {
+      this.a.c();
+    }
+    return false;
   }
 }
 

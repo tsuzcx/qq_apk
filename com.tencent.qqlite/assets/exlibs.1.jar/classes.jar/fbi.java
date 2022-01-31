@@ -1,41 +1,38 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
-import com.tencent.open.agent.FriendListOpenFrame.ViewHolder;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendDataManager;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class fbi
-  extends Handler
+  implements AdapterView.OnItemClickListener
 {
-  public fbi(FriendListOpenFrame paramFriendListOpenFrame) {}
+  public fbi(FriendChooser paramFriendChooser) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))) {
       return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.a.getChildCount();
-      int i = 0;
-      while (i < j)
-      {
-        FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.a.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (str.equals(localViewHolder.b)))
-        {
-          localViewHolder.c.setImageBitmap(paramMessage);
-          return;
-        }
-        i += 1;
-      }
     }
+    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.d)
+    {
+      this.a.j();
+      return;
+    }
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
+    this.a.g();
+    paramView.f();
+    this.a.b(true);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 

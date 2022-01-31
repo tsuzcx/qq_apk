@@ -1,20 +1,57 @@
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageWorker;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.mobileqq.util.ImageCache;
 
 public class erz
-  implements ImageCreator
+  extends CustomLruCache
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public erz(ImageWorker paramImageWorker, String paramString)
+  public erz(ImageCache paramImageCache, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramInt);
   }
   
-  public Drawable a()
+  protected int a(String paramString, Drawable paramDrawable)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a(this.jdField_a_of_type_JavaLangString);
+    int i = 0;
+    int j = 0;
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramString != null) {
+        j = paramString.getRowBytes() * paramString.getHeight();
+      }
+    }
+    int m;
+    int k;
+    do
+    {
+      do
+      {
+        return j;
+      } while (!(paramDrawable instanceof AnimationDrawable));
+      paramString = (AnimationDrawable)paramDrawable;
+      m = paramString.getNumberOfFrames();
+      k = 0;
+      j = i;
+    } while (k >= m);
+    paramDrawable = paramString.getFrame(k);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        j = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * j + i;
+      }
+    }
+    for (;;)
+    {
+      k += 1;
+      break;
+    }
   }
 }
 

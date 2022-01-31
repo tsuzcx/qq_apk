@@ -13,11 +13,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import awr;
+import aws;
 import awt;
 import awu;
-import awv;
-import aww;
-import axa;
+import awy;
 import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
 import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
 import com.tencent.mobileqq.app.ConditionSearchManager;
@@ -55,7 +55,6 @@ public class NearbyPeopleListFrame
   private static final String jdField_b_of_type_JavaLangString = "NearbyPeopleListFrame";
   public static final int c = 0;
   static final long jdField_c_of_type_Long = 1000L;
-  private static final String jdField_c_of_type_JavaLangString = "nearpeople_add_click";
   public static final int d = 1;
   public static final int e = 2;
   public static final int f = 4;
@@ -71,16 +70,16 @@ public class NearbyPeopleListFrame
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axa jdField_a_of_type_Axa = new axa(this, this);
+  private awy jdField_a_of_type_Awy = new awy(this, this);
   public NearPeopleFilterActivity.NearPeopleFilters a;
   public PeopleAroundAdapter a;
   private LBSHandler jdField_a_of_type_ComTencentMobileqqAppLBSHandler;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new aww(this);
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new awu(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new awu(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new aws(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public PullRefreshHeader a;
-  OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new awv(this);
+  OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new awt(this);
   public XListView a;
   public List a;
   public boolean a;
@@ -88,7 +87,6 @@ public class NearbyPeopleListFrame
   long[] jdField_a_of_type_ArrayOfLong;
   public long b;
   private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
   protected boolean b;
   private View jdField_c_of_type_AndroidViewView;
   private View d;
@@ -141,30 +139,30 @@ public class NearbyPeopleListFrame
   private void b(boolean paramBoolean)
   {
     int i2 = 8;
-    TextView localTextView = (TextView)this.d.findViewById(2131297315);
+    TextView localTextView = (TextView)this.d.findViewById(2131297311);
     ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131296558);
-    ImageView localImageView = (ImageView)this.d.findViewById(2131297314);
+    ImageView localImageView = (ImageView)this.d.findViewById(2131297310);
     if (paramBoolean)
     {
-      i1 = 2131364196;
+      i1 = 2131364181;
       localTextView.setText(i1);
       if (!paramBoolean) {
-        break label90;
+        break label89;
       }
       i1 = 0;
       label64:
       localProgressBar.setVisibility(i1);
       if (!paramBoolean) {
-        break label96;
+        break label95;
       }
     }
-    label90:
-    label96:
+    label89:
+    label95:
     for (int i1 = i2;; i1 = 0)
     {
       localImageView.setVisibility(i1);
       return;
-      i1 = 2131363193;
+      i1 = 2131363196;
       break;
       i1 = 8;
       break label64;
@@ -278,7 +276,7 @@ public class NearbyPeopleListFrame
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    return paramLayoutInflater.inflate(2130903514, null);
+    return paramLayoutInflater.inflate(2130903502, null);
   }
   
   short a()
@@ -310,18 +308,18 @@ public class NearbyPeopleListFrame
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131298239));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903351, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131298199));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903349, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeight(a().getDimensionPixelSize(2131492882));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837633);
-    this.e = a(2131297721);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837635);
+    this.e = a(2131297717);
     this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903515, null);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131298288);
-    this.d = this.jdField_b_of_type_AndroidViewView.findViewById(2131298289);
-    this.d.setOnClickListener(new awt(this));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.getLayoutInflater().inflate(2130903503, null);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131298248);
+    this.d = this.jdField_b_of_type_AndroidViewView.findViewById(2131298249);
+    this.d.setOnClickListener(new awr(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_b_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter = new PeopleAroundAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager, this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter);
@@ -454,45 +452,45 @@ public class NearbyPeopleListFrame
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 612	java/io/ObjectOutputStream
+    //   3: new 610	java/io/ObjectOutputStream
     //   6: dup
     //   7: aload_0
-    //   8: getfield 150	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity	Lcom/tencent/mobileqq/activity/NearbyActivity;
-    //   11: new 307	java/lang/StringBuilder
+    //   8: getfield 148	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity	Lcom/tencent/mobileqq/activity/NearbyActivity;
+    //   11: new 305	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 308	java/lang/StringBuilder:<init>	()V
+    //   15: invokespecial 306	java/lang/StringBuilder:<init>	()V
     //   18: aload_1
-    //   19: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: ldc_w 614
-    //   25: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   19: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: ldc_w 612
+    //   25: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   31: iconst_0
-    //   32: invokevirtual 618	com/tencent/mobileqq/activity/NearbyActivity:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   35: invokespecial 621	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   32: invokevirtual 616	com/tencent/mobileqq/activity/NearbyActivity:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   35: invokespecial 619	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   38: astore_3
     //   39: aload_3
     //   40: astore_1
     //   41: aload_3
     //   42: aload_2
-    //   43: invokevirtual 624	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   43: invokevirtual 622	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   46: aload_3
     //   47: astore_1
     //   48: aload_3
     //   49: aload_0
-    //   50: getfield 626	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_Long	J
-    //   53: invokevirtual 630	java/io/ObjectOutputStream:writeLong	(J)V
+    //   50: getfield 624	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_Long	J
+    //   53: invokevirtual 628	java/io/ObjectOutputStream:writeLong	(J)V
     //   56: aload_3
     //   57: astore_1
     //   58: aload_3
-    //   59: invokevirtual 633	java/io/ObjectOutputStream:flush	()V
+    //   59: invokevirtual 631	java/io/ObjectOutputStream:flush	()V
     //   62: aload_3
     //   63: ifnull +7 -> 70
     //   66: aload_3
-    //   67: invokevirtual 636	java/io/ObjectOutputStream:close	()V
+    //   67: invokevirtual 634	java/io/ObjectOutputStream:close	()V
     //   70: return
     //   71: astore_1
     //   72: aload_1
-    //   73: invokevirtual 639	java/io/IOException:printStackTrace	()V
+    //   73: invokevirtual 637	java/io/IOException:printStackTrace	()V
     //   76: return
     //   77: astore 4
     //   79: aconst_null
@@ -500,15 +498,15 @@ public class NearbyPeopleListFrame
     //   81: aload_2
     //   82: astore_1
     //   83: aload 4
-    //   85: invokevirtual 640	java/lang/Exception:printStackTrace	()V
+    //   85: invokevirtual 638	java/lang/Exception:printStackTrace	()V
     //   88: aload_2
     //   89: ifnull -19 -> 70
     //   92: aload_2
-    //   93: invokevirtual 636	java/io/ObjectOutputStream:close	()V
+    //   93: invokevirtual 634	java/io/ObjectOutputStream:close	()V
     //   96: return
     //   97: astore_1
     //   98: aload_1
-    //   99: invokevirtual 639	java/io/IOException:printStackTrace	()V
+    //   99: invokevirtual 637	java/io/IOException:printStackTrace	()V
     //   102: return
     //   103: astore_1
     //   104: aload 4
@@ -516,12 +514,12 @@ public class NearbyPeopleListFrame
     //   107: aload_2
     //   108: ifnull +7 -> 115
     //   111: aload_2
-    //   112: invokevirtual 636	java/io/ObjectOutputStream:close	()V
+    //   112: invokevirtual 634	java/io/ObjectOutputStream:close	()V
     //   115: aload_1
     //   116: athrow
     //   117: astore_2
     //   118: aload_2
-    //   119: invokevirtual 639	java/io/IOException:printStackTrace	()V
+    //   119: invokevirtual 637	java/io/IOException:printStackTrace	()V
     //   122: goto -7 -> 115
     //   125: astore_3
     //   126: aload_1
@@ -571,7 +569,7 @@ public class NearbyPeopleListFrame
   {
     if (paramBoolean1)
     {
-      this.jdField_a_of_type_Axa.removeMessages(0);
+      this.jdField_a_of_type_Awy.removeMessages(0);
       if (paramBoolean2) {
         o();
       }
@@ -584,8 +582,8 @@ public class NearbyPeopleListFrame
       continue;
       b(true);
     }
-    Message localMessage = this.jdField_a_of_type_Axa.obtainMessage(1, 1, 0);
-    this.jdField_a_of_type_Axa.sendMessageDelayed(localMessage, 1000L);
+    Message localMessage = this.jdField_a_of_type_Awy.obtainMessage(1, 1, 0);
+    this.jdField_a_of_type_Awy.sendMessageDelayed(localMessage, 1000L);
   }
   
   /* Error */
@@ -594,26 +592,26 @@ public class NearbyPeopleListFrame
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 665	java/io/ObjectInputStream
+    //   2: new 663	java/io/ObjectInputStream
     //   5: dup
     //   6: aload_0
-    //   7: getfield 150	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity	Lcom/tencent/mobileqq/activity/NearbyActivity;
-    //   10: new 307	java/lang/StringBuilder
+    //   7: getfield 148	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity	Lcom/tencent/mobileqq/activity/NearbyActivity;
+    //   10: new 305	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 308	java/lang/StringBuilder:<init>	()V
+    //   14: invokespecial 306	java/lang/StringBuilder:<init>	()V
     //   17: aload_1
-    //   18: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: ldc_w 614
-    //   24: invokevirtual 314	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokevirtual 669	com/tencent/mobileqq/activity/NearbyActivity:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   33: invokespecial 672	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   18: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: ldc_w 612
+    //   24: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokevirtual 667	com/tencent/mobileqq/activity/NearbyActivity:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   33: invokespecial 670	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   36: astore_2
     //   37: aload_2
     //   38: astore_1
     //   39: aload_2
-    //   40: invokevirtual 675	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   43: checkcast 508	java/util/List
+    //   40: invokevirtual 673	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   43: checkcast 506	java/util/List
     //   46: astore_3
     //   47: aload_3
     //   48: ifnull +31 -> 79
@@ -621,52 +619,52 @@ public class NearbyPeopleListFrame
     //   52: astore_1
     //   53: aload_0
     //   54: aload_3
-    //   55: putfield 92	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   55: putfield 90	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   58: aload_2
     //   59: astore_1
     //   60: aload_0
-    //   61: getfield 440	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter	Lcom/tencent/mobileqq/adapter/PeopleAroundAdapter;
+    //   61: getfield 438	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter	Lcom/tencent/mobileqq/adapter/PeopleAroundAdapter;
     //   64: aload_3
     //   65: iconst_0
-    //   66: invokevirtual 678	com/tencent/mobileqq/adapter/PeopleAroundAdapter:a	(Ljava/util/List;Z)V
+    //   66: invokevirtual 676	com/tencent/mobileqq/adapter/PeopleAroundAdapter:a	(Ljava/util/List;Z)V
     //   69: aload_2
     //   70: astore_1
     //   71: aload_0
     //   72: aload_2
-    //   73: invokevirtual 682	java/io/ObjectInputStream:readLong	()J
-    //   76: putfield 626	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_Long	J
+    //   73: invokevirtual 680	java/io/ObjectInputStream:readLong	()J
+    //   76: putfield 624	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_Long	J
     //   79: aload_2
     //   80: ifnull +7 -> 87
     //   83: aload_2
-    //   84: invokevirtual 683	java/io/ObjectInputStream:close	()V
+    //   84: invokevirtual 681	java/io/ObjectInputStream:close	()V
     //   87: aload_0
-    //   88: getfield 440	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter	Lcom/tencent/mobileqq/adapter/PeopleAroundAdapter;
-    //   91: invokevirtual 604	com/tencent/mobileqq/adapter/PeopleAroundAdapter:notifyDataSetChanged	()V
+    //   88: getfield 438	com/tencent/mobileqq/activity/NearbyPeopleListFrame:jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter	Lcom/tencent/mobileqq/adapter/PeopleAroundAdapter;
+    //   91: invokevirtual 602	com/tencent/mobileqq/adapter/PeopleAroundAdapter:notifyDataSetChanged	()V
     //   94: iconst_0
     //   95: ireturn
     //   96: astore_3
     //   97: aload_2
     //   98: astore_1
     //   99: aload_3
-    //   100: invokevirtual 640	java/lang/Exception:printStackTrace	()V
+    //   100: invokevirtual 638	java/lang/Exception:printStackTrace	()V
     //   103: goto -24 -> 79
     //   106: astore_3
     //   107: aload_2
     //   108: astore_1
     //   109: aload_3
-    //   110: invokevirtual 640	java/lang/Exception:printStackTrace	()V
+    //   110: invokevirtual 638	java/lang/Exception:printStackTrace	()V
     //   113: aload_2
     //   114: ifnull -27 -> 87
     //   117: aload_2
-    //   118: invokevirtual 683	java/io/ObjectInputStream:close	()V
+    //   118: invokevirtual 681	java/io/ObjectInputStream:close	()V
     //   121: goto -34 -> 87
     //   124: astore_1
     //   125: aload_1
-    //   126: invokevirtual 639	java/io/IOException:printStackTrace	()V
+    //   126: invokevirtual 637	java/io/IOException:printStackTrace	()V
     //   129: goto -42 -> 87
     //   132: astore_1
     //   133: aload_1
-    //   134: invokevirtual 639	java/io/IOException:printStackTrace	()V
+    //   134: invokevirtual 637	java/io/IOException:printStackTrace	()V
     //   137: goto -50 -> 87
     //   140: astore_1
     //   141: aload_3
@@ -674,12 +672,12 @@ public class NearbyPeopleListFrame
     //   143: aload_2
     //   144: ifnull +7 -> 151
     //   147: aload_2
-    //   148: invokevirtual 683	java/io/ObjectInputStream:close	()V
+    //   148: invokevirtual 681	java/io/ObjectInputStream:close	()V
     //   151: aload_1
     //   152: athrow
     //   153: astore_2
     //   154: aload_2
-    //   155: invokevirtual 639	java/io/IOException:printStackTrace	()V
+    //   155: invokevirtual 637	java/io/IOException:printStackTrace	()V
     //   158: goto -7 -> 151
     //   161: astore_3
     //   162: aload_1
@@ -758,12 +756,12 @@ public class NearbyPeopleListFrame
         this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
       }
     }
-    Object localObject = this.jdField_a_of_type_Axa;
+    Object localObject = this.jdField_a_of_type_Awy;
     if (paramBoolean1) {}
     for (int i1 = 0;; i1 = 1)
     {
-      localObject = ((axa)localObject).obtainMessage(0, i1, 0);
-      this.jdField_a_of_type_Axa.sendMessageDelayed((Message)localObject, 1000L);
+      localObject = ((awy)localObject).obtainMessage(0, i1, 0);
+      this.jdField_a_of_type_Awy.sendMessageDelayed((Message)localObject, 1000L);
       return;
     }
   }
@@ -818,7 +816,7 @@ public class NearbyPeopleListFrame
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      a(0, 2131364450);
+      a(0, 2131364432);
       return;
     }
     a(new Intent(a(), NearPeopleFilterActivity.class), r);

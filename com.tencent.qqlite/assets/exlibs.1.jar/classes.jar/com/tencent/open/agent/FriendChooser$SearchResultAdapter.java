@@ -11,8 +11,8 @@ import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
-import fbg;
-import fbh;
+import fbl;
+import fbm;
 import java.util.List;
 
 public class FriendChooser$SearchResultAdapter
@@ -42,17 +42,17 @@ public class FriendChooser$SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903642, paramViewGroup, false);
-      paramViewGroup = new fbh();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297015));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296879));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131298817));
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903626, paramViewGroup, false);
+      paramViewGroup = new fbm();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131297011));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131298766));
       paramView.setTag(paramViewGroup);
     }
     while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       return paramView;
-      paramViewGroup = (fbh)paramView.getTag();
+      paramViewGroup = (fbm)paramView.getTag();
     }
     Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject;
@@ -66,16 +66,16 @@ public class FriendChooser$SearchResultAdapter
       if (localObject != null) {
         break label290;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838042);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838036);
       localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      ImageLoader.a().a(localFriend.d, new fbg(this, (ImageView)localObject));
+      ImageLoader.a().a(localFriend.d, new fbl(this, (ImageView)localObject));
     }
     for (;;)
     {
       if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
         break label302;
       }
-      paramViewGroup.b.setText(2131363227);
+      paramViewGroup.b.setText(2131363230);
       return paramView;
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
       break;

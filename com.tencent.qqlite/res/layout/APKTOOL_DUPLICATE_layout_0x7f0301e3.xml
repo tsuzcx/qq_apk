@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f090849" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200fa" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f090379" android:visibility="visible" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005b" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f09053c" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-</LinearLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09084a" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0a081b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e8" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09084b" android:duplicateParentState="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ea" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f09084c" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c004a" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0c004a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f09084b" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f09084a" android:layout_alignParentTop="true">
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09084d" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09084e" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="6.0dip" android:scaleType="centerCrop" />
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f09084f" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="6.0dip" android:scaleType="centerCrop" />
+    </LinearLayout>
+</RelativeLayout>

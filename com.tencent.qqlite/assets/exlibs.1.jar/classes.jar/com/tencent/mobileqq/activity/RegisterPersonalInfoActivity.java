@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bhh;
+import bhf;
 import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
@@ -21,7 +21,7 @@ public class RegisterPersonalInfoActivity
   private static final String jdField_a_of_type_JavaLangString = "RegisterPersonalInfoActivity";
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bhh(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bhf(this);
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private ClearableEditText jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText;
   private String jdField_b_of_type_JavaLangString = "";
@@ -42,22 +42,22 @@ public class RegisterPersonalInfoActivity
       return;
       if (!NetworkUtil.e(BaseApplication.getContext()))
       {
-        a(2131362785, 0);
+        a(2131362790, 0);
         return;
       }
       paramView = this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
       if ((TextUtils.isEmpty(paramView)) || (paramView.trim().length() == 0))
       {
-        a(2131363342, 1);
+        a(2131363345, 1);
         return;
       }
       try
       {
-        a(2131363302);
+        a(2131363305);
         if (PhoneNumLoginImpl.a().a(this.app, this.jdField_b_of_type_JavaLangString.getBytes(), paramView.getBytes(), this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
         {
           g();
-          a(2131363283, 1);
+          a(2131363286, 1);
           return;
         }
       }
@@ -71,8 +71,8 @@ public class RegisterPersonalInfoActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903583));
-    setTitle(2131363326);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130903570));
+    setTitle(2131363329);
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key_register_smscode");
     if (this.jdField_b_of_type_JavaLangString == null) {
       this.jdField_b_of_type_JavaLangString = "";
@@ -80,8 +80,8 @@ public class RegisterPersonalInfoActivity
     this.c = getIntent().getStringExtra("phonenum");
     this.d = getIntent().getStringExtra("key");
     this.e = getIntent().getStringExtra("key_register_now_account");
-    this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298632));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298634));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298588));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131298590));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   

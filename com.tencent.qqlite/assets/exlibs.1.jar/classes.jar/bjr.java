@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SnapScreenActivity;
 
 public class bjr
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public bjr(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public bjr(SnapScreenActivity paramSnapScreenActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a.a(false);
   }
 }
 

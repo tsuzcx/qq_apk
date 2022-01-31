@@ -29,7 +29,7 @@ public class a
   private static final int z = 1048833;
   private ByteBuffer a;
   private boolean b = false;
-  private j c;
+  private k c;
   private int[] d;
   private a e = new a();
   private boolean f;
@@ -113,7 +113,7 @@ public class a
     {
       c.a(this.a, 524291);
       c.b(this.a, 4);
-      this.c = j.a(this.a);
+      this.c = k.a(this.a);
       this.e.f();
       this.b = true;
     }
@@ -228,7 +228,7 @@ public class a
     return this.k[(paramInt + 3)];
   }
   
-  final j a()
+  final k a()
   {
     return this.c;
   }

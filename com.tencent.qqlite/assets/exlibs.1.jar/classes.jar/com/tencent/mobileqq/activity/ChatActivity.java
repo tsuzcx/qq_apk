@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abl;
+import abj;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -100,7 +100,7 @@ public class ChatActivity
     }
     if (i == -1)
     {
-      QQToast.a(this, getString(2131362928), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131362932), 0).b(getTitleBarHeight());
       return false;
     }
     if (paramIntent.hasExtra("account"))
@@ -117,7 +117,7 @@ public class ChatActivity
     }
     if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((FriendManager)this.app.getManager(8)).b(str)))
     {
-      QQToast.a(getApplicationContext(), getString(2131362819), 0).b(getTitleBarHeight());
+      QQToast.a(getApplicationContext(), getString(2131362823), 0).b(getTitleBarHeight());
       return false;
     }
     return true;
@@ -342,7 +342,7 @@ public class ChatActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTimeReporter.a(5);
     }
     if ((EmojiUtil.a(521705)) && (EmojiUtil.a(this) != EmotcationConstants.f)) {
-      new abl(this).execute(new Object[0]);
+      new abj(this).execute(new Object[0]);
     }
   }
   
@@ -423,7 +423,7 @@ public class ChatActivity
     getWindow().setFeatureInt(7, 2130903144);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131296934).getParent());
+      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131296930).getParent());
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return true;
     }

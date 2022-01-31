@@ -1,33 +1,25 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentEmotionData;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public final class abm
-  extends AsyncTask
+  implements FMDialogUtil.FMDialogInterface
 {
-  public abm(QQAppInterface paramQQAppInterface, String paramString) {}
+  public abm(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, ForwardFileInfo paramForwardFileInfo) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void a()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    List localList = localEntityManager.a(RecentEmotionData.class, false, null, null, null, null, null, null);
-    paramVarArgs = localList;
-    if (localList == null) {
-      paramVarArgs = new ArrayList();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      return;
     }
-    if (ChatActivityFacade.a(paramVarArgs, 3, 0, this.jdField_a_of_type_JavaLangString) < 0) {
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEntityManager, 3, 0, this.jdField_a_of_type_JavaLangString, paramVarArgs);
-    }
-    localEntityManager.a();
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
   }
   
-  protected void a(Void paramVoid) {}
+  public void b() {}
 }
 
 

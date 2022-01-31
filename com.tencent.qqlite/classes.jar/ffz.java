@@ -1,10 +1,19 @@
-import com.tencent.qqconnect.wtlogin.AuthDevUgActivity2;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.common.NoticeParam;
 
-public class ffz
-  extends VerifyDevLockManager.VerifyDevLockObserver
+public final class ffz
+  implements Parcelable.Creator
 {
-  public ffz(AuthDevUgActivity2 paramAuthDevUgActivity2) {}
+  public NoticeParam a(Parcel paramParcel)
+  {
+    return new NoticeParam(paramParcel);
+  }
+  
+  public NoticeParam[] a(int paramInt)
+  {
+    return new NoticeParam[paramInt];
+  }
 }
 
 

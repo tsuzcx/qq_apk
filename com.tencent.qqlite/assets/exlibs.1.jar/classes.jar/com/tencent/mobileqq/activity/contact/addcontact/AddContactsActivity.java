@@ -12,9 +12,9 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cbj;
-import cbm;
-import cbn;
+import cbp;
+import cbs;
+import cbt;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class AddContactsActivity
@@ -34,8 +34,8 @@ public class AddContactsActivity
   
   public AddContactsActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext = new cbj(this);
-    this.jdField_a_of_type_AndroidOsHandler = new cbn(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext = new cbp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cbt(this);
   }
   
   public static void a(Activity paramActivity)
@@ -69,13 +69,13 @@ public class AddContactsActivity
   
   private void c()
   {
-    ((TextView)findViewById(2131296895)).setText(2131363393);
+    ((TextView)findViewById(2131296891)).setText(2131363396);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296564));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363393);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364541));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131363396);
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131364516));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131298138));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131298098));
     d();
   }
   
@@ -100,7 +100,7 @@ public class AddContactsActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903469);
+    setContentView(2130903457);
     getWindow().setBackgroundDrawable(null);
     c();
     return true;
@@ -129,7 +129,7 @@ public class AddContactsActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.b();
     }
     if (this.jdField_a_of_type_Boolean) {
-      Looper.myQueue().addIdleHandler(new cbm(this));
+      Looper.myQueue().addIdleHandler(new cbs(this));
     }
   }
   

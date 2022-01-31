@@ -1,27 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class bmb
-  implements View.OnClickListener
+  implements Runnable
 {
   public bmb(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
-  {
-    if (TroopAssistantActivity.a(this.a) != null)
-    {
-      TroopAssistantActivity.a(this.a).a(4);
-      this.a.e();
-      this.a.d();
-    }
-    if (TroopAssistantManager.a().c()) {
-      TroopAssistantManager.a().f(this.a.app);
-    }
-    TroopAssistantActivity.a(this.a);
-  }
+  public void run() {}
 }
 
 

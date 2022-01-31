@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -59,6 +60,7 @@ public class RecentTroopAssistantItem
     if (localObject1 != null) {}
     for (QQMessageFacade.Message localMessage = ((QQMessageFacade)localObject1).a(str, j);; localMessage = null)
     {
+      label90:
       int i;
       if (localMessage != null)
       {
@@ -69,22 +71,23 @@ public class RecentTroopAssistantItem
           this.v = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
           if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.d(str)))
           {
-            this.jdField_c_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131363035);
-            this.y = paramContext.getResources().getColor(2131427514);
+            this.jdField_c_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131363039);
+            this.y = paramContext.getResources().getColor(2131427509);
           }
           i = this.A & 0xFFFFF0FF;
           localObject1 = (FriendManager)paramQQAppInterface.getManager(8);
           if ((localObject1 == null) || (!((FriendManager)localObject1).f(str))) {
-            break label452;
+            break label502;
           }
           localObject1 = ((FriendManager)localObject1).a(str);
           if (localObject1 == null) {
-            break label446;
+            break label496;
           }
         }
       }
       Object localObject3;
-      label446:
+      label231:
+      label496:
       for (localObject1 = ((OpenTroopInfo)localObject1).troopName;; localObject1 = null)
       {
         localObject3 = "";
@@ -93,10 +96,9 @@ public class RecentTroopAssistantItem
         localObject3 = localObject2;
         this.A = i;
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label508;
+          break label558;
         }
         this.jdField_a_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, str, true);
-        label231:
         localObject3 = a();
         if ((localMessage != null) && (TextUtils.isEmpty(localMessage.nickName))) {
           localMessage.nickName = localMessage.senderuin;
@@ -113,21 +115,25 @@ public class RecentTroopAssistantItem
         a(paramQQAppInterface);
         a(paramQQAppInterface, (MsgSummary)localObject3);
         a(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
-        paramContext = new StringBuilder().append(String.format("%s群", new Object[] { this.jdField_a_of_type_JavaLangString }));
+        localObject1 = new StringBuilder().append(String.format("%s群", new Object[] { this.jdField_a_of_type_JavaLangString }));
         if (this.v != 0) {
-          break label517;
+          break label567;
         }
         paramQQAppInterface = ",";
-        label374:
+        label375:
         this.jdField_c_of_type_JavaLangString = (paramQQAppInterface + String.format("%s, %s", new Object[] { ((MsgSummary)localObject3).b, TimeManager.a().a(a(), localMessage.time) }));
+        if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) || (localMessage == null) || (localObject3 == null) || (!AnonymousChatHelper.a(localMessage))) {
+          break;
+        }
+        this.b = ((MsgSummary)localObject3).a(paramContext, paramContext.getResources().getString(2131362566), -1);
         return;
         this.v = 0;
-        break;
+        break label90;
         this.jdField_a_of_type_Long = 0L;
         this.v = 0;
-        break;
+        break label90;
       }
-      label452:
+      label502:
       if (localObject1 != null) {}
       for (localObject1 = ((FriendManager)localObject1).a(str);; localObject1 = null)
       {
@@ -142,12 +148,12 @@ public class RecentTroopAssistantItem
           localObject3 = localObject1;
           localObject1 = localObject2;
           break;
-          label508:
+          label558:
           this.jdField_a_of_type_JavaLangString = ((String)localObject3);
           break label231;
-          label517:
+          label567:
           paramQQAppInterface = ", " + this.v;
-          break label374;
+          break label375;
         }
       }
     }

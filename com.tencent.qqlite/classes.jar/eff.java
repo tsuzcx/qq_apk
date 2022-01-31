@@ -1,16 +1,16 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class eff
-  extends URLDrawableDownListener.Adapter
+  implements View.OnLongClickListener
 {
-  public eff(StructMsgForHypertext paramStructMsgForHypertext) {}
+  public eff(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public boolean onLongClick(View paramView)
   {
-    paramView.setBackgroundDrawable(null);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
   }
 }
 

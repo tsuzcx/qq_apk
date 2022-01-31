@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class bwx
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public bwx(ShortVideoItemBuilder paramShortVideoItemBuilder, String paramString, ShortVideoItemBuilder.Holder paramHolder) {}
+  public bwx(ShortVideoItemBuilder paramShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (ShortVideoItemBuilder.Holder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder) != null) {
-      ShortVideoItemBuilder.Holder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder).setImageResource(2130839175);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
     }
   }
 }

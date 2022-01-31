@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-public class fhn
-  implements View.OnClickListener
+public final class fhn
+  implements Parcelable.Creator
 {
-  public fhn(ActionSheet paramActionSheet) {}
-  
-  public void onClick(View paramView)
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    this.a.dismiss();
-    if (ActionSheet.a(this.a) != null) {
-      ActionSheet.a(this.a).e();
-    }
+    return new AbsSpinner.SavedState(paramParcel, null);
+  }
+  
+  public AbsSpinner.SavedState[] a(int paramInt)
+  {
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 

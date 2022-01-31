@@ -21,16 +21,16 @@ public class fli
       return;
     case 7: 
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838904);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838831);
       return;
     case 9: 
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838904);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838831);
       return;
     case 11: 
       this.a.jdField_a_of_type_AndroidWidgetTextView.setText(Integer.toString((int)Math.round(this.a.e * 1.0D / 1000.0D)) + "\"");
       return;
     }
-    QfavUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 2131362721, 1);
+    QfavUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 2131362728, 1);
   }
 }
 

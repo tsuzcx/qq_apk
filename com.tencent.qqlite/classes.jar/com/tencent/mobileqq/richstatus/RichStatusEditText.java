@@ -13,15 +13,15 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import com.tencent.mobileqq.widget.ClickableImageSpan;
-import eby;
-import ebz;
+import ece;
+import ecf;
 
 public class RichStatusEditText
   extends EditText
 {
   private static float jdField_a_of_type_Float = 1.0F;
   int jdField_a_of_type_Int = -1;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new eby(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ece(this);
   private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = null;
   private ClickableImageSpan jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan = null;
   public boolean a;
@@ -210,11 +210,11 @@ public class RichStatusEditText
     }
   }
   
-  public ebz a(int paramInt)
+  public ecf a(int paramInt)
   {
     int k = getText().length();
     if ((paramInt < 0) || (paramInt > k)) {
-      return new ebz(k, k);
+      return new ecf(k, k);
     }
     ImageSpan[] arrayOfImageSpan = (ImageSpan[])a().getSpans(0, k, ImageSpan.class);
     int i1 = arrayOfImageSpan.length;
@@ -238,7 +238,7 @@ public class RichStatusEditText
       {
         k = m;
         continue;
-        return new ebz(i, k);
+        return new ecf(i, k);
       }
     }
   }
@@ -392,8 +392,8 @@ public class RichStatusEditText
         break label204;
       }
       localObject = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = ((ebz)localObject).jdField_a_of_type_Int;
-      this.b = ((ebz)localObject).b;
+      this.jdField_a_of_type_Int = ((ecf)localObject).jdField_a_of_type_Int;
+      this.b = ((ecf)localObject).b;
       i = 1;
     }
     for (;;)

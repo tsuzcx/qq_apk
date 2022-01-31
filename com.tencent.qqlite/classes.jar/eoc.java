@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class eoc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public eoc(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((VideoPlayLogic.a(this.a) instanceof ChatActivity)) {
-      ((ChatActivity)VideoPlayLogic.a(this.a)).a().S();
-    }
+    VideoPlayLogic.a(this.a);
   }
 }
 

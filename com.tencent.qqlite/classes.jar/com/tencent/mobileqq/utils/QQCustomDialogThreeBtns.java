@@ -16,20 +16,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
-import euf;
-import eug;
-import euh;
-import eui;
-import euj;
 import euk;
 import eul;
+import eum;
+import eun;
+import euo;
+import eup;
+import euq;
 
 public class QQCustomDialogThreeBtns
   extends Dialog
 {
   public DialogInterface.OnClickListener a;
   public LayoutInflater a;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new euf(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new euk(this);
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   ListView jdField_a_of_type_AndroidWidgetListView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -166,7 +166,7 @@ public class QQCustomDialogThreeBtns
     }
     this.c.setText(paramString);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new eug(this, paramOnClickListener));
+    this.c.setOnClickListener(new eul(this, paramOnClickListener));
     a();
     return this;
   }
@@ -206,7 +206,7 @@ public class QQCustomDialogThreeBtns
     }
     this.c.setText(paramInt);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new euj(this, paramOnClickListener));
+    this.c.setOnClickListener(new euo(this, paramOnClickListener));
     a();
     return this;
   }
@@ -232,7 +232,7 @@ public class QQCustomDialogThreeBtns
     }
     this.e.setText(paramString);
     this.e.setVisibility(0);
-    this.e.setOnClickListener(new euh(this, paramOnClickListener));
+    this.e.setOnClickListener(new eum(this, paramOnClickListener));
     a();
     return this;
   }
@@ -246,7 +246,7 @@ public class QQCustomDialogThreeBtns
     }
     this.e.setText(paramInt);
     this.e.setVisibility(0);
-    this.e.setOnClickListener(new euk(this, paramOnClickListener));
+    this.e.setOnClickListener(new eup(this, paramOnClickListener));
     a();
     return this;
   }
@@ -260,7 +260,7 @@ public class QQCustomDialogThreeBtns
     }
     this.d.setText(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new eui(this, paramOnClickListener));
+    this.d.setOnClickListener(new eun(this, paramOnClickListener));
     a();
     return this;
   }
@@ -274,7 +274,7 @@ public class QQCustomDialogThreeBtns
     }
     this.d.setText(paramInt);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new eul(this, paramOnClickListener));
+    this.d.setOnClickListener(new euq(this, paramOnClickListener));
     a();
     return this;
   }
@@ -292,17 +292,17 @@ public class QQCustomDialogThreeBtns
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296915));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296911));
     this.b = ((TextView)findViewById(2131296470));
-    this.f = ((TextView)findViewById(2131296926));
-    this.c = ((TextView)findViewById(2131296918));
-    this.e = ((TextView)findViewById(2131296931));
-    this.d = ((TextView)findViewById(2131296919));
+    this.f = ((TextView)findViewById(2131296922));
+    this.c = ((TextView)findViewById(2131296914));
+    this.e = ((TextView)findViewById(2131296927));
+    this.d = ((TextView)findViewById(2131296915));
     this.c.setVisibility(8);
     this.e.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296831));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296922));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131296827));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131296918));
   }
   
   public void setTitle(int paramInt)

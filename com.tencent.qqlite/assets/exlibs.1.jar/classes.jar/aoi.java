@@ -1,18 +1,26 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class aoi
-  implements IIconListener
+  implements DialogInterface.OnClickListener
 {
   public aoi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.b == paramInt1) && (paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.a.a(this.a.a.a);
+    if (this.a.b == 1) {
+      VipUtils.a(this.a, 1, ProfileCardUtil.a(3));
+    }
+    for (;;)
+    {
+      this.a.p();
+      return;
+      if (this.a.b == 2) {
+        VipUtils.b(this.a, 1, ProfileCardUtil.a(6));
+      }
     }
   }
 }

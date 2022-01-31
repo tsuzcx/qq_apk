@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class bgz
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bgz(RegisterActivity paramRegisterActivity) {}
+  public bgz(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.g();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131363518);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

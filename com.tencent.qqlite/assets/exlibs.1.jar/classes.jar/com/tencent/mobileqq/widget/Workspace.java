@@ -75,7 +75,7 @@ public class Workspace
     g();
     setDrawingCacheEnabled(true);
     setAlwaysDrawnWithCacheEnabled(true);
-    setBackgroundDrawable(getResources().getDrawable(2130837633));
+    setBackgroundDrawable(getResources().getDrawable(2130837635));
   }
   
   private void g()

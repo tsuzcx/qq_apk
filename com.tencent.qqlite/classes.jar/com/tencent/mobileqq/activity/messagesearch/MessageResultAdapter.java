@@ -1,13 +1,17 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cfh;
-import cfi;
+import cfn;
+import cfo;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -121,7 +125,7 @@ public class MessageResultAdapter
   
   public String a()
   {
-    return this.b;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
   public void a(String paramString, MessageResultAdapter.LOAD_TYPE paramLOAD_TYPE)
@@ -132,9 +136,9 @@ public class MessageResultAdapter
     if (paramString == null) {
       return;
     }
-    this.b = paramString;
+    this.jdField_b_of_type_JavaLangString = paramString;
     MessageItem.a(paramString);
-    new Thread(new cfh(this, paramString, paramLOAD_TYPE)).start();
+    new Thread(new cfn(this, paramString, paramLOAD_TYPE)).start();
   }
   
   public void a(List paramList, int paramInt)
@@ -172,11 +176,11 @@ public class MessageResultAdapter
     if (paramView == null)
     {
       localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130903237, null);
-      paramViewGroup = new cfi(null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296851));
-      paramViewGroup.b = ((TextView)localView.findViewById(2131296854));
+      paramViewGroup = new cfo(null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131296847));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131296850));
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131296453));
-      paramViewGroup.c = ((TextView)localView.findViewById(2131297255));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131297251));
       localView.setTag(paramViewGroup);
       localMessageRecord = localMessageItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       str2 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
@@ -186,23 +190,35 @@ public class MessageResultAdapter
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)
       {
         paramView = str1;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000)
+        {
           if (!localMessageRecord.isSend()) {
-            break label264;
+            break label305;
           }
+          paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         }
       }
+      label200:
+      if (!AnonymousChatHelper.a(localMessageRecord)) {
+        break label316;
+      }
+      paramView = AnonymousChatHelper.a(localMessageRecord);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362566) + paramView.jdField_b_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(AnonymousChatHelper.a(paramView.jdField_b_of_type_Int)));
     }
-    label264:
-    for (paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();; paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)
+    for (;;)
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageItem.a(str2));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramView));
       paramViewGroup.c.setText(localMessageItem.a(localMessageRecord.time));
       return localView;
-      paramViewGroup = (cfi)paramView.getTag();
+      paramViewGroup = (cfo)paramView.getTag();
       localView = paramView;
       break;
+      label305:
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      break label200;
+      label316:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageItem.a(str2));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramView));
     }
   }
 }

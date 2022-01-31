@@ -1,28 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
-public class fer
-  implements ITMAssistantDownloadSDKClientListener
+class fer
+  implements DialogInterface.OnClickListener
 {
-  public fer(DownloadManager paramDownloadManager) {}
+  fer(fep paramfep) {}
   
-  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.b().post(new fet(this, paramLong1, paramLong2, paramString));
-  }
-  
-  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ThreadManager.b().post(new fes(this, paramTMAssistantDownloadSDKClient, paramInt1, paramString1, paramInt2, paramString2));
-  }
-  
-  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
-  {
-    LogUtility.e(DownloadManager.a, "OnDwonloadSDKServiceInvalid");
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
+      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class dly
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public dly(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dly(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a.a(Integer.valueOf(-1));
-    QfileBaseRecentFileTabView.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null)
+    {
+      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.jdField_a_of_type_Int);
+    }
   }
 }
 

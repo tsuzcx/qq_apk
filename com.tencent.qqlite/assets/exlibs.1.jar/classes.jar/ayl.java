@@ -1,17 +1,20 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 
 public class ayl
-  implements ConditionSearchManager.IConfigListener
+  implements TextWatcher
 {
   public ayl(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramBoolean) && (paramInt == 2)) {
-      NearbyPeopleProfileActivity.x(this.a);
-    }
+    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.c(this.a), 40);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

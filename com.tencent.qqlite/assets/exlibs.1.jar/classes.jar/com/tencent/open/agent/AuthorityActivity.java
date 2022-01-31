@@ -54,16 +54,16 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import ezx;
-import ezy;
-import ezz;
-import faa;
 import fac;
 import fad;
 import fae;
+import faf;
+import fah;
+import fai;
 import faj;
-import fak;
-import fal;
+import fao;
+import fap;
+import faq;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -211,10 +211,10 @@ public class AuthorityActivity
     this.jdField_y_of_type_Int = 6;
     this.jdField_z_of_type_Int = 0;
     this.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new ezx(this);
-    this.jdField_a_of_type_JavaLangRunnable = new faa(this);
-    this.jdField_a_of_type_AndroidOsHandler = new fae(this);
-    this.jdField_b_of_type_JavaLangRunnable = new ezy(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new fac(this);
+    this.jdField_a_of_type_JavaLangRunnable = new faf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new faj(this);
+    this.jdField_b_of_type_JavaLangRunnable = new fad(this);
   }
   
   public static Bitmap a(String paramString)
@@ -284,7 +284,7 @@ public class AuthorityActivity
       }
       localNewIntent.putExtra("data", (byte[])localObject1);
       localNewIntent.putExtra("cmd", (String)localObject2);
-      localNewIntent.setObserver(new fac(this));
+      localNewIntent.setObserver(new fah(this));
       super.getAppRuntime().startServlet(localNewIntent);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -335,7 +335,7 @@ public class AuthorityActivity
         paramGetAuthApiListRequest = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
         paramGetAuthApiListRequest.what = 6;
         paramGetAuthApiListRequest.arg1 = 3000;
-        paramGetAuthApiListRequest.obj = getResources().getString(2131363837);
+        paramGetAuthApiListRequest.obj = getResources().getString(2131363828);
         this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramGetAuthApiListRequest);
         return;
       }
@@ -346,7 +346,7 @@ public class AuthorityActivity
     localNewIntent.putExtra("data", paramGetAuthApiListRequest);
     localNewIntent.putExtra("cmd", str);
     this.w = 0;
-    localNewIntent.setObserver(new ezz(this));
+    localNewIntent.setObserver(new fae(this));
     super.getAppRuntime().startServlet(localNewIntent);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -374,7 +374,7 @@ public class AuthorityActivity
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    paramString = DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131363271)).setPositiveButton(17039370, paramOnClickListener);
+    paramString = DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131363274)).setPositiveButton(17039370, paramOnClickListener);
     if (!super.isFinishing()) {
       paramString.show();
     }
@@ -391,7 +391,7 @@ public class AuthorityActivity
     try
     {
       a(paramString, this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.b(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString));
-      runOnUiThread(new faj(this, paramString));
+      runOnUiThread(new fao(this, paramString));
       return;
     }
     catch (IOException paramBitmap)
@@ -674,134 +674,142 @@ public class AuthorityActivity
     //   60: invokevirtual 667	java/io/File:exists	()Z
     //   63: istore 4
     //   65: iload 4
-    //   67: ifne +25 -> 92
-    //   70: iconst_0
-    //   71: ifeq +11 -> 82
-    //   74: new 800	java/lang/NullPointerException
-    //   77: dup
-    //   78: invokespecial 801	java/lang/NullPointerException:<init>	()V
-    //   81: athrow
-    //   82: aload 5
-    //   84: areturn
-    //   85: astore_1
-    //   86: aload_1
-    //   87: invokevirtual 802	java/lang/Exception:printStackTrace	()V
-    //   90: aconst_null
-    //   91: areturn
-    //   92: new 804	java/io/DataInputStream
-    //   95: dup
-    //   96: new 806	java/io/FileInputStream
-    //   99: dup
-    //   100: aload_1
-    //   101: invokespecial 807	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   104: invokespecial 810	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: astore_1
-    //   108: aload_1
-    //   109: invokevirtual 813	java/io/DataInputStream:readLong	()J
-    //   112: invokestatic 687	java/lang/System:currentTimeMillis	()J
-    //   115: ldc2_w 306
-    //   118: ldiv
-    //   119: lcmp
-    //   120: ifle +61 -> 181
-    //   123: aload_1
-    //   124: invokevirtual 816	java/io/DataInputStream:available	()I
-    //   127: istore_3
-    //   128: iload_3
-    //   129: ifle +52 -> 181
-    //   132: iload_3
-    //   133: newarray byte
-    //   135: astore 6
-    //   137: aload_1
-    //   138: aload 6
-    //   140: invokevirtual 820	java/io/DataInputStream:read	([B)I
-    //   143: pop
-    //   144: aload_1
-    //   145: invokevirtual 821	java/io/DataInputStream:close	()V
-    //   148: aload 6
-    //   150: aload_2
-    //   151: ldc_w 697
-    //   154: invokevirtual 701	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   157: invokestatic 823	com/tencent/util/ThreeDes:b	([B[B)[B
-    //   160: astore_2
-    //   161: aload_2
-    //   162: astore 5
-    //   164: aload_1
-    //   165: ifnull -83 -> 82
-    //   168: aload_1
-    //   169: invokevirtual 821	java/io/DataInputStream:close	()V
-    //   172: aload_2
-    //   173: areturn
-    //   174: astore_1
-    //   175: aload_1
-    //   176: invokevirtual 802	java/lang/Exception:printStackTrace	()V
-    //   179: aload_2
-    //   180: areturn
+    //   67: ifne +27 -> 94
+    //   70: aload 5
+    //   72: astore_2
+    //   73: iconst_0
+    //   74: ifeq +11 -> 85
+    //   77: new 800	java/lang/NullPointerException
+    //   80: dup
+    //   81: invokespecial 801	java/lang/NullPointerException:<init>	()V
+    //   84: athrow
+    //   85: aload_2
+    //   86: areturn
+    //   87: astore_1
+    //   88: aload_1
+    //   89: invokevirtual 802	java/lang/Exception:printStackTrace	()V
+    //   92: aconst_null
+    //   93: areturn
+    //   94: new 804	java/io/DataInputStream
+    //   97: dup
+    //   98: new 806	java/io/FileInputStream
+    //   101: dup
+    //   102: aload_1
+    //   103: invokespecial 807	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   106: invokespecial 810	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   109: astore_1
+    //   110: aload_1
+    //   111: invokevirtual 813	java/io/DataInputStream:readLong	()J
+    //   114: invokestatic 687	java/lang/System:currentTimeMillis	()J
+    //   117: ldc2_w 306
+    //   120: ldiv
+    //   121: lcmp
+    //   122: ifle +66 -> 188
+    //   125: aload_1
+    //   126: invokevirtual 816	java/io/DataInputStream:available	()I
+    //   129: istore_3
+    //   130: iload_3
+    //   131: ifle +57 -> 188
+    //   134: iload_3
+    //   135: newarray byte
+    //   137: astore 6
+    //   139: aload_1
+    //   140: aload 6
+    //   142: invokevirtual 820	java/io/DataInputStream:read	([B)I
+    //   145: pop
+    //   146: aload_1
+    //   147: invokevirtual 821	java/io/DataInputStream:close	()V
+    //   150: aload 6
+    //   152: aload_2
+    //   153: ldc_w 697
+    //   156: invokevirtual 701	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   159: invokestatic 823	com/tencent/util/ThreeDes:b	([B[B)[B
+    //   162: astore_2
+    //   163: aload_2
+    //   164: astore 5
+    //   166: aload 5
+    //   168: astore_2
+    //   169: aload_1
+    //   170: ifnull -85 -> 85
+    //   173: aload_1
+    //   174: invokevirtual 821	java/io/DataInputStream:close	()V
+    //   177: aload 5
+    //   179: areturn
+    //   180: astore_1
     //   181: aload_1
-    //   182: ifnull -100 -> 82
-    //   185: aload_1
-    //   186: invokevirtual 821	java/io/DataInputStream:close	()V
-    //   189: aconst_null
-    //   190: areturn
-    //   191: astore_1
-    //   192: aload_1
-    //   193: invokevirtual 802	java/lang/Exception:printStackTrace	()V
-    //   196: aconst_null
-    //   197: areturn
-    //   198: astore_1
+    //   182: invokevirtual 802	java/lang/Exception:printStackTrace	()V
+    //   185: aload 5
+    //   187: areturn
+    //   188: aload 5
+    //   190: astore_2
+    //   191: aload_1
+    //   192: ifnull -107 -> 85
+    //   195: aload_1
+    //   196: invokevirtual 821	java/io/DataInputStream:close	()V
     //   199: aconst_null
-    //   200: astore_1
-    //   201: aload_1
-    //   202: ifnull -120 -> 82
-    //   205: aload_1
-    //   206: invokevirtual 821	java/io/DataInputStream:close	()V
+    //   200: areturn
+    //   201: astore_1
+    //   202: aload_1
+    //   203: invokevirtual 802	java/lang/Exception:printStackTrace	()V
+    //   206: aconst_null
+    //   207: areturn
+    //   208: astore_1
     //   209: aconst_null
-    //   210: areturn
-    //   211: astore_1
-    //   212: aload_1
-    //   213: invokevirtual 802	java/lang/Exception:printStackTrace	()V
-    //   216: aconst_null
-    //   217: areturn
-    //   218: astore_2
-    //   219: aconst_null
-    //   220: astore_1
-    //   221: aload_1
-    //   222: ifnull +7 -> 229
+    //   210: astore_1
+    //   211: aload 5
+    //   213: astore_2
+    //   214: aload_1
+    //   215: ifnull -130 -> 85
+    //   218: aload_1
+    //   219: invokevirtual 821	java/io/DataInputStream:close	()V
+    //   222: aconst_null
+    //   223: areturn
+    //   224: astore_1
     //   225: aload_1
-    //   226: invokevirtual 821	java/io/DataInputStream:close	()V
-    //   229: aload_2
-    //   230: athrow
-    //   231: astore_1
-    //   232: aload_1
-    //   233: invokevirtual 802	java/lang/Exception:printStackTrace	()V
-    //   236: goto -7 -> 229
-    //   239: astore_2
-    //   240: goto -19 -> 221
-    //   243: astore_2
-    //   244: goto -43 -> 201
+    //   226: invokevirtual 802	java/lang/Exception:printStackTrace	()V
+    //   229: aconst_null
+    //   230: areturn
+    //   231: astore_2
+    //   232: aconst_null
+    //   233: astore_1
+    //   234: aload_1
+    //   235: ifnull +7 -> 242
+    //   238: aload_1
+    //   239: invokevirtual 821	java/io/DataInputStream:close	()V
+    //   242: aload_2
+    //   243: athrow
+    //   244: astore_1
+    //   245: aload_1
+    //   246: invokevirtual 802	java/lang/Exception:printStackTrace	()V
+    //   249: goto -7 -> 242
+    //   252: astore_2
+    //   253: goto -19 -> 234
+    //   256: astore_2
+    //   257: goto -46 -> 211
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	247	0	this	AuthorityActivity
-    //   0	247	1	paramString1	String
-    //   0	247	2	paramString2	String
-    //   127	6	3	i1	int
+    //   0	260	0	this	AuthorityActivity
+    //   0	260	1	paramString1	String
+    //   0	260	2	paramString2	String
+    //   129	6	3	i1	int
     //   63	3	4	bool	boolean
-    //   1	162	5	localObject	Object
-    //   135	14	6	arrayOfByte	byte[]
+    //   1	211	5	str	String
+    //   137	14	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   74	82	85	java/lang/Exception
-    //   168	172	174	java/lang/Exception
-    //   185	189	191	java/lang/Exception
-    //   3	65	198	java/io/IOException
-    //   92	108	198	java/io/IOException
-    //   205	209	211	java/lang/Exception
-    //   3	65	218	finally
-    //   92	108	218	finally
-    //   225	229	231	java/lang/Exception
-    //   108	128	239	finally
-    //   132	161	239	finally
-    //   108	128	243	java/io/IOException
-    //   132	161	243	java/io/IOException
+    //   77	85	87	java/lang/Exception
+    //   173	177	180	java/lang/Exception
+    //   195	199	201	java/lang/Exception
+    //   3	65	208	java/io/IOException
+    //   94	110	208	java/io/IOException
+    //   218	222	224	java/lang/Exception
+    //   3	65	231	finally
+    //   94	110	231	finally
+    //   238	242	244	java/lang/Exception
+    //   110	130	252	finally
+    //   134	163	252	finally
+    //   110	130	256	java/io/IOException
+    //   134	163	256	java/io/IOException
   }
   
   protected byte[] a(byte[] paramArrayOfByte)
@@ -826,10 +834,10 @@ public class AuthorityActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     if (TextUtils.isEmpty(paramString)) {
-      a(String.format(super.getString(2131363835), new Object[] { Integer.valueOf(paramInt) }), new fak(this));
+      a(String.format(super.getString(2131363826), new Object[] { Integer.valueOf(paramInt) }), new fap(this));
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131363837);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131363828);
     d(paramInt, paramString);
   }
   
@@ -922,7 +930,7 @@ public class AuthorityActivity
           str1 = this.jdField_z_of_type_JavaLangString.substring(0, 12) + "...";
         }
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131363833), new Object[] { str1 }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131363824), new Object[] { str1 }));
     }
     c(str3);
   }
@@ -933,9 +941,9 @@ public class AuthorityActivity
     localJSONObject.put("ret", paramInt);
     localJSONObject.put("msg", paramString);
     if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = String.format(super.getString(2131363835), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131363839), new Object[] { paramString, Integer.valueOf(paramInt) }))
+    for (paramString = String.format(super.getString(2131363826), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131363830), new Object[] { paramString, Integer.valueOf(paramInt) }))
     {
-      a(paramString, new fal(this, paramInt, localJSONObject));
+      a(paramString, new faq(this, paramInt, localJSONObject));
       return;
     }
   }
@@ -1139,17 +1147,17 @@ public class AuthorityActivity
   
   protected void f()
   {
-    this.jdField_h_of_type_AndroidWidgetTextView.setText(2131363832);
-    super.setTitle(2131363830);
+    this.jdField_h_of_type_AndroidWidgetTextView.setText(2131363823);
+    super.setTitle(2131363821);
     this.jdField_h_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    setRightButton(2131363828, this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297488));
+    setRightButton(2131363819, this);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297484));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.x = ((String)super.getText(2131363827));
-    this.jdField_y_of_type_JavaLangString = ((String)super.getText(2131363831));
+    this.x = ((String)super.getText(2131363818));
+    this.jdField_y_of_type_JavaLangString = ((String)super.getText(2131363822));
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131297487));
+    this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131297483));
   }
   
   protected void g()
@@ -1181,7 +1189,7 @@ public class AuthorityActivity
     {
       QLog.d("AuthorityActivity", 1, "send | cmd: g_t_n_p | uin : *" + AuthorityUtil.a(str));
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoGetTicketNoPasswd(str, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131363838));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131363829));
       if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
       try
       {
@@ -1223,7 +1231,7 @@ public class AuthorityActivity
   
   protected void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131363836));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131363827));
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
     try
     {
@@ -1348,7 +1356,7 @@ public class AuthorityActivity
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("doAuthorize", true);
     this.jdField_a_of_type_AndroidOsBundle.putString("need_pay", "1");
     this.jdField_a_of_type_AndroidOsBundle.putString("appid_for_getting_config", this.jdField_a_of_type_AndroidOsBundle.getString("client_id") + "");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131363836));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131363827));
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -1454,7 +1462,7 @@ public class AuthorityActivity
     }
     ((NewIntent)localObject5).putExtra("data", (byte[])localObject1);
     ((NewIntent)localObject5).putExtra("cmd", (String)localObject3);
-    ((NewIntent)localObject5).setObserver(new fad(this));
+    ((NewIntent)localObject5).setObserver(new fai(this));
     super.getAppRuntime().startServlet((NewIntent)localObject5);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -1609,14 +1617,14 @@ public class AuthorityActivity
     }
     if (this.w == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131363838));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131363829));
       if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       k();
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetButton.getText().equals(super.getString(2131363837)))
+    if (this.jdField_a_of_type_AndroidWidgetButton.getText().equals(super.getString(2131363828)))
     {
       h();
       return;

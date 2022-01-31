@@ -1,34 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearPeopleFilterActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class awe
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public awe(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public awe(NearPeopleFilterActivity paramNearPeopleFilterActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    if (paramMessage.what == 1000)
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.a.jdField_a_of_type_Byte = 0;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("男");
-      continue;
-      this.a.jdField_a_of_type_Byte = 1;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("女");
-      continue;
-      this.a.jdField_a_of_type_Byte = 2;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("");
+      this.a.e();
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
     }
   }
 }

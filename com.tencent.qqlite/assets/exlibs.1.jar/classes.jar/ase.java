@@ -1,29 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class ase
-  implements Runnable
+  extends QZoneObserver
 {
-  public ase(Leba paramLeba, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public ase(Leba paramLeba) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.a().getSharedPreferences("web_process_preload_file", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int i = localSharedPreferences.getInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), 0);
-    localEditor.putInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), i + 1);
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)
-    {
-      i = localSharedPreferences.getInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), 0);
-      localEditor.putInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), i + 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
     }
-    localEditor.putLong("key_come_webview_time" + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a(), System.currentTimeMillis());
-    localEditor.commit();
+    if (paramBoolean1)
+    {
+      Leba.b(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
+    }
   }
 }
 

@@ -1,22 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.MobileQQService;
 
 public class edn
-  extends Handler
+  extends FriendListObserver
 {
-  public edn(AppLaucherHelper paramAppLaucherHelper) {}
+  public edn(MobileQQService paramMobileQQService) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      AppLaucherHelper.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
+    String str = MobileQQService.a(this.a).a();
+    if ((paramBoolean) && (str != null) && (str.equals(paramString))) {
+      MobileQQService.a(this.a).a(MobileQQService.a(this.a).a());
     }
   }
 }

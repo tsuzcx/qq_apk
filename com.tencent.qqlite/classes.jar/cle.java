@@ -1,18 +1,25 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.NearFieldDiscussHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cle
-  implements Runnable
+  implements View.OnClickListener
 {
   public cle(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.app.a(32);
-    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
-    localNearFieldDiscussHandler.b(this.a.a.toString(), this.a.b, localLBSInfo);
+    if (this.a.b) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(2130968587, 2130968588);
+      return;
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-class enu
-  implements DialogInterface.OnClickListener
+public class enu
+  implements Runnable
 {
-  enu(ent parament) {}
+  public enu(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    VideoPlayLogic.a(this.a.a);
+    try
+    {
+      JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
+      int i = 0;
+      int j = localJSONArray.length();
+      while (i < j)
+      {
+        String str = localJSONArray.get(i).toString();
+        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(str);
+        i += 1;
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

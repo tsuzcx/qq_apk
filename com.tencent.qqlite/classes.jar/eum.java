@@ -6,20 +6,14 @@ import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 public class eum
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  
-  public eum(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public eum(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 

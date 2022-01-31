@@ -1,27 +1,51 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class eow
+public final class eow
   implements Runnable
 {
-  public eow(TroopFileTransferManager paramTroopFileTransferManager) {}
-  
   public void run()
   {
-    for (;;)
+    File[] arrayOfFile;
+    do
     {
-      synchronized (this.a)
+      try
       {
-        if (this.a.e == 0L) {
-          return;
-        }
-        if (SystemClock.uptimeMillis() > this.a.e + 10000L)
-        {
-          this.a.e = 0L;
-          this.a.a();
+        Thread.sleep(3000L);
+        File localFile = new File(AppConstants.aB);
+        if (!localFile.isDirectory()) {
           return;
         }
       }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        return;
+      }
+      arrayOfFile = localInterruptedException.listFiles(new eox(this));
+    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
+    Object localObject = new ArrayList(arrayOfFile.length);
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
+      i += 1;
+    }
+    Collections.sort((List)localObject);
+    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
+    j = arrayOfFile.length;
+    i = 0;
+    while (i < j)
+    {
+      localObject = arrayOfFile[i];
+      if (((File)localObject).lastModified() < l) {
+        ((File)localObject).deleteOnExit();
+      }
+      i += 1;
     }
   }
 }

@@ -1,52 +1,15 @@
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public final class dxb
-  implements Runnable
+public class dxb
+  implements DialogInterface.OnCancelListener
 {
-  public dxb(Activity paramActivity, String paramString) {}
+  public dxb(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        return;
-      }
-      if ("V 3.3.0.544".contains("CheckIn"))
-      {
-        AlertDialog localAlertDialog = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).create();
-        localAlertDialog.show();
-        Object localObject = localAlertDialog.getWindow();
-        ((Window)localObject).setContentView(2130903248);
-        ((TextView)((Window)localObject).findViewById(2131297362)).setText("Dump内存信息!");
-        ((TextView)((Window)localObject).findViewById(2131297365)).setText("是否dump内存信息？");
-        Button localButton = (Button)((Window)localObject).findViewById(2131297368);
-        localObject = (Button)((Window)localObject).findViewById(2131297367);
-        if (localButton != null)
-        {
-          localButton.setText(2131362791);
-          ((Button)localObject).setText(2131362790);
-          localButton.setOnClickListener(new dxc(this, localAlertDialog));
-          ((Button)localObject).setOnClickListener(new dxe(this, localAlertDialog));
-          return;
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ReportLog", 2, "showDumpDialog exception.", localThrowable);
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
   }
 }
 

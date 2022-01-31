@@ -1,21 +1,40 @@
-import android.graphics.Bitmap;
+import android.os.Bundle;
 import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class sn
-  implements Runnable
+public class sn
+  implements BusinessObserver
 {
-  sn(sm paramsm, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap) {}
+  public sn(Share paramShare) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Sm.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Sm.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
+    if (!paramBoolean) {}
+    byte[] arrayOfByte;
+    do
     {
-      if ((this.jdField_a_of_type_Sm.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Sm.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_Sm.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      return;
+      arrayOfByte = paramBundle.getByteArray("data");
+    } while (arrayOfByte == null);
+    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+    try
+    {
+      paramBundle.mergeFrom(arrayOfByte);
+      ThreadManager.a(new so(this, paramBundle));
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(Share.b(), 2, localInvalidProtocolBufferMicroException.getMessage());
+        }
       }
-      this.jdField_a_of_type_Sm.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_Sm.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }

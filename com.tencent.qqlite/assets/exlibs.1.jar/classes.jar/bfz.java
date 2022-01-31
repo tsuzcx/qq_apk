@@ -8,7 +8,7 @@ class bfz
   
   public void run()
   {
-    this.a.a.c();
+    this.a.a.e();
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }

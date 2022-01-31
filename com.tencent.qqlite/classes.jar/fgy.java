@@ -1,33 +1,29 @@
-import android.annotation.TargetApi;
-import android.view.VelocityTracker;
-import com.tencent.util.VersionUtils;
 import com.tencent.widget.AbsListView;
-import com.tencent.widget.OverScroller;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import com.tencent.widget.FastScroller;
 
-class fgy
-  implements Runnable
+public class fgy
+  extends AdapterView.AdapterDataSetObserver
 {
-  fgy(fgx paramfgx) {}
-  
-  @TargetApi(8)
-  public void run()
+  public fgy(AbsListView paramAbsListView)
   {
-    int i = AbsListView.c(this.a.a);
-    VelocityTracker localVelocityTracker = AbsListView.a(this.a.a);
-    OverScroller localOverScroller = fgx.a(this.a);
-    if ((localVelocityTracker == null) || (i == -1)) {
-      return;
+    super(paramAbsListView);
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    if (this.a.a != null) {
+      this.a.a.c();
     }
-    localVelocityTracker.computeCurrentVelocity(1000, AbsListView.d(this.a.a));
-    if (VersionUtils.b()) {}
-    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.e(this.a.a)) && (localOverScroller.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
-    {
-      this.a.a.postDelayed(this, 40L);
-      return;
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    if (this.a.a != null) {
+      this.a.a.c();
     }
-    this.a.a();
-    this.a.a.ab = 3;
-    this.a.a.a(1);
   }
 }
 

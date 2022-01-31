@@ -1,20 +1,22 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class ekc
-  implements AdapterView.OnItemLongClickListener
+  implements Animation.AnimationListener
 {
   public ekc(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.c) {
-      TroopAvatarWallPreviewActivity.a(this.a);
-    }
-    return true;
+    this.a.f = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

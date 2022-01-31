@@ -13,7 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import cgf;
+import cgl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
@@ -41,27 +41,27 @@ public class BindVerifyActivity
   private void e()
   {
     setTitle("验证手机号码");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297395));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297391));
     String str = getIntent().getStringExtra("k_number");
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362087, new Object[] { str }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362084, new Object[] { str }));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297396));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131297392));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297387));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297383));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (this.jdField_a_of_type_Boolean) {
-        findViewById(2131297397).setVisibility(0);
+        findViewById(2131297393).setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297389));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297385));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.b = ((TextView)findViewById(2131297390));
+      this.b = ((TextView)findViewById(2131297386));
       this.b.setOnClickListener(this);
       return;
       if (1 == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362088, new Object[] { str }));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131362085, new Object[] { str }));
       }
     }
   }
@@ -70,16 +70,16 @@ public class BindVerifyActivity
   {
     if (!NetworkUtil.e(this))
     {
-      b(2131363449);
+      b(2131363450);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgf(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cgl(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), this.jdField_a_of_type_Int);
-    b(2131363378, 1000L);
+    b(2131363381, 1000L);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -130,11 +130,11 @@ public class BindVerifyActivity
   {
     switch (paramView.getId())
     {
-    case 2131297388: 
-    case 2131297389: 
+    case 2131297384: 
+    case 2131297385: 
     default: 
       return;
-    case 2131297387: 
+    case 2131297383: 
       f();
       return;
     }

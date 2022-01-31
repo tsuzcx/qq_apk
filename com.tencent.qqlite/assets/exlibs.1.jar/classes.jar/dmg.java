@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class dmg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dmg(QfileRecentAppFileTabView paramQfileRecentAppFileTabView, FileManagerEntity paramFileManagerEntity) {}
+  public dmg(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = QfileTimeUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAppFileTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAppFileTabView.a.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAppFileTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
-      return;
-    }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAppFileTabView.i();
+    QfileBaseRecentFileTabView.a(this.a);
   }
 }
 

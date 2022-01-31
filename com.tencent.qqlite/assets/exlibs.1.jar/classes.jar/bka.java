@@ -1,14 +1,15 @@
-import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
-class bka
-  implements Runnable
+public class bka
+  implements View.OnClickListener
 {
-  bka(bjz parambjz) {}
+  public bka(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.a.setEmpty();
-    this.a.a.a.invalidate();
+    SoundAndVibrateActivity.a(this.a);
   }
 }
 

@@ -1,30 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.dataline.mpfile.LiteMpFileDownloadActivity;
+import com.dataline.mpfile.MpfileTaskInfo;
+import com.dataline.mpfile.MpfileTaskListAdapter.ItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import java.util.ArrayList;
 
 public class ce
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
   public ce(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
-    do
+    paramView = (MpfileTaskListAdapter.ItemHolder)paramView.getTag();
+    if (paramView != null)
     {
-      do
+      Object localObject = paramView.a;
+      if (localObject != null)
       {
-        return;
-        paramContext = paramIntent.getAction();
-      } while (paramContext == null);
-      if (paramContext.equals("com.dataline.mpfile.download_progress"))
-      {
-        this.a.a();
-        return;
+        paramView = FileManagerUtil.a((MpfileTaskInfo)localObject);
+        ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+        localForwardFileInfo.a(10009);
+        localForwardFileInfo.c(7);
+        localForwardFileInfo.b(paramView.nSessionId);
+        localForwardFileInfo.d(((MpfileTaskInfo)localObject).jdField_d_of_type_JavaLangString);
+        localForwardFileInfo.c(((MpfileTaskInfo)localObject).jdField_d_of_type_Long);
+        localForwardFileInfo.d(((MpfileTaskInfo)localObject).b);
+        localForwardFileInfo.a(((MpfileTaskInfo)localObject).e);
+        localObject = new Intent(this.a.getApplicationContext(), FileBrowserActivity.class);
+        if ((paramView.nFileType == 0) || (paramView.nFileType == 1))
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(String.valueOf(paramView.nSessionId));
+          ((Intent)localObject).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
+        }
+        ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
+        this.a.startActivity((Intent)localObject);
       }
-    } while (!paramContext.equals("com.dataline.mpfile.download_completed"));
-    this.a.a();
+    }
   }
 }
 

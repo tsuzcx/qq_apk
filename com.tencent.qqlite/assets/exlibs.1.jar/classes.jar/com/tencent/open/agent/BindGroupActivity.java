@@ -33,9 +33,9 @@ import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
-import fam;
-import fan;
-import fao;
+import far;
+import fas;
+import fat;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -89,7 +89,7 @@ public class BindGroupActivity
   public BindGroupActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new fan(this);
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new fas(this);
   }
   
   private void e()
@@ -112,10 +112,10 @@ public class BindGroupActivity
     {
       if ((localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)))
       {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363366);
+        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363369);
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fao(this), 3000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new fat(this), 3000L);
         this.app.a(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
         this.app.a().e(this.g);
         return;
@@ -195,7 +195,7 @@ public class BindGroupActivity
     if (QLog.isColorLevel()) {
       QLog.d("BindGroupActivity", 2, "-->onImageLoaded() url = " + paramString);
     }
-    runOnUiThread(new fam(this, paramString, paramBitmap));
+    runOnUiThread(new far(this, paramString, paramBitmap));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -280,10 +280,10 @@ public class BindGroupActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362447);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362490);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362790, this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362448, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131362444);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131362487);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131362794, this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131362445, this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -331,7 +331,7 @@ public class BindGroupActivity
       {
       default: 
         return;
-      case 2131296901: 
+      case 2131296897: 
         super.finish();
         return;
       }
@@ -361,19 +361,19 @@ public class BindGroupActivity
     this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
     this.jdField_a_of_type_AndroidOsBundle.putString("vkey", super.getIntent().getStringExtra("vkey"));
     this.jdField_a_of_type_AndroidOsBundle.putString("uin", super.getIntent().getStringExtra("uin"));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296905));
-    this.c = ((TextView)super.findViewById(2131296895));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297773);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)super.findViewById(2131297776));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296897));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131296901));
+    this.c = ((TextView)super.findViewById(2131296891));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131297769);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)super.findViewById(2131297772));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this);
     if (this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity$GroupListAdapter == null) {
       this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity$GroupListAdapter = new BindGroupActivity.GroupListAdapter(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity$GroupListAdapter);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297777);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131297773);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297780));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131297776));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
@@ -387,10 +387,10 @@ public class BindGroupActivity
   {
     super.onStart();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362159));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362156));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.c.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362159));
+    this.c.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131362156));
     if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_Boolean))
     {
       if (!jdField_b_of_type_Boolean) {

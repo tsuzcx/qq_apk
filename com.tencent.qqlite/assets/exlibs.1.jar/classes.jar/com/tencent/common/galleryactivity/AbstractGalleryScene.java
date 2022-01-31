@@ -22,9 +22,9 @@ import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.Gallery;
 import com.tencent.widget.Gallery.OnItemRotateListener;
 import com.tencent.widget.Gallery.OnScollListener;
-import tn;
-import to;
-import tp;
+import tj;
+import tk;
+import tl;
 
 public abstract class AbstractGalleryScene
   extends ImageScene
@@ -37,7 +37,7 @@ public abstract class AbstractGalleryScene
   protected AbstractImageAdapter a;
   protected AbstractImageListModel a;
   public AbstractProgressView a;
-  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new tn(this);
+  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new tj(this);
   public Gallery a;
   protected int b;
   View b;
@@ -51,7 +51,7 @@ public abstract class AbstractGalleryScene
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903527, null);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903514, null);
   }
   
   protected AbstractGalleryPageView a(Context paramContext)
@@ -93,7 +93,7 @@ public abstract class AbstractGalleryScene
     for (;;)
     {
       b((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131296564));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131297187));
+      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131297183));
       this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131296445);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView = a(this.jdField_a_of_type_AndroidAppActivity);
       if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) {
@@ -112,7 +112,7 @@ public abstract class AbstractGalleryScene
       }
       this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter);
       this.jdField_a_of_type_ComTencentWidgetGallery.setRotateEnable(true);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131492924));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131492920));
       this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b());
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(this);
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(this);
@@ -150,7 +150,7 @@ public abstract class AbstractGalleryScene
       this.jdField_b_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
       return;
     }
-    localAlphaAnimation.setAnimationListener(new to(this));
+    localAlphaAnimation.setAnimationListener(new tk(this));
     a().startAnimation(localAlphaAnimation);
   }
   
@@ -231,7 +231,7 @@ public abstract class AbstractGalleryScene
     localAnimationSet.setFillAfter(true);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.setAnimationListener(new tp(this));
+    localAnimationSet.setAnimationListener(new tl(this));
     this.jdField_b_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
   }

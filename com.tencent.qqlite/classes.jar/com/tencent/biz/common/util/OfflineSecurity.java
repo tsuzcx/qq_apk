@@ -16,8 +16,8 @@ import java.security.MessageDigest;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Iterator;
-import lv;
-import lw;
+import lr;
+import ls;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -132,8 +132,8 @@ public class OfflineSecurity
   {
     a(paramString2);
     jdField_a_of_type_ComTencentBizCommonUtilOfflineSecurity$VerifyListener = paramVerifyListener;
-    jdField_a_of_type_AndroidOsHandler = new lv();
-    new Thread(new lw(paramString1, paramString2)).start();
+    jdField_a_of_type_AndroidOsHandler = new lr();
+    new Thread(new ls(paramString1, paramString2)).start();
   }
   
   private static boolean a(String paramString)

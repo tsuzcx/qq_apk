@@ -1,15 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import java.util.TimerTask;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class cak
-  extends TimerTask
+  implements Runnable
 {
-  public cak(FraudTipsBar paramFraudTipsBar) {}
+  public cak(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    FraudTipsBar.a(this.a).post(new cal(this));
+    new cal(this).execute(new Void[0]);
   }
 }
 

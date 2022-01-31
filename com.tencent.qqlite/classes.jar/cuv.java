@@ -1,19 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class cuv
-  extends BroadcastReceiver
 {
-  public cuv(QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
-      QQAppInterface.a(this.a, paramContext, paramIntent);
-    }
-  }
+  public int a;
+  public long a;
+  public List a;
+  public boolean a;
 }
 
 

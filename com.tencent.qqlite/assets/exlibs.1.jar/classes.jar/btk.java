@@ -1,4 +1,6 @@
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class btk
   implements Runnable
@@ -7,7 +9,8 @@ public class btk
   
   public void run()
   {
-    this.a.i();
+    this.a.g();
+    QQToast.a(this.a.a, this.a.a.getString(2131362977), 0).a();
   }
 }
 

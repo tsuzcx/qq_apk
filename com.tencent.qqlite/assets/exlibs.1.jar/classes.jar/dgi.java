@@ -1,23 +1,31 @@
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter;
+import java.util.Random;
 
-class dgi
-  implements Runnable
+public class dgi
+  implements View.OnClickListener
 {
-  dgi(dgh paramdgh) {}
+  public dgi(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    FilePreviewActivity.a(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131364052);
+    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
     {
-      this.a.a.a.loadUrl("javascript:add_more_page()");
-      return;
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter;
+      paramView.a += 1;
     }
-    catch (Exception localException)
-    {
-      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
-    }
+    int i = new Random(System.currentTimeMillis()).nextInt(1500);
+    new Handler().postDelayed(new dgj(this), i % 1001 + 500);
   }
 }
 

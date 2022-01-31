@@ -1,32 +1,15 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class dvc
-  extends ClickableSpan
+public final class dvc
+  implements Runnable
 {
-  private WeakReference a;
+  public dvc(int paramInt) {}
   
-  public dvc(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface)
+  public void run()
   {
-    this.a = new WeakReference(paramTipsClickedInterface);
-  }
-  
-  public void onClick(View paramView)
-  {
-    FileManagerUtil.TipsClickedInterface localTipsClickedInterface = (FileManagerUtil.TipsClickedInterface)this.a.get();
-    if (localTipsClickedInterface != null) {
-      localTipsClickedInterface.a(paramView);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-    paramTextPaint.setUnderlineText(false);
+    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
   }
 }
 

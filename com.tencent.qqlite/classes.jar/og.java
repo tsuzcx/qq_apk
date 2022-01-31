@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface.LocListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
+import mqq.observer.BusinessObserver;
 
-public class og
+class og
   implements Runnable
 {
-  public og(PublicAccountJavascriptInterface.LocListener paramLocListener) {}
+  og(of paramof, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "-2", "{type:1, data:null}" });
-    String str = Long.toString(System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
-    ReportController.a(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.getNetworkType(), str, "", "");
-    if (PublicAccountJavascriptInterface.a.decrementAndGet() == 0) {
-      SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    this.jdField_a_of_type_Of.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_Of.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Of.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
+    if (this.jdField_a_of_type_Of.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+      this.jdField_a_of_type_Of.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

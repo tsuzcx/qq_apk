@@ -1,50 +1,85 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity;
 import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class dkq
-  implements Runnable
+  extends AsyncTask
 {
-  public dkq(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, Context paramContext) {}
+  public dkq(QfileLocalFileCategoryBrowserActivity paramQfileLocalFileCategoryBrowserActivity) {}
   
-  public void run()
+  protected List a(Void... paramVarArgs)
   {
-    Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
+    ArrayList localArrayList;
     Iterator localIterator;
-    Object localObject;
-    if (localMap != null)
+    switch (this.a.c)
     {
-      localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
-        {
-          localObject = (List)localMap.get(localObject);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll((Collection)localObject);
-        }
+    case 0: 
+    case 3: 
+    case 5: 
+    case 7: 
+    case 8: 
+    case 9: 
+    default: 
+      return null;
+    case 10: 
+      paramVarArgs = FileCategoryUtil.a(this.a.getApplicationContext());
+      localArrayList = new ArrayList();
+      localIterator = paramVarArgs.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll((Collection)paramVarArgs.get((String)localIterator.next()));
       }
+      return localArrayList;
+    case 1: 
+      paramVarArgs = FileCategoryUtil.c(this.a.getApplicationContext());
+      localArrayList = new ArrayList();
+      localIterator = paramVarArgs.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll((Collection)paramVarArgs.get((String)localIterator.next()));
+      }
+      return localArrayList;
+    case 2: 
+      paramVarArgs = FileCategoryUtil.b(this.a.getApplicationContext());
+      localArrayList = new ArrayList();
+      localIterator = paramVarArgs.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll((Collection)paramVarArgs.get((String)localIterator.next()));
+      }
+      return localArrayList;
+    case 4: 
+      return FileCategoryUtil.a(this.a.getApplicationContext(), null);
     }
-    localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
-    if (localMap != null)
+    return FileManagerUtil.a(false, 0);
+  }
+  
+  protected void a(List paramList)
+  {
+    if (paramList == null)
     {
-      localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
-        {
-          localObject = (List)localMap.get(localObject);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll((Collection)localObject);
-        }
-      }
+      QfileLocalFileCategoryBrowserActivity.a(this.a);
+      QfileLocalFileCategoryBrowserActivity.b(this.a);
+      FileManagerUtil.a(QfileLocalFileCategoryBrowserActivity.a(this.a));
+      return;
     }
+    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("本地文件分组", this.a.jdField_a_of_type_JavaUtilArrayList);
+    QfileLocalFileCategoryBrowserActivity.a(this.a);
+    QfileLocalFileCategoryBrowserActivity.c(this.a);
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setGone();
+    QfileLocalFileCategoryBrowserActivity.a(this.a);
   }
 }
 

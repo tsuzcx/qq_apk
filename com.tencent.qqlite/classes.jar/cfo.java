@@ -1,20 +1,12 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class cfo
-  implements View.OnTouchListener
 {
-  public cfo(MessageSearchDialog paramMessageSearchDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)MessageSearchDialog.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

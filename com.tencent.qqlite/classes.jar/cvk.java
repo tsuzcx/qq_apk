@@ -1,58 +1,47 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.app.QQMapActivityProxy;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class cvk
-  extends LBSObserver
+  extends DefaultHandler
 {
-  public cvk(QQMapActivityProxy paramQQMapActivityProxy) {}
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
+  public cvk(QQAppInterface paramQQAppInterface) {}
+  
+  public HashMap a()
   {
-    if ((paramBoolean) && (paramArrayOfByte != null)) {
-      QQMapActivityProxy.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", new String(paramArrayOfByte)));
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
     }
   }
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void endDocument()
   {
-    if (paramArrayOfObject == null) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = (ToServiceMsg)paramArrayOfObject[0];
-    paramArrayOfObject = (byte[])paramArrayOfObject[1];
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
-    localIntent.putExtra("data", paramArrayOfObject);
-    localIntent.putExtra("req", localToServiceMsg.extraData.getBundle("req"));
-    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+    super.endDocument();
   }
   
-  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    if (paramArrayOfObject == null) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareShop");
-    localIntent.putExtra("data", (byte[])paramArrayOfObject[1]);
-    localIntent.putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+    this.jdField_a_of_type_JavaLangString = null;
   }
   
-  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void startDocument()
   {
-    if (paramArrayOfObject == null) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mobileqq.onGetShareShopDetail");
-    localIntent.putExtra("data", (byte[])paramArrayOfObject[1]);
-    localIntent.putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+    super.startDocument();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
 }
 

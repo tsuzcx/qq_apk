@@ -1,15 +1,19 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
-class ahj
-  implements Runnable
+public class ahj
+  extends BizTroopObserver
 {
-  ahj(ahh paramahh, String paramString) {}
+  public ahj(Conversation paramConversation) {}
   
-  public void run()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (Conversation.a(this.jdField_a_of_type_Ahh.a) != null) {
-      Conversation.a(this.jdField_a_of_type_Ahh.a).a(this.jdField_a_of_type_JavaLangString, true);
+    if (paramBoolean)
+    {
+      TroopAssistantManager.a().b(paramString1, this.a.a);
+      this.a.a(8, AppConstants.U, 5000);
     }
   }
 }

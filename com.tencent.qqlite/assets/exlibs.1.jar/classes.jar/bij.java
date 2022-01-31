@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
-class bij
+public class bij
   implements Runnable
 {
-  bij(bih parambih) {}
+  public bij(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
   public void run()
   {
-    this.a.a.a(2131363338, 1);
+    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    {
+      RegisterVerifyCodeActivity.a(this.a).setText(2131363328);
+      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
+    }
+    RegisterVerifyCodeActivity.b(this.a);
+    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131363328) + "(" + RegisterVerifyCodeActivity.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

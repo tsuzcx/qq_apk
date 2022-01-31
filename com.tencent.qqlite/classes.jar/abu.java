@@ -1,15 +1,15 @@
-import android.app.Dialog;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 
-class abu
+public final class abu
   implements Animation.AnimationListener
 {
-  abu(abt paramabt) {}
+  public abu(Handler paramHandler, Runnable paramRunnable, long paramLong) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.dismiss();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Long);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

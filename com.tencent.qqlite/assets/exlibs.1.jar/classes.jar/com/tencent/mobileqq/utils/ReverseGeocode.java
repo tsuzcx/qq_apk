@@ -7,7 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
 import android.net.Uri;
-import evr;
+import evw;
 import java.util.HashMap;
 import java.util.Iterator;
 import org.apache.http.HttpHost;
@@ -39,9 +39,9 @@ public class ReverseGeocode
     a = Uri.parse("content://telephony/carriers/preferapn");
   }
   
-  private static evr a(Context paramContext)
+  private static evw a(Context paramContext)
   {
-    evr localevr = new evr();
+    evw localevw = new evw();
     try
     {
       label244:
@@ -66,37 +66,37 @@ public class ReverseGeocode
           localCursor.close();
           if ((paramContext != null) && (paramContext.length() > 0) && (Integer.valueOf(str3).intValue() > 0))
           {
-            localevr.jdField_a_of_type_JavaLangString = paramContext;
-            localevr.jdField_a_of_type_Int = Integer.valueOf(str3).intValue();
+            localevw.jdField_a_of_type_JavaLangString = paramContext;
+            localevw.jdField_a_of_type_Int = Integer.valueOf(str3).intValue();
           }
           else if ((str1 != null) && (str1.startsWith("ctwap")))
           {
-            localevr.jdField_a_of_type_JavaLangString = "10.0.0.200";
-            localevr.jdField_a_of_type_Int = 80;
+            localevw.jdField_a_of_type_JavaLangString = "10.0.0.200";
+            localevw.jdField_a_of_type_Int = 80;
           }
         }
         catch (Exception paramContext)
         {
           paramContext.printStackTrace();
-          return localevr;
+          return localevw;
         }
         if ((str1 != null) && (str1.startsWith("cmwap")))
         {
-          localevr.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localevr.jdField_a_of_type_Int = 80;
+          localevw.jdField_a_of_type_JavaLangString = "10.0.0.172";
+          localevw.jdField_a_of_type_Int = 80;
           break;
         }
         if ((str1 == null) || (!str1.startsWith("uniwap"))) {
           break;
         }
-        localevr.jdField_a_of_type_JavaLangString = "10.0.0.172";
-        localevr.jdField_a_of_type_Int = 80;
+        localevw.jdField_a_of_type_JavaLangString = "10.0.0.172";
+        localevw.jdField_a_of_type_Int = 80;
         break;
       }
-      return localevr;
+      return localevw;
     }
     finally {}
-    return localevr;
+    return localevw;
   }
   
   private static String a(Context paramContext)

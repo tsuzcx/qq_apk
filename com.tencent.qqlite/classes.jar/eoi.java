@@ -1,56 +1,98 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache.QueueItem;
-import java.util.LinkedList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.util.Iterator;
+import java.util.List;
 
 public class eoi
-  implements Runnable
+  extends BizTroopObserver
 {
-  public eoi(RollangleImageView.ImageCache paramImageCache) {}
+  public eoi(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void run()
+  protected void a(String paramString, List paramList, int paramInt)
   {
-    Object localObject1 = null;
-    for (;;)
+    VideoPlayLogic.a(this.a, paramInt);
+    if (paramString.compareToIgnoreCase(VideoPlayLogic.a(this.a)) != 0) {}
+    do
     {
-      if (this.a.a) {
-        return;
+      return;
+      if ((paramString.compareToIgnoreCase(VideoPlayLogic.a(this.a)) != 0) || (paramList == null) || (paramList.size() <= 0)) {
+        break;
       }
-      try
+      VideoPlayLogic.a(this.a).clear();
+      paramString = paramList.iterator();
+      while (paramString.hasNext())
       {
-        Thread.sleep(100L);
-        label19:
-        synchronized (this.a)
+        paramList = (String)paramString.next();
+        if (!TextUtils.isEmpty(paramList)) {
+          VideoPlayLogic.a(this.a).add(paramList);
+        }
+      }
+      if (VideoPlayLogic.a(this.a).size() <= 0)
+      {
+        if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+          VideoPlayLogic.a(this.a).dismiss();
+        }
+        if ((VideoPlayLogic.a(this.a)) && (VideoPlayLogic.a(this.a) != null))
         {
-          if (RollangleImageView.ImageCache.a(this.a) == null) {
-            return;
-          }
-        }
-        if (localObject2 != null) {
-          RollangleImageView.ImageCache.a(this.a).poll();
-        }
-        if (RollangleImageView.ImageCache.a(this.a).isEmpty()) {
+          new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
           return;
         }
-        RollangleImageView.ImageCache.QueueItem localQueueItem = (RollangleImageView.ImageCache.QueueItem)RollangleImageView.ImageCache.a(this.a).peek();
-        ??? = RollangleImageView.a(localQueueItem.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localQueueItem;
-        if (??? == null) {
-          continue;
-        }
-        BaseApplicationImpl.a.put("troopfileimage://" + localQueueItem.jdField_a_of_type_JavaLangString, ???);
-        RollangleImageView.ImageCache.a(this.a).obtainMessage(0, new Object[] { localQueueItem.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localQueueItem.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localQueueItem;
+        this.a.a(VideoPlayLogic.a(this.a));
+        return;
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label19;
-      }
+      VideoPlayLogic.b(this.a, 0);
+    } while ((VideoPlayLogic.a(this.a) == null) || (!VideoPlayLogic.a(this.a).isShowing()));
+    VideoPlayLogic.a(this.a).dismiss();
+    this.a.d();
+    if (VideoPlayLogic.a(this.a) == null)
+    {
+      VideoPlayLogic.a(this.a, new RelativeLayout(VideoPlayLogic.a(this.a)));
+      VideoPlayLogic.b(this.a).addView(VideoPlayLogic.a(this.a), -1, 0);
     }
+    if (VideoPlayLogic.a(this.a) == null)
+    {
+      VideoPlayLogic.a(this.a, new VideoViewX(VideoPlayLogic.a(this.a)));
+      VideoPlayLogic.a(this.a).addView(VideoPlayLogic.a(this.a), -1, -1);
+    }
+    if (VideoPlayLogic.a(this.a) == null)
+    {
+      VideoPlayLogic.a(this.a, new MessageSubtitleView(VideoPlayLogic.a(this.a)));
+      paramString = new RelativeLayout.LayoutParams(-1, -2);
+      paramString.leftMargin = VideoPlayLogic.a(this.a).getResources().getDimensionPixelSize(2131493049);
+      paramString.rightMargin = VideoPlayLogic.a(this.a).getResources().getDimensionPixelSize(2131493050);
+      paramString.topMargin = VideoPlayLogic.a(this.a).getResources().getDimensionPixelSize(2131493052);
+      paramString.addRule(10);
+      VideoPlayLogic.a(this.a).addView(VideoPlayLogic.a(this.a), paramString);
+    }
+    if (!this.a.c()) {
+      VideoPlayLogic.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      VideoPlayLogic.a(this.a, true);
+      return;
+      VideoPlayLogic.a(this.a).getWindow().addFlags(1024);
+    }
+    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+      VideoPlayLogic.a(this.a).dismiss();
+    }
+    if ((VideoPlayLogic.a(this.a)) && (VideoPlayLogic.a(this.a) != null))
+    {
+      new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
+      return;
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

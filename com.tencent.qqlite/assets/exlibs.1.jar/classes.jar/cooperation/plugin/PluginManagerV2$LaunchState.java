@@ -1,12 +1,12 @@
 package cooperation.plugin;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
 
 public class PluginManagerV2$LaunchState
 {
+  public ProgressDialog a;
   public Context a;
-  public QFavDownloadProgressDialog a;
   public IPluginManager.OnPluginReadyListener a;
   public IPluginManager.PluginParams a;
   public boolean a = true;

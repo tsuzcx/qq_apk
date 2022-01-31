@@ -1,42 +1,20 @@
-import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
 
 public class aye
-  extends TransProcessorHandler
+  implements TextWatcher
 {
   public aye(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (NearbyPeopleProfileActivity.b(this.a) != 1) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.aN);
-        }
-        break;
-      }
-    } while (NearbyPeopleProfileActivity.a(this.a) == null);
-    NearbyPeopleProfileActivity.a(this.a).a = NearbyPeoplePhotoUploadProcessor.aN;
-    NearbyPeopleProfileActivity.f(this.a);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyPeopleProfileActivity.mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.c();
-    QQToast.a(this.a, "上传失败", 0).b(this.a.getTitleBarHeight());
+    NearbyPeopleProfileActivity.a(this.a, NearbyPeopleProfileActivity.b(this.a), 40);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

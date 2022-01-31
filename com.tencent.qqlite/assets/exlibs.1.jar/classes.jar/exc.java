@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.widget.AdaptiveLayout;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class exc
+  implements Runnable
 {
-  public int a;
-  public int b;
+  public exc(WebProcessManager paramWebProcessManager) {}
   
-  public exc(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (this.a.c()) {
+      this.a.f();
+    }
   }
 }
 

@@ -1,29 +1,41 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class bsa
-  implements Runnable
+  extends Handler
 {
-  public bsa(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public bsa(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
-      {
-        VerifyPhoneNumActivity.a(this.a).dismiss();
-        VerifyPhoneNumActivity.a(this.a).cancel();
-      }
-      VerifyPhoneNumActivity.a(this.a, null);
+    default: 
+      return;
+    case 1: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
+      return;
+    case 4: 
+      this.a.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.B();
+      return;
+    case 2: 
+      VisitorsActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
+      this.a.jdField_b_of_type_ComTencentMobileqqWidgetGridListView.B();
+      this.a.a(1, this.a.getString(2131363516));
       return;
     }
-    catch (Throwable localThrowable)
+    if (this.a.h == 0) {
+      this.a.jdField_a_of_type_Bsg.notifyDataSetChanged();
+    }
+    for (;;)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      this.a.d = SystemClock.uptimeMillis();
+      return;
+      this.a.jdField_b_of_type_Bsg.notifyDataSetChanged();
     }
   }
 }

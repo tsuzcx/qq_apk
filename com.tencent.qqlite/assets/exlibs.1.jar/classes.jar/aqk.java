@@ -1,14 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class aqk
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
   public aqk(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a();
+    this.a.c();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.a(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.tencentmap.mapsdk.map.MapView;
-import eyq;
-import eyr;
+import eyv;
+import eyw;
 
 @SuppressLint({"HandlerLeak"})
 public class QQMapView
@@ -34,8 +34,8 @@ public class QQMapView
     super(paramContext, paramAttributeSet);
     this.jdField_e_of_type_Int = 0;
     this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new eyq(this);
-    this.jdField_a_of_type_JavaLangThread = new eyr(this, "qqmapview_calculate_position");
+    this.jdField_a_of_type_AndroidOsHandler = new eyv(this);
+    this.jdField_a_of_type_JavaLangThread = new eyw(this, "qqmapview_calculate_position");
     this.jdField_a_of_type_JavaLangThread.setPriority(10);
     this.jdField_a_of_type_JavaLangThread.start();
   }

@@ -3,11 +3,11 @@ import com.tencent.litetransfersdk.LiteTransferWrapper;
 public class uh
   implements Runnable
 {
-  public uh(LiteTransferWrapper paramLiteTransferWrapper, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean) {}
+  public uh(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetTempPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,27 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class chv
-  extends Handler
+  extends ContactBindObserver
 {
-  private WeakReference a;
+  public chv(PhoneMatchView paramPhoneMatchView) {}
   
-  public chv(SettingActivity2 paramSettingActivity2)
+  protected void a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramSettingActivity2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((SettingActivity2)this.a.get() == null) {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+      this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+    }
+    this.a.g();
+    if (paramBoolean)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+        this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      }
+      if (this.a.jdField_a_of_type_Int == 2)
+      {
+        this.a.jdField_a_of_type_AndroidAppActivity.setResult(-1);
+        this.a.f();
+        return;
+      }
+      Intent localIntent = new Intent(this.a.getContext(), ContactListView.class);
+      this.a.a(localIntent);
       return;
     }
-    switch (paramMessage.what)
-    {
-    }
-    throw new RuntimeException("Unknown message: " + paramMessage.what);
+    this.a.b("更新失败，请稍后重试。");
   }
 }
 

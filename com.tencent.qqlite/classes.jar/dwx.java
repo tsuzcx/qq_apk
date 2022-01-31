@@ -1,94 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getopenid.GetOpenidProto.GetOpenidEntry;
-import com.tencent.protofile.getopenid.GetOpenidProto.GetOpenidResp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.io.IOException;
+import java.util.Map;
 
-public final class dwx
-  implements BusinessObserver
+public class dwx
+  implements Runnable
 {
-  public dwx(Activity paramActivity) {}
+  public dwx(QQApiPlugin paramQQApiPlugin, String paramString, Map paramMap, Runnable paramRunnable) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UiApiPlugin.a, 2, "onReceive get_openid:" + paramBoolean);
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    int[] arrayOfInt;
-    int i;
-    if (paramBoolean)
+    label143:
+    try
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject != null)
-      {
-        paramBundle = new GetOpenidProto.GetOpenidResp();
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject);
-          if (paramBundle.retcode.get() != 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(UiApiPlugin.a, 2, "get_openid retcode:" + paramBundle.retcode.get());
-            }
-            this.a.setResult(-1, new Intent().putExtra("ret", 2).putExtra("errMsg", "server error, unexpected retcode"));
-            this.a.finish();
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle)
-        {
-          this.a.setResult(-1, new Intent().putExtra("ret", 2).putExtra("errMsg", "server error, unexpected pbdata"));
-          this.a.finish();
-          return;
-        }
-        int j = paramBundle.list.size();
-        localObject = new String[j];
-        arrayOfInt = new int[j];
-        i = 0;
-        if (i < j)
-        {
-          GetOpenidProto.GetOpenidEntry localGetOpenidEntry = (GetOpenidProto.GetOpenidEntry)paramBundle.list.get(i);
-          localObject[i] = localGetOpenidEntry.openid.get();
-          paramInt = localGetOpenidEntry.type.get();
-          if (paramInt != 0) {
-            break label360;
-          }
-          paramInt = 1;
-          break label345;
-        }
-        this.a.setResult(-1, new Intent().putExtra("ret", 0).putExtra("openids", (String[])localObject).putExtra("types", arrayOfInt));
-        this.a.finish();
-        return;
+      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+      if (localObject == null) {
+        break label115;
       }
+      int i = ((Bitmap)localObject).getWidth();
+      int j = ((Bitmap)localObject).getHeight();
+      if (i * j <= 8000) {
+        break label143;
+      }
+      double d = Math.sqrt(8000.0D / (i * j));
+      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
+      ((Bitmap)localObject).recycle();
+      localObject = localBitmap;
     }
-    this.a.setResult(-1, new Intent().putExtra("ret", 2));
-    this.a.finish();
-    return;
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      label345:
-      arrayOfInt[i] = paramInt;
-      i += 1;
-      break;
-      label360:
-      if (paramInt == 1) {
-        paramInt = 4;
-      } else if (paramInt == 2) {
-        paramInt = 8;
-      } else {
-        paramInt = 0;
-      }
+      Object localObject;
+      break label115;
     }
+    catch (IOException localIOException)
+    {
+      label115:
+      for (;;) {}
+    }
+    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

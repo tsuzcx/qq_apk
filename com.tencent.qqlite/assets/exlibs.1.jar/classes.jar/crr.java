@@ -1,15 +1,16 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.service.HttpNotify;
 
 public class crr
-  implements Runnable
+  implements HttpNotify
 {
   public crr(DataLineHandler paramDataLineHandler) {}
   
-  public void run()
-  {
-    FMToastUtil.a(2131361874);
-  }
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
 }
 
 

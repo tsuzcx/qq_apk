@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import boe;
+import bod;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 
 public class TroopMemberGagActivity$TroopGagListAdapter$Holder
@@ -14,7 +14,7 @@ public class TroopMemberGagActivity$TroopGagListAdapter$Holder
   public FrameLayout a;
   public ImageView a;
   public TextView a;
-  public boe a;
+  public bod a;
   public View b;
   public ImageView b;
   public TextView b;

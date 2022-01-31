@@ -1,172 +1,148 @@
-import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
 
 public class bob
   extends TroopObserver
 {
   public bob(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  protected void a(int paramInt, byte paramByte)
+  protected void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerFailed, reqtype:" + paramInt);
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onSetTroopAdminFail: errorCode=" + paramInt);
     }
-    if ((paramInt == 2) || (paramInt == 9)) {
-      this.a.a(1, this.a.getString(2131363681));
+    this.a.l();
+    Object localObject;
+    switch (paramInt)
+    {
+    case 5: 
+    case 6: 
+    default: 
+      localObject = this.a.getString(2131362864);
+      this.a.a(1, (String)localObject);
+      return;
+    case 4: 
+      localObject = (FriendsManagerImp)this.a.app.getManager(8);
+      if (localObject != null)
+      {
+        localObject = ((FriendsManagerImp)localObject).a(this.a.c);
+        if (localObject == null) {
+          break;
+        }
+      }
+      break;
+    }
+    for (paramInt = ((TroopInfo)localObject).maxAdminNum;; paramInt = 0)
+    {
+      if (paramInt > 0)
+      {
+        localObject = String.format(this.a.getString(2131362868), new Object[] { Integer.valueOf(paramInt) });
+        break;
+      }
+      localObject = this.a.getString(2131362869);
+      break;
+      localObject = this.a.getString(2131362870);
+      break;
     }
   }
   
-  protected void a(int paramInt, byte paramByte, String paramString)
+  protected void a(String paramString1, String paramString2, byte paramByte)
   {
-    if (paramInt == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerSuccess, reqtype:_eResignGroupReq result:" + paramByte + " troopUin:" + paramString);
-      }
-      if (paramByte == 0) {
-        this.a.a(5, 2131363680, 1000);
-      }
-    }
-    while (paramInt != 9)
-    {
-      return;
-      this.a.a(1, this.a.getString(2131363681));
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerSuccess, reqtype:_eDeleteGroupReq result:" + paramByte + " troopUin:" + paramString);
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onSetTroopAdminSuccess: mTroopUin=" + paramString1 + " memberUin=" + paramString2 + " operation=" + paramByte);
     }
-    if (paramByte == 0)
+    TroopInfo localTroopInfo;
+    if ((this.a.c.equals(paramString1)) && (this.a.e.equals(paramString2)))
     {
-      this.a.a(5, 2131363680, 1000);
-      return;
-    }
-    this.a.a(1, this.a.getString(2131363681));
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onDeleteTroopMember, isSuccess:" + paramBoolean + " errorCode:" + paramInt);
-    }
-    if (paramBoolean)
-    {
-      this.a.a(2, this.a.getString(2131362850));
-      this.a.a(1);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    }
-    this.a.a(1, this.a.getString(2131362851));
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    try
-    {
-      if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
-      TroopMemberCardActivity.a(this.a);
-      ((TroopGagMgr)this.a.app.getManager(42)).a(this.a.c, this.a.e);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
-      }
-      if (paramBoolean)
+      paramString1 = (FriendsManagerImp)this.a.app.getManager(8);
+      localTroopInfo = paramString1.a(this.a.c);
+      if (localTroopInfo != null)
       {
-        paramObject = (Object[])paramObject;
-        l = ((Long)paramObject[0]).longValue();
-        i = ((Integer)paramObject[1]).intValue();
-        paramObject = (TroopMemberCard)paramObject[2];
-        if (l != Long.parseLong(this.a.c))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: troopUin != mTroopUin, " + l + "!=" + this.a.c);
-          }
+        if (localTroopInfo.Administrator == null) {
+          break label401;
         }
-        else if (paramObject == null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: cardInfo==null");
+        if (localTroopInfo.Administrator.startsWith("|")) {
+          localTroopInfo.Administrator = localTroopInfo.Administrator.substring(1);
         }
+        if (localTroopInfo.Administrator.endsWith("|")) {
+          localTroopInfo.Administrator = localTroopInfo.Administrator.substring(0, localTroopInfo.Administrator.length() - 1);
+        }
+        if (paramByte != 0) {
+          break label411;
+        }
+        localTroopInfo.Administrator = localTroopInfo.Administrator.replace(paramString2 + "|", "").replace("|" + paramString2, "").replace(paramString2, "");
+        label251:
+        paramString1.b(localTroopInfo);
       }
-    }
-    catch (Exception paramObject)
-    {
-      long l;
-      int i;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard:" + paramObject.toString());
-        return;
-        l = paramObject.memberUin;
-        if (l != Long.parseLong(this.a.e))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: memberUin != mMemberUin, " + l + "!=" + this.a.e);
-          }
-        }
-        else {
-          this.a.a(i, paramObject);
-        }
+      if (paramByte != 0) {
+        break label451;
       }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong)
-  {
-    if (paramString.equalsIgnoreCase("OidbSvc.0x8bb_2"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, CMD_ADD_SPECIAL_FOCUS, isSuccess:" + paramBoolean + " cmd:" + paramString + " errorCode:" + paramInt);
+      this.a.a(2, this.a.getString(2131362866));
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.memberRole = 1;
+      label289:
+      paramString1 = "";
+      paramString2 = (TextView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131298876);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.memberRole != 2) {
+        break label526;
       }
-      if (paramBoolean)
-      {
-        this.a.a(2, this.a.getString(2131363732));
-        this.a.a(0);
-        paramString = this.a.jdField_a_of_type_ArrayOfAndroidViewView[3];
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned = this.a.a(this.a.c, this.a.e);
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned) {
-          break label368;
-        }
-        this.a.a(paramString, this.a.getString(2131363731), true);
-        paramString.setContentDescription(this.a.getString(2131363626) + this.a.getString(2131363731));
+      paramString1 = this.a.getString(2131362844);
+      paramString2.setBackgroundResource(2130839433);
+      label338:
+      if (TextUtils.isEmpty(paramString1)) {
+        break label559;
       }
+      paramString2.setPadding(AIOUtils.a(5.0F, this.a.getResources()), 0, AIOUtils.a(5.0F, this.a.getResources()), 0);
+      paramString2.setText(paramString1);
+      paramString2.setVisibility(0);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, isMemberSpecialFocus:" + this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned);
-      }
-      return;
-      this.a.a(1, this.a.getString(2131363733));
-      break;
-      if (!paramString.equalsIgnoreCase("OidbSvc.0x8bb_3")) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, CMD_DELETE_SPECIAL_FOCUS, isSuccess:" + paramBoolean + " cmd:" + paramString + " errorCode:" + paramInt);
-      }
-      if (paramBoolean)
+      for (;;)
       {
-        this.a.a(2, this.a.getString(2131363735));
-        this.a.a(0);
+        this.a.a(2);
+        this.a.l();
+        return;
+        label401:
+        localTroopInfo.Administrator = "";
         break;
+        label411:
+        if (paramByte != 1) {
+          break label251;
+        }
+        localTroopInfo.Administrator = (localTroopInfo.Administrator + "|" + paramString2);
+        break label251;
+        label451:
+        if (paramByte != 1) {
+          break label289;
+        }
+        this.a.a(2, this.a.getString(2131362863));
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.memberRole = 2;
+        try
+        {
+          ReportController.b(this.a.app, "P_CliOper", "Grp_manage", "", "mber_card", "suc_setadmin", 0, 0, this.a.c, "", "", "");
+        }
+        catch (Exception paramString1) {}
       }
-      this.a.a(1, this.a.getString(2131363736));
-      break;
-      label368:
-      paramString.setContentDescription(this.a.getString(2131363626) + this.a.getString(2131363734));
-      this.a.a(paramString, this.a.getString(2131363734), true);
+      break label289;
+      label526:
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.memberRole != 3) {
+        break label338;
+      }
+      paramString1 = this.a.getString(2131362845);
+      paramString2.setBackgroundResource(2130839434);
+      break label338;
+      label559:
+      paramString2.setVisibility(8);
     }
   }
 }

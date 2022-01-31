@@ -14,32 +14,27 @@ public abstract class PluginBroadcastReceiver
   protected boolean mIsRunInPlugin;
   protected BroadcastReceiver mOutReceiver;
   protected PackageInfo mPackageInfo;
-  private boolean mUseQqResources;
+  private int mPluginResourcesType;
   
-  public void IInit(String paramString1, String paramString2, BroadcastReceiver paramBroadcastReceiver, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean)
+  public void IInit(String paramString1, String paramString2, BroadcastReceiver paramBroadcastReceiver, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginBroadcastReceiver.Init:" + paramString1 + ", " + paramBoolean);
+      DebugHelper.log("plugin_tag", "PluginBroadcastReceiver.Init:" + paramString1 + ", " + this.mPluginResourcesType);
     }
     this.mIsRunInPlugin = true;
     this.mApkFilePath = paramString2;
     this.mOutReceiver = paramBroadcastReceiver;
     this.mDexClassLoader = paramClassLoader;
     this.mPackageInfo = paramPackageInfo;
-    this.mUseQqResources = paramBoolean;
+    this.mPluginResourcesType = paramInt;
   }
   
   public void IOnReceive(Context paramContext, Intent paramIntent)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "PluginBroadcastReceiver.IOnReceive");
+      DebugHelper.log("plugin_tag", "PluginBroadcastReceiver.IOnReceive");
     }
-    if (this.mUseQqResources) {}
-    for (paramContext = new PluginContext(paramContext, 0, this.mApkFilePath, this.mDexClassLoader, paramContext.getResources());; paramContext = new PluginContext(paramContext, 0, this.mApkFilePath, this.mDexClassLoader))
-    {
-      onReceive(paramContext, paramIntent);
-      return;
-    }
+    onReceive(new PluginContext(paramContext, 0, this.mApkFilePath, this.mDexClassLoader, paramContext.getResources(), this.mPluginResourcesType), paramIntent);
   }
 }
 

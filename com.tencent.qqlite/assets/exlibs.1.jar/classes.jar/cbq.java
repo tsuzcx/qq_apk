@@ -1,18 +1,23 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.content.Intent;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.util.ThreadPriorityManager;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class cbq
-  implements MessageQueue.IdleHandler
+class cbq
+  extends AnimateUtils.AnimationAdapter
 {
-  public cbq(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  cbq(cbp paramcbp) {}
   
-  public boolean queueIdle()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    this.a.a.a = true;
+    paramAnimation = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimation.putExtra("from_key", this.a.a.a());
+    this.a.a.startActivity(paramAnimation);
+    this.a.a.overridePendingTransition(0, 0);
+    ThreadPriorityManager.a(false);
   }
 }
 

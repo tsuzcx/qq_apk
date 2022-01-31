@@ -1,20 +1,17 @@
+import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.litetransfersdk.NFCInfo;
+import com.tencent.litetransfersdk.Session;
 
 public class us
   implements Runnable
 {
-  public us(LiteTransferWrapper paramLiteTransferWrapper, boolean paramBoolean) {}
+  public us(LiteTransferWrapper paramLiteTransferWrapper, Session[] paramArrayOfSession, NFCInfo[] paramArrayOfNFCInfo, FTNInfo[] paramArrayOfFTNInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    if (LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L)
-    {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.destryOperator(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Boolean);
-      LiteTransferWrapper.access$302(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, 0L);
-    }
-    LiteTransferWrapper.access$402(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
-    LiteTransferWrapper.access$602(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.releaseGlobalFuncCallback();
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.RecvGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkSession, this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkFTNInfo, this.jdField_a_of_type_Boolean);
   }
 }
 

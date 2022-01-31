@@ -1,56 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
 
 public class app
-  extends Handler
+  extends FriendListObserver
 {
   public app(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Setting paramSetting)
   {
-    switch (paramMessage.what)
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.Avatar", 2, "refresh progress : " + paramMessage.arg1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = paramMessage.arg1;
-        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.Avatar", 2, "start progress : " + paramMessage.arg1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = 0;
-        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.Avatar", 2, "end result : " + paramMessage.arg1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = 100;
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.a = false;
-        this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-        if (paramMessage.arg1 == 1)
-        {
-          this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.h = 5;
-        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      } while (this.a.f >= 3);
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.jdField_a_of_type_JavaLangString = null;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
       return;
     }
-    this.a.a(this.a.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
+      this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.h = 2;
+    this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
   }
 }
 

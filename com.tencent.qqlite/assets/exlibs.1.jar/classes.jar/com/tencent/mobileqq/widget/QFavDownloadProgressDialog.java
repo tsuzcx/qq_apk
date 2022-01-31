@@ -13,8 +13,8 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import eyo;
-import eyp;
+import eyt;
+import eyu;
 
 public class QFavDownloadProgressDialog
   extends Dialog
@@ -29,7 +29,7 @@ public class QFavDownloadProgressDialog
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
   private QFavDownloadProgressDialog.Callback jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog$Callback;
-  private eyp jdField_a_of_type_Eyp = new eyp(this, null);
+  private eyu jdField_a_of_type_Eyu = new eyu(this, null);
   private int b = 0;
   private int c = 0;
   
@@ -44,12 +44,12 @@ public class QFavDownloadProgressDialog
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903410, null);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131297991));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131297992));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new eyo(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297990));
-    paramContext = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131364538), new Object[] { Integer.valueOf(this.b), Integer.valueOf(220357) });
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903400, null);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131297954));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131297955));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new eyt(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297953));
+    paramContext = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131364513), new Object[] { Integer.valueOf(this.b), Integer.valueOf(266474) });
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext);
   }
   
@@ -72,7 +72,7 @@ public class QFavDownloadProgressDialog
   {
     this.b = paramInt;
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-    this.jdField_a_of_type_Eyp.sendEmptyMessage(1001);
+    this.jdField_a_of_type_Eyu.sendEmptyMessage(1001);
   }
   
   public void c(int paramInt)

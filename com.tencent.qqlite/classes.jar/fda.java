@@ -1,24 +1,10 @@
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.smtt.sdk.WebView;
 
 public class fda
-  implements Runnable
 {
-  public fda(ToastUtil paramToastUtil, int paramInt1, int paramInt2) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
-    {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_Int, this.b);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.b);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
-  }
+  public static final int a = 0;
+  public WebView a;
+  public String a;
 }
 
 

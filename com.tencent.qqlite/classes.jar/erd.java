@@ -1,77 +1,76 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.view.SurfaceHolder;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import com.tencent.util.VersionUtils;
 
 public class erd
-  implements AdapterView.OnItemClickListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public erd(TroopShareUtility paramTroopShareUtility) {}
+  public erd(VideoViewX paramVideoViewX) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  @TargetApi(8)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    TroopShareUtility.a(this.a).dismiss();
-    int i;
-    if ((paramLong == 1L) || (paramLong == 2L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131363703;
+    VideoViewX.c(this.a, 2);
+    VideoViewX.a(this.a, true);
+    boolean bool;
+    if (VersionUtils.b())
+    {
+      i = ((AudioManager)BaseApplication.getContext().getSystemService("audio")).requestAudioFocus(this.a.a, 3, 1);
+      if (QLog.isColorLevel())
+      {
+        String str = VideoViewX.a(this.a);
+        StringBuilder localStringBuilder = new StringBuilder().append("requestAudioFocus,result:");
+        if (i != 1) {
+          break label292;
+        }
+        bool = true;
+        QLog.d(str, 2, bool);
       }
     }
-    for (;;)
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onPrepared(VideoViewX.a(this.a));
+    }
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).setEnabled(true);
+    }
+    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
+    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
+    int i = VideoViewX.d(this.a);
+    if (i != 0) {
+      this.a.a(i);
+    }
+    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
     {
-      if (i != -1)
+      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
+      if ((VideoViewX.e(this.a) == VideoViewX.b(this.a)) && (VideoViewX.f(this.a) == VideoViewX.c(this.a)))
       {
-        QQToast.a(TroopShareUtility.a(this.a), TroopShareUtility.a(this.a).getString(i), 0).b(TroopShareUtility.a(this.a).getTitleBarHeight());
-        TroopShareUtility.a(this.a, -1);
-        TroopShareUtility.b(this.a, -1);
-        if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-          ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+        if (VideoViewX.g(this.a) != 3) {
+          break label297;
         }
+        this.a.a();
       }
+    }
+    label292:
+    label297:
+    while (VideoViewX.g(this.a) != 3)
+    {
       do
       {
         return;
-        if (WXShareHelper.a().b()) {
-          break label333;
-        }
-        i = 2131363704;
+        bool = false;
         break;
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-        }
-        TroopShareUtility.a(this.a, (int)paramLong);
-        if ((TroopShareUtility.a(this.a) != 4) || (!TroopShareUtility.a(this.a).a)) {
-          break label253;
-        }
-        this.a.g();
-      } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
-      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+      } while ((this.a.a()) || (i != 0) || (this.a.b() <= 0));
       return;
-      label253:
-      if (TroopShareUtility.a(this.a).e())
-      {
-        if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-          this.a.a = true;
-        }
-        this.a.d();
-        return;
-      }
-      if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-        this.a.a = false;
-      }
-      TroopShareUtility.b(this.a, 0);
-      TroopShareUtility.a(this.a);
-      return;
-      label333:
-      i = -1;
     }
+    this.a.a();
   }
 }
 

@@ -1,15 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
-class dlh
-  implements DialogInterface.OnDismissListener
+public class dlh
+  implements Runnable
 {
-  dlh(dlf paramdlf, View paramView) {}
+  public dlh(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    localLinkedHashMap.put("已下载图片", new ArrayList());
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext())
+    {
+      FileInfo localFileInfo = (FileInfo)localIterator.next();
+      String str = localFileInfo.a();
+      if ((str != null) && (str.length() != 0))
+      {
+        localObject = str;
+        if (!str.equalsIgnoreCase("QQfile_recv")) {}
+      }
+      else
+      {
+        localObject = "已下载图片";
+      }
+      if (!localLinkedHashMap.containsKey(localObject)) {
+        localLinkedHashMap.put(localObject, new ArrayList());
+      }
+      ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
+    }
+    Object localObject = localLinkedHashMap.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((List)localLinkedHashMap.get((String)((Iterator)localObject).next())).size() == 0) {
+        ((Iterator)localObject).remove();
+      }
+    }
+    QfileLocalFilePicTabView.a(this.a, new dli(this, localLinkedHashMap));
   }
 }
 

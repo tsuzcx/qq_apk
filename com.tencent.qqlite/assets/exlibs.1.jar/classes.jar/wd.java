@@ -1,21 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.MayKnowManActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class wd
-  implements View.OnTouchListener
+class wd
+  implements Runnable
 {
-  public wd(AddFriendActivity paramAddFriendActivity) {}
+  wd(wc paramwc, List paramList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((AddFriendActivity.a(this.a) != null) && (paramMotionEvent.getAction() == 0)) {
-      AddFriendActivity.a(this.a).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-    }
-    return false;
+    MayKnowManActivity.a(this.jdField_a_of_type_Wc.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Wc.a.app.a());
   }
 }
 

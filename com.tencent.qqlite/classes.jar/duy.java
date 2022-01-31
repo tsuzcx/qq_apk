@@ -5,15 +5,11 @@ import com.tencent.mobileqq.widget.QQToast;
 public final class duy
   implements Runnable
 {
-  public duy(int paramInt) {}
+  public duy(String paramString) {}
   
   public void run()
   {
-    QQToast localQQToast = new QQToast(BaseApplicationImpl.getContext());
-    localQQToast.a(2130837966);
-    localQQToast.c(3000);
-    localQQToast.b(this.a);
-    localQQToast.b(FMToastUtil.a());
+    QQToast.a(BaseApplicationImpl.getContext(), 1, this.a, 0).b(FMToastUtil.a());
   }
 }
 

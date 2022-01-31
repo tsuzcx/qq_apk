@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.item;
 import android.content.Context;
 import android.view.View;
 import android.widget.BaseAdapter;
-import bxf;
+import bxe;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
@@ -33,7 +33,7 @@ public class SystemItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new bxf(this);
+    return new bxe(this);
   }
   
   protected String a(ChatMessage paramChatMessage)

@@ -1,15 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class akp
   implements View.OnClickListener
 {
-  public akp(DoodleActivity paramDoodleActivity) {}
+  public akp(EditActivity paramEditActivity) {}
   
   public void onClick(View paramView)
   {
-    DoodleActivity.a(this.a);
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130839035);
+    EditActivity.a(this.a, false);
   }
 }
 

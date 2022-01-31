@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class cli
-  implements Comparator
+  implements Animation.AnimationListener
 {
-  public cli(DiscussionListInnerFrame paramDiscussionListInnerFrame, HashMap paramHashMap) {}
+  public cli(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
-    }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
+    paramAnimation = new LinearLayout.LayoutParams(-1, -2);
+    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

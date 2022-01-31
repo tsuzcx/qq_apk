@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
 
 public class ccq
   implements Runnable
 {
-  public ccq(SystemMsgListView paramSystemMsgListView) {}
+  public ccq(NewFriendActivity paramNewFriendActivity) {}
   
-  public void run()
-  {
-    this.a.a.a().a().b();
-  }
+  public void run() {}
 }
 
 

@@ -1,19 +1,31 @@
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class eug
   implements View.OnClickListener
 {
-  public eug(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  int jdField_a_of_type_Int;
+  
+  public eug(QQCustomDialog paramQQCustomDialog, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.customWhichToCallBack(this.jdField_a_of_type_Int));
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import caj;
+import cap;
 import com.tencent.biz.widgets.ShareAioResultDialog;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -47,13 +47,13 @@ public class WpaThirdAppStructMsgUtil
       throw new NullPointerException();
     }
     ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramActivity);
-    String str = paramActivity.getString(2131362486);
+    String str = paramActivity.getString(2131362483);
     if (paramString != null) {}
     for (paramString = str + paramString;; paramString = str)
     {
-      paramAbsShareMsg = new caj(paramAbsShareMsg, paramActivity, paramActivity, paramQQAppInterface, paramSessionInfo);
+      paramAbsShareMsg = new cap(paramAbsShareMsg, paramActivity, paramActivity, paramQQAppInterface, paramSessionInfo);
       localShareAioResultDialog.a(paramString, paramAbsShareMsg);
-      localShareAioResultDialog.a(paramActivity.getResources().getString(2131362485));
+      localShareAioResultDialog.a(paramActivity.getResources().getString(2131362482));
       localShareAioResultDialog.a(paramAbsShareMsg);
       localShareAioResultDialog.a(false);
       localShareAioResultDialog.show();

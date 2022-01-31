@@ -1,69 +1,31 @@
 import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.JumpFilterHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class cqy
   implements Runnable
 {
-  public cqy(ConfigHandler paramConfigHandler, String paramString1, String paramString2) {}
+  public cqy(ConfigHandler paramConfigHandler, String paramString, long paramLong) {}
   
-  /* Error */
   public void run()
   {
-    // Byte code:
-    //   0: new 27	java/io/File
-    //   3: dup
-    //   4: aload_0
-    //   5: getfield 16	cqy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_1
-    //   12: aload_0
-    //   13: getfield 14	cqy:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   16: getfield 35	com/tencent/mobileqq/app/ConfigHandler:a	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   19: new 37	java/net/URL
-    //   22: dup
-    //   23: aload_0
-    //   24: getfield 18	cqy:b	Ljava/lang/String;
-    //   27: invokespecial 38	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   30: aload_1
-    //   31: invokestatic 43	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Lcom/tencent/common/app/AppInterface;Ljava/net/URL;Ljava/io/File;)Z
-    //   34: ifeq +16 -> 50
-    //   37: aload_0
-    //   38: getfield 14	cqy:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   41: iconst_3
-    //   42: iconst_1
-    //   43: aload_0
-    //   44: getfield 16	cqy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   47: invokevirtual 46	com/tencent/mobileqq/app/ConfigHandler:a	(IZLjava/lang/Object;)V
-    //   50: aload_0
-    //   51: getfield 14	cqy:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   54: aload_0
-    //   55: getfield 18	cqy:b	Ljava/lang/String;
-    //   58: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
-    //   61: return
-    //   62: astore_1
-    //   63: aload_0
-    //   64: getfield 14	cqy:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   67: aload_0
-    //   68: getfield 18	cqy:b	Ljava/lang/String;
-    //   71: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
-    //   74: return
-    //   75: astore_1
-    //   76: aload_0
-    //   77: getfield 14	cqy:jdField_a_of_type_ComTencentMobileqqAppConfigHandler	Lcom/tencent/mobileqq/app/ConfigHandler;
-    //   80: aload_0
-    //   81: getfield 18	cqy:b	Ljava/lang/String;
-    //   84: invokestatic 49	com/tencent/mobileqq/app/ConfigHandler:a	(Lcom/tencent/mobileqq/app/ConfigHandler;Ljava/lang/String;)V
-    //   87: aload_1
-    //   88: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	this	cqy
-    //   11	20	1	localFile	java.io.File
-    //   62	1	1	localException	java.lang.Exception
-    //   75	13	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	50	62	java/lang/Exception
-    //   12	50	75	finally
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
+    String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
+    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, str, localFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpWhiteList", 2, "handleJumpWhiteList download: " + i);
+    }
+    if (i == 0)
+    {
+      JumpFilterHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      return;
+    }
+    JumpFilterHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication());
   }
 }
 

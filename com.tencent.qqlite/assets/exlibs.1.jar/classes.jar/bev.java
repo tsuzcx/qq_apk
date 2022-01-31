@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.QQSetting;
 
 class bev
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  bev(beu parambeu) {}
+  bev(bes parambes) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((QQSetting.a(this.a.a) != null) && (QQSetting.a(this.a.a).isShowing())) {
-      QQSetting.a(this.a.a).dismiss();
-    }
     QQSetting.a(this.a.a, null);
   }
 }

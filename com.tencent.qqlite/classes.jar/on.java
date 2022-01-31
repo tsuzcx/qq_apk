@@ -1,31 +1,54 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
 
-public class on
-  extends LBSObserver
+public final class on
+  implements BusinessObserver
 {
-  public on(PublicAccountManager paramPublicAccountManager) {}
+  public on(AppInterface paramAppInterface, Context paramContext, String paramString) {}
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramArrayOfByte = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramBoolean)
-    {
-      double d1 = Double.valueOf(paramString1).doubleValue();
-      double d2 = Double.valueOf(paramString2).doubleValue();
-      this.a.a(this.a.jdField_a_of_type_AndroidContentContext, paramArrayOfByte, this.a.q, this.a.r, true, d1, d2, (BusinessObserver)PublicAccountManager.a(this.a).get());
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
+    if (!paramBoolean) {}
     for (;;)
     {
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte.c(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
-      }
       return;
-      this.a.a(this.a.jdField_a_of_type_AndroidContentContext, paramArrayOfByte, this.a.q, this.a.r, false, 0.0D, 0.0D, (BusinessObserver)PublicAccountManager.a(this.a).get());
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            PublicAccountUtil.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+          if (paramInt == 58)
+          {
+            PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362453);
+            return;
+          }
+          PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362450);
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
     }
+    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131362450);
+    return;
   }
 }
 

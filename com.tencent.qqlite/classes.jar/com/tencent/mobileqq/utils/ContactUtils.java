@@ -86,21 +86,21 @@ public class ContactUtils
     {
     case 2: 
     default: 
-      return 2130839429;
+      return 2130839394;
     case 1: 
-      return 2130839442;
+      return 2130839407;
     case 3: 
-      return 2130839430;
+      return 2130839395;
     case 4: 
-      return 2130839431;
+      return 2130839396;
     case 5: 
-      return 2130839440;
+      return 2130839405;
     case 6: 
-      return 2130839438;
+      return 2130839403;
     case 100: 
-      return 2130839433;
+      return 2130839398;
     }
-    return 2130839436;
+    return 2130839401;
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -267,7 +267,7 @@ public class ContactUtils
       case 5: 
       case 6: 
       default: 
-        return paramContext.getString(2131364006);
+        return paramContext.getString(2131363995);
         i1 = 0;
         continue;
         i1 = 1;
@@ -281,9 +281,9 @@ public class ContactUtils
         i1 = 7;
       }
     }
-    return paramContext.getString(2131364003);
-    return paramContext.getString(2131364004);
-    return paramContext.getString(2131364005);
+    return paramContext.getString(2131363992);
+    return paramContext.getString(2131363993);
+    return paramContext.getString(2131363994);
   }
   
   public static String a(Context paramContext, DiscussionInfo paramDiscussionInfo)
@@ -299,7 +299,7 @@ public class ContactUtils
     }
     else
     {
-      paramDiscussionInfo = paramContext.getResources().getString(2131363221);
+      paramDiscussionInfo = paramContext.getResources().getString(2131363224);
     }
     return paramDiscussionInfo;
   }
@@ -821,7 +821,7 @@ public class ContactUtils
   public static boolean a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
     if (b == null) {
-      b = paramQQAppInterface.a().getString(2131362949);
+      b = paramQQAppInterface.a().getString(2131362953);
     }
     return (((0x40 & paramLong) >>> 6 == 1L) && ((0x20000000 & paramLong) >>> 29 == 1L)) || (paramString == null) || (paramString.matches(b)) || (paramString.length() == 0);
   }

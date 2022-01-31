@@ -1,26 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.DownloadInterface;
+import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebView;
 
 public class fcr
   implements Runnable
 {
-  public fcr(DownloadInterface paramDownloadInterface, String paramString) {}
+  public fcr(BaseInterface paramBaseInterface, long paramLong, String paramString, WebView paramWebView) {}
   
   public void run()
   {
+    String str = "javascript:QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']});";
+    LogUtility.e("Response<callBatch>", str);
     try
     {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
       return;
     }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "webview loadUrl>>> ", localException);
-    }
+    catch (Exception localException) {}
   }
 }
 

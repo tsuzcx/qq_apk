@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class cye
-  implements Comparator
+  implements Runnable
 {
-  public cye(C2CMessageProcessor paramC2CMessageProcessor) {}
+  public cye(BaseMessageManager paramBaseMessageManager, String paramString, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void run()
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.b + ", context = " + this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a.post(new cyf(this));
   }
 }
 

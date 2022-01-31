@@ -1,51 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
-
 public class dcc
-  extends ContactBindObserver
 {
-  public dcc(ContactSyncManager paramContactSyncManager) {}
+  public byte a;
+  public long a;
+  public String a;
+  public short a;
+  public byte[] a;
+  public short b = 0;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public dcc()
   {
-    PhoneContactManager localPhoneContactManager = (PhoneContactManager)this.a.a.getManager(10);
-    int i = localPhoneContactManager.b();
-    String str1 = this.a.a.a();
-    String str2 = this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i + " | syncUin = " + ContactSyncManager.b(str2) + " | currentUin = " + ContactSyncManager.b(str1));
-    }
-    if (localPhoneContactManager.g()) {
-      if (!TextUtils.isEmpty(str2)) {}
-    }
-    do
-    {
-      do
-      {
-        ContactSyncManager.a(this.a);
-        do
-        {
-          return;
-        } while (str1.equals(str2));
-        ContactSyncManager.a(this.a);
-        ContactSyncManager.a(this.a);
-        return;
-      } while ((i != 2) && (i != 1));
-      ContactSyncManager.b(this.a);
-    } while ((TextUtils.isEmpty(str2)) || (!str2.equals(this.a.a.a())));
-    ContactSyncManager.a(this.a);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean1 + " | hasUpdate = " + paramBoolean2);
-    }
-    this.a.b();
+    this.jdField_a_of_type_Short = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

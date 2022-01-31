@@ -1,31 +1,39 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 public class xd
   implements View.OnClickListener
 {
-  public xd(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public xd(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.getText().toString().length() > 30)
+    paramView = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    int i = 0;
+    String str;
+    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
     {
-      paramView = new Dialog(this.a, 2131624119);
-      paramView.setContentView(2130903615);
-      ((TextView)paramView.findViewById(2131296470)).setText(this.a.getString(2131363513));
-      ((ProgressBar)paramView.findViewById(2131296469)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131298746)).setImageResource(2130837991);
-      paramView.show();
+      str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
+      if (!"".equals(str)) {}
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131363392), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+        return;
+        paramView = paramView.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
+        i += 1;
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, null);
       return;
     }
-    this.a.a(this.a.a.getText().toString().trim(), false);
-    this.a.a(this.a.a.getText().toString().trim(), null);
   }
 }
 

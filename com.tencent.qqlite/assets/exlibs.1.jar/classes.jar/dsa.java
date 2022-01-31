@@ -1,29 +1,21 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.BaseActionBar.IActionBarClickEvent;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.HlistViewHolder;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.ActionBar.ActionBarOnlineFile.BaseActionBarOnlineFile;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 
-public final class dsa
+public class dsa
   implements View.OnClickListener
 {
-  public dsa(Activity paramActivity, String paramString, BaseActionBar.IActionBarClickEvent paramIActionBarClickEvent) {}
+  public dsa(BaseActionBarOnlineFile paramBaseActionBarOnlineFile) {}
   
   public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    if ((paramView.getTag() instanceof HorizontalListViewAdapter.HlistViewHolder))
-    {
-      paramView = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
-      if (paramView.a.isShowing()) {
-        paramView.a.dismiss();
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerActionBarBaseActionBar$IActionBarClickEvent.g();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.a.h();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
   }
 }
 

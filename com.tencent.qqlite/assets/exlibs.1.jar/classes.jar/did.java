@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.MenuPopupDialog;
 
-class did
-  implements FMDialogUtil.FMDialogInterface
+public class did
+  implements View.OnLongClickListener
 {
-  did(dib paramdib, FileManagerEntity paramFileManagerEntity) {}
+  public did(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    QfileBaseCloudFileTabView.g(this.jdField_a_of_type_Dib.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
+    QfileBaseCloudFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new die(this, paramView), new dif(this, paramView)));
+    return true;
   }
-  
-  public void b() {}
 }
 
 

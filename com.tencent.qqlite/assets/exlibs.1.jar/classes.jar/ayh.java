@@ -1,24 +1,30 @@
-import android.view.View;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayh
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ayh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ayu paramayu, ActionSheet paramActionSheet) {}
+  public ayh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (!NearbyPeopleProfileActivity.c(this.a).isEnabled()))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dating", 2, "profile add friend return");
+      }
       return;
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, this.jdField_a_of_type_Ayu);
     }
+    NearbyPeopleProfileActivity.w(this.a);
+    if ((NearbyPeopleProfileActivity.c(this.a) != null) && (NearbyPeopleProfileActivity.c(this.a).isShowing())) {
+      NearbyPeopleProfileActivity.c(this.a).dismiss();
+    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004829", "0X8004829", 1, 0, "", "", "", "");
   }
 }
 

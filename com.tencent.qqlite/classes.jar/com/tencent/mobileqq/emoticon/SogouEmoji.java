@@ -16,10 +16,10 @@ import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import dds;
-import ddt;
-import ddv;
-import ddw;
+import ddy;
+import ddz;
+import deb;
+import dec;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,7 +44,7 @@ public class SogouEmoji
   
   public SogouEmoji(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji$OnEmojiJsonBackSogou = new dds(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji$OnEmojiJsonBackSogou = new ddy(this);
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "func SogouEmoji constructor begins");
     }
@@ -122,7 +122,7 @@ public class SogouEmoji
       QLog.d(jdField_a_of_type_JavaLangString, 2, "func trySend begins, packId:" + paramInt + ",exprId:" + paramString);
     }
     if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getApplicationContext())) {
-      QQToast.a(BaseApplicationImpl.a, 2131362912, 0).a();
+      QQToast.a(BaseApplicationImpl.a, 2131362916, 0).a();
     }
     do
     {
@@ -172,7 +172,7 @@ public class SogouEmoji
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    paramString1 = new ddt(this, paramString1, paramString2, paramBoolean);
+    paramString1 = new ddz(this, paramString1, paramString2, paramBoolean);
     ThreadManager.a().post(paramString1);
   }
   
@@ -185,7 +185,7 @@ public class SogouEmoji
     do
     {
       return;
-      paramOnEmojiKeyBackSogou = new ddw(this, paramArrayList, paramOnEmojiKeyBackSogou);
+      paramOnEmojiKeyBackSogou = new dec(this, paramArrayList, paramOnEmojiKeyBackSogou);
       String str = Integer.toString(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramOnEmojiKeyBackSogou);
       this.jdField_a_of_type_Int += 1;
@@ -200,7 +200,7 @@ public class SogouEmoji
   
   public void a(List paramList)
   {
-    paramList = new ddv(this, paramList);
+    paramList = new deb(this, paramList);
     ThreadManager.a().post(paramList);
   }
 }

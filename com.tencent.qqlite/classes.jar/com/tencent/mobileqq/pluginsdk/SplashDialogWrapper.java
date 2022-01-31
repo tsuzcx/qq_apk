@@ -36,7 +36,7 @@ public final class SplashDialogWrapper
     {
       this.mContext.unregisterReceiver(this.mReceiver);
       if (DebugHelper.sDebug) {
-        DebugHelper.log("PluginDebug", "SplashDialogWrapper.dismiss unregisterReceiver");
+        DebugHelper.log("plugin_tag", "SplashDialogWrapper.dismiss unregisterReceiver");
       }
       this.mReceiver = null;
       this.mHandler.removeMessages(0);
@@ -64,7 +64,7 @@ public final class SplashDialogWrapper
     localIntentFilter.addAction("action_launch_completed");
     this.mReceiver = new LaunchCompletedObserver(this.mPluginName, this.mPluginApk);
     if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginDebug", "SplashDialogWrapper.show registerReceiver");
+      DebugHelper.log("plugin_tag", "SplashDialogWrapper.show registerReceiver");
     }
     this.mContext.registerReceiver(this.mReceiver, localIntentFilter);
     try
@@ -122,7 +122,7 @@ public final class SplashDialogWrapper
       paramContext = paramIntent.getStringExtra("plugin_apk");
       paramIntent = paramIntent.getStringExtra("plugin_name");
       if (DebugHelper.sDebug) {
-        DebugHelper.log("PluginDebug", "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent + ", " + SplashDialogWrapper.this.mOnlyCheckID);
+        DebugHelper.log("plugin_tag", "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent + ", " + SplashDialogWrapper.this.mOnlyCheckID);
       }
       if ((this.mPluginID.equalsIgnoreCase(paramContext)) && ((SplashDialogWrapper.this.mOnlyCheckID) || (paramIntent != null))) {
         SplashDialogWrapper.this.dismiss();

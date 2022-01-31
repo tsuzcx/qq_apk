@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.transfile.MultiMsgUpProcessor;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
 public class ehe
-  implements Runnable
+  extends AsyncTask
 {
-  public ehe(MultiMsgUpProcessor paramMultiMsgUpProcessor) {}
+  public ehe(GroupPicUploadProcessor paramGroupPicUploadProcessor, PicReq paramPicReq) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    this.a.a();
+    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqTransfileGroupPicUploadProcessor.a);
+    return null;
   }
 }
 

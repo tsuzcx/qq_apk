@@ -39,8 +39,8 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import zg;
-import zh;
+import ze;
+import zf;
 
 public class AutoRemarkActivity
   extends IphoneTitleBarActivity
@@ -62,9 +62,9 @@ public class AutoRemarkActivity
   public EditText a;
   public TextView a;
   public FriendListHandler a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zg(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ze(this);
   public QQProgressDialog a;
-  private zh jdField_a_of_type_Zh = new zh(this, null);
+  private zf jdField_a_of_type_Zf = new zf(this, null);
   private View b = null;
   int e;
   int f;
@@ -119,7 +119,7 @@ public class AutoRemarkActivity
   {
     if (this.e == 0)
     {
-      paramInt = 2131363623;
+      paramInt = 2131363617;
       setTitle(paramInt);
       this.jdField_a_of_type_AndroidViewView = findViewById(2131296593);
       this.b = findViewById(2131296595);
@@ -130,7 +130,7 @@ public class AutoRemarkActivity
       }
     }
     label349:
-    for (paramInt = 2131363069;; paramInt = 2131363430)
+    for (paramInt = 2131363072;; paramInt = 2131363433)
     {
       a(paramInt, this);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(this.jdField_g_of_type_Int));
@@ -155,10 +155,10 @@ public class AutoRemarkActivity
       c(true);
       this.h.setContentDescription("返回" + this.h.getText().toString() + "界面");
       this.jdField_a_of_type_AndroidViewView.setFocusable(true);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363027) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363031) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(null);
       return;
-      paramInt = 2131362798;
+      paramInt = 2131362802;
       break;
     }
   }
@@ -231,7 +231,7 @@ public class AutoRemarkActivity
   {
     if (NetworkUtil.e(this))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363378);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       Intent localIntent = getIntent();
       int m = localIntent.getIntExtra("friend_setting", 0);
@@ -248,7 +248,7 @@ public class AutoRemarkActivity
       }
       return;
     }
-    QQToast.a(this.app.a(), 1, getString(2131363449), 0).b(getTitleBarHeight());
+    QQToast.a(this.app.a(), 1, getString(2131363450), 0).b(getTitleBarHeight());
   }
   
   private boolean c()
@@ -262,19 +262,19 @@ public class AutoRemarkActivity
     {
       if (a(0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363378);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
     }
-    QQToast.a(this.app.a(), 1, getString(2131363449), 0).b(getTitleBarHeight());
+    QQToast.a(this.app.a(), 1, getString(2131363450), 0).b(getTitleBarHeight());
   }
   
   private void e()
   {
     if (NetworkUtil.e(this))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363378);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363381);
       Intent localIntent = getIntent();
       long l1 = localIntent.getLongExtra("lToMobile", 0L);
       byte[] arrayOfByte = localIntent.getByteArrayExtra("sig");
@@ -284,7 +284,7 @@ public class AutoRemarkActivity
       this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(0, Long.parseLong(this.jdField_f_of_type_JavaLangString), l1, arrayOfByte, (byte)this.jdField_g_of_type_Int, str, l2, l3);
       return;
     }
-    QQToast.a(this.app.a(), 1, getString(2131363449), 0).b(getTitleBarHeight());
+    QQToast.a(this.app.a(), 1, getString(2131363450), 0).b(getTitleBarHeight());
   }
   
   private void f()
@@ -356,7 +356,7 @@ public class AutoRemarkActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
       }
     }
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363027) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131363031) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -385,7 +385,7 @@ public class AutoRemarkActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903072);
-    d(2130837633);
+    d(2130837635);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.app.a(1));
     Intent localIntent = getIntent();
     this.e = localIntent.getIntExtra("param_mode", 0);
@@ -393,13 +393,13 @@ public class AutoRemarkActivity
     this.jdField_f_of_type_Int = getIntent().getIntExtra("source_id", 10004);
     this.jdField_g_of_type_JavaLangString = getIntent().getStringExtra("src_name");
     a(this.jdField_f_of_type_Int);
-    this.app.a(this.jdField_a_of_type_Zh);
+    this.app.a(this.jdField_a_of_type_Zf);
     this.app.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     if (((paramBundle == null) || (this.e == 1)) && (NetworkUtil.e(this)) && (c()))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(this.jdField_f_of_type_JavaLangString, getIntent().getIntExtra("source_id", 10004), getIntent().getIntExtra("sub_source_id", 0));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363212);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131363215);
     }
     f();
     return true;
@@ -408,7 +408,7 @@ public class AutoRemarkActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.c(this.jdField_a_of_type_Zh);
+    this.app.c(this.jdField_a_of_type_Zf);
     this.app.c(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
   }
   
@@ -417,7 +417,7 @@ public class AutoRemarkActivity
     if (paramView == this.jdField_a_of_type_AndroidViewView)
     {
       paramView = new Intent(this, EditActivity.class);
-      paramView.putExtra("title", 2131363619).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("hint", getResources().getString(2131363622)).putExtra("multiLine", false);
+      paramView.putExtra("title", 2131363613).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("hint", getResources().getString(2131363616)).putExtra("multiLine", false);
       if ((this.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0)) {
         paramView.putExtra("current", this.jdField_a_of_type_AndroidWidgetEditText.getText());
       }

@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import java.util.Comparator;
+import android.app.ProgressDialog;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.TimerTask;
 
-public class dxj
-  implements Comparator
+class dxj
+  extends TimerTask
 {
-  public dxj(TroopAssistantManager paramTroopAssistantManager) {}
+  dxj(dxi paramdxi, ProgressDialog paramProgressDialog) {}
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  public void run()
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    DumpMemInfoHandler.a(this.jdField_a_of_type_Dxi.a.a);
+    this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
   }
 }
 

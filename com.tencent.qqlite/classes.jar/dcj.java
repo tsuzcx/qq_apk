@@ -1,34 +1,22 @@
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class dcj
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
-  public dcj(MessageProgressTextView paramMessageProgressTextView, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
+  public dcj(ContactSyncManager paramContactSyncManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.jdField_a_of_type_Dcj = null;
-    if (!this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.jdField_a_of_type_Boolean)
+    try
     {
-      this.jdField_a_of_type_Int += this.b;
-      MessageProgressTextView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView, this.jdField_a_of_type_Int, this.b);
+      this.a.a();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ContactSync.Manager", 2, "onQQContactRefreshed | syncAllContacts exception", localThrowable);
     }
   }
 }

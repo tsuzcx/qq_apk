@@ -1,26 +1,37 @@
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.widget.ActionSheet;
 
 public class ayp
-  implements IphonePickerView.IphonePickListener
+  implements IphonePickerView.PickerViewAdapter
 {
-  public ayp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public ayp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public int a()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    NearbyPeopleProfileActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setTag(Byte.valueOf((byte)i));
-    NearbyPeopleProfileActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).setText(NearbyPeopleProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).a(0, i));
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
+    return 1;
   }
   
-  public void a(int paramInt1, int paramInt2) {}
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return "男";
+    }
+    return "女";
+  }
 }
 
 

@@ -10,8 +10,8 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.weiyun.sdk.IWyFileSystem.Thumbnail;
 import com.weiyun.sdk.IWyFileSystem.ThumbnailType;
-import dmt;
-import dmu;
+import dmz;
+import dna;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -296,7 +296,7 @@ public class FMObserver
       paramObject.jdField_a_of_type_JavaLangObject = localObject1[1];
       localObject1 = new Handler();
       QLog.i("FMObserver<FileAssistant>", 1, "OnThumbDownLoadSuccess(faild),fileId[" + paramObject.jdField_a_of_type_JavaLangString + "],delay 1000ms");
-      ((Handler)localObject1).postDelayed(new dmu(this, paramObject), 1000L);
+      ((Handler)localObject1).postDelayed(new dna(this, paramObject), 1000L);
       return;
     case 40: 
       if (((Boolean)paramObject[1]).booleanValue())
@@ -530,7 +530,7 @@ public class FMObserver
     paramObservable = Looper.getMainLooper();
     if (Thread.currentThread() != paramObservable.getThread())
     {
-      new Handler(paramObservable).post(new dmt(this, paramObject));
+      new Handler(paramObservable).post(new dmz(this, paramObject));
       return;
     }
     a(paramObject);

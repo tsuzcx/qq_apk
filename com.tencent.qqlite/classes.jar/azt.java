@@ -1,18 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class azt
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   public azt(NotificationActivity paramNotificationActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent.getAction().equals("com.tencent.qqlite.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
-    }
+    this.a.c();
   }
 }
 

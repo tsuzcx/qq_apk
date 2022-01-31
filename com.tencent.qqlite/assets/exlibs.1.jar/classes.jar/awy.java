@@ -1,15 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.NearbyPeopleListFrame;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
-class awy
-  implements View.OnClickListener
+public class awy
+  extends Handler
 {
-  awy(aww paramaww) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public awy(NearbyPeopleListFrame paramNearbyPeopleListFrame1, NearbyPeopleListFrame paramNearbyPeopleListFrame2)
   {
-    this.a.a.m();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramNearbyPeopleListFrame2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NearbyPeopleListFrame localNearbyPeopleListFrame = (NearbyPeopleListFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localNearbyPeopleListFrame == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        NearbyPeopleListFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
+        localNearbyPeopleListFrame.a.B();
+      }
+    } while (paramMessage.arg1 != 1);
+    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, 2131363356);
+    return;
+    NearbyPeopleListFrame.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleListFrame);
+    localNearbyPeopleListFrame.a.B();
+    NearbyPeopleListFrame.a(localNearbyPeopleListFrame, 1, localNearbyPeopleListFrame.a(2131363516));
   }
 }
 

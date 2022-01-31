@@ -1,48 +1,21 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
 
 public class fbp
-  extends Handler
+  implements View.OnClickListener
 {
-  public fbp(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fbp(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-        localMessage = Message.obtain();
-        localMessage.what = 1002;
-        localMessage.obj = paramMessage;
-        this.a.b.sendMessage(localMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      paramMessage = AuthorityActivity.a(paramMessage);
-    } while (paramMessage == null);
-    Message localMessage = Message.obtain();
-    localMessage.what = 1003;
-    localMessage.obj = paramMessage;
-    this.a.b.sendMessage(localMessage);
+    paramView = new Bundle();
+    paramView.putInt("group_index", this.jdField_a_of_type_Int);
+    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
   }
 }
 

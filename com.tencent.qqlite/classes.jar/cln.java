@@ -1,13 +1,15 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class cln
-  extends TroopMemberListActivity.ViewHolder
 {
-  public CheckBox a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
   
-  private cln(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  cln(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
 }
 
 

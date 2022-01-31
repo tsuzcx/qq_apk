@@ -1,28 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQProfileItem;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.RegisterPush;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class cxv
-  extends TroopObserver
+  extends AccountObserver
 {
-  private cxv(UpdateTroop paramUpdateTroop) {}
+  private cxv(RegisterPush paramRegisterPush) {}
   
-  protected void a(boolean paramBoolean)
+  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+    RegisterPush.a(this.a).g = true;
+    if (paramStatus == AppRuntime.Status.online) {
+      RegisterPush.b(this.a).a.a(11L, false);
     }
-    if (!paramBoolean)
+    for (;;)
     {
-      this.a.a(6);
+      RegisterPush.e(this.a).a(paramBoolean2);
+      if (!paramBoolean2)
+      {
+        paramStatus = new QQProfileItem(RegisterPush.f(this.a).a);
+        RegisterPush.g(this.a).a(101, paramStatus);
+      }
+      if (!paramBoolean1) {
+        break;
+      }
+      this.a.a(7);
       return;
+      if (paramStatus == AppRuntime.Status.away) {
+        RegisterPush.c(this.a).a.a(31L, false);
+      } else if (paramStatus == AppRuntime.Status.invisiable) {
+        RegisterPush.d(this.a).a.a(41L, false);
+      }
     }
-    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
-    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    this.a.a(6);
   }
 }
 

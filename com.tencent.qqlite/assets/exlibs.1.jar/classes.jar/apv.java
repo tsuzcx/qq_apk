@@ -1,34 +1,69 @@
 import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
-import java.util.HashMap;
-import java.util.Stack;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
+import com.tencent.mobileqq.gesturelock.LockPatternView.OnPatternListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class apv
-  extends Handler
+  implements LockPatternView.OnPatternListener
 {
-  public apv(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
+  public apv(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(List paramList)
   {
-    switch (paramMessage.what)
-    {
+    if (paramList != null) {
+      switch (this.a.b)
+      {
+      }
     }
     do
     {
       return;
-      paramMessage = (String)FriendProfileImagePortraits.a(this.a).pop();
-      if ((TextUtils.isEmpty(paramMessage)) && (FriendProfileImagePortraits.a(this.a) != null))
+      if ((paramList != null) && (paramList.size() >= 3))
       {
-        paramMessage = (FriendProfileImageModel.ProfileImageInfo)FriendProfileImagePortraits.a(this.a).get(paramMessage);
-        if (paramMessage != null) {
-          this.a.e(paramMessage);
-        }
+        this.a.a(paramList);
+        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.a());
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131364002);
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new apw(this), 500L);
+        this.a.b = 1;
+        return;
       }
-    } while (FriendProfileImagePortraits.a(this.a).isEmpty());
-    FriendProfileImagePortraits.a(this.a).sendEmptyMessageDelayed(1, 300L);
+      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+      this.a.a(1, this.a.getString(2131364005));
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new apx(this), 500L);
+      return;
+      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.a());
+      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
+        break;
+      }
+      GesturePWDUtils.setGesturePWD(this.a, this.a.app.a(), this.a.jdField_a_of_type_JavaLangString);
+      GesturePWDUtils.setGesturePWDState(this.a, this.a.app.a(), 2);
+      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
+      this.a.a(2, this.a.getString(2131364003));
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new apy(this), 300L);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new apz(this), 500L);
+    this.a.a(1, this.a.getString(2131364004));
+  }
+  
+  public void b() {}
+  
+  public void b(List paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.gesturelock.creat", 2, "celladd.");
+    }
   }
 }
 

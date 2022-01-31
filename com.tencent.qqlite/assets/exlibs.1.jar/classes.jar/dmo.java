@@ -1,25 +1,44 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 public class dmo
   implements Runnable
 {
-  public dmo(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView, String paramString, FileManagerEntity paramFileManagerEntity) {}
+  public dmo(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.put(this.jdField_a_of_type_JavaLangString, new ArrayList());
+    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    localLinkedHashMap.put("WORD", new ArrayList());
+    localLinkedHashMap.put("PPT", new ArrayList());
+    localLinkedHashMap.put("PDF", new ArrayList());
+    localLinkedHashMap.put("EXCEL", new ArrayList());
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      String str = QfileRecentDocFileTabView.a(this.a, localFileManagerEntity.fileName);
+      if (str != null) {
+        ((List)localLinkedHashMap.get(str)).add(localFileManagerEntity);
+      }
     }
-    List localList = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.get(this.jdField_a_of_type_JavaLangString);
-    if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
-      return;
+    localIterator = localLinkedHashMap.keySet().iterator();
+    while (localIterator.hasNext()) {
+      if (((List)localLinkedHashMap.get((String)localIterator.next())).size() == 0) {
+        localIterator.remove();
+      }
     }
-    localList.add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.i();
+    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(localLinkedHashMap);
+    this.a.i();
+    this.a.setSelect(0);
+    this.a.a(true);
+    this.a.c = false;
   }
 }
 

@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileRecentImageExpandableListAdapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import java.util.LinkedHashMap;
 
-public class dli
-  implements View.OnClickListener
+class dli
+  implements Runnable
 {
-  public dli(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  dli(dlh paramdlh, LinkedHashMap paramLinkedHashMap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Object localObject = paramView.getTag();
-    FileManagerEntity localFileManagerEntity = null;
-    if ((localObject instanceof QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)) {
-      localFileManagerEntity = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
-    }
-    for (;;)
-    {
-      this.a.c(localFileManagerEntity);
-      return;
-      if ((localObject instanceof QfileRecentImageExpandableListAdapter.ImageHolder)) {
-        localFileManagerEntity = (FileManagerEntity)((QfileRecentImageExpandableListAdapter.ImageHolder)paramView.getTag()).a;
-      }
-    }
+    this.jdField_a_of_type_Dlh.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Dlh.a.i();
+    this.jdField_a_of_type_Dlh.a.setSelect(0);
   }
 }
 

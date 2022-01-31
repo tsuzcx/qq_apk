@@ -14,8 +14,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.Gallery;
-import dtq;
-import dtr;
+import dtw;
+import dtx;
 import java.util.List;
 
 public abstract class PhotoFileViewBase
@@ -33,8 +33,8 @@ public abstract class PhotoFileViewBase
   public PhotoFileViewBase(Activity paramActivity, List paramList, int paramInt)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new dtq(this);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new dtr(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new dtw(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new dtx(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerGalleryAdapter.a(paramList);
     this.jdField_a_of_type_Int = paramInt;
   }
@@ -48,9 +48,9 @@ public abstract class PhotoFileViewBase
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidViewView.findViewById(2131297187));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidViewView.findViewById(2131297183));
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerGalleryAdapter);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_AndroidViewView.getResources().getDimensionPixelSize(2131492924));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_AndroidViewView.getResources().getDimensionPixelSize(2131492920));
     this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
     this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
@@ -58,7 +58,7 @@ public abstract class PhotoFileViewBase
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903450, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903440, paramViewGroup, false);
     e();
     return this.jdField_a_of_type_AndroidViewView;
   }
@@ -72,7 +72,7 @@ public abstract class PhotoFileViewBase
       int i = this.jdField_a_of_type_Int;
       return i + 1 + "/" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerGalleryAdapter.getCount();
     }
-    return BaseApplicationImpl.getContext().getString(2131361985);
+    return BaseApplicationImpl.getContext().getString(2131361982);
   }
   
   public void a()

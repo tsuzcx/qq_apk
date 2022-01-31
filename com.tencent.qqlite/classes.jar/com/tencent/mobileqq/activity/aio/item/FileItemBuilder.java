@@ -16,10 +16,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import buo;
 import bup;
-import buq;
+import bur;
 import bus;
-import but;
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
@@ -324,13 +324,13 @@ public class FileItemBuilder
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramChatMessage = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    ((but)paramChatMessage.getTag()).jdField_c_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.f;
+    ((bus)paramChatMessage.getTag()).jdField_c_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.f;
     return paramChatMessage;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (but)paramViewHolder;
+    paramViewHolder = (bus)paramViewHolder;
     MessageForFile localMessageForFile = (MessageForFile)paramChatMessage;
     paramChatMessage = paramView;
     if (paramView == null)
@@ -355,7 +355,7 @@ public class FileItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new but(this);
+    return new bus(this);
   }
   
   public FileManagerEntity a(MessageForFile paramMessageForFile)
@@ -455,7 +455,7 @@ public class FileItemBuilder
         if (localMessageForFile.isSend())
         {
           paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          FMToastUtil.b(FileManagerUtil.d(((FileManagerEntity)localObject).fileName) + paramContext.getString(2131362001));
+          FMToastUtil.b(FileManagerUtil.d(((FileManagerEntity)localObject).fileName) + paramContext.getString(2131361998));
           if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
             break label347;
           }
@@ -489,11 +489,11 @@ public class FileItemBuilder
           if ((!FileManagerUtil.a()) || (localMessageForFile.fileSize <= 5242880L)) {
             break label447;
           }
-          FMDialogUtil.a(paramContext, 2131362021, 2131362019, new bup(this, localMessageForFile, paramContext, (FileManagerEntity)localObject));
+          FMDialogUtil.a(paramContext, 2131362018, 2131362016, new buo(this, localMessageForFile, paramContext, (FileManagerEntity)localObject));
           break;
         }
         label447:
-        FMToastUtil.b(FileManagerUtil.d(((FileManagerEntity)localObject).fileName) + paramContext.getString(2131362001));
+        FMToastUtil.b(FileManagerUtil.d(((FileManagerEntity)localObject).fileName) + paramContext.getString(2131361998));
         if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
           this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((FileManagerEntity)localObject).strFilePath, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, false);
         }
@@ -562,42 +562,42 @@ public class FileItemBuilder
   protected void a(View paramView)
   {
     super.a(paramView);
-    but localbut = (but)AIOUtils.a(paramView);
-    MessageForFile localMessageForFile = (MessageForFile)localbut.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    BaseChatItemLayout localBaseChatItemLayout = localbut.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+    bus localbus = (bus)AIOUtils.a(paramView);
+    MessageForFile localMessageForFile = (MessageForFile)localbus.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    BaseChatItemLayout localBaseChatItemLayout = localbus.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
     paramView = a(localMessageForFile);
-    this.jdField_a_of_type_AndroidContentContext.getString(2131363070);
-    this.jdField_a_of_type_AndroidContentContext.getString(2131363071);
+    this.jdField_a_of_type_AndroidContentContext.getString(2131363073);
+    this.jdField_a_of_type_AndroidContentContext.getString(2131363074);
     String str;
     switch (paramView.nOpType)
     {
     case 6: 
     case 7: 
     default: 
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131361951);
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131361950);
     }
-    for (paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131361949); localMessageForFile.isSendFromLocal(); paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131361950))
+    for (paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131361948); localMessageForFile.isSendFromLocal(); paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131361949))
     {
       ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null, 2131624119);
       localActionSheet.c(str);
-      localActionSheet.d(this.jdField_a_of_type_AndroidContentContext.getString(2131362790));
+      localActionSheet.d(this.jdField_a_of_type_AndroidContentContext.getString(2131362794));
       localActionSheet.a(paramView);
-      localActionSheet.a(new buq(this, localMessageForFile, localBaseChatItemLayout, localbut, localActionSheet));
+      localActionSheet.a(new bup(this, localMessageForFile, localBaseChatItemLayout, localbus, localActionSheet));
       localActionSheet.show();
       return;
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131361952);
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131361951);
     }
     paramView = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext, 2131624119);
-    paramView.c(this.jdField_a_of_type_AndroidContentContext.getString(2131361952));
-    paramView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131362790));
-    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131361950));
-    paramView.a(new bus(this, localMessageForFile, localBaseChatItemLayout, localbut, paramView));
+    paramView.c(this.jdField_a_of_type_AndroidContentContext.getString(2131361951));
+    paramView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131362794));
+    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131361949));
+    paramView.a(new bur(this, localMessageForFile, localBaseChatItemLayout, localbus, paramView));
     paramView.show();
   }
   
   public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    paramView = (but)AIOUtils.a(paramView);
+    paramView = (bus)AIOUtils.a(paramView);
     MessageForFile localMessageForFile = (MessageForFile)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
     BaseChatItemLayout localBaseChatItemLayout = paramView.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
     if (localMessageForFile.uniseq != paramFileMsg.c) {
@@ -605,7 +605,7 @@ public class FileItemBuilder
     }
     if (paramInt1 == 5000)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131363129, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131363132, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -614,7 +614,7 @@ public class FileItemBuilder
     a(localBaseChatItemLayout, localMessageForFile, paramView, paramInt1, false);
   }
   
-  public void a(BaseChatItemLayout paramBaseChatItemLayout, MessageForFile paramMessageForFile, but parambut, int paramInt, boolean paramBoolean)
+  public void a(BaseChatItemLayout paramBaseChatItemLayout, MessageForFile paramMessageForFile, bus parambus, int paramInt, boolean paramBoolean)
   {
     FileManagerEntity localFileManagerEntity = a(paramMessageForFile);
     FileManagerUtil.b(localFileManagerEntity);
@@ -627,11 +627,11 @@ public class FileItemBuilder
     String str;
     if (localFileManagerEntity.cloudType == 3)
     {
-      parambut.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileManagerEntity.fileName));
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131361978);
-      parambut.jdField_b_of_type_AndroidWidgetTextView.setText(FileUtil.a(localFileManagerEntity.fileSize));
-      if (parambut.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        parambut.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      parambus.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileManagerEntity.fileName));
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131361977);
+      parambus.jdField_b_of_type_AndroidWidgetTextView.setText(FileUtil.a(localFileManagerEntity.fileSize));
+      if (parambus.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        parambus.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       }
       switch (localFileManagerEntity.cloudType)
       {
@@ -640,7 +640,7 @@ public class FileItemBuilder
     switch (localFileManagerEntity.status)
     {
     default: 
-      parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       paramBoolean = false;
     case 0: 
     case 16: 
@@ -662,130 +662,130 @@ public class FileItemBuilder
       {
         paramMessageForFile.status = paramInt;
         paramBaseChatItemLayout.setFailedIconVisable(paramBoolean, this);
-        FileManagerUtil.a(parambut.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
+        FileManagerUtil.a(parambus.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
         if ((localFileManagerEntity.nFileType != 1) || (!FileUtil.b(localFileManagerEntity.strFilePath))) {
           break label1518;
         }
         if (!FileViewMusicService.a().b(localFileManagerEntity.strFilePath)) {
           break label1505;
         }
-        parambut.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838615);
-        parambut.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        parambus.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838592);
+        parambus.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         return;
-        parambut.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileManagerEntity.strSrcName));
+        parambus.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileManagerEntity.strSrcName));
         break;
-        parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+        parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         if (paramMessageForFile.isSend()) {
           if ((localFileManagerEntity.nOpType == 8) || (localFileManagerEntity.nOpType == 1) || (localFileManagerEntity.nOpType == 5)) {
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362029));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362026));
           }
         }
         while (localFileManagerEntity.status == 0)
         {
           paramBoolean = true;
           break label272;
-          parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362032));
+          parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362029));
           continue;
-          parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362033));
+          parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
         }
-        parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-        parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+        parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+        parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         if (paramMessageForFile.isSend())
         {
-          parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362029));
+          parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362026));
           paramBoolean = false;
         }
         else
         {
-          parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
+          parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
           paramBoolean = false;
           continue;
-          parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-          parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-          parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+          parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+          parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+          parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
           if (paramMessageForFile.isSend())
           {
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362029));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362026));
             paramBoolean = false;
           }
           else if (localFileManagerEntity.cloudType == 0)
           {
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362039));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362036));
             paramBoolean = false;
           }
           else
           {
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362024));
             paramBoolean = false;
             continue;
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
             if (paramMessageForFile.isSend())
             {
               if ((localFileManagerEntity.nOpType == 8) || (localFileManagerEntity.nOpType == 5))
               {
-                parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362029));
+                parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362026));
                 paramBoolean = false;
                 continue;
               }
               if (3 != localFileManagerEntity.cloudType) {
                 break label269;
               }
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362028));
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362025));
               paramBoolean = false;
               continue;
             }
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
             paramBoolean = false;
             continue;
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress((int)(localFileManagerEntity.fProgress * 100.0F));
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress((int)(localFileManagerEntity.fProgress * 100.0F));
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
             paramBoolean = false;
             continue;
             if (13 == localFileManagerEntity.nOpType)
             {
-              parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+              parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
             }
             for (paramBoolean = true;; paramBoolean = false)
             {
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
               break;
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-              parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-              parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+              parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+              parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
             }
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
             paramBoolean = false;
             continue;
             if (10 == localFileManagerEntity.nOpType)
             {
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-              parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-              parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+              parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+              parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
             }
             for (paramBoolean = false;; paramBoolean = true)
             {
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
               break;
-              parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-              parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+              parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+              parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
             }
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-            parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-            parambut.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362030));
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+            parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+            parambus.jdField_c_of_type_AndroidWidgetTextView.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131362027));
             paramBoolean = false;
           }
         }
@@ -802,21 +802,21 @@ public class FileItemBuilder
     {
       if (9 == localFileManagerEntity.nOpType)
       {
-        parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress((int)(localFileManagerEntity.fProgress * 100.0F));
-        parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        parambut.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131362009));
+        parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress((int)(localFileManagerEntity.fProgress * 100.0F));
+        parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        parambus.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131362006));
         break;
       }
-      parambut.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      parambut.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
-      parambut.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      parambus.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      parambus.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(0);
+      parambus.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(4);
       break;
       label1505:
-      parambut.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838614);
+      parambus.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838591);
       break label338;
       label1518:
-      parambut.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      parambus.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
   }
@@ -827,11 +827,11 @@ public class FileItemBuilder
     paramView = new QQCustomMenu();
     if (localFileManagerEntity.cloudType != 0)
     {
-      paramView.a(2131298999, this.jdField_a_of_type_AndroidContentContext.getString(2131361962));
-      paramView.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131361963));
+      paramView.a(2131298948, this.jdField_a_of_type_AndroidContentContext.getString(2131361961));
+      paramView.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131361962));
     }
     if ((localFileManagerEntity.cloudType == 3) || ((localFileManagerEntity.cloudType == 2) && (!TextUtils.isEmpty(localFileManagerEntity.strFilePath)) && (FileUtil.a(localFileManagerEntity.strFilePath)))) {
-      paramView.a(2131299000, this.jdField_a_of_type_AndroidContentContext.getString(2131361880));
+      paramView.a(2131298949, this.jdField_a_of_type_AndroidContentContext.getString(2131361880));
     }
     if ((localFileManagerEntity.cloudType != 0) && (localFileManagerEntity.cloudType != 2))
     {
@@ -841,7 +841,7 @@ public class FileItemBuilder
         ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         return paramView.a();
       }
-      paramView.a(2131298998, this.jdField_a_of_type_AndroidContentContext.getString(2131361965));
+      paramView.a(2131298947, this.jdField_a_of_type_AndroidContentContext.getString(2131361964));
     }
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     return paramView.a();

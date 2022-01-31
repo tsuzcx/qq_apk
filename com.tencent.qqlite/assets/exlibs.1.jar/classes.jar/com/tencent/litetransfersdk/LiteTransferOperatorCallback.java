@@ -30,7 +30,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
 import tencent.im.cs.cmd0x346.cmd0x346.DownloadInfo;
 import tencent.im.cs.cmd0x346.cmd0x346.FileInfo;
 import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
-import uf;
+import ub;
 
 public class LiteTransferOperatorCallback
 {
@@ -166,7 +166,7 @@ public class LiteTransferOperatorCallback
     if (!NetworkUtil.e(BaseApplication.getContext())) {
       return;
     }
-    new Timer().schedule(new uf(this, paramInt, paramFileControl), 10L);
+    new Timer().schedule(new ub(this, paramInt, paramFileControl), 10L);
   }
   
   private void _sendNFCNotify(int paramInt, NFCNotify paramNFCNotify)

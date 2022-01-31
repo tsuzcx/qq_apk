@@ -1,44 +1,27 @@
+import android.graphics.Bitmap;
 import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-public class fan
-  extends OpenIdObserver
+class fan
+  implements Runnable
 {
-  public fan(BindGroupActivity paramBindGroupActivity) {}
+  fan(faj paramfaj, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
-    }
-    if ((this.a.isFinishing()) || (this.a.c)) {}
-    do
+    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
+    this.jdField_a_of_type_Faj.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(AuthorityActivity.A, localBitmap);
+    if (localBitmap != null)
     {
-      return;
-      this.a.b.hide();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BindGroupActivity", 2, "openIdObserver success");
-        }
-        this.a.f = paramOpenID.openID;
-        if (!paramOpenID.openID.equals(this.a.e))
-        {
-          this.a.d();
-          return;
-        }
-        this.a.c();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+      Message localMessage = new Message();
+      localMessage.obj = localBitmap;
+      localMessage.what = 4;
+      this.jdField_a_of_type_Faj.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    }
   }
 }
 

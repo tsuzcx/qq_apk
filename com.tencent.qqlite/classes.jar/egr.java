@@ -1,19 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.DataLineDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class egr
-  implements BitmapDecoder
+  implements Runnable
 {
-  public egq a;
+  public egr(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public egr(DataLineDownloader paramDataLineDownloader) {}
-  
-  public Bitmap a(URL paramURL)
+  public void run()
   {
-    this.jdField_a_of_type_Egq = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
-    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Egq);
+    this.a.u();
   }
 }
 

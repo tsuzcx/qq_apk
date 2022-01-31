@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import cir;
-import cis;
+import android.widget.TextView;
+import cix;
+import ciy;
 import com.tencent.mobileqq.activity.PortraitImageview;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AlbumUtil;
@@ -25,6 +26,7 @@ public class PhotoCropActivity
   public Handler a;
   public ViewGroup a;
   Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   public PortraitImageview a;
   PhotoCropAction jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction;
   public RegionView a;
@@ -32,8 +34,7 @@ public class PhotoCropActivity
   boolean jdField_a_of_type_Boolean = false;
   String[] jdField_a_of_type_ArrayOfJavaLangString;
   public int b;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  String jdField_b_of_type_JavaLangString;
+  String b;
   public int c;
   public String c;
   public int d;
@@ -56,7 +57,7 @@ public class PhotoCropActivity
     this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.TARGET_PATH");
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      QQToast.a(this, 2131363958, 0).a();
+      QQToast.a(this, 2131363947, 0).a();
       return false;
     }
     this.f = localIntent.getIntExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", 1);
@@ -68,13 +69,13 @@ public class PhotoCropActivity
   @SuppressLint({"NewApi"})
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131297426));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297423));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131297425));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131297422));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131297419));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131297421));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-      this.jdField_b_of_type_AndroidWidgetButton.setText(this.jdField_d_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_d_of_type_JavaLangString);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview = new PortraitImageview(this);
   }
@@ -104,7 +105,7 @@ public class PhotoCropActivity
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    new cis(this, null).execute(new Void[0]);
+    new ciy(this, null).execute(new Void[0]);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -117,7 +118,7 @@ public class PhotoCropActivity
       return false;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f);
-    new cir(this, null).execute(new Void[0]);
+    new cix(this, null).execute(new Void[0]);
     return true;
   }
   
@@ -125,10 +126,10 @@ public class PhotoCropActivity
   {
     switch (paramView.getId())
     {
-    case 2131297424: 
+    case 2131297420: 
     default: 
       return;
-    case 2131297423: 
+    case 2131297419: 
       if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction == null)

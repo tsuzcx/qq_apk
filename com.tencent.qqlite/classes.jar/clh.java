@@ -1,15 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
-public class clh
+class clh
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  clh(clg paramclg) {}
   
-  clh(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public void run()
+  {
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a.a);
+    ((NearFieldDiscussHandler)this.a.a.app.a(32)).a(this.a.a.a.toString(), this.a.a.b, localLBSInfo, false);
+  }
 }
 
 

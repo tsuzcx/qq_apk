@@ -1,20 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
 public class efp
-  implements Runnable
+  implements CountdownTextView.TimerCallback
 {
-  public efp(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public efp(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
   
-  public void run()
+  public void a()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_Group_system_msg", this.jdField_a_of_type_Int).commit();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = paramLong;
   }
 }
 

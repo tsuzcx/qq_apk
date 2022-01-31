@@ -1,16 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class cmg
-  implements View.OnClickListener
+  extends FriendListObserver
 {
   public cmg(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.g();
-  }
+  protected void a(boolean paramBoolean, String paramString) {}
 }
 
 

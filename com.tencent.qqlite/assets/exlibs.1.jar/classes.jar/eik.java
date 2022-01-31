@@ -1,20 +1,20 @@
-import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
 
 public class eik
-  implements View.OnTouchListener
+  extends GestureDetector.SimpleOnGestureListener
 {
   public eik(NearbyTroopsView paramNearbyTroopsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.a.a != null) {
-      this.a.a.onTouchEvent(paramMotionEvent);
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (this.a.a == null)) {}
+    while (paramMotionEvent2.getY() - paramMotionEvent1.getY() >= 0.0F) {
+      return false;
     }
-    return false;
+    this.a.b(false);
+    return true;
   }
 }
 

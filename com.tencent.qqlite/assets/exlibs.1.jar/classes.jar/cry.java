@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.app.DiscussionIconHelper;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class cry
-  implements Comparator
+  implements Runnable
 {
-  public cry(DiscussionIconHelper paramDiscussionIconHelper) {}
+  public cry(DataLineHandler paramDataLineHandler) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    try
-    {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
-      }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
-    }
-    catch (Exception paramString1) {}
-    return 0;
+    FMToastUtil.a(2131361875);
   }
 }
 

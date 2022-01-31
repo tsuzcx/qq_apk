@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class bze
-  implements DialogInterface.OnClickListener
+  extends MessageObserver
 {
-  public bze(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie, PublicAccountDataManager paramPublicAccountDataManager) {}
+  public bze(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void e(boolean paramBoolean)
   {
-    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie).mIsAgreeSyncLbs = false;
-    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie).mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a(BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie));
-    BusinessCmrTmpChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBusinessCmrTmpChatPie, 2, null);
+    super.e(paramBoolean);
+    BusinessCmrTmpChatPie.a(this.a).sendEmptyMessage(0);
   }
 }
 

@@ -11,7 +11,7 @@ public class cbd
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag(-1)).intValue();
-    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
+    SearchResultDialog.a(this.a).a(SearchResultDialog.a(this.a), paramView, i, 0L);
   }
 }
 

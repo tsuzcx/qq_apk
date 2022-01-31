@@ -1,7 +1,4 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class aaa
   implements Runnable
@@ -10,7 +7,7 @@ public class aaa
   
   public void run()
   {
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131363135, 1).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    BaseChatPie.c(this.a, true);
   }
 }
 

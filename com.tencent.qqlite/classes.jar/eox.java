@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
-import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class eox
-  implements Runnable
+class eox
+  implements FilenameFilter
 {
-  public eox(TroopFileTransferManager.TaskPool paramTaskPool) {}
+  eox(eow parameow) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    synchronized (this.a)
-    {
-      if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-      {
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-        return;
-      }
-      TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-      localTask.run();
+    if (paramString == null) {
+      return false;
     }
+    return paramString.startsWith("[Thumb]");
   }
 }
 

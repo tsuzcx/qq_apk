@@ -1,16 +1,36 @@
-import android.media.SoundPool;
+import android.net.wifi.WifiManager;
+import android.os.Handler;
+import android.os.Message;
+import com.google.zxing.client.android.wifi.BizWifiConfigManager;
+import com.google.zxing.client.android.wifi.WifiParsedResult;
 import com.tencent.biz.game.SensorAPIJavaScript;
 import com.tencent.qphone.base.util.QLog;
 
 public class nd
-  implements Runnable
+  extends Thread
 {
-  public nd(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
+  public nd(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString1, String paramString2, String paramString3, boolean paramBoolean, WifiManager paramWifiManager, String paramString4) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SensorApi", 4, "start connectToWiFi");
+    }
+    Object localObject = new WifiParsedResult(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
+    boolean bool = new BizWifiConfigManager(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((WifiParsedResult)localObject);
+    localObject = new Message();
+    if (bool)
+    {
+      ((Message)localObject).what = 5;
+      ((Message)localObject).obj = this.d;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.sendMessage((Message)localObject);
+      return;
+      ((Message)localObject).what = 0;
+      ((Message)localObject).obj = ("javascript: " + this.d + "('" + 1 + "')");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.c = false;
     }
   }
 }

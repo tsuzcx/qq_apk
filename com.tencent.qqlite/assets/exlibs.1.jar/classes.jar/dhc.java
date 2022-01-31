@@ -1,35 +1,56 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 import com.tencent.widget.MenuPopupDialog;
-import java.util.ArrayList;
 
-class dhc
-  implements View.OnClickListener
+public class dhc
+  implements SlideDetectListView.OnSlideListener
 {
-  dhc(dhb paramdhb, View paramView) {}
+  public dhc(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    if (LocalFileBrowserActivity.a(this.jdField_a_of_type_Dhb.a) != null) {
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Dhb.a).dismiss();
+    if (LocalFileBrowserActivity.a(this.a) != null) {
+      LocalFileBrowserActivity.a(this.a).dismiss();
     }
-    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Dhb.a.b = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Dhb.a.a.get(this.jdField_a_of_type_Dhb.a.b);
-    if ((!FileUtil.a(paramView.d())) || (FileUtil.c(paramView.d())))
+    if (!this.a.f())
     {
-      FileManagerUtil.d(paramView.d());
-      this.jdField_a_of_type_Dhb.a.a.remove(this.jdField_a_of_type_Dhb.a.b);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Dhb.a);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+      paramView.setPressed(false);
     }
-    FMToastUtil.a(2131361979);
+    do
+    {
+      return;
+      paramSlideDetectListView = paramView.findViewById(2131296441);
+      paramView = (FileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getItem(paramInt);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(paramView);
+    } while (paramSlideDetectListView == null);
+    paramView = (Button)paramSlideDetectListView.findViewById(2131297123);
+    paramView.setTag(Integer.valueOf(paramInt));
+    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((ShaderAnimLayout)paramSlideDetectListView).a();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+  }
+  
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    paramSlideDetectListView = paramView.findViewById(2131296441);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).d();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131297123);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
+    }
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

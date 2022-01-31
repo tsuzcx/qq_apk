@@ -1,15 +1,14 @@
-import android.graphics.drawable.Animatable;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.OvalProgress;
 
 public class eys
-  implements Runnable
 {
-  public eys(QQProgressDialog paramQQProgressDialog) {}
+  public double a;
+  public double b;
+  public double c;
+  public double d;
+  public double e;
   
-  public void run()
-  {
-    QQProgressDialog.a(this.a).start();
-  }
+  public eys(OvalProgress paramOvalProgress) {}
 }
 
 

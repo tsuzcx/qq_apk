@@ -9,7 +9,9 @@ public class bpb
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.l();
+    paramView = this.a.p;
+    this.a.a("Clk_find", paramView, "");
   }
 }
 

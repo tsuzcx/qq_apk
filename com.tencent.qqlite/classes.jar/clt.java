@@ -1,20 +1,13 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-class clt
-  implements View.OnClickListener
+public class clt
+  extends TroopMemberListActivity.ViewHolder
 {
-  clt(cls paramcls) {}
+  public CheckBox a;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(5, new Bundle());
-    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Friends_select", "Fs_tab_clk", 0, 0, "4", "", "", "");
-  }
+  private clt(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

@@ -1,27 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.NightModeLogic;
 
 public class bli
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public bli(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThemeSwitchDlgActivity.a(this.a, true);
-    ThemeSwitchDlgActivity.a(this.a, new NightModeLogic(this.a.getAppRuntime(), this.a));
-    ThemeSwitchDlgActivity.a(this.a).registerModeCallback(new blj(this));
-    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
-    {
-      ThemeSwitchDlgActivity.a(this.a).dismiss();
-      ThemeSwitchDlgActivity.a(this.a, null);
+    if (ThemeSwitchDlgActivity.a(this.a)) {
+      return;
     }
-    ThemeSwitchDlgActivity.a(this.a).setupNightTheme();
-    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "1", "", "", "");
+    this.a.finish();
   }
 }
 

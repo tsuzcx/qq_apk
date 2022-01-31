@@ -1,22 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.GalleryPageView;
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class tx
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public tx(GalleryPageView paramGalleryPageView) {}
+  public tx(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(4);
+    Session localSession = LiteTransferListenerCallback.access$100(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback).a(this.jdField_a_of_type_Long);
+    LiteTransferListenerCallback.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, localSession, null, null, true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

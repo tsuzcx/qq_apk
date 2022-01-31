@@ -1,43 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 
 public class aun
-  extends WtloginObserver
+  implements Runnable
 {
-  public aun(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public aun(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
-      }
-    }
-    this.a.g();
-    if (this.a.isFinishing()) {
+      LoginVerifyCodeActivity.a(this.a).setText(2131363328);
+      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
+      LoginVerifyCodeActivity.a(this.a).setClickable(true);
       return;
     }
-    if (paramInt3 == 0)
-    {
-      this.a.c();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.d();
+    LoginVerifyCodeActivity.b(this.a);
+    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131363328) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

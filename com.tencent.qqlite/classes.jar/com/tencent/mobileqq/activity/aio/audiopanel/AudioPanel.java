@@ -254,11 +254,11 @@ public class AudioPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = paramInputLinearLayout;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager = ((AudioPanelViewPager)findViewById(2131298148));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131298149));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298152));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298153));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131298151));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager = ((AudioPanelViewPager)findViewById(2131298108));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131298109));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298112));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298113));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131298111));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter = new AudioPanelAdapter(paramQQAppInterface, paramBaseChatPie, this, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.a(paramQQAppInterface, this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelAdapter);
@@ -270,7 +270,7 @@ public class AudioPanel
     this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_b_of_type_AndroidWidgetTextView.getText());
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    paramQQAppInterface = getResources().getDrawable(2130839328);
+    paramQQAppInterface = getResources().getDrawable(2130839294);
     if ((paramQQAppInterface instanceof BitmapDrawable)) {
       paramQQAppInterface = ((BitmapDrawable)paramQQAppInterface).getBitmap();
     }
@@ -367,7 +367,7 @@ public class AudioPanel
   public void onClick(View paramView)
   {
     int m = paramView.getId();
-    if (m == 2131298152) {
+    if (m == 2131298112) {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.getCurrentItem() != 0)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.setCurrentItem(0);
@@ -375,7 +375,7 @@ public class AudioPanel
         a(this.jdField_b_of_type_AndroidViewViewGroup, this.jdField_b_of_type_AndroidViewViewGroup.getChildAt(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.getCurrentItem()), -8355712, -15158044);
       }
     }
-    while ((m != 2131298153) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.getCurrentItem() == 1)) {
+    while ((m != 2131298113) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.getCurrentItem() == 1)) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelViewPager.setCurrentItem(1);

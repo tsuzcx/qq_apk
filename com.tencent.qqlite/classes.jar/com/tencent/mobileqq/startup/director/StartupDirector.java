@@ -21,8 +21,8 @@ import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.mobileqq.utils.ShortcutUtils;
 import com.tencent.qphone.base.util.QLog;
-import edz;
-import eea;
+import eef;
+import eeg;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.app.AppActivity;
@@ -446,13 +446,13 @@ public class StartupDirector
     localTextView.setTextColor(-1);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     if (!paramBoolean1) {
-      localTextView.setText(2131362825);
+      localTextView.setText(2131362829);
     }
     for (;;)
     {
       paramAppActivity.setContentView(localTextView);
       InjectUtils.a(paramAppActivity, "SuicideFailed", Integer.toString(jdField_c_of_type_Int));
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new eea(this, paramAppActivity), 8000L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new eeg(this, paramAppActivity), 8000L);
       return;
       localTextView.setText("程序启动失败，请稍候重试.");
     }
@@ -497,7 +497,7 @@ public class StartupDirector
     label188:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      ThreadManager.b().postDelayed(new edz(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
+      ThreadManager.b().postDelayed(new eef(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
       BaseApplicationImpl.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector = null;
       return;
     }

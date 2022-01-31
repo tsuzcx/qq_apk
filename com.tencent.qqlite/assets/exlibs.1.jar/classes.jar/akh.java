@@ -1,9 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodleTextView;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akh
   implements View.OnClickListener
@@ -12,11 +11,7 @@ public class akh
   
   public void onClick(View paramView)
   {
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
-    this.a.b();
+    DialogUtil.a(this.a, this.a.getString(2131363453), 2131362794, 2131363454, new aki(this), new akj(this)).show();
   }
 }
 

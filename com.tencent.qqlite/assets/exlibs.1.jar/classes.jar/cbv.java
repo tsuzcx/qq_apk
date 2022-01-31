@@ -1,48 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.app.LBSObserver;
 
 public class cbv
-  implements ContactSearchFacade.ISearchListener
+  extends LBSObserver
 {
-  public cbv(SearchBaseActivity paramSearchBaseActivity) {}
+  public cbv(AddContactsView paramAddContactsView) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    this.a.n();
-    if (paramBoolean)
-    {
-      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
-      {
-        paramObject = (ArrayList)paramObject;
-        if (paramObject.size() != 0) {
-          break label81;
-        }
-        paramObject = this.a.a;
-        if (!this.a.b) {
-          break label76;
-        }
-        paramInt1 = 3;
-        paramObject.sendEmptyMessage(paramInt1);
-        if (QLog.isColorLevel()) {
-          QLog.d(SearchBaseActivity.c(), 2, "error! SearchResult is null!");
-        }
-      }
-      label76:
-      label81:
-      while (!this.a.a(paramObject)) {
-        for (;;)
-        {
-          return;
-          paramInt1 = 2;
-        }
-      }
-      this.a.a.sendEmptyMessage(0);
-      return;
+    if (paramBoolean) {
+      this.a.a = paramLBSInfo.a();
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    if ((this.a.a == null) || (this.a.a.length != 4)) {
+      this.a.a = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    this.a.d();
   }
 }
 

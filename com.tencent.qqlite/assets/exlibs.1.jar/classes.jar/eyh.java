@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
-import com.tencent.mobileqq.widget.RotateBitmap;
+import com.tencent.mobileqq.widget.DropdownView;
 
 public class eyh
   implements Runnable
 {
-  public eyh(ImageViewTouchBase paramImageViewTouchBase, RotateBitmap paramRotateBitmap, boolean paramBoolean) {}
+  public eyh(DropdownView paramDropdownView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.setImageRotateBitmapResetBase(this.jdField_a_of_type_ComTencentMobileqqWidgetRotateBitmap, this.jdField_a_of_type_Boolean);
+    this.a.a = false;
   }
 }
 

@@ -1,27 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import java.util.ArrayList;
 
 public class acj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acj(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity, int paramInt) {}
+  public acj(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.h == 0) {
-      ChatBackgroundSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity, "OPENVIP_BUTTON", this.jdField_a_of_type_Int);
-    }
-    do
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.h == 1)
-      {
-        ChatBackgroundSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity, "XUFEI_VIP", this.jdField_a_of_type_Int);
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.h != 2);
-    ChatBackgroundSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity, "XUFEI_SVIP", this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.e();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.jdField_a_of_type_Acl.notifyDataSetChanged();
   }
 }
 

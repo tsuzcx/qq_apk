@@ -1,29 +1,28 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class dlk
-  implements FMDialogUtil.FMDialogInterface
+public class dlk
+  implements Runnable
 {
-  dlk(dlj paramdlj, FileManagerEntity paramFileManagerEntity) {}
+  public dlk(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_Dlj.a.a.a().ad();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType == 0)
-    {
-      QfileBaseRecentFileTabView.e(this.jdField_a_of_type_Dlj.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB thread start");
     }
-    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_Dlj.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    List localList = QfileBaseRecentFileTabView.a(this.a).a().a();
+    if (localList != null) {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB end size[" + this.a.jdField_a_of_type_JavaUtilList.size() + "]");
+    }
+    this.a.a();
   }
-  
-  public void b() {}
 }
 
 

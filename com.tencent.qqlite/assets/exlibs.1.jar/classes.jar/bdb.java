@@ -1,6 +1,7 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
 public class bdb
   implements View.OnClickListener
@@ -9,7 +10,8 @@ public class bdb
   
   public void onClick(View paramView)
   {
-    this.a.q();
+    this.a.a.zoomIn();
+    this.a.n();
   }
 }
 

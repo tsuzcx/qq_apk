@@ -1,16 +1,18 @@
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
 
-public class aji
-  extends FriendListObserver
+class aji
+  implements Runnable
 {
-  public aji(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  aji(ajh paramajh) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
 }
 

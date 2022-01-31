@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class fgk
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public fgk(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  public fgk(Login paramLogin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
+    if (paramInt3 < 2)
+    {
+      this.a.jdField_b_of_type_Boolean = false;
+      if (paramCharSequence.length() == 0) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

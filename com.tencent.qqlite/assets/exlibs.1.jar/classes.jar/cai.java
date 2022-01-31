@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class cai
-  implements TroopFileError.TroopFileErrorFilter
+  extends Handler
 {
-  public String a;
-  
-  public cai(String paramString)
+  public cai(TroopChatPie paramTroopChatPie, Looper paramLooper)
   {
-    this.a = paramString;
+    super(paramLooper);
   }
   
-  public long a()
+  public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      long l = Long.parseLong(this.a);
-      return l;
+    if (paramMessage.what == 1) {
+      TroopChatPie.a(this.a, null, false);
     }
-    catch (Exception localException) {}
-    return 0L;
   }
 }
 

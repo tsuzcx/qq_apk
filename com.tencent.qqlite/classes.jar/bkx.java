@@ -1,6 +1,5 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class bkx
   implements Runnable
@@ -9,19 +8,9 @@ public class bkx
   
   public void run()
   {
-    if (!this.a.isResume()) {}
-    do
-    {
-      return;
-      localIntent = this.a.app.a();
-      this.a.app.a(null);
-    } while (localIntent == null);
-    String str = localIntent.getStringExtra("wording");
-    int i = localIntent.getIntExtra("timetowait", 360000);
-    Intent localIntent = new Intent("com.tencent.mobileqq.action.SECURITY_DETECT_PUSH_BANNER");
-    localIntent.putExtra("wording", str);
-    localIntent.putExtra("timetowait", i);
-    SplashActivity.a(this.a, localIntent);
+    if (this.a.a != null) {
+      this.a.a.h();
+    }
   }
 }
 

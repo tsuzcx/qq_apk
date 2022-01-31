@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
+import afw;
+import afx;
 import afy;
 import afz;
-import aga;
-import agb;
 import android.app.Dialog;
 import android.app.KeyguardManager;
 import android.content.DialogInterface.OnCancelListener;
@@ -58,12 +58,12 @@ public class ContactSyncJumpActivity
   private static final String jdField_g_of_type_JavaLangString = "ContactSync.JumpActivity";
   public int a;
   public Dialog a;
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new aga(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new afz(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new afy(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new afy(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new afx(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new afw(this);
   private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
   private ContactSyncManager jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new agb(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new afz(this);
   private int b;
   private String h;
   private String i;
@@ -80,31 +80,31 @@ public class ContactSyncJumpActivity
   private Dialog a()
   {
     Dialog localDialog = new Dialog(this, 2131624119);
-    localDialog.setContentView(2130903485);
-    Object localObject2 = (ImageView)localDialog.findViewById(2131298198);
+    localDialog.setContentView(2130903473);
+    Object localObject2 = (ImageView)localDialog.findViewById(2131298158);
     if (this.k.equals("0")) {}
     for (Object localObject1 = FaceDrawable.a(this.app, 11, this.i + this.j);; localObject1 = FaceDrawable.a(this.app, 1, this.k))
     {
       ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-      Object localObject3 = (TextView)localDialog.findViewById(2131298199);
-      localObject1 = (TextView)localDialog.findViewById(2131298200);
-      TextView localTextView = (TextView)localDialog.findViewById(2131298196);
-      localObject2 = (TextView)localDialog.findViewById(2131298197);
+      Object localObject3 = (TextView)localDialog.findViewById(2131298159);
+      localObject1 = (TextView)localDialog.findViewById(2131298160);
+      TextView localTextView = (TextView)localDialog.findViewById(2131298156);
+      localObject2 = (TextView)localDialog.findViewById(2131298157);
       ((TextView)localObject3).setText(this.l);
-      localTextView.setText(2131364352);
+      localTextView.setText(2131364336);
       localTextView.setOnClickListener(this);
-      ((TextView)localObject2).setText(String.format(getResources().getString(2131364359), new Object[] { "" }));
+      ((TextView)localObject2).setText(String.format(getResources().getString(2131364343), new Object[] { "" }));
       if (!NetworkUtil.e(this)) {
         break;
       }
-      localObject3 = getResources().getDrawable(2130837914);
+      localObject3 = getResources().getDrawable(2130837910);
       ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject3, null, null, null);
       ((TextView)localObject1).setCompoundDrawablePadding(10);
       ((Animatable)localObject3).start();
       ((TextView)localObject2).setOnClickListener(this);
       return localDialog;
     }
-    ((TextView)localObject1).setText(2131364361);
+    ((TextView)localObject1).setText(2131364345);
     ((TextView)localObject2).setTextColor(getResources().getColor(2131427393));
     ((TextView)localObject2).setEnabled(false);
     return localDialog;
@@ -113,11 +113,11 @@ public class ContactSyncJumpActivity
   private Dialog a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     Dialog localDialog = new Dialog(this, 2131624119);
-    localDialog.setContentView(2130903484);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131298194);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131298195);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131298196);
-    TextView localTextView4 = (TextView)localDialog.findViewById(2131298197);
+    localDialog.setContentView(2130903472);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131298154);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131298155);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131298156);
+    TextView localTextView4 = (TextView)localDialog.findViewById(2131298157);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramString);
     if (paramInt2 == 0) {
@@ -155,9 +155,9 @@ public class ContactSyncJumpActivity
         this.jdField_a_of_type_AndroidAppDialog.show();
       }
       return;
-      this.jdField_a_of_type_AndroidAppDialog = a(2131364349, paramString, 2131364352, 2131364353);
+      this.jdField_a_of_type_AndroidAppDialog = a(2131364333, paramString, 2131364336, 2131364337);
       continue;
-      this.jdField_a_of_type_AndroidAppDialog = a(2131364354, paramString, 0, 2131364356);
+      this.jdField_a_of_type_AndroidAppDialog = a(2131364338, paramString, 0, 2131364340);
       continue;
       this.jdField_a_of_type_AndroidAppDialog = a();
     }
@@ -171,7 +171,7 @@ public class ContactSyncJumpActivity
       QLog.d("ContactSync.JumpActivity", 2, "dealWithUnbind | syncUin = " + ContactSyncManager.b(str2) + " | loginUin = " + ContactSyncManager.b(str3) + " | bindState = " + paramInt);
     }
     if ((paramInt == 2) || (paramInt == 1) || (paramInt == 0)) {}
-    for (String str1 = getResources().getString(2131364350);; str1 = getResources().getString(2131364351))
+    for (String str1 = getResources().getString(2131364334);; str1 = getResources().getString(2131364335))
     {
       a(0, String.format(str1, new Object[] { ContactSyncManager.d(str3), ContactSyncManager.d(str2) }));
       return true;
@@ -417,7 +417,7 @@ public class ContactSyncJumpActivity
       ((FriendListHandler)localObject).d(this.i + this.j, true);
       return true;
       label371:
-      localObject = String.format(getResources().getString(2131364355), new Object[] { this.l });
+      localObject = String.format(getResources().getString(2131364339), new Object[] { this.l });
       this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a(this.h);
       a(1, (String)localObject);
       return true;

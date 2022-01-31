@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TabHost.OnTabChangeListener;
 import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import csp;
+import csv;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.Constants.LogoutReason;
@@ -81,13 +81,13 @@ public class FrameActivity
   public void a(int paramInt, Class paramClass, View paramView)
   {
     if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131297297));
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131297293));
     }
     paramClass = new FrameActivity.TabInfo(this, paramClass.getName(), a(paramClass.getName()), paramView);
     this.jdField_a_of_type_JavaUtilList.add(paramInt, paramClass);
   }
   
-  public String a_()
+  public String b_()
   {
     Frame localFrame = a();
     if (localFrame != null) {
@@ -225,7 +225,7 @@ public class FrameActivity
   public void onAccountChanged()
   {
     super.onAccountChanged();
-    new Handler().post(new csp(this));
+    new Handler().post(new csv(this));
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason)

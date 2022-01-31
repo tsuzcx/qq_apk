@@ -1,17 +1,20 @@
-import com.tencent.litetransfersdk.FTNInfo;
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.NFCInfo;
-import com.tencent.litetransfersdk.Session;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class uw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uw(LiteTransferWrapper paramLiteTransferWrapper, Session[] paramArrayOfSession, NFCInfo[] paramArrayOfNFCInfo, FTNInfo[] paramArrayOfFTNInfo, boolean paramBoolean) {}
+  public uw(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.RecvGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkSession, this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkFTNInfo, this.jdField_a_of_type_Boolean);
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null)) {
+      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+    }
   }
 }
 

@@ -1,180 +1,83 @@
-import android.os.Handler;
 import android.text.TextUtils;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class aix
-  extends DiscussionObserver
+  extends CardObserver
 {
   public aix(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramLong == Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue()))
+    if ((paramObject instanceof Card)) {}
+    for (Object localObject2 = (Card)paramObject;; localObject2 = null)
     {
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      if ((paramBoolean) && (localObject2 != null))
       {
-        String str = (String)paramArrayList.next();
-        HashMap localHashMap = new HashMap();
-        if (!TextUtils.isEmpty(str))
+        if ((DiscussionInfoCardActivity.a(this.a) != 0) || (!DiscussionInfoCardActivity.a(this.a).equals(((Card)localObject2).uin))) {
+          break label148;
+        }
+        paramObject = ((FriendManager)this.a.app.getManager(8)).b(DiscussionInfoCardActivity.a(this.a));
+        if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(DiscussionInfoCardActivity.b(this.a))))
         {
-          Friends localFriends = ((FriendManager)this.a.app.getManager(8)).c(str);
-          if (localFriends != null) {
-            localHashMap.put("memberName", localFriends.name);
-          }
-          for (;;)
+          DiscussionInfoCardActivity.a(this.a, paramObject);
+          ((HashMap)DiscussionInfoCardActivity.a(this.a).get(0)).put("memberName", DiscussionInfoCardActivity.b(this.a));
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      }
+      return;
+      label148:
+      while (DiscussionInfoCardActivity.a(this.a) != 3000) {}
+      paramObject = (FriendManager)this.a.app.getManager(8);
+      String str = ((Card)localObject2).uin;
+      Object localObject3 = paramObject.c(str);
+      Object localObject1 = paramObject.b(str);
+      paramObject = localObject1;
+      if (localObject3 != null)
+      {
+        paramObject = localObject1;
+        if (!((Friends)localObject3).isFriend()) {
+          if (!TextUtils.isEmpty(((Card)localObject2).strAutoRemark))
           {
-            localHashMap.put("memberUin", str);
-            localArrayList1.add(localHashMap);
-            localArrayList2.add(str);
-            break;
-            localHashMap.put("memberName", str);
+            localObject1 = ((Card)localObject2).strAutoRemark;
+            label237:
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+              break label351;
+            }
+            paramObject = ((Card)localObject2).uin;
           }
         }
       }
-      this.a.a(localArrayList1);
-      DiscussionInfoCardActivity.a(this.a).addAll(localArrayList2);
-      this.a.a(2, this.a.getString(2131363676));
-      DiscussionInfoCardActivity.a(this.a);
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a)))) {
-      ReportController.b(this.a.app, "CliOper", "", "", "discuss", "discuss_common", 0, 0, "", "", "", "");
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if ((paramBoolean) && (paramLong1 != null) && (String.valueOf(paramLong1).equals(DiscussionInfoCardActivity.a(this.a))))
-    {
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.a(this.a));
-      return;
-    }
-    QQToast.a(this.a, 1, this.a.getString(2131363219), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
-    {
-      if (!paramBoolean) {
-        break label110;
-      }
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      label351:
+      for (;;)
       {
-        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363680));
-        DiscussionInfoCardActivity.a(this.a).c(2130837989);
-        DiscussionInfoCardActivity.a(this.a).b(false);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16, 1500L);
-      }
-    }
-    label110:
-    while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing())) {
-      return;
-    }
-    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363681));
-    DiscussionInfoCardActivity.a(this.a).c(2130837979);
-    DiscussionInfoCardActivity.a(this.a).b(false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 1500L);
-  }
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    String str = (String)paramArrayOfObject[0];
-    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    if ((DiscussionInfoCardActivity.a(this.a).equals(str)) && (paramBoolean) && (bool))
-    {
-      paramArrayOfObject = (FriendsManagerImp)this.a.app.getManager(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramArrayOfObject.a(DiscussionInfoCardActivity.a(this.a));
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.a(this.a));
-      this.a.a();
-      DiscussionInfoCardActivity.b(this.a);
-    }
-  }
-  
-  protected void a(Object[] paramArrayOfObject)
-  {
-    String str = (String)paramArrayOfObject[0];
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    paramArrayOfObject = (String)paramArrayOfObject[2];
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.trim().equals(""))) {
-      paramArrayOfObject = this.a.getString(2131363682);
-    }
-    for (;;)
-    {
-      if (DiscussionInfoCardActivity.a(this.a).equals(str))
-      {
-        if ((10001 == i) || (10002 == i)) {
-          DialogUtil.a(this.a, 230, null, paramArrayOfObject, new aiy(this, str), null).show();
+        localObject1 = DiscussionInfoCardActivity.a(this.a).iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
         }
-      }
-      else {
+        localObject2 = (HashMap)((Iterator)localObject1).next();
+        localObject3 = (String)((HashMap)localObject2).get("memberUin");
+        if ((localObject3 == null) || (!((String)localObject3).equals(str))) {
+          break;
+        }
+        ((HashMap)localObject2).put("memberName", paramObject);
+        if (DiscussionInfoCardActivity.a(this.a) == null) {
+          break;
+        }
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
         return;
-      }
-      this.a.a(1, paramArrayOfObject);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a)))) {}
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
-    {
-      if (!paramBoolean) {
-        break label164;
-      }
-      paramString = ((FriendsManagerImp)this.a.app.getManager(8)).a(paramString);
-      if (paramString != null)
-      {
-        DiscussionInfoCardActivity.a(this.a, paramString.discussionName);
-        DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
-      }
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
-      {
-        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363673));
-        DiscussionInfoCardActivity.a(this.a).c(2130837989);
-        DiscussionInfoCardActivity.a(this.a).b(false);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 1500L);
+        localObject1 = ((Card)localObject2).strNick;
+        break label237;
       }
     }
-    label164:
-    do
-    {
-      return;
-      DiscussionInfoCardActivity.a(this.a).setText(DiscussionInfoCardActivity.b(this.a));
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131363674));
-    DiscussionInfoCardActivity.a(this.a).c(2130837989);
-    DiscussionInfoCardActivity.a(this.a).b(false);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 1500L);
   }
 }
 

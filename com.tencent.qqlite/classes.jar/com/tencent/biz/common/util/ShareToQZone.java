@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.Set;
-import lx;
-import ly;
+import lt;
+import lu;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
@@ -43,8 +43,8 @@ public class ShareToQZone
   {
     jdField_a_of_type_JavaLangString = "ShareToQZone";
     b = null;
-    jdField_a_of_type_AndroidOsHandler = new lx();
-    jdField_a_of_type_JavaLangRunnable = new ly();
+    jdField_a_of_type_AndroidOsHandler = new lt();
+    jdField_a_of_type_JavaLangRunnable = new lu();
   }
   
   public static int a()

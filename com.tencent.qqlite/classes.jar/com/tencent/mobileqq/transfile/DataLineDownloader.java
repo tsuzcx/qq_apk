@@ -15,8 +15,8 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import egq;
-import egr;
+import egv;
+import egw;
 import java.io.File;
 import java.io.OutputStream;
 import java.net.URL;
@@ -33,11 +33,11 @@ public class DataLineDownloader
     this.a = paramBaseApplicationImpl;
   }
   
-  private Bitmap a(egq paramegq)
+  private Bitmap a(egv paramegv)
   {
     int j = 0;
-    int i = paramegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.f;
-    int k = paramegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.g;
+    int i = paramegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.f;
+    int k = paramegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.g;
     Object localObject;
     for (;;)
     {
@@ -49,10 +49,10 @@ public class DataLineDownloader
         localOptions.inTargetDensity = 160;
         localOptions.inScreenDensity = 160;
         localOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(paramegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a, localOptions);
+        BitmapFactory.decodeFile(paramegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a, localOptions);
         localOptions.inJustDecodeBounds = false;
         localOptions.inSampleSize = a(localOptions, i, k);
-        localObject = BitmapFactory.decodeFile(paramegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a, localOptions);
+        localObject = BitmapFactory.decodeFile(paramegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a, localOptions);
         k = AIOUtils.a(135.0F, BaseApplicationImpl.getContext().getResources());
         if (localOptions.outHeight > localOptions.outWidth * 2.0F)
         {
@@ -71,7 +71,7 @@ public class DataLineDownloader
           if (localObject == null) {
             break;
           }
-          return new ExifBitmapCreator(paramegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a).a((Bitmap)localObject);
+          return new ExifBitmapCreator(paramegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a).a((Bitmap)localObject);
         }
         if (localOptions.outWidth > localOptions.outHeight * 2.0F)
         {
@@ -84,10 +84,10 @@ public class DataLineDownloader
           i = 0;
         }
       }
-      catch (Throwable paramegq)
+      catch (Throwable paramegv)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("_dataline_file", 2, "make Thumb", paramegq);
+          QLog.d("_dataline_file", 2, "make Thumb", paramegv);
         }
         return null;
       }
@@ -139,19 +139,19 @@ public class DataLineDownloader
     }
   }
   
-  public egq a(URL paramURL)
+  public egv a(URL paramURL)
   {
     try
     {
-      egq localegq = new egq(this);
+      egv localegv = new egv(this);
       paramURL = paramURL.getFile().split("\\|");
-      localegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-      localegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a = paramURL[0];
-      localegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.f = Integer.parseInt(paramURL[1]);
-      localegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.g = Integer.parseInt(paramURL[2]);
-      localegq.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.d = Long.parseLong(paramURL[3]);
-      localegq.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramURL[4]);
-      return localegq;
+      localegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
+      localegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.a = paramURL[0];
+      localegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.f = Integer.parseInt(paramURL[1]);
+      localegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.g = Integer.parseInt(paramURL[2]);
+      localegv.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.d = Long.parseLong(paramURL[3]);
+      localegv.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramURL[4]);
+      return localegv;
     }
     catch (Exception paramURL) {}
     return null;
@@ -174,7 +174,7 @@ public class DataLineDownloader
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     paramFile = AlbumThumbManager.a(BaseApplicationImpl.getContext());
-    paramURLDrawableHandler = new egr(this);
+    paramURLDrawableHandler = new egw(this);
     paramFile = paramFile.a(paramDownloadParams.url, paramURLDrawableHandler);
     if (paramFile == null) {
       return null;

@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class cgq
-  implements DialogInterface.OnDismissListener
+class cgq
+  implements Runnable
 {
-  public cgq(ContactListView paramContactListView, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  cgq(cgp paramcgp) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    ContactListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView, null);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f();
+    this.a.a.jdField_a_of_type_Chc.sendEmptyMessage(3);
   }
 }
 

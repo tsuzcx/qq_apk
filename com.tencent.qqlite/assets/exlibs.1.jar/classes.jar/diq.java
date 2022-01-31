@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class diq
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public diq(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public diq(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    QfileBaseCloudFileTabView.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(QfileBaseCloudFileTabView.jdField_a_of_type_JavaLangString, 2, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.c(this.jdField_a_of_type_Int);
+    }
   }
 }
 

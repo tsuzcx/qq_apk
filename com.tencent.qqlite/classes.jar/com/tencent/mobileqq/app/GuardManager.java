@@ -27,17 +27,17 @@ import com.tencent.mobileqq.trick.TrickHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import cpt;
-import cpu;
-import csn;
-import cso;
-import csy;
-import cta;
-import ctb;
-import ctc;
+import cpz;
+import cqa;
+import cst;
+import csu;
+import cte;
+import ctg;
+import cth;
 import cti;
-import ctj;
-import cum;
+import cto;
+import ctp;
+import cus;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,11 +92,11 @@ public class GuardManager
   private Application jdField_a_of_type_AndroidAppApplication;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private ctc jdField_a_of_type_Ctc = null;
+  private cti jdField_a_of_type_Cti = null;
   private Random jdField_a_of_type_JavaUtilRandom;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask = null;
   private boolean jdField_a_of_type_Boolean;
-  private ctc[] jdField_a_of_type_ArrayOfCtc = new ctc[9];
+  private cti[] jdField_a_of_type_ArrayOfCti = new cti[9];
   public long[][] a;
   public int b;
   private long jdField_b_of_type_Long = 0L;
@@ -127,7 +127,7 @@ public class GuardManager
       label129:
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
       {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ctb(this, null);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cth(this, null);
         paramApplication = new IntentFilter();
         paramApplication.addAction("android.intent.action.SCREEN_OFF");
         paramApplication.addAction("android.intent.action.SCREEN_ON");
@@ -153,38 +153,38 @@ public class GuardManager
     }
   }
   
-  private ctc a(int paramInt)
+  private cti a(int paramInt)
   {
-    ctc localctc = this.jdField_a_of_type_ArrayOfCtc[paramInt];
-    Object localObject = localctc;
-    if (localctc == null) {
+    cti localcti = this.jdField_a_of_type_ArrayOfCti[paramInt];
+    Object localObject = localcti;
+    if (localcti == null) {
       switch (paramInt)
       {
       default: 
         throw new RuntimeException("WTF");
       case 2: 
-        localObject = new csn();
+        localObject = new cst();
       }
     }
     for (;;)
     {
-      ((ctc)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
-      ((ctc)localObject).s = paramInt;
-      this.jdField_a_of_type_ArrayOfCtc[paramInt] = localObject;
+      ((cti)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
+      ((cti)localObject).s = paramInt;
+      this.jdField_a_of_type_ArrayOfCti[paramInt] = localObject;
       return localObject;
-      localObject = new cso();
+      localObject = new csu();
       continue;
-      localObject = new cpt();
+      localObject = new cpz();
       continue;
-      localObject = new cpu();
+      localObject = new cqa();
       continue;
-      localObject = new ctj();
-      continue;
-      localObject = new ctc();
+      localObject = new ctp();
       continue;
       localObject = new cti();
       continue;
-      localObject = new cum();
+      localObject = new cto();
+      continue;
+      localObject = new cus();
     }
   }
   
@@ -296,7 +296,7 @@ public class GuardManager
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.d("GuardManager", 2, "nextState: " + ctc.jdField_a_of_type_ArrayOfJavaLangString[this.s] + ", " + ctc.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
+          QLog.d("GuardManager", 2, "nextState: " + cti.jdField_a_of_type_ArrayOfJavaLangString[this.s] + ", " + cti.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
         }
         int i1 = this.s;
         if (i1 == 8) {
@@ -309,9 +309,9 @@ public class GuardManager
           if (this.s == 1) {
             ApplicationLifeController.getController().setRuntimeReady(true);
           }
-          this.jdField_a_of_type_Ctc = a(paramInt);
+          this.jdField_a_of_type_Cti = a(paramInt);
           this.s = paramInt;
-          this.jdField_a_of_type_Ctc.a(5, paramObject);
+          this.jdField_a_of_type_Cti.a(5, paramObject);
           continue;
         }
         if (paramInt != 0) {
@@ -319,7 +319,7 @@ public class GuardManager
         }
       }
       finally {}
-      this.jdField_a_of_type_Ctc = a(paramInt);
+      this.jdField_a_of_type_Cti = a(paramInt);
     }
   }
   
@@ -333,7 +333,7 @@ public class GuardManager
   public void a(String paramString, HashMap paramHashMap)
   {
     StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    paramHashMap.put("config", csy.a().jdField_a_of_type_JavaLangString);
+    paramHashMap.put("config", cte.a().jdField_a_of_type_JavaLangString);
     localStatisticCollector.a("", paramString, true, 0L, 0L, paramHashMap, "");
   }
   
@@ -536,7 +536,7 @@ public class GuardManager
     }
     try
     {
-      this.jdField_a_of_type_Ctc.a(paramInt, paramObject);
+      this.jdField_a_of_type_Cti.a(paramInt, paramObject);
       return;
     }
     finally {}
@@ -559,7 +559,7 @@ public class GuardManager
     localHashMap.put("qqUsedMemory", String.valueOf(l1 / 1024L));
     localHashMap.put("resumeCount", String.valueOf(i3 * 1.0D / 15.0D));
     localHashMap.put("msgCount", String.valueOf(i2 * 1.0D / 15.0D));
-    localHashMap.put("activeLevel", String.valueOf(csy.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
+    localHashMap.put("activeLevel", String.valueOf(cte.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
     if (paramBoolean) {}
     for (String str = "actLiteActive";; str = "actFullActive")
     {
@@ -582,7 +582,7 @@ public class GuardManager
     IntentFilter localIntentFilter;
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ctb(this, null);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cth(this, null);
       localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
@@ -604,11 +604,11 @@ public class GuardManager
   
   public void c(boolean paramBoolean)
   {
-    csy localcsy = csy.a();
+    cte localcte = cte.a();
     AppRuntime localAppRuntime = BaseApplicationImpl.a.a();
-    int i1 = localcsy.jdField_a_of_type_Int;
-    long l1 = localcsy.jdField_b_of_type_Int | i1 << 8;
-    int i2 = csy.a().c;
+    int i1 = localcte.jdField_a_of_type_Int;
+    long l1 = localcte.jdField_b_of_type_Int | i1 << 8;
+    int i2 = cte.a().c;
     if (paramBoolean) {}
     for (i1 = 1;; i1 = 0)
     {
@@ -640,7 +640,7 @@ public class GuardManager
     }
     if (this.jdField_a_of_type_JavaUtilTimerTask == null)
     {
-      this.jdField_a_of_type_JavaUtilTimerTask = new cta(this, null);
+      this.jdField_a_of_type_JavaUtilTimerTask = new ctg(this, null);
       ThreadManager.a().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 36000L, 12000L);
     }
     this.jdField_d_of_type_Boolean = true;
@@ -686,7 +686,7 @@ public class GuardManager
         Object localObject;
         if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
         {
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ctb(this, null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new cth(this, null);
           localObject = new IntentFilter();
           ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
           ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
@@ -719,8 +719,8 @@ public class GuardManager
             continue;
           }
           localObject = new HashMap();
-          ((HashMap)localObject).put("before", ctc.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
-          ((HashMap)localObject).put("after", ctc.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
+          ((HashMap)localObject).put("before", cti.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
+          ((HashMap)localObject).put("after", cti.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
           a("GM_guardChangeS", (HashMap)localObject);
           return true;
         }

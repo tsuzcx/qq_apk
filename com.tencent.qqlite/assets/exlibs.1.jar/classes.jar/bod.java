@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity;
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.GagItemListener;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
 
 public class bod
-  implements TroopMemberGagActivity.GagItemListener
 {
-  public bod(TroopMemberGagActivity paramTroopMemberGagActivity) {}
+  public TroopGagMgr.GagItem a;
+  public boolean a;
+  public boolean b;
   
-  public void a(TroopGagMgr.GagItem paramGagItem)
+  public bod(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
   {
-    if (paramGagItem.a > 0) {
-      this.a.a = paramGagItem.a;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = false;
+  }
+  
+  public bod(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
 }
 

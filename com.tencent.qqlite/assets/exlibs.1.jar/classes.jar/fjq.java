@@ -1,52 +1,82 @@
 import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class fjq
-  extends AbstractCollection
+public abstract class fjq
+  implements Iterator
 {
-  public fjq(SoftHashMap paramSoftHashMap) {}
+  int jdField_a_of_type_Int;
+  fjn jdField_a_of_type_Fjn = null;
+  Object jdField_a_of_type_JavaLangObject = null;
+  int jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+  fjn jdField_b_of_type_Fjn = null;
+  Object jdField_b_of_type_JavaLangObject = null;
   
-  public void clear()
+  fjq(SoftHashMap paramSoftHashMap)
   {
-    this.a.clear();
-  }
-  
-  public boolean contains(Object paramObject)
-  {
-    return this.a.containsValue(paramObject);
-  }
-  
-  public Iterator iterator()
-  {
-    return new fjp(this.a);
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Object[] toArray()
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
+    if (paramSoftHashMap.size() != 0) {}
+    for (int i = SoftHashMap.a(paramSoftHashMap).length;; i = 0)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
     }
-    return localArrayList.toArray();
   }
   
-  public Object[] toArray(Object[] paramArrayOfObject)
+  protected fjn a()
   {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
+    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) != this.jdField_b_of_type_Int) {
+      throw new ConcurrentModificationException();
     }
-    return localArrayList.toArray(paramArrayOfObject);
+    if ((this.jdField_a_of_type_JavaLangObject == null) && (!hasNext())) {
+      throw new NoSuchElementException();
+    }
+    this.jdField_b_of_type_Fjn = this.jdField_a_of_type_Fjn;
+    this.jdField_a_of_type_Fjn = fjn.a(this.jdField_a_of_type_Fjn);
+    this.jdField_b_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangObject = null;
+    return this.jdField_b_of_type_Fjn;
+  }
+  
+  public boolean hasNext()
+  {
+    fjn[] arrayOffjn = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+    while (this.jdField_a_of_type_JavaLangObject == null)
+    {
+      fjn localfjn = this.jdField_a_of_type_Fjn;
+      int i = this.jdField_a_of_type_Int;
+      while ((localfjn == null) && (i > 0))
+      {
+        i -= 1;
+        localfjn = arrayOffjn[i];
+      }
+      this.jdField_a_of_type_Fjn = localfjn;
+      this.jdField_a_of_type_Int = i;
+      if (localfjn == null)
+      {
+        this.jdField_b_of_type_JavaLangObject = null;
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangObject = localfjn.get();
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        this.jdField_a_of_type_Fjn = fjn.a(this.jdField_a_of_type_Fjn);
+      }
+    }
+    return true;
+  }
+  
+  public void remove()
+  {
+    if (this.jdField_b_of_type_Fjn == null) {
+      throw new IllegalStateException();
+    }
+    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) != this.jdField_b_of_type_Int) {
+      throw new ConcurrentModificationException();
+    }
+    this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap.remove(this.jdField_b_of_type_JavaLangObject);
+    this.jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+    this.jdField_b_of_type_Fjn = null;
+    this.jdField_b_of_type_JavaLangObject = null;
   }
 }
 

@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.adapter.WebBaseFacePreloadExpandableListAdapter;
 import com.tencent.mobileqq.adapter.WebFacePreloadBaseAdapter.ViewHolder;
 import com.tencent.mobileqq.troop.activity.FavOpenTroopActivity;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsBaseView.INearbyTroopContext;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsView.UIHandler;
@@ -24,7 +23,7 @@ import com.tencent.mobileqq.troop.widget.NearbyTroopsExpandableListView;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ExpandableListView;
-import emb;
+import emg;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -290,7 +289,7 @@ public class NearbyTroopsExpandableListViewAdapter
   
   public void c(int paramInt)
   {
-    switch (((emb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
+    switch (((emg)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
     {
     default: 
       return;
@@ -357,7 +356,6 @@ public class NearbyTroopsExpandableListViewAdapter
     if ((paramInt1 == 0) && (paramInt2 == 0) && (this.jdField_b_of_type_Boolean))
     {
       paramView = NearbyTroops.d(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
-      paramViewGroup = (NearbyTroopsActivity)this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsBaseView$INearbyTroopContext.a();
       paramInt2 = this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsView.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView.getHeight() - this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsView.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getHeight();
       paramInt1 = paramInt2;
       if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsView.jdField_f_of_type_AndroidViewView.getVisibility() == 0) {
@@ -371,25 +369,25 @@ public class NearbyTroopsExpandableListViewAdapter
     {
       i = a(paramInt1, paramInt2);
       if ((paramView != null) && ((paramView.getTag() instanceof NearbyTroops.CustomViewHolder)) && (!(paramView.getTag() instanceof NearbyTroops.ActivityAndTopicViewHolder))) {
-        break label505;
+        break label491;
       }
       paramView = NearbyTroops.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, paramBoolean);
     }
-    label416:
-    label505:
+    label402:
+    label491:
     for (;;)
     {
       if (i == 1)
       {
         paramViewGroup = NearbyTroops.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, paramBoolean);
-        NearbyTroops.a(paramViewGroup, (emb)this.jdField_a_of_type_JavaUtilArrayList.get(b(i, paramInt2)));
+        NearbyTroops.a(paramViewGroup, (emg)this.jdField_a_of_type_JavaUtilArrayList.get(b(i, paramInt2)));
         paramView = paramViewGroup;
       }
       Object localObject;
       for (;;)
       {
         if (paramView != null) {
-          break label416;
+          break label402;
         }
         return null;
         if (i == 2)

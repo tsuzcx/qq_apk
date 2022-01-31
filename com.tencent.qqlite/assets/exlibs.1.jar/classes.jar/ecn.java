@@ -1,67 +1,85 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richstatus.StatusServlet;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.ArrayList;
+import mqq.app.NewIntent;
 
 public class ecn
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public ecn(StatusJsHandler paramStatusJsHandler) {}
+  public ecn(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    Object localObject = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject == null) || (((BaseActivity)localObject).isFinishing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
+    int i = 1;
+    boolean bool;
+    if ((paramView != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof Integer)))
     {
-      this.a.a(2131362453);
-      this.a.a(this.a.c, "false");
-      return;
+      if (!NetworkUtil.e(this.a)) {
+        QQToast.a(this.a, this.a.getString(2131362790), 0).b(this.a.getTitleBarHeight());
+      }
+      int j;
+      do
+      {
+        return;
+        j = ((Integer)paramView.getTag()).intValue();
+      } while ((StatusHistoryActivity.a(this.a) == null) || (j < 0) || (j >= StatusHistoryActivity.a(this.a).size()));
+      StatusHistoryActivity.a(this.a, (RichStatus)StatusHistoryActivity.a(this.a).get(j));
+      paramView = this.a;
+      if (j != 0) {
+        break label264;
+      }
+      bool = true;
+      StatusHistoryActivity.b(paramView, bool);
+      StatusHistoryActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
+      StatusHistoryActivity.a(this.a).a("正在删除");
+      StatusHistoryActivity.a(this.a).show();
+      if ((!StatusHistoryActivity.b(this.a)) || (StatusHistoryActivity.a(this.a).size() != 1)) {
+        break label270;
+      }
+      paramView = (StatusManager)this.a.app.getManager(14);
+      if (paramView != null) {
+        paramView.a(RichStatus.a(), -1);
+      }
     }
-    if (paramBoolean) {}
+    label264:
+    label270:
     for (;;)
     {
-      try
+      label243:
+      if (StatusHistoryActivity.a(this.a) != null)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break;
-        }
-        localObject = new mobileqq_mp.FollowResponse();
-        ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
-        if ((!((mobileqq_mp.FollowResponse)localObject).ret_info.has()) || (!((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.has())) {
-          break label251;
-        }
-        paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
-        if (paramInt == 0)
+        StatusHistoryActivity.a(this.a).d();
+        return;
+        bool = false;
+        break;
+        if ((StatusHistoryActivity.a(this.a) != null) && (this.a.app != null) && (StatusHistoryActivity.a(this.a).a != null))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
-          this.a.a(this.a.c, "true");
-          return;
+          paramView = new NewIntent(this.a.app.a(), StatusServlet.class);
+          paramView.putExtra("k_cmd", 5);
+          paramView.putExtra("k_status_key", StatusHistoryActivity.a(this.a).a);
+          if (!StatusHistoryActivity.c(this.a)) {
+            break label380;
+          }
         }
-        if (paramInt == 58)
-        {
-          this.a.a(2131362456);
-          break;
-        }
-        this.a.a(2131362453);
       }
-      catch (Exception paramBundle) {}
-      this.a.a(2131362453);
+    }
+    for (;;)
+    {
+      paramView.putExtra("k_status_flag", i);
+      this.a.app.startServlet(paramView);
+      break label243;
       break;
-      break;
-      label251:
-      paramInt = -1;
+      label380:
+      i = 0;
     }
   }
 }

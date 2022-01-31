@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public final class dra
   implements Parcelable.Creator
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
+  public FileInfo a(Parcel paramParcel)
   {
-    return new WeiYunFileInfo(paramParcel);
+    return new FileInfo(paramParcel, null);
   }
   
-  public WeiYunFileInfo[] a(int paramInt)
+  public FileInfo[] a(int paramInt)
   {
-    return new WeiYunFileInfo[paramInt];
+    return new FileInfo[paramInt];
   }
 }
 

@@ -1,12 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.widget.DoodlePicView;
+import com.tencent.mobileqq.widget.DoodleTextView;
 
-class ajz
-  implements DialogInterface.OnClickListener
+public class ajz
+  implements View.OnClickListener
 {
-  ajz(ajx paramajx) {}
+  public ajz(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.a()))
+    {
+      Toast.makeText(BaseApplicationImpl.getContext(), this.a.getString(2131363452) + "...", 0).show();
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.a()))
+    {
+      Toast.makeText(BaseApplicationImpl.getContext(), this.a.getString(2131363451) + "...", 0).show();
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+    if (this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+  }
 }
 
 

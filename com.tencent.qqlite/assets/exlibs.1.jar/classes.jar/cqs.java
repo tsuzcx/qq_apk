@@ -1,31 +1,42 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.JumpFilterHelper;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class cqs
+class cqs
   implements Runnable
 {
-  public cqs(ConfigHandler paramConfigHandler, String paramString, long paramLong) {}
+  cqs(cqr paramcqr) {}
   
   public void run()
   {
-    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
-    String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, str, localFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpWhiteList", 2, "handleJumpWhiteList download: " + i);
-    }
-    if (i == 0)
+    ConditionSearchManager.a(this.a.a, false);
+    if (this.a.a.jdField_b_of_type_Boolean)
     {
-      JumpFilterHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      if (this.a.a.jdField_b_of_type_JavaUtilLinkedList != null)
+      {
+        Iterator localIterator = this.a.a.jdField_b_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)localIterator.next();
+          if (ConditionSearchManager.a(this.a.a) != null) {}
+          for (boolean bool = true;; bool = false)
+          {
+            localIConfigListener.a(2, bool);
+            break;
+          }
+        }
+      }
+      if (this.a.a.c) {
+        this.a.a.a();
+      }
       return;
     }
-    JumpFilterHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a.getApplication());
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
+    }
+    ConditionSearchManager.a(this.a.a, null);
   }
 }
 

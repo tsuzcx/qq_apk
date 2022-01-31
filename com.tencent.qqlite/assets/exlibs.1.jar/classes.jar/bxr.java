@@ -1,67 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
 
-public class bxr
-  extends GalleryManager
+class bxr
+  extends IAIOImageProviderCallBack.Stub
 {
-  IAIOImageProviderCallBack jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack = new bxs(this);
+  bxr(bxq parambxq) {}
   
-  private bxr(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
   {
-    return new AIOGalleryScene(paramActivity, paramAbstractImageListModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+    this.a.a.runOnUiThread(new bxt(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2));
   }
   
-  public AbstractImageListModel a(Activity paramActivity)
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    return new AIOImageListModel();
+    this.a.a.runOnUiThread(new bxs(this, paramLong, paramInt1, paramInt2, paramInt3, paramString));
   }
   
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void a(AIOImageData[] paramArrayOfAIOImageData, int paramInt)
   {
-    return new AIOImageListScene(paramActivity, paramAbstractImageListModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    AIOGalleryUtils.a.removeMessages(1);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a == null)
-    {
-      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (localBinderWarpper == null) {
-        break label108;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a = IAIOImageProvider.Stub.a(localBinderWarpper.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack);
-      if (QLog.isColorLevel()) {
-        QLog.d(AIOGalleryActivity.a(), 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a);
-      }
-    }
-    super.a(paramActivity);
-    return;
-    label108:
-    throw new IllegalArgumentException("can't find Binder in Intent..");
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.a.a.runOnUiThread(new bxu(this, paramArrayOfAIOImageData, paramInt));
   }
 }
 

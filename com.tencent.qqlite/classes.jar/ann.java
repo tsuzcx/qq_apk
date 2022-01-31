@@ -1,72 +1,40 @@
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.ContactFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.model.FriendManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class ann
-  extends AutomatorObserver
+  extends OpenIdObserver
 {
   public ann(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void a(int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    Object localObject1 = (ContactFacade)this.a.app.getManager(46);
-    if (localObject1 == null) {}
+    if ((this.a.isFinishing()) || (this.a.d)) {}
     do
     {
       return;
-      switch (paramInt)
-      {
-      default: 
-        ForwardRecentActivity.c(this.a);
-        return;
-      case 1: 
-        localObject2 = (FriendManager)this.a.app.getManager(8);
+      ForwardRecentActivity.a(this.a).d();
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
       }
-    } while (localObject2 == null);
-    Object localObject2 = ((FriendManager)localObject2).c();
-    if (localObject2 != null)
-    {
-      localObject2 = ((ArrayList)localObject2).iterator();
-      ArrayList localArrayList;
-      do
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
       {
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
         }
-        localArrayList = ((ContactFacade)localObject1).a(String.valueOf(((Groups)((Iterator)localObject2).next()).group_id));
-      } while ((localArrayList == null) || (localArrayList.size() <= 0));
-    }
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt == 0)
-      {
-        ForwardRecentActivity.a(this.a, false);
-        break;
+        if (!paramOpenID.openID.equals(this.a.w)) {
+          this.a.a();
+        }
       }
-      ForwardRecentActivity.a(this.a, true);
-      break;
-      localObject1 = ((ContactFacade)localObject1).a("-1004");
-      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+      else if (QLog.isColorLevel())
       {
-        ForwardRecentActivity.b(this.a, false);
-        break;
+        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
       }
-      ForwardRecentActivity.b(this.a, true);
-      break;
-      localObject1 = ((ContactFacade)localObject1).a("-1003");
-      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
-      {
-        ForwardRecentActivity.c(this.a, false);
-        break;
-      }
-      ForwardRecentActivity.c(this.a, true);
-      break;
-    }
+    } while ((!this.a.b) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
   }
 }
 

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c9" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c8" />
-</selector>
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_01" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_02" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_03" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_04" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_05" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_06" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_07" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_08" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_09" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_10" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_11" />
+    <item android:duration="100" android:drawable="@drawable/qvip_pay_loading_12" />
+</animation-list>

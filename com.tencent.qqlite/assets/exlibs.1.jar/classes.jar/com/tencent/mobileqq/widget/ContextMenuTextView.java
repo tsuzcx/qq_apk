@@ -11,8 +11,8 @@ import android.widget.TextView.BufferType;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQText.EmotcationSpan;
 import com.tencent.widget.MenuPopupDialog;
-import exr;
-import ext;
+import exw;
+import exy;
 
 public class ContextMenuTextView
   extends TextView
@@ -20,27 +20,27 @@ public class ContextMenuTextView
   private Context jdField_a_of_type_AndroidContentContext = null;
   public View.OnClickListener a;
   private MenuPopupDialog jdField_a_of_type_ComTencentWidgetMenuPopupDialog;
-  ext jdField_a_of_type_Ext = new ext(this, null);
+  exy jdField_a_of_type_Exy = new exy(this, null);
   private boolean jdField_a_of_type_Boolean = false;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   
   public ContextMenuTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new exr(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new exw(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Ext);
+    setOnLongClickListener(this.jdField_a_of_type_Exy);
     setSelectAllOnFocus(true);
   }
   
   public ContextMenuTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new exr(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new exw(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Ext);
+    setOnLongClickListener(this.jdField_a_of_type_Exy);
     setSelectAllOnFocus(true);
-    setOnTouchListener(this.jdField_a_of_type_Ext);
+    setOnTouchListener(this.jdField_a_of_type_Exy);
   }
   
   private void a(Object paramObject)

@@ -1,13 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class eew
-  extends StructMsgClickHandler
 {
-  public eew(QQAppInterface paramQQAppInterface, View paramView)
+  public String a;
+  public String b;
+  
+  public eew(StatisticCollector paramStatisticCollector, String paramString1, String paramString2)
   {
-    super(paramQQAppInterface, paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

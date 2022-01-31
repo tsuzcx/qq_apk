@@ -1,34 +1,44 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.EmosmHandler;
+import com.tencent.mobileqq.app.EmosmHandler.EmosmHandlerListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.data.EmosmResp;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class alz
-  implements View.OnClickListener
+public final class alz
+  implements EmosmHandler.EmosmHandlerListener
 {
-  public alz(EmosmDetailActivity paramEmosmDetailActivity, Context paramContext) {}
+  public alz(EmosmHandler paramEmosmHandler, int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, PicEmoticonInfo paramPicEmoticonInfo, ImageView paramImageView, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt, EmosmResp paramEmosmResp)
   {
-    paramView = (EmojiManager)this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.app.getManager(39);
-    if ((2 == this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType) && (!paramView.a()))
+    if ((paramInt == 6) || (paramInt == 7) || (paramInt == 107))
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131364122, 0);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppEmosmHandler.b(this);
+      if (paramBoolean != true) {
+        break label100;
+      }
+      paramInt = paramEmosmResp.delEpId;
+      if ((paramEmosmResp.keySeq != null) && (!paramEmosmResp.keySeq.equals(""))) {
+        break label92;
+      }
+      paramEmosmResp = "你暂时没有此表情的权限。";
     }
-    MarketFaceItemBuilder.m = 2;
-    EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.app, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Ep_detail_forward", 0);
-    paramView = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
-    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131364051));
-    paramView.show();
-    EmosmDetailActivity.a(7, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.b, paramView, null);
+    for (;;)
+    {
+      EmosmDetailActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_AndroidWidgetImageView, paramInt, paramEmosmResp, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return;
+      label92:
+      paramEmosmResp = paramEmosmResp.keySeq;
+      continue;
+      label100:
+      paramInt = -404;
+      paramEmosmResp = "服务器忙，请稍后再试";
+    }
   }
 }
 

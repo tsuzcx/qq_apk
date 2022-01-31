@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aqo
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aqo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aqo(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d();
+    GroupManagerActivity.a(this.a, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

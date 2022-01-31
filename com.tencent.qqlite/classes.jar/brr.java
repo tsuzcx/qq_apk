@@ -1,25 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class brr
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public brr(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity.c(this.a, true);
-      return;
+    if (!this.a.b) {
+      this.a.c();
     }
-    VerifyCodeActivity.d(this.a, false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,38 +1,29 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.agent.datamodel.FriendDataManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
 
 public class fbd
-  implements AdapterView.OnItemClickListener
+  extends Handler
 {
-  public fbd(FriendChooser paramFriendChooser) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public fbd(CardContainer paramCardContainer, Looper paramLooper)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.d)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.j();
-      return;
     }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
-    this.a.g();
-    paramView.f();
-    this.a.b(true);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.a.b.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
   }
 }
 

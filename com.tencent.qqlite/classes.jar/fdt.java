@@ -1,15 +1,19 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.component.cache.database.DbCacheManager;
+import com.tencent.open.component.cache.database.DbCacheService;
+import java.util.HashMap;
 
-public final class fdt
-  implements Runnable
+public class fdt
+  implements fds
 {
-  public fdt(Activity paramActivity, Bundle paramBundle) {}
+  public fdt(DbCacheService paramDbCacheService) {}
   
-  public void run()
+  public void a(DbCacheManager paramDbCacheManager)
   {
-    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
+    synchronized (this.a.a)
+    {
+      this.a.a.remove(paramDbCacheManager.a());
+      return;
+    }
   }
 }
 

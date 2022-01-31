@@ -1,40 +1,25 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.MsgTabUnreadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import java.util.TimerTask;
 
 public class cff
-  implements MsgTabUnreadListener
+  extends TimerTask
 {
   public cff(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, "msg fresh callback...");
-    }
-    if ((this.a.a == null) || (this.a.a.app == null)) {}
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null)) {}
     QQAppInterface localQQAppInterface;
-    QQMessageFacade localQQMessageFacade;
     do
     {
       return;
-      localQQAppInterface = this.a.a.app;
-      localQQMessageFacade = localQQAppInterface.a();
-    } while (localQQMessageFacade == null);
-    int i = localQQMessageFacade.e();
-    this.a.a(32, 16, Integer.valueOf(i));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.a().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, "msg fresh callback.msgNum.." + i);
-    }
-    BadgeUtils.a(localQQAppInterface.a(), localQQMessageFacade.e());
+      localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app;
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.l);
+    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.b(localQQAppInterface);
   }
 }
 

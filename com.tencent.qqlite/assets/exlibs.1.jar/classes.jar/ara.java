@@ -1,38 +1,17 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ara
-  implements DragSortListView.RemoveListener
+  extends ConfigObserver
 {
-  public ara(GroupManagerActivity paramGroupManagerActivity) {}
+  public ara(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "RemoveListener which = " + paramInt);
+    if (paramBoolean) {
+      this.a.a(1);
     }
-    Object localObject = (Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-    byte b = (byte)((Groups)localObject).group_id;
-    if (QLog.isColorLevel())
-    {
-      QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "RemoveListener remove groupId :" + b);
-      QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-    }
-    if (b == 0)
-    {
-      localObject = new QQToast(this.a);
-      ((QQToast)localObject).c(2000);
-      ((QQToast)localObject).b(2131364183);
-      ((QQToast)localObject).a();
-      return;
-    }
-    GroupManagerActivity.a(this.a, b);
-    ReportController.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

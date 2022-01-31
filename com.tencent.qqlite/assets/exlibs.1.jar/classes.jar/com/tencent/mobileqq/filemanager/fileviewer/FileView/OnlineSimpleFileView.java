@@ -54,16 +54,16 @@ public class OnlineSimpleFileView
       } while (!QLog.isColorLevel());
       QLog.e("OnlineSimpleFileView", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_BE_PC_HANDLED] status[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.d() + "not implemented");
       return null;
-      return BaseApplicationImpl.getContext().getString(2131362035);
-      return BaseApplicationImpl.getContext().getString(2131362036);
-      return BaseApplicationImpl.getContext().getString(2131362037);
+      return BaseApplicationImpl.getContext().getString(2131362032);
+      return BaseApplicationImpl.getContext().getString(2131362033);
+      return BaseApplicationImpl.getContext().getString(2131362034);
       switch (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.d())
       {
       }
     } while (!QLog.isColorLevel());
     QLog.e("OnlineSimpleFileView", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_GOTO_UPLOAD] status[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.d() + "not implemented");
     return null;
-    return BaseApplicationImpl.getContext().getString(2131362038);
+    return BaseApplicationImpl.getContext().getString(2131362035);
   }
   
   private void e()
@@ -77,19 +77,19 @@ public class OnlineSimpleFileView
     do
     {
       return;
-      localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297648);
+      localObject = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297644);
       String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
       ((AsyncImageView)localObject).setImageResource(FileManagerUtil.b(str));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298022)).setText(str);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297650)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297985)).setText(str);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131297646)).setText(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()));
       localObject = b();
     } while (localObject == null);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298095)).setText((CharSequence)localObject);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298058)).setText((CharSequence)localObject);
   }
   
   public View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903444, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130903434, paramViewGroup, false);
     e();
     return this.jdField_a_of_type_AndroidViewView;
   }

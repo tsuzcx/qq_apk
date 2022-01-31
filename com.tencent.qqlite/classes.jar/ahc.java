@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.managers.LoadingStateManager;
 
 public class ahc
-  implements DialogInterface.OnDismissListener
+  extends Handler
 {
-  public ahc(Conversation paramConversation, View paramView, TranslateAnimation paramTranslateAnimation) {}
+  public ahc(Conversation paramConversation) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    LoadingStateManager.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      Conversation.a(this.a, 1134013, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, true);
   }
 }
 

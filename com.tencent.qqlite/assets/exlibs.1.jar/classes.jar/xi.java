@@ -1,41 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class xi
-  extends CardObserver
+class xi
+  implements Runnable
 {
-  public xi(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  xi(xh paramxh) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      Object localObject;
-      String str;
-      TextView localTextView;
-      if ((paramBoolean) && (paramObject != null) && (paramObject.uin != null) && (paramObject.uin.equals(AddFriendVerifyActivity.a(this.a))))
-      {
-        localObject = (FriendManager)this.a.app.getManager(8);
-        str = ((FriendManager)localObject).d(paramObject.uin);
-        localObject = ((FriendManager)localObject).c(paramObject.uin);
-        localTextView = AddFriendVerifyActivity.c(this.a);
-        if (!AddFriendVerifyActivity.a(this.a)) {
-          break label125;
-        }
-        if (!((String)localObject).equals(paramObject.uin)) {
-          localTextView.setText((CharSequence)localObject);
-        }
-      }
-      return;
-      label125:
-      localTextView.setText(String.format("%s(%s)", new Object[] { localObject, str }));
-      return;
-    }
+    AddRequestActivity.a(this.a.a).dismiss();
+    this.a.a.finish();
   }
 }
 

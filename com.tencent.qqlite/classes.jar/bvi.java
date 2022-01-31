@@ -1,15 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
 public class bvi
-  extends BaseBubbleBuilder.ViewHolder
+  implements AnimationTextView.OnDoubleClick
 {
-  public ImageView a;
-  public TextView a;
+  public bvi(LongMsgItemBuilder paramLongMsgItemBuilder) {}
   
-  public bvi(LocationItemBuilder paramLocationItemBuilder) {}
+  public void a(View paramView)
+  {
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (ChatActivity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

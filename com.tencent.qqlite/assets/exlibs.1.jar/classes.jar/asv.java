@@ -1,44 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.DownloadInfo;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-public final class asv
-  extends Thread
+public class asv
+  implements Runnable
 {
-  public asv(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
+  public asv(LoginActivity paramLoginActivity) {}
   
   public void run()
   {
-    boolean bool = false;
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
-        bool = true;
-      }
-      if (bool)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LebaIconDownloader", 2, "download ok");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaIconDownloader", 2, localException.toString());
-      }
-    }
+    this.a.a.setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setAnimationListener(new asw(this));
+    this.a.a.startAnimation(localTranslateAnimation);
   }
 }
 

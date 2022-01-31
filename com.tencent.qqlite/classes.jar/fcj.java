@@ -1,36 +1,102 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.Common;
-import com.tencent.open.base.FileUtils;
-import com.tencent.open.base.LogUtility;
-import java.io.File;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.agent.report.BaseData;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.open.agent.report.ReportDatabaseHelper;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.business.base.OpenConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class fcj
+public class fcj
   implements Runnable
 {
+  public fcj(ReportCenter paramReportCenter, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
+  
   public void run()
   {
-    File localFile1 = new File(Common.a());
-    if (localFile1.exists())
+    int j = 1;
+    for (;;)
     {
-      File[] arrayOfFile = localFile1.listFiles();
-      int j = arrayOfFile.length;
-      int i = 0;
-      if (i < j)
+      try
       {
-        File localFile2 = arrayOfFile[i];
-        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.o())) && (!localFile2.getName().equals(Common.o()))))
+        long l1 = SystemClock.elapsedRealtime();
+        long l2 = this.jdField_a_of_type_Long;
+        localObject1 = new Bundle();
+        Object localObject3 = APNUtil.a(CommonDataAdapter.a().a());
+        ((Bundle)localObject1).putString("apn", (String)localObject3);
+        ((Bundle)localObject1).putString("appid", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject1).putString("commandid", this.jdField_b_of_type_JavaLangString);
+        ((Bundle)localObject1).putString("detail", this.jdField_c_of_type_JavaLangString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("network=").append((String)localObject3).append('&');
+        localObject3 = localStringBuilder.append("sdcard=");
+        if (Environment.getExternalStorageState().equals("mounted"))
         {
-          if (!FileUtils.a(new File(localFile1 + File.separator + localFile2.getName()))) {
-            break label179;
+          i = 1;
+          ((StringBuilder)localObject3).append(i).append('&');
+          localStringBuilder.append("wifi=").append(APNUtil.e(CommonDataAdapter.a().a()));
+          ((Bundle)localObject1).putString("deviceInfo", localStringBuilder.toString());
+          i = 100 / this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a(this.jdField_a_of_type_Int);
+          if (i > 0) {
+            continue;
           }
-          LogUtility.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
+          i = j;
+          ((Bundle)localObject1).putString("frequency", i + "");
+          ((Bundle)localObject1).putString("reqSize", this.jdField_b_of_type_Long + "");
+          ((Bundle)localObject1).putString("resultCode", this.jdField_a_of_type_Int + "");
+          ((Bundle)localObject1).putString("rspSize", this.jdField_c_of_type_Long + "");
+          ((Bundle)localObject1).putString("timeCost", l1 - l2 + "");
+          ((Bundle)localObject1).putString("uin", this.d + "");
+          localObject1 = new BaseData((Bundle)localObject1);
         }
-        for (;;)
+      }
+      catch (Exception localException)
+      {
+        Object localObject1;
+        int k;
+        int m;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ReportCenter", 2, "-->reportCgi, exception in sub thread.", localException);
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a.add(localObject1);
+        k = this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a.size();
+        m = ReportDatabaseHelper.a().a("report_cgi");
+        j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Agent_ReportTimeInterval");
+        i = j;
+        if (j == 0) {
+          i = 10000;
+        }
+        if ((!this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a("report_cgi", m + k)) && (!this.jdField_a_of_type_Boolean)) {
+          break label523;
+        }
+        this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a();
+        this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.b.removeMessages(1000);
+        return;
+      }
+      finally {}
+      int i = 0;
+      continue;
+      if (i > 100)
+      {
+        i = 100;
+        continue;
+        label523:
+        if (!this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.b.hasMessages(1000))
         {
-          i += 1;
-          break;
-          label179:
-          LogUtility.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
+          Message localMessage = Message.obtain();
+          localMessage.what = 1000;
+          this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.b.sendMessageDelayed(localMessage, i);
+          return;
         }
       }
     }

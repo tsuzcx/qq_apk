@@ -1,30 +1,16 @@
-import android.util.Pair;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
 
 public class blb
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public blb(SplashActivity paramSplashActivity, List paramList, ActionSheet paramActionSheet) {}
+  public blb(SplashActivity paramSplashActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.c();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
-    }
-    try
-    {
-      SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (blg)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

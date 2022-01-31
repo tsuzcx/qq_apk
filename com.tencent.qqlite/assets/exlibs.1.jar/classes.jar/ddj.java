@@ -1,64 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.ReqInfo;
-import com.tencent.mobileqq.emoticon.SogouEmoji.OnEmojiJsonBackSogou;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.mobileqq.activity.IndividuationSetActivity.EmojiJsBridgeListener;
+import com.tencent.mobileqq.emoji.EmojiJsHandler;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ddj
-  extends DownloadListener
+  extends QQCustomDialog
 {
-  public ddj(EmojiManager paramEmojiManager, String paramString1, String paramString2)
+  public ddj(EmojiJsHandler paramEmojiJsHandler, Context paramContext, int paramInt, IndividuationSetActivity.EmojiJsBridgeListener paramEmojiJsBridgeListener)
   {
-    super(paramString1, paramString2);
+    super(paramContext, paramInt);
   }
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onBackPressed()
   {
-    Bundle localBundle;
-    EmoticonPackage localEmoticonPackage;
-    if (paramDownloadTask.a() == 3)
-    {
-      localBundle = paramDownloadTask.a();
-      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-      Object localObject = EmosmUtils.getEmosmJsonUrl(localEmoticonPackage.epId);
-      int i = localBundle.getInt("jsonType", EmojiManager.c);
-      paramDownloadTask = (File)paramDownloadTask.a.get(localObject);
-      localObject = new ArrayList();
-      ArrayList localArrayList = new ArrayList();
-      ReqInfo localReqInfo = new ReqInfo();
-      if (!paramDownloadTask.exists()) {
-        break label154;
-      }
-      paramDownloadTask = FileUtils.a(paramDownloadTask);
-      paramDownloadTask = this.a.a(localEmoticonPackage, i, paramDownloadTask, (ArrayList)localObject, localArrayList, localReqInfo);
-      if (paramDownloadTask == null) {
-        break label159;
-      }
-      this.a.a("param_error", paramDownloadTask);
-      this.a.a(localEmoticonPackage, 11008);
-      this.a.a(localEmoticonPackage, 11008, 0L);
+    if (QLog.isColorLevel()) {
+      QLog.i("Emoji.EmojiJsHandler", 2, "back button clicked");
     }
-    label154:
-    label159:
-    do
+    try
     {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", 2);
+      localJSONObject.put("message", "user cancel download emoji in not wifi network");
+      localJSONObject.put("what", 1014);
+      this.jdField_a_of_type_ComTencentMobileqqActivityIndividuationSetActivity$EmojiJsBridgeListener.a(localJSONObject);
       return;
-      paramDownloadTask = null;
-      break;
-      paramDownloadTask = EmojiManager.a(this.a).get(localEmoticonPackage.epId);
-    } while (localBundle == null);
-    paramDownloadTask = (Object[])paramDownloadTask;
-    if ((paramDownloadTask != null) && (paramDownloadTask.length == 4)) {
-      ((SogouEmoji.OnEmojiJsonBackSogou)paramDownloadTask[0]).a(((Integer)paramDownloadTask[1]).intValue(), (String)paramDownloadTask[2], (String)paramDownloadTask[3]);
     }
-    EmojiManager.a(this.a).remove(localEmoticonPackage.epId);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return;
+    }
+    finally
+    {
+      super.onBackPressed();
+    }
   }
 }
 

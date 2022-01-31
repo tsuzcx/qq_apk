@@ -1,22 +1,13 @@
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
 
-class fkd
-  extends fke
+public final class fkd
+  implements DialogInterface.OnDismissListener
 {
-  public Activity a;
-  
-  public fkd(fkc paramfkc, Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramfkc);
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public void a()
-  {
-    IPluginManager.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    IPluginManager.a(null);
   }
 }
 

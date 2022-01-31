@@ -24,14 +24,14 @@ public class PhoneLaunchView
   {
     super(paramActivity, paramInt);
     a(2130903262);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131297413));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131297409));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   private void j()
   {
     b(new Intent(getContext(), BindNumberActivity.class), 1);
-    a(2130968637, 2130968589);
+    a(2130968635, 2130968589);
   }
   
   protected void a()
@@ -102,7 +102,7 @@ public class PhoneLaunchView
     if (i == 2)
     {
       b(new Intent(getContext(), BindNumberFromPcActivity.class), 1);
-      a(2130968637, 2130968589);
+      a(2130968635, 2130968589);
       return;
     }
     a("请求出错", "请稍后重试");

@@ -1,11 +1,15 @@
-import java.util.concurrent.ThreadFactory;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import mqq.app.AppActivity;
 
-public final class eeg
-  implements ThreadFactory
+public class eeg
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public eeg(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
+  
+  public void run()
   {
-    return new Thread(paramRunnable, "RDM-Service");
+    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
+    System.exit(0);
   }
 }
 

@@ -16,7 +16,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cuq;
+import cuw;
 import mqq.app.MobileQQ;
 
 public class PushSecSigHandler
@@ -37,7 +37,7 @@ public class PushSecSigHandler
   public static final String i = "dlg_lbutton";
   public static final String j = "dlg_rbutton";
   public static final String k = "dlg_url";
-  private Runnable jdField_a_of_type_JavaLangRunnable = new cuq(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new cuw(this);
   private boolean jdField_a_of_type_Boolean = false;
   
   PushSecSigHandler(QQAppInterface paramQQAppInterface)

@@ -1,22 +1,31 @@
-import android.os.Handler;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
 
 public class asq
-  extends ResourcePluginListener
+  implements SearchProtocol.SearchObserver
 {
   public asq(Leba paramLeba) {}
   
-  public void a(byte paramByte)
+  public void a(int paramInt, SearchProtocol.WordItem paramWordItem)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramWordItem.a)))
+    {
+      Leba.a(this.a).setHint(paramWordItem.a);
+      Leba.a(this.a).setTag(paramWordItem.b);
     }
   }
+  
+  public void a(int paramInt, ArrayList paramArrayList) {}
+  
+  public void a(int paramInt, List paramList) {}
+  
+  public void a(int paramInt, JSONArray paramJSONArray) {}
 }
 
 

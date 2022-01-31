@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.utils.pathtracker.VipPathTracker;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
 public class ewo
+  extends Thread
 {
-  public static final int a = 0;
-  public static final int b = 2;
-  public boolean a;
-  public int c;
-  public int d;
+  int jdField_a_of_type_Int = -1;
+  volatile boolean jdField_a_of_type_Boolean = false;
   
-  public ewo(VipPathTracker paramVipPathTracker, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  ewo(HttpCommunicator paramHttpCommunicator) {}
+  
+  public void run() {}
 }
 
 

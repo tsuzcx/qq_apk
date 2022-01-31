@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class boe
+  implements View.OnClickListener
 {
-  public TroopGagMgr.GagItem a;
-  public boolean a;
-  public boolean b;
+  public boe(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public boe(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = false;
-  }
-  
-  public boe(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    this.a.l();
+    paramView = this.a.p;
+    this.a.a("Clk_find", paramView, "");
   }
 }
 

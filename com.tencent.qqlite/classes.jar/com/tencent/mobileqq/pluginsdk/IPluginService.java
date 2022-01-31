@@ -7,7 +7,7 @@ import android.os.IBinder;
 
 public abstract interface IPluginService
 {
-  public abstract void IInit(String paramString1, String paramString2, Service paramService, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean);
+  public abstract void IInit(String paramString1, String paramString2, Service paramService, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt);
   
   public abstract IBinder IOnBind(Intent paramIntent);
   

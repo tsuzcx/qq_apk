@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.text.TextUtils;
 import com.tencent.biz.apiproxy.QQMusicClient;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BizTroopObserver;
@@ -17,14 +18,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import ra;
-import rb;
+import qw;
+import qx;
 
 public class TroopMemberApiClient
 {
   private static TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   static final String jdField_a_of_type_JavaLangString = "com.tencent.biz.troop.TroopMemberApiClient";
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new ra(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new qw(this);
   public final Messenger a;
   QQMusicClient jdField_a_of_type_ComTencentBizApiproxyQQMusicClient;
   public BizTroopObserver a;
@@ -37,7 +38,7 @@ public class TroopMemberApiClient
   
   private TroopMemberApiClient()
   {
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new rb(this));
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new qx(this));
     this.jdField_b_of_type_AndroidOsMessenger = null;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
@@ -170,6 +171,7 @@ public class TroopMemberApiClient
     localBundle.putString("nickName", paramString2);
     localBundle.putInt("expireTime", paramInt2);
     localBundle.putInt("seq", a(paramCallback));
+    a(13, localBundle);
   }
   
   public void a(String paramString, TroopMemberApiClient.Callback paramCallback)
@@ -180,6 +182,17 @@ public class TroopMemberApiClient
     localBundle.putInt("seq", i);
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
     a(4, localBundle);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("gcode", paramString1);
+    localBundle.putString("anId", paramString2);
+    a(7, localBundle);
   }
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, String paramString)

@@ -1,23 +1,19 @@
-import android.graphics.Bitmap;
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-class ata
-  implements Runnable
+public class ata
+  implements DialogInterface.OnClickListener
 {
-  ata(asz paramasz, Bitmap paramBitmap) {}
+  public ata(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_Asz.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Asz.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
-      this.jdField_a_of_type_Asz.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Asz.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      return;
-    }
-    this.jdField_a_of_type_Asz.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838126);
+    paramDialogInterface = (UpgradeDetailWrapper)this.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
+    UpgradeDetailActivity.a(this.a, paramDialogInterface, true, false, false);
   }
 }
 

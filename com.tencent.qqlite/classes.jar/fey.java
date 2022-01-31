@@ -1,19 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class fey
-  extends BroadcastReceiver
+class fey
+  implements Runnable
 {
-  public fey(MyAppApi paramMyAppApi) {}
+  fey(few paramfew, long paramLong1, long paramLong2, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqql.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
+    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Few.a.c(this.jdField_a_of_type_JavaLangString, i);
+    if (localDownloadInfo == null) {
+      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Few.a.a(2, localDownloadInfo);
+      return;
+      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.k);
     }
   }
 }

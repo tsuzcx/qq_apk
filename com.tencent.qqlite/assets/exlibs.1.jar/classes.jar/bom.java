@@ -1,19 +1,16 @@
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class bom
-  implements Runnable
+public class bom
+  implements View.OnClickListener
 {
-  bom(bol parambol) {}
+  public bom(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.e = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    this.a.a.setText("");
   }
 }
 

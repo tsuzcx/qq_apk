@@ -1,15 +1,18 @@
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aat
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   public aat(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((FriendsManagerImp)this.a.a.getManager(8)).a();
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
   }
 }
 

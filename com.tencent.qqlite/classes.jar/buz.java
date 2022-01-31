@@ -1,22 +1,12 @@
-import android.content.Context;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class buz
-  extends ClickableSpan
+class buz
+  implements DialogInterface.OnClickListener
 {
-  public buz(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, String paramString2) {}
+  buz(buy parambuy) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = GrayTipsItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131363591) + " " + this.jdField_a_of_type_JavaLangString;
-    paramView = DialogUtil.a(GrayTipsItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder), 230).setTitle(paramView).setMessage(this.b);
-    paramView.setPositiveButton(GrayTipsItemBuilder.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131363593), new bvb(this)).setNegativeButton(GrayTipsItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder).getString(2131362790), new bva(this));
-    paramView.show();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,22 +1,15 @@
-import android.app.Dialog;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public final class abt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abt(Dialog paramDialog) {}
+  public abt(Handler paramHandler, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.isShowing())
-    {
-      TextView localTextView = (TextView)this.a.findViewById(2131296580);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.9F, 0.0F);
-      localAlphaAnimation.setDuration(500L);
-      localAlphaAnimation.setAnimationListener(new abu(this));
-      localTextView.startAnimation(localAlphaAnimation);
-    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
   }
 }
 

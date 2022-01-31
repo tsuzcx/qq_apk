@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic.compress;
 
 import com.tencent.mobileqq.pic.CompressInfo;
-import dzt;
+import dzz;
 
 public class PicTypeNormal
   extends PicType
@@ -19,7 +19,7 @@ public class PicTypeNormal
       return null;
     case 0: 
     case 1: 
-      return new dzt(this, this);
+      return new dzz(this, this);
     }
     return new PicQualityOriginal(this);
   }

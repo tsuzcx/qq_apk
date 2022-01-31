@@ -1,61 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
 
-class dkt
+public class dkt
   implements Runnable
 {
-  dkt(dks paramdks, HashMap paramHashMap1, HashMap paramHashMap2) {}
+  public dkt(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    Object localObject;
-    while (localIterator.hasNext())
-    {
-      localObject = (String)localIterator.next();
-      if (!this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的音乐")) {
-        this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的音乐", new ArrayList());
-      }
-      ((List)this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的音乐")).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
-      if (!this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_a_of_type_JavaUtilHashMap.get(localObject))) {
-        this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(localObject));
-      }
-    }
-    localIterator = this.b.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = (String)localIterator.next();
-      if (!this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的视频")) {
-        this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的视频", new ArrayList());
-      }
-      ((List)this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的视频")).addAll((Collection)this.b.get(localObject));
-      if (!this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilArrayList.contains(this.b.get(localObject))) {
-        this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)this.b.get(localObject));
-      }
-    }
-    localIterator = this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = (FileInfo)localIterator.next();
-      String str = ((FileInfo)localObject).a();
-      if ((str != null) && (str.length() != 0))
-      {
-        if (!this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-          this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_Dks.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localObject);
-      }
-    }
-    this.jdField_a_of_type_Dks.a.i();
-    this.jdField_a_of_type_Dks.a.setSelect(0);
+    HashMap localHashMap = new HashMap();
+    FileCategoryUtil.a(AppConstants.ay, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, this.a);
+    FileCategoryUtil.a(localHashMap);
+    QfileLocalFileDocTabView.a(this.a, new dku(this));
   }
 }
 

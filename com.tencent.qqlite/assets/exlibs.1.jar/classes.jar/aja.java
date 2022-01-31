@@ -1,27 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aja
-  implements DialogInterface.OnClickListener
+  extends BizTroopObserver
 {
   public aja(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    if (NetworkUtil.e(this.a.getActivity()))
+    int i = -1;
+    this.a.f();
+    if ((!paramBoolean) && (paramObject != null)) {}
+    try
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-      DiscussionInfoCardActivity.a(this.a).d(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue());
-      this.a.a(this.a.getString(2131363677));
-      DiscussionInfoCardActivity.a(this.a).show();
-      return;
+      int j = ((TroopCreateLogic.TroopCreateResult)paramObject).b;
+      i = j;
     }
-    this.a.a(1, this.a.getString(2131363449));
+    catch (Exception paramObject)
+    {
+      label29:
+      break label29;
+    }
+    i = TroopCreateLogic.TroopCreateResult.a(i);
+    if (i == 0) {}
+    do
+    {
+      do
+      {
+        return;
+        QQToast.a(this.a, i, 0).b(this.a.getTitleBarHeight());
+        return;
+        if (paramObject != null) {
+          break;
+        }
+        i = TroopCreateLogic.TroopCreateResult.a(-1);
+      } while (i == 0);
+      QQToast.a(this.a, i, 0).b(this.a.getTitleBarHeight());
+      return;
+      paramObject = (TroopInfo)paramObject;
+    } while (TextUtils.isEmpty(paramObject.troopuin));
+    DiscussionInfoCardActivity.c(this.a);
+    TroopCreateLogicActivity.a(this.a.app, this.a, paramObject.troopuin);
   }
 }
 

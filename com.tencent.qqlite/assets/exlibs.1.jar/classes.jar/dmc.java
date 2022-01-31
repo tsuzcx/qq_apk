@@ -1,33 +1,40 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class dmc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dmc(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  public dmc(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (paramView == null)
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      String str = QfileTimeUtils.a(localFileManagerEntity.srvTime);
-      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
       }
-      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localFileManagerEntity);
+      return;
     }
-    this.a.i();
-    this.a.setSelect(0);
-    this.a.a(true);
-    this.a.c = false;
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
+    if (localFileManagerEntity != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
+      }
+      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
+      if (QfileBaseRecentFileTabView.b(this.a).a().b(this.a.jdField_a_of_type_Long)) {
+        this.a.a(localFileManagerEntity);
+      }
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
+    paramView.setVisibility(4);
+    QfileBaseRecentFileTabView.a(this.a);
   }
 }
 

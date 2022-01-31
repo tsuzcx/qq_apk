@@ -1,15 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class yl
-  implements View.OnClickListener
+  implements Runnable
 {
   public yl(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
+    try
+    {
+      if ((AuthDevActivity.a(this.a) != null) && (AuthDevActivity.a(this.a).isShowing()))
+      {
+        AuthDevActivity.a(this.a).dismiss();
+        AuthDevActivity.a(this.a).cancel();
+      }
+      AuthDevActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

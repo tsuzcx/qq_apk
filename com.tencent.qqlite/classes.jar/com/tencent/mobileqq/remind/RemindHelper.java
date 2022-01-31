@@ -5,11 +5,6 @@ import android.os.Build.VERSION;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
 import com.tencent.mobileqq.remind.widget.IosTimepicker.OnTimePickerSelectListener;
 import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
@@ -17,7 +12,7 @@ import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import eal;
+import ear;
 import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -91,14 +86,14 @@ public class RemindHelper
       jdField_a_of_type_Boolean = false;
       localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null, 2131624119);
       ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131296499)).jdField_a_of_type_Boolean = true;
-      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2130903711, null);
+      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2130903694, null);
       ((IosTimepicker)localObject).setMaxDays(25568);
       ((IosTimepicker)localObject).a(paramContext, localActionSheet, paramLong, paramOnTimePickerSelectListener, null);
       if (Build.VERSION.SDK_INT >= 11) {
         localActionSheet.getWindow().setFlags(16777216, 16777216);
       }
       localActionSheet.b((View)localObject, null);
-      localActionSheet.setOnDismissListener(new eal((IosTimepicker)localObject, paramJsBridgeListener));
+      localActionSheet.setOnDismissListener(new ear((IosTimepicker)localObject, paramJsBridgeListener));
     }
     try
     {
@@ -109,31 +104,6 @@ public class RemindHelper
     {
       while (!QLog.isColorLevel()) {}
       QLog.d(g, 2, paramContext.getMessage());
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      paramQQAppInterface = paramQQAppInterface.a().a();
-      if (paramQQAppInterface != null)
-      {
-        paramString = paramQQAppInterface.a(paramString, paramInt);
-        if (paramString != null)
-        {
-          paramString.lastmsgtime = paramLong;
-          paramQQAppInterface.a(paramString);
-        }
-      }
-      QQMessageFacade.Message localMessage;
-      do
-      {
-        return;
-        localMessage = paramQQAppInterface.a().a(paramString, paramInt);
-      } while (localMessage == null);
-      paramLong = localMessage.time;
     }
   }
   

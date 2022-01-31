@@ -1,82 +1,185 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.LBSHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQMapActivityProxy;
-import java.util.ArrayList;
+import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class cvj
-  extends BroadcastReceiver
+  implements INetInfoHandler
 {
-  public cvj(QQMapActivityProxy paramQQMapActivityProxy) {}
+  private cvj(QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void a()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.qqlite.addLbsObserver")) {
-      if (QQMapActivityProxy.a(this.a) != null) {
-        QQMapActivityProxy.a(this.a).a(QQMapActivityProxy.a(this.a));
-      }
+    NetworkCenter.a().b();
+  }
+  
+  private void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("raw_photo", 2, "type:" + paramInt + ",logmsg:" + paramString);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramContext.equals("com.tencent.mobileqq.removeLbsObserver")) {
-            break;
-          }
-        } while (QQMapActivityProxy.a(this.a) == null);
-        QQMapActivityProxy.a(this.a).c(QQMapActivityProxy.a(this.a));
-        return;
-        if (paramContext.equals("com.tencent.mobileqq.getStreetViewUrl"))
-        {
-          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
-          return;
-        }
-        if (paramContext.equals("com.tencent.mobileqq.unregisterReceiver"))
-        {
-          QQMapActivityProxy.a(this.a).unregisterReceiver(QQMapActivityProxy.a(this.a));
-          return;
-        }
-        int i;
-        int j;
-        int k;
-        int m;
-        int n;
-        if (paramContext.equals("com.tencent.mobileqq.getLbsShareSearch"))
-        {
-          i = paramIntent.getIntExtra("latitude", 0);
-          j = paramIntent.getIntExtra("longitude", 0);
-          k = paramIntent.getIntExtra("coordinate", 0);
-          paramContext = paramIntent.getStringExtra("keyword");
-          String str = paramIntent.getStringExtra("category");
-          m = paramIntent.getIntExtra("page", 0);
-          n = paramIntent.getIntExtra("count", 0);
-          int i1 = paramIntent.getIntExtra("requireMyLbs", 0);
-          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, paramContext, str, m, n, i1);
-          return;
-        }
-        if (paramContext.equals("com.tencent.mobileqq.getLbsShareShop"))
-        {
-          i = paramIntent.getIntExtra("latitude", 0);
-          j = paramIntent.getIntExtra("longitude", 0);
-          k = paramIntent.getIntExtra("coordinate", 0);
-          m = paramIntent.getIntExtra("begin", 0);
-          n = paramIntent.getIntExtra("count", 0);
-          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, m, n);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
-      paramContext = paramIntent.getStringExtra("shop_id");
-    } while (TextUtils.isEmpty(paramContext));
-    paramIntent = new ArrayList();
-    paramIntent.add(paramContext);
-    ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(paramIntent);
+    if (1 == paramInt) {
+      this.a.C();
+    }
+    while (2 != paramInt) {
+      return;
+    }
+    this.a.D();
+  }
+  
+  public void onNetMobile2None()
+  {
+    a(3, "onNetMobile2None");
+    ReportLog.a("Network", "onNetMobile2None()");
+    Handler localHandler = this.a.a(FileManagerNotifyCenter.class);
+    if (localHandler != null) {
+      localHandler.obtainMessage(10001, null).sendToTarget();
+    }
+    localHandler = this.a.a(Conversation.class);
+    if (localHandler != null) {
+      localHandler.obtainMessage(10001, QQAppInterface.a(this.a).getString(2131362790)).sendToTarget();
+    }
+    FMTSrvAddrProvider.a().a();
+    QQAppInterface.a(this.a);
+    this.a.a().a(1);
+    a();
+    if (QQAppInterface.a(this.a) != null) {
+      QQAppInterface.a(this.a).onNetMobile2None();
+    }
+  }
+  
+  public void onNetMobile2Wifi()
+  {
+    a(2, "onNetMobile2Wifi");
+    ReportLog.a("Network", "onNetMobile2Wifi()");
+    Object localObject = this.a.a(FileManagerNotifyCenter.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    }
+    localObject = this.a.a(Conversation.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    }
+    FMTSrvAddrProvider.a().a();
+    QQAppInterface.a(this.a);
+    this.a.a().a(1);
+    a();
+    if (QQAppInterface.a(this.a) != null) {
+      QQAppInterface.a(this.a).onNetMobile2Wifi();
+    }
+    this.a.a();
+    localObject = (EarlyDownloadManager)this.a.getManager(58);
+    if (localObject != null) {
+      ((EarlyDownloadManager)localObject).a();
+    }
+  }
+  
+  public void onNetNone2Mobile()
+  {
+    a(1, "onNetNone2Mobile");
+    ReportLog.a("Network", "onNetNone2Mobile()");
+    Object localObject = this.a.a(Conversation.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    }
+    localObject = this.a.a(ChatHistory.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(6, null).sendToTarget();
+    }
+    FMTSrvAddrProvider.a().a();
+    QQAppInterface.a(this.a);
+    this.a.a().a(2);
+    a();
+    if (QQAppInterface.a(this.a) != null) {
+      QQAppInterface.a(this.a).onNetNone2Mobile();
+    }
+    localObject = (EarlyDownloadManager)this.a.getManager(58);
+    if (localObject != null) {
+      ((EarlyDownloadManager)localObject).a();
+    }
+  }
+  
+  public void onNetNone2Wifi()
+  {
+    a(2, "onNetNone2Wifi");
+    ReportLog.a("Network", "onNetNone2Wifi()");
+    Object localObject = this.a.a(Conversation.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    }
+    localObject = this.a.a(ChatHistory.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(6, null).sendToTarget();
+    }
+    FMTSrvAddrProvider.a().a();
+    QQAppInterface.a(this.a);
+    this.a.a().a(1);
+    a();
+    if (QQAppInterface.a(this.a) != null) {
+      QQAppInterface.a(this.a).onNetNone2Wifi();
+    }
+    this.a.a();
+    localObject = (EarlyDownloadManager)this.a.getManager(58);
+    if (localObject != null) {
+      ((EarlyDownloadManager)localObject).a();
+    }
+  }
+  
+  public void onNetWifi2Mobile()
+  {
+    a(1, "onNetWifi2Mobile");
+    ReportLog.a("Network", "onNetWifi2Mobile()");
+    Object localObject = this.a.a(FileManagerNotifyCenter.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    }
+    localObject = this.a.a(Conversation.class);
+    if (localObject != null) {
+      ((Handler)localObject).obtainMessage(10001, null).sendToTarget();
+    }
+    FMTSrvAddrProvider.a().a();
+    QQAppInterface.a(this.a);
+    this.a.a().a(2);
+    a();
+    if (QQAppInterface.a(this.a) != null) {
+      QQAppInterface.a(this.a).onNetWifi2Mobile();
+    }
+    localObject = (EarlyDownloadManager)this.a.getManager(58);
+    if (localObject != null) {
+      ((EarlyDownloadManager)localObject).a();
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(3, "onNetWifi2None");
+    ReportLog.a("Network", "onNetWifi2None()");
+    Handler localHandler = this.a.a(FileManagerNotifyCenter.class);
+    if (localHandler != null) {
+      localHandler.obtainMessage(10001, null).sendToTarget();
+    }
+    localHandler = this.a.a(Conversation.class);
+    if (localHandler != null) {
+      localHandler.obtainMessage(10001, QQAppInterface.b(this.a).getString(2131362790)).sendToTarget();
+    }
+    FMTSrvAddrProvider.a().a();
+    QQAppInterface.a(this.a);
+    this.a.a().a(1);
+    a();
+    if (QQAppInterface.a(this.a) != null) {
+      QQAppInterface.a(this.a).onNetWifi2None();
+    }
   }
 }
 

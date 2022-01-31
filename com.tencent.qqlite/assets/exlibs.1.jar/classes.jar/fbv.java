@@ -1,16 +1,35 @@
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateListener;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
-class fbv
-  implements OpenSdkFriendService.CheckAvatarUpdateListener
+public class fbv
+  extends Handler
 {
-  fbv(fbu paramfbu) {}
-  
-  public void a()
+  public fbv(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    ((OpenFrame)this.a.a.a.getCurrentView()).f();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramMessage = (Bitmap)paramMessage.obj;
+      } while (paramMessage == null);
+      this.a.a.a("", "", paramMessage, true);
+      return;
+      paramMessage = (Bitmap)paramMessage.obj;
+    } while (paramMessage == null);
+    this.a.a.a("", paramMessage);
   }
 }
 

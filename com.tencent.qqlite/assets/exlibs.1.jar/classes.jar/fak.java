@@ -1,11 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
 
-public class fak
+class fak
   implements DialogInterface.OnClickListener
 {
-  public fak(AuthorityActivity paramAuthorityActivity) {}
+  fak(faj paramfaj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

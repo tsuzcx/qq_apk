@@ -1,38 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-public class dgt
-  implements AdapterView.OnItemClickListener
+class dgt
+  implements Runnable
 {
-  public dgt(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  dgt(dgs paramdgs) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = (FileInfo)this.a.a.get(paramInt);
-    if (paramAdapterView.a()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.d(), true);
-    }
-    while (!this.a.j()) {
-      return;
-    }
-    if (FMDataCache.a(paramAdapterView)) {
-      FMDataCache.b(paramAdapterView);
-    }
-    for (;;)
+    if (this.a.a.e)
     {
-      this.a.m();
-      LocalFileBrowserActivity.a(this.a);
+      this.a.a.g();
       return;
-      if (this.a.b) {
-        FMDataCache.b();
-      }
-      FMDataCache.a(paramAdapterView);
     }
+    this.a.a.h();
+    this.a.a.g();
+    new Handler().postDelayed(new dgu(this), 1500L);
   }
 }
 

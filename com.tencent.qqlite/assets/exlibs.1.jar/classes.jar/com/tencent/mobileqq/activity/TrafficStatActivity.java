@@ -33,7 +33,7 @@ public class TrafficStatActivity
   {
     if (paramArrayOfLong1 == null)
     {
-      Toast.makeText(this, getString(2131363383), 1).show();
+      Toast.makeText(this, getString(2131363386), 1).show();
       return;
     }
     long l3 = 0L;
@@ -167,7 +167,7 @@ public class TrafficStatActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903050);
-    setTitle(2131363047);
+    setTitle(2131363050);
     this.app.registObserver(this);
     d();
     c();
@@ -198,7 +198,7 @@ public class TrafficStatActivity
     a(arrayOfLong, paramBundle);
     return;
     label51:
-    Toast.makeText(this, getString(2131363383), 1).show();
+    Toast.makeText(this, getString(2131363386), 1).show();
   }
 }
 

@@ -4,12 +4,12 @@ import AvatarInfo.DestQQHeadInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import csu;
+import cta;
 
 public class FriendListHandler$QQHeadDetails
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new csu();
+  public static final Parcelable.Creator CREATOR = new cta();
   public byte a;
   public int a;
   public long a;

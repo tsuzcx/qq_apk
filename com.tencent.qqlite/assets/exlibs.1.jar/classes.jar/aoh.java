@@ -5,7 +5,10 @@ public class aoh
 {
   public aoh(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.a.n();
+  }
 }
 
 

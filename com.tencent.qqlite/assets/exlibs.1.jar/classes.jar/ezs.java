@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.graphics.Paint;
+import com.tencent.mobileqq.widget.UnderlinePageIndicator;
 
-public final class ezs
-  implements Parcelable.Creator
+public class ezs
+  implements Runnable
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  public ezs(UnderlinePageIndicator paramUnderlinePageIndicator) {}
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void run()
   {
-    return new Workspace.SavedState[paramInt];
+    if (!this.a.a) {}
+    int i;
+    do
+    {
+      return;
+      i = Math.max(UnderlinePageIndicator.a(this.a).getAlpha() - UnderlinePageIndicator.a(this.a), 0);
+      UnderlinePageIndicator.a(this.a).setAlpha(i);
+      this.a.invalidate();
+    } while (i <= 0);
+    this.a.postDelayed(this, 30L);
   }
 }
 

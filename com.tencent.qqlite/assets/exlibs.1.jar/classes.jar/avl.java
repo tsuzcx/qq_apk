@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class avl
-  extends Thread
+class avl
+  implements Runnable
 {
-  public avl(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  avl(avk paramavk) {}
   
   public void run()
   {
-    Object localObject = (FriendManager)this.a.app.getManager(8);
-    Friends localFriends = ((FriendManager)localObject).c(this.a.jdField_a_of_type_JavaLangString);
-    if (localFriends != null)
-    {
-      this.a.jdField_a_of_type_Int = localFriends.groupid;
-      localObject = ((FriendManager)localObject).a(this.a.jdField_a_of_type_Int + "");
-      if (localObject != null) {
-        this.a.d = ((Groups)localObject).group_name;
-      }
-    }
-    if (this.a.jdField_a_of_type_Int == -1)
-    {
-      this.a.runOnUiThread(new avm(this));
-      return;
-    }
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 2;
-    ((Message)localObject).sendToTarget();
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131363614)).setMessage(String.format(this.a.a.getString(2131363615), new Object[] { this.a.a.b })).setPositiveButton(2131363042, new avm(this));
+    localQQCustomDialog.setOnDismissListener(new avn(this));
+    localQQCustomDialog.show();
   }
 }
 

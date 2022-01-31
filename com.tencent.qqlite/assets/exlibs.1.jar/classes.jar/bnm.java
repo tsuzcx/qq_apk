@@ -1,49 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.CommUtils.IHttpGetString;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class bnm
-  implements CommUtils.IHttpGetString
+  implements View.OnClickListener
 {
   public bnm(TroopManageActivity paramTroopManageActivity) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
+    Object localObject = "";
     try
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.troopmanage", 4, "get group statics ok:" + paramString);
+      if (1L == this.a.a.dwAdditionalFlag) {
+        localObject = "0";
       }
-      Object localObject = new JSONObject(paramString);
-      if ((((JSONObject)localObject).has("title")) && (((JSONObject)localObject).has("url")))
+      for (;;)
       {
-        paramString = ((JSONObject)localObject).getString("title");
-        localObject = ((JSONObject)localObject).getString("url");
-        SharePreferenceUtils.a(this.a.app.getApplication(), this.a.app.a() + "_" + "GoupStatisticsTitle", paramString);
-        SharePreferenceUtils.a(this.a.app.getApplication(), this.a.app.a() + "_" + "GoupStatisticsUrl", (String)localObject);
-        if (this.a.isFinishing()) {
-          return;
-        }
-        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          TroopManageActivity.a(this.a, paramString, (String)localObject);
-          return;
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("Q.troopmanage", 2, paramString.toString());
+        ReportController.b(this.a.app, "P_CliOper", "Grp_manage", "", "manage_grp", "Clk_data", 0, 0, this.a.a.troopuin, (String)localObject, "", "");
+        paramView = (String)paramView.getTag();
+        paramView = paramView + "&gc=" + this.a.a.troopuin;
+        paramView = paramView + "&src=2";
+        localObject = new Intent(this.a, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        this.a.startActivity((Intent)localObject);
         return;
-        TroopManageActivity.a(this.a);
+        if (1L == this.a.a.dwCmdUinUinFlag) {
+          localObject = "1";
+        }
+      }
+      return;
+    }
+    catch (Exception paramView)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.troopmanage", 2, "go to statics h5 url error");
       }
     }
   }

@@ -3,9 +3,9 @@ package com.tencent.mobileqq.search;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import ecu;
-import ecv;
-import ecw;
+import eda;
+import edb;
+import edc;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,9 +19,9 @@ import java.util.concurrent.Future;
 public class SearchTask
   extends AsyncTask
 {
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new ecv();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new edb();
   private static final int jdField_b_of_type_Int = 30;
-  private static Comparator jdField_b_of_type_JavaUtilComparator = new ecw();
+  private static Comparator jdField_b_of_type_JavaUtilComparator = new edc();
   private final int jdField_a_of_type_Int = 300;
   private SearchTask.SearchTaskCallBack jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack;
   private String jdField_a_of_type_JavaLangString;
@@ -103,7 +103,7 @@ public class SearchTask
             j = n + 300;
             break label91;
             label178:
-            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new ecu(this, n, j));
+            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new eda(this, n, j));
             this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
             i += 1;
             break;

@@ -1,14 +1,30 @@
-import com.tencent.widget.VerticalGallery;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import com.tencent.widget.PinnedHeaderExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
 
 public class fiu
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public fiu(VerticalGallery paramVerticalGallery) {}
+  public fiu(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VerticalGallery.a(this.a, false);
-    this.a.f_();
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.b(this.a.q());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.d(i);
+        }
+      }
+    }
+    return true;
   }
 }
 

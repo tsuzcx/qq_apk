@@ -13,7 +13,7 @@ import android.widget.ToggleButton;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
-import eab;
+import eah;
 import java.util.List;
 
 public class ProfileLabelPanelAdapter
@@ -28,7 +28,7 @@ public class ProfileLabelPanelAdapter
   protected PanelRecycleBin a;
   protected ProfileLabelCallBack a;
   public ProfileLabelPanel.LabelStatusManager a;
-  protected eab a;
+  protected eah a;
   protected List a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List paramList)
@@ -55,15 +55,15 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Eab = ((eab)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Eab == null)
+    this.jdField_a_of_type_Eah = ((eah)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Eah == null)
     {
-      this.jdField_a_of_type_Eab = new eab(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Eab);
+      this.jdField_a_of_type_Eah = new eah(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Eah);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Eab.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Eab);
+    this.jdField_a_of_type_Eah.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Eah);
   }
   
   public void a(ProfileLabelCallBack paramProfileLabelCallBack)

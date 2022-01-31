@@ -1,22 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aos
-  extends BroadcastReceiver
+  implements BounceScrollView.OnScrollChangedListener
 {
   public aos(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.a.a.a.a.equals(this.a.app.a())) && (FriendProfileCardActivity.a(this.a) != null)) {
-      FriendProfileCardActivity.a(this.a).sendEmptyMessage(2);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("PROFILE_TEST", 4, "onScrollChanged, [" + paramInt1 + "," + paramInt2 + "],[" + paramInt3 + "," + paramInt4 + "]");
     }
+    if ((this.a.a.a.a != 33) && (FriendProfileCardActivity.a(this.a) == null)) {}
   }
 }
 

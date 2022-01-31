@@ -1,46 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class dla
-  extends IClickListener_Ver51
+  implements Runnable
 {
-  public dla(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public dla(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, FileInfo paramFileInfo) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    Object localObject = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.b());
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.containsKey(localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.put(localObject, new ArrayList());
+    }
+    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.get(localObject);
+    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {
+      return;
+    }
+    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.i();
   }
 }
 

@@ -28,6 +28,7 @@ import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
 import com.tencent.mobileqq.activity.fling.ScreenCapture;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,8 +43,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class PluginProxyActivity
   extends Activity
 {
-  public static final String ACTION_PLUGIN_DIR_INFO_LOG = "com.tencent.qqlite.ACTION_PLUGIN_DIR_INFO_LOG";
-  public static final String ACTION_PLUGIN_STARTUP_FAILED = "com.tencent.qqlite.ACTION_PLUGIN_STARTUP_FAILED";
+  public static final String ACTION_PLUGIN_DIR_INFO_LOG = "com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG";
+  public static final String ACTION_PLUGIN_STARTUP_FAILED = "com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED";
   private static final String INNER_BUNDLE = "pluginsdk_inner_bundle";
   private static final String INNER_INTENT_EXTRAS = "pluginsdk_inner_intent_extras";
   public static final String READER_ID = "qqreaderplugin.apk";
@@ -64,6 +65,7 @@ public abstract class PluginProxyActivity
   private boolean mPluginGestureLock = false;
   private String mPluginID = null;
   private String mPluginName = null;
+  private int mPluginResoucesType;
   private BroadcastReceiver mScreenOffReceiver = new BroadcastReceiver()
   {
     public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -75,7 +77,6 @@ public abstract class PluginProxyActivity
   };
   protected int mStopFlag = 0;
   private String mUinString = null;
-  private int mUseQqResources;
   private boolean mUseSkinEngine = false;
   
   static
@@ -146,7 +147,7 @@ public abstract class PluginProxyActivity
   {
     if (((paramThrowable instanceof FileNotFoundException)) || ((paramThrowable.getMessage() != null) && (paramThrowable.getMessage().contains("permission"))))
     {
-      QLog.d("PluginDebug", 1, "" + this.mPluginApkFilePath);
+      QLog.d("plugin_tag", 1, "" + this.mPluginApkFilePath);
       paramThrowable = getApplicationInfo();
       boolean bool1;
       if (paramThrowable != null)
@@ -163,8 +164,8 @@ public abstract class PluginProxyActivity
       label157:
       for (boolean bool2 = true;; bool2 = false)
       {
-        QLog.d("PluginDebug", 1, "UID: " + paramThrowable.uid + ", IsSystemApp: " + bool1 + ", IsUpdateSystemApp: " + bool2);
-        sendBroadcast(new Intent("com.tencent.qqlite.ACTION_PLUGIN_DIR_INFO_LOG"));
+        QLog.d("plugin_tag", 1, "UID: " + paramThrowable.uid + ", IsSystemApp: " + bool1 + ", IsUpdateSystemApp: " + bool2);
+        sendBroadcast(new Intent("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG"));
         showNeedUninstanllAndInstallDialog();
         return true;
         bool1 = false;
@@ -178,7 +179,7 @@ public abstract class PluginProxyActivity
     }
     if (((paramThrowable instanceof ClassNotFoundException)) || ((paramThrowable instanceof PluginUtils.GetPackageInfoFailException)))
     {
-      QLog.d("PluginDebug", 1, "" + this.mPluginApkFilePath);
+      QLog.d("plugin_tag", 1, "" + this.mPluginApkFilePath);
       PluginRecoverReceiver.broadcast(this, this.mPluginID);
       return false;
     }
@@ -189,7 +190,6 @@ public abstract class PluginProxyActivity
   private void initPlugin()
     throws Exception
   {
-    boolean bool1 = true;
     Object localObject2 = (PackageInfo)PluginStatic.sPackageInfoMap.get(this.mPluginApkFilePath);
     Object localObject1 = localObject2;
     if (localObject2 == null)
@@ -223,25 +223,15 @@ public abstract class PluginProxyActivity
       DebugHelper.log("PluginProxyActivity.initPlugin start loadClass");
     }
     this.mPluginActivity = ((IPluginActivity)this.mClassLaunchActivity.newInstance());
-    IPluginActivity localIPluginActivity = this.mPluginActivity;
-    String str1 = this.mPluginID;
-    String str2 = this.mPluginApkFilePath;
-    boolean bool2 = this.mUseSkinEngine;
-    if (this.mUseQqResources == 1) {}
-    for (;;)
+    this.mPluginActivity.IInit(this.mPluginID, this.mPluginApkFilePath, this, (ClassLoader)localObject2, (PackageInfo)localObject1, this.mUseSkinEngine, this.mPluginResoucesType);
+    localObject1 = new Intent(getIntent());
+    localObject2 = ((Intent)localObject1).getBundleExtra("pluginsdk_inner_intent_extras");
+    if (localObject2 != null)
     {
-      localIPluginActivity.IInit(str1, str2, this, (ClassLoader)localObject2, (PackageInfo)localObject1, bool2, bool1);
-      localObject1 = new Intent(getIntent());
-      localObject2 = ((Intent)localObject1).getBundleExtra("pluginsdk_inner_intent_extras");
-      if (localObject2 != null)
-      {
-        ((Intent)localObject1).putExtras((Bundle)localObject2);
-        ((Intent)localObject1).removeExtra("pluginsdk_inner_intent_extras");
-      }
-      this.mPluginActivity.ISetIntent((Intent)localObject1);
-      return;
-      bool1 = false;
+      ((Intent)localObject1).putExtras((Bundle)localObject2);
+      ((Intent)localObject1).removeExtra("pluginsdk_inner_intent_extras");
     }
+    this.mPluginActivity.ISetIntent((Intent)localObject1);
   }
   
   private boolean isAppOnForeground()
@@ -297,12 +287,23 @@ public abstract class PluginProxyActivity
     paramIntent.putExtra("pluginsdk_pluginName", paramString1);
     paramIntent.putExtra("pluginsdk_pluginLocation", paramString2);
     paramIntent.putExtra("pluginsdk_launchActivity", paramString4);
+    paramIntent.putExtra("pluginsdk_pluginpath", paramString3);
     try
     {
       paramActivity.startActivityForResult(paramIntent, paramInt);
       return;
     }
     catch (Throwable paramActivity) {}
+  }
+  
+  private void safeShowToast(Context paramContext, String paramString, int paramInt)
+  {
+    try
+    {
+      Toast.makeText(paramContext, paramString, paramInt).show();
+      return;
+    }
+    catch (Throwable paramContext) {}
   }
   
   private void sendLaunchCompletedBroadcast()
@@ -381,13 +382,13 @@ public abstract class PluginProxyActivity
     if (this.mCreateErrorInfo != null)
     {
       if ((this.mCreateErrorInfo.contains("空间")) || (this.mCreateErrorInfo.contains("Space"))) {
-        Toast.makeText(this, "系统可用内存不足，" + this.mPluginName + "启动失败!", 0).show();
+        safeShowToast(BaseApplication.getContext(), "系统可用内存不足，" + this.mPluginName + "启动失败!", 0);
       }
     }
     else {
       return;
     }
-    Toast.makeText(this, this.mPluginName + "启动失败!", 0).show();
+    safeShowToast(BaseApplication.getContext(), this.mPluginName + "启动失败!", 0);
   }
   
   private void startPluginActivityForResult(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
@@ -395,10 +396,11 @@ public abstract class PluginProxyActivity
     Intent localIntent = new Intent(paramActivity, getProxyActivity(paramString));
     localIntent.putExtra("pluginsdk_pluginName", this.mPluginName);
     localIntent.putExtra("pluginsdk_pluginLocation", this.mPluginID);
+    localIntent.putExtra("pluginsdk_pluginpath", this.mPluginApkFilePath);
     localIntent.putExtra("pluginsdk_launchActivity", paramString);
     localIntent.putExtra("useSkinEngine", this.mUseSkinEngine);
-    if ((this.mUseQqResources == 1) || (this.mUseQqResources == -1)) {
-      localIntent.putExtra("userQqResources", this.mUseQqResources);
+    if ((this.mPluginResoucesType == 1) || (this.mPluginResoucesType == -1) || (this.mPluginResoucesType == 2)) {
+      localIntent.putExtra("userQqResources", this.mPluginResoucesType);
     }
     if (paramIntent != null)
     {
@@ -415,7 +417,7 @@ public abstract class PluginProxyActivity
     localObject = ((Intent)localObject).getStringExtra("pluginsdk_selfuin");
     if (str != null)
     {
-      Intent localIntent = new Intent("com.tencent.qqlite.ACTION_PLUGIN_STARTUP_FAILED");
+      Intent localIntent = new Intent("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED");
       localIntent.putExtra("pluginsdk_selfuin", (String)localObject);
       localIntent.putExtra("pluginsdk_pluginName", paramString1);
       localIntent.putExtra("pluginsdk_pluginLocation", paramString2);
@@ -545,7 +547,8 @@ public abstract class PluginProxyActivity
     this.mPluginID = ((Bundle)localObject2).getString("pluginsdk_pluginLocation");
     this.mLaunchActivity = ((Bundle)localObject2).getString("pluginsdk_launchActivity");
     this.mUseSkinEngine = ((Bundle)localObject2).getBoolean("useSkinEngine", false);
-    this.mUseQqResources = ((Bundle)localObject2).getInt("userQqResources", 0);
+    this.mPluginResoucesType = ((Bundle)localObject2).getInt("userQqResources", 0);
+    this.mPluginApkFilePath = ((Bundle)localObject2).getString("pluginsdk_pluginpath");
     PluginRecoverReceiver.addCarePluginId(this.mPluginID);
     if (DebugHelper.sDebug) {
       DebugHelper.log("PluginProxyActivity onCreate.fetchParams");
@@ -553,7 +556,7 @@ public abstract class PluginProxyActivity
     if (TextUtils.isEmpty(this.mPluginApkFilePath)) {}
     try
     {
-      this.mPluginApkFilePath = PluginUtils.getInstallPath(this, this.mPluginID).getCanonicalPath();
+      this.mPluginApkFilePath = PluginUtils.getInstalledPluginPath(this, this.mPluginID).getCanonicalPath();
       this.mUinString = ((Bundle)localObject2).getString("pluginsdk_selfuin");
       if (!TextUtils.isEmpty(this.mUinString))
       {
@@ -581,7 +584,7 @@ public abstract class PluginProxyActivity
           j = 0;
           i = 0;
           if (DebugHelper.sDebug) {
-            DebugHelper.log("PluginDebug", "PluginProxyActivity.onCreate Params:" + this.mPluginID + ", " + this.mLaunchActivity);
+            DebugHelper.log("plugin_tag", "PluginProxyActivity.onCreate Params:" + this.mPluginID + ", " + this.mLaunchActivity);
           }
           if ((this.mPluginID != null) && (this.mPluginID.length() != 0)) {
             break;
@@ -591,12 +594,8 @@ public abstract class PluginProxyActivity
           if (j == 0) {
             super.onCreate(paramBundle);
           }
-          if (DebugHelper.sDebug) {
-            DebugHelper.log("PluginProxyActivity onCreate start sendLaunchCompletedBroadcast");
-          }
-          sendLaunchCompletedBroadcast();
           if (localObject1 == null) {
-            break label716;
+            break label730;
           }
           this.mCreateErrorInfo = PluginUtils.getExceptionInfo((Throwable)localObject1);
           if (DebugHelper.sDebug) {
@@ -608,6 +607,10 @@ public abstract class PluginProxyActivity
             finish();
           }
           uploadStartupResult(this.mPluginName, this.mPluginID, this.mLaunchActivity, this.mCreateErrorInfo);
+          if (DebugHelper.sDebug) {
+            DebugHelper.log("plugin_tag", "PluginProxyActivity onCreate start sendLaunchCompletedBroadcast");
+          }
+          sendLaunchCompletedBroadcast();
           return;
           localException2 = localException2;
         }
@@ -621,7 +624,7 @@ public abstract class PluginProxyActivity
           int i;
           if (DebugHelper.sDebug)
           {
-            DebugHelper.log("PluginDebug", "register exception.", localException1);
+            DebugHelper.log("plugin_tag", "register exception.", localException1);
             continue;
             i = j;
             try
@@ -678,7 +681,7 @@ public abstract class PluginProxyActivity
               j = i;
             }
             continue;
-            label716:
+            label730:
             this.mCreateErrorInfo = "success";
             if (DebugHelper.sDebug) {
               DebugHelper.log("PluginProxyActivity.onCreate Success");
@@ -770,7 +773,7 @@ public abstract class PluginProxyActivity
     if (localObject != null) {
       paramIntent.setExtrasClassLoader((ClassLoader)localObject);
     }
-    if ((this.mPluginActivity != null) && (paramIntent.getBooleanExtra("cleartop", false)))
+    if (this.mPluginActivity != null)
     {
       paramIntent = new Intent(paramIntent);
       paramIntent.setExtrasClassLoader((ClassLoader)localObject);
@@ -881,7 +884,7 @@ public abstract class PluginProxyActivity
     paramBundle.putString("pluginsdk_pluginpath", this.mPluginApkFilePath);
     paramBundle.putString("pluginsdk_launchActivity", this.mLaunchActivity);
     paramBundle.putBoolean("useSkinEngine", this.mUseSkinEngine);
-    paramBundle.putInt("userQqResources", this.mUseQqResources);
+    paramBundle.putInt("userQqResources", this.mPluginResoucesType);
     paramBundle.putString("pluginsdk_selfuin", this.mUinString);
     paramBundle.putBoolean("param_plugin_gesturelock", this.mPluginGestureLock);
     super.onSaveInstanceState(paramBundle);

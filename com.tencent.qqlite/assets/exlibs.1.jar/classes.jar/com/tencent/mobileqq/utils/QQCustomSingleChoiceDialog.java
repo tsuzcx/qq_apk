@@ -10,16 +10,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import eva;
-import evb;
+import evf;
+import evg;
 
 public class QQCustomSingleChoiceDialog
   extends QQCustomDialog
 {
   public int a;
   public DialogInterface.OnClickListener a;
-  AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new evb(this);
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new eva(this);
+  AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new evg(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new evf(this);
   QQCustomMenu jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
   public CharSequence[] a;
   

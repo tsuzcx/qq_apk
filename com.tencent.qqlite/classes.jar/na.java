@@ -1,19 +1,15 @@
-import android.os.Bundle;
+import android.app.Activity;
 import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
 public class na
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public na(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public na(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("mode");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
-    }
+    this.a.a.setResult(4660);
+    this.a.a.finish();
   }
 }
 

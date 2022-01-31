@@ -1,60 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.ReqInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class alm
-  extends DownloadListener
+public final class alm
+  implements Runnable
 {
-  public alm(EmosmDetailActivity paramEmosmDetailActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public alm(Context paramContext) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    EmojiManager localEmojiManager;
-    Object localObject1;
-    EmoticonPackage localEmoticonPackage;
-    Object localObject2;
-    int i;
-    ReqInfo localReqInfo;
-    if (paramDownloadTask.a() == 3)
-    {
-      localEmojiManager = (EmojiManager)this.a.app.getManager(39);
-      localObject1 = paramDownloadTask.a();
-      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
-      localObject2 = EmosmUtils.getEmosmJsonUrl(localEmoticonPackage.epId);
-      i = ((Bundle)localObject1).getInt("jsonType", EmojiManager.c);
-      paramDownloadTask = (File)paramDownloadTask.a.get(localObject2);
-      localObject1 = new ArrayList();
-      localObject2 = new ArrayList();
-      localReqInfo = new ReqInfo();
-      if (!paramDownloadTask.exists()) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramDownloadTask = FileUtils.a(paramDownloadTask); localEmojiManager.a(localEmoticonPackage, i, paramDownloadTask, (ArrayList)localObject1, (ArrayList)localObject2, localReqInfo) != null; paramDownloadTask = null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.EmosmDetailActivity", 2, "json is complete,result ok: " + EmosmDetailActivity.a(this.a));
-    }
-    this.a.app.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-    this.a.runOnUiThread(new aln(this, localEmoticonPackage));
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131363409), 0).b(this.a.getResources().getDimensionPixelSize(2131492887));
   }
 }
 

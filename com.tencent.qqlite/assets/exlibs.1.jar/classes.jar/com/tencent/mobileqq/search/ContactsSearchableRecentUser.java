@@ -93,7 +93,7 @@ public class ContactsSearchableRecentUser
           paramMap = this.jdField_a_of_type_ComTencentMobileqqModelFriendManager.c(str);
           if (String.valueOf(AppConstants.Y).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131363525);
+            this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getString(2131363526);
             return;
           }
         case 6000: 
@@ -116,22 +116,22 @@ public class ContactsSearchableRecentUser
           return;
           if (String.valueOf(AppConstants.aa).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363523);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363524);
             return;
           }
           if (String.valueOf(AppConstants.Z).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131363238);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131363241);
             return;
           }
           if (String.valueOf(AppConstants.S).equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363240);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363243);
             return;
           }
           if (AppConstants.W.equals(str))
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363537);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363532);
             return;
           }
           if (i == 1000)
@@ -171,11 +171,11 @@ public class ContactsSearchableRecentUser
       this.jdField_a_of_type_JavaUtilList = ((List)paramMap.get(str));
       return;
     } while (!String.valueOf(AppConstants.V).equals(str));
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362952);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362956);
     return;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363624);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131363618);
     return;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362461);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131362458);
     this.w = 0L;
   }
   

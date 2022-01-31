@@ -1,12 +1,16 @@
-import com.tencent.util.DumpMemInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class fgp
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public long b;
-  public long c;
+  public fgp(OpenSDKAppInterface paramOpenSDKAppInterface) {}
   
-  private fgp(DumpMemInfoHandler paramDumpMemInfoHandler) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

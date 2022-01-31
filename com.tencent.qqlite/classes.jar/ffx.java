@@ -1,25 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.open.appcommon.CallBackEvent;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.export.js.VipDownloadInterface;
+import com.tencent.open.downloadnew.WebViewDownloadListener;
 import com.tencent.smtt.sdk.WebView;
 
 public class ffx
   implements Runnable
 {
-  public ffx(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  public ffx(WebViewDownloadListener paramWebViewDownloadListener, WebView paramWebView, String paramString) {}
   
   public void run()
   {
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
     try
     {
-      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception localException)
     {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
+      LogUtility.a(WebViewDownloadListener.jdField_a_of_type_JavaLangString, "doJsCallBack >>> ", localException);
     }
   }
 }

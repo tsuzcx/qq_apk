@@ -1,10 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-public final class dji
-  implements DialogInterface.OnClickListener
+public class dji
+  extends FMObserver
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public dji(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QfileFileAssistantActivity.b(this.a)) {
+      return;
+    }
+    this.a.runOnUiThread(new djj(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!QfileFileAssistantActivity.b(this.a)) {
+      FMToastUtil.a(paramString);
+    }
+  }
 }
 
 

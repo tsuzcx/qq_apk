@@ -1,11 +1,10 @@
-import com.tencent.mobileqq.app.automator.Automator;
+import android.net.Uri;
 
-class dcy
-  implements Runnable
+abstract interface dcy
 {
-  dcy(dcx paramdcx) {}
-  
-  public void run() {}
+  public static final Uri a = Uri.parse("content://qqlite");
+  public static final Uri b = Uri.parse("content://qqlite/external/friendlist");
+  public static final Uri c = Uri.parse("content://qqlite/external/historylist");
 }
 
 

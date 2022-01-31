@@ -1,25 +1,44 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class dlf
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public dlf(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public dlf(QfileLocalFilePicTabView paramQfileLocalFilePicTabView, Context paramContext) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    HashMap localHashMap = (HashMap)FileCategoryUtil.a(this.jdField_a_of_type_AndroidContentContext);
+    if (localHashMap == null) {
+      localHashMap = new HashMap();
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363247));
-    QfileBaseRecentFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363274), localQQCustomMenu, new dlg(this, paramView), new dlh(this, paramView)));
-    return true;
+    for (;;)
+    {
+      FileCategoryUtil.a(AppConstants.ay, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+      FileCategoryUtil.a(localHashMap);
+      if (localHashMap != null)
+      {
+        Iterator localIterator = localHashMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (String)localIterator.next();
+          if (((String)localObject).equalsIgnoreCase("QQfile_recv") != true)
+          {
+            localObject = (List)localHashMap.get(localObject);
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.addAll((Collection)localObject);
+          }
+        }
+      }
+      return;
+    }
   }
 }
 

@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
 public class abe
   implements Runnable
 {
-  private ExtensionInfo jdField_a_of_type_ComTencentMobileqqDataExtensionInfo;
-  
-  public abe(BaseChatPie paramBaseChatPie, ExtensionInfo paramExtensionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = paramExtensionInfo;
-  }
+  public abe(BaseSystemActivity paramBaseSystemActivity) {}
   
   public void run()
   {
-    ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(43)).a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo);
+    this.a.a();
   }
 }
 

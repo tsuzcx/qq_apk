@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class cer
-  implements DialogInterface.OnDismissListener
+  extends ConfigObserver
 {
-  public cer(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
+  public cer(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.finish();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(false);
+    MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
+    this.a.f();
   }
 }
 

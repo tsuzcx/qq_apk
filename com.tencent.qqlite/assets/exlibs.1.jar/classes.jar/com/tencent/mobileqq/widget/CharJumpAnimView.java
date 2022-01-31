@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import exk;
+import exp;
 
 public class CharJumpAnimView
   extends TextView
@@ -22,7 +22,7 @@ public class CharJumpAnimView
   public static final int d = 20;
   private float jdField_a_of_type_Float;
   private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new exk(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new exp(this);
   private String jdField_a_of_type_JavaLangString;
   private CharUnit[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetCharUnit;
   private long b = 0L;
@@ -50,7 +50,7 @@ public class CharJumpAnimView
     int i = 0;
     this.jdField_a_of_type_JavaLangString = getText().toString();
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = getResources().getString(2131364194);
+      this.jdField_a_of_type_JavaLangString = getResources().getString(2131364179);
     }
     this.jdField_a_of_type_Float = getTextSize();
     setBackgroundColor(0);

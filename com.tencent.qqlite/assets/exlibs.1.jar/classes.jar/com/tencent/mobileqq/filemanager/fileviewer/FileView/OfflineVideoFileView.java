@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import dtm;
+import dts;
 
 public class OfflineVideoFileView
   extends OfflineVideoFileViewBase
@@ -13,7 +13,7 @@ public class OfflineVideoFileView
   public OfflineVideoFileView(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewOfflineVideoFileViewBase$IControllProxyInterface = new dtm(this, paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewOfflineVideoFileViewBase$IControllProxyInterface = new dts(this, paramQQAppInterface);
     a().a();
   }
   

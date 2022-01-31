@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.core;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import dns;
+import dny;
 
 public class OfflinePreviewController
   extends FilePreViewControllerBase
@@ -28,7 +28,7 @@ public class OfflinePreviewController
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dns(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dny(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

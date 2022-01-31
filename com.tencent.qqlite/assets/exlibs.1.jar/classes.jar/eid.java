@@ -1,24 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.troop.activity.FavOpenTroopActivity.TroopAdapter;
 
 public class eid
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public eid(NearbyTroopsActivity paramNearbyTroopsActivity) {}
+  public eid(FavOpenTroopActivity.TroopAdapter paramTroopAdapter, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.v();
-      return;
-    case 2131296901: 
-      this.a.onBackPressed();
-      return;
-    }
-    this.a.u();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

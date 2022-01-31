@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class dqk
-  implements IWyFileSystem.IWyCallback
 {
-  public dqk(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
-    }
-    this.a.a.a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramString });
-  }
-  
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
-    }
-    this.a.a.a().a(false, 45, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, null });
-  }
+  public dqk(UniformDownloadMgr paramUniformDownloadMgr) {}
 }
 
 

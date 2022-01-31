@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#00000000" />
-    <corners android:radius="8.0dip" />
-</shape>
+<bitmap android:gravity="fill_horizontal|center|top" android:src="@drawable/skin_aio_input_bar_bg_big" android:tileMode="disabled"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

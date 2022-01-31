@@ -1,44 +1,16 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.List;
 
 public class cgr
-  extends BaseAdapter
+  implements DialogInterface.OnClickListener
 {
-  private cgr(ContactListView paramContactListView) {}
+  public cgr(ContactListView paramContactListView) {}
   
-  public int getCount()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b == null) {
-      return 0;
-    }
-    return this.a.b.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.a();
-      paramViewGroup.setOnClickListener(this.a);
-    }
-    paramView = (PhoneContact)this.a.b.get(paramInt);
-    ContactListView.a(this.a, paramViewGroup, paramView);
-    return paramViewGroup;
+    this.a.f();
+    this.a.m();
   }
 }
 

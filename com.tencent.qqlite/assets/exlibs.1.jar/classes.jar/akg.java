@@ -1,7 +1,9 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.widget.DoodleTextView;
 
 public class akg
   implements View.OnClickListener
@@ -10,8 +12,17 @@ public class akg
   
   public void onClick(View paramView)
   {
-    this.a.a.setVisibility(0);
-    this.a.b.setVisibility(8);
+    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.b.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839129);
+    this.a.c.setVisibility(8);
   }
 }
 

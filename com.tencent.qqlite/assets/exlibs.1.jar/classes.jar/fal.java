@@ -1,17 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
 import org.json.JSONObject;
 
-public class fal
+class fal
   implements DialogInterface.OnClickListener
 {
-  public fal(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
+  fal(faj paramfaj, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    this.jdField_a_of_type_Faj.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

@@ -1,68 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.util.LruCache;
-import android.view.View;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.WebFacePreloadBaseAdapter;
-import com.tencent.mobileqq.adapter.WebFacePreloadBaseAdapter.ViewHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
 
 public class cpk
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public cpk(WebFacePreloadBaseAdapter paramWebFacePreloadBaseAdapter) {}
+  public cpk(LebaListViewAdapter paramLebaListViewAdapter, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder, Drawable paramDrawable, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (WebFacePreloadBaseAdapter.a(this.a) == null) {}
+    boolean bool = true;
+    LebaListViewAdapter localLebaListViewAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter;
+    ImageView localImageView1 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.d;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ImageView localImageView2 = this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter$CornerListItemHolder.g;
+    if (this.jdField_a_of_type_Int == 1) {}
     for (;;)
     {
+      LebaListViewAdapter.b(localLebaListViewAdapter, localImageView1, localDrawable, localImageView2, bool);
       return;
-      if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) && (paramIntent.getIntExtra("faceType", -1) == WebFacePreloadBaseAdapter.a(this.a)))
-      {
-        paramContext = paramIntent.getStringArrayListExtra("uinList");
-        paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-        int j;
-        if ((paramContext != null) && (paramIntent != null))
-        {
-          j = paramContext.size();
-          i = 0;
-          while (i < j)
-          {
-            String str = (String)paramContext.get(i);
-            if (WebFacePreloadBaseAdapter.a(this.a).contains(str)) {
-              WebFacePreloadBaseAdapter.a(this.a).remove(str);
-            }
-            WebFacePreloadBaseAdapter.a(this.a).put(str, paramIntent.get(i));
-            i += 1;
-          }
-          if (WebFacePreloadBaseAdapter.b(this.a) == 0)
-          {
-            int k = WebFacePreloadBaseAdapter.a(this.a).getChildCount();
-            i = 0;
-            while (i < k)
-            {
-              paramContext = WebFacePreloadBaseAdapter.a(this.a).getChildAt(i).getTag();
-              if ((paramContext != null) && ((paramContext instanceof WebFacePreloadBaseAdapter.ViewHolder)))
-              {
-                paramContext = (WebFacePreloadBaseAdapter.ViewHolder)paramContext;
-                if ((paramContext != null) && (paramContext.jdField_a_of_type_JavaLangString != null) && (paramContext.jdField_a_of_type_JavaLangString.length() > 0)) {
-                  paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.a(paramContext.jdField_a_of_type_JavaLangString, false));
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-        for (int i = j; QLog.isColorLevel(); i = 0)
-        {
-          QLog.d("WebFacePreloadBaseAdapter", 2, "onReceive, uinListSize:" + i + " reqSize:" + WebFacePreloadBaseAdapter.a(this.a).size());
-          return;
-        }
-      }
+      bool = false;
     }
   }
 }

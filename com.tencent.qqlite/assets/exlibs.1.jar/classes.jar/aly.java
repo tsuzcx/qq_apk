@@ -1,27 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class aly
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aly(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public aly(EmosmDetailActivity paramEmosmDetailActivity, Context paramContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.d = true;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.b.setVisibility(0);
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramAnimation.height = (this.a.a.getHeight() - this.a.b.getHeight());
-    this.a.a.setLayoutParams(paramAnimation);
+    EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.app, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect", 0);
+    paramView = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
+    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131364037));
+    paramView.show();
+    EmosmDetailActivity.a(6, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.b, paramView, null);
   }
 }
 

@@ -10,6 +10,8 @@ import android.util.Log;
 import android.util.StateSet;
 import android.util.Xml;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -17,48 +19,73 @@ import org.xmlpull.v1.XmlPullParserException;
 public class SkinnableColorStateList
   extends ColorStateList
 {
-  public static final Parcelable.Creator<ColorStateList> CREATOR = new Parcelable.Creator()
+  public static final Parcelable.Creator<ColorStateList> CREATOR;
+  static Constructor b;
+  static Field c;
+  private static final int[][] g = { new int[0] };
+  private static final int[][] h = new int[0][];
+  Object a;
+  private int[][] d;
+  private int[] e;
+  private int f = -65536;
+  public j skinData;
+  
+  static
   {
-    public ColorStateList a(Parcel paramAnonymousParcel)
+    CREATOR = new Parcelable.Creator()
     {
-      int j = paramAnonymousParcel.readInt();
-      int[][] arrayOfInt = new int[j][];
-      int i = 0;
-      while (i < j)
+      public ColorStateList a(Parcel paramAnonymousParcel)
       {
-        arrayOfInt[i] = paramAnonymousParcel.createIntArray();
-        i += 1;
+        int j = paramAnonymousParcel.readInt();
+        int[][] arrayOfInt = new int[j][];
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfInt[i] = paramAnonymousParcel.createIntArray();
+          i += 1;
+        }
+        return new ColorStateList(arrayOfInt, paramAnonymousParcel.createIntArray());
       }
-      return new ColorStateList(arrayOfInt, paramAnonymousParcel.createIntArray());
-    }
-    
-    public ColorStateList[] a(int paramAnonymousInt)
+      
+      public ColorStateList[] a(int paramAnonymousInt)
+      {
+        return new ColorStateList[paramAnonymousInt];
+      }
+    };
+    if (SkinEngine.a) {}
+    try
     {
-      return new ColorStateList[paramAnonymousInt];
+      b = Class.forName("android.content.res.ColorStateList$ColorStateListFactory").getConstructor(new Class[] { ColorStateList.class });
+      b.setAccessible(true);
+      c = ColorStateList.class.getDeclaredField("mFactory");
+      c.setAccessible(true);
+      return;
     }
-  };
-  private static final int[][] d = { new int[0] };
-  private static final int[][] e = new int[0][];
-  private int[][] a;
-  private int[] b;
-  private int c = -65536;
-  public i skinData;
+    catch (Exception localException)
+    {
+      b = null;
+      c = null;
+    }
+  }
   
   public SkinnableColorStateList(int[][] paramArrayOfInt, int[] paramArrayOfInt1)
   {
-    super(e, null);
-    this.a = paramArrayOfInt;
-    this.b = paramArrayOfInt1;
+    super(h, null);
+    this.d = paramArrayOfInt;
+    this.e = paramArrayOfInt1;
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
     {
-      this.c = paramArrayOfInt1[0];
+      this.f = paramArrayOfInt1[0];
       while (i < paramArrayOfInt.length)
       {
         if (paramArrayOfInt[i].length == 0) {
-          this.c = paramArrayOfInt1[i];
+          this.f = paramArrayOfInt1[i];
         }
         i += 1;
       }
+    }
+    if (SkinEngine.a) {
+      a();
     }
   }
   
@@ -78,6 +105,21 @@ public class SkinnableColorStateList
       return localObject;
     }
     throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": invalid drawable tag " + (String)localObject);
+  }
+  
+  private void a()
+  {
+    try
+    {
+      Object localObject = b.newInstance(new Object[] { this });
+      c.set(this, localObject);
+      this.a = localObject;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
   
   private void b(SkinEngine paramSkinEngine, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, boolean paramBoolean)
@@ -102,11 +144,11 @@ public class SkinnableColorStateList
     {
       i = paramXmlPullParser.next();
       if (i == 1) {
-        break label1031;
+        break label1032;
       }
       j = paramXmlPullParser.getDepth();
       if ((j < i4) && (i == 3)) {
-        break label1031;
+        break label1032;
       }
       if ((i == 2) && (j <= i4) && (paramXmlPullParser.getName().equals("item")))
       {
@@ -133,7 +175,7 @@ public class SkinnableColorStateList
         }
         j = paramSkinEngine.getColor(m);
         if ((n == 0) || (arrayOfInt.length == 0)) {
-          this.c = j;
+          this.f = j;
         }
         localObject3 = paramResources;
         localObject2 = localObject1;
@@ -160,7 +202,7 @@ public class SkinnableColorStateList
     {
       m = paramAttributeSet.getAttributeResourceValue(i2, 0);
       if (m != 0) {
-        break label1074;
+        break label1075;
       }
       k = paramAttributeSet.getAttributeIntValue(i2, j);
       j = 1;
@@ -307,13 +349,13 @@ public class SkinnableColorStateList
         break label172;
       }
       throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <item> tag requires a 'android:color' attribute.");
-      label1031:
-      this.b = new int[n];
-      this.a = new int[n][];
-      System.arraycopy(localObject1, 0, this.b, 0, n);
-      System.arraycopy(paramResources, 0, this.a, 0, n);
+      label1032:
+      this.e = new int[n];
+      this.d = new int[n][];
+      System.arraycopy(localObject1, 0, this.e, 0, n);
+      System.arraycopy(paramResources, 0, this.d, 0, n);
       return;
-      label1074:
+      label1075:
       i3 = j;
       j = k;
       k = i3;
@@ -341,7 +383,7 @@ public class SkinnableColorStateList
       if (SkinEngine.DEBUG) {
         Log.e("SkinEngine", "", paramSkinEngine);
       }
-      return new SkinnableColorStateList(d, new int[] { -65281 });
+      return new SkinnableColorStateList(g, new int[] { -65281 });
     }
     paramSkinEngine = a(paramSkinEngine, paramResources, paramXmlPullParser, localAttributeSet, paramBoolean);
     return paramSkinEngine;
@@ -368,9 +410,9 @@ public class SkinnableColorStateList
   
   void a(SkinnableColorStateList paramSkinnableColorStateList)
   {
-    this.a = paramSkinnableColorStateList.a;
-    this.b = paramSkinnableColorStateList.b;
-    this.c = paramSkinnableColorStateList.c;
+    this.d = paramSkinnableColorStateList.d;
+    this.e = paramSkinnableColorStateList.e;
+    this.f = paramSkinnableColorStateList.f;
   }
   
   public int describeContents()
@@ -380,15 +422,15 @@ public class SkinnableColorStateList
   
   public int getColorForState(int[] paramArrayOfInt, int paramInt)
   {
-    int k = this.a.length;
+    int k = this.d.length;
     int i = 0;
     for (;;)
     {
       int j = paramInt;
       if (i < k)
       {
-        if (StateSet.stateSetMatches(this.a[i], paramArrayOfInt)) {
-          j = this.b[i];
+        if (StateSet.stateSetMatches(this.d[i], paramArrayOfInt)) {
+          j = this.e[i];
         }
       }
       else {
@@ -400,7 +442,7 @@ public class SkinnableColorStateList
   
   public int getDefaultColor()
   {
-    return this.c;
+    return this.f;
   }
   
   public boolean isStateful()
@@ -410,33 +452,33 @@ public class SkinnableColorStateList
   
   public String toString()
   {
-    return "ColorStateList{mStateSpecs=" + Arrays.deepToString(this.a) + "mColors=" + Arrays.toString(this.b) + "mDefaultColor=" + this.c + '}';
+    return "ColorStateList{mStateSpecs=" + Arrays.deepToString(this.d) + "mColors=" + Arrays.toString(this.e) + "mDefaultColor=" + this.f + '}';
   }
   
   public ColorStateList withAlpha(int paramInt)
   {
-    int[] arrayOfInt = new int[this.b.length];
+    int[] arrayOfInt = new int[this.e.length];
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfInt[i] = (this.b[i] & 0xFFFFFF | paramInt << 24);
+      arrayOfInt[i] = (this.e[i] & 0xFFFFFF | paramInt << 24);
       i += 1;
     }
-    return new ColorStateList(this.a, arrayOfInt);
+    return new ColorStateList(this.d, arrayOfInt);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = this.a.length;
+    int i = this.d.length;
     paramParcel.writeInt(i);
     paramInt = 0;
     while (paramInt < i)
     {
-      paramParcel.writeIntArray(this.a[paramInt]);
+      paramParcel.writeIntArray(this.d[paramInt]);
       paramInt += 1;
     }
-    paramParcel.writeIntArray(this.b);
+    paramParcel.writeIntArray(this.e);
   }
 }
 

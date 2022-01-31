@@ -1,16 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.RecommendEmoticonViewBinder;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dfj
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public dfj(RecommendEmoticonViewBinder paramRecommendEmoticonViewBinder, ClubContentJsonTask.PromotionEmoticonPkg paramPromotionEmoticonPkg) {}
+  public dfj(FavoriteEmoticonInfo paramFavoriteEmoticonInfo, QQAppInterface paramQQAppInterface, EmoticonCallback paramEmoticonCallback, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRecommendEmoticonViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo);
+    }
   }
 }
 

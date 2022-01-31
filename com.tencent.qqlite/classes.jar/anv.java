@@ -1,23 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class anv
-  implements Animation.AnimationListener
+  extends FriendListObserver
 {
-  public anv(ForwardRecentActivity paramForwardRecentActivity, int paramInt) {}
+  public anv(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.requestLayout();
+    if (paramBoolean) {
+      ForwardRecentActivity.b(this.a);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,42 +1,20 @@
 import android.view.View;
-import android.widget.ListAdapter;
 import com.tencent.widget.AbsListView;
 
 public class fgv
-  extends fhf
   implements Runnable
 {
-  private fgv(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public fgv(AbsListView paramAbsListView, View paramView, fhg paramfhg) {}
   
   public void run()
   {
-    int i = this.a.W;
-    View localView = this.a.getChildAt(i - this.a.ao);
-    long l;
-    if (localView != null)
-    {
-      i = this.a.W;
-      l = this.a.a.getItemId(this.a.W);
-      if ((!a()) || (this.a.q)) {
-        break label126;
-      }
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
+    this.jdField_a_of_type_AndroidViewView.setPressed(false);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
+    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.q) {
+      this.jdField_a_of_type_Fhg.run();
     }
-    label126:
-    for (boolean bool = this.a.b(localView, i, l);; bool = false)
-    {
-      if (bool)
-      {
-        this.a.ab = -1;
-        this.a.setPressed(false);
-        localView.setPressed(false);
-        return;
-      }
-      this.a.ab = 2;
-      return;
-    }
+    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
   }
 }
 

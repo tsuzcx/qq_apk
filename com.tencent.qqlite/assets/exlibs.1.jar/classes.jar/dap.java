@@ -1,29 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class dap
-  implements Runnable
 {
-  public dap(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  final AbstractCollection a;
   
-  public void run()
+  public dap(int paramInt)
   {
-    try
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(this.a.c);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      localMessage.obj = new Object[] { this.a.c, str };
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      this.a = new ArrayDeque();
       return;
     }
-    catch (Exception localException)
+    this.a = new ArrayBlockingQueue(30);
+  }
+  
+  public int a()
+  {
+    return this.a.size();
+  }
+  
+  public Object a()
+  {
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(ConditionSearchFriendActivity.c(), 2, "fillLocationData | exception ", localException);
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
     }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramObject);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramObject);
   }
 }
 

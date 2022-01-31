@@ -1,96 +1,64 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.IndividuationSetActivity.EmojiJsBridgeListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.emoji.EmojiJsHandler;
+import com.tencent.mobileqq.emoji.EmojiUtil;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ddl
-  extends DownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public ddl(EmojiManager paramEmojiManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public ddl(EmojiJsHandler paramEmojiJsHandler, BaseActivity paramBaseActivity, IndividuationSetActivity.EmojiJsBridgeListener paramEmojiJsBridgeListener, String paramString, int paramInt) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "qfaceMaterialDownloadListener| onDone task=" + paramDownloadTask);
-    }
-    long l = paramDownloadTask.h - paramDownloadTask.g;
-    Bundle localBundle = paramDownloadTask.a();
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-    int i;
-    if (paramDownloadTask.a() == 3)
+    try
     {
-      if (localBundle.getInt("status") == 2)
-      {
-        localEmoticonPackage.status = 2;
-        this.a.a().a(localEmoticonPackage);
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.d(localEmoticonPackage);
-        this.a.a(localEmoticonPackage, 0);
-        this.a.a(localEmoticonPackage, 0, l);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Emoji.EmojiJsHandler", 2, "not wifi network confirm continue to download");
       }
-      paramDownloadTask = (File)paramDownloadTask.a.get(paramDownloadTask.b);
-      if (paramDownloadTask == null) {
-        break label361;
-      }
-      try
+      paramDialogInterface = new JSONObject();
+      TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTransFileControlller();
+      String str = EmojiUtil.a();
+      EmojiJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler, this.jdField_a_of_type_ComTencentMobileqqActivityIndividuationSetActivity$EmojiJsBridgeListener);
+      if ((localTransFileController != null) && (localTransFileController.e(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_Int)))
       {
-        FileUtils.a(paramDownloadTask.getAbsolutePath(), EmosmUtils.getQFaceMaterialFolderPath(localEmoticonPackage.epId, false), false);
-        i = 1;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          localIOException.printStackTrace();
-          i = 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("Emoji.EmojiJsHandler", 2, "start download emoji!");
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage, 11025, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.a.a(localEmoticonPackage, 11025);
-        this.a.a(localEmoticonPackage, 11025, 0L);
+        this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.a, this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.a.getTitleBarHeight());
+        this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b.setOnDismissListener(new ddm(this));
+        this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b.b(2131364502);
+        this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b.show();
         return;
       }
-      paramDownloadTask.delete();
-    }
-    for (;;)
-    {
-      if (i != 0)
+      if ((localTransFileController != null) && (localTransFileController.a(this.jdField_a_of_type_JavaLangString) != null))
       {
-        localEmoticonPackage.status = 2;
-        this.a.a().a(localEmoticonPackage);
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.d(localEmoticonPackage);
-        this.a.a(localEmoticonPackage, 0);
-        this.a.a(localEmoticonPackage, 0, l);
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.i("Emoji.EmojiJsHandler", 2, "wifi network is downloading emoji!");
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage, 11025, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.a(localEmoticonPackage, EmosmUtils.checkResultCode(paramDownloadTask.z));
-      this.a.a(localEmoticonPackage, EmosmUtils.checkResultCode(paramDownloadTask.z), 0L);
-      return;
-      label361:
-      i = 0;
     }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramDownloadTask.a().getSerializable("emoticonPackage");
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage);
-    this.a.a("param_epId", localEmoticonPackage.epId);
-    super.onStart(paramDownloadTask);
-    return true;
+    catch (JSONException paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+      return;
+    }
+    paramDialogInterface.put("result", -1);
+    paramDialogInterface.put("message", "start downloading error.");
+    paramDialogInterface.put("what", 1015);
+    this.jdField_a_of_type_ComTencentMobileqqActivityIndividuationSetActivity$EmojiJsBridgeListener.a(paramDialogInterface);
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b != null) && (this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqEmojiEmojiJsHandler.b.dismiss();
+    }
   }
 }
 

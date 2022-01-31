@@ -1,14 +1,26 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.Session;
+import android.telephony.TelephonyManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AboutActivity;
 
 public class uu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uu(LiteTransferWrapper paramLiteTransferWrapper, Session[] paramArrayOfSession) {}
+  public uu(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SyncGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkSession);
+    AboutActivity.a(this.a);
+    if (AboutActivity.b(this.a) < 6) {
+      return;
+    }
+    paramView = AppSetting.a(this.a);
+    String str = ((TelephonyManager)this.a.getSystemService("phone")).getDeviceId();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("渠道号:").append(paramView).append("\n\r").append("IMEI:").append(str);
+    AboutActivity.a(this.a, localStringBuilder.toString());
+    AboutActivity.a(this.a, 0);
   }
 }
 

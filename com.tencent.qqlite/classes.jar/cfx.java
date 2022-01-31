@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.view.View;
 
-public class cfx
+class cfx
   implements DialogInterface.OnDismissListener
 {
-  public cfx(BaseActivityView paramBaseActivityView) {}
+  cfx(cfw paramcfw, View paramView) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a = null;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

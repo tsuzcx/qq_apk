@@ -1,31 +1,14 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
-public class ccv
-  extends FriendListObserver
+public final class ccv
+  implements Runnable
 {
-  public ccv(SystemMsgListView paramSystemMsgListView) {}
+  public ccv(QQAppInterface paramQQAppInterface) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-    }
+    FriendSystemMsgController.a().c(this.a);
   }
 }
 

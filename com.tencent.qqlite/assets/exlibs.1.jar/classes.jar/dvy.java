@@ -1,52 +1,39 @@
-import android.content.Context;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dvy
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public dvy(SendBottomBar paramSendBottomBar) {}
+  public dvy(QfileEditBottomBar paramQfileEditBottomBar, ActionSheet paramActionSheet) {}
   
-  private void a()
+  public void a(View paramView, int paramInt)
   {
-    int i = TroopFileUtils.a(SendBottomBar.a(this.a));
-    if (i == 0)
+    switch (((Integer)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.a.get(Integer.valueOf(paramInt).intValue())).intValue())
     {
-      TroopFileError.a(SendBottomBar.a(this.a), SendBottomBar.a(this.a).getString(2131362259));
-      this.a.b();
-      return;
     }
-    if (1 == i)
+    for (;;)
     {
-      dvz localdvz = new dvz(this);
-      DialogUtil.a(SendBottomBar.a(this.a), 230, SendBottomBar.a(this.a).getString(2131362241), SendBottomBar.a(this.a).getString(2131362246), 2131362790, 2131362208, localdvz, localdvz).show();
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).d(FMDataCache.c());
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).e(FMDataCache.b());
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).f(FMDataCache.e());
+      FMDataCache.b();
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).f(false);
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).d();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).a().a(false);
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).j();
+      continue;
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).a().a(true);
+      QfileEditBottomBar.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar).j();
     }
-    this.a.b();
-  }
-  
-  public void onClick(View paramView)
-  {
-    SendBottomBar.a(this.a).b();
-    int j = SendBottomBar.a(this.a).a();
-    if (j == 1) {}
-    for (int i = 1; j == 5; i = 0)
-    {
-      this.a.b();
-      return;
-    }
-    if (i != 0)
-    {
-      a();
-      return;
-    }
-    this.a.a(true);
   }
 }
 

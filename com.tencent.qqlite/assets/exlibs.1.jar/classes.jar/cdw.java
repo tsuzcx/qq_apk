@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class cdw
-  extends SlideDetectListView.OnScrollGroupFloatingListener
+  implements View.OnClickListener
 {
-  public cdw(TroopView paramTroopView) {}
+  public cdw(TroopActivity paramTroopActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      TroopView.a(this.a, paramInt1);
-    }
+    TroopActivity.a(this.a);
   }
 }
 

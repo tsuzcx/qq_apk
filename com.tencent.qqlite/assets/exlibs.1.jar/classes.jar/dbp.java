@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class dbp
-  implements VerticalGallery.OnEndMovementListener
 {
-  private int jdField_a_of_type_Int;
-  
-  public dbp(IphonePickerView paramIphonePickerView, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    paramVerticalGallery = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int];
-    int i = paramVerticalGallery.p();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null)
-    {
-      String str = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
-      paramVerticalGallery.setContentDescription(str + "已选中");
-    }
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
-    }
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public String a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 

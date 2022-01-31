@@ -1,13 +1,20 @@
+import com.dataline.util.WaitEvent;
 import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class czq
   implements Runnable
 {
-  public czq(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
+  public czq(DataLineMsgProxy paramDataLineMsgProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = ((DataLineMsgRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, DataLineMsgRecord.tableName(), localDataLineMsgRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 

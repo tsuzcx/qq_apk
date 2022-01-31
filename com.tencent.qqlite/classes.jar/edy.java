@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
-import com.tencent.mobileqq.shortvideo.UiCallBack;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import msf.msgcomm.msg_comm.Msg;
 
-public abstract interface edy
+public final class edy
+  implements Runnable
 {
-  public abstract MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo);
+  public edy(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
   
-  public abstract void a(ShortVideoUploadInfo paramShortVideoUploadInfo);
-  
-  public abstract void a(UiCallBack paramUiCallBack);
+  public void run()
+  {
+    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+  }
 }
 
 

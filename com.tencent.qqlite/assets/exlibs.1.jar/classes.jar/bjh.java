@@ -1,35 +1,105 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
+import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class bjh
-  implements View.OnClickListener
+  extends TroopObserver
 {
   public bjh(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if ((SetTroopAdminsActivity.a(this.a) > 0) && (SetTroopAdminsActivity.a(this.a) <= SetTroopAdminsActivity.a(this.a).size()))
-    {
-      QQToast.a(this.a, 1, String.format(this.a.getString(2131362864), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) }), 0).b(this.a.getTitleBarHeight());
-      return;
+    ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Grant_cancel_admin", 0, 1, SetTroopAdminsActivity.a(this.a), "", "", "");
+    if (SetTroopAdminsActivity.a(this.a) != null) {
+      SetTroopAdminsActivity.a(this.a).dismiss();
     }
-    paramView = new Intent(this.a, TroopMemberListActivity.class);
-    paramView.putExtra("troop_code", SetTroopAdminsActivity.a(this.a));
-    paramView.putExtra("troop_uin", SetTroopAdminsActivity.b(this.a));
-    paramView.putExtra("param_from", 2);
-    this.a.startActivityForResult(paramView, 0);
-    try
+    String str;
+    switch (paramInt)
     {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_mber", "", "mber_list", "Clk_mberlist", 0, 0, SetTroopAdminsActivity.a(this.a), "3", "0", "");
-      return;
+    case 5: 
+    case 6: 
+    default: 
+      str = this.a.getString(2131362864);
     }
-    catch (Exception paramView) {}
+    for (;;)
+    {
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (SetTroopAdminsActivity.a(this.a) > 0)
+      {
+        str = String.format(this.a.getString(2131362868), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) });
+      }
+      else
+      {
+        str = this.a.getString(2131362869);
+        continue;
+        str = this.a.getString(2131362870);
+      }
+    }
+  }
+  
+  protected void a(String paramString1, String paramString2, byte paramByte)
+  {
+    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {}
+    TroopInfo localTroopInfo;
+    do
+    {
+      return;
+      paramString1 = (FriendsManagerImp)this.a.app.getManager(8);
+      localTroopInfo = paramString1.a(SetTroopAdminsActivity.a(this.a));
+    } while (localTroopInfo == null);
+    if (localTroopInfo.Administrator != null)
+    {
+      if (localTroopInfo.Administrator.startsWith("|")) {
+        localTroopInfo.Administrator = localTroopInfo.Administrator.substring(1);
+      }
+      if (!localTroopInfo.Administrator.endsWith("|")) {}
+    }
+    for (localTroopInfo.Administrator = localTroopInfo.Administrator.substring(0, localTroopInfo.Administrator.length() - 1); paramByte == 0; localTroopInfo.Administrator = "")
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Grant_cancel_admin", 0, 0, SetTroopAdminsActivity.a(this.a), "1", "", "");
+      localTroopInfo.Administrator = localTroopInfo.Administrator.replace(paramString2 + "|", "").replace("|" + paramString2, "").replace(paramString2, "");
+      int i = SetTroopAdminsActivity.a(this.a).size() - 1;
+      while (i >= 0)
+      {
+        if (((SetTroopAdminsActivity.TroopAdmin)SetTroopAdminsActivity.a(this.a).get(i)).a.equals(paramString2)) {
+          SetTroopAdminsActivity.a(this.a).remove(i);
+        }
+        i -= 1;
+      }
+    }
+    if (paramByte == 1)
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Grant_cancel_admin", 0, 0, SetTroopAdminsActivity.a(this.a), "0", "", "");
+      localTroopInfo.Administrator = (localTroopInfo.Administrator + "|" + paramString2);
+      SetTroopAdminsActivity.a(this.a).add(SetTroopAdminsActivity.a(this.a).get(paramString2));
+    }
+    paramString1.b(localTroopInfo);
+    SetTroopAdminsActivity.a(this.a).remove(paramString2);
+    SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
+    SetTroopAdminsActivity.a(this.a);
+    if (SetTroopAdminsActivity.a(this.a) != null) {
+      SetTroopAdminsActivity.a(this.a).dismiss();
+    }
+    if (paramByte == 0) {
+      QQToast.a(this.a, 2, 2131362866, 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.setResult(-1);
+      return;
+      if (paramByte == 1) {
+        QQToast.a(this.a, 2, 2131362862, 0).b(this.a.getTitleBarHeight());
+      }
+    }
   }
 }
 

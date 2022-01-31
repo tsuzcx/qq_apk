@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorObserver;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
-class eom
-  implements DialogInterface.OnClickListener
+public class eom
+  extends AsyncTask
 {
-  eom(eol parameol) {}
+  private RollangleImageView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public eom(RollangleImageView paramRollangleImageView) {}
+  
+  protected Bitmap a(Boolean... paramVarArgs)
   {
-    if ((TroopFileError.a != null) && (TroopFileError.a.get() != null)) {
-      ((TroopFileError.TroopFileErrorObserver)TroopFileError.a.get()).a = 0;
+    return RollangleImageView.a(this.a, paramVarArgs[0].booleanValue());
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      this.a.setImageBitmap(paramBitmap);
     }
-    paramDialogInterface.dismiss();
   }
 }
 

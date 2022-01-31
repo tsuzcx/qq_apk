@@ -10,8 +10,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ets;
-import ett;
+import etx;
+import ety;
 
 public class PerformanceReportUtils
 {
@@ -90,7 +90,7 @@ public class PerformanceReportUtils
   
   public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
   {
-    new ets(paramInt, paramLong, paramString).execute(new Void[0]);
+    new etx(paramInt, paramLong, paramString).execute(new Void[0]);
   }
   
   public static void a(Intent paramIntent, int paramInt, String paramString)
@@ -106,7 +106,7 @@ public class PerformanceReportUtils
   
   public static void a(String paramString1, int paramInt, String paramString2)
   {
-    new ett(paramString1, paramInt, paramString2).execute(new Void[0]);
+    new ety(paramString1, paramInt, paramString2).execute(new Void[0]);
   }
   
   public static void a(String paramString, long paramLong)

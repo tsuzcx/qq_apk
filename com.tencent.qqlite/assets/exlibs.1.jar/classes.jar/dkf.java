@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.MenuPopupDialog;
 
 public class dkf
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public dkf(QfileLocalFileAppTabView paramQfileLocalFileAppTabView, FileInfo paramFileInfo) {}
+  public dkf(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    QfileLocalFileAppTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileAppTabView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131296440, paramView.getContext().getString(2131363250));
+    QfileBaseLocalFileTabView.a(this.a, MenuPopupDialog.a(paramView, paramView.getContext().getString(2131363277), localQQCustomMenu, new dkg(this, paramView), new dkh(this, paramView)));
+    return true;
   }
 }
 

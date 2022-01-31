@@ -9,7 +9,7 @@ import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.photopreview.PhotoPreviewConstant;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.transfile.DiskCache;
-import eed;
+import eej;
 import java.io.File;
 
 public class InitUrlDrawable
@@ -25,7 +25,7 @@ public class InitUrlDrawable
     if ("mounted".equals(Environment.getExternalStorageState()))
     {
       localFile = new File(AppConstants.as);
-      URLDrawable.init(localBaseApplicationImpl, new eed(localBaseApplicationImpl));
+      URLDrawable.init(localBaseApplicationImpl, new eej(localBaseApplicationImpl));
       localFile = new File(localFile, "diskcache");
       if (localFile != null) {
         break label123;

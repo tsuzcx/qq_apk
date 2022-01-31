@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class dvd
+public final class dvd
   implements Runnable
 {
-  public dvd(UniformDownloadBPTransProxy paramUniformDownloadBPTransProxy, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
+  public dvd(int paramInt) {}
   
   public void run()
   {
-    UniformDownloadBPTransProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransEntity, null);
+    QQToast.a(BaseApplicationImpl.getContext(), -1, this.a, 0).b(FMToastUtil.a());
   }
 }
 

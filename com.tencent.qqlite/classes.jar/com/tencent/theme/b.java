@@ -11,7 +11,7 @@ public abstract class b
   static final int c = 0;
   static final int d = 1;
   static final int e = 2;
-  i f;
+  j f;
   boolean g;
   int[] h;
   

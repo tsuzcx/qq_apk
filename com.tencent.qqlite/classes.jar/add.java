@@ -1,15 +1,25 @@
-import android.app.Dialog;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class add
-  extends Thread
+public class add
+  extends Handler
 {
-  add(adc paramadc) {}
+  public add(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ChatHistory.a(this.a.a, this.a.a.b, this.a.a.a);
-    this.a.a.c.dismiss();
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.b(2131363263);
+      this.a.a.show();
+    }
   }
 }
 

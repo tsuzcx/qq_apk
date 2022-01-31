@@ -1,14 +1,43 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public final class fgm
-  implements Runnable
+public class fgm
+  implements View.OnClickListener
 {
-  public fgm(Context paramContext, int paramInt) {}
+  public fgm(Login paramLogin) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    BadgeUtilImpl.setSamsungBadge(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
+      this.a.d();
+    }
+    do
+    {
+      return;
+      if (paramView == Login.a(this.a))
+      {
+        this.a.setResult(0);
+        this.a.finish();
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+    } while (paramView != this.a.jdField_a_of_type_AndroidWidgetTextView);
+    paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
+    paramView.putExtra("key_req_src", this.a.j);
+    this.a.startActivityForResult(paramView, 10000);
   }
 }
 

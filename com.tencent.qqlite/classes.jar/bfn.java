@@ -1,17 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bfn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bfn(QQSettingMe paramQQSettingMe, String paramString) {}
+  public bfn(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new bfo(this, localDrawable));
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).isShowing())) {
+      QQSettingMe.a(this.a).dismiss();
+    }
+    QQSettingMe.a(this.a, null);
   }
 }
 

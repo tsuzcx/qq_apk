@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class bbj
-  implements Runnable
+  extends Handler
 {
-  public bbj(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public bbj(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      i = ProfileCardMoreActivity.a(this.a, this.a.a.a);
-      ProfileCardMoreActivity.a(this.a, false);
-      this.a.app.runOnUiThread(new bbk(this, i));
+    }
+    do
+    {
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

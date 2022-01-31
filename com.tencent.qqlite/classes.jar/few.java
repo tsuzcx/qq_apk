@@ -1,23 +1,28 @@
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
 public class few
-  implements Runnable
+  implements ITMAssistantDownloadSDKClientListener
 {
-  public few(DownloadManager paramDownloadManager, String paramString) {}
+  public few(DownloadManager paramDownloadManager) {}
   
-  public void run()
+  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-    }
+    ThreadManager.b().post(new fey(this, paramLong1, paramLong2, paramString));
+  }
+  
+  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    ThreadManager.b().post(new fex(this, paramTMAssistantDownloadSDKClient, paramInt1, paramString1, paramInt2, paramString2));
+  }
+  
+  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
+  {
+    LogUtility.e(DownloadManager.a, "OnDwonloadSDKServiceInvalid");
   }
 }
 

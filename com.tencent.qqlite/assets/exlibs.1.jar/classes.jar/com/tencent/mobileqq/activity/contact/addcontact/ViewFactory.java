@@ -27,11 +27,11 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131363767;
+      return 2131363759;
     case 80000000: 
-      return 2131363361;
+      return 2131363364;
     }
-    return 2131363768;
+    return 2131363760;
   }
   
   private View a(Context paramContext)
@@ -42,7 +42,7 @@ public class ViewFactory
     TextView localTextView = new TextView(paramContext);
     localTextView.setText("没有找到相关结果");
     localTextView.setTextSize(0, paramContext.getResources().getDimension(2131492890));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131493139), 0, 0);
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131493093), 0, 0);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);

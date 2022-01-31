@@ -8,14 +8,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+import arr;
+import ars;
 import art;
 import aru;
 import arv;
 import arw;
 import arx;
 import ary;
-import arz;
-import asa;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -75,8 +75,8 @@ public class LbsBaseActivity
   {
     if (this.a == null)
     {
-      this.a = a(17039380, 2131363199, 2131364518, 2131363206, new arv(this), new arw(this));
-      this.a.setOnDismissListener(new arx(this, paramRunnable));
+      this.a = a(17039380, 2131363202, 2131364497, 2131363209, new art(this), new aru(this));
+      this.a.setOnDismissListener(new arv(this, paramRunnable));
     }
     c();
     this.a.show();
@@ -84,15 +84,15 @@ public class LbsBaseActivity
   
   private void h(Runnable paramRunnable)
   {
-    paramRunnable = new ary(this, paramRunnable);
-    this.b = a(2131363202, a(), 2131363207, 2131363206, new arz(this), new asa(this));
+    paramRunnable = new arw(this, paramRunnable);
+    this.b = a(2131363205, a(), 2131363210, 2131363209, new arx(this), new ary(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131363203;
+    return 2131363206;
   }
   
   protected Dialog a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
@@ -103,7 +103,7 @@ public class LbsBaseActivity
     String str1 = getResources().getString(paramInt4);
     Dialog localDialog = new Dialog(this, 2131624119);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296915);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
     if (localTextView != null)
     {
       localTextView.setText((CharSequence)localObject2);
@@ -115,14 +115,14 @@ public class LbsBaseActivity
       ((TextView)localObject2).setText((CharSequence)localObject1);
       ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
     }
-    localObject1 = (TextView)localDialog.findViewById(2131296918);
+    localObject1 = (TextView)localDialog.findViewById(2131296914);
     if (localObject1 != null)
     {
       ((TextView)localObject1).setText(str2);
       ((TextView)localObject1).setContentDescription(str2);
       ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
     }
-    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296919);
+    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296915);
     if (paramOnClickListener1 != null)
     {
       paramOnClickListener1.setText(str1);
@@ -196,7 +196,7 @@ public class LbsBaseActivity
   
   protected void d(Runnable paramRunnable)
   {
-    this.c = a(2131363200, 2131363201, 2131362790, 2131363208, new art(this), new aru(this, paramRunnable));
+    this.c = a(2131363203, 2131363204, 2131362794, 2131363211, new arr(this), new ars(this, paramRunnable));
     this.c.show();
   }
   

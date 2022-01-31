@@ -1,22 +1,19 @@
-import android.os.Message;
-import android.os.Process;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.List;
 
 public class cbf
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public cbf(SearchResultDialog paramSearchResultDialog) {}
+  public cbf(SearchResultDialog paramSearchResultDialog, Context paramContext) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Process.setThreadPriority(10);
-    List localList = this.a.a(this.a.getContext(), SearchResultDialog.a(this.a), SearchResultDialog.a(this.a));
-    Message localMessage = SearchResultDialog.a(this.a).obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = localList;
-    SearchResultDialog.a(this.a).sendMessage(localMessage);
+    ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

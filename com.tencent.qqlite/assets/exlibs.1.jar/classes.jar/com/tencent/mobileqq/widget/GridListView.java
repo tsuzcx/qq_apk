@@ -9,8 +9,8 @@ import android.widget.ListAdapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import eye;
-import eyf;
+import eyj;
+import eyk;
 
 @Deprecated
 public class GridListView
@@ -18,7 +18,7 @@ public class GridListView
 {
   public static final int a = 0;
   public static final int b = 1;
-  static final int l = 2131298496;
+  static final int l = 2131298451;
   static final int m = 2131296456;
   static final int n = 0;
   static final int o = 1;
@@ -128,7 +128,7 @@ public class GridListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter = ((GridListView.GridListAdapter)paramListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.registerDataSetObserver(new eye(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.registerDataSetObserver(new eyj(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.b(this.c);
     this.k = this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.a();
     g(this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
@@ -209,7 +209,7 @@ public class GridListView
   {
     this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = new eyf(this);
+      this.jdField_a_of_type_AndroidViewView$OnClickListener = new eyk(this);
     }
   }
 }

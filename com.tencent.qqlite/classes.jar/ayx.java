@@ -1,25 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
-class ayx
-  implements Runnable
+public class ayx
+  implements DialogInterface.OnClickListener
 {
-  ayx(ayw paramayw) {}
+  public ayx(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      Thread.sleep(1000L);
-      this.a.a.c();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    this.a.finish();
   }
 }
 

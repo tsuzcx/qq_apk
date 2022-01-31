@@ -1,16 +1,10 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class egy
-  implements Runnable
+public abstract interface egy
 {
-  public egy(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
-  
-  public void run()
-  {
-    QQToast.a(BaseApplicationImpl.a, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
-  }
+  public static final int a = 1;
+  public static final int b = 2;
+  public static final int c = 3;
+  public static final int d = 7;
+  public static final int e = 4;
 }
 
 

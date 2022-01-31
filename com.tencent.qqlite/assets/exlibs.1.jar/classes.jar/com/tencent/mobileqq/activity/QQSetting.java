@@ -23,11 +23,13 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bdz;
+import bdx;
+import bdy;
 import bea;
-import bec;
+import beb;
 import bed;
-import bef;
+import beg;
+import beh;
 import bei;
 import bej;
 import bek;
@@ -39,9 +41,7 @@ import bep;
 import beq;
 import ber;
 import bes;
-import bet;
-import beu;
-import bey;
+import bew;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.ConfigObserver;
@@ -51,7 +51,6 @@ import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeController;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.config.AboutConfig;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.Friends;
@@ -77,7 +76,6 @@ import java.net.URLEncoder;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import mqq.observer.AccountObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class QQSetting
@@ -85,8 +83,8 @@ public class QQSetting
 {
   public static final int b = 4000;
   public static final String b = "Setting_Quit";
+  private static final boolean jdField_b_of_type_Boolean = true;
   public static final String c = "http://mma.qq.com/feedback/index.html?";
-  private static final boolean jdField_c_of_type_Boolean = true;
   static String jdField_d_of_type_JavaLangString = "http://m.qzone.com/l?g=755";
   private static final String jdField_e_of_type_JavaLangString = "QQSetting";
   protected int a;
@@ -95,9 +93,9 @@ public class QQSetting
   public ImageView a;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bed(this);
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new bec(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bef(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new beb(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new bea(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bed(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
   private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener;
   private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener;
@@ -108,25 +106,22 @@ public class QQSetting
   private StatableSpanTextView jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView;
   String jdField_a_of_type_JavaLangString;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new bdz(this);
-  private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
+  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new bdx(this);
   public boolean a;
   private View jdField_b_of_type_AndroidViewView;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
   private View jdField_c_of_type_AndroidViewView;
   ImageView jdField_c_of_type_AndroidWidgetImageView;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private boolean jdField_c_of_type_Boolean = false;
   private View jdField_d_of_type_AndroidViewView;
   private ImageView jdField_d_of_type_AndroidWidgetImageView;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
   private View jdField_e_of_type_AndroidViewView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
   private boolean jdField_e_of_type_Boolean = false;
-  private View jdField_f_of_type_AndroidViewView;
-  private boolean jdField_f_of_type_Boolean = false;
+  private View f;
   private View g;
   private View h;
   private View i;
@@ -150,7 +145,7 @@ public class QQSetting
     {
       localObject1 = new Dialog(a(), 2131624119);
       ((Dialog)localObject1).setContentView(2130903135);
-      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131296915);
+      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131296911);
       if (localTextView != null) {
         localTextView.setText((CharSequence)localObject2);
       }
@@ -158,13 +153,13 @@ public class QQSetting
       if (localObject2 != null) {
         ((TextView)localObject2).setText(paramString);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131296918);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131296914);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131296919);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131296915);
       if (paramString != null)
       {
         paramString.setText(str1);
@@ -215,22 +210,22 @@ public class QQSetting
       m += 1;
     }
     SpannableString localSpannableString = new SpannableString(str);
-    m = (int)a().getDimension(2131492939);
+    m = (int)a().getDimension(2131492935);
     paramInt = 0;
     while (paramInt < str.length())
     {
       localObject = null;
       if ("!".equalsIgnoreCase(str.substring(paramInt, paramInt + 1))) {
-        localObject = a().getDrawable(2130838913);
+        localObject = a().getDrawable(2130838859);
       }
       if ("@".equalsIgnoreCase(str.substring(paramInt, paramInt + 1))) {
-        localObject = a().getDrawable(2130838917);
+        localObject = a().getDrawable(2130838891);
       }
       if ("#".equalsIgnoreCase(str.substring(paramInt, paramInt + 1))) {
-        localObject = a().getDrawable(2130838914);
+        localObject = a().getDrawable(2130838860);
       }
       if ("%".equalsIgnoreCase(str.substring(paramInt, paramInt + 1))) {
-        localObject = a().getDrawable(2130838916);
+        localObject = a().getDrawable(2130838864);
       }
       if (localObject != null)
       {
@@ -246,18 +241,18 @@ public class QQSetting
   {
     if (paramInt == 0)
     {
-      if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 8) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8) {
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       return;
     }
-    if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     Object localObject = a(paramInt);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     localObject = a(2131361801) + a(2131361800) + Integer.toString(paramInt);
-    this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject);
   }
   
   private void c(boolean paramBoolean)
@@ -279,7 +274,6 @@ public class QQSetting
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
       if (m != 0)
       {
         this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -298,34 +292,34 @@ public class QQSetting
   @SuppressLint({"NewApi"})
   private void t()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)a(2131298600));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.findViewById(2131298605));
-    this.jdField_b_of_type_AndroidViewView = a(2131298610);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131298612);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)a(2131298556));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.findViewById(2131298561));
+    this.jdField_b_of_type_AndroidViewView = a(2131298566);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131298568);
     p();
-    this.jdField_c_of_type_AndroidViewView = a(2131298613);
-    this.jdField_d_of_type_AndroidViewView = a(2131298615);
-    this.jdField_e_of_type_AndroidViewView = a(2131298601);
-    this.jdField_f_of_type_AndroidViewView = a(2131298607);
-    this.g = a(2131298609);
-    this.h = a(2131298608);
-    this.i = a(2131298616);
+    this.jdField_c_of_type_AndroidViewView = a(2131298569);
+    this.jdField_d_of_type_AndroidViewView = a(2131298571);
+    this.jdField_e_of_type_AndroidViewView = a(2131298557);
+    this.f = a(2131298563);
+    this.g = a(2131298565);
+    this.h = a(2131298564);
+    this.i = a(2131298572);
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)a(2131298618));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)a(2131298574));
     s();
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new beo(this));
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(new bep(this));
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new beq(this));
-    this.jdField_e_of_type_AndroidViewView.setOnClickListener(new ber(this));
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new bem(this));
+    this.jdField_d_of_type_AndroidViewView.setOnClickListener(new ben(this));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new beo(this));
+    this.jdField_e_of_type_AndroidViewView.setOnClickListener(new bep(this));
     if (QLog.isColorLevel()) {
       QLog.d("QQSetting", 2, "initUI()");
     }
-    this.jdField_f_of_type_AndroidViewView.setOnClickListener(new bes(this));
-    this.g.setOnClickListener(new bet(this));
-    this.h.setOnClickListener(new beu(this));
-    this.i.setOnClickListener(new bey(this));
+    this.f.setOnClickListener(new beq(this));
+    this.g.setOnClickListener(new ber(this));
+    this.h.setOnClickListener(new bes(this));
+    this.i.setOnClickListener(new bew(this));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131296439));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131298603));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131298559));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131296443));
     b();
     u();
@@ -333,28 +327,28 @@ public class QQSetting
   
   private void u()
   {
-    bei localbei = new bei(this);
-    this.j = a(2131298606);
-    this.j.setOnClickListener(localbei);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.j.findViewById(2131298623));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView = ((StatableSpanTextView)this.j.findViewById(2131298621));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.j.findViewById(2131298620));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.j.findViewById(2131298622));
-    this.k = a(2131298624);
-    this.k.setOnClickListener(localbei);
-    this.l = a(2131298625);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.k.findViewById(2131298629));
-    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.k.findViewById(2131298628));
+    beg localbeg = new beg(this);
+    this.j = a(2131298562);
+    this.j.setOnClickListener(localbeg);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.j.findViewById(2131298579));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView = ((StatableSpanTextView)this.j.findViewById(2131298577));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.j.findViewById(2131298576));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.j.findViewById(2131298578));
+    this.k = a(2131298580);
+    this.k.setOnClickListener(localbeg);
+    this.l = a(2131298581);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.k.findViewById(2131298585));
+    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.k.findViewById(2131298584));
   }
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    return paramLayoutInflater.inflate(2130903580, null);
+    return paramLayoutInflater.inflate(2130903567, null);
   }
   
   protected String a()
   {
-    return a(2131362939);
+    return a(2131362943);
   }
   
   public void a()
@@ -394,7 +388,7 @@ public class QQSetting
     } while (str == null);
     paramIntent = ((FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(str);
     if ((paramIntent == null) || (TextUtils.isEmpty(paramIntent.discussionName))) {}
-    for (paramIntent = a().getString(2131363221);; paramIntent = paramIntent.discussionName)
+    for (paramIntent = a().getString(2131363224);; paramIntent = paramIntent.discussionName)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSetting", 2, "start discussion session " + paramIntent);
@@ -506,7 +500,7 @@ public class QQSetting
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.b());
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839390);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839355);
       return;
     }
     a(str2);
@@ -533,12 +527,12 @@ public class QQSetting
     if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) {
       this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new bea(this, paramString));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new bdy(this, paramString));
   }
   
   public void b(boolean paramBoolean)
   {
-    new Handler().postDelayed(new ben(this, paramBoolean), 150L);
+    new Handler().postDelayed(new bel(this, paramBoolean), 150L);
   }
   
   public void e()
@@ -593,7 +587,7 @@ public class QQSetting
       if (bool1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839406, 0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839371, 0);
         return;
         localObject = localFriendsManagerImp.c((String)localObject);
         break;
@@ -601,7 +595,7 @@ public class QQSetting
       if (bool2)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839483, 0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839448, 0);
         return;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -626,18 +620,18 @@ public class QQSetting
       QLog.d("QQSetting", 2, "online status = " + l1);
     }
     if (l1 == 11L) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839391);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839356);
     }
     do
     {
       return;
       if (l1 == 41L)
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839386);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839351);
         return;
       }
     } while (l1 != 31L);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839388);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839353);
   }
   
   public void n()
@@ -648,9 +642,9 @@ public class QQSetting
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new bej(this);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new bek(this);
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new bel(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new beh(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new bei(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new bej(this);
       this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
       this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
       this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
@@ -667,40 +661,40 @@ public class QQSetting
       this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView.setText(((RichStatus)localObject).a(null));
       if (!TextUtils.isEmpty(((RichStatus)localObject).e))
       {
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(((RichStatus)localObject).a(this.jdField_d_of_type_AndroidWidgetTextView));
-        this.jdField_f_of_type_Boolean = false;
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(((RichStatus)localObject).a(this.jdField_c_of_type_AndroidWidgetTextView));
+        this.jdField_e_of_type_Boolean = false;
       }
     }
     for (;;)
     {
       this.j.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView.getText() + "，连按两次修改个性签名");
-      if ((!this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a()) && (!this.jdField_f_of_type_Boolean)) {
+      if ((!this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a()) && (!this.jdField_e_of_type_Boolean)) {
         break label440;
       }
       localProgressBar.setVisibility(0);
-      localObject = new bem(this);
+      localObject = new bek(this);
       Message localMessage = new Message();
       localMessage.obj = localProgressBar;
       ((Handler)localObject).sendMessageDelayed(localMessage, 1000L);
       return;
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       break;
       this.j.setVisibility(8);
       this.k.setVisibility(0);
       localProgressBar = this.jdField_b_of_type_AndroidWidgetProgressBar;
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(((RichStatus)localObject).a(null));
-      if ((this.jdField_e_of_type_AndroidWidgetTextView.getText() == null) || (this.jdField_e_of_type_AndroidWidgetTextView.getText().length() == 0) || (this.jdField_e_of_type_AndroidWidgetTextView.equals("")))
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(((RichStatus)localObject).a(null));
+      if ((this.jdField_d_of_type_AndroidWidgetTextView.getText() == null) || (this.jdField_d_of_type_AndroidWidgetTextView.getText().length() == 0) || (this.jdField_d_of_type_AndroidWidgetTextView.equals("")))
       {
         this.l.setVisibility(0);
-        this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_f_of_type_Boolean = true;
+        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_e_of_type_Boolean = true;
       }
       else
       {
         this.l.setVisibility(8);
-        this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_f_of_type_Boolean = false;
+        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_e_of_type_Boolean = false;
       }
     }
     label440:

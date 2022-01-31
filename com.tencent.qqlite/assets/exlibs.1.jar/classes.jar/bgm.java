@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class bgm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bgm(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public bgm(RegisterActivity paramRegisterActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-      }
-      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
-        RecentLoginDevActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

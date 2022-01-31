@@ -1,19 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
 public class bvx
-  implements View.OnClickListener
+  implements AnimationTextView.OnDoubleClick
 {
   public bvx(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    if (MixedMsgItemBuilder.a(this.a)) {
+    if (MixedMsgItemBuilder.b(this.a)) {
       return;
     }
-    MixedMsgItemBuilder.a(this.a).onClick(paramView);
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (ChatActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

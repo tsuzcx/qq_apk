@@ -870,7 +870,7 @@ public class QWalletGetContactJsPlugin
       return false;
       paramJsBridgeListener = comboApiName(paramString2, paramString3);
     } while ((!"qw_charge_getSelectContact".equals(paramJsBridgeListener)) && (!"qw_charge_getAllContact".equals(paramJsBridgeListener)) && (!"qw_charge_gotoQWalletHome".equals(paramJsBridgeListener)) && (!"qw_charge_qqpimsecure_safe_isopen_securitypay".equals(paramJsBridgeListener)) && (!"qw_charge_tenpayTransfer".equals(paramJsBridgeListener)));
-    QQToast.a(this.mContext, 2131364506, 0).a();
+    QQToast.a(this.mContext, 2131364486, 0).a();
     return true;
   }
   

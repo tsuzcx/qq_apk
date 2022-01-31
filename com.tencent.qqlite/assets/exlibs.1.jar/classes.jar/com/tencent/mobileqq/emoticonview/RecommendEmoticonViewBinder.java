@@ -27,7 +27,7 @@ import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dfj;
+import dfp;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -57,8 +57,8 @@ public class RecommendEmoticonViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130839034);
-    paramContext = paramContext.getResources().getDrawable(2130839035);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839005);
+    paramContext = paramContext.getResources().getDrawable(2130839006);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);
@@ -87,20 +87,20 @@ public class RecommendEmoticonViewBinder
       return;
     }
     ClubContentJsonTask.PromotionEmoticonPkg localPromotionEmoticonPkg = (ClubContentJsonTask.PromotionEmoticonPkg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject1 = (URLImageView)paramView.findViewById(2131298676);
-    Object localObject2 = (Button)paramView.findViewById(2131298675);
-    TextView localTextView = (TextView)paramView.findViewById(2131298674);
+    Object localObject1 = (URLImageView)paramView.findViewById(2131298632);
+    Object localObject2 = (Button)paramView.findViewById(2131298631);
+    TextView localTextView = (TextView)paramView.findViewById(2131298630);
     if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839011);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838982);
     }
     if (b == null) {
-      b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839010);
+      b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838981);
     }
     localTextView.setText(StringUtil.a(localPromotionEmoticonPkg.c, o));
     ((URLImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(ClubContentJsonTask.a.c + localPromotionEmoticonPkg.jdField_b_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsDrawableDrawable, b));
     ((URLImageView)localObject1).setURLDrawableDownListener(this);
     ((Button)localObject2).setText(localPromotionEmoticonPkg.d);
-    ((Button)localObject2).setOnClickListener(new dfj(this, localPromotionEmoticonPkg));
+    ((Button)localObject2).setOnClickListener(new dfp(this, localPromotionEmoticonPkg));
     localObject2 = new Bundle();
     if (localPromotionEmoticonPkg.jdField_b_of_type_Int == 1) {
       localObject1 = "Ep_offer_info_index";

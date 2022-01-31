@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import mqq.observer.AccountObserver;
 
 public class bgf
-  extends ConfigObserver
+  extends AccountObserver
 {
-  public bgf(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public bgf(QuickLoginActivity paramQuickLoginActivity) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.a(this.a);
+    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
+  }
+  
+  protected void onLoginTimeout(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
+  }
+  
+  protected void onUserCancel(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
   }
 }
 

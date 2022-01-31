@@ -1,21 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class adr
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public adr(ChatHistory paramChatHistory) {}
+  public adr(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.a > this.a.b)
-    {
-      this.a.a = l;
-      this.a.a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

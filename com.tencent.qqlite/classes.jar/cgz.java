@@ -1,21 +1,67 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.IndexView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class cgz
-  implements DialogInterface.OnDismissListener
+  extends ContactBindObserver
 {
-  public cgz(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  private cgz(ContactListView paramContactListView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    if ((!paramBoolean) || (!NetworkUtil.e(this.a.getContext())))
+    {
+      this.a.i();
+      this.a.g();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b();
+    if (!paramBoolean1)
+    {
+      this.a.i();
+      this.a.g();
+      if (((i == 0) || (i == 4)) && (this.a.l == 0)) {
+        this.a.a(2131363383, 3000L);
+      }
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.b.setEnabled(true);
+      if (i == 4)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c())
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new cha(this));
+          return;
+        }
+        this.a.i();
+        this.a.jdField_a_of_type_Chc.sendEmptyMessageDelayed(1, 0L);
+        return;
+      }
+    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h());
+    this.a.a(2131363381, 0L, false);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.a.i();
+      ContactListView.a(this.a, true);
+      if (!paramBoolean2) {
+        this.a.g();
+      }
+      return;
+    }
+    this.a.g();
   }
 }
 

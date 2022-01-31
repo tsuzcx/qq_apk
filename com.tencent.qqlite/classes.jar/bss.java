@@ -1,27 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-public class bss
+public final class bss
+  implements Parcelable.Creator
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public WeakReference b;
-  
-  public bss(FileTransferManager paramFileTransferManager, View paramView, FileTransferManager.Callback paramCallback)
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramCallback);
+    return new ForwardUtils.SectionBase(paramParcel);
   }
   
-  public View a()
+  public ForwardUtils.SectionBase[] a(int paramInt)
   {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public FileTransferManager.Callback a()
-  {
-    return (FileTransferManager.Callback)this.b.get();
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ego
-  extends MessageObserver
+  implements Runnable
 {
-  public ego(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
+  public ego(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void run()
   {
-    this.a.a("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    QQToast.a(BaseApplicationImpl.a, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
   }
 }
 

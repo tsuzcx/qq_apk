@@ -1,16 +1,17 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class cru
   implements Runnable
 {
-  public cru(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
+  public cru(DataLineHandler paramDataLineHandler, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.handleMsgBody0x346(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_Int);
+    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131361871));
   }
 }
 

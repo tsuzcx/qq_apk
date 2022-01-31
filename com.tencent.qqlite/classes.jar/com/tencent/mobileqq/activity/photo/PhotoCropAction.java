@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import cip;
+import civ;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 
@@ -25,8 +25,8 @@ public class PhotoCropAction
         localActionSheet.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
         i += 1;
       }
-      localActionSheet.d(2131362790);
-      localActionSheet.a(new cip(this, localActionSheet));
+      localActionSheet.d(2131362794);
+      localActionSheet.a(new civ(this, localActionSheet));
       localActionSheet.show();
     }
   }

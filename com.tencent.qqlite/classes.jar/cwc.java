@@ -1,16 +1,21 @@
-import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
-class cwc
-  implements Runnable
+public class cwc
+  implements View.OnClickListener
 {
-  cwc(cwb paramcwb) {}
+  public cwc(ScreenShot paramScreenShot) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.a.a.a.jdField_a_of_type_Boolean) {
-      this.a.a.a.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    ScreenShot.a(this.a);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.a);
     }
-    this.a.a.a.invalidate();
   }
 }
 

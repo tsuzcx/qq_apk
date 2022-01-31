@@ -8,9 +8,9 @@ import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.qphone.base.util.QLog;
-import dmm;
-import dmn;
-import dmo;
+import dms;
+import dmt;
+import dmu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -57,7 +57,7 @@ public class QfileRecentMediaFileTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().Q();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dmm(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dms(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -68,7 +68,7 @@ public class QfileRecentMediaFileTabView
   
   protected void a()
   {
-    a(new dmn(this));
+    a(new dmt(this));
   }
   
   protected void b(FileManagerEntity paramFileManagerEntity)
@@ -80,7 +80,7 @@ public class QfileRecentMediaFileTabView
     if (str == null) {
       return;
     }
-    a(new dmo(this, str, paramFileManagerEntity));
+    a(new dmu(this, str, paramFileManagerEntity));
   }
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)

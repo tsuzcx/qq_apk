@@ -1,22 +1,46 @@
-import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
 public class arf
-  implements Runnable
+  extends NightModeLogic.NightModeCallback
 {
   public arf(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    int i = (int)(35.0F * this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
+    this.a.b();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("start_status");
+    if (i == 1)
+    {
+      IndividuationSetActivity.a(this.a).setClickable(false);
+      this.a.a.setText("");
     }
-    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
-    if (localBitmap != null) {
-      this.a.runOnUiThread(new arg(this, localBitmap));
+    do
+    {
+      return;
+      if (i == 2)
+      {
+        this.a.b();
+        return;
+      }
+    } while (i != 3);
+    IndividuationSetActivity.a(this.a).setClickable(false);
+    i = paramBundle.getInt("percent");
+    paramBundle = this.a.getString(2131364515);
+    paramBundle = paramBundle + "  " + String.valueOf(i) + "%";
+    if (QLog.isDevelopLevel()) {
+      QLog.d("spooner", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
     }
+    this.a.a.setText(paramBundle);
+    this.a.a.setContentDescription(paramBundle);
   }
 }
 

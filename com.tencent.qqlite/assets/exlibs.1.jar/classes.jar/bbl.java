@@ -1,22 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bbl
-  extends Handler
+class bbl
+  implements View.OnLongClickListener
 {
-  public bbl(QQBroadcastActivity paramQQBroadcastActivity) {}
+  bbl(bbk parambbk, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onLongClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    DialogUtil.a(this.jdField_a_of_type_Bbk.a, 230).setTitle(this.jdField_a_of_type_Bbk.a.getString(2131363524)).setItems(2131230724, new bbm(this)).show();
+    return true;
   }
 }
 

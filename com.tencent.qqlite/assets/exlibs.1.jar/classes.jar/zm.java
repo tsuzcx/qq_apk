@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ProfileCardUtil;
 
 public class zm
-  implements View.OnClickListener
+  implements Runnable
 {
   public zm(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(230);
-    ProfileCardUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true);
+    if ((this.a.e != null) && (this.a.e.isShowing())) {
+      this.a.e.dismiss();
+    }
+    while ((this.a.f == null) || (!this.a.f.isShowing())) {
+      return;
+    }
+    this.a.f.dismiss();
   }
 }
 

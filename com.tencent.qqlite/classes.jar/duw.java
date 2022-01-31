@@ -1,15 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class duw
   implements Runnable
 {
-  public duw(int paramInt) {}
+  public duw(Context paramContext, String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_Int), 2131361966, 2131361967, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
   }
 }
 

@@ -21,8 +21,8 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import cyp;
-import cyq;
+import cyv;
+import cyw;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -40,7 +40,7 @@ public class MsgProxyUtils
 {
   public static final int a = 40;
   private static final String jdField_a_of_type_JavaLangString = "Q.msg.MsgProxyUtils";
-  static Comparator jdField_a_of_type_JavaUtilComparator = new cyp();
+  static Comparator jdField_a_of_type_JavaUtilComparator = new cyv();
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public static final boolean a = true;
   public static final int[] a;
@@ -279,7 +279,7 @@ public class MsgProxyUtils
       return localArrayList;
     }
     if (paramBoolean) {
-      Collections.sort(paramList, new cyq());
+      Collections.sort(paramList, new cyw());
     }
     long l = ((MessageRecord)paramList.get(paramList.size() - 1)).shmsgseq;
     int j = paramList.size() - 1;

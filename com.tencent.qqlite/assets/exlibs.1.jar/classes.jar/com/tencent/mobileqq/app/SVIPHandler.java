@@ -6,6 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -20,7 +21,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cvq;
+import cvw;
 import java.util.Random;
 import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,7 +39,7 @@ public class SVIPHandler
   public static final int e = 2;
   public static final int f = 3;
   private static final int g = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new cvq(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new cvw(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper());
   public WeakHashMap a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   private boolean jdField_a_of_type_Boolean = false;
@@ -156,7 +157,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("3.3.0.544");
+    localTFontSsoReq.str_mqqver.set("3.4.0.607");
     localTFontSsoReq.st_fresh_req = new VipFontUpdate.TFontFreshReq();
     localTFontSsoReq.st_fresh_req.i32_local_font_id.set(a());
     localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Font.fresh");
@@ -195,9 +196,11 @@ public class SVIPHandler
   
   public void a(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord.istroop != 1001) {
-      paramMessageRecord.vipBubbleID = b();
+    if ((AnonymousChatHelper.a(paramMessageRecord)) && (AnonymousChatHelper.b(paramMessageRecord))) {}
+    while (paramMessageRecord.istroop == 1001) {
+      return;
     }
+    paramMessageRecord.vipBubbleID = b();
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}

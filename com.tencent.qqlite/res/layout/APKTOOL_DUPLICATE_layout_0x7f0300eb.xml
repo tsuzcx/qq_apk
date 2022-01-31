@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a3" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.ADView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.ADView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <LinearLayout android:gravity="center" android:id="@id/close" android:clickable="true" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904ab" android:clickable="false" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200ce" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0904a7" android:clickable="false" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200cf" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

@@ -1,19 +1,13 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import com.tencent.mobileqq.managers.ShieldMsgManger;
 
 public class dxn
-  implements View.OnTouchListener
+  extends Thread
 {
-  public dxn(RoamSearchDialog paramRoamSearchDialog) {}
+  public dxn(ShieldMsgManger paramShieldMsgManger) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    ShieldMsgManger.a(this.a);
   }
 }
 

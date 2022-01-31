@@ -1,46 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Collection;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class eop
-  extends Handler
+public final class eop
+  implements Runnable
 {
-  public eop(TroopFileManager paramTroopFileManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public eop(boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (Collection)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      this.a.b(paramMessage, bool);
-      return;
-    case 2: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.e(paramMessage);
-      return;
-    case 3: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
-    case 4: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.g(paramMessage);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
       return;
     }
-    int i = paramMessage.arg1;
-    this.a.b(i);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130837987, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

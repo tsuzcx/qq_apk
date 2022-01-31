@@ -94,7 +94,7 @@ public class LockPatternView
       setClickable(true);
       this.s = getResources().getColor(2131427374);
       this.t = getResources().getColor(2131427375);
-      this.u = getResources().getDimensionPixelSize(2131492988);
+      this.u = getResources().getDimensionPixelSize(2131492983);
       this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.s);
@@ -114,7 +114,7 @@ public class LockPatternView
       this.m = getResources().getColor(2131427384);
       this.n = getResources().getColor(2131427385);
       this.o = getResources().getColor(2131427386);
-      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131492989);
+      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131492984);
       this.p = (getWidth() / 4);
       this.q = (getHeight() / 4);
       return;
@@ -556,7 +556,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131364034);
+    a(2131364021);
   }
   
   private void e()
@@ -564,7 +564,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a();
     }
-    a(2131364032);
+    a(2131364019);
   }
   
   private void f()
@@ -572,7 +572,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131364035);
+    a(2131364022);
   }
   
   private void g()
@@ -580,7 +580,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b();
     }
-    a(2131364033);
+    a(2131364020);
   }
   
   private void h()

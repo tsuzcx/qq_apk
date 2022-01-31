@@ -1,20 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.richstatus.EditActivity;
 
 public class ebo
-  implements TextWatcher
+  implements Runnable
 {
   public ebo(EditActivity paramEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    EditActivity.a(this.a);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -20.0F, 0.0F);
+    localTranslateAnimation.setDuration(400L);
+    localTranslateAnimation.setAnimationListener(new ebp(this));
+    EditActivity.a(this.a).startAnimation(localTranslateAnimation);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

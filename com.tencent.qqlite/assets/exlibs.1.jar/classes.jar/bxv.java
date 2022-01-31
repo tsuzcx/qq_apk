@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryCollector;
 
-class bxv
-  implements Runnable
+public class bxv
+  extends Handler
 {
-  bxv(bxs parambxs, AIOImageData[] paramArrayOfAIOImageData, int paramInt) {}
-  
-  public void run()
+  public bxv(AIOGalleryCollector paramAIOGalleryCollector, Looper paramLooper)
   {
-    if (bxr.e(this.jdField_a_of_type_Bxs.a) != null) {
-      ((AIOGalleryScene)bxr.f(this.jdField_a_of_type_Bxs.a)).a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Int);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      bxw.a((bxw)paramMessage.obj);
+      return;
+    case 1: 
+      bxw.b((bxw)paramMessage.obj);
+      return;
+    case 2: 
+      bxw.c((bxw)paramMessage.obj);
+      return;
     }
+    AIOGalleryCollector.a(this.a);
   }
 }
 

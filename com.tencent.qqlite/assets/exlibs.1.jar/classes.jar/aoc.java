@@ -1,27 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.MenuPopupDialog;
 
-class aoc
-  implements View.OnClickListener
+public class aoc
+  implements DialogInterface.OnClickListener
 {
-  aoc(anz paramanz) {}
+  public aoc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((anz.a(this.a) != null) && ((anz.a(this.a).a instanceof String)))
-    {
-      this.a.a.b((String)anz.a(this.a).a);
-      ReportController.b(this.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.g), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a)), "", "", "");
-    }
-    if (anz.a(this.a) != null) {
-      anz.a(this.a).dismiss();
+    this.a.g();
+    if ((FriendProfileCardActivity.a(this.a) != null) && (FriendProfileCardActivity.a(this.a).isShowing())) {
+      FriendProfileCardActivity.a(this.a).dismiss();
     }
   }
 }

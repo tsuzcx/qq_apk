@@ -1,14 +1,31 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalMusicFileView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.CanPreviewOfflineFileView;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class dsx
-  implements Runnable
+public class dsx
+  implements View.OnClickListener
 {
-  dsx(dsw paramdsw) {}
+  public dsx(CanPreviewOfflineFileView paramCanPreviewOfflineFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalMusicFileView.a(this.a.a).post(new dsy(this));
+    CanPreviewOfflineFileView.a(this.a).b(1);
+    if (!NetworkUtil.e(BaseApplicationImpl.getContext())) {
+      FMToastUtil.a(CanPreviewOfflineFileView.a(this.a).getString(2131363570));
+    }
+    do
+    {
+      return;
+      CanPreviewOfflineFileView.a(this.a).a(true);
+      CanPreviewOfflineFileView.b(this.a).b(false);
+    } while (CanPreviewOfflineFileView.b(this.a) == null);
+    CanPreviewOfflineFileView.c(this.a).c();
   }
 }
 

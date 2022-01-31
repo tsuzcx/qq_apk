@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.PhotoFileView;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
+import java.util.TimerTask;
 
-class dtp
-  extends FMObserver
+public class dtp
+  extends TimerTask
 {
-  dtp(dto paramdto) {}
+  public dtp(LocalVideoFileView paramLocalVideoFileView) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void run()
   {
-    IFileViewerAdapter localIFileViewerAdapter;
-    if ((paramThumbnailInfo.a instanceof IFileViewerAdapter))
-    {
-      localIFileViewerAdapter = (IFileViewerAdapter)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() >= 1)) {}
-    }
-    else
-    {
-      return;
-    }
-    this.a.a.a(localIFileViewerAdapter, paramThumbnailInfo.b);
+    LocalVideoFileView.e(this.a).runOnUiThread(new dtq(this));
   }
 }
 

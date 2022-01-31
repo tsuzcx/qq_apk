@@ -70,12 +70,12 @@ public class ContactsSearchResultAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903125, paramViewGroup, false);
       paramViewGroup = new ContactsSearchResultAdapter.ViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296876));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296877));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296880));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296879));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296882));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296881));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296872));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296873));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296876));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296875));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296878));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296877));
       paramView.setTag(paramViewGroup);
       localObject = (IContactSearchable)getItem(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IContactSearchable)localObject).a());
@@ -89,7 +89,7 @@ public class ContactsSearchResultAdapter
       if ((localSelectMemberActivity.a == null) || (!localSelectMemberActivity.a.contains(str))) {
         break label306;
       }
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131363226);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131363229);
       label209:
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(((IContactSearchable)localObject).d(), ((IContactSearchable)localObject).b()));
       paramViewGroup.jdField_a_of_type_JavaLangString = ((IContactSearchable)localObject).d();
@@ -113,7 +113,7 @@ public class ContactsSearchResultAdapter
       label306:
       if (localSelectMemberActivity.a(str))
       {
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131363227);
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131363230);
         break label209;
       }
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(((IContactSearchable)localObject).b());

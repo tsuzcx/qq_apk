@@ -1,24 +1,50 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhq
   implements Runnable
 {
-  public bhq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString) {}
+  public bhq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, Bundle paramBundle) {}
   
   public void run()
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-      return;
-    }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://")) {
-      localObject1 = "http://" + (String)localObject2;
-    }
-    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.getActivity(), QQBrowserActivity.class);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
+    do
+    {
+      boolean bool1;
+      String str1;
+      boolean bool2;
+      String str2;
+      String str3;
+      do
+      {
+        return;
+        bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("visibility", false);
+        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("enableVersion");
+        bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("checked", false);
+        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockText");
+        str3 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpText");
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpURL"));
+      } while ((!bool1) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, "3.4.0", str1) < 0));
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterPhoneNumActivity", 2, "update ui.");
+      }
+      if ((bool2) && (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setChecked(bool2);
+      }
+      if (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setText(str2);
+      }
+      if (RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null) {
+        RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setText(str3);
+      }
+    } while (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) == null);
+    RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setVisibility(0);
   }
 }
 

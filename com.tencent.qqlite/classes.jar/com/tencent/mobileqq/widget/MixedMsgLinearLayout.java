@@ -22,8 +22,8 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import eyk;
-import eyl;
+import eyp;
+import eyq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,8 +34,8 @@ public class MixedMsgLinearLayout
   public static final String a = "MixedMsgLinearLayout";
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
   public AnimationTextView.OnDoubleClick a;
-  private eyk jdField_a_of_type_Eyk = new eyk(this);
-  private eyl jdField_a_of_type_Eyl = new eyl(this);
+  private eyp jdField_a_of_type_Eyp = new eyp(this);
+  private eyq jdField_a_of_type_Eyq = new eyq(this);
   private MotionEvent b;
   public AnimationTextView.OnDoubleClick b;
   
@@ -165,8 +165,8 @@ public class MixedMsgLinearLayout
   private AnimationTextView a()
   {
     AnimationTextView localAnimationTextView = new AnimationTextView(getContext());
-    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131427478));
-    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131427477));
+    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131427473));
+    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131427472));
     localAnimationTextView.setSpannableFactory(QQText.a);
     localAnimationTextView.setMaxWidth(BaseChatItemLayout.g);
     localAnimationTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -240,7 +240,7 @@ public class MixedMsgLinearLayout
       localObject1 = (View)((ArrayList)localObject3).get(i);
       detachViewFromParent((View)localObject1);
       ((AnimationTextView)localObject1).setText("");
-      this.jdField_a_of_type_Eyl.a((AnimationTextView)localObject1);
+      this.jdField_a_of_type_Eyq.a((AnimationTextView)localObject1);
       i += 1;
     }
     j = paramList.size();
@@ -250,7 +250,7 @@ public class MixedMsgLinearLayout
       localObject2 = paramList.get(i);
       if ((localObject2 instanceof MessageForText))
       {
-        localObject2 = this.jdField_a_of_type_Eyl.a();
+        localObject2 = this.jdField_a_of_type_Eyq.a();
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = a();
@@ -262,7 +262,7 @@ public class MixedMsgLinearLayout
         i += 1;
         break;
       }
-      localObject1 = this.jdField_a_of_type_Eyk.a();
+      localObject1 = this.jdField_a_of_type_Eyp.a();
       if (localObject1 != null) {
         break label474;
       }
@@ -295,7 +295,7 @@ public class MixedMsgLinearLayout
         {
           ((ChatThumbView)paramList).setImageDrawable(null);
           ((ChatThumbView)paramList).setURLDrawableDownListener(null);
-          this.jdField_a_of_type_Eyk.a((ChatThumbView)paramList);
+          this.jdField_a_of_type_Eyp.a((ChatThumbView)paramList);
         }
         i += 1;
       }

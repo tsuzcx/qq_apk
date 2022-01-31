@@ -1,26 +1,18 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.redtouch.VipBannerInfo;
 
 public class agq
-  extends FMObserver
+  extends GameCenterObserver
 {
   public agq(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferProgress");
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.d(this.a))) {
+      VipBannerInfo.a(this.a);
     }
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferEnd");
-    }
-    this.a.a(8, paramString1, -2147483648);
   }
 }
 

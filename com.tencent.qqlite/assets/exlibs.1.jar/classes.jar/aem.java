@@ -1,30 +1,33 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aem
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aem(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
+  public aem(ChatSettingActivity paramChatSettingActivity, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = null;
-    Object localObject = localMessage;
-    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
+    if (NetworkUtil.e(BaseApplication.getContext()))
     {
-      localObject = localMessage;
-      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(ChatActivity.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
       }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+      return;
     }
-    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
-    {
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
-      localMessage.what = 18;
-      localMessage.obj = localObject;
-      localMessage.sendToTarget();
-    }
+    ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131362937, 1);
   }
 }
 

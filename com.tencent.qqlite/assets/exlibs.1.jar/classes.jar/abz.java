@@ -1,14 +1,27 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class abz
-  extends UniPayHandler.UniPayUpdateListener
+public final class abz
+  implements Runnable
 {
-  public abz(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
+  public abz(String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    this.a.runOnUiThread(new aca(this));
+    ChatBackgroundSettingActivity.j = ChatBackgroundSettingActivity.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString);
+    Message localMessage = ChatBackgroundSettingActivity.a.obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
+      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundSettingActivity.j);
+    }
+    ChatBackgroundSettingActivity.a.sendMessage(localMessage);
   }
 }
 

@@ -1,15 +1,68 @@
-import PersonalState.UserProfile;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class ect
-  implements Comparator
+  implements BusinessObserver
 {
-  public ect(StatusManager paramStatusManager) {}
+  public ect(StatusJsHandler paramStatusJsHandler) {}
   
-  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
+    Object localObject = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localObject == null) || (((BaseActivity)localObject).isFinishing())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(2131362450);
+      this.a.a(this.a.c, "false");
+      return;
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break;
+        }
+        localObject = new mobileqq_mp.FollowResponse();
+        ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+        if ((!((mobileqq_mp.FollowResponse)localObject).ret_info.has()) || (!((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.has())) {
+          break label251;
+        }
+        paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
+          this.a.a(this.a.c, "true");
+          return;
+        }
+        if (paramInt == 58)
+        {
+          this.a.a(2131362453);
+          break;
+        }
+        this.a.a(2131362450);
+      }
+      catch (Exception paramBundle) {}
+      this.a.a(2131362450);
+      break;
+      break;
+      label251:
+      paramInt = -1;
+    }
   }
 }
 

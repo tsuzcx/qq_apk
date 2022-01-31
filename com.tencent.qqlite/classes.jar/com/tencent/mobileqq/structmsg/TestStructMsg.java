@@ -1,12 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
@@ -164,78 +158,6 @@ public class TestStructMsg
     localArrayList.add(a("后开始游戏", "又贱又萌的小泡泡，不捏它捏谁，点击进入又贱又萌的小泡泡，不捏它捏谁，点击进入又贱又萌的小泡泡，不捏它捏谁，点击进入又贱又萌的小泡泡，不捏它捏谁，点击进入又贱又萌的小泡泡，不捏它捏谁，点击进入>>"));
     localArrayList.add(a("后开始游戏后开始游戏后开始游戏后开始游戏后开始游戏后开始游戏", "又贱又萌的小泡泡，不捏它捏谁，点击进入>>"));
     return localArrayList;
-  }
-  
-  public static void a(String paramString1, Context paramContext, String paramString2)
-  {
-    String str3 = null;
-    Object localObject;
-    if (paramString2.indexOf("?") > 0)
-    {
-      paramString2 = paramString2.split("\\?");
-      if (paramString2.length != 2) {
-        break label248;
-      }
-      localObject = paramString2[0];
-      paramString2 = paramString2[1];
-    }
-    for (;;)
-    {
-      String str1 = paramString2;
-      String str2;
-      if (localObject == null)
-      {
-        paramString2 = (String)localObject;
-        str2 = str3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(a, 2, "pluginName is null");
-          str2 = str3;
-          paramString2 = (String)localObject;
-        }
-      }
-      for (;;)
-      {
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("account", paramString1);
-        ((Intent)localObject).putExtra("load_from_third_app", true);
-        ((Intent)localObject).putExtra("param_plugin_gesturelock", true);
-        ((Intent)localObject).putExtra("clsUploader", "com.tencent.mobileqq.statistics.PluginStatisticsCollector");
-        str3 = PluginUtils.installPlugin(paramContext, paramString2, "107392");
-        if (str3 != null) {
-          break label217;
-        }
-        ((Intent)localObject).setClassName(paramContext, str2);
-        paramString1 = new Bundle();
-        if (str1 != null) {
-          paramString1.putString("plugin_data", str1);
-        }
-        ((Intent)localObject).putExtras(paramString1);
-        paramContext.startActivity((Intent)localObject);
-        return;
-        str1 = null;
-        localObject = paramString2;
-        break;
-        String[] arrayOfString = ((String)localObject).split("/");
-        paramString2 = (String)localObject;
-        str2 = str3;
-        if (arrayOfString.length == 2)
-        {
-          paramString2 = arrayOfString[0];
-          str2 = arrayOfString[1];
-        }
-      }
-      label217:
-      localObject = paramString2;
-      if (!TextUtils.isEmpty(paramString2)) {
-        localObject = paramString2.substring(0, paramString2.indexOf("."));
-      }
-      PluginStatisticsCollector.a(paramContext, paramString1, (String)localObject, str3);
-      return;
-      label248:
-      paramString2 = null;
-      localObject = null;
-    }
   }
   
   public static AbsStructMsg b(int paramInt)

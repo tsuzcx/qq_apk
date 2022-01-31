@@ -1,50 +1,41 @@
+import android.app.Dialog;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class wa
-  implements Runnable
+public class wa
+  implements ActionSheet.OnButtonClickListener
 {
-  wa(vz paramvz) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void run()
+  public wa(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    RelativeLayout.LayoutParams localLayoutParams;
-    switch (this.a.jdField_a_of_type_Int)
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
     }
-    for (;;)
+    do
     {
-      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
-      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      this.a.jdField_a_of_type_AndroidViewView.setTag("left");
-      continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839153);
-      continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839152);
-      continue;
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.a.jdField_a_of_type_AndroidViewView.getId() == 2131296457)
+      do
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
-        continue;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+      } while (this.jdField_a_of_type_Int < 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+    } while (this.jdField_a_of_type_Int < 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
   }
 }
 

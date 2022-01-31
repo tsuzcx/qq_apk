@@ -6,9 +6,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import blh;
+import blf;
+import blg;
 import bli;
-import blk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.NightModeLogic;
@@ -29,8 +29,8 @@ public class ThemeSwitchDlgActivity
     }
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = a(2131363265, 2131363267, 2131362790, 2131363268, new blh(this), new bli(this));
-      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new blk(this));
+      this.jdField_a_of_type_AndroidAppDialog = a(2131363268, 2131363270, 2131362794, 2131363271, new blf(this), new blg(this));
+      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bli(this));
     }
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -43,7 +43,7 @@ public class ThemeSwitchDlgActivity
     String str1 = getResources().getString(paramInt4);
     Dialog localDialog = new Dialog(this, 2131624119);
     localDialog.setContentView(2130903135);
-    TextView localTextView = (TextView)localDialog.findViewById(2131296915);
+    TextView localTextView = (TextView)localDialog.findViewById(2131296911);
     if (localTextView != null) {
       localTextView.setText((CharSequence)localObject2);
     }
@@ -51,13 +51,13 @@ public class ThemeSwitchDlgActivity
     if (localObject2 != null) {
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject1 = (TextView)localDialog.findViewById(2131296918);
+    localObject1 = (TextView)localDialog.findViewById(2131296914);
     if (localObject1 != null)
     {
       ((TextView)localObject1).setText(str2);
       ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
     }
-    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296919);
+    paramOnClickListener1 = (TextView)localDialog.findViewById(2131296915);
     if (paramOnClickListener1 != null)
     {
       paramOnClickListener1.setText(str1);

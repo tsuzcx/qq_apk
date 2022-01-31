@@ -1,26 +1,30 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsBaseView.INearbyTroopContext;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateEnterActivity;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class eij
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public eij(NearbyTroopsView paramNearbyTroopsView) {}
+  public eij(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    paramView = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.a.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("hide_more_button", true);
-    this.a.b(paramView);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsBaseView$INearbyTroopContext.a(), "P_CliOper", "Grp_nearby", "", "hot", "Clk", 0, 0, "", "", "", "");
-    this.a.h = false;
-    this.a.l();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopCreateEnterActivity.a(this.a, 2, 51);
+      this.a.v();
+      ReportController.b(this.a.app, "P_CliOper", "Grp_nearby", "", "right", "create", 0, 0, "", "", "", "");
+      return;
+    }
+    AddContactsActivity.a(this.a);
+    this.a.v();
+    ReportController.b(this.a.app, "P_CliOper", "Grp_nearby", "", "right", "find", 0, 0, "", "", "", "");
   }
 }
 

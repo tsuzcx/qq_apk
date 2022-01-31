@@ -1,14 +1,15 @@
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class ajq
+  implements Comparator
 {
-  public String a;
-  public short a;
-  public String b;
-  public String c;
-  public String d;
-  
   private ajq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  
+  public int a(ajo paramajo1, ajo paramajo2)
+  {
+    return paramajo1.c.compareToIgnoreCase(paramajo2.c);
+  }
 }
 
 

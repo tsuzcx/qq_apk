@@ -1,25 +1,39 @@
+import MessageSvcPack.UinPairReadInfo;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.message.DiscMessageProcessor;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class cyl
   implements BaseMessageProcessor.RequestBuilder
 {
-  public cyl(DiscMessageProcessor paramDiscMessageProcessor, long paramLong1, long paramLong2) {}
+  public cyl(C2CMessageProcessor paramC2CMessageProcessor, ArrayList paramArrayList) {}
   
   public ToServiceMsg a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.DiscMessageProcessor", 2, "<ReadReport><S>_Discussion_disUin:" + this.jdField_a_of_type_Long + " lastReadSeq:" + this.b);
+    Object localObject = new StringBuilder("-ReportList-");
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      UinPairReadInfo localUinPairReadInfo = (UinPairReadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      ((StringBuilder)localObject).append("-uin:").append(localUinPairReadInfo.lPeerUin).append("-ReadTime-").append(localUinPairReadInfo.lLastReadTime);
+      i += 1;
     }
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor.a.a("MessageSvc.DisMsgReadConfirm");
-    localToServiceMsg.extraData.putLong("groupuin", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("lastReadSeq", this.b);
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.C2CMessageProcessor", 2, "<ReadReport><S>_C2C:" + ((StringBuilder)localObject).toString());
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.MsgReadedReport");
+    ((ToServiceMsg)localObject).extraData.putSerializable("vMsgKey", this.jdField_a_of_type_JavaUtilArrayList);
+    ((ToServiceMsg)localObject).extraData.putByteArray("vSyncCookie", this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a());
+    ((ToServiceMsg)localObject).extraData.putBoolean("bPbReadedReport", true);
+    ((ToServiceMsg)localObject).setEnableFastResend(true);
+    return localObject;
   }
 }
 

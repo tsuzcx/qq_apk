@@ -14,7 +14,7 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.OpenConfig;
-import fdc;
+import fdh;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -868,7 +868,7 @@ public class HttpBaseUtil
     {
       Object localObject = KeyStore.getInstance(KeyStore.getDefaultType());
       ((KeyStore)localObject).load(null, null);
-      localObject = new fdc((KeyStore)localObject);
+      localObject = new fdh((KeyStore)localObject);
       ((SSLSocketFactory)localObject).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
       BasicHttpParams localBasicHttpParams = new BasicHttpParams();
       HttpProtocolParams.setVersion(localBasicHttpParams, HttpVersion.HTTP_1_1);

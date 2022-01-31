@@ -23,9 +23,9 @@ import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.statistics.ReportController;
-import deg;
-import deh;
-import dei;
+import dem;
+import den;
+import deo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +43,9 @@ public class EmoticonLinearLayout
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   public EmoticonCallback a;
   private EmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo;
-  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new deg(this);
+  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new dem(this);
   public EmoticonLinearLayout.EmoticonAdapter a;
-  private dei jdField_a_of_type_Dei;
+  private deo jdField_a_of_type_Deo;
   public Runnable a;
   public List a;
   public boolean a;
@@ -58,7 +58,7 @@ public class EmoticonLinearLayout
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 6;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new deh(this);
+    this.jdField_a_of_type_JavaLangRunnable = new den(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_Int = super.getResources().getColor(2131427407);
     setOrientation(1);
@@ -259,8 +259,8 @@ public class EmoticonLinearLayout
     for (;;)
     {
       return true;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Dei != null)) {
-        removeCallbacks(this.jdField_a_of_type_Dei);
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Deo != null)) {
+        removeCallbacks(this.jdField_a_of_type_Deo);
       }
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_Boolean)) {
         a(this.jdField_a_of_type_AndroidViewView);
@@ -273,19 +273,19 @@ public class EmoticonLinearLayout
       this.jdField_a_of_type_AndroidViewView = a(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        if (this.jdField_a_of_type_Dei == null) {
-          this.jdField_a_of_type_Dei = new dei(this);
+        if (this.jdField_a_of_type_Deo == null) {
+          this.jdField_a_of_type_Deo = new deo(this);
         }
-        this.jdField_a_of_type_Dei.a();
-        postDelayed(this.jdField_a_of_type_Dei, ViewConfiguration.getLongPressTimeout());
+        this.jdField_a_of_type_Deo.a();
+        postDelayed(this.jdField_a_of_type_Deo, ViewConfiguration.getLongPressTimeout());
         paramMotionEvent = (EmoticonInfo)this.jdField_a_of_type_AndroidViewView.getTag();
         if ((paramMotionEvent != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) && ("delete".equals(paramMotionEvent.a)))
         {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a();
           continue;
           setPressed(false);
-          if (this.jdField_a_of_type_Dei != null) {
-            removeCallbacks(this.jdField_a_of_type_Dei);
+          if (this.jdField_a_of_type_Deo != null) {
+            removeCallbacks(this.jdField_a_of_type_Deo);
           }
           removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           b();

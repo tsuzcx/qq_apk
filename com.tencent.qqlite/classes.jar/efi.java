@@ -1,16 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class efi
-  extends URLDrawableDownListener.Adapter
+  implements View.OnTouchListener
 {
-  public efi(StructMsgItemCover paramStructMsgItemCover) {}
+  public efi(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView.setBackgroundDrawable(null);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
   }
 }
 

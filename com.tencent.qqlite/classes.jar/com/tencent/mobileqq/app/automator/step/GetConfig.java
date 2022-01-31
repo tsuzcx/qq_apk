@@ -9,7 +9,7 @@ import com.tencent.mobileqq.config.AboutConfig;
 import com.tencent.mobileqq.config.ResourcePluginListener;
 import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
 import cooperation.plugin.IPluginManager;
-import cxe;
+import cxk;
 import java.util.ArrayList;
 import protocol.KQQConfig.GetResourceReqInfo;
 
@@ -34,7 +34,7 @@ public class GetConfig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new cxe(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new cxk(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.a(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.b(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
     }

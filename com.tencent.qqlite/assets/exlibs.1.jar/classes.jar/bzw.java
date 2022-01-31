@@ -1,14 +1,19 @@
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousStatusListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class bzw
-  extends ProxyObserver
+  implements AnonymousChatHelper.AnonymousStatusListener
 {
   public bzw(TroopChatPie paramTroopChatPie) {}
   
-  public void b()
+  public void a(String paramString1, String paramString2)
   {
-    this.a.d(false);
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(TroopChatPie.N(this.a).a))) {
+      TroopChatPie.h(this.a).post(new bzx(this, paramString2));
+    }
   }
 }
 

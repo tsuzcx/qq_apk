@@ -1,16 +1,18 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class ajm
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public ajm(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public ajm(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

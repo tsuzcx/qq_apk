@@ -1,40 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
 
 public class xf
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public xf(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer) {}
+  public xf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-    int i = 0;
-    String str;
-    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
+    int i = paramEditable.length();
+    int j = i;
+    if (i > 30)
     {
-      str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
-      if (!"".equals(str)) {}
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
+      paramEditable = paramEditable.toString();
+      if (i > 30)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131363389), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
-        return;
-        paramView = paramView.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
-        i += 1;
-        break;
+        i = paramEditable.length();
+        if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
+        for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
+        {
+          i = paramEditable.length();
+          break;
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, null);
+      if (AddFriendVerifyActivity.a(this.a) != 4) {
+        break label162;
+      }
+      AddFriendVerifyActivity.a(this.a).setText(paramEditable);
+      AddFriendVerifyActivity.a(this.a).setSelection(paramEditable.length());
+    }
+    for (j = i;; j = i)
+    {
+      if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0) {
+        AddFriendVerifyActivity.b(this.a).setText(30 - j + "");
+      }
       return;
+      label162:
+      this.a.a.setText(paramEditable);
+      this.a.a.setSelection(paramEditable.length());
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,16 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopAioNewMessageBar;
+import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
 
 public class eme
-  extends Handler
+  implements Runnable
 {
-  public eme(TroopAioNewMessageBar paramTroopAioNewMessageBar) {}
+  public eme(NearbyOpenTroop paramNearbyOpenTroop) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((paramMessage.what == TroopAioNewMessageBar.a()) && (TroopAioNewMessageBar.b() == TroopAioNewMessageBar.a(this.a))) {
-      TroopAioNewMessageBar.a(this.a);
+    this.a.a = true;
+    if (this.a.b)
+    {
+      this.a.b = false;
+      NearbyOpenTroop.a(this.a, this.a.d, this.a.e, this.a.c, this.a.f);
     }
   }
 }

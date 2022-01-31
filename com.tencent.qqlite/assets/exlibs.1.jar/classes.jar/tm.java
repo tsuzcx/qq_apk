@@ -1,30 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+
 public class tm
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private long b;
-  private long c = -1L;
+  public tm(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public tm(long paramLong1, String paramString, long paramLong2, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
+    this.a.e();
   }
 }
 

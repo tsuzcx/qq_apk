@@ -5,11 +5,14 @@ import com.tencent.mobileqq.activity.RegisterActivity;
 public class bgt
   implements DialogInterface.OnClickListener
 {
-  public bgt(RegisterActivity paramRegisterActivity) {}
+  public bgt(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, "请稍候，请保证发送短信" + this.jdField_a_of_type_JavaLangString + "至" + this.b + "成功");
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
   }
 }
 

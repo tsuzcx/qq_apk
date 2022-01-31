@@ -1,24 +1,20 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class bok
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public bok(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation) {}
+  public bok(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b.show();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.findViewById(2131298882).getHandler().postDelayed(new bol(this), 150L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

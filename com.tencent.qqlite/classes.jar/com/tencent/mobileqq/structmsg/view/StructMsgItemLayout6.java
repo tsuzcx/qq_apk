@@ -51,13 +51,13 @@ public class StructMsgItemLayout6
     paramContext = new LinearLayout(paramContext);
     paramContext.setOrientation(1);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int k = localResources.getDimensionPixelSize(2131492991);
-    int n = localResources.getDimensionPixelSize(2131492992);
+    int k = localResources.getDimensionPixelSize(2131492986);
+    int n = localResources.getDimensionPixelSize(2131492987);
     if (a(1)) {}
-    for (int i = localResources.getDimensionPixelSize(2131492993);; i = 0)
+    for (int i = localResources.getDimensionPixelSize(2131492988);; i = 0)
     {
       if (a(2)) {
-        j = localResources.getDimensionPixelSize(2131492994);
+        j = localResources.getDimensionPixelSize(2131492989);
       }
       paramContext.setPadding(k, i, n, j);
       paramContext.setLayoutParams(localLayoutParams);

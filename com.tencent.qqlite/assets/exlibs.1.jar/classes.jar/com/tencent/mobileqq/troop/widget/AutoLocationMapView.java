@@ -5,8 +5,8 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
 import com.tencent.tencentmap.mapsdk.map.MapView;
-import epd;
-import epe;
+import epi;
+import epj;
 
 public class AutoLocationMapView
   extends MapView
@@ -14,25 +14,25 @@ public class AutoLocationMapView
   static final int jdField_a_of_type_Int = 1;
   public Handler a;
   public AutoLocationMapView.AutoLocationCallback a;
-  epe jdField_a_of_type_Epe = new epe(this, 1, 1, 1, 8);
+  epj jdField_a_of_type_Epj = new epj(this, 1, 1, 1, 8);
   
   public AutoLocationMapView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new epd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new epi(this);
   }
   
   public AutoLocationMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new epd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new epi(this);
   }
   
   public void a(String paramString, AutoLocationMapView.AutoLocationCallback paramAutoLocationCallback)
   {
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView$AutoLocationCallback = paramAutoLocationCallback;
     if (SOSOMapLBSApi.getInstance().verifyRegCode("QQ2013", paramString)) {
-      SOSOMapLBSApi.getInstance().requestLocationUpdate(getContext().getApplicationContext(), this.jdField_a_of_type_Epe);
+      SOSOMapLBSApi.getInstance().requestLocationUpdate(getContext().getApplicationContext(), this.jdField_a_of_type_Epj);
     }
   }
   

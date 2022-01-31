@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import bpl;
+import bpk;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,14 +22,14 @@ public class TroopPrivilegeActivity$PrivilegeAdapter
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      bpl localbpl = (bpl)localIterator.next();
-      if ((localbpl != null) && (localbpl.jdField_a_of_type_JavaLangString != null) && (localbpl.jdField_a_of_type_JavaLangString.equals(paramString)))
+      bpk localbpk = (bpk)localIterator.next();
+      if ((localbpk != null) && (localbpk.jdField_a_of_type_JavaLangString != null) && (localbpk.jdField_a_of_type_JavaLangString.equals(paramString)))
       {
-        localbpl.jdField_a_of_type_Int = paramInt;
+        localbpk.jdField_a_of_type_Int = paramInt;
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilList.add(new bpl(this, paramString, paramInt));
+    this.jdField_a_of_type_JavaUtilList.add(new bpk(this, paramString, paramInt));
   }
   
   public int getCount()
@@ -67,17 +67,17 @@ public class TroopPrivilegeActivity$PrivilegeAdapter
       localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity);
     }
     paramView = (TextView)localView.findViewById(2131296455);
-    paramViewGroup = (TextView)localView.findViewById(2131297747);
-    bpl localbpl = (bpl)getItem(paramInt);
-    paramView.setText(localbpl.jdField_a_of_type_JavaLangString);
-    paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity.a(localbpl.jdField_a_of_type_Int));
-    localView.setTag(localbpl);
+    paramViewGroup = (TextView)localView.findViewById(2131297743);
+    bpk localbpk = (bpk)getItem(paramInt);
+    paramView.setText(localbpk.jdField_a_of_type_JavaLangString);
+    paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqActivityTroopPrivilegeActivity.a(localbpk.jdField_a_of_type_Int));
+    localView.setTag(localbpk);
     if ((paramInt > 1) || (paramInt == getCount() - 1))
     {
-      localView.setBackgroundResource(2130837930);
+      localView.setBackgroundResource(2130837926);
       return localView;
     }
-    localView.setBackgroundResource(2130837931);
+    localView.setBackgroundResource(2130837927);
     return localView;
   }
 }

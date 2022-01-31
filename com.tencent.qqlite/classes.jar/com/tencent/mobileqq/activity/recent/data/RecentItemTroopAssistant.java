@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,8 +30,8 @@ public class RecentItemTroopAssistant
   {
     if (this.v > 0)
     {
-      this.jdField_c_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131364260), new Object[] { Integer.valueOf(this.v) });
-      this.y = paramContext.getResources().getColor(2131427514);
+      this.jdField_c_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131364245), new Object[] { Integer.valueOf(this.v) });
+      this.y = paramContext.getResources().getColor(2131427509);
       return;
     }
     this.jdField_c_of_type_JavaLangCharSequence = "";
@@ -62,7 +63,7 @@ public class RecentItemTroopAssistant
       return;
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131363624);
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131363618);
     }
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
     Object localObject2;
@@ -89,31 +90,36 @@ public class RecentItemTroopAssistant
         }
         i = this.A & 0xFFFFFF0F;
         if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.lastmsgtime != 9223372036854775805L) {
-          break label264;
+          break label312;
         }
         i |= 0x20;
-      }
-      for (;;)
-      {
+        label190:
         this.A = i;
         a(paramQQAppInterface);
         a(paramQQAppInterface, (MsgSummary)localObject2);
         a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
         a(paramContext);
         if (this.v <= 0) {
-          break label272;
+          break label320;
         }
-        this.jdField_c_of_type_JavaLangString = String.format("进入群助手界面，有%d个群有新消息。", new Object[] { Integer.valueOf(this.v) });
+      }
+      label312:
+      label320:
+      for (this.jdField_c_of_type_JavaLangString = String.format("进入群助手界面，有%d个群有新消息。", new Object[] { Integer.valueOf(this.v) });; this.jdField_c_of_type_JavaLangString = "进入群助手界面，无新消息。")
+      {
+        if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) || (localMessage == null) || (localObject2 == null) || (!AnonymousChatHelper.a(localMessage))) {
+          break label327;
+        }
+        this.jdField_b_of_type_JavaLangCharSequence = ((MsgSummary)localObject2).a(paramContext, paramContext.getResources().getString(2131362566), -1);
         return;
         this.v = 0;
         this.jdField_a_of_type_Long = 0L;
         break;
-        label264:
         i |= 0x10;
+        break label190;
       }
-      label272:
-      this.jdField_c_of_type_JavaLangString = "进入群助手界面，无新消息。";
-      return;
+      label327:
+      break;
     }
   }
   

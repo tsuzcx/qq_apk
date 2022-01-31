@@ -1,32 +1,39 @@
 import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class vb
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public vb(AboutActivity paramAboutActivity, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public vb(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16754769);
-    paramTextPaint.setUnderlineText(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
+    }
+    if (!PhoneNumLoginImpl.a().a(this.a.app, this.a)) {
+      return;
+    }
+    paramView = new Intent();
+    paramView.setPackage(this.a.getPackageName());
+    paramView.setClass(this.a, LoginActivity.class);
+    paramView.putExtra("IS_ADD_ACCOUNT", true);
+    paramView.putExtra("login_from_account_change", true);
+    this.a.startActivityForResult(paramView, 1000);
+    if (QQPlayerService.a())
+    {
+      paramView = new Intent();
+      paramView.setAction("qqplayer_exit_action");
+      this.a.sendBroadcast(paramView);
+    }
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 

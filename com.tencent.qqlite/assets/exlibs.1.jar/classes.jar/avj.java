@@ -1,20 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import cannon.Visitor;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
-class avj
+public class avj
   implements View.OnClickListener
 {
-  avj(avi paramavi, Visitor paramVisitor) {}
+  public avj(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_Avi.a, 1, String.valueOf(this.jdField_a_of_type_CannonVisitor.uin), null, 3003, 0, this.jdField_a_of_type_CannonVisitor.name, null, null, MayKnowManActivity.a(this.jdField_a_of_type_Avi.a));
-    this.jdField_a_of_type_Avi.a.startActivity(paramView);
-    ReportController.b(this.jdField_a_of_type_Avi.a.app, "CliOper", "", "", "Contacts_tab", "Contacts_tab_frdoffer_add", 0, 0, "", "", "", "");
+    Toast.makeText(this.a, 2131362803, 0).show();
   }
 }
 

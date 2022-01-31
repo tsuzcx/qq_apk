@@ -1,16 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
-public class enz
-  implements Runnable
+class enz
+  implements DialogInterface.OnClickListener
 {
-  public enz(VideoPlayLogic paramVideoPlayLogic, CharSequence paramCharSequence1, CharSequence paramCharSequence2) {}
+  enz(eny parameny) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) {
-      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).a(this.jdField_a_of_type_JavaLangCharSequence, this.b);
-    }
+    VideoPlayLogic.a(this.a.a);
   }
 }
 

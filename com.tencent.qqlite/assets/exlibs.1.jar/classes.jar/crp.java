@@ -1,19 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
+import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 
 public class crp
   implements Runnable
 {
-  public crp(DataLineHandler paramDataLineHandler, String paramString, int paramInt) {}
+  public crp(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = "'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131361873);
-    QQToast.a(BaseApplicationImpl.getContext(), 1, str, 0).b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileComing0x211_0x2_0xa(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
   }
 }
 

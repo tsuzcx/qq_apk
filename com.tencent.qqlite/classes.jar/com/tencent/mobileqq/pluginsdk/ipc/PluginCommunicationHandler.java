@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.RemoteException;
-import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public final class PluginCommunicationHandler
 {
@@ -30,7 +30,9 @@ public final class PluginCommunicationHandler
     {
       if (sInstance == null)
       {
-        Log.d("plugin_tag", "PluginCommunicationHandler.init");
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "PluginCommunicationHandler.init");
+        }
         sInstance = new PluginCommunicationHandler();
       }
       return sInstance;
@@ -100,10 +102,19 @@ public final class PluginCommunicationHandler
         synchronized (PluginCommunicationHandler.this.mCmdMap)
         {
           RemoteCommand localRemoteCommand = (RemoteCommand)PluginCommunicationHandler.this.mCmdMap.get(paramString);
+          if (paramBundle != null) {
+            paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+          }
           paramString = null;
           if (localRemoteCommand != null)
           {
-            paramString = localRemoteCommand.invoke(paramBundle, null);
+            paramBundle = localRemoteCommand.invoke(paramBundle, null);
+            paramString = paramBundle;
+            if (paramBundle != null)
+            {
+              paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+              paramString = paramBundle;
+            }
             return paramString;
           }
         }
@@ -173,14 +184,19 @@ public final class PluginCommunicationHandler
         this.mCmd = paramString;
         this.mCb = paramRemoteCallback;
         this.mParams = paramBundle;
+        if (this.mParams != null) {
+          this.mParams.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+        }
         if (this.mCb != null) {
           this.mListener = new RemoteCommand.OnInvokeFinishLinstener()
           {
             public void onInvokeFinish(Bundle paramAnonymousBundle)
             {
+              if (paramAnonymousBundle != null) {}
               try
               {
-                PluginCommunicationHandler.PluginCommunicationChannelImpl.TransferRunnable.this.mCb.onCallback(paramAnonymousBundle);
+                paramAnonymousBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+                PluginCommunicationHandler.PluginCommunicationChannelImpl.TransferRunnable.this.mCb.onRemoteCallback(paramAnonymousBundle);
                 return;
               }
               catch (RemoteException paramAnonymousBundle) {}
@@ -201,9 +217,11 @@ public final class PluginCommunicationHandler
         if (localObject2.isSynchronized())
         {
           ??? = PluginCommunicationHandler.PluginCommunicationChannelImpl.this.transferInner(this.mCmd, this.mParams);
+          if (??? != null) {}
           try
           {
-            this.mCb.onCallback((Bundle)???);
+            ((Bundle)???).setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+            this.mCb.onRemoteCallback((Bundle)???);
             return;
           }
           catch (RemoteException localRemoteException)

@@ -1,39 +1,27 @@
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bap
-  extends CardObserver
+  implements IStatusListener
 {
   public bap(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt, RichStatus paramRichStatus) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean1) {}
+    PermisionPrivacyActivity.a(this.a, this.a.e.a(), paramBoolean);
   }
   
-  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void b(int paramInt, boolean paramBoolean)
   {
-    if (!this.a.app.a().equals(paramString)) {
-      return;
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131364023);
     }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
-  }
-  
-  protected void onSetAllowSeeLoginDays(boolean paramBoolean) {}
-  
-  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (!this.a.app.a().equals(paramString)) {}
-    do
-    {
-      return;
-      if (!paramBoolean1) {
-        this.a.a(2131364036, 1);
-      }
-    } while (!paramBoolean2);
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean3);
+    PermisionPrivacyActivity.a(this.a, this.a.e.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

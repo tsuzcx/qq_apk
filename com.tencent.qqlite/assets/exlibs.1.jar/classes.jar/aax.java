@@ -1,15 +1,20 @@
-import android.widget.TextView;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class aax
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public aax(BaseChatPie paramBaseChatPie, String paramString) {}
+  public aax(BaseChatPie paramBaseChatPie, Intent paramIntent, String paramString, ForwardFileInfo paramForwardFileInfo) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setContentDescription(this.jdField_a_of_type_JavaLangString);
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo, false);
   }
+  
+  public void b() {}
 }
 
 

@@ -3,6 +3,7 @@ package cooperation.plugin;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
@@ -17,7 +18,6 @@ import com.tencent.mobileqq.pluginsdk.PluginManageHandler;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QFavDownloadProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.rc.GetQQAppInterfaceDataRemoteCommand;
 import fko;
@@ -82,7 +82,7 @@ public final class PluginManagerV2
       PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
       localPluginCommunicationHandler.setCommunicationChannel(new QQPluginCommunicationChannel());
       localPluginCommunicationHandler.register(new GetQQAppInterfaceDataRemoteCommand(paramQQAppInterface));
-      PluginManageHandler.getInstance().setPluginManager(this);
+      PluginManageHandler.getInstance().setPluginManagerProvider(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
       return;
     }
     catch (IOException localIOException)
@@ -99,10 +99,15 @@ public final class PluginManagerV2
     }
   }
   
-  private static QFavDownloadProgressDialog a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  private static ProgressDialog a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    paramContext = new QFavDownloadProgressDialog(paramContext);
-    paramContext.a(new fko(paramOnClickListener, paramContext));
+    paramContext = new ProgressDialog(paramContext);
+    paramContext.setProgressStyle(1);
+    paramContext.setIndeterminate(false);
+    paramContext.setTitle(paramString);
+    paramContext.setMessage("下载中...");
+    paramContext.setCancelable(false);
+    paramContext.setButton(-2, "取消", new fko(paramOnClickListener));
     return paramContext;
   }
   
@@ -152,7 +157,7 @@ public final class PluginManagerV2
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
           localLaunchState.jdField_a_of_type_Boolean = false;
-          localLaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog = a(paramContext, (String)localObject, new fkp(this, paramPluginParams.b, null));
+          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject, new fkp(this, paramPluginParams.b, null));
           a(str, paramBoolean, new fkr(this, localLaunchState, paramContext));
           return;
         }
@@ -168,7 +173,7 @@ public final class PluginManagerV2
       localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
       localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
       localLaunchState.jdField_a_of_type_Boolean = false;
-      localLaunchState.jdField_a_of_type_ComTencentMobileqqWidgetQFavDownloadProgressDialog = a(paramContext, (String)localObject, new fkp(this, paramPluginParams.b, null));
+      localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject, new fkp(this, paramPluginParams.b, null));
       a(str, paramBoolean, new fkr(this, localLaunchState, paramContext));
       return;
     }
@@ -184,7 +189,7 @@ public final class PluginManagerV2
     if (localPluginInfo2 != null) {
       localPluginInfo1 = localPluginInfo2.a();
     }
-    c();
+    b();
     paramOnQueryPluginListener.a(paramString, localPluginInfo1, this);
   }
   
@@ -251,18 +256,13 @@ public final class PluginManagerV2
     catch (IOException localIOException) {}
   }
   
-  public static boolean b()
+  private boolean b()
   {
-    if (jdField_a_of_type_CooperationPluginPluginUpdater.a("qqfav.apk") == null) {}
-    PluginInfo localPluginInfo;
-    do
+    if (!this.jdField_b_of_type_Boolean)
     {
-      do
-      {
-        return true;
-      } while (!jdField_a_of_type_CooperationPluginPluginInstaller.a("qqfav.apk"));
-      localPluginInfo = jdField_a_of_type_CooperationPluginPluginInstaller.a("qqfav.apk");
-    } while ((!jdField_a_of_type_CooperationPluginPluginUpdater.a(localPluginInfo)) || (!jdField_a_of_type_CooperationPluginPluginInstaller.a(IPluginManager.a())));
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(66049);
+      return true;
+    }
     return false;
   }
   
@@ -364,16 +364,6 @@ public final class PluginManagerV2
     }
   }
   
-  private boolean c()
-  {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(66049);
-      return true;
-    }
-    return false;
-  }
-  
   private void d()
   {
     if (QLog.isColorLevel()) {
@@ -418,7 +408,7 @@ public final class PluginManagerV2
     if (localPluginInfo != null) {
       paramString = localPluginInfo.a();
     }
-    c();
+    b();
     return paramString;
   }
   
@@ -427,7 +417,7 @@ public final class PluginManagerV2
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "setReadyToNetworking");
     }
-    c();
+    b();
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
@@ -467,7 +457,7 @@ public final class PluginManagerV2
         }
         synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          c();
+          b();
           PluginManagerV2.LaunchState localLaunchState = new PluginManagerV2.LaunchState();
           localLaunchState.jdField_a_of_type_AndroidContentContext = paramContext;
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
@@ -600,6 +590,21 @@ public final class PluginManagerV2
       return;
     }
     catch (RemoteException paramString) {}
+  }
+  
+  public boolean a()
+  {
+    if (jdField_a_of_type_CooperationPluginPluginUpdater.a("qqfav.apk") == null) {}
+    PluginInfo localPluginInfo;
+    do
+    {
+      do
+      {
+        return true;
+      } while (!jdField_a_of_type_CooperationPluginPluginInstaller.a("qqfav.apk"));
+      localPluginInfo = jdField_a_of_type_CooperationPluginPluginInstaller.a("qqfav.apk");
+    } while ((!jdField_a_of_type_CooperationPluginPluginUpdater.a(localPluginInfo)) || (!jdField_a_of_type_CooperationPluginPluginInstaller.a(IPluginManager.a())));
+    return false;
   }
   
   public boolean a(PluginInfo paramPluginInfo)
@@ -763,7 +768,7 @@ public final class PluginManagerV2
   
   public boolean isPlugininstalled(String paramString)
   {
-    if ((paramString.equals("qqfav.apk")) && (IPluginManager.a())) {}
+    if ((paramString.equals("qqfav.apk")) && (a())) {}
     do
     {
       return false;

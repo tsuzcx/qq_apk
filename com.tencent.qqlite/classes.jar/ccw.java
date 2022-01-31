@@ -1,17 +1,16 @@
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 
 public class ccw
-  extends TroopObserver
+  implements Runnable
 {
   public ccw(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramBoolean) && (SystemMsgListView.a(this.a) != null)) {
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-    }
+    this.a.a.a().a().b();
   }
 }
 

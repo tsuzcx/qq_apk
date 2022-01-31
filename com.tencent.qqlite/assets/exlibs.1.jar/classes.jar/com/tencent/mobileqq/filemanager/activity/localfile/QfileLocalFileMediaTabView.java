@@ -9,10 +9,10 @@ import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.qphone.base.util.QLog;
-import dkq;
-import dkr;
-import dks;
-import dku;
+import dkw;
+import dkx;
+import dky;
+import dla;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -29,7 +29,7 @@ public class QfileLocalFileMediaTabView
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = null;
     setEditbarButton(false, false, true, true, true);
     this.jdField_a_of_type_AndroidOsHandler = ThreadManager.b();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dkq(this, paramContext));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dkw(this, paramContext));
   }
   
   private void h()
@@ -43,7 +43,7 @@ public class QfileLocalFileMediaTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().Z();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dkr(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dkx(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -55,7 +55,7 @@ public class QfileLocalFileMediaTabView
   protected void a()
   {
     this.jdField_a_of_type_AndroidOsHandler = ThreadManager.b();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dks(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dky(this));
   }
   
   protected void b(FileInfo paramFileInfo)
@@ -63,7 +63,7 @@ public class QfileLocalFileMediaTabView
     if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramFileInfo)) {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramFileInfo);
     }
-    a(new dku(this, paramFileInfo));
+    a(new dla(this, paramFileInfo));
   }
   
   protected boolean b(FileInfo paramFileInfo)

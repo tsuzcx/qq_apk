@@ -1,10 +1,17 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class cbs
+  implements MessageQueue.IdleHandler
 {
-  public ProgressBar a;
-  public TextView a;
+  public cbs(AddContactsActivity paramAddContactsActivity) {}
+  
+  public boolean queueIdle()
+  {
+    this.a.a.sendEmptyMessage(0);
+    return false;
+  }
 }
 
 

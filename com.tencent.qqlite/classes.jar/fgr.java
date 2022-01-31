@@ -1,25 +1,14 @@
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
 
-public class fgr
+public final class fgr
   implements Runnable
 {
-  public fgr(AbsListView paramAbsListView) {}
+  public fgr(Context paramContext, int paramInt) {}
   
   public void run()
   {
-    if (this.a.g)
-    {
-      AbsListView localAbsListView = this.a;
-      this.a.h = false;
-      localAbsListView.g = false;
-      AbsListView.a(this.a, false);
-      if ((AbsListView.n(this.a) & 0x2) == 0) {
-        AbsListView.b(this.a, false);
-      }
-      if (!this.a.isAlwaysDrawnWithCacheEnabled()) {
-        this.a.invalidate();
-      }
-    }
+    BadgeUtilImpl.setSamsungBadge(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
   }
 }
 

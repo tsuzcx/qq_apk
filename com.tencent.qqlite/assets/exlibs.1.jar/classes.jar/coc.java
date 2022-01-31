@@ -1,19 +1,31 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class coc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends BroadcastReceiver
 {
-  public coc(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public coc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ShortVideoPreviewActivity.a(this.a, ShortVideoUtils.a(this.a, ShortVideoPreviewActivity.a(this.a)));
-    ShortVideoPreviewActivity.a(this.a).setImageBitmap(ShortVideoPreviewActivity.a(this.a));
-    ShortVideoPreviewActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      ShortVideoPlayActivity.c(this.a);
+      if (ShortVideoPlayActivity.a(this.a) != null) {
+        ShortVideoPlayActivity.a(this.a).setVisibility(0);
+      }
+      if (ShortVideoPlayActivity.b(this.a) != null) {
+        ShortVideoPlayActivity.b(this.a).setVisibility(0);
+      }
+    }
   }
 }
 

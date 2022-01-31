@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class dlz
-  implements DialogInterface.OnCancelListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public dlz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onGlobalLayout()
   {
-    this.a.a.a(Integer.valueOf(-1));
-    QfileBaseRecentFileTabView.a(this.a);
+    this.a.e();
   }
 }
 

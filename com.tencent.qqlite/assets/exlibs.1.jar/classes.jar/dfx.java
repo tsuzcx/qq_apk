@@ -1,41 +1,56 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class dfx
-  extends AsyncTask
+  implements View.OnClickListener
 {
-  public dfx(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public dfx(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    return Integer.valueOf(FileCategoryUtil.e(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    FMLocalFileActivity.b(this.a);
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (this.a.j())
     {
-      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
-      if (localFileCategoryEntity.E == 4)
+      FMDataCache.b();
+      this.a.f(false);
+      if (this.a.g())
       {
-        localFileCategoryEntity.D = paramInteger.intValue();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+        this.a.setResult(5);
+        this.a.finish();
+        return;
       }
+      BaseFileAssistantActivity.a(this.a).setVisibility(0);
+      BaseFileAssistantActivity.b(this.a).setText(2131361939);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
+      this.a.setTitle(this.a.b);
+      this.a.d();
+      this.a.c();
+      if (this.a.jdField_a_of_type_Int == 1) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      this.a.b(false);
+      return;
     }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    FMLocalFileActivity.a(this.a);
+    if (BaseFileAssistantActivity.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
+      }
+      BaseFileAssistantActivity.a(this.a).g();
+    }
+    FMDataCache.b();
+    this.a.f(true);
+    BaseFileAssistantActivity.c(this.a).setVisibility(0);
+    BaseFileAssistantActivity.d(this.a).setText(2131361966);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
+    this.a.d();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.b(true);
   }
 }
 

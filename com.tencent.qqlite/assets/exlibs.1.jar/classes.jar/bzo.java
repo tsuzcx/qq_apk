@@ -1,76 +1,80 @@
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class bzo
-  extends MessageObserver
+  implements DownCallBack
 {
-  public bzo(FriendChatPie paramFriendChatPie) {}
+  WeakReference a;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public bzo(MultiForwardChatPie paramMultiForwardChatPie)
   {
-    if ((paramString1 == null) || (!paramString1.equals(FriendChatPie.g(this.a).jdField_a_of_type_JavaLangString)) || (paramInt1 != FriendChatPie.h(this.a).jdField_a_of_type_Int))
+    this.a = new WeakReference(paramMultiForwardChatPie);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(DownCallBack.DownResult paramDownResult)
+  {
+    if (this.a == null) {}
+    MultiForwardChatPie localMultiForwardChatPie;
+    do
     {
+      do
+      {
+        do
+        {
+          return;
+          localMultiForwardChatPie = (MultiForwardChatPie)this.a.get();
+          if ((paramDownResult.jdField_a_of_type_Int != 0) || (paramDownResult.jdField_a_of_type_ArrayOfByte == null)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload success");
+          }
+        } while (localMultiForwardChatPie == null);
+        localObject = new HashMap();
+        MessageRecord localMessageRecord = MultiForwardChatPie.a(localMultiForwardChatPie).a().a(MultiForwardChatPie.a(localMultiForwardChatPie).jdField_a_of_type_JavaLangString, MultiForwardChatPie.b(localMultiForwardChatPie).jdField_a_of_type_Int, localMultiForwardChatPie.e);
+        paramDownResult = MultiForwardChatPie.b(localMultiForwardChatPie).a().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject, localMessageRecord);
+      } while ((paramDownResult == null) || (paramDownResult.size() <= 0));
+      MultiMsgManager.a().a((HashMap)localObject, localMultiForwardChatPie.e, MultiForwardChatPie.c(localMultiForwardChatPie));
+      Object localObject = new ArrayList();
+      paramDownResult = paramDownResult.iterator();
+      while (paramDownResult.hasNext()) {
+        ((List)localObject).add((ChatMessage)paramDownResult.next());
+      }
+      localMultiForwardChatPie.b = ((List)localObject);
+      paramDownResult = ChatActivityUtils.a(localMultiForwardChatPie.b, MultiForwardChatPie.c(localMultiForwardChatPie), MultiForwardChatPie.d(localMultiForwardChatPie));
+      paramDownResult = ChatActivityUtils.a(MultiForwardChatPie.e(localMultiForwardChatPie), BaseApplicationImpl.getContext(), MultiForwardChatPie.d(localMultiForwardChatPie), paramDownResult);
       if (QLog.isColorLevel()) {
-        QLog.d("ChatActivity", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+        QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - MultiForwardChatPie.a(localMultiForwardChatPie)));
       }
+      MultiMsgManager.a().a(MultiForwardChatPie.f(localMultiForwardChatPie), localMultiForwardChatPie.b, true);
+      MultiForwardChatPie.a(localMultiForwardChatPie).runOnUiThread(new bzp(this, localMultiForwardChatPie, paramDownResult));
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    this.a.a(196608);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (FriendChatPie.j(this.a).jdField_a_of_type_JavaLangString != null) && (FriendChatPie.k(this.a).jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.a();
-      if (paramBoolean) {
-        this.a.h();
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg", 2, "MultiForwardActivity.onDownload failed");
       }
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean1) {
-      this.a.C();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (FriendChatPie.l(this.a).jdField_a_of_type_JavaLangString != null) && (FriendChatPie.m(this.a).jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.a();
-      if (paramBoolean) {
-        this.a.h();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.a(65536);
-  }
-  
-  protected void d(boolean paramBoolean, String paramString)
-  {
-    MultiMsgManager.a().b("send struct msg  ");
-    MultiMsgManager.a().c();
-    MultiMsgManager.a().a("all cost time ");
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(FriendChatPie.i(this.a).jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.j = true;
-    this.a.a(131072);
+    } while (localMultiForwardChatPie == null);
+    MultiMsgManager.a().a(MultiForwardChatPie.g(localMultiForwardChatPie), null, false);
+    MultiForwardChatPie.b(localMultiForwardChatPie).runOnUiThread(new bzq(this, localMultiForwardChatPie));
   }
 }
 

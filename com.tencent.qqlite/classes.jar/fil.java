@@ -1,17 +1,4 @@
-import android.view.animation.Interpolator;
-import com.tencent.util.AnimateUtils;
-import com.tencent.widget.ListView;
-
-public class fil
-  implements Interpolator
-{
-  private fil(ListView paramListView) {}
-  
-  public float getInterpolation(float paramFloat)
-  {
-    return AnimateUtils.a(paramFloat);
-  }
-}
+public class fil {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.qqlite\classes.jar

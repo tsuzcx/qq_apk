@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.automator.step.GetSig;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
 
 public class cxi
-  extends MessageObserver
+  extends AutomatorObserver
 {
-  private cxi(GetSig paramGetSig) {}
+  private cxi(GetCheckUpdate paramGetCheckUpdate) {}
   
-  protected void h(boolean paramBoolean)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    GetSig localGetSig = this.a;
-    if (paramBoolean) {}
-    for (int i = 7;; i = 6)
-    {
-      localGetSig.a(i);
-      return;
-    }
+    this.a.a(7);
   }
 }
 

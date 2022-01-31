@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DoodleActivity;
 import com.tencent.mobileqq.widget.DoodleTextView;
 
-class akk
-  implements DialogInterface.OnClickListener
+public class akk
+  implements View.OnClickListener
 {
-  akk(akj paramakj) {}
+  public akk(DoodleActivity paramDoodleActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a.e();
+    this.a.a.f();
   }
 }
 

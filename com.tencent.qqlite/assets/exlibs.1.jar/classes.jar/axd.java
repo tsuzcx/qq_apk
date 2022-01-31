@@ -1,61 +1,49 @@
-import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class axd
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public axd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
+  public axd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a();
+      QQToast.a(this.a, 2131363516, 0).b(this.a.getTitleBarHeight());
       return;
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, 5));
-      continue;
-      paramView = new ArrayList();
-      paramInt = 0;
-      while (paramInt < NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).size() - 1)
-      {
-        localObject = (ayu)NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity).get(paramInt);
-        if (!StringUtil.b(((ayu)localObject).a)) {
-          paramView.add(((ayu)localObject).a);
-        }
-        paramInt += 1;
-      }
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, PhotoListActivity.class);
-      paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.getClass().getName());
-      paramView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.qqlite");
-      paramView.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
-      paramView.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-      paramView.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
-      paramView.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
-      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      Object localObject = AppConstants.as + this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.app.a() + "/" + "nearby_people_photo/";
-      paramView.putExtra("PhotoConst.TARGET_PATH", (String)localObject + System.currentTimeMillis() + ".jpg");
-      paramView.putExtra("PhotoConst.CLIP_WIDTH", 640);
-      paramView.putExtra("PhotoConst.CLIP_HEIGHT", 640);
-      paramView.putExtra("PhotoConst.TARGET_WIDTH", 640);
-      paramView.putExtra("PhotoConst.TARGET_HEIGHT", 640);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.startActivity(paramView);
-      AlbumUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity, false, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyPeopleProfileActivity.app, "CliOper", "", "", "0X800481F", "0X800481F", 1, 0, "", "", "", "");
     }
+    if (NearbyPeopleProfileActivity.a(this.a).size() <= 1)
+    {
+      paramView = DialogUtil.a(this.a, "交友相册需要至少一张照片\n仅陌生人可见，秀出精彩的自己！", 0, 0, null, null);
+      paramView.setNegativeButton(2131362794, new axe(this, paramView));
+      paramView.setPositiveButton("立即上传", new axf(this, paramView));
+      paramView.show();
+      return;
+    }
+    paramView = NearbyPeopleProfileActivity.a(this.a).getText().toString();
+    if ((!StringUtil.b(paramView)) && (StringUtil.e(paramView).length() == 0))
+    {
+      QQToast.a(this.a, "交友昵称不允许全为空格", 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    NearbyPeopleProfileActivity.c(this.a);
+    if (NearbyPeopleProfileActivity.a(this.a).size() > 0)
+    {
+      NearbyPeopleProfileActivity.f(this.a);
+      return;
+    }
+    NearbyPeopleProfileActivity.g(this.a);
   }
 }
 

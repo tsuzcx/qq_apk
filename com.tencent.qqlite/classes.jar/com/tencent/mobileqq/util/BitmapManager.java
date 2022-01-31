@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Rect;
 import android.util.Pair;
-import erj;
+import ero;
 import java.io.InputStream;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
@@ -55,7 +55,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.e = 0;
         paramResources = String.valueOf(localBitmapDecodeResult.a.hashCode());
-        localObject = new erj(paramResources, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ero(paramResources, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
       }
       return localBitmapDecodeResult.a;
@@ -88,8 +88,8 @@ public class BitmapManager
     if (paramResources != null)
     {
       localObject = String.valueOf(paramResources.hashCode());
-      erj localerj = new erj((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localerj);
+      ero localero = new ero((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localero);
     }
     return paramResources;
   }
@@ -107,7 +107,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.e = 0;
         paramInputStream = String.valueOf(localBitmapDecodeResult.a.hashCode());
-        localObject = new erj(paramInputStream, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ero(paramInputStream, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramInputStream, localObject);
       }
       return localBitmapDecodeResult.a;
@@ -140,7 +140,7 @@ public class BitmapManager
     if (paramInputStream != null)
     {
       paramRect = String.valueOf(paramInputStream.hashCode());
-      localObject = new erj(paramRect, paramInputStream, jdField_a_of_type_JavaLangRefReferenceQueue);
+      localObject = new ero(paramRect, paramInputStream, jdField_a_of_type_JavaLangRefReferenceQueue);
       jdField_a_of_type_JavaUtilMap.put(paramRect, localObject);
     }
     return paramInputStream;
@@ -163,8 +163,8 @@ public class BitmapManager
     if (paramString != null)
     {
       localObject = String.valueOf(paramString.hashCode());
-      erj localerj = new erj((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localerj);
+      ero localero = new ero((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localero);
     }
     return paramString;
   }
@@ -189,7 +189,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.e = 0;
         paramArrayOfByte = String.valueOf(localBitmapDecodeResult.a.hashCode());
-        localObject = new erj(paramArrayOfByte, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ero(paramArrayOfByte, localBitmapDecodeResult.a, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
       }
       return localBitmapDecodeResult.a;
@@ -222,8 +222,8 @@ public class BitmapManager
     if (paramArrayOfByte != null)
     {
       localObject = String.valueOf(paramArrayOfByte.hashCode());
-      erj localerj = new erj((String)localObject, paramArrayOfByte, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localerj);
+      ero localero = new ero((String)localObject, paramArrayOfByte, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localero);
     }
     return paramArrayOfByte;
   }
@@ -286,11 +286,11 @@ public class BitmapManager
   {
     for (;;)
     {
-      erj localerj = (erj)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localerj == null) {
+      ero localero = (ero)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      if (localero == null) {
         break;
       }
-      jdField_a_of_type_JavaUtilMap.remove(erj.a(localerj));
+      jdField_a_of_type_JavaUtilMap.remove(ero.a(localero));
     }
   }
   
@@ -376,13 +376,13 @@ public class BitmapManager
     //   150: aload_2
     //   151: iconst_0
     //   152: putfield 80	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:e	I
-    //   155: new 92	erj
+    //   155: new 92	ero
     //   158: dup
     //   159: aload_0
     //   160: aload_2
     //   161: getfield 77	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:a	Landroid/graphics/Bitmap;
     //   164: getstatic 30	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   167: invokespecial 95	erj:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   167: invokespecial 95	ero:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   170: astore_1
     //   171: getstatic 25	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   174: aload_0

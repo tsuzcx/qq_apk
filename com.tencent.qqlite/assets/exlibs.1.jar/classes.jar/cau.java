@@ -1,23 +1,20 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.ReaderTipsBar;
 
 public class cau
-  implements InputFilter
+  implements View.OnClickListener
 {
-  public cau(BookEditText paramBookEditText) {}
+  public cau(ReaderTipsBar paramReaderTipsBar) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
-    }
-    while (!QQText.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
+    paramView = new Intent();
+    paramView.setAction("com.qqreader.aioback2reader");
+    paramView.putExtra("bookid", ReaderTipsBar.a(this.a));
+    ReaderTipsBar.a(this.a).sendBroadcast(paramView);
   }
 }
 

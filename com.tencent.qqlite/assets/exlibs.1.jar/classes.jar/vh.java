@@ -1,32 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.AccountManageActivity;
 
-class vh
+public class vh
   implements Runnable
 {
-  vh(vg paramvg) {}
+  public vh(AccountManageActivity paramAccountManageActivity, long paramLong) {}
   
   public void run()
   {
-    int i = 0;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidViewView = null;
-    int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    while (i < j)
-    {
-      View localView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView.getTag() != null) {
-        localView.setTag(Integer.valueOf(i));
-      }
-      i += 2;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Long);
   }
 }
 

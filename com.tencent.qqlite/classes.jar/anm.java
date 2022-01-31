@@ -1,25 +1,31 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class anm
-  extends TroopObserver
+  implements DialogInterface.OnClickListener
 {
   public anm(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1) {
-      ForwardRecentActivity.b(this.a);
+    if (paramInt == 1)
+    {
+      if ((this.a.b) && (this.a.f == 11)) {
+        ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131362372));
+      }
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.b(this.a);
+    while (paramInt != 0) {
+      return;
     }
+    this.a.setResult(0);
+    StatisticCollector.a(BaseApplication.getContext()).a(this.a.app, this.a.app.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.finish();
   }
 }
 

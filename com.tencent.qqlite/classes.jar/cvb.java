@@ -1,14 +1,18 @@
-import com.tencent.lbsapi.QLBSService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class cvb
-  implements Runnable
+  extends BroadcastReceiver
 {
   public cvb(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.startLocation();
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+      QQAppInterface.a(this.a, paramContext, paramIntent);
+    }
   }
 }
 

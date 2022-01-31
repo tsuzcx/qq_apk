@@ -10,7 +10,7 @@ import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.utils.ImageUtil;
 import java.io.File;
 import java.net.URL;
-import tz;
+import tv;
 
 @Deprecated
 public class UrlGalleryAdapter
@@ -121,7 +121,7 @@ public class UrlGalleryAdapter
       if ((paramView.getStatus() != 1) && (paramView.getStatus() != 4) && (paramView.getStatus() != 2))
       {
         int i = paramView.getProgress();
-        localURLImageView.setURLDrawableDownListener(new tz(this, paramInt, paramViewGroup));
+        localURLImageView.setURLDrawableDownListener(new tv(this, paramInt, paramViewGroup));
         a(paramInt, i / 100);
         return localURLImageView;
       }

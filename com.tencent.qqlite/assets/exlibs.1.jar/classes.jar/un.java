@@ -1,15 +1,23 @@
+import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import com.tencent.litetransfersdk.LiteTransferOperatorCallback;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgCSBody;
 
 public class un
   implements Runnable
 {
-  public un(LiteTransferWrapper paramLiteTransferWrapper, MsgCSBody paramMsgCSBody) {}
+  public un(LiteTransferWrapper paramLiteTransferWrapper) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.PbMsgReciveToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ComTencentLitetransfersdkMsgCSBody);
+    if (LiteTransferWrapper.access$300(this.a) == 0L)
+    {
+      this.a.initGlobalFuncCallback();
+      LiteTransferWrapper.access$402(this.a, new LiteTransferOperatorCallback(LiteTransferWrapper.access$500(this.a)));
+      LiteTransferWrapper.access$602(this.a, new LiteTransferListenerCallback(LiteTransferWrapper.access$500(this.a)));
+      LiteTransferWrapper.access$302(this.a, this.a.createOperator(LiteTransferWrapper.access$400(this.a), LiteTransferWrapper.access$600(this.a)));
+      this.a.checkPathExist();
+      this.a.SetProxyToJni();
+    }
   }
 }
 

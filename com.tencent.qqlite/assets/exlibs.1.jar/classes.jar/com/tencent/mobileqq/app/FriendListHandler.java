@@ -99,12 +99,12 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.TraceUtils;
-import csq;
-import csr;
-import css;
-import cst;
-import csv;
-import cvf;
+import csw;
+import csx;
+import csy;
+import csz;
+import ctb;
+import cvl;
 import friendlist.AddFriendResp;
 import friendlist.AddGroupResp;
 import friendlist.DelFriendResp;
@@ -302,7 +302,7 @@ public class FriendListHandler
   public static final int y = 37;
   public static final int z = 38;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private cvf jdField_a_of_type_Cvf;
+  private cvl jdField_a_of_type_Cvl;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
@@ -328,7 +328,7 @@ public class FriendListHandler
   public FriendListHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new csq(this, paramQQAppInterface.a().getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new csw(this, paramQQAppInterface.a().getMainLooper());
     OnlineStatusIconHelper.a();
     try
     {
@@ -906,18 +906,18 @@ public class FriendListHandler
         label236:
         paramQQHeadUrlResp.UserHeadInfoList = ???;
       }
-      if (this.jdField_a_of_type_Cvf == null) {}
+      if (this.jdField_a_of_type_Cvl == null) {}
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        if (this.jdField_a_of_type_Cvf == null) {
-          this.jdField_a_of_type_Cvf = new cvf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+        if (this.jdField_a_of_type_Cvl == null) {
+          this.jdField_a_of_type_Cvl = new cvl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
         }
         i1 = 0;
         if (i1 >= paramQQHeadUrlResp.UserHeadInfoList.size()) {
           continue;
         }
         ??? = (QQHeadInfo)paramQQHeadUrlResp.UserHeadInfoList.get(i1);
-        this.jdField_a_of_type_Cvf.a(???, paramToServiceMsg);
+        this.jdField_a_of_type_Cvl.a(???, paramToServiceMsg);
         i1 += 1;
       }
     }
@@ -3447,17 +3447,17 @@ public class FriendListHandler
         }
         label1360:
         break label928;
-        if (this.jdField_a_of_type_Cvf == null) {}
+        if (this.jdField_a_of_type_Cvl == null) {}
         synchronized (this.jdField_b_of_type_JavaLangObject)
         {
-          if (this.jdField_a_of_type_Cvf == null) {
-            this.jdField_a_of_type_Cvf = new cvf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+          if (this.jdField_a_of_type_Cvl == null) {
+            this.jdField_a_of_type_Cvl = new cvl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
           }
           i1 = 0;
           if (i1 < localArrayList.size())
           {
             ??? = (QQHeadInfo)localArrayList.get(i1);
-            this.jdField_a_of_type_Cvf.a(???, paramToServiceMsg);
+            this.jdField_a_of_type_Cvl.a(???, paramToServiceMsg);
             i1 += 1;
           }
         }
@@ -3630,17 +3630,17 @@ public class FriendListHandler
           break label244;
           ???.uin = localRspHeadInfo.dstUin.get();
           break label328;
-          if (this.jdField_a_of_type_Cvf == null) {}
+          if (this.jdField_a_of_type_Cvl == null) {}
           synchronized (this.jdField_b_of_type_JavaLangObject)
           {
-            if (this.jdField_a_of_type_Cvf == null) {
-              this.jdField_a_of_type_Cvf = new cvf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+            if (this.jdField_a_of_type_Cvl == null) {
+              this.jdField_a_of_type_Cvl = new cvl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
             }
             i2 = 0;
             if (i2 < ((List)localObject2).size())
             {
               ??? = (QQHeadInfo)((List)localObject2).get(i2);
-              this.jdField_a_of_type_Cvf.a(???, paramToServiceMsg);
+              this.jdField_a_of_type_Cvl.a(???, paramToServiceMsg);
               i2 += 1;
             }
           }
@@ -4239,7 +4239,7 @@ public class FriendListHandler
       if (this.jdField_c_of_type_JavaUtilHashtable.containsKey(paramString1)) {
         this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
       }
-      paramString2 = new csv(this);
+      paramString2 = new ctb(this);
       paramString2.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_c_of_type_JavaUtilHashtable.put(paramString1, paramString2);
     }
@@ -4293,7 +4293,7 @@ public class FriendListHandler
       label550:
       if (this.jdField_c_of_type_JavaUtilHashtable.containsKey(paramString1))
       {
-        localObject = (csv)this.jdField_c_of_type_JavaUtilHashtable.get(paramString1);
+        localObject = (ctb)this.jdField_c_of_type_JavaUtilHashtable.get(paramString1);
         switch (paramInt2)
         {
         }
@@ -4301,20 +4301,20 @@ public class FriendListHandler
         {
           paramString2 = (String)localObject;
           break;
-          ((csv)localObject).b = System.currentTimeMillis();
+          ((ctb)localObject).b = System.currentTimeMillis();
           if (!bool) {
             this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
           }
-          ((csv)localObject).e = (((csv)localObject).b - ((csv)localObject).jdField_a_of_type_Long);
+          ((ctb)localObject).e = (((ctb)localObject).b - ((ctb)localObject).jdField_a_of_type_Long);
           paramString2 = (String)localObject;
           break;
-          ((csv)localObject).c = System.currentTimeMillis();
+          ((ctb)localObject).c = System.currentTimeMillis();
           paramString2 = (String)localObject;
           break;
-          ((csv)localObject).d = System.currentTimeMillis();
-          ((csv)localObject).jdField_a_of_type_Int = paramInt3;
-          ((csv)localObject).jdField_a_of_type_JavaLangString = paramString2;
-          ((csv)localObject).e = (((csv)localObject).d - ((csv)localObject).jdField_a_of_type_Long);
+          ((ctb)localObject).d = System.currentTimeMillis();
+          ((ctb)localObject).jdField_a_of_type_Int = paramInt3;
+          ((ctb)localObject).jdField_a_of_type_JavaLangString = paramString2;
+          ((ctb)localObject).e = (((ctb)localObject).d - ((ctb)localObject).jdField_a_of_type_Long);
           this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
         }
       }
@@ -5382,7 +5382,7 @@ public class FriendListHandler
     if (this.bo == 0)
     {
       this.bo = 1;
-      new Handler(Looper.getMainLooper()).postDelayed(new csr(this), 15000L);
+      new Handler(Looper.getMainLooper()).postDelayed(new csx(this), 15000L);
     }
   }
   
@@ -5611,7 +5611,7 @@ public class FriendListHandler
       if (!this.jdField_d_of_type_JavaUtilHashtable.containsKey(paramString)) {
         break label181;
       }
-      paramString = (cst)this.jdField_d_of_type_JavaUtilHashtable.get(paramString);
+      paramString = (csz)this.jdField_d_of_type_JavaUtilHashtable.get(paramString);
       l2 = Math.abs(l1 - paramString.jdField_a_of_type_Long);
       if (paramString.c > 0L)
       {
@@ -5653,8 +5653,8 @@ public class FriendListHandler
       while (((Enumeration)localObject2).hasMoreElements())
       {
         String str = (String)((Enumeration)localObject2).nextElement();
-        cst localcst = (cst)this.jdField_d_of_type_JavaUtilHashtable.get(str);
-        if (((localcst.c == 0L) && (l1 - localcst.jdField_a_of_type_Long > 60000L)) || ((localcst.c > 0L) && (l1 > localcst.c))) {
+        csz localcsz = (csz)this.jdField_d_of_type_JavaUtilHashtable.get(str);
+        if (((localcsz.c == 0L) && (l1 - localcsz.jdField_a_of_type_Long > 60000L)) || ((localcsz.c > 0L) && (l1 > localcsz.c))) {
           ((ArrayList)localObject1).add(str);
         }
       }
@@ -5670,9 +5670,9 @@ public class FriendListHandler
       }
       else
       {
-        localObject1 = new cst();
-        ((cst)localObject1).jdField_a_of_type_Long = l1;
-        ((cst)localObject1).b = 1L;
+        localObject1 = new csz();
+        ((csz)localObject1).jdField_a_of_type_Long = l1;
+        ((csz)localObject1).b = 1L;
         this.jdField_d_of_type_JavaUtilHashtable.put(paramString, localObject1);
         break;
         i1 = 0;
@@ -6091,8 +6091,8 @@ public class FriendListHandler
   
   public void d()
   {
-    if (this.jdField_a_of_type_Cvf != null) {
-      this.jdField_a_of_type_Cvf.a();
+    if (this.jdField_a_of_type_Cvl != null) {
+      this.jdField_a_of_type_Cvl.a();
     }
     super.d();
   }
@@ -6257,7 +6257,7 @@ public class FriendListHandler
   
   public void e(String paramString)
   {
-    new css(this, "saveSelfSig", paramString).start();
+    new csy(this, "saveSelfSig", paramString).start();
     ToServiceMsg localToServiceMsg = a("ProfileService.SetRichSig");
     localToServiceMsg.extraData.putString("sig_value", paramString);
     localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());

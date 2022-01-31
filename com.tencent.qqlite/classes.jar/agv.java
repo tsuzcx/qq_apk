@@ -1,20 +1,26 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.mobileqq.newfriend.NewFriendPushListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class agv
-  implements NewFriendPushListener
+  implements Comparator
 {
   public agv(Conversation paramConversation) {}
   
-  public void a(NewFriendMessage paramNewFriendMessage)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onRecommendMsgPushed");
+    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
+    {
+      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+      if ((paramRecentBaseData1.a.showUpTime > 0L) || (paramRecentBaseData2.a.showUpTime > 0L)) {
+        return Conversation.a(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
+      }
+      return Conversation.b(this.a, paramRecentBaseData1.a, paramRecentBaseData2.a);
     }
-    this.a.b(new agw(this));
-    this.a.a(0L);
+    return 0;
   }
 }
 

@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.MenuPopupDialog;
 
 class aoa
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  aoa(anz paramanz, View paramView) {}
+  aoa(anx paramanx) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if ((anx.a(this.a) != null) && ((anx.a(this.a).a instanceof String)))
+    {
+      this.a.a.b((String)anx.a(this.a).a);
+      ReportController.b(this.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.g), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a)), "", "", "");
+    }
+    if (anx.a(this.a) != null) {
+      anx.a(this.a).dismiss();
+    }
   }
 }
 

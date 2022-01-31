@@ -20,7 +20,7 @@ import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 import com.tencent.open.base.LogUtility;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
-import fbi;
+import fbn;
 
 public class FriendListOpenFrame
   extends OpenFrame
@@ -40,15 +40,15 @@ public class FriendListOpenFrame
   public FriendListOpenFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new fbi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fbn(this);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    super.setContentView(2130903624);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131298767));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131298768));
+    super.setContentView(2130903608);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131298716));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131298717));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "$", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131427345);
@@ -126,7 +126,7 @@ public class FriendListOpenFrame
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
     this.d = paramBundle.getInt("group_index");
     this.b = paramBundle.getString("group_name");
-    this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.a(true, false, this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.getString(2131363994), this.b);
+    this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.a(true, false, this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser.getString(2131363983), this.b);
     if (this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter == null)
     {
       this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter = new FriendListOpenFrame.FriendListAdapter(this);

@@ -1,14 +1,14 @@
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public final class fdz
   implements Runnable
 {
-  public fdz(DownloadListener paramDownloadListener) {}
+  public fdz(Bundle paramBundle) {}
   
   public void run()
   {
-    DownloadManager.a().a(this.a);
+    MyAppApi.a().a(this.a);
   }
 }
 

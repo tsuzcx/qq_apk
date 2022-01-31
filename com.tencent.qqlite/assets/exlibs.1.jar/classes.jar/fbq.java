@@ -1,35 +1,17 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.open.agent.OpenSdkFriendService;
+import java.util.ArrayList;
 
 public class fbq
-  extends Handler
+  implements Runnable
 {
-  public fbq(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fbq(OpenSdkFriendService paramOpenSdkFriendService, Handler paramHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramMessage = (Bitmap)paramMessage.obj;
-      } while (paramMessage == null);
-      this.a.a.a("", "", paramMessage, true);
-      return;
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.a.a("", paramMessage);
+    ArrayList localArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 888802, localArrayList).sendToTarget();
   }
 }
 

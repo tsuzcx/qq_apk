@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.MenuPopupDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bht
-  implements View.OnLongClickListener
+class bht
+  implements DialogInterface.OnDismissListener
 {
-  public bht(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  bht(bhr parambhr) {}
   
-  public boolean onLongClick(View paramView)
-  {
-    paramView = new QQCustomMenu();
-    paramView.a(2131298988, this.a.getString(2131363570));
-    RegisterQQNumberActivity.a(this.a, MenuPopupDialog.a(RegisterQQNumberActivity.a(this.a), this.a.getString(2131363274), paramView, new bhu(this), new bhv(this)));
-    return true;
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

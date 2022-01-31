@@ -1,16 +1,22 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.SurfaceView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalVideoFileView;
 
-class dti
-  implements Runnable
+public class dti
+  implements View.OnClickListener
 {
-  dti(dth paramdth, Bitmap paramBitmap) {}
+  public dti(LocalVideoFileView paramLocalVideoFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LocalVideoFileView.a(this.jdField_a_of_type_Dth.a.a).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
+    if (LocalVideoFileView.a(this.a))
+    {
+      LocalVideoFileView.a(this.a);
+      return;
+    }
+    LocalVideoFileView.b(this.a);
+    new Handler().postDelayed(new dtj(this), 2000L);
   }
 }
 

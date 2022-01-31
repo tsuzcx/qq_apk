@@ -1,43 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
 
 public class afp
-  implements URLDrawable.URLDrawableListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afp(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
+  public afp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onGlobalLayout()
   {
-    try
-    {
-      paramURLDrawable = ImageUtil.a(paramURLDrawable);
-      if (paramURLDrawable != null)
-      {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(paramURLDrawable, paramURLDrawable.getWidth(), paramURLDrawable.getHeight());
-        paramURLDrawable.recycle();
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      }
-      return;
+    if (this.a.ap >= 0) {
+      ChatSettingForTroop.a(this.a, this.a.ap);
     }
-    catch (NullPointerException paramURLDrawable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.chatopttroop", 2, QLog.getStackTraceString(paramURLDrawable));
-      return;
-    }
-    catch (OutOfMemoryError paramURLDrawable) {}
   }
 }
 

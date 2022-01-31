@@ -24,42 +24,41 @@ public class an
     StringBuilder localStringBuilder;
     if (((this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin.equalsIgnoreCase(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a()))) && (!this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getColor(2131427451);
       if (LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity) == null)
       {
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, new TextView(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity));
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setId(2131296312);
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setSingleLine();
-        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setBackgroundDrawable(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130837688));
+        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setBackgroundDrawable(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130837690));
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setGravity(17);
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setTextSize(2, 14.0F);
-        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setBackgroundResource(2130837688);
-        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setTextColor(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getColorStateList(2131427496));
+        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setBackgroundResource(2130837690);
+        LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setTextColor(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getColorStateList(2131427491));
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setPadding((int)(LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity) * 10.0F), LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).getPaddingTop(), (int)(LiteActivity.b(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity) * 10.0F), LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).getPaddingBottom());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDimension(2131493003));
+        localObject = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDimension(2131492998));
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity), (ViewGroup.LayoutParams)localObject);
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setOnClickListener(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity);
       }
       LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setVisibility(0);
       if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgtype != -2011) {
-        break label514;
+        break label501;
       }
       localObject = StructMsgFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgData);
       if (localObject == null) {
-        break label503;
+        break label490;
       }
       localObject = ((AbsStructMsg)localObject).mMsgBrief;
       localStringBuilder = new StringBuilder();
       if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.nickName == null) {
-        break label525;
+        break label512;
       }
       localStringBuilder.append(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("uinname"));
       localStringBuilder.append("-");
       localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.nickName);
-      label389:
+      label376:
       localStringBuilder.append(":");
       if (!(localObject instanceof QQText)) {
-        break label604;
+        break label591;
       }
     }
     for (;;)
@@ -76,21 +75,21 @@ public class an
           ((Handler)localObject).postDelayed(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_JavaLangRunnable, 10000L);
         }
         return;
-        label503:
+        label490:
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msg;
         break;
-        label514:
+        label501:
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.getMessageText();
         break;
-        label525:
+        label512:
         String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("uinname");
         if ((str == null) || (str.length() == 0))
         {
           localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin);
-          break label389;
+          break label376;
         }
         if (7000 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop) {
-          break label389;
+          break label376;
         }
         localStringBuilder.append(str);
       }
@@ -102,7 +101,7 @@ public class an
         QLog.e(LiteActivity.jdField_a_of_type_JavaLangString, 2, localException.toString());
         continue;
       }
-      label604:
+      label591:
       localStringBuilder.append(localException);
       LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).setText(localStringBuilder.toString());
     }

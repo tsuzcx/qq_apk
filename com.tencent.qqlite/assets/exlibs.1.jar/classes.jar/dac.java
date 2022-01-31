@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.utils.StartupTracker;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
 
 public class dac
   implements Runnable
 {
-  public dac(BubbleManager paramBubbleManager, int paramInt) {}
+  public dac(MpfileTaskProxy paramMpfileTaskProxy, MpfileTaskRecord paramMpfileTaskRecord, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
-    StartupTracker.a(null, "AIO_bubble_craete_bubble_info");
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, true);
-    StartupTracker.a("AIO_bubble_craete_bubble_info", null);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskRecord, null);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 

@@ -1,46 +1,24 @@
 import com.tencent.mobileqq.activity.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ayq
-  implements IphonePickerView.PickerViewAdapter
+  implements ConditionSearchManager.IConfigListener
 {
   public ayq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public int a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
-    {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return "保密";
-        case 1: 
-          return "单身";
-        case 2: 
-          return "恋爱中";
-        }
-        return "已婚";
-      }
+    this.a.c();
+    NearbyPeopleProfileActivity.a(this.a).d(this);
+    if (!paramBoolean) {
+      QQToast.a(this.a, 2131364394, 0).b(this.a.getTitleBarHeight());
     }
+    while (paramInt != 2) {
+      return;
+    }
+    this.a.d();
   }
 }
 

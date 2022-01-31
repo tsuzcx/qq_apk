@@ -1,23 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class cbx
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public cbx(SearchBaseActivity paramSearchBaseActivity) {}
+  public cbx(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.setResult(0);
-    if ((this.a instanceof SearchContactsActivity))
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    ImageButton localImageButton = this.a.jdField_a_of_type_AndroidWidgetImageButton;
+    if (paramEditable.equals("")) {}
+    for (int i = 8;; i = 0)
     {
-      this.a.l();
+      localImageButton.setVisibility(i);
       return;
     }
-    SearchBaseActivity.a(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

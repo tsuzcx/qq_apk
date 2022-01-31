@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
 import com.tencent.qqconnect.wtlogin.Login;
 
 public class fgi
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
   public fgi(Login paramLogin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 

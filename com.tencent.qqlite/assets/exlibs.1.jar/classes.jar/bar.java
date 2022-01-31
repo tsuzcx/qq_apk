@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class bar
-  implements IStatusListener
+  implements Runnable
 {
-  public bar(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public bar(PortraitImageview paramPortraitImageview, Bitmap paramBitmap) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    PermisionPrivacyActivity.a(this.a, this.a.e.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131364036);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.e.a(), PermisionPrivacyActivity.a(this.a).b());
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

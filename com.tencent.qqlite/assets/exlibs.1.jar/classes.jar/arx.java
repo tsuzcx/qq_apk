@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class arx
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public arx(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public arx(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
+      LbsBaseActivity.c(this.a).dismiss();
+    }
   }
 }
 

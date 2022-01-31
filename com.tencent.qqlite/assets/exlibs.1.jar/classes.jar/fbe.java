@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import com.tencent.open.agent.FriendChooser;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.qphone.base.util.QLog;
 
 public class fbe
-  extends Handler
+  extends URLDrawableDownListener.Adapter
 {
-  public fbe(FriendChooser paramFriendChooser) {}
+  public fbe(CardContainer paramCardContainer) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-    }
+    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    this.a.a.setVisibility(8);
   }
 }
 

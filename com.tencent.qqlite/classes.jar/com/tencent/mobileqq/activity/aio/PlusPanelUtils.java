@@ -11,8 +11,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.Toast;
-import btd;
+import btc;
 import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -42,19 +43,6 @@ public class PlusPanelUtils
 {
   public static String a;
   public static String b;
-  
-  private static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    }
-    return 2;
-  }
   
   private static String a()
   {
@@ -168,7 +156,7 @@ public class PlusPanelUtils
     if (localFriends != null) {
       localIntent.putExtra("PhotoConst.MY_NICK", localFriends.name);
     }
-    localIntent.putExtra("is_anonymous", false);
+    localIntent.putExtra("is_anonymous", AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString));
     if (AlbumUtil.a(paramSessionInfo.jdField_a_of_type_Int)) {}
     for (int i = MediaFileFilter.MEDIA_FILTER_DEFAULT.ordinal();; i = MediaFileFilter.MEDIA_FILTER_SHOW_IMAGE.ordinal())
     {
@@ -262,7 +250,7 @@ public class PlusPanelUtils
   {
     if (!Utils.e())
     {
-      Toast.makeText(paramActivity, paramActivity.getResources().getString(2131363510), 0).show();
+      Toast.makeText(paramActivity, paramActivity.getResources().getString(2131363511), 0).show();
       return;
     }
     paramQQAppInterface = new File(AppConstants.aw);
@@ -283,7 +271,7 @@ public class PlusPanelUtils
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
-      QQToast.a(paramActivity, 2131363514, 0).a();
+      QQToast.a(paramActivity, 2131363515, 0).a();
     }
   }
   
@@ -313,7 +301,7 @@ public class PlusPanelUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo)
   {
-    new btd(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.c(paramContext, paramUri)).execute(new Void[0]);
+    new btc(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.c(paramContext, paramUri)).execute(new Void[0]);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo)

@@ -6,17 +6,12 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 public class eub
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  
-  public eub(QQCustomDialog paramQQCustomDialog, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public eub(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.customWhichToCallBack(this.jdField_a_of_type_Int));
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 0);
     }
     try
     {

@@ -1,9 +1,18 @@
 import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.DropdownView;
 
-public class eyg
+class eyg
+  implements Runnable
 {
-  private static final int a = 12;
-  public View[] a = new View[12];
+  eyg(eyf parameyf, View paramView) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Eyf.a.jdField_a_of_type_Eyi.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Eyf.a.b);
+    this.jdField_a_of_type_Eyf.a.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

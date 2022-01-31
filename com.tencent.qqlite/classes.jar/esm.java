@@ -1,27 +1,16 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public final class esm
-  implements URLDrawable.URLDrawableListener
+class esm
+  implements Runnable
 {
-  public esm(WeakReference paramWeakReference) {}
+  esm(esk paramesk, Exception paramException) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (this.a != null)
-    {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
-      }
+    this.jdField_a_of_type_Esk.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
     }
   }
 }

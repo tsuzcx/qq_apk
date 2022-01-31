@@ -1,13 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 class bhm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   bhm(bhl parambhl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RegisterPhoneNumActivity.a(this.a.a, true);
+    paramDialogInterface.dismiss();
+    this.a.a.a(2131363299);
+    RegisterPhoneNumActivity.a(this.a.a);
   }
 }
 

@@ -1,27 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dlx
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public dlx(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, ActionSheet paramActionSheet) {}
+  public dlx(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.a)) {}
-      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
-    }
+    QfileBaseRecentFileTabView.a(this.a);
   }
 }
 

@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import cqe;
+import cqk;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +32,7 @@ public abstract class BusinessHandler
   
   private void a(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, BusinessObserver paramBusinessObserver, Handler paramHandler)
   {
-    paramObject = new cqe(this, paramBusinessObserver, paramInt, paramHandler, paramBoolean1, paramObject);
+    paramObject = new cqk(this, paramBusinessObserver, paramInt, paramHandler, paramBoolean1, paramObject);
     if (paramBoolean2)
     {
       paramHandler.postAtFrontOfQueue(paramObject);

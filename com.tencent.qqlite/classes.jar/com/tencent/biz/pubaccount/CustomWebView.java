@@ -11,7 +11,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.webviewplugin.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import ob;
+import nx;
 
 public class CustomWebView
   extends WebView
@@ -138,7 +138,7 @@ public class CustomWebView
         return;
       }
     }
-    post(new ob(this, paramString));
+    post(new nx(this, paramString));
   }
   
   public void destroy()

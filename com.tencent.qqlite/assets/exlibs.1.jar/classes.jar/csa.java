@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.app.DiscussionIconHelper;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class csa
   implements Runnable
 {
-  public csa(DiscussionIconHelper paramDiscussionIconHelper) {}
+  public csa(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
   
   public void run()
   {
-    long l = DeviceInfoUtil.a();
-    int i = DeviceInfoUtil.b();
-    if ((l != 0L) && (l < 1024L) && (i <= 1)) {
-      DiscussionIconHelper.a(this.a, true);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.handleMsgBody0x346(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_Int);
   }
 }
 

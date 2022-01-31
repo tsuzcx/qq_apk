@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class coo
+  implements DialogInterface.OnClickListener
 {
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  public coo(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  private coo(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

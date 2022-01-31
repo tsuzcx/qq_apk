@@ -1,26 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-public class ait
-  implements Runnable
+class ait
+  implements View.OnClickListener
 {
-  public ait(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, String paramString) {}
+  ait(ais paramais) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getManager(45)).a(this.jdField_a_of_type_JavaLangString);
-    if (localArrayList != null) {
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, localArrayList.size());
-    }
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = localArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.sendMessage(localMessage);
+    paramView = new Intent(this.a.a, DiscussionMemberActivity.class);
+    paramView.putExtra("uin", DiscussionInfoCardActivity.a(this.a.a));
+    this.a.a.startActivity(paramView);
   }
 }
 

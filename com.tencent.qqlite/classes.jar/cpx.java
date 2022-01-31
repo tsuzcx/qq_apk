@@ -1,36 +1,79 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class cpx
-  extends BroadcastReceiver
+  extends DefaultHandler
 {
-  private cpx(BaseActivity paramBaseActivity) {}
+  private static final String jdField_a_of_type_JavaLangString = "SAXForHandler";
+  private int jdField_a_of_type_Int = 0;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a()
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      if ((this.a.d_ != 0) || (!this.a.t) || (this.a.app == null) || (GesturePWDUtils.getGesturePWDState(this.a.getActivity(), this.a.app.a()) != 2) || (GesturePWDUtils.getGesturePWDMode(this.a.getActivity(), this.a.app.a()) != 21) || ((this.a.getActivity() instanceof GesturePWDUnlockActivity)) || ((this.a.getActivity() instanceof LoginActivity)) || (GesturePWDUtils.getGestureLocking(this.a.getActivity()))) {
-        break label176;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public ArrayList a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public List a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = paramArrayOfChar.toString();
+    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
+  }
+  
+  public void endDocument()
+  {
+    QLog.d("SAXForHandler", 4, "endDocument");
+    super.endDocument();
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+  }
+  
+  public void startDocument()
+  {
+    QLog.d("SAXForHandler", 4, "startDocument");
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    int j = 0;
+    int i = 0;
+    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+    if ("config".equals(paramString2)) {
+      while (i < paramAttributes.getLength())
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
+        i += 1;
       }
-      this.a.w();
     }
-    for (;;)
+    if ("Elem".equals(paramString2))
     {
-      BaseActivity.isUnLockSuccess = false;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onReceive broadcastreceiver.action=" + paramIntent.getAction());
+      i = j;
+      while (i < paramAttributes.getLength())
+      {
+        paramString1 = paramAttributes.getValue(i);
+        paramString3 = paramAttributes.getLocalName(i);
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+        i += 1;
       }
-      return;
-      label176:
-      this.a.b_();
     }
   }
 }

@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import java.util.TimerTask;
 
 public class crs
-  implements Runnable
+  extends TimerTask
 {
   public crs(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
-    FMToastUtil.a(2131361875);
+    this.a.a();
   }
 }
 

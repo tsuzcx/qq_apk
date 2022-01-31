@@ -1,19 +1,19 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class efv
   implements Runnable
 {
-  public efv(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public efv(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
     if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
+      localSharedPreferences.edit().putString("group_display", this.jdField_a_of_type_JavaLangString).commit();
     }
   }
 }

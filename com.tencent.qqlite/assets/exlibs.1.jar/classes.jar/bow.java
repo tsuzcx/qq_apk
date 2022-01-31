@@ -1,43 +1,54 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
 
-class bow
-  implements View.OnClickListener
+public class bow
+  extends DiscussionObserver
 {
-  bow(bou parambou, String paramString, CheckBox paramCheckBox, Dialog paramDialog) {}
+  public bow(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    paramView = (TroopHandler)this.jdField_a_of_type_Bou.a.app.a(17);
-    Object localObject;
-    if (paramView != null)
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
     {
-      localObject = new ArrayList();
-      ((List)localObject).add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_JavaLangString)));
-      paramView.a(Long.parseLong(this.jdField_a_of_type_Bou.a.i), (List)localObject, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-      localObject = this.jdField_a_of_type_Bou.a.p;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label184;
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.c(paramLong2 + "");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+      }
+      if (this.a.e)
+      {
+        this.a.b(paramLong2 + "");
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter.notifyDataSetChanged();
+        }
       }
     }
-    label184:
-    for (paramView = "0";; paramView = "1")
+    for (;;)
     {
-      ReportController.b(this.jdField_a_of_type_Bou.a.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_Bou.a.i, (String)localObject, paramView, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
-      this.jdField_a_of_type_Bou.a.k();
-      this.jdField_a_of_type_Bou.a.jdField_a_of_type_AndroidAppDialog.show();
       return;
+      QQToast.a(this.a, 1, this.a.getString(2131363133), 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

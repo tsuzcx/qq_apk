@@ -26,11 +26,11 @@ import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
 import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 import com.tencent.mobileqq.widget.GridListView;
 import com.tencent.qphone.base.util.QLog;
-import dkh;
-import dki;
-import dkj;
-import dkk;
-import dkl;
+import dkn;
+import dko;
+import dkp;
+import dkq;
+import dkr;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -64,7 +64,7 @@ public class QfileLocalFileCategoryBrowserActivity
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = null;
     this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dkl(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dkr(this);
   }
   
   private int a(int paramInt)
@@ -170,7 +170,7 @@ public class QfileLocalFileCategoryBrowserActivity
   private void q()
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    new dkk(this).execute(new Void[0]);
+    new dkq(this).execute(new Void[0]);
   }
   
   private void r()
@@ -186,13 +186,13 @@ public class QfileLocalFileCategoryBrowserActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903427);
+    setContentView(2130903417);
     this.jdField_c_of_type_Int = getIntent().getBundleExtra("bundle").getInt("category");
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = this;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131298050));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131296994));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131298013));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131296990));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = new NoFileRelativeLayout(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131361977);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131361976);
     if (this.jdField_c_of_type_Int == 10)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
@@ -212,10 +212,10 @@ public class QfileLocalFileCategoryBrowserActivity
       r();
       q();
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131427345);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGroupIndicator(getActivity().getResources().getDrawable(2130837938));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(new dkh(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnScrollListener(new dki(this));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getViewTreeObserver().addOnGlobalLayoutListener(new dkj(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setGroupIndicator(getActivity().getResources().getDrawable(2130837934));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(new dkn(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnScrollListener(new dko(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getViewTreeObserver().addOnGlobalLayoutListener(new dkp(this));
       return true;
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put("本地文件分组", this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);

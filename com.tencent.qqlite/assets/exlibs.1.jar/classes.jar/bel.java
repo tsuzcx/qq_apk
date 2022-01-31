@@ -1,16 +1,13 @@
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.richstatus.IActionListener;
 
 public class bel
-  implements IActionListener
+  implements Runnable
 {
-  public bel(QQSetting paramQQSetting) {}
+  public bel(QQSetting paramQQSetting, boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.n();
-    }
+    QQSetting.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting, this.jdField_a_of_type_Boolean);
   }
 }
 

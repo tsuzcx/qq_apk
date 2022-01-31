@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-class dvm
+public class dvm
   implements Runnable
 {
-  dvm(dvj paramdvj, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  public dvm(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
   
   public void run()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Dvj.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Dvj.a);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 1);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
   }
 }
 

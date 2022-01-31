@@ -1,16 +1,19 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.GridViewAdapter;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.graphics.drawable.Drawable;
+import android.os.Message;
+import com.tencent.mobileqq.transfile.LastModifySupportDownloader;
+import com.tencent.open.agent.CardContainer;
 
 public class fbf
-  implements ImageLoader.ImageLoadListener
+  implements Runnable
 {
-  public fbf(FriendChooser.GridViewAdapter paramGridViewAdapter, ImageView paramImageView) {}
+  public fbf(CardContainer paramCardContainer) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(LastModifySupportDownloader.a(this.a.a()));
+    if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
+    }
   }
 }
 

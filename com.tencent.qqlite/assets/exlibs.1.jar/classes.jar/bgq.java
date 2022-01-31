@@ -1,52 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
-public class bgq
-  extends Handler
+class bgq
+  implements Runnable
 {
-  public bgq(RegisterActivity paramRegisterActivity) {}
+  bgq(bgp parambgp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.e();
-    switch (paramMessage.what)
-    {
-    case -1: 
-    case 0: 
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        return;
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
-        this.a.c();
-        return;
-        this.a.f();
-        return;
-        this.a.d();
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangString == null);
-      Toast.makeText(this.a, this.a.jdField_a_of_type_JavaLangString, 1).show();
-      this.a.jdField_a_of_type_JavaLangString = null;
-      return;
-    case 6: 
-      paramMessage = paramMessage.getData().getString("url");
-      this.a.a(paramMessage);
-      return;
-    case 7: 
-      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
-      return;
-    }
-    this.a.jdField_a_of_type_Byte = 3;
-    this.a.c();
+    RegisterActivity.d(this.a.a);
+    RegisterActivity.a(this.a.a, "请重新发送短信");
   }
 }
 

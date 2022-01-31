@@ -1,40 +1,35 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
 
 public class dgs
-  implements SlideDetectListView.OnScrollToTopListener
+  implements FileWebView.TitilebarEventInterface
 {
-  public dgs(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public dgs(FilePreviewActivity paramFilePreviewActivity) {}
   
   public void a() {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.c + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
-    }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.e)) {
       return;
     }
-    URLDrawable.pause();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.l = "3";
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new dgt(this));
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
-      return;
-    }
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

@@ -10,10 +10,10 @@ import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
 import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.qphone.base.util.QLog;
-import dkz;
-import dla;
-import dlb;
-import dld;
+import dlf;
+import dlg;
+import dlh;
+import dlj;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -30,7 +30,7 @@ public class QfileLocalFilePicTabView
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = null;
     setEditbarButton(true, false, true, true, true);
     this.jdField_a_of_type_AndroidOsHandler = ThreadManager.b();
-    this.jdField_a_of_type_AndroidOsHandler.post(new dkz(this, paramContext));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dlf(this, paramContext));
   }
   
   private void h()
@@ -44,7 +44,7 @@ public class QfileLocalFilePicTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().ab();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dla(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new dlg(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -56,7 +56,7 @@ public class QfileLocalFilePicTabView
   protected void a()
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    ThreadManager.b(new dlb(this));
+    ThreadManager.b(new dlh(this));
   }
   
   protected void b(FileInfo paramFileInfo)
@@ -64,7 +64,7 @@ public class QfileLocalFilePicTabView
     if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramFileInfo)) {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramFileInfo);
     }
-    a(new dld(this, paramFileInfo));
+    a(new dlj(this, paramFileInfo));
   }
   
   protected boolean b(FileInfo paramFileInfo)

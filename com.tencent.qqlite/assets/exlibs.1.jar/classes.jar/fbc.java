@@ -1,30 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.open.agent.FriendChooser;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.BragActivity;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
 public class fbc
-  implements View.OnTouchListener
+  implements ImageLoader.ImageLoadListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public fbc(BragActivity paramBragActivity) {}
   
-  public fbc(FriendChooser paramFriendChooser) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.a.setImageBitmap(paramBitmap);
   }
 }
 

@@ -1,42 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CursorAdapter;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
 public class abd
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public abd(BaseChatPie paramBaseChatPie) {}
+  public abd(BaseSystemActivity paramBaseSystemActivity) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyOnGestureListener", 2, "onScroll");
+    if (this.a.a.getCursor() != null) {
+      this.a.b();
     }
-    if (BaseChatPie.c(this.a)) {
-      BaseChatPie.e(this.a, false);
-    }
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyOnGestureListener", 2, "onShowPress");
-    }
-    this.a.f(false);
-    BaseChatPie.e(this.a, true);
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyOnGestureListener", 2, "onSingleTapConfirmed");
-    }
-    this.a.f(false);
-    BaseChatPie.e(this.a, true);
-    return false;
   }
 }
 

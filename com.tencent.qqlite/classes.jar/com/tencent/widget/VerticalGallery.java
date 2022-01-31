@@ -23,10 +23,10 @@ import android.view.animation.Transformation;
 import android.widget.Scroller;
 import android.widget.SpinnerAdapter;
 import com.tencent.qqlite.R.styleable;
-import fhh;
-import fiu;
-import fiv;
-import fiw;
+import fhm;
+import fiz;
+import fja;
+import fjb;
 
 public class VerticalGallery
   extends VerticalAbsSpinner
@@ -42,8 +42,8 @@ public class VerticalGallery
   private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = null;
   private VerticalGallery.OnEndMovementListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndMovementListener = null;
   private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = null;
-  private fiw jdField_a_of_type_Fiw = new fiw(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new fiu(this);
+  private fjb jdField_a_of_type_Fjb = new fjb(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new fiz(this);
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int = 0;
   private View jdField_b_of_type_AndroidViewView;
@@ -173,7 +173,7 @@ public class VerticalGallery
   {
     if (!this.jdField_q_of_type_Boolean)
     {
-      localView = this.jdField_a_of_type_Fhh.a(paramInt1);
+      localView = this.jdField_a_of_type_Fhm.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getLeft();
@@ -277,7 +277,7 @@ public class VerticalGallery
           }
           return;
         }
-        this.jdField_a_of_type_Fhh.a(i4 + i2, localView);
+        this.jdField_a_of_type_Fhm.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -304,7 +304,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Fhh.a(i4 + i3, localView);
+      this.jdField_a_of_type_Fhm.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -318,7 +318,7 @@ public class VerticalGallery
     {
       paramInt = c();
       int i1 = d(localView);
-      this.jdField_a_of_type_Fiw.b(paramInt - i1);
+      this.jdField_a_of_type_Fjb.b(paramInt - i1);
       return true;
     }
     return false;
@@ -359,7 +359,7 @@ public class VerticalGallery
   {
     if (!this.jdField_q_of_type_Boolean)
     {
-      localView = this.jdField_a_of_type_Fhh.a(paramInt1);
+      localView = this.jdField_a_of_type_Fhm.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getTop();
@@ -455,7 +455,7 @@ public class VerticalGallery
           }
           return;
         }
-        this.jdField_a_of_type_Fhh.a(i4 + i2, localView);
+        this.jdField_a_of_type_Fhm.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -482,7 +482,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Fhh.a(i4 + i3, localView);
+      this.jdField_a_of_type_Fhm.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -554,7 +554,7 @@ public class VerticalGallery
       i1 = c() - i1;
       if (i1 != 0)
       {
-        this.jdField_a_of_type_Fiw.b(i1);
+        this.jdField_a_of_type_Fjb.b(i1);
         return;
       }
       j();
@@ -570,7 +570,7 @@ public class VerticalGallery
     }
     while (i1 != 0)
     {
-      this.jdField_a_of_type_Fiw.b(i1);
+      this.jdField_a_of_type_Fjb.b(i1);
       return;
       View localView2 = getChildAt(getChildCount() - 1);
       if (localView2.getBottom() - localView1.getTop() < getBottom() - getPaddingBottom())
@@ -972,8 +972,8 @@ public class VerticalGallery
   
   public int a(int paramInt)
   {
-    if (this.jdField_a_of_type_Fiw != null) {
-      this.jdField_a_of_type_Fiw.b(paramInt * -1);
+    if (this.jdField_a_of_type_Fjb != null) {
+      this.jdField_a_of_type_Fjb.b(paramInt * -1);
     }
     return paramInt * -1;
   }
@@ -1042,8 +1042,8 @@ public class VerticalGallery
     label176:
     for (;;)
     {
-      if ((i1 != 0) && (this.jdField_a_of_type_Fiw != null)) {
-        this.jdField_a_of_type_Fiw.b(i1 * -1);
+      if ((i1 != 0) && (this.jdField_a_of_type_Fjb != null)) {
+        this.jdField_a_of_type_Fjb.b(i1 * -1);
       }
       return i1 * -1;
       localView = getChildAt(0);
@@ -1120,7 +1120,7 @@ public class VerticalGallery
       }
       if (((!g()) || (getChildCount() >= this.aA)) && (a(bool, paramInt) != paramInt))
       {
-        fiw.a(this.jdField_a_of_type_Fiw, false);
+        fjb.a(this.jdField_a_of_type_Fjb, false);
         j();
       }
       c(paramInt);
@@ -1132,7 +1132,7 @@ public class VerticalGallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Fhh.a();
+      this.jdField_a_of_type_Fhm.a();
       k();
       invalidate();
       return;
@@ -1150,9 +1150,9 @@ public class VerticalGallery
         break label263;
       }
       paramInt = i1;
-      if (this.jdField_a_of_type_Fiw != null)
+      if (this.jdField_a_of_type_Fjb != null)
       {
-        this.jdField_a_of_type_Fiw.a(false);
+        this.jdField_a_of_type_Fjb.a(false);
         paramInt = i1;
       }
     }
@@ -1166,7 +1166,7 @@ public class VerticalGallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Fhh.a();
+        this.jdField_a_of_type_Fhm.a();
         k();
         awakenScrollBars();
         invalidate();
@@ -1176,10 +1176,10 @@ public class VerticalGallery
           break label263;
         }
         paramInt = i1;
-        if (this.jdField_a_of_type_Fiw == null) {
+        if (this.jdField_a_of_type_Fjb == null) {
           break;
         }
-        this.jdField_a_of_type_Fiw.a(false);
+        this.jdField_a_of_type_Fjb.a(false);
         paramInt = i1;
         break;
         m();
@@ -1238,7 +1238,7 @@ public class VerticalGallery
       }
       if (((!g()) || (getChildCount() >= this.aA)) && (a(bool, paramInt) != paramInt))
       {
-        fiw.a(this.jdField_a_of_type_Fiw, false);
+        fjb.a(this.jdField_a_of_type_Fjb, false);
         j();
       }
       d(paramInt);
@@ -1250,7 +1250,7 @@ public class VerticalGallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Fhh.a();
+      this.jdField_a_of_type_Fhm.a();
       l();
       invalidate();
       return;
@@ -1268,9 +1268,9 @@ public class VerticalGallery
         break label263;
       }
       paramInt = i1;
-      if (this.jdField_a_of_type_Fiw != null)
+      if (this.jdField_a_of_type_Fjb != null)
       {
-        this.jdField_a_of_type_Fiw.a(false);
+        this.jdField_a_of_type_Fjb.a(false);
         paramInt = i1;
       }
     }
@@ -1284,7 +1284,7 @@ public class VerticalGallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Fhh.a();
+        this.jdField_a_of_type_Fhm.a();
         k();
         awakenScrollBars();
         invalidate();
@@ -1294,10 +1294,10 @@ public class VerticalGallery
           break label263;
         }
         paramInt = i1;
-        if (this.jdField_a_of_type_Fiw == null) {
+        if (this.jdField_a_of_type_Fjb == null) {
           break;
         }
-        this.jdField_a_of_type_Fiw.a(false);
+        this.jdField_a_of_type_Fjb.a(false);
         paramInt = i1;
         break;
         n();
@@ -1338,7 +1338,7 @@ public class VerticalGallery
     localView.offsetLeftAndRight(paramInt);
     o();
     m();
-    this.jdField_a_of_type_Fhh.a();
+    this.jdField_a_of_type_Fhm.a();
     invalidate();
     this.jdField_q_of_type_Boolean = false;
     this.jdField_o_of_type_Boolean = false;
@@ -1411,7 +1411,7 @@ public class VerticalGallery
     localView.offsetTopAndBottom(paramInt);
     r();
     n();
-    this.jdField_a_of_type_Fhh.a();
+    this.jdField_a_of_type_Fhm.a();
     invalidate();
     this.jdField_q_of_type_Boolean = false;
     this.jdField_o_of_type_Boolean = false;
@@ -1533,7 +1533,7 @@ public class VerticalGallery
       i1 = c() - i1;
       if (i1 != 0)
       {
-        this.jdField_a_of_type_Fiw.b(i1);
+        this.jdField_a_of_type_Fjb.b(i1);
         return;
       }
       j();
@@ -1549,7 +1549,7 @@ public class VerticalGallery
     }
     while (i1 != 0)
     {
-      this.jdField_a_of_type_Fiw.b(i1);
+      this.jdField_a_of_type_Fjb.b(i1);
       return;
       View localView2 = getChildAt(getChildCount() - 1);
       if (localView2.getRight() - localView1.getLeft() < getRight() - getPaddingRight())
@@ -1617,7 +1617,7 @@ public class VerticalGallery
   
   protected void e()
   {
-    if (fiw.a(this.jdField_a_of_type_Fiw).isFinished()) {
+    if (fjb.a(this.jdField_a_of_type_Fjb).isFinished()) {
       d();
     }
     g();
@@ -1757,7 +1757,7 @@ public class VerticalGallery
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Fiw.a(false);
+    this.jdField_a_of_type_Fjb.a(false);
     this.jdField_o_of_type_Int = a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     if (this.jdField_o_of_type_Int >= 0)
     {
@@ -1783,11 +1783,11 @@ public class VerticalGallery
     if (h())
     {
       paramFloat1 = c();
-      this.jdField_a_of_type_Fiw.a((int)-(paramFloat1 * paramFloat2));
+      this.jdField_a_of_type_Fjb.a((int)-(paramFloat1 * paramFloat2));
       return true;
     }
     paramFloat2 = c();
-    this.jdField_a_of_type_Fiw.a((int)-(paramFloat2 * paramFloat1));
+    this.jdField_a_of_type_Fjb.a((int)-(paramFloat2 * paramFloat1));
     return true;
   }
   
@@ -1833,7 +1833,7 @@ public class VerticalGallery
     if ((this.f) && (this.aA > 0))
     {
       a(this.jdField_c_of_type_AndroidViewView);
-      postDelayed(new fiv(this), ViewConfiguration.getPressedStateDuration());
+      postDelayed(new fja(this), ViewConfiguration.getPressedStateDuration());
       a(getChildAt(this.az - this.ao), this.az, this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getItemId(this.az));
     }
     this.f = false;

@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class cgp
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public cgp(ContactListView paramContactListView, int paramInt) {}
+  public cgp(ContactListView paramContactListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.b.requestLayout();
+    this.a.a.a(new cgq(this));
+    this.a.h();
+    this.a.m();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

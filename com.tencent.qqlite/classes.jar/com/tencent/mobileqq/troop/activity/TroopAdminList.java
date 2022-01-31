@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
-import eju;
-import ejv;
+import ejz;
+import eka;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +27,7 @@ public class TroopAdminList
   public View.OnClickListener a;
   protected LinearLayout a;
   protected FriendListHandler a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eju(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ejz(this);
   TroopAdminList.AdminListAdapter jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter;
   protected XListView a;
   protected final String a;
@@ -38,7 +38,7 @@ public class TroopAdminList
   public TroopAdminList()
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ejv(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eka(this);
   }
   
   protected void c()
@@ -95,15 +95,15 @@ public class TroopAdminList
   
   protected void d()
   {
-    View localView = View.inflate(this, 2130903364, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131296783));
+    View localView = View.inflate(this, 2130903362, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131296779));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
     AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, -2);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     setContentView(localView);
-    setTitle(getString(2131362840));
+    setTitle(getString(2131362844));
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter = new TroopAdminList.AdminListAdapter(this, this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter);
   }

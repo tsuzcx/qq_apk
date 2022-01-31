@@ -1,34 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class bkl
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public bkl(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bkl(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

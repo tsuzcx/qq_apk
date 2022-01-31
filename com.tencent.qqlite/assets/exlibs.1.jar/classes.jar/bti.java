@@ -1,4 +1,3 @@
-import android.view.Window;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -10,9 +9,7 @@ public class bti
   
   public void run()
   {
-    this.a.setRequestedOrientation4Recording(true);
-    this.a.a.getWindow().clearFlags(128);
-    QQToast.a(this.a.a, 2131363136, 1).b(this.a.a.getTitleBarHeight());
+    QQToast.a(this.a.a, 2131363138, 1).b(this.a.a.getTitleBarHeight());
   }
 }
 

@@ -32,12 +32,6 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import cnm;
-import cnn;
-import cno;
-import cnp;
-import cnq;
-import cnr;
 import cns;
 import cnt;
 import cnu;
@@ -46,6 +40,12 @@ import cnw;
 import cnx;
 import cny;
 import cnz;
+import coa;
+import cob;
+import coc;
+import cod;
+import coe;
+import cof;
 import com.tencent.common.galleryactivity.AnimationView;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -77,36 +77,36 @@ public class ShortVideoPlayActivity
   private static final int j = 1;
   private static final int k = 2;
   private static final int l = 3;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cnw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new coc(this);
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new cnm(this);
+  private final Handler jdField_a_of_type_AndroidOsHandler = new cns(this);
   private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new cnu(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new coa(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new cnp(this);
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new cnv(this);
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AnimationView jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new cns(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new cny(this);
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new cnv(this);
+  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new cob(this);
   private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final Runnable jdField_b_of_type_JavaLangRunnable = new cnt(this);
+  private final Runnable jdField_b_of_type_JavaLangRunnable = new cnz(this);
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean = false;
   private View jdField_c_of_type_AndroidViewView;
   private Animation jdField_c_of_type_AndroidViewAnimationAnimation;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private Runnable jdField_c_of_type_JavaLangRunnable = new cnr(this);
+  private Runnable jdField_c_of_type_JavaLangRunnable = new cnx(this);
   private String jdField_c_of_type_JavaLangString;
   private boolean jdField_c_of_type_Boolean = false;
   private Animation jdField_d_of_type_AndroidViewAnimationAnimation;
@@ -145,7 +145,7 @@ public class ShortVideoPlayActivity
       if (paramInt == 1)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838773);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838747);
         this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
       }
       while (QLog.isColorLevel())
@@ -153,7 +153,7 @@ public class ShortVideoPlayActivity
         QLog.d("ShortVideoPlayActivity", 2, "changePlayState, playState=" + a(paramInt) + ", mIsPlaying=" + this.jdField_a_of_type_Boolean);
         return;
         this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838772);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838746);
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       }
     }
@@ -177,7 +177,7 @@ public class ShortVideoPlayActivity
     }
     if (!FileUtils.b(this.jdField_b_of_type_JavaLangString))
     {
-      QQToast.a(this, 1, 2131364425, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131364407, 0).b(getTitleBarHeight());
       finish();
     }
     if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsRect != null)) {
@@ -207,7 +207,7 @@ public class ShortVideoPlayActivity
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(this.jdField_b_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new cnn(this, paramInt));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new cnt(this, paramInt));
       if (this.jdField_b_of_type_Boolean) {
         return;
       }
@@ -378,7 +378,7 @@ public class ShortVideoPlayActivity
   
   private void m()
   {
-    DialogUtil.a(this, 232, null, getString(2131364431), new cno(this), null).show();
+    DialogUtil.a(this, 232, null, getString(2131364413), new cnu(this), null).show();
     if (!this.jdField_c_of_type_Boolean)
     {
       int i1 = (int)(DeviceInfoUtil.d() / 1024L);
@@ -448,11 +448,11 @@ public class ShortVideoPlayActivity
   private void r()
   {
     ActionSheet localActionSheet = ActionSheet.a(this);
-    localActionSheet.c(2131364426);
-    localActionSheet.c(2131364430);
-    localActionSheet.d(2131362790);
+    localActionSheet.c(2131364408);
+    localActionSheet.c(2131364412);
+    localActionSheet.d(2131362794);
     localActionSheet.show();
-    localActionSheet.a(new cnq(this, localActionSheet));
+    localActionSheet.a(new cnw(this, localActionSheet));
   }
   
   public void c()
@@ -469,7 +469,7 @@ public class ShortVideoPlayActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewSurfaceView.getLayoutParams());
     localRect2.set(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin, this.m - this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.rightMargin, this.n - this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(new cny(this));
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(new coe(this));
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a((Drawable)localObject, localRect1, localRect2, 0, 350L);
   }
   
@@ -495,13 +495,13 @@ public class ShortVideoPlayActivity
   public void doOnBackPressed()
   {
     super.doOnBackPressed();
-    overridePendingTransition(0, 2130968654);
+    overridePendingTransition(0, 2130968652);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130903554);
+    super.setContentView(2130903540);
     if (paramBundle != null)
     {
       this.o = paramBundle.getInt("state_play_position");
@@ -513,29 +513,29 @@ public class ShortVideoPlayActivity
     a(getIntent());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131296564));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131296445);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new cnx(this));
-    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131298497));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131298498);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131298500);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296901));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new cod(this));
+    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131298452));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131298453);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131298455);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131296897));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298499));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298454));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298502));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298504));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131298503));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298501));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298457));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298459));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131298458));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131298456));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewSurfaceView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setType(3);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().addCallback(this);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setFormat(-3);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)findViewById(2131298505));
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)findViewById(2131298460));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968648);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968647);
-    this.jdField_d_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968646);
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968645);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968646);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968645);
+    this.jdField_d_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968644);
+    this.jdField_c_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968643);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
     this.jdField_d_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
     this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener);
@@ -606,7 +606,7 @@ public class ShortVideoPlayActivity
     {
     default: 
       return;
-    case 2131298497: 
+    case 2131298452: 
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPlayActivity", 2, "onClick surfaceView, mHidden=" + this.jdField_e_of_type_Boolean);
       }
@@ -621,12 +621,12 @@ public class ShortVideoPlayActivity
       }
       g();
       return;
-    case 2131298501: 
+    case 2131298456: 
       q();
       return;
-    case 2131296901: 
+    case 2131296897: 
       finish();
-      overridePendingTransition(0, 2130968654);
+      overridePendingTransition(0, 2130968652);
       return;
     }
     if (this.jdField_e_of_type_Int == 1) {
@@ -684,7 +684,7 @@ public class ShortVideoPlayActivity
     {
       this.jdField_d_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDisplay(this.jdField_a_of_type_AndroidViewSurfaceView.getHolder());
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cnz(this), 100L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cof(this), 100L);
       return;
     }
     if (this.o > 0)

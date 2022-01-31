@@ -1,17 +1,37 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class eob
-  implements Runnable
+  implements View.OnClickListener
 {
   public eob(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
     if (VideoPlayLogic.a(this.a) != null) {
-      VideoPlayLogic.c(this.a);
+      VideoPlayLogic.a(this.a).c();
     }
-    this.a.b.removeCallbacks(VideoPlayLogic.a(this.a));
+    if (VideoPlayLogic.a(this.a))
+    {
+      if (this.a.c()) {
+        ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
+      }
+      while (VideoPlayLogic.a(this.a) != null)
+      {
+        new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
+        return;
+        ReportController.b(VideoPlayLogic.a(this.a).app, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
+      }
+      this.a.a(VideoPlayLogic.a(this.a));
+      return;
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

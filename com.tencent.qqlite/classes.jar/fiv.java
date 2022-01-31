@@ -1,14 +1,13 @@
-import com.tencent.widget.VerticalGallery;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.Switch;
 
 public class fiv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public fiv(VerticalGallery paramVerticalGallery) {}
+  public fiv(Switch paramSwitch) {}
   
-  public void run()
-  {
-    this.a.g();
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,13 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bpw
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   public bpw(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
+      QQToast.a(this.a, this.a.getString(2131363387), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
+      QQToast.a(this.a, this.a.getString(2131363388), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.a.setText(paramMessage + "");
+  }
 }
 
 

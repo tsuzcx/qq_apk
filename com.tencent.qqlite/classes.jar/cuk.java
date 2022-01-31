@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
-class cuk
-  implements Comparator
+public class cuk
+  extends ContentObserver
 {
-  cuk(cui paramcui) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public cuk(PhoneContactManagerImp paramPhoneContactManagerImp, Handler paramHandler)
   {
-    int i = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    if (i == 0)
-    {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      ((String)localObject1).compareTo((String)localObject2);
-      if (i == 0) {
-        return paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactManager", 2, "Contact changed.");
     }
-    return i;
+    this.a.d = true;
   }
 }
 

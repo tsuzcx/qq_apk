@@ -1,17 +1,26 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.MessageHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 public class ctz
+  extends SendMessageHandler.SendMessageRunnable
 {
-  String jdField_a_of_type_JavaLangString = "";
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = false;
+  public ctz(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
   
-  public ctz(MessageHandler paramMessageHandler) {}
+  public void run()
+  {
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    localToServiceMsg.extraData.putLong("timeOut", this.c);
+    localToServiceMsg.extraData.putLong("startTime", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgSeq", this.b);
+    localToServiceMsg.setEnableFastResend(true);
+    localToServiceMsg.setTimeout(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
+  }
 }
 
 

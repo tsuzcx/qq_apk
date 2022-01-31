@@ -1,24 +1,18 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil;
 
-public final class ewr
-  implements Runnable
+public class ewr
+  extends BroadcastReceiver
 {
-  public ewr(ClubContentJsonTask.TaskInfo paramTaskInfo, File paramFile, Context paramContext, int paramInt) {}
+  public ewr(SDCardMountInforUtil paramSDCardMountInforUtil) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = HttpDownloadUtil.a(null, EmosmUtils.insertMtype("VIP_other", this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b), this.jdField_a_of_type_JavaIoFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentJsonTask", 2, "updateJson, " + this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.b + ",ret=" + bool);
-    }
-    if (bool) {
-      ClubContentJsonTask.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.d, this.jdField_a_of_type_Int);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.MEDIA_MOUNTED".equals(paramContext)) || ("android.intent.action.MEDIA_SCANNER_STARTED".equals(paramContext)) || ("android.intent.action.MEDIA_SCANNER_FINISHED".equals(paramContext)) || ("android.intent.action.MEDIA_REMOVED".equals(paramContext)) || ("android.intent.action.MEDIA_UNMOUNTED".equals(paramContext)) || ("android.intent.action.MEDIA_BAD_REMOVAL".equals(paramContext))) {
+      SDCardMountInforUtil.a(this.a, SDCardMountInforUtil.a(this.a));
     }
   }
 }

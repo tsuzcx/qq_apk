@@ -30,9 +30,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import eho;
-import ehp;
-import ehr;
+import eht;
+import ehu;
+import ehw;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -50,7 +50,7 @@ public class ShortVideoUploadProcessor
   public static final String W = "ShortVideoUploadProcessor";
   public static final String X = "QQ_&_MoblieQQ_&_QQ";
   private String Y;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehp(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ehu(this);
   private ShortVideoTransManager jdField_a_of_type_ComTencentMobileqqAppShortVideoTransManager;
   private ShortVideoUpInfo jdField_a_of_type_ComTencentMobileqqDataShortVideoUpInfo;
   int aN = 0;
@@ -177,7 +177,7 @@ public class ShortVideoUploadProcessor
       paramArrayOfByte.append(((ServerAddr)localObject2).jdField_b_of_type_Int);
     }
     paramArrayOfByte.append("/qqupload?ver=");
-    paramArrayOfByte.append("544");
+    paramArrayOfByte.append("607");
     paramArrayOfByte.append("&ukey=");
     paramArrayOfByte.append(this.V);
     paramArrayOfByte.append("&filekey=");
@@ -918,7 +918,7 @@ public class ShortVideoUploadProcessor
       this.aw = 0;
       this.L = "";
       this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new eho(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new eht(this));
     }
     return 0;
   }

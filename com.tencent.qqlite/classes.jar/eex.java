@@ -1,31 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
 import android.view.View;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
-public final class eex
-  implements ActionSheet.OnButtonClickListener
+public class eex
+  extends URLDrawableDownListener.Adapter
 {
-  public eex(String paramString, Context paramContext) {}
+  public eex(AbsShareMsg paramAbsShareMsg) {}
   
-  public void a(View paramView, int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      StructMsgClickHandler.a().dismiss();
-      return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    }
+    paramView.setBackgroundDrawable(null);
   }
 }
 

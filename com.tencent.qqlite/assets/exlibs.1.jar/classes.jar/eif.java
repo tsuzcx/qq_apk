@@ -1,21 +1,13 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.activity.NearbyTroopsView;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class eif
-  extends GestureDetector.SimpleOnGestureListener
+  implements TroopMemberApiClient.Callback
 {
-  public eif(NearbyTroopsView paramNearbyTroopsView) {}
+  public eif(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (this.a.a == null)) {}
-    while (paramMotionEvent2.getY() - paramMotionEvent1.getY() >= 0.0F) {
-      return false;
-    }
-    this.a.b(false);
-    return true;
-  }
+  public void a(Bundle paramBundle) {}
 }
 
 

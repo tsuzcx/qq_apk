@@ -1,46 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
 public class dmb
-  extends IClickListener_Ver51
+  implements Comparator
 {
-  public dmb(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  public dmb(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().u();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().H();
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
   }
 }
 

@@ -25,7 +25,6 @@ import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -60,7 +59,6 @@ public class EmojiJsPlugin
   protected String mSelfUin;
   private String mSid = "";
   protected int mSrcFromType = 1;
-  private WebView mWebView;
   private EmojiJsPlugin.MakeDynamicEmojiInfo makeInfo;
   QQProgressDialog progressDialog;
   
@@ -495,7 +493,7 @@ public class EmojiJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i(TAG, 2, "startDownloadEmoji non wifi net");
         }
-        localObject = DialogUtil.a(this.mRuntime.a(), 230).a(this.mRuntime.a().getString(2131364092)).b(this.mRuntime.a().getString(2131364093)).a(this.mRuntime.a().getString(2131364094), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.a().getString(2131364095), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramString));
+        localObject = DialogUtil.a(this.mRuntime.a(), 230).a(this.mRuntime.a().getString(2131364079)).b(this.mRuntime.a().getString(2131364080)).a(this.mRuntime.a().getString(2131364081), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.a().getString(2131364082), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramString));
         ((QQCustomDialogThreeBtns)localObject).setOnKeyListener(new EmojiJsPlugin.7(this, (QQCustomDialogThreeBtns)localObject, paramString));
         ((QQCustomDialogThreeBtns)localObject).setCanceledOnTouchOutside(false);
         ((QQCustomDialogThreeBtns)localObject).show();
@@ -774,7 +772,6 @@ public class EmojiJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.mWebView = this.mRuntime.a();
   }
   
   protected void onDestroy()

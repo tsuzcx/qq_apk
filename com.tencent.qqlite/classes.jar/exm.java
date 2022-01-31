@@ -1,33 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.AntiphingToast;
 
 public class exm
-  implements TextWatcher
+  implements Animation.AnimationListener
 {
-  public exm(ClearableEditText paramClearableEditText) {}
+  public exm(AntiphingToast paramAntiphingToast) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    libsafeedit.getLoginLegal(paramCharSequence.toString());
-    paramCharSequence = this.a.getText().toString();
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
-    {
-      this.a.setClearButtonVisible(false);
-      return;
-    }
-    if (ClearableEditText.a(this.a))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
+    AntiphingToast.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

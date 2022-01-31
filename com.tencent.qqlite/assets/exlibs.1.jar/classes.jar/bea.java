@@ -1,16 +1,16 @@
-import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class bea
-  implements Runnable
+  extends ConfigObserver
 {
-  public bea(QQSetting paramQQSetting, String paramString) {}
+  public bea(QQSetting paramQQSetting) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting.a.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSetting.b(new beb(this, localDrawable));
+    QQSetting.a(this.a, paramUpgradeDetailWrapper);
+    QQSetting.a(this.a);
   }
 }
 

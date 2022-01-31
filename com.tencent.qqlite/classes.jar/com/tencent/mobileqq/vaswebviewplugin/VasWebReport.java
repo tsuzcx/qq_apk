@@ -51,7 +51,7 @@ public class VasWebReport
           if (!this.erroMap.containsKey(paramString)) {
             break label291;
           }
-          ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.erroMap.get(paramString), paramMap, Util.b(paramString, new String[0]), "3.3.0--android--" + Build.VERSION.SDK_INT);
+          ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.erroMap.get(paramString), paramMap, Util.b(paramString, new String[0]), "3.4.0--android--" + Build.VERSION.SDK_INT);
           this.erroMap.remove(paramString);
           this.startTimeMap.remove(paramString);
           break;
@@ -68,7 +68,7 @@ public class VasWebReport
         if (this.startTimeMap.containsKey(paramString)) {}
         for (long l = System.currentTimeMillis() - ((Long)this.startTimeMap.get(paramString)).longValue();; l = -1L)
         {
-          ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + l, paramMap, Util.b(paramString, new String[0]), "3.3.0--android--" + Build.VERSION.SDK_INT);
+          ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + l, paramMap, Util.b(paramString, new String[0]), "3.4.0--android--" + Build.VERSION.SDK_INT);
           break;
           if (QLog.isColorLevel()) {
             QLog.e("VasWebReport", 2, "VasWebReport--EVENT_LOAD_FINISH:report erro,there is not starttime for " + paramString);

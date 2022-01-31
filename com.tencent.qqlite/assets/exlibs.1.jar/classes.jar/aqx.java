@@ -1,57 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class aqx
-  implements DialogInterface.OnClickListener
+  implements DragSortListView.RemoveListener
 {
   public aqx(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131364178);
+    if (QLog.isColorLevel()) {
+      QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "RemoveListener which = " + paramInt);
     }
-    for (;;)
+    Object localObject = (Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+    byte b = (byte)((Groups)localObject).group_id;
+    if (QLog.isColorLevel())
     {
-      if (GroupManagerActivity.a(this.a) == 0) {
-        if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
-        {
-          b = (byte)(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1)).seqid + 1);
-          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
-          if (QLog.isColorLevel()) {
-            QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-          }
-          if (GroupManagerActivity.a(this.a)) {
-            this.a.a(2131363797);
-          }
-          ReportController.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
-        }
-      }
-      while (1 != GroupManagerActivity.a(this.a)) {
-        for (;;)
-        {
-          return;
-          byte b = 1;
-        }
-      }
-      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
-      if (QLog.isColorLevel()) {
-        QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (GroupManagerActivity.a(this.a)) {
-        this.a.a(2131363799);
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
+      QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "RemoveListener remove groupId :" + b);
+      QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+    }
+    if (b == 0)
+    {
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).c(2000);
+      ((QQToast)localObject).b(2131364168);
+      ((QQToast)localObject).a();
       return;
     }
+    GroupManagerActivity.a(this.a, b);
+    ReportController.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

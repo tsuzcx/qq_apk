@@ -11,7 +11,7 @@ public class bfw
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "", "", "", "");
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "", "", "", "");
     if (!this.a.isFinishing()) {
       this.a.showDialog(1);
     }

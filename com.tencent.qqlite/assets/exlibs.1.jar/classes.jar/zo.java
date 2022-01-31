@@ -1,5 +1,5 @@
-import android.app.Dialog;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class zo
   implements Runnable
@@ -8,13 +8,17 @@ public class zo
   
   public void run()
   {
-    if ((this.a.e != null) && (this.a.e.isShowing())) {
-      this.a.e.dismiss();
-    }
-    while ((this.a.f == null) || (!this.a.f.isShowing())) {
+    if (this.a.a.e)
+    {
+      if (this.a.a.g)
+      {
+        this.a.a(131078);
+        return;
+      }
+      this.a.a(131077);
       return;
     }
-    this.a.f.dismiss();
+    this.a.a(131075);
   }
 }
 

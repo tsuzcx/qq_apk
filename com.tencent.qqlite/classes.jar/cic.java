@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.utils.LogTag;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.phone.TosActivity;
 
 public class cic
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public cic(AlbumListAdapter paramAlbumListAdapter) {}
+  public cic(TosActivity paramTosActivity) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    LogTag.a();
-    AlbumListAdapter.a(this.a);
-    LogTag.a("PEAK", "queryAllAlbumList");
+    return true;
   }
 }
 

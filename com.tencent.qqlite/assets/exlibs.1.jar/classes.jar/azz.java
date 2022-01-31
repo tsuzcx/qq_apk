@@ -1,6 +1,7 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSwitchItem;
@@ -12,21 +13,32 @@ public class azz
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
+    int i = 1;
+    NotifyPushSettingActivity.c(this.a).setContentDescription("通知时指示灯闪烁");
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131363282), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
     if (paramBoolean)
     {
-      NotifyPushSettingActivity.a(this.a).setVisibility(0);
-      SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131363278), "qqsetting_notify_showcontent_key", paramBoolean);
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.a(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
       if (!paramBoolean) {
-        break label95;
+        break label138;
+      }
+      label80:
+      if (!paramBoolean) {
+        break label143;
       }
     }
-    label95:
-    for (int i = 1;; i = 0)
+    label138:
+    label143:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
       return;
-      NotifyPushSettingActivity.a(this.a).setVisibility(8);
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.a(), "LED_light", 0);
       break;
+      i = 0;
+      break label80;
     }
   }
 }

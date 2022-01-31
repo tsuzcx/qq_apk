@@ -1,37 +1,24 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.graphics.Color;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.io.UnsupportedEncodingException;
 
-public class akz
-  implements TextWatcher
+class akz
+  implements Runnable
 {
-  public akz(EditInfoActivity paramEditInfoActivity) {}
+  akz(akx paramakx, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
+    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Akx.a.c)
     {
-      this.a.b = ("0/" + this.a.c);
-      this.a.a.post(new ala(this));
+      this.jdField_a_of_type_Akx.a.a.setText("内容超出!" + this.jdField_a_of_type_Akx.a.b);
+      this.jdField_a_of_type_Akx.a.a.setTextColor(-65536);
+      EditInfoActivity.c(this.jdField_a_of_type_Akx.a, false);
       return;
     }
-    try
-    {
-      paramInt1 = paramCharSequence.toString().getBytes("utf-8").length;
-      this.a.b = (paramInt1 + "/" + this.a.c);
-      this.a.a.post(new alb(this, paramInt1));
-      return;
-    }
-    catch (UnsupportedEncodingException paramCharSequence)
-    {
-      paramCharSequence.printStackTrace();
-    }
+    this.jdField_a_of_type_Akx.a.a.setText(this.jdField_a_of_type_Akx.a.b);
+    this.jdField_a_of_type_Akx.a.a.setTextColor(Color.rgb(119, 119, 119));
+    EditInfoActivity.d(this.jdField_a_of_type_Akx.a, true);
   }
 }
 

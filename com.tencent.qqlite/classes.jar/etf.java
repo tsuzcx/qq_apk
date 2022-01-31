@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.utils.DBUtils;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class etf
+public final class etf
+  implements MediaPlayer.OnCompletionListener
 {
-  public static DBUtils a = new DBUtils(null);
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.release();
+    com.tencent.mobileqq.utils.AudioUtil.a = null;
+  }
 }
 
 

@@ -1,28 +1,16 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.ControlPolicyUtil;
 import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 
 public class ffl
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  public ffl(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ffl(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
-  public void a()
+  public void run()
   {
-    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
-    ThreadManager.b().post(new ffn(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.b().post(new ffm(this, paramArrayOfByte, paramString));
+    StaticAnalyz.a("100", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    ControlPolicyUtil.a();
   }
 }
 

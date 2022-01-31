@@ -17,10 +17,10 @@ public class OldApplication
     BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.a();
     SoLoadUtilNew.setReport(new SoLoadReportImpl());
     TimeFormatterUtils.a();
-    BaseApplicationImpl.appnewmsgicon = 2130838150;
-    BaseApplicationImpl.qqlaunchicon = 2130838052;
+    BaseApplicationImpl.appnewmsgicon = 2130838144;
+    BaseApplicationImpl.qqlaunchicon = 2130838046;
     BaseApplicationImpl.defaultNotifSoundResourceId = 2131165185;
-    BaseApplicationImpl.devlockQuickloginIcon = 2130838527;
+    BaseApplicationImpl.devlockQuickloginIcon = 2130838504;
     mqq.app.MainService.isDebugVersion = false;
     if (BaseApplicationImpl.h == 1)
     {

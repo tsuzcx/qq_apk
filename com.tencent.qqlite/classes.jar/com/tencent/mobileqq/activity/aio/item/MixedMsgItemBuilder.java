@@ -13,8 +13,8 @@ import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
+import bvw;
 import bvx;
-import bvy;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
@@ -58,9 +58,9 @@ public class MixedMsgItemBuilder
   implements FileTransferManager.Callback
 {
   private static final String b = MixedMsgItemBuilder.class.getSimpleName();
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bvx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bvw(this);
   private MixedImageOnclickListener jdField_a_of_type_ComTencentMobileqqActivityAioMixedImageOnclickListener = new MixedImageOnclickListener();
-  private AnimationTextView.OnDoubleClick jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new bvy(this);
+  private AnimationTextView.OnDoubleClick jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new bvx(this);
   
   public MixedMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -230,10 +230,10 @@ public class MixedMsgItemBuilder
       paramList.setFocusable(false);
       paramList.setClickable(true);
       paramList.setMinimumHeight(AIOUtils.a(44.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramList.setPadding(2131492966, 2131492964, 2131492967, 2131492965);
+      paramList.setPadding(2131492962, 2131492960, 2131492963, 2131492961);
       paramMixedMsgLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
       paramMixedMsgLinearLayout.addRule(1, 2131296453);
-      paramMixedMsgLinearLayout.addRule(3, 2131296764);
+      paramMixedMsgLinearLayout.addRule(3, 2131296760);
       paramMixedMsgLinearLayout.leftMargin = AIOUtils.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramMixedMsgLinearLayout.rightMargin = AIOUtils.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramList.setLayoutParams(paramMixedMsgLinearLayout);
@@ -312,10 +312,10 @@ public class MixedMsgItemBuilder
     {
     default: 
       return;
-    case 2131298983: 
+    case 2131298932: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
-    case 2131298988: 
+    case 2131298937: 
       ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(MessageForMixedMsg.getTextFromMixedMsg(paramChatMessage));
       return;
     case 2131296652: 
@@ -454,22 +454,22 @@ public class MixedMsgItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131427481);
+        paramViewHolder = paramView.getColorStateList(2131427476);
         if (!paramChatMessage.isSend()) {
           break label79;
         }
       }
       label79:
-      for (paramView = paramView.getColorStateList(2131427480);; paramView = paramView.getColorStateList(2131427479))
+      for (paramView = paramView.getColorStateList(2131427475);; paramView = paramView.getColorStateList(2131427474))
       {
         MixedMsgItemBuilder.MixedHolder.a(localMixedHolder).a(paramViewHolder, paramView);
         return;
-        paramViewHolder = paramView.getColorStateList(2131427478);
+        paramViewHolder = paramView.getColorStateList(2131427473);
         break;
       }
     }
     paramViewHolder = ColorStateList.valueOf(-16777216);
-    paramView = paramView.getResources().getColorStateList(2131427479);
+    paramView = paramView.getResources().getColorStateList(2131427474);
     if (paramBubbleInfo.c != 0) {
       paramViewHolder = ColorStateList.valueOf(paramBubbleInfo.c);
     }
@@ -482,10 +482,10 @@ public class MixedMsgItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131362795));
-    paramView.a(2131298988, this.jdField_a_of_type_AndroidContentContext.getString(2131363122));
-    paramView.a(2131296652, this.jdField_a_of_type_AndroidContentContext.getString(2131363568));
-    paramView.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131362658));
+    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131362799));
+    paramView.a(2131298937, this.jdField_a_of_type_AndroidContentContext.getString(2131363125));
+    paramView.a(2131296652, this.jdField_a_of_type_AndroidContentContext.getString(2131363562));
+    paramView.a(2131296656, this.jdField_a_of_type_AndroidContentContext.getString(2131362666));
     a(paramView);
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     return paramView.a();

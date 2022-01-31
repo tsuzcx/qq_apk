@@ -1,24 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.QQSetting;
-import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class bei
-  implements View.OnClickListener
+  implements IIconListener
 {
   public bei(QQSetting paramQQSetting) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (QQSetting.a(this.a) == null) {}
-    while (QQSetting.a(this.a).a()) {
-      return;
+    if ((QQSetting.d(this.a)) && (paramBitmap != null) && (QQSetting.a(this.a).a().b == paramInt1) && (paramInt2 == 201)) {
+      this.a.n();
     }
-    paramView = new Intent(this.a.a(), EditActivity.class);
-    paramView.putExtra("k_source", 0);
-    this.a.a(paramView);
   }
 }
 

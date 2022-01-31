@@ -53,8 +53,8 @@ public abstract class AbstractChatItemBuilder
         ((TextView)localObject).setGravity(17);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.gravity = 1;
-        localLayoutParams.topMargin = localContext.getResources().getDimensionPixelOffset(2131492974);
-        localLayoutParams.bottomMargin = localContext.getResources().getDimensionPixelOffset(2131492975);
+        localLayoutParams.topMargin = localContext.getResources().getDimensionPixelOffset(2131492970);
+        localLayoutParams.bottomMargin = localContext.getResources().getDimensionPixelOffset(2131492971);
         ((ViewGroup)paramViewGroup).addView((View)localObject, 0, localLayoutParams);
         paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
         ((TextView)localObject).setTag(Long.valueOf(0L));

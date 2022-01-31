@@ -70,12 +70,12 @@ public class VasWebviewUtil
   {
     if (!Utils.e())
     {
-      Toast.makeText(paramContext, paramContext.getString(2131363510), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131363511), 0).show();
       return false;
     }
     if (Utils.b() < 5242880L)
     {
-      Toast.makeText(paramContext, paramContext.getString(2131363511), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131363512), 0).show();
       return false;
     }
     return true;

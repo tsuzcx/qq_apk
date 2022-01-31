@@ -5,11 +5,11 @@ import com.tencent.mobileqq.widget.QQToast;
 public final class alo
   implements Runnable
 {
-  public alo(Context paramContext) {}
+  public alo(Context paramContext, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131363406), 0).b(this.a.getResources().getDimensionPixelSize(2131492887));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131492887));
   }
 }
 

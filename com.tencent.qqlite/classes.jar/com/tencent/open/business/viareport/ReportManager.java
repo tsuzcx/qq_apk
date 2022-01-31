@@ -9,8 +9,8 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.MobileInfoUtil;
-import fdk;
-import fdl;
+import fdp;
+import fdq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TimeZone;
@@ -91,7 +91,7 @@ public class ReportManager
   {
     String str = String.valueOf(CommonDataAdapter.a().a());
     if (a(str)) {
-      ThreadManager.a(new fdl(this, str));
+      ThreadManager.a(new fdq(this, str));
     }
   }
   
@@ -145,7 +145,7 @@ public class ReportManager
   
   public void a(String paramString, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, boolean paramBoolean)
   {
-    ThreadManager.a(new fdk(this, paramBoolean, paramBatchReportInfo, paramBundle, paramString));
+    ThreadManager.a(new fdp(this, paramBoolean, paramBatchReportInfo, paramBundle, paramString));
   }
   
   /* Error */

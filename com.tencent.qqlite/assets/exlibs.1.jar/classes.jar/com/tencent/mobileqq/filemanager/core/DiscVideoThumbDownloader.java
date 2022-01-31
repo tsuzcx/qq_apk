@@ -7,7 +7,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.QLog;
-import dng;
+import dnm;
 
 public class DiscVideoThumbDownloader
   extends BaseThumbDownloader
@@ -18,7 +18,7 @@ public class DiscVideoThumbDownloader
   public DiscVideoThumbDownloader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dng(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dnm(this);
     paramQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

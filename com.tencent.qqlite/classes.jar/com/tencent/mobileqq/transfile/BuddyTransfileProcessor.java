@@ -26,8 +26,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import egh;
-import egi;
+import egm;
+import egn;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -59,7 +59,7 @@ public class BuddyTransfileProcessor
   private String X;
   private String Y;
   long jdField_a_of_type_Long = -1L;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new egh(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new egm(this);
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   public boolean a;
   int aG = 0;
@@ -782,7 +782,7 @@ public class BuddyTransfileProcessor
         return;
       }
     } while ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new egi(this, str, paramShort, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new egn(this, str, paramShort, paramBoolean));
   }
   
   public void a(boolean paramBoolean)

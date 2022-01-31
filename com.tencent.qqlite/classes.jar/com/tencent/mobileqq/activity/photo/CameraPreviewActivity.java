@@ -12,13 +12,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import cig;
-import cih;
-import cii;
-import cij;
-import cik;
-import cil;
 import cim;
+import cin;
+import cio;
+import cip;
+import ciq;
+import cir;
+import cis;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -34,7 +34,7 @@ public class CameraPreviewActivity
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private cim jdField_a_of_type_Cim;
+  private cis jdField_a_of_type_Cis;
   public QQCustomDialog a;
   private Gallery jdField_a_of_type_ComTencentWidgetGallery;
   String jdField_a_of_type_JavaLangString = null;
@@ -49,20 +49,20 @@ public class CameraPreviewActivity
     String str2;
     if (paramInt == 6)
     {
-      str1 = getString(2131363009);
-      str2 = getString(2131363010);
+      str1 = getString(2131363013);
+      str2 = getString(2131363014);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new cij(this), null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new cik(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new cil(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new cip(this), null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new ciq(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new cir(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (paramInt == 7)
       {
-        str1 = getString(2131363005);
-        str2 = getString(2131363006);
+        str1 = getString(2131363009);
+        str2 = getString(2131363010);
       }
       else
       {
@@ -109,10 +109,10 @@ public class CameraPreviewActivity
   private void d()
   {
     this.jdField_a_of_type_ComTencentWidgetGallery = new Gallery(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131492924));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131492920));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery, -1, -1);
-    this.jdField_a_of_type_Cim = new cim(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Cim);
+    this.jdField_a_of_type_Cis = new cis(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Cis);
   }
   
   protected boolean b()
@@ -160,16 +160,16 @@ public class CameraPreviewActivity
     this.jdField_b_of_type_Int = getResources().getDisplayMetrics().heightPixels;
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
     if (this.jdField_a_of_type_Boolean) {
-      setRightButton(2131364054, new cig(this));
+      setRightButton(2131364041, new cim(this));
     }
-    setTitle(2131363435);
-    setLeftButton(2131363866, null);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297430);
+    setTitle(2131363438);
+    setLeftButton(2131363856, null);
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297426);
     if (this.jdField_a_of_type_JavaLangString != null) {
       paramBundle.setText(this.jdField_a_of_type_JavaLangString);
     }
-    paramBundle.setOnClickListener(new cih(this));
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297429).setOnClickListener(new cii(this));
+    paramBundle.setOnClickListener(new cin(this));
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131297425).setOnClickListener(new cio(this));
   }
 }
 
