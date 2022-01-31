@@ -1,14 +1,20 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.i;
 
-final class hd
-  extends Handler
+class hd
+  implements View.OnClickListener
 {
-  hd(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hd(FaceRecognitionComfirmActivity paramFaceRecognitionComfirmActivity) {}
   
-  public final void handleMessage(Message paramMessage) {}
+  public void onClick(View paramView)
+  {
+    i.b(FaceRecognitionComfirmActivity.access$200(this.a));
+    this.a.setResult(10);
+    this.a.finish();
+  }
 }
 
 

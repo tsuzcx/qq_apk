@@ -1,17 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class un
-  extends BroadcastReceiver
+class un
+  implements DialogInterface.OnClickListener
 {
-  un(RealNameActivity paramRealNameActivity) {}
+  un(ui paramui) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramIntent.getAction().equals("com.tencent.token.realname.AUDIT_INTERVAL4");
+    cw.a().a(RealNameFindActivity.access$1000(this.a.a));
   }
 }
 

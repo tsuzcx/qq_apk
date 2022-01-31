@@ -1,30 +1,72 @@
 package com.tencent.token;
 
-import android.media.SoundPool;
-import android.os.AsyncTask;
-import java.util.HashMap;
+import com.tencent.halley.common.j;
+import com.tencent.halley.downloader.c.d.a;
+import com.tencent.halley.downloader.c.d.a.a;
 
-final class aj
-  extends AsyncTask
+public final class aj
 {
-  aj(ai paramai) {}
+  public boolean a;
+  public String b = "";
+  public long c;
+  public long d;
+  public int e;
+  public String f = "";
+  public String g = "";
+  public long h = -1L;
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public int n = -1;
+  public int o = -1;
+  public String p = "";
+  public long q;
+  public String r = "";
+  public String s = "";
+  private int t;
+  private int u;
+  private int v;
   
-  private String a()
+  public aj(int paramInt, a parama)
   {
-    try
+    this.t = paramInt;
+    this.u = parama.c;
+    this.v = parama.b.ordinal();
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(this.t);
+    localStringBuilder1.append(",").append(this.u);
+    localStringBuilder1.append(",").append(this.v);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(",");
+    if (this.a) {}
+    for (int i1 = 1;; i1 = 0)
     {
-      Integer localInteger = (Integer)ai.a(this.a).get(Integer.valueOf(11));
-      if (localInteger == null) {
-        return null;
-      }
-      int i = this.a.a(localInteger.intValue());
-      Thread.sleep(600L);
-      ai.b(this.a).stop(i);
-      ai.c(this.a);
-      return null;
+      localStringBuilder2.append(i1);
+      localStringBuilder1.append(",").append(j.b(this.b));
+      localStringBuilder1.append(",").append(this.c);
+      localStringBuilder1.append(",").append(this.d);
+      localStringBuilder1.append(",").append(this.e);
+      localStringBuilder1.append(",").append(j.b(this.f));
+      localStringBuilder1.append(",").append(this.g);
+      localStringBuilder1.append(",").append(this.h);
+      localStringBuilder1.append(",").append(j.b(this.i));
+      localStringBuilder1.append(",").append(this.j);
+      localStringBuilder1.append(",").append(j.b("[" + this.k + "]"));
+      localStringBuilder1.append(",").append(j.b(this.l));
+      localStringBuilder1.append(",").append(j.b("[" + this.m + "]"));
+      localStringBuilder1.append(",").append(this.n);
+      localStringBuilder1.append(",").append(this.o);
+      localStringBuilder1.append(",").append(j.b(this.p));
+      localStringBuilder1.append(",").append(this.q);
+      localStringBuilder1.append(",").append(this.r);
+      localStringBuilder1.append(",").append(this.s);
+      return localStringBuilder1.toString();
     }
-    catch (Exception localException) {}
-    return null;
   }
 }
 

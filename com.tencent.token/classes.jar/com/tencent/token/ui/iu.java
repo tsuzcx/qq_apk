@@ -1,25 +1,26 @@
 package com.tencent.token.ui;
 
-import android.widget.TextView;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class iu
-  implements qe
+class iu
+  implements Animation.AnimationListener
 {
-  iu(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
+  iu(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void a(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FaceRecognitionDefaultActivity.access$002(this.a, paramBoolean);
-    e.a("open_switch" + FaceRecognitionDefaultActivity.access$000(this.a));
-    if (paramBoolean)
-    {
-      FaceRecognitionDefaultActivity.access$200(this.a).setText(2131362380);
-      FaceRecognitionDefaultActivity.access$200(this.a).setTextAppearance(this.a, 2131427368);
-      return;
-    }
-    FaceRecognitionDefaultActivity.access$200(this.a).setText(2131362381);
-    FaceRecognitionDefaultActivity.access$200(this.a).setTextAppearance(this.a, 2131427367);
+    FaceStartVryCameraActivity.access$2700(this.a).setVisibility(8);
+    FaceStartVryCameraActivity.access$2300(this.a).setVisibility(8);
+    FaceStartVryCameraActivity.access$300(this.a).a(true, false, 0, 0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    FaceStartVryCameraActivity.access$300(this.a).setStop(true);
   }
 }
 

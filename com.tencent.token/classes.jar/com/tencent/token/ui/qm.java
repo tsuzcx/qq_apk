@@ -2,20 +2,17 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
+import com.tencent.token.global.h;
 
-final class qm
+class qm
   implements View.OnClickListener
 {
-  qm(MyMbSubPageActivity paramMyMbSubPageActivity) {}
+  qm(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if ((Integer)paramView.getTag() == null) {
-      return;
-    }
-    af.a().d(0L, MyMbSubPageActivity.access$600(this.a));
-    this.a.showUserDialog(12);
+    h.a("interval: " + NetActiveVryMobileNoSmsActivity.access$600(this.a) + "  count: " + NetActiveVryMobileNoSmsActivity.access$700(this.a));
+    NetActiveVryMobileNoSmsActivity.access$500(this.a, false, false);
   }
 }
 

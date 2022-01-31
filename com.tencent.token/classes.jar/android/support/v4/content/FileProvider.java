@@ -9,18 +9,16 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
-import android.net.Uri.Builder;
+import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
-import android.text.TextUtils;
+import android.support.annotation.GuardedBy;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.webkit.MimeTypeMap;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class FileProvider
@@ -33,10 +31,14 @@ public class FileProvider
   private static final String META_DATA_FILE_PROVIDER_PATHS = "android.support.FILE_PROVIDER_PATHS";
   private static final String TAG_CACHE_PATH = "cache-path";
   private static final String TAG_EXTERNAL = "external-path";
+  private static final String TAG_EXTERNAL_CACHE = "external-cache-path";
+  private static final String TAG_EXTERNAL_FILES = "external-files-path";
+  private static final String TAG_EXTERNAL_MEDIA = "external-media-path";
   private static final String TAG_FILES_PATH = "files-path";
   private static final String TAG_ROOT_PATH = "root-path";
-  private static HashMap<String, PathStrategy> sCache = new HashMap();
-  private PathStrategy mStrategy;
+  @GuardedBy("sCache")
+  private static HashMap sCache = new HashMap();
+  private FileProvider.PathStrategy mStrategy;
   
   private static File buildPath(File paramFile, String... paramVarArgs)
   {
@@ -73,12 +75,12 @@ public class FileProvider
     return arrayOfString;
   }
   
-  private static PathStrategy getPathStrategy(Context paramContext, String paramString)
+  private static FileProvider.PathStrategy getPathStrategy(Context paramContext, String paramString)
   {
-    PathStrategy localPathStrategy1;
+    FileProvider.PathStrategy localPathStrategy1;
     synchronized (sCache)
     {
-      PathStrategy localPathStrategy2 = (PathStrategy)sCache.get(paramString);
+      FileProvider.PathStrategy localPathStrategy2 = (FileProvider.PathStrategy)sCache.get(paramString);
       localPathStrategy1 = localPathStrategy2;
       if (localPathStrategy2 != null) {}
     }
@@ -100,7 +102,7 @@ public class FileProvider
     }
   }
   
-  public static Uri getUriForFile(Context paramContext, String paramString, File paramFile)
+  public static Uri getUriForFile(@NonNull Context paramContext, @NonNull String paramString, @NonNull File paramFile)
   {
     return getPathStrategy(paramContext, paramString).getUriForFile(paramFile);
   }
@@ -125,51 +127,83 @@ public class FileProvider
     throw new IllegalArgumentException("Invalid mode: " + paramString);
   }
   
-  private static PathStrategy parsePathStrategy(Context paramContext, String paramString)
-    throws IOException, XmlPullParserException
+  private static FileProvider.PathStrategy parsePathStrategy(Context paramContext, String paramString)
   {
-    SimplePathStrategy localSimplePathStrategy = new SimplePathStrategy(paramString);
+    FileProvider.SimplePathStrategy localSimplePathStrategy = new FileProvider.SimplePathStrategy(paramString);
     XmlResourceParser localXmlResourceParser = paramContext.getPackageManager().resolveContentProvider(paramString, 128).loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
     if (localXmlResourceParser == null) {
       throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
     }
-    label226:
+    label277:
     for (;;)
     {
       int i = localXmlResourceParser.next();
-      if (i == 1) {
-        break;
-      }
-      if (i == 2)
+      String str1;
+      String str2;
+      if (i != 1)
       {
-        String str2 = localXmlResourceParser.getName();
-        String str1 = localXmlResourceParser.getAttributeValue(null, "name");
-        String str3 = localXmlResourceParser.getAttributeValue(null, "path");
-        paramString = null;
-        if ("root-path".equals(str2)) {
-          paramString = buildPath(DEVICE_ROOT, new String[] { str3 });
+        if (i != 2) {
+          continue;
         }
-        for (;;)
+        paramString = localXmlResourceParser.getName();
+        str1 = localXmlResourceParser.getAttributeValue(null, "name");
+        str2 = localXmlResourceParser.getAttributeValue(null, "path");
+        if ("root-path".equals(paramString)) {
+          paramString = DEVICE_ROOT;
+        }
+      }
+      for (;;)
+      {
+        if (paramString == null) {
+          break label277;
+        }
+        localSimplePathStrategy.addRoot(str1, buildPath(paramString, new String[] { str2 }));
+        break;
+        if ("files-path".equals(paramString))
         {
-          if (paramString == null) {
-            break label226;
+          paramString = paramContext.getFilesDir();
+        }
+        else if ("cache-path".equals(paramString))
+        {
+          paramString = paramContext.getCacheDir();
+        }
+        else if ("external-path".equals(paramString))
+        {
+          paramString = Environment.getExternalStorageDirectory();
+        }
+        else
+        {
+          if ("external-files-path".equals(paramString))
+          {
+            paramString = ContextCompat.getExternalFilesDirs(paramContext, null);
+            if (paramString.length > 0) {
+              paramString = paramString[0];
+            }
           }
-          localSimplePathStrategy.addRoot(str1, paramString);
-          break;
-          if ("files-path".equals(str2)) {
-            paramString = buildPath(paramContext.getFilesDir(), new String[] { str3 });
-          } else if ("cache-path".equals(str2)) {
-            paramString = buildPath(paramContext.getCacheDir(), new String[] { str3 });
-          } else if ("external-path".equals(str2)) {
-            paramString = buildPath(Environment.getExternalStorageDirectory(), new String[] { str3 });
+          else if ("external-cache-path".equals(paramString))
+          {
+            paramString = ContextCompat.getExternalCacheDirs(paramContext);
+            if (paramString.length > 0) {
+              paramString = paramString[0];
+            }
           }
+          else if ((Build.VERSION.SDK_INT >= 21) && ("external-media-path".equals(paramString)))
+          {
+            paramString = paramContext.getExternalMediaDirs();
+            if (paramString.length > 0)
+            {
+              paramString = paramString[0];
+              continue;
+              return localSimplePathStrategy;
+            }
+          }
+          paramString = null;
         }
       }
     }
-    return localSimplePathStrategy;
   }
   
-  public void attachInfo(Context paramContext, ProviderInfo paramProviderInfo)
+  public void attachInfo(@NonNull Context paramContext, @NonNull ProviderInfo paramProviderInfo)
   {
     super.attachInfo(paramContext, paramProviderInfo);
     if (paramProviderInfo.exported) {
@@ -181,7 +215,7 @@ public class FileProvider
     this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
   }
   
-  public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
+  public int delete(@NonNull Uri paramUri, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
     if (this.mStrategy.getFileForUri(paramUri).delete()) {
       return 1;
@@ -189,7 +223,7 @@ public class FileProvider
     return 0;
   }
   
-  public String getType(Uri paramUri)
+  public String getType(@NonNull Uri paramUri)
   {
     paramUri = this.mStrategy.getFileForUri(paramUri);
     int i = paramUri.getName().lastIndexOf('.');
@@ -204,7 +238,7 @@ public class FileProvider
     return "application/octet-stream";
   }
   
-  public Uri insert(Uri paramUri, ContentValues paramContentValues)
+  public Uri insert(@NonNull Uri paramUri, ContentValues paramContentValues)
   {
     throw new UnsupportedOperationException("No external inserts");
   }
@@ -214,13 +248,12 @@ public class FileProvider
     return true;
   }
   
-  public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
-    throws FileNotFoundException
+  public ParcelFileDescriptor openFile(@NonNull Uri paramUri, @NonNull String paramString)
   {
     return ParcelFileDescriptor.open(this.mStrategy.getFileForUri(paramUri), modeToMode(paramString));
   }
   
-  public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
+  public Cursor query(@NonNull Uri paramUri, @Nullable String[] paramArrayOfString1, @Nullable String paramString1, @Nullable String[] paramArrayOfString2, @Nullable String paramString2)
   {
     paramString1 = this.mStrategy.getFileForUri(paramUri);
     paramUri = paramArrayOfString1;
@@ -264,105 +297,9 @@ public class FileProvider
     }
   }
   
-  public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
+  public int update(@NonNull Uri paramUri, ContentValues paramContentValues, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
     throw new UnsupportedOperationException("No external updates");
-  }
-  
-  static abstract interface PathStrategy
-  {
-    public abstract File getFileForUri(Uri paramUri);
-    
-    public abstract Uri getUriForFile(File paramFile);
-  }
-  
-  static class SimplePathStrategy
-    implements FileProvider.PathStrategy
-  {
-    private final String mAuthority;
-    private final HashMap<String, File> mRoots = new HashMap();
-    
-    public SimplePathStrategy(String paramString)
-    {
-      this.mAuthority = paramString;
-    }
-    
-    public void addRoot(String paramString, File paramFile)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        throw new IllegalArgumentException("Name must not be empty");
-      }
-      try
-      {
-        File localFile = paramFile.getCanonicalFile();
-        this.mRoots.put(paramString, localFile);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile, paramString);
-      }
-    }
-    
-    public File getFileForUri(Uri paramUri)
-    {
-      Object localObject2 = paramUri.getEncodedPath();
-      int i = ((String)localObject2).indexOf('/', 1);
-      Object localObject1 = Uri.decode(((String)localObject2).substring(1, i));
-      localObject2 = Uri.decode(((String)localObject2).substring(i + 1));
-      localObject1 = (File)this.mRoots.get(localObject1);
-      if (localObject1 == null) {
-        throw new IllegalArgumentException("Unable to find configured root for " + paramUri);
-      }
-      paramUri = new File((File)localObject1, (String)localObject2);
-      try
-      {
-        localObject2 = paramUri.getCanonicalFile();
-        if (!((File)localObject2).getPath().startsWith(((File)localObject1).getPath())) {
-          throw new SecurityException("Resolved path jumped beyond configured root");
-        }
-      }
-      catch (IOException localIOException)
-      {
-        throw new IllegalArgumentException("Failed to resolve canonical path for " + paramUri);
-      }
-      return localObject2;
-    }
-    
-    public Uri getUriForFile(File paramFile)
-    {
-      String str2;
-      try
-      {
-        str2 = paramFile.getCanonicalPath();
-        paramFile = null;
-        Iterator localIterator = this.mRoots.entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          String str3 = ((File)localEntry.getValue()).getPath();
-          if ((str2.startsWith(str3)) && ((paramFile == null) || (str3.length() > ((File)paramFile.getValue()).getPath().length()))) {
-            paramFile = localEntry;
-          }
-        }
-        if (paramFile != null) {
-          break label156;
-        }
-      }
-      catch (IOException localIOException)
-      {
-        throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile);
-      }
-      throw new IllegalArgumentException("Failed to find configured root that contains " + str2);
-      label156:
-      String str1 = ((File)paramFile.getValue()).getPath();
-      if (str1.endsWith("/")) {}
-      for (str1 = str2.substring(str1.length());; str1 = str2.substring(str1.length() + 1))
-      {
-        paramFile = Uri.encode((String)paramFile.getKey()) + '/' + Uri.encode(str1, "/");
-        return new Uri.Builder().scheme("content").authority(this.mAuthority).encodedPath(paramFile).build();
-      }
-    }
   }
 }
 

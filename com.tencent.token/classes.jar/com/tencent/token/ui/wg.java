@@ -1,14 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-final class wg
-  implements DialogInterface.OnClickListener
+class wg
+  implements Runnable
 {
-  wg(RealNameSmsContentTipActivity paramRealNameSmsContentTipActivity) {}
+  wg(RealNameStep0VerifyMobileDownActivity paramRealNameStep0VerifyMobileDownActivity, String paramString) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    Message localMessage = new Message();
+    localMessage.what = 100;
+    RealNameStep0VerifyMobileDownActivity.access$200(this.b).sendMessage(localMessage);
+    RealNameStep0VerifyMobileDownActivity.access$1400(this.b, this.a);
+  }
 }
 
 

@@ -1,29 +1,17 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class lm
-  implements View.OnClickListener
+class lm
+  implements DialogInterface.OnClickListener
 {
-  lm(GetOtherBarcodeActivity paramGetOtherBarcodeActivity) {}
+  lm(ll paramll) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = GetOtherBarcodeActivity.access$000(this.a).getText().toString();
-    QQUser localQQUser = ax.a().e();
-    if ((localQQUser != null) && (paramView.contains("qq.com")))
-    {
-      x.a(RqdApplication.i()).a("" + localQQUser.mRealUin, GetOtherBarcodeActivity.access$100(this.a));
-      return;
-    }
-    s.a(this.a, paramView);
+    this.a.a.setResult(0);
+    this.a.a.finish();
   }
 }
 

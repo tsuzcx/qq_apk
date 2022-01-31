@@ -1,28 +1,51 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import com.tencent.token.ui.base.co;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.token.ch;
+import com.tencent.token.ui.base.FaceView;
 
-final class gw
-  implements DialogInterface.OnClickListener
+class gw
+  implements View.OnClickListener
 {
-  gw(fz paramfz) {}
+  gw(FaceRecognitionCameraPreview paramFaceRecognitionCameraPreview) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    FaceRecognitionCameraActivityOld.access$1700(this.a.a).b();
-    FaceRecognitionCameraActivityOld.access$1100(this.a.a).removeMessages(13);
-    this.a.a.setContentView(2130903089);
-    this.a.a.hideTitle();
-    this.a.a.findViewById(2131296572).setOnClickListener(new gx(this));
-    FaceRecognitionCameraActivityOld.access$1900(this.a.a);
-    if (FaceRecognitionCameraActivityOld.access$1000(this.a.a) != null) {
-      FaceRecognitionCameraActivityOld.access$1000(this.a.a).a(this.a.a, FaceRecognitionCameraActivityOld.access$100(this.a.a), FaceRecognitionCameraActivityOld.access$1100(this.a.a));
+    for (;;)
+    {
+      try
+      {
+        bool = FaceRecognitionCameraPreview.b(this.a).getBrightMode();
+        if (!bool) {
+          continue;
+        }
+        FaceRecognitionCameraPreview.d(this.a).setImageDrawable(FaceRecognitionCameraPreview.c(this.a).getResources().getDrawable(2130837698));
+        paramView = FaceRecognitionCameraPreview.b(this.a);
+        if (bool) {
+          continue;
+        }
+        bool = true;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+        boolean bool = false;
+        continue;
+      }
+      catch (Error paramView)
+      {
+        paramView.printStackTrace();
+      }
+      paramView.setBrightMode(bool);
+      return;
+      FaceRecognitionCameraPreview.d(this.a).setImageDrawable(FaceRecognitionCameraPreview.c(this.a).getResources().getDrawable(2130837699));
+      ch.a().a(System.currentTimeMillis(), 201);
     }
-    FaceRecognitionCameraActivityOld.access$402(this.a.a, 0);
   }
 }
 

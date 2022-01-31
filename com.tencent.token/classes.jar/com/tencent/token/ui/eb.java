@@ -1,30 +1,29 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.TitleOptionMenu;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.token.global.h;
 
-final class eb
-  implements View.OnClickListener
+class eb
+  implements DialogInterface.OnClickListener
 {
-  eb(FacePKActivity paramFacePKActivity) {}
+  eb(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.a("FacePKActivityOnclick");
-    if (this.a.mTitleMenu.getVisibility() == 0)
+    try
     {
-      this.a.mTitleMenu.a();
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=com.tencent.mm"));
+      this.a.startActivity(paramDialogInterface);
       return;
     }
-    this.a.mTitleMenu.a(new ec(this));
-    paramView = this.a.mTitleMenu;
-    Object localObject = paramView.getTag();
-    if (localObject != null) {
-      ((View)localObject).setSelected(true);
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+      h.b(paramDialogInterface.toString());
     }
-    paramView.setVisibility(0);
   }
 }
 

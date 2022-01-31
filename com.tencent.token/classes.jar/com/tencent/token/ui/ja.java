@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.token.ui.base.FaceView;
+import android.view.View;
+import android.widget.ImageView;
 
-final class ja
-  implements DialogInterface.OnCancelListener
+class ja
+  implements Runnable
 {
-  ja(iv paramiv) {}
+  ja(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    FaceRegCameraActivity.access$400(this.a.a).a(true, false, 0, FaceRegCameraActivity.access$300(this.a.a));
-    FaceRegCameraActivity.access$500(this.a.a).c(0);
+    FaceStartVryCameraActivity.access$2002(this.a, FaceStartVryCameraActivity.access$2100(this.a).getHeight());
+    FaceStartVryCameraActivity.access$2202(this.a, FaceStartVryCameraActivity.access$2300(this.a).getHeight() - FaceStartVryCameraActivity.access$2400(this.a).getBottom() - (FaceStartVryCameraActivity.access$2300(this.a).getHeight() - FaceStartVryCameraActivity.access$2500(this.a).getBottom()));
+    FaceStartVryCameraActivity.access$2602(this.a, FaceStartVryCameraActivity.access$2700(this.a).getHeight());
   }
 }
 

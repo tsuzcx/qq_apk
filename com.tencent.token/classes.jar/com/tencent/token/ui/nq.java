@@ -3,20 +3,22 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.JLProtectionInfo;
+import com.tencent.token.cg;
+import com.tencent.token.cw;
+import com.tencent.token.global.c;
 
-final class nq
+class nq
   implements View.OnClickListener
 {
-  nq(JianLingActivity paramJianLingActivity) {}
+  nq(no paramno, cg paramcg) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, JLFindItems.class);
-    paramView.putExtra("is_xy", this.a.mInfo.is_xy);
-    paramView.putExtra("detail_max", this.a.mInfo.detail_max);
-    paramView.putExtra("detail_min", this.a.mInfo.detail_min);
-    this.a.startActivity(paramView);
+    this.b.a.showOrangeToast(2131231181, 2130838018);
+    cw.a().a(0L, this.a.e[LoginMsgReportLocationActivity.access$200(this.b.a)], this.a.d[LoginMsgReportLocationActivity.access$200(this.b.a)], 2, LoginMsgReportLocationActivity.access$000(this.b.a), this.b.a.mHandler);
+    this.b.a.finish();
+    paramView = new Intent(c.g(), LoginMsgActivity.class);
+    this.b.a.startActivity(paramView);
   }
 }
 

@@ -19,6 +19,17 @@ public class QQUser
   public long mRealUin;
   public long mUin;
   public String mUinMask;
+  public int verify_sms;
+  
+  public String a()
+  {
+    return this.mUinMask;
+  }
+  
+  public long b()
+  {
+    return this.mRealUin;
+  }
 }
 
 

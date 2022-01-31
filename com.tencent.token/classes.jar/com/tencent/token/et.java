@@ -1,76 +1,149 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import java.util.HashMap;
-import org.json.JSONException;
+import com.tencent.token.core.bean.DeviceInfo;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.h;
+import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class et
-  extends bm
+public class et
 {
-  private long c;
-  private String d;
-  private int e = -1;
+  public h a = new h();
+  public ArrayList b;
+  String c;
+  long d;
   
-  protected final String a()
+  public void a(h paramh)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    str = "?uin=" + this.c + "&aq_base_sid=" + str + "&data=" + this.d;
-    e.c("params: " + str);
-    return b.c() + "/cn/mbtoken3/mbtoken3_report_location" + str;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramfs.c.get("param.loginmsg.reportlocation"));
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
     try
     {
-      this.e = paramJSONObject.getInt("is_priv_ip_user");
-      this.a.a = 0;
+      this.a = paramh;
+      do.a();
+      this.c = do.c;
+      if (do.a().e() != null) {
+        this.d = do.a().e().mUin;
+      }
       return;
     }
-    catch (JSONException paramJSONObject)
+    finally
     {
-      for (;;)
-      {
-        this.e = -1;
-        paramJSONObject.printStackTrace();
-      }
+      paramh = finally;
+      throw paramh;
     }
   }
   
-  protected final void b()
+  public boolean a(JSONArray paramJSONArray)
   {
-    if (!this.b.e)
+    h localh = new h();
+    if (paramJSONArray != null) {}
+    for (;;)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.e;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      int i;
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          i = 0;
+          if (i < paramJSONArray.length())
+          {
+            Object localObject = paramJSONArray.getJSONObject(i);
+            localh.a = ((JSONObject)localObject).getInt("id");
+            localh.b = ((JSONObject)localObject).getString("name");
+            if (((JSONObject)localObject).getInt("value") == 0) {
+              break label267;
+            }
+            bool = true;
+            localh.c = bool;
+            localObject = ((JSONObject)localObject).getJSONArray("list");
+            if (((JSONArray)localObject).length() > 0)
+            {
+              this.b = new ArrayList();
+              int j = 0;
+              if (j >= ((JSONArray)localObject).length()) {
+                break label273;
+              }
+              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+              DeviceInfo localDeviceInfo = new DeviceInfo();
+              localDeviceInfo.dguid = localJSONObject.getString("dguid");
+              localDeviceInfo.dname = localJSONObject.getString("dname");
+              localDeviceInfo.dtype = localJSONObject.getString("dtype");
+              localDeviceInfo.ddes = localJSONObject.getString("ddes");
+              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
+              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
+              localDeviceInfo.dappname = localJSONObject.getString("dappname");
+              this.b.add(localDeviceInfo);
+              j += 1;
+              continue;
+            }
+            this.b = new ArrayList();
+            break label273;
+          }
+        }
+        a(localh);
+        return true;
+      }
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return false;
+      }
+      label267:
+      boolean bool = false;
+      continue;
+      label273:
+      i += 1;
+    }
+  }
+  
+  public boolean a(JSONObject paramJSONObject)
+  {
+    h localh = new h();
+    for (;;)
+    {
+      try
+      {
+        localh.a = paramJSONObject.getInt("id");
+        localh.b = paramJSONObject.getString("name");
+        if (paramJSONObject.getInt("value") != 0)
+        {
+          bool = true;
+          localh.c = bool;
+          paramJSONObject = paramJSONObject.getJSONArray("list");
+          if (paramJSONObject.length() > 0)
+          {
+            this.b = new ArrayList();
+            int i = 0;
+            if (i < paramJSONObject.length())
+            {
+              JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+              DeviceInfo localDeviceInfo = new DeviceInfo();
+              localDeviceInfo.dguid = localJSONObject.getString("dguid");
+              localDeviceInfo.dname = localJSONObject.getString("dname");
+              localDeviceInfo.dtype = localJSONObject.getString("dtype");
+              localDeviceInfo.ddes = localJSONObject.getString("ddes");
+              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
+              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
+              localDeviceInfo.dappname = localJSONObject.getString("dappname");
+              this.b.add(localDeviceInfo);
+              i += 1;
+              continue;
+            }
+          }
+          else
+          {
+            this.b = new ArrayList();
+          }
+          a(localh);
+          return true;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return false;
+      }
+      boolean bool = false;
     }
   }
 }

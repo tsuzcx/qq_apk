@@ -1,25 +1,22 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
-final class cy
-  implements View.OnClickListener
+class cy
+  implements View.OnTouchListener
 {
-  cy(SecondVerifyDialog paramSecondVerifyDialog) {}
+  cy(TitleOptionMenu paramTitleOptionMenu) {}
   
-  public final void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
-    if (SecondVerifyDialog.e(this.a) != null)
+    if ((paramMotionEvent.getAction() == 0) && (TitleOptionMenu.b(this.a).findFocus() == null))
     {
-      paramView = new Message();
-      paramView.what = 1013;
-      paramView.arg1 = SecondVerifyDialog.d(this.a);
-      SecondVerifyDialog.e(this.a).sendMessage(paramView);
+      this.a.b();
+      return true;
     }
+    return false;
   }
 }
 

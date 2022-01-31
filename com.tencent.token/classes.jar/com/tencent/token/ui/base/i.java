@@ -1,8 +1,21 @@
 package com.tencent.token.ui.base;
 
-public abstract interface i
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.token.ui.ModifyQQPwdActivity;
+import com.tencent.token.ui.pg;
+
+class i
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  i(DualMsgShowDialog paramDualMsgShowDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = new Intent(DualMsgShowDialog.b(this.a), ModifyQQPwdActivity.class);
+    pg.a().a(DualMsgShowDialog.b(this.a), paramDialogInterface, pg.b);
+  }
 }
 
 

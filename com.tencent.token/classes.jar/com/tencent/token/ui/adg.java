@@ -1,38 +1,38 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ui.base.dh;
-import com.tencent.token.utils.s;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.token.core.bean.DeviceInfo;
 
-final class adg
-  implements dh
+class adg
+  extends Dialog
 {
-  adg(adf paramadf) {}
+  private DeviceInfo b;
   
-  public final void a(int paramInt)
+  public adg(UtilsMailProtectActivity paramUtilsMailProtectActivity, Context paramContext, int paramInt, DeviceInfo paramDeviceInfo)
   {
-    if (ax.a().e() == null)
-    {
-      if (paramInt == 0)
-      {
-        this.a.a.showNoAccountTipDialog(this.a.a, 13, 0);
-        return;
-      }
-      s.b(this.a.a, this.a.a.getString(2131361988));
-      return;
-    }
-    if (!ax.a().e().mIsBinded)
-    {
-      if (paramInt == 0)
-      {
-        this.a.a.showNoAccountTipDialog(this.a.a, 13, 1);
-        return;
-      }
-      s.b(this.a.a, this.a.a.getString(2131361988));
-      return;
-    }
-    UtilsActivity.access$200(this.a.a, paramInt);
+    super(paramContext, paramInt);
+    this.b = paramDeviceInfo;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    setContentView(2130968634);
+    paramBundle = String.format(this.a.getResources().getString(2131231540), new Object[] { this.b.dname });
+    ((TextView)findViewById(2131558778)).setText(paramBundle);
+    setCanceledOnTouchOutside(true);
+    paramBundle = getWindow();
+    paramBundle.setBackgroundDrawableResource(2130837730);
+    paramBundle.getAttributes().width = -1;
+    paramBundle.setGravity(80);
+    findViewById(2131558779).setOnClickListener(new adh(this));
+    findViewById(2131558780).setOnClickListener(new adi(this));
   }
 }
 

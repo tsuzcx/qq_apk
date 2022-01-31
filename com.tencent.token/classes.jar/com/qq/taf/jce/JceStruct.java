@@ -26,7 +26,9 @@ public abstract class JceStruct
     return false;
   }
   
-  public abstract void display(StringBuilder paramStringBuilder, int paramInt);
+  public void display(StringBuilder paramStringBuilder, int paramInt) {}
+  
+  public void displaySimple(StringBuilder paramStringBuilder, int paramInt) {}
   
   public Object getFieldByName(String paramString)
   {
@@ -47,6 +49,14 @@ public abstract class JceStruct
   public byte[] toByteArray()
   {
     JceOutputStream localJceOutputStream = new JceOutputStream();
+    writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
+  }
+  
+  public byte[] toByteArray(String paramString)
+  {
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding(paramString);
     writeTo(localJceOutputStream);
     return localJceOutputStream.toByteArray();
   }

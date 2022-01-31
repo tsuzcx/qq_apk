@@ -1,22 +1,14 @@
 package com.tencent.token.core.bean;
 
 import java.io.Serializable;
-import org.json.JSONObject;
 
 public class UpgradeDeterminResult$QuesInfoItem
   implements Serializable
 {
   private static final long serialVersionUID = -6303479941324604162L;
-  public String mContent = null;
-  public int mId = 0;
-  public int mType = 0;
-  
-  public UpgradeDeterminResult$QuesInfoItem(UpgradeDeterminResult paramUpgradeDeterminResult, JSONObject paramJSONObject)
-  {
-    this.mId = paramJSONObject.getInt("ques_id");
-    this.mContent = paramJSONObject.getString("ques_content");
-    this.mType = paramJSONObject.getInt("ques_type");
-  }
+  public String mContent;
+  public int mId;
+  public int mType;
 }
 
 

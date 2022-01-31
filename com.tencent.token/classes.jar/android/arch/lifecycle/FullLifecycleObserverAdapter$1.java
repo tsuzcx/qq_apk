@@ -1,0 +1,9 @@
+package android.arch.lifecycle;
+
+class FullLifecycleObserverAdapter$1 {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar
+ * Qualified Name:     android.arch.lifecycle.FullLifecycleObserverAdapter.1
+ * JD-Core Version:    0.7.0.1
+ */

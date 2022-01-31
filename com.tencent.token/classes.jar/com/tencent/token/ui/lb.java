@@ -1,32 +1,38 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.ui.base.SwitchButton;
+import android.os.Message;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 
-final class lb
+class lb
+  extends cb
 {
-  View a;
-  TextView b;
-  ProgressBar c;
-  SwitchButton d;
-  ImageView e;
-  g f;
-  
-  lb(kx paramkx, View paramView, g paramg)
+  lb(HelpActivity paramHelpActivity)
   {
-    this.a = paramView;
-    if (this.a == null) {
+    super(paramHelpActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      HelpActivity.access$100(this.a, HelpActivity.access$000(this.a));
       return;
     }
-    this.f = paramg;
-    this.d = ((SwitchButton)this.a.findViewById(2131297213));
-    this.b = ((TextView)this.a.findViewById(2131297211));
-    this.c = ((ProgressBar)this.a.findViewById(2131297214));
-    this.e = ((ImageView)this.a.findViewById(2131297212));
+    QQUser localQQUser = do.a().e();
+    if (localQQUser != null)
+    {
+      byte[] arrayOfByte = (byte[])paramMessage.obj;
+      if ((paramMessage.arg1 == 0) && (arrayOfByte != null))
+      {
+        HelpActivity.access$002(this.a, "https://ssl.ptlogin2.qq.com/jump?keyindex=19&clientuin=" + localQQUser.mRealUin + "&clientkey=" + w.a(arrayOfByte) + "&u1=" + HelpActivity.access$000(this.a));
+        h.c("skey: url=" + HelpActivity.access$000(this.a));
+      }
+    }
+    HelpActivity.access$100(this.a, HelpActivity.access$000(this.a));
   }
 }
 

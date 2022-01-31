@@ -1,104 +1,59 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import android.widget.ListView;
-import com.tencent.token.ba;
-import com.tencent.token.fk;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.SecondVerifyDialog;
-import com.tencent.token.ui.base.ds;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.cw;
 
-final class adr
-  extends bo
+class adr
+  implements View.OnClickListener
 {
-  adr(UtilsGameLockActivity paramUtilsGameLockActivity)
-  {
-    super(paramUtilsGameLockActivity);
-  }
+  adr(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity, boolean paramBoolean, int paramInt, String paramString) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((this.a == null) || (this.a.isFinishing())) {}
-    int i;
+    if (UtilsMbInfoItemActivity.access$300(this.d) == null) {}
     do
     {
       do
       {
         do
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  switch (paramMessage.what)
-                  {
-                  default: 
-                    return;
-                  case 1010: 
-                  case 1012: 
-                    UtilsGameLockActivity.access$000(this.a).a();
-                  }
-                } while (3 != paramMessage.arg1);
-                UtilsGameLockActivity.access$000(this.a).c();
-                return;
-              } while (3 != paramMessage.arg1);
-              paramMessage = new SecondVerifyDialog(this.a, this.a.mHandler, paramMessage.arg1);
-              paramMessage.setCancelable(true);
-              paramMessage.show();
-              return;
-              UtilsGameLockActivity.access$000(this.a).a();
-            } while (3 != paramMessage.arg1);
-            UtilsGameLockActivity.access$000(this.a).b();
-            return;
-          } while (UtilsGameLockActivity.access$000(this.a) == null);
-          UtilsGameLockActivity.access$000(this.a).notifyDataSetChanged();
           return;
-          paramMessage = (ds)paramMessage.obj;
-        } while ((paramMessage == null) || (UtilsGameLockActivity.access$000(this.a) == null));
-        UtilsGameLockActivity.access$000(this.a).a(paramMessage, true);
-        return;
-        UtilsGameLockActivity.access$102(this.a, false);
-        if (paramMessage.arg1 != 0) {
-          break;
+        } while (!this.a);
+        switch (this.b)
+        {
+        default: 
+          return;
         }
-        this.a.hideTip();
-      } while (UtilsGameLockActivity.access$200(this.a) <= 0);
-      i = ba.a().c.a(UtilsGameLockActivity.access$200(this.a)) - 1;
-      e.b("want find indexID =" + UtilsGameLockActivity.access$200(this.a) + " result=" + i);
-    } while (i <= 0);
-    UtilsGameLockActivity.access$300(this.a).post(new ads(this, i));
-    return;
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    e.c("game lock load failed:" + paramMessage.a + "-" + paramMessage.b);
-    if ((111 == paramMessage.a) || (110 == paramMessage.a) || (103 == paramMessage.a))
-    {
-      this.a.showTip(paramMessage.a, UtilsGameLockActivity.access$400(this.a), UtilsGameLockActivity.access$500(this.a), true);
+      } while (UtilsMbInfoItemActivity.access$300(this.d).mId != 51);
+      paramView = new Intent(this.d, UtilsModSetMobileStep1Activity.class);
+      paramView.putExtra("title", this.d.getResources().getString(2131231428) + UtilsMbInfoItemActivity.access$300(this.d).mName);
+      paramView.putExtra("op_type", 1);
+      paramView.putExtra("position", UtilsMbInfoItemActivity.access$400(this.d));
+      paramView.putExtra("page_id", UtilsMbInfoItemActivity.access$500(this.d));
+      this.d.startActivity(paramView);
       return;
-    }
-    this.a.showTip(paramMessage.a, paramMessage.c, null, false);
+    } while (UtilsMbInfoItemActivity.access$300(this.d).mId != 51);
+    paramView = new Intent(this.d, UtilsModSetMobileStep1Activity.class);
+    paramView.putExtra("title", this.d.getResources().getString(2131231241) + UtilsMbInfoItemActivity.access$300(this.d).mName);
+    paramView.putExtra("op_type", 3);
+    paramView.putExtra("position", UtilsMbInfoItemActivity.access$400(this.d));
+    paramView.putExtra("page_id", UtilsMbInfoItemActivity.access$500(this.d));
+    pg.a().b(this.d, paramView, pg.b);
     return;
-    d locald;
-    if (paramMessage.arg1 == 0)
-    {
-      locald = new d();
-      paramMessage = locald;
-      if (ku.b) {
-        this.a.showOrangeToast(2131362195, 2130837964);
-      }
-    }
-    for (paramMessage = locald;; paramMessage = (d)paramMessage.obj)
-    {
-      ku.b = false;
-      UtilsGameLockActivity.access$000(this.a).a(paramMessage);
-      return;
-    }
+    paramView = this.d;
+    String str = paramView.getResources().getString(2131231565) + this.c + UtilsMbInfoItemActivity.access$300(this.d).mName + "?";
+    ads localads = new ads(this, paramView);
+    adt localadt = new adt(this, paramView);
+    paramView.showUserDialog(2131230843, str, this.d.getResources().getString(2131231526) + this.c, this.d.getResources().getString(2131230886), localads, localadt);
+    return;
+    this.d.gotoVerify(this.d);
+    return;
+    cw.a().i(0L, UtilsMbInfoItemActivity.access$600(this.d));
+    this.d.showProDialog(this.d, 2131230843, 2131231567, null);
   }
 }
 

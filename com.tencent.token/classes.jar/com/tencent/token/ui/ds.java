@@ -1,34 +1,25 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.token.ch;
 
-final class ds
-  implements CompoundButton.OnCheckedChangeListener
+class ds
+  implements DialogInterface.OnClickListener
 {
-  ds(FaceChangePwdIndexActivity paramFaceChangePwdIndexActivity) {}
+  ds(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.a("isChecked" + paramBoolean);
-    e.a("mIsChecked" + FaceChangePwdIndexActivity.access$000(this.a));
-    if (paramBoolean)
-    {
-      this.a.showUserDialog(2131362812, this.a.getResources().getString(2131362813), 2131361804, 2131362697, new dt(this), new du(this), new dv(this, paramBoolean));
-      FaceChangePwdIndexActivity.access$200(this.a).setVisibility(4);
-      FaceChangePwdIndexActivity.access$300(this.a).setVisibility(4);
-      FaceChangePwdIndexActivity.access$400(this.a).setVisibility(4);
-      return;
+    this.a.dismissDialog();
+    ch.a().a(System.currentTimeMillis(), 134);
+    paramDialogInterface = new Intent(this.a, RealNameTakeIDPhotoActivity.class);
+    if ((DetectIDPhotoActivity.access$800(this.a) != null) && (DetectIDPhotoActivity.access$800(this.a).length() > 0)) {
+      paramDialogInterface.putExtra("frontdata", DetectIDPhotoActivity.access$800(this.a));
     }
-    FaceChangePwdIndexActivity.access$200(this.a).setVisibility(0);
-    FaceChangePwdIndexActivity.access$300(this.a).setVisibility(0);
-    FaceChangePwdIndexActivity.access$400(this.a).setVisibility(0);
-    this.a.showProDialog(this.a, 2131361808, 2131362485, null);
-    FaceChangePwdIndexActivity.access$502(this.a, 3);
-    FaceChangePwdIndexActivity.access$600(this.a, true);
+    paramDialogInterface.putExtra("scene", 2);
+    this.a.startActivityForResult(paramDialogInterface, 2);
   }
 }
 

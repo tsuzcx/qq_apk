@@ -1,16 +1,24 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-final class xs
-  implements View.OnClickListener
+class xs
+  implements TextView.OnEditorActionListener
 {
-  xs(xq paramxq) {}
+  xs(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.dismiss();
+    if (paramInt == 6)
+    {
+      if (!RealNameStep1InputNameIdActivity.access$500(this.a)) {
+        RealNameStep1InputNameIdActivity.access$3200(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

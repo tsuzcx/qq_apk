@@ -10,9 +10,8 @@ import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.RealNameStatusResult;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.fn;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
+import com.tencent.token.global.c;
+import com.tencent.token.global.h;
 
 public class CheckMobileAvailableActivity
   extends BaseActivity
@@ -26,24 +25,18 @@ public class CheckMobileAvailableActivity
   public static final int UP_SMS_SCENE_REALNAME_FIND_PSW = 2;
   public static final int UP_SMS_SCENE_SET_MOBILE = 4;
   public static final int UP_SMS_SCENE_UNBIND_APP = 6;
+  public static final int UP_SMS_SCENE_UNITE_VERIFY = 8;
   public static final int UP_SMS_SCENE_VERIFY = 7;
-  boolean canchange_uin;
-  private boolean isShowLockVerify = false;
-  String mBackPath;
-  String mFrontPath;
-  private Handler mHandler = new bw(this);
+  private boolean isFromRecommView = false;
+  private Handler mHandler = new ci(this);
   private boolean mIsRunning = true;
   private boolean mIsTimeTask = false;
-  private fn mMbInfoCache = fn.a();
   private String mMobile;
-  private int mOptype;
   private RealNameStatusResult mRealNameResult;
   private long mRealUin;
   private int mSceneId;
   private String mSmsPort;
-  private int mSourceId;
   private long mTimeConter;
-  private String mTitle;
   private UpgradeDeterminResult mUpDetermin = null;
   private QQUser mUser = null;
   private QQUser mUserToUnbind = null;
@@ -52,9 +45,9 @@ public class CheckMobileAvailableActivity
   
   private String getUrlFromXml()
   {
-    int i = b.a();
-    String str2 = getResources().getString(2131361845);
-    e.b(str2);
+    int i = c.a();
+    String str2 = getResources().getString(2131230810);
+    h.b(str2);
     String str1 = str2;
     switch (i)
     {
@@ -74,16 +67,16 @@ public class CheckMobileAvailableActivity
   
   private void initView()
   {
-    this.mobileMask = ((TextView)findViewById(2131296440));
+    this.mobileMask = ((TextView)findViewById(2131558728));
     if ((this.upSmsSceneId == 0) || (this.upSmsSceneId == 7)) {
-      this.mobileMask.setText(this.mUpDetermin.mMobileMask);
+      this.mobileMask.setText(this.mUpDetermin.b());
     }
     for (;;)
     {
-      Button localButton1 = (Button)findViewById(2131296468);
-      Button localButton2 = (Button)findViewById(2131296469);
-      localButton1.setOnClickListener(new bx(this));
-      localButton2.setOnClickListener(new by(this));
+      Button localButton1 = (Button)findViewById(2131558746);
+      Button localButton2 = (Button)findViewById(2131558747);
+      localButton1.setOnClickListener(new cj(this));
+      localButton2.setOnClickListener(new ck(this));
       return;
       if (this.upSmsSceneId == 5) {
         this.mobileMask.setText(this.mRealNameResult.mMaskMobile);
@@ -95,7 +88,7 @@ public class CheckMobileAvailableActivity
   
   private void showFailDialog(String paramString)
   {
-    showUserDialog(2131361831, paramString, 2131361800, new ca(this));
+    showUserDialog(2131230779, paramString, 2131230897, new cm(this));
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -116,19 +109,20 @@ public class CheckMobileAvailableActivity
     else
     {
       if (this.upSmsSceneId != 5) {
-        break label167;
+        break label180;
       }
       this.mRealNameResult = ((RealNameStatusResult)paramBundle.getSerializableExtra("realname_result"));
       this.mSceneId = paramBundle.getIntExtra("scene_id", 1001);
       this.mMobile = paramBundle.getStringExtra("realname_mobile");
       this.mRealUin = paramBundle.getLongExtra("real_uin", 0L);
+      this.isFromRecommView = getIntent().getBooleanExtra("zzb_recommend_view", false);
     }
-    label167:
+    label180:
     do
     {
       do
       {
-        setContentView(2130903064);
+        setContentView(2130968626);
         initView();
         return;
       } while (this.upSmsSceneId != 6);
@@ -155,7 +149,7 @@ public class CheckMobileAvailableActivity
       if ((this.mIsTimeTask) && (System.currentTimeMillis() - this.mTimeConter > 60000L)) {
         try
         {
-          e.c("removeTimeTask removeTimeTask");
+          h.c("removeTimeTask removeTimeTask");
           removeTimeTask();
           Message localMessage = new Message();
           localMessage.what = 15;
@@ -171,7 +165,7 @@ public class CheckMobileAvailableActivity
   
   public void showProgressDialog()
   {
-    showProDialog(this, 2131362363, 2131361827, new bz(this));
+    showProDialog(this, 2131231657, 2131230804, new cl(this));
   }
   
   public void startTimeTask()

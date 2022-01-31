@@ -1,18 +1,16 @@
 package com.tencent.token.ui;
 
-import android.widget.ListView;
+import android.widget.RelativeLayout;
 
-final class ady
+class ady
   implements Runnable
 {
-  ady(adx paramadx, int paramInt) {}
+  ady(UtilsModSetMobileStep1Activity paramUtilsModSetMobileStep1Activity, RelativeLayout paramRelativeLayout) {}
   
-  public final void run()
+  public void run()
   {
-    UtilsGameProtectActivity.access$200(this.b.a).requestFocusFromTouch();
-    UtilsGameProtectActivity.access$200(this.b.a).setSelection(this.a);
-    UtilsGameProtectActivity.access$200(this.b.a).requestFocus();
-    UtilsGameProtectActivity.access$102(this.b.a, 0);
+    this.a.setVisibility(8);
+    UtilsModSetMobileStep1Activity.access$602(this.b, false);
   }
 }
 

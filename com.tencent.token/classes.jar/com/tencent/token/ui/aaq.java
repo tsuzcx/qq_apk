@@ -1,18 +1,24 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.global.e;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class aaq
-  implements Runnable
+class aaq
+  implements View.OnClickListener
 {
-  aaq(SmsContentTipActivity paramSmsContentTipActivity) {}
+  aaq(StartPwdUpdateInfoActivity paramStartPwdUpdateInfoActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    e.c("send mod set mbmobile");
-    af.a().a(0L, SmsContentTipActivity.access$400(this.a), SmsContentTipActivity.access$500(this.a), SmsContentTipActivity.access$600(this.a), this.a.mHandler);
-    SmsContentTipActivity.access$708(this.a);
+    paramView = new Intent(this.a, StartPwdGestureModifyActivity.class);
+    if (StartPwdUpdateInfoActivity.access$000(this.a) == StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER) {
+      paramView.putExtra(StartPwdUpdateInfoActivity.SOURCE_TO_START_PSW, StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER);
+    }
+    this.a.startActivityForResult(paramView, 258);
+    if (StartPwdUpdateInfoActivity.access$000(this.a) == StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER) {
+      this.a.finish();
+    }
   }
 }
 

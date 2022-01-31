@@ -164,7 +164,7 @@ public class MMPluginAPIImpl
     }
   }
   
-  public boolean sendMsgNotify(String paramString1, String paramString2, int paramInt, String paramString3, Class<?> paramClass)
+  public boolean sendMsgNotify(String paramString1, String paramString2, int paramInt, String paramString3, Class paramClass)
   {
     if (paramClass == null) {
       return false;

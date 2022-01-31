@@ -1,24 +1,20 @@
 package com.tencent.token.ui.base;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.Interpolator;
 
-final class v
-  implements Animation.AnimationListener
+class v
+  implements Interpolator
 {
-  v(u paramu, DualMsgView paramDualMsgView) {}
+  private v(DualMsgView paramDualMsgView) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public float getInterpolation(float paramFloat)
   {
-    this.b.a.setVisibility(8);
-    if (DualMsgView.a(this.b.a) != null) {
-      DualMsgView.a(this.b.a).a();
+    if (paramFloat < 0.3D) {
+      return 0.0F;
     }
+    paramFloat = (paramFloat - 0.3F) / 0.7F;
+    return paramFloat * paramFloat;
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

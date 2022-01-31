@@ -1,9 +1,8 @@
 package com.tencent.token;
 
-public final class m
+public abstract interface m
 {
-  public static final int[] a = { 2130771968 };
-  public static final int[] b = { 2130771969, 2130771970, 2130771971, 2130771972, 2130771973, 2130771974, 2130771975 };
+  public abstract void r();
 }
 
 

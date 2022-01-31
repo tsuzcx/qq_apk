@@ -1,9 +1,33 @@
 package com.tencent.token;
 
-abstract class f
+import tmsdk.common.a;
+
+public class f
 {
-  public byte[] a;
-  public int b;
+  static Object a = new Object();
+  static g b = null;
+  private static boolean c = false;
+  
+  public static g a()
+  {
+    if (b == null) {}
+    synchronized (a)
+    {
+      if (b == null) {
+        b = new g();
+      }
+      return b;
+    }
+  }
+  
+  public static void b()
+  {
+    if (c) {
+      return;
+    }
+    tmsdk.common.c.a.g.a(a.a(), "TccCryptor");
+    c = true;
+  }
 }
 
 

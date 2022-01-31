@@ -8,7 +8,6 @@ public class RealNameQueryResult
 {
   private static final long serialVersionUID = 8007253534094985809L;
   private int is_auth_user;
-  private int is_h5_user;
   private String mask_mobile;
   private String sms_port;
   private String sms_up_code;
@@ -17,17 +16,16 @@ public class RealNameQueryResult
   public RealNameQueryResult(JSONObject paramJSONObject)
   {
     this.is_auth_user = paramJSONObject.getInt("is_auth_user");
-    this.is_h5_user = paramJSONObject.optInt("is_h5_user", 0);
     try
     {
       this.zzb_rebind_type = paramJSONObject.getInt("zzb_rebind_type");
       try
       {
-        label35:
+        label24:
         this.mask_mobile = paramJSONObject.getString("mobile_mask");
         try
         {
-          label45:
+          label34:
           this.sms_port = paramJSONObject.getString("sms_port");
           this.sms_up_code = paramJSONObject.getString("sms_up_code");
           return;
@@ -36,43 +34,38 @@ public class RealNameQueryResult
       }
       catch (Exception localException1)
       {
-        break label45;
+        break label34;
       }
     }
     catch (Exception localException2)
     {
-      break label35;
+      break label24;
     }
   }
   
-  public final int a()
+  public int a()
   {
     return this.is_auth_user;
   }
   
-  public final int b()
+  public int b()
   {
     return this.zzb_rebind_type;
   }
   
-  public final String c()
+  public String c()
   {
     return this.mask_mobile;
   }
   
-  public final String d()
+  public String d()
   {
     return this.sms_port;
   }
   
-  public final String e()
+  public String e()
   {
     return this.sms_up_code;
-  }
-  
-  public final int f()
-  {
-    return this.is_h5_user;
   }
 }
 

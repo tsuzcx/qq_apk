@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 
-final class mx
+class mx
   implements View.OnClickListener
 {
-  mx(mw parammw) {}
+  mx(KnowTokenActivity paramKnowTokenActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.a, FindItemsActivity.class);
-    paramView.addFlags(67108864);
-    this.a.a.startActivity(paramView);
+    KnowTokenActivity.access$600(this.a).setEnabled(false);
+    this.a.finish();
   }
 }
 

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class ErrMsg$1
-  implements Parcelable.Creator<ErrMsg>
+  implements Parcelable.Creator
 {
   public ErrMsg createFromParcel(Parcel paramParcel)
   {

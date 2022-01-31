@@ -105,11 +105,6 @@ public class FilePathGenerator
       }
     }
   }
-  
-  public static enum DIR_HASH_TYPE
-  {
-    private DIR_HASH_TYPE() {}
-  }
 }
 
 

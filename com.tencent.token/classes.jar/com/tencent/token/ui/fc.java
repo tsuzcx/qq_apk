@@ -2,15 +2,17 @@ package com.tencent.token.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class fc
+class fc
   implements DialogInterface.OnClickListener
 {
-  fc(es parames) {}
+  fc(FaceChangePwdIndexActivity paramFaceChangePwdIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FaceRecognitionCameraActivity.access$1900(this.a.a);
+    paramDialogInterface = new Intent(this.a, StartPwdUpdateInfoActivity.class);
+    this.a.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,5 +1,7 @@
 package oicq.wlogin_sdk.tools;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -7,6 +9,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
@@ -38,6 +42,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,6 +59,9 @@ public class util
   public static final int ASYN_GET_A1_WITH_A1 = 6;
   public static final int ASYN_GET_ST_WITHOUT_PWD = 5;
   public static final int ASYN_GET_ST_WITH_PWD = 0;
+  public static final int ASYN_QUICKLOG_WITH_PTSIG = 16;
+  public static final int ASYN_QUICKLOG_WITH_QQSIG = 15;
+  public static final int ASYN_QUICKLOG_WITH_QRSIG = 17;
   public static final int ASYN_REFLUSH_IMAGE = 1;
   public static final int ASYN_REFLUSH_SMS = 3;
   public static final int ASYN_REPORT = 7;
@@ -63,18 +71,24 @@ public class util
   public static final int ASYN_SMSLOGIN_VERIFY = 13;
   public static final int ASYN_TRANSPORT = 9;
   public static final int ASYN_TRANSPORT_MSF = 10;
-  public static final long BUILD_TIME = 1453167956L;
+  public static final long BUILD_TIME = 1502965326L;
   public static final int D = 2;
   private static SimpleDateFormat DAYFORMAT;
   public static final int E_A1_DECRYPT = -1014;
   public static final int E_A1_FORMAT = -1016;
   public static final int E_ADVANCE_NOTICE = 257;
   public static final int E_APK_CHK_ERR = -1021;
+  public static final int E_BUFFER_OVERFLOW = -1023;
   public static final int E_DECRYPT = -1002;
   public static final int E_ENCODING = -1013;
+  public static final int E_ENCRYPTION_METHOD = -1024;
   public static final int E_INPUT = -1017;
+  public static final int E_LOGIN_THROUGH_QQ = -2001;
+  public static final int E_LOGIN_THROUGH_WEB = -2000;
   public static final int E_NAME_INVALID = -1008;
+  public static final int E_NEWST_DECRYPT = -1025;
   public static final int E_NO_KEY = -1004;
+  public static final int E_NO_NETWORK = -1026;
   public static final int E_NO_REG_CMD = -1010;
   public static final int E_NO_RET = -1000;
   public static final int E_NO_TGTKEY = -1006;
@@ -98,13 +112,14 @@ public class util
   public static final String LOG_DIR = "tencent/wtlogin";
   public static int LOG_LEVEL = 0;
   public static int MAX_APPID = 0;
-  public static final int MAX_CONTENT_SIZE = 8192;
+  public static final int MAX_CONTENT_SIZE = 20480;
   public static final int MAX_FILE_SIZE = 524288;
   public static int MAX_NAME_LEN = 0;
+  @SuppressLint({"NewApi"})
   private static int MODE_MULTI_PROCESS = 0;
-  public static final String SDK_VERSION = "5.4.0.7";
+  public static final String SDK_VERSION = "6.0.0.2202";
   public static final int SSO_VERSION = 5;
-  public static final long SVN_VER = 1396L;
+  public static final long SVN_VER = 2202L;
   public static final int S_BABYLH_EXPIRED = 116;
   public static final int S_GET_IMAGE = 2;
   public static final int S_GET_SMS = 160;
@@ -119,6 +134,7 @@ public class util
   static final char base64_pad_url = '_';
   static final short[] base64_reverse_table_url = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 63, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
   private static boolean libwtecdh_loaded;
+  public static boolean loadEncryptSo;
   public static String logContent;
   
   static
@@ -132,60 +148,11 @@ public class util
     logContent = "";
     DAYFORMAT = null;
     libwtecdh_loaded = false;
+    loadEncryptSo = true;
     if (Build.VERSION.SDK_INT > 9) {
       i = 4;
     }
     MODE_MULTI_PROCESS = i;
-  }
-  
-  public static boolean CheckMayFastLogin(Context paramContext)
-  {
-    if (paramContext == null) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
-      {
-        paramContext = paramContext.getPackageInfo("com.tencent.mobileqq", 0);
-        if (paramContext == null) {
-          continue;
-        }
-        paramContext = paramContext.versionName;
-        if (paramContext.compareTo("4.6.0") >= 0) {
-          return true;
-        }
-        try
-        {
-          int i = Integer.parseInt(paramContext.substring(0, paramContext.indexOf(".")));
-          if (i < 10) {
-            continue;
-          }
-          return true;
-        }
-        catch (Exception paramContext)
-        {
-          printException(paramContext, "");
-          return false;
-        }
-        return false;
-      }
-      catch (Exception paramContext) {}
-    }
-  }
-  
-  public static boolean CheckQQMiniHD(Context paramContext)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    try
-    {
-      LOGI(paramContext.getPackageManager().getPackageInfo("com.tencent.minihd.qq", 0).versionName, "");
-      return true;
-    }
-    catch (Exception paramContext) {}
-    return false;
   }
   
   public static boolean ExistSDCard()
@@ -267,7 +234,7 @@ public class util
         }
         for (;;)
         {
-          b.a(t.r, paramString2, paramString1);
+          d.a(paramString1, paramString2);
           return;
           if (LOGCAT_OUT) {
             Log.i("wlogin_sdk" + getLineInfo(2), paramString1);
@@ -311,7 +278,7 @@ public class util
         }
         for (;;)
         {
-          b.a(t.r, paramString3, paramString1 + ":" + paramString2);
+          d.a(paramString1 + ":" + paramString2, paramString3);
           return;
           if (LOGCAT_OUT) {
             Log.w("wlogin_sdk" + getLineInfo(2), paramString1 + ":" + paramString2);
@@ -882,6 +849,11 @@ public class util
     return new byte[0];
   }
   
+  public static long constructSalt()
+  {
+    return (get_rand_32() << 32) + get_rand_32();
+  }
+  
   public static void decompress(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
@@ -940,7 +912,7 @@ public class util
         if (!paramString.isDirectory()) {
           continue;
         }
-        paramString = paramString.listFiles();
+        paramString = paramString.listFiles(new e());
         if (paramString == null) {
           continue;
         }
@@ -966,6 +938,11 @@ public class util
     }
     try
     {
+      if ((t.at != null) && (t.at.length() != 0))
+      {
+        deleteExpireFile(t.at, 691200);
+        return;
+      }
       if (ExistSDCard())
       {
         File localFile = Environment.getExternalStorageDirectory();
@@ -993,6 +970,58 @@ public class util
       return 2;
     }
     return 5;
+  }
+  
+  public static byte[] generateGuid(Context paramContext)
+  {
+    Object localObject3 = null;
+    if ((t.ai != null) && (t.ai.length != 0))
+    {
+      LOGI("generate guid from customer guid");
+      return t.ai;
+    }
+    LOGI("generate guid temporarily");
+    for (;;)
+    {
+      try
+      {
+        localObject1 = (TelephonyManager)paramContext.getSystemService("phone");
+        if (localObject1 != null)
+        {
+          localObject1 = ((TelephonyManager)localObject1).getDeviceId();
+          LOGI("imei " + (String)localObject1, "");
+          paramContext = (WifiManager)paramContext.getSystemService("wifi");
+          Object localObject2 = localObject3;
+          if (paramContext != null)
+          {
+            paramContext = paramContext.getConnectionInfo();
+            localObject2 = localObject3;
+            if (paramContext != null) {
+              localObject2 = paramContext.getMacAddress();
+            }
+          }
+          LOGI("mac " + (String)localObject2, "");
+          paramContext = "";
+          if (localObject1 != null) {
+            paramContext = "" + (String)localObject1;
+          }
+          localObject1 = paramContext;
+          if (localObject2 != null) {
+            localObject1 = paramContext + (String)localObject2;
+          }
+          if (((String)localObject1).length() <= 0) {
+            return new byte[0];
+          }
+          paramContext = MD5.toMD5Byte(((String)localObject1).getBytes());
+          return paramContext;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        return new byte[0];
+      }
+      Object localObject1 = null;
+    }
   }
   
   public static KeyPair generateRSAKeyPair()
@@ -1200,6 +1229,227 @@ public class util
     return 0;
   }
   
+  /* Error */
+  public static byte[] getGuidFromFile(Context paramContext)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: getstatic 649	oicq/wlogin_sdk/request/t:ai	[B
+    //   5: ifnull +24 -> 29
+    //   8: getstatic 649	oicq/wlogin_sdk/request/t:ai	[B
+    //   11: arraylength
+    //   12: ifeq +17 -> 29
+    //   15: ldc_w 824
+    //   18: ldc 180
+    //   20: invokestatic 668	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: getstatic 649	oicq/wlogin_sdk/request/t:ai	[B
+    //   26: astore_3
+    //   27: aload_3
+    //   28: areturn
+    //   29: ldc_w 826
+    //   32: ldc 180
+    //   34: invokestatic 668	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: aload_0
+    //   38: ifnull -11 -> 27
+    //   41: iconst_0
+    //   42: newarray byte
+    //   44: astore_3
+    //   45: new 584	java/io/File
+    //   48: dup
+    //   49: new 329	java/lang/StringBuilder
+    //   52: dup
+    //   53: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   56: aload_0
+    //   57: invokevirtual 635	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   60: invokevirtual 625	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   63: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: ldc_w 828
+    //   69: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokespecial 586	java/io/File:<init>	(Ljava/lang/String;)V
+    //   78: astore_2
+    //   79: aload_2
+    //   80: ifnull +230 -> 310
+    //   83: aload_2
+    //   84: invokevirtual 814	java/io/File:exists	()Z
+    //   87: ifeq +223 -> 310
+    //   90: new 748	java/io/FileInputStream
+    //   93: dup
+    //   94: aload_2
+    //   95: invokespecial 831	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   98: astore 5
+    //   100: aload 5
+    //   102: astore 4
+    //   104: aload_3
+    //   105: astore_2
+    //   106: aload 5
+    //   108: invokevirtual 752	java/io/FileInputStream:available	()I
+    //   111: istore_1
+    //   112: aload 5
+    //   114: astore 4
+    //   116: aload_3
+    //   117: astore_2
+    //   118: iload_1
+    //   119: sipush 1024
+    //   122: if_icmpge +32 -> 154
+    //   125: aload 5
+    //   127: astore 4
+    //   129: aload_3
+    //   130: astore_2
+    //   131: iload_1
+    //   132: newarray byte
+    //   134: astore_3
+    //   135: aload 5
+    //   137: astore 4
+    //   139: aload_3
+    //   140: astore_2
+    //   141: aload 5
+    //   143: aload_3
+    //   144: invokevirtual 759	java/io/FileInputStream:read	([B)I
+    //   147: pop
+    //   148: aload_3
+    //   149: astore_2
+    //   150: aload 5
+    //   152: astore 4
+    //   154: aload_2
+    //   155: astore_3
+    //   156: aload 4
+    //   158: ifnull +147 -> 305
+    //   161: aload 4
+    //   163: invokevirtual 760	java/io/FileInputStream:close	()V
+    //   166: aload_2
+    //   167: ifnull +10 -> 177
+    //   170: aload_2
+    //   171: astore_3
+    //   172: aload_2
+    //   173: arraylength
+    //   174: ifgt -147 -> 27
+    //   177: aload_0
+    //   178: invokestatic 834	oicq/wlogin_sdk/tools/util:get_saved_imei	(Landroid/content/Context;)[B
+    //   181: astore_2
+    //   182: aload_2
+    //   183: astore_3
+    //   184: aload_2
+    //   185: ifnull -158 -> 27
+    //   188: aload_2
+    //   189: astore_3
+    //   190: aload_2
+    //   191: arraylength
+    //   192: ifle -165 -> 27
+    //   195: aload_0
+    //   196: aload_2
+    //   197: invokestatic 838	oicq/wlogin_sdk/tools/util:saveGuidToFile	(Landroid/content/Context;[B)V
+    //   200: aload_2
+    //   201: areturn
+    //   202: astore_3
+    //   203: aload_3
+    //   204: ldc 180
+    //   206: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   209: goto -43 -> 166
+    //   212: astore 4
+    //   214: aconst_null
+    //   215: astore 5
+    //   217: aload_3
+    //   218: astore_2
+    //   219: aload 4
+    //   221: astore_3
+    //   222: aload 5
+    //   224: astore 4
+    //   226: getstatic 841	oicq/wlogin_sdk/request/t:Y	I
+    //   229: ldc_w 842
+    //   232: ior
+    //   233: putstatic 841	oicq/wlogin_sdk/request/t:Y	I
+    //   236: aload 5
+    //   238: astore 4
+    //   240: aload_3
+    //   241: ldc 180
+    //   243: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   246: aload_2
+    //   247: astore_3
+    //   248: aload 5
+    //   250: ifnull +55 -> 305
+    //   253: aload 5
+    //   255: invokevirtual 760	java/io/FileInputStream:close	()V
+    //   258: goto -92 -> 166
+    //   261: astore_3
+    //   262: aload_3
+    //   263: ldc 180
+    //   265: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   268: goto -102 -> 166
+    //   271: astore_0
+    //   272: aconst_null
+    //   273: astore 4
+    //   275: aload 4
+    //   277: ifnull +8 -> 285
+    //   280: aload 4
+    //   282: invokevirtual 760	java/io/FileInputStream:close	()V
+    //   285: aload_0
+    //   286: athrow
+    //   287: astore_2
+    //   288: aload_2
+    //   289: ldc 180
+    //   291: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   294: goto -9 -> 285
+    //   297: astore_0
+    //   298: goto -23 -> 275
+    //   301: astore_3
+    //   302: goto -80 -> 222
+    //   305: aload_3
+    //   306: astore_2
+    //   307: goto -141 -> 166
+    //   310: aconst_null
+    //   311: astore 4
+    //   313: aload_3
+    //   314: astore_2
+    //   315: goto -161 -> 154
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	318	0	paramContext	Context
+    //   111	21	1	i	int
+    //   78	169	2	localObject1	Object
+    //   287	2	2	localIOException1	IOException
+    //   306	9	2	localException1	Exception
+    //   1	189	3	localObject2	Object
+    //   202	16	3	localIOException2	IOException
+    //   221	27	3	localObject3	Object
+    //   261	2	3	localIOException3	IOException
+    //   301	13	3	localException2	Exception
+    //   102	60	4	localFileInputStream1	FileInputStream
+    //   212	8	4	localException3	Exception
+    //   224	88	4	localFileInputStream2	FileInputStream
+    //   98	156	5	localFileInputStream3	FileInputStream
+    // Exception table:
+    //   from	to	target	type
+    //   161	166	202	java/io/IOException
+    //   45	79	212	java/lang/Exception
+    //   83	100	212	java/lang/Exception
+    //   253	258	261	java/io/IOException
+    //   45	79	271	finally
+    //   83	100	271	finally
+    //   280	285	287	java/io/IOException
+    //   106	112	297	finally
+    //   131	135	297	finally
+    //   141	148	297	finally
+    //   226	236	297	finally
+    //   240	246	297	finally
+    //   106	112	301	java/lang/Exception
+    //   131	135	301	java/lang/Exception
+    //   141	148	301	java/lang/Exception
+  }
+  
+  public static String getLanguage(Context paramContext)
+  {
+    paramContext = paramContext.getResources().getConfiguration().locale.getCountry();
+    if (paramContext.equals("CN")) {
+      return "CN";
+    }
+    if (paramContext.equals("TW")) {
+      return "TW";
+    }
+    return "EN";
+  }
+  
   public static String getLineInfo(int paramInt)
   {
     if (paramInt < 0) {
@@ -1215,24 +1465,33 @@ public class util
     return "";
   }
   
-  public static String getLogFileName(Context paramContext, String paramString)
+  public static String getLogDir(Context paramContext)
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.length() == 0)) {
-      return null;
+    if ((t.at != null) && (t.at.length() != 0)) {
+      return t.at;
     }
     try
     {
       if (ExistSDCard())
       {
         File localFile = Environment.getExternalStorageDirectory();
-        return localFile.getAbsolutePath() + "/" + "tencent/wtlogin" + "/" + paramContext.getPackageName() + "/" + base64_encode(paramString.getBytes());
+        return localFile.getAbsolutePath() + "/" + "tencent/wtlogin" + "/" + paramContext.getPackageName();
       }
       paramContext = paramContext.getFilesDir().getPath();
-      paramContext = paramContext + "/" + "tencent/wtlogin" + "/" + base64_encode(paramString.getBytes());
+      paramContext = paramContext + "/" + "tencent/wtlogin";
       return paramContext;
     }
     catch (Exception paramContext) {}
-    return null;
+    return "";
+  }
+  
+  public static String getLogFileName(Context paramContext, String paramString)
+  {
+    if ((paramContext == null) || (paramString == null) || (paramString.length() == 0)) {
+      return null;
+    }
+    paramContext = getLogDir(paramContext);
+    return paramContext + "/wtlogin_" + paramString + ".log";
   }
   
   public static long getLogModifyTime(Context paramContext, String paramString)
@@ -1241,6 +1500,26 @@ public class util
       return 0L;
     }
     return getFileModifyTime(getLogFileName(paramContext, paramString));
+  }
+  
+  public static String getMaskBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramArrayOfByte == null) {
+      return "null";
+    }
+    paramArrayOfByte = new String(paramArrayOfByte);
+    if (paramInt1 + paramInt2 > paramArrayOfByte.length()) {
+      return "***";
+    }
+    return paramArrayOfByte.substring(0, paramInt1) + "***" + paramArrayOfByte.substring(paramArrayOfByte.length() - paramInt2);
+  }
+  
+  public static String getMaskString(String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 + paramInt2 > paramString.length()) {
+      return "***";
+    }
+    return paramString.substring(0, paramInt1) + "***" + paramString.substring(paramString.length() - paramInt2);
   }
   
   public static byte[] getPkgSigFromApkName(Context paramContext, String paramString)
@@ -1256,6 +1535,13 @@ public class util
     }
     catch (Throwable paramContext) {}
     return new byte[0];
+  }
+  
+  public static byte[] getRequestInitTime()
+  {
+    byte[] arrayOfByte = new byte[4];
+    int64_to_buf32(arrayOfByte, 0, System.currentTimeMillis() / 1000L + t.ac);
+    return arrayOfByte;
   }
   
   public static String getSdkVersion()
@@ -1274,50 +1560,6 @@ public class util
       return "[" + paramString + "]";
     }
     return "[]";
-  }
-  
-  public static byte[] get_IMEI(Context paramContext)
-  {
-    Object localObject3 = null;
-    for (;;)
-    {
-      try
-      {
-        localObject1 = (TelephonyManager)paramContext.getSystemService("phone");
-        if (localObject1 != null)
-        {
-          localObject1 = ((TelephonyManager)localObject1).getDeviceId();
-          paramContext = (WifiManager)paramContext.getSystemService("wifi");
-          Object localObject2 = localObject3;
-          if (paramContext != null)
-          {
-            paramContext = paramContext.getConnectionInfo();
-            localObject2 = localObject3;
-            if (paramContext != null) {
-              localObject2 = paramContext.getMacAddress();
-            }
-          }
-          paramContext = "";
-          if (localObject1 != null) {
-            paramContext = "" + (String)localObject1;
-          }
-          localObject1 = paramContext;
-          if (localObject2 != null) {
-            localObject1 = paramContext + (String)localObject2;
-          }
-          if (((String)localObject1).length() <= 0) {
-            return new byte[0];
-          }
-          paramContext = MD5.toMD5Byte(((String)localObject1).getBytes());
-          return paramContext;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        return new byte[0];
-      }
-      Object localObject1 = null;
-    }
   }
   
   public static byte[] get_IMSI(Context paramContext)
@@ -1339,6 +1581,7 @@ public class util
     return new byte[0];
   }
   
+  @SuppressLint({"NewApi"})
   public static byte[] get_android_id(Context paramContext)
   {
     try
@@ -1448,65 +1691,65 @@ public class util
     //   12: aload 5
     //   14: areturn
     //   15: aload_0
-    //   16: invokevirtual 867	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   16: invokevirtual 953	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   19: astore_0
-    //   20: new 360	java/lang/StringBuilder
+    //   20: new 329	java/lang/StringBuilder
     //   23: dup
-    //   24: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   27: ldc_w 908
-    //   30: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: ldc_w 910
-    //   36: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: ldc_w 912
-    //   42: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 918	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   24: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   27: ldc_w 997
+    //   30: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc_w 999
+    //   36: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: ldc_w 1001
+    //   42: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokestatic 1007	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   51: astore 6
-    //   53: new 360	java/lang/StringBuilder
+    //   53: new 329	java/lang/StringBuilder
     //   56: dup
-    //   57: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 158
-    //   62: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   60: ldc 180
+    //   62: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: lload_1
-    //   66: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokevirtual 808	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   72: astore 7
-    //   74: new 360	java/lang/StringBuilder
+    //   74: new 329	java/lang/StringBuilder
     //   77: dup
-    //   78: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   81: ldc 158
-    //   83: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   81: ldc 180
+    //   83: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: lload_3
-    //   87: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokevirtual 808	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: astore 8
     //   95: aload_0
     //   96: aload 6
     //   98: iconst_5
-    //   99: anewarray 308	java/lang/String
+    //   99: anewarray 314	java/lang/String
     //   102: dup
     //   103: iconst_0
-    //   104: ldc_w 920
+    //   104: ldc_w 1009
     //   107: aastore
     //   108: dup
     //   109: iconst_1
-    //   110: ldc_w 922
+    //   110: ldc_w 1011
     //   113: aastore
     //   114: dup
     //   115: iconst_2
-    //   116: ldc_w 924
+    //   116: ldc_w 1013
     //   119: aastore
     //   120: dup
     //   121: iconst_3
-    //   122: ldc_w 926
+    //   122: ldc_w 1015
     //   125: aastore
     //   126: dup
     //   127: iconst_4
-    //   128: ldc_w 928
+    //   128: ldc_w 1017
     //   131: aastore
-    //   132: ldc_w 930
+    //   132: ldc_w 1019
     //   135: iconst_2
-    //   136: anewarray 308	java/lang/String
+    //   136: anewarray 314	java/lang/String
     //   139: dup
     //   140: iconst_0
     //   141: aload 7
@@ -1516,106 +1759,108 @@ public class util
     //   146: aload 8
     //   148: aastore
     //   149: aconst_null
-    //   150: invokevirtual 936	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   150: invokevirtual 1025	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   153: astore_0
     //   154: aload_0
-    //   155: ifnull +144 -> 299
+    //   155: ifnull +98 -> 253
     //   158: aload_0
     //   159: astore 5
     //   161: aload_0
-    //   162: invokeinterface 941 1 0
-    //   167: ifeq +132 -> 299
+    //   162: invokeinterface 1030 1 0
+    //   167: ifeq +86 -> 253
     //   170: aload_0
     //   171: astore 5
     //   173: aload_0
     //   174: aload_0
-    //   175: ldc_w 926
-    //   178: invokeinterface 944 2 0
-    //   183: invokeinterface 946 2 0
+    //   175: ldc_w 1015
+    //   178: invokeinterface 1033 2 0
+    //   183: invokeinterface 1035 2 0
     //   188: astore 6
     //   190: aload_0
     //   191: astore 5
     //   193: aload_0
     //   194: aload_0
-    //   195: ldc_w 928
-    //   198: invokeinterface 944 2 0
-    //   203: invokeinterface 946 2 0
+    //   195: ldc_w 1017
+    //   198: invokeinterface 1033 2 0
+    //   203: invokeinterface 1035 2 0
     //   208: astore 7
     //   210: aload_0
     //   211: astore 5
     //   213: aload 6
-    //   215: invokestatic 949	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   215: invokestatic 1038	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
     //   218: aload 7
-    //   220: invokevirtual 351	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   223: ifeq +76 -> 299
+    //   220: invokevirtual 318	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   223: ifeq +30 -> 253
     //   226: aload_0
     //   227: astore 5
     //   229: aload 6
-    //   231: invokestatic 953	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
+    //   231: invokestatic 1042	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
     //   234: astore 6
     //   236: aload 6
     //   238: astore 5
     //   240: aload_0
     //   241: ifnull -229 -> 12
     //   244: aload_0
-    //   245: invokeinterface 954 1 0
+    //   245: invokeinterface 1043 1 0
     //   250: aload 6
     //   252: areturn
-    //   253: astore 6
-    //   255: aconst_null
-    //   256: astore_0
+    //   253: aload_0
+    //   254: ifnull +9 -> 263
     //   257: aload_0
-    //   258: astore 5
-    //   260: aload 6
-    //   262: ldc 158
-    //   264: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   267: aload_0
-    //   268: ifnull +9 -> 277
-    //   271: aload_0
-    //   272: invokeinterface 954 1 0
-    //   277: ldc_w 956
-    //   280: invokestatic 953	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
-    //   283: areturn
-    //   284: astore_0
-    //   285: aload 5
-    //   287: ifnull +10 -> 297
-    //   290: aload 5
-    //   292: invokeinterface 954 1 0
-    //   297: aload_0
-    //   298: athrow
-    //   299: aload_0
-    //   300: ifnull -23 -> 277
-    //   303: goto -32 -> 271
-    //   306: astore_0
-    //   307: goto -22 -> 285
-    //   310: astore 6
-    //   312: goto -55 -> 257
+    //   258: invokeinterface 1043 1 0
+    //   263: ldc_w 1045
+    //   266: invokestatic 1042	oicq/wlogin_sdk/tools/util:string_to_buf	(Ljava/lang/String;)[B
+    //   269: areturn
+    //   270: astore 6
+    //   272: aconst_null
+    //   273: astore_0
+    //   274: aload_0
+    //   275: astore 5
+    //   277: aload 6
+    //   279: ldc 180
+    //   281: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   284: aload_0
+    //   285: ifnull -22 -> 263
+    //   288: aload_0
+    //   289: invokeinterface 1043 1 0
+    //   294: goto -31 -> 263
+    //   297: astore_0
+    //   298: aload 5
+    //   300: ifnull +10 -> 310
+    //   303: aload 5
+    //   305: invokeinterface 1043 1 0
+    //   310: aload_0
+    //   311: athrow
+    //   312: astore_0
+    //   313: goto -15 -> 298
+    //   316: astore 6
+    //   318: goto -44 -> 274
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	315	0	paramContext	Context
-    //   0	315	1	paramLong1	long
-    //   0	315	3	paramLong2	long
-    //   1	290	5	localObject1	Object
+    //   0	321	0	paramContext	Context
+    //   0	321	1	paramLong1	long
+    //   0	321	3	paramLong2	long
+    //   1	303	5	localObject1	Object
     //   51	200	6	localObject2	Object
-    //   253	8	6	localException1	Exception
-    //   310	1	6	localException2	Exception
+    //   270	8	6	localException1	Exception
+    //   316	1	6	localException2	Exception
     //   72	147	7	str1	String
     //   93	54	8	str2	String
     // Exception table:
     //   from	to	target	type
-    //   53	154	253	java/lang/Exception
-    //   53	154	284	finally
-    //   161	170	306	finally
-    //   173	190	306	finally
-    //   193	210	306	finally
-    //   213	226	306	finally
-    //   229	236	306	finally
-    //   260	267	306	finally
-    //   161	170	310	java/lang/Exception
-    //   173	190	310	java/lang/Exception
-    //   193	210	310	java/lang/Exception
-    //   213	226	310	java/lang/Exception
-    //   229	236	310	java/lang/Exception
+    //   53	154	270	java/lang/Exception
+    //   53	154	297	finally
+    //   161	170	312	finally
+    //   173	190	312	finally
+    //   193	210	312	finally
+    //   213	226	312	finally
+    //   229	236	312	finally
+    //   277	284	312	finally
+    //   161	170	316	java/lang/Exception
+    //   173	190	316	java/lang/Exception
+    //   193	210	316	java/lang/Exception
+    //   213	226	316	java/lang/Exception
+    //   229	236	316	java/lang/Exception
   }
   
   public static String get_error_msg(int paramInt)
@@ -1626,196 +1871,6 @@ public class util
       return InternationMsg.a(InternationMsg.MSG_TYPE.MSG_3);
     }
     return InternationMsg.a(InternationMsg.MSG_TYPE.MSG_4);
-  }
-  
-  /* Error */
-  public static byte[] get_file_imei(Context paramContext)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: ifnonnull +5 -> 8
-    //   6: aload_2
-    //   7: areturn
-    //   8: iconst_0
-    //   9: newarray byte
-    //   11: astore_2
-    //   12: new 609	java/io/File
-    //   15: dup
-    //   16: new 360	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   23: aload_0
-    //   24: invokevirtual 651	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   27: invokevirtual 640	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   30: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: ldc_w 642
-    //   36: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: ldc_w 974
-    //   42: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokespecial 611	java/io/File:<init>	(Ljava/lang/String;)V
-    //   51: astore_3
-    //   52: aload_3
-    //   53: ifnull +218 -> 271
-    //   56: aload_3
-    //   57: invokevirtual 774	java/io/File:exists	()Z
-    //   60: ifeq +211 -> 271
-    //   63: new 708	java/io/FileInputStream
-    //   66: dup
-    //   67: aload_3
-    //   68: invokespecial 977	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   71: astore 4
-    //   73: aload 4
-    //   75: astore_3
-    //   76: aload_2
-    //   77: astore 5
-    //   79: aload 4
-    //   81: invokevirtual 712	java/io/FileInputStream:available	()I
-    //   84: istore_1
-    //   85: aload 4
-    //   87: astore 5
-    //   89: aload_2
-    //   90: astore_3
-    //   91: iload_1
-    //   92: sipush 1024
-    //   95: if_icmpge +32 -> 127
-    //   98: aload 4
-    //   100: astore_3
-    //   101: aload_2
-    //   102: astore 5
-    //   104: iload_1
-    //   105: newarray byte
-    //   107: astore_2
-    //   108: aload 4
-    //   110: astore_3
-    //   111: aload_2
-    //   112: astore 5
-    //   114: aload 4
-    //   116: aload_2
-    //   117: invokevirtual 719	java/io/FileInputStream:read	([B)I
-    //   120: pop
-    //   121: aload_2
-    //   122: astore_3
-    //   123: aload 4
-    //   125: astore 5
-    //   127: aload 5
-    //   129: ifnull +8 -> 137
-    //   132: aload 5
-    //   134: invokevirtual 720	java/io/FileInputStream:close	()V
-    //   137: aload_3
-    //   138: ifnull +10 -> 148
-    //   141: aload_3
-    //   142: astore_2
-    //   143: aload_3
-    //   144: arraylength
-    //   145: ifgt -139 -> 6
-    //   148: aload_0
-    //   149: invokestatic 980	oicq/wlogin_sdk/tools/util:get_saved_imei	(Landroid/content/Context;)[B
-    //   152: astore_3
-    //   153: aload_3
-    //   154: astore_2
-    //   155: aload_3
-    //   156: ifnull -150 -> 6
-    //   159: aload_3
-    //   160: astore_2
-    //   161: aload_3
-    //   162: arraylength
-    //   163: ifle -157 -> 6
-    //   166: aload_0
-    //   167: aload_3
-    //   168: invokestatic 984	oicq/wlogin_sdk/tools/util:save_file_imei	(Landroid/content/Context;[B)V
-    //   171: aload_3
-    //   172: areturn
-    //   173: astore 6
-    //   175: aconst_null
-    //   176: astore 4
-    //   178: aload 4
-    //   180: astore_3
-    //   181: getstatic 986	oicq/wlogin_sdk/request/t:W	I
-    //   184: ldc_w 987
-    //   187: ior
-    //   188: putstatic 986	oicq/wlogin_sdk/request/t:W	I
-    //   191: aload 4
-    //   193: astore_3
-    //   194: aload 6
-    //   196: ldc 158
-    //   198: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   201: aload 4
-    //   203: ifnull +8 -> 211
-    //   206: aload 4
-    //   208: invokevirtual 720	java/io/FileInputStream:close	()V
-    //   211: aload_2
-    //   212: astore_3
-    //   213: goto -76 -> 137
-    //   216: astore_0
-    //   217: aconst_null
-    //   218: astore_3
-    //   219: aload_3
-    //   220: ifnull +7 -> 227
-    //   223: aload_3
-    //   224: invokevirtual 720	java/io/FileInputStream:close	()V
-    //   227: aload_0
-    //   228: athrow
-    //   229: astore_2
-    //   230: aload_2
-    //   231: ldc 158
-    //   233: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   236: goto -9 -> 227
-    //   239: astore_3
-    //   240: aload_3
-    //   241: ldc 158
-    //   243: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   246: goto -35 -> 211
-    //   249: astore_2
-    //   250: aload_2
-    //   251: ldc 158
-    //   253: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   256: goto -119 -> 137
-    //   259: astore_0
-    //   260: goto -41 -> 219
-    //   263: astore 6
-    //   265: aload 5
-    //   267: astore_2
-    //   268: goto -90 -> 178
-    //   271: aconst_null
-    //   272: astore 5
-    //   274: aload_2
-    //   275: astore_3
-    //   276: goto -149 -> 127
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	279	0	paramContext	Context
-    //   84	21	1	i	int
-    //   1	211	2	localObject1	Object
-    //   229	2	2	localIOException1	IOException
-    //   249	2	2	localIOException2	IOException
-    //   267	8	2	localObject2	Object
-    //   51	173	3	localObject3	Object
-    //   239	2	3	localIOException3	IOException
-    //   275	1	3	localObject4	Object
-    //   71	136	4	localFileInputStream	FileInputStream
-    //   77	196	5	localObject5	Object
-    //   173	22	6	localException1	Exception
-    //   263	1	6	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   12	52	173	java/lang/Exception
-    //   56	73	173	java/lang/Exception
-    //   12	52	216	finally
-    //   56	73	216	finally
-    //   223	227	229	java/io/IOException
-    //   206	211	239	java/io/IOException
-    //   132	137	249	java/io/IOException
-    //   79	85	259	finally
-    //   104	108	259	finally
-    //   114	121	259	finally
-    //   181	191	259	finally
-    //   194	201	259	finally
-    //   79	85	263	java/lang/Exception
-    //   104	108	263	java/lang/Exception
-    //   114	121	263	java/lang/Exception
   }
   
   public static byte[] get_imei_id(Context paramContext)
@@ -2048,6 +2103,8 @@ public class util
     return new byte[16];
   }
   
+  @SuppressLint({"NewApi"})
+  @TargetApi(4)
   public static String get_proxy_ip()
   {
     if (Build.VERSION.SDK_INT < HONEYCOMB) {
@@ -2056,6 +2113,8 @@ public class util
     return System.getProperty("http.proxyHost");
   }
   
+  @SuppressLint({"NewApi", "NewApi"})
+  @TargetApi(4)
   public static int get_proxy_port()
   {
     if (Build.VERSION.SDK_INT < HONEYCOMB) {
@@ -2107,7 +2166,7 @@ public class util
   
   public static String get_release_time()
   {
-    return "2016/01/19  9:45:55";
+    return "2017/08/17 18:22:06";
   }
   
   public static byte[] get_rsa_privkey(Context paramContext)
@@ -2324,6 +2383,56 @@ public class util
     return false;
   }
   
+  public static boolean isMQQExist(Context paramContext)
+  {
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return false;
+      paramContext = paramContext.getPackageManager();
+      try
+      {
+        paramContext = paramContext.getPackageInfo("com.tencent.mobileqq", 0);
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext = paramContext.versionName;
+        if (paramContext.compareTo("4.6.0") >= 0) {
+          return true;
+        }
+        try
+        {
+          int i = Integer.parseInt(paramContext.substring(0, paramContext.indexOf(".")));
+          if (i < 10) {
+            continue;
+          }
+          return true;
+        }
+        catch (Exception paramContext)
+        {
+          printException(paramContext, "");
+          return false;
+        }
+        return false;
+      }
+      catch (Exception paramContext) {}
+    }
+  }
+  
+  public static boolean isPackageExist(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    try
+    {
+      LOGI(paramContext.getPackageManager().getPackageInfo(paramString, 0).versionName, "");
+      return true;
+    }
+    catch (Exception paramContext) {}
+    return false;
+  }
+  
   public static boolean is_wap_proxy_retry(Context paramContext)
   {
     try
@@ -2362,125 +2471,166 @@ public class util
   public static boolean loadLibrary(String paramString, Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 164	oicq/wlogin_sdk/tools/util:libwtecdh_loaded	Z
-    //   3: ifeq +5 -> 8
-    //   6: iconst_1
-    //   7: ireturn
-    //   8: aload_1
-    //   9: ifnull +14 -> 23
-    //   12: aload_0
-    //   13: ifnull +10 -> 23
-    //   16: aload_0
-    //   17: invokevirtual 605	java/lang/String:length	()I
-    //   20: ifne +5 -> 25
-    //   23: iconst_0
-    //   24: ireturn
-    //   25: new 609	java/io/File
-    //   28: dup
-    //   29: new 360	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   36: aload_1
-    //   37: invokevirtual 651	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   40: invokevirtual 1163	java/io/File:getParent	()Ljava/lang/String;
-    //   43: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: ldc_w 1165
-    //   49: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: aload_0
-    //   53: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: ldc_w 1167
-    //   59: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokespecial 611	java/io/File:<init>	(Ljava/lang/String;)V
-    //   68: astore 4
-    //   70: aload 4
-    //   72: invokevirtual 774	java/io/File:exists	()Z
-    //   75: ifne +142 -> 217
-    //   78: new 609	java/io/File
-    //   81: dup
-    //   82: new 360	java/lang/StringBuilder
-    //   85: dup
-    //   86: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   89: aload_1
-    //   90: invokevirtual 651	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   93: invokevirtual 1163	java/io/File:getParent	()Ljava/lang/String;
-    //   96: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: ldc_w 1169
-    //   102: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: aload_0
-    //   106: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc_w 1167
-    //   112: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokespecial 611	java/io/File:<init>	(Ljava/lang/String;)V
-    //   121: astore_1
-    //   122: aload_1
-    //   123: ifnull +89 -> 212
-    //   126: aload_1
-    //   127: invokevirtual 774	java/io/File:exists	()Z
-    //   130: ifeq +82 -> 212
-    //   133: aload_1
-    //   134: invokevirtual 640	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   137: invokestatic 1172	java/lang/System:load	(Ljava/lang/String;)V
-    //   140: iconst_1
-    //   141: istore_2
-    //   142: iload_2
-    //   143: istore_3
-    //   144: iload_2
-    //   145: ifne +9 -> 154
-    //   148: aload_0
-    //   149: invokestatic 1174	java/lang/System:loadLibrary	(Ljava/lang/String;)V
-    //   152: iconst_1
-    //   153: istore_3
-    //   154: iload_3
-    //   155: putstatic 164	oicq/wlogin_sdk/tools/util:libwtecdh_loaded	Z
-    //   158: new 360	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   165: ldc_w 1176
-    //   168: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: getstatic 164	oicq/wlogin_sdk/tools/util:libwtecdh_loaded	Z
-    //   174: invokevirtual 1179	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   177: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: ldc 158
-    //   182: invokestatic 337	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   185: iload_3
-    //   186: ireturn
-    //   187: astore_1
-    //   188: aconst_null
-    //   189: astore_1
-    //   190: goto -68 -> 122
-    //   193: astore_1
-    //   194: iconst_0
-    //   195: istore_2
-    //   196: goto -54 -> 142
-    //   199: astore_0
-    //   200: iload_2
-    //   201: istore_3
-    //   202: goto -48 -> 154
-    //   205: astore_1
-    //   206: aload 4
-    //   208: astore_1
-    //   209: goto -19 -> 190
-    //   212: iconst_0
-    //   213: istore_2
-    //   214: goto -72 -> 142
-    //   217: aload 4
-    //   219: astore_1
-    //   220: goto -98 -> 122
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: getstatic 188	oicq/wlogin_sdk/tools/util:loadEncryptSo	Z
+    //   5: ifne +7 -> 12
+    //   8: iconst_0
+    //   9: istore_2
+    //   10: iload_2
+    //   11: ireturn
+    //   12: getstatic 193	android/os/Build$VERSION:SDK_INT	I
+    //   15: bipush 23
+    //   17: if_icmplt +5 -> 22
+    //   20: iconst_0
+    //   21: ireturn
+    //   22: getstatic 186	oicq/wlogin_sdk/tools/util:libwtecdh_loaded	Z
+    //   25: ifne -15 -> 10
+    //   28: aload_1
+    //   29: ifnull +14 -> 43
+    //   32: aload_0
+    //   33: ifnull +10 -> 43
+    //   36: aload_0
+    //   37: invokevirtual 580	java/lang/String:length	()I
+    //   40: ifne +5 -> 45
+    //   43: iconst_0
+    //   44: ireturn
+    //   45: new 584	java/io/File
+    //   48: dup
+    //   49: new 329	java/lang/StringBuilder
+    //   52: dup
+    //   53: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   56: aload_1
+    //   57: invokevirtual 635	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   60: invokevirtual 1253	java/io/File:getParent	()Ljava/lang/String;
+    //   63: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: ldc_w 1255
+    //   69: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: aload_0
+    //   73: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: ldc_w 1257
+    //   79: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokespecial 586	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: astore 5
+    //   90: aload 5
+    //   92: astore 4
+    //   94: aload 5
+    //   96: invokevirtual 814	java/io/File:exists	()Z
+    //   99: ifne +128 -> 227
+    //   102: new 584	java/io/File
+    //   105: dup
+    //   106: new 329	java/lang/StringBuilder
+    //   109: dup
+    //   110: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   113: aload_1
+    //   114: invokevirtual 635	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   117: invokevirtual 1253	java/io/File:getParent	()Ljava/lang/String;
+    //   120: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: ldc_w 1259
+    //   126: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: aload_0
+    //   130: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: ldc_w 1257
+    //   136: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   142: invokespecial 586	java/io/File:<init>	(Ljava/lang/String;)V
+    //   145: astore_1
+    //   146: aload_1
+    //   147: ifnull +115 -> 262
+    //   150: aload_1
+    //   151: invokevirtual 814	java/io/File:exists	()Z
+    //   154: ifeq +108 -> 262
+    //   157: aload_1
+    //   158: invokevirtual 625	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   161: invokestatic 1262	java/lang/System:load	(Ljava/lang/String;)V
+    //   164: iconst_1
+    //   165: istore_2
+    //   166: iload_2
+    //   167: istore_3
+    //   168: iload_2
+    //   169: ifne +9 -> 178
+    //   172: aload_0
+    //   173: invokestatic 1264	java/lang/System:loadLibrary	(Ljava/lang/String;)V
+    //   176: iconst_1
+    //   177: istore_3
+    //   178: iload_3
+    //   179: ifne +3 -> 182
+    //   182: iload_3
+    //   183: putstatic 186	oicq/wlogin_sdk/tools/util:libwtecdh_loaded	Z
+    //   186: new 329	java/lang/StringBuilder
+    //   189: dup
+    //   190: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   193: ldc_w 1266
+    //   196: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: getstatic 186	oicq/wlogin_sdk/tools/util:libwtecdh_loaded	Z
+    //   202: invokevirtual 1269	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   205: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   208: ldc 180
+    //   210: invokestatic 668	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   213: iload_3
+    //   214: ireturn
+    //   215: astore 4
+    //   217: aconst_null
+    //   218: astore_1
+    //   219: aload 4
+    //   221: invokestatic 1272	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;)V
+    //   224: aload_1
+    //   225: astore 4
+    //   227: aload 4
+    //   229: astore_1
+    //   230: goto -84 -> 146
+    //   233: astore_1
+    //   234: new 329	java/lang/StringBuilder
+    //   237: dup
+    //   238: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   241: ldc_w 1274
+    //   244: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: aload_1
+    //   248: invokevirtual 1277	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
+    //   251: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: ldc 180
+    //   259: invokestatic 668	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   262: iconst_0
+    //   263: istore_2
+    //   264: goto -98 -> 166
+    //   267: astore_0
+    //   268: new 329	java/lang/StringBuilder
+    //   271: dup
+    //   272: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   275: ldc_w 1274
+    //   278: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: aload_0
+    //   282: invokevirtual 1277	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
+    //   285: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   291: ldc 180
+    //   293: invokestatic 668	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   296: iload_2
+    //   297: istore_3
+    //   298: goto -120 -> 178
+    //   301: astore 4
+    //   303: aload 5
+    //   305: astore_1
+    //   306: goto -87 -> 219
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	223	0	paramString	String
-    //   0	223	1	paramContext	Context
-    //   141	73	2	bool1	boolean
-    //   143	59	3	bool2	boolean
-    //   68	150	4	localFile	File
+    //   0	309	0	paramString	String
+    //   0	309	1	paramContext	Context
+    //   1	296	2	bool1	boolean
+    //   167	131	3	bool2	boolean
+    //   92	1	4	localFile1	File
+    //   215	5	4	localException1	Exception
+    //   225	3	4	localContext	Context
+    //   301	1	4	localException2	Exception
+    //   88	216	5	localFile2	File
     // Exception table:
     //   from	to	target	type
-    //   25	70	187	java/lang/Exception
-    //   133	140	193	java/lang/UnsatisfiedLinkError
-    //   148	152	199	java/lang/UnsatisfiedLinkError
-    //   70	122	205	java/lang/Exception
+    //   45	90	215	java/lang/Exception
+    //   157	164	233	java/lang/UnsatisfiedLinkError
+    //   172	176	267	java/lang/UnsatisfiedLinkError
+    //   94	146	301	java/lang/Exception
   }
   
   public static Bundle packBundle(byte[][] paramArrayOfByte)
@@ -2569,6 +2719,174 @@ public class util
     return readFile(getLogFileName(paramContext, paramString));
   }
   
+  /* Error */
+  public static void saveGuidToFile(Context paramContext, byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +168 -> 169
+    //   4: aload_1
+    //   5: ifnull +164 -> 169
+    //   8: aload_1
+    //   9: arraylength
+    //   10: ifle +159 -> 169
+    //   13: aconst_null
+    //   14: astore 6
+    //   16: aconst_null
+    //   17: astore 7
+    //   19: aconst_null
+    //   20: astore 5
+    //   22: aload 6
+    //   24: astore 4
+    //   26: aload 7
+    //   28: astore_2
+    //   29: new 584	java/io/File
+    //   32: dup
+    //   33: new 329	java/lang/StringBuilder
+    //   36: dup
+    //   37: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   40: aload_0
+    //   41: invokevirtual 635	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   44: invokevirtual 625	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   47: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: ldc_w 828
+    //   53: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokespecial 586	java/io/File:<init>	(Ljava/lang/String;)V
+    //   62: astore 8
+    //   64: aload 6
+    //   66: astore 4
+    //   68: aload 7
+    //   70: astore_2
+    //   71: aload 8
+    //   73: invokevirtual 814	java/io/File:exists	()Z
+    //   76: ifne +16 -> 92
+    //   79: aload 6
+    //   81: astore 4
+    //   83: aload 7
+    //   85: astore_2
+    //   86: aload 8
+    //   88: invokevirtual 1331	java/io/File:createNewFile	()Z
+    //   91: pop
+    //   92: aload 5
+    //   94: astore_3
+    //   95: aload 6
+    //   97: astore 4
+    //   99: aload 7
+    //   101: astore_2
+    //   102: aload 8
+    //   104: invokevirtual 814	java/io/File:exists	()Z
+    //   107: ifeq +44 -> 151
+    //   110: aload 5
+    //   112: astore_3
+    //   113: aload 6
+    //   115: astore 4
+    //   117: aload 7
+    //   119: astore_2
+    //   120: aload 8
+    //   122: invokevirtual 1334	java/io/File:canWrite	()Z
+    //   125: ifeq +26 -> 151
+    //   128: aload 6
+    //   130: astore 4
+    //   132: aload 7
+    //   134: astore_2
+    //   135: new 1336	java/io/FileOutputStream
+    //   138: dup
+    //   139: aload 8
+    //   141: iconst_0
+    //   142: invokespecial 1339	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   145: astore_3
+    //   146: aload_3
+    //   147: aload_1
+    //   148: invokevirtual 1340	java/io/FileOutputStream:write	([B)V
+    //   151: aload_3
+    //   152: astore 4
+    //   154: aload_3
+    //   155: astore_2
+    //   156: aload_0
+    //   157: aload_1
+    //   158: invokestatic 1343	oicq/wlogin_sdk/tools/util:save_imei	(Landroid/content/Context;[B)V
+    //   161: aload_3
+    //   162: ifnull +7 -> 169
+    //   165: aload_3
+    //   166: invokevirtual 1344	java/io/FileOutputStream:close	()V
+    //   169: return
+    //   170: astore_0
+    //   171: aload_0
+    //   172: ldc 180
+    //   174: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   177: return
+    //   178: astore_0
+    //   179: aload 4
+    //   181: astore_2
+    //   182: aload_0
+    //   183: ldc 180
+    //   185: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   188: aload 4
+    //   190: ifnull -21 -> 169
+    //   193: aload 4
+    //   195: invokevirtual 1344	java/io/FileOutputStream:close	()V
+    //   198: return
+    //   199: astore_0
+    //   200: aload_0
+    //   201: ldc 180
+    //   203: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   206: return
+    //   207: astore_0
+    //   208: aload_2
+    //   209: ifnull +7 -> 216
+    //   212: aload_2
+    //   213: invokevirtual 1344	java/io/FileOutputStream:close	()V
+    //   216: aload_0
+    //   217: athrow
+    //   218: astore_1
+    //   219: aload_1
+    //   220: ldc 180
+    //   222: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   225: goto -9 -> 216
+    //   228: astore_0
+    //   229: aload_3
+    //   230: astore_2
+    //   231: goto -23 -> 208
+    //   234: astore_0
+    //   235: aload_3
+    //   236: astore 4
+    //   238: goto -59 -> 179
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	241	0	paramContext	Context
+    //   0	241	1	paramArrayOfByte	byte[]
+    //   28	203	2	localObject1	Object
+    //   94	142	3	localObject2	Object
+    //   24	213	4	localObject3	Object
+    //   20	91	5	localObject4	Object
+    //   14	115	6	localObject5	Object
+    //   17	116	7	localObject6	Object
+    //   62	78	8	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   165	169	170	java/io/IOException
+    //   29	64	178	java/lang/Exception
+    //   71	79	178	java/lang/Exception
+    //   86	92	178	java/lang/Exception
+    //   102	110	178	java/lang/Exception
+    //   120	128	178	java/lang/Exception
+    //   135	146	178	java/lang/Exception
+    //   156	161	178	java/lang/Exception
+    //   193	198	199	java/io/IOException
+    //   29	64	207	finally
+    //   71	79	207	finally
+    //   86	92	207	finally
+    //   102	110	207	finally
+    //   120	128	207	finally
+    //   135	146	207	finally
+    //   156	161	207	finally
+    //   182	188	207	finally
+    //   212	216	218	java/io/IOException
+    //   146	151	228	finally
+    //   146	151	234	java/lang/Exception
+  }
+  
   public static void save_cur_flag(Context paramContext, int paramInt)
   {
     if (paramContext != null)
@@ -2607,173 +2925,6 @@ public class util
       paramContext.putString("last_mac", buf_to_string(paramArrayOfByte));
       paramContext.commit();
     }
-  }
-  
-  /* Error */
-  public static void save_file_imei(Context paramContext, byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +174 -> 175
-    //   4: aload_1
-    //   5: ifnull +170 -> 175
-    //   8: aload_1
-    //   9: arraylength
-    //   10: ifle +165 -> 175
-    //   13: aconst_null
-    //   14: astore 6
-    //   16: aconst_null
-    //   17: astore 7
-    //   19: aconst_null
-    //   20: astore 5
-    //   22: aload 6
-    //   24: astore 4
-    //   26: aload 7
-    //   28: astore_2
-    //   29: new 609	java/io/File
-    //   32: dup
-    //   33: new 360	java/lang/StringBuilder
-    //   36: dup
-    //   37: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   40: aload_0
-    //   41: invokevirtual 651	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   44: invokevirtual 640	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   47: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: ldc_w 642
-    //   53: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: ldc_w 974
-    //   59: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokespecial 611	java/io/File:<init>	(Ljava/lang/String;)V
-    //   68: astore 8
-    //   70: aload 6
-    //   72: astore 4
-    //   74: aload 7
-    //   76: astore_2
-    //   77: aload 8
-    //   79: invokevirtual 774	java/io/File:exists	()Z
-    //   82: ifne +16 -> 98
-    //   85: aload 6
-    //   87: astore 4
-    //   89: aload 7
-    //   91: astore_2
-    //   92: aload 8
-    //   94: invokevirtual 1256	java/io/File:createNewFile	()Z
-    //   97: pop
-    //   98: aload 5
-    //   100: astore_3
-    //   101: aload 6
-    //   103: astore 4
-    //   105: aload 7
-    //   107: astore_2
-    //   108: aload 8
-    //   110: invokevirtual 774	java/io/File:exists	()Z
-    //   113: ifeq +44 -> 157
-    //   116: aload 5
-    //   118: astore_3
-    //   119: aload 6
-    //   121: astore 4
-    //   123: aload 7
-    //   125: astore_2
-    //   126: aload 8
-    //   128: invokevirtual 1259	java/io/File:canWrite	()Z
-    //   131: ifeq +26 -> 157
-    //   134: aload 6
-    //   136: astore 4
-    //   138: aload 7
-    //   140: astore_2
-    //   141: new 1261	java/io/FileOutputStream
-    //   144: dup
-    //   145: aload 8
-    //   147: iconst_0
-    //   148: invokespecial 1264	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   151: astore_3
-    //   152: aload_3
-    //   153: aload_1
-    //   154: invokevirtual 1265	java/io/FileOutputStream:write	([B)V
-    //   157: aload_3
-    //   158: astore 4
-    //   160: aload_3
-    //   161: astore_2
-    //   162: aload_0
-    //   163: aload_1
-    //   164: invokestatic 1268	oicq/wlogin_sdk/tools/util:save_imei	(Landroid/content/Context;[B)V
-    //   167: aload_3
-    //   168: ifnull +7 -> 175
-    //   171: aload_3
-    //   172: invokevirtual 1269	java/io/FileOutputStream:close	()V
-    //   175: return
-    //   176: astore_0
-    //   177: aload 4
-    //   179: astore_2
-    //   180: aload_0
-    //   181: ldc 158
-    //   183: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   186: aload 4
-    //   188: ifnull -13 -> 175
-    //   191: aload 4
-    //   193: invokevirtual 1269	java/io/FileOutputStream:close	()V
-    //   196: return
-    //   197: astore_0
-    //   198: aload_0
-    //   199: ldc 158
-    //   201: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   204: return
-    //   205: astore_0
-    //   206: aload_2
-    //   207: ifnull +7 -> 214
-    //   210: aload_2
-    //   211: invokevirtual 1269	java/io/FileOutputStream:close	()V
-    //   214: aload_0
-    //   215: athrow
-    //   216: astore_1
-    //   217: aload_1
-    //   218: ldc 158
-    //   220: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   223: goto -9 -> 214
-    //   226: astore_0
-    //   227: goto -29 -> 198
-    //   230: astore_0
-    //   231: aload_3
-    //   232: astore_2
-    //   233: goto -27 -> 206
-    //   236: astore_0
-    //   237: aload_3
-    //   238: astore 4
-    //   240: goto -63 -> 177
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	243	0	paramContext	Context
-    //   0	243	1	paramArrayOfByte	byte[]
-    //   28	205	2	localObject1	Object
-    //   100	138	3	localObject2	Object
-    //   24	215	4	localObject3	Object
-    //   20	97	5	localObject4	Object
-    //   14	121	6	localObject5	Object
-    //   17	122	7	localObject6	Object
-    //   68	78	8	localFile	File
-    // Exception table:
-    //   from	to	target	type
-    //   29	70	176	java/lang/Exception
-    //   77	85	176	java/lang/Exception
-    //   92	98	176	java/lang/Exception
-    //   108	116	176	java/lang/Exception
-    //   126	134	176	java/lang/Exception
-    //   141	152	176	java/lang/Exception
-    //   162	167	176	java/lang/Exception
-    //   191	196	197	java/io/IOException
-    //   29	70	205	finally
-    //   77	85	205	finally
-    //   92	98	205	finally
-    //   108	116	205	finally
-    //   126	134	205	finally
-    //   141	152	205	finally
-    //   162	167	205	finally
-    //   180	186	205	finally
-    //   210	214	216	java/io/IOException
-    //   171	175	226	java/io/IOException
-    //   152	157	230	finally
-    //   152	157	236	java/lang/Exception
   }
   
   public static void save_imei(Context paramContext, byte[] paramArrayOfByte)
@@ -2825,68 +2976,68 @@ public class util
     //   4: iconst_0
     //   5: ireturn
     //   6: aload_0
-    //   7: invokevirtual 867	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   7: invokevirtual 953	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore 7
-    //   12: new 360	java/lang/StringBuilder
+    //   12: new 329	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 908
-    //   22: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc_w 910
-    //   28: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: ldc_w 912
-    //   34: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 918	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   16: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 997
+    //   22: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc_w 999
+    //   28: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: ldc_w 1001
+    //   34: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokestatic 1007	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   43: astore 8
     //   45: aload 8
-    //   47: invokevirtual 1275	android/net/Uri:toString	()Ljava/lang/String;
-    //   50: invokestatic 579	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;)V
-    //   53: new 360	java/lang/StringBuilder
+    //   47: invokevirtual 1372	android/net/Uri:toString	()Ljava/lang/String;
+    //   50: invokestatic 555	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;)V
+    //   53: new 329	java/lang/StringBuilder
     //   56: dup
-    //   57: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 158
-    //   62: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   60: ldc 180
+    //   62: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: lload_1
-    //   66: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokevirtual 808	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   72: astore 6
-    //   74: new 360	java/lang/StringBuilder
+    //   74: new 329	java/lang/StringBuilder
     //   77: dup
-    //   78: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   81: ldc 158
-    //   83: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   81: ldc 180
+    //   83: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: lload_3
-    //   87: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokevirtual 808	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: astore 9
     //   95: aload 7
     //   97: aload 8
     //   99: iconst_5
-    //   100: anewarray 308	java/lang/String
+    //   100: anewarray 314	java/lang/String
     //   103: dup
     //   104: iconst_0
-    //   105: ldc_w 920
+    //   105: ldc_w 1009
     //   108: aastore
     //   109: dup
     //   110: iconst_1
-    //   111: ldc_w 922
+    //   111: ldc_w 1011
     //   114: aastore
     //   115: dup
     //   116: iconst_2
-    //   117: ldc_w 924
+    //   117: ldc_w 1013
     //   120: aastore
     //   121: dup
     //   122: iconst_3
-    //   123: ldc_w 926
+    //   123: ldc_w 1015
     //   126: aastore
     //   127: dup
     //   128: iconst_4
-    //   129: ldc_w 928
+    //   129: ldc_w 1017
     //   132: aastore
-    //   133: ldc_w 930
+    //   133: ldc_w 1019
     //   136: iconst_2
-    //   137: anewarray 308	java/lang/String
+    //   137: anewarray 314	java/lang/String
     //   140: dup
     //   141: iconst_0
     //   142: aload 6
@@ -2896,102 +3047,102 @@ public class util
     //   147: aload 9
     //   149: aastore
     //   150: aconst_null
-    //   151: invokevirtual 936	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   151: invokevirtual 1025	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   154: astore 6
     //   156: aload 6
     //   158: ifnonnull +17 -> 175
     //   161: aload 6
     //   163: ifnull +10 -> 173
     //   166: aload 6
-    //   168: invokeinterface 954 1 0
+    //   168: invokeinterface 1043 1 0
     //   173: iconst_0
     //   174: ireturn
     //   175: aload_0
-    //   176: invokestatic 1277	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
-    //   179: invokestatic 1247	oicq/wlogin_sdk/tools/util:buf_to_string	([B)Ljava/lang/String;
+    //   176: invokestatic 1374	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
+    //   179: invokestatic 1360	oicq/wlogin_sdk/tools/util:buf_to_string	([B)Ljava/lang/String;
     //   182: astore_0
     //   183: aload_0
-    //   184: invokevirtual 605	java/lang/String:length	()I
+    //   184: invokevirtual 580	java/lang/String:length	()I
     //   187: istore 5
     //   189: iload 5
     //   191: ifne +17 -> 208
     //   194: aload 6
     //   196: ifnull +10 -> 206
     //   199: aload 6
-    //   201: invokeinterface 954 1 0
+    //   201: invokeinterface 1043 1 0
     //   206: iconst_0
     //   207: ireturn
     //   208: aload_0
-    //   209: invokestatic 949	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   209: invokestatic 1038	oicq/wlogin_sdk/tools/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
     //   212: astore 9
     //   214: aload 6
-    //   216: invokeinterface 1280 1 0
+    //   216: invokeinterface 1377 1 0
     //   221: ifle +53 -> 274
-    //   224: new 1282	android/content/ContentValues
+    //   224: new 1379	android/content/ContentValues
     //   227: dup
-    //   228: invokespecial 1283	android/content/ContentValues:<init>	()V
+    //   228: invokespecial 1380	android/content/ContentValues:<init>	()V
     //   231: astore 7
     //   233: aload 7
-    //   235: ldc_w 926
+    //   235: ldc_w 1015
     //   238: aload_0
-    //   239: invokevirtual 1286	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   239: invokevirtual 1383	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   242: aload 7
-    //   244: ldc_w 928
+    //   244: ldc_w 1017
     //   247: aload 9
-    //   249: invokevirtual 1286	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: invokevirtual 1383	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   252: aload 6
-    //   254: invokeinterface 941 1 0
+    //   254: invokeinterface 1030 1 0
     //   259: pop
     //   260: aload 6
     //   262: ifnull +10 -> 272
     //   265: aload 6
-    //   267: invokeinterface 954 1 0
+    //   267: invokeinterface 1043 1 0
     //   272: iconst_1
     //   273: ireturn
-    //   274: new 1282	android/content/ContentValues
+    //   274: new 1379	android/content/ContentValues
     //   277: dup
-    //   278: invokespecial 1283	android/content/ContentValues:<init>	()V
+    //   278: invokespecial 1380	android/content/ContentValues:<init>	()V
     //   281: astore 10
     //   283: aload 10
-    //   285: ldc_w 922
+    //   285: ldc_w 1011
     //   288: lload_1
-    //   289: invokestatic 1289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   292: invokevirtual 1292	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   289: invokestatic 1386	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   292: invokevirtual 1389	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   295: aload 10
-    //   297: ldc_w 924
+    //   297: ldc_w 1013
     //   300: lload_3
-    //   301: invokestatic 1289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   304: invokevirtual 1292	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   301: invokestatic 1386	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   304: invokevirtual 1389	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   307: aload 10
-    //   309: ldc_w 926
+    //   309: ldc_w 1015
     //   312: aload_0
-    //   313: invokevirtual 1286	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   313: invokevirtual 1383	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   316: aload 10
-    //   318: ldc_w 928
+    //   318: ldc_w 1017
     //   321: aload 9
-    //   323: invokevirtual 1286	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   323: invokevirtual 1383	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   326: aload 7
     //   328: aload 8
     //   330: aload 10
-    //   332: invokevirtual 1296	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   332: invokevirtual 1393	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
     //   335: astore_0
-    //   336: new 360	java/lang/StringBuilder
+    //   336: new 329	java/lang/StringBuilder
     //   339: dup
-    //   340: invokespecial 361	java/lang/StringBuilder:<init>	()V
-    //   343: ldc_w 1298
-    //   346: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: invokespecial 330	java/lang/StringBuilder:<init>	()V
+    //   343: ldc_w 1395
+    //   346: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   349: aload_0
-    //   350: invokevirtual 1301	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   353: ldc_w 1303
-    //   356: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: invokevirtual 1398	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   353: ldc_w 1400
+    //   356: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: lload_1
-    //   360: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   363: ldc_w 1305
-    //   366: invokevirtual 365	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: invokevirtual 808	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   363: ldc_w 1402
+    //   366: invokevirtual 334	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   369: lload_3
-    //   370: invokevirtual 768	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   373: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokestatic 1307	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;)V
+    //   370: invokevirtual 808	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   373: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   376: invokestatic 1404	oicq/wlogin_sdk/tools/util:LOGD	(Ljava/lang/String;)V
     //   379: goto -119 -> 260
     //   382: astore 7
     //   384: aload 6
@@ -2999,12 +3150,12 @@ public class util
     //   387: aload 7
     //   389: astore 6
     //   391: aload 6
-    //   393: ldc 158
-    //   395: invokestatic 330	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   393: ldc 180
+    //   395: invokestatic 424	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   398: aload_0
     //   399: ifnull +9 -> 408
     //   402: aload_0
-    //   403: invokeinterface 954 1 0
+    //   403: invokeinterface 1043 1 0
     //   408: iconst_0
     //   409: ireturn
     //   410: astore_0
@@ -3013,7 +3164,7 @@ public class util
     //   414: aload 6
     //   416: ifnull +10 -> 426
     //   419: aload 6
-    //   421: invokeinterface 954 1 0
+    //   421: invokeinterface 1043 1 0
     //   426: aload_0
     //   427: athrow
     //   428: astore_0
@@ -3119,6 +3270,11 @@ public class util
     }
   }
   
+  public static boolean shouldKick(int paramInt)
+  {
+    return (paramInt != -1000) && (paramInt != 257) && (paramInt != -1026);
+  }
+  
   public static byte[] string_to_buf(String paramString)
   {
     int i = 0;
@@ -3164,47 +3320,47 @@ public class util
     //   3: aload_0
     //   4: ifnull +12 -> 16
     //   7: aload_0
-    //   8: invokevirtual 605	java/lang/String:length	()I
+    //   8: invokevirtual 580	java/lang/String:length	()I
     //   11: istore_2
     //   12: iload_2
     //   13: ifne +7 -> 20
     //   16: ldc 2
     //   18: monitorexit
     //   19: return
-    //   20: new 609	java/io/File
+    //   20: new 584	java/io/File
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 611	java/io/File:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 586	java/io/File:<init>	(Ljava/lang/String;)V
     //   28: astore_3
     //   29: aload_3
-    //   30: invokevirtual 774	java/io/File:exists	()Z
+    //   30: invokevirtual 814	java/io/File:exists	()Z
     //   33: ifne +30 -> 63
     //   36: aload_3
-    //   37: invokevirtual 1345	java/io/File:getParentFile	()Ljava/io/File;
+    //   37: invokevirtual 1444	java/io/File:getParentFile	()Ljava/io/File;
     //   40: astore 4
     //   42: aload 4
     //   44: ifnull -28 -> 16
     //   47: aload 4
-    //   49: invokevirtual 1348	java/io/File:mkdirs	()Z
+    //   49: invokevirtual 1447	java/io/File:mkdirs	()Z
     //   52: ifne +11 -> 63
     //   55: aload 4
-    //   57: invokevirtual 614	java/io/File:isDirectory	()Z
+    //   57: invokevirtual 589	java/io/File:isDirectory	()Z
     //   60: ifeq -44 -> 16
     //   63: aload_0
-    //   64: invokestatic 1350	oicq/wlogin_sdk/tools/util:getFileSize	(Ljava/lang/String;)I
-    //   67: ldc 108
+    //   64: invokestatic 1449	oicq/wlogin_sdk/tools/util:getFileSize	(Ljava/lang/String;)I
+    //   67: ldc 126
     //   69: if_icmpge -53 -> 16
-    //   72: new 1261	java/io/FileOutputStream
+    //   72: new 1336	java/io/FileOutputStream
     //   75: dup
     //   76: aload_3
     //   77: iconst_1
-    //   78: invokespecial 1264	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   78: invokespecial 1339	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   81: astore_0
     //   82: aload_0
     //   83: aload_1
-    //   84: invokevirtual 1265	java/io/FileOutputStream:write	([B)V
+    //   84: invokevirtual 1340	java/io/FileOutputStream:write	([B)V
     //   87: aload_0
-    //   88: invokevirtual 1269	java/io/FileOutputStream:close	()V
+    //   88: invokevirtual 1344	java/io/FileOutputStream:close	()V
     //   91: goto -75 -> 16
     //   94: astore_0
     //   95: goto -79 -> 16

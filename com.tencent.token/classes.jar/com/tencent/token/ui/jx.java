@@ -1,14 +1,22 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class jx
-  extends Handler
+class jx
+  implements View.OnClickListener
 {
-  jx(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  jx(jt paramjt) {}
   
-  public final void handleMessage(Message paramMessage) {}
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.a.a, IndexActivity.class);
+    paramView.putExtra("index_from", 16);
+    paramView.addFlags(67108864);
+    this.a.a.startActivity(paramView);
+    this.a.a.finish();
+  }
 }
 
 

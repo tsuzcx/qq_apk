@@ -30,6 +30,7 @@ public abstract class ResourceCursorAdapter
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
+  @Deprecated
   public ResourceCursorAdapter(Context paramContext, int paramInt, Cursor paramCursor, boolean paramBoolean)
   {
     super(paramContext, paramCursor, paramBoolean);

@@ -1,16 +1,18 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import com.tencent.token.ui.base.ch;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
-final class zh
+class zh
   implements Runnable
 {
-  zh(SecurityReporterActivity paramSecurityReporterActivity, ch paramch) {}
+  zh(SmsContentTipActivity paramSmsContentTipActivity) {}
   
-  public final void run()
+  public void run()
   {
-    this.a.setBounds(SecurityReporterActivity.access$200(this.b).getLeft(), SecurityReporterActivity.access$200(this.b).getTop(), SecurityReporterActivity.access$200(this.b).getRight(), SecurityReporterActivity.access$200(this.b).getBottom());
+    h.c("send mod set mbmobile");
+    cw.a().a(0L, SmsContentTipActivity.access$500(this.a), SmsContentTipActivity.access$600(this.a), SmsContentTipActivity.access$700(this.a), SmsContentTipActivity.access$800(this.a), this.a.mHandler);
+    SmsContentTipActivity.access$908(this.a);
   }
 }
 

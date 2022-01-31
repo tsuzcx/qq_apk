@@ -3,17 +3,15 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.fn;
 
-final class sk
+class sk
   implements View.OnClickListener
 {
   sk(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    fn.a().b();
-    paramView = new Intent(this.a, UtilsGameLockActivity.class);
+    paramView = new Intent(this.a, UtilsQbQdProtectActivity.class);
     this.a.startActivity(paramView);
   }
 }

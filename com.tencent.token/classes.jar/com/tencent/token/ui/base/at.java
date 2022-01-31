@@ -3,16 +3,16 @@ package com.tencent.token.ui.base;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 
-final class at
+class at
   implements Animation.AnimationListener
 {
   at(as paramas, GameLoginSndConfirmView paramGameLoginSndConfirmView) {}
   
-  public final void onAnimationEnd(Animation paramAnimation) {}
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

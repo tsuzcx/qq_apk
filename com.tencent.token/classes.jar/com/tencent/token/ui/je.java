@@ -1,16 +1,24 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
 
-final class je
-  implements DialogInterface.OnClickListener
+class je
+  implements Runnable
 {
-  je(iv paramiv) {}
+  private View b;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public je(FaceStartVryCameraActivity paramFaceStartVryCameraActivity, View paramView)
   {
-    this.a.a.dismissDialog();
+    this.b = paramView;
+    FaceStartVryCameraActivity.access$3402(paramFaceStartVryCameraActivity, new AlphaAnimation(0.0F, 1.0F));
+    FaceStartVryCameraActivity.access$3400(paramFaceStartVryCameraActivity).setDuration(500L);
+    FaceStartVryCameraActivity.access$3400(paramFaceStartVryCameraActivity).setAnimationListener(new jf(this, paramFaceStartVryCameraActivity));
+  }
+  
+  public void run()
+  {
+    this.b.startAnimation(FaceStartVryCameraActivity.access$3400(this.a));
   }
 }
 

@@ -1,38 +1,42 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import com.tencent.token.ax;
+import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
+import com.tencent.token.do;
+import com.tencent.token.utils.x;
 
-final class ln
-  extends bo
+class ln
+  implements TabHost.OnTabChangeListener
 {
-  ln(HelpActivity paramHelpActivity)
-  {
-    super(paramHelpActivity);
-  }
+  ln(IndexActivity paramIndexActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onTabChanged(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      HelpActivity.access$100(this.a, HelpActivity.access$000(this.a));
-      return;
-    }
-    QQUser localQQUser = ax.a().e();
-    if (localQQUser != null)
-    {
-      byte[] arrayOfByte = (byte[])paramMessage.obj;
-      if ((paramMessage.arg1 == 0) && (arrayOfByte != null))
-      {
-        HelpActivity.access$002(this.a, "https://ssl.ptlogin2.qq.com/jump?keyindex=19&clientuin=" + localQQUser.mRealUin + "&clientkey=" + s.a(arrayOfByte) + "&u1=" + HelpActivity.access$000(this.a));
-        e.c("skey: url=" + HelpActivity.access$000(this.a));
+    int i = IndexActivity.access$1400(this.a).getCurrentTab();
+    if (i == 0) {
+      if (IndexActivity.access$1600(this.a) != 2131492909) {
+        x.a(this.a, IndexActivity.access$1600(this.a));
       }
     }
-    HelpActivity.access$100(this.a, HelpActivity.access$000(this.a));
+    for (;;)
+    {
+      IndexActivity.access$2600(this.a, i);
+      IndexActivity.access$2700(this.a);
+      IndexActivity.access$2000(this.a);
+      return;
+      paramString = do.a().e();
+      if ((paramString != null) && (paramString.mIsZzb))
+      {
+        x.a(this.a, 2131492882);
+      }
+      else
+      {
+        x.a(this.a, 2131492875);
+        continue;
+        x.a(this.a, 2131492909);
+      }
+    }
   }
 }
 

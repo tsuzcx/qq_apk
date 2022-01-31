@@ -5,7 +5,6 @@ import com.tencent.feedback.eup.b;
 import com.tencent.feedback.proguard.s;
 import com.tencent.feedback.proguard.t;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -71,8 +70,8 @@ public final class d
     }
     com.tencent.feedback.common.e.a("rqdp{ start to find native record}", new Object[0]);
     Object localObject = c.a(this.g, this.c.getAbsolutePath());
-    final int i;
-    final int j;
+    int i;
+    int j;
     String[] arrayOfString;
     if (localObject != null)
     {
@@ -91,39 +90,7 @@ public final class d
       localObject = new LinkedList();
       i = this.a.length();
       j = this.b.length();
-      arrayOfString = this.c.list(new FilenameFilter()
-      {
-        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
-        {
-          com.tencent.feedback.common.e.b("rqdp{  check dir} %s rqdp{  , filename} %s", new Object[] { paramAnonymousFile, paramAnonymousString });
-          if (paramAnonymousString.startsWith(d.this.a))
-          {
-            d.a(d.this);
-            com.tencent.feedback.common.e.b("rqdp{  accept }%s", new Object[] { paramAnonymousString });
-          }
-          try
-          {
-            long l = Long.parseLong(paramAnonymousString.substring(i, paramAnonymousString.length() - j));
-            com.tencent.feedback.common.e.b("rqdp{  mRemoveBeforeDate }%d", new Object[] { Long.valueOf(d.b(d.this)) });
-            if (l <= d.b(d.this))
-            {
-              com.tencent.feedback.common.e.b("rqdp{  recordTime} %d rqdp{  is old}", new Object[] { Long.valueOf(l) });
-              return true;
-            }
-            com.tencent.feedback.common.e.b("rqdp{  newFileTimeList add} %d", new Object[] { Long.valueOf(l) });
-            this.c.add(Long.valueOf(l));
-            return false;
-          }
-          catch (Throwable paramAnonymousFile)
-          {
-            com.tencent.feedback.common.e.c("rqdp{  filename is not formatted ,shoud do delete! \n path:}%s", new Object[] { paramAnonymousString });
-            if (!com.tencent.feedback.common.e.a(paramAnonymousFile)) {
-              paramAnonymousFile.printStackTrace();
-            }
-          }
-          return true;
-        }
-      });
+      arrayOfString = this.c.list(new d.1(this, i, j, (List)localObject));
       if (arrayOfString == null) {
         break label462;
       }

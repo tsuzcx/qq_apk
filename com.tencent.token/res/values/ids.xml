@@ -1,11 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item type="id" name="action_bar_activity_content" />
+    <item type="id" name="action_bar_spinner" />
+    <item type="id" name="action_menu_divider" />
+    <item type="id" name="action_menu_presenter" />
     <item type="id" name="decode" />
     <item type="id" name="decode_failed" />
     <item type="id" name="decode_succeeded" />
+    <item type="id" name="home" />
+    <item type="id" name="line1" />
+    <item type="id" name="line3" />
+    <item type="id" name="progress_circular" />
+    <item type="id" name="progress_horizontal" />
     <item type="id" name="quit" />
     <item type="id" name="restart_preview" />
     <item type="id" name="return_scan_result" />
+    <item type="id" name="split_action_bar" />
+    <item type="id" name="tag_transition_group" />
+    <item type="id" name="text" />
+    <item type="id" name="text2" />
+    <item type="id" name="title" />
+    <item type="id" name="up" />
+    <item type="id" name="action_bar_title" />
+    <item type="id" name="action_bar_subtitle" />
+    <item type="id" name="action_mode_close_button" />
+    <item type="id" name="activity_chooser_view_content" />
+    <item type="id" name="expand_activities_button" />
+    <item type="id" name="image" />
+    <item type="id" name="default_activity_button" />
+    <item type="id" name="list_item" />
+    <item type="id" name="icon" />
+    <item type="id" name="buttonPanel" />
+    <item type="id" name="spacer" />
+    <item type="id" name="parentPanel" />
+    <item type="id" name="contentPanel" />
+    <item type="id" name="scrollIndicatorUp" />
+    <item type="id" name="scrollView" />
+    <item type="id" name="textSpacerNoTitle" />
+    <item type="id" name="textSpacerNoButtons" />
+    <item type="id" name="scrollIndicatorDown" />
+    <item type="id" name="customPanel" />
+    <item type="id" name="custom" />
+    <item type="id" name="topPanel" />
+    <item type="id" name="title_template" />
+    <item type="id" name="alertTitle" />
+    <item type="id" name="titleDividerNoCustom" />
+    <item type="id" name="expanded_menu" />
+    <item type="id" name="checkbox" />
+    <item type="id" name="shortcut" />
+    <item type="id" name="radio" />
+    <item type="id" name="submenuarrow" />
+    <item type="id" name="action_bar_root" />
+    <item type="id" name="action_mode_bar_stub" />
+    <item type="id" name="action_mode_bar" />
+    <item type="id" name="decor_content_parent" />
+    <item type="id" name="action_bar_container" />
+    <item type="id" name="action_bar" />
+    <item type="id" name="action_context_bar" />
+    <item type="id" name="edit_query" />
+    <item type="id" name="search_bar" />
+    <item type="id" name="search_badge" />
+    <item type="id" name="search_button" />
+    <item type="id" name="search_edit_frame" />
+    <item type="id" name="search_mag_icon" />
+    <item type="id" name="search_plate" />
+    <item type="id" name="search_src_text" />
+    <item type="id" name="search_close_btn" />
+    <item type="id" name="submit_area" />
+    <item type="id" name="search_go_btn" />
+    <item type="id" name="search_voice_btn" />
+    <item type="id" name="select_dialog_listview" />
+    <item type="id" name="message" />
     <item type="id" name="msg_page_list" />
     <item type="id" name="offical_mail_btn_tip" />
     <item type="id" name="abnormal_login_mod_pwd" />
@@ -30,34 +95,16 @@
     <item type="id" name="about_logo" />
     <item type="id" name="about_info_1" />
     <item type="id" name="about_info_2" />
-    <item type="id" name="about_list_check_update" />
-    <item type="id" name="about_check_update" />
-    <item type="id" name="new_icon" />
-    <item type="id" name="about_update_action" />
-    <item type="id" name="about_no_update" />
-    <item type="id" name="about_divider_1" />
     <item type="id" name="about_evaluate" />
+    <item type="id" name="about_divider_1" />
     <item type="id" name="about_divider_8" />
     <item type="id" name="about_list_help" />
-    <item type="id" name="about_divider_9" />
+    <item type="id" name="about_divider_5" />
     <item type="id" name="about_list_serialnumber" />
     <item type="id" name="about_contact" />
-    <item type="id" name="about_aq_video" />
-    <item type="id" name="about_d1" />
     <item type="id" name="about_7" />
     <item type="id" name="about_6" />
     <item type="id" name="about_5" />
-    <item type="id" name="about_divider_5" />
-    <item type="id" name="account_detail_list" />
-    <item type="id" name="account_detail_risk_title_left" />
-    <item type="id" name="account_detail_risk_num" />
-    <item type="id" name="account_detail_risk_num_right" />
-    <item type="id" name="account_detail_list_item_icon" />
-    <item type="id" name="account_detail_list_item_container" />
-    <item type="id" name="account_detail_list_item_title" />
-    <item type="id" name="account_detail_list_item_desc" />
-    <item type="id" name="account_detail_list_item_action" />
-    <item type="id" name="account_detail_arrow" />
     <item type="id" name="account_head" />
     <item type="id" name="accountleft" />
     <item type="id" name="account_bind_qqface_left" />
@@ -87,7 +134,7 @@
     <item type="id" name="aboutandhelptext" />
     <item type="id" name="recommend" />
     <item type="id" name="feedback" />
-    <item type="id" name="unbindbt" />
+    <item type="id" name="unbind" />
     <item type="id" name="root_layout" />
     <item type="id" name="title_layout" />
     <item type="id" name="account_bind_qqface" />
@@ -114,31 +161,41 @@
     <item type="id" name="account_bind_eval_level_zzb" />
     <item type="id" name="zzb_detail_msg" />
     <item type="id" name="zzb_delete_safe_mode" />
+    <item type="id" name="zzb_recommend" />
+    <item type="id" name="guide_qqpimsecure_tips" />
     <item type="id" name="rl_account_login" />
     <item type="id" name="iv_login" />
     <item type="id" name="tv_my_login_history" />
     <item type="id" name="tv_my_login_history_desc" />
+    <item type="id" name="iv_my_login_history_array" />
     <item type="id" name="iv_my_login_history" />
     <item type="id" name="rl_my_mb" />
     <item type="id" name="iv_mb" />
     <item type="id" name="tv_my_mb" />
     <item type="id" name="tv_my_mb_desc" />
+    <item type="id" name="iv_my_mb_array" />
     <item type="id" name="iv_my_mb" />
     <item type="id" name="rl_my_password" />
     <item type="id" name="iv_password" />
     <item type="id" name="tv_my_password" />
     <item type="id" name="tv_my_password_desc" />
+    <item type="id" name="iv_my_password_array" />
     <item type="id" name="iv_my_password" />
-    <item type="id" name="rl_my_protection" />
-    <item type="id" name="iv_protection" />
-    <item type="id" name="tv_my_protection" />
-    <item type="id" name="tv_my_protection_desc" />
-    <item type="id" name="iv_my_protection" />
+    <item type="id" name="rl_my_qqpim_protect" />
+    <item type="id" name="iv_qqpim_protect" />
+    <item type="id" name="tv_my_qqpim_protect" />
+    <item type="id" name="tv_my_qqpim_protect_desc" />
+    <item type="id" name="iv_my_qqpim_protect_array" />
+    <item type="id" name="iv_my_qqpim_protect" />
+    <item type="id" name="rl_permission_guide" />
+    <item type="id" name="iv_permission" />
+    <item type="id" name="tv_permission" />
+    <item type="id" name="tv_permission_desc" />
+    <item type="id" name="iv_permission_array" />
+    <item type="id" name="bottom_margin_view" />
     <item type="id" name="account_pull_refresh_head" />
     <item type="id" name="refresh_array" />
     <item type="id" name="refresh_tip" />
-    <item type="id" name="head_arrowImageView" />
-    <item type="id" name="head_tipsTextView" />
     <item type="id" name="img_head" />
     <item type="id" name="succ_title" />
     <item type="id" name="succ_desc" />
@@ -148,7 +205,16 @@
     <item type="id" name="activity_succ_mobile" />
     <item type="id" name="succ_mobile" />
     <item type="id" name="bind_mb_mobile" />
-    <item type="id" name="title" />
+    <item type="id" name="add_real_name_result_img" />
+    <item type="id" name="add_real_name_title" />
+    <item type="id" name="add_real_name_tip" />
+    <item type="id" name="know_about_zzb" />
+    <item type="id" name="confirm_button" />
+    <item type="id" name="add_real_name_resource_button" />
+    <item type="id" name="add_face_result_img" />
+    <item type="id" name="add_face_title" />
+    <item type="id" name="add_face_tip" />
+    <item type="id" name="retry_button" />
     <item type="id" name="upper_layout" />
     <item type="id" name="divider_line" />
     <item type="id" name="scan_layout" />
@@ -160,6 +226,19 @@
     <item type="id" name="lower_layout" />
     <item type="id" name="text_explain" />
     <item type="id" name="root" />
+    <item type="id" name="main_img" />
+    <item type="id" name="wording1" />
+    <item type="id" name="wording2" />
+    <item type="id" name="wording3" />
+    <item type="id" name="process_btn" />
+    <item type="id" name="gallery_back" />
+    <item type="id" name="iv_gallery_show_protect" />
+    <item type="id" name="tv_gallery_protect_des" />
+    <item type="id" name="tv_gallery_protect_subdes" />
+    <item type="id" name="tv_gallery_protect_now" />
+    <item type="id" name="gallery_fl_progress" />
+    <item type="id" name="gallery_pb_download_progress" />
+    <item type="id" name="gallery_tv_progress_change" />
     <item type="id" name="preview_view" />
     <item type="id" name="progress" />
     <item type="id" name="title_bar" />
@@ -169,6 +248,23 @@
     <item type="id" name="bar_right_layout" />
     <item type="id" name="bar_right_image" />
     <item type="id" name="title_bar_divider" />
+    <item type="id" name="qqpim_back" />
+    <item type="id" name="iv_qqpim_show_protect" />
+    <item type="id" name="tv_qqpim_protect_des" />
+    <item type="id" name="tv_qqpim_protect_subdes" />
+    <item type="id" name="tv_qqpim_protect_now" />
+    <item type="id" name="qqpim_fl_progress" />
+    <item type="id" name="qqpim_pb_download_progress" />
+    <item type="id" name="qqpim_tv_progress_change" />
+    <item type="id" name="qqpim_back_new" />
+    <item type="id" name="ll_qqpim_desc" />
+    <item type="id" name="iv_qqpim_file" />
+    <item type="id" name="iv_qqpim_contact" />
+    <item type="id" name="iv_qqpim_coin_center" />
+    <item type="id" name="tv_qqpim_protect_now_new" />
+    <item type="id" name="qqpim_fl_progress_new" />
+    <item type="id" name="qqpim_pb_download_progress_new" />
+    <item type="id" name="qqpim_tv_progress_change_new" />
     <item type="id" name="container" />
     <item type="id" name="titile_pic" />
     <item type="id" name="tip_text_layout" />
@@ -180,8 +276,6 @@
     <item type="id" name="add_account_tip_close" />
     <item type="id" name="gobt" />
     <item type="id" name="nexttime" />
-    <item type="id" name="ScrollLayout" />
-    <item type="id" name="pointlayout" />
     <item type="id" name="info_layout" />
     <item type="id" name="info_upper" />
     <item type="id" name="mobile_info" />
@@ -189,10 +283,6 @@
     <item type="id" name="next_button" />
     <item type="id" name="cancel" />
     <item type="id" name="fee_tip" />
-    <item type="id" name="icon" />
-    <item type="id" name="bind_unbind_title" />
-    <item type="id" name="bind_unbind_content" />
-    <item type="id" name="Button_bind_unbind_success" />
     <item type="id" name="tv_binduin_verifyphone_tips" />
     <item type="id" name="ll_binduin_verifyphone_num" />
     <item type="id" name="tv_binduin_verifyphone_name" />
@@ -200,20 +290,18 @@
     <item type="id" name="et_binduin_verifyphone_phone" />
     <item type="id" name="binduin_verifyphone_button" />
     <item type="id" name="tv_binduin_verifyphone_forget" />
+    <item type="id" name="change_verify_type" />
     <item type="id" name="iv_binduin_icon" />
     <item type="id" name="tv_binduin_tips" />
     <item type="id" name="binduin_button" />
     <item type="id" name="binduin_tv_mb" />
     <item type="id" name="camera_prepare_view" />
-    <item type="id" name="captcha_dialog" />
-    <item type="id" name="captcha_input_title" />
-    <item type="id" name="captcha_image" />
-    <item type="id" name="progress_loading" />
-    <item type="id" name="captcha_change_image" />
-    <item type="id" name="captcha_input_text" />
-    <item type="id" name="captcha_verify_btn" />
     <item type="id" name="have_changed_mobile" />
     <item type="id" name="mobile_still_available" />
+    <item type="id" name="qq_head" />
+    <item type="id" name="quick_login_layout" />
+    <item type="id" name="quick_login_btn" />
+    <item type="id" name="wtlogin_find_psw" />
     <item type="id" name="result_img" />
     <item type="id" name="result_title" />
     <item type="id" name="result_desc" />
@@ -221,6 +309,10 @@
     <item type="id" name="commonverify_title" />
     <item type="id" name="commonverify_desc" />
     <item type="id" name="commonverify_action" />
+    <item type="id" name="copy_face_succ_tip" />
+    <item type="id" name="button_confirm_copy" />
+    <item type="id" name="copy_face_tip" />
+    <item type="id" name="button_cancel_copy" />
     <item type="id" name="date_display" />
     <item type="id" name="time_display" />
     <item type="id" name="correct_time_auto" />
@@ -239,9 +331,6 @@
     <item type="id" name="del_device_tips" />
     <item type="id" name="del_device_btn_del" />
     <item type="id" name="del_device_btn_cancel" />
-    <item type="id" name="utils_common_lock_dialog_tips" />
-    <item type="id" name="utils_mail_lock_dialog_lock" />
-    <item type="id" name="utils_mail_lock_dialog_close" />
     <item type="id" name="actionsheet_root" />
     <item type="id" name="actionsheet_btn1" />
     <item type="id" name="actionsheet_btn2" />
@@ -261,6 +350,9 @@
     <item type="id" name="canclebt" />
     <item type="id" name="ver_line" />
     <item type="id" name="okbt" />
+    <item type="id" name="content_one" />
+    <item type="id" name="content_two" />
+    <item type="id" name="content_three" />
     <item type="id" name="verify_upper_back" />
     <item type="id" name="page_bg_upper_back" />
     <item type="id" name="verify_lower_back" />
@@ -304,6 +396,7 @@
     <item type="id" name="fr_confirm_tv_rescan" />
     <item type="id" name="fr_confirm_tv_next" />
     <item type="id" name="fr_confirm_iv_face" />
+    <item type="id" name="upload_photo_pb" />
     <item type="id" name="take_again" />
     <item type="id" name="tiptext" />
     <item type="id" name="face_pwd_list" />
@@ -313,11 +406,11 @@
     <item type="id" name="face_add_tv_title" />
     <item type="id" name="face_add_iv_tip" />
     <item type="id" name="face_add_btn_add" />
-    <item type="id" name="linktext" />
     <item type="id" name="title_bar_v" />
     <item type="id" name="bar_title_v" />
     <item type="id" name="bar_back_button_v" />
     <item type="id" name="bar_right_layout_v" />
+    <item type="id" name="bright_layout" />
     <item type="id" name="realname_toast_layout" />
     <item type="id" name="realname_toast_icon" />
     <item type="id" name="zzbtitletext" />
@@ -336,30 +429,31 @@
     <item type="id" name="open_upper_door_bg" />
     <item type="id" name="open_upper_door" />
     <item type="id" name="open_upper_door_new" />
-    <item type="id" name="vry_face_tip_layout" />
-    <item type="id" name="tip_text" />
-    <item type="id" name="start_scan" />
     <item type="id" name="fr_rl_face" />
     <item type="id" name="fr_txt_face_name" />
     <item type="id" name="fr_txt_face_tips" />
+    <item type="id" name="fr_txt_face_tips2" />
     <item type="id" name="fr_rl_chk" />
     <item type="id" name="fr_chk" />
     <item type="id" name="fr_licence" />
     <item type="id" name="fr_btn_reg" />
     <item type="id" name="fr_rl_note" />
+    <item type="id" name="fr_rl_tip_layout" />
+    <item type="id" name="fr_tv_tip" />
     <item type="id" name="fr_no_tips" />
     <item type="id" name="fr_btn_scan" />
     <item type="id" name="fr_default_rl_pwd" />
     <item type="id" name="fr_default_tv_opt_text" />
     <item type="id" name="fr_default_tv_pwd_text" />
+    <item type="id" name="face_start_psw_divider" />
+    <item type="id" name="face_change_psw_divider" />
     <item type="id" name="face_chanege_mobile" />
     <item type="id" name="face_chanege_mobile_text" />
+    <item type="id" name="face_chanege_mobile_tip" />
     <item type="id" name="face_chanege_mobile_text_right" />
-    <item type="id" name="fr_default_rl_retry" />
+    <item type="id" name="face_change_mobile_divider" />
     <item type="id" name="fr_default_rl_add" />
-    <item type="id" name="fr_default_rl_pk" />
-    <item type="id" name="facepk" />
-    <item type="id" name="fr_iv_red_tip" />
+    <item type="id" name="fr_default_rl_retry" />
     <item type="id" name="livedetect1_border1" />
     <item type="id" name="livedetect1_border2" />
     <item type="id" name="livedetect_img1" />
@@ -370,7 +464,6 @@
     <item type="id" name="retake_btn" />
     <item type="id" name="fr_upload_progress" />
     <item type="id" name="fr_upload_tips" />
-    <item type="id" name="jianling_layout" />
     <item type="id" name="findpwd_input_qq" />
     <item type="id" name="next_step" />
     <item type="id" name="firsttime_text_layout" />
@@ -379,11 +472,33 @@
     <item type="id" name="textright" />
     <item type="id" name="firsttimebt" />
     <item type="id" name="firstiv" />
+    <item type="id" name="closeiv" />
+    <item type="id" name="head_portrait" />
+    <item type="id" name="freeze_confirm_btn" />
+    <item type="id" name="head_circle" />
+    <item type="id" name="freeze_auto_detail" />
+    <item type="id" name="freeze_mod_pwd" />
+    <item type="id" name="freeze_loading_view" />
+    <item type="id" name="account_lock_list_tip_progress" />
+    <item type="id" name="do_freeze" />
+    <item type="id" name="frees_sys_detail" />
+    <item type="id" name="freeze_dialog_title" />
+    <item type="id" name="freeze_dialog_detail" />
+    <item type="id" name="freeze_sync_qqsig" />
+    <item type="id" name="freeze_cancel" />
+    <item type="id" name="freeze_confirm" />
+    <item type="id" name="freeze_uin_detail" />
+    <item type="id" name="freeze_sync_qqsig_detail" />
+    <item type="id" name="freeze_ok" />
     <item type="id" name="prepare_tip" />
     <item type="id" name="prepare_progress" />
     <item type="id" name="result_tip" />
     <item type="id" name="result_tip_desc" />
     <item type="id" name="result_url" />
+    <item type="id" name="top_img" />
+    <item type="id" name="line2" />
+    <item type="id" name="guide_btn" />
+    <item type="id" name="close" />
     <item type="id" name="sliding_menu_view" />
     <item type="id" name="left_sliding_tab" />
     <item type="id" name="account_menu_page" />
@@ -392,8 +507,8 @@
     <item type="id" name="index_tab_divider" />
     <item type="id" name="tab_account_tip" />
     <item type="id" name="tab_util_tip" />
-    <item type="id" name="tab_token_tip" />
-    <item type="id" name="tab_setting_tip" />
+    <item type="id" name="view_desc" />
+    <item type="id" name="orange_toast" />
     <item type="id" name="input_phone_number_tip" />
     <item type="id" name="rl_input_phone_number_country" />
     <item type="id" name="tv_country_name" />
@@ -401,119 +516,13 @@
     <item type="id" name="tv_country_number" />
     <item type="id" name="text_mobile" />
     <item type="id" name="button_confirm_mobile" />
-    <item type="id" name="country_list_china" />
-    <item type="id" name="tv_country_name_china" />
-    <item type="id" name="tv_country_number_china" />
-    <item type="id" name="country_list_hongkong" />
-    <item type="id" name="tv_country_name_hongkong" />
-    <item type="id" name="tv_country_number_hongkong" />
-    <item type="id" name="country_list_macau" />
-    <item type="id" name="tv_country_name_macau" />
-    <item type="id" name="tv_country_number_macau" />
-    <item type="id" name="country_list_taiwan" />
-    <item type="id" name="tv_country_name_taiwan" />
-    <item type="id" name="tv_country_number_taiwan" />
-    <item type="id" name="country_list_america" />
-    <item type="id" name="tv_country_name_america" />
-    <item type="id" name="tv_country_number_america" />
-    <item type="id" name="country_list_japan" />
-    <item type="id" name="tv_country_name_japan" />
-    <item type="id" name="tv_country_number_japan" />
-    <item type="id" name="country_list_korea" />
-    <item type="id" name="tv_country_name_korea" />
-    <item type="id" name="tv_country_number_korea" />
-    <item type="id" name="country_list_singapore" />
-    <item type="id" name="tv_country_name_singapore" />
-    <item type="id" name="tv_country_number_singapore" />
-    <item type="id" name="country_list_canada" />
-    <item type="id" name="tv_country_name_canada" />
-    <item type="id" name="tv_country_number_canada" />
-    <item type="id" name="country_list_australia" />
-    <item type="id" name="tv_country_name_australia" />
-    <item type="id" name="tv_country_number_australia" />
-    <item type="id" name="country_list_italy" />
-    <item type="id" name="tv_country_name_italy" />
-    <item type="id" name="tv_country_number_italy" />
-    <item type="id" name="country_list_malaysia" />
-    <item type="id" name="tv_country_name_malaysia" />
-    <item type="id" name="tv_country_number_malaysia" />
-    <item type="id" name="country_list_philippines" />
-    <item type="id" name="tv_country_name_philippines" />
-    <item type="id" name="tv_country_number_philippines" />
-    <item type="id" name="country_list_thailand" />
-    <item type="id" name="tv_country_name_thailand" />
-    <item type="id" name="tv_country_number_thailand" />
-    <item type="id" name="country_list_indonesia" />
-    <item type="id" name="tv_country_name_indonesia" />
-    <item type="id" name="tv_country_number_indonesia" />
-    <item type="id" name="view1" />
-    <item type="id" name="view2" />
-    <item type="id" name="lastlogin" />
-    <item type="id" name="currlogin" />
-    <item type="id" name="view3" />
-    <item type="id" name="banner" />
-    <item type="id" name="jl_banner" />
-    <item type="id" name="jl_recommend_name" />
-    <item type="id" name="jl_recommend_desc" />
-    <item type="id" name="jl_list" />
-    <item type="id" name="jl_libao_text" />
-    <item type="id" name="jl_libao" />
-    <item type="id" name="jl_load_view" />
-    <item type="id" name="jl_progress" />
-    <item type="id" name="libao_img" />
-    <item type="id" name="jl_list_item_content_view" />
-    <item type="id" name="jl_list_item_name" />
-    <item type="id" name="jl_list_item_desc" />
-    <item type="id" name="jl_list_item_check_box" />
-    <item type="id" name="jl_list_item_progress" />
-    <item type="id" name="jl_list_item_arrow" />
-    <item type="id" name="jl_tip_verify_title" />
-    <item type="id" name="jl_tip_verify_desc" />
-    <item type="id" name="jl_tip_verify_action" />
-    <item type="id" name="col_title" />
-    <item type="id" name="col_content" />
-    <item type="id" name="text_appeal_name" />
-    <item type="id" name="text_appeal_detail" />
-    <item type="id" name="arrow" />
-    <item type="id" name="jl_appeal_listview" />
-    <item type="id" name="jl_appleal_progress" />
-    <item type="id" name="empty" />
-    <item type="id" name="img_ico_tip" />
-    <item type="id" name="tip_detail" />
-    <item type="id" name="jl_appeal_detail_desc" />
-    <item type="id" name="ll_container" />
-    <item type="id" name="jl_appeal_result__btn" />
-    <item type="id" name="role_name" />
-    <item type="id" name="jl_listview" />
-    <item type="id" name="rl_finditems_choosezone_item" />
-    <item type="id" name="zone_name" />
-    <item type="id" name="iv_finditems_arrow" />
-    <item type="id" name="finditems_desc" />
-    <item type="id" name="finditems_btn_apply" />
-    <item type="id" name="finditems_btn_record" />
-    <item type="id" name="column1" />
-    <item type="id" name="qq_title" />
-    <item type="id" name="qq_name" />
-    <item type="id" name="column2" />
-    <item type="id" name="lv_finditems_role" />
-    <item type="id" name="role_title" />
-    <item type="id" name="column3" />
-    <item type="id" name="lv_finditems_lastlogintime" />
-    <item type="id" name="lastlogintime_title" />
-    <item type="id" name="lastlogintime_time" />
-    <item type="id" name="column4" />
-    <item type="id" name="lv_finditems_getstealtime" />
-    <item type="id" name="getstealtime_title" />
-    <item type="id" name="getstealtime_time" />
-    <item type="id" name="finditems_et_desc" />
-    <item type="id" name="finditems_btn_submit" />
-    <item type="id" name="rl_jl_finditems_chk" />
-    <item type="id" name="jl_finditems_chk" />
-    <item type="id" name="jl_finditems_licence" />
-    <item type="id" name="jl_finditems_result_icon" />
-    <item type="id" name="jl_finditems_result_title" />
-    <item type="id" name="jl_finditems_result_content" />
-    <item type="id" name="jl_finditems_result__btn" />
+    <item type="id" name="left_icon" />
+    <item type="id" name="tips_title" />
+    <item type="id" name="tips_summary" />
+    <item type="id" name="item_root" />
+    <item type="id" name="item_icon" />
+    <item type="id" name="item_icon_new" />
+    <item type="id" name="tv_item" />
     <item type="id" name="uninstall" />
     <item type="id" name="imageView2" />
     <item type="id" name="textView1" />
@@ -540,6 +549,7 @@
     <item type="id" name="online_device" />
     <item type="id" name="online_des" />
     <item type="id" name="divider3" />
+    <item type="id" name="arrow" />
     <item type="id" name="private_ip_title" />
     <item type="id" name="private_ip_desc" />
     <item type="id" name="private_ip_all" />
@@ -554,14 +564,8 @@
     <item type="id" name="title_1" />
     <item type="id" name="title_2" />
     <item type="id" name="title_3" />
-    <item type="id" name="menu_nick" />
-    <item type="id" name="menu_verify_tip" />
-    <item type="id" name="menu_action_doverify" />
-    <item type="id" name="menu_action_switch" />
     <item type="id" name="modifypwdlayout" />
     <item type="id" name="scrollAreaLayout" />
-    <item type="id" name="view_desc" />
-    <item type="id" name="orange_toast" />
     <item type="id" name="view_input" />
     <item type="id" name="txt_account" />
     <item type="id" name="txt_password" />
@@ -576,11 +580,17 @@
     <item type="id" name="btn_msg_select" />
     <item type="id" name="msg_get_more" />
     <item type="id" name="head_view" />
+    <item type="id" name="head_arrowImageView" />
     <item type="id" name="head_progressBar" />
+    <item type="id" name="head_tipsTextView" />
     <item type="id" name="head_refreshTimeTextView" />
     <item type="id" name="img_view" />
     <item type="id" name="msg_icon" />
     <item type="id" name="cb_enable" />
+    <item type="id" name="img_ico_tip" />
+    <item type="id" name="tip_detail" />
+    <item type="id" name="thirdtitle" />
+    <item type="id" name="dividertitle" />
     <item type="id" name="face_layout" />
     <item type="id" name="face_tip" />
     <item type="id" name="realname_layout" />
@@ -614,18 +624,8 @@
     <item type="id" name="psw_tip" />
     <item type="id" name="psw_tip_read_detail" />
     <item type="id" name="psw_button" />
+    <item type="id" name="verify_type_list" />
     <item type="id" name="divider_1" />
-    <item type="id" name="select_mobile" />
-    <item type="id" name="mobile_img" />
-    <item type="id" name="vry_mobile" />
-    <item type="id" name="select_qqtoken" />
-    <item type="id" name="qqtoken_img" />
-    <item type="id" name="vry_qqtoken" />
-    <item type="id" name="select_ques" />
-    <item type="id" name="ques_img" />
-    <item type="id" name="vry_ques" />
-    <item type="id" name="select_skip" />
-    <item type="id" name="skip_img" />
     <item type="id" name="uin_info" />
     <item type="id" name="tip_info" />
     <item type="id" name="activity_no_sms_tip" />
@@ -645,6 +645,20 @@
     <item type="id" name="ques_3" />
     <item type="id" name="answer_3" />
     <item type="id" name="button_confirm_ques" />
+    <item type="id" name="action_container" />
+    <item type="id" name="action_image" />
+    <item type="id" name="action_text" />
+    <item type="id" name="notification_main_column_container" />
+    <item type="id" name="notification_main_column" />
+    <item type="id" name="right_side" />
+    <item type="id" name="info" />
+    <item type="id" name="right_icon" />
+    <item type="id" name="notification_background" />
+    <item type="id" name="time" />
+    <item type="id" name="chronometer" />
+    <item type="id" name="action_divider" />
+    <item type="id" name="actions" />
+    <item type="id" name="icon_group" />
     <item type="id" name="msg_title_tip" />
     <item type="id" name="op_msg_detail_tab" />
     <item type="id" name="msg_tip" />
@@ -658,91 +672,71 @@
     <item type="id" name="rl_common_protect_load_view" />
     <item type="id" name="login_protect_list_tip_progress" />
     <item type="id" name="emptydevices" />
+    <item type="id" name="permission_one_layout" />
+    <item type="id" name="permission_two_layout" />
     <item type="id" name="pro_dialog_icon_bg" />
     <item type="id" name="pro_dialog_txt" />
     <item type="id" name="pro_dialog_content" />
     <item type="id" name="pro_dialog_shutdown_icon" />
+    <item type="id" name="tv_qqpim_cancel" />
+    <item type="id" name="tv_qqpim_confirm" />
     <item type="id" name="iv_top_bg" />
     <item type="id" name="iv_top_face" />
     <item type="id" name="ll_top" />
     <item type="id" name="iv_top_icon" />
+    <item type="id" name="user_icon_layout" />
+    <item type="id" name="face" />
+    <item type="id" name="realicon" />
     <item type="id" name="tv_top_maintitle" />
+    <item type="id" name="enjoy_protect_layout" />
+    <item type="id" name="enjoy_protect_days" />
     <item type="id" name="tv_top_subtitle" />
     <item type="id" name="ll_mid" />
     <item type="id" name="realname_tv_findqq" />
     <item type="id" name="realname_tv_pwd" />
     <item type="id" name="ll_bottom" />
     <item type="id" name="realname_tv_recy" />
-    <item type="id" name="realname_tv_more" />
-    <item type="id" name="info" />
+    <item type="id" name="realname_tv_zzb_only" />
     <item type="id" name="change_mobile" />
     <item type="id" name="next_btn" />
     <item type="id" name="baselayout" />
-    <item type="id" name="scrollView" />
+    <item type="id" name="logo_layout" />
+    <item type="id" name="realname_title" />
     <item type="id" name="id" />
     <item type="id" name="pb_id" />
+    <item type="id" name="tip_text" />
     <item type="id" name="scan_face_layout" />
     <item type="id" name="scan_face_step" />
     <item type="id" name="scan_face_ok" />
     <item type="id" name="scan_id_layout" />
     <item type="id" name="scan_id_step" />
     <item type="id" name="scan_id_ok" />
-    <item type="id" name="realname_2_chk" />
-    <item type="id" name="realname_2_licence" />
-    <item type="id" name="realname_2_licence2" />
     <item type="id" name="day" />
     <item type="id" name="hour" />
     <item type="id" name="mini" />
     <item type="id" name="sec" />
     <item type="id" name="top_toast" />
     <item type="id" name="toast_iv" />
-    <item type="id" name="tip_text_content_layout" />
-    <item type="id" name="tip_one" />
-    <item type="id" name="dot_one" />
-    <item type="id" name="txt_title1" />
-    <item type="id" name="tip_two" />
-    <item type="id" name="dot_two" />
-    <item type="id" name="txt_title2" />
-    <item type="id" name="tip_three" />
-    <item type="id" name="dot_three" />
-    <item type="id" name="txt_title3" />
+    <item type="id" name="result_text_tip" />
     <item type="id" name="realname_find_tip" />
     <item type="id" name="realname_3_name" />
     <item type="id" name="realname_3_id" />
     <item type="id" name="realname_3_item_1_layout" />
     <item type="id" name="flag" />
-    <item type="id" name="text1" />
-    <item type="id" name="text1value" />
-    <item type="id" name="text2" />
-    <item type="id" name="text2value" />
-    <item type="id" name="changebt" />
-    <item type="id" name="tempview" />
+    <item type="id" name="ScrollLayout" />
     <item type="id" name="firstlayout" />
     <item type="id" name="twolayout" />
     <item type="id" name="threelayout" />
     <item type="id" name="forelayout" />
+    <item type="id" name="text1" />
     <item type="id" name="iv" />
+    <item type="id" name="pointlayout" />
     <item type="id" name="iv1" />
     <item type="id" name="iv2" />
     <item type="id" name="iv3" />
     <item type="id" name="iv4" />
     <item type="id" name="detailbt" />
-    <item type="id" name="frameid" />
-    <item type="id" name="face" />
-    <item type="id" name="realicon" />
-    <item type="id" name="bt1" />
-    <item type="id" name="bt2" />
-    <item type="id" name="bt3" />
-    <item type="id" name="guid_text1" />
-    <item type="id" name="guid_text2_layout" />
-    <item type="id" name="guid_text2" />
-    <item type="id" name="openface" />
     <item type="id" name="realname_takepic_btn" />
-    <item type="id" name="videobm" />
-    <item type="id" name="videoview" />
-    <item type="id" name="playbt" />
-    <item type="id" name="videotext" />
-    <item type="id" name="seekbar" />
     <item type="id" name="recommend_to_wechat" />
     <item type="id" name="recommend_wechat_icon" />
     <item type="id" name="list_divider" />
@@ -750,11 +744,6 @@
     <item type="id" name="recommend_friend_group_icon" />
     <item type="id" name="qrcode" />
     <item type="id" name="recommend_info" />
-    <item type="id" name="record_text_layout" />
-    <item type="id" name="record_text_one" />
-    <item type="id" name="record_text_two" />
-    <item type="id" name="record_text_three" />
-    <item type="id" name="record_text_four" />
     <item type="id" name="textv" />
     <item type="id" name="textv2" />
     <item type="id" name="listv" />
@@ -808,30 +797,16 @@
     <item type="id" name="sr_iv_paymentrange" />
     <item type="id" name="set_uin_manage" />
     <item type="id" name="find_serialnum" />
+    <item type="id" name="banner" />
     <item type="id" name="viewpager1" />
     <item type="id" name="tipsBox" />
-    <item type="id" name="qrcodelayout" />
-    <item type="id" name="qrcodetext" />
-    <item type="id" name="qrcode_new" />
-    <item type="id" name="qrcode_txt" />
-    <item type="id" name="queryqqlayout" />
-    <item type="id" name="queryqq" />
-    <item type="id" name="queryqq_new" />
-    <item type="id" name="queryqq_txt" />
-    <item type="id" name="utillayout" />
-    <item type="id" name="util" />
-    <item type="id" name="util_new" />
-    <item type="id" name="util_txt" />
-    <item type="id" name="safenews" />
-    <item type="id" name="safenewstext" />
-    <item type="id" name="safenews_new" />
-    <item type="id" name="safenews_txt" />
-    <item type="id" name="hot_promote" />
-    <item type="id" name="hot_promote_text" />
-    <item type="id" name="hot_promote_new" />
-    <item type="id" name="hot_promote_txt" />
+    <item type="id" name="listview" />
     <item type="id" name="setting_op_name" />
     <item type="id" name="setting_op_img" />
+    <item type="id" name="qrcodelayout" />
+    <item type="id" name="setting_op_icon" />
+    <item type="id" name="setting_op_new" />
+    <item type="id" name="sub_txt" />
     <item type="id" name="setting_submit_comment_comment" />
     <item type="id" name="set_token_pwd" />
     <item type="id" name="set_token_pwd_txt" />
@@ -839,6 +814,7 @@
     <item type="id" name="set_recommend2friend" />
     <item type="id" name="set_about" />
     <item type="id" name="set_about_txt" />
+    <item type="id" name="new_icon" />
     <item type="id" name="log_list" />
     <item type="id" name="log_text" />
     <item type="id" name="unbind_info" />
@@ -854,15 +830,6 @@
     <item type="id" name="text_ok" />
     <item type="id" name="unbind_info_upper" />
     <item type="id" name="unbind_info_lower" />
-    <item type="id" name="forget_qqMask" />
-    <item type="id" name="qq_pwd_view" />
-    <item type="id" name="forget_textAccount" />
-    <item type="id" name="forget_qqpasswd" />
-    <item type="id" name="passwd_check_box" />
-    <item type="id" name="passwd_dis_hint" />
-    <item type="id" name="passwd_hide_hint" />
-    <item type="id" name="forget_loginOK" />
-    <item type="id" name="forget_find_password" />
     <item type="id" name="set_gesture_pwd" />
     <item type="id" name="set_gesture_pwd_txt" />
     <item type="id" name="set_face_pwd_txt" />
@@ -881,10 +848,8 @@
     <item type="id" name="updateinfo_create" />
     <item type="id" name="updateinfo_skip" />
     <item type="id" name="startup_img" />
-    <item type="id" name="indicator" />
-    <item type="id" name="refresh_hint" />
-    <item type="id" name="refresh_time_layout" />
-    <item type="id" name="refresh_time" />
+    <item type="id" name="tcaptcha_container" />
+    <item type="id" name="tcaptcha_indicator_layout" />
     <item type="id" name="border_qqface" />
     <item type="id" name="bordoer_verify" />
     <item type="id" name="bordoer_zzb" />
@@ -896,8 +861,10 @@
     <item type="id" name="title_menu_content" />
     <item type="id" name="menu_clear" />
     <item type="id" name="menu_help" />
-    <item type="id" name="title_text" />
     <item type="id" name="menu_get_verify_msg" />
+    <item type="id" name="tip_view" />
+    <item type="id" name="tip_view_icon" />
+    <item type="id" name="tip_close" />
     <item type="id" name="contentAndTitle" />
     <item type="id" name="content" />
     <item type="id" name="vs_title_menu" />
@@ -916,7 +883,7 @@
     <item type="id" name="realname_new_icon" />
     <item type="id" name="tokenlab_realname_desc" />
     <item type="id" name="tokenlab_realname_text" />
-    <item type="id" name="token_widget_land_bg" />
+    <item type="id" name="token_widget_port_bg" />
     <item type="id" name="token_widget_speech" />
     <item type="id" name="token_widget_lock" />
     <item type="id" name="widget_lock_text" />
@@ -928,13 +895,12 @@
     <item type="id" name="token_widget_num_3" />
     <item type="id" name="token_widget_num_4" />
     <item type="id" name="token_widget_num_5" />
-    <item type="id" name="token_widget_port_bg" />
+    <item type="id" name="token_widget_land_bg" />
     <item type="id" name="utils_account_lock_dialog_lock" />
     <item type="id" name="utils_account_lock_dialog_close" />
     <item type="id" name="account_lock_img" />
     <item type="id" name="account_lock_list" />
     <item type="id" name="account_lock_load_view" />
-    <item type="id" name="account_lock_list_tip_progress" />
     <item type="id" name="utils_common_list_item_content_view" />
     <item type="id" name="lv_utils_common_list_item_name" />
     <item type="id" name="utils_utils_common_list_item_name" />
@@ -962,9 +928,8 @@
     <item type="id" name="game_protect_list" />
     <item type="id" name="game_protect_load_view" />
     <item type="id" name="game_protect_list_tip_progress" />
-    <item type="id" name="item_icon" />
-    <item type="id" name="item_new_flag" />
-    <item type="id" name="item_text" />
+    <item type="id" name="tip_account_protect" />
+    <item type="id" name="protect_line_grid_view" />
     <item type="id" name="login_protect_img" />
     <item type="id" name="login_protect_list" />
     <item type="id" name="login_protect_load_view" />
@@ -1025,17 +990,10 @@
     <item type="id" name="code4" />
     <item type="id" name="code5" />
     <item type="id" name="code6" />
+    <item type="id" name="code_mask_layout" />
+    <item type="id" name="code_mask_tip" />
     <item type="id" name="verify_codeline" />
-    <item type="id" name="account_protect_layout" />
-    <item type="id" name="account_protect_tip" />
-    <item type="id" name="divider_area1" />
-    <item type="id" name="qq_lock_layout" />
-    <item type="id" name="divider_area2" />
-    <item type="id" name="other_protect_layout" />
-    <item type="id" name="divider_area3" />
-    <item type="id" name="mask_new" />
-    <item type="id" name="img" />
-    <item type="id" name="divider_area4" />
+    <item type="id" name="belower_layout" />
     <item type="id" name="qbqd_protect_content_view" />
     <item type="id" name="utils_qbqd_protect_name" />
     <item type="id" name="qbqd_protect_check_box" />
@@ -1044,42 +1002,84 @@
     <item type="id" name="utils_tip_verify_action" />
     <item type="id" name="text_password" />
     <item type="id" name="btn_ok" />
+    <item type="id" name="verify_type_icon" />
+    <item type="id" name="verify_type_name" />
+    <item type="id" name="verify_type_status" />
+    <item type="id" name="verify_type_divider_fill" />
+    <item type="id" name="add_account_bottom_tip" />
+    <item type="id" name="skip_layout" />
+    <item type="id" name="bottom_divider2" />
+    <item type="id" name="skip_tip" />
+    <item type="id" name="verify_skip_tip" />
     <item type="id" name="bar_title_menu" />
     <item type="id" name="main_lock_verifyview" />
     <item type="id" name="webView1" />
     <item type="id" name="web_browse" />
-    <item type="id" name="wtlogin" />
-    <item type="id" name="wtlogin_account_headimage" />
-    <item type="id" name="wtlogin_account_headimage_mask" />
-    <item type="id" name="wtlogin_account_up" />
-    <item type="id" name="wtlogin_account_inputaccount_icon" />
-    <item type="id" name="wtlogin_account_inputaccount" />
-    <item type="id" name="wtlogin_account_divider" />
-    <item type="id" name="wtlogin_account_down" />
-    <item type="id" name="wtlogin_account_inputpasswd_icon" />
-    <item type="id" name="wtlogin_account_inputpasswd" />
-    <item type="id" name="wtlogin_account_check_box" />
-    <item type="id" name="wtlogin_passwd_dis_hint" />
-    <item type="id" name="wtlogin_passwd_hide_hint" />
-    <item type="id" name="wtlogin_account_ok" />
-    <item type="id" name="wtlogin_account_find_password" />
-    <item type="id" name="wtlogin_account_tip" />
-    <item type="id" name="wtlogin_login_finish_nomibao_icon" />
-    <item type="id" name="wtlogin_login_finish_nomibao_title" />
-    <item type="id" name="wtlogin_login_finish_nomibao_desc" />
-    <item type="id" name="wtlogin_login_finish_evaluate" />
-    <item type="id" name="wtlogin_login_nomibao_t1" />
-    <item type="id" name="wtlogin_login_finish_lastlogin" />
-    <item type="id" name="wtlogin_login_finish_safemsg" />
-    <item type="id" name="wtlogin_login_finish_nomibao_action" />
-    <item type="id" name="wtlogin_login_finish_nomibao_shensu" />
-    <item type="id" name="wtlogin_tip_verify" />
+    <item type="id" name="wifi_download_detail" />
+    <item type="id" name="wifi_download" />
+    <item type="id" name="wifi_result_content" />
+    <item type="id" name="wifi_result_icon" />
+    <item type="id" name="wifi_result_title" />
+    <item type="id" name="wifi_result_detail" />
+    <item type="id" name="wifi_item_arp" />
+    <item type="id" name="wifi_item_arp_1" />
+    <item type="id" name="wifi_item_arp_2" />
+    <item type="id" name="wifi_item_arp_3" />
+    <item type="id" name="wifi_item_dns" />
+    <item type="id" name="wifi_item_dns_1" />
+    <item type="id" name="wifi_item_dns_2" />
+    <item type="id" name="wifi_item_dns_3" />
+    <item type="id" name="wifi_item_fake" />
+    <item type="id" name="wifi_item_fake_1" />
+    <item type="id" name="wifi_item_fake_2" />
+    <item type="id" name="wifi_item_fake_3" />
+    <item type="id" name="wifi_item_diaoyu" />
+    <item type="id" name="wifi_item_diaoyu_1" />
+    <item type="id" name="wifi_item_diaoyu_2" />
+    <item type="id" name="wifi_item_diaoyu_3" />
+    <item type="id" name="wifi_item_pwd" />
+    <item type="id" name="wifi_item_pwd_1" />
+    <item type="id" name="wifi_item_pwd_2" />
+    <item type="id" name="wifi_item_pwd_3" />
+    <item type="id" name="wifi_result_btn" />
+    <item type="id" name="wifi_main_content" />
+    <item type="id" name="wifi_icon" />
+    <item type="id" name="wifi_checking_icon" />
+    <item type="id" name="wifi_3circles_loading" />
+    <item type="id" name="wifi_circle1" />
+    <item type="id" name="wifi_circle2" />
+    <item type="id" name="wifi_circle3" />
+    <item type="id" name="wifi_state" />
+    <item type="id" name="wifi_ssid" />
+    <item type="id" name="wifi_check" />
+    <item type="id" name="wifi_download_view" />
+    <item type="id" name="wifi_divider1" />
+    <item type="id" name="wifi_download1" />
+    <item type="id" name="wifi_download2" />
+    <item type="id" name="wifi_download3" />
+    <item type="id" name="wifi_download_btn" />
+    <item type="id" name="captcha_dialog" />
+    <item type="id" name="captcha_input_title" />
+    <item type="id" name="captcha_image" />
+    <item type="id" name="progress_loading" />
+    <item type="id" name="captcha_change_image" />
+    <item type="id" name="captcha_input_text" />
+    <item type="id" name="captcha_verify_btn" />
+    <item type="id" name="tip_text_content_layout" />
+    <item type="id" name="tip_one" />
     <item type="id" name="iv_num1" />
+    <item type="id" name="txt_title1" />
     <item type="id" name="txt_subtitle1" />
+    <item type="id" name="tip_two" />
     <item type="id" name="iv_num2" />
+    <item type="id" name="txt_title2" />
     <item type="id" name="txt_subtitle2" />
+    <item type="id" name="tip_three" />
     <item type="id" name="iv_num3" />
+    <item type="id" name="txt_title3" />
     <item type="id" name="cb_layout" />
+    <item type="id" name="realname_2_licence" />
+    <item type="id" name="realname_2_licence2" />
     <item type="id" name="account_tip_close" />
     <item type="id" name="zzb_tip_verify_view" />
 </resources>

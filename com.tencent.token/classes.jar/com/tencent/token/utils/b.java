@@ -23,27 +23,42 @@ public class b
   
   public static String a(byte[] paramArrayOfByte)
   {
-    int i1 = paramArrayOfByte.length;
-    byte[] arrayOfByte1 = a;
-    int i = (i1 + 2) / 3 * 4;
-    byte[] arrayOfByte2 = new byte[i + i / 2147483647];
+    return a(paramArrayOfByte, 0, paramArrayOfByte.length, a, true);
+  }
+  
+  public static String a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, boolean paramBoolean)
+  {
+    paramArrayOfByte1 = a(paramArrayOfByte1, paramInt1, paramInt2, paramArrayOfByte2, 2147483647);
+    paramInt1 = paramArrayOfByte1.length;
+    for (;;)
+    {
+      if ((paramBoolean) || (paramInt1 <= 0) || (paramArrayOfByte1[(paramInt1 - 1)] != 61)) {
+        return new String(paramArrayOfByte1, 0, paramInt1);
+      }
+      paramInt1 -= 1;
+    }
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    int i = (paramInt2 + 2) / 3 * 4;
+    byte[] arrayOfByte = new byte[i + i / paramInt3];
     int j = 0;
     i = 0;
     int k = 0;
-    int n;
-    while (k < i1 - 2)
+    while (k < paramInt2 - 2)
     {
-      m = paramArrayOfByte[(k + 0)] << 24 >>> 8 | paramArrayOfByte[(k + 1 + 0)] << 24 >>> 16 | paramArrayOfByte[(k + 2 + 0)] << 24 >>> 24;
-      arrayOfByte2[i] = arrayOfByte1[(m >>> 18)];
-      arrayOfByte2[(i + 1)] = arrayOfByte1[(m >>> 12 & 0x3F)];
-      arrayOfByte2[(i + 2)] = arrayOfByte1[(m >>> 6 & 0x3F)];
-      arrayOfByte2[(i + 3)] = arrayOfByte1[(m & 0x3F)];
-      n = j + 4;
+      m = paramArrayOfByte1[(k + paramInt1)] << 24 >>> 8 | paramArrayOfByte1[(k + 1 + paramInt1)] << 24 >>> 16 | paramArrayOfByte1[(k + 2 + paramInt1)] << 24 >>> 24;
+      arrayOfByte[i] = paramArrayOfByte2[(m >>> 18)];
+      arrayOfByte[(i + 1)] = paramArrayOfByte2[(m >>> 12 & 0x3F)];
+      arrayOfByte[(i + 2)] = paramArrayOfByte2[(m >>> 6 & 0x3F)];
+      arrayOfByte[(i + 3)] = paramArrayOfByte2[(m & 0x3F)];
+      int n = j + 4;
       j = n;
       m = i;
-      if (n == 2147483647)
+      if (n == paramInt3)
       {
-        arrayOfByte2[(i + 4)] = 10;
+        arrayOfByte[(i + 4)] = 10;
         m = i + 1;
         j = 0;
       }
@@ -51,68 +66,65 @@ public class b
       i = m + 4;
     }
     int m = i;
-    if (k < i1)
+    if (k < paramInt2)
     {
-      n = k + 0;
-      i1 -= k;
-      if (i1 <= 0) {
-        break label349;
-      }
-      k = paramArrayOfByte[n] << 24 >>> 8;
-      if (i1 <= 1) {
-        break label354;
-      }
-      m = paramArrayOfByte[(n + 1)] << 24 >>> 16;
-      label244:
-      if (i1 <= 2) {
-        break label360;
-      }
-      n = paramArrayOfByte[(n + 2)] << 24 >>> 24;
-      label264:
-      k = n | k | m;
-      switch (i1)
+      a(paramArrayOfByte1, k + paramInt1, paramInt2 - k, arrayOfByte, i, paramArrayOfByte2);
+      paramInt1 = i;
+      if (j + 4 == paramInt3)
       {
+        arrayOfByte[(i + 4)] = 10;
+        paramInt1 = i + 1;
       }
+      m = paramInt1 + 4;
     }
-    for (;;)
-    {
-      k = i;
-      if (j + 4 == 2147483647)
-      {
-        arrayOfByte2[(i + 4)] = 10;
-        k = i + 1;
-      }
-      m = k + 4;
-      if ((c) || (m == arrayOfByte2.length)) {
-        break label525;
-      }
+    if ((!c) && (m != arrayOfByte.length)) {
       throw new AssertionError();
-      label349:
-      k = 0;
-      break;
-      label354:
-      m = 0;
-      break label244;
-      label360:
-      n = 0;
-      break label264;
-      arrayOfByte2[i] = arrayOfByte1[(k >>> 18)];
-      arrayOfByte2[(i + 1)] = arrayOfByte1[(k >>> 12 & 0x3F)];
-      arrayOfByte2[(i + 2)] = arrayOfByte1[(k >>> 6 & 0x3F)];
-      arrayOfByte2[(i + 3)] = arrayOfByte1[(k & 0x3F)];
-      continue;
-      arrayOfByte2[i] = arrayOfByte1[(k >>> 18)];
-      arrayOfByte2[(i + 1)] = arrayOfByte1[(k >>> 12 & 0x3F)];
-      arrayOfByte2[(i + 2)] = arrayOfByte1[(k >>> 6 & 0x3F)];
-      arrayOfByte2[(i + 3)] = 61;
-      continue;
-      arrayOfByte2[i] = arrayOfByte1[(k >>> 18)];
-      arrayOfByte2[(i + 1)] = arrayOfByte1[(k >>> 12 & 0x3F)];
-      arrayOfByte2[(i + 2)] = 61;
-      arrayOfByte2[(i + 3)] = 61;
     }
-    label525:
-    return new String(arrayOfByte2, 0, arrayOfByte2.length);
+    return arrayOfByte;
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, byte[] paramArrayOfByte3)
+  {
+    int k = 0;
+    int i;
+    if (paramInt2 > 0)
+    {
+      i = paramArrayOfByte1[paramInt1] << 24 >>> 8;
+      label18:
+      if (paramInt2 <= 1) {
+        break label100;
+      }
+    }
+    label100:
+    for (int j = paramArrayOfByte1[(paramInt1 + 1)] << 24 >>> 16;; j = 0)
+    {
+      if (paramInt2 > 2) {
+        k = paramArrayOfByte1[(paramInt1 + 2)] << 24 >>> 24;
+      }
+      paramInt1 = k | j | i;
+      switch (paramInt2)
+      {
+      default: 
+        return paramArrayOfByte2;
+        i = 0;
+        break label18;
+      }
+    }
+    paramArrayOfByte2[paramInt3] = paramArrayOfByte3[(paramInt1 >>> 18)];
+    paramArrayOfByte2[(paramInt3 + 1)] = paramArrayOfByte3[(paramInt1 >>> 12 & 0x3F)];
+    paramArrayOfByte2[(paramInt3 + 2)] = paramArrayOfByte3[(paramInt1 >>> 6 & 0x3F)];
+    paramArrayOfByte2[(paramInt3 + 3)] = paramArrayOfByte3[(paramInt1 & 0x3F)];
+    return paramArrayOfByte2;
+    paramArrayOfByte2[paramInt3] = paramArrayOfByte3[(paramInt1 >>> 18)];
+    paramArrayOfByte2[(paramInt3 + 1)] = paramArrayOfByte3[(paramInt1 >>> 12 & 0x3F)];
+    paramArrayOfByte2[(paramInt3 + 2)] = paramArrayOfByte3[(paramInt1 >>> 6 & 0x3F)];
+    paramArrayOfByte2[(paramInt3 + 3)] = 61;
+    return paramArrayOfByte2;
+    paramArrayOfByte2[paramInt3] = paramArrayOfByte3[(paramInt1 >>> 18)];
+    paramArrayOfByte2[(paramInt3 + 1)] = paramArrayOfByte3[(paramInt1 >>> 12 & 0x3F)];
+    paramArrayOfByte2[(paramInt3 + 2)] = 61;
+    paramArrayOfByte2[(paramInt3 + 3)] = 61;
+    return paramArrayOfByte2;
   }
 }
 

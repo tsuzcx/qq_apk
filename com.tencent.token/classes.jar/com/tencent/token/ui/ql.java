@@ -1,16 +1,30 @@
 package com.tencent.token.ui;
 
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 
-final class ql
+class ql
   implements View.OnClickListener
 {
-  ql(MyMbSubPageActivity paramMyMbSubPageActivity) {}
+  ql(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.onBackPressed();
+    if ((NetActiveVryMobileNoSmsActivity.access$100(this.a) != null) && (NetActiveVryMobileNoSmsActivity.access$300(this.a) == 3) && (!NetActiveVryMobileNoSmsActivity.access$100(this.a).i()) && (!NetActiveVryMobileNoSmsActivity.access$100(this.a).j()))
+    {
+      String str = NetActiveVryMobileNoSmsActivity.access$100(this.a).f();
+      paramView = str;
+      if (TextUtils.isEmpty(str)) {
+        paramView = this.a.getResources().getString(2131231273);
+      }
+      this.a.showUserDialog(2131230843, paramView, 2131230897, null);
+      return;
+    }
+    NetActiveVryMobileNoSmsActivity.access$400(this.a);
+    NetActiveVryMobileNoSmsActivity.access$500(this.a, false, true);
   }
 }
 

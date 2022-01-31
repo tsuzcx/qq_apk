@@ -1,75 +1,32 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.SmsMessage;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-final class afk
-  extends BroadcastReceiver
+class afk
+  implements View.OnClickListener
 {
-  afk(UtilsModSetMobileStep2Activity paramUtilsModSetMobileStep2Activity) {}
+  afk(VryMobileForStrategyActivity paramVryMobileForStrategyActivity) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (!"android.provider.Telephony.SMS_RECEIVED".equals(paramIntent.getAction())) {
-        return;
-      }
-      paramContext = UtilsModSetMobileStep2Activity.access$100(this.a, paramIntent);
-      if ((paramContext == null) || (UtilsModSetMobileStep2Activity.access$200(this.a) == null)) {
-        return;
-      }
-      if (UtilsModSetMobileStep2Activity.access$200(this.a).length() == 0) {
-        return;
-      }
-      UtilsModSetMobileStep2Activity.access$000(this.a);
-      i = 0;
+    if (VryMobileForStrategyActivity.access$400(this.a)) {
+      return;
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        int i;
-        int k;
-        int j;
-        paramContext.printStackTrace();
-        return;
-        i += 1;
-      }
+    VryMobileForStrategyActivity.access$500(this.a);
+    paramView = (EditText)this.a.findViewById(2131559080);
+    String str = paramView.getText().toString();
+    if (paramView != null) {
+      paramView.clearFocus();
     }
-    catch (Error paramContext)
+    if ((str != null) && (str.length() > 0))
     {
-      paramContext.printStackTrace();
+      VryMobileForStrategyActivity.access$600(this.a, str);
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
     }
-    if (i < paramContext.length)
-    {
-      paramIntent = paramContext[i].getDisplayMessageBody();
-      k = paramIntent.indexOf(UtilsModSetMobileStep2Activity.access$200(this.a));
-      if (k >= 0)
-      {
-        j = UtilsModSetMobileStep2Activity.access$200(this.a).length() + k;
-        for (;;)
-        {
-          if ((j < paramIntent.length()) && (paramIntent.charAt(j) <= '9') && (paramIntent.charAt(j) >= '0'))
-          {
-            j += 1;
-          }
-          else
-          {
-            paramIntent = paramIntent.substring(k + UtilsModSetMobileStep2Activity.access$200(this.a).length(), j);
-            if (UtilsModSetMobileStep2Activity.access$300(this.a) != null)
-            {
-              UtilsModSetMobileStep2Activity.access$300(this.a).setText(paramIntent);
-              UtilsModSetMobileStep2Activity.access$300(this.a).postDelayed(new afl(this), 1000L);
-              return;
-            }
-          }
-        }
-      }
-    }
+    this.a.showToast(2131230959);
   }
 }
 

@@ -1,70 +1,34 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.hardware.Camera;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.cu;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.do;
+import com.tencent.token.global.RqdApplication;
 
-final class yi
-  extends bo
+class yi
+  implements View.OnClickListener
 {
-  yi(RealNameTakeIDPhotoActivity paramRealNameTakeIDPhotoActivity)
-  {
-    super(paramRealNameTakeIDPhotoActivity);
-  }
+  yi(ScanLoginBindActivity paramScanLoginBindActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    paramView = do.a().e();
+    if (paramView == null) {
+      return;
     }
-    do
+    paramView = "" + paramView.mRealUin;
+    cp localcp = cp.a(RqdApplication.l());
+    if (!localcp.b(paramView, 523005419L))
     {
-      do
-      {
-        do
-        {
-          return;
-          Intent localIntent = new Intent(this.a, TakeIDPhotoComfirmActivity.class);
-          localIntent.putExtra("data", (String)paramMessage.obj);
-          localIntent.putExtra("flag", paramMessage.arg1);
-          localIntent.putExtra("scene", RealNameTakeIDPhotoActivity.access$600(this.a));
-          this.a.startActivityForResult(localIntent, 300);
-          e.a("startActivity msg.arg1=" + paramMessage.arg1 + "msg.what=" + paramMessage.what);
-          return;
-          this.a.showToast(2131362118);
-          this.a.finish();
-          return;
-        } while (RealNameTakeIDPhotoActivity.access$500(this.a) == null);
-        paramMessage = RealNameTakeIDPhotoActivity.access$500(this.a);
-      } while (paramMessage.a == null);
-      try
-      {
-        paramMessage.a.autoFocus(paramMessage);
-        return;
-      }
-      catch (RuntimeException paramMessage)
-      {
-        paramMessage.printStackTrace();
-        e.d("camera auto focus " + paramMessage.toString());
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        e.d("camera auto focus " + paramMessage.toString());
-        return;
-      }
-    } while ((RealNameTakeIDPhotoActivity.access$100(this.a) != 2) || (RealNameTakeIDPhotoActivity.access$700(this.a) == null));
-    RealNameTakeIDPhotoActivity.access$700(this.a).setImageResource(2130837821);
-    paramMessage = new cu(270.0F, 360.0F, this.a.width / 2, this.a.height / 2, false);
-    paramMessage.setDuration(400L);
-    paramMessage.setFillAfter(true);
-    paramMessage.setAnimationListener(new yj(this));
-    RealNameTakeIDPhotoActivity.access$700(this.a).startAnimation(paramMessage);
+      localcp.a(paramView, this.a.mHandler, 523005419L);
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      ScanLoginBindActivity.access$002(this.a, 1);
+      return;
+    }
+    this.a.showUserDialog(2131231654, this.a.getResources().getString(2131231653), 2131230897, new yj(this));
   }
 }
 

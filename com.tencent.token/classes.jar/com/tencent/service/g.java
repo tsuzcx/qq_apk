@@ -1,14 +1,14 @@
 package com.tencent.service;
 
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
+import com.tencent.jni.FaceDetector;
+import com.tencent.jni.FaceInfo;
 
-final class g
-  implements RejectedExecutionHandler
+public class g
 {
-  public g(e parame) {}
-  
-  public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor) {}
+  public FaceDetector a;
+  public n b;
+  public int c;
+  public FaceInfo d;
 }
 
 

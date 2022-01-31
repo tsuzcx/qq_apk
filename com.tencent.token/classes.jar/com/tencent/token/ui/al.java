@@ -1,16 +1,22 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.EvalAccountResult.RecommendItem;
+import com.tmsdk.TMSDKContext;
 
-final class al
-  implements Runnable
+class al
+  implements View.OnClickListener
 {
-  al(ak paramak) {}
+  al(AccountPageActivity paramAccountPageActivity, EvalAccountResult.RecommendItem paramRecommendItem) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.a();
-    ak.b(this.a).postDelayed(ak.a(this.a), 50L);
+    paramView = new Intent(this.b, MyPswSubPageActivity.class);
+    paramView.putExtra("detailItems", this.a.mDetails);
+    this.b.startActivity(paramView);
+    TMSDKContext.saveActionData(1150061);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
 
-final class rg
+class rg
   implements View.OnClickListener
 {
-  rg(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
+  rg(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    e.a("interval: " + NetActiveVryMobileNoSmsActivity.access$800(this.a) + "  count: " + NetActiveVryMobileNoSmsActivity.access$900(this.a));
-    NetActiveVryMobileNoSmsActivity.access$700(this.a, false);
+    paramView = new Intent(this.a, SelectCountryCodeActivity.class);
+    this.a.startActivityForResult(paramView, 0);
   }
 }
 

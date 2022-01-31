@@ -1,15 +1,15 @@
 package com.tencent.token;
 
-import com.tencent.token.utils.UserTask;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 
-final class q
-  extends UserTask
+public final class q
+  extends PhoneStateListener
 {
-  q(p paramp) {}
-  
-  public final void a()
+  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    p.a(this.a);
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    o.b = o.a(paramSignalStrength.getGsmSignalStrength() * 2 - 113);
   }
 }
 

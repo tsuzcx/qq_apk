@@ -1,16 +1,15 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 
-final class afu
-  implements View.OnClickListener
+class afu
+  implements Runnable
 {
-  afu(UtilsQbQdProtectActivity paramUtilsQbQdProtectActivity) {}
+  afu(afr paramafr, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    UtilsQbQdProtectActivity.access$000(this.a);
+    abi.a().a(this.b.a, this.a, WtLoginAccountInput.access$500(this.b.a));
   }
 }
 

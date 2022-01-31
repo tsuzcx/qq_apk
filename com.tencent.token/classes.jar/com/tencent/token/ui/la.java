@@ -1,34 +1,32 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.ba;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.ui.base.SwitchButton;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.do;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.w;
 
-final class la
-  implements CompoundButton.OnCheckedChangeListener
+class la
+  implements View.OnClickListener
 {
-  la(kx paramkx) {}
+  la(GetOtherBarcodeActivity paramGetOtherBarcodeActivity) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    paramCompoundButton = (lb)((SwitchButton)paramCompoundButton).getTag();
-    if (paramCompoundButton == null) {}
-    View localView;
-    do
+    if (GetOtherBarcodeActivity.access$000(this.a) != null) {
+      GetOtherBarcodeActivity.access$000(this.a).clearFocus();
+    }
+    paramView = GetOtherBarcodeActivity.access$000(this.a).getText().toString();
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser != null) && (paramView.contains("qq.com")))
     {
+      cp.a(RqdApplication.l()).a("" + localQQUser.mRealUin, GetOtherBarcodeActivity.access$100(this.a), 523005419L, 32);
       return;
-      localObject = paramCompoundButton.f;
-      localView = paramCompoundButton.a;
-    } while ((localObject == null) || (localView == null) || (!ba.a().o()) || (paramBoolean != ((g)localObject).c) || (((g)localObject).e));
-    ((g)localObject).e = true;
-    this.a.a(paramCompoundButton, false);
-    Object localObject = this.a;
-    UtilsLoginProtectActivity.mNeedRefreshLoginProtect = true;
-    AccountPageActivity.mNeedRefreshEval = true;
-    new ky((kx)localObject, paramCompoundButton).a(new g[0]);
+    }
+    w.a(this.a, paramView);
   }
 }
 

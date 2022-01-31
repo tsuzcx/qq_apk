@@ -1,18 +1,28 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.eq;
 
-final class sb
+class sb
   implements View.OnClickListener
 {
-  sb(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
+  sb(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, SelectCountryCodeActivity.class);
-    this.a.startActivityForResult(paramView, 0);
+    paramView = do.a().e();
+    if ((eq.a().c() == null) && (paramView != null) && (paramView.mIsBinded))
+    {
+      cw.a().e(0L, OpMsgDisplayActivity.access$300(this.a));
+      OpMsgDisplayActivity.access$002(this.a, 52);
+      this.a.showUserDialog(12);
+      return;
+    }
+    OpMsgDisplayActivity.access$100(this.a, 52);
   }
 }
 

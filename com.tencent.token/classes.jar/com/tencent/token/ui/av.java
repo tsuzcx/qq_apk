@@ -2,15 +2,18 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.cw;
 
-final class av
+class av
   implements View.OnClickListener
 {
-  av(BaseActivity paramBaseActivity) {}
+  av(AddFaceResultActivity paramAddFaceResultActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.dismissDialog();
+    AddFaceResultActivity.access$102(this.a, AddFaceResultActivity.ADD_FACE_CAN_UPDATE_ZZB);
+    cw.a().j(0L, AddFaceResultActivity.access$300(this.a));
+    this.a.showProDialog(this.a, 2131230843, 2131231601, null);
   }
 }
 

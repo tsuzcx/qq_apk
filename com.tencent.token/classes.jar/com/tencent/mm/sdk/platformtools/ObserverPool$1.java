@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import java.util.Comparator;
 
 class ObserverPool$1
-  implements Comparator<ObserverPool.Listener>
+  implements Comparator
 {
   ObserverPool$1(ObserverPool paramObserverPool) {}
   

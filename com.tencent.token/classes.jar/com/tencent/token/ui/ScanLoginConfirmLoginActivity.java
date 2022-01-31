@@ -8,10 +8,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qbardemo.MainActivity;
+import com.tencent.token.cp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import com.tencent.token.utils.w;
 import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 
 public class ScanLoginConfirmLoginActivity
@@ -21,29 +21,29 @@ public class ScanLoginConfirmLoginActivity
   private TextView mConfirmBusiness;
   private Button mConfirmButton;
   private TextView mConfirmTime;
-  private Handler mHandler = new yz(this);
+  private Handler mHandler = new yo(this);
   private ImageView mQQIcon;
   private String mQQNick;
   private TextView mQQNickText;
   private String mQQUin;
   private byte[] mScanCode;
-  private x mScanLoginManager;
+  private cp mScanLoginManager;
   
   private void initUI()
   {
-    this.mConfirmTime = ((TextView)findViewById(2131297031));
-    this.mConfirmBusiness = ((TextView)findViewById(2131297033));
-    this.mQQNickText = ((TextView)findViewById(2131297019));
-    this.mConfirmButton = ((Button)findViewById(2131297035));
-    this.mCancelButton = ((Button)findViewById(2131297036));
-    this.mQQIcon = ((ImageView)findViewById(2131297018));
+    this.mConfirmTime = ((TextView)findViewById(2131559214));
+    this.mConfirmBusiness = ((TextView)findViewById(2131559216));
+    this.mQQNickText = ((TextView)findViewById(2131559202));
+    this.mConfirmButton = ((Button)findViewById(2131559218));
+    this.mCancelButton = ((Button)findViewById(2131559219));
+    this.mQQIcon = ((ImageView)findViewById(2131559201));
     WloginSimpleInfo localWloginSimpleInfo = this.mScanLoginManager.c(this.mQQUin);
     if (localWloginSimpleInfo != null) {}
     for (this.mQQNick = new String(localWloginSimpleInfo._nick);; this.mQQNick = null)
     {
       this.mQQNickText.setText(this.mQQNick);
-      this.mConfirmButton.setOnClickListener(new za(this));
-      this.mCancelButton.setOnClickListener(new zc(this));
+      this.mConfirmButton.setOnClickListener(new yp(this));
+      this.mCancelButton.setOnClickListener(new yr(this));
       return;
     }
   }
@@ -51,14 +51,14 @@ public class ScanLoginConfirmLoginActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903189);
-    this.mScanLoginManager = x.a(RqdApplication.i());
+    setContentView(2130968748);
+    this.mScanLoginManager = cp.a(RqdApplication.l());
     paramBundle = getIntent();
     this.mQQUin = paramBundle.getStringExtra("qquin");
     this.mScanCode = paramBundle.getByteArrayExtra("scancode");
     paramBundle = paramBundle.getExtras();
     initUI();
-    this.mConfirmTime.setText(s.a(1000L * paramBundle.getLong("scantime")));
+    this.mConfirmTime.setText(w.a(1000L * paramBundle.getLong("scantime"), '-'));
     this.mConfirmBusiness.setText(new String(paramBundle.getByteArray("appname")));
     this.mQQIcon.setImageDrawable(k.a(this.mQQUin, null));
   }

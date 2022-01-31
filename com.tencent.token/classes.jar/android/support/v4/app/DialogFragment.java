@@ -7,6 +7,10 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
+import android.support.annotation.StyleRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -52,10 +56,8 @@ public class DialogFragment
     }
     this.mDismissed = true;
     this.mShownByMe = false;
-    if (this.mDialog != null)
-    {
+    if (this.mDialog != null) {
       this.mDialog.dismiss();
-      this.mDialog = null;
     }
     this.mViewDestroyed = true;
     if (this.mBackStackId >= 0)
@@ -79,29 +81,12 @@ public class DialogFragment
     return this.mDialog;
   }
   
-  public LayoutInflater getLayoutInflater(Bundle paramBundle)
-  {
-    if (!this.mShowsDialog) {
-      return super.getLayoutInflater(paramBundle);
-    }
-    this.mDialog = onCreateDialog(paramBundle);
-    switch (this.mStyle)
-    {
-    }
-    while (this.mDialog != null)
-    {
-      return (LayoutInflater)this.mDialog.getContext().getSystemService("layout_inflater");
-      this.mDialog.getWindow().addFlags(24);
-      this.mDialog.requestWindowFeature(1);
-    }
-    return (LayoutInflater)this.mActivity.getSystemService("layout_inflater");
-  }
-  
   public boolean getShowsDialog()
   {
     return this.mShowsDialog;
   }
   
+  @StyleRes
   public int getTheme()
   {
     return this.mTheme;
@@ -121,15 +106,18 @@ public class DialogFragment
       do
       {
         return;
-        View localView = getView();
-        if (localView != null)
+        Object localObject = getView();
+        if (localObject != null)
         {
-          if (localView.getParent() != null) {
+          if (((View)localObject).getParent() != null) {
             throw new IllegalStateException("DialogFragment can not be attached to a container view");
           }
-          this.mDialog.setContentView(localView);
+          this.mDialog.setContentView((View)localObject);
         }
-        this.mDialog.setOwnerActivity(getActivity());
+        localObject = getActivity();
+        if (localObject != null) {
+          this.mDialog.setOwnerActivity((Activity)localObject);
+        }
         this.mDialog.setCancelable(this.mCancelable);
         this.mDialog.setOnCancelListener(this);
         this.mDialog.setOnDismissListener(this);
@@ -139,9 +127,9 @@ public class DialogFragment
     this.mDialog.onRestoreInstanceState(paramBundle);
   }
   
-  public void onAttach(Activity paramActivity)
+  public void onAttach(Context paramContext)
   {
-    super.onAttach(paramActivity);
+    super.onAttach(paramContext);
     if (!this.mShownByMe) {
       this.mDismissed = false;
     }
@@ -149,7 +137,7 @@ public class DialogFragment
   
   public void onCancel(DialogInterface paramDialogInterface) {}
   
-  public void onCreate(Bundle paramBundle)
+  public void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (this.mContainerId == 0) {}
@@ -168,6 +156,7 @@ public class DialogFragment
     }
   }
   
+  @NonNull
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     return new Dialog(getActivity(), getTheme());
@@ -197,6 +186,20 @@ public class DialogFragment
     if (!this.mViewDestroyed) {
       dismissInternal(true);
     }
+  }
+  
+  public LayoutInflater onGetLayoutInflater(Bundle paramBundle)
+  {
+    if (!this.mShowsDialog) {
+      return super.onGetLayoutInflater(paramBundle);
+    }
+    this.mDialog = onCreateDialog(paramBundle);
+    if (this.mDialog != null)
+    {
+      setupDialog(this.mDialog, this.mStyle);
+      return (LayoutInflater)this.mDialog.getContext().getSystemService("layout_inflater");
+    }
+    return (LayoutInflater)this.mHost.getContext().getSystemService("layout_inflater");
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
@@ -257,7 +260,7 @@ public class DialogFragment
     this.mShowsDialog = paramBoolean;
   }
   
-  public void setStyle(int paramInt1, int paramInt2)
+  public void setStyle(int paramInt1, @StyleRes int paramInt2)
   {
     this.mStyle = paramInt1;
     if ((this.mStyle == 2) || (this.mStyle == 3)) {
@@ -266,6 +269,19 @@ public class DialogFragment
     if (paramInt2 != 0) {
       this.mTheme = paramInt2;
     }
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public void setupDialog(Dialog paramDialog, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 3: 
+      paramDialog.getWindow().addFlags(24);
+    }
+    paramDialog.requestWindowFeature(1);
   }
   
   public int show(FragmentTransaction paramFragmentTransaction, String paramString)
@@ -285,6 +301,15 @@ public class DialogFragment
     paramFragmentManager = paramFragmentManager.beginTransaction();
     paramFragmentManager.add(this, paramString);
     paramFragmentManager.commit();
+  }
+  
+  public void showNow(FragmentManager paramFragmentManager, String paramString)
+  {
+    this.mDismissed = false;
+    this.mShownByMe = true;
+    paramFragmentManager = paramFragmentManager.beginTransaction();
+    paramFragmentManager.add(this, paramString);
+    paramFragmentManager.commitNow();
   }
 }
 

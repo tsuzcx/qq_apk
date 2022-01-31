@@ -1,26 +1,18 @@
 package com.tencent.token.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class dh
-  implements Animation.AnimationListener
+class dh
+  implements DialogInterface.OnClickListener
 {
-  dh(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  dh(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (EmbedWebBaseActivity.access$200(this.a) != null)
-    {
-      EmbedWebBaseActivity.access$300(this.a).removeView(EmbedWebBaseActivity.access$200(this.a));
-      EmbedWebBaseActivity.access$202(this.a, null);
-    }
+    CorrectTokenActivity.access$502(this.a, true);
+    this.a.removeTimeTask();
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

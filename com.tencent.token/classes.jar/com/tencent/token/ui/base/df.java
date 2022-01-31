@@ -1,22 +1,16 @@
 package com.tencent.token.ui.base;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.ui.abi;
 
-final class df
-  implements View.OnTouchListener
+class df
+  implements Runnable
 {
-  df(TitleOptionMenu paramTitleOptionMenu) {}
+  df(de paramde, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) && (TitleOptionMenu.b(this.a).findFocus() == null))
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
+    abi.a().a(dd.a(this.b.a), this.a, this.b.a.a);
   }
 }
 

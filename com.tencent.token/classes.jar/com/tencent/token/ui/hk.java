@@ -1,17 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class hk
+class hk
   implements View.OnClickListener
 {
-  hk(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hk(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    FaceRecognitionCameraActivityOld.access$2100(this.a);
-    this.a.finish();
+    paramView = new Intent(this.a, FacePwdIndexActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

@@ -2,15 +2,16 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.cw;
 
-final class adk
+class adk
   implements View.OnClickListener
 {
-  adk(adj paramadj) {}
+  adk(UtilsMbInfoActivity paramUtilsMbInfoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.a.dismissDialog();
+    cw.a().e(0L, this.a.mHandler);
   }
 }
 

@@ -9,19 +9,22 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.utils.s;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
 public class UtilsModSetMobileStep1Activity
   extends BaseActivity
   implements View.OnClickListener
 {
+  private boolean isOrangeToastShowing;
   private String mCountryCode = "+86";
   private int mCountryIndex = -1;
   private TextView mCountry_name;
   private TextView mCountry_number;
-  private Handler mHandler = new afg(this);
+  private Handler mHandler = new adv(this);
   private int mOpType;
   private int mPageId;
   private String mSmsPrefix;
@@ -31,40 +34,52 @@ public class UtilsModSetMobileStep1Activity
   
   private void init()
   {
-    Bundle localBundle = getIntent().getExtras();
-    if (localBundle == null)
+    Object localObject = getIntent().getExtras();
+    if (localObject == null)
     {
       finish();
       return;
     }
-    if ((localBundle.getInt("op_type", 0) == 0) || (localBundle.getString("title") == null))
+    if ((((Bundle)localObject).getInt("op_type", 0) == 0) || (((Bundle)localObject).getString("title") == null))
     {
       finish();
       return;
     }
-    this.mPageId = localBundle.getInt("page_id");
-    this.mOpType = localBundle.getInt("op_type", 0);
-    this.mTitle = localBundle.getString("title");
+    this.mPageId = ((Bundle)localObject).getInt("page_id");
+    this.mOpType = ((Bundle)localObject).getInt("op_type", 0);
+    this.mTitle = ((Bundle)localObject).getString("title");
     setTitle(this.mTitle);
-    this.mStep1MobileText = ((EditText)findViewById(2131296655));
+    this.mStep1MobileText = ((EditText)findViewById(2131558964));
     if (this.mStep1MobileText != null) {
       this.mStep1MobileText.clearFocus();
     }
-    this.mcountry = findViewById(2131296651);
-    this.mCountry_name = ((TextView)findViewById(2131296652));
-    this.mCountry_number = ((TextView)findViewById(2131296654));
-    this.mcountry.setOnClickListener(new afi(this));
+    this.mcountry = findViewById(2131558960);
+    this.mCountry_name = ((TextView)findViewById(2131558961));
+    this.mCountry_number = ((TextView)findViewById(2131558963));
+    this.mcountry.setOnClickListener(new adx(this));
     if (this.mOpType == 3)
     {
-      ((TextView)findViewById(2131296650)).setText(getResources().getString(2131362209));
-      this.mStep1MobileText.setHint(getResources().getString(2131362209));
+      if (((this.mPageId == 15) || (this.mPageId == 16)) && (!this.isOrangeToastShowing))
+      {
+        this.isOrangeToastShowing = true;
+        localObject = getResources().getString(2131231003);
+        RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131558958);
+        localRelativeLayout.setVisibility(0);
+        TextView localTextView = (TextView)findViewById(2131558987);
+        ImageView localImageView = (ImageView)findViewById(2131558986);
+        localTextView.setText((CharSequence)localObject);
+        localImageView.setImageDrawable(getResources().getDrawable(2130838018));
+        localTextView.postDelayed(new ady(this, localRelativeLayout), 3000L);
+      }
+      ((TextView)findViewById(2131558959)).setText(getResources().getString(2131231583));
+      this.mStep1MobileText.setHint(getResources().getString(2131231583));
     }
     for (;;)
     {
-      findViewById(2131296656).setOnClickListener(this);
+      findViewById(2131558965).setOnClickListener(this);
+      h.c("test mbinfo, positon=, optype=" + this.mOpType + ", area_code=" + this.mCountryCode + ",title=" + this.mTitle);
       return;
-      ((TextView)findViewById(2131296650)).setText(getResources().getString(2131362208));
-      this.mStep1MobileText.setHint(getResources().getString(2131362208));
+      this.mStep1MobileText.setHint(getResources().getString(2131231589));
     }
   }
   
@@ -74,14 +89,10 @@ public class UtilsModSetMobileStep1Activity
     if (paramInt2 == 0) {
       return;
     }
-    if (paramInt2 == 1111) {}
-    for (paramIntent = "+1";; paramIntent = "+" + paramInt2)
-    {
-      this.mCountryCode = paramIntent;
-      this.mCountryIndex = paramInt2;
-      s.a(paramInt2, this.mCountry_name, this.mCountry_number);
-      return;
-    }
+    paramIntent = paramIntent.getStringExtra("name");
+    this.mCountryCode = ("+" + paramInt2);
+    this.mCountry_name.setText(paramIntent);
+    this.mCountry_number.setText(this.mCountryCode);
   }
   
   public void onClick(View paramView)
@@ -93,28 +104,36 @@ public class UtilsModSetMobileStep1Activity
     {
       return;
     } while (this.mStep1MobileText == null);
+    if (this.mStep1MobileText != null) {
+      this.mStep1MobileText.clearFocus();
+    }
     ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(getWindow().peekDecorView().getWindowToken(), 0);
     paramView = this.mStep1MobileText.getText().toString();
     if ((paramView != null) && (paramView.length() != 0))
     {
-      af.a().b(0L, this.mOpType, paramView, this.mCountryCode, this.mHandler);
-      showProDialog(this, 2131361808, 2131362215, null);
+      cw.a().a(0L, this.mOpType, paramView, this.mCountryCode, this.mHandler);
+      showProDialog(this, 2131230843, 2131231571, null);
       return;
     }
-    showToast(2131361947);
+    showToast(2131230957);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903105);
+    if (getIntent().getBooleanExtra("finish", false))
+    {
+      finish();
+      return;
+    }
+    setContentView(2130968676);
     init();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    af.a().a(getClass().getName());
+    cw.a().a(getClass().getName());
   }
   
   public void onResume()

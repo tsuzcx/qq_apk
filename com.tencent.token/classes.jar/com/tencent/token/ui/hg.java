@@ -1,17 +1,26 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-final class hg
-  implements DialogInterface.OnClickListener
+class hg
+  implements CompoundButton.OnCheckedChangeListener
 {
-  hg(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hg(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FaceRecognitionCameraActivityOld.access$1000(this.a).b(FaceRecognitionCameraActivityOld.access$400(this.a));
-    this.a.dismissDialog();
+    if (paramBoolean)
+    {
+      FaceRecognitionCreateActivity.access$000(this.a).setTextAppearance(this.a, 2131362228);
+      FaceRecognitionCreateActivity.access$000(this.a).setBackgroundResource(2130837632);
+      FaceRecognitionCreateActivity.access$000(this.a).setEnabled(true);
+      return;
+    }
+    FaceRecognitionCreateActivity.access$000(this.a).setTextAppearance(this.a, 2131362186);
+    FaceRecognitionCreateActivity.access$000(this.a).setBackgroundResource(2130837728);
+    FaceRecognitionCreateActivity.access$000(this.a).setEnabled(false);
   }
 }
 

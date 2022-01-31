@@ -1,13 +1,13 @@
 package com.tencent.token.utils;
 
-final class d
+class d
   implements Runnable
 {
   d(c paramc) {}
   
-  public final void run()
+  public void run()
   {
-    this.a.a().b();
+    this.a.b().b();
   }
 }
 

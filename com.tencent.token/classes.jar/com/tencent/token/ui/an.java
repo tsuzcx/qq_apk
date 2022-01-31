@@ -1,51 +1,30 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
 
-final class an
+class an
   implements View.OnClickListener
 {
-  an(AppGuidActivity paramAppGuidActivity) {}
+  an(AccountPageActivity paramAccountPageActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131296434)
+    if (do.a().e() == null)
     {
-      if (ax.a().e() == null)
-      {
-        this.a.setResult(263);
-        this.a.finish();
-        com.tencent.token.global.RqdApplication.f = true;
-        return;
-      }
-      if (!ax.a().e().mIsBinded)
-      {
-        this.a.setResult(263);
-        this.a.finish();
-        com.tencent.token.global.RqdApplication.f = true;
-        return;
-      }
-      if (ax.a().j())
-      {
-        paramView = new Intent(this.a, FaceRecognitionDefaultActivity.class);
-        paramView.putExtra("fromsplash", true);
-        this.a.startActivity(paramView);
-      }
-      for (;;)
-      {
-        this.a.finish();
-        return;
-        paramView = new Intent(this.a, FaceRecognitionCreateActivity.class);
-        paramView.putExtra("fromsplash", true);
-        this.a.startActivity(paramView);
-      }
+      this.a.showNoAccountTipDialog(this.a, 3, 0);
+      return;
     }
-    this.a.setResult(263);
-    this.a.finish();
+    if (!do.a().e().mIsBinded)
+    {
+      this.a.showNoAccountTipDialog(this.a, 3, 1);
+      return;
+    }
+    cw.a().j(0L, this.a.mHandler);
+    this.a.showProDialog(this.a, 2131230843, 2131231601, null);
   }
 }
 

@@ -1,12 +1,12 @@
 package gameloginsdk;
 
 import android.content.Context;
-import c.a.b.a.b;
+import com.tencent.token.c;
 import tmsdk.common.a;
 
 public class k
 {
-  static b a;
+  static c a;
   
   private static void a(int paramInt1, String paramString, int paramInt2)
   {
@@ -18,7 +18,7 @@ public class k
     try
     {
       a.a(paramContext);
-      a = new b(paramContext);
+      a = new c(paramContext);
       a.a(a, paramInt2);
       a(paramInt1, paramString, paramInt2);
       return true;

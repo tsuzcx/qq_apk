@@ -11,23 +11,21 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.token.ax;
-import com.tencent.token.bb;
-import com.tencent.token.bc;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.SecurityReporterResult;
-import com.tencent.token.fo;
+import com.tencent.token.cp;
+import com.tencent.token.do;
+import com.tencent.token.ds;
+import com.tencent.token.dt;
+import com.tencent.token.er;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
+import com.tencent.token.global.c;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.LoginMsgMenuDialog;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.TitleOptionMenu;
-import com.tencent.token.ui.base.cc;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import com.tencent.token.ui.base.bv;
+import com.tencent.token.utils.w;
 import java.lang.reflect.Method;
 import java.util.TimeZone;
 
@@ -39,21 +37,20 @@ public class LoginMsgActivity
   private static boolean mNeedShowNewMsgCnt;
   public static int mNewMsgCntSetByAccount;
   public static String mSkey;
-  private qf mAdapter;
-  private fo mCache = bb.a().f;
-  public Handler mHandler = new oa(this);
+  private ps mAdapter;
+  private er mCache = ds.a().f;
+  public Handler mHandler = new ne(this);
   private int mHaveMsgReqTimes = 0;
   private boolean mIsBusy = false;
   private boolean mKickOff = false;
   private PullToRefreshListView mListView;
-  private cc mListener = new oc(this);
+  private bv mListener = new ng(this);
   private LoginMsgMenuDialog mMenuDialog;
   private int mNewMsgCnt = 0;
   private boolean mQuerySecurityReporter = false;
-  private View.OnClickListener mRightTitleButtonClickListener = new oe(this);
   private SecurityReporterResult mSecurityResult;
   private String mSessId;
-  private byte mSource = bc.e;
+  private byte mSource = dt.e;
   private TitleOptionMenu mTitleMenu;
   private long mUin;
   private long mUinHash;
@@ -71,6 +68,23 @@ public class LoginMsgActivity
     }
   }
   
+  private void getA2()
+  {
+    QQUser localQQUser = do.a().e();
+    if (localQQUser == null) {
+      return;
+    }
+    cp localcp = cp.a(RqdApplication.l());
+    byte[] arrayOfByte = cp.a(RqdApplication.l()).b(do.a().e().mRealUin);
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0) && (!localcp.b("" + localQQUser.mRealUin, 523005419L)))
+    {
+      mSkey = w.a(arrayOfByte);
+      ds.a().a(this.mSource, mSkey, this.mHandler);
+      return;
+    }
+    cp.a(RqdApplication.l()).a("" + localQQUser.mRealUin, this.mHandler, 523005419L, 64);
+  }
+  
   private void getLoginMsg()
   {
     if (this.mIsBusy) {}
@@ -79,20 +93,24 @@ public class LoginMsgActivity
       return;
       this.mIsBusy = true;
       resetParams();
-    } while (ax.a().e() == null);
-    byte[] arrayOfByte = x.a(RqdApplication.i()).a(ax.a().e().mRealUin);
-    if (arrayOfByte != null)
-    {
-      mSkey = s.a(arrayOfByte);
-      bb.a().a(this.mSource, mSkey, this.mHandler);
+    } while (do.a().e() == null);
+    getA2();
+  }
+  
+  private void gotoQuickLoginWb()
+  {
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L)) {
       return;
     }
-    x.a(RqdApplication.i()).a(this, "" + ax.a().e().mRealUin, this.mHandler, true);
+    cp.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
   }
+  
+  private void judgeNextStep() {}
   
   private void saveTimeZoneFlag()
   {
-    SharedPreferences.Editor localEditor = RqdApplication.i().getSharedPreferences("msg_tips_timezone", 0).edit();
+    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("msg_tips_timezone", 0).edit();
     localEditor.putBoolean("msg_tips_timezone_flag", true);
     localEditor.commit();
   }
@@ -100,14 +118,12 @@ public class LoginMsgActivity
   private void seekIpcMsg()
   {
     int i = this.mCache.d;
-    e.c("login msg ipc index= " + i);
+    h.c("login msg ipc index= " + i);
     if (i >= 0)
     {
       this.mListView.clearFocus();
-      this.mListView.post(new of(this, i));
-      fo localfo = this.mCache;
-      localfo.d = -1;
-      localfo.e = 0L;
+      this.mListView.post(new ni(this, i));
+      this.mCache.k();
     }
   }
   
@@ -119,19 +135,19 @@ public class LoginMsgActivity
   
   void checkTimeZoneFlag()
   {
-    if ((!RqdApplication.i().getSharedPreferences("msg_tips_timezone", 0).getBoolean("msg_tips_timezone_flag", false)) && (this.mCache.g() > 0))
+    if ((!RqdApplication.l().getSharedPreferences("msg_tips_timezone", 0).getBoolean("msg_tips_timezone_flag", false)) && (this.mCache.g() > 0))
     {
       int i = TimeZone.getDefault().getOffset(System.currentTimeMillis());
-      e.b("checkTimeZoneFlag offset=" + i);
+      h.b("checkTimeZoneFlag offset=" + i);
       if (i != 28800000)
       {
-        View localView = findViewById(2131296782);
+        View localView = findViewById(2131558985);
         localView.setVisibility(0);
-        findViewById(2131296785).setOnClickListener(new og(this, localView));
+        findViewById(2131558988).setOnClickListener(new nj(this, localView));
       }
       return;
     }
-    findViewById(2131296782).setVisibility(8);
+    findViewById(2131558985).setVisibility(8);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -140,7 +156,7 @@ public class LoginMsgActivity
     {
       try
       {
-        if ((b.d()) && (paramKeyEvent.getAction() == 0)) {}
+        if ((c.f()) && (paramKeyEvent.getAction() == 0)) {}
         switch (paramKeyEvent.getKeyCode())
         {
         case 4: 
@@ -150,12 +166,12 @@ public class LoginMsgActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
       if ((this.mTitleMenu != null) && (this.mTitleMenu.getVisibility() == 0))
       {
-        this.mTitleMenu.a();
+        this.mTitleMenu.b();
         return true;
       }
       if ((this.mMenuDialog != null) && (this.mMenuDialog.isShowing()))
@@ -168,7 +184,7 @@ public class LoginMsgActivity
   
   public void finishRefresh()
   {
-    e.c("finish refresh");
+    h.c("finish refresh");
     if (this.mKickOff) {
       this.mKickOff = false;
     }
@@ -178,37 +194,44 @@ public class LoginMsgActivity
       this.mListView.b();
     } while ((isFinishing()) || (this.mAdapter == null));
     if (this.mNewMsgCnt > 0) {
-      showOrangeToast(this.mNewMsgCnt + getResources().getString(2131362016), 2130837964);
+      showOrangeToast(this.mNewMsgCnt + getResources().getString(2131230893), 2130838017);
     }
-    this.mListView.a(System.currentTimeMillis());
+    this.mListView.setRefreshTime(System.currentTimeMillis());
     this.mListView.a("login_msg_refresh_time");
-    this.mAdapter.a(bb.a().f, bb.a().b);
+    this.mAdapter.a(ds.a().f, ds.a().b);
     this.mAdapter.notifyDataSetChanged();
     seekIpcMsg();
   }
   
   public boolean isValid()
   {
-    QQUser localQQUser = ax.a().e();
+    QQUser localQQUser = do.a().e();
     if ((this.mSessId == null) || (localQQUser == null)) {}
     String str;
     do
     {
       return false;
       str = this.mSessId;
-      ax.a();
-    } while ((!str.equals(ax.c)) || (this.mUinHash != localQQUser.mUin) || (!this.mQuerySecurityReporter));
+      do.a();
+    } while ((!str.equals(do.c)) || (this.mUinHash != localQQUser.mUin) || (!this.mQuerySecurityReporter));
     return true;
+  }
+  
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
+      cp.a(getApplicationContext()).a(paramIntent);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903126);
+    setContentView(2130968683);
     try
     {
-      Activity.class.getDeclaredMethod("overridePendingTransition", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(this, new Object[] { Integer.valueOf(2130968585), Integer.valueOf(2130968584) });
-      this.mListView = ((PullToRefreshListView)findViewById(2131296262));
+      Activity.class.getDeclaredMethod("overridePendingTransition", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(this, new Object[] { Integer.valueOf(2131034135), Integer.valueOf(2131034134) });
+      this.mListView = ((PullToRefreshListView)findViewById(2131558521));
       if ((!$assertionsDisabled) && (this.mListView == null)) {
         throw new AssertionError();
       }
@@ -219,18 +242,18 @@ public class LoginMsgActivity
       {
         paramBundle.printStackTrace();
       }
-      this.mAdapter = new qf(this);
-      this.mAdapter.a(bb.a().f, bb.a().b);
-      paramBundle = LayoutInflater.from(this).inflate(2130903142, this.mListView, false);
+      this.mAdapter = new ps(this);
+      this.mAdapter.a(ds.a().f, ds.a().b);
+      paramBundle = LayoutInflater.from(this).inflate(2130968698, this.mListView, false);
       this.mListView.addFooterView(paramBundle);
       this.mAdapter.a(paramBundle);
-      paramBundle = LayoutInflater.from(this).inflate(2130903139, this.mListView, false);
+      paramBundle = LayoutInflater.from(this).inflate(2130968695, this.mListView, false);
       this.mListView.addFooterView(paramBundle);
       this.mAdapter.c(paramBundle);
       this.mAdapter.e();
-      paramBundle = LayoutInflater.from(this).inflate(2130903138, this.mListView, false);
+      paramBundle = LayoutInflater.from(this).inflate(2130968694, this.mListView, false);
       this.mListView.addFooterView(paramBundle);
-      this.mListView.setSelector(2130837756);
+      this.mListView.setSelector(2130837832);
       this.mAdapter.b(paramBundle);
       this.mListView.setScrollingCacheEnabled(true);
       paramBundle = getIntent().getStringExtra("skey");
@@ -239,28 +262,26 @@ public class LoginMsgActivity
       }
       paramBundle = getIntent().getBundleExtra("com.tencent.input_param");
       if (paramBundle == null) {
-        break label435;
+        break label416;
       }
     }
     if (paramBundle.getLong("uin") > 0L)
     {
       this.mUin = paramBundle.getLong("uin");
-      ax.a().a(this.mUin);
-      this.mSource = bc.d;
-      s.a(String.valueOf(this.mUin), false);
+      do.a().a(this.mUin);
+      this.mSource = dt.d;
+      w.a(String.valueOf(this.mUin), false);
       mNewMsgCntSetByAccount = 0;
     }
     for (;;)
     {
       this.mAdapter.a();
-      this.mListView.a(2131362020);
+      this.mListView.a(2131231171);
       this.mListView.setAdapter(this.mAdapter);
-      this.mListView.a(this.mListView.b("login_msg_refresh_time"));
-      this.mListView.a(new od(this));
-      setRightTitleImage(2130837952, this.mRightTitleButtonClickListener);
-      this.mRightOptionImage.setVisibility(0);
+      this.mListView.setRefreshTime(this.mListView.b("login_msg_refresh_time"));
+      this.mListView.setOnRefreshListener(new nh(this));
       return;
-      label435:
+      label416:
       this.mUin = 0L;
     }
   }
@@ -274,16 +295,14 @@ public class LoginMsgActivity
   
   protected void onPause()
   {
-    fo localfo = this.mCache;
-    localfo.d = -1;
-    localfo.e = 0L;
+    this.mCache.k();
     AccountPageActivity.mNeedShowIpcMsg = false;
     super.onPause();
   }
   
   protected void onResume()
   {
-    if ((!bb.a().d()) || (this.mUin > 0L))
+    if ((!ds.a().d()) || (this.mUin > 0L))
     {
       resetParams();
       this.mUin = 0L;
@@ -291,7 +310,7 @@ public class LoginMsgActivity
     }
     if (mConfirmLogin)
     {
-      showOrangeToast(2131362037, 2130837964);
+      showOrangeToast(2131231466, 2130838017);
       mConfirmLogin = false;
     }
     seekIpcMsg();
@@ -303,7 +322,7 @@ public class LoginMsgActivity
     if ((paramBoolean) && (mNeedShowNewMsgCnt))
     {
       if (mNewMsgCntSetByAccount > 0) {
-        showOrangeToast(mNewMsgCntSetByAccount + getResources().getString(2131362016), 2130837964);
+        showOrangeToast(mNewMsgCntSetByAccount + getResources().getString(2131230893), 2130838017);
       }
       mNeedShowNewMsgCnt = false;
     }
@@ -312,7 +331,7 @@ public class LoginMsgActivity
   
   public void resetParams()
   {
-    bb.a().c();
+    ds.a().c();
     this.mNewMsgCnt = 0;
     this.mHaveMsgReqTimes = 0;
     mNeedShowNewMsgCnt = false;

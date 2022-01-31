@@ -1,90 +1,31 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.SecondVerifyDialog;
-import com.tencent.token.ui.base.ds;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.dr;
+import com.tmsdk.TMSDKContext;
 
-final class acy
-  extends bo
+class acy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  acy(UtilsAccountLockActivity paramUtilsAccountLockActivity)
-  {
-    super(paramUtilsAccountLockActivity);
-  }
+  acy(UtilsMailProtectActivity paramUtilsMailProtectActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
-    if ((this.a == null) || (this.a.isFinishing())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                return;
-              }
-            } while (3 != paramMessage.arg1);
-            UtilsAccountLockActivity.access$000(this.a).b();
-            UtilsAccountLockActivity.access$000(this.a).d();
-            return;
-            k localk = UtilsAccountLockActivity.access$000(this.a);
-            ds localds = (ds)paramMessage.obj;
-            if (paramMessage.arg1 == 1) {}
-            for (;;)
-            {
-              localk.b(localds, bool);
-              return;
-              bool = false;
-            }
-          } while (3 != paramMessage.arg1);
-          paramMessage = new SecondVerifyDialog(this.a, this.a.mHandler, paramMessage.arg1);
-          paramMessage.setCancelable(true);
-          paramMessage.show();
-          return;
-        } while (3 != paramMessage.arg1);
-        UtilsAccountLockActivity.access$000(this.a).b();
-        UtilsAccountLockActivity.access$000(this.a).c();
-        return;
-      } while (UtilsAccountLockActivity.access$000(this.a) == null);
-      UtilsAccountLockActivity.access$000(this.a).a();
-      UtilsAccountLockActivity.access$000(this.a).notifyDataSetChanged();
-      return;
-      paramMessage = (ds)paramMessage.obj;
-    } while ((paramMessage == null) || (UtilsAccountLockActivity.access$000(this.a) == null));
-    UtilsAccountLockActivity.access$000(this.a).a(paramMessage, true);
-    return;
-    UtilsAccountLockActivity.access$102(this.a, false);
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.hideTip();
+    paramCompoundButton = dr.a().h();
+    if ((paramCompoundButton == null) || (paramBoolean != paramCompoundButton.c)) {
       return;
     }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    e.c("game lock load failed:" + paramMessage.a + "-" + paramMessage.b);
-    if ((111 == paramMessage.a) || (110 == paramMessage.a) || (103 == paramMessage.a))
-    {
-      this.a.showTip(paramMessage.a, UtilsAccountLockActivity.access$200(this.a), UtilsAccountLockActivity.access$300(this.a), true);
-      return;
+    if (!paramBoolean) {
+      TMSDKContext.saveActionData(1150080);
     }
-    this.a.showTip(paramMessage.a, paramMessage.c, null, false);
-    return;
-    if (paramMessage.arg1 == 0) {}
-    for (paramMessage = new d();; paramMessage = (d)paramMessage.obj)
+    for (;;)
     {
-      UtilsAccountLockActivity.access$000(this.a).a(paramMessage);
+      UtilsMailProtectActivity.access$102(this.a, paramCompoundButton);
+      UtilsMailProtectActivity.access$200(this.a);
       return;
+      TMSDKContext.saveActionData(1150081);
     }
   }
 }

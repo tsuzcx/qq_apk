@@ -19,12 +19,12 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import com.tencent.token.af;
 import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
-import com.tencent.token.fn;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.eq;
+import com.tencent.token.global.h;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,16 +33,17 @@ public class UtilsMbInfoItemActivity
   extends BaseActivity
 {
   private RelativeLayout mDelSuccView;
-  private Handler mHandler = new aez(this);
+  private Handler mHandler = new ado(this);
   private boolean mIsDelSucc = false;
   private MbInfoResult.MbInfoItem mItem = null;
   private RelativeLayout mItemView;
+  private int mPageId = -1;
   private int mPosition;
   
   private View createTableCol1(String paramString)
   {
-    View localView = getLayoutInflater().inflate(2130903241, null);
-    TextView localTextView = (TextView)localView.findViewById(2131297246);
+    View localView = getLayoutInflater().inflate(2130968804, null);
+    TextView localTextView = (TextView)localView.findViewById(2131559405);
     if ((localTextView != null) && (paramString != null)) {
       localTextView.setText(Html.fromHtml(paramString));
     }
@@ -51,8 +52,8 @@ public class UtilsMbInfoItemActivity
   
   private View createTableCol2(String paramString)
   {
-    View localView = getLayoutInflater().inflate(2130903242, null);
-    TextView localTextView = (TextView)localView.findViewById(2131297247);
+    View localView = getLayoutInflater().inflate(2130968805, null);
+    TextView localTextView = (TextView)localView.findViewById(2131559406);
     if ((localTextView != null) && (paramString != null)) {
       localTextView.setText(Html.fromHtml(paramString));
     }
@@ -65,15 +66,15 @@ public class UtilsMbInfoItemActivity
       return;
     }
     setTitle(this.mItem.mName);
-    this.mItemView = ((RelativeLayout)findViewById(2131297241));
-    this.mDelSuccView = ((RelativeLayout)findViewById(2131297244));
+    this.mItemView = ((RelativeLayout)findViewById(2131559400));
+    this.mDelSuccView = ((RelativeLayout)findViewById(2131559403));
     if ((this.mItem.mDetail.mBtnText != null) && (this.mItem.mDetail.mBtnText.length() > 0)) {
-      ((TextView)findViewById(2131296396)).setText(getResources().getString(2131362207) + this.mItem.mDetail.mBtnText + this.mItem.mName + "!");
+      ((TextView)findViewById(2131558647)).setText(getResources().getString(2131231568) + this.mItem.mDetail.mBtnText + this.mItem.mName + "!");
     }
-    findViewById(2131296398).setOnClickListener(new afa(this));
+    findViewById(2131558649).setOnClickListener(new adp(this));
     this.mItemView.setVisibility(0);
     this.mDelSuccView.setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131296903);
+    TextView localTextView = (TextView)findViewById(2131559111);
     if ((this.mItem.mDetail.mDesc != null) && (this.mItem.mDetail.mDesc.length() > 0))
     {
       Object localObject = Html.fromHtml(this.mItem.mDetail.mDesc);
@@ -81,12 +82,12 @@ public class UtilsMbInfoItemActivity
       localTextView.setVisibility(0);
       localObject = (URLSpan[])((Spanned)localObject).getSpans(0, ((Spanned)localObject).length(), URLSpan.class);
       if ((localObject != null) && (localObject.length > 0)) {
-        localTextView.setOnClickListener(new afb(this, localObject[0].getURL()));
+        localTextView.setOnClickListener(new adq(this, localObject[0].getURL()));
       }
     }
     for (;;)
     {
-      insertTableRows((TableLayout)findViewById(2131297242));
+      insertTableRows((TableLayout)findViewById(2131559401));
       setActionButton();
       setRightBtn();
       return;
@@ -143,7 +144,7 @@ public class UtilsMbInfoItemActivity
           while (i < localJSONArray.length() - 1)
           {
             paramTableLayout = new ImageView(this);
-            paramTableLayout.setBackgroundColor(getResources().getColor(2131165213));
+            paramTableLayout.setBackgroundColor(getResources().getColor(2131493034));
             localObject = new RelativeLayout.LayoutParams(j - k - m, (int)IndexActivity.S_DENSITY);
             ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)((i + 1) * 50 * IndexActivity.S_DENSITY));
             this.mItemView.addView(paramTableLayout, (ViewGroup.LayoutParams)localObject);
@@ -160,8 +161,8 @@ public class UtilsMbInfoItemActivity
     if ((this.mItem == null) || (this.mItem.mDetail == null)) {
       return;
     }
-    Button localButton1 = (Button)findViewById(2131296904);
-    Button localButton2 = (Button)findViewById(2131297243);
+    Button localButton1 = (Button)findViewById(2131559112);
+    Button localButton2 = (Button)findViewById(2131559402);
     setButton(localButton1, this.mItem.mDetail.mBtnStatus, this.mItem.mDetail.mBtnText, this.mItem.mDetail.mBtnType);
     setButton(localButton2, this.mItem.mDetail.mBtnExtStatus, this.mItem.mDetail.mBtnExtText, this.mItem.mDetail.mBtnExtType);
   }
@@ -193,9 +194,9 @@ public class UtilsMbInfoItemActivity
       if ((!bool) || (paramInt2 == 0))
       {
         paramButton.setVisibility(4);
-        paramButton.setTextColor(getResources().getColor(2131165214));
+        paramButton.setTextColor(getResources().getColor(2131492939));
       }
-      paramButton.setOnClickListener(new afc(this, bool, paramInt2, paramString));
+      paramButton.setOnClickListener(new adr(this, bool, paramInt2, paramString));
       return;
       bool = false;
       break;
@@ -215,15 +216,15 @@ public class UtilsMbInfoItemActivity
     }
     while (i != 0)
     {
-      setRightTitleImage(2130837951, new aff(this, i));
+      setRightTitleImage(2130838011, new adu(this, i));
       return;
-      i = 2131362228;
+      i = 2131231572;
       continue;
-      i = 2131362226;
+      i = 2131231573;
       continue;
-      i = 2131362229;
+      i = 2131231574;
       continue;
-      i = 2131362227;
+      i = 2131231575;
     }
   }
   
@@ -245,7 +246,7 @@ public class UtilsMbInfoItemActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
     }
@@ -254,7 +255,7 @@ public class UtilsMbInfoItemActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903240);
+    setContentView(2130968803);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null)
     {
@@ -262,7 +263,8 @@ public class UtilsMbInfoItemActivity
       return;
     }
     this.mPosition = paramBundle.getInt("position", -1);
-    paramBundle = fn.a().c();
+    this.mPageId = paramBundle.getInt("page_id", -1);
+    paramBundle = eq.a().c();
     if ((this.mPosition == -1) || (paramBundle == null) || (paramBundle.mMbInfoItems == null) || (paramBundle.mMbInfoItems.size() <= this.mPosition))
     {
       finish();
@@ -274,7 +276,7 @@ public class UtilsMbInfoItemActivity
   
   public void onDestroy()
   {
-    af.a().a(getClass().getName());
+    cw.a().a(getClass().getName());
     super.onDestroy();
   }
   

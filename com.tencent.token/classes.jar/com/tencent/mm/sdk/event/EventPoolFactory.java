@@ -1,34 +1,17 @@
 package com.tencent.mm.sdk.event;
 
-import android.os.Looper;
-
 public final class EventPoolFactory
 {
-  public static IEventPool impl = null;
+  public static EventPoolFactory.IEventPool impl = null;
   
-  public static final IEventPool getImpl()
+  public static final EventPoolFactory.IEventPool getImpl()
   {
     return impl;
   }
   
-  public static final void setImpl(IEventPool paramIEventPool)
+  public static final void setImpl(EventPoolFactory.IEventPool paramIEventPool)
   {
     impl = paramIEventPool;
-  }
-  
-  public static abstract interface IEventPool
-  {
-    public abstract boolean add(String paramString, IListener paramIListener);
-    
-    public abstract void asyncPublish(IEvent paramIEvent);
-    
-    public abstract void asyncPublish(IEvent paramIEvent, Looper paramLooper);
-    
-    public abstract void publish(IEvent paramIEvent);
-    
-    public abstract void release(int paramInt);
-    
-    public abstract boolean remove(String paramString, IListener paramIListener);
   }
 }
 

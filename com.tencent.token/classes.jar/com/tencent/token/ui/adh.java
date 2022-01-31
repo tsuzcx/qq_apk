@@ -1,46 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeviceInfo;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.w;
 
-final class adh
-  extends BroadcastReceiver
+class adh
+  implements View.OnClickListener
 {
-  adh(UtilsActivity paramUtilsActivity) {}
+  adh(adg paramadg) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.token.utils_icon_flag")) {
-      UtilsActivity.access$300(this.a);
-    }
-    do
-    {
-      return;
-      if (paramContext.equals("com.tencent.token.token_code_change_30s"))
-      {
-        UtilsActivity.access$400(this.a);
-        return;
-      }
-    } while ((!paramContext.equals("com.tencent.token.siderbar.statechanged")) || (paramIntent.getExtras() == null));
-    int i = paramIntent.getExtras().getInt("cscreen", -1);
-    int j = paramIntent.getExtras().getInt("nscreen", -1);
-    boolean bool = paramIntent.getExtras().getBoolean("cstate");
-    com.tencent.token.global.e.c("cscreen=" + i + ", nscreen=" + j + ", moving=" + bool);
-    if (bool)
-    {
-      UtilsActivity.access$500(this.a).a = false;
-      return;
-    }
-    if (j == 0)
-    {
-      UtilsActivity.access$500(this.a).a = false;
-      return;
-    }
-    UtilsActivity.access$500(this.a).a = true;
-    UtilsActivity.access$500(this.a).invalidateSelf();
+    cw.a().a(0L, adg.a(this.a).dguid, adg.a(this.a).ddes, adg.a(this.a).dappid, adg.a(this.a).dsubappid, adg.a(this.a).dappname, 70, w.a(cp.a(RqdApplication.l()).b()), 523005419, 1, "com.tencent.token", UtilsMailProtectActivity.access$400(this.a.a), UtilsMailProtectActivity.access$500(this.a.a));
+    this.a.dismiss();
   }
 }
 

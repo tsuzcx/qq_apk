@@ -1,34 +1,57 @@
 package com.tencent.token.core.push;
 
-import com.tencent.token.ap;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
-public final class d
+class d
+  implements Runnable
 {
-  public static int a(byte[] paramArrayOfByte, int paramInt, c paramc)
+  d(b paramb) {}
+  
+  public void run()
   {
-    if (paramInt <= 42) {
-      return -1;
+    this.a.c();
+    if ((b.e() == null) || (b.f() == null) || (b.e().length == 0) || (b.f().length == 0))
+    {
+      b.b(0);
+      return;
     }
-    if ((paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramInt - 1)] != 3)) {
-      return -2;
+    if (b.a(this.a) >= b.b(this.a))
+    {
+      b.b(0);
+      b.a(this.a, 0);
+      return;
     }
-    paramc.a = ((short)(((paramArrayOfByte[1] & 0xFF) << 8) + ((paramArrayOfByte[2] & 0xFF) << 0)));
-    if (paramc.a != paramInt) {
-      return -3;
+    h.a("pushservice connect....");
+    try
+    {
+      int i = b.a(this.a) % b.e().length;
+      h.a("socket connect server ok [" + b.e()[i] + ", " + b.f()[i] + "]");
+      b.b(this.a, 0L);
+      b.a(this.a, new Socket());
+      InetSocketAddress localInetSocketAddress = new InetSocketAddress(b.e()[i], b.f()[i]);
+      b.c(this.a).connect(localInetSocketAddress, 3000);
+      b.c(this.a).setKeepAlive(true);
+      h.a("socket connect server ok [" + b.e()[i] + ", " + b.f()[i] + "]");
+      b.d(this.a);
+      b.b(2);
+      b.e(this.a);
+      return;
     }
-    paramc.b = ((short)(((paramArrayOfByte[3] & 0xFF) << 8) + ((paramArrayOfByte[4] & 0xFF) << 0)));
-    paramc.c = ap.a(paramArrayOfByte, 5);
-    c.d = ap.a(paramArrayOfByte, 9);
-    paramc.e = ((short)(((paramArrayOfByte[13] & 0xFF) << 8) + ((paramArrayOfByte[14] & 0xFF) << 0)));
-    paramc.f = ((short)(((paramArrayOfByte[15] & 0xFF) << 8) + ((paramArrayOfByte[16] & 0xFF) << 0)));
-    paramc.g = ((short)(((paramArrayOfByte[17] & 0xFF) << 8) + ((paramArrayOfByte[18] & 0xFF) << 0)));
-    paramc.h = ap.a(paramArrayOfByte, 19);
-    paramc.i = paramArrayOfByte[23];
-    paramc.j = paramArrayOfByte[24];
-    System.arraycopy(paramArrayOfByte, 25, c.k, 0, 16);
-    e.a("socket parse msg head: totallen[" + paramc.a + "]" + " msgtype[" + paramc.b + "]" + " seq[" + paramc.c + "]" + " traceID[" + c.d + "]" + " version[" + paramc.g + "]" + " echo[" + c.k + "]");
-    return 0;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      h.c(localException.toString());
+      this.a.c();
+      b.b(6);
+      b.a(this.a, System.currentTimeMillis());
+      return;
+    }
+    finally
+    {
+      b.d(this.a);
+    }
   }
 }
 

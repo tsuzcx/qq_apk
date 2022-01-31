@@ -1,36 +1,23 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.ch;
+import com.tencent.token.cw;
 
-final class wr
-  implements DialogInterface.OnClickListener
+class wr
+  implements View.OnClickListener
 {
-  wr(wn paramwn) {}
+  wr(wp paramwp) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, RealNameStep0VerifyMobileUpActivity.class);
-    paramDialogInterface.putExtra("realname_mobile", RealNameStep0VerifyMobileDownActivity.access$1000(this.a.a));
-    paramDialogInterface.putExtra("real_uin", RealNameStep0VerifyMobileDownActivity.access$400(this.a.a));
-    paramDialogInterface.putExtra("scene_id", RealNameStep0VerifyMobileDownActivity.access$1100(this.a.a));
-    if (RealNameStep0VerifyMobileDownActivity.access$1100(this.a.a) == 1003)
-    {
-      paramDialogInterface.putExtra("source_id", this.a.a.mSourceId);
-      paramDialogInterface.putExtra("mFrontPath", this.a.a.mFrontPath);
-      paramDialogInterface.putExtra("mBackPath", this.a.a.mBackPath);
-      paramDialogInterface.putExtra("mFaceData", this.a.a.mFaceData);
-      paramDialogInterface.putExtra("frontphotoinfo", this.a.a.frontphotoinfo);
-      paramDialogInterface.putExtra("backphotoinfo", this.a.a.backphotoinfo);
-      paramDialogInterface.putExtra("canchange_uin", RealNameStep0VerifyMobileDownActivity.access$800(this.a.a));
-    }
-    for (;;)
-    {
-      this.a.a.startActivity(paramDialogInterface);
-      return;
-      paramDialogInterface.putExtra("realname_result", RealNameStep0VerifyMobileDownActivity.access$1200(this.a.a));
-    }
+    this.a.a.dismiss();
+    ch.a().a(System.currentTimeMillis(), 94);
+    this.a.a.showProDialogWithoutShutDown(this.a.a, this.a.a.getResources().getString(2131231298));
+    cw.a().a(0L, RealNameStep1InputNameIdActivity.access$1700(this.a.a), 3, RealNameStep1InputNameIdActivity.access$1800(this.a.a).getText().toString(), RealNameStep1InputNameIdActivity.access$1900(this.a.a).getText().toString(), null, null, null, RealNameStep1InputNameIdActivity.access$2500(this.a.a), RealNameStep1InputNameIdActivity.access$2600(this.a.a), RealNameStep1InputNameIdActivity.access$2700(this.a.a));
   }
 }
 

@@ -1,22 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.ah;
-import com.tencent.token.global.RqdApplication;
+import android.os.Handler;
+import com.tencent.token.fk;
 
-final class aca
-  implements DialogInterface.OnClickListener
+class aca
+  implements Runnable
 {
-  aca(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity, Context paramContext) {}
+  aca(UtilsActivity paramUtilsActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ah.a().f();
-    RqdApplication.f();
-    this.b.setResult(35);
-    this.b.finish();
+    if (fk.a("guide_qqpimsecure_tips_utils_last_show_time"))
+    {
+      this.a.mHandler.post(new acb(this));
+      fk.a("guide_qqpimsecure_tips_utils_last_show_time", System.currentTimeMillis());
+    }
   }
 }
 

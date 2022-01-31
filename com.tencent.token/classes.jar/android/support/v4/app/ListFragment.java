@@ -2,11 +2,12 @@ package android.support.v4.app;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -29,21 +30,9 @@ public class ListFragment
   ListView mList;
   View mListContainer;
   boolean mListShown;
-  private final AdapterView.OnItemClickListener mOnClickListener = new AdapterView.OnItemClickListener()
-  {
-    public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-    {
-      ListFragment.this.onListItemClick((ListView)paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
-    }
-  };
+  private final AdapterView.OnItemClickListener mOnClickListener = new ListFragment.2(this);
   View mProgressContainer;
-  private final Runnable mRequestFocus = new Runnable()
-  {
-    public void run()
-    {
-      ListFragment.this.mList.focusableViewAvailable(ListFragment.this.mList);
-    }
-  };
+  private final Runnable mRequestFocus = new ListFragment.1(this);
   TextView mStandardEmptyView;
   
   private void ensureList()
@@ -124,8 +113,8 @@ public class ListFragment
     {
       if (paramBoolean2)
       {
-        this.mProgressContainer.startAnimation(AnimationUtils.loadAnimation(getActivity(), 17432577));
-        this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getActivity(), 17432576));
+        this.mProgressContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+        this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
       }
       for (;;)
       {
@@ -138,8 +127,8 @@ public class ListFragment
     }
     if (paramBoolean2)
     {
-      this.mProgressContainer.startAnimation(AnimationUtils.loadAnimation(getActivity(), 17432576));
-      this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getActivity(), 17432577));
+      this.mProgressContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+      this.mListContainer.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
     }
     for (;;)
     {
@@ -176,7 +165,7 @@ public class ListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = getActivity();
+    paramViewGroup = getContext();
     paramLayoutInflater = new FrameLayout(paramViewGroup);
     paramBundle = new LinearLayout(paramViewGroup);
     paramBundle.setId(16711682);
@@ -185,17 +174,17 @@ public class ListFragment
     paramBundle.setGravity(17);
     paramBundle.addView(new ProgressBar(paramViewGroup, null, 16842874), new FrameLayout.LayoutParams(-2, -2));
     paramLayoutInflater.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-    paramViewGroup = new FrameLayout(paramViewGroup);
-    paramViewGroup.setId(16711683);
-    paramBundle = new TextView(getActivity());
-    paramBundle.setId(16711681);
-    paramBundle.setGravity(17);
-    paramViewGroup.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-    paramBundle = new ListView(getActivity());
-    paramBundle.setId(16908298);
-    paramBundle.setDrawSelectorOnTop(false);
-    paramViewGroup.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-    paramLayoutInflater.addView(paramViewGroup, new FrameLayout.LayoutParams(-1, -1));
+    paramBundle = new FrameLayout(paramViewGroup);
+    paramBundle.setId(16711683);
+    TextView localTextView = new TextView(paramViewGroup);
+    localTextView.setId(16711681);
+    localTextView.setGravity(17);
+    paramBundle.addView(localTextView, new FrameLayout.LayoutParams(-1, -1));
+    paramViewGroup = new ListView(paramViewGroup);
+    paramViewGroup.setId(16908298);
+    paramViewGroup.setDrawSelectorOnTop(false);
+    paramBundle.addView(paramViewGroup, new FrameLayout.LayoutParams(-1, -1));
+    paramLayoutInflater.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
     paramLayoutInflater.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     return paramLayoutInflater;
   }
@@ -214,7 +203,7 @@ public class ListFragment
   
   public void onListItemClick(ListView paramListView, View paramView, int paramInt, long paramLong) {}
   
-  public void onViewCreated(View paramView, Bundle paramBundle)
+  public void onViewCreated(@NonNull View paramView, @Nullable Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
     ensureList();

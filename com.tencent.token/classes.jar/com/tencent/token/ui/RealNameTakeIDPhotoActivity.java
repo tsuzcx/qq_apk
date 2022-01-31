@@ -10,13 +10,13 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.cu;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.cm;
 
 public class RealNameTakeIDPhotoActivity
   extends BaseActivity
 {
-  private Handler handler = new yi(this);
+  private Handler handler = new xy(this);
   int height;
   private String mBackPath;
   private boolean mCanTakePic = true;
@@ -44,27 +44,28 @@ public class RealNameTakeIDPhotoActivity
   
   private void initView()
   {
-    setContentView(2130903177);
+    setContentView(2130968736);
     hideTitle();
-    findViewById(2131296490).setOnClickListener(new ye(this));
-    this.mPreview = ((RealNameTakeIDPhotoPreview)findViewById(2131296481));
-    this.mPhotoBorder = ((ImageView)findViewById(2131296482));
-    this.mPhotoBorder.setImageResource(2130837822);
-    this.mTipTxt = ((TextView)findViewById(2131296487));
+    findViewById(2131558776).setOnClickListener(new xt(this));
+    this.mPreview = ((RealNameTakeIDPhotoPreview)findViewById(2131558767));
+    this.mPreview.setVisibility(4);
+    this.mPhotoBorder = ((ImageView)findViewById(2131558768));
+    this.mPhotoBorder.setImageResource(2130837903);
+    this.mTipTxt = ((TextView)findViewById(2131558773));
     if (this.mCurrentStep == 2)
     {
-      this.mTipTxt.setText(2131362515);
+      this.mTipTxt.setText(2131231346);
       if (!this.mIsAnimation) {
-        this.mPhotoBorder.setImageResource(2130837821);
+        this.mPhotoBorder.setImageResource(2130837902);
       }
     }
-    this.mTakePicBtn = ((ImageView)findViewById(2131296993));
-    this.mTakePicBtn.setOnClickListener(new yf(this));
+    this.mTakePicBtn = ((ImageView)findViewById(2131559186));
+    this.mTakePicBtn.setOnClickListener(new xu(this));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    e.c("resultCoderesultCode=" + paramInt2);
+    h.c("resultCoderesultCode=" + paramInt2);
     if (paramInt2 == 10) {
       if (this.mCurrentStep == 1) {
         this.mFrontPath = null;
@@ -85,14 +86,14 @@ public class RealNameTakeIDPhotoActivity
       {
         this.mCurrentStep += 1;
         this.mIsAnimation = true;
-        e.c("onActivityResulton ccurrent_step=" + this.mCurrentStep);
+        h.c("onActivityResulton ccurrent_step=" + this.mCurrentStep);
         return;
       }
     } while (this.mCurrentStep != 2);
     paramIntent = new Intent();
     paramIntent.putExtra("frontdata", this.mFrontPath);
     paramIntent.putExtra("backdata", this.mBackPath);
-    e.c("step2 onActivityResult!!!");
+    h.c("step2 onActivityResult!!!");
     setResult(0, paramIntent);
     finish();
   }
@@ -118,13 +119,7 @@ public class RealNameTakeIDPhotoActivity
     if (this.mPreview.a != null) {
       this.mPreview.a();
     }
-    this.mTakePicBtn = null;
-    this.mPhotoBorder = null;
-    if (this.mPreview != null)
-    {
-      this.mPreview.a();
-      this.mPreview = null;
-    }
+    destroyview();
     System.gc();
   }
   
@@ -132,7 +127,8 @@ public class RealNameTakeIDPhotoActivity
   {
     super.onResume();
     initView();
-    this.mPreview.a(this, this.handler);
+    Object localObject = new xw(this);
+    requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, (dy)localObject);
     if (this.mIsAnimation)
     {
       this.mCanTakePic = false;
@@ -141,11 +137,11 @@ public class RealNameTakeIDPhotoActivity
       this.mPhotoBorder.measure(i, j);
       this.height = this.mPhotoBorder.getMeasuredHeight();
       this.width = this.mPhotoBorder.getMeasuredWidth();
-      cu localcu = new cu(0.0F, 90.0F, this.width / 2, this.height / 2, true);
-      localcu.setDuration(400L);
-      localcu.setFillAfter(true);
-      localcu.setAnimationListener(new yh(this));
-      this.mPhotoBorder.startAnimation(localcu);
+      localObject = new cm(0.0F, 90.0F, this.width / 2, this.height / 2, 310.0F, true);
+      ((Animation)localObject).setDuration(400L);
+      ((Animation)localObject).setFillAfter(true);
+      ((Animation)localObject).setAnimationListener(new xx(this));
+      this.mPhotoBorder.startAnimation((Animation)localObject);
       this.mIsAnimation = false;
     }
   }

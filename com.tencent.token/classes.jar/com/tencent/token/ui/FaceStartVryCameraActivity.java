@@ -17,24 +17,25 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.jni.FaceData;
-import com.tencent.token.af;
-import com.tencent.token.ah;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cv;
+import com.tencent.token.core.protocolcenter.protocol.ProtoFaceCommon;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.cy;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.FaceView;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.w;
+import com.tencent.token.utils.x;
 
 public class FaceStartVryCameraActivity
   extends BaseActivity
 {
   public static String LANUCH_RETRY_COUNT = "fr_retrycount";
   private final int ALLOW_MAX_RETRY = 5;
-  private Handler animationHandler = new jx(this);
-  private Handler handler = new jl(this);
+  private Handler animationHandler = new iv(this);
+  private Handler handler = new ij(this);
   private int[] mActions;
   private AlphaAnimation mAnimAlpha;
   private TranslateAnimation mAnimGoUp;
@@ -46,7 +47,7 @@ public class FaceStartVryCameraActivity
   private boolean mDetectSucc;
   private FaceData mFaceData;
   private int mFaceOpType = 2;
-  private int mFaceScene = 6;
+  private int mFaceScene = 10;
   private FaceView mFaceView;
   private int mHeightUpper;
   private boolean mIsActiveSuccess = false;
@@ -75,18 +76,18 @@ public class FaceStartVryCameraActivity
   private int getLockStatus()
   {
     int i;
-    if (t.e() != 0L) {
-      if ((ah.a().c()) && (ah.a().e() == 2)) {
+    if (x.e() != 0L) {
+      if ((cy.a().c()) && (cy.a().e() == 2)) {
         i = 19;
       }
     }
     for (;;)
     {
-      e.c("getLockStatus = " + i);
+      h.c("getLockStatus = " + i);
       return i;
       i = 18;
       continue;
-      if ((ah.a().c()) && (ah.a().e() == 2)) {
+      if ((cy.a().c()) && (cy.a().e() == 2)) {
         i = 17;
       } else {
         i = 16;
@@ -94,20 +95,33 @@ public class FaceStartVryCameraActivity
     }
   }
   
+  private void gotoQuickLoginWb()
+  {
+    do.a().e();
+    if (x.e() < 0L)
+    {
+      cw.a().b(this.handler);
+      showProDialog(this, 2131230843, 2131231298, null);
+      return;
+    }
+    cp.a(getApplicationContext()).a(this, 523005419L, this.handler, "" + x.e());
+  }
+  
   private void init()
   {
-    this.mRetryCount = s.j(LANUCH_RETRY_COUNT);
-    e.c("retryCount = " + this.mRetryCount);
+    this.mRetryCount = w.b(null, LANUCH_RETRY_COUNT);
+    h.c("retryCount = " + this.mRetryCount);
     if (this.mRetryCount >= 5) {
       jumpGesOrPWD();
     }
-    this.mPreview = ((FaceRecognitionCameraPreview)findViewById(2131296481));
-    this.mFaceView = ((FaceView)findViewById(2131296482));
-    QQUser localQQUser1 = ax.a().e();
-    QQUser localQQUser2 = t.g();
-    this.mVrySucc1 = ((ImageView)findViewById(2131296579));
-    this.mVrySucc2 = ((ImageView)findViewById(2131296580));
-    this.mTipTxt = ((TextView)findViewById(2131296578));
+    this.mPreview = ((FaceRecognitionCameraPreview)findViewById(2131558767));
+    this.mPreview.setVisibility(4);
+    this.mFaceView = ((FaceView)findViewById(2131558768));
+    QQUser localQQUser1 = do.a().e();
+    QQUser localQQUser2 = x.g();
+    this.mVrySucc1 = ((ImageView)findViewById(2131558866));
+    this.mVrySucc2 = ((ImageView)findViewById(2131558867));
+    this.mTipTxt = ((TextView)findViewById(2131558865));
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTipTxt.getLayoutParams();
     int i = getResources().getDisplayMetrics().densityDpi;
     float f = getResources().getDisplayMetrics().density;
@@ -115,75 +129,77 @@ public class FaceStartVryCameraActivity
     {
       localMarginLayoutParams.bottomMargin = ((int)(70.0F * f));
       if ((localQQUser1 == null) || (localQQUser2 == null) || (!localQQUser2.mIsZzb)) {
-        break label263;
+        break label293;
       }
       this.mFaceView.a(true, true);
-      this.mVrySucc1.setImageResource(2130838027);
-      this.mVrySucc2.setImageResource(2130838028);
+      this.mVrySucc1.setImageResource(2130838079);
+      this.mVrySucc2.setImageResource(2130838080);
     }
     for (;;)
     {
-      this.handler.postDelayed(new ka(this, f), 2000L);
+      this.handler.postDelayed(new iy(this, f), 2000L);
       return;
+      if (i <= 320)
+      {
+        localMarginLayoutParams.bottomMargin = ((int)(90.0F * f));
+        break;
+      }
       localMarginLayoutParams.bottomMargin = ((int)(90.0F * f));
       break;
-      label263:
+      label293:
       this.mFaceView.a(false, true);
     }
   }
   
   private void initValidationUI()
   {
-    this.mChangeVryTxt = ((TextView)findViewById(2131296585));
-    this.mOpenLower = findViewById(2131296586);
-    this.mOpenUper = findViewById(2131296587);
-    this.mOpenUperDoor = ((ImageView)findViewById(2131296590));
-    this.mOpenUperDoorNew = ((ImageView)findViewById(2131296591));
-    QQUser localQQUser1 = ax.a().e();
-    QQUser localQQUser2 = t.g();
+    this.mChangeVryTxt = ((TextView)findViewById(2131558872));
+    this.mOpenLower = findViewById(2131558873);
+    this.mOpenUper = findViewById(2131558874);
+    this.mOpenUperDoor = ((ImageView)findViewById(2131558877));
+    this.mOpenUperDoorNew = ((ImageView)findViewById(2131558878));
+    QQUser localQQUser1 = do.a().e();
+    QQUser localQQUser2 = x.g();
     if ((localQQUser1 != null) && (localQQUser2 != null) && (localQQUser2.mIsZzb))
     {
-      this.animationHandler.post(new ki(this, this.mOpenUperDoor));
-      this.animationHandler.post(new kg(this, this.mOpenUperDoorNew));
+      this.animationHandler.post(new jg(this, this.mOpenUperDoor));
+      this.animationHandler.post(new je(this, this.mOpenUperDoorNew));
     }
-    this.mOpenUper.postDelayed(new kb(this), 800L);
-    this.mBgUpper = findViewById(2131296536);
-    this.mBgUpper.postDelayed(new kc(this), 500L);
-    this.mLogoMiddle = findViewById(2131296584);
+    this.mOpenUper.postDelayed(new iz(this), 800L);
+    this.mBgUpper = findViewById(2131558822);
+    this.mBgUpper.postDelayed(new ja(this), 500L);
+    this.mLogoMiddle = findViewById(2131558871);
     this.mLogoMiddle.setVisibility(4);
-    this.mBmpLogo = t.a(getResources(), 2130837920);
-    this.mBmpLogoGreen = t.a(getResources(), 2130837922);
+    this.mBmpLogo = x.a(getResources(), 2130837982);
+    this.mBmpLogoGreen = x.a(getResources(), 2130837984);
     if ((localQQUser1 != null) && (localQQUser2 != null) && (localQQUser2.mIsZzb))
     {
-      ((ImageView)this.mLogoMiddle).setImageDrawable(getResources().getDrawable(2130837919));
-      this.mBmpLogoGreen = t.a(getResources(), 2130837924);
-      this.mBmpLogo = t.a(getResources(), 2130837924);
-      this.mChangeVryTxt.setTextColor(getResources().getColor(2131165326));
+      ((ImageView)this.mLogoMiddle).setImageDrawable(getResources().getDrawable(2130837981));
+      this.mBmpLogoGreen = x.a(getResources(), 2130837986);
+      this.mBmpLogo = x.a(getResources(), 2130837986);
+      this.mChangeVryTxt.setTextColor(getResources().getColor(2131492924));
     }
     for (;;)
     {
       if (this.mBmpLogo != null)
       {
-        this.mLogo = ((ImageView)findViewById(2131296583));
+        this.mLogo = ((ImageView)findViewById(2131558870));
         this.mLogo.setImageBitmap(this.mBmpLogo);
       }
-      if (!RqdApplication.d()) {
-        this.mChangeVryTxt.setText(2131361941);
+      if (!RqdApplication.g()) {
+        this.mChangeVryTxt.setText(2131231619);
       }
-      this.mChangeVryTxt.setOnClickListener(new kd(this));
+      this.mChangeVryTxt.setOnClickListener(new jb(this));
       return;
-      this.mChangeVryTxt.setTextColor(getResources().getColor(2131165325));
+      this.mChangeVryTxt.setTextColor(getResources().getColor(2131492923));
     }
   }
   
   private void jumpGesOrPWD()
   {
-    if (!RqdApplication.d())
+    if (!RqdApplication.g())
     {
-      Intent localIntent = new Intent(this, StartPwdGestureForgetActivity.class);
-      localIntent.putExtra("startpwd_forget_source", 3);
-      startActivity(localIntent);
-      finish();
+      gotoQuickLoginWb();
       return;
     }
     startActivity(new Intent(this, StartPwdGestureVerifyActivity.class));
@@ -193,8 +209,8 @@ public class FaceStartVryCameraActivity
   private void resetFaceDetection()
   {
     this.mPreview.a(true, false, 0, 0);
-    this.mFaceView.c(0);
-    this.mTipTxt.setText(2131362782);
+    this.mFaceView.setStatus(0);
+    this.mTipTxt.setText(2131231151);
   }
   
   private void setLiveDetectTxt(int paramInt)
@@ -204,22 +220,28 @@ public class FaceStartVryCameraActivity
     default: 
       return;
     case 1: 
-      this.mTipTxt.setText(2131362787);
+      this.mTipTxt.setText(2131231152);
       return;
     case 2: 
-      this.mTipTxt.setText(2131362788);
+      this.mTipTxt.setText(2131231153);
       return;
     case 3: 
-      this.mTipTxt.setText(2131362789);
+      this.mTipTxt.setText(2131231154);
+      return;
+    case 4: 
+      this.mTipTxt.setText(2131231155);
+      return;
+    case 5: 
+      this.mTipTxt.setText(2131231146);
       return;
     }
-    this.mTipTxt.setText(2131362790);
+    this.mTipTxt.setText(2131231147);
   }
   
   private void showNobindingAlert(Context paramContext, int paramInt1, int paramInt2)
   {
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-      showUserDialog(2131361808, getString(paramInt1), paramInt2, new jy(this, paramContext), new jz(this, paramContext));
+      showUserDialog(2131230843, getString(paramInt1), paramInt2, new iw(this, paramContext), new ix(this, paramContext));
     }
   }
   
@@ -241,7 +263,7 @@ public class FaceStartVryCameraActivity
         paramKeyEvent.printStackTrace();
         return true;
       }
-      if (RqdApplication.c())
+      if (RqdApplication.f())
       {
         exitToken();
         return true;
@@ -255,21 +277,29 @@ public class FaceStartVryCameraActivity
     return true;
   }
   
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    h.c("verify gesture: resultCode=" + paramInt2 + ", requestCode=" + paramInt1);
+    if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
+      cp.a(getApplicationContext()).a(paramIntent);
+    }
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
     this.realNameBindUin = getIntent().getLongExtra("real_uin", 0L);
-    e.a("flag=" + this.mFaceOpType + ",realuin=" + this.realNameBindUin);
+    h.a("flag=" + this.mFaceOpType + ",realuin=" + this.realNameBindUin);
     this.mIsh5zzb = getIntent().getBooleanExtra("ish5zzb", false);
     this.mDetectSucc = false;
     this.mIsActiveSuccess = false;
-    setContentView(2130903092);
+    setContentView(2130968656);
     hideTitle();
     initValidationUI();
     init();
-    cv.e();
-    af.a().h(t.e(), this.mScene, this.handler);
+    ProtoFaceCommon.e();
+    cw.a().f(x.e(), this.mScene, this.handler);
   }
   
   protected void onDestroy()
@@ -278,7 +308,7 @@ public class FaceStartVryCameraActivity
     this.mServerData = null;
     if (this.mPreview != null)
     {
-      this.mPreview.a();
+      this.mPreview.c();
       this.mPreview = null;
     }
     this.handler = null;
@@ -296,14 +326,13 @@ public class FaceStartVryCameraActivity
     RqdApplication.b = true;
     if (this.mPreview != null)
     {
-      this.mPreview.a(this, this.mScene, this.handler, this.mFaceView, this.mTipTxt);
-      this.mPreview.a(false);
-      this.mPreview.a(true, false, 0, 0);
-      this.mFaceView.c(0);
-      this.mTipTxt.setText(2131362782);
+      jd localjd = new jd(this);
+      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, localjd);
+      this.mPreview.setStop(false);
+      resetFaceDetection();
     }
     if (this.mDetectSucc) {
-      this.mPreview.a(true);
+      this.mPreview.setStop(true);
     }
   }
   
@@ -318,7 +347,7 @@ public class FaceStartVryCameraActivity
     if ((this.mTitleBar.getVisibility() == 0) && (this.mBackArrow != null))
     {
       this.mBackArrow.setVisibility(0);
-      this.mBackArrow.setOnClickListener(new ke(this));
+      this.mBackArrow.setOnClickListener(new jc(this));
     }
   }
   
@@ -328,7 +357,7 @@ public class FaceStartVryCameraActivity
       this.mLogo.setImageBitmap(this.mBmpLogoGreen);
     }
     this.mLogoMiddle.setVisibility(0);
-    this.animationHandler.post(new kk(this, this.mBgUpper, this.mLogoMiddle));
+    this.animationHandler.post(new ji(this, this.mBgUpper, this.mLogoMiddle));
   }
   
   public void startOpenAnimation()
@@ -337,7 +366,7 @@ public class FaceStartVryCameraActivity
     this.mOpenAnimGoUp.setDuration(500L);
     this.mOpenAnimGoDown = new TranslateAnimation(0.0F, 0.0F, 0.0F, this.mOpenHeightLower);
     this.mOpenAnimGoDown.setDuration(500L);
-    this.mOpenAnimGoDown.setAnimationListener(new kf(this));
+    this.mOpenAnimGoDown.setAnimationListener(new iu(this));
     this.mOpenUper.startAnimation(this.mOpenAnimGoUp);
     this.mOpenLower.startAnimation(this.mOpenAnimGoDown);
   }

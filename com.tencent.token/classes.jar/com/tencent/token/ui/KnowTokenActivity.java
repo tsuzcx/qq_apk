@@ -14,38 +14,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.token.ui.base.cf;
-import com.tencent.token.ui.base.cg;
-import com.tencent.token.utils.t;
+import com.tencent.token.ui.base.by;
+import com.tencent.token.ui.base.bz;
+import com.tencent.token.utils.x;
 
 public class KnowTokenActivity
   extends BaseActivity
-  implements cg
+  implements bz
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
   private static final int FLING_MIN_DISTANCE = 0;
-  private static final int IMAGE_LEVEL_COUNT;
-  private static final int[] mBitmapIds;
+  private static final int IMAGE_LEVEL_COUNT = mBitmapIds.length;
+  private static final int[] mBitmapIds = new int[0];
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
-  private GestureDetector mDetector = new GestureDetector(new nt(this));
+  private GestureDetector mDetector = new GestureDetector(new mw(this));
   private Bitmap mDotEmpty;
   private Bitmap mDotFull;
   private Button mEndBtn;
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private cf mPageCurlView;
+  private by mPageCurlView;
   private int mWidth;
-  
-  static
-  {
-    int[] arrayOfInt = new int[0];
-    mBitmapIds = arrayOfInt;
-    IMAGE_LEVEL_COUNT = arrayOfInt.length;
-  }
   
   private void doOutOfMemory()
   {
@@ -58,7 +51,7 @@ public class KnowTokenActivity
     }
     this.mDotFull = null;
     if (this.mPageCurlView != null) {
-      this.mPageCurlView.b();
+      this.mPageCurlView.c();
     }
     this.mPageCurlView = null;
     finish();
@@ -89,39 +82,39 @@ public class KnowTokenActivity
     requestWindowFeature(1);
     try
     {
-      this.mDotEmpty = BitmapFactory.decodeResource(getResources(), 2130837592);
-      this.mDotFull = BitmapFactory.decodeResource(getResources(), 2130837593);
+      this.mDotEmpty = BitmapFactory.decodeResource(getResources(), 2130837676);
+      this.mDotFull = BitmapFactory.decodeResource(getResources(), 2130837677);
       paramBundle = getWindowManager().getDefaultDisplay();
       this.mWidth = paramBundle.getWidth();
       this.mHeight = paramBundle.getHeight();
       this.DOT_SIZE = this.mDotEmpty.getWidth();
       this.DOT_OFFSET_X = ((this.mWidth - IMAGE_LEVEL_COUNT * 2 * this.DOT_SIZE + this.DOT_SIZE) / 2);
       this.DOT_OFFSET_Y = (this.mHeight * 9 / 10);
-      this.mLowQuality = t.a(this.mWidth, this.mHeight);
-      this.mPageCurlView = new cf(this, this, this.mWidth, this.mHeight);
-      this.mPageCurlView.setBackgroundColor(getResources().getColor(2131165185));
+      this.mLowQuality = x.a(this.mWidth, this.mHeight, 1);
+      this.mPageCurlView = new by(this, this, this.mWidth, this.mHeight);
+      this.mPageCurlView.setBackgroundColor(getResources().getColor(2131492981));
       paramBundle = new RelativeLayout(this);
       paramBundle.addView(this.mPageCurlView, new ViewGroup.LayoutParams(-1, -1));
       Object localObject = new DisplayMetrics();
       getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
       this.mEndBtn = new Button(this);
-      this.mEndBtn.setBackgroundResource(2130837621);
+      this.mEndBtn.setBackgroundResource(2130837708);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(200.0F * ((DisplayMetrics)localObject).density), (int)(45.0F * ((DisplayMetrics)localObject).density));
       localLayoutParams.addRule(12, -1);
       localLayoutParams.addRule(14, -1);
       localLayoutParams.bottomMargin = ((int)(((DisplayMetrics)localObject).density * 110.0F));
       this.mEndBtn.setVisibility(8);
-      this.mEndBtn.setOnClickListener(new nu(this));
+      this.mEndBtn.setOnClickListener(new mx(this));
       this.mEndBtn.setGravity(17);
       paramBundle.addView(this.mEndBtn, localLayoutParams);
-      localObject = t.a(this, mBitmapIds[0], this.mLowQuality);
+      localObject = x.a(this, mBitmapIds[0], this.mLowQuality);
       if ((localObject == null) || (this.mDotEmpty == null) || (this.mDotFull == null))
       {
         doOutOfMemory();
         return;
       }
-      this.mPageCurlView.a((Bitmap)localObject);
-      this.mPageCurlView.setOnTouchListener(new nv(this));
+      this.mPageCurlView.a((Bitmap)localObject, null);
+      this.mPageCurlView.setOnTouchListener(new my(this));
       setContentView(paramBundle);
       hideTitle();
       return;

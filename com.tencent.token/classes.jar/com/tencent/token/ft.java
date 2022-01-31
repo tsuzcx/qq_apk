@@ -1,8 +1,21 @@
 package com.tencent.token;
 
-public final class ft
+import com.tencent.token.global.h;
+
+public class ft
 {
-  public Object a;
+  public static void a(String paramString)
+  {
+    try
+    {
+      ga.a(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      h.c("delete database table failed: " + paramString.toString());
+    }
+  }
 }
 
 

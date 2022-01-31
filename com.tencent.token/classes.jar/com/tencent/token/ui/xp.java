@@ -1,32 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-final class xp
-  implements View.OnClickListener
+class xp
+  implements TextWatcher
 {
   xp(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.getWindowManager().getDefaultDisplay().getWidth();
-    this.a.getWindowManager().getDefaultDisplay().getHeight();
-    paramView = new DisplayMetrics();
-    this.a.getWindowManager().getDefaultDisplay().getMetrics(paramView);
-    if (RealNameStep1InputNameIdActivity.access$100(this.a))
-    {
-      paramView = new Intent(this.a, DetectIDPhotoActivity.class);
-      this.a.startActivityForResult(paramView, 2);
-      return;
-    }
-    paramView = new Intent(this.a, RealNameTakeIDPhotoActivity.class);
-    paramView.putExtra("scene", 2);
-    this.a.startActivityForResult(paramView, 2);
+    RealNameStep1InputNameIdActivity.access$3102(this.a, false);
+    RealNameStep1InputNameIdActivity.access$1000(this.a);
   }
 }
 

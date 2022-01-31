@@ -1,33 +1,29 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.af;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
 
-final class rx
+class rx
   implements View.OnClickListener
 {
-  rx(NetActiveVryQQTokenActivity paramNetActiveVryQQTokenActivity) {}
+  rx(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    NetActiveVryQQTokenActivity.access$1000(this.a);
-    paramView = ((EditText)this.a.findViewById(2131296891)).getText().toString();
-    if ((paramView != null) && (paramView.length() == 6))
+    paramView = do.a().e();
+    if ((paramView != null) && (paramView.mIsBinded))
     {
-      NetActiveVryQQTokenActivity.access$1000(this.a);
-      this.a.showProDialog(this.a, 2131361808, 2131361817, null);
-      NetActiveVryQQTokenActivity.access$1300(this.a).b(NetActiveVryQQTokenActivity.access$1200(this.a).mRealUin, paramView, NetActiveVryQQTokenActivity.access$900(this.a));
+      cw.a().j(0L, OpMsgDisplayActivity.access$300(this.a));
+      this.a.showUserDialog(12);
       return;
     }
-    if ((paramView == null) || (paramView.length() == 0))
-    {
-      this.a.showToast(2131361949);
-      return;
-    }
-    this.a.showToast(2131361950);
+    paramView = new Intent(this.a, CommonVerifyActivity.class);
+    paramView.putExtra("name", this.a.getString(2131231331));
+    this.a.startActivity(paramView);
   }
 }
 

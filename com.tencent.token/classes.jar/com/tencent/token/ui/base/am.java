@@ -6,12 +6,12 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.token.ui.VerifyStartScanActivity;
 
-final class am
+class am
   implements DialogInterface.OnClickListener
 {
   am(aj paramaj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.a.dismiss();
     paramDialogInterface = new Intent(GameLoginSndConfirmDialog.c(this.a.a), VerifyStartScanActivity.class);

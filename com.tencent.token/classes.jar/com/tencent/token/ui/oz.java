@@ -1,13 +1,16 @@
 package com.tencent.token.ui;
 
-final class oz
-  implements Runnable
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class oz
+  implements DialogInterface.OnClickListener
 {
-  oz(LogoActivity paramLogoActivity) {}
+  oz(ModifyQQPwdActivity paramModifyQQPwdActivity) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.nextPage();
+    this.a.dismissDialog();
   }
 }
 

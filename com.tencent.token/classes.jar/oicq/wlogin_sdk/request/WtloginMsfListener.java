@@ -10,12 +10,12 @@ import oicq.wlogin_sdk.tools.util;
 public class WtloginMsfListener
   implements Runnable
 {
+  public static String CLIENT_CLASSNAME = "com.tencent.mobileqq.msf.core.auth.WtProvider";
   static Object TicketMgr;
   private static final Object __SyncCB;
   private static final Object __SyncSeq = new Object();
-  private static Map<Long, WtloginMsfListener> __cbs = new HashMap();
+  private static Map __cbs = new HashMap();
   private static long __seq;
-  private final String CLIENT_CLASSNAME = "com.tencent.mobileqq.msf.core.auth.WtProvider";
   private byte[] data;
   private boolean flag;
   private int ret;
@@ -155,7 +155,7 @@ public class WtloginMsfListener
   {
     try
     {
-      Class localClass = Class.forName("com.tencent.mobileqq.msf.core.auth.WtProvider");
+      Class localClass = Class.forName(CLIENT_CLASSNAME);
       localClass.getMethod("cancel", new Class[] { WUserSigInfo.class }).invoke(localClass, new Object[] { this.userSigInfo });
       return;
     }
@@ -231,10 +231,14 @@ public class WtloginMsfListener
   
   public int SendData(byte[] paramArrayOfByte, int paramInt)
   {
-    Object localObject = t.l();
-    util.LOGI("mqq process: " + (String)localObject, "");
-    if (!((String)localObject).endsWith(":MSF")) {
-      paramInt = sendRPCData(paramArrayOfByte, paramInt);
+    Object localObject;
+    if (!t.ar)
+    {
+      localObject = t.l();
+      util.LOGI("mqq process: " + (String)localObject, "");
+      if (!((String)localObject).endsWith(":MSF")) {
+        paramInt = sendRPCData(paramArrayOfByte, paramInt);
+      }
     }
     for (;;)
     {
@@ -242,7 +246,7 @@ public class WtloginMsfListener
       try
       {
         util.LOGI("msf sendData", "");
-        localObject = Class.forName("com.tencent.mobileqq.msf.core.auth.WtProvider");
+        localObject = Class.forName(CLIENT_CLASSNAME);
         int i = Integer.valueOf(((Class)localObject).getMethod("sendData", new Class[] { WUserSigInfo.class, String.class, String.class, [B.class, Integer.TYPE, Boolean.TYPE, WtloginMsfListener.class }).invoke(localObject, new Object[] { this.userSigInfo, this.uin, this.serviceCmd, paramArrayOfByte.clone(), Integer.valueOf(paramInt), Boolean.valueOf(this.flag), this }).toString()).intValue();
         paramInt = i;
         if (i > 0)

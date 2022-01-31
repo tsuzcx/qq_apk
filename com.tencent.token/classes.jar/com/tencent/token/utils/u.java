@@ -1,27 +1,38 @@
 package com.tencent.token.utils;
 
-import java.io.File;
-import java.io.FileFilter;
-
-final class u
-  implements FileFilter
+public class u
 {
-  public final boolean accept(File paramFile)
+  public static int a = 99;
+  public static String b = "6.9.15";
+  public static int c = 1;
+  public static boolean d = true;
+  public static boolean e = true;
+  public static boolean f = true;
+  public static boolean g = false;
+  public static int h = 63;
+  public static boolean i = true;
+  public static boolean j = true;
+  public static boolean k = false;
+  public static boolean l = true;
+  public static boolean m = true;
+  public static boolean n = true;
+  public static boolean o = true;
+  public static boolean p = true;
+  public static boolean q = true;
+  
+  static
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
+    if (c != 0)
     {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
+      d = false;
+      e = false;
+      i = false;
+      l = false;
+      m = false;
+      n = false;
+      q = false;
+      return;
     }
-    return false;
   }
 }
 

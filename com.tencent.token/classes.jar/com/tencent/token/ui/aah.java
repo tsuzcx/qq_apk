@@ -1,16 +1,22 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.token.ch;
+import com.tencent.token.utils.w;
 
-final class aah
-  implements View.OnLongClickListener
+class aah
+  implements View.OnClickListener
 {
-  aah(aag paramaag) {}
+  aah(StartPwdGestureSelActivity paramStartPwdGestureSelActivity) {}
   
-  public final boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    return true;
+    ch.a().a(System.currentTimeMillis(), 21);
+    paramView = new Intent(this.a, StartPwdGestureDeleteActivity.class);
+    this.a.startActivityForResult(paramView, 256);
+    w.a(this.a, 1);
   }
 }
 

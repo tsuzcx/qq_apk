@@ -1,16 +1,22 @@
 package com.tencent.token.ui;
 
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
 
-final class go
-  implements DialogInterface.OnClickListener
+class go
+  implements DialogInterface.OnCancelListener
 {
-  go(fz paramfz) {}
+  go(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity, Context paramContext) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    FaceRecognitionCameraActivityOld.access$2100(this.a.a);
+    cy.a().a(this.a);
+    RqdApplication.i();
+    this.b.setResult(35);
+    this.b.finish();
   }
 }
 

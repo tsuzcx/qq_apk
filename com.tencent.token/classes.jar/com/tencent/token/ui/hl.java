@@ -1,26 +1,19 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.n;
 
-final class hl
+class hl
   implements View.OnClickListener
 {
-  hl(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hl(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    e.c("onBackPressed");
-    FaceRecognitionCameraActivityOld.access$1100(this.a).removeMessages(90);
-    if (n.a().c())
-    {
-      FaceRecognitionCameraActivityOld.access$1100(this.a).postDelayed(new hm(this), 300L);
-      return;
-    }
-    this.a.finish();
+    paramView = new Intent(this.a, FaceChangePwdIndexActivity.class);
+    paramView.putExtra("open_switch", FaceRecognitionDefaultActivity.access$000(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

@@ -5,12 +5,12 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class s
+class s
   implements View.OnClickListener
 {
   s(AccountPageActivity paramAccountPageActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
     LocalBroadcastManager.getInstance(this.a).sendBroadcast(new Intent("com.tencent.token.open_menu"));
   }

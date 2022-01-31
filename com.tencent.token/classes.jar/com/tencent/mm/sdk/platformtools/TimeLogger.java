@@ -8,8 +8,8 @@ public class TimeLogger
   private String bm;
   private String bn;
   private boolean bo;
-  ArrayList<Long> bp;
-  ArrayList<String> bq;
+  ArrayList bp;
+  ArrayList bq;
   
   public TimeLogger(String paramString1, String paramString2)
   {

@@ -1,13 +1,44 @@
 package com.tencent.token.ui;
 
-final class hi
-  implements Runnable
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+
+class hi
+  implements View.OnClickListener
 {
-  hi(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hi(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.startOpenAnimation();
+    if (FaceRecognitionCreateActivity.access$100(this.a).isChecked())
+    {
+      if (do.a().e() == null) {
+        this.a.showNoAccountTipDialog(this.a, 3, 0);
+      }
+    }
+    else {
+      return;
+    }
+    if (!do.a().e().mIsBinded)
+    {
+      this.a.showNoAccountTipDialog(this.a, 3, 1);
+      return;
+    }
+    if (FaceRecognitionCreateActivity.getFlag())
+    {
+      paramView = new Intent(this.a, FaceRegCameraActivity.class);
+      paramView.putExtra("scene", 1);
+      paramView.putExtra("flag", 1);
+      this.a.startActivity(paramView);
+      this.a.finish();
+      return;
+    }
+    this.a.setContentView(2130968658);
+    FaceRecognitionCreateActivity.access$200(this.a);
   }
 }
 

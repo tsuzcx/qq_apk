@@ -11,22 +11,22 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.bb;
+import com.tencent.token.cg;
 import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.fo;
-import com.tencent.token.global.e;
-import com.tencent.token.o;
+import com.tencent.token.cw;
+import com.tencent.token.ds;
+import com.tencent.token.er;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.LoginMsgRightLetterView;
 import com.tencent.token.ui.base.ProDialog;
 
 public class LoginMsgReportLocationActivity
   extends BaseActivity
 {
-  private nx mAdapter;
+  private nb mAdapter;
   private ListView mCityList;
   ProDialog mDialogPro = null;
-  public Handler mHandler = new ol(this);
+  public Handler mHandler = new no(this);
   private int mIndex;
   private boolean mIsFeedSuccess = false;
   private SafeMsgItem mItem;
@@ -34,36 +34,36 @@ public class LoginMsgReportLocationActivity
   private Button mMenuBarBtn;
   private String mNewLocation;
   private TextView mOverlay;
-  private oq mOverlayThread;
+  private nt mOverlayThread;
   private int mPosition;
   
   private void init()
   {
-    if ((getIntent() == null) || (getIntent().getExtras() == null) || (bb.a().f == null))
+    if ((getIntent() == null) || (getIntent().getExtras() == null) || (ds.a().f == null))
     {
       finish();
       return;
     }
     this.mPosition = getIntent().getExtras().getInt("position");
-    this.mItem = bb.a().f.b(this.mPosition);
-    this.mCityList = ((ListView)findViewById(2131296800));
-    this.mLetterList = ((LoginMsgRightLetterView)findViewById(2131296801));
-    this.mLetterList.a(new op(this));
-    this.mMenuBarBtn = ((Button)findViewById(2131297148));
+    this.mItem = ds.a().f.b(this.mPosition);
+    this.mCityList = ((ListView)findViewById(2131559004));
+    this.mLetterList = ((LoginMsgRightLetterView)findViewById(2131559005));
+    this.mLetterList.setOnTouchingLetterChangedListener(new ns(this, null));
+    this.mMenuBarBtn = ((Button)findViewById(2131559307));
     this.mMenuBarBtn.setVisibility(0);
-    this.mMenuBarBtn.setText(getResources().getString(2131361806));
-    this.mMenuBarBtn.setOnClickListener(new oo(this));
-    this.mOverlayThread = new oq(this);
+    this.mMenuBarBtn.setText(getResources().getString(2131230896));
+    this.mMenuBarBtn.setOnClickListener(new nr(this));
+    this.mOverlayThread = new nt(this, null);
     initOverlay();
-    o localo = o.a();
-    e.c("test city: " + localo.d.length + "|" + localo.c.length + "|" + localo.f.length + "|" + localo.g.length + "|" + localo.e.length);
-    this.mAdapter = new nx(this);
+    cg localcg = cg.a();
+    h.c("test city: " + localcg.d.length + "|" + localcg.c.length + "|" + localcg.f.length + "|" + localcg.g.length + "|" + localcg.e.length);
+    this.mAdapter = new nb(this);
     this.mCityList.setAdapter(this.mAdapter);
   }
   
   private void initOverlay()
   {
-    this.mOverlay = ((TextView)LayoutInflater.from(this).inflate(2130903129, null));
+    this.mOverlay = ((TextView)LayoutInflater.from(this).inflate(2130968686, null));
     this.mOverlay.setVisibility(4);
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-2, -2, 2, 24, -3);
     ((WindowManager)getSystemService("window")).addView(this.mOverlay, localLayoutParams);
@@ -71,7 +71,7 @@ public class LoginMsgReportLocationActivity
   
   public void cancelRequest()
   {
-    af.a().a(getClass().getName());
+    cw.a().a(getClass().getName());
   }
   
   public void checkMenuBtnEnable(int paramInt)
@@ -79,11 +79,11 @@ public class LoginMsgReportLocationActivity
     if (paramInt == -1)
     {
       this.mMenuBarBtn.setClickable(false);
-      this.mMenuBarBtn.setTextColor(getResources().getColor(2131165214));
+      this.mMenuBarBtn.setTextColor(getResources().getColor(2131492939));
       return;
     }
     this.mMenuBarBtn.setClickable(true);
-    this.mMenuBarBtn.setTextColor(getResources().getColor(2131165223));
+    this.mMenuBarBtn.setTextColor(getResources().getColor(2131492905));
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -112,7 +112,7 @@ public class LoginMsgReportLocationActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903130);
+    setContentView(2130968687);
     init();
   }
   

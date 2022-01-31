@@ -1,12 +1,22 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.utils.UserTask;
-
 final class ay
-  extends UserTask
+  implements Runnable
 {
-  ay(ax paramax, Handler paramHandler) {}
+  private ay(ax paramax) {}
+  
+  public final void run()
+  {
+    try
+    {
+      this.a.b();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
 }
 
 

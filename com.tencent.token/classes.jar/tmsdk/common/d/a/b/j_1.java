@@ -1,7 +1,7 @@
 package tmsdk.common.d.a.b;
 
 import a.e.c;
-import d.b.d;
+import com.tencent.token.fq;
 
 class j
 {
@@ -9,15 +9,15 @@ class j
   public c b = null;
   public int c = 0;
   public boolean d = false;
-  public d e = null;
+  public fq e = null;
   public long f = -1L;
   
-  public j(c paramc, int paramInt, boolean paramBoolean, d paramd)
+  public j(c paramc, int paramInt, boolean paramBoolean, fq paramfq)
   {
     this.c = paramInt;
     this.b = paramc;
     this.d = paramBoolean;
-    this.e = paramd;
+    this.e = paramfq;
   }
 }
 

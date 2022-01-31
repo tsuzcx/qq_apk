@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/detail_back" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="right" android:id="@id/close" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/ad_close_icon" android:scaleType="fitXY" />
+    <ImageView android:layout_gravity="center" android:id="@id/top_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/popup_img_update" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+    <TextView android:textStyle="bold" android:gravity="center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/face_copy_to_other_uin_succ" style="@style/text_view_middle_18" />
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="17.0dip" android:text="@string/face_copy_to_other_uin_succ" style="@style/small_text_view" />
+    <Button android:gravity="center" android:id="@id/process_btn" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="20.0dip" android:text="立即体验" style="@style/text_view_white" />
+</LinearLayout>

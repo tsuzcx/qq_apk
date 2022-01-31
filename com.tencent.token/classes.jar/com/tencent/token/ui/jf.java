@@ -1,21 +1,24 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class jf
-  implements DialogInterface.OnCancelListener
+class jf
+  implements Animation.AnimationListener
 {
-  jf(iv paramiv) {}
+  jf(je paramje, FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FaceRegCameraActivity.access$400(this.b.a).a(true);
-    FaceRegCameraActivity.access$400(this.b.a).a();
-    FaceRegCameraActivity.access$202(this.b.a, false);
-    if (!this.a) {
-      this.b.a.finish();
-    }
+    je.a(this.b).setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    je.a(this.b).setVisibility(0);
   }
 }
 

@@ -1,28 +1,20 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.widget.ListView;
-import android.widget.TextView;
-import com.tencent.token.o;
-import com.tencent.token.ui.base.cd;
+import java.util.List;
 
-final class op
-  implements cd
+class op
+  implements dy
 {
-  private op(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity, byte paramByte) {}
+  op(oo paramoo) {}
   
-  public final void a(int paramInt)
+  public void a()
   {
-    String[] arrayOfString = o.a().f;
-    int[] arrayOfInt = o.a().g;
-    if (paramInt < arrayOfString.length)
-    {
-      LoginMsgReportLocationActivity.access$700(this.a).setSelection(arrayOfInt[paramInt]);
-      LoginMsgReportLocationActivity.access$800(this.a).setText(arrayOfString[paramInt]);
-      LoginMsgReportLocationActivity.access$800(this.a).setVisibility(0);
-      this.a.mHandler.removeCallbacks(LoginMsgReportLocationActivity.access$900(this.a));
-      this.a.mHandler.postDelayed(LoginMsgReportLocationActivity.access$900(this.a), 1500L);
-    }
+    LogoActivity.access$100(this.a.a);
+  }
+  
+  public void a(List paramList)
+  {
+    LogoActivity.access$100(this.a.a);
   }
 }
 

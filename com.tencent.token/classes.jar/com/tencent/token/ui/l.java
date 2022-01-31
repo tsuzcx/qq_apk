@@ -1,22 +1,20 @@
 package com.tencent.token.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-final class l
-  implements Animation.AnimationListener
+class l
+  extends BroadcastReceiver
 {
-  l(k paramk, ImageView paramImageView) {}
+  l(AccountPageActivity paramAccountPageActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.setVisibility(8);
+    if (paramIntent.getAction().equals("com.tencent.token.account_opr_msg")) {
+      AccountPageActivity.access$000(this.a);
+    }
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,27 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.fo;
-import com.tencent.token.gm;
+import com.tencent.token.utils.w;
 
-final class tb
+class tb
   implements View.OnClickListener
 {
-  tb(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  tb(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    af.a().b(0L, this.a.mItem.mId, OpMsgDisplayActivity.access$300(this.a));
-    paramView = this.a.mItem;
-    paramView.mFlag |= 0x100;
-    LoginMsgActivity.mConfirmLogin = true;
-    this.a.mItem.mContent += this.a.getResources().getString(2131362039);
-    this.a.mCache.a.a(this.a.mItem.mId, this.a.mItem.mFlag, this.a.mItem.mContent);
-    this.a.finish();
+    paramView = this.a.getString(2131231496);
+    w.b(this.a, paramView);
   }
 }
 

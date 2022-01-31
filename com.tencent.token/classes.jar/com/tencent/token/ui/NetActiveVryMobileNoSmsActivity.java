@@ -1,12 +1,9 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.telephony.SmsMessage;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,17 +11,14 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.ax;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.core.push.a;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.do;
+import com.tencent.token.global.h;
 
 public class NetActiveVryMobileNoSmsActivity
   extends BaseActivity
@@ -32,60 +26,48 @@ public class NetActiveVryMobileNoSmsActivity
   private final int INTERVAL_TIME_AFTER_GET_SMS_1 = 60;
   private final int INTERVAL_TIME_AFTER_GET_SMS_2 = 99;
   private final int MSG_LOADING = 100;
-  private final String RECEIVE_SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
   private final int SMS_INTERVAL = 3000;
   private final int UPDATE_TIME = -100;
-  private View.OnClickListener mBindTokenListener = new rh(this);
+  private boolean isFirstFactor = false;
+  private View.OnClickListener mBindTokenListener = new qn(this);
   private int mCGISendSMSCount = 0;
-  private View.OnClickListener mCancelButtonListener = new re(this);
-  private View.OnClickListener mCompleteButtonListener = new rd(this);
-  private View.OnClickListener mConfirmSendSmsListener = new rf(this);
-  Handler mHandler = new ri(this);
+  private View.OnClickListener mCancelButtonListener = new qk(this);
+  private View.OnClickListener mConfirmSendSmsListener = new ql(this);
+  Handler mHandler = new qo(this);
   private int mIntervalTime = 0;
   private boolean mIsActiveSuccess = false;
   private boolean mIsAutoSumbit = false;
   private boolean mIsSMSRegisted = false;
   private int mPageId;
-  private View.OnClickListener mReSendButtonListener = new rg(this);
-  private BroadcastReceiver mSMSReceiver = new rb(this);
-  private af mTokenCore = af.a();
-  private UpgradeDeterminResult mUpDetermin;
+  private View.OnClickListener mReSendButtonListener = new qm(this);
+  private cw mTokenCore = cw.a();
   private QQUser mUser;
+  private int mVerifyFactorId;
+  private DeterminVerifyFactorsResult mVerifyResult;
+  private DeterminVerifyFactorsResult.VerifyTypeItem mVerifyType;
   
-  private void checkAndGetSMS(boolean paramBoolean)
+  private void checkAndGetSMS(boolean paramBoolean1, boolean paramBoolean2)
   {
-    e.a("interval: " + this.mIntervalTime + "  count: " + this.mCGISendSMSCount);
-    if (this.mIntervalTime > 0) {
+    h.a("interval: " + this.mIntervalTime + "  count: " + this.mCGISendSMSCount);
+    if (this.mIntervalTime > 0)
+    {
+      if (paramBoolean2) {
+        showUserDialog(2131230779, String.format(getResources().getString(2131230805), new Object[] { Integer.valueOf(this.mIntervalTime) }), 2131230897, null);
+      }
       return;
     }
-    if (paramBoolean)
+    if (paramBoolean1)
     {
       Intent localIntent = new Intent(this, NetActiveVryOtherListActivity.class);
       localIntent.putExtra("page_id", this.mPageId);
       localIntent.putExtra("intent.qquser", this.mUser);
-      localIntent.putExtra("intent.upgradedetermin", this.mUpDetermin);
+      localIntent.putExtra("intent.determin_factors_result", this.mVerifyResult);
+      localIntent.putExtra("intent.determin_verify_type", this.mVerifyType);
       startActivity(localIntent);
       finish();
       return;
     }
     getSMS();
-  }
-  
-  private SmsMessage[] getMessage(Intent paramIntent)
-  {
-    paramIntent = (Object[])paramIntent.getSerializableExtra("pdus");
-    if (paramIntent == null) {
-      return null;
-    }
-    int j = paramIntent.length;
-    SmsMessage[] arrayOfSmsMessage = new SmsMessage[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfSmsMessage[i] = SmsMessage.createFromPdu((byte[])paramIntent[i]);
-      i += 1;
-    }
-    return arrayOfSmsMessage;
   }
   
   private void getSMS()
@@ -107,99 +89,66 @@ public class NetActiveVryMobileNoSmsActivity
   
   private void init()
   {
-    setTitle(2131362363);
-    String str = this.mUpDetermin.mMobileMask;
+    setTitle(2131231657);
+    String str = this.mVerifyResult.g();
     if ((str == null) || (str.length() == 0))
     {
       finish();
       return;
     }
-    ((Button)findViewById(2131296442)).setOnClickListener(this.mConfirmSendSmsListener);
-    Button localButton = (Button)findViewById(2131296443);
-    localButton.setOnClickListener(this.mCancelButtonListener);
-    localButton.setText(2131361824);
-    ((TextView)findViewById(2131296882)).setText(2131361819);
-    ((TextView)findViewById(2131296440)).setText(str);
+    ((Button)findViewById(2131558730)).setOnClickListener(this.mConfirmSendSmsListener);
+    ((TextView)findViewById(2131558740)).setOnClickListener(this.mCancelButtonListener);
+    ((TextView)findViewById(2131559076)).setText(2131230796);
+    ((TextView)findViewById(2131558728)).setText(str);
   }
   
   private void initSMS()
   {
-    Button localButton = (Button)findViewById(2131296887);
-    Object localObject = (EditText)findViewById(2131296886);
+    Button localButton = (Button)findViewById(2131559081);
+    Object localObject = (EditText)findViewById(2131559080);
     if (localObject != null) {
       ((EditText)localObject).clearFocus();
     }
-    String str = getResources().getString(2131361823) + "\n(";
+    String str = getResources().getString(2131230800) + "\n(";
     localObject = str;
     if (this.mIntervalTime < 10) {
       localObject = str + "0";
     }
     localButton.setText((String)localObject + this.mIntervalTime + ")");
-    localButton.setTextColor(getResources().getColor(2131165197));
+    localButton.setTextColor(getResources().getColor(2131492930));
     localButton.setOnClickListener(this.mReSendButtonListener);
-    findViewById(2131296889).setOnClickListener(this.mBindTokenListener);
-  }
-  
-  private void registerSMSReceiver()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
-    registerReceiver(this.mSMSReceiver, localIntentFilter, "android.permission.RECEIVE_SMS", null);
-    this.mIsSMSRegisted = true;
+    findViewById(2131559083).setOnClickListener(this.mBindTokenListener);
   }
   
   private void sendDnaBind()
   {
-    this.mTokenCore.c(this.mUser.mRealUin, 1, "", "+86", this.mHandler);
+    this.mTokenCore.b(this.mUser.mRealUin, this.mVerifyType.a(), "", "+86", this.mHandler);
   }
   
   private void setActiveSucc()
   {
-    Object localObject = ag.c();
-    ((ag)localObject).i();
-    ((ag)localObject).n();
+    Object localObject = cx.c();
+    ((cx)localObject).i();
+    ((cx)localObject).n();
     localObject = this.mUser.mRealUin + "";
-    this.mIsActiveSuccess = true;
-    setContentView(2130903050);
-    this.mBackArrow.setVisibility(4);
-    ax.a().f(Long.parseLong((String)localObject));
-    findViewById(2131296398).setOnClickListener(this.mCompleteButtonListener);
-    setTitle(2131361842);
-    ((ImageView)findViewById(2131296395)).setImageDrawable(k.a((String)localObject, s.f(Long.parseLong((String)localObject)) + " "));
-    a.a().a(8);
-  }
-  
-  private void setTextFromSMS(String paramString)
-  {
-    EditText localEditText = (EditText)findViewById(2131296886);
-    if (localEditText != null)
-    {
-      localEditText.setText(paramString);
-      findViewById(2131296888).setVisibility(0);
-      if (this.mIsSMSRegisted)
-      {
-        unregisterReceiver(this.mSMSReceiver);
-        this.mIsSMSRegisted = false;
-      }
-      this.mIsAutoSumbit = true;
-      localEditText.postDelayed(new rj(this, paramString), 3000L);
-    }
+    do.a().f(Long.parseLong((String)localObject));
+    cw.a().b(this.mHandler);
   }
   
   private boolean setTime(long paramLong)
   {
-    Button localButton = (Button)findViewById(2131296887);
+    Button localButton = (Button)findViewById(2131559081);
     if (paramLong <= 0L)
     {
       if (localButton != null)
       {
-        localButton.setTextColor(getResources().getColor(2131165192));
-        localButton.setText(2131361823);
-        localButton.setTextSize(0, getResources().getDimensionPixelSize(2131230731));
+        localButton.setTextColor(getResources().getColor(2131492925));
+        localButton.setText(2131230800);
+        localButton.setTextSize(0, getResources().getDimensionPixelSize(2131296403));
       }
       return false;
     }
-    String str2 = getResources().getString(2131361823) + "\n(";
+    String str2 = getResources().getString(2131230800) + "\n(";
     String str1 = str2;
     if (this.mIntervalTime < 10) {
       str1 = str2 + "0";
@@ -208,34 +157,20 @@ public class NetActiveVryMobileNoSmsActivity
     if (localButton != null)
     {
       localButton.setText(str1);
-      localButton.setTextColor(getResources().getColor(2131165197));
-      localButton.setTextSize(0, getResources().getDimensionPixelSize(2131230728));
+      localButton.setTextColor(getResources().getColor(2131492930));
+      localButton.setTextSize(0, getResources().getDimensionPixelSize(2131296400));
     }
     return true;
   }
   
   private void showBindFailDialog(String paramString)
   {
-    showUserDialog(2131361831, paramString, 2131361800, new rk(this));
-  }
-  
-  private void showKeyBoard(View paramView)
-  {
-    ((InputMethodManager)getSystemService("input_method")).showSoftInput(paramView, 1);
+    showUserDialog(2131230779, paramString, 2131230897, new qp(this));
   }
   
   private void showMobileFreqFail(String paramString)
   {
-    showUserDialog(2131361808, paramString, 2131361800, new rc(this));
-  }
-  
-  private void unregisterSMSReceiver()
-  {
-    if (this.mIsSMSRegisted)
-    {
-      unregisterReceiver(this.mSMSReceiver);
-      this.mIsSMSRegisted = false;
-    }
+    showUserDialog(2131230843, paramString, 2131230897, new qq(this), new qr(this));
   }
   
   private void updateIntervalTimer()
@@ -248,7 +183,7 @@ public class NetActiveVryMobileNoSmsActivity
   
   private void vrySmsCode(String paramString)
   {
-    this.mTokenCore.c(this.mUser.mRealUin, paramString, this.mHandler);
+    this.mTokenCore.c(this.mUser.mRealUin, paramString, this.mVerifyType.a(), this.mHandler);
   }
   
   public void cancelRequest()
@@ -258,7 +193,6 @@ public class NetActiveVryMobileNoSmsActivity
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    boolean bool = true;
     for (;;)
     {
       try
@@ -266,32 +200,49 @@ public class NetActiveVryMobileNoSmsActivity
         if ((this.mIsActiveSuccess) && (paramKeyEvent.getAction() == 0)) {}
         switch (paramKeyEvent.getKeyCode())
         {
-        case 4: 
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          return bool;
+        default: 
+          if ((this.isFirstFactor) && (paramKeyEvent.getAction() == 0)) {}
+          switch (paramKeyEvent.getKeyCode())
+          {
+          case 4: 
+            return super.dispatchKeyEvent(paramKeyEvent);
+          }
+          break;
         }
       }
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
+      startActivity(abi.a().a(this));
+      return true;
     }
+    return true;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    if (getIntent().getBooleanExtra("intent.determin_from_list", false)) {
+      overridePendingTransition(0, 0);
+    }
     this.mUser = ((QQUser)getIntent().getSerializableExtra("intent.qquser"));
-    this.mUpDetermin = ((UpgradeDeterminResult)getIntent().getSerializableExtra("intent.upgradedetermin"));
-    if ((this.mUser == null) || (this.mUpDetermin == null))
+    this.mVerifyResult = ((DeterminVerifyFactorsResult)getIntent().getSerializableExtra("intent.determin_factors_result"));
+    this.mVerifyType = ((DeterminVerifyFactorsResult.VerifyTypeItem)getIntent().getSerializableExtra("intent.determin_verify_type"));
+    this.mVerifyFactorId = getIntent().getIntExtra("intent.determin_verify_factor_id", -1);
+    this.isFirstFactor = getIntent().getBooleanExtra("intent.determin_first_verify_factor", false);
+    if ((this.mUser == null) || (this.mVerifyResult == null))
     {
       finish();
       return;
     }
+    if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
+      setNeverShowLockVerifyView();
+    }
     this.mPageId = getIntent().getIntExtra("page_id", 0);
-    setContentView(2130903147);
+    setContentView(2130968703);
     init();
   }
   
@@ -301,22 +252,26 @@ public class NetActiveVryMobileNoSmsActivity
     if (this.mHandler != null) {
       this.mHandler.removeMessages(-100);
     }
-    if (this.mIsSMSRegisted)
-    {
-      unregisterReceiver(this.mSMSReceiver);
-      this.mIsSMSRegisted = false;
-    }
+    abi.c();
   }
   
   protected void onPause()
   {
     super.onPause();
-    e.a("pause");
+    h.a("pause");
   }
   
   protected void onResume()
   {
     super.onResume();
+  }
+  
+  protected void setDefaultBackArrow()
+  {
+    super.setDefaultBackArrow();
+    if (this.isFirstFactor) {
+      this.mBackArrow.setOnClickListener(new qs(this));
+    }
   }
 }
 

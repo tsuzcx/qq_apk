@@ -2,17 +2,16 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
 
-final class sp
+class sp
   implements View.OnClickListener
 {
-  sp(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  sp(sn paramsn) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    af.a().k(0L, OpMsgDisplayActivity.access$300(this.a));
-    this.a.showUserDialog(12);
+    sn.a(this.a);
+    this.a.a(false);
   }
 }
 

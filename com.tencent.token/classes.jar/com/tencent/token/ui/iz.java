@@ -1,16 +1,13 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class iz
-  implements View.OnClickListener
+class iz
+  implements Runnable
 {
-  iz(iy paramiy) {}
+  iz(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a.finish();
+    this.a.startOpenAnimation();
   }
 }
 

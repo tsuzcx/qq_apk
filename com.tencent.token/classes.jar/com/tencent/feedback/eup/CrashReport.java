@@ -64,7 +64,7 @@ public class CrashReport
     return f.n();
   }
   
-  public static Set<String> getAllUserDataKeys(Context paramContext)
+  public static Set getAllUserDataKeys(Context paramContext)
   {
     if (paramContext == null) {
       e.c("getAllUserDataKeys args context should not be null", new Object[0]);
@@ -110,7 +110,8 @@ public class CrashReport
       if (paramBoolean) {
         return paramContext.e;
       }
-      return paramContext.d + paramContext.e;
+      long l = paramContext.d;
+      return paramContext.e + l;
     }
     return -1L;
   }
@@ -184,12 +185,12 @@ public class CrashReport
     initNativeCrashReport(paramContext, paramString, paramBoolean, null, null);
   }
   
-  public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList)
+  public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List paramList)
   {
     initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, null);
   }
   
-  public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList, File paramFile)
+  public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List paramList, File paramFile)
   {
     if (com.tencent.feedback.eup.jni.b.a() != null)
     {
@@ -393,7 +394,7 @@ public class CrashReport
     e.b("setted version %s", new Object[] { paramString });
   }
   
-  public static void setSOFile(Context paramContext, List<SOFile> paramList)
+  public static void setSOFile(Context paramContext, List paramList)
   {
     if (paramList != null)
     {

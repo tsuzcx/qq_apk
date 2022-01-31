@@ -1,19 +1,19 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-final class cx
-  implements View.OnClickListener
+class cx
+  extends Handler
 {
-  cx(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
+  cx(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (DetectIDPhotoActivity.access$100(this.a) != null) {
-      DetectIDPhotoActivity.access$100(this.a).a(true);
+    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {
+      return;
     }
-    DetectIDPhotoActivity.access$200(this.a);
+    CorrectTokenActivity.access$000(this.a);
   }
 }
 

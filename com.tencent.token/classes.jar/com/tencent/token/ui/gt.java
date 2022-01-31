@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class gt
-  implements Runnable
+class gt
+  implements View.OnClickListener
 {
-  gt(fz paramfz) {}
+  gt(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.a, FaceRecognitionDefaultActivity.class);
-    localIntent.putExtra("toastflag", 1);
-    localIntent.addFlags(67108864);
-    this.a.a.startActivity(localIntent);
-    this.a.a.finish();
+    FaceRecognitionCameraActivity.access$2400(this.a);
   }
 }
 

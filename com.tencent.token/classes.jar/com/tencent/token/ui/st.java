@@ -1,29 +1,49 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
+import android.os.Message;
+import com.tencent.token.du;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 
-final class st
-  implements View.OnClickListener
+class st
+  extends cb
 {
-  st(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
-  
-  public final void onClick(View paramView)
+  st(OpreateMsgActivity paramOpreateMsgActivity)
   {
-    paramView = ax.a().e();
-    if ((paramView != null) && (paramView.mIsBinded))
+    super(paramOpreateMsgActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a.mAdapter == null) || (this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {}
+    f localf;
+    do
     {
-      af.a().l(0L, OpMsgDisplayActivity.access$300(this.a));
-      this.a.showUserDialog(12);
       return;
-    }
-    paramView = new Intent(this.a, CommonVerifyActivity.class);
-    paramView.putExtra("name", this.a.getString(2131362513));
-    this.a.startActivity(paramView);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      if (paramMessage.arg1 == 0)
+      {
+        this.a.mAdapter.a(true);
+        this.a.mIsRefreshing = false;
+        return;
+      }
+      if (OpreateMsgActivity.access$000(this.a) < 5)
+      {
+        OpreateMsgActivity.access$008(this.a);
+        OpreateMsgActivity.access$100(this.a).a(this.a.mSource, this.a.mHandler);
+        return;
+      }
+      this.a.finishRefresh(true);
+      localf = (f)paramMessage.obj;
+      f.a(this.a.getResources(), (f)paramMessage.obj);
+      h.c("Op msg load failed:" + localf.a + "-" + localf.b);
+    } while ((103 != localf.a) && (110 != localf.a));
+    this.a.mAdapter.a(localf.c);
+    this.a.mAdapter.notifyDataSetChanged();
   }
 }
 

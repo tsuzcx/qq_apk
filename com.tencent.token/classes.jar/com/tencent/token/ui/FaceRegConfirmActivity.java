@@ -4,31 +4,69 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.tencent.token.global.e;
+import android.widget.LinearLayout;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.i;
 
 public class FaceRegConfirmActivity
   extends BaseActivity
 {
+  private Bitmap mBitmap1;
+  private Bitmap mBitmap2;
+  private String mPath1;
+  private String mPath2;
+  
   private void init()
   {
-    Object localObject1 = getIntent().getByteArrayExtra("data1");
-    Object localObject2 = getIntent().getByteArrayExtra("data2");
-    if ((localObject1 != null) && (localObject2 != null))
+    h.c("pathpath: w=" + this.mBitmap1.getWidth() + ",h=" + this.mBitmap1.getHeight());
+    if ((this.mBitmap1 != null) && (this.mBitmap2 != null))
     {
-      localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
-      localObject2 = BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length);
-      e.a("face bitmap1 w=" + ((Bitmap)localObject1).getWidth() + ",h=" + ((Bitmap)localObject1).getHeight() + ", bitmap2 w=" + ((Bitmap)localObject2).getWidth() + ",h=" + ((Bitmap)localObject2).getHeight());
-      ImageView localImageView1 = (ImageView)findViewById(2131296618);
-      ImageView localImageView2 = (ImageView)findViewById(2131296621);
-      localImageView1.setImageBitmap((Bitmap)localObject1);
-      localImageView2.setImageBitmap((Bitmap)localObject2);
+      ImageView localImageView1 = (ImageView)findViewById(2131558906);
+      ImageView localImageView2 = (ImageView)findViewById(2131558909);
+      localImageView1.setImageBitmap(this.mBitmap1);
+      localImageView2.setImageBitmap(this.mBitmap2);
     }
-    ((Button)findViewById(2131296622)).setOnClickListener(new ji(this));
-    ((Button)findViewById(2131296623)).setOnClickListener(new jj(this));
+    ((Button)findViewById(2131558910)).setOnClickListener(new ig(this));
+    ((Button)findViewById(2131558911)).setOnClickListener(new ih(this));
+  }
+  
+  private void initOriginImg()
+  {
+    Object localObject = i.a(this.mPath1);
+    this.mBitmap1 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+    localObject = i.a(this.mPath2);
+    this.mBitmap2 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+    localObject = (ImageView)findViewById(2131558906);
+    ImageView localImageView = (ImageView)findViewById(2131558909);
+    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131558904);
+    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131558905);
+    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131558907);
+    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131558908);
+    int i = (int)(this.mBitmap1.getHeight() * 140 / this.mBitmap1.getWidth() * IndexActivity.S_DENSITY);
+    int j = (int)(i + 6.0F * IndexActivity.S_DENSITY);
+    int k = (int)(i + 4.0F * IndexActivity.S_DENSITY);
+    ((ImageView)localObject).getLayoutParams().height = i;
+    localImageView.getLayoutParams().height = i;
+    localLinearLayout1.getLayoutParams().height = j;
+    localLinearLayout3.getLayoutParams().height = j;
+    localLinearLayout2.getLayoutParams().height = k;
+    localLinearLayout4.getLayoutParams().height = k;
+  }
+  
+  private void initSoImg()
+  {
+    byte[] arrayOfByte1 = getIntent().getByteArrayExtra("data1");
+    byte[] arrayOfByte2 = getIntent().getByteArrayExtra("data2");
+    if ((arrayOfByte1 != null) && (arrayOfByte2 != null))
+    {
+      this.mBitmap1 = BitmapFactory.decodeByteArray(arrayOfByte1, 0, arrayOfByte1.length);
+      this.mBitmap2 = BitmapFactory.decodeByteArray(arrayOfByte2, 0, arrayOfByte2.length);
+    }
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -58,8 +96,18 @@ public class FaceRegConfirmActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903097);
-    init();
+    setContentView(2130968660);
+    this.mPath1 = getIntent().getStringExtra("origindata1");
+    this.mPath2 = getIntent().getStringExtra("origindata2");
+    if ((!TextUtils.isEmpty(this.mPath1)) && (!TextUtils.isEmpty(this.mPath2))) {
+      initOriginImg();
+    }
+    for (;;)
+    {
+      init();
+      return;
+      initSoImg();
+    }
   }
   
   protected void setDefaultBackArrow()
@@ -67,7 +115,7 @@ public class FaceRegConfirmActivity
     if ((this.mTitleBar.getVisibility() == 0) && (this.mBackArrow != null))
     {
       this.mBackArrow.setVisibility(0);
-      this.mBackArrow.setOnClickListener(new jk(this));
+      this.mBackArrow.setOnClickListener(new ii(this));
     }
   }
 }

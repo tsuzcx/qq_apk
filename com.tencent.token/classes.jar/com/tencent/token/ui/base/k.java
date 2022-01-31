@@ -1,12 +1,17 @@
 package com.tencent.token.ui.base;
 
-import com.tencent.token.core.bean.b;
-import com.tencent.token.utils.UserTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class k
-  extends UserTask
+class k
+  implements View.OnClickListener
 {
-  k(DualMsgShowDialog paramDualMsgShowDialog, b paramb, int paramInt) {}
+  k(DualMsgView paramDualMsgView) {}
+  
+  public void onClick(View paramView)
+  {
+    DualMsgView.a(this.a).a(2);
+  }
 }
 
 

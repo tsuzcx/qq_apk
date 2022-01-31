@@ -38,7 +38,7 @@ public class RoundImageView
   {
     Drawable localDrawable = getDrawable();
     if (localDrawable == null) {}
-    label241:
+    label244:
     for (;;)
     {
       return;
@@ -46,7 +46,7 @@ public class RoundImageView
       for (Bitmap localBitmap1 = ((BitmapDrawable)localDrawable).getBitmap();; localBitmap1 = null)
       {
         if (localDrawable.getCurrent() == null) {
-          break label241;
+          break label244;
         }
         Bitmap localBitmap2 = localBitmap1;
         if (localBitmap1 == null)
@@ -89,6 +89,11 @@ public class RoundImageView
     this.d = getMeasuredHeight();
     this.h = new RectF(0.0F, 0.0F, this.c, this.d);
     this.i = (this.c / 2);
+  }
+  
+  public void setRadiusOffset(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

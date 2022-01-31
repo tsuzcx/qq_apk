@@ -3,16 +3,33 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.SafeMsgItem;
 
-final class ss
+class ss
   implements View.OnClickListener
 {
-  ss(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  SafeMsgItem a = null;
+  int b;
   
-  public final void onClick(View paramView)
+  public ss(sn paramsn, SafeMsgItem paramSafeMsgItem, int paramInt)
   {
-    paramView = new Intent(this.a, UtilsMailProtectActivity.class);
-    this.a.startActivity(paramView);
+    this.a = paramSafeMsgItem;
+    this.b = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (sn.b(this.c).isListEdit()) {}
+    do
+    {
+      return;
+      Intent localIntent = new Intent(sn.b(this.c), OpMsgDisplayActivity.class);
+      localIntent.putExtra("position", this.b);
+      localIntent.putExtra("type", 2);
+      localIntent.putExtra("abnormmsg", this.a.p());
+      sn.b(this.c).startActivity(localIntent);
+    } while (this.a.mIsRead);
+    paramView.postDelayed(new sr(this.c, this.a), 5L);
   }
 }
 

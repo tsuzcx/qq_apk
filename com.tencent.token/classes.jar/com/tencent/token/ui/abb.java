@@ -1,17 +1,21 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
-final class abb
+class abb
   implements View.OnClickListener
 {
-  abb(aba paramaba) {}
+  abb(UnbindUinActivity paramUnbindUinActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    StartPwdGestureDeleteActivity.access$100(this.a.a).sendEmptyMessage(1008);
+    this.a.startTimeTask();
+    this.a.showProgressDialog();
+    cw.a().a("", UnbindUinActivity.access$200(this.a), 1, 3, "", this.a.handler);
+    h.a("msg.what=, timetask=" + UnbindUinActivity.access$000(this.a));
   }
 }
 

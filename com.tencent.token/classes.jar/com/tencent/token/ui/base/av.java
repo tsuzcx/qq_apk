@@ -3,12 +3,12 @@ package com.tencent.token.ui.base;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 
-final class av
+class av
   implements Animation.AnimationListener
 {
   av(au paramau, GameLoginSndConfirmView paramGameLoginSndConfirmView) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationEnd(Animation paramAnimation)
   {
     this.b.a.setVisibility(8);
     if (GameLoginSndConfirmView.a(this.b.a) != null) {
@@ -16,9 +16,9 @@ final class av
     }
   }
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,24 +1,45 @@
 package com.tencent.token;
 
-public abstract interface al
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+
+final class al
+  implements ThreadFactory
 {
-  public abstract void a();
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private final ThreadGroup b;
+  private final AtomicInteger c = new AtomicInteger(1);
+  private final String d;
   
-  public abstract void a(int paramInt);
+  al(String paramString)
+  {
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    {
+      this.b = ((ThreadGroup)localObject);
+      this.d = (paramString + "-" + a.getAndIncrement() + "-thread-");
+      return;
+    }
+  }
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
+  public final Thread newThread(Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(this.b, paramRunnable, this.d + this.c.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    try
+    {
+      paramRunnable.setPriority(h.d);
+      return paramRunnable;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return paramRunnable;
+  }
 }
 
 

@@ -3,12 +3,12 @@ package com.tencent.token.ui.base;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class aq
+class aq
   implements View.OnClickListener
 {
   aq(GameLoginSndConfirmView paramGameLoginSndConfirmView) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
     GameLoginSndConfirmView.a(this.a).a(2);
   }

@@ -1,45 +1,70 @@
 package android.support.v4.content;
 
 import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
+import android.support.annotation.MainThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.util.DebugUtils;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-public class Loader<D>
+public class Loader
 {
   boolean mAbandoned = false;
   boolean mContentChanged = false;
   Context mContext;
   int mId;
-  OnLoadCompleteListener<D> mListener;
+  Loader.OnLoadCompleteListener mListener;
+  Loader.OnLoadCanceledListener mOnLoadCanceledListener;
+  boolean mProcessingChange = false;
   boolean mReset = true;
   boolean mStarted = false;
   
-  public Loader(Context paramContext)
+  public Loader(@NonNull Context paramContext)
   {
     this.mContext = paramContext.getApplicationContext();
   }
   
+  @MainThread
   public void abandon()
   {
     this.mAbandoned = true;
     onAbandon();
   }
   
-  public String dataToString(D paramD)
+  @MainThread
+  public boolean cancelLoad()
+  {
+    return onCancelLoad();
+  }
+  
+  public void commitContentChanged()
+  {
+    this.mProcessingChange = false;
+  }
+  
+  @NonNull
+  public String dataToString(@Nullable Object paramObject)
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    DebugUtils.buildShortClassTag(paramD, localStringBuilder);
+    DebugUtils.buildShortClassTag(paramObject, localStringBuilder);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
-  public void deliverResult(D paramD)
+  @MainThread
+  public void deliverCancellation()
+  {
+    if (this.mOnLoadCanceledListener != null) {
+      this.mOnLoadCanceledListener.onLoadCanceled(this);
+    }
+  }
+  
+  @MainThread
+  public void deliverResult(@Nullable Object paramObject)
   {
     if (this.mListener != null) {
-      this.mListener.onLoadComplete(this, paramD);
+      this.mListener.onLoadComplete(this, paramObject);
     }
   }
   
@@ -50,22 +75,33 @@ public class Loader<D>
     paramPrintWriter.print(this.mId);
     paramPrintWriter.print(" mListener=");
     paramPrintWriter.println(this.mListener);
-    paramPrintWriter.print(paramString);
-    paramPrintWriter.print("mStarted=");
-    paramPrintWriter.print(this.mStarted);
-    paramPrintWriter.print(" mContentChanged=");
-    paramPrintWriter.print(this.mContentChanged);
-    paramPrintWriter.print(" mAbandoned=");
-    paramPrintWriter.print(this.mAbandoned);
-    paramPrintWriter.print(" mReset=");
-    paramPrintWriter.println(this.mReset);
+    if ((this.mStarted) || (this.mContentChanged) || (this.mProcessingChange))
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mStarted=");
+      paramPrintWriter.print(this.mStarted);
+      paramPrintWriter.print(" mContentChanged=");
+      paramPrintWriter.print(this.mContentChanged);
+      paramPrintWriter.print(" mProcessingChange=");
+      paramPrintWriter.println(this.mProcessingChange);
+    }
+    if ((this.mAbandoned) || (this.mReset))
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mAbandoned=");
+      paramPrintWriter.print(this.mAbandoned);
+      paramPrintWriter.print(" mReset=");
+      paramPrintWriter.println(this.mReset);
+    }
   }
   
+  @MainThread
   public void forceLoad()
   {
     onForceLoad();
   }
   
+  @NonNull
   public Context getContext()
   {
     return this.mContext;
@@ -91,8 +127,16 @@ public class Loader<D>
     return this.mStarted;
   }
   
+  @MainThread
   protected void onAbandon() {}
   
+  @MainThread
+  protected boolean onCancelLoad()
+  {
+    return false;
+  }
+  
+  @MainThread
   public void onContentChanged()
   {
     if (this.mStarted)
@@ -103,15 +147,20 @@ public class Loader<D>
     this.mContentChanged = true;
   }
   
+  @MainThread
   protected void onForceLoad() {}
   
+  @MainThread
   protected void onReset() {}
   
+  @MainThread
   protected void onStartLoading() {}
   
+  @MainThread
   protected void onStopLoading() {}
   
-  public void registerListener(int paramInt, OnLoadCompleteListener<D> paramOnLoadCompleteListener)
+  @MainThread
+  public void registerListener(int paramInt, @NonNull Loader.OnLoadCompleteListener paramOnLoadCompleteListener)
   {
     if (this.mListener != null) {
       throw new IllegalStateException("There is already a listener registered");
@@ -120,6 +169,16 @@ public class Loader<D>
     this.mId = paramInt;
   }
   
+  @MainThread
+  public void registerOnLoadCanceledListener(@NonNull Loader.OnLoadCanceledListener paramOnLoadCanceledListener)
+  {
+    if (this.mOnLoadCanceledListener != null) {
+      throw new IllegalStateException("There is already a listener registered");
+    }
+    this.mOnLoadCanceledListener = paramOnLoadCanceledListener;
+  }
+  
+  @MainThread
   public void reset()
   {
     onReset();
@@ -127,8 +186,17 @@ public class Loader<D>
     this.mStarted = false;
     this.mAbandoned = false;
     this.mContentChanged = false;
+    this.mProcessingChange = false;
   }
   
+  public void rollbackContentChanged()
+  {
+    if (this.mProcessingChange) {
+      onContentChanged();
+    }
+  }
+  
+  @MainThread
   public final void startLoading()
   {
     this.mStarted = true;
@@ -137,6 +205,7 @@ public class Loader<D>
     onStartLoading();
   }
   
+  @MainThread
   public void stopLoading()
   {
     this.mStarted = false;
@@ -147,6 +216,7 @@ public class Loader<D>
   {
     boolean bool = this.mContentChanged;
     this.mContentChanged = false;
+    this.mProcessingChange |= bool;
     return bool;
   }
   
@@ -160,7 +230,8 @@ public class Loader<D>
     return localStringBuilder.toString();
   }
   
-  public void unregisterListener(OnLoadCompleteListener<D> paramOnLoadCompleteListener)
+  @MainThread
+  public void unregisterListener(@NonNull Loader.OnLoadCompleteListener paramOnLoadCompleteListener)
   {
     if (this.mListener == null) {
       throw new IllegalStateException("No listener register");
@@ -171,28 +242,16 @@ public class Loader<D>
     this.mListener = null;
   }
   
-  public final class ForceLoadContentObserver
-    extends ContentObserver
+  @MainThread
+  public void unregisterOnLoadCanceledListener(@NonNull Loader.OnLoadCanceledListener paramOnLoadCanceledListener)
   {
-    public ForceLoadContentObserver()
-    {
-      super();
+    if (this.mOnLoadCanceledListener == null) {
+      throw new IllegalStateException("No listener register");
     }
-    
-    public boolean deliverSelfNotifications()
-    {
-      return true;
+    if (this.mOnLoadCanceledListener != paramOnLoadCanceledListener) {
+      throw new IllegalArgumentException("Attempting to unregister the wrong listener");
     }
-    
-    public void onChange(boolean paramBoolean)
-    {
-      Loader.this.onContentChanged();
-    }
-  }
-  
-  public static abstract interface OnLoadCompleteListener<D>
-  {
-    public abstract void onLoadComplete(Loader<D> paramLoader, D paramD);
+    this.mOnLoadCanceledListener = null;
   }
 }
 

@@ -1,16 +1,15 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.token.upload.e;
 
-final class lj
-  implements DialogInterface.OnDismissListener
+class lj
+  implements Runnable
 {
-  lj(GetBarcodeVerifyMsgActivity paramGetBarcodeVerifyMsgActivity) {}
+  lj(IndexActivity paramIndexActivity) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    e.a().b();
   }
 }
 

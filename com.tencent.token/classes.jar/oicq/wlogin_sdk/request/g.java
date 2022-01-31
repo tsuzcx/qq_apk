@@ -1,22 +1,16 @@
 package oicq.wlogin_sdk.request;
 
-import android.content.Context;
-import oicq.wlogin_sdk.tools.util;
+import android.widget.Toast;
+import java.util.TimerTask;
 
-public class g
-  extends Thread
+class g
+  extends TimerTask
 {
-  private Context a;
-  
-  public g(Context paramContext)
-  {
-    this.a = paramContext;
-    setName("WtCleanThread");
-  }
+  g(f paramf, Toast paramToast, int paramInt) {}
   
   public void run()
   {
-    util.deleteExpireLog(this.a);
+    f.a(this.c, this.a, this.b + 1);
   }
 }
 

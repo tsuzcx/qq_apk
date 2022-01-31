@@ -1,19 +1,12 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import java.util.List;
 
-final class dy
-  implements DialogInterface.OnClickListener
+public abstract interface dy
 {
-  dy(FaceChangePwdIndexActivity paramFaceChangePwdIndexActivity) {}
+  public abstract void a();
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new Intent(this.a, StartPwdUpdateInfoActivity.class);
-    this.a.startActivity(paramDialogInterface);
-  }
+  public abstract void a(List paramList);
 }
 
 

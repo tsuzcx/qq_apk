@@ -1,19 +1,24 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.ax;
+import com.tencent.token.fk;
+import com.tmsdk.TMSDKContext;
 
-final class x
+class x
   implements View.OnClickListener
 {
-  x(AccountPageActivity paramAccountPageActivity) {}
+  x(w paramw) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (ax.a().e() == null) {
-      this.a.showNoAccountTipDialog(this.a, 18, 0);
-    }
+    paramView = new Intent(this.a.c.a, PermissionGuideSubActivity.class);
+    paramView.putExtra("app_whitelist", this.a.a);
+    paramView.putExtra("auto_start", this.a.b);
+    this.a.c.a.startActivity(paramView);
+    TMSDKContext.saveActionData(1150115);
+    fk.a("permission_guide_click_time", System.currentTimeMillis());
   }
 }
 

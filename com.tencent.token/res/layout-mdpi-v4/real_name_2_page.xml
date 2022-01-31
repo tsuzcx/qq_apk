@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/iv_top_bg" android:background="@color/title_bar_divider_black" android:layout_width="fill_parent" android:layout_height="290.0dip" />
-        <com.tencent.token.ui.base.RoundImageView android:id="@id/iv_top_face" android:visibility="gone" android:layout_width="78.0dip" android:layout_height="78.0dip" android:layout_marginTop="40.0dip" android:layout_centerHorizontal="true" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ll_top" android:layout_width="fill_parent" android:layout_height="290.0dip">
-            <ImageView android:id="@id/iv_top_icon" android:layout_width="144.0dip" android:layout_height="138.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/realname_icon_shield2" />
-            <TextView android:id="@id/tv_top_maintitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/text_pwd_name" style="@style/text_view_22_white" />
-            <TextView android:id="@id/tv_top_subtitle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/text_pwd_name" style="@style/text_view_14_gray" />
-            <Button android:gravity="center" android:id="@id/next_button" android:background="@drawable/realname_btn" android:padding="0.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="54.0dip" android:layout_marginTop="10.0dip" android:minWidth="233.0dip" style="@style/text_btn_black_bold" />
-        </LinearLayout>
-        <include layout="@layout/zzb_tip_verify_view" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_mid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="90.0dip" android:layout_below="@id/ll_top">
-            <TextView android:gravity="center" android:id="@id/realname_tv_findqq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips1" android:drawableTop="@drawable/realname_icon_find" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
-            <View android:background="@color/realname_divider" android:layout_width="1.0dip" android:layout_height="fill_parent" />
-            <TextView android:gravity="center" android:id="@id/realname_tv_pwd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips2" android:drawableTop="@drawable/realname_icon_lock" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
-        </LinearLayout>
-        <View android:background="@color/realname_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/ll_mid" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="90.0dip" android:layout_below="@id/ll_mid">
-            <TextView android:gravity="center" android:id="@id/realname_tv_recy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips3" android:drawableTop="@drawable/realname_icon_flag" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
-            <View android:background="@color/realname_divider" android:layout_width="1.0dip" android:layout_height="fill_parent" />
-            <TextView android:gravity="center" android:id="@id/realname_tv_more" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips4" android:drawableTop="@drawable/realname_icon_more" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
-        </LinearLayout>
-        <View android:background="@color/realname_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/ll_bottom" />
-    </RelativeLayout>
-</ScrollView>
+    <ScrollView android:orientation="vertical" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never">
+        <RelativeLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/iv_top_bg" android:background="@color/title_bar_divider_black" android:layout_width="fill_parent" android:layout_height="290.0dip" />
+            <com.tencent.token.ui.base.RoundImageView android:id="@id/iv_top_face" android:visibility="gone" android:layout_width="78.0dip" android:layout_height="78.0dip" android:layout_marginTop="40.0dip" android:layout_centerHorizontal="true" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ll_top" android:layout_width="fill_parent" android:layout_height="290.0dip">
+                <ImageView android:id="@id/iv_top_icon" android:layout_width="144.0dip" android:layout_height="138.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/realname_icon_shield2" />
+                <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/user_icon_layout" android:background="@drawable/zzb_circle_bg" android:visibility="gone" android:layout_width="144.0dip" android:layout_height="138.0dip" android:layout_marginTop="10.0dip">
+                    <com.tencent.token.ui.base.RoundImageView android:id="@id/face" android:layout_width="78.0dip" android:layout_height="78.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/realicon" android:layout_width="79.0dip" android:layout_height="83.0dip" android:layout_marginTop="32.0dip" android:src="@drawable/zzb_icon_whole" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <TextView android:id="@id/tv_top_maintitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/text_pwd_name" style="@style/text_view_22_white" />
+                <LinearLayout android:id="@id/enjoy_protect_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_centerHorizontal="true">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/realname_guid_text_twoline" style="@style/text_view_14_gray" />
+                    <TextView android:id="@id/enjoy_protect_days" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" style="@style/text_view_yellow_14" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/real_name_day" style="@style/text_view_14_gray" />
+                </LinearLayout>
+                <TextView android:id="@id/tv_top_subtitle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/text_pwd_name" style="@style/text_view_14_gray" />
+                <Button android:gravity="center" android:id="@id/next_button" android:background="@drawable/realname_btn" android:padding="0.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="54.0dip" android:layout_marginTop="10.0dip" android:minWidth="233.0dip" style="@style/text_btn_black_bold" />
+            </LinearLayout>
+            <include layout="@layout/zzb_tip_verify_view" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_mid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="90.0dip" android:layout_below="@id/ll_top">
+                <TextView android:gravity="center" android:id="@id/realname_tv_findqq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips1" android:drawableTop="@drawable/realname_icon_find" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
+                <View android:background="@color/realname_divider" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                <TextView android:gravity="center" android:id="@id/realname_tv_pwd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips2" android:drawableTop="@drawable/realname_icon_lock" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
+            </LinearLayout>
+            <View android:background="@color/realname_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/ll_mid" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ll_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="90.0dip" android:layout_below="@id/ll_mid">
+                <TextView android:gravity="center" android:id="@id/realname_tv_recy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips3" android:drawableTop="@drawable/realname_icon_flag" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
+                <View android:background="@color/realname_divider" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                <TextView android:gravity="center" android:id="@id/realname_tv_zzb_only" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/realname_get_tips4" android:drawableTop="@drawable/realname_icon_only" android:drawablePadding="3.0dip" android:layout_weight="1.0" style="@style/text_view" />
+            </LinearLayout>
+            <View android:background="@color/realname_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/ll_bottom" />
+        </RelativeLayout>
+    </ScrollView>
+    <View android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -1,45 +1,61 @@
 package oicq.wlogin_sdk.request;
 
-import oicq.wlogin_sdk.b.aw;
-import oicq.wlogin_sdk.b.ay;
-import oicq.wlogin_sdk.b.cr;
-import oicq.wlogin_sdk.b.f;
-import oicq.wlogin_sdk.b.g;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tlv_type.tlv_t104;
+import oicq.wlogin_sdk.tlv_type.tlv_t116;
+import oicq.wlogin_sdk.tlv_type.tlv_t401;
+import oicq.wlogin_sdk.tlv_type.tlv_t402;
+import oicq.wlogin_sdk.tlv_type.tlv_t403;
+import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
 public class q
-  extends j
+  extends oicq_request
 {
   public q(t paramt)
   {
-    this.s = 2064;
-    this.t = 3;
-    this.u = "wtlogin.login";
-    this.w = paramt;
-    this.w.m = 0;
+    this.t = 2064;
+    this.u = 20;
+    this.v = "wtlogin.login";
+    this.x = paramt;
+    this.x.m = 0;
   }
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.u;
-    f localf = t.b(this.w.h)._t104;
-    if (localf == null) {
-      localf = new f();
+    int j = t.w;
+    async_context localasync_context = t.b(this.x.h);
+    tlv_t104 localtlv_t104 = localasync_context._t104;
+    if (localtlv_t104 == null) {
+      localtlv_t104 = new tlv_t104();
     }
     for (;;)
     {
+      Object localObject2 = localasync_context._t402;
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new tlv_t402();
+      }
+      tlv_t403 localtlv_t403 = localasync_context._t403;
+      localObject2 = localtlv_t403;
+      if (localtlv_t403 == null) {
+        localObject2 = new tlv_t403();
+      }
+      localasync_context._dpwd = util.get_mpasswd().getBytes();
+      localasync_context._G = c(t.A, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
+      if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
+        localasync_context._sec_guid_flag = true;
+      }
       int i = 0;
       for (;;)
       {
-        byte[] arrayOfByte = a(localf.b(), paramInt1, paramInt2, paramArrayOfLong);
-        a(this.h, this.s, this.i, this.w.f, this.l, this.m, j, this.o, arrayOfByte);
-        int k = a(String.valueOf(this.w.f), false, paramWUserSigInfo);
+        localObject1 = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G);
+        a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject1);
+        int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
         if (k != 0) {
           return k;
         }
         k = b();
-        util.LOGI("retry num:" + i + " ret:" + k, "" + this.w.f);
+        util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
         if (k != 180) {
           return k;
         }
@@ -51,68 +67,26 @@ public class q
     }
   }
   
-  public byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong)
+  public byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte2)
   {
-    Object localObject1 = new cr();
-    f localf = new f();
-    Object localObject2 = new oicq.wlogin_sdk.b.t();
-    localObject1 = ((cr)localObject1).a(0, t.s, 0);
-    paramArrayOfByte = localf.a(paramArrayOfByte);
-    paramArrayOfLong = ((oicq.wlogin_sdk.b.t)localObject2).a(paramInt1, paramInt2, paramArrayOfLong);
-    localObject2 = new byte[localObject1.length + paramArrayOfByte.length + paramArrayOfLong.length];
+    Object localObject1 = new tlv_t8();
+    tlv_t104 localtlv_t104 = new tlv_t104();
+    tlv_t116 localtlv_t116 = new tlv_t116();
+    Object localObject2 = new tlv_t401();
+    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.u, 0);
+    paramArrayOfByte1 = localtlv_t104.get_tlv_104(paramArrayOfByte1);
+    paramArrayOfLong = localtlv_t116.get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
+    paramArrayOfByte2 = ((tlv_t401)localObject2).get_tlv_401(paramArrayOfByte2);
+    localObject2 = new byte[localObject1.length + paramArrayOfByte1.length + paramArrayOfLong.length + paramArrayOfByte2.length];
     System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
     paramInt1 = localObject1.length + 0;
-    System.arraycopy(paramArrayOfByte, 0, localObject2, paramInt1, paramArrayOfByte.length);
-    paramInt1 += paramArrayOfByte.length;
+    System.arraycopy(paramArrayOfByte1, 0, localObject2, paramInt1, paramArrayOfByte1.length);
+    paramInt1 += paramArrayOfByte1.length;
     System.arraycopy(paramArrayOfLong, 0, localObject2, paramInt1, paramArrayOfLong.length);
-    paramInt1 = paramArrayOfLong.length;
-    return a((byte[])localObject2, this.t, 3);
-  }
-  
-  public int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    f localf = new f();
-    g localg = new g();
-    ay localay = new ay();
-    aw localaw = new aw();
-    async_context localasync_context = t.b(this.w.h);
-    paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
-    util.LOGD(getClass().getName(), "type=" + paramInt2);
-    int j = paramInt1 + 5;
-    switch (paramInt2)
-    {
-    default: 
-      b(paramArrayOfByte, j, this.b - j - 1);
-      paramInt1 = paramInt2;
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return paramInt1;
-          i = localf.b(paramArrayOfByte, j, this.b - j);
-          paramInt1 = i;
-        } while (i < 0);
-        localasync_context._t104 = localf;
-        i = localg.b(paramArrayOfByte, j, this.b - j);
-        paramInt1 = i;
-      } while (i < 0);
-      localasync_context._t105 = localg;
-      if (localay.b(paramArrayOfByte, j, this.b - j) >= 0) {}
-      for (localasync_context._t165 = localay;; localasync_context._t165 = new ay())
-      {
-        a((ErrMsg)null);
-        return paramInt2;
-      }
-      i = localaw.b(paramArrayOfByte, j, this.b - j - 1);
-      paramInt1 = i;
-    } while (i < 0);
-    a(localaw);
-    b(paramArrayOfByte, j, this.b - j - 1);
-    return paramInt2;
+    paramInt1 += paramArrayOfLong.length;
+    System.arraycopy(paramArrayOfByte2, 0, localObject2, paramInt1, paramArrayOfByte2.length);
+    paramInt1 = paramArrayOfByte2.length;
+    return b((byte[])localObject2, this.u, 4);
   }
 }
 

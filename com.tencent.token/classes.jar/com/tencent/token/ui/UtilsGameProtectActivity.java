@@ -8,39 +8,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.ba;
 import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.fl;
-import com.tencent.token.fp;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.dr;
+import com.tencent.token.eo;
+import com.tencent.token.es;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.ErrorView;
-import com.tencent.token.ui.base.dk;
+import com.tencent.token.ui.base.dd;
 
 public class UtilsGameProtectActivity
   extends BaseActivity
 {
   private int indexID;
-  private kx mAdapter;
-  private View.OnClickListener mBindListener = new adz(this);
+  private kb mAdapter;
+  private View.OnClickListener mBindListener = new acn(this);
   private ErrorView mErrorView;
-  private Handler mHandler = new adx(this);
+  private Handler mHandler = new acl(this);
   public boolean mIsIniting = false;
   private ListView mListView;
-  private dk mNeedVerifyView;
+  private dd mNeedVerifyView;
   private View mProgressView;
-  private View.OnClickListener mRetryListener = new aea(this);
+  private View.OnClickListener mRetryListener = new aco(this);
   private String mTipBindQQBtnDesc;
   private String mTipBindQQDesc;
   
   private void initUI()
   {
-    this.mProgressView = findViewById(2131297216);
-    this.mListView = ((ListView)findViewById(2131297215));
-    this.mAdapter = new kx(this, this.mListView, this.mHandler);
+    this.mProgressView = findViewById(2131559376);
+    this.mListView = ((ListView)findViewById(2131559375));
+    this.mAdapter = new kb(this, this.mListView, this.mHandler);
     if (this.indexID > 0) {
       this.mAdapter.a = false;
     }
@@ -48,10 +47,10 @@ public class UtilsGameProtectActivity
     {
       this.mListView.setScrollingCacheEnabled(true);
       this.mListView.setAdapter(this.mAdapter);
-      this.mTipBindQQDesc = getResources().getString(2131362193);
-      this.mTipBindQQBtnDesc = getResources().getString(2131362297);
+      this.mTipBindQQDesc = getResources().getString(2131231535);
+      this.mTipBindQQBtnDesc = getResources().getString(2131230778);
       return;
-      View localView = LayoutInflater.from(this).inflate(2130903248, this.mListView, false);
+      View localView = LayoutInflater.from(this).inflate(2130968811, this.mListView, false);
       this.mListView.addFooterView(localView);
       this.mAdapter.a(localView);
     }
@@ -66,19 +65,19 @@ public class UtilsGameProtectActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = ax.a().e();
+    paramBundle = do.a().e();
     if ((paramBundle != null) && (!paramBundle.mIsBinded))
     {
       if (this.mNeedVerifyView == null) {
-        this.mNeedVerifyView = new dk(this, 1);
+        this.mNeedVerifyView = new dd(this, 2);
       }
       setContentView(this.mNeedVerifyView);
     }
     for (;;)
     {
-      setRightTitleImage(2130837951, new aeb(this));
+      setRightTitleImage(2130838011, new acp(this));
       return;
-      setContentView(2130903233);
+      setContentView(2130968796);
       this.indexID = getIntent().getIntExtra("indexid", 0);
       initUI();
     }
@@ -86,33 +85,23 @@ public class UtilsGameProtectActivity
   
   protected void onDestroy()
   {
-    if (this.mAdapter != null)
-    {
-      int j = ba.a().f();
-      int i = 0;
-      while (i < j)
-      {
-        g localg = ba.a().b(i);
-        if (localg != null) {
-          localg.e = false;
-        }
-        i += 1;
-      }
+    if (this.mAdapter != null) {
+      this.mAdapter.a();
     }
     super.onDestroy();
   }
   
   protected void onPause()
   {
-    ba.a().d.d();
-    ba.a().h.a("account_prot").a();
+    dr.a().d.e();
+    dr.a().h.a("account_prot").a();
     super.onPause();
   }
   
   protected void onResume()
   {
     super.onResume();
-    QQUser localQQUser = ax.a().e();
+    QQUser localQQUser = do.a().e();
     if ((localQQUser != null) && (localQQUser.mIsBinded)) {
       queryGameProtectStatus();
     }
@@ -127,16 +116,16 @@ public class UtilsGameProtectActivity
   {
     if (this.mIsIniting)
     {
-      e.c("busy initing");
+      h.c("busy initing");
       return;
     }
     this.mIsIniting = true;
-    if (ba.a().l()) {
+    if (dr.a().l()) {
       hideTip();
     }
     for (;;)
     {
-      af.a().c(0L, this.mHandler);
+      cw.a().c(0L, this.mHandler);
       return;
       showTip(-1, null, null, false);
     }
@@ -158,16 +147,16 @@ public class UtilsGameProtectActivity
       this.mErrorView = new ErrorView(this);
       addContentView(this.mErrorView);
     }
-    this.mErrorView.a(paramInt);
+    this.mErrorView.setErrorType(paramInt);
     if (paramBoolean) {
-      this.mErrorView.a(this.mBindListener);
+      this.mErrorView.setAction(this.mBindListener);
     }
     for (;;)
     {
-      this.mErrorView.setVisibility(0);
+      this.mErrorView.a();
       bringChildToFront(this.mErrorView);
       return;
-      this.mErrorView.a(this.mRetryListener);
+      this.mErrorView.setAction(this.mRetryListener);
     }
   }
   
@@ -176,7 +165,7 @@ public class UtilsGameProtectActivity
     if (isFinishing()) {
       return;
     }
-    showUserDialog(paramInt, paramString, 2131361800, null);
+    showUserDialog(paramInt, paramString, 2131230897, null);
   }
 }
 

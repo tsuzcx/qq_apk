@@ -2,17 +2,9 @@ package com.tencent.token;
 
 public final class gq
 {
-  private static gr a = null;
-  
-  public static gr a()
+  public static String a()
   {
-    if (a == null)
-    {
-      gr localgr = new gr();
-      a = localgr;
-      localgr.a();
-    }
-    return a;
+    return "okhttp/3.11.0";
   }
 }
 

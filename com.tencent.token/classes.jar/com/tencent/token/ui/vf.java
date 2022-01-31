@@ -1,17 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class vf
-  implements DialogInterface.OnClickListener
+class vf
+  implements View.OnClickListener
 {
-  vf(ux paramux) {}
+  vf(RealNameFirstJoinActivity paramRealNameFirstJoinActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    af.a().a(RealNameFindActivity.access$400(this.a.a));
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

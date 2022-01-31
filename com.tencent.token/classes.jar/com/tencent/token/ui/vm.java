@@ -1,17 +1,14 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class vm
-  implements View.OnClickListener
+class vm
+  implements DialogInterface.OnClickListener
 {
-  vm(RealNameGuidActivity paramRealNameGuidActivity) {}
+  vm(vj paramvj) {}
   
-  public final void onClick(View paramView)
-  {
-    this.a.onBackPressed();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

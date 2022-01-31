@@ -1,15 +1,12 @@
 package com.tencent.token.ui.base;
 
-final class bs
-  implements Runnable
+public abstract interface bs
 {
-  bs(LockPatternVerifyView paramLockPatternVerifyView) {}
+  public abstract void a();
   
-  public final void run()
-  {
-    LockPatternVerifyView.b(this.a).d();
-    LockPatternVerifyView.b(this.a).f();
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

@@ -16,7 +16,7 @@ public class report_t2
   private static final long serialVersionUID = 1L;
   public long _app = 0L;
   public long[] _app_list = null;
-  public TreeMap<Integer, report_t3> _log = new TreeMap();
+  public TreeMap _log = new TreeMap();
   public String _name = new String("");
   public String _oper = new String("");
   public int _rlen = 0;
@@ -28,6 +28,18 @@ public class report_t2
   public String _type = new String("");
   public long _uin = 0L;
   public int _used = 0;
+  public int attr;
+  
+  public report_t2(int paramInt)
+  {
+    this._type = "login";
+    this._oper = "null";
+    this._start = System.currentTimeMillis();
+    this._app = 0L;
+    this._sub_app = 0L;
+    this._app_list = null;
+    this.attr = paramInt;
+  }
   
   public report_t2(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, long[] paramArrayOfLong)
   {
@@ -69,10 +81,10 @@ public class report_t2
     catch (Exception localException1)
     {
       Object localObject2;
-      label219:
+      label231:
       localObject1 = null;
-      label333:
-      label485:
+      label345:
+      label497:
       localObject3 = new StringWriter();
       PrintWriter localPrintWriter = new PrintWriter((Writer)localObject3, true);
       localException1.printStackTrace(localPrintWriter);
@@ -91,19 +103,20 @@ public class report_t2
       ((JSONObject)localObject3).put("app", String.format("%d", new Object[] { Long.valueOf(this._app & 0xFFFFFFFF) }));
       ((JSONObject)localObject3).put("subapp", String.format("%d", new Object[] { Long.valueOf(this._sub_app & 0xFFFFFFFF) }));
       ((JSONObject)localObject3).put("email", this._name);
+      ((JSONObject)localObject3).put("attr", this.attr);
       localObject1 = "";
       localObject2 = localObject1;
       if (this._app_list == null) {
-        break label333;
+        break label345;
       }
       i = 0;
     }
     catch (Exception localException2)
     {
       localObject1 = localObject3;
-      break label485;
+      break label497;
       i += 1;
-      break label219;
+      break label231;
     }
     localObject2 = localObject1;
     if (i < this._app_list.length)

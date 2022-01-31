@@ -1,6 +1,6 @@
 package com.tencent.token.utils;
 
-import com.tencent.token.ag;
+import com.tencent.token.cx;
 import java.io.File;
 import java.io.FileFilter;
 import java.text.SimpleDateFormat;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
-public final class e
+public class e
 {
   private static FileFilter a = new f();
   private String b = "Tracer.File";
@@ -23,17 +23,17 @@ public final class e
   private FileFilter k = new g(this);
   private Comparator l = new h(this);
   
-  public e(File paramFile, int paramInt, String paramString1, String paramString2, long paramLong)
+  public e(File paramFile, int paramInt1, int paramInt2, int paramInt3, String paramString1, long paramLong1, int paramInt4, String paramString2, long paramLong2)
   {
-    this.g = paramFile;
-    this.d = paramInt;
-    this.c = 262144;
-    this.e = 8192;
-    this.b = paramString1;
-    this.f = 10000L;
-    this.h = 10;
-    this.i = paramString2;
-    this.j = paramLong;
+    c(paramFile);
+    b(paramInt1);
+    a(paramInt2);
+    c(paramInt3);
+    a(paramString1);
+    b(paramLong1);
+    d(paramInt4);
+    b(paramString2);
+    c(paramLong2);
   }
   
   public static long a(File paramFile)
@@ -47,7 +47,43 @@ public final class e
     return -1L;
   }
   
-  private static int d(File paramFile)
+  private File d(long paramLong)
+  {
+    return e(a(paramLong));
+  }
+  
+  private File e(File paramFile)
+  {
+    File[] arrayOfFile = b(paramFile);
+    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
+    {
+      paramFile = new File(paramFile, "1" + j());
+      return paramFile;
+    }
+    a(arrayOfFile);
+    File localFile2 = arrayOfFile[(arrayOfFile.length - 1)];
+    int n = arrayOfFile.length - e();
+    int m = n;
+    File localFile1 = localFile2;
+    if ((int)localFile2.length() > d())
+    {
+      m = f(localFile2);
+      localFile1 = new File(paramFile, m + 1 + j());
+      m = n + 1;
+    }
+    n = 0;
+    for (;;)
+    {
+      paramFile = localFile1;
+      if (n >= m) {
+        break;
+      }
+      arrayOfFile[n].delete();
+      n += 1;
+    }
+  }
+  
+  private static int f(File paramFile)
   {
     try
     {
@@ -59,58 +95,41 @@ public final class e
     return -1;
   }
   
-  public final File a()
+  public File a()
   {
-    File localFile = a(ag.c().r());
-    File[] arrayOfFile = localFile.listFiles(this.k);
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
-    {
-      localObject2 = new File(localFile, "1" + this.i);
-      return localObject2;
-    }
-    Arrays.sort(arrayOfFile, this.l);
-    Object localObject2 = arrayOfFile[(arrayOfFile.length - 1)];
-    int n = arrayOfFile.length - this.d;
-    int m = n;
-    Object localObject1 = localObject2;
-    if ((int)((File)localObject2).length() > this.c)
-    {
-      m = d((File)localObject2);
-      localObject1 = new File(localFile, m + 1 + this.i);
-      m = n + 1;
-    }
-    n = 0;
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (n >= m) {
-        break;
-      }
-      arrayOfFile[n].delete();
-      n += 1;
-    }
+    return d(cx.c().s());
   }
   
-  public final File a(long paramLong)
+  public File a(long paramLong)
   {
-    File localFile = new File(this.g, new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong)));
+    File localFile = new File(h(), new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong)));
     localFile.mkdirs();
     return localFile;
   }
   
-  public final File[] a(File[] paramArrayOfFile)
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public File[] a(File[] paramArrayOfFile)
   {
     Arrays.sort(paramArrayOfFile, this.l);
     return paramArrayOfFile;
   }
   
-  public final void b()
+  public void b()
   {
-    if (this.g == null) {}
+    if (h() == null) {}
     for (;;)
     {
       return;
-      File[] arrayOfFile = this.g.listFiles(a);
+      File[] arrayOfFile = h().listFiles(a);
       if (arrayOfFile != null)
       {
         int n = arrayOfFile.length;
@@ -119,7 +138,7 @@ public final class e
         {
           File localFile = arrayOfFile[m];
           long l1 = a(localFile);
-          if (System.currentTimeMillis() - l1 > this.j) {
+          if (System.currentTimeMillis() - l1 > k()) {
             i.a(localFile);
           }
           m += 1;
@@ -128,34 +147,89 @@ public final class e
     }
   }
   
-  public final File[] b(File paramFile)
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.f = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public File[] b(File paramFile)
   {
     return paramFile.listFiles(this.k);
   }
   
-  public final String c()
+  public String c()
   {
     return this.b;
   }
   
-  public final int d()
+  public void c(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.j = paramLong;
+  }
+  
+  public void c(File paramFile)
+  {
+    this.g = paramFile;
+  }
+  
+  public int d()
+  {
+    return this.c;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.h = paramInt;
+  }
+  
+  public int e()
+  {
+    return this.d;
+  }
+  
+  public int f()
   {
     return this.e;
   }
   
-  public final long e()
+  public long g()
   {
     return this.f;
   }
   
-  public final int f()
+  public File h()
+  {
+    return this.g;
+  }
+  
+  public int i()
   {
     return this.h;
   }
   
-  public final String g()
+  public String j()
   {
     return this.i;
+  }
+  
+  public long k()
+  {
+    return this.j;
   }
 }
 

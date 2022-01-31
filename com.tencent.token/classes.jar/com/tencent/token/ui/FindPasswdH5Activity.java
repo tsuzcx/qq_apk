@@ -4,16 +4,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.webkit.WebView;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
+import com.tencent.token.global.c;
+import com.tencent.token.global.h;
 
 public class FindPasswdH5Activity
   extends EmbedWebBaseActivity
 {
-  private static final int EVENT_DOBIND = -100;
-  private String fsig;
-  private Long real_uin;
-  private int source_id;
   String url;
   
   public void onCreate(Bundle paramBundle)
@@ -21,25 +17,23 @@ public class FindPasswdH5Activity
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
     paramBundle = getIntent().getStringExtra("captcha_sig");
-    this.real_uin = Long.valueOf(getIntent().getLongExtra("real_uin", 0L));
-    this.source_id = getIntent().getIntExtra("source_id", 0);
-    e.a("captcha_sig=" + paramBundle);
-    switch (b.a())
+    h.a("captcha_sig=" + paramBundle);
+    switch (c.a())
     {
     default: 
-      this.mWebView.loadUrl(getResources().getString(2131361794) + "&key=" + paramBundle);
+      this.mWebView.loadUrl(getResources().getString(2131231301) + "&key=" + paramBundle);
       return;
     case 0: 
-      this.mWebView.loadUrl(getResources().getString(2131361795) + "&key=" + paramBundle);
+      this.mWebView.loadUrl(getResources().getString(2131231458) + "&key=" + paramBundle);
       return;
     case 1: 
-      this.mWebView.loadUrl(getResources().getString(2131361794) + "&key=" + paramBundle);
+      this.mWebView.loadUrl(getResources().getString(2131231301) + "&key=" + paramBundle);
       return;
     case 2: 
-      this.mWebView.loadUrl(getResources().getString(2131361796) + "&key=" + paramBundle);
+      this.mWebView.loadUrl(getResources().getString(2131230971) + "&key=" + paramBundle);
       return;
     }
-    this.mWebView.loadUrl(getResources().getString(2131361797) + "&key=" + paramBundle);
+    this.mWebView.loadUrl(getResources().getString(2131231118) + "&key=" + paramBundle);
   }
 }
 

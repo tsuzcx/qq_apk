@@ -1,1874 +1,1494 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.ContentValues;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.jni.FaceDetector;
-import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.ct;
-import com.tencent.token.utils.b;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import java.io.File;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import com.tencent.halley.common.c;
+import com.tencent.halley.downloader.c.d.a;
+import com.tencent.halley.downloader.c.d.a.a;
+import com.tencent.halley.downloader.c.d.b;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
 
 public final class af
-  implements bh
+  implements l, u, Runnable
 {
-  public static int a = new Random().nextInt() >>> 1;
-  private static af b;
-  private bn c = new bn();
+  public ad a;
+  public a b;
+  private boolean c = true;
+  private b d;
+  private long e = -1L;
+  private u f;
+  private ae g;
+  private Map h = null;
+  private int i = 0;
+  private String j = "";
+  private boolean k = false;
+  private boolean l = false;
+  private long m = 0L;
+  private m n;
+  private Object o = new Object();
+  private ai p = new ai();
+  private String q;
+  private boolean r = true;
   
-  public static af a()
+  public af(b paramb, boolean paramBoolean1, long paramLong, u paramu, ae paramae, Map paramMap, boolean paramBoolean2)
   {
-    if (b == null) {
-      b = new af();
-    }
-    return b;
+    this.d = paramb;
+    this.c = paramBoolean1;
+    this.e = paramLong;
+    this.p.a = paramBoolean1;
+    this.f = paramu;
+    this.g = paramae;
+    this.h = paramMap;
+    this.r = paramBoolean2;
   }
   
-  public static int b()
+  private void a(i parami)
   {
-    return a;
-  }
-  
-  public final int a(byte paramByte, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_get_dual_msg_list_v2", 2, paramHandler, 3069);
-    paramHandler.c.put("param.uinhash", Long.valueOf(0L));
-    paramHandler.c.put("param.msg.source", Byte.valueOf(paramByte));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(int paramInt1, int paramInt2, int paramInt3, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_get_config_v2", 2, paramHandler, 3041);
-    paramHandler.c.put("param.config.width", Integer.valueOf(paramInt1));
-    paramHandler.c.put("param.config.height", Integer.valueOf(paramInt2));
-    paramHandler.c.put("param.config.dpi", Integer.valueOf(paramInt3));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int paramInt1, int paramInt2, int paramInt3, SafeMsgItem paramSafeMsgItem, Handler paramHandler)
-  {
-    Object localObject = ax.a().e();
-    if (0L == 0L)
+    if (parami != null)
     {
-      if (localObject == null)
+      parami = parami.n();
+      if ((parami != null) && (parami.size() > 0))
       {
-        paramSafeMsgItem = paramHandler.obtainMessage(3032);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramSafeMsgItem.arg1 = paramHandler.a;
-        paramSafeMsgItem.obj = paramHandler;
-        paramSafeMsgItem.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_report_location", 3, paramHandler, 3032);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    localObject = new JSONObject();
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject3 = new JSONObject();
-    try
-    {
-      localJSONObject1.put("type_a", paramSafeMsgItem.mTypea);
-      localJSONObject1.put("type_b", paramSafeMsgItem.mTypeb);
-      localJSONObject1.put("type_c", paramSafeMsgItem.mTypec);
-      int i = paramSafeMsgItem.a();
-      localJSONObject2.put("ip", i);
-      localJSONObject2.put("country_id", paramSafeMsgItem.mLoc_country_id);
-      localJSONObject2.put("prov_id", paramSafeMsgItem.mLoc_prov_id);
-      localJSONObject2.put("city_id", paramSafeMsgItem.mLoc_city_id);
-      localJSONObject3.put("ip", i);
-      localJSONObject3.put("country_id", 1);
-      localJSONObject3.put("prov_id", paramInt1);
-      localJSONObject3.put("city_id", paramInt2);
-      ((JSONObject)localObject).put("msg_time", paramSafeMsgItem.mTime);
-      ((JSONObject)localObject).put("msg_type", localJSONObject1);
-      ((JSONObject)localObject).put("old_loc", localJSONObject2);
-      ((JSONObject)localObject).put("new_loc", localJSONObject3);
-      if ((paramInt3 == 1) || (paramInt3 == 2)) {
-        ((JSONObject)localObject).put("feed_priv_ip_type", paramInt3);
-      }
-      paramHandler.c.put("param.loginmsg.reportlocation", URLEncoder.encode(((JSONObject)localObject).toString()));
-    }
-    catch (Exception paramSafeMsgItem)
-    {
-      for (;;)
-      {
-        paramSafeMsgItem.printStackTrace();
-        paramHandler.c.put("param.loginmsg.reportlocation", "");
-      }
-    }
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int paramInt, Handler paramHandler)
-  {
-    Object localObject = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3005);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new fs("mbtoken3_get_message_v2", 3, paramHandler, 3005);
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-      du.a(paramHandler, paramLong, paramInt, 1, 1);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public final int a(long paramLong1, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, long paramLong2, long paramLong3, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3045);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong1 = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_jl_appeal", 3, paramHandler, 3045);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramHandler.c.put("param.jl_roleid", Integer.valueOf(paramInt1));
-    paramHandler.c.put("param.jl_rolename", paramString1);
-    paramHandler.c.put("param.jl_zoneid", Integer.valueOf(paramInt2));
-    paramHandler.c.put("param.jl_serverid", Integer.valueOf(paramInt3));
-    paramHandler.c.put("param.jl_servername", paramString2);
-    paramHandler.c.put("param.jl_lastlogintime", Long.valueOf(paramLong2));
-    paramHandler.c.put("param.jl_stealtime", Long.valueOf(paramLong3));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int paramInt, String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_verify_captcha_v2", 2, paramHandler, 3072);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.scene.id", Integer.valueOf(paramInt));
-    paramHandler.c.put("param.captcha", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3012);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_set_mod_mobile", 3, paramHandler, 3012);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.mbmobile.set", Integer.valueOf(paramInt));
-    paramHandler.c.put("param.mbmobile.mobile", paramString1);
-    paramHandler.c.put("param.mbmoible.areacode", paramString2);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, Handler paramHandler)
-  {
-    QQUser localQQUser = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3005);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_get_message_v2", 3, paramHandler, 3005);
-    paramHandler.c.put("param.uin.wtlogin", Long.valueOf(localQQUser.mRealUin));
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.msg.source", Integer.valueOf(paramInt));
-    paramHandler.c.put("param.msg.type", Integer.valueOf(1));
-    paramHandler.c.put("param.msg.num", Integer.valueOf(40));
-    paramHandler.c.put("param.msg.filter", Integer.valueOf(0));
-    paramHandler.c.put("param.device.lock.guid", paramString1);
-    paramHandler.c.put("param.device.lock.appid", Integer.valueOf(523005425));
-    paramHandler.c.put("param.device.lock.subappid", Integer.valueOf(1));
-    paramHandler.c.put("param.device.lock.appname", paramString2);
-    paramHandler.c.put("param.skey", paramString3);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int paramInt, boolean paramBoolean, String paramString, Handler paramHandler)
-  {
-    QQUser localQQUser = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3004);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_face_verify_on_off", 3, paramHandler, 4002);
-    int i = a + 1;
-    a = i;
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.scene_id", Integer.valueOf(paramInt));
-    paramHandler.c.put("param.verifyonoff", Boolean.valueOf(paramBoolean));
-    paramHandler.c.put("param.wtlogin.a2", paramString);
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong1, long paramLong2, int paramInt, Handler paramHandler)
-  {
-    Object localObject;
-    if (paramLong2 == 0L)
-    {
-      if (paramLong1 != 0L) {
-        break label191;
-      }
-      localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3068);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong1 = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new fs("mbtoken3_check_up_sms", 2, paramHandler, 3068);
-      a += 1;
-      cc.a(paramHandler, paramLong1, ((QQUser)localObject).mRealUin, paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new fs("mbtoken3_check_up_sms", 2, paramHandler, 3068);
-      a += 1;
-      cc.a(paramHandler, s.f(paramLong2), paramLong2, paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-      label191:
-      localObject = null;
-    }
-  }
-  
-  public final int a(long paramLong1, long paramLong2, int paramInt, String paramString, Handler paramHandler)
-  {
-    QQUser localQQUser;
-    if (paramLong2 == 0L)
-    {
-      if (paramLong1 != 0L) {
-        break label195;
-      }
-      localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3066);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong1 = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new fs("mbtoken3_general_verify_mobile_code", 2, paramHandler, 3066);
-      a += 1;
-      dc.a(paramHandler, paramLong1, localQQUser.mRealUin, paramInt, a, paramString);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new fs("mbtoken3_general_verify_mobile_code", 2, paramHandler, 3066);
-      a += 1;
-      dc.a(paramHandler, s.f(paramLong2), paramLong2, paramInt, a, paramString);
-      this.c.a(paramHandler);
-      return 0;
-      label195:
-      localQQUser = null;
-    }
-  }
-  
-  public final int a(long paramLong1, long paramLong2, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, Handler paramHandler)
-  {
-    long l;
-    int i;
-    label146:
-    Object localObject2;
-    if ((paramInt == 1) || (paramInt == 3))
-    {
-      localObject1 = ax.a().e();
-      l = paramLong2;
-      if (0L == 0L)
-      {
-        if (localObject1 == null)
+        parami = parami.iterator();
+        while (parami.hasNext())
         {
-          paramString1 = paramHandler.obtainMessage(3067);
-          paramString2 = new d((byte)0);
-          paramString2.a(110, null, null);
-          paramString1.arg1 = paramString2.a;
-          paramString1.obj = paramString2;
-          paramString1.sendToTarget();
-          return -1;
-        }
-        if (paramLong2 == ((QQUser)localObject1).mRealUin)
-        {
-          paramLong1 = ((QQUser)localObject1).mUin;
-          l = ((QQUser)localObject1).mRealUin;
-        }
-      }
-      else
-      {
-        i = a + 1;
-        a = i;
-        if (paramInt != 1) {
-          break label1139;
-        }
-        paramHandler = new fs("mbtoken3_realname_reg", 3, paramHandler, 3067);
-        paramHandler.m = 1;
-        paramHandler.n = new ContentValues(3);
-        localObject2 = paramHandler.n;
-        ae.a();
-        if (!ax.a().p()) {
-          break label1187;
-        }
-        ax.a();
-      }
-    }
-    label1187:
-    for (Object localObject1 = ax.c;; localObject1 = null)
-    {
-      ((ContentValues)localObject2).put("aq_base_sid", (String)localObject1);
-      paramHandler.n.put("uin", Long.valueOf(paramLong1));
-      localObject1 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject1).put("real_uin", l);
-        ((JSONObject)localObject1).put("realname", paramString1);
-        ((JSONObject)localObject1).put("id_number", paramString2);
-        ((JSONObject)localObject1).put("op_type", paramInt);
-        e.a("doRealNameReg common_data=" + ((JSONObject)localObject1).toString());
-        if (paramArrayOfByte1 != null)
-        {
-          localObject2 = b.a(paramArrayOfByte1);
-          ((JSONObject)localObject1).put("face_data", localObject2);
-          e.a("doRealNameReg face_data=" + ((String)localObject2).length());
-        }
-        if (paramArrayOfByte2 != null)
-        {
-          localObject2 = b.a(paramArrayOfByte2);
-          ((JSONObject)localObject1).put("id_photo_front", localObject2);
-          e.a("doRealNameReg front_data=" + ((String)localObject2).length());
-        }
-        if (paramArrayOfByte3 != null)
-        {
-          localObject2 = b.a(paramArrayOfByte3);
-          ((JSONObject)localObject1).put("id_photo_back", localObject2);
-          e.a("doRealNameReg back_data=" + ((String)localObject2).length());
-        }
-        if (paramArrayOfByte4 != null) {
-          ((JSONObject)localObject1).put("id_photo_info_front", b.a(paramArrayOfByte4));
-        }
-        if (paramArrayOfByte5 != null) {
-          ((JSONObject)localObject1).put("id_photo_info_back", b.a(paramArrayOfByte5));
-        }
-        ((JSONObject)localObject1).put("token_seq", ag.c().k());
-        ((JSONObject)localObject1).put("guid", s.a(x.a(RqdApplication.i()).c()));
-        ((JSONObject)localObject1).put("seq_id", i);
-        ((JSONObject)localObject1).put("op_time", (int)(ag.c().r() / 1000L));
-        ((JSONObject)localObject1).put("vendor_id", Build.MANUFACTURER);
-        ((JSONObject)localObject1).put("android_id", s.a(RqdApplication.i()));
-        ((JSONObject)localObject1).put("imei", s.b(RqdApplication.i()));
-        ((JSONObject)localObject1).put("mac", s.c(RqdApplication.i()));
-        ((JSONObject)localObject1).put("device_model", Build.MODEL);
-        ((JSONObject)localObject1).put("sys_ver", Build.VERSION.RELEASE);
-        ((JSONObject)localObject1).put("face_detect_time", cv.e);
-        ((JSONObject)localObject1).put("face_detect_frame", cv.g);
-        ((JSONObject)localObject1).put("face_model_init_time", cv.f);
-        ((JSONObject)localObject1).put("vivo_model_init_time", cv.h);
-        ((JSONObject)localObject1).put("vivo_reg_action1_time", cv.i);
-        ((JSONObject)localObject1).put("vivo_reg_action2_time", cv.j);
-        ((JSONObject)localObject1).put("vivo_reg_action1_frame", cv.k);
-        ((JSONObject)localObject1).put("vivo_reg_action2_frame", cv.l);
-        ((JSONObject)localObject1).put("vivo_ver_action_time", cv.m);
-        ((JSONObject)localObject1).put("vivo_ver_action_frame", cv.n);
-        ((JSONObject)localObject1).put("vivo_reg_action1_type", ei.c);
-        ((JSONObject)localObject1).put("vivo_reg_action2_type", ei.d);
-        ((JSONObject)localObject1).put("vivo_ver_action_type", ei.e);
-        ((JSONObject)localObject1).put("id_photo_front_time", ct.b);
-        ((JSONObject)localObject1).put("id_photo_front_frame", ct.a);
-        ((JSONObject)localObject1).put("id_photo_back_time", ct.d);
-        ((JSONObject)localObject1).put("id_photo_back_frame", ct.c);
-        localObject2 = s.e(RqdApplication.i());
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONObject)localObject1).put("route_name", localObject2);
-        }
-        localObject2 = s.d(RqdApplication.i());
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONObject)localObject1).put("route_mac", localObject2);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-      localObject1 = b.a(s.c(((JSONObject)localObject1).toString().getBytes())).replace('+', '-').replace('=', '_');
-      e.a("doRealNameReg data = " + ((String)localObject1).length());
-      paramHandler.n.put("data", (String)localObject1);
-      paramHandler.c.put("param.uinhash", Long.valueOf(paramLong1));
-      paramHandler.c.put("param.realuin", Long.valueOf(l));
-      paramHandler.c.put("param.realname", paramString1);
-      paramHandler.c.put("param.idnumber", paramString2);
-      paramHandler.c.put("param.optype", Integer.valueOf(paramInt));
-      paramHandler.c.put("param.facedata", paramArrayOfByte1);
-      paramHandler.c.put("param.frontdata", paramArrayOfByte2);
-      paramHandler.c.put("param.backdata", paramArrayOfByte3);
-      paramHandler.c.put("param.prontphotoinfo", paramArrayOfByte4);
-      paramHandler.c.put("param.backphotoinfo", paramArrayOfByte5);
-      paramHandler.j = i;
-      this.c.a(paramHandler);
-      return 0;
-      paramLong1 = s.f(paramLong2);
-      l = paramLong2;
-      break;
-      label1139:
-      if (paramInt == 3)
-      {
-        paramHandler = new fs("mbtoken3_realname_reg", 3, paramHandler, 3078);
-        break label146;
-      }
-      paramHandler = new fs("mbtoken3_realname_reg", 2, paramHandler, 3067);
-      break label146;
-    }
-  }
-  
-  public final int a(long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, Handler paramHandler)
-  {
-    Object localObject1 = null;
-    if (paramLong2 != 0L) {
-      localObject1 = ax.a().d(paramLong2);
-    }
-    if (localObject1 == null) {
-      localObject1 = ax.a().e();
-    }
-    for (;;)
-    {
-      if (0L == 0L)
-      {
-        if (localObject1 == null)
-        {
-          paramArrayOfByte = paramHandler.obtainMessage(3058);
-          paramHandler = new d((byte)0);
-          paramHandler.a(110, null, null);
-          paramArrayOfByte.arg1 = paramHandler.a;
-          paramArrayOfByte.obj = paramHandler;
-          paramArrayOfByte.sendToTarget();
-          return -1;
-        }
-        paramLong1 = ((QQUser)localObject1).mUin;
-      }
-      for (;;)
-      {
-        long l;
-        int j;
-        label156:
-        Object localObject2;
-        if (paramLong2 != 0L)
-        {
-          l = s.f(paramLong2);
-          j = a + 1;
-          a = j;
-          if ((paramInt3 != 2) && (paramInt3 != 6)) {
-            break label1135;
-          }
-          paramHandler = new fs("mbtoken3_face_reg", 2, paramHandler, 3058);
-          paramHandler.m = 1;
-          paramHandler.n = new ContentValues(3);
-          ContentValues localContentValues = paramHandler.n;
-          ae.a();
-          if (!ax.a().p()) {
-            break label1156;
-          }
-          ax.a();
-          localObject2 = ax.c;
-          label204:
-          localContentValues.put("aq_base_sid", (String)localObject2);
-          paramHandler.n.put("uin", Long.valueOf(l));
-          localObject2 = new JSONObject();
-          if (paramInt1 == 2) {
-            break label1162;
-          }
-        }
-        for (;;)
-        {
-          try
-          {
-            ((JSONObject)localObject2).put("uin", ((QQUser)localObject1).mRealUin);
-            ((JSONObject)localObject2).put("op_type", paramInt1);
-            e.a("doFaceRecognition opType=" + paramInt1 + ",mRealUin=" + ((QQUser)localObject1).mRealUin + "," + "uin=" + paramLong2);
-            paramLong1 = System.currentTimeMillis();
-            if (paramInt1 == 3) {
-              continue;
-            }
-            e.c("doFaceRecognition src data=" + paramArrayOfByte.length);
-            localObject1 = b.a(paramArrayOfByte);
-            ((JSONObject)localObject2).put("img_data", localObject1);
-            e.c("doFaceRecognition img_data=" + ((String)localObject1).length());
-            ((JSONObject)localObject2).put("resolution", cv.c);
-            ((JSONObject)localObject2).put("so_code_time", cv.d);
-            ((JSONObject)localObject2).put("face_detect_time", cv.e);
-            ((JSONObject)localObject2).put("face_detect_frame", cv.g);
-            if (!FaceDetector.IsSupportNeon()) {
-              continue;
-            }
-            i = 1;
-          }
-          catch (Exception localException)
-          {
-            label1135:
-            paramHandler.k = true;
-            label1156:
-            label1162:
-            localException.printStackTrace();
-            continue;
-            int i = 0;
-            continue;
-            i = paramInt3;
-            continue;
-          }
-          ((JSONObject)localObject2).put("is_neon", i);
-          ((JSONObject)localObject2).put("face_model_init_time", cv.f);
-          ((JSONObject)localObject2).put("vivo_model_init_time", cv.h);
-          ((JSONObject)localObject2).put("vivo_reg_action1_time", cv.i);
-          ((JSONObject)localObject2).put("vivo_reg_action2_time", cv.j);
-          ((JSONObject)localObject2).put("vivo_reg_action1_frame", cv.k);
-          ((JSONObject)localObject2).put("vivo_reg_action2_frame", cv.l);
-          ((JSONObject)localObject2).put("vivo_ver_action_time", cv.m);
-          ((JSONObject)localObject2).put("vivo_ver_action_frame", cv.n);
-          ((JSONObject)localObject2).put("vivo_reg_action1_type", ei.c);
-          ((JSONObject)localObject2).put("vivo_reg_action2_type", ei.d);
-          ((JSONObject)localObject2).put("vivo_ver_action_type", ei.e);
-          ((JSONObject)localObject2).put("mobile_os", "android:" + URLEncoder.encode(Build.VERSION.RELEASE));
-          ((JSONObject)localObject2).put("algorithm", t.l());
-          ((JSONObject)localObject2).put("op_time", (int)(ag.c().r() / 1000L));
-          ((JSONObject)localObject2).put("seq_id", j);
-          if (paramInt3 != 6) {
-            continue;
-          }
-          i = 1;
-          ((JSONObject)localObject2).put("scene", i);
-          e.a("doFaceRecognition scene=" + paramInt3);
-          if (paramInt1 == 5) {
-            ((JSONObject)localObject2).put("token_seq", ag.c().k());
-          }
-          localObject1 = s.c(((JSONObject)localObject2).toString().getBytes());
-          localObject2 = b.a((byte[])localObject1).replace('+', '-').replace('=', '_');
-          i = (int)(System.currentTimeMillis() - paramLong1);
-          e.c("encodeTime=" + i);
-          paramHandler.n.put("data", (String)localObject2);
-          paramHandler.n.put("encode_time", Integer.valueOf(i));
-          e.a("resolution=" + cv.c + ",so_code_time=" + cv.d + ",scan_time=" + cv.e + ",frame_cnt=" + cv.g + ",encode_time=" + i + ",seq=" + j);
-          e.a("doFaceRecognition data=" + localObject1.length);
-          e.a("doFaceRecognition base64 data=" + ((String)localObject2).length());
-          paramHandler.c.put("param.uinhash", Long.valueOf(l));
-          paramHandler.j = j;
-          e.c("reqdata.seq=" + j);
-          paramHandler.c.put("param.realuin", Long.valueOf(paramLong2));
-          paramHandler.c.put("param.optype", Integer.valueOf(paramInt1));
-          paramHandler.c.put("param.facedata", paramArrayOfByte);
-          paramHandler.c.put("param.lockstatus", Integer.valueOf(paramInt2));
-          paramHandler.c.put("param.scene.id", Integer.valueOf(paramInt3));
-          this.c.a(paramHandler);
-          return 0;
-          l = paramLong1;
-          if (localObject1 == null) {
-            break;
-          }
-          paramLong2 = ((QQUser)localObject1).mRealUin;
-          l = paramLong1;
-          break;
-          paramHandler = new fs("mbtoken3_face_reg", 3, paramHandler, 3058);
-          break label156;
-          localObject2 = null;
-          break label204;
-          ((JSONObject)localObject2).put("uin", paramLong2);
-          if (paramInt2 > 0) {
-            ((JSONObject)localObject2).put("lock_status", paramInt2);
-          }
+          String str = (String)parami.next();
+          this.d.a(o.a, str, a.a.e);
+          c.a("SectionTransport", "add header schedule url...apn:" + o.a + ",type:" + a.a.e + ",url:" + str);
         }
       }
     }
   }
   
-  public final int a(long paramLong1, long paramLong2, Handler paramHandler)
+  public final boolean a()
   {
-    a += 1;
-    paramHandler = new fs("mbtoken3_unbind_token", 3, paramHandler, 4001);
-    int i = a;
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramHandler.c.put("param.unbind.type", Integer.valueOf(1));
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong1, long paramLong2, String paramString, Handler paramHandler)
-  {
-    long l2 = paramLong1;
-    long l1 = paramLong2;
-    if (0L == paramLong2)
-    {
-      QQUser localQQUser = ax.a().e();
-      l2 = paramLong1;
-      l1 = paramLong2;
-      if (paramLong1 == 0L)
-      {
-        if (localQQUser == null)
-        {
-          paramString = paramHandler.obtainMessage(3080);
-          paramHandler = new d((byte)0);
-          paramHandler.a(110, null, null);
-          paramString.arg1 = paramHandler.a;
-          paramString.obj = paramHandler;
-          paramString.sendToTarget();
-          return -1;
-        }
-        l1 = localQQUser.mRealUin;
-        l2 = localQQUser.mUin;
-      }
+    if (this.k) {
+      return true;
     }
-    a += 1;
-    paramHandler = new fs("mbtoken3_card_check", 3, paramHandler, 3080);
-    int i = a;
-    paramHandler.c.put("param.uinhash", Long.valueOf(l2));
-    paramHandler.c.put("param.realuin", Long.valueOf(l1));
-    paramHandler.c.put("param.idnumber", paramString);
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3000);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
+    if (this.f != null) {
+      return this.f.a();
     }
-    paramHandler = new fs("mbtoken3_get_ac_lock_status_v2", 3, paramHandler, 3000);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
+    c.d("SectionTransport", "cancelChecker is null");
+    return true;
   }
   
-  public final int a(long paramLong, Handler paramHandler, Activity paramActivity)
+  public final boolean a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
-    if (0L == 0L)
-    {
-      localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3048);
-        paramActivity = new d((byte)0);
-        paramActivity.a(110, null, null);
-        paramHandler.arg1 = paramActivity.a;
-        paramHandler.obj = paramActivity;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
+    if (paramBoolean) {
+      c.a("DownloadTest", "is direct:" + this.c + ",onReceiveData...len:" + paramInt + ",section:" + this.a);
     }
-    paramHandler = new fs("mbtoken3_query_jl_protection_info", 3, paramHandler, 3048);
-    int i = paramActivity.getWindowManager().getDefaultDisplay().getWidth();
-    int j = paramActivity.getWindowManager().getDefaultDisplay().getHeight();
-    Object localObject = new DisplayMetrics();
-    paramActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    int k = ((DisplayMetrics)localObject).densityDpi;
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.config.width", Integer.valueOf(i));
-    paramHandler.c.put("param.config.height", Integer.valueOf(j));
-    paramHandler.c.put("param.config.dpi", Integer.valueOf(k));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, Long paramLong1, int paramInt, Handler paramHandler)
-  {
-    if (paramLong1.longValue() == 0L)
+    if (this.g != null)
     {
-      if (0L != 0L) {
+      if (this.a.f + paramInt < this.a.g) {
         break label192;
       }
-      paramLong1 = ax.a().e();
-      if (paramLong1 == null)
+      paramInt = (int)(this.a.g - this.a.f);
+    }
+    label192:
+    for (int i1 = 0;; i1 = 1)
+    {
+      paramBoolean = this.g.a(this, this.a.f, paramArrayOfByte, paramInt, paramBoolean) & i1;
+      if (!paramBoolean) {
+        c.a("DownloadTest", "is direct:" + this.c + ",stop read data...len:" + paramInt + ",section:" + this.a);
+      }
+      this.m += paramInt;
+      return paramBoolean;
+      c.d("SectionTransport", "listener in Ant is null.");
+      return true;
+    }
+  }
+  
+  public final boolean b()
+  {
+    return this.c;
+  }
+  
+  public final int c()
+  {
+    return this.i;
+  }
+  
+  public final String d()
+  {
+    return this.j;
+  }
+  
+  public final void e()
+  {
+    try
+    {
+      this.k = true;
+      if (this.n != null) {
+        this.n.r();
+      }
+      synchronized (this.o)
       {
-        paramLong1 = paramHandler.obtainMessage(3065);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramLong1.arg1 = paramHandler.a;
-        paramLong1.obj = paramHandler;
-        paramLong1.sendToTarget();
-        return -1;
+        this.o.notifyAll();
+        return;
       }
-      paramLong = paramLong1.mUin;
+      return;
     }
-    for (;;)
+    catch (Throwable localThrowable) {}
+  }
+  
+  public final boolean f()
+  {
+    return this.l;
+  }
+  
+  public final String g()
+  {
+    if (this.p != null) {
+      return this.p.a();
+    }
+    return "";
+  }
+  
+  public final String h()
+  {
+    if (this.p != null) {
+      return this.p.toString();
+    }
+    return "";
+  }
+  
+  public final String i()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (this.c) {}
+    for (int i1 = 0;; i1 = 1)
     {
-      paramHandler = new fs("mbtoken3_general_get_mobile_code", 2, paramHandler, 3065);
-      a += 1;
-      db.a(paramHandler, paramLong, paramLong1.mRealUin, paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new fs("mbtoken3_general_get_mobile_code", 2, paramHandler, 3065);
-      a += 1;
-      db.a(paramHandler, s.f(paramLong1.longValue()), paramLong1.longValue(), paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-      label192:
-      paramLong1 = null;
+      localStringBuilder1.append(i1).append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(this.q).append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(this.i).append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(",");
+      localStringBuilder1.append(";");
+      return localStringBuilder1.toString();
     }
   }
   
-  public final int a(long paramLong, String paramString, int paramInt, Handler paramHandler)
+  /* Error */
+  public final void run()
   {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3052);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_modify_pwd", 3, paramHandler, 3052);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.qqpwd", paramString);
-    paramHandler.c.put("param.scene.id", Integer.valueOf(paramInt));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, String paramString, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3014);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_mbop_verify_mobile_code", 3, paramHandler, 3014);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.mbmobile.vrycode", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3055);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    int i = a + 1;
-    a = i;
-    paramHandler = new fs("mbtoken3_device_lock_del_device_v2", 3, paramHandler, 3055);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.device.lock.dguid", paramString1);
-    paramHandler.c.put("param.device.lock.ddes", paramString2);
-    paramHandler.c.put("param.device.lock.dappid", Integer.valueOf(paramInt1));
-    paramHandler.c.put("param.device.lock.dsubappid", Integer.valueOf(paramInt2));
-    paramHandler.c.put("param.device.lock.dappname", paramString3);
-    paramHandler.c.put("param.device.lock.id", Integer.valueOf(paramInt3));
-    paramHandler.c.put("param.device.lock.guid", paramString4);
-    paramHandler.c.put("param.device.lock.appid", Integer.valueOf(523005419));
-    paramHandler.c.put("param.device.lock.subappid", Integer.valueOf(1));
-    paramHandler.c.put("param.device.lock.appname", paramString5);
-    paramHandler.c.put("param.wtlogin.a2", paramString6);
-    paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3056);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_kickoff", 3, paramHandler, 3056);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.device.lock.dguid", paramString1);
-    paramHandler.c.put("param.device.lock.ddes", paramString2);
-    paramHandler.c.put("param.device.lock.dappid", Integer.valueOf(paramInt1));
-    paramHandler.c.put("param.device.lock.dsubappid", Integer.valueOf(paramInt2));
-    paramHandler.c.put("param.device.lock.dappname", paramString3);
-    paramHandler.c.put("param.device.lock.guid", paramString4);
-    paramHandler.c.put("param.device.lock.appid", Integer.valueOf(523005425));
-    paramHandler.c.put("param.device.lock.subappid", Integer.valueOf(1));
-    paramHandler.c.put("param.device.lock.appname", paramString5);
-    paramHandler.c.put("param.skey", paramString6);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, List paramList, String[] paramArrayOfString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_vry_ques", 2, paramHandler, 3028);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.qqquestion", paramList);
-    paramHandler.c.put("param.qqquestionanswer", paramArrayOfString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, byte[] paramArrayOfByte, Handler paramHandler)
-  {
-    int i = a + 1;
-    a = i;
-    paramHandler = new fs("mbtoken3_upgrade_determin_v3", 3, paramHandler, 3030);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.wtlogin.a2", paramArrayOfByte);
-    paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-    paramHandler.c.put("param.uin.wtlogin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, byte[] paramArrayOfByte, Handler paramHandler, int paramInt)
-  {
-    paramHandler = new fs("mbtoken3_vfy_wtlogin", 2, paramHandler, 3024);
-    cu.a(paramHandler, paramLong + "", paramArrayOfByte, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(long paramLong, byte[] paramArrayOfByte, Handler paramHandler, String paramString)
-  {
-    Object localObject1 = null;
-    Object localObject2 = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localObject2 == null)
-      {
-        paramArrayOfByte = paramHandler.obtainMessage(3059);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramArrayOfByte.arg1 = paramHandler.a;
-        paramArrayOfByte.obj = paramHandler;
-        paramArrayOfByte.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject2).mUin;
-    }
-    int i = a + 1;
-    a = i;
-    localObject2 = new fs("mbtoken3_face_pk", 3, paramHandler, 3059);
-    ((fs)localObject2).m = 1;
-    ((fs)localObject2).n = new ContentValues(3);
-    ContentValues localContentValues = ((fs)localObject2).n;
-    ae.a();
-    paramHandler = localObject1;
-    if (ax.a().p())
-    {
-      ax.a();
-      paramHandler = ax.c;
-    }
-    localContentValues.put("aq_base_sid", paramHandler);
-    ((fs)localObject2).n.put("uin", Long.valueOf(paramLong));
-    ((fs)localObject2).k = true;
-    e.c("path:" + paramString);
-    ((fs)localObject2).c.put("param.uinhash", Long.valueOf(paramLong));
-    ((fs)localObject2).j = i;
-    ((fs)localObject2).c.put("param.facedata", paramArrayOfByte);
-    if (paramString != null) {
-      ((fs)localObject2).c.put("param.videopath", paramString);
-    }
-    this.c.a((fs)localObject2);
-    return 0;
-  }
-  
-  public final int a(long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramArrayOfInt1 = paramHandler.obtainMessage(3018);
-        paramArrayOfInt2 = new d((byte)0);
-        paramArrayOfInt2.a(110, null, null);
-        paramArrayOfInt1.arg1 = paramArrayOfInt2.a;
-        paramArrayOfInt1.obj = paramArrayOfInt2;
-        paramArrayOfInt1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_set_service_status", 3, paramHandler, 3018);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.mbinfo.id", paramArrayOfInt1);
-    paramHandler.c.put("param.mbinfo.val", paramArrayOfInt2);
-    paramHandler.c.put("param.skey", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_exchange_key_v3", 1, paramHandler, 4000);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(Handler paramHandler, int paramInt1, int paramInt2)
-  {
-    QQUser localQQUser = ax.a().e();
-    if (localQQUser == null) {}
-    for (long l = 0L;; l = localQQUser.mRealUin)
-    {
-      a += 1;
-      paramHandler = new fs("mbtoken3_detector_report", 2, paramHandler, 0);
-      int i = a;
-      paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-      paramHandler.c.put("param.realuin", Long.valueOf(l));
-      paramHandler.c.put("param.worm_type", Integer.valueOf(paramInt1));
-      paramHandler.c.put("infected_cnt", Integer.valueOf(paramInt2));
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public final int a(Handler paramHandler, File paramFile, String paramString)
-  {
-    QQUser localQQUser = ax.a().e();
-    fs localfs = new fs("mbtoken3_log_upload", 2, paramHandler, 3063);
-    localfs.m = 2;
-    localfs.o = paramFile;
-    if (localQQUser == null)
-    {
-      localfs.p = ("0_" + paramString);
-      localfs.n = new ContentValues(2);
-      if (localQQUser != null) {
-        break label224;
-      }
-      localfs.n.put("uin", s.b(String.valueOf(0).getBytes()));
-      label106:
-      paramString = localfs.n;
-      ae.a();
-      if (!ax.a().p()) {
-        break label252;
-      }
-      ax.a();
-    }
-    label224:
-    label252:
-    for (paramHandler = ax.c;; paramHandler = null)
-    {
-      paramString.put("aq_base_sid", paramHandler);
-      paramHandler = localfs.n;
-      gb.a();
-      paramHandler.put("log_date", Integer.valueOf(gb.g()));
-      ey.a(paramFile.getAbsolutePath());
-      this.c.a(localfs);
-      return 0;
-      localfs.p = ("" + localQQUser.mUin + "_" + paramString);
-      break;
-      localfs.n.put("uin", s.b(String.valueOf(localQQUser.mRealUin).getBytes()));
-      break label106;
-    }
-  }
-  
-  public final int a(ConfigResult paramConfigResult, Handler paramHandler)
-  {
-    paramHandler = new fs("token.getstartupimg", 1, paramHandler, 3042);
-    paramHandler.c.put("param.startup.img.result", paramConfigResult);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(String paramString)
-  {
-    return this.c.a(paramString);
-  }
-  
-  public final int a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3019);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      l = localQQUser.mRealUin;
-    }
-    int i = a + 1;
-    a = i;
-    paramHandler = new fs("mbtoken3_get_sms_port_v2", 2, paramHandler, 3019);
-    paramHandler.c.put("param.realuin", Long.valueOf(l));
-    paramHandler.c.put("param.mbmobile.mobile", paramString1);
-    paramHandler.c.put("param.mbmoible.ismobile", Integer.valueOf(paramInt1));
-    paramHandler.c.put("param.scene.id", Integer.valueOf(paramInt2));
-    paramHandler.c.put("param.mbmoible.areacode", paramString2);
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int a(String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_feedback_v2", 2, paramHandler, 3022);
-    paramHandler.c.put("param.uinhash", Long.valueOf(0L));
-    paramHandler.c.put("param.feedback.comment", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(long paramLong, int paramInt, Handler paramHandler)
-  {
-    Object localObject = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3006);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new fs("mbtoken3_get_message_v2", 3, paramHandler, 3006);
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-      du.a(paramHandler, paramLong, paramInt, 2, 0);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public final int b(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3013);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_mbop_get_mobile_code", 3, paramHandler, 3013);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.mbmobile.getcode", Integer.valueOf(paramInt));
-    paramHandler.c.put("param.mbmobile.mobile", paramString1);
-    paramHandler.c.put("param.mbmoible.areacode", paramString2);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3054);
-        paramString2 = new d((byte)0);
-        paramString2.a(110, null, null);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    int i = a + 1;
-    a = i;
-    paramHandler = new fs("mbtoken3_get_device_lock_status_v2", 3, paramHandler, 3054);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.device.lock.id", Integer.valueOf(paramInt));
-    paramHandler.c.put("param.device.lock.guid", paramString1);
-    paramHandler.c.put("param.device.lock.appid", Integer.valueOf(523005419));
-    paramHandler.c.put("param.device.lock.subappid", Integer.valueOf(1));
-    paramHandler.c.put("param.device.lock.appname", paramString2);
-    paramHandler.c.put("param.wtlogin.a2", paramString3);
-    paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(long paramLong1, long paramLong2, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3038);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong1 = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_feedback_abnormal_login", 3, paramHandler, 3038);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramHandler.c.put("param.feedback.msgid", Long.valueOf(paramLong2));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(long paramLong, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3002);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_get_game_lock_status_v2", 3, paramHandler, 3002);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(long paramLong, String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_verify_qqtoken", 2, paramHandler, 3027);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.qqtoken", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      QQUser localQQUser = ax.a().e();
-      if (localQQUser == null)
-      {
-        paramArrayOfInt1 = paramHandler.obtainMessage(3061);
-        paramArrayOfInt2 = new d((byte)0);
-        paramArrayOfInt2.a(110, null, null);
-        paramArrayOfInt1.arg1 = paramArrayOfInt2.a;
-        paramArrayOfInt1.obj = paramArrayOfInt2;
-        paramArrayOfInt1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    paramHandler = new fs("mbtoken3_set_service_status_v2", 3, paramHandler, 3061);
-    a += 1;
-    int i = a;
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.mbinfo.id", paramArrayOfInt1);
-    paramHandler.c.put("param.mbinfo.val", paramArrayOfInt2);
-    paramHandler.c.put("param.wtlogin.a2", paramString);
-    paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_get_uin_list_v2", 2, paramHandler, 3003);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int b(String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("token.getcommonimg", 1, paramHandler, 3050);
-    paramHandler.c.put("param.common.img.url", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int c(long paramLong, int paramInt, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3011);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_del_mbitem", 3, paramHandler, 3011);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int c(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    paramString1 = new fs("mbtoken3_bind_token_by_app_v3", 2, paramHandler, 3026);
-    paramString1.c.put("param.realuin", Long.valueOf(paramLong));
-    paramString1.c.put("param.bind.type", Integer.valueOf(paramInt));
-    paramString1.c.put("param.bind.mobile", str);
-    paramString1.c.put("param.bind.areacode", paramString2);
-    this.c.a(paramString1);
-    return 0;
-  }
-  
-  public final int c(long paramLong1, long paramLong2, Handler paramHandler)
-  {
-    long l = paramLong1;
-    if (0L == paramLong2)
-    {
-      l = paramLong1;
-      if (paramLong1 == 0L)
-      {
-        Object localObject = ax.a().e();
-        if (localObject == null)
-        {
-          paramHandler = paramHandler.obtainMessage(3075);
-          localObject = new d((byte)0);
-          ((d)localObject).a(110, null, null);
-          paramHandler.arg1 = ((d)localObject).a;
-          paramHandler.obj = localObject;
-          paramHandler.sendToTarget();
-          return -1;
-        }
-        l = ((QQUser)localObject).mUin;
-      }
-    }
-    paramHandler = new fs("mbtoken3_qry_spec_verify", 3, paramHandler, 3075);
-    a += 1;
-    int i = a;
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramHandler.c.put("param.scene_id", Integer.valueOf(1));
-    paramHandler.c.put("param.op_time", Long.valueOf(ag.c().r() / 1000L));
-    paramHandler.c.put("param.uinhash", Long.valueOf(l));
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int c(long paramLong, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3001);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_get_safe_protection_v2", 3, paramHandler, 3001);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int c(long paramLong, String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_verify_mobile_code", 2, paramHandler, 3029);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.smscode", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int c(Handler paramHandler)
-  {
-    fs localfs = new fs("mbtoken3_get_key_value_conf", 2, paramHandler, 3023);
-    Object localObject = bi.a(localfs.a);
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((bm)localObject).c())
-    {
-      if ((localObject == null) || (((ft)localObject).a == null)) {
-        break label133;
-      }
-      try
-      {
-        NewConfigureCacheItem localNewConfigureCacheItem = ba.a().h.a("key_value");
-        localObject = new JSONObject((String)((ft)localObject).a);
-        if (((JSONObject)localObject).getInt("key_value_version") < localNewConfigureCacheItem.mClientVersion) {
-          break label133;
-        }
-        localObject = ((JSONObject)localObject).getJSONObject("data");
-        paramHandler = paramHandler.obtainMessage(3023);
-        paramHandler.arg1 = 0;
-        paramHandler.obj = ((JSONObject)localObject).toString();
-        paramHandler.sendToTarget();
-        return 0;
-      }
-      catch (JSONException paramHandler)
-      {
-        paramHandler.printStackTrace();
-      }
-    }
-    label133:
-    this.c.a(localfs);
-    return 0;
-  }
-  
-  public final int c(String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_query_malicious_url", 2, paramHandler, 3053);
-    paramHandler.c.put("param.barcode.url", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int d(long paramLong, int paramInt, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3044);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_query_jl_role_list", 3, paramHandler, 3044);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.jl_worldid", Integer.valueOf(paramInt));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int d(long paramLong, Handler paramHandler)
-  {
-    Object localObject = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3004);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_eval_account_v3", 3, paramHandler, 3004);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    e.c("account page ProtoGetEvalAccountResult packet params: user =" + paramLong);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int d(long paramLong, String paramString, Handler paramHandler)
-  {
-    QQUser localQQUser = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3060);
-        paramHandler = new d((byte)0);
-        paramHandler.a(110, null, null);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    a += 1;
-    paramHandler = new fs("mbtoken3_get_login_prot", 3, paramHandler, 3060);
-    int i = a;
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.wtlogin.a2", paramString);
-    paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int d(Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_activate_token", 2, paramHandler, 3025);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int d(String paramString, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_report_dns", 2, paramHandler, 3041);
-    paramHandler.c.put("param.reportdns.domain", paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int e(long paramLong, int paramInt, Handler paramHandler)
-  {
-    a += 1;
-    paramHandler = new fs("mbtoken3_login_v2", 2, paramHandler, 10002);
-    int i = a;
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.loginv2.clearkick", Integer.valueOf(paramInt));
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int e(long paramLong, Handler paramHandler)
-  {
-    Object localObject = ax.a().e();
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3010);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_get_mbinfo", 3, paramHandler, 3010);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    paramHandler.c.put("param.uinhash", Long.valueOf(l));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int e(Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_qry_bind_notify_msg", 2, paramHandler, 3043);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int f(long paramLong, int paramInt, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_query_captcha", 2, paramHandler, 3071);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.scene.id", Integer.valueOf(paramInt));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int f(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_get_mobile_code_v2", 2, paramHandler, 3031);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int f(Handler paramHandler)
-  {
-    if ((0L == 0L) && (ax.a().e() == null))
-    {
-      paramHandler = paramHandler.obtainMessage(3049);
-      d locald = new d((byte)0);
-      locald.a(110, null, null);
-      paramHandler.arg1 = locald.a;
-      paramHandler.obj = locald;
-      paramHandler.sendToTarget();
-      return -1;
-    }
-    paramHandler = new fs("mbtoken3_query_jl_zone_list", 2, paramHandler, 3049);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int g(long paramLong, int paramInt, Handler paramHandler)
-  {
-    a += 1;
-    paramHandler = new fs("mbtoken3_bind_token_by_realname", 2, paramHandler, 3074);
-    int i = a;
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.c.put("param.type", Integer.valueOf(paramInt));
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int g(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_query_real_uin_v2", 2, paramHandler, 1006);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int g(Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_get_domain", 2, paramHandler, 3062);
-    long l = 0L;
-    QQUser localQQUser = ax.a().e();
-    if (localQQUser != null) {
-      l = localQQUser.mRealUin;
-    }
-    paramHandler.c.put("param.realuin", Long.valueOf(l));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int h(long paramLong, int paramInt, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == -1L)
-    {
-      QQUser localQQUser = ax.a().e();
-      l = paramLong;
-      if (localQQUser != null) {
-        l = localQQUser.mRealUin;
-      }
-    }
-    paramHandler = new fs("mbtoken3_live_video_detect", 2, paramHandler, 3082);
-    ei.a(paramHandler, l, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int h(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_del_unvfy_uin", 2, paramHandler, 3036);
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int h(Handler paramHandler)
-  {
-    QQUser localQQUser = ax.a().e();
-    if (localQQUser == null) {}
-    for (long l = 0L;; l = localQQUser.mRealUin)
-    {
-      a += 1;
-      paramHandler = new fs("mbtoken3_detector_info", 2, paramHandler, 3079);
-      int i = a;
-      paramHandler.c.put("param.common.seq", Integer.valueOf(i));
-      paramHandler.c.put("param.realuin", Long.valueOf(l));
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public final int i(long paramLong, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3037);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_feedback_mobile_using", 2, paramHandler, 3037);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int j(long paramLong, Handler paramHandler)
-  {
-    if (0L == 0L)
-    {
-      Object localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3046);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new fs("mbtoken3_query_jl_appeal_list", 3, paramHandler, 3046);
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int k(long paramLong, Handler paramHandler)
-  {
-    Object localObject = ax.a().e();
-    if (0L == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3057);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    int i = a + 1;
-    a = i;
-    paramHandler = new fs("mbtoken3_security_reporter_v2", 3, paramHandler, 3057);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramHandler.c.put("param.type", Integer.valueOf(1));
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int l(long paramLong, Handler paramHandler)
-  {
-    Object localObject;
-    if (0L == 0L)
-    {
-      localObject = ax.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3064);
-        localObject = new d((byte)0);
-        ((d)localObject).a(110, null, null);
-        paramHandler.arg1 = ((d)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new fs("mbtoken3_realname_status_v2", 3, paramHandler, 3064);
-      a += 1;
-      long l = ((QQUser)localObject).mRealUin;
-      int i = a;
-      paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-      paramHandler.c.put("param.realuin", Long.valueOf(l));
-      paramHandler.j = i;
-      this.c.a(paramHandler);
-      return 0;
-      localObject = null;
-    }
-  }
-  
-  public final int m(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new fs("mbtoken3_realname_qry", 2, paramHandler, 3073);
-    a += 1;
-    int i = a;
-    paramHandler.c.put("param.realuin", Long.valueOf(paramLong));
-    paramHandler.j = i;
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public final int n(long paramLong, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (-1L == -1L)
-    {
-      QQUser localQQUser = ax.a().e();
-      l = paramLong;
-      if (localQQUser != null) {
-        l = localQQUser.mRealUin;
-      }
-    }
-    paramHandler = new fs("mbtoken3_auto_idcard_detect", 2, paramHandler, 3083);
-    ca.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   4: invokestatic 225	java/lang/System:currentTimeMillis	()J
+    //   7: putfield 227	com/tencent/token/ai:b	J
+    //   10: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   13: lstore 6
+    //   15: iconst_1
+    //   16: istore_3
+    //   17: iconst_0
+    //   18: istore 13
+    //   20: lconst_0
+    //   21: lstore 4
+    //   23: iconst_0
+    //   24: istore_1
+    //   25: aload_0
+    //   26: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   29: ifne +461 -> 490
+    //   32: aload_0
+    //   33: getfield 48	com/tencent/token/af:c	Z
+    //   36: ifne +90 -> 126
+    //   39: aload_0
+    //   40: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   43: invokevirtual 234	com/tencent/halley/downloader/c/d/b:a	()Z
+    //   46: ifeq +80 -> 126
+    //   49: invokestatic 236	com/tencent/token/o:b	()V
+    //   52: getstatic 116	com/tencent/token/o:a	Ljava/lang/String;
+    //   55: astore 14
+    //   57: aload_0
+    //   58: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   61: aload 14
+    //   63: invokevirtual 239	com/tencent/halley/downloader/c/d/b:a	(Ljava/lang/String;)Z
+    //   66: ifeq +60 -> 126
+    //   69: aload_0
+    //   70: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   73: getfield 241	com/tencent/halley/downloader/c/d/b:a	Lcom/tencent/halley/downloader/c/d/a;
+    //   76: getfield 244	com/tencent/halley/downloader/c/d/a:a	Ljava/lang/String;
+    //   79: bipush 10
+    //   81: aload_0
+    //   82: getfield 52	com/tencent/token/af:e	J
+    //   85: iconst_1
+    //   86: invokestatic 249	com/tencent/halley/a:a	(Ljava/lang/String;IJZ)Ljava/util/List;
+    //   89: astore 16
+    //   91: aload 16
+    //   93: ifnull +33 -> 126
+    //   96: invokestatic 236	com/tencent/token/o:b	()V
+    //   99: getstatic 116	com/tencent/token/o:a	Ljava/lang/String;
+    //   102: astore 15
+    //   104: aload 15
+    //   106: invokestatic 255	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   109: ifne +17 -> 126
+    //   112: aload 15
+    //   114: aload 14
+    //   116: invokevirtual 259	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   119: istore 12
+    //   121: iload 12
+    //   123: ifne +439 -> 562
+    //   126: aload_0
+    //   127: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   130: ifne +360 -> 490
+    //   133: aload_0
+    //   134: getfield 48	com/tencent/token/af:c	Z
+    //   137: ifne +10 -> 147
+    //   140: aload_0
+    //   141: getfield 75	com/tencent/token/af:r	Z
+    //   144: ifeq +346 -> 490
+    //   147: iload_1
+    //   148: ifle +24 -> 172
+    //   151: aload_0
+    //   152: getfield 68	com/tencent/token/af:o	Ljava/lang/Object;
+    //   155: astore 14
+    //   157: aload 14
+    //   159: monitorenter
+    //   160: aload_0
+    //   161: getfield 68	com/tencent/token/af:o	Ljava/lang/Object;
+    //   164: iload_1
+    //   165: i2l
+    //   166: invokevirtual 263	java/lang/Object:wait	(J)V
+    //   169: aload 14
+    //   171: monitorexit
+    //   172: aload_0
+    //   173: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   176: ifne +314 -> 490
+    //   179: lload 4
+    //   181: lconst_0
+    //   182: lcmp
+    //   183: ifne +2442 -> 2625
+    //   186: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   189: lstore 4
+    //   191: iload_3
+    //   192: ifeq +535 -> 727
+    //   195: aload_0
+    //   196: getfield 56	com/tencent/token/af:i	I
+    //   199: sipush 404
+    //   202: if_icmpeq +12 -> 214
+    //   205: aload_0
+    //   206: getfield 56	com/tencent/token/af:i	I
+    //   209: bipush 246
+    //   211: if_icmpne +510 -> 721
+    //   214: iconst_1
+    //   215: istore 12
+    //   217: aload_0
+    //   218: aload_0
+    //   219: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   222: getstatic 116	com/tencent/token/o:a	Ljava/lang/String;
+    //   225: aload_0
+    //   226: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   229: aload_0
+    //   230: getfield 48	com/tencent/token/af:c	Z
+    //   233: iload 12
+    //   235: invokevirtual 268	com/tencent/halley/downloader/c/d/b:a	(Ljava/lang/String;Lcom/tencent/halley/downloader/c/d/a;ZZ)Lcom/tencent/halley/downloader/c/d/a;
+    //   238: putfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   241: ldc 128
+    //   243: new 130	java/lang/StringBuilder
+    //   246: dup
+    //   247: ldc_w 270
+    //   250: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   253: aload_0
+    //   254: getfield 48	com/tencent/token/af:c	Z
+    //   257: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   260: ldc_w 272
+    //   263: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: aload_0
+    //   267: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   270: getfield 274	com/tencent/halley/downloader/c/d/a:b	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   273: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   276: ldc_w 276
+    //   279: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: iload 12
+    //   284: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   287: ldc 146
+    //   289: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: aload_0
+    //   293: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   296: getfield 244	com/tencent/halley/downloader/c/d/a:a	Ljava/lang/String;
+    //   299: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokestatic 155	com/tencent/halley/common/c:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   308: aload_0
+    //   309: aload_0
+    //   310: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   313: aload_0
+    //   314: invokeinterface 279 2 0
+    //   319: putfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   322: ldc 164
+    //   324: new 130	java/lang/StringBuilder
+    //   327: dup
+    //   328: ldc_w 270
+    //   331: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   334: aload_0
+    //   335: getfield 48	com/tencent/token/af:c	Z
+    //   338: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   341: ldc_w 281
+    //   344: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: aload_0
+    //   348: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   351: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   354: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   357: invokestatic 283	com/tencent/halley/common/c:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   360: aload_0
+    //   361: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   364: ifnull +126 -> 490
+    //   367: iload 13
+    //   369: istore 12
+    //   371: iload 13
+    //   373: ifeq +16 -> 389
+    //   376: iload 13
+    //   378: istore 12
+    //   380: invokestatic 285	com/tencent/token/o:d	()Z
+    //   383: ifne +6 -> 389
+    //   386: iconst_0
+    //   387: istore 12
+    //   389: iconst_m1
+    //   390: istore_1
+    //   391: iload 12
+    //   393: ifeq +7 -> 400
+    //   396: invokestatic 289	com/tencent/token/h:f	()I
+    //   399: istore_1
+    //   400: aload_0
+    //   401: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   404: iload_1
+    //   405: aload_0
+    //   406: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   409: invokeinterface 290 1 0
+    //   414: invokevirtual 293	com/tencent/token/ad:a	(IZ)Lcom/tencent/token/j;
+    //   417: astore 15
+    //   419: new 295	com/tencent/token/n
+    //   422: dup
+    //   423: aload_0
+    //   424: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   427: getfield 244	com/tencent/halley/downloader/c/d/a:a	Ljava/lang/String;
+    //   430: aload_0
+    //   431: getfield 54	com/tencent/token/af:h	Ljava/util/Map;
+    //   434: aload 15
+    //   436: iload 12
+    //   438: aload_0
+    //   439: invokespecial 298	com/tencent/token/n:<init>	(Ljava/lang/String;Ljava/util/Map;Lcom/tencent/token/j;ZLcom/tencent/token/u;)V
+    //   442: astore 14
+    //   444: aload_0
+    //   445: aload 14
+    //   447: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   450: aload_0
+    //   451: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   454: istore 13
+    //   456: iload 13
+    //   458: ifeq +431 -> 889
+    //   461: aload_0
+    //   462: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   465: aload_0
+    //   466: invokeinterface 301 2 0
+    //   471: aload_0
+    //   472: aconst_null
+    //   473: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   476: aload_0
+    //   477: aload 14
+    //   479: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   482: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   485: aload 14
+    //   487: invokevirtual 305	com/tencent/token/n:q	()V
+    //   490: ldc 128
+    //   492: new 130	java/lang/StringBuilder
+    //   495: dup
+    //   496: ldc_w 307
+    //   499: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   502: aload_0
+    //   503: getfield 56	com/tencent/token/af:i	I
+    //   506: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   509: ldc_w 309
+    //   512: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: aload_0
+    //   516: getfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   519: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   525: invokestatic 311	com/tencent/halley/common/c:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   528: aload_0
+    //   529: iconst_1
+    //   530: putfield 64	com/tencent/token/af:l	Z
+    //   533: aload_0
+    //   534: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   537: invokestatic 225	java/lang/System:currentTimeMillis	()J
+    //   540: aload_0
+    //   541: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   544: getfield 227	com/tencent/token/ai:b	J
+    //   547: lsub
+    //   548: putfield 313	com/tencent/token/ai:c	J
+    //   551: aload_0
+    //   552: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   555: aload_0
+    //   556: invokeinterface 315 2 0
+    //   561: return
+    //   562: aload_0
+    //   563: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   566: aload 15
+    //   568: invokevirtual 317	com/tencent/halley/downloader/c/d/b:c	(Ljava/lang/String;)V
+    //   571: aload 16
+    //   573: invokeinterface 100 1 0
+    //   578: astore 16
+    //   580: aload 16
+    //   582: invokeinterface 106 1 0
+    //   587: ifeq -461 -> 126
+    //   590: aload 16
+    //   592: invokeinterface 110 1 0
+    //   597: checkcast 112	java/lang/String
+    //   600: astore 17
+    //   602: aload 17
+    //   604: invokestatic 255	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   607: ifne -27 -> 580
+    //   610: getstatic 319	com/tencent/halley/downloader/c/d/a$a:f	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   613: astore 14
+    //   615: aload 17
+    //   617: invokevirtual 322	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   620: ldc_w 324
+    //   623: invokevirtual 327	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   626: ifeq +8 -> 634
+    //   629: getstatic 329	com/tencent/halley/downloader/c/d/a$a:j	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   632: astore 14
+    //   634: aload_0
+    //   635: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   638: aload 15
+    //   640: aload 17
+    //   642: aload 14
+    //   644: invokevirtual 126	com/tencent/halley/downloader/c/d/b:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/halley/downloader/c/d/a$a;)V
+    //   647: ldc 128
+    //   649: new 130	java/lang/StringBuilder
+    //   652: dup
+    //   653: ldc_w 331
+    //   656: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   659: aload 15
+    //   661: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   664: ldc 141
+    //   666: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   669: aload 14
+    //   671: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   674: ldc 146
+    //   676: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   679: aload 17
+    //   681: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   684: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   687: invokestatic 155	com/tencent/halley/common/c:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   690: goto -110 -> 580
+    //   693: astore 14
+    //   695: aload 14
+    //   697: invokevirtual 334	java/lang/Exception:printStackTrace	()V
+    //   700: goto -574 -> 126
+    //   703: astore 15
+    //   705: aload 15
+    //   707: invokevirtual 335	java/lang/InterruptedException:printStackTrace	()V
+    //   710: goto -541 -> 169
+    //   713: astore 15
+    //   715: aload 14
+    //   717: monitorexit
+    //   718: aload 15
+    //   720: athrow
+    //   721: iconst_0
+    //   722: istore 12
+    //   724: goto -507 -> 217
+    //   727: aload_0
+    //   728: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   731: getfield 274	com/tencent/halley/downloader/c/d/a:b	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   734: getstatic 336	com/tencent/halley/downloader/c/d/a$a:b	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   737: if_acmpeq +16 -> 753
+    //   740: aload_0
+    //   741: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   744: getfield 274	com/tencent/halley/downloader/c/d/a:b	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   747: getstatic 338	com/tencent/halley/downloader/c/d/a$a:a	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   750: if_acmpne +80 -> 830
+    //   753: aload_0
+    //   754: aload_0
+    //   755: getfield 77	com/tencent/token/af:d	Lcom/tencent/halley/downloader/c/d/b;
+    //   758: getstatic 116	com/tencent/token/o:a	Ljava/lang/String;
+    //   761: aload_0
+    //   762: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   765: invokevirtual 341	com/tencent/halley/downloader/c/d/b:a	(Ljava/lang/String;Lcom/tencent/halley/downloader/c/d/a;)Lcom/tencent/halley/downloader/c/d/a;
+    //   768: putfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   771: ldc 128
+    //   773: new 130	java/lang/StringBuilder
+    //   776: dup
+    //   777: ldc_w 270
+    //   780: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   783: aload_0
+    //   784: getfield 48	com/tencent/token/af:c	Z
+    //   787: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   790: ldc_w 343
+    //   793: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   796: aload_0
+    //   797: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   800: getfield 274	com/tencent/halley/downloader/c/d/a:b	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   803: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   806: ldc 146
+    //   808: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   811: aload_0
+    //   812: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   815: getfield 244	com/tencent/halley/downloader/c/d/a:a	Ljava/lang/String;
+    //   818: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   821: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   824: invokestatic 155	com/tencent/halley/common/c:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   827: goto -519 -> 308
+    //   830: ldc 128
+    //   832: new 130	java/lang/StringBuilder
+    //   835: dup
+    //   836: ldc_w 270
+    //   839: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   842: aload_0
+    //   843: getfield 48	com/tencent/token/af:c	Z
+    //   846: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   849: ldc_w 345
+    //   852: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   855: aload_0
+    //   856: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   859: getfield 274	com/tencent/halley/downloader/c/d/a:b	Lcom/tencent/halley/downloader/c/d/a$a;
+    //   862: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   865: ldc 146
+    //   867: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   870: aload_0
+    //   871: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   874: getfield 244	com/tencent/halley/downloader/c/d/a:a	Ljava/lang/String;
+    //   877: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   880: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   883: invokestatic 155	com/tencent/halley/common/c:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   886: goto -578 -> 308
+    //   889: aload_0
+    //   890: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   893: astore 16
+    //   895: aload 16
+    //   897: getfield 347	com/tencent/token/ai:d	I
+    //   900: istore_1
+    //   901: aload 16
+    //   903: iload_1
+    //   904: iconst_1
+    //   905: iadd
+    //   906: putfield 347	com/tencent/token/ai:d	I
+    //   909: new 349	com/tencent/token/aj
+    //   912: dup
+    //   913: iload_1
+    //   914: aload_0
+    //   915: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   918: invokespecial 352	com/tencent/token/aj:<init>	(ILcom/tencent/halley/downloader/c/d/a;)V
+    //   921: astore 16
+    //   923: aload 16
+    //   925: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   928: lload 6
+    //   930: lsub
+    //   931: putfield 353	com/tencent/token/aj:c	J
+    //   934: aload 16
+    //   936: iload 12
+    //   938: putfield 354	com/tencent/token/aj:a	Z
+    //   941: aload 16
+    //   943: aload_0
+    //   944: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   947: invokevirtual 355	com/tencent/token/ad:toString	()Ljava/lang/String;
+    //   950: putfield 357	com/tencent/token/aj:b	Ljava/lang/String;
+    //   953: aload 16
+    //   955: aload 15
+    //   957: invokevirtual 360	com/tencent/token/j:toString	()Ljava/lang/String;
+    //   960: putfield 362	com/tencent/token/aj:f	Ljava/lang/String;
+    //   963: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   966: lstore 8
+    //   968: aload 14
+    //   970: invokevirtual 364	com/tencent/token/n:p	()V
+    //   973: aload_0
+    //   974: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   977: istore 13
+    //   979: iload 13
+    //   981: ifeq +35 -> 1016
+    //   984: aload_0
+    //   985: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   988: aload_0
+    //   989: invokeinterface 301 2 0
+    //   994: aload_0
+    //   995: aconst_null
+    //   996: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   999: aload_0
+    //   1000: aload 14
+    //   1002: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1005: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1008: aload 14
+    //   1010: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1013: goto -523 -> 490
+    //   1016: aload_0
+    //   1017: aload 14
+    //   1019: invokevirtual 366	com/tencent/token/n:a	()I
+    //   1022: putfield 56	com/tencent/token/af:i	I
+    //   1025: aload_0
+    //   1026: aload 14
+    //   1028: invokevirtual 368	com/tencent/token/n:b	()Ljava/lang/String;
+    //   1031: putfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   1034: aload 16
+    //   1036: aload_0
+    //   1037: getfield 56	com/tencent/token/af:i	I
+    //   1040: putfield 370	com/tencent/token/aj:e	I
+    //   1043: aload 16
+    //   1045: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   1048: lload 6
+    //   1050: lsub
+    //   1051: putfield 372	com/tencent/token/aj:d	J
+    //   1054: aload 16
+    //   1056: aload 14
+    //   1058: invokevirtual 374	com/tencent/token/n:g	()Ljava/lang/String;
+    //   1061: putfield 376	com/tencent/token/aj:g	Ljava/lang/String;
+    //   1064: aload 16
+    //   1066: aload 14
+    //   1068: invokevirtual 378	com/tencent/token/n:i	()Ljava/lang/String;
+    //   1071: putfield 380	com/tencent/token/aj:i	Ljava/lang/String;
+    //   1074: aload 16
+    //   1076: aload 14
+    //   1078: invokevirtual 382	com/tencent/token/n:j	()Ljava/lang/String;
+    //   1081: putfield 383	com/tencent/token/aj:j	Ljava/lang/String;
+    //   1084: aload 16
+    //   1086: aload 14
+    //   1088: invokevirtual 385	com/tencent/token/n:c	()J
+    //   1091: putfield 387	com/tencent/token/aj:h	J
+    //   1094: aload 16
+    //   1096: aload 14
+    //   1098: invokevirtual 389	com/tencent/token/n:h	()Ljava/lang/String;
+    //   1101: putfield 391	com/tencent/token/aj:k	Ljava/lang/String;
+    //   1104: aload 16
+    //   1106: aload 14
+    //   1108: invokevirtual 393	com/tencent/token/n:k	()Ljava/lang/String;
+    //   1111: putfield 395	com/tencent/token/aj:l	Ljava/lang/String;
+    //   1114: aload 16
+    //   1116: aload 14
+    //   1118: invokevirtual 397	com/tencent/token/n:l	()Ljava/lang/String;
+    //   1121: putfield 399	com/tencent/token/aj:m	Ljava/lang/String;
+    //   1124: aload 16
+    //   1126: aload 14
+    //   1128: iconst_0
+    //   1129: invokevirtual 402	com/tencent/token/n:a	(Z)Ljava/lang/String;
+    //   1132: putfield 404	com/tencent/token/aj:r	Ljava/lang/String;
+    //   1135: aload 16
+    //   1137: aload 14
+    //   1139: invokevirtual 406	com/tencent/token/n:f	()Ljava/lang/String;
+    //   1142: putfield 409	com/tencent/token/aj:s	Ljava/lang/String;
+    //   1145: aload_0
+    //   1146: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   1149: aload 16
+    //   1151: invokevirtual 412	com/tencent/token/ai:a	(Lcom/tencent/token/aj;)V
+    //   1154: aload_0
+    //   1155: getfield 56	com/tencent/token/af:i	I
+    //   1158: bipush 203
+    //   1160: if_icmpne +1454 -> 2614
+    //   1163: aload_0
+    //   1164: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1167: invokeinterface 290 1 0
+    //   1172: ifne +1442 -> 2614
+    //   1175: new 295	com/tencent/token/n
+    //   1178: dup
+    //   1179: aload_0
+    //   1180: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   1183: getfield 244	com/tencent/halley/downloader/c/d/a:a	Ljava/lang/String;
+    //   1186: aload_0
+    //   1187: getfield 54	com/tencent/token/af:h	Ljava/util/Map;
+    //   1190: aconst_null
+    //   1191: iload 12
+    //   1193: aload_0
+    //   1194: invokespecial 298	com/tencent/token/n:<init>	(Ljava/lang/String;Ljava/util/Map;Lcom/tencent/token/j;ZLcom/tencent/token/u;)V
+    //   1197: astore 16
+    //   1199: aload_0
+    //   1200: aload 16
+    //   1202: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1205: aload_0
+    //   1206: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   1209: istore 13
+    //   1211: iload 13
+    //   1213: ifeq +35 -> 1248
+    //   1216: aload_0
+    //   1217: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1220: aload_0
+    //   1221: invokeinterface 301 2 0
+    //   1226: aload_0
+    //   1227: aconst_null
+    //   1228: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1231: aload_0
+    //   1232: aload 16
+    //   1234: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1237: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1240: aload 16
+    //   1242: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1245: goto -755 -> 490
+    //   1248: aload_0
+    //   1249: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   1252: astore 14
+    //   1254: aload 14
+    //   1256: getfield 347	com/tencent/token/ai:d	I
+    //   1259: istore_1
+    //   1260: aload 14
+    //   1262: iload_1
+    //   1263: iconst_1
+    //   1264: iadd
+    //   1265: putfield 347	com/tencent/token/ai:d	I
+    //   1268: new 349	com/tencent/token/aj
+    //   1271: dup
+    //   1272: iload_1
+    //   1273: aload_0
+    //   1274: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   1277: invokespecial 352	com/tencent/token/aj:<init>	(ILcom/tencent/halley/downloader/c/d/a;)V
+    //   1280: astore 14
+    //   1282: aload 14
+    //   1284: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   1287: lload 6
+    //   1289: lsub
+    //   1290: putfield 353	com/tencent/token/aj:c	J
+    //   1293: aload 14
+    //   1295: iload 12
+    //   1297: putfield 354	com/tencent/token/aj:a	Z
+    //   1300: aload 14
+    //   1302: aload_0
+    //   1303: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   1306: invokevirtual 355	com/tencent/token/ad:toString	()Ljava/lang/String;
+    //   1309: putfield 357	com/tencent/token/aj:b	Ljava/lang/String;
+    //   1312: aload 14
+    //   1314: ldc 58
+    //   1316: putfield 362	com/tencent/token/aj:f	Ljava/lang/String;
+    //   1319: aload 16
+    //   1321: invokevirtual 364	com/tencent/token/n:p	()V
+    //   1324: aload_0
+    //   1325: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   1328: istore 13
+    //   1330: iload 13
+    //   1332: ifeq +35 -> 1367
+    //   1335: aload_0
+    //   1336: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1339: aload_0
+    //   1340: invokeinterface 301 2 0
+    //   1345: aload_0
+    //   1346: aconst_null
+    //   1347: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1350: aload_0
+    //   1351: aload 16
+    //   1353: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1356: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1359: aload 16
+    //   1361: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1364: goto -874 -> 490
+    //   1367: aload_0
+    //   1368: aload 16
+    //   1370: invokevirtual 366	com/tencent/token/n:a	()I
+    //   1373: putfield 56	com/tencent/token/af:i	I
+    //   1376: aload_0
+    //   1377: aload 16
+    //   1379: invokevirtual 368	com/tencent/token/n:b	()Ljava/lang/String;
+    //   1382: putfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   1385: aload 14
+    //   1387: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   1390: lload 6
+    //   1392: lsub
+    //   1393: putfield 372	com/tencent/token/aj:d	J
+    //   1396: aload 14
+    //   1398: aload 16
+    //   1400: invokevirtual 374	com/tencent/token/n:g	()Ljava/lang/String;
+    //   1403: putfield 376	com/tencent/token/aj:g	Ljava/lang/String;
+    //   1406: aload 14
+    //   1408: aload 16
+    //   1410: invokevirtual 378	com/tencent/token/n:i	()Ljava/lang/String;
+    //   1413: putfield 380	com/tencent/token/aj:i	Ljava/lang/String;
+    //   1416: aload 14
+    //   1418: aload 16
+    //   1420: invokevirtual 382	com/tencent/token/n:j	()Ljava/lang/String;
+    //   1423: putfield 383	com/tencent/token/aj:j	Ljava/lang/String;
+    //   1426: aload 14
+    //   1428: aload 16
+    //   1430: invokevirtual 385	com/tencent/token/n:c	()J
+    //   1433: putfield 387	com/tencent/token/aj:h	J
+    //   1436: aload 14
+    //   1438: aload 16
+    //   1440: invokevirtual 389	com/tencent/token/n:h	()Ljava/lang/String;
+    //   1443: putfield 391	com/tencent/token/aj:k	Ljava/lang/String;
+    //   1446: aload 14
+    //   1448: aload 16
+    //   1450: invokevirtual 393	com/tencent/token/n:k	()Ljava/lang/String;
+    //   1453: putfield 395	com/tencent/token/aj:l	Ljava/lang/String;
+    //   1456: aload 14
+    //   1458: aload 16
+    //   1460: invokevirtual 397	com/tencent/token/n:l	()Ljava/lang/String;
+    //   1463: putfield 399	com/tencent/token/aj:m	Ljava/lang/String;
+    //   1466: aload 14
+    //   1468: aload 16
+    //   1470: iconst_0
+    //   1471: invokevirtual 402	com/tencent/token/n:a	(Z)Ljava/lang/String;
+    //   1474: putfield 404	com/tencent/token/aj:r	Ljava/lang/String;
+    //   1477: aload 14
+    //   1479: aload 16
+    //   1481: invokevirtual 406	com/tencent/token/n:f	()Ljava/lang/String;
+    //   1484: putfield 409	com/tencent/token/aj:s	Ljava/lang/String;
+    //   1487: aload_0
+    //   1488: getfield 73	com/tencent/token/af:p	Lcom/tencent/token/ai;
+    //   1491: aload 14
+    //   1493: invokevirtual 412	com/tencent/token/ai:a	(Lcom/tencent/token/aj;)V
+    //   1496: aload 16
+    //   1498: astore 15
+    //   1500: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   1503: lstore 10
+    //   1505: ldc 128
+    //   1507: new 130	java/lang/StringBuilder
+    //   1510: dup
+    //   1511: ldc_w 270
+    //   1514: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1517: aload_0
+    //   1518: getfield 48	com/tencent/token/af:c	Z
+    //   1521: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1524: ldc_w 414
+    //   1527: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1530: aload_0
+    //   1531: getfield 56	com/tencent/token/af:i	I
+    //   1534: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1537: ldc_w 309
+    //   1540: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1543: aload_0
+    //   1544: getfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   1547: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1550: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1553: invokestatic 283	com/tencent/halley/common/c:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1556: aload_0
+    //   1557: getfield 56	com/tencent/token/af:i	I
+    //   1560: ifeq +151 -> 1711
+    //   1563: aload_0
+    //   1564: getfield 56	com/tencent/token/af:i	I
+    //   1567: istore_1
+    //   1568: iload_1
+    //   1569: bipush 245
+    //   1571: if_icmpne +35 -> 1606
+    //   1574: aload_0
+    //   1575: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1578: aload_0
+    //   1579: invokeinterface 301 2 0
+    //   1584: aload_0
+    //   1585: aconst_null
+    //   1586: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1589: aload_0
+    //   1590: aload 15
+    //   1592: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1595: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1598: aload 15
+    //   1600: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1603: goto -1113 -> 490
+    //   1606: aload_0
+    //   1607: getfield 56	com/tencent/token/af:i	I
+    //   1610: bipush 197
+    //   1612: if_icmpne +68 -> 1680
+    //   1615: iconst_1
+    //   1616: istore 12
+    //   1618: iconst_0
+    //   1619: istore_3
+    //   1620: goto +1008 -> 2628
+    //   1623: iload_2
+    //   1624: ifeq +760 -> 2384
+    //   1627: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   1630: lstore 8
+    //   1632: invokestatic 416	com/tencent/token/h:i	()I
+    //   1635: pop
+    //   1636: lload 8
+    //   1638: lload 4
+    //   1640: lsub
+    //   1641: ldc2_w 417
+    //   1644: lcmp
+    //   1645: ifle +523 -> 2168
+    //   1648: aload_0
+    //   1649: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1652: aload_0
+    //   1653: invokeinterface 301 2 0
+    //   1658: aload_0
+    //   1659: aconst_null
+    //   1660: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1663: aload_0
+    //   1664: aload 15
+    //   1666: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1669: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1672: aload 15
+    //   1674: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1677: goto -1187 -> 490
+    //   1680: iconst_1
+    //   1681: istore_3
+    //   1682: goto +946 -> 2628
+    //   1685: aload_0
+    //   1686: getfield 56	com/tencent/token/af:i	I
+    //   1689: istore_1
+    //   1690: iload_1
+    //   1691: bipush 240
+    //   1693: if_icmpeq +954 -> 2647
+    //   1696: iload_1
+    //   1697: bipush 241
+    //   1699: if_icmpeq +948 -> 2647
+    //   1702: iload_1
+    //   1703: bipush 204
+    //   1705: if_icmpne +957 -> 2662
+    //   1708: goto +939 -> 2647
+    //   1711: aload_0
+    //   1712: aload 15
+    //   1714: invokespecial 420	com/tencent/token/af:a	(Lcom/tencent/token/i;)V
+    //   1717: aload_0
+    //   1718: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   1721: istore 13
+    //   1723: iload 13
+    //   1725: ifeq +35 -> 1760
+    //   1728: aload_0
+    //   1729: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1732: aload_0
+    //   1733: invokeinterface 301 2 0
+    //   1738: aload_0
+    //   1739: aconst_null
+    //   1740: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1743: aload_0
+    //   1744: aload 15
+    //   1746: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1749: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1752: aload 15
+    //   1754: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1757: goto -1267 -> 490
+    //   1760: aload_0
+    //   1761: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1764: aload_0
+    //   1765: aload_0
+    //   1766: getfield 265	com/tencent/token/af:b	Lcom/tencent/halley/downloader/c/d/a;
+    //   1769: aload 15
+    //   1771: invokevirtual 422	com/tencent/token/n:e	()Ljava/lang/String;
+    //   1774: aload 15
+    //   1776: invokevirtual 385	com/tencent/token/n:c	()J
+    //   1779: aload 15
+    //   1781: invokevirtual 424	com/tencent/token/n:o	()Z
+    //   1784: aload 15
+    //   1786: invokevirtual 393	com/tencent/token/n:k	()Ljava/lang/String;
+    //   1789: aload 15
+    //   1791: invokevirtual 397	com/tencent/token/n:l	()Ljava/lang/String;
+    //   1794: aload 15
+    //   1796: invokevirtual 389	com/tencent/token/n:h	()Ljava/lang/String;
+    //   1799: aload 15
+    //   1801: invokevirtual 426	com/tencent/token/n:m	()Ljava/lang/String;
+    //   1804: invokeinterface 429 11 0
+    //   1809: astore 16
+    //   1811: ldc 128
+    //   1813: new 130	java/lang/StringBuilder
+    //   1816: dup
+    //   1817: ldc_w 270
+    //   1820: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1823: aload_0
+    //   1824: getfield 48	com/tencent/token/af:c	Z
+    //   1827: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1830: ldc_w 431
+    //   1833: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1836: aload 16
+    //   1838: getfield 435	com/tencent/halley/common/g:a	I
+    //   1841: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1844: ldc 210
+    //   1846: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1849: aload 16
+    //   1851: getfield 436	com/tencent/halley/common/g:b	Ljava/lang/String;
+    //   1854: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1857: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1860: invokestatic 283	com/tencent/halley/common/c:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1863: aload_0
+    //   1864: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   1867: istore 13
+    //   1869: iload 13
+    //   1871: ifeq +35 -> 1906
+    //   1874: aload_0
+    //   1875: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1878: aload_0
+    //   1879: invokeinterface 301 2 0
+    //   1884: aload_0
+    //   1885: aconst_null
+    //   1886: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1889: aload_0
+    //   1890: aload 15
+    //   1892: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1895: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1898: aload 15
+    //   1900: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1903: goto -1413 -> 490
+    //   1906: aload 14
+    //   1908: aload 16
+    //   1910: getfield 435	com/tencent/halley/common/g:a	I
+    //   1913: putfield 438	com/tencent/token/aj:n	I
+    //   1916: aload 16
+    //   1918: getfield 435	com/tencent/halley/common/g:a	I
+    //   1921: ifne +210 -> 2131
+    //   1924: aload_0
+    //   1925: invokevirtual 233	com/tencent/token/af:a	()Z
+    //   1928: istore 13
+    //   1930: iload 13
+    //   1932: ifeq +35 -> 1967
+    //   1935: aload_0
+    //   1936: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   1939: aload_0
+    //   1940: invokeinterface 301 2 0
+    //   1945: aload_0
+    //   1946: aconst_null
+    //   1947: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   1950: aload_0
+    //   1951: aload 15
+    //   1953: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   1956: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   1959: aload 15
+    //   1961: invokevirtual 305	com/tencent/token/n:q	()V
+    //   1964: goto -1474 -> 490
+    //   1967: ldc 128
+    //   1969: new 130	java/lang/StringBuilder
+    //   1972: dup
+    //   1973: ldc_w 270
+    //   1976: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1979: aload_0
+    //   1980: getfield 48	com/tencent/token/af:c	Z
+    //   1983: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1986: ldc_w 440
+    //   1989: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1992: aload_0
+    //   1993: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   1996: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1999: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2002: invokestatic 283	com/tencent/halley/common/c:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2005: aload 15
+    //   2007: aload_0
+    //   2008: invokevirtual 443	com/tencent/token/n:a	(Lcom/tencent/token/l;)V
+    //   2011: aload_0
+    //   2012: aload 15
+    //   2014: invokevirtual 366	com/tencent/token/n:a	()I
+    //   2017: putfield 56	com/tencent/token/af:i	I
+    //   2020: aload_0
+    //   2021: aload 15
+    //   2023: invokevirtual 368	com/tencent/token/n:b	()Ljava/lang/String;
+    //   2026: putfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   2029: ldc 128
+    //   2031: new 130	java/lang/StringBuilder
+    //   2034: dup
+    //   2035: ldc_w 270
+    //   2038: invokespecial 135	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2041: aload_0
+    //   2042: getfield 48	com/tencent/token/af:c	Z
+    //   2045: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2048: ldc_w 445
+    //   2051: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2054: aload_0
+    //   2055: getfield 56	com/tencent/token/af:i	I
+    //   2058: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2061: ldc_w 447
+    //   2064: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2067: aload_0
+    //   2068: getfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   2071: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2074: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2077: invokestatic 283	com/tencent/halley/common/c:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2080: aload 14
+    //   2082: aload_0
+    //   2083: getfield 56	com/tencent/token/af:i	I
+    //   2086: putfield 449	com/tencent/token/aj:o	I
+    //   2089: aload 14
+    //   2091: aload_0
+    //   2092: getfield 178	com/tencent/token/af:a	Lcom/tencent/token/ad;
+    //   2095: invokevirtual 355	com/tencent/token/ad:toString	()Ljava/lang/String;
+    //   2098: putfield 451	com/tencent/token/aj:p	Ljava/lang/String;
+    //   2101: aload 14
+    //   2103: invokestatic 232	android/os/SystemClock:elapsedRealtime	()J
+    //   2106: lload 6
+    //   2108: lsub
+    //   2109: putfield 453	com/tencent/token/aj:q	J
+    //   2112: aload_0
+    //   2113: getfield 56	com/tencent/token/af:i	I
+    //   2116: ifeq +560 -> 2676
+    //   2119: iconst_1
+    //   2120: istore_3
+    //   2121: iconst_0
+    //   2122: istore_1
+    //   2123: lconst_0
+    //   2124: lstore 4
+    //   2126: iconst_0
+    //   2127: istore_2
+    //   2128: goto -505 -> 1623
+    //   2131: aload 16
+    //   2133: getfield 435	com/tencent/halley/common/g:a	I
+    //   2136: ifge +552 -> 2688
+    //   2139: aload_0
+    //   2140: aload 16
+    //   2142: getfield 435	com/tencent/halley/common/g:a	I
+    //   2145: putfield 56	com/tencent/token/af:i	I
+    //   2148: aload_0
+    //   2149: aload 16
+    //   2151: getfield 436	com/tencent/halley/common/g:b	Ljava/lang/String;
+    //   2154: putfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   2157: iconst_1
+    //   2158: istore_3
+    //   2159: iconst_1
+    //   2160: istore_2
+    //   2161: sipush 1000
+    //   2164: istore_1
+    //   2165: goto -542 -> 1623
+    //   2168: aload_0
+    //   2169: getfield 56	com/tencent/token/af:i	I
+    //   2172: istore_2
+    //   2173: iload_2
+    //   2174: bipush 240
+    //   2176: if_icmpeq +523 -> 2699
+    //   2179: iload_2
+    //   2180: bipush 241
+    //   2182: if_icmpeq +517 -> 2699
+    //   2185: iload_2
+    //   2186: bipush 204
+    //   2188: if_icmpne +58 -> 2246
+    //   2191: goto +508 -> 2699
+    //   2194: iload_2
+    //   2195: ifeq +56 -> 2251
+    //   2198: invokestatic 455	com/tencent/token/h:j	()I
+    //   2201: pop
+    //   2202: lload 8
+    //   2204: lload 4
+    //   2206: lsub
+    //   2207: ldc2_w 456
+    //   2210: lcmp
+    //   2211: ifle +40 -> 2251
+    //   2214: aload_0
+    //   2215: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   2218: aload_0
+    //   2219: invokeinterface 301 2 0
+    //   2224: aload_0
+    //   2225: aconst_null
+    //   2226: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   2229: aload_0
+    //   2230: aload 15
+    //   2232: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   2235: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   2238: aload 15
+    //   2240: invokevirtual 305	com/tencent/token/n:q	()V
+    //   2243: goto -1753 -> 490
+    //   2246: iconst_0
+    //   2247: istore_2
+    //   2248: goto -54 -> 2194
+    //   2251: aload_0
+    //   2252: getfield 56	com/tencent/token/af:i	I
+    //   2255: istore_2
+    //   2256: iload_2
+    //   2257: bipush 246
+    //   2259: if_icmpeq +445 -> 2704
+    //   2262: iload_2
+    //   2263: bipush 213
+    //   2265: if_icmpne +58 -> 2323
+    //   2268: goto +436 -> 2704
+    //   2271: iload_2
+    //   2272: ifeq +56 -> 2328
+    //   2275: invokestatic 416	com/tencent/token/h:i	()I
+    //   2278: pop
+    //   2279: lload 8
+    //   2281: lload 4
+    //   2283: lsub
+    //   2284: ldc2_w 458
+    //   2287: lcmp
+    //   2288: ifle +40 -> 2328
+    //   2291: aload_0
+    //   2292: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   2295: aload_0
+    //   2296: invokeinterface 301 2 0
+    //   2301: aload_0
+    //   2302: aconst_null
+    //   2303: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   2306: aload_0
+    //   2307: aload 15
+    //   2309: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   2312: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   2315: aload 15
+    //   2317: invokevirtual 305	com/tencent/token/n:q	()V
+    //   2320: goto -1830 -> 490
+    //   2323: iconst_0
+    //   2324: istore_2
+    //   2325: goto -54 -> 2271
+    //   2328: aload_0
+    //   2329: getfield 56	com/tencent/token/af:i	I
+    //   2332: bipush 241
+    //   2334: if_icmpne +50 -> 2384
+    //   2337: invokestatic 461	com/tencent/token/h:k	()I
+    //   2340: istore_2
+    //   2341: lload 8
+    //   2343: lload 4
+    //   2345: lsub
+    //   2346: iload_2
+    //   2347: i2l
+    //   2348: lcmp
+    //   2349: ifle +35 -> 2384
+    //   2352: aload_0
+    //   2353: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   2356: aload_0
+    //   2357: invokeinterface 301 2 0
+    //   2362: aload_0
+    //   2363: aconst_null
+    //   2364: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   2367: aload_0
+    //   2368: aload 15
+    //   2370: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   2373: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   2376: aload 15
+    //   2378: invokevirtual 305	com/tencent/token/n:q	()V
+    //   2381: goto -1891 -> 490
+    //   2384: aload_0
+    //   2385: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   2388: aload_0
+    //   2389: invokeinterface 301 2 0
+    //   2394: aload_0
+    //   2395: aconst_null
+    //   2396: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   2399: aload_0
+    //   2400: aload 15
+    //   2402: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   2405: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   2408: aload 15
+    //   2410: invokevirtual 305	com/tencent/token/n:q	()V
+    //   2413: iload 12
+    //   2415: istore 13
+    //   2417: goto -2392 -> 25
+    //   2420: astore 15
+    //   2422: aconst_null
+    //   2423: astore 14
+    //   2425: aload 15
+    //   2427: invokevirtual 462	java/lang/Throwable:printStackTrace	()V
+    //   2430: aload_0
+    //   2431: bipush 195
+    //   2433: putfield 56	com/tencent/token/af:i	I
+    //   2436: aload_0
+    //   2437: new 130	java/lang/StringBuilder
+    //   2440: dup
+    //   2441: invokespecial 208	java/lang/StringBuilder:<init>	()V
+    //   2444: aload 15
+    //   2446: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2449: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2452: putfield 60	com/tencent/token/af:j	Ljava/lang/String;
+    //   2455: aload_0
+    //   2456: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   2459: aload_0
+    //   2460: invokeinterface 301 2 0
+    //   2465: aload_0
+    //   2466: aconst_null
+    //   2467: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   2470: aload 14
+    //   2472: ifnull -1982 -> 490
+    //   2475: aload_0
+    //   2476: aload 14
+    //   2478: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   2481: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   2484: aload 14
+    //   2486: invokevirtual 305	com/tencent/token/n:q	()V
+    //   2489: goto -1999 -> 490
+    //   2492: astore 14
+    //   2494: aconst_null
+    //   2495: astore 15
+    //   2497: aload_0
+    //   2498: getfield 83	com/tencent/token/af:g	Lcom/tencent/token/ae;
+    //   2501: aload_0
+    //   2502: invokeinterface 301 2 0
+    //   2507: aload_0
+    //   2508: aconst_null
+    //   2509: putfield 197	com/tencent/token/af:n	Lcom/tencent/token/m;
+    //   2512: aload 15
+    //   2514: ifnull +17 -> 2531
+    //   2517: aload_0
+    //   2518: aload 15
+    //   2520: invokevirtual 303	com/tencent/token/n:d	()Ljava/lang/String;
+    //   2523: putfield 212	com/tencent/token/af:q	Ljava/lang/String;
+    //   2526: aload 15
+    //   2528: invokevirtual 305	com/tencent/token/n:q	()V
+    //   2531: aload 14
+    //   2533: athrow
+    //   2534: astore 14
+    //   2536: aload 14
+    //   2538: invokevirtual 462	java/lang/Throwable:printStackTrace	()V
+    //   2541: return
+    //   2542: astore 16
+    //   2544: aload 14
+    //   2546: astore 15
+    //   2548: aload 16
+    //   2550: astore 14
+    //   2552: goto -55 -> 2497
+    //   2555: astore 14
+    //   2557: aload 16
+    //   2559: astore 15
+    //   2561: goto -64 -> 2497
+    //   2564: astore 14
+    //   2566: goto -69 -> 2497
+    //   2569: astore 16
+    //   2571: aload 14
+    //   2573: astore 15
+    //   2575: aload 16
+    //   2577: astore 14
+    //   2579: goto -82 -> 2497
+    //   2582: astore 15
+    //   2584: goto -159 -> 2425
+    //   2587: astore 15
+    //   2589: aload 16
+    //   2591: astore 14
+    //   2593: goto -168 -> 2425
+    //   2596: astore 16
+    //   2598: aload 15
+    //   2600: astore 14
+    //   2602: aload 16
+    //   2604: astore 15
+    //   2606: goto -181 -> 2425
+    //   2609: astore 14
+    //   2611: goto -2251 -> 360
+    //   2614: aload 14
+    //   2616: astore 15
+    //   2618: aload 16
+    //   2620: astore 14
+    //   2622: goto -1122 -> 1500
+    //   2625: goto -2434 -> 191
+    //   2628: lload 10
+    //   2630: lload 8
+    //   2632: lsub
+    //   2633: ldc2_w 463
+    //   2636: lcmp
+    //   2637: ifle -952 -> 1685
+    //   2640: iconst_1
+    //   2641: istore_2
+    //   2642: iconst_0
+    //   2643: istore_1
+    //   2644: goto -1021 -> 1623
+    //   2647: iconst_1
+    //   2648: istore_1
+    //   2649: iload_1
+    //   2650: ifeq +17 -> 2667
+    //   2653: iconst_1
+    //   2654: istore_2
+    //   2655: sipush 3000
+    //   2658: istore_1
+    //   2659: goto -1036 -> 1623
+    //   2662: iconst_0
+    //   2663: istore_1
+    //   2664: goto -15 -> 2649
+    //   2667: iconst_1
+    //   2668: istore_2
+    //   2669: sipush 1000
+    //   2672: istore_1
+    //   2673: goto -1050 -> 1623
+    //   2676: iconst_0
+    //   2677: istore_3
+    //   2678: iconst_0
+    //   2679: istore_1
+    //   2680: lconst_0
+    //   2681: lstore 4
+    //   2683: iconst_0
+    //   2684: istore_2
+    //   2685: goto -1062 -> 1623
+    //   2688: iconst_0
+    //   2689: istore_3
+    //   2690: iconst_1
+    //   2691: istore_2
+    //   2692: sipush 1000
+    //   2695: istore_1
+    //   2696: goto -1073 -> 1623
+    //   2699: iconst_1
+    //   2700: istore_2
+    //   2701: goto -507 -> 2194
+    //   2704: iconst_1
+    //   2705: istore_2
+    //   2706: goto -435 -> 2271
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	2709	0	this	af
+    //   24	2672	1	i1	int
+    //   1623	1083	2	i2	int
+    //   16	2674	3	i3	int
+    //   21	2661	4	l1	long
+    //   13	2094	6	l2	long
+    //   966	1665	8	l3	long
+    //   1503	1126	10	l4	long
+    //   119	2295	12	bool1	boolean
+    //   18	2398	13	bool2	boolean
+    //   55	615	14	localObject1	Object
+    //   693	445	14	localException1	java.lang.Exception
+    //   1252	1233	14	localObject2	Object
+    //   2492	40	14	localObject3	Object
+    //   2534	11	14	localThrowable1	Throwable
+    //   2550	1	14	localObject4	Object
+    //   2555	1	14	localObject5	Object
+    //   2564	8	14	localObject6	Object
+    //   2577	24	14	localObject7	Object
+    //   2609	6	14	localException2	java.lang.Exception
+    //   2620	1	14	localObject8	Object
+    //   102	558	15	localObject9	Object
+    //   703	3	15	localInterruptedException	java.lang.InterruptedException
+    //   713	243	15	localObject10	Object
+    //   1498	911	15	localObject11	Object
+    //   2420	25	15	localThrowable2	Throwable
+    //   2495	79	15	localObject12	Object
+    //   2582	1	15	localThrowable3	Throwable
+    //   2587	12	15	localThrowable4	Throwable
+    //   2604	13	15	localObject13	Object
+    //   89	2061	16	localObject14	Object
+    //   2542	16	16	localObject15	Object
+    //   2569	21	16	localObject16	Object
+    //   2596	23	16	localThrowable5	Throwable
+    //   600	80	17	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   32	91	693	java/lang/Exception
+    //   96	121	693	java/lang/Exception
+    //   562	580	693	java/lang/Exception
+    //   580	615	693	java/lang/Exception
+    //   615	634	693	java/lang/Exception
+    //   634	690	693	java/lang/Exception
+    //   160	169	703	java/lang/InterruptedException
+    //   160	169	713	finally
+    //   169	172	713	finally
+    //   705	710	713	finally
+    //   380	386	2420	java/lang/Throwable
+    //   396	400	2420	java/lang/Throwable
+    //   400	444	2420	java/lang/Throwable
+    //   380	386	2492	finally
+    //   396	400	2492	finally
+    //   400	444	2492	finally
+    //   551	561	2534	java/lang/Throwable
+    //   444	456	2542	finally
+    //   889	979	2542	finally
+    //   1016	1199	2542	finally
+    //   1199	1211	2555	finally
+    //   1248	1330	2555	finally
+    //   1367	1496	2555	finally
+    //   1500	1568	2564	finally
+    //   1606	1615	2564	finally
+    //   1627	1636	2564	finally
+    //   1685	1690	2564	finally
+    //   1711	1723	2564	finally
+    //   1760	1869	2564	finally
+    //   1906	1930	2564	finally
+    //   1967	2119	2564	finally
+    //   2131	2157	2564	finally
+    //   2168	2173	2564	finally
+    //   2198	2202	2564	finally
+    //   2251	2256	2564	finally
+    //   2275	2279	2564	finally
+    //   2328	2341	2564	finally
+    //   2425	2455	2569	finally
+    //   444	456	2582	java/lang/Throwable
+    //   889	979	2582	java/lang/Throwable
+    //   1016	1199	2582	java/lang/Throwable
+    //   1199	1211	2587	java/lang/Throwable
+    //   1248	1330	2587	java/lang/Throwable
+    //   1367	1496	2587	java/lang/Throwable
+    //   1500	1568	2596	java/lang/Throwable
+    //   1606	1615	2596	java/lang/Throwable
+    //   1627	1636	2596	java/lang/Throwable
+    //   1685	1690	2596	java/lang/Throwable
+    //   1711	1723	2596	java/lang/Throwable
+    //   1760	1869	2596	java/lang/Throwable
+    //   1906	1930	2596	java/lang/Throwable
+    //   1967	2119	2596	java/lang/Throwable
+    //   2131	2157	2596	java/lang/Throwable
+    //   2168	2173	2596	java/lang/Throwable
+    //   2198	2202	2596	java/lang/Throwable
+    //   2251	2256	2596	java/lang/Throwable
+    //   2275	2279	2596	java/lang/Throwable
+    //   2328	2341	2596	java/lang/Throwable
+    //   322	360	2609	java/lang/Exception
   }
 }
 

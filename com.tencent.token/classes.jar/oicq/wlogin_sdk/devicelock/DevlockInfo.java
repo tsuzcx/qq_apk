@@ -7,7 +7,7 @@ import android.os.Parcelable.Creator;
 public class DevlockInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<DevlockInfo> CREATOR = new c();
+  public static final Parcelable.Creator CREATOR = new c();
   public int AllowSet;
   public int AvailableMsgCount;
   public String BakCountryCode;

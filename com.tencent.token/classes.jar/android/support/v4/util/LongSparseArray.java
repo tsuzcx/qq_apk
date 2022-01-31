@@ -1,6 +1,6 @@
 package android.support.v4.util;
 
-public class LongSparseArray<E>
+public class LongSparseArray
   implements Cloneable
 {
   private static final Object DELETED = new Object();
@@ -16,47 +16,29 @@ public class LongSparseArray<E>
   
   public LongSparseArray(int paramInt)
   {
-    paramInt = idealLongArraySize(paramInt);
-    this.mKeys = new long[paramInt];
-    this.mValues = new Object[paramInt];
-    this.mSize = 0;
-  }
-  
-  private static int binarySearch(long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong)
-  {
-    int i = paramInt1 + paramInt2;
-    int j = paramInt1 - 1;
-    while (i - j > 1)
-    {
-      int k = (i + j) / 2;
-      if (paramArrayOfLong[k] < paramLong) {
-        j = k;
-      } else {
-        i = k;
-      }
+    if (paramInt == 0) {
+      this.mKeys = ContainerHelpers.EMPTY_LONGS;
     }
-    if (i == paramInt1 + paramInt2) {
-      paramInt1 = paramInt1 + paramInt2 ^ 0xFFFFFFFF;
-    }
-    do
+    for (this.mValues = ContainerHelpers.EMPTY_OBJECTS;; this.mValues = new Object[paramInt])
     {
-      return paramInt1;
-      paramInt1 = i;
-    } while (paramArrayOfLong[i] == paramLong);
-    return i ^ 0xFFFFFFFF;
+      this.mSize = 0;
+      return;
+      paramInt = ContainerHelpers.idealLongArraySize(paramInt);
+      this.mKeys = new long[paramInt];
+    }
   }
   
   private void gc()
   {
     int m = this.mSize;
-    int j = 0;
     long[] arrayOfLong = this.mKeys;
     Object[] arrayOfObject = this.mValues;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
-      int k = j;
+      k = j;
       if (localObject != DELETED)
       {
         if (i != j)
@@ -68,41 +50,16 @@ public class LongSparseArray<E>
         k = j + 1;
       }
       i += 1;
-      j = k;
     }
     this.mGarbage = false;
     this.mSize = j;
   }
   
-  public static int idealByteArraySize(int paramInt)
-  {
-    int i = 4;
-    for (;;)
-    {
-      int j = paramInt;
-      if (i < 32)
-      {
-        if (paramInt <= (1 << i) - 12) {
-          j = (1 << i) - 12;
-        }
-      }
-      else {
-        return j;
-      }
-      i += 1;
-    }
-  }
-  
-  public static int idealLongArraySize(int paramInt)
-  {
-    return idealByteArraySize(paramInt * 8) / 8;
-  }
-  
-  public void append(long paramLong, E paramE)
+  public void append(long paramLong, Object paramObject)
   {
     if ((this.mSize != 0) && (paramLong <= this.mKeys[(this.mSize - 1)]))
     {
-      put(paramLong, paramE);
+      put(paramLong, paramObject);
       return;
     }
     if ((this.mGarbage) && (this.mSize >= this.mKeys.length)) {
@@ -111,7 +68,7 @@ public class LongSparseArray<E>
     int i = this.mSize;
     if (i >= this.mKeys.length)
     {
-      int j = idealLongArraySize(i + 1);
+      int j = ContainerHelpers.idealLongArraySize(i + 1);
       long[] arrayOfLong = new long[j];
       Object[] arrayOfObject = new Object[j];
       System.arraycopy(this.mKeys, 0, arrayOfLong, 0, this.mKeys.length);
@@ -120,7 +77,7 @@ public class LongSparseArray<E>
       this.mValues = arrayOfObject;
     }
     this.mKeys[i] = paramLong;
-    this.mValues[i] = paramE;
+    this.mValues[i] = paramObject;
     this.mSize = (i + 1);
   }
   
@@ -138,25 +95,30 @@ public class LongSparseArray<E>
     this.mGarbage = false;
   }
   
-  public LongSparseArray<E> clone()
+  public LongSparseArray clone()
   {
-    Object localObject = null;
     try
     {
       LongSparseArray localLongSparseArray = (LongSparseArray)super.clone();
-      localObject = localLongSparseArray;
-      localLongSparseArray.mKeys = ((long[])this.mKeys.clone());
-      localObject = localLongSparseArray;
-      localLongSparseArray.mValues = ((Object[])this.mValues.clone());
-      return localLongSparseArray;
+      return localCloneNotSupportedException1;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return localObject;
+    catch (CloneNotSupportedException localCloneNotSupportedException1)
+    {
+      try
+      {
+        localLongSparseArray.mKeys = ((long[])this.mKeys.clone());
+        localLongSparseArray.mValues = ((Object[])this.mValues.clone());
+        return localLongSparseArray;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
+      localCloneNotSupportedException1 = localCloneNotSupportedException1;
+      return null;
+    }
   }
   
   public void delete(long paramLong)
   {
-    int i = binarySearch(this.mKeys, 0, this.mSize, paramLong);
+    int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong);
     if ((i >= 0) && (this.mValues[i] != DELETED))
     {
       this.mValues[i] = DELETED;
@@ -164,16 +126,16 @@ public class LongSparseArray<E>
     }
   }
   
-  public E get(long paramLong)
+  public Object get(long paramLong)
   {
     return get(paramLong, null);
   }
   
-  public E get(long paramLong, E paramE)
+  public Object get(long paramLong, Object paramObject)
   {
-    int i = binarySearch(this.mKeys, 0, this.mSize, paramLong);
+    int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong);
     if ((i < 0) || (this.mValues[i] == DELETED)) {
-      return paramE;
+      return paramObject;
     }
     return this.mValues[i];
   }
@@ -183,10 +145,10 @@ public class LongSparseArray<E>
     if (this.mGarbage) {
       gc();
     }
-    return binarySearch(this.mKeys, 0, this.mSize, paramLong);
+    return ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong);
   }
   
-  public int indexOfValue(E paramE)
+  public int indexOfValue(Object paramObject)
   {
     if (this.mGarbage) {
       gc();
@@ -194,7 +156,7 @@ public class LongSparseArray<E>
     int i = 0;
     while (i < this.mSize)
     {
-      if (this.mValues[i] == paramE) {
+      if (this.mValues[i] == paramObject) {
         return i;
       }
       i += 1;
@@ -210,19 +172,19 @@ public class LongSparseArray<E>
     return this.mKeys[paramInt];
   }
   
-  public void put(long paramLong, E paramE)
+  public void put(long paramLong, Object paramObject)
   {
-    int i = binarySearch(this.mKeys, 0, this.mSize, paramLong);
+    int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong);
     if (i >= 0)
     {
-      this.mValues[i] = paramE;
+      this.mValues[i] = paramObject;
       return;
     }
     int j = i ^ 0xFFFFFFFF;
     if ((j < this.mSize) && (this.mValues[j] == DELETED))
     {
       this.mKeys[j] = paramLong;
-      this.mValues[j] = paramE;
+      this.mValues[j] = paramObject;
       return;
     }
     i = j;
@@ -232,12 +194,12 @@ public class LongSparseArray<E>
       if (this.mSize >= this.mKeys.length)
       {
         gc();
-        i = binarySearch(this.mKeys, 0, this.mSize, paramLong) ^ 0xFFFFFFFF;
+        i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramLong) ^ 0xFFFFFFFF;
       }
     }
     if (this.mSize >= this.mKeys.length)
     {
-      j = idealLongArraySize(this.mSize + 1);
+      j = ContainerHelpers.idealLongArraySize(this.mSize + 1);
       long[] arrayOfLong = new long[j];
       Object[] arrayOfObject = new Object[j];
       System.arraycopy(this.mKeys, 0, arrayOfLong, 0, this.mKeys.length);
@@ -251,7 +213,7 @@ public class LongSparseArray<E>
       System.arraycopy(this.mValues, i, this.mValues, i + 1, this.mSize - i);
     }
     this.mKeys[i] = paramLong;
-    this.mValues[i] = paramE;
+    this.mValues[i] = paramObject;
     this.mSize += 1;
   }
   
@@ -269,12 +231,12 @@ public class LongSparseArray<E>
     }
   }
   
-  public void setValueAt(int paramInt, E paramE)
+  public void setValueAt(int paramInt, Object paramObject)
   {
     if (this.mGarbage) {
       gc();
     }
-    this.mValues[paramInt] = paramE;
+    this.mValues[paramInt] = paramObject;
   }
   
   public int size()
@@ -285,7 +247,37 @@ public class LongSparseArray<E>
     return this.mSize;
   }
   
-  public E valueAt(int paramInt)
+  public String toString()
+  {
+    if (size() <= 0) {
+      return "{}";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(this.mSize * 28);
+    localStringBuilder.append('{');
+    int i = 0;
+    if (i < this.mSize)
+    {
+      if (i > 0) {
+        localStringBuilder.append(", ");
+      }
+      localStringBuilder.append(keyAt(i));
+      localStringBuilder.append('=');
+      Object localObject = valueAt(i);
+      if (localObject != this) {
+        localStringBuilder.append(localObject);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append("(this Map)");
+      }
+    }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
+  
+  public Object valueAt(int paramInt)
   {
     if (this.mGarbage) {
       gc();

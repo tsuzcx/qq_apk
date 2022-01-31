@@ -1,23 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.token.ui.base.FaceView;
+import java.util.List;
 
-final class jd
-  implements DialogInterface.OnCancelListener
+class jd
+  implements dy
 {
-  jd(iv paramiv) {}
+  jd(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void a()
   {
-    FaceRegCameraActivity.access$302(this.a.a, 0);
-    FaceRegCameraActivity.access$400(this.a.a).a(true, false, 0, FaceRegCameraActivity.access$300(this.a.a));
-    FaceRegCameraActivity.access$500(this.a.a).c(0);
-    FaceRegCameraActivity.access$600(this.a.a).setText(2131362782);
-    FaceRegCameraActivity.access$700(this.a.a).setImageResource(2130837712);
+    FaceStartVryCameraActivity.access$300(this.a).a(this.a, FaceStartVryCameraActivity.access$2800(this.a), FaceStartVryCameraActivity.access$1400(this.a), FaceStartVryCameraActivity.access$600(this.a), FaceStartVryCameraActivity.access$700(this.a));
+    FaceStartVryCameraActivity.access$300(this.a).setVisibility(0);
+  }
+  
+  public void a(List paramList)
+  {
+    FaceStartVryCameraActivity.access$300(this.a).a(this.a, FaceStartVryCameraActivity.access$2800(this.a), FaceStartVryCameraActivity.access$1400(this.a), FaceStartVryCameraActivity.access$600(this.a), FaceStartVryCameraActivity.access$700(this.a));
+    FaceStartVryCameraActivity.access$300(this.a).setVisibility(0);
   }
 }
 

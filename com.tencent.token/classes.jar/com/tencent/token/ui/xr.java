@@ -1,23 +1,29 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.RqdApplication;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.token.upload.useraction.CustomerEditText;
 
-final class xr
-  implements View.OnClickListener
+class xr
+  implements View.OnFocusChangeListener
 {
-  xr(xq paramxq) {}
+  xr(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.a.dismiss();
-    RealNameStep1InputNameIdActivity.access$3100(this.a.a);
-    RealNameStep1InputNameIdActivity.access$2802(this.a.a, true);
-    RqdApplication.i().getSharedPreferences("sp_name_global", 0).edit().putBoolean("key_zzb_refused_firsttime", true).commit();
+    try
+    {
+      ((CustomerEditText)RealNameStep1InputNameIdActivity.access$1900(this.a)).a(paramBoolean);
+      RealNameStep1InputNameIdActivity.access$3200(this.a);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
   }
 }
 

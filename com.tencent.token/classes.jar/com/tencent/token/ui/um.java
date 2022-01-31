@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class um
-  implements View.OnClickListener
+class um
+  implements DialogInterface.OnClickListener
 {
-  um(RealNameActivity paramRealNameActivity) {}
+  um(ui paramui) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, RealNameDetailActivity.class);
-    paramView.putExtra("index", 3);
-    this.a.startActivity(paramView);
+    this.a.a.finish();
   }
 }
 

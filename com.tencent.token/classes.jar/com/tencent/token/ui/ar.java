@@ -1,29 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ar
-  implements DialogInterface.OnClickListener
+class ar
+  implements View.OnClickListener
 {
-  ar(AssistantRecommendFriendQrcode paramAssistantRecommendFriendQrcode) {}
+  ar(AddFaceRealNameApplyResultActivity paramAddFaceRealNameApplyResultActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=com.tencent.mm"));
-      this.a.startActivity(paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-      e.b(paramDialogInterface.toString());
-    }
+    paramView = new Intent(this.a, FaceRecognitionDefaultActivity.class);
+    paramView.addFlags(67108864);
+    this.a.startActivity(paramView);
+    this.a.finish();
   }
 }
 

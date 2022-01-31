@@ -1,18 +1,17 @@
 package com.tencent.feedback.common;
 
-import android.util.Log;
 import com.tencent.feedback.proguard.a;
 import java.util.Locale;
 
 public final class e
 {
-  private static a a = null;
+  private static e.a a = null;
   
-  private static a a()
+  private static e.a a()
   {
     try
     {
-      a locala = a;
+      e.a locala = a;
       return locala;
     }
     finally
@@ -22,7 +21,7 @@ public final class e
     }
   }
   
-  public static void a(a parama)
+  public static void a(e.a parama)
   {
     try
     {
@@ -38,7 +37,7 @@ public final class e
   
   private static boolean a(int paramInt, String paramString, Object... paramVarArgs)
   {
-    a locala = a();
+    e.a locala = a();
     if (locala == null) {
       return false;
     }
@@ -76,7 +75,7 @@ public final class e
   
   private static boolean a(int paramInt, Throwable paramThrowable)
   {
-    a locala = a();
+    e.a locala = a();
     if (locala == null) {
       return false;
     }
@@ -127,29 +126,6 @@ public final class e
   public static boolean d(String paramString, Object... paramVarArgs)
   {
     return a(3, paramString, paramVarArgs);
-  }
-  
-  public static class a
-  {
-    public void a(String paramString)
-    {
-      Log.i("eup", paramString);
-    }
-    
-    public void b(String paramString)
-    {
-      Log.d("eup", paramString);
-    }
-    
-    public void c(String paramString)
-    {
-      Log.w("eup", paramString);
-    }
-    
-    public void d(String paramString)
-    {
-      Log.e("eup", paramString);
-    }
   }
 }
 

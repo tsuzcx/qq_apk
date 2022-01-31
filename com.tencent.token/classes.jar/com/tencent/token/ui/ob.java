@@ -1,19 +1,31 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.token.core.bean.f;
+import com.tencent.token.ui.base.SwitchButton;
 
-final class ob
-  implements DialogInterface.OnClickListener
+class ob
 {
-  ob(oa paramoa) {}
+  public View a;
+  public TextView b;
+  public TextView c;
+  public ProgressBar d;
+  public SwitchButton e;
+  public f f;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ob(nu paramnu, View paramView, f paramf)
   {
-    paramDialogInterface = new Intent(this.a.a, WtloginSigExpireActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    this.a = paramView;
+    if (this.a == null) {
+      return;
+    }
+    this.f = paramf;
+    this.b = ((TextView)this.a.findViewById(2131559384));
+    this.c = ((TextView)this.a.findViewById(2131559387));
+    this.e = ((SwitchButton)this.a.findViewById(2131559385));
+    this.d = ((ProgressBar)this.a.findViewById(2131559386));
   }
 }
 

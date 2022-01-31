@@ -14,7 +14,7 @@ public final class a
     this.a = paramImageView;
   }
   
-  private static Uri a(String... paramVarArgs)
+  protected Uri a(String... paramVarArgs)
   {
     try
     {
@@ -26,6 +26,14 @@ public final class a
       paramVarArgs.printStackTrace();
     }
     return null;
+  }
+  
+  protected void a(Uri paramUri)
+  {
+    super.onPostExecute(paramUri);
+    if ((this.a != null) && (paramUri != null)) {
+      this.a.setImageURI(paramUri);
+    }
   }
 }
 

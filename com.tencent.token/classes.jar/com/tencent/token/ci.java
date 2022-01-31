@@ -1,101 +1,45 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.UserTask;
 
-public final class ci
-  extends bm
+class ci
+  extends UserTask
 {
-  private long c;
-  private int d;
-  private int e;
+  ci(ch paramch) {}
   
-  protected final String a()
+  public f a(String... paramVarArgs)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str1 = ax.c; str1 == null; str1 = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    Object localObject = ag.c();
-    ((ag)localObject).m();
-    String str2 = ((ag)localObject).j().replaceAll("-", "");
-    localObject = s.a(new Object[] { "real_uin", Long.valueOf(this.c), "imei", ag.b(), "verify_type", Integer.valueOf(this.e), "token_seq", str2, "token_code", ((ag)localObject).o(), "seq_id", Integer.valueOf(this.d), "op_time", Long.valueOf(ag.c().r() / 1000L) });
-    str1 = "?aq_base_sid=" + str1 + "&data=" + (String)localObject;
-    return b.c() + "/cn/mbtoken3/mbtoken3_bind_token_by_realname" + str1;
+    return ch.a(this.a, this.a.c);
   }
   
-  protected final void a(fs paramfs)
+  public void a()
   {
-    this.c = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramfs.c.get("param.type")).intValue();
-    this.d = paramfs.j;
+    ch.a(this.a, false);
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public void a(f paramf)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    if (paramf.b()) {
+      ch.a(ch.d());
+    }
+    for (;;)
     {
-      a(i, paramJSONObject.getString("info"));
+      ch.a(this.a, false);
       return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.d)
+      h.c("post click flow msg failed:" + paramf.a + "-" + paramf.b);
+      if (ch.e() < ch.f()) {}
+      try
       {
-        this.a.a(10030, null, null);
-        e.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.d);
-        return;
+        ch.a(ch.f());
       }
-      long l = paramJSONObject.getLong("server_time");
-      ag.c();
-      ag.b(l);
-      if (paramJSONObject.getInt("seed_available") == 1)
+      catch (Exception paramf)
       {
-        paramJSONObject = s.e(paramJSONObject.getString("seed"));
-        if (paramJSONObject != null)
-        {
-          ag.c().e();
-          ag.c().a(paramJSONObject);
-          ag.c().i();
-        }
+        continue;
+        ch.a(ch.d());
       }
-      paramJSONObject = ax.a().d(this.c);
-      if (paramJSONObject != null) {
-        ax.a().b(paramJSONObject);
-      }
-      this.a.a = 0;
-      return;
-    }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
-  }
-  
-  protected final void b()
-  {
-    if (!this.b.e)
-    {
-      e.c("handleSuccess" + this.b.f);
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      catch (Error paramf) {}
     }
   }
 }

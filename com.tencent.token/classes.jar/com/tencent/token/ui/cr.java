@@ -1,41 +1,16 @@
 package com.tencent.token.ui;
 
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.token.ag;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class cr
-  extends bo
+class cr
+  implements DialogInterface.OnClickListener
 {
-  cr(CorrectTokenActivity paramCorrectTokenActivity)
-  {
-    super(paramCorrectTokenActivity);
-  }
+  cr(CommonVerifyActivity paramCommonVerifyActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 13: 
-      int i = paramMessage.getData().getInt("serTime");
-      long l1 = System.currentTimeMillis();
-      long l2 = i;
-      ag.c().a(l2 * 1000L - l1);
-      ag.c().i();
-      ag.c().n();
-      CorrectTokenActivity.access$000(this.a);
-      CorrectTokenActivity.access$700(this.a);
-      return;
-    case 14: 
-      CorrectTokenActivity.access$800(this.a);
-      return;
-    }
-    CorrectTokenActivity.access$800(this.a);
+    CommonVerifyActivity.access$500(this.a);
   }
 }
 

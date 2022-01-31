@@ -1,19 +1,17 @@
 package com.tencent.token.ui;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
 
-final class pm
+class pm
   implements DialogInterface.OnClickListener
 {
-  pm(pi parampi) {}
+  pm(pg parampg, Activity paramActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.dismissDialog();
-    af.a().b(this.a.a.mHandler);
-    this.a.a.showProDialog(this.a.a, 2131361808, 2131361817, null);
+    ((BaseActivity)this.a).dismissDialog();
   }
 }
 

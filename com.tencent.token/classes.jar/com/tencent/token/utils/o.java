@@ -1,18 +1,16 @@
 package com.tencent.token.utils;
 
-import com.tencent.token.as;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class o
+final class o
+  implements ThreadFactory
 {
-  private String a = "";
-  private String b = "";
-  private as c = null;
-  private int d = 0;
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public o(as paramas)
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.c = paramas;
-    this.d = 0;
+    return new Thread(paramRunnable, "AsyncTask #" + this.a.getAndIncrement());
   }
 }
 

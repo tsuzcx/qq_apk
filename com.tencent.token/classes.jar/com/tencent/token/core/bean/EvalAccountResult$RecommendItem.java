@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -28,7 +28,7 @@ public class EvalAccountResult$RecommendItem
     int i = 0;
     while (i < paramJSONObject.length())
     {
-      e.b("二级推荐列表" + paramJSONObject.getJSONObject(i).toString());
+      h.b("二级推荐列表" + paramJSONObject.getJSONObject(i).toString());
       EvalAccountResult.DetailItem localDetailItem = new EvalAccountResult.DetailItem(paramJSONObject.getJSONObject(i));
       this.mDetails.add(localDetailItem);
       i += 1;

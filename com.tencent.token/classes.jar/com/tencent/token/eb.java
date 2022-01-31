@@ -1,98 +1,54 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import okhttp3.at;
+import okhttp3.av;
+import okhttp3.g;
+import okhttp3.h;
 
-public final class eb
-  extends bm
+class eb
+  implements h
 {
-  private long c;
-  private int d;
-  private ba e = ba.a();
+  eb(ea paramea) {}
   
-  protected final String a()
+  public void a(g paramg, IOException paramIOException)
   {
-    Object localObject1 = null;
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("uin", this.c);
-      int i = af.a + 1;
-      af.a = i;
-      this.d = i;
-      ((JSONObject)localObject2).put("seq_id", this.d);
-      ((JSONObject)localObject2).put("op_time", ag.c().r() / 1000L);
-      localObject2 = ((JSONObject)localObject2).toString();
-      e.a("plain:" + (String)localObject2);
-      localObject2 = s.b(((String)localObject2).getBytes());
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        e.c("JSONException:" + localJSONException.getMessage());
-      }
-    }
-    str = "?aq_base_sid=" + str + "&data=" + localObject1;
-    return b.c() + "/cn/mbtoken3/mbtoken3_get_safe_protection_v2" + str;
+    ea.a(this.a);
   }
   
-  protected final void a(fs paramfs)
+  public void a(g paramg, at paramat)
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int i = 0;
+    if (paramat.b() != 200)
     {
-      a(i, null);
-      return;
+      ea.a(this.a, new Closeable[] { paramat.e() });
+      ea.a(this.a);
     }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    for (;;)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.d)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder().append("parseJSON error seq is wrong seq=").append(i).append(",right = ");
-        af.a();
-        e.c(af.b());
-        return;
-      }
-      long l = paramJSONObject.getLong("uin");
-      if (l != this.c)
-      {
-        this.a.a(10000, "uin not match=" + l + ":" + this.c, null);
-        return;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("result");
-      this.e.e(paramJSONObject);
-      this.a.a = 0;
       return;
+      ea.a(this.a, paramat.e().a());
+      ea.a(this.a, new Closeable[] { paramat.e() });
+      ea.a(this.a, new File(ea.b(this.a).c(), ea.b(this.a).a() + ".tmp"));
+      if (!ea.c(this.a).getParentFile().exists()) {
+        ea.c(this.a).getParentFile().mkdirs();
+      }
+      new RandomAccessFile(ea.c(this.a), "rw").setLength(ea.d(this.a));
+      long l2 = ea.d(this.a) / 4L;
+      while (i < 4)
+      {
+        long l3 = i;
+        long l1 = (i + 1) * l2 - 1L;
+        if (i == 3) {
+          l1 = ea.d(this.a) - 1L;
+        }
+        ea.a(this.a, l3 * l2, l1, i);
+        i += 1;
+      }
     }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
   }
 }
 

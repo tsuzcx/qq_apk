@@ -1,22 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class rc
-  implements DialogInterface.OnClickListener
+class rc
+  implements View.OnClickListener
 {
-  rc(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
+  rc(NetActiveVryQQTokenActivity paramNetActiveVryQQTokenActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a, NetActiveVryOtherListActivity.class);
-    paramDialogInterface.putExtra("page_id", NetActiveVryMobileNoSmsActivity.access$500(this.a));
-    paramDialogInterface.putExtra("intent.qquser", NetActiveVryMobileNoSmsActivity.access$400(this.a));
-    paramDialogInterface.putExtra("intent.upgradedetermin", NetActiveVryMobileNoSmsActivity.access$200(this.a));
-    this.a.startActivity(paramDialogInterface);
-    this.a.finish();
+    NetActiveVryQQTokenActivity.access$700(this.a);
+    paramView = abi.a().a(this.a);
+    this.a.startActivity(paramView);
   }
 }
 

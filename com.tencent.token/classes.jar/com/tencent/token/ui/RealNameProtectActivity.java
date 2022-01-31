@@ -19,8 +19,8 @@ public class RealNameProtectActivity
       finish();
       return;
     }
-    setContentView(2130903166);
-    findViewById(2131296965).setOnClickListener(new vr(this));
+    setContentView(2130968728);
+    findViewById(2131559171).setOnClickListener(new vh(this));
   }
 }
 

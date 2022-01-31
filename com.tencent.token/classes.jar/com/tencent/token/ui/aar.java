@@ -1,24 +1,18 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.e;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.token.utils.x;
 
-final class aar
+class aar
   implements Runnable
 {
-  aar(SmsContentTipActivity paramSmsContentTipActivity) {}
+  aar(TakeIDPhotoComfirmActivity paramTakeIDPhotoComfirmActivity, String paramString, ImageView paramImageView) {}
   
-  public final void run()
+  public void run()
   {
-    e.a("send unbind seq request:" + SmsContentTipActivity.access$800(this.a));
-    if (!SmsContentTipActivity.access$000(this.a)) {
-      return;
-    }
-    ag.c().n();
-    af.a().a(SmsContentTipActivity.access$900(this.a).mUin, SmsContentTipActivity.access$900(this.a).mRealUin, 1005, this.a.mHandler);
-    SmsContentTipActivity.access$808(this.a);
+    Bitmap localBitmap = x.b(this.a, Math.max(this.b.getWidth(), this.b.getHeight()));
+    this.b.setImageBitmap(localBitmap);
   }
 }
 

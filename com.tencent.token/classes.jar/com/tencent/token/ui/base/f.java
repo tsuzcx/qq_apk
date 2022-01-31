@@ -1,16 +1,24 @@
 package com.tencent.token.ui.base;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.ui.FaceRecognitionDefaultActivity;
 
-final class f
+class f
   implements View.OnClickListener
 {
-  f(CommonActionSheetDialog paramCommonActionSheetDialog) {}
+  f(CopyFaceDialog paramCopyFaceDialog) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    CommonActionSheetDialog.a(this.a).a(0);
+    this.a.dismiss();
+    paramView = new Intent(CopyFaceDialog.a(this.a), FaceRecognitionDefaultActivity.class);
+    paramView.addFlags(67108864);
+    CopyFaceDialog.a(this.a).startActivity(paramView);
+    ((Activity)CopyFaceDialog.a(this.a)).finish();
   }
 }
 

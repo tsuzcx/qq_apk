@@ -2,16 +2,30 @@ package com.tencent.token.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.utils.s;
+import com.tencent.token.core.bean.j;
+import com.tencent.token.utils.w;
+import java.lang.reflect.Field;
 
-final class mk
+class mk
   implements DialogInterface.OnClickListener
 {
-  mk(IndexActivity paramIndexActivity, String paramString) {}
+  mk(IndexActivity paramIndexActivity, String paramString, j paramj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    s.a(this.b, this.a);
+    w.a(this.c, this.a);
+    if (3 == this.b.a) {}
+    try
+    {
+      Field localField = paramDialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
+      localField.setAccessible(true);
+      localField.set(paramDialogInterface, Boolean.valueOf(false));
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

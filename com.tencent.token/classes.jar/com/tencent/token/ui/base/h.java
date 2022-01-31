@@ -1,17 +1,25 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.a;
+import com.tencent.token.dk;
+import com.tencent.token.dm;
+import com.tencent.token.global.f;
+import com.tencent.token.utils.UserTask;
 
-final class h
-  implements View.OnClickListener
+class h
+  extends UserTask
 {
-  h(CommonActionSheetDialog paramCommonActionSheetDialog, int paramInt) {}
+  h(DualMsgShowDialog paramDualMsgShowDialog, a parama, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public f a(String... paramVarArgs)
   {
-    CommonActionSheetDialog.a(this.b).a(this.a);
+    if (DualMsgShowDialog.d(this.c) == 0) {
+      return dm.a().a(this.a, this.b);
+    }
+    return dk.a().a(this.a, this.b);
   }
+  
+  public void a(f paramf) {}
 }
 
 

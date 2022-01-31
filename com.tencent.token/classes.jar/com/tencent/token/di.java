@@ -1,136 +1,60 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public final class di
-  extends bm
+public class di
 {
-  private long c;
-  private byte d;
-  private final String e = "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2";
-  private int f;
-  
-  protected final String a()
+  public short a(byte[] paramArrayOfByte)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2) || (paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3)) {
+      return -1;
     }
-    for (Object localObject1 = ax.c; localObject1 == null; localObject1 = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    localObject1 = ax.a();
-    int i;
-    if (this.c > 0L)
-    {
-      i = 0;
-      while (i < ((ax)localObject1).d())
-      {
-        QQUser localQQUser = ((ax)localObject1).a(i);
-        e.c("getdualmsglist: hash=" + this.c + ", uin=" + localQQUser.mUin + ", real=" + localQQUser.mRealUin + ", bind=" + localQQUser.mIsBinded);
-        if ((localQQUser.mIsBinded) && (localQQUser.mUin == this.c)) {
-          break;
-        }
-        if ((!localQQUser.mIsBinded) && (s.f(localQQUser.mRealUin) == this.c))
-        {
-          this.a.a(10029, null, null);
-          return null;
-        }
-        i += 1;
-      }
-      if (i == ((ax)localObject1).d())
-      {
-        this.a.a(110, null, null);
-        return null;
-      }
-    }
-    long l = ((ax)localObject1).f();
-    if ((((ax)localObject1).e() == null) || (l == 0L))
-    {
-      this.a.a(110, null, null);
-      return null;
-    }
-    if (((ax)localObject1).e().mIsBinded) {
-      l = ((ax)localObject1).e().mUin;
-    }
-    try
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("uin", l);
-      i = af.a + 1;
-      af.a = i;
-      this.f = i;
-      ((JSONObject)localObject1).put("seq_id", this.f);
-      ((JSONObject)localObject1).put("op_time", ag.c().r() / 1000L);
-      ((JSONObject)localObject1).put("tkn_seq", ag.c().j().replaceAll("-", ""));
-      ((JSONObject)localObject1).put("source", this.d);
-      localObject1 = ((JSONObject)localObject1).toString();
-      e.a("plain:" + (String)localObject1);
-      localObject1 = s.b(((String)localObject1).getBytes());
-      localObject1 = "?aq_base_sid=" + ax.g() + "&data=" + (String)localObject1;
-      return b.c() + "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2" + (String)localObject1;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        e.c("JSONException:" + localJSONException.getMessage());
-        Object localObject2 = null;
-      }
-    }
+    return dg.a(paramArrayOfByte, 20);
   }
   
-  protected final void a(fs paramfs)
+  public void a(dd paramdd)
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.d = ((Byte)paramfs.c.get("param.msg.source")).byteValue();
+    paramdd.a = dg.b(paramdd.f, 0, 32);
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public void a(de paramde, byte[] paramArrayOfByte)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2) || (paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3)) {
       return;
     }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    paramde.g = dg.b(paramArrayOfByte, 1);
+    paramde.h = dg.a(paramArrayOfByte, 5);
+    paramde.i = paramArrayOfByte[7];
+    paramde.j = dg.a(paramArrayOfByte, 8);
+    paramde.k = dg.a(paramArrayOfByte, 10);
+    paramde.l = ((int)dg.b(paramArrayOfByte, 12));
+    paramde.m = ((int)dg.b(paramArrayOfByte, 16));
+    paramde.n = dg.a(paramArrayOfByte, 20);
+    paramde.o = dg.a(paramArrayOfByte, 22);
+    paramde.p = dg.a(paramArrayOfByte, 24);
+    paramde.q = dg.a(paramArrayOfByte, 26);
+    paramde.r = dg.b(paramArrayOfByte, 28, 64);
+    paramde.b = ((int)dg.b(paramArrayOfByte, 92));
+    paramde.c = dg.b(paramArrayOfByte, 96, 256);
+    paramde.d = ((int)dg.b(paramArrayOfByte, 352));
+    paramde.e = dg.a(paramArrayOfByte, 356);
+    dg.a(paramde.t, 0, paramArrayOfByte, 358, paramde.t.length);
+    int j = paramde.t.length + 358;
+    int k = paramArrayOfByte.length - 1 - paramde.s.length - j;
+    int i = j;
+    if (k > 0)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.f)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder().append("parseJSON error seq is wrong seq=").append(i).append(",right = ");
-        af.a();
-        e.c(af.b());
-        return;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("msgs");
-      if (!av.a().a(paramJSONObject, this.c))
-      {
-        this.a.a(10000, "update conf list failed:" + paramJSONObject.toString(), null);
-        return;
-      }
-      ax.a().m();
-      this.a.a = 0;
-      return;
+      paramde.f = new byte[k];
+      dg.a(paramde.f, 0, paramArrayOfByte, j, paramde.f.length);
+      i = j + paramde.f.length;
     }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+    dg.a(paramde.s, 0, paramArrayOfByte, i, paramde.s.length);
+    i = paramde.s.length;
+  }
+  
+  public byte[] a(long paramLong, int paramInt)
+  {
+    df localdf = new df();
+    localdf.a(paramLong, paramInt, (int)(System.currentTimeMillis() / 1000L), (short)1);
+    return localdf.a();
   }
 }
 

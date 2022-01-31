@@ -2,87 +2,106 @@ package oicq.wlogin_sdk.request;
 
 import android.os.Build.VERSION;
 import java.net.Socket;
-import oicq.wlogin_sdk.b.bi;
+import oicq.wlogin_sdk.report.Reporter;
 import oicq.wlogin_sdk.report.report_t;
-import oicq.wlogin_sdk.report.report_t1;
+import oicq.wlogin_sdk.tlv_type.tlv_t172;
 import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
 import org.json.JSONObject;
 
 public class z
-  extends j
+  extends oicq_request
 {
-  public int D = 0;
-  public int E = 5;
+  public int I = 0;
+  public int J = 5;
   
   public z(t paramt)
   {
-    this.s = 2066;
-    this.t = 1;
-    this.u = "wtlogin.trans_emp";
-    this.w = paramt;
-    if (this.w.m != 0) {
-      this.w.m = 1;
+    this.t = 2066;
+    this.u = 1;
+    this.v = "wtlogin.trans_emp";
+    this.x = paramt;
+    if (this.x.m != 0) {
+      this.x.m = 1;
     }
   }
   
   public int a(long paramLong1, TransReqContext paramTransReqContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong2, long paramLong3, WUserSigInfo paramWUserSigInfo)
   {
-    try
+    for (;;)
     {
-      int m = t.u;
-      int k = 0;
-      int j = 0;
-      Object localObject = paramTransReqContext._body;
-      long l1 = System.currentTimeMillis() / 1000L;
-      long l2 = t.aa;
-      if (localObject == null) {
-        localObject = new byte[0];
-      }
-      for (;;)
+      boolean bool;
+      try
       {
-        byte[] arrayOfByte = new byte[localObject.length + 4];
-        util.int64_to_buf32(arrayOfByte, 0, l1 + l2);
-        System.arraycopy(localObject, 0, arrayOfByte, 4, localObject.length);
-        localObject = arrayOfByte;
-        if (paramArrayOfByte1 != null) {
-          localObject = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte2);
-        }
-        int i = j;
-        if (localObject != null)
+        int i = t.w;
+        int k = 0;
+        int j = 0;
+        Object localObject = paramTransReqContext._body;
+        long l1 = System.currentTimeMillis() / 1000L;
+        long l2 = t.ac;
+        if (localObject == null)
         {
-          i = j;
-          if (localObject.length > 0)
-          {
-            localObject = a((byte[])localObject, paramArrayOfByte1, paramLong2, paramLong3, 0);
-            a(this.h, this.s, this.i, paramLong1, this.l, this.m, m, this.o, (byte[])localObject);
-            j = a(String.valueOf(paramLong1), false, paramWUserSigInfo);
-            if (j == 0) {}
+          localObject = new byte[0];
+          byte[] arrayOfByte = new byte[localObject.length + 4];
+          util.int64_to_buf32(arrayOfByte, 0, l2 + l1);
+          System.arraycopy(localObject, 0, arrayOfByte, 4, localObject.length);
+          localObject = arrayOfByte;
+          if (paramArrayOfByte1 != null) {
+            localObject = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte2);
           }
-        }
-        do
-        {
-          do
+          i = j;
+          if (localObject != null)
           {
-            util.LOGI("request_transport rsp: ret=" + j);
-            return j;
-            i = a(paramTransReqContext);
-            if ((i == 0) && (paramArrayOfByte1 != null))
+            i = j;
+            if (localObject.length > 0)
             {
-              localObject = paramTransReqContext.get_body();
-              paramTransReqContext.set_body(cryptor.decrypt((byte[])localObject, 0, localObject.length, paramArrayOfByte2));
+              if ((oicq_request.EncryptionMethod.EM_ST != paramTransReqContext.requestEm) || ((paramTransReqContext.wtSessionTicketKey != null) && (paramTransReqContext.wtSessionTicketKey.length != 0) && (paramTransReqContext.wtSessionTicket != null) && (paramTransReqContext.wtSessionTicket.length != 0))) {
+                break label355;
+              }
+              paramTransReqContext.requestEm = oicq_request.EncryptionMethod.EM_ECDH;
+              t.an.attr_api(2413503);
+              util.LOGI("using wt st encrypt body but no st key", "" + paramLong1);
+              break label355;
+              a(paramLong1, a((byte[])localObject, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
+              j = a(String.valueOf(paramLong1), false, paramWUserSigInfo);
+              if (j != 0)
+              {
+                util.LOGI("request_transport rsp: ret=" + j);
+                return j;
+                bool = false;
+                continue;
+              }
+              i = a(paramTransReqContext);
+              if ((i == 0) && (paramArrayOfByte1 != null))
+              {
+                localObject = paramTransReqContext.get_body();
+                paramTransReqContext.set_body(cryptor.decrypt((byte[])localObject, 0, localObject.length, paramArrayOfByte2));
+              }
+              j = i;
+              if (i != 180) {
+                continue;
+              }
             }
-            j = i;
-          } while (i != 180);
+          }
           j = i;
-        } while (k >= 1);
-        k += 1;
-        j = i;
-        break;
+          if (k >= 1) {
+            continue;
+          }
+          k += 1;
+          j = i;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      finally {}
+      label355:
+      if (paramArrayOfByte1 != null) {
+        bool = true;
       }
     }
-    finally {}
   }
   
   public int a(long paramLong1, TransReqContext paramTransReqContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2, long paramLong3, WUserSigInfo paramWUserSigInfo)
@@ -94,24 +113,25 @@ public class z
       byte[] arrayOfByte2;
       try
       {
-        i = t.u;
+        i = t.w;
         l = paramTransReqContext._body.length;
-        j = this.z;
-        this.z = (j + 1);
-        arrayOfByte1 = a(l, j, String.valueOf(paramLong1).getBytes(), paramLong2, paramLong2, paramArrayOfByte3, new String("wtlogin_conn_trans").getBytes(), new byte[8], 0, 0L, t.y);
+        j = this.E;
+        this.E = (j + 1);
+        arrayOfByte1 = a(l, j, String.valueOf(paramLong1).getBytes(), paramLong2, paramLong2, paramArrayOfByte3, new String("wtlogin_conn_trans").getBytes(), new byte[8], 0, 0L, t.A);
         arrayOfByte2 = paramTransReqContext._body;
-        l = System.currentTimeMillis() / 1000L + t.aa;
+        l = System.currentTimeMillis() / 1000L;
+        l = t.ac + l;
         if (arrayOfByte2 == null)
         {
           paramArrayOfByte3 = new byte[0];
           if ((paramArrayOfByte3 == null) || (paramArrayOfByte3.length <= 0)) {
-            break label365;
+            break label369;
           }
           paramArrayOfByte3 = a(paramArrayOfByte3, paramArrayOfByte1, paramLong2, paramLong3, 1);
-          a(this.h, this.s, this.i, paramLong1, this.l, this.m, i, this.o, paramArrayOfByte3);
+          a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte3);
           i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
           if (i == 0) {
-            break label312;
+            break label316;
           }
           return i;
         }
@@ -131,7 +151,7 @@ public class z
       System.arraycopy(arrayOfByte2, 0, paramArrayOfByte3, arrayOfByte1.length + 4, arrayOfByte2.length);
       paramArrayOfByte3 = cryptor.encrypt(paramArrayOfByte3, 0, paramArrayOfByte3.length, paramArrayOfByte2);
       continue;
-      label312:
+      label316:
       int j = a(paramTransReqContext);
       int i = j;
       if (j == 0)
@@ -143,7 +163,7 @@ public class z
           paramTransReqContext.set_body(cryptor.decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2));
           i = j;
           continue;
-          label365:
+          label369:
           i = 0;
         }
       }
@@ -156,13 +176,13 @@ public class z
     {
       try
       {
-        i = t.u;
+        i = t.w;
         long l1 = System.currentTimeMillis() / 1000L;
-        long l2 = t.aa;
-        t.ag.commit(Build.VERSION.RELEASE, new String(t.E), "", util.buf_to_string(util.get_ksid(t.r)), new String(t.C), new String(t.O), new String(t.G), new String(t.F), util.get_release_time(), "5.4.0.7");
+        long l2 = t.ac;
+        t.an.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2202");
         try
         {
-          paramArrayOfByte1 = t.ag.toJasonObj().toString().getBytes();
+          paramArrayOfByte1 = t.an.toJasonObj().toString().getBytes();
           if (paramArrayOfByte1 != null)
           {
             int j = paramArrayOfByte1.length;
@@ -196,16 +216,16 @@ public class z
         if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
           break label350;
         }
-        report_t.delete_file(t.r);
+        report_t.delete_file(t.t);
         paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramLong2, 85L, 0);
-        a(this.h, this.s, this.i, paramLong1, this.l, this.m, i, this.o, paramArrayOfByte1);
+        a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte1);
         i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
         if (i != 0)
         {
           if (i == 0) {
             break label335;
           }
-          report_t.write_tofile(t.ag, t.r);
+          report_t.write_tofile(t.an, t.t);
           continue;
         }
         i = b();
@@ -213,7 +233,7 @@ public class z
       finally {}
       continue;
       label335:
-      t.ag.clear_t2();
+      t.an.clear_t2();
       continue;
       label344:
       int i = 0;
@@ -225,27 +245,29 @@ public class z
   
   public int a(TransReqContext paramTransReqContext)
   {
-    int i = this.b;
+    int i = this.c;
     int j;
-    if (i <= this.e + 2)
+    if (i <= this.f + 2)
     {
       j = -1009;
       return j;
     }
-    this.f = (i - this.e - 2);
-    if (this.w.m == 0)
-    {
-      j = a(this.g, this.e + 1, this.f, this.w.o);
-      i = j;
-      if (j < 0)
+    this.g = (i - this.f - 2);
+    if (paramTransReqContext.requestEm == oicq_request.EncryptionMethod.EM_ECDH) {
+      if (this.x.m == 0)
       {
-        util.LOGI("use ecdh decrypt_body failed");
-        j = a(this.g, this.e + 1, this.f, this.w.c);
+        j = a(this.h, this.f + 1, this.g, this.x.p);
         i = j;
         if (j < 0)
         {
-          util.LOGI("use kc decrypt_body failed");
+          util.LOGI("use ecdh decrypt_body failed");
+          j = a(this.h, this.f + 1, this.g, this.x.c);
           i = j;
+          if (j < 0)
+          {
+            util.LOGI("use kc decrypt_body failed");
+            i = j;
+          }
         }
       }
     }
@@ -255,20 +277,37 @@ public class z
       if (i < 0) {
         break;
       }
-      return a(this.g, this.e + 1, this.f, paramTransReqContext);
-      j = a(this.g, this.e + 1, this.f, this.w.c);
+      return a(this.h, this.f + 1, this.g, paramTransReqContext);
+      j = a(this.h, this.f + 1, this.g, this.x.c);
       i = j;
       if (j < 0)
       {
         util.LOGI("use kc decrypt_body failed");
         i = j;
+        continue;
+        if (paramTransReqContext.requestEm == oicq_request.EncryptionMethod.EM_ST)
+        {
+          j = a(this.h, this.f + 1, this.g, paramTransReqContext.wtSessionTicketKey);
+          i = j;
+          if (j < 0)
+          {
+            t.an.attr_api(2494911);
+            util.LOGI("use session key decrypt_body failed", "");
+            i = -1025;
+          }
+        }
+        else
+        {
+          util.LOGI("unknown encryption method " + paramTransReqContext.requestEm, "");
+          i = -1024;
+        }
       }
     }
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, TransReqContext paramTransReqContext)
   {
-    if (paramInt2 < this.E) {
+    if (paramInt2 < this.J) {
       return -1009;
     }
     int i = c(paramArrayOfByte, paramInt1);
@@ -279,20 +318,20 @@ public class z
     default: 
       return i;
     case 0: 
-      int j = this.E;
-      byte[] arrayOfByte = new byte[paramInt2 - this.E];
+      int j = this.J;
+      byte[] arrayOfByte = new byte[paramInt2 - this.J];
       System.arraycopy(paramArrayOfByte, j + paramInt1, arrayOfByte, 0, arrayOfByte.length);
       paramTransReqContext.set_body(arrayOfByte);
       return i;
     }
-    paramInt1 = this.E + 2 + paramInt1;
-    paramTransReqContext = new bi();
-    paramInt2 = paramTransReqContext.b(paramArrayOfByte, paramInt1, this.b - paramInt1 - 1);
+    paramInt1 = this.J + 2 + paramInt1;
+    paramTransReqContext = new tlv_t172();
+    paramInt2 = paramTransReqContext.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
     paramInt1 = paramInt2;
     if (paramInt2 > 0)
     {
-      this.w.m = 2;
-      this.w.p = paramTransReqContext.b();
+      this.x.m = 2;
+      this.x.r = paramTransReqContext.get_data();
       util.LOGI("request_transport get rollback sig");
       paramInt1 = i;
     }
@@ -301,7 +340,7 @@ public class z
   
   public void a(Socket paramSocket)
   {
-    this.w.ad = paramSocket;
+    this.x.ak = paramSocket;
   }
   
   byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt, long paramLong5, byte[] paramArrayOfByte5)
@@ -345,6 +384,47 @@ public class z
     return paramArrayOfByte2;
   }
   
+  public byte[] a(byte[] paramArrayOfByte1, boolean paramBoolean, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, TransReqContext paramTransReqContext)
+  {
+    byte[] arrayOfByte1 = paramArrayOfByte2;
+    if (paramArrayOfByte2 == null) {
+      arrayOfByte1 = new byte[0];
+    }
+    if (true == paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      byte[] arrayOfByte2 = new byte[0];
+      paramArrayOfByte2 = arrayOfByte2;
+      if (this.x.r != null)
+      {
+        paramArrayOfByte2 = arrayOfByte2;
+        if (this.x.r.length > 0)
+        {
+          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.r);
+          paramArrayOfByte2 = new byte[arrayOfByte2.length + 2];
+          util.int16_to_buf(paramArrayOfByte2, 0, 1);
+          System.arraycopy(arrayOfByte2, 0, paramArrayOfByte2, 2, arrayOfByte2.length);
+        }
+      }
+      this.I = (arrayOfByte1.length + 13 + 1 + paramArrayOfByte2.length);
+      arrayOfByte2 = new byte[paramArrayOfByte1.length + this.I];
+      util.int8_to_buf(arrayOfByte2, 0, i);
+      util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte1.length);
+      util.int64_to_buf32(arrayOfByte2, 3, paramLong1);
+      util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
+      util.int16_to_buf(arrayOfByte2, 11, arrayOfByte1.length);
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 13, arrayOfByte1.length);
+      i = arrayOfByte1.length + 13;
+      util.int8_to_buf(arrayOfByte2, i, paramArrayOfByte2.length);
+      i += 1;
+      System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, i, paramArrayOfByte2.length);
+      i += paramArrayOfByte2.length;
+      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, i, paramArrayOfByte1.length);
+      i = paramArrayOfByte1.length;
+      return a(arrayOfByte2, paramTransReqContext.requestEm, paramTransReqContext.wtSessionTicket, paramTransReqContext.wtSessionTicketKey);
+    }
+  }
+  
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, int paramInt)
   {
     if (paramArrayOfByte2 == null)
@@ -358,19 +438,19 @@ public class z
     {
       byte[] arrayOfByte2 = new byte[0];
       byte[] arrayOfByte1 = arrayOfByte2;
-      if (this.w.p != null)
+      if (this.x.r != null)
       {
         arrayOfByte1 = arrayOfByte2;
-        if (this.w.p.length > 0)
+        if (this.x.r.length > 0)
         {
-          arrayOfByte2 = new bi().a(this.w.p);
+          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.r);
           arrayOfByte1 = new byte[arrayOfByte2.length + 2];
           util.int16_to_buf(arrayOfByte1, 0, 1);
           System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 2, arrayOfByte2.length);
         }
       }
-      this.D = (paramArrayOfByte2.length + 13 + 1 + arrayOfByte1.length);
-      arrayOfByte2 = new byte[paramArrayOfByte1.length + this.D];
+      this.I = (paramArrayOfByte2.length + 13 + 1 + arrayOfByte1.length);
+      arrayOfByte2 = new byte[paramArrayOfByte1.length + this.I];
       util.int8_to_buf(arrayOfByte2, 0, paramInt);
       util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte1.length);
       util.int64_to_buf32(arrayOfByte2, 3, paramLong1);
@@ -401,9 +481,9 @@ public class z
     return 8080;
   }
   
-  public int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramInt2 < this.E) {
+    if (paramInt2 < this.J) {
       return -1009;
     }
     paramInt1 = c(paramArrayOfByte, paramInt1);
@@ -414,12 +494,12 @@ public class z
   
   public Socket d()
   {
-    if (this.w.ad != null) {
-      util.LOGD("_transport_sk", "_transport_sk" + this.w.ad.toString());
+    if (this.x.ak != null) {
+      util.LOGD("_transport_sk", "_transport_sk" + this.x.ak.toString());
     }
     for (;;)
     {
-      return this.w.ad;
+      return this.x.ak;
       util.LOGD("_transport_sk", "_transport_sk null");
     }
   }

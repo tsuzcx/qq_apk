@@ -11,45 +11,44 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.ListView;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.ba;
 import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.fc;
-import com.tencent.token.fp;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.dr;
+import com.tencent.token.ef;
+import com.tencent.token.es;
+import com.tencent.token.global.c;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.ErrorView;
 import com.tencent.token.ui.base.TitleOptionMenu;
-import com.tencent.token.ui.base.dk;
+import com.tencent.token.ui.base.dd;
 
 public class UtilsAccountLockActivity
   extends BaseActivity
 {
   static int windowWidth;
-  private k mAdapter;
-  private View.OnClickListener mBindListener = new acz(this);
+  private i mAdapter;
+  private View.OnClickListener mBindListener = new abl(this);
   private ErrorView mErrorView;
-  Handler mHandler = new acy(this);
+  Handler mHandler = new abk(this);
   private ListView mListView;
-  private dk mNeedVerifyView;
+  private dd mNeedVerifyView;
   private View mProgressView;
   private boolean mQueryingAccountLockStatus = false;
-  private View.OnClickListener mRetryListener = new ada(this);
+  private View.OnClickListener mRetryListener = new abm(this);
   private String mTipBindQQBtnDesc;
   private String mTipBindQQDesc;
   private TitleOptionMenu mTitleMenu;
   
   private void initUI()
   {
-    this.mProgressView = findViewById(2131297189);
-    this.mListView = ((ListView)findViewById(2131297188));
-    this.mAdapter = new k(this, this.mListView, this.mHandler);
+    this.mProgressView = findViewById(2131559350);
+    this.mListView = ((ListView)findViewById(2131559349));
+    this.mAdapter = new i(this, this.mListView, this.mHandler);
     this.mListView.setAdapter(this.mAdapter);
-    this.mTipBindQQDesc = getResources().getString(2131362193);
-    this.mTipBindQQBtnDesc = getResources().getString(2131362297);
+    this.mTipBindQQDesc = getResources().getString(2131231535);
+    this.mTipBindQQBtnDesc = getResources().getString(2131230778);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -58,7 +57,7 @@ public class UtilsAccountLockActivity
     {
       try
       {
-        if ((b.d()) && (paramKeyEvent.getAction() == 0)) {}
+        if ((c.f()) && (paramKeyEvent.getAction() == 0)) {}
         switch (paramKeyEvent.getKeyCode())
         {
         case 4: 
@@ -68,12 +67,12 @@ public class UtilsAccountLockActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
       if ((this.mTitleMenu != null) && (this.mTitleMenu.getVisibility() == 0))
       {
-        this.mTitleMenu.a();
+        this.mTitleMenu.b();
         return true;
       }
     }
@@ -98,66 +97,45 @@ public class UtilsAccountLockActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = ax.a().e();
+    paramBundle = do.a().e();
     if ((paramBundle != null) && (!paramBundle.mIsBinded))
     {
       if (this.mNeedVerifyView == null) {
-        this.mNeedVerifyView = new dk(this, 4);
+        this.mNeedVerifyView = new dd(this, 5);
       }
       setContentView(this.mNeedVerifyView);
     }
     for (;;)
     {
-      setRightTitleImage(2130837951, new adb(this));
+      setRightTitleImage(2130838011, new abn(this));
       paramBundle = new DisplayMetrics();
       getWindowManager().getDefaultDisplay().getMetrics(paramBundle);
       windowWidth = paramBundle.widthPixels;
       return;
-      setContentView(2130903226);
+      setContentView(2130968789);
       initUI();
     }
   }
   
   protected void onDestroy()
   {
-    if (this.mAdapter != null)
-    {
-      int j = ba.a().a(true);
-      int i = 0;
-      g localg;
-      while (i < j)
-      {
-        localg = ba.a().a(i, true);
-        if (localg != null) {
-          localg.e = false;
-        }
-        i += 1;
-      }
-      j = ba.a().a(false);
-      i = 0;
-      while (i < j)
-      {
-        localg = ba.a().a(i, false);
-        if (localg != null) {
-          localg.e = false;
-        }
-        i += 1;
-      }
+    if (this.mAdapter != null) {
+      this.mAdapter.d();
     }
     super.onDestroy();
   }
   
   protected void onPause()
   {
-    ba.a().b.b();
-    ba.a().h.a("account_lock").a();
+    dr.a().b.b();
+    dr.a().h.a("account_lock").a();
     super.onPause();
   }
   
   protected void onResume()
   {
     super.onResume();
-    QQUser localQQUser = ax.a().e();
+    QQUser localQQUser = do.a().e();
     if ((localQQUser != null) && (localQQUser.mIsBinded)) {
       queryAccountLockStatus();
     }
@@ -174,12 +152,12 @@ public class UtilsAccountLockActivity
       return;
     }
     this.mQueryingAccountLockStatus = true;
-    if (ba.a().j()) {
+    if (dr.a().j()) {
       hideTip();
     }
     for (;;)
     {
-      af.a().a(0L, this.mHandler);
+      cw.a().a(0L, this.mHandler);
       return;
       showTip(-1, null, null, false);
     }
@@ -201,16 +179,16 @@ public class UtilsAccountLockActivity
       this.mErrorView = new ErrorView(this);
       addContentView(this.mErrorView);
     }
-    this.mErrorView.a(paramInt);
+    this.mErrorView.setErrorType(paramInt);
     if (paramBoolean) {
-      this.mErrorView.a(this.mBindListener);
+      this.mErrorView.setAction(this.mBindListener);
     }
     for (;;)
     {
-      this.mErrorView.setVisibility(0);
+      this.mErrorView.a();
       bringChildToFront(this.mErrorView);
       return;
-      this.mErrorView.a(this.mRetryListener);
+      this.mErrorView.setAction(this.mRetryListener);
     }
   }
   
@@ -219,7 +197,7 @@ public class UtilsAccountLockActivity
     if (isFinishing()) {
       return;
     }
-    showUserDialog(paramInt, paramString, 2131361800, null);
+    showUserDialog(paramInt, paramString, 2131230897, null);
   }
 }
 

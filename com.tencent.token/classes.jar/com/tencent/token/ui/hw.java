@@ -1,16 +1,16 @@
 package com.tencent.token.ui;
 
-import com.tencent.jni.Face;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class hw
-  implements Runnable
+class hw
+  implements View.OnClickListener
 {
-  hw(FaceRecognitionCameraPreviewOld paramFaceRecognitionCameraPreviewOld) {}
+  hw(hv paramhv) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.b.Destroy();
-    this.a.b = null;
+    this.a.a.a.finish();
   }
 }
 

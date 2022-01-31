@@ -1,22 +1,21 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Message;
-import android.widget.EditText;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import com.tencent.token.global.f;
 
-final class afg
-  extends bo
+class afg
+  extends cb
 {
-  afg(UtilsModSetMobileStep1Activity paramUtilsModSetMobileStep1Activity)
+  afg(VerifySuccActivity paramVerifySuccActivity)
   {
-    super(paramUtilsModSetMobileStep1Activity);
+    super(paramVerifySuccActivity);
   }
   
-  public final void handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.isFinishing()) || (UtilsModSetMobileStep1Activity.access$000(this.a) == null) || (UtilsModSetMobileStep1Activity.access$000(this.a).getText() == null)) {
+    if (this.a.isFinishing()) {
       return;
     }
     switch (paramMessage.what)
@@ -27,33 +26,15 @@ final class afg
     this.a.dismissDialog();
     if (paramMessage.arg1 == 0)
     {
-      UtilsModSetMobileStep1Activity.access$102(this.a, (String)paramMessage.obj);
-      paramMessage = new Intent(this.a, UtilsModSetMobileStep2Activity.class);
-      paramMessage.putExtra("title", UtilsModSetMobileStep1Activity.access$200(this.a));
-      paramMessage.putExtra("op_type", UtilsModSetMobileStep1Activity.access$300(this.a));
-      paramMessage.putExtra("mobile", UtilsModSetMobileStep1Activity.access$000(this.a).getText().toString());
-      paramMessage.putExtra("area_code", UtilsModSetMobileStep1Activity.access$400(this.a));
-      paramMessage.putExtra("sms_prefix", UtilsModSetMobileStep1Activity.access$100(this.a));
-      paramMessage.putExtra("page_id", UtilsModSetMobileStep1Activity.access$500(this.a));
+      paramMessage = new Intent(this.a, UtilsModSetMobileStep1Activity.class);
+      paramMessage.putExtra("op_type", 1);
+      paramMessage.putExtra("title", this.a.getResources().getString(2131230788));
+      paramMessage.putExtra("page_id", 10);
       this.a.startActivity(paramMessage);
       return;
     }
-    paramMessage = (d)paramMessage.obj;
-    if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
-      d.a(this.a.getResources(), paramMessage);
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append("errcode").append(paramMessage.a).append(", ");
-    if (paramMessage.a == 124) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e.c(bool);
-      if (paramMessage.a != 124) {
-        break;
-      }
-      this.a.showUserDialog(2131361808, paramMessage.c, 2131361800, new afh(this));
-      return;
-    }
-    this.a.showUserDialog(2131361808, paramMessage.c, 2131361800, null);
+    paramMessage = (f)paramMessage.obj;
+    this.a.showToast(paramMessage.c);
   }
 }
 

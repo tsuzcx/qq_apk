@@ -58,15 +58,19 @@ public class ProcessThread
       Process.setThreadPriority(-20);
       label5:
       Log.v("TAG", "detect start");
-      long l = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       Object localObject = new int[2];
-      ImgProcessScan.a(this.outImg, (int[])localObject, this.raw_data, this.width, this.height, (this.width - this.real_width) / 2, (this.height - this.real_width) / 2, this.real_width, this.real_width);
+      ImgProcessScan.a(this.outImg, (int[])localObject, this.raw_data, this.width, this.height, (this.width - this.real_width) / 2, (this.height - this.real_width) / 2, this.real_width, this.real_width, 0, 0);
       System.arraycopy(this.outImg, 0, this.inImg, 0, this.inImg.length);
       int j = QbarNative.ScanImage(this.inImg, this.real_width, this.real_width, 0);
-      double d1 = (System.currentTimeMillis() - l + 0.0D) / 2.0D;
+      long l2 = System.currentTimeMillis();
+      double d1 = (1L * 0.0D + (l2 - l1)) / (1L + 1L);
       Log.v("TAG", "average detect time:" + d1);
       double d2;
-      if (j == 1) {
+      if (j == 1)
+      {
+        d1 = 1L;
+        d1 = (l2 - l1 + d1 * 0.0D) / (1L + 1L);
         d2 = 0.0D;
       }
       for (;;)
@@ -74,7 +78,7 @@ public class ProcessThread
         Log.v("TAG", "average target time:" + d1);
         Log.v("TAG", "average no target time:" + d2);
         if (j != 1) {
-          break label331;
+          break label373;
         }
         localObject = new Point[10];
         int i = 0;
@@ -83,7 +87,8 @@ public class ProcessThread
           localObject[i] = new Point();
           i += 1;
         }
-        d2 = d1;
+        d1 = 1L;
+        d2 = (l2 - l1 + d1 * 0.0D) / (1L + 1L);
         d1 = 0.0D;
       }
       StringBuilder localStringBuilder1 = new StringBuilder();
@@ -91,11 +96,9 @@ public class ProcessThread
       QbarNative.GetOneResult(localStringBuilder1, localStringBuilder2, (Point[])localObject);
       this.bundle.putString("dataType", localStringBuilder1.toString());
       this.bundle.putString("dataInfo", localStringBuilder2.toString());
-      System.currentTimeMillis();
       sendMsg(j, this.bundle);
       return;
-      label331:
-      System.currentTimeMillis();
+      label373:
       sendMsg(j);
       return;
     }

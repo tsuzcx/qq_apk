@@ -1,18 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ada
-  implements View.OnClickListener
+class ada
+  implements DialogInterface.OnClickListener
 {
-  ada(UtilsAccountLockActivity paramUtilsAccountLockActivity) {}
+  ada(acz paramacz) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.c("retry: ");
-    this.a.queryAccountLockStatus();
+    UtilsMailProtectActivity.access$700(this.a.a);
   }
 }
 

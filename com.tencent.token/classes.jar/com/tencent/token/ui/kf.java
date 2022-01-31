@@ -1,26 +1,62 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.ui.base.SwitchButton;
 
-final class kf
-  implements Animation.AnimationListener
+class kf
 {
-  kf(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  View a;
+  TextView b;
+  ProgressBar c;
+  SwitchButton d;
+  ImageView e;
+  h f;
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  kf(kb paramkb, View paramView, h paramh)
   {
-    FaceStartVryCameraActivity.access$2700(this.a).setVisibility(8);
-    FaceStartVryCameraActivity.access$2300(this.a).setVisibility(8);
-    FaceStartVryCameraActivity.access$700(this.a).a(true, false, 0, 0);
+    this.a = paramView;
+    if (this.a == null) {
+      return;
+    }
+    this.f = paramh;
+    this.d = ((SwitchButton)this.a.findViewById(2131559373));
+    this.b = ((TextView)this.a.findViewById(2131559371));
+    this.c = ((ProgressBar)this.a.findViewById(2131559374));
+    this.e = ((ImageView)this.a.findViewById(2131559372));
   }
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation)
+  public h a()
   {
-    FaceStartVryCameraActivity.access$700(this.a).a(true);
+    return this.f;
+  }
+  
+  public SwitchButton b()
+  {
+    return this.d;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public ProgressBar d()
+  {
+    return this.c;
+  }
+  
+  public ImageView e()
+  {
+    return this.e;
+  }
+  
+  public View f()
+  {
+    return this.a;
   }
 }
 

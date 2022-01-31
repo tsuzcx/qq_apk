@@ -1,78 +1,178 @@
 package com.tencent.token;
 
 import android.content.Context;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.halley.common.h;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public final class cc
-  extends bm
 {
-  private long c;
-  private long d;
-  private int e;
-  private int f;
-  private final String g = "/cn/mbtoken3/mbtoken3_check_up_sms";
+  private static String a = "";
+  private static String b = "";
   
-  public static void a(fs paramfs, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public static String a(Context paramContext)
   {
-    paramfs.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramfs.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramfs.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
-    paramfs.j = paramInt2;
-  }
-  
-  protected final String a()
-  {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str1 = ax.c; str1 == null; str1 = null)
-    {
-      this.a.a(104, null, null);
+    int i = 1;
+    if (paramContext == null) {
       return null;
     }
-    String str2 = s.a(new Object[] { "real_uin", Long.valueOf(this.d), "scene_id", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(ag.c().r() / 1000L) });
-    str1 = "?uin=" + this.c + "&aq_base_sid=" + str1 + "&data=" + str2;
-    return b.c() + "/cn/mbtoken3/mbtoken3_check_up_sms" + str1;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramfs.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.e = paramfs.j;
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    for (;;)
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (i != this.e)
+      try
       {
-        this.a.a(10030, null, null);
-        e.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.e);
-        return;
+        str = a;
+        if (str != null) {
+          continue;
+        }
+        if (i != 0)
+        {
+          paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+          if (paramContext != null) {
+            a = paramContext.getDeviceId();
+          }
+        }
       }
-      this.a.a = 0;
-      return;
+      catch (Exception paramContext)
+      {
+        String str;
+        int j;
+        continue;
+      }
+      return a;
+      j = str.trim().length();
+      if (j != 0) {
+        i = 0;
+      }
     }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+  }
+  
+  public static String a(Exception paramException)
+  {
+    String str = Log.getStackTraceString(paramException);
+    if (str != null)
+    {
+      if ((str.indexOf("\n") != -1) && (str.indexOf("\n") < 100)) {
+        paramException = str.substring(0, str.indexOf("\n"));
+      }
+      do
+      {
+        return paramException;
+        paramException = str;
+      } while (str.length() <= 100);
+      return str.substring(0, 100);
+    }
+    return "";
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (paramString == null) {}
+    while (paramString.trim().length() == 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    int i = 1;
+    if (paramContext == null) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        str = b;
+        if (str != null) {
+          continue;
+        }
+        if (i != 0)
+        {
+          paramContext = (WifiManager)paramContext.getSystemService("wifi");
+          if (paramContext != null)
+          {
+            paramContext = paramContext.getConnectionInfo();
+            if (paramContext != null) {
+              b = paramContext.getMacAddress();
+            }
+          }
+        }
+      }
+      catch (Exception paramContext)
+      {
+        String str;
+        int j;
+        continue;
+      }
+      return b;
+      j = str.trim().length();
+      if (j != 0) {
+        i = 0;
+      }
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    Object localObject = h.a();
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder("");
+      String str = a((Context)localObject);
+      if (!TextUtils.isEmpty(str)) {
+        localStringBuilder.append(str);
+      }
+      localObject = b((Context)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localStringBuilder.append((String)localObject);
+      }
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append(paramString);
+      localStringBuilder.append((int)(Math.random() * 2147483647.0D));
+      paramString = c(localStringBuilder.toString());
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  private static String c(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return null;
+    }
+    try
+    {
+      localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramString.getBytes());
+      paramString = ((MessageDigest)localObject).digest();
+      if (paramString == null) {
+        return "";
+      }
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    Object localObject = new StringBuffer();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      String str = Integer.toHexString(paramString[i] & 0xFF);
+      if (str.length() == 1) {
+        ((StringBuffer)localObject).append("0");
+      }
+      ((StringBuffer)localObject).append(str);
+      i += 1;
+    }
+    return ((StringBuffer)localObject).toString().toUpperCase();
   }
 }
 

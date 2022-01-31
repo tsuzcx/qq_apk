@@ -1,20 +1,29 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.core.bean.SafeMsgItem.MsgAction;
 
-final class rt
+class rt
   implements View.OnClickListener
 {
-  rt(NetActiveVryQQTokenActivity paramNetActiveVryQQTokenActivity) {}
+  rt(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, IndexActivity.class);
-    paramView.putExtra("index_from", 16);
-    this.a.startActivity(paramView);
-    this.a.finish();
+    try
+    {
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.a.mItem.mAction.mTargetUrl));
+      this.a.startActivity(paramView);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

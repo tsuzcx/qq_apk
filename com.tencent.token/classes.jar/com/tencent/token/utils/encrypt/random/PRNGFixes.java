@@ -15,7 +15,9 @@ public final class PRNGFixes
 {
   private static final byte[] a = ;
   
-  public static void a()
+  public static void a() {}
+  
+  private static void c()
   {
     if ((Build.VERSION.SDK_INT < 16) || (Build.VERSION.SDK_INT > 18)) {}
     for (;;)
@@ -23,7 +25,7 @@ public final class PRNGFixes
       return;
       try
       {
-        Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_seed", new Class[] { [B.class }).invoke(null, new Object[] { c() });
+        Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_seed", new Class[] { [B.class }).invoke(null, new Object[] { d() });
         int i = ((Integer)Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_load_file", new Class[] { String.class, Long.TYPE }).invoke(null, new Object[] { "/dev/urandom", Integer.valueOf(1024) })).intValue();
         if (i == 1024) {
           continue;
@@ -37,7 +39,7 @@ public final class PRNGFixes
     }
   }
   
-  private static byte[] c()
+  private static byte[] d()
   {
     try
     {
@@ -58,7 +60,7 @@ public final class PRNGFixes
     }
   }
   
-  private static String d()
+  private static String e()
   {
     try
     {
@@ -69,14 +71,14 @@ public final class PRNGFixes
     return null;
   }
   
-  private static byte[] e()
+  private static byte[] f()
   {
     Object localObject = new StringBuilder();
     String str = Build.FINGERPRINT;
     if (str != null) {
       ((StringBuilder)localObject).append(str);
     }
-    str = d();
+    str = e();
     if (str != null) {
       ((StringBuilder)localObject).append(str);
     }

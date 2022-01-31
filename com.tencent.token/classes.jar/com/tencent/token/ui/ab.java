@@ -1,17 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.do;
+import com.tmsdk.TMSDKContext;
 
-final class ab
-  implements DialogInterface.OnClickListener
+class ab
+  implements View.OnClickListener
 {
-  ab(aa paramaa) {}
+  ab(AccountPageActivity paramAccountPageActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    af.a().a(this.a.a.mHandler);
+    if (do.a().e() == null) {
+      this.a.showNoAccountTipDialog(this.a, 19, 0);
+    }
+    TMSDKContext.saveActionData(1150060);
   }
 }
 

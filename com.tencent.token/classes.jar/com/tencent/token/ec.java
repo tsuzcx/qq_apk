@@ -1,106 +1,67 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.ScanDataResult;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.s;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
+import okhttp3.at;
+import okhttp3.av;
+import okhttp3.g;
+import okhttp3.h;
 
-public final class ec
-  extends bm
+class ec
+  implements h
 {
-  ScanDataResult c;
-  private long d;
-  private long e;
+  ec(ea paramea, long paramLong1, RandomAccessFile paramRandomAccessFile, File paramFile, int paramInt, long paramLong2) {}
   
-  protected final String a()
+  public void a(g paramg, IOException paramIOException)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str1 = ax.c; str1 == null; str1 = null)
+    ea.a(this.f, false);
+  }
+  
+  public void a(g paramg, at paramat)
+  {
+    if (paramat.b() != 206)
     {
-      this.a.a(104, null, null);
-      return null;
+      ea.a(this.f);
+      return;
     }
-    Object localObject1 = "";
-    try
+    paramg = paramat.e().b();
+    RandomAccessFile localRandomAccessFile = new RandomAccessFile(ea.c(this.f), "rw");
+    localRandomAccessFile.seek(this.a);
+    byte[] arrayOfByte = new byte[4096];
+    int i = 0;
+    for (;;)
     {
-      Object localObject2 = new JSONObject();
-      if (this.d != 0L) {
-        ((JSONObject)localObject2).put("real_uin", this.d);
+      int j = paramg.read(arrayOfByte);
+      if (j <= 0) {
+        break;
       }
-      ((JSONObject)localObject2).put("seq_id", this.e);
-      ((JSONObject)localObject2).put("op_time", (int)(ag.c().r() / 1000L));
-      String str2 = s.c(RqdApplication.i());
-      if (!TextUtils.isEmpty(str2)) {
-        ((JSONObject)localObject2).put("mac", str2);
-      }
-      str2 = s.b(RqdApplication.i());
-      if (!TextUtils.isEmpty(str2)) {
-        ((JSONObject)localObject2).put("imei", str2);
-      }
-      ((JSONObject)localObject2).put("sys_ver", URLEncoder.encode(Build.VERSION.RELEASE));
-      ((JSONObject)localObject2).put("model", URLEncoder.encode(Build.MODEL));
-      localObject2 = s.b(((JSONObject)localObject2).toString().getBytes());
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      if (ea.e(this.f))
       {
-        localJSONException.printStackTrace();
+        ea.a(this.f, new Closeable[] { this.b, paramg, paramat.e() });
+        ea.a(this.f, new File[] { this.c });
+        this.f.sendEmptyMessage(4);
+        return;
       }
+      if (ea.f(this.f))
+      {
+        ea.a(this.f, new Closeable[] { this.b, paramg, paramat.e() });
+        this.f.sendEmptyMessage(3);
+        return;
+      }
+      localRandomAccessFile.write(arrayOfByte, 0, j);
+      i += j;
+      long l = this.a + i;
+      this.b.seek(0L);
+      this.b.write((l + "").getBytes("UTF-8"));
+      ea.g(this.f)[this.d] = (l - this.e);
+      this.f.sendEmptyMessage(1);
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + (String)localObject1;
-    return b.c() + "/cn/mbtoken3/mbtoken3_detector_info" + str1;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.d = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramfs.c.get("param.common.seq")).intValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      this.c = new ScanDataResult(new JSONObject(new String(paramJSONObject)));
-      this.a.a = 0;
-      return;
-    }
-    a(10022, RqdApplication.i().getString(2131361799));
-  }
-  
-  protected final void b()
-  {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.c;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    ea.a(this.f, new Closeable[] { this.b, paramg, paramat.e() });
+    ea.a(this.f, new File[] { this.c });
+    this.f.sendEmptyMessage(2);
   }
 }
 

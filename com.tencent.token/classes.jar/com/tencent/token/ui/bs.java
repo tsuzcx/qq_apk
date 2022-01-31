@@ -1,26 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class bs
-  implements View.OnClickListener
+class bs
+  implements DialogInterface.OnClickListener
 {
-  bs(BindUinActivity paramBindUinActivity) {}
+  bs(BaseActivity paramBaseActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.b("startTimeTask mSmsListener");
-    this.a.startTimeTask(2);
-    this.a.showProgressDialog();
-    if (BindUinActivity.access$200(this.a) == 13)
-    {
-      af.a().a("", Long.parseLong(BindUinActivity.access$300(this.a)), 1, 5, "", this.a.mHandler);
-      return;
-    }
-    af.a().a("", Long.parseLong(BindUinActivity.access$300(this.a)), 1, 1, "", this.a.mHandler);
+    this.a.dismissDialog();
   }
 }
 

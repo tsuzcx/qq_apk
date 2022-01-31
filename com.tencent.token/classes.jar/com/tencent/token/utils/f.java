@@ -6,7 +6,7 @@ import java.io.FileFilter;
 final class f
   implements FileFilter
 {
-  public final boolean accept(File paramFile)
+  public boolean accept(File paramFile)
   {
     if (!paramFile.isDirectory()) {}
     while (e.a(paramFile) <= 0L) {

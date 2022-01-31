@@ -1,20 +1,25 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class jk
-  implements View.OnClickListener
+class jk
+  implements Animation.AnimationListener
 {
-  jk(FaceRegConfirmActivity paramFaceRegConfirmActivity) {}
+  jk(ji paramji, FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    e.c("onBackPressed");
-    this.a.setResult(10);
-    this.a.finish();
+    FaceStartVryCameraActivity.access$2100(this.b.a).setVisibility(4);
+    FaceStartVryCameraActivity.access$3300(this.b.a).setVisibility(4);
+    IndexActivity.need_query_dual_msg = true;
+    this.b.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

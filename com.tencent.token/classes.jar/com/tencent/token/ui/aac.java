@@ -1,15 +1,24 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.ui.base.cq;
+import android.content.res.Resources;
+import com.tencent.token.ui.base.bs;
 
-final class aac
-  implements cq
+class aac
+  implements bs
 {
-  aac(ShowLogActivity paramShowLogActivity) {}
+  aac(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity) {}
   
-  public final void onRefresh()
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    ShowLogActivity.access$100(this.a);
+    this.a.showUserDialog(2131230843, this.a.getResources().getString(2131231116), 2131230897, new aad(this));
+  }
+  
+  public void b()
+  {
+    StartPwdGestureModifyActivity.access$402(this.a, 2);
+    StartPwdGestureModifyActivity.access$500(this.a);
   }
 }
 

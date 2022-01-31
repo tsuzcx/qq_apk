@@ -1,6 +1,6 @@
 package tmsdk.common.d.a.b;
 
-import d.b.c;
+import com.tencent.token.fp;
 import java.util.Comparator;
 
 class C
@@ -10,7 +10,7 @@ class C
   
   public int a(j paramj1, j paramj2)
   {
-    return c.b(paramj2.c) - c.b(paramj1.c);
+    return fp.b(paramj2.c) - fp.b(paramj1.c);
   }
 }
 

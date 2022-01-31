@@ -1,23 +1,38 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.global.e;
+import android.content.res.Resources;
+import com.tencent.token.ch;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.bs;
 
-final class aao
-  implements Runnable
+class aao
+  implements bs
 {
-  aao(SmsContentTipActivity paramSmsContentTipActivity) {}
+  aao(StartPwdGestureVerifyActivity paramStartPwdGestureVerifyActivity) {}
   
-  public final void run()
+  public void a()
   {
-    if (!SmsContentTipActivity.access$000(this.a)) {
+    this.a.setResult(35);
+    ch.a().a(System.currentTimeMillis(), 18);
+    IndexActivity.need_query_dual_msg = true;
+    this.a.finish();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    h.a("verifyinit limit");
+    if (paramBoolean)
+    {
+      this.a.mActivityType = 3;
+      StartPwdGestureVerifyActivity.access$300(this.a);
       return;
     }
-    e.a("send bind seq request:" + SmsContentTipActivity.access$100(this.a));
-    ag.c().n();
-    af.a().a(0L, Long.parseLong(SmsContentTipActivity.access$200(this.a)), SmsContentTipActivity.access$300(this.a), this.a.mHandler);
-    SmsContentTipActivity.access$108(this.a);
+    this.a.showUserDialog(2131230843, this.a.getResources().getString(2131231116), 2131230897, new aap(this));
+  }
+  
+  public void b()
+  {
+    StartPwdGestureVerifyActivity.access$300(this.a);
   }
 }
 

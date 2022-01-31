@@ -1,17 +1,16 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class abx
+class abx
   implements View.OnClickListener
 {
-  abx(abw paramabw) {}
+  abx(abv paramabv) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    StartPwdGestureModifyActivity.access$200(this.a.a).sendEmptyMessage(1008);
+    this.a.a.dismissDialog();
   }
 }
 

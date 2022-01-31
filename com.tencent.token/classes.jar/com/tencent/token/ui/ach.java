@@ -1,18 +1,23 @@
 package com.tencent.token.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.token.utils.t;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.ui.base.TitleOptionMenu;
 
-final class ach
-  implements Runnable
+class ach
+  implements View.OnClickListener
 {
-  ach(TakeIDPhotoComfirmActivity paramTakeIDPhotoComfirmActivity, String paramString, ImageView paramImageView) {}
+  ach(UtilsGameLockActivity paramUtilsGameLockActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = t.b(this.a, Math.max(this.b.getWidth(), this.b.getHeight()));
-    this.b.setImageBitmap(localBitmap);
+    if (UtilsGameLockActivity.access$600(this.a).getVisibility() == 0)
+    {
+      UtilsGameLockActivity.access$600(this.a).b();
+      return;
+    }
+    UtilsGameLockActivity.access$600(this.a).setOnItemClickedListener(new aci(this));
+    UtilsGameLockActivity.access$600(this.a).a();
   }
 }
 

@@ -1,17 +1,12 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-final class ze
-  implements View.OnClickListener
+class ze
 {
-  ze(SecurityReporterActivity paramSecurityReporterActivity) {}
+  TextView a;
   
-  public final void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  private ze(zc paramzc) {}
 }
 
 

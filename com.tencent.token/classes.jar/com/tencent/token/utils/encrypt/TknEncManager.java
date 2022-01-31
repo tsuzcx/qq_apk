@@ -14,7 +14,7 @@ public class TknEncManager
   
   private TknEncManager()
   {
-    initEncKey(RqdApplication.i(), 2131361935);
+    initEncKey(RqdApplication.l(), 2131231497);
   }
   
   public static TknEncManager a()
@@ -28,6 +28,8 @@ public class TknEncManager
   private native void initEncKey(Context paramContext, int paramInt);
   
   public native byte[] decInitCode(byte[] paramArrayOfByte);
+  
+  public native byte[] encInitCode(byte[] paramArrayOfByte);
 }
 
 

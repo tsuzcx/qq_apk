@@ -1,25 +1,55 @@
 package com.tencent.token.ui.base;
 
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import com.tencent.token.ui.IndexActivity;
 
-final class r
-  implements Animation.AnimationListener
+class r
+  implements Runnable
 {
-  r(q paramq, DualMsgView paramDualMsgView) {}
+  private View b;
+  private View c;
+  private View d;
+  private View e;
+  private TranslateAnimation f;
+  private TranslateAnimation g;
+  private TranslateAnimation h;
+  private TranslateAnimation i;
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public r(DualMsgView paramDualMsgView, View paramView1, View paramView2, View paramView3, View paramView4)
   {
-    DualMsgView.i(this.b.a).setText(DualMsgView.h(this.b.a).getText());
-    DualMsgView.k(this.b.a).setText(DualMsgView.j(this.b.a).getText());
-    q.a(this.b).setVisibility(4);
+    this.b = paramView1;
+    this.c = paramView2;
+    this.d = paramView3;
+    this.e = paramView4;
+    this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, (int)(IndexActivity.S_DENSITY * 40.0F) + -DualMsgView.c(paramDualMsgView));
+    this.h.setDuration(600L);
+    this.h.setInterpolator(new v(paramDualMsgView, null));
+    this.i = new TranslateAnimation(0.0F, 0.0F, 0.0F, DualMsgView.b(paramDualMsgView));
+    this.i.setDuration(600L);
+    this.i.setInterpolator(new v(paramDualMsgView, null));
+    this.f = new TranslateAnimation(0.0F, 0.0F, 0.0F, -DualMsgView.c(paramDualMsgView));
+    this.f.setDuration(600L);
+    this.f.setInterpolator(new AccelerateInterpolator());
+    this.f.setFillAfter(true);
+    this.g = new TranslateAnimation(0.0F, 0.0F, 0.0F, DualMsgView.b(paramDualMsgView));
+    this.g.setDuration(600L);
+    this.g.setInterpolator(new AccelerateInterpolator());
+    this.g.setFillAfter(true);
+    this.i.setAnimationListener(new s(this, paramDualMsgView));
   }
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public void run()
+  {
+    DualMsgView.e(this.a).setEnabled(false);
+    DualMsgView.f(this.a).setEnabled(false);
+    this.b.startAnimation(this.f);
+    this.c.startAnimation(this.g);
+    this.d.startAnimation(this.h);
+    this.e.startAnimation(this.i);
+  }
 }
 
 

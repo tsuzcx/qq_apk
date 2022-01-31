@@ -1,20 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.EvalAccountResult.RecommendItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class ai
-  implements View.OnClickListener
+class ai
+  implements DialogInterface.OnClickListener
 {
-  ai(AccountPageActivity paramAccountPageActivity, EvalAccountResult.RecommendItem paramRecommendItem) {}
+  ai(ad paramad) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.b, MyProtecSubPageActivity.class);
-    paramView.putExtra("detailItems", this.a.mDetails);
-    this.b.startActivity(paramView);
+    this.a.a.dismissDialog();
+    cw.a().b(this.a.a.mHandler);
   }
 }
 

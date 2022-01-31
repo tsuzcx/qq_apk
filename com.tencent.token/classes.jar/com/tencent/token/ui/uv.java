@@ -1,34 +1,17 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import com.tencent.token.ui.base.cv;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class uv
-  implements cv
+class uv
+  implements View.OnClickListener
 {
-  uv(RealNameDetailActivity paramRealNameDetailActivity) {}
+  uv(RealNameFindActivity paramRealNameFindActivity) {}
   
-  public final void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.iv1.setImageResource(2130837778);
-    this.a.iv2.setImageResource(2130837778);
-    this.a.iv3.setImageResource(2130837778);
-    this.a.iv4.setImageResource(2130837778);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.iv1.setImageResource(2130837779);
-      return;
-    case 1: 
-      this.a.iv2.setImageResource(2130837779);
-      return;
-    case 2: 
-      this.a.iv3.setImageResource(2130837779);
-      return;
-    }
-    this.a.iv4.setImageResource(2130837779);
+    paramView = abi.a().a(this.a);
+    this.a.startActivity(paramView);
   }
 }
 

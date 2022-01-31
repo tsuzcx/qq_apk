@@ -1,16 +1,13 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 
-final class cb
-  implements View.OnClickListener
+public class cb
+  extends Handler
 {
-  cb(CommonVerifyActivity paramCommonVerifyActivity) {}
-  
-  public final void onClick(View paramView)
+  public cb(BaseActivity paramBaseActivity)
   {
-    CommonVerifyActivity.access$000(this.a);
+    super(BaseActivity.access$000(paramBaseActivity));
   }
 }
 

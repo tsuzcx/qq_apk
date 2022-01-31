@@ -4,12 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class ao
+class ao
   extends BroadcastReceiver
 {
   ao(GameLoginSndConfirmView paramGameLoginSndConfirmView) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (paramIntent.getAction().equals("com.tencent.token.update_btn_interval_time_action")) {
       this.a.e();

@@ -1,22 +1,21 @@
 package com.tencent.token.ui.base;
 
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ui.FacePwdIndexActivity;
-import com.tencent.token.utils.t;
+import android.os.Handler;
+import android.os.Message;
 
-final class ac
-  implements View.OnClickListener
+class ac
+  extends Handler
 {
-  ac(ab paramab, QQUser paramQQUser) {}
-  
-  public final void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    t.b(this.a.mRealUin);
-    ab.a(this.b).dismiss();
-    ab.b(this.b).refreshList();
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (paramMessage.obj == null);
+    ((Runnable)paramMessage.obj).run();
   }
 }
 

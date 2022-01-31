@@ -1,26 +1,14 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.ag;
-import com.tencent.token.aq;
-import com.tencent.token.as;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class cm
-  implements View.OnClickListener
+class cm
+  implements DialogInterface.OnClickListener
 {
-  cm(CorrectTokenActivity paramCorrectTokenActivity) {}
+  cm(CheckMobileAvailableActivity paramCheckMobileAvailableActivity) {}
   
-  public final void onClick(View paramView)
-  {
-    if (CorrectTokenActivity.access$500(this.a) == true)
-    {
-      ag.c().a.b.a();
-      CorrectTokenActivity.access$502(this.a, false);
-      this.a.startTimeTask();
-    }
-    this.a.showUserDialog(6);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -5,24 +5,24 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.token.core.bean.EvalAccountResult;
-import com.tencent.token.utils.s;
+import com.tencent.token.utils.w;
 
-final class q
+class q
   implements View.OnClickListener
 {
   q(AccountPageActivity paramAccountPageActivity, EvalAccountResult paramEvalAccountResult) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
     if (this.a.mSubStatus == 0)
     {
       if (!TextUtils.isEmpty(this.a.mUrl)) {
-        s.a(this.b, this.a.mUrl, this.b.getString(2131362296));
+        w.a(this.b, this.a.mUrl, this.b.getString(2131230924));
       }
       return;
     }
     paramView = new Intent(this.b, ModifyQQPwdActivity.class);
-    pv.a().a(this.b, paramView, pv.b);
+    pg.a().a(this.b, paramView, pg.b);
   }
 }
 

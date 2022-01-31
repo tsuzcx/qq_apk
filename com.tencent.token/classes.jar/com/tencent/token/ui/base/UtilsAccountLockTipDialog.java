@@ -11,24 +11,24 @@ public class UtilsAccountLockTipDialog
   extends Dialog
 {
   private Handler a;
-  private ds b;
+  private dj b;
   private boolean c;
   
-  public UtilsAccountLockTipDialog(Context paramContext, Handler paramHandler, ds paramds, boolean paramBoolean)
+  public UtilsAccountLockTipDialog(Context paramContext, int paramInt, Handler paramHandler, dj paramdj, boolean paramBoolean)
   {
-    super(paramContext, 2131427400);
+    super(paramContext, paramInt);
     this.a = paramHandler;
-    this.b = paramds;
+    this.b = paramdj;
     this.c = paramBoolean;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903224);
-    getWindow().setBackgroundDrawableResource(2130837639);
-    findViewById(2131297186).setOnClickListener(new di(this));
-    findViewById(2131297185).setOnClickListener(new dj(this));
+    setContentView(2130968787);
+    getWindow().setBackgroundDrawableResource(2130837730);
+    findViewById(2131559347).setOnClickListener(new db(this));
+    findViewById(2131559346).setOnClickListener(new dc(this));
   }
 }
 

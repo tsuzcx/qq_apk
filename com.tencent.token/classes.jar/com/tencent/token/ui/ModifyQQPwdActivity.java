@@ -11,31 +11,34 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.ah;
-import com.tencent.token.ax;
-import com.tencent.token.ba;
-import com.tencent.token.bf;
+import com.tencent.token.ch;
 import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.fp;
-import com.tencent.token.global.e;
-import com.tencent.token.p;
-import com.tencent.token.ui.base.dk;
-import com.tencent.token.utils.t;
+import com.tencent.token.cw;
+import com.tencent.token.cy;
+import com.tencent.token.do;
+import com.tencent.token.dr;
+import com.tencent.token.dw;
+import com.tencent.token.es;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.RoundImageView;
+import com.tencent.token.ui.base.dd;
+import com.tencent.token.utils.k;
+import com.tencent.token.utils.x;
 import com.tencent.token.widget.InputMethodRelativeLayout;
 
 public class ModifyQQPwdActivity
   extends BaseActivity
   implements View.OnClickListener
 {
+  public static final int S_SOURCE_ID_FREEZE = 1;
   boolean autoStartModPwdActivity = false;
   private boolean isOrangeToastShowing = false;
   private Button mCompleteBtn;
   private boolean mGoToLoginMsgList = false;
-  Handler mHandler = new pi(this);
+  Handler mHandler = new ot(this);
   private Button mModifyBtn;
-  private dk mNeedVerifyView;
+  private dd mNeedVerifyView;
   private Button mNoSetTokenPwdBtn;
   String mPwdText = null;
   EditText mPwdTextView = null;
@@ -43,6 +46,7 @@ public class ModifyQQPwdActivity
   View mScrollAreaLayout;
   private Button mSetTokenPwdBtn;
   private TextView mSetTokenPwdTipText;
+  private int mSourceId;
   private TextView mTextAccount;
   private RelativeLayout orange_toast;
   private ImageView toast_image;
@@ -52,85 +56,86 @@ public class ModifyQQPwdActivity
   
   private void init()
   {
-    Object localObject = ax.a().e();
-    this.mPwdTextView = ((EditText)findViewById(2131296820));
+    Object localObject = do.a().e();
+    this.mPwdTextView = ((EditText)findViewById(2131559018));
     if (this.mPwdTextView != null) {
       this.mPwdTextView.clearFocus();
     }
-    this.mModifyBtn = ((Button)findViewById(2131296822));
+    this.mModifyBtn = ((Button)findViewById(2131559020));
     this.mModifyBtn.setOnClickListener(this);
-    this.mTextAccount = ((TextView)findViewById(2131296819));
-    this.orange_toast = ((RelativeLayout)findViewById(2131296817));
-    this.toast_text = ((TextView)findViewById(2131296784));
-    this.toast_image = ((ImageView)findViewById(2131296783));
+    this.mTextAccount = ((TextView)findViewById(2131559017));
+    this.orange_toast = ((RelativeLayout)findViewById(2131558958));
+    this.toast_text = ((TextView)findViewById(2131558987));
+    this.toast_image = ((ImageView)findViewById(2131558986));
     if ((localObject != null) && (((QQUser)localObject).mNickName != null)) {
-      this.mTextAccount.setText(getResources().getString(2131362296) + "： " + ((QQUser)localObject).mNickName);
+      this.mTextAccount.setText(getResources().getString(2131230776) + "： " + ((QQUser)localObject).mNickName);
     }
     for (;;)
     {
-      this.mRootLayout = ((InputMethodRelativeLayout)findViewById(2131296814));
-      this.mScrollAreaLayout = findViewById(2131296815);
-      this.mRootLayout.a = new pq(this);
+      this.mRootLayout = ((InputMethodRelativeLayout)findViewById(2131559014));
+      this.mScrollAreaLayout = findViewById(2131559015);
+      this.mRootLayout.setOnSizeChangedListenner(new pb(this));
       localObject = getIntent().getExtras();
       if ((localObject != null) && (((Bundle)localObject).getInt("page_id") == 2)) {
         this.mGoToLoginMsgList = true;
       }
       return;
-      this.mTextAccount.setText(getResources().getString(2131362296) + "： ");
+      this.mTextAccount.setText(getResources().getString(2131230776) + "： ");
     }
   }
   
   private void initView(QQUser paramQQUser)
   {
-    label60:
-    Object localObject;
+    Object localObject = null;
     if (getIntent().getIntExtra("index_from", 0) == 25)
     {
       this.autoStartModPwdActivity = true;
       if ((paramQQUser == null) || (paramQQUser.mIsBinded)) {
-        break label213;
+        break label218;
       }
       if (this.mNeedVerifyView == null) {
-        this.mNeedVerifyView = new dk(this, 6);
+        this.mNeedVerifyView = new dd(this, 8);
       }
       setContentView(this.mNeedVerifyView);
-      setRightTitleImage(2130837951, new pr(this));
+      label62:
+      this.mRightOptionImage = null;
+      setRightTitleImage(2130838011, new pc(this));
       this.vrySucc = getIntent().getBooleanExtra("face_vry_succ", false);
       this.vrypswSucc = getIntent().getBooleanExtra("verify_psw", false);
-      if ((paramQQUser != null) && (ax.a().j()) && (!this.isOrangeToastShowing))
+      if ((paramQQUser != null) && (do.a().j()) && (!this.isOrangeToastShowing))
       {
         this.orange_toast.setVisibility(0);
         this.isOrangeToastShowing = true;
-        localObject = null;
         if (!this.vrySucc) {
-          break label241;
+          break label246;
         }
         if (!paramQQUser.mIsZzb) {
-          break label227;
+          break label232;
         }
-        paramQQUser = getResources().getString(2131362627);
+        paramQQUser = getResources().getString(2131231670);
       }
     }
     for (;;)
     {
       this.toast_text.setText(paramQQUser);
-      this.toast_image.setImageDrawable(getResources().getDrawable(2130837966));
-      this.toast_text.postDelayed(new ps(this), 3000L);
+      this.toast_image.setImageDrawable(getResources().getDrawable(2130838018));
+      this.toast_text.postDelayed(new pd(this), 3000L);
       return;
       this.autoStartModPwdActivity = false;
       break;
-      label213:
-      setContentView(2130903135);
+      label218:
+      setContentView(2130968691);
       init();
-      break label60;
-      label227:
-      paramQQUser = getResources().getString(2131362811);
+      break label62;
+      label232:
+      paramQQUser = getResources().getString(2131231003);
       continue;
-      label241:
+      label246:
       if (this.autoStartModPwdActivity)
       {
         this.autoStartModPwdActivity = false;
-        paramQQUser = getResources().getString(2131362624);
+        this.orange_toast.setVisibility(8);
+        paramQQUser = localObject;
       }
       else
       {
@@ -143,52 +148,65 @@ public class ModifyQQPwdActivity
   
   private void showErrorDialog(String paramString)
   {
-    showUserDialog(2131361808, paramString, 2131361800, new po(this), new pp(this));
+    showUserDialog(2131230843, paramString, 2131230897, new oz(this), new pa(this));
   }
   
   public void onClick(View paramView)
   {
     boolean bool;
     QQUser localQQUser;
-    if (paramView.getId() == 2131296822)
+    if (paramView.getId() == 2131559020)
     {
       bool = true;
-      e.a(bool);
-      localQQUser = ax.a().e();
+      h.a(bool);
+      localQQUser = do.a().e();
     }
     switch (paramView.getId())
     {
-    case 2131296823: 
     default: 
-    case 2131296822: 
+    case 2131559020: 
       do
       {
-        do
+        return;
+        bool = false;
+        break;
+        if (this.mPwdTextView != null) {
+          this.mPwdTextView.clearFocus();
+        }
+        this.mPwdText = this.mPwdTextView.getText().toString();
+        if ((this.mPwdText == null) || (this.mPwdText.length() < 8))
         {
+          showUserDialog(2131231464, getResources().getString(2131231242), 2131230897, null);
           return;
-          bool = false;
-          break;
-          this.mPwdText = this.mPwdTextView.getText().toString();
-        } while ((this.mPwdText == null) || (this.mPwdText.length() <= 0));
-        t.a(this);
+        }
+        x.a(this);
       } while (localQQUser == null);
       if ((localQQUser.mIsZzb) && (this.vrySucc))
       {
-        showUserDialog(2131361808, getResources().getString(2131361930) + this.mPwdText, 2131361800, 2131361804, new pt(this), null);
+        showUserDialog(2131230843, getResources().getString(2131230941) + this.mPwdText, 2131230897, 2131230886, new pe(this), null);
         return;
       }
-      bf.a().a(1, this.mHandler);
-      showProDialog(this, 2131361808, 2131361931, null);
+      dw.a().a(1, this.mHandler);
+      showProDialog(this, 2131230843, 2131230942, null);
       return;
-    case 2131296825: 
-      p.a().a(System.currentTimeMillis(), 14);
+    case 2131559023: 
+      ch.a().a(System.currentTimeMillis(), 14);
       startActivity(new Intent(this, StartPwdUpdateInfoActivity.class));
-    case 2131296826: 
       finish();
       return;
-    }
-    if (this.mGoToLoginMsgList) {
-      startActivity(new Intent(this, OpMsgDisplayActivity.class));
+    case 2131559022: 
+      if (this.mGoToLoginMsgList) {
+        startActivity(new Intent(this, OpMsgDisplayActivity.class));
+      }
+      finish();
+      return;
+    case 2131558924: 
+      paramView = new Intent(this, IndexActivity.class);
+      paramView.addFlags(67108864);
+      paramView.putExtra("index_from", 16);
+      startActivity(paramView);
+      finish();
+      return;
     }
     finish();
   }
@@ -196,10 +214,16 @@ public class ModifyQQPwdActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    if ((getIntent() != null) && (getIntent().getExtras() != null)) {
+      this.mSourceId = getIntent().getIntExtra("source_id", 0);
+    }
+    h.a("sourceid=" + this.mSourceId);
     this.autoStartModPwdActivity = false;
-    ax.a().e();
-    af.a().b(this.mHandler);
-    showProDialog(this, 2131361808, 2131361817, null);
+    if (0 == 0)
+    {
+      cw.a().b(this.mHandler);
+      showProDialog(this, 2131230843, 2131231298, null);
+    }
     initView(null);
   }
   
@@ -217,36 +241,56 @@ public class ModifyQQPwdActivity
   public void onResume()
   {
     super.onResume();
-    ba.a().h.a("modify_pwd").a();
+    dr.a().h.a("modify_pwd").a();
   }
   
   public void showSuccessView()
   {
-    setBackArrowHide();
-    setRightTitleImageHide();
-    setContentView(2130903136);
-    this.mCompleteBtn = ((Button)findViewById(2131296824));
-    this.mSetTokenPwdBtn = ((Button)findViewById(2131296825));
-    this.mNoSetTokenPwdBtn = ((Button)findViewById(2131296826));
-    this.mSetTokenPwdTipText = ((TextView)findViewById(2131296823));
-    this.mSetTokenPwdBtn.setOnClickListener(this);
-    this.mNoSetTokenPwdBtn.setOnClickListener(this);
-    this.mCompleteBtn.setOnClickListener(this);
-    if ((ah.a().c()) || (this.mGoToLoginMsgList))
+    RoundImageView localRoundImageView;
+    if (this.mSourceId == 1)
     {
-      this.mCompleteBtn.setVisibility(0);
-      this.mSetTokenPwdBtn.setVisibility(8);
-      this.mNoSetTokenPwdBtn.setVisibility(8);
-      this.mSetTokenPwdTipText.setVisibility(8);
+      setContentView(2130968664);
+      setBackArrowHide();
+      setRightTitleImageHide();
+      setTitle(2131231518);
+      QQUser localQQUser = do.a().e();
+      localRoundImageView = (RoundImageView)findViewById(2131558923);
+      if (localQQUser != null)
+      {
+        localRoundImageView.setImageDrawable(k.a(localQQUser.b() + "", localQQUser.mUin + ""));
+        ((Button)findViewById(2131558924)).setOnClickListener(this);
+      }
     }
     for (;;)
     {
       AccountPageActivity.mNeedRefreshEval = true;
       return;
-      this.mCompleteBtn.setVisibility(8);
-      this.mSetTokenPwdBtn.setVisibility(0);
-      this.mNoSetTokenPwdBtn.setVisibility(0);
-      this.mSetTokenPwdTipText.setVisibility(0);
+      localRoundImageView.setImageDrawable(getResources().getDrawable(2130837666));
+      break;
+      setContentView(2130968692);
+      setBackArrowHide();
+      setRightTitleImageHide();
+      this.mCompleteBtn = ((Button)findViewById(2131559022));
+      this.mSetTokenPwdBtn = ((Button)findViewById(2131559023));
+      this.mNoSetTokenPwdBtn = ((Button)findViewById(2131559024));
+      this.mSetTokenPwdTipText = ((TextView)findViewById(2131559021));
+      this.mSetTokenPwdBtn.setOnClickListener(this);
+      this.mNoSetTokenPwdBtn.setOnClickListener(this);
+      this.mCompleteBtn.setOnClickListener(this);
+      if ((cy.a().c()) || (this.mGoToLoginMsgList))
+      {
+        this.mCompleteBtn.setVisibility(0);
+        this.mSetTokenPwdBtn.setVisibility(8);
+        this.mNoSetTokenPwdBtn.setVisibility(8);
+        this.mSetTokenPwdTipText.setVisibility(8);
+      }
+      else
+      {
+        this.mCompleteBtn.setVisibility(8);
+        this.mSetTokenPwdBtn.setVisibility(0);
+        this.mNoSetTokenPwdBtn.setVisibility(0);
+        this.mSetTokenPwdTipText.setVisibility(0);
+      }
     }
   }
 }

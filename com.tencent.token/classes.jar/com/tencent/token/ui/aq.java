@@ -1,44 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX.Req;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
-import com.tencent.token.p;
-import com.tencent.token.utils.t;
+import com.tencent.token.ch;
+import com.tencent.token.cw;
 
-final class aq
+class aq
   implements View.OnClickListener
 {
-  aq(AssistantRecommendFriendQrcode paramAssistantRecommendFriendQrcode) {}
+  aq(AddFaceRealNameApplyResultActivity paramAddFaceRealNameApplyResultActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    p.a().a(System.currentTimeMillis(), 62);
-    if (AssistantRecommendFriendQrcode.access$200(this.a).isWXAppInstalled())
-    {
-      if (AssistantRecommendFriendQrcode.access$200(this.a).getWXAppSupportAPI() >= 553779201)
-      {
-        paramView = new WXWebpageObject();
-        paramView.webpageUrl = "http://m.aq.qq.com/lp?i=18";
-        paramView = new WXMediaMessage(paramView);
-        paramView.title = this.a.getResources().getString(2131362384);
-        paramView.description = AssistantRecommendFriendQrcode.access$400(this.a);
-        paramView.setThumbImage(t.a(this.a.getResources(), 2130838008));
-        SendMessageToWX.Req localReq = new SendMessageToWX.Req();
-        localReq.transaction = String.valueOf(System.currentTimeMillis());
-        localReq.message = paramView;
-        localReq.scene = 1;
-        AssistantRecommendFriendQrcode.access$200(this.a).sendReq(localReq);
-        return;
-      }
-      this.a.showToast(this.a.getString(2131362385));
-      return;
-    }
-    AssistantRecommendFriendQrcode.access$300(this.a);
+    ch.a().a(System.currentTimeMillis(), 219);
+    cw.a().a(0L, this.a.mRealUin, 5, this.a.mName, this.a.mId, this.a.mFaceData, this.a.mFrontData, this.a.mBackData, this.a.frontphotoinfo, this.a.backphotoinfo, AddFaceRealNameApplyResultActivity.access$400(this.a));
+    this.a.showProDialog(this.a, 2131230843, 2131231601, null);
   }
 }
 

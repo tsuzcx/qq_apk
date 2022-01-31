@@ -1,15 +1,40 @@
 package com.tencent.token;
 
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.concurrent.CountDownLatch;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bv
+final class bv
+  implements Runnable
 {
-  Class a();
+  private CountDownLatch a = null;
+  private bw b = null;
+  private bs c = null;
+  
+  public bv(CountDownLatch paramCountDownLatch, bw parambw, bs parambs)
+  {
+    this.a = paramCountDownLatch;
+    this.b = parambw;
+    this.c = parambs;
+  }
+  
+  public final void run()
+  {
+    try
+    {
+      this.c.a();
+      bt.a = this.c.d();
+      bt.b = this.c.e();
+      this.b.a(this.c);
+      label38:
+      if (this.a != null) {
+        this.a.countDown();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label38;
+    }
+  }
 }
 
 

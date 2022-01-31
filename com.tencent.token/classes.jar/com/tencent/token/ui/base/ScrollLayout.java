@@ -7,12 +7,11 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.m;
+import com.tencent.token.ce;
 
 public class ScrollLayout
   extends ViewGroup
@@ -26,7 +25,7 @@ public class ScrollLayout
   private float g;
   private float h;
   private int i;
-  private cv j;
+  private co j;
   private int k;
   private boolean l;
   
@@ -39,12 +38,18 @@ public class ScrollLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.a = new Scroller(paramContext);
-    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, m.a).getBoolean(0, false);
+    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, ce.scrolllayout).getBoolean(0, false);
     this.c = this.d;
     this.f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
-  private void b(int paramInt)
+  public void a()
+  {
+    int m = getWidth();
+    a((getScrollX() + m / 2) / m);
+  }
+  
+  public void a(int paramInt)
   {
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
     if (getScrollX() != getWidth() * paramInt)
@@ -60,18 +65,6 @@ public class ScrollLayout
     }
   }
   
-  public final void a(int paramInt)
-  {
-    paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
-    this.c = paramInt;
-    scrollTo(paramInt * getWidth(), getTop());
-  }
-  
-  public final void a(cv paramcv)
-  {
-    this.j = paramcv;
-  }
-  
   public void computeScroll()
   {
     if (this.a.computeScrollOffset())
@@ -79,6 +72,21 @@ public class ScrollLayout
       scrollTo(this.a.getCurrX(), this.a.getCurrY());
       postInvalidate();
     }
+  }
+  
+  public int getCurScreen()
+  {
+    return this.c;
+  }
+  
+  protected int getScreenHeight()
+  {
+    return ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getHeight();
+  }
+  
+  protected int getScreenWidth()
+  {
+    return ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -116,14 +124,16 @@ public class ScrollLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt1 = 0;
+    paramInt2 = 0;
     if (paramBoolean)
     {
       paramInt4 = getChildCount();
-      paramInt2 = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getHeight();
+      paramInt1 = getScreenHeight();
       if (this.l) {}
-      for (this.i = 0;; this.i = (paramInt2 * 12 / 100)) {
-        for (paramInt2 = 0; paramInt1 < paramInt4; paramInt2 = paramInt3)
+      for (this.i = 0;; this.i = (paramInt1 * 12 / 100))
+      {
+        paramInt1 = 0;
+        while (paramInt1 < paramInt4)
         {
           View localView = getChildAt(paramInt1);
           paramInt3 = paramInt2;
@@ -134,6 +144,7 @@ public class ScrollLayout
             paramInt3 = paramInt2 + getWidth();
           }
           paramInt1 += 1;
+          paramInt2 = paramInt3;
         }
       }
     }
@@ -142,8 +153,6 @@ public class ScrollLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    View.MeasureSpec.getSize(paramInt1);
-    View.MeasureSpec.getMode(paramInt1);
     int n = getChildCount();
     int m = 0;
     while (m < n)
@@ -188,7 +197,7 @@ public class ScrollLayout
       paramMotionEvent.computeCurrentVelocity(1000);
       m = (int)paramMotionEvent.getXVelocity();
       if ((m > 600) && (this.c > 0)) {
-        b(this.c - 1);
+        a(this.c - 1);
       }
       for (;;)
       {
@@ -199,18 +208,26 @@ public class ScrollLayout
         }
         this.e = 0;
         break;
-        if ((m < -600) && (this.c < getChildCount() - 1))
-        {
-          b(this.c + 1);
-        }
-        else
-        {
-          m = getWidth();
-          b((getScrollX() + m / 2) / m);
+        if ((m < -600) && (this.c < getChildCount() - 1)) {
+          a(this.c + 1);
+        } else {
+          a();
         }
       }
       this.e = 0;
     }
+  }
+  
+  public void setOnScrollListner(co paramco)
+  {
+    this.j = paramco;
+  }
+  
+  public void setToScreen(int paramInt)
+  {
+    paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
+    this.c = paramInt;
+    scrollTo(paramInt * getWidth(), getTop());
   }
 }
 

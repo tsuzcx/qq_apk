@@ -1,23 +1,29 @@
 package com.tencent.token.ui;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ProgressBar;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.f;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import android.widget.EditText;
+import com.tencent.token.utils.x;
 
-final class qh
+class qh
   implements View.OnClickListener
 {
-  qh(qf paramqf, f paramf, ProgressBar paramProgressBar) {}
+  qh(NetActiveSetDirBySeqActivity paramNetActiveSetDirBySeqActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    af.a().a(0L, this.a.a, this.a.d, this.a.e, this.a.f, this.a.g, s.a(x.a(RqdApplication.i()).c()), "com.tencent.token", LoginMsgActivity.mSkey, qf.a(this.c).mHandler);
-    this.b.setVisibility(0);
+    x.a(this.a);
+    if (NetActiveSetDirBySeqActivity.access$100(this.a) != null) {
+      NetActiveSetDirBySeqActivity.access$100(this.a).clearFocus();
+    }
+    NetActiveSetDirBySeqActivity.access$202(this.a, NetActiveSetDirBySeqActivity.access$100(this.a).getText().toString());
+    if ((NetActiveSetDirBySeqActivity.access$200(this.a) != null) && (NetActiveSetDirBySeqActivity.access$200(this.a).length() != 0))
+    {
+      this.a.showUserDialog(2131230935, NetActiveSetDirBySeqActivity.access$200(this.a) + this.a.getResources().getString(2131230865), 2131230863, 2131230862, new qi(this), new qj(this));
+      return;
+    }
+    this.a.showToast(2131230957);
   }
 }
 

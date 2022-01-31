@@ -1,20 +1,44 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 
-final class kz
-  implements View.OnClickListener
+class kz
+  extends cb
 {
-  kz(kx paramkx) {}
-  
-  public final void onClick(View paramView)
+  kz(GetOtherBarcodeActivity paramGetOtherBarcodeActivity)
   {
-    kx.c(this.a).findViewById(2131297271).setVisibility(8);
-    kx.c(this.a).findViewById(2131297270).setVisibility(8);
-    kx.c(this.a).setVisibility(8);
-    this.a.a = false;
-    this.a.notifyDataSetChanged();
+    super(paramGetOtherBarcodeActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    String str = GetOtherBarcodeActivity.access$000(this.a).getText().toString();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    QQUser localQQUser = do.a().e();
+    if (localQQUser != null)
+    {
+      byte[] arrayOfByte = (byte[])paramMessage.obj;
+      if ((paramMessage.arg1 == 0) && (arrayOfByte != null))
+      {
+        paramMessage = "https://ssl.ptlogin2.qq.com/jump?keyindex=19&clientuin=" + localQQUser.mRealUin + "&clientkey=" + w.a(arrayOfByte) + "&u1=" + str;
+        h.c("skey: url=" + paramMessage);
+      }
+    }
+    for (;;)
+    {
+      w.a(this.a, paramMessage);
+      return;
+      paramMessage = str;
+    }
   }
 }
 

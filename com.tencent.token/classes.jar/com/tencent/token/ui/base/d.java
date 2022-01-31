@@ -1,13 +1,16 @@
 package com.tencent.token.ui.base;
 
-final class d
-  implements Runnable
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class d
+  implements View.OnClickListener
 {
-  d(CaptchaDialog paramCaptchaDialog) {}
+  d(CommonActionSheetDialog paramCommonActionSheetDialog, int paramInt) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.b();
+    CommonActionSheetDialog.a(this.b).a(this.a);
   }
 }
 

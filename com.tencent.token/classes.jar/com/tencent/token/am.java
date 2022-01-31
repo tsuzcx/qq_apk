@@ -1,9 +1,31 @@
 package com.tencent.token;
 
-public final class am
-  extends an
+import java.util.concurrent.Future;
+
+public class am
 {
-  public String a = "";
+  private Future a;
+  
+  public am(Future paramFuture)
+  {
+    this.a = paramFuture;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if (this.a != null) {}
+    try
+    {
+      bool = this.a.cancel(false);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return false;
+  }
 }
 
 

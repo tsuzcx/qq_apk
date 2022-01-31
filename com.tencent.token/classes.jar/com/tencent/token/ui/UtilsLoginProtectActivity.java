@@ -1,23 +1,26 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.ba;
 import com.tencent.token.core.bean.LoginProtectResult;
 import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.fp;
+import com.tencent.token.core.bean.f;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.dr;
+import com.tencent.token.es;
 import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.ErrorView;
-import com.tencent.token.ui.base.dk;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import com.tencent.token.ui.base.dd;
+import com.tencent.token.utils.w;
 import java.util.List;
 
 public class UtilsLoginProtectActivity
@@ -25,32 +28,45 @@ public class UtilsLoginProtectActivity
 {
   public static boolean mNeedRefreshLoginProtect;
   public String mA2;
-  private or mAdapter;
-  private View.OnClickListener mBindListener = new aef(this);
+  private nu mAdapter;
+  private View.OnClickListener mBindListener = new act(this);
   private ErrorView mErrorView;
-  public Handler mHandler = new aec(this);
-  private boolean mIsIniting;
+  public Handler mHandler = new acq(this);
   private ListView mListView;
   public LoginProtectResult mLoginProtectResult;
-  private dk mNeedVerifyView;
+  private dd mNeedVerifyView;
   private boolean mNormalStatus;
   private View mProgressView;
   private boolean mQueryMobile;
-  private View.OnClickListener mRetryListener = new aeg(this);
+  private View.OnClickListener mRetryListener = new acu(this);
   private String mTipBindQQBtnDesc;
   private String mTipBindQQDesc;
   
-  private void initUI()
+  private void gotoQuickLoginWb()
   {
-    this.mProgressView = findViewById(2131297223);
-    this.mListView = ((ListView)findViewById(2131297222));
-    this.mAdapter = new or(this);
-    this.mListView.setAdapter(this.mAdapter);
-    this.mTipBindQQDesc = getResources().getString(2131362193);
-    this.mTipBindQQBtnDesc = getResources().getString(2131362297);
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L)) {
+      return;
+    }
+    cp.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
   }
   
-  public com.tencent.token.core.bean.e getItem(int paramInt)
+  private void initUI()
+  {
+    this.mProgressView = findViewById(2131559382);
+    this.mListView = ((ListView)findViewById(2131559381));
+    this.mAdapter = new nu(this);
+    this.mListView.setAdapter(this.mAdapter);
+    this.mTipBindQQDesc = getResources().getString(2131231535);
+    this.mTipBindQQBtnDesc = getResources().getString(2131230778);
+  }
+  
+  private void judgeNextStep()
+  {
+    queryLoginProtect();
+  }
+  
+  public f getItem(int paramInt)
   {
     Object localObject;
     if ((this.mLoginProtectResult == null) || (this.mLoginProtectResult.mLists.size() == 0))
@@ -64,9 +80,9 @@ public class UtilsLoginProtectActivity
       if (i >= this.mLoginProtectResult.mLists.size()) {
         break label81;
       }
-      com.tencent.token.core.bean.e locale = (com.tencent.token.core.bean.e)this.mLoginProtectResult.mLists.get(i);
-      localObject = locale;
-      if (locale.a == paramInt) {
+      f localf = (f)this.mLoginProtectResult.mLists.get(i);
+      localObject = localf;
+      if (localf.a == paramInt) {
         break;
       }
       i += 1;
@@ -81,25 +97,32 @@ public class UtilsLoginProtectActivity
     this.mListView.setVisibility(0);
   }
   
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
+      cp.a(getApplicationContext()).a(paramIntent);
+    }
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = ax.a().e();
+    paramBundle = do.a().e();
     mNeedRefreshLoginProtect = true;
     if ((paramBundle != null) && (!paramBundle.mIsBinded))
     {
       this.mNormalStatus = false;
       if (this.mNeedVerifyView == null) {
-        this.mNeedVerifyView = new dk(this, 0);
+        this.mNeedVerifyView = new dd(this, 1);
       }
       setContentView(this.mNeedVerifyView);
     }
     for (;;)
     {
-      setRightTitleImage(2130837951, new aeh(this));
-      ba.a().h.a("login_protect").a();
+      setRightTitleImage(2130838011, new acv(this));
+      dr.a().h.a("login_protect").a();
       return;
-      setContentView(2130903236);
+      setContentView(2130968798);
       initUI();
       this.mNormalStatus = true;
       mNeedRefreshLoginProtect = true;
@@ -109,47 +132,41 @@ public class UtilsLoginProtectActivity
   public void onResume()
   {
     super.onResume();
-    if ((mNeedRefreshLoginProtect) && (this.mNormalStatus)) {
+    if ((mNeedRefreshLoginProtect) && (this.mNormalStatus))
+    {
       queryLoginProtect();
+      showTip(-1);
     }
   }
   
   public void queryLoginProtect()
   {
-    if (this.mIsIniting) {
-      com.tencent.token.global.e.c("busy initing");
-    }
-    QQUser localQQUser;
-    do
+    QQUser localQQUser = do.a().e();
+    if (localQQUser == null)
     {
-      return;
-      this.mIsIniting = true;
-      showTip(-1, null, null, false);
-      localQQUser = ax.a().e();
-      if (!this.mQueryMobile)
-      {
-        af.a().e(0L, this.mHandler);
-        return;
-      }
-      if ((this.mA2 != null) && (this.mA2.length() > 0))
-      {
-        af.a().d(0L, this.mA2, this.mHandler);
-        return;
-      }
-    } while (localQQUser == null);
-    byte[] arrayOfByte = x.a(RqdApplication.i()).a(localQQUser.mRealUin);
-    if (arrayOfByte != null)
-    {
-      this.mA2 = s.a(arrayOfByte);
-      af.a().d(0L, this.mA2, this.mHandler);
+      finish();
       return;
     }
-    x.a(RqdApplication.i()).a(this, "" + localQQUser.mRealUin, this.mHandler, true);
+    if (!this.mQueryMobile)
+    {
+      cw.a().e(0L, this.mHandler);
+      return;
+    }
+    cp localcp = cp.a(RqdApplication.l());
+    byte[] arrayOfByte = localcp.b(do.a().e().mRealUin);
+    h.a("mailprotect data=" + arrayOfByte);
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0) && (!localcp.b("" + localQQUser.mRealUin, 523005419L)))
+    {
+      this.mA2 = w.a(arrayOfByte);
+      cw.a().c(0L, this.mA2, this.mHandler);
+      return;
+    }
+    cp.a(RqdApplication.l()).a("" + localQQUser.mRealUin, this.mHandler, 523005419L, 64);
   }
   
-  public void showTip(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public void showTip(int paramInt)
   {
-    if ((paramInt == -1) && (paramString1 == null) && (paramString2 == null))
+    if (paramInt == -1)
     {
       this.mProgressView.setVisibility(0);
       this.mListView.setVisibility(8);
@@ -160,17 +177,10 @@ public class UtilsLoginProtectActivity
       this.mErrorView = new ErrorView(this);
       addContentView(this.mErrorView);
     }
-    this.mErrorView.a(paramInt);
-    if (paramBoolean) {
-      this.mErrorView.a(this.mBindListener);
-    }
-    for (;;)
-    {
-      this.mErrorView.setVisibility(0);
-      bringChildToFront(this.mErrorView);
-      return;
-      this.mErrorView.a(this.mRetryListener);
-    }
+    this.mErrorView.setErrorType(paramInt);
+    this.mErrorView.setAction(this.mRetryListener);
+    this.mErrorView.a();
+    bringChildToFront(this.mErrorView);
   }
   
   public void showTipDialog(int paramInt, String paramString)
@@ -178,7 +188,7 @@ public class UtilsLoginProtectActivity
     if (isFinishing()) {
       return;
     }
-    showUserDialog(paramInt, paramString, 2131361800, null);
+    showUserDialog(paramInt, paramString, 2131230897, null);
   }
 }
 

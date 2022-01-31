@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 
-final class d
+class d
   implements View.OnLongClickListener
 {
   d(AboutActivity paramAboutActivity) {}
   
-  public final boolean onLongClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
     paramView = new Intent(this.a, ShowLogActivity.class);
     this.a.startActivity(paramView);

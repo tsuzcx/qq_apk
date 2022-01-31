@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ public class EvalAccountResult$DetailItem
   
   public EvalAccountResult$DetailItem(JSONObject paramJSONObject)
   {
-    e.b("DetailItem:" + paramJSONObject.toString());
+    h.b("DetailItem:" + paramJSONObject.toString());
     this.mRecommendId = paramJSONObject.getInt("recommend_id");
     this.mDegree = paramJSONObject.getInt("degree");
     this.mTitle = paramJSONObject.getString("title");

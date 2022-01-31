@@ -1,25 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.utils.t;
 
-final class xo
+class xo
   implements View.OnClickListener
 {
-  xo(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
+  xo(xn paramxn) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (t.l() == 0) {}
-    for (paramView = new Intent(this.a, FaceRecognitionCameraActivityOld.class);; paramView = new Intent(this.a, FaceRegCameraActivity.class))
-    {
-      paramView.putExtra("flag", 3);
-      paramView.putExtra("scene", 2);
-      this.a.startActivityForResult(paramView, 1);
-      return;
-    }
+    RealNameStep1InputNameIdActivity.access$800(this.a.a).setVisibility(8);
   }
 }
 

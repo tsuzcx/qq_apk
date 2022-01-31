@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
-final class vi
-  implements View.OnClickListener
+class vi
+  implements Runnable
 {
-  vi(RealNameFindActivity paramRealNameFindActivity) {}
+  vi(RealNameSmsContentTipActivity paramRealNameSmsContentTipActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    if (RealNameFindActivity.access$2000(this.a)) {
-      RealNameFindActivity.access$2100(this.a);
-    }
+    h.a("realname vrysms thread run, sceneid=" + RealNameSmsContentTipActivity.access$000(this.a));
+    cw.a().a(0L, RealNameSmsContentTipActivity.access$100(this.a), RealNameSmsContentTipActivity.access$000(this.a), 0, this.a.mHandler);
+    RealNameSmsContentTipActivity.access$208(this.a);
   }
 }
 

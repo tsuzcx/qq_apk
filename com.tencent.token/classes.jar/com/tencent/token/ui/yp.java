@@ -3,21 +3,15 @@ package com.tencent.token.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class yp
+class yp
   implements View.OnClickListener
 {
-  yp(ScanLoginAccountListActivity paramScanLoginAccountListActivity) {}
+  yp(ScanLoginConfirmLoginActivity paramScanLoginConfirmLoginActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = ScanLoginAccountListActivity.access$500(this.a);
-    if (!ScanLoginAccountListActivity.access$500(this.a).a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.a(bool);
-      ScanLoginAccountListActivity.access$600(this.a);
-      return;
-    }
+    new yq(this).c(new String[0]);
+    this.a.showUserDialog(11);
   }
 }
 

@@ -1,71 +1,59 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.BaseActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
+import com.tencent.token.cx;
+import com.tencent.token.ui.IndexActivity;
 
-final class a
-  extends Handler
+public class a
+  extends Drawable
 {
-  a(CaptchaDialog paramCaptchaDialog) {}
+  public boolean a = true;
+  private Paint b;
+  private float c;
+  private float d;
   
-  public final void handleMessage(Message paramMessage)
+  public a(Context paramContext)
   {
-    if ((CaptchaDialog.a(this.a) != null) && (CaptchaDialog.a(this.a).isFinishing())) {}
-    do
+    float f1 = IndexActivity.S_RES_WIDTH - paramContext.getResources().getDimension(2131296303);
+    float f2 = paramContext.getResources().getDimension(2131296302);
+    if (f1 > f2) {
+      f1 = f2;
+    }
+    for (;;)
     {
+      this.c = f1;
+      this.d = (3.5F * IndexActivity.S_DENSITY);
+      this.b = new Paint();
+      this.b.setStyle(Paint.Style.FILL);
+      this.b.setColor(-1);
       return;
-      if (this.a.a != null) {
-        this.a.a.dismiss();
-      }
-      e.a("vry dialog msg.what=" + paramMessage.what + ", msg.arg1=" + paramMessage.arg1);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case -101: 
-        CaptchaDialog.b(this.a).setVisibility(0);
-        CaptchaDialog.e(this.a).setVisibility(4);
-        CaptchaDialog.d(this.a).setVisibility(4);
-        return;
-      case -100: 
-        CaptchaDialog.b(this.a).setVisibility(0);
-        CaptchaDialog.d(this.a).setImageBitmap(CaptchaDialog.c(this.a));
-        CaptchaDialog.e(this.a).setVisibility(4);
-        CaptchaDialog.d(this.a).setVisibility(0);
-        return;
-      case 3072: 
-        CaptchaDialog.a(this.a, false);
-        if (paramMessage.arg1 == 0)
-        {
-          Message localMessage = new Message();
-          localMessage.what = 3072;
-          localMessage.arg1 = 0;
-          localMessage.obj = paramMessage.obj;
-          CaptchaDialog.f(this.a).sendMessage(localMessage);
-          this.a.dismiss();
-          return;
-        }
-        paramMessage = (d)paramMessage.obj;
-        CaptchaDialog.a(this.a).showToast(paramMessage.c);
-        return;
-      }
-      if (paramMessage.arg1 != 0) {
-        break;
-      }
-      CaptchaDialog.a(this.a, (QueryCaptchaResult)paramMessage.obj);
-    } while (!CaptchaDialog.g(this.a).mNeedCaptcha);
-    this.a.a();
-    return;
-    paramMessage = (d)paramMessage.obj;
-    CaptchaDialog.a(this.a).showToast(paramMessage.c);
+    }
   }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    long l = System.currentTimeMillis() + cx.c().q();
+    int i = (int)(l / 1000L);
+    paramCanvas.drawRect(((int)(l % 1000L) + i % 30 * 1000) * this.c / 30000.0F, 0.0F, 3.0F + this.c, this.d, this.b);
+    if (this.a) {
+      invalidateSelf();
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return -1;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

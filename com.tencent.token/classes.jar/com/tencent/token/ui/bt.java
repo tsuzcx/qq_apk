@@ -1,31 +1,56 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-final class bt
-  implements View.OnClickListener
+class bt
+  implements DialogInterface.OnClickListener
 {
-  bt(BindUinActivity paramBindUinActivity) {}
+  bt(BaseActivity paramBaseActivity, int paramInt, ErrMsg paramErrMsg, Context paramContext) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, CheckMobileAvailableActivity.class);
-    paramView.putExtra("intent.qquser", BindUinActivity.access$900(this.a));
-    paramView.putExtra("intent.upgradedetermin", BindUinActivity.access$800(this.a));
-    if (BindUinActivity.access$200(this.a) == 13)
+    if (this.a == 40)
     {
-      paramView.putExtra("scene_id", 1006);
-      paramView.putExtra("up_sms_scene_id", 7);
+      str = this.d.getResources().getString(2131230774);
+      paramDialogInterface = str;
+      if (this.b != null)
+      {
+        paramDialogInterface = str;
+        if (this.b.getOtherinfo() != null)
+        {
+          paramDialogInterface = str;
+          if (this.b.getOtherinfo().length() != 0) {
+            paramDialogInterface = this.b.getOtherinfo();
+          }
+        }
+      }
+      h.c(this + "goToRemoveProtectH5WithLoginTask url:" + paramDialogInterface);
+      w.a(this.c, paramDialogInterface, this.d.getResources().getString(2131230924));
     }
-    for (;;)
-    {
-      this.a.startActivity(paramView);
+    while (this.a != 42) {
       return;
-      paramView.putExtra("scene_id", 1004);
-      paramView.putExtra("up_sms_scene_id", 0);
     }
+    String str = this.d.getResources().getString(2131230764);
+    paramDialogInterface = str;
+    if (this.b != null)
+    {
+      paramDialogInterface = str;
+      if (this.b.getOtherinfo() != null)
+      {
+        paramDialogInterface = str;
+        if (this.b.getOtherinfo().length() != 0) {
+          paramDialogInterface = this.b.getOtherinfo();
+        }
+      }
+    }
+    h.c(this + "goToRemoveProtectH5WithLoginTask url:" + paramDialogInterface);
+    w.a(this.c, paramDialogInterface, this.d.getResources().getString(2131231122));
   }
 }
 

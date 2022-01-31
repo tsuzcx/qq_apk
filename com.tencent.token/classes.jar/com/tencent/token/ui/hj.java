@@ -1,18 +1,21 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
 
-final class hj
-  implements Runnable
+class hj
+  implements View.OnClickListener
 {
-  hj(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hj(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    FaceRecognitionCameraActivityOld.access$2202(this.a, FaceRecognitionCameraActivityOld.access$2300(this.a).getHeight());
-    FaceRecognitionCameraActivityOld.access$2402(this.a, FaceRecognitionCameraActivityOld.access$2500(this.a).getHeight() - FaceRecognitionCameraActivityOld.access$2600(this.a).getBottom() - (FaceRecognitionCameraActivityOld.access$2500(this.a).getHeight() - FaceRecognitionCameraActivityOld.access$2700(this.a).getBottom()));
-    FaceRecognitionCameraActivityOld.access$2802(this.a, FaceRecognitionCameraActivityOld.access$2900(this.a).getHeight());
+    paramView = new Intent(this.a, FaceRegCameraActivity.class);
+    paramView.putExtra("scene", 1);
+    paramView.putExtra("flag", 1);
+    this.a.startActivity(paramView);
+    this.a.finish();
   }
 }
 

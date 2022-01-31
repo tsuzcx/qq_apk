@@ -1,21 +1,23 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class acs
+class acs
   implements View.OnClickListener
 {
-  acs(UnbindUinActivity paramUnbindUinActivity) {}
+  acs(acq paramacq, String paramString, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, CheckMobileAvailableActivity.class);
-    paramView.putExtra("real_uin", UnbindUinActivity.access$200(this.a));
-    paramView.putExtra("user_to_unbind", UnbindUinActivity.access$600(this.a));
-    paramView.putExtra("up_sms_scene_id", 6);
-    this.a.startActivity(paramView);
+    paramView = new Intent(this.c.a, UtilsModSetMobileStep1Activity.class);
+    paramView.putExtra("title", this.c.a.getResources().getString(2131231428) + this.a);
+    paramView.putExtra("op_type", 1);
+    paramView.putExtra("position", this.b);
+    paramView.putExtra("page_id", 17);
+    this.c.a.startActivity(paramView);
   }
 }
 

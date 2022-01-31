@@ -1,36 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.af;
-import com.tencent.token.p;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class kt
-  implements View.OnClickListener
+class kt
+  implements DialogInterface.OnCancelListener
 {
-  kt(FindPasswdActivity paramFindPasswdActivity) {}
+  kt(kq paramkq) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = FindPasswdActivity.access$600(this.a).getText().toString();
-    if ((paramView == null) || (paramView.length() == 0))
-    {
-      this.a.showToast(2131362366);
-      return;
-    }
-    p.a().a(System.currentTimeMillis(), 88);
-    try
-    {
-      FindPasswdActivity.access$202(this.a, Long.parseLong(paramView));
-      af.a().f(FindPasswdActivity.access$200(this.a), 5, FindPasswdActivity.access$100(this.a));
-      return;
-    }
-    catch (Exception paramView)
-    {
-      this.a.showUserDialog(this.a.getResources().getString(2131362636));
-    }
+    this.a.a.finish();
   }
 }
 

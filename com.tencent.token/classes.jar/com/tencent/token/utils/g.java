@@ -3,15 +3,15 @@ package com.tencent.token.utils;
 import java.io.File;
 import java.io.FileFilter;
 
-final class g
+class g
   implements FileFilter
 {
   g(e parame) {}
   
-  public final boolean accept(File paramFile)
+  public boolean accept(File paramFile)
   {
-    if (!paramFile.getName().endsWith(this.a.g())) {}
-    while (e.c(paramFile) == -1) {
+    if (!paramFile.getName().endsWith(this.a.j())) {}
+    while (e.d(paramFile) == -1) {
       return false;
     }
     return true;

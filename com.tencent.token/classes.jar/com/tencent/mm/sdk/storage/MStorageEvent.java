@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-public abstract class MStorageEvent<T, E>
+public abstract class MStorageEvent
 {
   private int bY = 0;
-  private final Hashtable<T, Object> bZ = new Hashtable();
-  private final CopyOnWriteArraySet<E> ca = new CopyOnWriteArraySet();
+  private final Hashtable bZ = new Hashtable();
+  private final CopyOnWriteArraySet ca = new CopyOnWriteArraySet();
   
-  private Vector<T> e()
+  private Vector e()
   {
     try
     {
@@ -70,34 +70,34 @@ public abstract class MStorageEvent<T, E>
   }
   
   /* Error */
-  public void add(T paramT, Looper paramLooper)
+  public void add(Object paramObject, Looper paramLooper)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 24	com/tencent/mm/sdk/storage/MStorageEvent:bZ	Ljava/util/Hashtable;
+    //   3: getfield 21	com/tencent/mm/sdk/storage/MStorageEvent:bZ	Ljava/util/Hashtable;
     //   6: aload_1
-    //   7: invokevirtual 110	java/util/Hashtable:containsKey	(Ljava/lang/Object;)Z
+    //   7: invokevirtual 105	java/util/Hashtable:containsKey	(Ljava/lang/Object;)Z
     //   10: ifne +17 -> 27
     //   13: aload_2
     //   14: ifnull +16 -> 30
     //   17: aload_0
-    //   18: getfield 24	com/tencent/mm/sdk/storage/MStorageEvent:bZ	Ljava/util/Hashtable;
+    //   18: getfield 21	com/tencent/mm/sdk/storage/MStorageEvent:bZ	Ljava/util/Hashtable;
     //   21: aload_1
     //   22: aload_2
-    //   23: invokevirtual 111	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: invokevirtual 106	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   26: pop
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
-    //   31: getfield 24	com/tencent/mm/sdk/storage/MStorageEvent:bZ	Ljava/util/Hashtable;
+    //   31: getfield 21	com/tencent/mm/sdk/storage/MStorageEvent:bZ	Ljava/util/Hashtable;
     //   34: aload_1
-    //   35: new 5	java/lang/Object
+    //   35: new 4	java/lang/Object
     //   38: dup
-    //   39: invokespecial 17	java/lang/Object:<init>	()V
-    //   42: invokevirtual 111	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: invokespecial 14	java/lang/Object:<init>	()V
+    //   42: invokevirtual 106	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   45: pop
     //   46: goto -19 -> 27
     //   49: astore_1
@@ -108,7 +108,7 @@ public abstract class MStorageEvent<T, E>
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	54	0	this	MStorageEvent
-    //   0	54	1	paramT	T
+    //   0	54	1	paramObject	Object
     //   0	54	2	paramLooper	Looper
     // Exception table:
     //   from	to	target	type
@@ -124,9 +124,9 @@ public abstract class MStorageEvent<T, E>
     }
   }
   
-  public boolean event(E paramE)
+  public boolean event(Object paramObject)
   {
-    return this.ca.add(paramE);
+    return this.ca.add(paramObject);
   }
   
   public boolean isLocked()
@@ -139,19 +139,19 @@ public abstract class MStorageEvent<T, E>
     this.bY += 1;
   }
   
-  protected abstract void processEvent(T paramT, E paramE);
+  protected abstract void processEvent(Object paramObject1, Object paramObject2);
   
-  public void remove(T paramT)
+  public void remove(Object paramObject)
   {
     try
     {
-      this.bZ.remove(paramT);
+      this.bZ.remove(paramObject);
       return;
     }
     finally
     {
-      paramT = finally;
-      throw paramT;
+      paramObject = finally;
+      throw paramObject;
     }
   }
   

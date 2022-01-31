@@ -1,18 +1,23 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.global.e;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.ch;
 
-final class wx
-  implements Runnable
+class wx
+  implements View.OnClickListener
 {
-  wx(RealNameStep0VerifyMobileUpActivity paramRealNameStep0VerifyMobileUpActivity) {}
+  wx(wp paramwp) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    e.a("realname vrysms thread run, sceneid=" + RealNameStep0VerifyMobileUpActivity.access$000(this.a));
-    af.a().a(0L, RealNameStep0VerifyMobileUpActivity.access$100(this.a), RealNameStep0VerifyMobileUpActivity.access$000(this.a), RealNameStep0VerifyMobileUpActivity.access$200(this.a));
-    RealNameStep0VerifyMobileUpActivity.access$308(this.a);
+    this.a.a.dismiss();
+    ch.a().a(System.currentTimeMillis(), 91);
+    paramView = new Intent(this.a.a, FaceRegCameraActivity.class);
+    paramView.putExtra("flag", 3);
+    paramView.putExtra("scene", 2);
+    this.a.a.startActivityForResult(paramView, 1);
   }
 }
 

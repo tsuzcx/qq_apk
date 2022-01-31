@@ -1,30 +1,57 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.token.global.h;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class nk
-  implements View.OnClickListener
+class nk
+  extends cb
 {
-  nk(JLFinditemsChooseZone paramJLFinditemsChooseZone) {}
-  
-  public final void onClick(View paramView)
+  nk(LoginMsgChangePwdActivity paramLoginMsgChangePwdActivity)
   {
-    if (JLFinditemsChooseZone.access$000(this.a) == 0)
-    {
-      this.a.finish();
+    super(paramLoginMsgChangePwdActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.isFinishing()) {
       return;
     }
-    if (JLFinditemsChooseZone.access$000(this.a) == 1)
+    this.a.dismissDialog();
+    switch (paramMessage.what)
     {
-      JLFinditemsChooseZone.access$002(this.a, 0);
-      JLFinditemsChooseZone.access$400(this.a, 0);
-      this.a.setTitle(2131362265);
+    default: 
       return;
     }
-    JLFinditemsChooseZone.access$002(this.a, 1);
-    JLFinditemsChooseZone.access$400(this.a, JLFinditemsChooseZone.access$300(this.a));
-    this.a.setTitle(2131362266);
+    if (paramMessage.arg1 == 0) {}
+    try
+    {
+      paramMessage = new JSONObject((String)paramMessage.obj);
+      LoginMsgChangePwdActivity.access$000(this.a).setText(paramMessage.getString("abnormal_login_btn_word"));
+      LoginMsgChangePwdActivity.access$100(this.a).setText(paramMessage.getString("abnormal_login_big_word"));
+      LoginMsgChangePwdActivity.access$200(this.a).setText(paramMessage.getString("abnormal_login_small_word"));
+      this.a.setTitle(paramMessage.getString("abnormal_login_title"));
+      h.c("test config: " + paramMessage);
+      return;
+    }
+    catch (JSONException paramMessage)
+    {
+      paramMessage.printStackTrace();
+      LoginMsgChangePwdActivity.access$000(this.a).setText(2131231162);
+      LoginMsgChangePwdActivity.access$100(this.a).setText(2131231164);
+      LoginMsgChangePwdActivity.access$200(this.a).setText(2131231163);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      for (;;)
+      {
+        paramMessage.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,85 +1,69 @@
 package com.tencent.token.ui.base;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.content.res.Resources;
-import android.os.Handler;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.ui.BaseActivity;
-import com.tencent.token.ui.WtloginFinishNoMibaoActivity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
-public final class bh
-  extends LinearLayout
+public class bh
+  extends Drawable
 {
-  public Handler a = new bi(this);
-  private BaseActivity b;
-  private LayoutInflater c;
-  private View d;
-  private Button e;
-  private final long f = 523005425L;
-  private final int g = 2;
-  private UpgradeDeterminResult h;
-  private boolean i = false;
-  private byte[] j;
-  private long k;
-  private View.OnClickListener l = new bk(this);
-  private View.OnClickListener m = new bo(this);
+  private Paint a = new Paint();
+  private Bitmap b;
+  private final int c = 100;
+  private float d;
+  private int e = 0;
+  private float f;
+  private float g;
+  private float h;
   
-  public bh(BaseActivity paramBaseActivity)
+  public bh(Activity paramActivity)
   {
-    super(paramBaseActivity);
-    this.b = paramBaseActivity;
-    this.c = ((LayoutInflater)this.b.getSystemService("layout_inflater"));
-    this.d = this.c.inflate(2130903111, null);
-    removeAllViews();
-    addView(this.d, new LinearLayout.LayoutParams(-1, -1));
-    this.e = ((Button)findViewById(2131296725));
-    ((TextView)findViewById(2131296724)).setText(getResources().getString(2131362190) + getResources().getString(2131362455) + getResources().getString(2131362231));
-    this.e.setOnClickListener(this.l);
-    paramBaseActivity = ax.a().e();
-    if (paramBaseActivity != null) {
-      this.k = paramBaseActivity.mRealUin;
+    this.b = BitmapFactory.decodeResource(paramActivity.getResources(), 2130837914);
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    this.d = localDisplayMetrics.density;
+    this.f = (286.0F * this.d);
+    this.g = (442.0F * this.d);
+    this.h = (this.f / 100.0F);
+    this.a.setColor(paramActivity.getResources().getColor(2131493007));
+    this.a.setAntiAlias(true);
+    this.a.setFilterBitmap(true);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    this.e %= 100;
+    if (this.e != 99)
+    {
+      float f1 = this.h;
+      float f2 = this.e;
+      paramCanvas.drawBitmap(this.b, 0.0F, f1 * f2, this.a);
     }
-  }
-  
-  private void a()
-  {
-    Intent localIntent = new Intent(this.b, WtloginFinishNoMibaoActivity.class);
-    localIntent.putExtra("uin", ax.a().e().mRealUin);
-    this.b.startActivity(localIntent);
-  }
-  
-  public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
-  {
-    boolean bool = true;
     for (;;)
     {
-      try
-      {
-        if ((this.i) && (paramKeyEvent.getAction() == 0)) {}
-        switch (paramKeyEvent.getKeyCode())
-        {
-        case 4: 
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          return bool;
-        }
-      }
-      catch (Exception paramKeyEvent)
-      {
-        paramKeyEvent.printStackTrace();
-        return true;
-      }
+      this.e += 1;
+      invalidateSelf();
+      return;
+      paramCanvas.drawBitmap(this.b, 0.0F, this.f - this.b.getHeight(), this.a);
     }
   }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

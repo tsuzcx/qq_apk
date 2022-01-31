@@ -1,12 +1,43 @@
 package com.tencent.token.utils;
 
-public final class r
+import java.util.ArrayDeque;
+import java.util.concurrent.Executor;
+
+class r
+  implements Executor
 {
-  protected long a = 0L;
+  final ArrayDeque a = new ArrayDeque();
+  Runnable b;
   
-  public final long a()
+  protected void a()
   {
-    return System.currentTimeMillis() - this.a;
+    try
+    {
+      Runnable localRunnable = (Runnable)this.a.poll();
+      this.b = localRunnable;
+      if (localRunnable != null) {
+        MyAsyncTask.a.execute(this.b);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      this.a.offer(new s(this, paramRunnable));
+      if (this.b == null) {
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 

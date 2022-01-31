@@ -1,47 +1,15 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.e;
+import android.view.View;
 
-final class cs
-  extends Handler
+class cs
+  implements Runnable
 {
-  cs(RecordTextView paramRecordTextView) {}
+  cs(SlidingMenuView paramSlidingMenuView) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = this.a;
-    boolean bool;
-    if (!RecordTextView.a(this.a))
-    {
-      bool = true;
-      RecordTextView.a(paramMessage, bool);
-      if (!RecordTextView.b(this.a)) {
-        break label81;
-      }
-      RecordTextView.c(this.a);
-      this.a.invalidate();
-      if (RecordTextView.d(this.a) >= 10) {
-        break label81;
-      }
-      RecordTextView.e(this.a).sendEmptyMessageDelayed(0, 70L);
-    }
-    label81:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (RecordTextView.f(this.a) < this.a.getWidth())
-      {
-        RecordTextView.a(this.a, this.a.getWidth() / 10);
-        this.a.invalidate();
-        RecordTextView.e(this.a).sendEmptyMessageDelayed(0, 70L);
-        return;
-      }
-    } while (RecordTextView.g(this.a) == null);
-    e.c("onAniEnd");
+    this.a.scrollTo(this.a.findViewById(2131558950).getWidth(), 0);
   }
 }
 

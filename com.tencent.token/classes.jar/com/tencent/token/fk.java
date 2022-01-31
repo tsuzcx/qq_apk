@@ -1,215 +1,196 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.global.e;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.util.Log;
+import com.tencent.service.d;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.ui.base.GuideQQPimSecureDialog;
+import com.tmsdk.TMSDKContext;
+import com.tmsdk.base.conch.ConchServiceProxy;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class fk
+public class fk
 {
-  List a = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem b;
-  String c;
-  long d;
-  public boolean e;
-  public boolean f = false;
-  
-  private void a(List paramList)
+  public static void a()
   {
-    try
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(6275));
+    localArrayList.add(Integer.valueOf(6277));
+    localArrayList.add(Integer.valueOf(6296));
+    ConchServiceProxy.getInstance().registerConchPush(localArrayList, new fl());
+    ConchServiceProxy.getInstance().pullConch(6275);
+    ConchServiceProxy.getInstance().pullConch(6277);
+    ConchServiceProxy.getInstance().pullConch(6296);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    Object localObject = d();
+    if (localObject != null)
     {
-      if (this.b == null) {
-        this.b = ba.a().h.a("game_lock");
-      }
-      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
-      {
-        Iterator localIterator1 = this.b.mConfIDs.iterator();
-        while (localIterator1.hasNext())
-        {
-          int i = ((Integer)localIterator1.next()).intValue();
-          Iterator localIterator2 = paramList.iterator();
-          while (localIterator2.hasNext())
-          {
-            g localg = (g)localIterator2.next();
-            if (i == localg.a) {
-              localg.f = true;
-            }
-          }
-        }
-      }
-      this.a.clear();
-    }
-    finally {}
-    this.a.addAll(paramList);
-    ax.a();
-    this.c = ax.c;
-    if (ax.a().e() != null) {
-      this.d = ax.a().e().mUin;
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
   
-  public final int a(int paramInt)
+  public static void a(String paramString, long paramLong)
   {
-    Iterator localIterator = this.a.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    Object localObject = d();
+    if (localObject != null)
     {
-      g localg = (g)localIterator.next();
-      int j = i + 1;
-      i = j;
-      if (localg.a == paramInt) {
-        return j;
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    Object localObject = d();
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (b("guide_qqpimsecure_dialog_ison", -1) < 0) {}
+    do
+    {
+      return false;
+      long l = b("guide_qqpimsecure_dialog_last_show_time", -1L);
+      int i = b("guide_qqpimsecure_dialog_limit_hour", -1);
+      if ((l > 0L) && (i > 0) && (System.currentTimeMillis() - l < i * 3600 * 1000L))
+      {
+        Log.i("SecureGuideUtil", "not show guide dialog because time limit");
+        return false;
       }
+    } while (b());
+    paramContext = new GuideQQPimSecureDialog(paramContext, c());
+    try
+    {
+      paramContext.show();
+      a("guide_qqpimsecure_dialog_last_show_time", System.currentTimeMillis());
+      TMSDKContext.saveActionData(1150101);
+      return true;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (b("guide_qqpimsecure_tips_ison", -1) < 0) {}
+    do
+    {
+      return false;
+      long l = b(paramString, -1L);
+      int i = b("guide_qqpimsecure_tips_limit_hour", -1);
+      if ((l > 0L) && (i > 0) && (System.currentTimeMillis() - l < i * 3600 * 1000L))
+      {
+        Log.i("SecureGuideUtil", "not show guide tips because time limit");
+        return false;
+      }
+    } while (b());
+    return true;
+  }
+  
+  public static int b(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = d();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, paramInt);
     }
     return -1;
   }
   
-  public final List a()
+  public static long b(String paramString, long paramLong)
   {
-    return this.a;
+    SharedPreferences localSharedPreferences = d();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, paramLong);
+    }
+    return -1L;
   }
   
-  public final boolean a(JSONArray paramJSONArray)
+  public static d b(String paramString)
   {
-    boolean bool;
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    if (paramJSONArray != null)
-    {
-      bool = true;
-      e.a(bool);
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      if (paramJSONArray == null) {}
+    d locald = new d();
+    locald.a = "com.tencent.qqpimsecure";
+    locald.c = paramString;
+    locald.d = (paramString.hashCode() + "qqsecure.apk");
+    return locald;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = d();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString1, paramString2);
     }
-    for (;;)
+    return null;
+  }
+  
+  public static boolean b()
+  {
+    try
     {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i >= paramJSONArray.length()) {
-            break label234;
-          }
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label229;
-          }
-          bool = true;
-          e.a(bool);
-          g localg = new g();
-          if (!localg.c(localJSONObject)) {
-            e.c("object item parse failed: " + i);
-          }
-          localArrayList1.add(localg);
-          i += 1;
-          continue;
-          if (i >= localArrayList1.size()) {
-            break label246;
-          }
-          paramJSONArray = (g)localArrayList1.get(i);
-          if (paramJSONArray.g) {
-            break label239;
-          }
-          localArrayList2.add(paramJSONArray);
-          break label239;
-          if (i < localArrayList1.size())
-          {
-            paramJSONArray = (g)localArrayList1.get(i);
-            if (paramJSONArray.g) {
-              localArrayList2.add(paramJSONArray);
-            }
-            i += 1;
-            continue;
-          }
-        }
-        a(localArrayList2);
-        return true;
-      }
-      catch (JSONException paramJSONArray)
-      {
+      PackageInfo localPackageInfo = RqdApplication.l().getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
+      if (localPackageInfo == null) {
         return false;
       }
-      bool = false;
-      break;
-      label229:
-      bool = false;
-      continue;
-      label234:
-      int i = 0;
-      continue;
-      label239:
-      i += 1;
-      continue;
-      label246:
-      i = 0;
     }
-  }
-  
-  public final boolean b()
-  {
-    Object localObject = ax.a().e();
-    if ((this.c == null) || (localObject == null)) {}
-    do
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      return false;
-      localObject = this.c;
-      ax.a();
-    } while ((!((String)localObject).equals(ax.c)) || (this.d != ax.a().e().mUin) || (!this.e));
+      Object localObject;
+      do
+      {
+        for (;;)
+        {
+          localNameNotFoundException.printStackTrace();
+          localObject = null;
+        }
+      } while (localObject.versionCode < 1352);
+    }
     return true;
   }
   
-  public final int c()
+  public static ArrayList c()
   {
-    List localList = this.a;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
+    ArrayList localArrayList = new ArrayList();
+    String str1 = b("guide_qqpimsecure_dialog_line1", "重要通知QQ安全中心");
+    String str2 = b("guide_qqpimsecure_dialog_line2", "核心功能已搬家到手机管家");
+    String str3 = b("guide_qqpimsecure_dialog_line3", "QQ安全中心的常用功能已全面升级");
+    String str4 = b("guide_qqpimsecure_dialog_line4", "前往设置");
+    localArrayList.add(str1);
+    localArrayList.add(str2);
+    localArrayList.add(str3);
+    localArrayList.add(str4);
+    return localArrayList;
   }
   
-  public final int d()
+  private static SharedPreferences d()
   {
-    int i = 0;
-    int k = 0;
     try
     {
-      List localList = this.a;
-      if (localList == null) {}
-      int j;
-      do
-      {
-        return k;
-        j = 0;
-        k = i;
-      } while (j >= localList.size());
-      boolean bool = ((g)localList.get(j)).g;
-      if (!bool) {
-        i += 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-      }
+      SharedPreferences localSharedPreferences = RqdApplication.l().getSharedPreferences("com.tencent.token.com", 0);
+      return localSharedPreferences;
     }
-    finally {}
-  }
-  
-  public final void e()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((g)localIterator.next()).f = false;
-    }
+    catch (Exception localException) {}
+    return null;
   }
 }
 

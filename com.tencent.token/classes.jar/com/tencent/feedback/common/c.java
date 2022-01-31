@@ -1,7 +1,6 @@
 package com.tencent.feedback.common;
 
 import android.content.Context;
-import com.tencent.feedback.proguard.o;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,13 +12,13 @@ public final class c
   private static c E = null;
   private boolean A = true;
   private String B = null;
-  private List<o> C;
+  private List C;
   private Boolean D = null;
   private final long F;
   private int G = -1;
   private int H = -1;
-  private Map<String, String> I = new HashMap();
-  private Map<String, String> J = new HashMap();
+  private Map I = new HashMap();
+  private Map J = new HashMap();
   private final Context a;
   private final byte b;
   private String c;
@@ -45,7 +44,7 @@ public final class c
   private long w = -1L;
   private String x = null;
   private String y = null;
-  private Map<String, PlugInInfo> z = null;
+  private Map z = null;
   
   private c(Context paramContext)
   {
@@ -118,7 +117,7 @@ public final class c
     }
   }
   
-  public final List<o> A()
+  public final List A()
   {
     try
     {
@@ -198,14 +197,14 @@ public final class c
   }
   
   /* Error */
-  public final Map<String, String> H()
+  public final Map H()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 116	com/tencent/feedback/common/c:I	Ljava/util/Map;
-    //   6: invokeinterface 236 1 0
+    //   3: getfield 113	com/tencent/feedback/common/c:I	Ljava/util/Map;
+    //   6: invokeinterface 231 1 0
     //   11: istore_1
     //   12: iload_1
     //   13: ifgt +9 -> 22
@@ -215,11 +214,11 @@ public final class c
     //   19: monitorexit
     //   20: aload_2
     //   21: areturn
-    //   22: new 113	java/util/HashMap
+    //   22: new 110	java/util/HashMap
     //   25: dup
     //   26: aload_0
-    //   27: getfield 116	com/tencent/feedback/common/c:I	Ljava/util/Map;
-    //   30: invokespecial 239	java/util/HashMap:<init>	(Ljava/util/Map;)V
+    //   27: getfield 113	com/tencent/feedback/common/c:I	Ljava/util/Map;
+    //   30: invokespecial 234	java/util/HashMap:<init>	(Ljava/util/Map;)V
     //   33: astore_2
     //   34: goto -16 -> 18
     //   37: astore_2
@@ -253,7 +252,7 @@ public final class c
     }
   }
   
-  public final Set<String> J()
+  public final Set J()
   {
     try
     {
@@ -268,14 +267,14 @@ public final class c
   }
   
   /* Error */
-  public final Map<String, String> K()
+  public final Map K()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 118	com/tencent/feedback/common/c:J	Ljava/util/Map;
-    //   6: invokeinterface 236 1 0
+    //   3: getfield 115	com/tencent/feedback/common/c:J	Ljava/util/Map;
+    //   6: invokeinterface 231 1 0
     //   11: istore_1
     //   12: iload_1
     //   13: ifgt +9 -> 22
@@ -285,11 +284,11 @@ public final class c
     //   19: monitorexit
     //   20: aload_2
     //   21: areturn
-    //   22: new 113	java/util/HashMap
+    //   22: new 110	java/util/HashMap
     //   25: dup
     //   26: aload_0
-    //   27: getfield 118	com/tencent/feedback/common/c:J	Ljava/util/Map;
-    //   30: invokespecial 239	java/util/HashMap:<init>	(Ljava/util/Map;)V
+    //   27: getfield 115	com/tencent/feedback/common/c:J	Ljava/util/Map;
+    //   30: invokespecial 234	java/util/HashMap:<init>	(Ljava/util/Map;)V
     //   33: astore_2
     //   34: goto -16 -> 18
     //   37: astore_2
@@ -323,7 +322,7 @@ public final class c
     }
   }
   
-  public final Set<String> M()
+  public final Set M()
   {
     try
     {
@@ -394,12 +393,12 @@ public final class c
     //   2: aload_1
     //   3: ifnull +24 -> 27
     //   6: aload_1
-    //   7: invokevirtual 269	java/lang/String:trim	()Ljava/lang/String;
-    //   10: invokevirtual 272	java/lang/String:length	()I
+    //   7: invokevirtual 262	java/lang/String:trim	()Ljava/lang/String;
+    //   10: invokevirtual 265	java/lang/String:length	()I
     //   13: ifeq +14 -> 27
     //   16: aload_1
-    //   17: ldc 61
-    //   19: invokevirtual 276	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ldc 58
+    //   19: invokevirtual 269	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   22: istore_2
     //   23: iload_2
     //   24: ifeq +6 -> 30
@@ -408,7 +407,7 @@ public final class c
     //   29: return
     //   30: aload_0
     //   31: aload_1
-    //   32: putfield 63	com/tencent/feedback/common/c:j	Ljava/lang/String;
+    //   32: putfield 60	com/tencent/feedback/common/c:j	Ljava/lang/String;
     //   35: goto -8 -> 27
     //   38: astore_1
     //   39: aload_0
@@ -465,7 +464,7 @@ public final class c
     }
   }
   
-  public final void a(List<o> paramList)
+  public final void a(List paramList)
   {
     try
     {
@@ -612,7 +611,7 @@ public final class c
     //   2: aload_1
     //   3: ifnull +12 -> 15
     //   6: aload_0
-    //   7: getfield 101	com/tencent/feedback/common/c:z	Ljava/util/Map;
+    //   7: getfield 98	com/tencent/feedback/common/c:z	Ljava/util/Map;
     //   10: astore_2
     //   11: aload_2
     //   12: ifnonnull +6 -> 18
@@ -620,9 +619,9 @@ public final class c
     //   16: monitorexit
     //   17: return
     //   18: aload_0
-    //   19: getfield 101	com/tencent/feedback/common/c:z	Ljava/util/Map;
+    //   19: getfield 98	com/tencent/feedback/common/c:z	Ljava/util/Map;
     //   22: aload_1
-    //   23: invokeinterface 301 2 0
+    //   23: invokeinterface 293 2 0
     //   28: pop
     //   29: goto -14 -> 15
     //   32: astore_1
@@ -667,21 +666,21 @@ public final class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 73	com/tencent/feedback/common/c:m	Ljava/lang/String;
+    //   3: getfield 70	com/tencent/feedback/common/c:m	Ljava/lang/String;
     //   6: ifnull +13 -> 19
     //   9: aload_0
-    //   10: getfield 73	com/tencent/feedback/common/c:m	Ljava/lang/String;
-    //   13: invokevirtual 272	java/lang/String:length	()I
+    //   10: getfield 70	com/tencent/feedback/common/c:m	Ljava/lang/String;
+    //   13: invokevirtual 265	java/lang/String:length	()I
     //   16: ifne +12 -> 28
     //   19: aload_0
-    //   20: invokevirtual 303	com/tencent/feedback/common/c:o	()Ljava/lang/String;
+    //   20: invokevirtual 295	com/tencent/feedback/common/c:o	()Ljava/lang/String;
     //   23: astore_1
     //   24: aload_0
     //   25: monitorexit
     //   26: aload_1
     //   27: areturn
     //   28: aload_0
-    //   29: getfield 73	com/tencent/feedback/common/c:m	Ljava/lang/String;
+    //   29: getfield 70	com/tencent/feedback/common/c:m	Ljava/lang/String;
     //   32: astore_1
     //   33: goto -9 -> 24
     //   36: astore_1
@@ -768,24 +767,24 @@ public final class c
     //   4: aload_1
     //   5: ifnull +51 -> 56
     //   8: aload_1
-    //   9: invokevirtual 269	java/lang/String:trim	()Ljava/lang/String;
-    //   12: invokevirtual 272	java/lang/String:length	()I
+    //   9: invokevirtual 262	java/lang/String:trim	()Ljava/lang/String;
+    //   12: invokevirtual 265	java/lang/String:length	()I
     //   15: ifle +41 -> 56
     //   18: iload_2
     //   19: ifeq +42 -> 61
-    //   22: ldc_w 306
+    //   22: ldc_w 298
     //   25: iconst_1
     //   26: anewarray 4	java/lang/Object
     //   29: dup
     //   30: iconst_0
-    //   31: new 160	java/lang/StringBuilder
+    //   31: new 157	java/lang/StringBuilder
     //   34: dup
-    //   35: invokespecial 181	java/lang/StringBuilder:<init>	()V
+    //   35: invokespecial 178	java/lang/StringBuilder:<init>	()V
     //   38: aload_1
-    //   39: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   45: aastore
-    //   46: invokestatic 281	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   46: invokestatic 274	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   49: pop
     //   50: aconst_null
     //   51: astore_1
@@ -797,10 +796,10 @@ public final class c
     //   57: istore_2
     //   58: goto -40 -> 18
     //   61: aload_0
-    //   62: getfield 116	com/tencent/feedback/common/c:I	Ljava/util/Map;
+    //   62: getfield 113	com/tencent/feedback/common/c:I	Ljava/util/Map;
     //   65: aload_1
-    //   66: invokeinterface 301 2 0
-    //   71: checkcast 266	java/lang/String
+    //   66: invokeinterface 293 2 0
+    //   71: checkcast 259	java/lang/String
     //   74: astore_1
     //   75: goto -23 -> 52
     //   78: astore_1
@@ -844,24 +843,24 @@ public final class c
     //   4: aload_1
     //   5: ifnull +51 -> 56
     //   8: aload_1
-    //   9: invokevirtual 269	java/lang/String:trim	()Ljava/lang/String;
-    //   12: invokevirtual 272	java/lang/String:length	()I
+    //   9: invokevirtual 262	java/lang/String:trim	()Ljava/lang/String;
+    //   12: invokevirtual 265	java/lang/String:length	()I
     //   15: ifle +41 -> 56
     //   18: iload_2
     //   19: ifeq +42 -> 61
-    //   22: ldc_w 306
+    //   22: ldc_w 298
     //   25: iconst_1
     //   26: anewarray 4	java/lang/Object
     //   29: dup
     //   30: iconst_0
-    //   31: new 160	java/lang/StringBuilder
+    //   31: new 157	java/lang/StringBuilder
     //   34: dup
-    //   35: invokespecial 181	java/lang/StringBuilder:<init>	()V
+    //   35: invokespecial 178	java/lang/StringBuilder:<init>	()V
     //   38: aload_1
-    //   39: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   45: aastore
-    //   46: invokestatic 281	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   46: invokestatic 274	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   49: pop
     //   50: aconst_null
     //   51: astore_1
@@ -873,10 +872,10 @@ public final class c
     //   57: istore_2
     //   58: goto -40 -> 18
     //   61: aload_0
-    //   62: getfield 116	com/tencent/feedback/common/c:I	Ljava/util/Map;
+    //   62: getfield 113	com/tencent/feedback/common/c:I	Ljava/util/Map;
     //   65: aload_1
-    //   66: invokeinterface 311 2 0
-    //   71: checkcast 266	java/lang/String
+    //   66: invokeinterface 303 2 0
+    //   71: checkcast 259	java/lang/String
     //   74: astore_1
     //   75: goto -23 -> 52
     //   78: astore_1
@@ -920,24 +919,24 @@ public final class c
     //   4: aload_1
     //   5: ifnull +51 -> 56
     //   8: aload_1
-    //   9: invokevirtual 269	java/lang/String:trim	()Ljava/lang/String;
-    //   12: invokevirtual 272	java/lang/String:length	()I
+    //   9: invokevirtual 262	java/lang/String:trim	()Ljava/lang/String;
+    //   12: invokevirtual 265	java/lang/String:length	()I
     //   15: ifle +41 -> 56
     //   18: iload_2
     //   19: ifeq +42 -> 61
-    //   22: ldc_w 306
+    //   22: ldc_w 298
     //   25: iconst_1
     //   26: anewarray 4	java/lang/Object
     //   29: dup
     //   30: iconst_0
-    //   31: new 160	java/lang/StringBuilder
+    //   31: new 157	java/lang/StringBuilder
     //   34: dup
-    //   35: invokespecial 181	java/lang/StringBuilder:<init>	()V
+    //   35: invokespecial 178	java/lang/StringBuilder:<init>	()V
     //   38: aload_1
-    //   39: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   45: aastore
-    //   46: invokestatic 281	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   46: invokestatic 274	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   49: pop
     //   50: aconst_null
     //   51: astore_1
@@ -949,10 +948,10 @@ public final class c
     //   57: istore_2
     //   58: goto -40 -> 18
     //   61: aload_0
-    //   62: getfield 118	com/tencent/feedback/common/c:J	Ljava/util/Map;
+    //   62: getfield 115	com/tencent/feedback/common/c:J	Ljava/util/Map;
     //   65: aload_1
-    //   66: invokeinterface 311 2 0
-    //   71: checkcast 266	java/lang/String
+    //   66: invokeinterface 303 2 0
+    //   71: checkcast 259	java/lang/String
     //   74: astore_1
     //   75: goto -23 -> 52
     //   78: astore_1
@@ -979,7 +978,7 @@ public final class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 79	com/tencent/feedback/common/c:p	Ljava/lang/String;
+    //   3: getfield 76	com/tencent/feedback/common/c:p	Ljava/lang/String;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17
@@ -1032,28 +1031,28 @@ public final class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 317	com/tencent/feedback/common/c:O	()Z
+    //   3: invokespecial 309	com/tencent/feedback/common/c:O	()Z
     //   6: ifne +10 -> 16
-    //   9: ldc 71
+    //   9: ldc 68
     //   11: astore_1
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_1
     //   15: areturn
     //   16: aload_0
-    //   17: getfield 77	com/tencent/feedback/common/c:o	Ljava/lang/String;
+    //   17: getfield 74	com/tencent/feedback/common/c:o	Ljava/lang/String;
     //   20: ifnonnull +22 -> 42
     //   23: aload_0
-    //   24: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   27: invokestatic 132	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
+    //   24: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   27: invokestatic 129	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
     //   30: pop
     //   31: aload_0
     //   32: aload_0
-    //   33: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   36: invokestatic 318	com/tencent/feedback/common/d:b	(Landroid/content/Context;)Ljava/lang/String;
-    //   39: putfield 77	com/tencent/feedback/common/c:o	Ljava/lang/String;
+    //   33: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   36: invokestatic 310	com/tencent/feedback/common/d:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   39: putfield 74	com/tencent/feedback/common/c:o	Ljava/lang/String;
     //   42: aload_0
-    //   43: getfield 77	com/tencent/feedback/common/c:o	Ljava/lang/String;
+    //   43: getfield 74	com/tencent/feedback/common/c:o	Ljava/lang/String;
     //   46: astore_1
     //   47: goto -35 -> 12
     //   50: astore_1
@@ -1080,28 +1079,28 @@ public final class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 317	com/tencent/feedback/common/c:O	()Z
+    //   3: invokespecial 309	com/tencent/feedback/common/c:O	()Z
     //   6: ifne +10 -> 16
-    //   9: ldc 71
+    //   9: ldc 68
     //   11: astore_1
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_1
     //   15: areturn
     //   16: aload_0
-    //   17: getfield 83	com/tencent/feedback/common/c:r	Ljava/lang/String;
+    //   17: getfield 80	com/tencent/feedback/common/c:r	Ljava/lang/String;
     //   20: ifnonnull +22 -> 42
     //   23: aload_0
-    //   24: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   27: invokestatic 132	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
+    //   24: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   27: invokestatic 129	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
     //   30: pop
     //   31: aload_0
     //   32: aload_0
-    //   33: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   36: invokestatic 320	com/tencent/feedback/common/d:e	(Landroid/content/Context;)Ljava/lang/String;
-    //   39: putfield 83	com/tencent/feedback/common/c:r	Ljava/lang/String;
+    //   33: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   36: invokestatic 312	com/tencent/feedback/common/d:e	(Landroid/content/Context;)Ljava/lang/String;
+    //   39: putfield 80	com/tencent/feedback/common/c:r	Ljava/lang/String;
     //   42: aload_0
-    //   43: getfield 83	com/tencent/feedback/common/c:r	Ljava/lang/String;
+    //   43: getfield 80	com/tencent/feedback/common/c:r	Ljava/lang/String;
     //   46: astore_1
     //   47: goto -35 -> 12
     //   50: astore_1
@@ -1128,28 +1127,28 @@ public final class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 317	com/tencent/feedback/common/c:O	()Z
+    //   3: invokespecial 309	com/tencent/feedback/common/c:O	()Z
     //   6: ifne +10 -> 16
-    //   9: ldc 71
+    //   9: ldc 68
     //   11: astore_1
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_1
     //   15: areturn
     //   16: aload_0
-    //   17: getfield 85	com/tencent/feedback/common/c:s	Ljava/lang/String;
+    //   17: getfield 82	com/tencent/feedback/common/c:s	Ljava/lang/String;
     //   20: ifnonnull +22 -> 42
     //   23: aload_0
-    //   24: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   27: invokestatic 132	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
+    //   24: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   27: invokestatic 129	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
     //   30: pop
     //   31: aload_0
     //   32: aload_0
-    //   33: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   36: invokestatic 321	com/tencent/feedback/common/d:c	(Landroid/content/Context;)Ljava/lang/String;
-    //   39: putfield 85	com/tencent/feedback/common/c:s	Ljava/lang/String;
+    //   33: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   36: invokestatic 313	com/tencent/feedback/common/d:c	(Landroid/content/Context;)Ljava/lang/String;
+    //   39: putfield 82	com/tencent/feedback/common/c:s	Ljava/lang/String;
     //   42: aload_0
-    //   43: getfield 85	com/tencent/feedback/common/c:s	Ljava/lang/String;
+    //   43: getfield 82	com/tencent/feedback/common/c:s	Ljava/lang/String;
     //   46: astore_1
     //   47: goto -35 -> 12
     //   50: astore_1
@@ -1176,28 +1175,28 @@ public final class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 317	com/tencent/feedback/common/c:O	()Z
+    //   3: invokespecial 309	com/tencent/feedback/common/c:O	()Z
     //   6: ifne +10 -> 16
-    //   9: ldc 71
+    //   9: ldc 68
     //   11: astore_1
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_1
     //   15: areturn
     //   16: aload_0
-    //   17: getfield 87	com/tencent/feedback/common/c:t	Ljava/lang/String;
+    //   17: getfield 84	com/tencent/feedback/common/c:t	Ljava/lang/String;
     //   20: ifnonnull +22 -> 42
     //   23: aload_0
-    //   24: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   27: invokestatic 132	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
+    //   24: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   27: invokestatic 129	com/tencent/feedback/common/d:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/d;
     //   30: pop
     //   31: aload_0
     //   32: aload_0
-    //   33: getfield 127	com/tencent/feedback/common/c:a	Landroid/content/Context;
-    //   36: invokestatic 322	com/tencent/feedback/common/d:d	(Landroid/content/Context;)Ljava/lang/String;
-    //   39: putfield 87	com/tencent/feedback/common/c:t	Ljava/lang/String;
+    //   33: getfield 124	com/tencent/feedback/common/c:a	Landroid/content/Context;
+    //   36: invokestatic 314	com/tencent/feedback/common/d:d	(Landroid/content/Context;)Ljava/lang/String;
+    //   39: putfield 84	com/tencent/feedback/common/c:t	Ljava/lang/String;
     //   42: aload_0
-    //   43: getfield 87	com/tencent/feedback/common/c:t	Ljava/lang/String;
+    //   43: getfield 84	com/tencent/feedback/common/c:t	Ljava/lang/String;
     //   46: astore_1
     //   47: goto -35 -> 12
     //   50: astore_1
@@ -1288,7 +1287,7 @@ public final class c
     finally {}
   }
   
-  public final Map<String, PlugInInfo> x()
+  public final Map x()
   {
     try
     {
@@ -1303,17 +1302,17 @@ public final class c
   }
   
   /* Error */
-  public final Map<String, PlugInInfo> y()
+  public final Map y()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 101	com/tencent/feedback/common/c:z	Ljava/util/Map;
+    //   3: getfield 98	com/tencent/feedback/common/c:z	Ljava/util/Map;
     //   6: ifnull +17 -> 23
     //   9: aload_0
-    //   10: getfield 101	com/tencent/feedback/common/c:z	Ljava/util/Map;
-    //   13: invokeinterface 236 1 0
+    //   10: getfield 98	com/tencent/feedback/common/c:z	Ljava/util/Map;
+    //   13: invokeinterface 231 1 0
     //   18: istore_1
     //   19: iload_1
     //   20: ifgt +9 -> 29
@@ -1323,17 +1322,17 @@ public final class c
     //   26: monitorexit
     //   27: aload_2
     //   28: areturn
-    //   29: new 113	java/util/HashMap
+    //   29: new 110	java/util/HashMap
     //   32: dup
     //   33: aload_0
-    //   34: getfield 101	com/tencent/feedback/common/c:z	Ljava/util/Map;
-    //   37: invokeinterface 236 1 0
-    //   42: invokespecial 335	java/util/HashMap:<init>	(I)V
+    //   34: getfield 98	com/tencent/feedback/common/c:z	Ljava/util/Map;
+    //   37: invokeinterface 231 1 0
+    //   42: invokespecial 326	java/util/HashMap:<init>	(I)V
     //   45: astore_2
     //   46: aload_2
     //   47: aload_0
-    //   48: getfield 101	com/tencent/feedback/common/c:z	Ljava/util/Map;
-    //   51: invokeinterface 338 2 0
+    //   48: getfield 98	com/tencent/feedback/common/c:z	Ljava/util/Map;
+    //   51: invokeinterface 329 2 0
     //   56: goto -31 -> 25
     //   59: astore_2
     //   60: aload_0

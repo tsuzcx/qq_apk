@@ -2,15 +2,16 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class afa
+class afa
   implements View.OnClickListener
 {
-  afa(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity) {}
+  afa(VerifyStartScanActivity paramVerifyStartScanActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    w.b(this.a, this.a.getString(2131231286));
   }
 }
 

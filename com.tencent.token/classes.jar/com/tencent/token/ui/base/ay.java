@@ -2,12 +2,12 @@ package com.tencent.token.ui.base;
 
 import android.view.animation.Interpolator;
 
-final class ay
+class ay
   implements Interpolator
 {
-  private ay(GameLoginSndConfirmView paramGameLoginSndConfirmView, byte paramByte) {}
+  private ay(GameLoginSndConfirmView paramGameLoginSndConfirmView) {}
   
-  public final float getInterpolation(float paramFloat)
+  public float getInterpolation(float paramFloat)
   {
     if (paramFloat < 0.3D) {
       return 0.0F;

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/detail_back" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textStyle="bold" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/face_copy_to_other_uin_succ" style="@style/text_view_middle_18" />
+    <TextView android:id="@id/copy_face_succ_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="23.0dip" android:layout_marginRight="17.0dip" style="@style/small_text_view" />
+    <Button android:gravity="center" android:id="@id/button_confirm_copy" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="20.0dip" android:text="@string/confirm_button" style="@style/text_view_white" />
+</LinearLayout>

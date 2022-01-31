@@ -1,35 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.RealNameStatusResult;
-import com.tencent.token.global.RqdApplication;
+import android.widget.EditText;
+import com.tencent.token.cw;
 
-final class ur
-  implements View.OnClickListener
+class ur
+  implements Runnable
 {
-  ur(RealNameActivity paramRealNameActivity, boolean paramBoolean) {}
+  ur(uq paramuq) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    if (this.a) {
-      if (RealNameActivity.access$100(this.b).regVersion == 1)
-      {
-        RealNameActivity.access$300(this.b, false);
-        RqdApplication.i().getSharedPreferences("sp_name_global", 0).edit().putBoolean("key_zzb_refused_firsttime", true).commit();
-      }
-    }
-    while (RealNameActivity.access$100(this.b).mRealStatus != 3) {
-      for (;;)
-      {
-        return;
-        RealNameActivity.access$300(this.b, true);
-      }
-    }
-    RealNameActivity.access$400(this.b);
+    cw.a().a(0L, RealNameFindActivity.access$900(this.a.a.a), RealNameFindActivity.access$000(this.a.a.a), RealNameFindActivity.access$2400(this.a.a.a).getText().toString(), RealNameFindActivity.access$2500(this.a.a.a).getText().toString(), RealNameFindActivity.access$1600(this.a.a.a), RealNameFindActivity.access$2700(this.a.a.a, RealNameFindActivity.access$2600(this.a.a.a)), RealNameFindActivity.access$2700(this.a.a.a, RealNameFindActivity.access$2800(this.a.a.a)), RealNameFindActivity.access$1400(this.a.a.a), RealNameFindActivity.access$1500(this.a.a.a), RealNameFindActivity.access$1000(this.a.a.a));
   }
 }
 

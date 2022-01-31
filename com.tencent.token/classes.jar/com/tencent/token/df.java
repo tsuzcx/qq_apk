@@ -1,133 +1,82 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.token.global.c;
 
-public final class df
-  extends bm
+public class df
 {
-  private int c;
-  private int d;
-  private int e;
-  private ConfigResult f;
-  private int g;
+  public byte[] f = null;
+  public long g;
+  public short h;
+  public byte i = 1;
+  public short j = 0;
+  public short k = 0;
+  public int l;
+  public int m;
+  public short n;
+  public short o = c.b();
+  public short p = c.c();
+  public short q = c.d();
+  public String r = "";
+  public byte[] s = new byte[32];
+  public byte[] t = new byte[32];
   
-  protected final String a()
+  public void a(long paramLong, int paramInt1, int paramInt2, short paramShort)
   {
-    Object localObject1 = null;
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
+    this.g = paramLong;
+    this.l = paramInt1;
+    this.m = paramInt2;
+    this.n = paramShort;
+  }
+  
+  public byte[] a()
+  {
+    this.o = c.b();
+    this.p = c.c();
+    this.q = c.d();
+    byte[] arrayOfByte1 = this.r.getBytes();
+    int i3 = arrayOfByte1.length;
+    if ((this.f != null) && (this.f.length > 0)) {}
+    for (int i1 = this.f.length;; i1 = 0)
     {
-      this.a.a(104, null, null);
-      return null;
-    }
-    try
-    {
-      Object localObject2 = new JSONObject();
-      int i = af.a + 1;
-      af.a = i;
-      this.g = i;
-      ((JSONObject)localObject2).put("seq_id", this.g);
-      ((JSONObject)localObject2).put("op_time", ag.c().r() / 1000L);
-      ((JSONObject)localObject2).put("mobile_brand", Build.BRAND);
-      ((JSONObject)localObject2).put("mobile_model", Build.MODEL);
-      ((JSONObject)localObject2).put("mobile_sys_version", Build.VERSION.RELEASE);
-      ((JSONObject)localObject2).put("screen_width", this.c);
-      ((JSONObject)localObject2).put("screen_height", this.d);
-      ((JSONObject)localObject2).put("screen_dpi", this.e);
-      localObject2 = ((JSONObject)localObject2).toString();
-      e.a("plain:" + (String)localObject2);
-      localObject2 = s.b(((String)localObject2).getBytes());
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
+      int i2 = this.t.length + 92 + i1 + 32 + 1;
+      this.h = ((short)i2);
+      byte[] arrayOfByte2 = new byte[i2];
+      arrayOfByte2[0] = 2;
+      dg.a(arrayOfByte2, 1, this.g);
+      dg.a(arrayOfByte2, 5, this.h);
+      arrayOfByte2[7] = this.i;
+      dg.a(arrayOfByte2, 8, this.j);
+      dg.a(arrayOfByte2, 10, this.k);
+      dg.a(arrayOfByte2, 12, this.l);
+      dg.a(arrayOfByte2, 16, this.m);
+      dg.a(arrayOfByte2, 20, this.n);
+      dg.a(arrayOfByte2, 22, this.o);
+      dg.a(arrayOfByte2, 24, this.p);
+      dg.a(arrayOfByte2, 26, this.q);
+      byte[] arrayOfByte3 = new byte[64];
+      if (i3 > 0)
+      {
+        i2 = i3;
+        if (i3 > 64) {
+          i2 = 64;
+        }
+        dg.a(arrayOfByte3, 0, arrayOfByte1, 0, i2);
+      }
+      dg.a(arrayOfByte2, 28, arrayOfByte3, 0, 64);
+      dg.a(arrayOfByte2, 92, this.t, 0, this.t.length);
+      i2 = this.t.length + 92;
+      if (i1 > 0)
+      {
+        dg.a(arrayOfByte2, i2, this.f, 0, i1);
+        i1 += i2;
+      }
       for (;;)
       {
-        e.c("JSONException:" + localJSONException.getMessage());
+        dg.a(arrayOfByte2, i1, this.s, 0, this.s.length);
+        arrayOfByte2[(i1 + this.s.length)] = 3;
+        return arrayOfByte2;
+        i1 = i2;
       }
-    }
-    str = "?aq_base_sid=" + str + "&data=" + localObject1;
-    return b.c() + "/cn/mbtoken3/mbtoken3_get_config_v2" + str;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.c = ((Integer)paramfs.c.get("param.config.width")).intValue();
-    this.d = ((Integer)paramfs.c.get("param.config.height")).intValue();
-    this.e = ((Integer)paramfs.c.get("param.config.dpi")).intValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0) {
-      a(i, paramJSONObject.getString("info"));
-    }
-    do
-    {
-      return;
-      paramJSONObject = s.d(paramJSONObject.getString("data"));
-      if (paramJSONObject == null) {
-        break;
-      }
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      e.a("parseJSON  decodeData=" + paramJSONObject.toString());
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.g)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder().append("parseJSON error seq is wrong seq=").append(i).append(",right = ");
-        af.a();
-        e.c(af.b());
-        return;
-      }
-      this.f = new ConfigResult(paramJSONObject);
-      this.a.a = 0;
-      t.c(this.f);
-    } while (TextUtils.isEmpty(this.f.schemaKey));
-    try
-    {
-      paramJSONObject = new String(s.d(this.f.schemaKey));
-      e.b("schemaKey=" + this.f.schemaKey + " save as=" + paramJSONObject);
-      t.a(paramJSONObject, this.f.schemaTimeout);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      e.b("decode schemakey failed! schemaKey=" + this.f.schemaKey + " key=" + ap.a(ax.a().c()));
-      return;
-    }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
-  }
-  
-  protected final void b()
-  {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.f;
-      localMessage.sendToTarget();
-      this.b.e = true;
     }
   }
 }

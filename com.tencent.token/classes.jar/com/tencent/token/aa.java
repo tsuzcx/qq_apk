@@ -1,17 +1,18 @@
 package com.tencent.token;
 
-import java.util.TimerTask;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-final class aa
-  extends TimerTask
+public final class aa
 {
-  aa(x paramx) {}
+  public int a = -1;
+  public long b;
+  public byte[] c;
+  public long d;
   
-  public final void run()
+  public aa(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
   {
-    this.a.e.OnGetStWithPasswd(null, 0L, 0, 0L, null, null, 8192, new ErrMsg());
+    this.a = paramInt;
+    this.b = paramLong1;
+    this.c = paramArrayOfByte;
+    this.d = paramLong2;
   }
 }
 

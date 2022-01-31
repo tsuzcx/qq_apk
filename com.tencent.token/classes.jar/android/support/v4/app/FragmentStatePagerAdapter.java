@@ -13,12 +13,12 @@ public abstract class FragmentStatePagerAdapter
   extends PagerAdapter
 {
   private static final boolean DEBUG = false;
-  private static final String TAG = "FragmentStatePagerAdapter";
+  private static final String TAG = "FragmentStatePagerAdapt";
   private FragmentTransaction mCurTransaction = null;
   private Fragment mCurrentPrimaryItem = null;
   private final FragmentManager mFragmentManager;
-  private ArrayList<Fragment> mFragments = new ArrayList();
-  private ArrayList<Fragment.SavedState> mSavedState = new ArrayList();
+  private ArrayList mFragments = new ArrayList();
+  private ArrayList mSavedState = new ArrayList();
   
   public FragmentStatePagerAdapter(FragmentManager paramFragmentManager)
   {
@@ -27,25 +27,30 @@ public abstract class FragmentStatePagerAdapter
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup = (Fragment)paramObject;
+    paramObject = (Fragment)paramObject;
     if (this.mCurTransaction == null) {
       this.mCurTransaction = this.mFragmentManager.beginTransaction();
     }
     while (this.mSavedState.size() <= paramInt) {
       this.mSavedState.add(null);
     }
-    this.mSavedState.set(paramInt, this.mFragmentManager.saveFragmentInstanceState(paramViewGroup));
-    this.mFragments.set(paramInt, null);
-    this.mCurTransaction.remove(paramViewGroup);
+    ArrayList localArrayList = this.mSavedState;
+    if (paramObject.isAdded()) {}
+    for (paramViewGroup = this.mFragmentManager.saveFragmentInstanceState(paramObject);; paramViewGroup = null)
+    {
+      localArrayList.set(paramInt, paramViewGroup);
+      this.mFragments.set(paramInt, null);
+      this.mCurTransaction.remove(paramObject);
+      return;
+    }
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
   {
     if (this.mCurTransaction != null)
     {
-      this.mCurTransaction.commitAllowingStateLoss();
+      this.mCurTransaction.commitNowAllowingStateLoss();
       this.mCurTransaction = null;
-      this.mFragmentManager.executePendingTransactions();
     }
   }
   
@@ -123,7 +128,7 @@ public abstract class FragmentStatePagerAdapter
           }
           else
           {
-            Log.w("FragmentStatePagerAdapter", "Bad fragment at key " + str);
+            Log.w("FragmentStatePagerAdapt", "Bad fragment at key " + str);
           }
         }
       }
@@ -149,11 +154,15 @@ public abstract class FragmentStatePagerAdapter
       if (localFragment != null)
       {
         localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = new Bundle();
+        if (localFragment.isAdded())
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new Bundle();
+          }
+          localObject1 = "f" + i;
+          this.mFragmentManager.putFragment((Bundle)localObject2, (String)localObject1, localFragment);
         }
-        localObject1 = "f" + i;
-        this.mFragmentManager.putFragment((Bundle)localObject2, (String)localObject1, localFragment);
       }
       i += 1;
       localObject1 = localObject2;
@@ -180,7 +189,12 @@ public abstract class FragmentStatePagerAdapter
     }
   }
   
-  public void startUpdate(ViewGroup paramViewGroup) {}
+  public void startUpdate(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup.getId() == -1) {
+      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    }
+  }
 }
 
 

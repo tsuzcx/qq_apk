@@ -1,41 +1,41 @@
 package com.tencent.token.ui;
 
-import android.graphics.Bitmap;
-import android.net.http.SslError;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.TextView;
-import com.tencent.token.global.e;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.token.cx;
 
-final class dg
-  extends WebViewClient
+class dg
+  extends cb
 {
-  dg(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
-  
-  public final void onPageFinished(WebView paramWebView, String paramString)
+  dg(CorrectTokenActivity paramCorrectTokenActivity)
   {
-    e.c("onPageFinished");
-    if (this.a.mWebView.canGoBack()) {
-      this.a.closetext.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.a.mIsRefreshing = false;
-      EmbedWebBaseActivity.access$102(this.a, false);
-      return;
-      this.a.closetext.setVisibility(4);
-    }
+    super(paramCorrectTokenActivity);
   }
   
-  public final void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap) {}
-  
-  public final void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError) {}
-  
-  public final boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    e.a("url" + paramString);
-    return this.a.overrideUrlLoading(paramString);
+    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 13: 
+      int i = paramMessage.getData().getInt("serTime");
+      long l1 = System.currentTimeMillis();
+      long l2 = i;
+      cx.c().a(l2 * 1000L - l1);
+      cx.c().i();
+      cx.c().n();
+      CorrectTokenActivity.access$000(this.a);
+      CorrectTokenActivity.access$700(this.a);
+      return;
+    case 14: 
+      CorrectTokenActivity.access$800(this.a);
+      return;
+    }
+    CorrectTokenActivity.access$800(this.a);
   }
 }
 

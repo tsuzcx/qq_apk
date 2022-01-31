@@ -1,35 +1,30 @@
 package com.tencent.token.ui.base;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.token.at;
-import com.tencent.token.av;
-import com.tencent.token.core.bean.b;
-import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.ft;
+import com.tencent.token.global.f;
+import com.tencent.token.utils.UserTask;
 
-final class j
-  implements z
+class j
+  extends UserTask
 {
   j(DualMsgShowDialog paramDualMsgShowDialog) {}
   
-  public final void a()
+  public f a(String... paramVarArgs)
   {
-    this.a.dismiss();
-    if (DualMsgShowDialog.a(this.a))
+    try
     {
-      Intent localIntent = new Intent(DualMsgShowDialog.b(this.a), IndexActivity.class);
-      localIntent.putExtra("intent.retcode", DualMsgShowDialog.c(this.a));
-      DualMsgShowDialog.b(this.a).startActivity(localIntent);
+      ft.a("tbl_dual_msg");
+      ft.a("tbl_barcode_msg");
+      label10:
+      return null;
     }
-  }
-  
-  public final void a(int paramInt)
-  {
-    if (DualMsgShowDialog.d(this.a) == 0) {}
-    for (b localb = av.a().a(DualMsgShowDialog.e(this.a));; localb = at.a().a(DualMsgShowDialog.e(this.a)))
+    catch (Error paramVarArgs)
     {
-      DualMsgShowDialog.a(this.a, localb, paramInt);
-      return;
+      break label10;
+    }
+    catch (Exception paramVarArgs)
+    {
+      break label10;
     }
   }
 }

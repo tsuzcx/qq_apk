@@ -1,16 +1,45 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class aav
-  implements DialogInterface.OnCancelListener
+class aav
+  implements View.OnClickListener
 {
-  aav(SmsContentTipActivity paramSmsContentTipActivity) {}
+  public final int a = 0;
+  public final int b = 1;
+  private int d = 0;
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public aav(aau paramaau, int paramInt)
   {
-    this.a.unbindResult();
+    this.d = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    h.a("conf modify onClick=" + this.d);
+    paramView = (StartPwdDigitSelActivity)aau.a(this.c);
+    paramView.finish();
+    switch (this.d)
+    {
+    default: 
+      return;
+    case 0: 
+      localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
+      localBundle = new Bundle();
+      localBundle.putInt("enter_type", 2);
+      localIntent.putExtra("com.tencent.input_param", localBundle);
+      paramView.startActivity(localIntent);
+      return;
+    }
+    Intent localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("enter_type", 3);
+    localIntent.putExtra("com.tencent.input_param", localBundle);
+    paramView.startActivity(localIntent);
   }
 }
 

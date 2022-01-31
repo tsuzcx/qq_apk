@@ -10,7 +10,6 @@ public final class E
   implements C
 {
   public final byte[] a(byte[] paramArrayOfByte)
-    throws Exception
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     ZipOutputStream localZipOutputStream = new ZipOutputStream(localByteArrayOutputStream);
@@ -26,7 +25,6 @@ public final class E
   }
   
   public final byte[] b(byte[] paramArrayOfByte)
-    throws Exception
   {
     ByteArrayOutputStream localByteArrayOutputStream = null;
     ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);

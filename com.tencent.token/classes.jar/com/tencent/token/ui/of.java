@@ -1,17 +1,20 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.ui.base.PullToRefreshListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class of
-  implements Runnable
+class of
+  implements DialogInterface.OnCancelListener
 {
-  of(LoginMsgActivity paramLoginMsgActivity, int paramInt) {}
+  of(LogoActivity paramLogoActivity) {}
   
-  public final void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    LoginMsgActivity.access$1200(this.b).requestFocusFromTouch();
-    LoginMsgActivity.access$1200(this.b).setSelection(this.a);
-    LoginMsgActivity.access$1200(this.b).requestFocus();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface.dismiss();
+      LogoActivity.access$400(this.a);
+    }
   }
 }
 

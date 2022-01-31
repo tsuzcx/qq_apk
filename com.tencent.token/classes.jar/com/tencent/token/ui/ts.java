@@ -1,17 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class ts
+class ts
   implements View.OnClickListener
 {
-  ts(OpreateMsgActivity paramOpreateMsgActivity, View paramView) {}
+  ts(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.setVisibility(8);
-    OpreateMsgActivity.access$600(this.b);
+    w.a(this.a, this.a.getString(2131231296), this.a.getResources().getString(2131231297));
   }
 }
 

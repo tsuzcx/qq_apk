@@ -4,12 +4,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 
-final class mj
+class mj
   implements DialogInterface.OnClickListener
 {
   mj(IndexActivity paramIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = new Intent(this.a, WtLoginAccountInput.class);
     paramDialogInterface.putExtra("page_id", 4);

@@ -1,24 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class zo
+class zo
   implements View.OnClickListener
 {
-  zo(SettingPageActivity paramSettingPageActivity, long[] paramArrayOfLong) {}
+  zo(SmsContentTipActivity paramSmsContentTipActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    System.arraycopy(this.a, 1, this.a, 0, this.a.length - 1);
-    this.a[(this.a.length - 1)] = SystemClock.uptimeMillis();
-    if (this.a[0] >= SystemClock.uptimeMillis() - 500L)
-    {
-      paramView = new Intent(this.b, EnvirChangeListviewActivity.class);
-      this.b.startActivity(paramView);
-    }
+    h.c("removeTimeTask showProgressDialog");
+    this.a.removeTimeTask();
   }
 }
 

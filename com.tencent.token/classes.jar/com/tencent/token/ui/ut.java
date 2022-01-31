@@ -3,14 +3,16 @@ package com.tencent.token.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class ut
+class ut
   implements View.OnClickListener
 {
-  ut(RealNameActivity paramRealNameActivity, View paramView) {}
+  ut(RealNameFindActivity paramRealNameFindActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.setVisibility(8);
+    if (RealNameFindActivity.access$600(this.a)) {
+      RealNameFindActivity.access$3300(this.a);
+    }
   }
 }
 

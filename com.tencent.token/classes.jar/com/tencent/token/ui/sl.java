@@ -3,15 +3,17 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.eq;
 
-final class sl
+class sl
   implements View.OnClickListener
 {
   sl(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, LoginMsgActivity.class);
+    eq.a().b();
+    paramView = new Intent(this.a, UtilsMbInfoActivity.class);
     this.a.startActivity(paramView);
   }
 }

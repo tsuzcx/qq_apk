@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.token.gb;
-import com.tencent.token.global.e;
+import com.tencent.token.fe;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class ShowLogActivity
   ForegroundColorSpan ColorV = new ForegroundColorSpan(-16777216);
   ForegroundColorSpan ColorW = new ForegroundColorSpan(-32945);
   private boolean Landscape_Mode = false;
-  private aag mAdapter;
+  private zc mAdapter;
   private int mCurrType = 0;
   private PullToRefreshListView mListView;
   private List mLogs;
@@ -41,15 +41,15 @@ public class ShowLogActivity
     if (paramBufferedReader == null) {
       return;
     }
-    aad localaad = ((aaj)this.mLogs.get(this.mCurrType)).a;
+    yz localyz = ((zf)this.mLogs.get(this.mCurrType)).a;
     try
     {
       ArrayList localArrayList = new ArrayList();
       for (Object localObject1 = paramBufferedReader.readLine(); localObject1 != null; localObject1 = paramBufferedReader.readLine()) {
         localArrayList.add(highlightLog((String)localObject1));
       }
-      localaad.a(localArrayList);
-      updateData(localaad);
+      localyz.a(localArrayList);
+      updateData(localyz);
       localObject1 = this.mListView;
       if (localArrayList.size() - 3 > 0) {}
       for (int i = localArrayList.size() - 3;; i = 0)
@@ -78,7 +78,7 @@ public class ShowLogActivity
     catch (IOException localIOException)
     {
       localIOException = localIOException;
-      e.c(localIOException.getMessage());
+      h.c(localIOException.getMessage());
       try
       {
         paramBufferedReader.close();
@@ -91,7 +91,7 @@ public class ShowLogActivity
   
   private void clearLog()
   {
-    new aae(this).execute(new Void[0]);
+    new za(this, null).execute(new Void[0]);
   }
   
   private SpannableString highlightLog(String paramString)
@@ -130,10 +130,10 @@ public class ShowLogActivity
   
   private void initData()
   {
-    this.mAdapter = new aag(this);
+    this.mAdapter = new zc(this, null);
     this.mListView.setAdapter(this.mAdapter);
-    this.mListView.a(System.currentTimeMillis());
-    this.mListView.a(new aac(this));
+    this.mListView.setRefreshTime(System.currentTimeMillis());
+    this.mListView.setOnRefreshListener(new yy(this));
   }
   
   private void initLog()
@@ -141,67 +141,66 @@ public class ShowLogActivity
     if (this.mLogs == null)
     {
       this.mLogs = new ArrayList();
-      aaj localaaj = new aaj(this);
-      localaaj.a = new aad();
-      localaaj.b = -1;
-      this.mLogs.add(localaaj);
+      zf localzf = new zf(this);
+      localzf.a = new yz(1024, true);
+      localzf.b = -1;
+      this.mLogs.add(localzf);
     }
   }
   
   private void initUI()
   {
-    setContentView(2130903198);
-    this.mListView = ((PullToRefreshListView)findViewById(2131297095));
-    View localView = LayoutInflater.from(this).inflate(2130903142, this.mListView, false);
+    setContentView(2130968761);
+    this.mListView = ((PullToRefreshListView)findViewById(2131559265));
+    View localView = LayoutInflater.from(this).inflate(2130968698, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2130903139, this.mListView, false);
+    localView = LayoutInflater.from(this).inflate(2130968695, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2130903138, this.mListView, false);
+    localView = LayoutInflater.from(this).inflate(2130968694, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
     this.mListView.setScrollingCacheEnabled(true);
-    this.mListView.a(2131362020);
+    this.mListView.a(2131231171);
   }
   
   private void loadMoreLogs()
   {
     if ((this.mCurrType < 0) || (this.mLogs == null) || (this.mCurrType >= this.mLogs.size())) {}
-    aaj localaaj;
+    zf localzf;
     BufferedReader localBufferedReader;
     do
     {
       do
       {
         return;
-        localaaj = (aaj)this.mLogs.get(this.mCurrType);
-      } while (localaaj.b + 1 >= 2);
-      localBufferedReader = gb.b(localaaj.b + 1);
+        localzf = (zf)this.mLogs.get(this.mCurrType);
+      } while (localzf.b + 1 >= 2);
+      localBufferedReader = fe.b(localzf.b + 1);
     } while (localBufferedReader == null);
     addData(localBufferedReader);
-    localaaj.b += 1;
+    localzf.b += 1;
   }
   
   private void showlog(int paramInt)
   {
     if ((paramInt < 0) || (this.mLogs == null)) {}
-    aad localaad;
+    yz localyz;
     do
     {
       return;
       this.mCurrType = paramInt;
-      localaad = ((aaj)this.mLogs.get(this.mCurrType)).a;
-      this.mAdapter.a(localaad);
-      this.mListView.b();
+      localyz = ((zf)this.mLogs.get(this.mCurrType)).a;
+      updateData(localyz);
       this.mListView.setSelection(this.mAdapter.getCount() - 1);
-    } while (localaad.a() > 0);
+    } while (localyz.a() > 0);
     loadMoreLogs();
   }
   
-  private void updateData(aad paramaad)
+  private void updateData(yz paramyz)
   {
-    this.mAdapter.a(paramaad);
+    this.mAdapter.a(paramyz);
     this.mListView.b();
   }
   

@@ -32,7 +32,7 @@ class a
       continue;
       paramInt2 = paramInt1 + paramInt2;
     }
-    return l & 0xFFFFFFFF;
+    return 0xFFFFFFFF & l;
   }
   
   private void a()

@@ -1,29 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.ch;
 
-final class df
-  implements DialogInterface.OnClickListener
+class df
+  implements View.OnClickListener
 {
-  df(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  df(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=com.tencent.mm"));
-      this.a.startActivity(paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-      e.b(paramDialogInterface.toString());
-    }
+    ch.a().a(System.currentTimeMillis(), 55);
+    this.a.showDialog(0);
   }
 }
 

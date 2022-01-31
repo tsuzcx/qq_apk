@@ -1,16 +1,28 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import com.tencent.token.ui.base.cj;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.global.h;
 
-final class zg
+class zg
   implements Runnable
 {
-  zg(SecurityReporterActivity paramSecurityReporterActivity, cj paramcj) {}
+  zg(SmsContentTipActivity paramSmsContentTipActivity) {}
   
-  public final void run()
+  public void run()
   {
-    this.a.setBounds(SecurityReporterActivity.access$100(this.b).getLeft(), SecurityReporterActivity.access$100(this.b).getTop(), SecurityReporterActivity.access$100(this.b).getRight(), SecurityReporterActivity.access$100(this.b).getBottom());
+    if (!SmsContentTipActivity.access$000(this.a)) {
+      return;
+    }
+    h.a("send bind seq request:" + SmsContentTipActivity.access$100(this.a));
+    cx.c().n();
+    int i = 0;
+    if (SmsContentTipActivity.access$200(this.a) != null) {
+      i = SmsContentTipActivity.access$200(this.a).a();
+    }
+    cw.a().a(0L, Long.parseLong(SmsContentTipActivity.access$300(this.a)), SmsContentTipActivity.access$400(this.a), i, this.a.mHandler);
+    SmsContentTipActivity.access$108(this.a);
   }
 }
 

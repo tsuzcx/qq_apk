@@ -8,16 +8,15 @@ public class UtilsMbInfoFeedbackMobileUsingSuccActivity
 {
   private void initUI()
   {
-    findViewById(2131297205).setOnClickListener(new aey(this));
+    findViewById(2131559365).setOnClickListener(new adn(this));
     this.mBackArrow.setVisibility(4);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903230);
-    findViewById(2131297205).setOnClickListener(new aey(this));
-    this.mBackArrow.setVisibility(4);
+    setContentView(2130968793);
+    initUI();
   }
 }
 

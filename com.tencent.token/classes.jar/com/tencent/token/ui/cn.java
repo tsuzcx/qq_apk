@@ -1,21 +1,16 @@
 package com.tencent.token.ui;
 
-import android.app.TimePickerDialog.OnTimeSetListener;
-import android.widget.TimePicker;
-import com.tencent.token.p;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class cn
-  implements TimePickerDialog.OnTimeSetListener
+class cn
+  implements View.OnClickListener
 {
-  cn(CorrectTokenActivity paramCorrectTokenActivity) {}
+  cn(CommonVerifyActivity paramCommonVerifyActivity) {}
   
-  public final void onTimeSet(TimePicker paramTimePicker, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    CorrectTokenActivity.mHour = paramInt1;
-    CorrectTokenActivity.mMinute = paramInt2;
-    CorrectTokenActivity.access$600(this.a);
-    CorrectTokenActivity.access$000(this.a);
-    p.a().a(System.currentTimeMillis(), 56);
+    CommonVerifyActivity.access$000(this.a);
   }
 }
 

@@ -1,24 +1,17 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
 
-final class kh
-  implements Animation.AnimationListener
+class kh
+  implements View.OnClickListener
 {
-  kh(kg paramkg, FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  kh(GeneralVerifyMobileUpActivity paramGeneralVerifyMobileUpActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    kg.a(this.b).setVisibility(0);
-  }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation)
-  {
-    kg.a(this.b).setVisibility(0);
+    paramView = abi.a().a(this.a);
+    this.a.startActivity(paramView);
   }
 }
 

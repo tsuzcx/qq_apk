@@ -1,81 +1,108 @@
 package com.tencent.token;
 
-import com.tencent.token.global.e;
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class bi
 {
-  private static bi b;
-  private HashMap a = new HashMap();
+  private String a;
+  private String b;
+  private List c;
+  private long d;
   
-  private bi()
+  public bi(String paramString1, long paramLong, String paramString2)
   {
-    a(bh.class);
+    this.a = paramString1;
+    this.d = paramLong;
+    this.b = paramString2;
+    this.c = new ArrayList();
   }
   
-  public static bm a(String paramString)
+  public bi(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
   {
-    if (b == null) {
-      b = new bi();
-    }
-    return b.b(paramString);
-  }
-  
-  private void a(Class paramClass)
-  {
-    paramClass = paramClass.getDeclaredFields();
-    if (paramClass == null) {}
-    for (;;)
+    this.a = paramString1;
+    this.d = paramLong;
+    this.b = paramString3;
+    this.c = a(paramString2);
+    if (!TextUtils.isEmpty(paramString4))
     {
-      return;
-      int j = paramClass.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = paramClass[i];
-        try
-        {
-          Object localObject1 = ((Field)localObject2).get(null);
-          if (!(localObject1 instanceof String)) {
-            break label135;
-          }
-          localObject1 = (String)localObject1;
-          localObject2 = (bv)((Field)localObject2).getAnnotation(bv.class);
-          if ((localObject1 == null) || (localObject2 == null)) {
-            break label135;
-          }
-          localObject2 = ((bv)localObject2).a();
-          if (localObject2 == null) {
-            e.c("protocol mapping definition in ProtocolConstant is error:" + (String)localObject1);
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        this.a.put(localException, localObject2);
-        label135:
-        i += 1;
+      paramString1 = paramString4.split(":");
+      if ((paramString1 != null) && (paramString1.length > 0)) {
+        new bg(paramString1[0], Integer.parseInt(paramString1[1]));
       }
     }
   }
   
-  private bm b(String paramString)
+  private static ArrayList a(String paramString)
   {
-    paramString = (Class)this.a.get(paramString);
-    if (paramString != null) {
-      try
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split(",");
+      if ((paramString != null) && (paramString.length > 0))
       {
-        paramString = (bm)paramString.newInstance();
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String[] arrayOfString = paramString[i].split(":");
+          if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+            localArrayList.add(new bg(arrayOfString[0], Integer.parseInt(arrayOfString[1])));
+          }
+          i += 1;
+        }
       }
     }
-    return null;
+    return localArrayList;
+  }
+  
+  public final String a()
+  {
+    return this.a;
+  }
+  
+  public final void a(bg parambg)
+  {
+    this.c.add(parambg);
+  }
+  
+  public final long b()
+  {
+    return this.d;
+  }
+  
+  public final List c()
+  {
+    return this.c;
+  }
+  
+  public final String d()
+  {
+    Object localObject = this.c;
+    if ((localObject == null) || (((List)localObject).size() == 0)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localStringBuilder.append(((bg)((Iterator)localObject).next()).c());
+      localStringBuilder.append(",");
+    }
+    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+    return localStringBuilder.toString();
+  }
+  
+  public final String e()
+  {
+    return this.b;
+  }
+  
+  public final boolean f()
+  {
+    return System.currentTimeMillis() - this.d > bm.a().b.e * 60 * 1000;
   }
 }
 

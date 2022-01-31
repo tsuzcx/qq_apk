@@ -1,24 +1,28 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.app.Dialog;
+import android.os.Build.VERSION;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.global.b;
-import com.tencent.token.o;
+import com.tencent.token.fk;
 
-final class om
+class om
   implements View.OnClickListener
 {
-  om(ol paramol, o paramo) {}
+  om(LogoActivity paramLogoActivity, Dialog paramDialog) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.b.a.showOrangeToast(2131362050, 2130837966);
-    af.a().a(0L, this.a.e[LoginMsgReportLocationActivity.access$200(this.b.a)], this.a.d[LoginMsgReportLocationActivity.access$200(this.b.a)], 1, LoginMsgReportLocationActivity.access$000(this.b.a), this.b.a.mHandler);
-    this.b.a.finish();
-    paramView = new Intent(b.e(), LoginMsgActivity.class);
-    this.b.a.startActivity(paramView);
+    this.a.dismiss();
+    fk.a("privacy_dialog_agree_time", System.currentTimeMillis());
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      LogoActivity.access$000(this.b);
+      return;
+    }
+    Log.i("SecureGuideUtil", "andriod 版本小于23，无需引导权限");
+    LogoActivity.access$100(this.b);
   }
 }
 

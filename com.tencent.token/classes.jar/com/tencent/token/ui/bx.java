@@ -1,34 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.j;
+import com.tencent.token.utils.w;
 
-final class bx
-  implements View.OnClickListener
+class bx
+  implements DialogInterface.OnClickListener
 {
-  bx(CheckMobileAvailableActivity paramCheckMobileAvailableActivity) {}
+  bx(BaseActivity paramBaseActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((CheckMobileAvailableActivity.access$200(this.a) == 0) || (CheckMobileAvailableActivity.access$200(this.a) == 7)) {
-      s.a(this.a, this.a.getResources().getString(2131361883), this.a.getResources().getString(2131362363));
-    }
-    do
-    {
-      return;
-      if (CheckMobileAvailableActivity.access$200(this.a) == 5)
-      {
-        af.a().e(s.f(CheckMobileAvailableActivity.access$800(this.a)), CheckMobileAvailableActivity.access$900(this.a));
-        this.a.showUserDialog(12);
-        return;
-      }
-    } while (CheckMobileAvailableActivity.access$200(this.a) != 6);
-    af.a().e(CheckMobileAvailableActivity.access$600(this.a).mUin, CheckMobileAvailableActivity.access$900(this.a));
-    this.a.showUserDialog(12);
+    w.a(this.a, j.b().e);
   }
 }
 

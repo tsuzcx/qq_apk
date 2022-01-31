@@ -16,5 +16,6 @@
         <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/ques_3" android:layout_alignTop="@id/answer_3" />
         <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/answer_3" />
         <Button android:gravity="center" android:id="@id/button_confirm_ques" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="15.0dip" android:text="@string/next_button" android:layout_below="@id/answer_3" style="@style/text_view_white" />
+        <TextView android:id="@id/change_verify_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/change_verify_type" android:layout_below="@id/button_confirm_ques" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/text_view_16_blue" />
     </RelativeLayout>
 </com.tencent.token.widget.InputMethodRelativeLayout>

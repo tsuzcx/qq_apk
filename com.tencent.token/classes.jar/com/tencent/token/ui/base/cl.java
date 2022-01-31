@@ -1,17 +1,8 @@
 package com.tencent.token.ui.base;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-final class cl
-  implements DialogInterface.OnDismissListener
+public abstract interface cl
 {
-  cl(ProDialog paramProDialog) {}
-  
-  public final void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ProDialog.a(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 

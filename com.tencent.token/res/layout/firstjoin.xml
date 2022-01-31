@@ -6,6 +6,7 @@
         <TextView android:id="@id/firsttime_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" style="@style/text_view_yellow" />
         <TextView android:id="@id/textright" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/realname_firsttime_text2" style="@style/text_view_white" />
     </LinearLayout>
-    <Button android:gravity="center" android:id="@id/firsttimebt" android:background="@drawable/realname_btn" android:layout_width="235.0dip" android:layout_height="50.0dip" android:layout_marginTop="40.0dip" android:text="@string/realname_firsttime_buttontext" android:layout_below="@id/firsttime_text_layout" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold" />
+    <Button android:gravity="center" android:id="@id/firsttimebt" android:background="@drawable/realname_btn" android:layout_width="235.0dip" android:layout_height="50.0dip" android:layout_marginTop="40.0dip" android:text="@string/realname_firsttime_share" android:layout_below="@id/firsttime_text_layout" android:layout_centerHorizontal="true" style="@style/text_btn_black_bold" />
     <ImageView android:id="@id/firstiv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-50.0dip" android:src="@drawable/jiangbeiicon" android:layout_above="@id/firsttime_text_layout" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/closeiv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-50.0dip" android:src="@drawable/close_tranparent" android:layout_alignTop="@id/firstiv" android:layout_alignRight="@id/firstiv" />
 </RelativeLayout>

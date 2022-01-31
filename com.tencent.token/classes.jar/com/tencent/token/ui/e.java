@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class e
+class e
   implements View.OnClickListener
 {
   e(AboutActivity paramAboutActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
     paramView = new Intent(this.a, SerialNumberActivity.class);
     this.a.startActivity(paramView);

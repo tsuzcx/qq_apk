@@ -1,28 +1,35 @@
 package com.tencent.token.ui;
 
 import android.content.res.Resources;
+import android.os.Handler;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.token.core.bean.JLProtectionInfo;
-import com.tencent.token.core.bean.JLProtectionInfo.ActivityItem;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.token.cg;
+import com.tencent.token.cw;
+import com.tencent.token.global.f;
+import com.tencent.token.ui.base.ProDialog;
 
-final class nr
-  implements AdapterView.OnItemClickListener
+class nr
+  implements View.OnClickListener
 {
-  nr(JianLingActivity paramJianLingActivity) {}
+  nr(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity) {}
   
-  public final void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    e.c("jl activity: " + paramAdapterView + ", " + paramView + ", " + paramInt + ", " + paramLong);
-    if ((this.a.mInfo != null) && (this.a.mInfo.activityItem != null) && (paramInt < this.a.mInfo.activityItem.size()))
+    LoginMsgReportLocationActivity.access$202(this.a, LoginMsgReportLocationActivity.access$500(this.a).a());
+    paramView = cg.a();
+    if ((LoginMsgReportLocationActivity.access$200(this.a) == -1) || (LoginMsgReportLocationActivity.access$200(this.a) > paramView.e.length) || (LoginMsgReportLocationActivity.access$000(this.a) == null))
     {
-      paramAdapterView = (JLProtectionInfo.ActivityItem)this.a.mInfo.activityItem.get(paramInt);
-      s.a(this.a, paramAdapterView.jumpURL, this.a.getResources().getString(2131362456));
+      paramView = this.a.mHandler.obtainMessage(3032);
+      paramView.arg1 = 10000;
+      String str = this.a.getResources().getString(2131231183);
+      paramView.obj = new f(10000, str, str);
+      this.a.mHandler.sendMessage(paramView);
+      return;
     }
+    this.a.mDialogPro = new ProDialog(this.a, 2131362182, this.a.getString(2131231392));
+    this.a.mDialogPro.show();
+    cw.a().a(0L, paramView.e[LoginMsgReportLocationActivity.access$200(this.a)], paramView.d[LoginMsgReportLocationActivity.access$200(this.a)], 0, LoginMsgReportLocationActivity.access$000(this.a), this.a.mHandler);
   }
 }
 

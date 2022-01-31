@@ -1,28 +1,24 @@
 package com.tencent.token.ui.base;
 
-import android.database.DataSetObserver;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.ui.DownloadAppActivity;
+import com.tmsdk.TMSDKContext;
 
-final class bc
-  extends DataSetObserver
+class bc
+  implements View.OnClickListener
 {
-  bc(HorizontialListView paramHorizontialListView) {}
+  bc(GuideQQPimSecureDialog paramGuideQQPimSecureDialog) {}
   
-  public final void onChanged()
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      HorizontialListView.a(this.a);
-      this.a.invalidate();
-      this.a.requestLayout();
-      return;
-    }
-  }
-  
-  public final void onInvalidated()
-  {
-    HorizontialListView.b(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
+    paramView = new Intent(this.a.getContext(), DownloadAppActivity.class);
+    paramView.putExtra("downloadurl", "http://qqwx.qq.com/s?aid=index&p=1&c=107013&vt=1&pf=0");
+    this.a.getContext().startActivity(paramView);
+    this.a.a();
+    TMSDKContext.saveActionData(1150103);
   }
 }
 

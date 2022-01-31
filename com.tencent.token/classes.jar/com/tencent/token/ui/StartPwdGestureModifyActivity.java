@@ -10,12 +10,18 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ah;
-import com.tencent.token.global.e;
+import com.tencent.token.ch;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.cy;
+import com.tencent.token.do;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.LockPatternSmallView;
 import com.tencent.token.ui.base.LockPatternVerifyView;
 import com.tencent.token.ui.base.LockPatternView;
-import com.tencent.token.utils.s;
+import com.tencent.token.utils.w;
 
 public class StartPwdGestureModifyActivity
   extends BaseActivity
@@ -25,10 +31,10 @@ public class StartPwdGestureModifyActivity
   public static final int MODIFY_STAGE_3 = 3;
   public static final int RIGHT_FINISH_DELAY = 1000;
   public static final int WRONG_PATTERN_DELAY = 1000;
-  protected Runnable mClearView = new abu(this);
-  protected Runnable mFinishTask = new abv(this);
-  private Handler mHandler = new abt(this);
-  protected boolean mIsNewPwdPage = false;
+  private int mActivityType;
+  protected Runnable mClearView = new aaa(this);
+  protected Runnable mFinishTask = new aab(this);
+  private Handler mHandler = new zz(this);
   private LockPatternView mLockPatternView;
   private boolean mModifyMode = false;
   private int mModifyStage = 1;
@@ -37,33 +43,58 @@ public class StartPwdGestureModifyActivity
   private String mStage1String;
   LockPatternVerifyView mVV;
   
+  private void gotoQuickLoginWb()
+  {
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L))
+    {
+      cw.a().b(this.mHandler);
+      showProDialog(this, 2131230843, 2131231298, null);
+      return;
+    }
+    cp.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
+  }
+  
   private void initUI()
   {
     this.mSmallView.a(this.mLockPatternView);
-    this.mLockPatternView.a(new abz(this));
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2131165236));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2131165298));
-    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837537));
-    this.mTitleText.setTextColor(getResources().getColor(2131165297));
+    this.mLockPatternView.setOnPatternListener(new aae(this));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
+    this.mTitleText.setTextColor(getResources().getColor(2131493027));
+  }
+  
+  private void judgeNextStep()
+  {
+    dismissDialog();
+    ch.a().a(System.currentTimeMillis(), 25);
+    cy.a().a(this);
+    RqdApplication.i();
+    w.a(null, FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
+    cy.a().a(this, 0);
+    if (this.mVV != null) {
+      this.mVV.d();
+    }
   }
   
   private void showNobindingAlert(Context paramContext, int paramInt1, int paramInt2)
   {
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-      showUserDialog(2131361808, getString(paramInt1), paramInt2, 2131361804, new aca(this, paramContext), null);
+      showUserDialog(2131230843, getString(paramInt1), paramInt2, 2131230886, new aaf(this, paramContext), null);
     }
   }
   
   private void showPromtMsg(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.mPromtMsg.setTextColor(getResources().getColor(2131165241));
+      this.mPromtMsg.setTextColor(getResources().getColor(2131493044));
     }
     for (;;)
     {
       this.mPromtMsg.setText(paramInt);
       return;
-      this.mPromtMsg.setTextColor(getResources().getColor(2131165237));
+      this.mPromtMsg.setTextColor(getResources().getColor(2131493043));
     }
   }
   
@@ -71,34 +102,40 @@ public class StartPwdGestureModifyActivity
   {
     super.finish();
     if (this.mModifyMode) {
-      s.a(this, 0);
+      w.a(this, 0);
     }
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    e.c("verify gesture: resultCode=" + paramInt2 + ", requestCode=" + paramInt1);
-    if ((paramInt1 == 256) && (paramInt2 == 257) && (this.mVV != null)) {
-      this.mVV.f();
+    h.c("verify gesture: resultCode=" + paramInt2 + ", requestCode=" + paramInt1);
+    if ((paramInt1 == 256) && (paramInt2 == 257)) {
+      if (this.mVV != null) {
+        this.mVV.d();
+      }
     }
+    while ((paramInt1 != 1201) && (paramInt1 != 1202)) {
+      return;
+    }
+    cp.a(getApplicationContext()).a(paramIntent);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2130903206);
-    if (ah.a().c())
+    setContentView(2130968768);
+    if (cy.a().c())
     {
-      ((ViewStub)findViewById(2131297157)).inflate();
-      this.mVV = ((LockPatternVerifyView)findViewById(2131297301));
-      this.mVV.a(1);
+      ((ViewStub)findViewById(2131559318)).inflate();
+      this.mVV = ((LockPatternVerifyView)findViewById(2131559462));
+      this.mVV.setAnimType(1);
       this.mModifyMode = true;
-      this.mVV.a(new abw(this));
+      this.mVV.setVerifyListener(new aac(this));
     }
-    this.mLockPatternView = ((LockPatternView)findViewById(2131297124));
-    this.mSmallView = ((LockPatternSmallView)findViewById(2131297122));
-    this.mPromtMsg = ((TextView)findViewById(2131297123));
+    this.mLockPatternView = ((LockPatternView)findViewById(2131559285));
+    this.mSmallView = ((LockPatternSmallView)findViewById(2131559283));
+    this.mPromtMsg = ((TextView)findViewById(2131559284));
     initUI();
   }
 }

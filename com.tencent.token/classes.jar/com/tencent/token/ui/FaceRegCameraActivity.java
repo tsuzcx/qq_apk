@@ -1,6 +1,7 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -11,25 +12,26 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.jni.FaceData;
-import com.tencent.token.af;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cv;
-import com.tencent.token.ge;
+import com.tencent.token.core.protocolcenter.protocol.ProtoFaceCommon;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.fi;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.FaceView;
-import com.tencent.token.ui.base.co;
+import com.tencent.token.ui.base.cd;
 import java.util.ArrayList;
 
 public class FaceRegCameraActivity
   extends BaseActivity
 {
-  private Handler handler = new iv(this);
+  private AnimationDrawable animationDrawable;
+  private Handler handler = new hs(this);
   private boolean isShowingErrorDialog = false;
   private int[] mActions;
   private Animation mAnimLeft;
-  private co mDrawable;
+  private cd mDrawable;
   private int mFaceOpType = 1;
   private int mFaceScene = 1;
   private FaceView mFaceView;
@@ -54,17 +56,17 @@ public class FaceRegCameraActivity
       return;
       localArrayList.add(this.mImgData1.mUploadData);
       localArrayList.add(this.mImgData2.mUploadData);
-      this.mServerData = ge.a(localArrayList);
+      this.mServerData = fi.a(localArrayList);
     } while ((this.mServerData == null) || (this.mServerData.length <= 100));
-    setContentView(2130903098);
-    this.mProgress = ((ImageView)findViewById(2131296624));
+    setContentView(2130968661);
+    this.mProgress = ((ImageView)findViewById(2131558912));
     this.mProgress.setBackgroundDrawable(this.mDrawable);
     this.handler.sendEmptyMessageDelayed(13, 10000L);
-    if (ax.a().e() != null) {}
-    for (long l = ax.a().e().mRealUin;; l = 0L)
+    if (do.a().e() != null) {}
+    for (long l = do.a().e().mRealUin;; l = 0L)
     {
-      af.a().a(0L, l, this.mFaceOpType, this.mServerData, 0, this.mFaceScene, this.handler);
-      this.mPreview.a();
+      cw.a().a(0L, l, this.mFaceOpType, this.mServerData, 0, this.mFaceScene, this.mFaceView.getBrightModeIntValue(), this.handler);
+      this.mPreview.c();
       return;
     }
   }
@@ -78,7 +80,7 @@ public class FaceRegCameraActivity
       return;
       ((ArrayList)localObject).add(this.mImgData1.mUploadData);
       ((ArrayList)localObject).add(this.mImgData2.mUploadData);
-      this.mServerData = ge.a((ArrayList)localObject);
+      this.mServerData = fi.a((ArrayList)localObject);
     } while ((this.mServerData == null) || (this.mServerData.length <= 100));
     localObject = new Intent();
     ((Intent)localObject).putExtra("facedata", this.mServerData);
@@ -88,21 +90,22 @@ public class FaceRegCameraActivity
   
   private void init()
   {
-    findViewById(2131296572).setOnClickListener(new jg(this));
-    this.mTipAreaLayout = ((RelativeLayout)findViewById(2131296581));
-    this.mTipTxt = ((TextView)findViewById(2131296578));
-    this.mLiveDetectImg = ((ImageView)findViewById(2131296582));
-    TextView localTextView = (TextView)findViewById(2131296571);
+    findViewById(2131558858).setOnClickListener(new id(this));
+    this.mTipAreaLayout = ((RelativeLayout)findViewById(2131558868));
+    this.mTipTxt = ((TextView)findViewById(2131558865));
+    this.mLiveDetectImg = ((ImageView)findViewById(2131558869));
+    TextView localTextView = (TextView)findViewById(2131558857);
     if (this.mScene == 1) {
-      localTextView.setText(2131362470);
+      localTextView.setText(2131230986);
     }
     for (;;)
     {
-      this.mPreview = ((FaceRecognitionCameraPreview)findViewById(2131296481));
-      this.mFaceView = ((FaceView)findViewById(2131296482));
-      this.mDrawable = new co(this);
+      this.mPreview = ((FaceRecognitionCameraPreview)findViewById(2131558767));
+      this.mPreview.setVisibility(4);
+      this.mFaceView = ((FaceView)findViewById(2131558768));
+      this.mDrawable = new cd(this);
       return;
-      localTextView.setText(2131362609);
+      localTextView.setText(2131231371);
     }
   }
   
@@ -115,20 +118,28 @@ public class FaceRegCameraActivity
     default: 
       return;
     case 1: 
-      this.mTipTxt.setText(2131362783);
-      this.mLiveDetectImg.setImageResource(2130837774);
+      this.mTipTxt.setText(2131231146);
+      this.mLiveDetectImg.setImageResource(2130837858);
+      this.animationDrawable = ((AnimationDrawable)this.mLiveDetectImg.getDrawable());
+      this.animationDrawable.start();
       return;
     case 2: 
-      this.mTipTxt.setText(2131362784);
-      this.mLiveDetectImg.setImageResource(2130837546);
+      this.mTipTxt.setText(2131231147);
+      this.mLiveDetectImg.setImageResource(2130837629);
+      this.animationDrawable = ((AnimationDrawable)this.mLiveDetectImg.getDrawable());
+      this.animationDrawable.start();
       return;
     case 3: 
-      this.mTipTxt.setText(2131362785);
-      this.mLiveDetectImg.setImageResource(2130837770);
+      this.mTipTxt.setText(2131231148);
+      this.mLiveDetectImg.setImageResource(2130837843);
+      this.animationDrawable = ((AnimationDrawable)this.mLiveDetectImg.getDrawable());
+      this.animationDrawable.start();
       return;
     }
-    this.mTipTxt.setText(2131362786);
-    this.mLiveDetectImg.setImageResource(2130837891);
+    this.mTipTxt.setText(2131231149);
+    this.mLiveDetectImg.setImageResource(2130837953);
+    this.animationDrawable = ((AnimationDrawable)this.mLiveDetectImg.getDrawable());
+    this.animationDrawable.start();
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -149,7 +160,7 @@ public class FaceRegCameraActivity
         paramKeyEvent.printStackTrace();
         return true;
       }
-      if (RqdApplication.c())
+      if (RqdApplication.f())
       {
         exitToken();
         return true;
@@ -161,10 +172,10 @@ public class FaceRegCameraActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    e.a("requestcode=" + paramInt1 + ",resultcode=" + paramInt2);
+    h.a("requestcode=" + paramInt1 + ",resultcode=" + paramInt2);
     if (paramInt1 == 100) {
       if (paramInt2 == 10) {
-        if (this.mStep <= 0) {
+        if (this.mStep < 1) {
           if (this.mImgData1 != null)
           {
             this.mImgData1.mOriginDataPath = null;
@@ -174,20 +185,20 @@ public class FaceRegCameraActivity
         }
       }
     }
-    label122:
+    label123:
     do
     {
       do
       {
         do
         {
-          break label122;
+          break label123;
           for (;;)
           {
             this.mPreview.a(true, false, 0, this.mStep);
-            this.mFaceView.c(0);
-            this.mTipTxt.setText(2131362782);
-            this.mLiveDetectImg.setImageResource(2130837712);
+            this.mFaceView.setStatus(0);
+            this.mTipTxt.setText(2131231151);
+            this.mLiveDetectImg.setImageResource(2130837790);
             return;
             if (this.mImgData2 != null)
             {
@@ -202,9 +213,9 @@ public class FaceRegCameraActivity
           this.mStep += 1;
           if (this.mStep < 2)
           {
-            showOrangeToast(2131362479, 2130837964);
+            showOrangeToast(2131231027, 2130838017);
             this.mPreview.a(true, false, 0, this.mStep);
-            this.mFaceView.c(3);
+            this.mFaceView.setStatus(3);
             return;
           }
           doFaceReg();
@@ -213,9 +224,9 @@ public class FaceRegCameraActivity
         this.mStep += 1;
         if (this.mStep < 2)
         {
-          showOrangeToast(2131362479, 2130837964);
+          showOrangeToast(2131231027, 2130838017);
           this.mPreview.a(true, false, 0, this.mStep);
-          this.mFaceView.c(0);
+          this.mFaceView.setStatus(0);
           return;
         }
         doRealnameReg();
@@ -237,9 +248,9 @@ public class FaceRegCameraActivity
           this.mImgData2 = null;
         }
         this.mPreview.a(true, false, 0, this.mStep);
-        this.mFaceView.c(0);
-        this.mTipTxt.setText(2131362782);
-        this.mLiveDetectImg.setImageResource(2130837712);
+        this.mFaceView.setStatus(0);
+        this.mTipTxt.setText(2131231151);
+        this.mLiveDetectImg.setImageResource(2130837790);
         return;
       }
     } while (paramInt2 != 20);
@@ -257,11 +268,11 @@ public class FaceRegCameraActivity
     setNeverShowLockVerifyView();
     this.mScene = getIntent().getIntExtra("scene", 1);
     requestWindowFeature(1);
-    setContentView(2130903091);
+    setContentView(2130968655);
     hideTitle();
     init();
-    cv.e();
-    af.a().h(-1L, this.mScene, this.handler);
+    ProtoFaceCommon.e();
+    cw.a().f(-1L, this.mScene, this.handler);
   }
   
   protected void onDestroy()
@@ -270,7 +281,7 @@ public class FaceRegCameraActivity
     this.mServerData = null;
     if (this.mPreview != null)
     {
-      this.mPreview.a();
+      this.mPreview.c();
       this.mPreview = null;
     }
     this.handler = null;
@@ -300,11 +311,12 @@ public class FaceRegCameraActivity
     RqdApplication.b = true;
     if (this.mPreview != null)
     {
-      this.mPreview.a(this, this.mScene, this.handler, this.mFaceView, this.mTipTxt);
-      this.mPreview.a(false);
+      if localif = new if(this);
+      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, localif);
+      this.mPreview.setStop(false);
     }
     if (this.mAnimLeft == null) {
-      this.mAnimLeft = AnimationUtils.loadAnimation(this, 2130968579);
+      this.mAnimLeft = AnimationUtils.loadAnimation(this, 2131034128);
     }
   }
   
@@ -313,7 +325,7 @@ public class FaceRegCameraActivity
     if ((this.mTitleBar.getVisibility() == 0) && (this.mBackArrow != null))
     {
       this.mBackArrow.setVisibility(0);
-      this.mBackArrow.setOnClickListener(new jh(this));
+      this.mBackArrow.setOnClickListener(new ie(this));
     }
   }
 }

@@ -1,7 +1,6 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,18 +11,16 @@ import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.ax;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.QuesInfoItem;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.core.bean.UpgradeDeterminResult.QuesInfoItem;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.global.h;
 import com.tencent.token.widget.InputMethodRelativeLayout;
+import com.tencent.token.widget.a;
 import java.util.List;
 
 public class NetActiveVryQuesActivity
@@ -34,27 +31,29 @@ public class NetActiveVryQuesActivity
   private final int CHECK_TYPE_NULL = 4;
   private final int CHECK_TYPE_OTHER = 3;
   private final int CHECK_TYPE_SPACE = 2;
+  private boolean isFirstFactor = false;
   private String[] mAnswer = new String[3];
-  private View.OnClickListener mBindButtonListener = new sd(this);
-  private View.OnClickListener mCompleteButtonListener = new rz(this);
+  private View.OnClickListener mCompleteButtonListener = new re(this);
   Button mConfirmBtn;
-  private View.OnClickListener mConfirmMobileButtonListener = new sa(this);
-  private View.OnClickListener mConfirmQuesButtonListener = new sc(this);
+  private View.OnClickListener mConfirmMobileButtonListener = new rf(this);
+  private View.OnClickListener mConfirmQuesButtonListener = new rh(this);
   private String mCountryCode = "+86";
-  private View.OnClickListener mCountryListener = new sb(this);
+  private View.OnClickListener mCountryListener = new rg(this);
   private TextView mCountry_name;
   private TextView mCountry_number;
-  private Handler mHandler = new ry(this);
+  private Handler mHandler = new rd(this);
   private boolean mIsActiveSuccess = false;
   private String mMobile = "";
   private EditText mMobileText;
   InputMethodRelativeLayout mRootLayout;
   View mScrollAreaLayout;
   private boolean mText1HasFocus;
-  private af mTokenCore = af.a();
+  private cw mTokenCore = cw.a();
   private int[] mType = new int[3];
-  private UpgradeDeterminResult mUpDetermin;
   private QQUser mUser;
+  private int mVerifyFactorId;
+  private DeterminVerifyFactorsResult mVerifyResult;
+  private DeterminVerifyFactorsResult.VerifyTypeItem mVerifyType;
   private View mcountry;
   private int originBtnY;
   private int originH;
@@ -135,112 +134,70 @@ public class NetActiveVryQuesActivity
   
   private void init()
   {
-    if (this.mUpDetermin.mQuesAppear == 1) {}
-    for (int i = 1; i == 0; i = 0)
+    List localList = this.mVerifyResult.k();
+    if ((localList.size() != 3) || (localList == null) || (localList.size() == 0))
     {
+      h.c("Ques Info err, question size = " + localList.size());
       finish();
       return;
     }
-    List localList = this.mUpDetermin.mQuesInfo;
-    if ((localList.size() != 3) || (localList == null)) {
-      e.c("Ques Info err, question size = " + localList.size());
-    }
-    this.mConfirmBtn = ((Button)findViewById(2131296900));
+    this.mConfirmBtn = ((Button)findViewById(2131559094));
     this.mConfirmBtn.setOnClickListener(this.mConfirmQuesButtonListener);
-    this.mRootLayout = ((InputMethodRelativeLayout)findViewById(2131296892));
-    this.mScrollAreaLayout = findViewById(2131296815);
-    this.mRootLayout.a = new se(this);
-    TextView localTextView1 = (TextView)findViewById(2131296894);
-    TextView localTextView2 = (TextView)findViewById(2131296896);
-    TextView localTextView3 = (TextView)findViewById(2131296898);
+    this.mRootLayout = ((InputMethodRelativeLayout)findViewById(2131559086));
+    this.mScrollAreaLayout = findViewById(2131559015);
+    this.mRootLayout.setOnSizeChangedListenner(new ri(this));
+    TextView localTextView1 = (TextView)findViewById(2131559088);
+    TextView localTextView2 = (TextView)findViewById(2131559090);
+    TextView localTextView3 = (TextView)findViewById(2131559092);
     String[] arrayOfString = new String[3];
     EditText[] arrayOfEditText = new EditText[3];
-    arrayOfEditText[0] = ((EditText)findViewById(2131296895));
-    arrayOfEditText[1] = ((EditText)findViewById(2131296897));
-    arrayOfEditText[2] = ((EditText)findViewById(2131296899));
+    arrayOfEditText[0] = ((EditText)findViewById(2131559089));
+    arrayOfEditText[1] = ((EditText)findViewById(2131559091));
+    arrayOfEditText[2] = ((EditText)findViewById(2131559093));
     arrayOfEditText[0].setOnFocusChangeListener(this);
     arrayOfEditText[1].setOnFocusChangeListener(this);
     arrayOfEditText[2].setOnFocusChangeListener(this);
-    i = 0;
+    int i = 0;
     while (i < 3)
     {
-      UpgradeDeterminResult.QuesInfoItem localQuesInfoItem = (UpgradeDeterminResult.QuesInfoItem)localList.get(i);
-      arrayOfString[i] = ((UpgradeDeterminResult.QuesInfoItem)localList.get(i)).mContent;
-      this.mType[i] = localQuesInfoItem.mType;
+      DeterminVerifyFactorsResult.QuesInfoItem localQuesInfoItem = (DeterminVerifyFactorsResult.QuesInfoItem)localList.get(i);
+      arrayOfString[i] = ((DeterminVerifyFactorsResult.QuesInfoItem)localList.get(i)).b();
+      this.mType[i] = localQuesInfoItem.c();
       if ((this.mType[i] == 0) || (this.mType[i] == 2)) {
         arrayOfEditText[i].setInputType(2);
       }
       i += 1;
     }
-    localTextView1.setText(getString(2131361828) + arrayOfString[0]);
-    localTextView2.setText(getString(2131361829) + arrayOfString[1]);
-    localTextView3.setText(getString(2131361830) + arrayOfString[2]);
+    localTextView1.setText(getString(2131230780) + arrayOfString[0]);
+    localTextView2.setText(getString(2131230781) + arrayOfString[1]);
+    localTextView3.setText(getString(2131230782) + arrayOfString[2]);
     this.mIsActiveSuccess = false;
-    setTitle(2131362363);
+    setTitle(2131231657);
+    ((TextView)findViewById(2131558740)).setOnClickListener(new rj(this));
   }
   
   private void sendDnaBind()
   {
-    this.mTokenCore.c(this.mUser.mRealUin, 1, this.mMobile, this.mCountryCode, this.mHandler);
+    this.mTokenCore.b(this.mUser.mRealUin, this.mVerifyType.a(), this.mMobile, this.mCountryCode, this.mHandler);
   }
   
   private void setActiveSucc(boolean paramBoolean)
   {
-    Object localObject = ag.c();
-    ((ag)localObject).i();
-    ((ag)localObject).n();
+    Object localObject = cx.c();
+    ((cx)localObject).i();
+    ((cx)localObject).n();
     localObject = this.mUser.mRealUin + "";
-    this.mIsActiveSuccess = true;
-    int i;
-    if (this.mUpDetermin.mHaveMobile == 1)
+    Intent localIntent = new Intent(this, VerifySuccActivity.class);
+    localIntent.putExtra("mRealUin", Long.parseLong((String)localObject));
+    localIntent.putExtra("mMobile", this.mMobile);
+    if (!this.mVerifyResult.b()) {}
+    for (boolean bool = true;; bool = false)
     {
-      i = 1;
-      if (i != 0) {
-        break label266;
-      }
-      if (!paramBoolean) {
-        break label256;
-      }
-      setContentView(2130903052);
-      label71:
-      this.mBackArrow.setVisibility(4);
-      ax.a().f(Long.parseLong((String)localObject));
-      ((Button)findViewById(2131296398)).setOnClickListener(this.mCompleteButtonListener);
-      setTitle(2131361842);
-      ((ImageView)findViewById(2131296395)).setImageDrawable(k.a((String)localObject, s.f(Long.parseLong((String)localObject)) + " "));
-      if (this.mUpDetermin.mHaveMobile != 1) {
-        break label276;
-      }
-      i = 1;
-      label169:
-      if (i == 0)
-      {
-        localObject = (TextView)findViewById(2131296402);
-        if (!paramBoolean) {
-          break label281;
-        }
-        String str = getString(2131361843) + " ";
-        ((TextView)localObject).setText(str + this.mMobile);
-      }
-    }
-    for (;;)
-    {
-      com.tencent.token.core.push.a.a().a(8);
+      localIntent.putExtra("isHaveMobie", bool);
+      localIntent.putExtra("bindMobileSucc", paramBoolean);
+      startActivity(localIntent);
+      finish();
       return;
-      i = 0;
-      break;
-      label256:
-      setContentView(2130903051);
-      break label71;
-      label266:
-      setContentView(2130903050);
-      break label71;
-      label276:
-      i = 0;
-      break label169;
-      label281:
-      ((Button)findViewById(2131296403)).setOnClickListener(this.mBindButtonListener);
-      ((TextView)localObject).setText(getResources().getString(2131361832));
     }
   }
   
@@ -251,7 +208,6 @@ public class NetActiveVryQuesActivity
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    boolean bool = true;
     for (;;)
     {
       try
@@ -259,18 +215,26 @@ public class NetActiveVryQuesActivity
         if ((this.mIsActiveSuccess) && (paramKeyEvent.getAction() == 0)) {}
         switch (paramKeyEvent.getKeyCode())
         {
-        case 4: 
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          return bool;
+        default: 
+          if ((this.isFirstFactor) && (paramKeyEvent.getAction() == 0)) {}
+          switch (paramKeyEvent.getKeyCode())
+          {
+          case 4: 
+            return super.dispatchKeyEvent(paramKeyEvent);
+          }
+          break;
         }
       }
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
+      startActivity(abi.a().a(this));
+      return true;
     }
+    return true;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -279,27 +243,33 @@ public class NetActiveVryQuesActivity
     if (paramInt2 == 0) {
       return;
     }
-    if (paramInt2 == 1111) {}
-    for (paramIntent = "+1";; paramIntent = "+" + paramInt2)
-    {
-      this.mCountryCode = paramIntent;
-      s.a(paramInt2, this.mCountry_name, this.mCountry_number);
-      return;
-    }
+    paramIntent = paramIntent.getStringExtra("name");
+    this.mCountryCode = ("+" + paramInt2);
+    this.mCountry_name.setText(paramIntent);
+    this.mCountry_number.setText(this.mCountryCode);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903150);
+    if (getIntent().getBooleanExtra("intent.determin_from_list", false)) {
+      overridePendingTransition(0, 0);
+    }
     this.mUser = ((QQUser)getIntent().getSerializableExtra("intent.qquser"));
-    this.mUpDetermin = ((UpgradeDeterminResult)getIntent().getSerializableExtra("intent.upgradedetermin"));
-    if ((this.mUser == null) || (this.mUpDetermin == null))
+    this.mVerifyResult = ((DeterminVerifyFactorsResult)getIntent().getSerializableExtra("intent.determin_factors_result"));
+    this.mVerifyType = ((DeterminVerifyFactorsResult.VerifyTypeItem)getIntent().getSerializableExtra("intent.determin_verify_type"));
+    this.mVerifyFactorId = getIntent().getIntExtra("intent.determin_verify_factor_id", -1);
+    this.isFirstFactor = getIntent().getBooleanExtra("intent.determin_first_verify_factor", false);
+    if ((this.mUser == null) || (this.mVerifyResult == null) || (this.mVerifyType == null))
     {
       finish();
       return;
     }
-    e.a("NetActiveVryQuesActivity start");
+    if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
+      setNeverShowLockVerifyView();
+    }
+    h.a("NetActiveVryQuesActivity start");
+    setContentView(2130968706);
     if (Build.MODEL.equals("K-Touch W619")) {
       getWindow().setSoftInputMode(2);
     }
@@ -315,17 +285,18 @@ public class NetActiveVryQuesActivity
   {
     super.onDestroy();
     finish();
+    abi.c();
   }
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramView.getId() == 2131296895) {
+    if (paramView.getId() == 2131559089) {
       this.mText1HasFocus = paramBoolean;
     }
-    while ((paramView.getId() != 2131296897) || (!paramBoolean)) {
+    while ((paramView.getId() != 2131559091) || (!paramBoolean)) {
       return;
     }
-    this.mRootLayout.a.a(true, 0);
+    this.mRootLayout.a.a(true, 0, 0);
   }
   
   protected void onPause()
@@ -336,6 +307,14 @@ public class NetActiveVryQuesActivity
   protected void onResume()
   {
     super.onResume();
+  }
+  
+  protected void setDefaultBackArrow()
+  {
+    super.setDefaultBackArrow();
+    if (this.isFirstFactor) {
+      this.mBackArrow.setOnClickListener(new rk(this));
+    }
   }
 }
 

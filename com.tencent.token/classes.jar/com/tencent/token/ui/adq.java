@@ -2,20 +2,16 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class adq
+class adq
   implements View.OnClickListener
 {
-  private int b;
+  adq(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity, String paramString) {}
   
-  public adq(UtilsActivity paramUtilsActivity, int paramInt)
+  public void onClick(View paramView)
   {
-    this.b = paramInt;
-  }
-  
-  public final void onClick(View paramView)
-  {
-    UtilsActivity.access$000(this.a, this.b);
+    w.b(this.b, this.a);
   }
 }
 

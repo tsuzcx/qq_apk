@@ -1,18 +1,45 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+import com.tencent.token.ui.base.da;
+import com.tencent.token.utils.w;
+import com.tmsdk.TMSDKContext;
 
-final class abs
-  implements View.OnClickListener
+class abs
+  implements da
 {
-  abs(StartPwdGestureIndexActivity paramStartPwdGestureIndexActivity) {}
+  abs(abr paramabr) {}
   
-  public final void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = new Intent(this.a, FacePwdIndexActivity.class);
-    this.a.startActivity(paramView);
+    if (paramInt == 0) {
+      TMSDKContext.saveActionData(1150076);
+    }
+    if (do.a().e() == null)
+    {
+      if (paramInt == 0)
+      {
+        Intent localIntent = new Intent(this.a.a, WtLoginAccountInput.class);
+        localIntent.putExtra("page_id", 4);
+        this.a.a.startActivity(localIntent);
+        return;
+      }
+      w.b(this.a.a, this.a.a.getString(2131231287));
+      return;
+    }
+    if (!do.a().e().mIsBinded)
+    {
+      if (paramInt == 0)
+      {
+        this.a.a.showNoAccountTipDialog(this.a.a, 13, 1);
+        return;
+      }
+      w.b(this.a.a, this.a.a.getString(2131231287));
+      return;
+    }
+    UtilsActivity.access$400(this.a.a, paramInt);
   }
 }
 

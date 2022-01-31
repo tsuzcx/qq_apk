@@ -1,33 +1,16 @@
 package com.tencent.token.ui;
 
-import android.text.Editable;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class abf
-  implements CompoundButton.OnCheckedChangeListener
+class abf
+  implements DialogInterface.OnCancelListener
 {
-  abf(StartPwdGestureForgetActivity paramStartPwdGestureForgetActivity) {}
+  abf(UnbindUinActivity paramUnbindUinActivity) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!paramCompoundButton.isChecked())
-    {
-      StartPwdGestureForgetActivity.access$000(this.a).setInputType(145);
-      StartPwdGestureForgetActivity.access$100(this.a).setVisibility(4);
-      StartPwdGestureForgetActivity.access$200(this.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      StartPwdGestureForgetActivity.access$000(this.a).requestFocus();
-      StartPwdGestureForgetActivity.access$000(this.a).setSelection(StartPwdGestureForgetActivity.access$000(this.a).getText().length());
-      return;
-      StartPwdGestureForgetActivity.access$000(this.a).setInputType(129);
-      StartPwdGestureForgetActivity.access$100(this.a).setVisibility(0);
-      StartPwdGestureForgetActivity.access$200(this.a).setVisibility(4);
-    }
+    this.a.unbindResult();
   }
 }
 

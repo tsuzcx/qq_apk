@@ -1,29 +1,57 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.webkit.JsPromptResult;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import com.tencent.token.global.h;
 
-final class ed
-  implements DialogInterface.OnClickListener
+class ed
+  extends WebChromeClient
 {
-  ed(FacePKActivity paramFacePKActivity) {}
+  ed(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
     try
     {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=com.tencent.mm"));
-      this.a.startActivity(paramDialogInterface);
-      return;
+      h.a("onJsPrompt message=" + paramString2);
+      if ((this.a.shareurl != null) && (this.a.shareurl.contains("mobile_reset_psw_uv_verify")))
+      {
+        paramWebView = new Intent();
+        paramWebView.putExtra("sppkey", paramString2);
+        this.a.setResult(-1, paramWebView);
+        this.a.finish();
+      }
+      paramJsPromptResult.cancel();
+      return true;
     }
-    catch (Exception paramDialogInterface)
+    catch (Exception paramWebView)
     {
-      paramDialogInterface.printStackTrace();
-      e.b(paramDialogInterface.toString());
+      for (;;)
+      {
+        paramWebView.printStackTrace();
+      }
     }
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt) {}
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if ((paramWebView.getUrl() != null) && (paramWebView.getUrl().contains("sec_headline_content")))
+    {
+      this.a.sharetitle = paramString;
+      this.a.shareurl = paramWebView.getUrl();
+      this.a.mRightOptionLayout.setVisibility(0);
+    }
+    do
+    {
+      return;
+      this.a.shareurl = paramWebView.getUrl();
+    } while (this.a.alsoShowMenu);
+    this.a.mRightOptionLayout.setVisibility(8);
   }
 }
 

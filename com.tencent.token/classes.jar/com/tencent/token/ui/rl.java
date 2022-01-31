@@ -1,20 +1,40 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 
-final class rl
-  implements View.OnClickListener
+class rl
+  extends cb
 {
-  rl(NetActiveVryOtherListActivity paramNetActiveVryOtherListActivity) {}
-  
-  public final void onClick(View paramView)
+  rl(NoCheckWithAuthActivity paramNoCheckWithAuthActivity)
   {
-    paramView = new Intent(this.a, NetActiveVryQuesActivity.class);
-    paramView.putExtra("intent.qquser", NetActiveVryOtherListActivity.access$000(this.a));
-    paramView.putExtra("intent.upgradedetermin", NetActiveVryOtherListActivity.access$100(this.a));
-    this.a.startActivity(paramView);
+    super(paramNoCheckWithAuthActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (paramMessage.arg1 == 0)
+    {
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        NoCheckWithAuthActivity.access$000(this.a, bool);
+        return;
+        bool = false;
+      }
+    }
+    paramMessage = (f)paramMessage.obj;
+    f.a(this.a.getResources(), paramMessage);
+    h.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
+    this.a.showUserDialog(2131230779, paramMessage.c, 2131230897, null);
   }
 }
 

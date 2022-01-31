@@ -1,12 +1,15 @@
 package com.tencent.token;
 
-public final class el
+import java.io.File;
+import java.io.FilenameFilter;
+
+class el
+  implements FilenameFilter
 {
-  public int a;
-  public String b;
-  public long c;
-  
-  public el(ek paramek) {}
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.startsWith("TOKEN_");
+  }
 }
 
 

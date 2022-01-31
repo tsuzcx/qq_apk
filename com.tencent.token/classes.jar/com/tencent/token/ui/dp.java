@@ -1,31 +1,22 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class dp
-  implements View.OnClickListener
+class dp
+  implements Animation.AnimationListener
 {
-  dp(FaceChangeMobileActivity paramFaceChangeMobileActivity) {}
+  dp(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ax.a().e() == null)
-    {
-      this.a.showNoAccountTipDialog(this.a, 3, 0);
-      return;
-    }
-    if (!ax.a().e().mIsBinded)
-    {
-      this.a.showNoAccountTipDialog(this.a, 3, 1);
-      return;
-    }
-    this.a.showProDialog(this.a, 2131361808, 2131362203, null);
-    af.a().l(0L, FaceChangeMobileActivity.access$000(this.a));
+    DetectIDPhotoActivity.access$000(this.a).sendEmptyMessage(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

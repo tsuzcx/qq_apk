@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class fw
-  implements View.OnClickListener
+class fw
+  implements DialogInterface.OnClickListener
 {
-  fw(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity) {}
+  fw(fj paramfj) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, StartPwdGestureForgetActivity.class);
-    paramView.putExtra("startpwd_forget_source", 5);
-    this.a.startActivity(paramView);
+    FaceRecognitionCameraActivity.access$2200(this.a.a);
   }
 }
 

@@ -1,11 +1,16 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.utils.UserTask;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 
-final class lq
-  extends UserTask
+class lq
+  implements Runnable
 {
-  lq(IndexActivity paramIndexActivity) {}
+  lq(lp paramlp, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult) {}
+  
+  public void run()
+  {
+    abi.a().a(this.b.a, this.a, IndexActivity.access$100(this.b.a));
+  }
 }
 
 

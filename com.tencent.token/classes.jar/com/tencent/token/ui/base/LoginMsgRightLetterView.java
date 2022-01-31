@@ -8,37 +8,37 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.token.o;
+import com.tencent.token.cg;
 
 public class LoginMsgRightLetterView
   extends View
 {
-  cd a;
+  bw a;
   Paint b = new Paint();
   private int c = -1;
   private float d;
   private String[] e;
   private int f = -1;
   
+  public LoginMsgRightLetterView(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
   public LoginMsgRightLetterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.d = paramContext.getResources().getDimension(2131230728);
-    this.e = o.a().f;
+    this.d = paramContext.getResources().getDimension(2131296400);
+    this.e = cg.a().f;
     this.b.setTypeface(Typeface.DEFAULT_BOLD);
     this.b.setAntiAlias(true);
     this.b.setTextSize(this.d);
-    this.b.setColor(paramContext.getResources().getColor(2131165259));
+    this.b.setColor(paramContext.getResources().getColor(2131492958));
   }
   
   public LoginMsgRightLetterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-  }
-  
-  public final void a(cd paramcd)
-  {
-    this.a = paramcd;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -92,6 +92,11 @@ public class LoginMsgRightLetterView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  public void setOnTouchingLetterChangedListener(bw parambw)
+  {
+    this.a = parambw;
   }
 }
 

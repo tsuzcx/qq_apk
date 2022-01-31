@@ -1,16 +1,16 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 
-final class zd
-  implements View.OnClickListener
+class zd
+  implements View.OnLongClickListener
 {
-  zd(ScanLoginSuccActivity paramScanLoginSuccActivity) {}
+  zd(zc paramzc) {}
   
-  public final void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.finish();
+    return true;
   }
 }
 

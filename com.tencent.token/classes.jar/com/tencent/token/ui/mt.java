@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.ag;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class mt
-  implements Runnable
+class mt
+  implements DialogInterface.OnClickListener
 {
   mt(IndexActivity paramIndexActivity) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ag.c().g()) {
-      return;
-    }
-    af.a().e(IndexActivity.access$300(this.a));
+    this.a.dismissDialog();
   }
 }
 

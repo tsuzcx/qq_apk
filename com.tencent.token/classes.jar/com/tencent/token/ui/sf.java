@@ -1,40 +1,27 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.cw;
+import com.tencent.token.er;
+import com.tencent.token.gb;
 
-final class sf
-  extends bo
+class sf
+  implements View.OnClickListener
 {
-  sf(NoCheckWithAuthActivity paramNoCheckWithAuthActivity)
-  {
-    super(paramNoCheckWithAuthActivity);
-  }
+  sf(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (paramMessage.arg1 == 0)
-    {
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        NoCheckWithAuthActivity.access$000(this.a, bool);
-        return;
-        bool = false;
-      }
-    }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-    this.a.showUserDialog(2131361831, paramMessage.c, 2131361800, null);
+    cw.a().a(0L, this.a.mItem.a(), OpMsgDisplayActivity.access$300(this.a));
+    paramView = this.a.mItem;
+    paramView.mFlag |= 0x100;
+    LoginMsgActivity.mConfirmLogin = true;
+    this.a.mItem.mContent += this.a.getResources().getString(2131231128);
+    this.a.mCache.a.a(this.a.mItem.a(), this.a.mItem.mFlag, this.a.mItem.mContent);
+    this.a.finish();
   }
 }
 

@@ -1,22 +1,18 @@
 package com.tencent.token.ui;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class zy
-  implements ViewPager.OnPageChangeListener
+class zy
+  implements View.OnClickListener
 {
-  zy(SettingPageActivity paramSettingPageActivity) {}
+  zy(StartPwdGestureIndexActivity paramStartPwdGestureIndexActivity) {}
   
-  public final void onPageScrollStateChanged(int paramInt) {}
-  
-  public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public final void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    SettingPageActivity.access$800(this.a)[SettingPageActivity.access$900(this.a)].setBackgroundResource(2130837541);
-    SettingPageActivity.access$902(this.a, paramInt);
-    SettingPageActivity.access$800(this.a)[paramInt].setBackgroundResource(2130837542);
+    paramView = new Intent(this.a, FacePwdIndexActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

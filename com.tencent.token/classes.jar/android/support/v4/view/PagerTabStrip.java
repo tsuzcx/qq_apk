@@ -6,11 +6,15 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
 
@@ -42,12 +46,12 @@ public class PagerTabStrip
   private final Rect mTempRect = new Rect();
   private int mTouchSlop;
   
-  public PagerTabStrip(Context paramContext)
+  public PagerTabStrip(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public PagerTabStrip(Context paramContext, AttributeSet paramAttributeSet)
+  public PagerTabStrip(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.mTabPaint.setColor(this.mIndicatorColor);
@@ -57,27 +61,15 @@ public class PagerTabStrip
     this.mMinTextSpacing = ((int)(64.0F * f));
     this.mTabPadding = ((int)(16.0F * f + 0.5F));
     this.mFullUnderlineHeight = ((int)(1.0F * f + 0.5F));
-    this.mMinStripHeight = ((int)(32.0F * f + 0.5F));
+    this.mMinStripHeight = ((int)(f * 32.0F + 0.5F));
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
     setTextSpacing(getTextSpacing());
     setWillNotDraw(false);
     this.mPrevText.setFocusable(true);
-    this.mPrevText.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        PagerTabStrip.this.mPager.setCurrentItem(PagerTabStrip.this.mPager.getCurrentItem() - 1);
-      }
-    });
+    this.mPrevText.setOnClickListener(new PagerTabStrip.1(this));
     this.mNextText.setFocusable(true);
-    this.mNextText.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        PagerTabStrip.this.mPager.setCurrentItem(PagerTabStrip.this.mPager.getCurrentItem() + 1);
-      }
-    });
+    this.mNextText.setOnClickListener(new PagerTabStrip.2(this));
     if (getBackground() == null) {
       this.mDrawFullUnderline = true;
     }
@@ -93,6 +85,7 @@ public class PagerTabStrip
     return Math.max(super.getMinHeight(), this.mMinStripHeight);
   }
   
+  @ColorInt
   public int getTabIndicatorColor()
   {
     return this.mIndicatorColor;
@@ -147,7 +140,7 @@ public class PagerTabStrip
     }
   }
   
-  public void setBackgroundColor(int paramInt)
+  public void setBackgroundColor(@ColorInt int paramInt)
   {
     super.setBackgroundColor(paramInt);
     if (!this.mDrawFullUnderlineSet) {
@@ -179,7 +172,7 @@ public class PagerTabStrip
     }
   }
   
-  public void setBackgroundResource(int paramInt)
+  public void setBackgroundResource(@DrawableRes int paramInt)
   {
     super.setBackgroundResource(paramInt);
     if (!this.mDrawFullUnderlineSet) {
@@ -211,16 +204,16 @@ public class PagerTabStrip
     super.setPadding(paramInt1, paramInt2, paramInt3, i);
   }
   
-  public void setTabIndicatorColor(int paramInt)
+  public void setTabIndicatorColor(@ColorInt int paramInt)
   {
     this.mIndicatorColor = paramInt;
     this.mTabPaint.setColor(this.mIndicatorColor);
     invalidate();
   }
   
-  public void setTabIndicatorColorResource(int paramInt)
+  public void setTabIndicatorColorResource(@ColorRes int paramInt)
   {
-    setTabIndicatorColor(getContext().getResources().getColor(paramInt));
+    setTabIndicatorColor(ContextCompat.getColor(getContext(), paramInt));
   }
   
   public void setTextSpacing(int paramInt)

@@ -1,138 +1,256 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.util.DisplayMetrics;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import java.net.URLEncoder;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.StreamCorruptedException;
+import java.lang.ref.SoftReference;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Map;
 
-public final class ei
-  extends bm
+public class ei
+  implements eg
 {
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f = -1;
-  public static int g = -1;
-  private long h;
-  private int i;
-  private int j;
-  private int[] k;
+  private static final Comparator a = new ek();
+  private static final FilenameFilter b = new el();
+  private static final Object f = new Object();
+  private final Context c;
+  private final Map d;
+  private int e;
   
-  public static void a(fs paramfs, long paramLong, int paramInt)
+  public ei(Context paramContext)
   {
-    paramfs.c.put("param.realuin", Long.valueOf(paramLong));
-    paramfs.c.put("param.scene.id", Integer.valueOf(paramInt));
+    this.c = paramContext;
+    this.d = new HashMap();
+    this.e = -1;
   }
   
-  protected final String a()
+  public eh a(em paramem)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
+    return a(paramem, 0L);
+  }
+  
+  public eh a(em paramem, long paramLong)
+  {
+    for (;;)
     {
-      this.a.a(104, null, null);
+      Object localObject1;
+      synchronized (f)
+      {
+        localObject1 = b(paramem);
+        if (localObject1 != null) {
+          break label109;
+        }
+        paramem = c(paramem);
+        if (paramem == null) {
+          break label107;
+        }
+        localObject1 = new eh();
+        long l = System.currentTimeMillis();
+        if ((paramLong > 0L) && (l - paramem.a > paramLong))
+        {
+          ((eh)localObject1).a = true;
+          return localObject1;
+        }
+      }
+      ((eh)localObject1).a = false;
+      ((eh)localObject1).b = paramem.b;
+      ((eh)localObject1).c = paramem.c;
+      return localObject1;
+      label107:
       return null;
+      label109:
+      paramem = (em)localObject1;
     }
-    c = 0;
-    d = 0;
-    e = 0;
-    Object localObject = RqdApplication.i().getResources().getDisplayMetrics();
-    localObject = s.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.i), "mobile_brand", URLEncoder.encode(Build.BRAND), "mobile_model", URLEncoder.encode(Build.MODEL), "mobile_sdk_int", Integer.valueOf(Integer.parseInt(Build.VERSION.SDK)), "mobile_sdk_str", URLEncoder.encode(Build.VERSION.RELEASE), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(t.r()), "cpu_freq", Integer.valueOf(t.s()) });
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    return b.c() + "/cn/mbtoken3/mbtoken3_live_video_detect" + str;
   }
   
-  protected final void a(fs paramfs)
+  void a()
   {
-    this.h = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.i = ((Integer)paramfs.c.get("param.scene.id")).intValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int m = paramJSONObject.getInt("err");
-    if (m != 0)
+    File[] arrayOfFile;
+    if ((this.e < 0) || (this.e > 100))
     {
-      a(m, paramJSONObject.getString("info"));
+      arrayOfFile = this.c.getCacheDir().listFiles(b);
+      if (arrayOfFile != null) {
+        break label35;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label35:
+      int j = arrayOfFile.length;
+      this.e = j;
+      if (j >= 100)
+      {
+        Arrays.sort(arrayOfFile, a);
+        int i = 0;
+        while ((i < j) && (this.e > 75))
+        {
+          if (arrayOfFile[i].delete()) {
+            this.e -= 1;
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  void a(em paramem, ej paramej)
+  {
+    paramem = paramem.d();
+    paramej = new SoftReference(paramej);
+    this.d.put(paramem, paramej);
+  }
+  
+  public void a(em paramem, ew paramew, Serializable paramSerializable)
+  {
+    synchronized (f)
+    {
+      ej localej = new ej(this);
+      localej.b = paramew;
+      localej.c = paramSerializable;
+      localej.a = System.currentTimeMillis();
+      a(paramem, localej);
+      b(paramem, localej);
       return;
     }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      this.j = paramJSONObject.getInt("need_live_detect");
-      if ((this.j == 1) && (paramJSONObject.getJSONArray("actions") != null) && (paramJSONObject.getJSONArray("actions").length() > 0))
-      {
-        int n = paramJSONObject.getJSONArray("actions").length();
-        this.k = new int[n];
-        m = 0;
-        while (m < n)
-        {
-          this.k[m] = paramJSONObject.getJSONArray("actions").getInt(m);
-          m += 1;
-        }
-        if ((this.i != 2) && (this.i != 1)) {
-          break label248;
-        }
-        if (this.k.length >= 2)
-        {
-          c = this.k[0];
-          d = this.k[1];
-        }
-      }
-      try
-      {
-        for (;;)
-        {
-          f = paramJSONObject.getInt("displayangle");
-          g = paramJSONObject.getInt("imageangle");
-          e.a("plain angle=" + f + ",angel2=" + g);
-          this.a.a = 0;
-          return;
-          label248:
-          if (this.k.length > 0) {
-            e = this.k[0];
-          }
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-    }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
   }
   
-  protected final void b()
+  ej b(em paramem)
   {
-    if (!this.b.e)
+    paramem = paramem.d();
+    Object localObject = (SoftReference)this.d.get(paramem);
+    if (localObject != null)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.j;
-      localMessage.obj = this.k;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      localObject = (ej)((SoftReference)localObject).get();
+      if (localObject == null) {
+        this.d.remove(paramem);
+      }
+      return localObject;
     }
+    return null;
+  }
+  
+  void b(em paramem, ej paramej)
+  {
+    a();
+    File localFile = d(paramem);
+    ObjectOutputStream localObjectOutputStream;
+    try
+    {
+      localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(localFile));
+      localObjectOutputStream.writeInt(1);
+      localObjectOutputStream.writeLong(paramej.a);
+      if (paramej.b == null) {
+        break label145;
+      }
+      Serializable localSerializable = paramem.a(paramej.b);
+      if (localSerializable == null) {
+        break label107;
+      }
+      localObjectOutputStream.writeBoolean(true);
+      localObjectOutputStream.writeObject(localSerializable);
+    }
+    catch (FileNotFoundException paramej)
+    {
+      for (;;)
+      {
+        h.c(paramem.d() + ": can't open cache file to write");
+        return;
+        localObjectOutputStream.writeBoolean(false);
+      }
+    }
+    catch (IOException paramej)
+    {
+      paramej.printStackTrace();
+      localFile.delete();
+      h.c(paramem.d() + ": writting error:" + paramej);
+      return;
+    }
+    if (paramej.c != null)
+    {
+      localObjectOutputStream.writeBoolean(true);
+      localObjectOutputStream.writeObject(paramej.c);
+    }
+    for (;;)
+    {
+      localObjectOutputStream.flush();
+      return;
+      label107:
+      localObjectOutputStream.writeBoolean(false);
+      break;
+      label145:
+      localObjectOutputStream.writeBoolean(false);
+    }
+  }
+  
+  ej c(em paramem)
+  {
+    Object localObject = d(paramem);
+    if (!((File)localObject).exists()) {
+      return null;
+    }
+    try
+    {
+      ObjectInputStream localObjectInputStream = new ObjectInputStream(new FileInputStream((File)localObject));
+      if (localObjectInputStream.readInt() != 1)
+      {
+        ((File)localObject).delete();
+        return null;
+      }
+      localObject = new ej(this);
+      ((ej)localObject).a = localObjectInputStream.readLong();
+      if (localObjectInputStream.readBoolean()) {
+        ((ej)localObject).b = paramem.a((Serializable)localObjectInputStream.readObject());
+      }
+      if (localObjectInputStream.readBoolean()) {
+        ((ej)localObject).c = ((Serializable)localObjectInputStream.readObject());
+      }
+      return localObject;
+    }
+    catch (StreamCorruptedException paramem)
+    {
+      paramem.printStackTrace();
+      return null;
+    }
+    catch (FileNotFoundException paramem)
+    {
+      for (;;)
+      {
+        paramem.printStackTrace();
+      }
+    }
+    catch (IOException paramem)
+    {
+      for (;;)
+      {
+        paramem.printStackTrace();
+      }
+    }
+    catch (ClassNotFoundException paramem)
+    {
+      for (;;)
+      {
+        paramem.printStackTrace();
+      }
+    }
+  }
+  
+  File d(em paramem)
+  {
+    paramem = w.b(paramem.d());
+    return new File(this.c.getCacheDir(), "TOKEN_" + paramem);
   }
 }
 

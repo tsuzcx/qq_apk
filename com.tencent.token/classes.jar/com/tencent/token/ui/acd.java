@@ -1,50 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.p;
-import com.tencent.token.ui.base.SwitchButton;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class acd
-  implements CompoundButton.OnCheckedChangeListener
+class acd
+  implements DialogInterface.OnClickListener
 {
-  acd(StartPwdGestureSelActivity paramStartPwdGestureSelActivity) {}
+  acd(acc paramacc) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean != StartPwdGestureSelActivity.access$000(this.a)) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramCompoundButton = RqdApplication.i().getSharedPreferences("start_pwd_config", 0).edit();
-        if (StartPwdGestureSelActivity.access$100(this.a) == 1)
-        {
-          p.a().a(System.currentTimeMillis(), 65);
-          paramCompoundButton.putInt("is_set_start_pwd_show", 0);
-          StartPwdGestureSelActivity.access$102(this.a, 0);
-          StartPwdGestureSelActivity.access$200(this.a).a(true, false);
-          StartPwdGestureSelActivity.access$002(this.a, false);
-          paramCompoundButton.commit();
-          return;
-        }
-      }
-      catch (Exception paramCompoundButton)
-      {
-        paramCompoundButton.printStackTrace();
-        return;
-      }
-      paramCompoundButton.putInt("is_set_start_pwd_show", 1);
-      StartPwdGestureSelActivity.access$102(this.a, 1);
-      StartPwdGestureSelActivity.access$200(this.a).a(false, false);
-      StartPwdGestureSelActivity.access$002(this.a, true);
-    }
+    UtilsActivity.access$2200(this.a.a);
   }
 }
 

@@ -1,46 +1,31 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.ax;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.a;
-import com.tencent.token.utils.s;
-import java.util.ArrayList;
 
-final class zn
+class zn
   implements View.OnClickListener
 {
-  zn(zm paramzm) {}
+  zn(SmsContentTipActivity paramSmsContentTipActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (((a)this.a.a.bannerlist.get(i)).b.startsWith("qmtoken://face"))
+    SmsContentTipActivity.access$2900(this.a).setVisibility(0);
+    SmsContentTipActivity.access$3000(this.a).setText(this.a.getResources().getString(2131231129));
+    SmsContentTipActivity.access$3100(this.a).setClickable(false);
+    SmsContentTipActivity.access$1500(this.a).setVisibility(4);
+    if ((SmsContentTipActivity.access$1200(this.a) == 0) || (SmsContentTipActivity.access$1200(this.a) == 7))
     {
-      paramView = ax.a().e();
-      if (paramView == null)
-      {
-        this.a.a.showUserDialog(9);
-        return;
-      }
-      if (!paramView.mIsBinded)
-      {
-        this.a.a.showNoAccountTipDialog(this.a.a, 20, 1);
-        return;
-      }
-      if (ax.a().j())
-      {
-        paramView = new Intent(this.a.a, FaceRecognitionDefaultActivity.class);
-        this.a.a.startActivity(paramView);
-        return;
-      }
-      paramView = new Intent(this.a.a, FaceRecognitionCreateActivity.class);
-      this.a.a.startActivity(paramView);
-      return;
+      SmsContentTipActivity.access$3202(this.a, false);
+      SmsContentTipActivity.access$302(this.a, SmsContentTipActivity.access$2000(this.a).mRealUin + "");
     }
-    s.a(this.a.a, ((a)this.a.a.bannerlist.get(i)).b);
+    this.a.startTimeTask();
+    this.a.mHandler.sendEmptyMessage(3);
   }
 }
 

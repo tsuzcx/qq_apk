@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
 public class ProDialog
   extends Dialog
@@ -13,17 +15,25 @@ public class ProDialog
   private Activity a;
   private String b;
   
-  public ProDialog(Activity paramActivity)
+  public ProDialog(Activity paramActivity, int paramInt)
   {
-    super(paramActivity, 2131427400);
+    super(paramActivity, paramInt);
     this.a = paramActivity;
   }
   
-  public ProDialog(Activity paramActivity, String paramString)
+  public ProDialog(Activity paramActivity, int paramInt, String paramString)
   {
-    super(paramActivity, 2131427400);
+    super(paramActivity, paramInt);
     this.a = paramActivity;
     this.b = paramString;
+  }
+  
+  private void a()
+  {
+    h.c("dismiss and cancel request");
+    if (this.a != null) {
+      cw.a().a(this.a.getClass().getName());
+    }
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -34,10 +44,10 @@ public class ProDialog
       return;
     }
     super.onCreate(paramBundle);
-    setContentView(2130903155);
-    getWindow().setBackgroundDrawableResource(2130837639);
-    ((ImageView)findViewById(2131296914)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130968581));
-    setOnDismissListener(new cl(this));
+    setContentView(2130968717);
+    getWindow().setBackgroundDrawableResource(2130837730);
+    ((ImageView)findViewById(2131559124)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
+    setOnDismissListener(new ca(this));
   }
 }
 

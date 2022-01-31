@@ -7,12 +7,13 @@ public class c
   public static byte[] i = new byte[0];
   public static byte[] q = new byte[0];
   public static byte[] r = new byte[0];
-  public static boolean s = false;
+  public static byte[] s = new byte[0];
+  public static boolean t = false;
   public long a = 0L;
   public int b = 0;
   public long c = 0L;
   public byte[] d = new byte[0];
-  public List<byte[]> e = null;
+  public List e = null;
   public byte[] f = new byte[0];
   public byte[] g = new byte[0];
   public long h = 0L;

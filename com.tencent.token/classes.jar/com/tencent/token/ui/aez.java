@@ -1,63 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.os.Message;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.token.fn;
-import com.tencent.token.global.d;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 
-final class aez
-  extends bo
+class aez
+  implements View.OnClickListener
 {
-  aez(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity)
-  {
-    super(paramUtilsMbInfoItemActivity);
-  }
+  aez(VerifyMobilePhoneActivity paramVerifyMobilePhoneActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.dismissDialog();
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3011: 
-      if (paramMessage.arg1 == 0)
-      {
-        UtilsMbInfoItemActivity.access$000(this.a).setVisibility(8);
-        UtilsMbInfoItemActivity.access$100(this.a).setVisibility(0);
-        this.a.mBackArrow.setVisibility(4);
-        UtilsMbInfoItemActivity.access$202(this.a, true);
-        fn.a().b();
-        AccountPageActivity.mNeedRefreshEval = true;
-      }
-      break;
-    }
-    while (paramMessage.arg1 == 0)
-    {
-      paramMessage = new Intent(this.a, UtilsMbInfoFeedbackMobileUsingSuccActivity.class);
-      this.a.startActivity(paramMessage);
-      fn.a().b();
-      AccountPageActivity.mNeedRefreshEval = true;
-      this.a.finish();
-      return;
-      UtilsMbInfoItemActivity.access$000(this.a).setVisibility(0);
-      UtilsMbInfoItemActivity.access$100(this.a).setVisibility(8);
-      d locald = (d)paramMessage.obj;
-      if ((locald.c == null) || (locald.c.length() == 0)) {
-        d.a(this.a.getResources(), locald);
-      }
-      this.a.showUserDialog(2131361808, locald.c, 2131361800, null);
-    }
-    paramMessage = (d)paramMessage.obj;
-    if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
-      d.a(this.a.getResources(), paramMessage);
-    }
-    this.a.showUserDialog(2131361808, paramMessage.c, 2131361800, null);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+    paramView = abi.a().a(this.a);
+    this.a.startActivity(paramView);
   }
 }
 

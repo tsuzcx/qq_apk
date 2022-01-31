@@ -1,12 +1,14 @@
 package com.tencent.token.utils.encrypt;
 
-import com.tencent.token.fu;
+import com.tencent.token.dg;
+import com.tencent.token.ex;
 import com.tencent.token.utils.encrypt.random.PRNGFixes;
 import com.tencent.token.utils.encrypt.random.SecureRandom;
+import oicq.wlogin_sdk.tools.MD5;
 
-public final class b
+public class b
 {
-  public static fu a()
+  public static ex a()
   {
     byte[] arrayOfByte = new byte[14];
     Object localObject2 = System.getProperty("microedition.platform");
@@ -43,40 +45,49 @@ public final class b
       }
       arrayOfByte[0] = ((byte)(Math.abs(localException.nextInt()) % 64));
     }
-    return new fu(arrayOfByte);
+    return new ex(arrayOfByte);
   }
   
-  public static fu a(fu paramfu1, fu paramfu2, fu paramfu3)
+  public static String a(ex paramex1, long paramLong, ex paramex2)
   {
-    if ((paramfu1 == null) || (paramfu2 == null) || (paramfu3 == null)) {
+    if ((paramex1 == null) || (paramex2 == null)) {
       return null;
     }
+    ex localex = new ex(paramLong + "");
     try
     {
-      paramfu1 = paramfu2.a(paramfu1, paramfu3);
-      return paramfu1;
+      paramex1 = localex.a(paramex1, paramex2);
+      return paramex1.e().toUpperCase();
     }
-    catch (Exception paramfu1)
+    catch (Exception paramex1)
     {
-      paramfu1.printStackTrace();
+      paramex1.printStackTrace();
     }
     return null;
   }
   
-  public static String a(fu paramfu1, fu paramfu2)
+  public static byte[] a(ex paramex1, ex paramex2, ex paramex3)
   {
-    if ((paramfu1 == null) || (paramfu2 == null)) {
+    paramex1 = b(paramex1, paramex2, paramex3);
+    if (paramex1 == null) {
       return null;
     }
-    fu localfu = new fu(2L + "");
+    return MD5.toMD5Byte(dg.a(paramex1.e()));
+  }
+  
+  public static ex b(ex paramex1, ex paramex2, ex paramex3)
+  {
+    if ((paramex1 == null) || (paramex2 == null) || (paramex3 == null)) {
+      return null;
+    }
     try
     {
-      paramfu1 = localfu.a(paramfu1, paramfu2);
-      return paramfu1.a().toUpperCase();
+      paramex1 = paramex2.a(paramex1, paramex3);
+      return paramex1;
     }
-    catch (Exception paramfu1)
+    catch (Exception paramex1)
     {
-      paramfu1.printStackTrace();
+      paramex1.printStackTrace();
     }
     return null;
   }

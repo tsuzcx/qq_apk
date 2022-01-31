@@ -1,17 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
 
-final class rq
+class rq
   implements View.OnClickListener
 {
-  rq(NetActiveVryOtherListActivity paramNetActiveVryOtherListActivity) {}
+  rq(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    s.b(this.a, this.a.getString(2131361986));
+    paramView = new Intent(this.a, LoginMsgActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

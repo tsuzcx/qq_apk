@@ -1,24 +1,32 @@
 package com.tencent.token.ui;
 
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
-final class yd
-  implements TextView.OnEditorActionListener
+class yd
+  implements View.OnClickListener
 {
-  yd(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
+  yd(ScanLoginAccountListActivity paramScanLoginAccountListActivity) {}
   
-  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 6)
-    {
-      if (!RealNameStep1InputNameIdActivity.access$500(this.a)) {
-        RealNameStep1InputNameIdActivity.access$2900(this.a);
-      }
-      return true;
+    paramView = (QQUser)paramView.getTag();
+    if (paramView == null) {
+      return;
     }
-    return false;
+    if (!paramView.mIsBinded)
+    {
+      this.a.showUserDialog(2131230843, this.a.getString(2131231516), 2131230897, 2131230886, new ye(this, paramView), null);
+      return;
+    }
+    ScanLoginAccountListActivity.access$002(this.a, paramView);
+    long l = ScanLoginAccountListActivity.access$000(this.a).mUin;
+    h.b("unbind uin: " + l);
+    cw.a().g(l, ScanLoginAccountListActivity.access$300(this.a));
+    this.a.showProDialog(this.a, 2131230843, 2131231517, null);
   }
 }
 

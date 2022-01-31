@@ -1,19 +1,14 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class aeg
-  implements View.OnClickListener
+class aeg
+  implements DialogInterface.OnCancelListener
 {
-  aeg(UtilsLoginProtectActivity paramUtilsLoginProtectActivity) {}
+  aeg(UtilsModSetMobileStep2SmsActivity paramUtilsModSetMobileStep2SmsActivity) {}
   
-  public final void onClick(View paramView)
-  {
-    e.c("retry: ");
-    this.a.queryLoginProtect();
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

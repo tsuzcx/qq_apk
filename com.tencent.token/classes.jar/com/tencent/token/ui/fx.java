@@ -1,18 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.token.ui.base.FaceView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class fx
-  implements Runnable
+class fx
+  implements DialogInterface.OnCancelListener
 {
-  fx(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity, float paramFloat) {}
+  fx(fj paramfj) {}
   
-  public final void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ((ViewGroup.MarginLayoutParams)FaceRecognitionCameraActivity.access$900(this.b).getLayoutParams()).topMargin = ((int)(FaceRecognitionCameraActivity.access$500(this.b).a() - this.a * 170.0F));
-    ((ViewGroup.MarginLayoutParams)FaceRecognitionCameraActivity.access$1000(this.b).getLayoutParams()).topMargin = ((int)(FaceRecognitionCameraActivity.access$500(this.b).a() - this.a * 170.0F));
+    FaceRecognitionCameraActivity.access$500(this.a.a);
   }
 }
 

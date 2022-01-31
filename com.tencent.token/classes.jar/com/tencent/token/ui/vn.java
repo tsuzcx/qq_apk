@@ -1,21 +1,26 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.ui.base.CommonActionSheetDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.HandlerThread;
 
-final class vn
-  implements View.OnClickListener
+class vn
+  implements DialogInterface.OnClickListener
 {
-  vn(RealNameGuidActivity paramRealNameGuidActivity) {}
+  vn(vj paramvj) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.getResources().getString(2131362475);
-    String str = this.a.getResources().getString(2131362476);
-    this.a.dialog = new CommonActionSheetDialog(this.a, this.a.listener, new String[] { paramView, str });
-    this.a.dialog.show();
+    if (RealNameSmsContentTipActivity.access$400(this.a.a) == null)
+    {
+      RealNameSmsContentTipActivity.access$402(this.a.a, new HandlerThread("uploadphoto", 1));
+      RealNameSmsContentTipActivity.access$400(this.a.a).start();
+    }
+    if (RealNameSmsContentTipActivity.access$500(this.a.a) == null) {
+      RealNameSmsContentTipActivity.access$502(this.a.a, new Handler(RealNameSmsContentTipActivity.access$400(this.a.a).getLooper()));
+    }
+    RealNameSmsContentTipActivity.access$500(this.a.a).post(new vo(this));
   }
 }
 

@@ -1,15 +1,20 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.ui.base.cq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class od
-  implements cq
+class od
+  implements DialogInterface.OnClickListener
 {
-  od(LoginMsgActivity paramLoginMsgActivity) {}
+  od(LogoActivity paramLogoActivity) {}
   
-  public final void onRefresh()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginMsgActivity.access$1100(this.a);
+    paramDialogInterface = new Intent(this.a, WtLoginAccountInput.class);
+    paramDialogInterface.putExtra("page_id", 3);
+    this.a.startActivity(paramDialogInterface);
+    this.a.finish();
   }
 }
 

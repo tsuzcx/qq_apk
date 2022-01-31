@@ -1,19 +1,34 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.h;
+import oicq.wlogin_sdk.tools.util;
 
-final class afz
-  implements View.OnClickListener
+class afz
+  implements Runnable
 {
-  afz(UtilsTokenLabActivity paramUtilsTokenLabActivity) {}
+  afz(WtLoginAccountInput paramWtLoginAccountInput) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, RealNameProtectActivity.class);
-    paramView.putExtra("realname_result", UtilsTokenLabActivity.access$100(this.a));
-    this.a.startActivity(paramView);
+    h.a("mQuickLoginIntenData" + WtLoginAccountInput.access$1300(this.a));
+    if (WtLoginAccountInput.access$1300(this.a) == null)
+    {
+      util.LOGI("用户异常返回");
+      h.a("mQuickLoginIntenData_null");
+      localMessage = WtLoginAccountInput.access$500(this.a).obtainMessage(4108);
+      localMessage.arg1 = 5001;
+      localMessage.obj = "";
+      localMessage.sendToTarget();
+    }
+    while ((RqdApplication.b) || (!WtLoginAccountInput.access$300(this.a)))
+    {
+      Message localMessage;
+      return;
+    }
+    WtLoginAccountInput.access$400(this.a);
   }
 }
 

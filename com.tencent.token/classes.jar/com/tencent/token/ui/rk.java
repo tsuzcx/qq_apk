@@ -1,18 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class rk
-  implements DialogInterface.OnClickListener
+class rk
+  implements View.OnClickListener
 {
-  rk(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
+  rk(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.setContentView(2130903148);
-    NetActiveVryMobileNoSmsActivity.access$1500(this.a);
-    NetActiveVryMobileNoSmsActivity.access$100(this.a);
+    paramView = abi.a().a(this.a);
+    this.a.startActivity(paramView);
   }
 }
 

@@ -1,16 +1,21 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.token.core.protocolcenter.protocol.b;
 
-final class lv
-  implements View.OnClickListener
+class lv
+  implements DialogInterface.OnClickListener
 {
-  lv(IndexActivity paramIndexActivity) {}
+  lv(lp paramlp, b paramb) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.dismissDialog();
+    paramDialogInterface = new Intent(this.b.a, WtLoginAccountInput.class);
+    paramDialogInterface.putExtra("page_id", 4);
+    paramDialogInterface.putExtra("intent.uin", this.a.c);
+    this.b.a.startActivity(paramDialogInterface);
   }
 }
 

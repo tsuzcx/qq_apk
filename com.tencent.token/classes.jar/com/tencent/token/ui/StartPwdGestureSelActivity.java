@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ah;
+import com.tencent.token.ch;
+import com.tencent.token.cy;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.p;
 import com.tencent.token.ui.base.SwitchButton;
 
 public class StartPwdGestureSelActivity
@@ -30,21 +30,21 @@ public class StartPwdGestureSelActivity
   
   private void initUI()
   {
-    this.mButtonModify.setOnClickListener(new acb(this));
-    this.mButtonClear.setOnClickListener(new acc(this));
+    this.mButtonModify.setOnClickListener(new aag(this));
+    this.mButtonClear.setOnClickListener(new aah(this));
     try
     {
-      this.mSetStartPwd = RqdApplication.i().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
+      this.mSetStartPwd = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
       if (this.mSetStartPwd == 1) {
         this.mSwitchStartPwd.a(false, false);
       }
       for (this.mIsChecked = true;; this.mIsChecked = false)
       {
-        this.mSwitchStartPwd.setOnCheckedChangeListener(new acd(this));
-        this.mTitleBar.setBackgroundColor(getResources().getColor(2131165236));
-        this.mTitleDivider.setBackgroundColor(getResources().getColor(2131165298));
-        this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837537));
-        this.mTitleText.setTextColor(getResources().getColor(2131165297));
+        this.mSwitchStartPwd.setOnCheckedChangeListener(new aai(this));
+        this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
+        this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
+        this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
+        this.mTitleText.setTextColor(getResources().getColor(2131493027));
         return;
         this.mSwitchStartPwd.a(true, false);
       }
@@ -63,9 +63,9 @@ public class StartPwdGestureSelActivity
     if (paramInt1 == 256) {
       if (paramInt2 == 257)
       {
-        p.a().a(System.currentTimeMillis(), 22);
+        ch.a().a(System.currentTimeMillis(), 22);
         startActivity(new Intent(this, StartPwdUpdateInfoActivity.class));
-        showOrangeToast(2131362155, 2130837966);
+        showOrangeToast(2131231102, 2130838018);
         finish();
       }
     }
@@ -76,28 +76,28 @@ public class StartPwdGestureSelActivity
         do
         {
           return;
-        } while (ah.a().c());
+        } while (cy.a().c());
         finish();
         return;
       } while (paramInt1 != 258);
       if (paramInt2 == 259)
       {
-        p.a().a(System.currentTimeMillis(), 16);
-        showOrangeToast(2131362154, 2130837966);
+        ch.a().a(System.currentTimeMillis(), 16);
+        showOrangeToast(2131231091, 2130838018);
         return;
       }
-    } while (ah.a().c());
+    } while (cy.a().c());
     finish();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903207);
-    this.mButtonModify = ((Button)findViewById(2131297128));
-    this.mButtonClear = ((Button)findViewById(2131297129));
-    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131297127));
-    this.mTextOpName = ((TextView)findViewById(2131296280));
+    setContentView(2130968769);
+    this.mButtonModify = ((Button)findViewById(2131559289));
+    this.mButtonClear = ((Button)findViewById(2131559290));
+    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131559288));
+    this.mTextOpName = ((TextView)findViewById(2131558539));
     initUI();
   }
 }

@@ -1,45 +1,19 @@
 package com.tencent.token.ui;
 
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.PreviewCallback;
-import android.hardware.Camera.Size;
-import android.os.Message;
-import com.tencent.token.global.e;
-import java.util.concurrent.ExecutorService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class hu
-  implements Camera.PreviewCallback
+class hu
+  implements DialogInterface.OnClickListener
 {
-  Message a = null;
-  long b = 0L;
+  hu(hs paramhs) {}
   
-  hu(FaceRecognitionCameraPreviewOld paramFaceRecognitionCameraPreviewOld) {}
-  
-  public final void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((FaceRecognitionCameraPreviewOld.a(this.c)) || (FaceRecognitionCameraPreviewOld.b(this.c))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object localObject = this.c;
-        ((FaceRecognitionCameraPreviewOld)localObject).e += 1L;
-        if (!FaceRecognitionCameraPreviewOld.c(this.c))
-        {
-          paramCamera = paramCamera.getParameters();
-          localObject = paramCamera.getPreviewSize();
-          FaceRecognitionCameraPreviewOld.k(this.c).execute(new hv(this, paramCamera, (Camera.Size)localObject, paramArrayOfByte));
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        e.c("preview handler is null");
-      }
-    }
+    paramDialogInterface = new Intent(this.a.a, FaceRecognitionCreateActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

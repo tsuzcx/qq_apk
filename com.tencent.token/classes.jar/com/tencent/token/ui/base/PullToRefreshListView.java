@@ -17,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 
 public class PullToRefreshListView
   extends ListView
@@ -33,7 +33,7 @@ public class PullToRefreshListView
   private RotateAnimation h;
   private int i;
   private Context j;
-  private cq k;
+  private cg k;
   private int l;
   private int m = 0;
   private float n;
@@ -46,7 +46,90 @@ public class PullToRefreshListView
     this.j = paramContext;
   }
   
-  private void b(int paramInt)
+  private void a(View paramView)
+  {
+    ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
+    if (localLayoutParams2 == null) {
+      localLayoutParams1 = new ViewGroup.LayoutParams(-1, -2);
+    }
+    int i2 = ViewGroup.getChildMeasureSpec(0, 0, localLayoutParams1.width);
+    int i1 = localLayoutParams1.height;
+    if (i1 > 0) {}
+    for (i1 = View.MeasureSpec.makeMeasureSpec(i1, 1073741824);; i1 = View.MeasureSpec.makeMeasureSpec(0, 0))
+    {
+      paramView.measure(i2, i1);
+      return;
+    }
+  }
+  
+  public void a()
+  {
+    b(3);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.l = paramInt;
+    this.b = LayoutInflater.from(this.j).inflate(2130968696, this, false);
+    a(this.b);
+    this.a = this.b.getMeasuredHeight();
+    if (this.a < 10) {
+      this.a = 10;
+    }
+    this.b.setPadding(0, -this.a, 0, 0);
+    addHeaderView(this.b, null, false);
+    this.c = ((ImageView)this.b.findViewById(2131559030));
+    this.d = ((ProgressBar)this.b.findViewById(2131559031));
+    this.e = ((TextView)this.b.findViewById(2131559032));
+    this.f = ((TextView)this.b.findViewById(2131559033));
+    this.c.setImageResource(2130837878);
+    this.g = new RotateAnimation(0.0F, -180.0F, 1, 0.5F, 1, 0.5F);
+    this.g.setInterpolator(new LinearInterpolator());
+    this.g.setDuration(250L);
+    this.g.setFillAfter(true);
+    this.h = new RotateAnimation(-180.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+    this.h.setInterpolator(new LinearInterpolator());
+    this.h.setDuration(250L);
+    this.h.setFillAfter(true);
+    setOnScrollListener(new ch(this, null));
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = this.j.getSharedPreferences(paramString, 0).edit();
+      paramString.putLong("refresh_time", this.p);
+      paramString.commit();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      h.c("SharedPreferences msg " + paramString.getMessage());
+    }
+  }
+  
+  public long b(String paramString)
+  {
+    try
+    {
+      long l1 = this.j.getSharedPreferences(paramString, 0).getLong("refresh_time", 0L);
+      return l1;
+    }
+    catch (Exception paramString)
+    {
+      h.c("SharedPreferences msg " + paramString.getMessage());
+    }
+    return 0L;
+  }
+  
+  public void b()
+  {
+    b(0);
+  }
+  
+  public void b(int paramInt)
   {
     if (paramInt != this.m)
     {
@@ -75,14 +158,14 @@ public class PullToRefreshListView
         this.c.clearAnimation();
         this.c.startAnimation(this.h);
       }
-      this.e.setText(2131362021);
+      this.e.setText(2131231170);
       continue;
       if (this.m == 2)
       {
         this.c.clearAnimation();
         this.c.startAnimation(this.g);
       }
-      this.e.setText(2131362022);
+      this.e.setText(2131231172);
       continue;
       this.b.setPadding(0, 0, 0, 0);
       this.b.invalidate();
@@ -93,100 +176,9 @@ public class PullToRefreshListView
         continue;
         this.b.setPadding(0, -this.a, 0, 0);
         this.b.invalidate();
-        this.e.setText(2131362021);
+        this.e.setText(2131231170);
       }
     }
-  }
-  
-  public final void a()
-  {
-    b(3);
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.l = paramInt;
-    this.b = LayoutInflater.from(this.j).inflate(2130903140, this, false);
-    View localView = this.b;
-    ViewGroup.LayoutParams localLayoutParams2 = localView.getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null) {
-      localLayoutParams1 = new ViewGroup.LayoutParams(-1, -2);
-    }
-    int i1 = ViewGroup.getChildMeasureSpec(0, 0, localLayoutParams1.width);
-    paramInt = localLayoutParams1.height;
-    if (paramInt > 0) {}
-    for (paramInt = View.MeasureSpec.makeMeasureSpec(paramInt, 1073741824);; paramInt = View.MeasureSpec.makeMeasureSpec(0, 0))
-    {
-      localView.measure(i1, paramInt);
-      this.a = this.b.getMeasuredHeight();
-      if (this.a < 10) {
-        this.a = 10;
-      }
-      this.b.setPadding(0, -this.a, 0, 0);
-      addHeaderView(this.b, null, false);
-      this.c = ((ImageView)this.b.findViewById(2131296393));
-      this.d = ((ProgressBar)this.b.findViewById(2131296832));
-      this.e = ((TextView)this.b.findViewById(2131296394));
-      this.f = ((TextView)this.b.findViewById(2131296833));
-      this.c.setImageResource(2130837794);
-      this.g = new RotateAnimation(0.0F, -180.0F, 1, 0.5F, 1, 0.5F);
-      this.g.setInterpolator(new LinearInterpolator());
-      this.g.setDuration(250L);
-      this.g.setFillAfter(true);
-      this.h = new RotateAnimation(-180.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-      this.h.setInterpolator(new LinearInterpolator());
-      this.h.setDuration(250L);
-      this.h.setFillAfter(true);
-      setOnScrollListener(new cr(this));
-      return;
-    }
-  }
-  
-  public final void a(long paramLong)
-  {
-    this.p = paramLong;
-    String str = s.a(paramLong);
-    this.f.setText(str);
-  }
-  
-  public final void a(cq paramcq)
-  {
-    this.k = paramcq;
-  }
-  
-  public final void a(String paramString)
-  {
-    try
-    {
-      paramString = this.j.getSharedPreferences(paramString, 0).edit();
-      paramString.putLong("refresh_time", this.p);
-      paramString.commit();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      e.c("SharedPreferences msg " + paramString.getMessage());
-    }
-  }
-  
-  public final long b(String paramString)
-  {
-    try
-    {
-      long l1 = this.j.getSharedPreferences(paramString, 0).getLong("refresh_time", 0L);
-      return l1;
-    }
-    catch (Exception paramString)
-    {
-      e.c("SharedPreferences msg " + paramString.getMessage());
-    }
-    return 0L;
-  }
-  
-  public final void b()
-  {
-    b(0);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -198,7 +190,7 @@ public class PullToRefreshListView
     }
     catch (IndexOutOfBoundsException paramCanvas)
     {
-      e.c("PullToRefreshListView dispatchDraw" + paramCanvas.toString());
+      h.c("PullToRefreshListView dispatchDraw" + paramCanvas.toString());
     }
   }
   
@@ -215,7 +207,7 @@ public class PullToRefreshListView
           if ((this.o) || (this.i != 0) || (this.m == 3)) {
             continue;
           }
-          e.b("DOWN " + paramMotionEvent.getY());
+          h.b("DOWN " + paramMotionEvent.getY());
           this.o = true;
           this.n = paramMotionEvent.getY();
           continue;
@@ -223,18 +215,18 @@ public class PullToRefreshListView
       }
       catch (IndexOutOfBoundsException paramMotionEvent)
       {
-        e.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
+        h.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
         return false;
         if ((!this.o) && (this.i == 0) && (this.m != 3))
         {
-          e.b("DOWN2 " + paramMotionEvent.getY());
+          h.b("DOWN2 " + paramMotionEvent.getY());
           this.o = true;
           this.n = paramMotionEvent.getY();
         }
         if ((!this.o) || (this.m == 3)) {
           continue;
         }
-        e.b("MOVE " + paramMotionEvent.getY());
+        h.b("MOVE " + paramMotionEvent.getY());
         float f1 = paramMotionEvent.getY() - this.n;
         if (f1 <= 0.0F) {
           continue;
@@ -248,14 +240,14 @@ public class PullToRefreshListView
       }
       catch (Exception paramMotionEvent)
       {
-        e.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
+        h.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
         return false;
       }
       b(1);
       continue;
       if ((this.o) && (this.m != 3))
       {
-        e.b("UP " + paramMotionEvent.getY());
+        h.b("UP " + paramMotionEvent.getY());
         this.o = false;
         if (this.m == 1) {
           b(3);
@@ -275,15 +267,27 @@ public class PullToRefreshListView
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      e.c("PullToRefreshListView onLayout" + localIndexOutOfBoundsException.toString());
+      h.c("PullToRefreshListView onLayout" + localIndexOutOfBoundsException.toString());
       localIndexOutOfBoundsException.printStackTrace();
       return;
     }
     catch (Exception localException)
     {
-      e.c("PullToRefreshListView onLayout" + localException.toString());
+      h.c("PullToRefreshListView onLayout" + localException.toString());
       localException.printStackTrace();
     }
+  }
+  
+  public void setOnRefreshListener(cg paramcg)
+  {
+    this.k = paramcg;
+  }
+  
+  public void setRefreshTime(long paramLong)
+  {
+    this.p = paramLong;
+    String str = w.a(paramLong, '-');
+    this.f.setText(str);
   }
 }
 

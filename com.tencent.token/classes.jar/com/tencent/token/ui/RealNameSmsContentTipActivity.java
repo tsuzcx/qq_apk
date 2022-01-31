@@ -8,40 +8,40 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.ag;
-import com.tencent.token.as;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
+import android.widget.Toast;
+import com.tencent.captchasdk.TCaptchaPopupActivity;
+import com.tencent.token.core.bean.QueryCaptchaResult;
 import com.tencent.token.core.bean.RealNameQueryResult;
 import com.tencent.token.core.bean.RealNameStatusResult;
-import com.tencent.token.core.push.a;
-import com.tencent.token.db;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
+import com.tencent.token.core.protocolcenter.protocol.ProtoGeneralGetMobileCode;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.dj;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.i;
+import org.json.JSONObject;
 
 public class RealNameSmsContentTipActivity
   extends BaseActivity
   implements Runnable
 {
+  private static final int VERIFYREQESTCODE = 1001;
   private Handler _handler;
   byte[] backphotoinfo;
   private View btnLayout;
   boolean canchange_uin;
   private TextView errorTip;
   byte[] frontphotoinfo;
+  private boolean isFromRecommView = false;
   private boolean ish5zzb;
   byte[] mBackData;
   String mBackPath;
-  private View.OnClickListener mCompleteButtonListener = new wf(this);
   byte[] mFaceData;
   byte[] mFrontData;
   String mFrontPath;
-  Handler mHandler = new vu(this);
+  Handler mHandler = new vj(this);
   private HandlerThread mHandlerThread;
   private boolean mIsActiveSuccess = false;
   private boolean mIsRunning = true;
@@ -55,10 +55,10 @@ public class RealNameSmsContentTipActivity
   private int mSceneId;
   private int mSourceId;
   private long mTimeConter;
-  private String mUin;
-  Runnable mVrySMSRunnable = new vs(this);
+  Runnable mVrySMSRunnable = new vi(this);
   private TextView mobileNum;
   private TextView okText;
+  protected QueryCaptchaResult queryCaptchaResult;
   private TextView smsContent;
   private int upSmsSceneId;
   private TextView useTip;
@@ -85,113 +85,80 @@ public class RealNameSmsContentTipActivity
   private byte[] compressPicData(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 150	android/graphics/BitmapFactory$Options
+    //   0: new 148	android/graphics/BitmapFactory$Options
     //   3: dup
-    //   4: invokespecial 165	android/graphics/BitmapFactory$Options:<init>	()V
+    //   4: invokespecial 163	android/graphics/BitmapFactory$Options:<init>	()V
     //   7: astore_2
     //   8: aload_2
     //   9: iconst_1
-    //   10: putfield 168	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   10: putfield 166	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   13: aload_1
     //   14: iconst_0
     //   15: aload_1
     //   16: arraylength
     //   17: aload_2
-    //   18: invokestatic 174	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   18: invokestatic 172	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   21: pop
     //   22: aload_2
     //   23: aload_2
     //   24: sipush 640
     //   27: sipush 640
-    //   30: invokestatic 176	com/tencent/token/ui/RealNameSmsContentTipActivity:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   33: putfield 179	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   30: invokestatic 174	com/tencent/token/ui/RealNameSmsContentTipActivity:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   33: putfield 177	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   36: aload_2
     //   37: iconst_0
-    //   38: putfield 168	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   38: putfield 166	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   41: aload_1
     //   42: iconst_0
     //   43: aload_1
     //   44: arraylength
     //   45: aload_2
-    //   46: invokestatic 174	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   46: invokestatic 172	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   49: astore_2
-    //   50: new 181	java/io/ByteArrayOutputStream
+    //   50: new 179	java/io/ByteArrayOutputStream
     //   53: dup
-    //   54: invokespecial 182	java/io/ByteArrayOutputStream:<init>	()V
+    //   54: invokespecial 180	java/io/ByteArrayOutputStream:<init>	()V
     //   57: astore_1
     //   58: aload_2
-    //   59: getstatic 188	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   59: getstatic 186	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   62: bipush 85
     //   64: aload_1
-    //   65: invokevirtual 194	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   65: invokevirtual 192	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   68: pop
     //   69: aload_1
-    //   70: invokevirtual 197	java/io/ByteArrayOutputStream:close	()V
+    //   70: ifnull +7 -> 77
     //   73: aload_1
-    //   74: invokevirtual 201	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   77: areturn
-    //   78: astore_2
-    //   79: aload_2
-    //   80: invokevirtual 204	java/io/IOException:printStackTrace	()V
-    //   83: goto -10 -> 73
-    //   86: astore_2
-    //   87: aload_1
-    //   88: invokevirtual 197	java/io/ByteArrayOutputStream:close	()V
-    //   91: aload_2
-    //   92: athrow
-    //   93: astore_1
-    //   94: aload_1
-    //   95: invokevirtual 204	java/io/IOException:printStackTrace	()V
-    //   98: goto -7 -> 91
+    //   74: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
+    //   77: aload_1
+    //   78: invokevirtual 199	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   81: areturn
+    //   82: astore_2
+    //   83: aload_2
+    //   84: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   87: goto -10 -> 77
+    //   90: astore_2
+    //   91: aload_1
+    //   92: ifnull +7 -> 99
+    //   95: aload_1
+    //   96: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
+    //   99: aload_2
+    //   100: athrow
+    //   101: astore_1
+    //   102: aload_1
+    //   103: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   106: goto -7 -> 99
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	101	0	this	RealNameSmsContentTipActivity
-    //   0	101	1	paramArrayOfByte	byte[]
+    //   0	109	0	this	RealNameSmsContentTipActivity
+    //   0	109	1	paramArrayOfByte	byte[]
     //   7	52	2	localObject1	Object
-    //   78	2	2	localIOException	java.io.IOException
-    //   86	6	2	localObject2	Object
+    //   82	2	2	localIOException	java.io.IOException
+    //   90	10	2	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   69	73	78	java/io/IOException
-    //   58	69	86	finally
-    //   87	91	93	java/io/IOException
-  }
-  
-  private void displaySucc()
-  {
-    dismissDialog();
-    Object localObject = ax.a().d(this.mRealUin);
-    if (localObject != null) {
-      ax.a().b((QQUser)localObject);
-    }
-    ag.c().n();
-    localObject = this.mRealUin + "";
-    this.mIsActiveSuccess = true;
-    setContentView(2130903050);
-    this.mBackArrow.setVisibility(4);
-    findViewById(2131296398).setOnClickListener(this.mCompleteButtonListener);
-    setTitle(2131361842);
-    ((ImageView)findViewById(2131296395)).setImageDrawable(k.a((String)localObject, s.f(Long.parseLong((String)localObject)) + " "));
-    ax.a().f(Long.parseLong((String)localObject));
-    a.a().a(8);
-  }
-  
-  private void showFailDialog(String paramString)
-  {
-    showUserDialog(2131361831, paramString, 2131361800, new wg(this));
-  }
-  
-  private void uploadData()
-  {
-    if (this.mHandlerThread == null)
-    {
-      this.mHandlerThread = new HandlerThread("uploadphoto", 1);
-      this.mHandlerThread.start();
-    }
-    if (this._handler == null) {
-      this._handler = new Handler(this.mHandlerThread.getLooper());
-    }
-    this._handler.post(new vt(this));
+    //   73	77	82	java/io/IOException
+    //   58	69	90	finally
+    //   95	99	101	java/io/IOException
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -212,10 +179,56 @@ public class RealNameSmsContentTipActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
     }
+  }
+  
+  protected void gotoVerifyActivity(QueryCaptchaResult paramQueryCaptchaResult)
+  {
+    this.queryCaptchaResult = paramQueryCaptchaResult;
+    Intent localIntent = new Intent(this, TCaptchaPopupActivity.class);
+    if (paramQueryCaptchaResult != null) {
+      localIntent.putExtra("appid", paramQueryCaptchaResult.mAppid);
+    }
+    startActivityForResult(localIntent, 1001);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramIntent == null) {}
+    for (;;)
+    {
+      return;
+      if (paramInt1 == 1001)
+      {
+        if (paramInt2 != -1) {
+          break label114;
+        }
+        try
+        {
+          paramIntent = new JSONObject(paramIntent.getStringExtra("retJson"));
+          if (paramIntent.getInt("ret") == 0)
+          {
+            if (this.queryCaptchaResult == null) {
+              continue;
+            }
+            cw.a().d(this.queryCaptchaResult.mRealUin, this.queryCaptchaResult.mSceneId, paramIntent.getString("ticket"), paramIntent.getString("randstr"), this.mHandler);
+          }
+        }
+        catch (Exception paramIntent)
+        {
+          paramIntent.printStackTrace();
+          return;
+        }
+      }
+    }
+    Toast.makeText(this, "未验证成功", 0).show();
+    return;
+    label114:
+    Toast.makeText(this, "未验证成功", 0).show();
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -241,22 +254,24 @@ public class RealNameSmsContentTipActivity
     }
     for (;;)
     {
-      this.mIsActiveSuccess = false;
-      setContentView(2130903201);
-      this.useTip = ((TextView)findViewById(2131297100));
-      this.smsContent = ((TextView)findViewById(2131297103));
-      this.mobileNum = ((TextView)findViewById(2131297106));
-      this.errorTip = ((TextView)findViewById(2131296593));
-      this.okText = ((TextView)findViewById(2131297107));
-      this.btnLayout = findViewById(2131296430);
-      this.mPb = ((ProgressBar)findViewById(2131296936));
-      this.smsContent.setText(db.d);
-      this.mobileNum.setText(db.c);
-      paramBundle = String.format(getString(2131361877), new Object[] { this.mMobile });
+      setContentView(2130968764);
+      this.useTip = ((TextView)findViewById(2131559270));
+      this.smsContent = ((TextView)findViewById(2131559273));
+      this.mobileNum = ((TextView)findViewById(2131559276));
+      this.errorTip = ((TextView)findViewById(2131559154));
+      this.okText = ((TextView)findViewById(2131559277));
+      this.btnLayout = findViewById(2131558720);
+      this.mPb = ((ProgressBar)findViewById(2131559153));
+      this.smsContent.setText(ProtoGeneralGetMobileCode.e);
+      this.mobileNum.setText(ProtoGeneralGetMobileCode.d);
+      paramBundle = String.format(getString(2131231525), new Object[] { this.mMobile });
       this.useTip.setText(paramBundle);
-      this.btnLayout.setOnClickListener(new wd(this));
+      this.btnLayout.setOnClickListener(new vs(this));
       return;
       this.mResult = ((RealNameStatusResult)paramBundle.getSerializableExtra("realname_result"));
+      if (this.upSmsSceneId == 5) {
+        this.isFromRecommView = getIntent().getBooleanExtra("zzb_recommend_view", false);
+      }
     }
   }
   
@@ -264,21 +279,23 @@ public class RealNameSmsContentTipActivity
   {
     super.onDestroy();
     this.mIsRunning = false;
+    i.b(this.mFrontPath);
+    i.b(this.mBackPath);
   }
   
   protected void onResume()
   {
     super.onResume();
-    ag.c().a.a(this.mHandler);
+    cx.c().a.a(this.mHandler);
   }
   
   protected void onStop()
   {
     super.onStop();
-    ag.c().a.a(null);
+    cx.c().a.a(null);
   }
   
-  public void removeTimeTask(int paramInt)
+  public void removeTimeTask()
   {
     this.mIsTimeTask = false;
   }
@@ -289,8 +306,8 @@ public class RealNameSmsContentTipActivity
       if ((this.mIsTimeTask) && (System.currentTimeMillis() - this.mTimeConter > 60000L)) {
         try
         {
-          e.c("removeTimeTask removeTimeTask");
-          removeTimeTask(6);
+          h.c("removeTimeTask removeTimeTask");
+          removeTimeTask();
           Message localMessage = new Message();
           localMessage.what = 15;
           this.mHandler.sendMessage(localMessage);
@@ -303,12 +320,7 @@ public class RealNameSmsContentTipActivity
     }
   }
   
-  public void showProgressDialog()
-  {
-    showProDialog(this, 2131362363, 2131361827, new we(this));
-  }
-  
-  public void startTimeTask(int paramInt)
+  public void startTimeTask()
   {
     this.mTimeConter = System.currentTimeMillis();
     this.mIsTimeTask = true;

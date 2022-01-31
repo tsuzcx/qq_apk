@@ -13,19 +13,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.token.ax;
-import com.tencent.token.bb;
-import com.tencent.token.bd;
 import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.SafeMsgItem;
 import com.tencent.token.core.bean.SafeMsgItem.MsgAction;
-import com.tencent.token.fn;
-import com.tencent.token.fo;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
+import com.tencent.token.do;
+import com.tencent.token.ds;
+import com.tencent.token.du;
+import com.tencent.token.eq;
+import com.tencent.token.er;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,51 +59,50 @@ public class OpMsgDisplayActivity
   public static final int MC_RECOMM_OP_ID_SET_QB_PROTTECT = 2;
   private static final int MC_RECOMM_OP_ID_UNKNOW = 99;
   public static final int MC_RECOMM_OP_ID_UPDATE_LOCATION = 1;
-  private View.OnClickListener mAbnormalModifyQQPwdListener = new tf(this);
-  private View.OnClickListener mAccountLockListener = new tc(this);
+  private View.OnClickListener mAbnormalModifyQQPwdListener = new sj(this);
+  private View.OnClickListener mAccountLockListener = new sg(this);
   Button mActionButton;
-  fo mCache;
-  private View.OnClickListener mDataListener = new sp(this);
-  private View.OnClickListener mDelMBMBKListener = new sx(this);
-  private View.OnClickListener mDelMBQuesListener = new sw(this);
+  er mCache;
+  private View.OnClickListener mDelMBMBKListener = new sb(this);
+  private View.OnClickListener mDelMBQuesListener = new sa(this);
   Button mFeedbackButton;
-  private View.OnClickListener mGameLockListener = new sk(this);
-  private View.OnClickListener mGameProtectListener = new td(this);
-  private View.OnClickListener mGotoAccountPageListener = new sz(this);
-  private View.OnClickListener mGotoQQTokenListener = new ta(this);
-  private View.OnClickListener mGotoUrlListener = new sn(this);
-  private View.OnClickListener mGotoVerifyPageListener = new sy(this);
-  private Handler mHandler = new sj(this);
+  private View.OnClickListener mGameLockListener = new rp(this);
+  private View.OnClickListener mGameProtectListener = new sh(this);
+  private View.OnClickListener mGotoAccountPageListener = new sd(this);
+  private View.OnClickListener mGotoQQTokenListener = new se(this);
+  private View.OnClickListener mGotoUrlListener = new rs(this);
+  private View.OnClickListener mGotoVerifyPageListener = new sc(this);
+  private Handler mHandler = new ro(this);
   private boolean mIpcMsg;
   private boolean mIpcMsgButConfirm;
   SafeMsgItem mItem;
-  private View.OnClickListener mLoginMsgListener = new sl(this);
-  private View.OnClickListener mLoginProtectListener = new sq(this);
+  private View.OnClickListener mLoginMsgListener = new rq(this);
+  private View.OnClickListener mLoginProtectListener = new ru(this);
   private int mMBItemID;
-  private View.OnClickListener mMailProtectListener = new ss(this);
-  private View.OnClickListener mMibaoInfoListener = new th(this);
-  private View.OnClickListener mModifyQQPwdListener = new te(this);
+  private View.OnClickListener mMailProtectListener = new rw(this);
+  private View.OnClickListener mMibaoInfoListener = new sl(this);
+  private View.OnClickListener mModifyQQPwdListener = new si(this);
   private ImageView mMsgIcon;
   TextView mMsgTips;
   TextView mMsgTitle;
   private int mMsgType;
-  private View.OnClickListener mPhoneCallListener = new so(this);
+  private View.OnClickListener mPhoneCallListener = new rt(this);
   private int mPosition;
-  private View.OnClickListener mQQLoginProtectListener = new sr(this);
-  private View.OnClickListener mQbQdProtectListener = new tg(this);
-  private View.OnClickListener mRealNameListener = new st(this);
-  private View.OnClickListener mSafeMsgListener = new sm(this);
-  private View.OnClickListener mSetMBMobileListener = new sv(this);
+  private View.OnClickListener mQQLoginProtectListener = new rv(this);
+  private View.OnClickListener mQbQdProtectListener = new sk(this);
+  private View.OnClickListener mRealNameListener = new rx(this);
+  private View.OnClickListener mSafeMsgListener = new rr(this);
+  private View.OnClickListener mSetMBMobileListener = new ry(this);
   Button mSureButton;
-  private View.OnClickListener mSureListener = new tb(this);
+  private View.OnClickListener mSureListener = new sf(this);
   TextView mTextAfterTable;
   View mViewAfterTable;
   
   private View createTableCol(String paramString1, String paramString2)
   {
-    View localView = getLayoutInflater().inflate(2130903152, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131296907);
-    TextView localTextView2 = (TextView)localView.findViewById(2131296908);
+    View localView = getLayoutInflater().inflate(2130968714, null);
+    TextView localTextView1 = (TextView)localView.findViewById(2131559115);
+    TextView localTextView2 = (TextView)localView.findViewById(2131559116);
     localTextView1.setText(paramString1);
     localTextView2.setText(Html.fromHtml(paramString2));
     return localView;
@@ -111,18 +110,18 @@ public class OpMsgDisplayActivity
   
   private void gotoMbItemActivity(int paramInt)
   {
-    Object localObject = ax.a().e();
-    if ((localObject != null) && (((QQUser)localObject).mIsBinded) && (fn.a().c() != null) && (fn.a().c().mMbInfoItems != null))
+    Object localObject = do.a().e();
+    if ((localObject != null) && (((QQUser)localObject).mIsBinded) && (eq.a().c() != null) && (eq.a().c().mMbInfoItems != null))
     {
-      int i = fn.a().a(paramInt);
-      if ((i < 0) || (i >= fn.a().c().mMbInfoItems.size())) {
+      int i = eq.a().a(paramInt);
+      if ((i < 0) || (i >= eq.a().c().mMbInfoItems.size())) {
         return;
       }
-      localObject = (MbInfoResult.MbInfoItem)fn.a().c().mMbInfoItems.get(i);
+      localObject = (MbInfoResult.MbInfoItem)eq.a().c().mMbInfoItems.get(i);
       if ((paramInt == 51) && (((MbInfoResult.MbInfoItem)localObject).mId == 51) && (((MbInfoResult.MbInfoItem)localObject).mDetail.mBtnType == 1))
       {
         Intent localIntent = new Intent(this, UtilsModSetMobileStep1Activity.class);
-        localIntent.putExtra("title", getResources().getString(2131361814) + ((MbInfoResult.MbInfoItem)localObject).mName);
+        localIntent.putExtra("title", getResources().getString(2131231428) + ((MbInfoResult.MbInfoItem)localObject).mName);
         localIntent.putExtra("op_type", 1);
         localIntent.putExtra("position", i);
         startActivityForResult(localIntent, 0);
@@ -140,7 +139,7 @@ public class OpMsgDisplayActivity
   {
     if (this.mItem != null)
     {
-      setRightTitleImage(2130837951, new su(this));
+      setRightTitleImage(2130838011, new rz(this));
       if ((this.mItem.mTextAfterTable != null) && (this.mItem.mTextAfterTable.length() > 0))
       {
         this.mTextAfterTable.setText(Html.fromHtml(this.mItem.mTextAfterTable));
@@ -148,10 +147,10 @@ public class OpMsgDisplayActivity
       }
       for (;;)
       {
-        insertTableRows((LinearLayout)findViewById(2131296902));
+        insertTableRows((LinearLayout)findViewById(2131559110));
         setActionButton();
         setFeedbackButton();
-        e.b("Action: " + this.mItem.mAction);
+        h.b("Action: " + this.mItem.mAction);
         return;
         this.mTextAfterTable.setVisibility(8);
       }
@@ -161,7 +160,7 @@ public class OpMsgDisplayActivity
   
   private void insertTableRows(LinearLayout paramLinearLayout)
   {
-    if ("5".equals(this.mItem.mMsgVersion)) {}
+    if ("5".equals(this.mItem.o())) {}
     for (;;)
     {
       JSONArray localJSONArray;
@@ -170,7 +169,7 @@ public class OpMsgDisplayActivity
       int j;
       try
       {
-        localJSONArray = new JSONArray(this.mItem.mTable);
+        localJSONArray = new JSONArray(this.mItem.i());
         String str1 = "";
         str2 = "";
         i = 0;
@@ -182,12 +181,12 @@ public class OpMsgDisplayActivity
             if (j == 0)
             {
               str1 = ((JSONArray)localObject).getString(j);
-              e.b("temp1 = " + str1);
+              h.b("temp1 = " + str1);
             }
             else
             {
               str2 = ((JSONArray)localObject).getString(j);
-              e.b("temp2 = " + str2);
+              h.b("temp2 = " + str2);
             }
           }
         }
@@ -200,8 +199,8 @@ public class OpMsgDisplayActivity
       {
         if (i == 0)
         {
-          paramLinearLayout.addView(createTableCol(getResources().getString(2131362040), s.a(this.mItem.mTime * 1000L)));
-          paramLinearLayout.addView(createTableCol(getResources().getString(2131362041), this.mItem.mContent));
+          paramLinearLayout.addView(createTableCol(getResources().getString(2131231459), w.a(this.mItem.e() * 1000L, '-')));
+          paramLinearLayout.addView(createTableCol(getResources().getString(2131231460), this.mItem.d()));
         }
         return;
         paramLinearLayout.addView(createTableCol(localJSONException, str2));
@@ -209,7 +208,7 @@ public class OpMsgDisplayActivity
         {
           localObject = new ImageView(this);
           ((ImageView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, 2));
-          ((ImageView)localObject).setBackgroundResource(2130837708);
+          ((ImageView)localObject).setBackgroundResource(2130837787);
           paramLinearLayout.addView((View)localObject);
         }
         i += 1;
@@ -221,10 +220,10 @@ public class OpMsgDisplayActivity
   
   private void setActionButton()
   {
-    e.c("action op: " + this.mItem.mAction);
-    String str = getResources().getString(2131361916);
+    h.c("action op: " + this.mItem.mAction);
+    String str = getResources().getString(2131231393);
     if (this.mItem.mAction != null) {
-      e.c("action op: " + this.mItem.mAction.mActionType + ", url=" + this.mItem.mAction.mTargetUrl);
+      h.c("action op: " + this.mItem.mAction.mActionType + ", url=" + this.mItem.mAction.mTargetUrl);
     }
     try
     {
@@ -241,6 +240,7 @@ public class OpMsgDisplayActivity
         default: 
           this.mActionButton.setVisibility(4);
         case 1: 
+        case 19: 
           return;
           this.mActionButton.setText(Html.fromHtml(this.mItem.mAction.mButtonText));
         }
@@ -283,8 +283,6 @@ public class OpMsgDisplayActivity
       return;
       this.mActionButton.setOnClickListener(this.mPhoneCallListener);
       return;
-      this.mActionButton.setOnClickListener(this.mDataListener);
-      return;
       this.mActionButton.setOnClickListener(this.mLoginProtectListener);
       return;
       this.mActionButton.setOnClickListener(this.mQQLoginProtectListener);
@@ -293,7 +291,7 @@ public class OpMsgDisplayActivity
       return;
       this.mActionButton.setOnClickListener(this.mRealNameListener);
       return;
-      if (ax.a().j())
+      if (do.a().j())
       {
         startActivity(new Intent(this, FaceRecognitionDefaultActivity.class));
         return;
@@ -319,17 +317,17 @@ public class OpMsgDisplayActivity
       if (this.mActionButton.getVisibility() != 0)
       {
         this.mFeedbackButton = this.mActionButton;
-        this.mFeedbackButton.setBackgroundResource(2130837636);
-        this.mFeedbackButton.setTextColor(getResources().getColor(2131165192));
+        this.mFeedbackButton.setBackgroundResource(2130837728);
+        this.mFeedbackButton.setTextColor(getResources().getColor(2131492925));
       }
       this.mFeedbackButton.setVisibility(0);
-      e.c("test feed back: " + i + "|" + this.mItem.mFeedBack.mButtonText + "|" + this.mItem.mFeedBack);
+      h.c("test feed back: " + i + "|" + this.mItem.mFeedBack.mButtonText + "|" + this.mItem.mFeedBack);
       if ((this.mItem.mFeedBack.mButtonText == null) || (this.mItem.mFeedBack.mButtonText.length() == 0)) {
-        this.mFeedbackButton.setText(2131361917);
+        this.mFeedbackButton.setText(2131231394);
       }
       for (;;)
       {
-        this.mFeedbackButton.setOnClickListener(new ti(this));
+        this.mFeedbackButton.setOnClickListener(new sm(this));
         return;
         this.mFeedbackButton.setText(Html.fromHtml(this.mItem.mFeedBack.mButtonText));
       }
@@ -340,16 +338,15 @@ public class OpMsgDisplayActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    int j = 1;
     super.onCreate(paramBundle);
-    setContentView(2130903151);
-    this.mTextAfterTable = ((TextView)findViewById(2131296903));
-    this.mActionButton = ((Button)findViewById(2131296904));
-    this.mSureButton = ((Button)findViewById(2131296905));
-    this.mMsgTitle = ((TextView)findViewById(2131296529));
-    this.mMsgTips = ((TextView)findViewById(2131296901));
-    this.mMsgIcon = ((ImageView)findViewById(2131296835));
-    this.mFeedbackButton = ((Button)findViewById(2131296906));
+    setContentView(2130968713);
+    this.mTextAfterTable = ((TextView)findViewById(2131559111));
+    this.mActionButton = ((Button)findViewById(2131559112));
+    this.mSureButton = ((Button)findViewById(2131559113));
+    this.mMsgTitle = ((TextView)findViewById(2131558815));
+    this.mMsgTips = ((TextView)findViewById(2131559109));
+    this.mMsgIcon = ((ImageView)findViewById(2131559035));
+    this.mFeedbackButton = ((Button)findViewById(2131559114));
     this.mActionButton.setVisibility(4);
     this.mFeedbackButton.setVisibility(4);
     if (getIntent().getExtras() == null)
@@ -361,9 +358,9 @@ public class OpMsgDisplayActivity
     this.mMsgType = getIntent().getExtras().getInt("type");
     this.mIpcMsg = getIntent().getExtras().getBoolean("ipcmsg");
     if (this.mMsgType == 1) {
-      setTitle(2131362018);
+      setTitle(2131231167);
     }
-    for (this.mCache = bb.a().f;; this.mCache = bd.a().f)
+    for (this.mCache = ds.a().f;; this.mCache = du.a().f)
     {
       this.mItem = this.mCache.b(this.mPosition);
       if (this.mItem != null) {
@@ -371,98 +368,78 @@ public class OpMsgDisplayActivity
       }
       finish();
       return;
-      setTitle(2131362019);
+      setTitle(2131231280);
     }
-    boolean bool;
     if ((this.mItem != null) && (this.mItem.mTitle != null) && (this.mItem.mTitle.length() > 0))
     {
       this.mMsgTitle.setVisibility(0);
       this.mMsgTitle.setText(this.mItem.mTitle);
       if (this.mMsgType != 1) {
-        break label618;
+        break label592;
       }
       if (this.mItem.mTypeb == 1) {
-        this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837751, 0, 0, 0);
+        this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837827, 0, 0, 0);
       }
     }
     else
     {
-      if ((this.mItem.mFlag & 0x100) != 256) {
-        break label680;
-      }
-      bool = true;
-      label370:
-      this.mIpcMsgButConfirm = bool;
+      this.mIpcMsgButConfirm = this.mItem.r();
       if (!this.mIpcMsg) {
-        break label706;
+        break label656;
       }
       if (this.mIpcMsgButConfirm) {
-        break label686;
+        break label636;
       }
       this.mSureButton.setVisibility(0);
       this.mMsgTips.setVisibility(8);
       this.mSureButton.setOnClickListener(this.mSureListener);
-      label418:
+    }
+    for (;;)
+    {
       paramBundle = "";
-      i = this.mItem.mContent.indexOf('|');
+      int i = this.mItem.mContent.indexOf('|');
       if (i != -1) {
         paramBundle = this.mItem.mContent.substring(i + 1);
       }
-      if ((this.mItem.mFlag & 0x1) != 1) {
-        break label727;
-      }
-    }
-    label667:
-    label680:
-    label686:
-    label706:
-    label727:
-    for (int i = j;; i = 0)
-    {
-      if ((i != 0) && (paramBundle.length() > 0))
+      if ((this.mItem.s()) && (paramBundle.length() > 0))
       {
         this.mMsgTips.setVisibility(0);
         this.mSureButton.setVisibility(8);
-        this.mMsgTips.setText(getResources().getString(2131362052) + paramBundle);
+        this.mMsgTips.setText(getResources().getString(2131231180) + paramBundle);
       }
       initUI();
       return;
       if (this.mItem.mTypeb == 2)
       {
-        this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837752, 0, 0, 0);
+        this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837828, 0, 0, 0);
         break;
       }
       if (this.mItem.mTypeb == 3)
       {
-        this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837749, 0, 0, 0);
+        this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837825, 0, 0, 0);
         break;
       }
       if (this.mItem.mTypeb != 11) {
         break;
       }
-      this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837750, 0, 0, 0);
+      this.mMsgTitle.setCompoundDrawablesWithIntrinsicBounds(2130837826, 0, 0, 0);
       break;
-      label618:
+      label592:
       this.mMsgIcon.setVisibility(0);
-      if ((this.mItem.mFlag & 0x80) == 128) {}
-      for (i = 1;; i = 0)
+      if (this.mItem.p())
       {
-        if (i == 0) {
-          break label667;
-        }
-        this.mMsgIcon.setBackgroundResource(2130837569);
+        this.mMsgIcon.setBackgroundResource(2130837652);
         break;
       }
-      this.mMsgIcon.setBackgroundResource(2130837571);
+      this.mMsgIcon.setBackgroundResource(2130837654);
       break;
-      bool = false;
-      break label370;
+      label636:
       this.mSureButton.setVisibility(8);
       this.mMsgTips.setVisibility(0);
-      break label418;
+      continue;
+      label656:
       this.mSureButton.setVisibility(8);
       this.mMsgTips.setVisibility(8);
-      break label418;
     }
   }
 }

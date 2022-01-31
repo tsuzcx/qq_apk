@@ -1,27 +1,10 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.token.ai;
-import com.tencent.token.global.RqdApplication;
+import java.util.List;
 
-final class bx
-  implements Animation.AnimationListener
+public abstract interface bx
 {
-  bx(bw parambw, LockPatternVerifyView paramLockPatternVerifyView) {}
-  
-  public final void onAnimationEnd(Animation paramAnimation)
-  {
-    bw.a(this.b).setVisibility(4);
-    bw.b(this.b).startAnimation(LockPatternVerifyView.g(this.b.a));
-    bw.c(this.b).startAnimation(LockPatternVerifyView.i(this.b.a));
-    ai.a(RqdApplication.i()).a();
-  }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(List paramList, String paramString);
 }
 
 

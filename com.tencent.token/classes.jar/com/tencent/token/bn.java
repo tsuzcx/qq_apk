@@ -1,25 +1,23 @@
 package com.tencent.token;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.halley.common.h;
 
 public final class bn
 {
-  private ExecutorService a = Executors.newFixedThreadPool(5);
-  private bq b = new bq(this, "");
-  private bp c = new bo(this);
+  public String a;
+  public String b;
   
-  public final int a(fs paramfs)
+  public static void a(String paramString1, String paramString2)
   {
-    paramfs.l = this.c;
-    this.b.a(paramfs);
-    return 0;
+    h.a().getSharedPreferences("Access_Preferences", 0).edit().putString(paramString1, paramString2).commit();
   }
   
-  public final int a(String paramString)
+  public final String toString()
   {
-    this.b.a(paramString);
-    return 0;
+    return "detectTaskCode:" + this.a + "ipInfo:" + this.b;
   }
 }
 

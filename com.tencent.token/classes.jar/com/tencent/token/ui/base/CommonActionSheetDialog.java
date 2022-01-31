@@ -13,50 +13,55 @@ public class CommonActionSheetDialog
   extends Dialog
 {
   private Context a;
-  private i b;
+  private e b;
   private LinearLayout c;
   private String[] d;
   
-  public CommonActionSheetDialog(Activity paramActivity, i parami, String[] paramArrayOfString)
+  public CommonActionSheetDialog(Activity paramActivity, int paramInt, e parame, String[] paramArrayOfString)
   {
-    super(paramActivity, 2131427400);
+    super(paramActivity, paramInt);
     this.a = paramActivity;
     this.d = paramArrayOfString;
-    this.b = parami;
+    this.b = parame;
+  }
+  
+  private void a()
+  {
+    if ((this.d == null) || (this.d.length < 2)) {
+      return;
+    }
+    Button localButton1 = (Button)findViewById(2131558782);
+    localButton1.setText(this.d[0]);
+    localButton1.setOnClickListener(new b(this));
+    localButton1 = (Button)findViewById(2131558783);
+    localButton1.setText(this.d[1]);
+    localButton1.setOnClickListener(new c(this));
+    int i = 2;
+    while (i < this.d.length)
+    {
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton1.getLayoutParams();
+      Button localButton2 = new Button(this.a);
+      localButton2.setLayoutParams(localLayoutParams);
+      localButton2.setTextAppearance(this.a, 2131362186);
+      localButton2.setText(this.d[i]);
+      localButton2.setOnClickListener(new d(this, i));
+      this.c.addView(localButton2);
+      i += 1;
+    }
+    this.c.invalidate();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903071);
-    this.c = ((LinearLayout)findViewById(2131296498));
+    setContentView(2130968635);
+    this.c = ((LinearLayout)findViewById(2131558781));
     setCanceledOnTouchOutside(true);
     paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837639);
+    paramBundle.setBackgroundDrawableResource(2130837730);
     paramBundle.getAttributes().width = -1;
     paramBundle.setGravity(80);
-    if ((this.d == null) || (this.d.length < 2)) {
-      return;
-    }
-    paramBundle = (Button)findViewById(2131296499);
-    paramBundle.setText(this.d[0]);
-    paramBundle.setOnClickListener(new f(this));
-    paramBundle = (Button)findViewById(2131296500);
-    paramBundle.setText(this.d[1]);
-    paramBundle.setOnClickListener(new g(this));
-    int i = 2;
-    while (i < this.d.length)
-    {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
-      Button localButton = new Button(this.a);
-      localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextAppearance(this.a, 2131427335);
-      localButton.setText(this.d[i]);
-      localButton.setOnClickListener(new h(this, i));
-      this.c.addView(localButton);
-      i += 1;
-    }
-    this.c.invalidate();
+    a();
   }
   
   public void show()

@@ -36,9 +36,8 @@ public abstract class FragmentPagerAdapter
   {
     if (this.mCurTransaction != null)
     {
-      this.mCurTransaction.commitAllowingStateLoss();
+      this.mCurTransaction.commitNowAllowingStateLoss();
       this.mCurTransaction = null;
-      this.mFragmentManager.executePendingTransactions();
     }
   }
   
@@ -104,7 +103,12 @@ public abstract class FragmentPagerAdapter
     }
   }
   
-  public void startUpdate(ViewGroup paramViewGroup) {}
+  public void startUpdate(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup.getId() == -1) {
+      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    }
+  }
 }
 
 

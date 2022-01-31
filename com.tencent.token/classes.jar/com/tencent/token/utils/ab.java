@@ -1,13 +1,56 @@
 package com.tencent.token.utils;
 
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
-abstract class ab
-  implements Callable
+class ab
+  extends FutureTask
 {
-  Object[] b;
+  ab(UserTask paramUserTask, Callable paramCallable)
+  {
+    super(paramCallable);
+  }
   
-  private ab(byte paramByte) {}
+  protected void done()
+  {
+    Object localObject1 = null;
+    if (UserTask.d() == null)
+    {
+      Looper.prepare();
+      UserTask.a(new ad(null));
+    }
+    try
+    {
+      Object localObject2 = get();
+      localObject1 = localObject2;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        Log.w("UserTask", localInterruptedException);
+      }
+    }
+    catch (ExecutionException localExecutionException)
+    {
+      throw new RuntimeException("An error occured while executing doInBackground()", localExecutionException.getCause());
+    }
+    catch (CancellationException localCancellationException)
+    {
+      UserTask.d().obtainMessage(3, new ae(this.a, (Object[])null)).sendToTarget();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      throw new RuntimeException("An error occured while executing doInBackground()", localThrowable);
+    }
+    UserTask.d().obtainMessage(1, new ae(this.a, new Object[] { localObject1 })).sendToTarget();
+  }
 }
 
 

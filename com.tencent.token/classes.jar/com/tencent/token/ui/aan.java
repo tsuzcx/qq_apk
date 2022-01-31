@@ -1,19 +1,22 @@
 package com.tencent.token.ui;
 
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
 
-final class aan
-  implements DialogInterface.OnClickListener
+class aan
+  implements DialogInterface.OnCancelListener
 {
-  aan(aal paramaal) {}
+  aan(StartPwdGestureVerifyActivity paramStartPwdGestureVerifyActivity, Context paramContext) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = new Intent(this.a.a, ModifyQQPwdActivity.class);
-    pv.a().a(this.a.a, paramDialogInterface, pv.b);
-    this.a.a.finish();
+    cy.a().a(this.a);
+    RqdApplication.i();
+    this.b.setResult(35);
+    this.b.finish();
   }
 }
 

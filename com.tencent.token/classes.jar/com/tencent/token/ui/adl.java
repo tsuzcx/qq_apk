@@ -1,18 +1,40 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 
-final class adl
-  implements View.OnClickListener
+class adl
+  extends cb
 {
-  adl(UtilsActivity paramUtilsActivity) {}
-  
-  public final void onClick(View paramView)
+  adl(UtilsMbInfoActivity paramUtilsMbInfoActivity)
   {
-    paramView = new Intent(this.a, VerifyStartScanActivity.class);
-    this.a.startActivity(paramView);
+    super(paramUtilsMbInfoActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.dismissDialog();
+    h.c("utils mbinfo: " + paramMessage.what);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.mIsIniting = false;
+    if (paramMessage.arg1 == 0)
+    {
+      this.a.hideTip();
+      return;
+    }
+    paramMessage = (f)paramMessage.obj;
+    if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
+      f.a(this.a.getResources(), paramMessage);
+    }
+    this.a.showTip(paramMessage.a, paramMessage.c, null, false);
   }
 }
 

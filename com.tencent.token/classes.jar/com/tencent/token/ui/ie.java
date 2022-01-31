@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.token.utils.t;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class ie
-  implements Runnable
+class ie
+  implements View.OnClickListener
 {
-  ie(FaceRecognitionComfirmActivity paramFaceRecognitionComfirmActivity, ImageView paramImageView) {}
+  ie(FaceRegCameraActivity paramFaceRegCameraActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = t.b(FaceRecognitionComfirmActivity.access$000(this.b), Math.max(this.a.getWidth(), this.a.getHeight()));
-    this.a.setImageBitmap(localBitmap);
+    h.c("onBackPressed");
+    this.a.finish();
   }
 }
 

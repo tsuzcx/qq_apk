@@ -1,20 +1,14 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.kingkong.Cursor;
-import com.tencent.kingkong.database.SQLiteDatabase;
+import java.util.Comparator;
 
-public abstract interface go
+class go
+  implements Comparator
 {
-  public abstract go a(Cursor paramCursor);
-  
-  public abstract String a();
-  
-  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
-  
-  public abstract long b(SQLiteDatabase paramSQLiteDatabase);
-  
-  public abstract ContentValues b();
+  public int a(String paramString1, String paramString2)
+  {
+    return paramString1.compareTo(paramString2);
+  }
 }
 
 

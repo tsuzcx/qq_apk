@@ -1,21 +1,19 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
 
-final class z
-  implements View.OnClickListener
+class z
+  implements Runnable
 {
   z(AccountPageActivity paramAccountPageActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    paramView = (Integer)paramView.getTag();
-    if (paramView == null) {}
-    while ((paramView.intValue() != 3004) && (paramView.intValue() != 3003)) {
+    if (cx.c().g()) {
       return;
     }
-    AccountPageActivity.access$100(this.a, null, null);
+    cw.a().e(this.a.mHandler);
   }
 }
 

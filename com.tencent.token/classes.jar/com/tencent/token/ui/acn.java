@@ -1,13 +1,21 @@
 package com.tencent.token.ui;
 
-import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
 import android.view.View.OnClickListener;
 
-public abstract interface acn
+class acn
+  implements View.OnClickListener
 {
-  public abstract void dismissDialog();
+  acn(UtilsGameProtectActivity paramUtilsGameProtectActivity) {}
   
-  public abstract void showProDialog(Activity paramActivity, int paramInt, View.OnClickListener paramOnClickListener);
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.a, WtLoginAccountInput.class);
+    paramView.putExtra("page_id", 4);
+    this.a.startActivity(paramView);
+    this.a.finish();
+  }
 }
 
 

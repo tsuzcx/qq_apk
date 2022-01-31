@@ -1,21 +1,17 @@
 package com.tencent.token.ui.base;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class dg
-  implements Animation.AnimationListener
+class dg
+  implements DialogInterface.OnClickListener
 {
-  dg(TitleOptionMenu paramTitleOptionMenu) {}
+  dg(de paramde) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setVisibility(4);
+    dd.d(this.a.a);
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

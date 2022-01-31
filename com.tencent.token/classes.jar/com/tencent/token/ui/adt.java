@@ -1,28 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.ui.base.TitleOptionMenu;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class adt
-  implements View.OnClickListener
+class adt
+  implements DialogInterface.OnClickListener
 {
-  adt(UtilsGameLockActivity paramUtilsGameLockActivity) {}
+  adt(adr paramadr, UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (UtilsGameLockActivity.access$600(this.a).getVisibility() == 0)
-    {
-      UtilsGameLockActivity.access$600(this.a).a();
-      return;
-    }
-    UtilsGameLockActivity.access$600(this.a).a(new adu(this));
-    paramView = UtilsGameLockActivity.access$600(this.a);
-    Object localObject = paramView.getTag();
-    if (localObject != null) {
-      ((View)localObject).setSelected(true);
-    }
-    paramView.setVisibility(0);
+    this.a.dismissDialog();
   }
 }
 

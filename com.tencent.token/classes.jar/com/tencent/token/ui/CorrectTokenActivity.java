@@ -14,9 +14,7 @@ import android.os.Message;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.ag;
-import com.tencent.token.aq;
-import com.tencent.token.as;
+import com.tencent.token.dj;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -34,8 +32,8 @@ public class CorrectTokenActivity
   public static int mYear;
   private boolean ReAutoCorrectToken = true;
   private String cur_ser_time;
-  Handler h = new ci(this);
-  Handler handler = new cr(this);
+  Handler h = new cx(this);
+  Handler handler = new dg(this);
   private boolean isRunning = true;
   private boolean istimeTask = false;
   private final float kEraseAccelerationThreshold = 2.0F;
@@ -43,13 +41,13 @@ public class CorrectTokenActivity
   private long lastTime = System.currentTimeMillis();
   private SensorEventListener lsn;
   private Button mAutoCorrect;
-  private View.OnClickListener mAutoListener = new cm(this);
+  private View.OnClickListener mAutoListener = new db(this);
   private TextView mDateDisplay;
-  private View.OnClickListener mDateListener = new cp(this);
-  private DatePickerDialog.OnDateSetListener mDateSetListener = new co(this);
+  private View.OnClickListener mDateListener = new de(this);
+  private DatePickerDialog.OnDateSetListener mDateSetListener = new dd(this);
   private TextView mTimeDisplay;
-  private View.OnClickListener mTimeListener = new cq(this);
-  private TimePickerDialog.OnTimeSetListener mTimeSetListener = new cn(this);
+  private View.OnClickListener mTimeListener = new df(this);
+  private TimePickerDialog.OnTimeSetListener mTimeSetListener = new dc(this);
   private Sensor sensor;
   private SensorManager sensorMgr;
   private long timeConter;
@@ -72,39 +70,39 @@ public class CorrectTokenActivity
     Calendar localCalendar = getCalendar();
     localCalendar.set(mYear, mMonth, mDay, mHour, mMinute, 0);
     long l = localCalendar.getTimeInMillis();
-    ag.c().a(l - System.currentTimeMillis());
-    ag.c().i();
+    com.tencent.token.cx.c().a(l - System.currentTimeMillis());
+    com.tencent.token.cx.c().i();
   }
   
   private void showFailDialog()
   {
-    showUserDialog(2131361899, getString(2131361900), 2131361914, 2131361802, new cj(this), new ck(this));
+    showUserDialog(2131230917, getString(2131230918), 2131230881, 2131231388, new cy(this), new cz(this));
   }
   
   private void showSucDialog()
   {
-    showUserDialog(2131361896, this.cur_ser_time, 2131361800, new cs(this));
+    showUserDialog(2131230919, this.cur_ser_time, 2131230897, new dh(this));
   }
   
   private void updateDisplay()
   {
-    setTime(System.currentTimeMillis() + ag.c().p());
+    setTime(System.currentTimeMillis() + com.tencent.token.cx.c().q());
     this.mDateDisplay.setText(new StringBuilder().append(mYear).append("年").append(mMonth + 1).append("月").append(mDay).append("日"));
     this.mTimeDisplay.setText(new StringBuilder().append(pad(mHour)).append(":").append(pad(mMinute)));
   }
   
-  public void didAccelerate(j paramj)
+  public void didAccelerate(h paramh)
   {
     double[] arrayOfDouble = new double[3];
-    arrayOfDouble[0] = (paramj.a * 0.1F + arrayOfDouble[0] * 0.8999999985098839D);
-    arrayOfDouble[1] = (paramj.b * 0.1F + arrayOfDouble[1] * 0.8999999985098839D);
-    arrayOfDouble[2] = (paramj.c * 0.1F + arrayOfDouble[2] * 0.8999999985098839D);
-    double d1 = paramj.a - arrayOfDouble[0];
-    double d2 = paramj.b - arrayOfDouble[0];
-    double d3 = paramj.c - arrayOfDouble[0];
-    if ((Math.sqrt(d1 * d1 + d2 * d2 + d3 * d3) >= 20.0D) && (this.ReAutoCorrectToken == true))
+    arrayOfDouble[0] = (paramh.a * 0.1F + arrayOfDouble[0] * 0.8999999985098839D);
+    arrayOfDouble[1] = (paramh.b * 0.1F + arrayOfDouble[1] * 0.8999999985098839D);
+    arrayOfDouble[2] = (paramh.c * 0.1F + arrayOfDouble[2] * 0.8999999985098839D);
+    double d1 = paramh.a - arrayOfDouble[0];
+    double d2 = paramh.b - arrayOfDouble[0];
+    double d3 = paramh.c - arrayOfDouble[0];
+    if ((Math.sqrt(d3 * d3 + (d1 * d1 + d2 * d2)) >= 20.0D) && (this.ReAutoCorrectToken == true))
     {
-      ag.c().a.b.a();
+      com.tencent.token.cx.c().a.b.a(86630087L);
       this.ReAutoCorrectToken = false;
       showUserDialog(6);
       startTimeTask();
@@ -148,17 +146,17 @@ public class CorrectTokenActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903067);
-    this.mDateDisplay = ((TextView)findViewById(2131296477));
-    this.mTimeDisplay = ((TextView)findViewById(2131296478));
-    this.mAutoCorrect = ((Button)findViewById(2131296479));
+    setContentView(2130968632);
+    this.mDateDisplay = ((TextView)findViewById(2131558763));
+    this.mTimeDisplay = ((TextView)findViewById(2131558764));
+    this.mAutoCorrect = ((Button)findViewById(2131558765));
     updateDisplay();
     this.mAutoCorrect.setOnClickListener(this.mAutoListener);
     this.mDateDisplay.setOnClickListener(this.mDateListener);
     this.mTimeDisplay.setOnClickListener(this.mTimeListener);
     this.sensorMgr = ((SensorManager)getSystemService("sensor"));
     this.sensor = this.sensorMgr.getDefaultSensor(1);
-    this.lsn = new cl(this);
+    this.lsn = new da(this);
     new Thread(this).start();
   }
   
@@ -197,7 +195,7 @@ public class CorrectTokenActivity
   protected void onResume()
   {
     super.onResume();
-    ag.c().a.a(this.handler);
+    com.tencent.token.cx.c().a.a(this.handler);
     if (this.sensor != null) {
       this.sensorMgr.registerListener(this.lsn, this.sensor, 2);
     }
@@ -207,7 +205,7 @@ public class CorrectTokenActivity
   {
     super.onStop();
     this.sensorMgr.unregisterListener(this.lsn);
-    ag.c().a.a(null);
+    com.tencent.token.cx.c().a.a(null);
   }
   
   public void removeTimeTask()

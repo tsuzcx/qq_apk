@@ -1,52 +1,86 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.token.global.d;
-import java.util.ArrayList;
+import com.tencent.token.ui.base.by;
+import com.tencent.token.utils.x;
 
-final class mw
-  extends bo
+class mw
+  implements GestureDetector.OnGestureListener
 {
-  mw(JLAppealListActivity paramJLAppealListActivity)
+  mw(KnowTokenActivity paramKnowTokenActivity) {}
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    super(paramJLAppealListActivity);
+    return false;
   }
   
-  public final void handleMessage(Message paramMessage)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    switch (paramMessage.what)
+    try
     {
-    }
-    do
-    {
-      return;
-      this.a.pb.setVisibility(8);
-      if (paramMessage.arg1 != 0) {
-        break;
+      if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 0.0F) {
+        if (KnowTokenActivity.access$000(this.a) < KnowTokenActivity.access$100() - 1)
+        {
+          paramMotionEvent1 = x.a(this.a, KnowTokenActivity.access$200()[KnowTokenActivity.access$004(this.a)], KnowTokenActivity.access$300(this.a));
+          if (paramMotionEvent1 == null)
+          {
+            KnowTokenActivity.access$400(this.a);
+            return true;
+          }
+          KnowTokenActivity.access$500(this.a).a(paramMotionEvent1);
+          if ((KnowTokenActivity.access$000(this.a) != KnowTokenActivity.access$100() - 1) || (KnowTokenActivity.access$600(this.a) == null)) {
+            break label250;
+          }
+          KnowTokenActivity.access$600(this.a).setVisibility(0);
+          return true;
+        }
       }
-      JLAppealListActivity.access$002(this.a, (ArrayList)paramMessage.obj);
-      JLAppealListActivity.access$100(this.a).notifyDataSetChanged();
-    } while ((JLAppealListActivity.access$000(this.a) != null) && (JLAppealListActivity.access$000(this.a).size() != 0));
-    JLAppealListActivity.access$200(this.a).setVisibility(8);
-    this.a.ll.setVisibility(0);
-    return;
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    this.a.setContentView(2130903121);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131296766);
-    this.a.findViewById(2131296767);
-    TextView localTextView = (TextView)this.a.findViewById(2131296768);
-    Button localButton = (Button)this.a.findViewById(2131296769);
-    localButton.setText(2131362762);
-    localButton.setOnClickListener(new mx(this));
-    localImageView.setImageResource(2130837569);
-    localTextView.setText(paramMessage.c);
+    }
+    catch (OutOfMemoryError paramMotionEvent1)
+    {
+      paramMotionEvent1.printStackTrace();
+      KnowTokenActivity.access$400(this.a);
+      return true;
+      this.a.finish();
+      return true;
+    }
+    catch (Exception paramMotionEvent1)
+    {
+      paramMotionEvent1.printStackTrace();
+      KnowTokenActivity.access$400(this.a);
+      return true;
+    }
+    if ((paramMotionEvent2.getX() - paramMotionEvent1.getX() > 0.0F) && (KnowTokenActivity.access$000(this.a) > 0))
+    {
+      paramMotionEvent1 = x.a(this.a, KnowTokenActivity.access$200()[KnowTokenActivity.access$006(this.a)], KnowTokenActivity.access$300(this.a));
+      if (paramMotionEvent1 == null)
+      {
+        KnowTokenActivity.access$400(this.a);
+        return true;
+      }
+      KnowTokenActivity.access$500(this.a).b(paramMotionEvent1);
+      if (KnowTokenActivity.access$600(this.a) != null) {
+        KnowTokenActivity.access$600(this.a).setVisibility(8);
+      }
+    }
+    label250:
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

@@ -1,22 +1,29 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.DeviceInfo;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.token.global.h;
 
-final class uc
-  implements View.OnClickListener
+class uc
+  implements DialogInterface.OnClickListener
 {
-  uc(ub paramub) {}
+  uc(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    af.a().a(0L, ub.a(this.a).dguid, ub.a(this.a).ddes, ub.a(this.a).dappid, ub.a(this.a).dsubappid, ub.a(this.a).dappname, 71, s.a(x.a(RqdApplication.i()).c()), "com.tencent.token", PCMobileQQVerifyedDevicesActivity.access$200(this.a.a), PCMobileQQVerifyedDevicesActivity.access$000(this.a.a));
-    this.a.dismiss();
+    try
+    {
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=com.tencent.mm"));
+      this.a.startActivity(paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+      h.b(paramDialogInterface.toString());
+    }
   }
 }
 

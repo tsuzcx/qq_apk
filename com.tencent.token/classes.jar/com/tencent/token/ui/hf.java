@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class hf
+class hf
   implements View.OnClickListener
 {
-  hf(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hf(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, StartPwdGestureForgetActivity.class);
-    paramView.putExtra("startpwd_forget_source", 4);
-    this.a.startActivity(paramView);
+    this.a.onBackPressed();
   }
 }
 

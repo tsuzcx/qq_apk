@@ -1,23 +1,17 @@
 package com.tencent.token.ui;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.ba;
-import com.tencent.token.core.bean.g;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class ael
-  implements CompoundButton.OnCheckedChangeListener
+class ael
+  implements View.OnClickListener
 {
-  ael(UtilsMailProtectActivity paramUtilsMailProtectActivity) {}
+  ael(UtilsQbQdProtectActivity paramUtilsQbQdProtectActivity) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    paramCompoundButton = ba.a().h();
-    if ((paramCompoundButton == null) || (paramBoolean != paramCompoundButton.c)) {
-      return;
-    }
-    UtilsMailProtectActivity.access$102(this.a, paramCompoundButton);
-    UtilsMailProtectActivity.access$200(this.a);
+    w.b(this.a, this.a.getString(2131231495));
   }
 }
 

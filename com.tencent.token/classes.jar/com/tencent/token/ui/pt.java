@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class pt
-  implements DialogInterface.OnClickListener
+class pt
+  implements View.OnClickListener
 {
-  pt(ModifyQQPwdActivity paramModifyQQPwdActivity) {}
+  pt(ps paramps) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    af.a().a(0L, this.a.mPwdText, 1, this.a.mHandler);
-    this.a.showProDialog(this.a, 2131361808, 2131361931, new pu(this));
+    paramView = this.a;
+    paramView.c += 1;
+    this.a.a();
   }
 }
 

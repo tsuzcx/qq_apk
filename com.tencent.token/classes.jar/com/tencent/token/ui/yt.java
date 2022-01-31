@@ -1,16 +1,23 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.m;
+import java.util.List;
 
-final class yt
-  implements DialogInterface.OnClickListener
+class yt
+  implements View.OnClickListener
 {
-  yt(ys paramys) {}
+  yt(SelectCountryCodeActivity paramSelectCountryCodeActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ScanLoginBindActivity.access$000(this.a.a);
+    int i = ((Integer)paramView.getTag()).intValue();
+    paramView = new Intent();
+    paramView.putExtra("name", ((m)SelectCountryCodeActivity.access$100(this.a).get(i)).b());
+    this.a.setResult(Integer.parseInt(((m)SelectCountryCodeActivity.access$100(this.a).get(i)).a()), paramView);
+    this.a.finish();
   }
 }
 

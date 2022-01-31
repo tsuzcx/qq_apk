@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class WloginSimpleInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<WloginSimpleInfo> CREATOR = new WloginSimpleInfo.1();
+  public static final Parcelable.Creator CREATOR = new WloginSimpleInfo.1();
   private static final long serialVersionUID = 1L;
   public byte[] _age;
   public byte[] _face;
@@ -18,6 +18,7 @@ public class WloginSimpleInfo
   public byte[] _img_url;
   public byte[] _nick;
   public long _uin;
+  public byte[] mainDisplayName;
   
   public WloginSimpleInfo()
   {
@@ -29,6 +30,7 @@ public class WloginSimpleInfo
     this._img_type = new byte[0];
     this._img_format = new byte[0];
     this._img_url = new byte[0];
+    this.mainDisplayName = new byte[0];
   }
   
   public WloginSimpleInfo(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7)
@@ -168,6 +170,9 @@ public class WloginSimpleInfo
     if (this._img_url != null) {
       localWloginSimpleInfo._img_url = ((byte[])this._img_url.clone());
     }
+    if (this.mainDisplayName != null) {
+      localWloginSimpleInfo.mainDisplayName = ((byte[])this.mainDisplayName.clone());
+    }
     return localWloginSimpleInfo;
   }
   
@@ -238,47 +243,143 @@ public class WloginSimpleInfo
     this._img_type = paramParcel.createByteArray();
     this._img_format = paramParcel.createByteArray();
     this._img_url = paramParcel.createByteArray();
+    this.mainDisplayName = paramParcel.createByteArray();
   }
   
-  public void set_info(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[][] paramArrayOfByte)
+  public void setAge(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._age = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setFace(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._face = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setGender(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._gender = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setImgFormat(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._img_format = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setImgType(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._img_type = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setImgUrl(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._img_url = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setMainDisplayName(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this.mainDisplayName = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setNick(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      this._nick = ((byte[])paramArrayOfByte.clone());
+    }
+  }
+  
+  public void setReserveUinInfo(byte[][] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 3) && (paramArrayOfByte[0].length > 0) && (paramArrayOfByte[1].length > 0) && (paramArrayOfByte[2].length > 0))
+    {
+      this._img_type = ((byte[])paramArrayOfByte[0].clone());
+      this._img_format = ((byte[])paramArrayOfByte[1].clone());
+      this._img_url = ((byte[])paramArrayOfByte[2].clone());
+    }
+  }
+  
+  public void setUin(long paramLong)
   {
     this._uin = paramLong;
-    if (paramArrayOfByte1 != null)
+  }
+  
+  public void set_info(WloginSimpleInfo paramWloginSimpleInfo)
+  {
+    this._uin = paramWloginSimpleInfo._uin;
+    if (paramWloginSimpleInfo._face != null)
     {
-      this._face = ((byte[])paramArrayOfByte1.clone());
-      if (paramArrayOfByte2 == null) {
-        break label160;
+      this._face = ((byte[])paramWloginSimpleInfo._face.clone());
+      if (paramWloginSimpleInfo._age == null) {
+        break label187;
       }
-      this._age = ((byte[])paramArrayOfByte2.clone());
-      label37:
-      if (paramArrayOfByte3 == null) {
-        break label170;
+      this._age = ((byte[])paramWloginSimpleInfo._age.clone());
+      label50:
+      if (paramWloginSimpleInfo._gender == null) {
+        break label197;
       }
-      this._gender = ((byte[])paramArrayOfByte3.clone());
-      label54:
-      if (paramArrayOfByte4 == null) {
-        break label180;
+      this._gender = ((byte[])paramWloginSimpleInfo._gender.clone());
+      label71:
+      if (paramWloginSimpleInfo._nick == null) {
+        break label207;
+      }
+      this._nick = ((byte[])paramWloginSimpleInfo._nick.clone());
+      label92:
+      if (paramWloginSimpleInfo._img_type == null) {
+        break label217;
+      }
+      this._img_type = ((byte[])paramWloginSimpleInfo._img_type.clone());
+      label113:
+      if (paramWloginSimpleInfo._img_format == null) {
+        break label227;
+      }
+      this._img_format = ((byte[])paramWloginSimpleInfo._img_format.clone());
+      label134:
+      if (paramWloginSimpleInfo._img_url == null) {
+        break label237;
       }
     }
-    label160:
-    label170:
-    label180:
-    for (this._nick = ((byte[])paramArrayOfByte4.clone());; this._nick = new byte[0])
+    label187:
+    label197:
+    label207:
+    label217:
+    label227:
+    label237:
+    for (this._img_url = ((byte[])paramWloginSimpleInfo._img_url.clone());; this._img_url = new byte[0])
     {
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 3) && (paramArrayOfByte[0].length > 0) && (paramArrayOfByte[1].length > 0) && (paramArrayOfByte[2].length > 0))
-      {
-        this._img_type = ((byte[])paramArrayOfByte[0].clone());
-        this._img_format = ((byte[])paramArrayOfByte[1].clone());
-        this._img_url = ((byte[])paramArrayOfByte[2].clone());
+      if (paramWloginSimpleInfo.mainDisplayName == null) {
+        break label247;
       }
+      this.mainDisplayName = ((byte[])paramWloginSimpleInfo.mainDisplayName.clone());
       return;
       this._face = new byte[0];
       break;
       this._age = new byte[0];
-      break label37;
+      break label50;
       this._gender = new byte[0];
-      break label54;
+      break label71;
+      this._nick = new byte[0];
+      break label92;
+      this._img_type = new byte[0];
+      break label113;
+      this._img_format = new byte[0];
+      break label134;
     }
+    label247:
+    this.mainDisplayName = new byte[0];
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -291,6 +392,7 @@ public class WloginSimpleInfo
     paramParcel.writeByteArray(this._img_type);
     paramParcel.writeByteArray(this._img_format);
     paramParcel.writeByteArray(this._img_url);
+    paramParcel.writeByteArray(this.mainDisplayName);
   }
 }
 

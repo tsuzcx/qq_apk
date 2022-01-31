@@ -1,50 +1,28 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.token.global.e;
-import com.tencent.token.widget.InputMethodRelativeLayout;
-import com.tencent.token.widget.a;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.eq;
 
-final class se
-  implements a
+class se
+  implements View.OnClickListener
 {
-  se(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
+  se(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    paramView = do.a().e();
+    if ((eq.a().c() == null) && (paramView != null) && (paramView.mIsBinded))
     {
-      localObject = new int[2];
-      this.a.mConfirmBtn.getLocationInWindow((int[])localObject);
-      int i = localObject[1];
-      this.a.mRootLayout.getLocationInWindow((int[])localObject);
-      int j = localObject[1];
-      if (NetActiveVryQuesActivity.access$1600(this.a))
-      {
-        NetActiveVryQuesActivity.access$1702(this.a, i);
-        NetActiveVryQuesActivity.access$1802(this.a, j);
-        NetActiveVryQuesActivity.access$1902(this.a, paramInt);
-      }
-      do
-      {
-        return;
-        paramInt = NetActiveVryQuesActivity.access$1700(this.a);
-        i = NetActiveVryQuesActivity.access$1800(this.a);
-        j = NetActiveVryQuesActivity.access$1900(this.a);
-        paramInt = paramInt - i + this.a.mConfirmBtn.getHeight() - j;
-      } while (paramInt <= 0);
-      localObject = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(this.a.mScrollAreaLayout.getPaddingLeft(), this.a.mScrollAreaLayout.getPaddingTop() - paramInt, this.a.mScrollAreaLayout.getPaddingRight(), this.a.mScrollAreaLayout.getPaddingBottom());
-      this.a.mScrollAreaLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      e.c("mScrollAreaLayout.getPaddingTop()-paddingY = " + (this.a.mScrollAreaLayout.getPaddingTop() - paramInt) + "paddingY = " + paramInt);
+      cw.a().e(0L, OpMsgDisplayActivity.access$300(this.a));
+      OpMsgDisplayActivity.access$002(this.a, 53);
+      this.a.showUserDialog(12);
       return;
     }
-    Object localObject = new RelativeLayout.LayoutParams(-1, -1);
-    ((RelativeLayout.LayoutParams)localObject).setMargins(this.a.mScrollAreaLayout.getPaddingLeft(), this.a.mScrollAreaLayout.getPaddingTop(), this.a.mScrollAreaLayout.getPaddingRight(), this.a.mScrollAreaLayout.getPaddingBottom());
-    this.a.mScrollAreaLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    OpMsgDisplayActivity.access$100(this.a, 53);
   }
 }
 

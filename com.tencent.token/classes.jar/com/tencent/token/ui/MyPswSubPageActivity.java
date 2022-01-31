@@ -9,25 +9,25 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.af;
 import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.core.bean.EvalAccountResult.DetailItem;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.ErrorView;
 import java.util.ArrayList;
 
 public class MyPswSubPageActivity
   extends BaseActivity
 {
-  public static int[] mIconStatus = { 2130837761, 2130837763, 2130837762 };
+  public static int[] mIconStatus = { 2130837836, 2130837838, 2130837837 };
   private boolean isNeedRefresh = false;
   private EvalAccountResult.DetailItem mAbnormalPswDetail;
   private ArrayList mDetails = new ArrayList();
-  private View.OnClickListener mErrorAction = new qt(this);
+  private View.OnClickListener mErrorAction = new qd(this);
   private ErrorView mErrorView;
   private EvalAccountResult mEvalResult = null;
-  private Handler mHandler = new qq(this);
+  private Handler mHandler = new qa(this);
   private Button mPswBtn;
   private EvalAccountResult.DetailItem mPswDetail;
   private ImageView mPswIv;
@@ -65,27 +65,27 @@ public class MyPswSubPageActivity
       {
         this.mPswTip.setText(this.mAbnormalPswDetail.mDesc + ", ");
         this.mPswTipDetail.setVisibility(0);
-        this.mPswTipDetail.setOnClickListener(new qr(this));
+        this.mPswTipDetail.setOnClickListener(new qb(this));
       }
     }
-    this.mPswBtn.setOnClickListener(new qs(this));
+    this.mPswBtn.setOnClickListener(new qc(this));
   }
   
-  private void selectView(d paramd, Message paramMessage)
+  private void selectView(f paramf, Message paramMessage)
   {
-    if ((paramd != null) && (paramMessage != null) && (paramMessage.arg1 != 110))
+    if ((paramf != null) && (paramMessage != null) && (paramMessage.arg1 != 110))
     {
-      e.c("----result.mErrCode: " + paramd.a);
-      e.c("----result.mErrDebug: " + paramd.b);
+      h.c("----result.mErrCode: " + paramf.a);
+      h.c("----result.mErrDebug: " + paramf.b);
       if (this.mErrorView == null)
       {
         this.mErrorView = new ErrorView(this);
-        this.mErrorView.a(this.mErrorAction);
+        this.mErrorView.setAction(this.mErrorAction);
         addContentView(this.mErrorView);
       }
-      this.mErrorView.a(paramd.a);
+      this.mErrorView.setErrorType(paramf.a);
       this.mErrorView.setTag(Integer.valueOf(paramMessage.what));
-      this.mErrorView.setVisibility(0);
+      this.mErrorView.a();
       bringChildToFront(this.mErrorView);
       setRightTitleImageHide();
     }
@@ -94,13 +94,13 @@ public class MyPswSubPageActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903145);
+    setContentView(2130968701);
     this.mDetails = ((ArrayList)getIntent().getSerializableExtra("detailItems"));
-    this.mPswIv = ((ImageView)findViewById(2131296864));
-    this.mPswTitle = ((TextView)findViewById(2131296865));
-    this.mPswTip = ((TextView)findViewById(2131296867));
-    this.mPswBtn = ((Button)findViewById(2131296869));
-    this.mPswTipDetail = ((TextView)findViewById(2131296868));
+    this.mPswIv = ((ImageView)findViewById(2131559068));
+    this.mPswTitle = ((TextView)findViewById(2131559069));
+    this.mPswTip = ((TextView)findViewById(2131559071));
+    this.mPswBtn = ((Button)findViewById(2131559073));
+    this.mPswTipDetail = ((TextView)findViewById(2131559072));
     initView(this.mDetails);
   }
   
@@ -115,7 +115,7 @@ public class MyPswSubPageActivity
     super.onResume();
     if (this.isNeedRefresh)
     {
-      af.a().d(0L, this.mHandler);
+      cw.a().d(0L, this.mHandler);
       showUserDialog(12);
     }
   }

@@ -1,38 +1,20 @@
 package com.tencent.token;
 
-import com.tencent.token.global.c;
+import android.content.ContentValues;
+import com.tencent.wcdb.Cursor;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
-public abstract class gd
+public abstract interface gd
 {
-  private volatile int a = c.h;
-  private volatile boolean b = true;
-  private gc c = gc.a;
+  public abstract gd a(Cursor paramCursor);
   
-  public gd()
-  {
-    this(63, gc.a);
-  }
+  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
   
-  public gd(int paramInt, gc paramgc)
-  {
-    this.a = paramInt;
-    this.b = true;
-    this.c = paramgc;
-  }
+  public abstract long b(SQLiteDatabase paramSQLiteDatabase);
   
-  public final void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract String b();
   
-  protected abstract void a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2);
-  
-  public final void b(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.b) && (paramInt == (this.a & paramInt))) {
-      a(paramInt, paramThread, paramLong, paramString1, paramString2);
-    }
-  }
+  public abstract ContentValues c();
 }
 
 

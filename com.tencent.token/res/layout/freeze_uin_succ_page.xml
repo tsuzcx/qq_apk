@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" android:src="@drawable/freeze_uin_ok" />
+    <TextView android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/freeze_uin_succ_txt" style="@style/text_view_middle_18" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/utils_font_color_desc" android:gravity="center" android:id="@id/freeze_uin_detail" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="20.0dip" />
+    <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/utils_font_color_desc" android:layout_gravity="center" android:id="@id/freeze_sync_qqsig_detail" android:paddingTop="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/freeze_uin_sync_sig_fail" android:drawableLeft="@drawable/account_detail_sigh" android:drawablePadding="6.0dip" />
+    <Button android:textSize="17.0dip" android:textColor="@color/font_color_blue" android:id="@id/freeze_ok" android:background="@drawable/freeze_btn" android:layout_width="fill_parent" android:layout_height="46.599976dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="30.0dip" android:text="@string/confirm_button" />
+</LinearLayout>

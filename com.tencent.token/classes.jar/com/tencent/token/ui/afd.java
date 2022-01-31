@@ -1,19 +1,49 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.global.RqdApplication;
 
-final class afd
-  implements DialogInterface.OnClickListener
+class afd
+  implements View.OnClickListener
 {
-  afd(afc paramafc, UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity) {}
+  afd(VerifySuccActivity paramVerifySuccActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    af.a().c(0L, UtilsMbInfoItemActivity.access$300(this.b.d).mId, UtilsMbInfoItemActivity.access$500(this.b.d));
-    this.a.showProDialog(this.a, 2131361808, 2131362206, null);
+    if (DeterminVerifyFactorsResult.s_SourceId == 2)
+    {
+      DeterminVerifyFactorsResult.s_SourceId = 0;
+      paramView = new Intent(this.a, FreezeStatusActivity.class);
+      paramView.addFlags(67108864);
+      this.a.startActivity(paramView);
+      this.a.finish();
+      return;
+    }
+    paramView = new Intent(this.a, IndexActivity.class);
+    paramView.addFlags(67108864);
+    if (VerifySuccActivity.access$000(this.a) == 1)
+    {
+      paramView.putExtra("index_from", 25);
+      RqdApplication.i();
+      paramView.putExtra("snap", true);
+    }
+    for (;;)
+    {
+      Activity localActivity = abi.a().b();
+      if ((localActivity != null) && ((localActivity instanceof UtilsActivity))) {
+        paramView.putExtra("index_from", 32);
+      }
+      paramView.putExtra("ish5zzb", VerifySuccActivity.access$100(this.a));
+      this.a.startActivity(paramView);
+      this.a.finish();
+      return;
+      paramView.putExtra("index_from", 16);
+      paramView.putExtra("snap", true);
+    }
   }
 }
 

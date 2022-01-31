@@ -10,8 +10,8 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.ah;
-import com.tencent.token.global.e;
+import com.tencent.token.cy;
+import com.tencent.token.global.h;
 
 public class StartPwdDigitVerifyActivity
   extends BaseActivity
@@ -34,22 +34,25 @@ public class StartPwdDigitVerifyActivity
   protected int getBtnStringId()
   {
     if (1 == this.mEnterType) {
-      return 2131361940;
+      return 2131231490;
     }
-    return 2131361800;
+    return 2131230897;
   }
   
   public void onClick(View paramView)
   {
-    if (ah.a().a(this.mTokenPwdInpuText.getText().toString()))
+    if (this.mTokenPwdInpuText != null) {
+      this.mTokenPwdInpuText.clearFocus();
+    }
+    if (cy.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
-      ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(getWindow().peekDecorView().getWindowToken(), 0);
-      e.a("verify_token_pwd: " + this.mEnterType);
+      hideKeyBoard();
+      h.a("verify_token_pwd: " + this.mEnterType);
       setResult(257);
       finish();
       return;
     }
-    showToast(2131361942);
+    showToast(2131231494);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -61,22 +64,22 @@ public class StartPwdDigitVerifyActivity
       this.mEnterType = paramBundle.getInt("enter_type");
       this.mUin = paramBundle.getLong("uin");
     }
-    setContentView(2130903254);
-    paramBundle = findViewById(2131297299);
+    setContentView(2130968816);
+    paramBundle = findViewById(2131559451);
     paramBundle.setOnClickListener(this);
     ((Button)paramBundle).setText(getBtnStringId());
     setBtnWidth(paramBundle.getLayoutParams());
-    this.mTokenPwdInpuText = ((EditText)findViewById(2131297298));
+    this.mTokenPwdInpuText = ((EditText)findViewById(2131559450));
     if (this.mTokenPwdInpuText != null) {
       this.mTokenPwdInpuText.clearFocus();
     }
-    e.a("verify_token_pwd: " + this.mEnterType + ", uin: " + this.mUin);
+    h.a("verify_token_pwd: " + this.mEnterType + ", uin: " + this.mUin);
   }
   
   protected void setBtnWidth(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (1 == this.mEnterType) {
-      paramLayoutParams.width = ((int)getResources().getDimension(2131230739));
+      paramLayoutParams.width = ((int)getResources().getDimension(2131296365));
     }
   }
 }

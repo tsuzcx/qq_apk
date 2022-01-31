@@ -1,73 +1,75 @@
 package com.tencent.token.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ah;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.p;
+import android.support.v4.content.LocalBroadcastManager;
+import android.widget.ImageView;
+import android.widget.TabHost;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.SlidingMenuView;
+import com.tencent.token.utils.x;
 
-final class mo
-  implements View.OnClickListener
+class mo
+  extends BroadcastReceiver
 {
   mo(IndexActivity paramIndexActivity) {}
   
-  public final void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramView.getId())
-    {
+    int i = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.token.push_ipc_msg")) {
+      if (IndexActivity.access$1400(this.a).getCurrentTab() != 0)
+      {
+        AccountPageActivity.mNeedShowIpcMsg = true;
+        AccountPageActivity.mNeedRefreshEval = true;
+        IndexActivity.isShowAccountTip = true;
+        if (IndexActivity.access$1500(this.a) != null) {
+          IndexActivity.access$1500(this.a).setVisibility(0);
+        }
+      }
     }
+    label138:
     do
     {
       do
       {
         return;
-      } while (this.a.curruser.mIsBinded);
-      IndexActivity.access$1200(this.a);
-      this.a.slidingMenuView.a(1);
+        if (!paramContext.equals("com.tencent.token.push_opr_msg")) {
+          break label138;
+        }
+        if (IndexActivity.access$1400(this.a).getCurrentTab() == 0) {
+          break;
+        }
+        AccountPageActivity.mNeedRefreshEval = true;
+        IndexActivity.isShowAccountTip = true;
+      } while (IndexActivity.access$1500(this.a) == null);
+      IndexActivity.access$1500(this.a).setVisibility(0);
       return;
-      paramView = ax.a().b(1);
-      IndexActivity.access$1300(this.a, paramView);
+      paramContext = new Intent("com.tencent.token.account_opr_msg");
+      LocalBroadcastManager.getInstance(this.a).sendBroadcast(paramContext);
       return;
-      paramView = ax.a().b(2);
-      IndexActivity.access$1300(this.a, paramView);
-      return;
-      IndexActivity.access$1300(this.a, this.a.curruser);
-      return;
-      paramView = new Intent(this.a, SettingSubmitCommentActivity.class);
-      this.a.startActivity(paramView);
-      return;
-      paramView = new Intent(this.a, AssistantRecommendFriendQrcode.class);
-      this.a.startActivity(paramView);
-      return;
-      paramView = new Intent(this.a, AboutActivity.class);
-      this.a.startActivity(paramView);
-      return;
-      paramView = new Intent(this.a, CorrectTokenActivity.class);
-      this.a.startActivity(paramView);
-      return;
-      p.a().a(System.currentTimeMillis(), 6);
-      if ((ah.a().c()) && (ah.a().e() == 1)) {}
-      for (paramView = new Intent(this.a, StartPwdDigitSelActivity.class);; paramView = new Intent(this.a, StartPwdGestureIndexActivity.class))
+      if (paramContext.equals("com.tencent.token.open_menu"))
       {
-        this.a.startActivity(paramView);
-        ah.a();
-        ah.d("startpwd_tip_newflag");
+        paramContext = this.a.slidingMenuView;
+        if (this.a.slidingMenuView.getCurrentScreen() == 0) {}
+        for (;;)
+        {
+          paramContext.a(i);
+          return;
+          i = 0;
+        }
+      }
+      if (paramContext.equals("com.tencent.token.refresh_menu"))
+      {
+        this.a.remsumeMenu();
         return;
       }
-    } while (this.a.curruser == null);
-    if (!this.a.curruser.mIsBinded)
-    {
-      this.a.showUserDialog(2131361808, this.a.getString(2131361912), 2131361800, 2131361804, new mp(this), null);
-      return;
-    }
-    long l = this.a.curruser.mUin;
-    this.a.slidingMenuView.a(1);
-    af.a().g(l, IndexActivity.access$300(this.a));
-    this.a.showProDialog(this.a, 2131361808, 2131361905, null);
+    } while ((!paramContext.equals("com.tencent.token.refresh_statusbar")) || (IndexActivity.access$1400(this.a).getCurrentTab() != 0));
+    IndexActivity.access$1602(this.a, paramIntent.getIntExtra("color", 2131492909));
+    x.a(this.a, IndexActivity.access$1600(this.a));
+    h.c("receive action amend color = " + IndexActivity.access$1600(this.a));
   }
 }
 

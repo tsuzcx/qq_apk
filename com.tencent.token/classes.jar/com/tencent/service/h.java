@@ -1,22 +1,47 @@
 package com.tencent.service;
 
-public final class h
+import com.tencent.jni.FaceDetector;
+import com.tencent.jni.FaceInfo;
+
+public class h
+  implements Runnable
 {
-  protected byte[] a;
-  protected int b = 0;
-  protected int c;
-  protected int d = 0;
-  protected int[] e;
-  protected float[] f;
+  public long a = 0L;
+  private FaceDetector b;
+  private n c;
+  private g d;
+  private j e;
+  private DetectType f;
+  private long g = 0L;
   
-  public h(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  public h(j paramj, FaceDetector paramFaceDetector, n paramn, DetectType paramDetectType)
   {
-    this.a = paramArrayOfByte;
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.d = paramInt3;
-    this.e = paramArrayOfInt;
-    this.f = paramArrayOfFloat;
+    this.b = paramFaceDetector;
+    this.e = paramj;
+    this.c = paramn;
+    this.f = paramDetectType;
+    this.g = System.currentTimeMillis();
+  }
+  
+  public void run()
+  {
+    System.gc();
+    this.d = new g();
+    this.d.d = new FaceInfo();
+    switch (i.a[this.f.ordinal()])
+    {
+    default: 
+      return;
+    }
+    for (int i = this.b.FaceRegister(this.d.d, this.c.a, this.c.b, this.c.c, this.c.d, this.c.e);; i = this.b.FaceValidate(this.d.d, this.c.a, this.c.b, this.c.c, this.c.d, this.c.e))
+    {
+      this.d.a = this.b;
+      this.d.b = this.c;
+      this.d.c = i;
+      com.tencent.token.global.h.b("任务构建到结束时间: " + (System.currentTimeMillis() - this.g));
+      this.e.a(this.d);
+      return;
+    }
   }
 }
 

@@ -1,17 +1,29 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.Log;
+import android.widget.Toast;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.TMSDKContext;
+import tmsdk.common.module.pgsdk.RequestCallback;
 
-final class tl
-  implements View.OnClickListener
+class tl
+  implements RequestCallback
 {
-  tl(tj paramtj) {}
+  tl(tk paramtk) {}
   
-  public final void onClick(View paramView)
+  public void onCallback(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    tj.a(this.a);
-    this.a.a(false);
+    if (paramArrayOfInt2[0] == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("permission_test", "申请自启权限结果:" + bool);
+      if (bool) {
+        break;
+      }
+      Toast.makeText(RqdApplication.l(), "授权失败", 0).show();
+      return;
+    }
+    TMSDKContext.saveActionData(1150118);
   }
 }
 

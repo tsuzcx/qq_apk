@@ -8,24 +8,26 @@ import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TaskStackBuilder
-  implements Iterable<Intent>
+public final class TaskStackBuilder
+  implements Iterable
 {
-  private static final TaskStackBuilderImpl IMPL = new TaskStackBuilderImplBase();
+  private static final TaskStackBuilder.TaskStackBuilderBaseImpl IMPL = new TaskStackBuilder.TaskStackBuilderBaseImpl();
   private static final String TAG = "TaskStackBuilder";
-  private final ArrayList<Intent> mIntents = new ArrayList();
+  private final ArrayList mIntents = new ArrayList();
   private final Context mSourceContext;
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 11)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      IMPL = new TaskStackBuilderImplHoneycomb();
+      IMPL = new TaskStackBuilder.TaskStackBuilderApi16Impl();
       return;
     }
   }
@@ -35,23 +37,27 @@ public class TaskStackBuilder
     this.mSourceContext = paramContext;
   }
   
-  public static TaskStackBuilder create(Context paramContext)
+  @NonNull
+  public static TaskStackBuilder create(@NonNull Context paramContext)
   {
     return new TaskStackBuilder(paramContext);
   }
   
+  @Deprecated
   public static TaskStackBuilder from(Context paramContext)
   {
     return create(paramContext);
   }
   
-  public TaskStackBuilder addNextIntent(Intent paramIntent)
+  @NonNull
+  public TaskStackBuilder addNextIntent(@NonNull Intent paramIntent)
   {
     this.mIntents.add(paramIntent);
     return this;
   }
   
-  public TaskStackBuilder addNextIntentWithParentStack(Intent paramIntent)
+  @NonNull
+  public TaskStackBuilder addNextIntentWithParentStack(@NonNull Intent paramIntent)
   {
     ComponentName localComponentName2 = paramIntent.getComponent();
     ComponentName localComponentName1 = localComponentName2;
@@ -65,20 +71,28 @@ public class TaskStackBuilder
     return this;
   }
   
-  public TaskStackBuilder addParentStack(Activity paramActivity)
+  @NonNull
+  public TaskStackBuilder addParentStack(@NonNull Activity paramActivity)
   {
-    Intent localIntent = NavUtils.getParentActivityIntent(paramActivity);
-    if (localIntent != null)
-    {
-      ComponentName localComponentName = localIntent.getComponent();
-      paramActivity = localComponentName;
-      if (localComponentName == null) {
-        paramActivity = localIntent.resolveActivity(this.mSourceContext.getPackageManager());
-      }
-      addParentStack(paramActivity);
-      addNextIntent(localIntent);
+    Object localObject = null;
+    if ((paramActivity instanceof TaskStackBuilder.SupportParentable)) {
+      localObject = ((TaskStackBuilder.SupportParentable)paramActivity).getSupportParentActivityIntent();
     }
-    return this;
+    if (localObject == null) {}
+    for (paramActivity = NavUtils.getParentActivityIntent(paramActivity);; paramActivity = (Activity)localObject)
+    {
+      if (paramActivity != null)
+      {
+        ComponentName localComponentName = paramActivity.getComponent();
+        localObject = localComponentName;
+        if (localComponentName == null) {
+          localObject = paramActivity.resolveActivity(this.mSourceContext.getPackageManager());
+        }
+        addParentStack((ComponentName)localObject);
+        addNextIntent(paramActivity);
+      }
+      return this;
+    }
   }
   
   public TaskStackBuilder addParentStack(ComponentName paramComponentName)
@@ -98,16 +112,19 @@ public class TaskStackBuilder
     }
   }
   
-  public TaskStackBuilder addParentStack(Class<?> paramClass)
+  @NonNull
+  public TaskStackBuilder addParentStack(@NonNull Class paramClass)
   {
     return addParentStack(new ComponentName(this.mSourceContext, paramClass));
   }
   
+  @Nullable
   public Intent editIntentAt(int paramInt)
   {
     return (Intent)this.mIntents.get(paramInt);
   }
   
+  @Deprecated
   public Intent getIntent(int paramInt)
   {
     return editIntentAt(paramInt);
@@ -118,29 +135,31 @@ public class TaskStackBuilder
     return this.mIntents.size();
   }
   
+  @NonNull
   public Intent[] getIntents()
   {
     Intent[] arrayOfIntent = new Intent[this.mIntents.size()];
-    if (arrayOfIntent.length == 0) {}
-    for (;;)
-    {
+    if (arrayOfIntent.length == 0) {
       return arrayOfIntent;
-      arrayOfIntent[0] = new Intent((Intent)this.mIntents.get(0)).addFlags(268484608);
-      int i = 1;
-      while (i < arrayOfIntent.length)
-      {
-        arrayOfIntent[i] = new Intent((Intent)this.mIntents.get(i));
-        i += 1;
-      }
     }
+    arrayOfIntent[0] = new Intent((Intent)this.mIntents.get(0)).addFlags(268484608);
+    int i = 1;
+    while (i < arrayOfIntent.length)
+    {
+      arrayOfIntent[i] = new Intent((Intent)this.mIntents.get(i));
+      i += 1;
+    }
+    return arrayOfIntent;
   }
   
+  @Nullable
   public PendingIntent getPendingIntent(int paramInt1, int paramInt2)
   {
     return getPendingIntent(paramInt1, paramInt2, null);
   }
   
-  public PendingIntent getPendingIntent(int paramInt1, int paramInt2, Bundle paramBundle)
+  @Nullable
+  public PendingIntent getPendingIntent(int paramInt1, int paramInt2, @Nullable Bundle paramBundle)
   {
     if (this.mIntents.isEmpty()) {
       throw new IllegalStateException("No intents added to TaskStackBuilder; cannot getPendingIntent");
@@ -150,7 +169,8 @@ public class TaskStackBuilder
     return IMPL.getPendingIntent(this.mSourceContext, arrayOfIntent, paramInt1, paramInt2, paramBundle);
   }
   
-  public Iterator<Intent> iterator()
+  @Deprecated
+  public Iterator iterator()
   {
     return this.mIntents.iterator();
   }
@@ -160,7 +180,7 @@ public class TaskStackBuilder
     startActivities(null);
   }
   
-  public void startActivities(Bundle paramBundle)
+  public void startActivities(@Nullable Bundle paramBundle)
   {
     if (this.mIntents.isEmpty()) {
       throw new IllegalStateException("No intents added to TaskStackBuilder; cannot startActivities");
@@ -172,42 +192,6 @@ public class TaskStackBuilder
       paramBundle = new Intent(arrayOfIntent[(arrayOfIntent.length - 1)]);
       paramBundle.addFlags(268435456);
       this.mSourceContext.startActivity(paramBundle);
-    }
-  }
-  
-  static abstract interface TaskStackBuilderImpl
-  {
-    public abstract PendingIntent getPendingIntent(Context paramContext, Intent[] paramArrayOfIntent, int paramInt1, int paramInt2, Bundle paramBundle);
-  }
-  
-  static class TaskStackBuilderImplBase
-    implements TaskStackBuilder.TaskStackBuilderImpl
-  {
-    public PendingIntent getPendingIntent(Context paramContext, Intent[] paramArrayOfIntent, int paramInt1, int paramInt2, Bundle paramBundle)
-    {
-      paramArrayOfIntent = new Intent(paramArrayOfIntent[(paramArrayOfIntent.length - 1)]);
-      paramArrayOfIntent.addFlags(268435456);
-      return PendingIntent.getActivity(paramContext, paramInt1, paramArrayOfIntent, paramInt2);
-    }
-  }
-  
-  static class TaskStackBuilderImplHoneycomb
-    implements TaskStackBuilder.TaskStackBuilderImpl
-  {
-    public PendingIntent getPendingIntent(Context paramContext, Intent[] paramArrayOfIntent, int paramInt1, int paramInt2, Bundle paramBundle)
-    {
-      paramArrayOfIntent[0] = new Intent(paramArrayOfIntent[0]).addFlags(268484608);
-      return TaskStackBuilderHoneycomb.getActivitiesPendingIntent(paramContext, paramInt1, paramArrayOfIntent, paramInt2);
-    }
-  }
-  
-  static class TaskStackBuilderImplJellybean
-    implements TaskStackBuilder.TaskStackBuilderImpl
-  {
-    public PendingIntent getPendingIntent(Context paramContext, Intent[] paramArrayOfIntent, int paramInt1, int paramInt2, Bundle paramBundle)
-    {
-      paramArrayOfIntent[0] = new Intent(paramArrayOfIntent[0]).addFlags(268484608);
-      return TaskStackBuilderJellybean.getActivitiesPendingIntent(paramContext, paramInt1, paramArrayOfIntent, paramInt2, paramBundle);
     }
   }
 }

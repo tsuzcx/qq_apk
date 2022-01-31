@@ -1,61 +1,30 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.telephony.SmsMessage;
-import com.tencent.token.global.e;
 
-final class wm
-  extends BroadcastReceiver
+class wm
+  implements DialogInterface.OnCancelListener
 {
-  wm(RealNameStep0VerifyMobileDownActivity paramRealNameStep0VerifyMobileDownActivity) {}
+  wm(wi paramwi) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = 0;
-    try
-    {
-      if (!"android.provider.Telephony.SMS_RECEIVED".equals(paramIntent.getAction())) {
-        return;
-      }
-      paramContext = RealNameStep0VerifyMobileDownActivity.access$000(this.a, paramIntent);
-      if (paramContext == null) {
-        return;
-      }
-      e.a("current time: " + System.currentTimeMillis());
-      e.a("msgs count: " + paramContext.length + ", msgs[0] time: " + paramContext[0].getTimestampMillis());
-      RealNameStep0VerifyMobileDownActivity.access$100(this.a);
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        int j;
-        paramContext.printStackTrace();
-        return;
-        i += 1;
-      }
-    }
-    catch (Error paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    if (i < paramContext.length)
-    {
-      paramIntent = paramContext[i].getDisplayMessageBody();
-      e.a("msg[" + i + "]: " + paramIntent);
-      j = paramIntent.indexOf(RealNameStep0VerifyMobileDownActivity.access$200(this.a));
-      if (j >= 0)
-      {
-        i = RealNameStep0VerifyMobileDownActivity.access$200(this.a).length() + j;
-        while ((i < paramIntent.length()) && (paramIntent.charAt(i) <= '9') && (paramIntent.charAt(i) >= '0')) {
-          i += 1;
-        }
-        RealNameStep0VerifyMobileDownActivity.access$300(this.a, paramIntent.substring(j + RealNameStep0VerifyMobileDownActivity.access$200(this.a).length(), i));
-        return;
-      }
-    }
+    paramDialogInterface = new Intent(this.a.a, RealNameFindActivity.class);
+    paramDialogInterface.putExtra("result", RealNameStep0VerifyMobileUpActivity.access$800(this.a.a));
+    paramDialogInterface.putExtra("real_uin", RealNameStep0VerifyMobileUpActivity.access$100(this.a.a));
+    paramDialogInterface.putExtra("source_id", this.a.a.mSourceId);
+    paramDialogInterface.putExtra("mFrontPath", this.a.a.mFrontPath);
+    paramDialogInterface.putExtra("mBackPath", this.a.a.mBackPath);
+    paramDialogInterface.putExtra("mFaceData", this.a.a.mFaceData);
+    paramDialogInterface.putExtra("frontphotoinfo", this.a.a.frontphotoinfo);
+    paramDialogInterface.putExtra("backphotoinfo", this.a.a.backphotoinfo);
+    paramDialogInterface.putExtra("ish5zzb", RealNameStep0VerifyMobileUpActivity.access$500(this.a.a));
+    paramDialogInterface.putExtra("canchange_uin", this.a.a.canchange_uin);
+    paramDialogInterface.addFlags(67108864);
+    paramDialogInterface.putExtra("reupload", true);
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,18 +1,35 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.global.e;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.core.bean.QueryCaptchaResult;
+import com.tencent.token.cx;
 
-final class afo
-  implements Runnable
+class afo
+  extends Handler
 {
-  afo(UtilsModSetMobileStep2SmsActivity paramUtilsModSetMobileStep2SmsActivity) {}
+  afo(WelcomeActivity paramWelcomeActivity) {}
   
-  public final void run()
+  public void handleMessage(Message paramMessage)
   {
-    e.c("send mod set mbmobile");
-    af.a().a(0L, UtilsModSetMobileStep2SmsActivity.access$000(this.a), UtilsModSetMobileStep2SmsActivity.access$100(this.a), UtilsModSetMobileStep2SmsActivity.access$200(this.a), UtilsModSetMobileStep2SmsActivity.access$300(this.a));
-    UtilsModSetMobileStep2SmsActivity.access$408(this.a);
+    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        }
+      } while (paramMessage.arg1 != 0);
+      paramMessage = cx.c();
+      paramMessage.i();
+      paramMessage.n();
+      return;
+    } while ((paramMessage.arg1 != 0) || (((QueryCaptchaResult)paramMessage.obj).mNeedCaptcha));
+    WelcomeActivity.access$000(this.a);
   }
 }
 

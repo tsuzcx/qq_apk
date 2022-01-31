@@ -1,24 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.global.b;
-import com.tencent.token.o;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class on
-  implements View.OnClickListener
+class on
+  implements DialogInterface.OnClickListener
 {
-  on(ol paramol, o paramo) {}
+  on(LogoActivity paramLogoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b.a.showOrangeToast(2131362050, 2130837966);
-    af.a().a(0L, this.a.e[LoginMsgReportLocationActivity.access$200(this.b.a)], this.a.d[LoginMsgReportLocationActivity.access$200(this.b.a)], 2, LoginMsgReportLocationActivity.access$000(this.b.a), this.b.a.mHandler);
-    this.b.a.finish();
-    paramView = new Intent(b.e(), LoginMsgActivity.class);
-    this.b.a.startActivity(paramView);
+    this.a.finish();
   }
 }
 

@@ -13,11 +13,14 @@ import oicq.wlogin_sdk.tools.util;
 public class Ticket
   implements Parcelable
 {
-  public static final Parcelable.Creator<Ticket> CREATOR = new Ticket.1();
+  public static final Parcelable.Creator CREATOR = new Ticket.1();
+  private static final int EXPIRE_FIELD = 65535;
   public long _create_time;
   public long _expire_time;
-  public Map<String, Long> _pskey_expire = new HashMap();
-  public Map<String, byte[]> _pskey_map = new HashMap();
+  public Map _pskey_expire = new HashMap();
+  public Map _pskey_map = new HashMap();
+  public Map _pt4token_expire = new HashMap();
+  public Map _pt4token_map = new HashMap();
   public byte[] _sig;
   public byte[] _sig_key;
   public int _type;
@@ -32,10 +35,10 @@ public class Ticket
       paramArrayOfByte1 = new byte[0];
       this._sig = paramArrayOfByte1;
       if (paramArrayOfByte2 != null) {
-        break label81;
+        break label103;
       }
     }
-    label81:
+    label103:
     for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = (byte[])paramArrayOfByte2.clone())
     {
       this._sig_key = paramArrayOfByte1;
@@ -55,10 +58,10 @@ public class Ticket
       paramArrayOfByte1 = new byte[0];
       this._sig = paramArrayOfByte1;
       if (paramArrayOfByte2 != null) {
-        break label102;
+        break label124;
       }
     }
-    label102:
+    label124:
     for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = (byte[])paramArrayOfByte2.clone())
     {
       this._sig_key = paramArrayOfByte1;
@@ -71,26 +74,126 @@ public class Ticket
     }
   }
   
+  public Ticket(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
+  {
+    this._type = paramInt;
+    if (paramArrayOfByte1 == null)
+    {
+      paramArrayOfByte1 = new byte[0];
+      this._sig = paramArrayOfByte1;
+      if (paramArrayOfByte2 != null) {
+        break label141;
+      }
+    }
+    label141:
+    for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = (byte[])paramArrayOfByte2.clone())
+    {
+      this._sig_key = paramArrayOfByte1;
+      this._create_time = paramLong;
+      this._expire_time = (86400L + paramLong);
+      parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire);
+      parsePsBuf(paramArrayOfByte4, this._create_time, this._pt4token_map, this._pt4token_expire);
+      return;
+      paramArrayOfByte1 = (byte[])paramArrayOfByte1.clone();
+      break;
+    }
+  }
+  
   private Ticket(Parcel paramParcel)
   {
     readFromParcel(paramParcel);
   }
   
-  public static byte[] packPsBuf(Map<String, byte[]> paramMap, long paramLong, Map<String, Long> paramMap1)
+  private String __getPskey(String paramString, Map paramMap1, Map paramMap2)
   {
+    util.LOGI("__getPskey get domain " + paramString + " pskey or pt4token", "");
+    if (paramMap1 == null) {
+      return null;
+    }
+    byte[] arrayOfByte = (byte[])paramMap1.get(paramString);
+    if (arrayOfByte == null)
+    {
+      util.LOGI("__getPskey get domain " + paramString + " pskey or pt4token null", "");
+      return null;
+    }
+    if (paramMap2 != null)
+    {
+      Long localLong = (Long)paramMap2.get(paramString);
+      if ((localLong != null) && (localLong.longValue() <= t.f()))
+      {
+        util.LOGI("__getPskey delete domain " + paramString + " expired pskey or pt4token expire time " + localLong, "");
+        paramMap2.remove(paramString);
+        paramMap1.remove(paramString);
+        return null;
+      }
+    }
+    paramMap1 = new String(arrayOfByte);
+    util.LOGI("__getPskey get domain " + paramString + " pskey or pt4token len " + paramMap1.length() + " " + paramMap1.substring(0, 5) + "***" + paramMap1.substring(paramMap1.length() - 5, paramMap1.length()), "");
+    return paramMap1;
+  }
+  
+  private String getPskeyOrPt4tokenContent()
+  {
+    Iterator localIterator = this._pskey_map.keySet().iterator();
+    String str2;
+    for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + ":" + util.getMaskBytes((byte[])this._pskey_map.get(str2), 3, 3) + "|") {
+      str2 = (String)localIterator.next();
+    }
+    return str1;
+  }
+  
+  public static boolean isPskeyExpired(long paramLong)
+  {
+    return isTicketExpired(paramLong);
+  }
+  
+  public static boolean isPskeyStorageExpired(long paramLong)
+  {
+    long l = t.f();
+    util.LOGI("isPskeyStorageExpired expireTime:" + paramLong + "|current: " + l, "");
+    return l > 86400L + paramLong;
+  }
+  
+  public static boolean isPt4TokenExpired(long paramLong)
+  {
+    return isTicketExpired(paramLong);
+  }
+  
+  public static boolean isSkeyExpired(long paramLong)
+  {
+    return isTicketExpired(paramLong);
+  }
+  
+  public static boolean isTicketExpired(long paramLong)
+  {
+    long l = t.f();
+    if (l > paramLong) {
+      return true;
+    }
+    if (paramLong > 86400L + l)
+    {
+      util.LOGI("time for system may be  modified manually expireTime " + paramLong + " current " + l, "");
+      return true;
+    }
+    return false;
+  }
+  
+  protected static byte[] packPsBuf(Map paramMap1, long paramLong, Map paramMap2)
+  {
+    util.LOGI("pskeyMap " + paramMap1.size(), "");
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4096);
-    localByteBuffer.putShort((short)paramMap.size());
-    Iterator localIterator = paramMap.keySet().iterator();
+    localByteBuffer.putShort((short)paramMap1.size());
+    Iterator localIterator = paramMap1.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
       localByteBuffer.putShort((short)((String)localObject).length());
       localByteBuffer.put(((String)localObject).getBytes());
-      byte[] arrayOfByte = (byte[])paramMap.get(localObject);
+      byte[] arrayOfByte = (byte[])paramMap1.get(localObject);
       localByteBuffer.putShort((short)arrayOfByte.length);
       localByteBuffer.put(arrayOfByte);
       localByteBuffer.putShort((short)-1);
-      localObject = (Long)paramMap1.get(localObject);
+      localObject = (Long)paramMap2.get(localObject);
       if (localObject != null) {
         localByteBuffer.putLong(((Long)localObject).longValue());
       } else {
@@ -98,33 +201,29 @@ public class Ticket
       }
     }
     localByteBuffer.flip();
-    paramMap = new byte[localByteBuffer.limit()];
-    localByteBuffer.get(paramMap);
-    return paramMap;
+    paramMap1 = new byte[localByteBuffer.limit()];
+    localByteBuffer.get(paramMap1);
+    return paramMap1;
   }
   
-  public static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap, Map<String, Long> paramMap1)
+  protected static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map paramMap1, Map paramMap2)
   {
-    long l2 = t.f();
-    int i;
-    int j;
+    Object localObject2 = new StringBuilder().append("ps_buf ");
+    Object localObject1;
     if (paramArrayOfByte == null)
     {
-      util.LOGI("ps_buf null", "");
-      util.LOGI("pskeyMap " + paramMap.size(), "");
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 2))
-      {
-        int k = util.buf_to_int16(paramArrayOfByte, 0);
-        i = 2;
-        j = 0;
-        if ((j < k) && (paramArrayOfByte.length >= i + 2)) {
-          break label111;
-        }
+      localObject1 = "null";
+      util.LOGI(localObject1, "");
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 2)) {
+        break label58;
       }
     }
-    label111:
+    label58:
+    long l2;
+    int i;
+    int j;
+    label101:
     int m;
-    String str;
     do
     {
       do
@@ -132,19 +231,27 @@ public class Ticket
         do
         {
           return;
-          util.LOGI("ps_buf len " + paramArrayOfByte.length);
+          localObject1 = Integer.valueOf(paramArrayOfByte.length);
           break;
+          l2 = t.f();
+          int k = util.buf_to_int16(paramArrayOfByte, 0);
+          i = 2;
+          util.LOGI("domainCnt " + k, "");
+          j = 0;
+          if ((j >= k) || (paramArrayOfByte.length < i + 2)) {
+            break label343;
+          }
           m = util.buf_to_int16(paramArrayOfByte, i);
           i += 2;
         } while (paramArrayOfByte.length < i + m);
-        str = new String(paramArrayOfByte, i, m);
+        localObject1 = new String(paramArrayOfByte, i, m);
         i = m + i;
       } while (paramArrayOfByte.length < i + 2);
       m = util.buf_to_int16(paramArrayOfByte, i);
       i += 2;
     } while (paramArrayOfByte.length < i + m);
-    byte[] arrayOfByte = new byte[m];
-    System.arraycopy(paramArrayOfByte, i, arrayOfByte, 0, m);
+    localObject2 = new byte[m];
+    System.arraycopy(paramArrayOfByte, i, localObject2, 0, m);
     i += m;
     long l1;
     if ((paramArrayOfByte.length > i + 2) && (util.buf_to_int16(paramArrayOfByte, i) == 65535))
@@ -157,19 +264,79 @@ public class Ticket
     {
       if (l1 > l2)
       {
-        paramMap.put(str, arrayOfByte);
-        paramMap1.put(str, Long.valueOf(l1));
+        paramMap1.put(localObject1, localObject2);
+        paramMap2.put(localObject1, Long.valueOf(l1));
       }
-      util.LOGI(str + " pskey:" + m + " expire: " + l1, "");
+      util.LOGI((String)localObject1 + " pskey or pt4token:" + m + " expire: " + l1, "");
       j += 1;
+      break label101;
+      label343:
       break;
       l1 = 86400L + paramLong;
+    }
+  }
+  
+  protected static void parseSvrPs(byte[] paramArrayOfByte, long paramLong, Map paramMap1, Map paramMap2, Map paramMap3, Map paramMap4)
+  {
+    util.LOGI("pskeyMap " + paramMap1.size() + ", tokenMap " + paramMap3.size() + " create time:" + paramLong, "");
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 2)) {}
+    for (;;)
+    {
+      return;
+      paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+      int j = paramArrayOfByte.getShort();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = new byte[paramArrayOfByte.getShort()];
+        paramArrayOfByte.get((byte[])localObject);
+        localObject = new String((byte[])localObject);
+        byte[] arrayOfByte1 = new byte[paramArrayOfByte.getShort()];
+        paramArrayOfByte.get(arrayOfByte1);
+        byte[] arrayOfByte2 = new byte[paramArrayOfByte.getShort()];
+        paramArrayOfByte.get(arrayOfByte2);
+        long l = 86400L + paramLong;
+        if (arrayOfByte1.length > 0)
+        {
+          util.LOGI("parseSvrPs add domain " + (String)localObject + " pskey len " + arrayOfByte1.length + " " + l, "");
+          paramMap1.put(localObject, arrayOfByte1);
+          paramMap2.put(localObject, Long.valueOf(l));
+        }
+        if (arrayOfByte2.length > 0)
+        {
+          String str = new String(arrayOfByte2);
+          util.LOGI("parseSvrPs add domain " + (String)localObject + " pt4token len " + arrayOfByte2.length + " " + l + " " + str.substring(0, 5) + "***" + str.substring(str.length() - 5), "");
+          paramMap3.put(localObject, arrayOfByte2);
+          paramMap4.put(localObject, Long.valueOf(l));
+        }
+        util.LOGI((String)localObject + " pskey:" + arrayOfByte1.length + " pt4token " + arrayOfByte2.length + " expire: " + l, "");
+        i += 1;
+      }
     }
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public String getContent()
+  {
+    if (4096 == this._type) {
+      return "skey:" + util.getMaskBytes(this._sig, 2, 2);
+    }
+    return "";
+  }
+  
+  public String getPSkey(String paramString)
+  {
+    return __getPskey(paramString, this._pskey_map, this._pskey_expire);
+  }
+  
+  public String getPt4Token(String paramString)
+  {
+    util.LOGI("getPt4Token get domain " + paramString + " pt4token", "");
+    return __getPskey(paramString, this._pt4token_map, this._pt4token_expire);
   }
   
   public void readFromParcel(Parcel paramParcel)
@@ -180,6 +347,7 @@ public class Ticket
     this._create_time = paramParcel.readLong();
     this._expire_time = paramParcel.readLong();
     this._pskey_map = paramParcel.readHashMap(Map.class.getClassLoader());
+    this._pt4token_map = paramParcel.readHashMap(Map.class.getClassLoader());
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -190,6 +358,7 @@ public class Ticket
     paramParcel.writeLong(this._create_time);
     paramParcel.writeLong(this._expire_time);
     paramParcel.writeMap(this._pskey_map);
+    paramParcel.writeMap(this._pt4token_map);
   }
 }
 

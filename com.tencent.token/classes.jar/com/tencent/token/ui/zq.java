@@ -1,17 +1,59 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.ch;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.do;
+import com.tencent.token.global.f;
 
-final class zq
-  implements DialogInterface.OnClickListener
+class zq
+  extends Handler
 {
-  zq(zp paramzp) {}
+  zq(StartPwdGestureDeleteActivity paramStartPwdGestureDeleteActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    af.a().a(this.a.a.mHandler);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1008: 
+      if (paramMessage.arg1 == 0)
+      {
+        this.a.dismissDialog();
+        paramMessage = do.a().e();
+        if (paramMessage == null)
+        {
+          ch.a().a(System.currentTimeMillis(), 23);
+          StartPwdGestureDeleteActivity.access$000(this.a, this.a, 2131231100, 2131231094);
+          return;
+        }
+        this.a.dismissDialog();
+        cp.a(this.a.getApplicationContext()).a(this.a, 523005419L, StartPwdGestureDeleteActivity.access$100(this.a), paramMessage.mRealUin + "");
+        return;
+      }
+      this.a.dismissDialog();
+      paramMessage = (f)paramMessage.obj;
+      this.a.showUserDialog(paramMessage.c);
+      return;
+    case 4104: 
+      this.a.dismissDialog();
+      if ((paramMessage.getData() != null) && (paramMessage.getData().getString("exception") != null))
+      {
+        this.a.showToast(this.a.getResources().getString(2131231411) + ":" + paramMessage.getData().getString("exception"));
+        return;
+      }
+      this.a.showToast(2131231411);
+      return;
+    }
+    StartPwdGestureDeleteActivity.access$200(this.a);
   }
 }
 

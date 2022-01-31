@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.af;
+import com.tencent.token.cw;
 
 public class LoginMsgChangePwdActivity
   extends BaseActivity
@@ -12,26 +12,26 @@ public class LoginMsgChangePwdActivity
   private Button mChangePwdBtn;
   private TextView mChangePwdDesc;
   private TextView mChangePwdTitle;
-  public Handler mHandler = new oh(this);
+  public Handler mHandler = new nk(this);
   
   private void init()
   {
-    this.mChangePwdTitle = ((TextView)findViewById(2131296774));
-    this.mChangePwdDesc = ((TextView)findViewById(2131296775));
-    this.mChangePwdBtn = ((Button)findViewById(2131296776));
-    this.mChangePwdBtn.setOnClickListener(new oi(this));
-    af.a().c(this.mHandler);
+    this.mChangePwdTitle = ((TextView)findViewById(2131558977));
+    this.mChangePwdDesc = ((TextView)findViewById(2131558978));
+    this.mChangePwdBtn = ((Button)findViewById(2131558979));
+    this.mChangePwdBtn.setOnClickListener(new nl(this));
+    cw.a().c(this.mHandler);
   }
   
   public void cancelRequest()
   {
-    af.a().a(getClass().getName());
+    cw.a().a(getClass().getName());
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903123);
+    setContentView(2130968680);
     init();
   }
 }

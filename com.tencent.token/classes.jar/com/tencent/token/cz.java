@@ -1,46 +1,102 @@
 package com.tencent.token;
 
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.token.global.h;
 import java.util.HashMap;
-import org.json.JSONObject;
 
-public final class cz
-  extends bm
+public class cz
 {
-  private long c;
-  private long d;
+  private static cz a = null;
+  private SoundPool b = null;
+  private Context c = null;
+  private HashMap d = null;
+  private boolean e = false;
+  private Handler f = null;
   
-  protected final String a()
+  public static cz a(Context paramContext)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
+    if (a == null) {
+      a = new cz();
     }
-    for (String str = ax.c; str == null; str = null)
+    try
     {
-      this.a.a(104, null, null);
-      return null;
+      a.b(paramContext);
+      return a;
     }
-    str = "?uin=" + this.c + "&msgid=" + this.d + "&aq_base_sid=" + str;
-    return b.c() + "/cn/mbtoken3/mbtoken3_feedback_abnormal_login" + str;
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+      }
+    }
   }
   
-  protected final void a(fs paramfs)
+  private void b(Context paramContext)
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramfs.c.get("param.feedback.msgid")).longValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
+    if (this.c == paramContext) {
       return;
     }
-    this.a.a = 0;
+    this.c = paramContext;
+    this.b = new SoundPool(1, 3, 100);
+    this.d = new HashMap();
+    int i = 1;
+    if (i <= 10)
+    {
+      int j = this.b.load(this.c, 2131165185 + (i - 1), 1);
+      if (j == 0) {
+        h.c("load audio number=" + i + " fail");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.d.put(Integer.valueOf(i), Integer.valueOf(j));
+      }
+    }
+    i = this.b.load(this.c, 2131165184, 100);
+    if (i == 0)
+    {
+      h.c("load audio door_open fail");
+      return;
+    }
+    this.d.put(Integer.valueOf(11), Integer.valueOf(i));
+  }
+  
+  public int a(int paramInt)
+  {
+    AudioManager localAudioManager = (AudioManager)this.c.getSystemService("audio");
+    float f1 = localAudioManager.getStreamVolume(3) / localAudioManager.getStreamMaxVolume(3);
+    return this.b.play(paramInt, f1, f1, 1, 0, 1.0F);
+  }
+  
+  public void a()
+  {
+    if (!this.e)
+    {
+      this.e = true;
+      new da(this).execute(new String[] { "" });
+    }
+  }
+  
+  public void a(int[] paramArrayOfInt, int paramInt)
+  {
+    h.a("start play token1");
+    if (!this.e)
+    {
+      this.e = true;
+      h.a("start play token2");
+      new db(this, paramArrayOfInt).execute(new String[] { Integer.toString(paramInt) });
+    }
+  }
+  
+  public void b()
+  {
+    this.b.release();
   }
 }
 

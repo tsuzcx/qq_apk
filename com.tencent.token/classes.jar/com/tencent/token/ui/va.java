@@ -1,16 +1,19 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
 
-final class va
-  implements DialogInterface.OnClickListener
+class va
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  va(ux paramux) {}
+  va(RealNameFindActivity paramRealNameFindActivity, ScrollView paramScrollView) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.a.finish();
+    if ((this.a.getRootView().getHeight() - this.a.getHeight() < this.a.getMeasuredHeight() / 3) && (!RealNameFindActivity.access$300(this.b))) {
+      RealNameFindActivity.access$3100(this.b);
+    }
   }
 }
 

@@ -1,41 +1,43 @@
 package oicq.wlogin_sdk.request;
 
 import java.util.ArrayList;
-import oicq.wlogin_sdk.b.al;
-import oicq.wlogin_sdk.b.ao;
-import oicq.wlogin_sdk.b.av;
-import oicq.wlogin_sdk.b.c;
-import oicq.wlogin_sdk.b.cr;
-import oicq.wlogin_sdk.b.k;
-import oicq.wlogin_sdk.b.q;
+import oicq.wlogin_sdk.tlv_type.tlv_t100;
+import oicq.wlogin_sdk.tlv_type.tlv_t108;
+import oicq.wlogin_sdk.tlv_type.tlv_t109;
+import oicq.wlogin_sdk.tlv_type.tlv_t112;
+import oicq.wlogin_sdk.tlv_type.tlv_t116;
+import oicq.wlogin_sdk.tlv_type.tlv_t142;
+import oicq.wlogin_sdk.tlv_type.tlv_t145;
+import oicq.wlogin_sdk.tlv_type.tlv_t154;
+import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
 public class v
-  extends j
+  extends oicq_request
 {
   public v(t paramt)
   {
-    this.s = 2064;
-    this.t = 17;
-    this.u = "wtlogin.login";
-    this.w = paramt;
-    this.w.m = 0;
+    this.t = 2064;
+    this.u = 17;
+    this.v = "wtlogin.login";
+    this.x = paramt;
+    this.x.m = 0;
   }
   
   public int a(long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte, String paramString, int paramInt2, int paramInt3, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.u;
+    int j = t.w;
     int i = 0;
     for (;;)
     {
       byte[] arrayOfByte = a(paramLong1, paramLong2, paramInt1, j, paramArrayOfByte, paramString.getBytes(), paramInt2, paramInt3, paramArrayOfLong);
-      a(this.h, this.s, this.i, this.w.f, this.l, this.m, j, this.o, arrayOfByte);
-      int k = a(String.valueOf(this.w.f), false, paramWUserSigInfo);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
+      int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       if (k != 0) {
         return k;
       }
       k = b();
-      util.LOGI("retry num:" + i + " ret:" + k, "" + this.w.f);
+      util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
       if (k != 180) {
         return k;
       }
@@ -97,7 +99,7 @@ public class v
     {
       k += 1;
       break;
-      arrayOfByte1 = new c().a(paramLong1, paramLong2, paramInt2, paramInt1);
+      arrayOfByte1 = new tlv_t100().get_tlv_100(paramLong1, paramLong2, paramInt2, paramInt1);
       break label192;
       arrayOfByte1 = arrayOfByte2;
       if (paramArrayOfByte1 == null) {
@@ -107,29 +109,29 @@ public class v
       if (paramArrayOfByte1.length <= 0) {
         break label192;
       }
-      arrayOfByte1 = new oicq.wlogin_sdk.b.j().a(paramArrayOfByte1);
+      arrayOfByte1 = new tlv_t108().get_tlv_108(paramArrayOfByte1);
       break label192;
       arrayOfByte1 = arrayOfByte2;
-      if (t.K == null) {
+      if (t.M == null) {
         break label192;
       }
       arrayOfByte1 = arrayOfByte2;
-      if (t.K.length <= 0) {
+      if (t.M.length <= 0) {
         break label192;
       }
-      arrayOfByte1 = new k().a(t.K);
+      arrayOfByte1 = new tlv_t109().get_tlv_109(t.M);
       break label192;
-      arrayOfByte1 = new cr().a(0, t.s, 0);
+      arrayOfByte1 = new tlv_t8().get_tlv_8(0, t.u, 0);
       break label192;
-      arrayOfByte1 = new al().a(t.C);
+      arrayOfByte1 = new tlv_t142().get_tlv_142(t.E);
       break label192;
-      arrayOfByte1 = new ao().a(t.y);
+      arrayOfByte1 = new tlv_t145().get_tlv_145(t.A);
       break label192;
-      arrayOfByte1 = new av().b(this.w.i);
+      arrayOfByte1 = new tlv_t154().get_tlv_154(this.x.i);
       break label192;
-      arrayOfByte1 = new q().a(paramArrayOfByte2);
+      arrayOfByte1 = new tlv_t112().get_tlv_112(paramArrayOfByte2);
       break label192;
-      arrayOfByte1 = new oicq.wlogin_sdk.b.t().a(paramInt3, paramInt4, paramArrayOfLong);
+      arrayOfByte1 = new tlv_t116().get_tlv_116(paramInt3, paramInt4, paramArrayOfLong);
       break label192;
       paramArrayOfByte1 = new byte[j];
       paramInt2 = 0;
@@ -141,7 +143,7 @@ public class v
         paramInt2 += paramArrayOfByte2.length;
         paramInt1 += 1;
       }
-      return a(paramArrayOfByte1, this.t, i);
+      return b(paramArrayOfByte1, this.u, i);
     }
   }
 }

@@ -2,17 +2,27 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.x;
 
-final class rf
+class rf
   implements View.OnClickListener
 {
-  rf(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
+  rf(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    NetActiveVryMobileNoSmsActivity.access$600(this.a);
-    NetActiveVryMobileNoSmsActivity.access$100(this.a);
-    NetActiveVryMobileNoSmsActivity.access$700(this.a, false);
+    x.a(this.a);
+    NetActiveVryQuesActivity.access$702(this.a, NetActiveVryQuesActivity.access$800(this.a).getText().toString());
+    h.a("mobile " + NetActiveVryQuesActivity.access$700(this.a));
+    if ((NetActiveVryQuesActivity.access$700(this.a) != null) && (NetActiveVryQuesActivity.access$700(this.a).length() != 0))
+    {
+      NetActiveVryQuesActivity.access$400(this.a);
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
+    }
+    this.a.showToast(2131230956);
   }
 }
 

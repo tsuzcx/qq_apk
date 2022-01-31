@@ -4,13 +4,14 @@ import android.os.Handler;
 import android.util.Pair;
 import b.a.h;
 import com.qq.taf.jce.JceStruct;
-import d.b.b;
+import com.tencent.token.fm;
+import com.tencent.token.fo;
 import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicLong;
 
 class c
-  implements b
+  implements fo
 {
   c(GameLogin paramGameLogin) {}
   
@@ -18,18 +19,18 @@ class c
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = d.a.a.a;
+      paramInt1 = fm.a;
       return null;
     }
     paramJceStruct = (h)paramJceStruct;
     Object localObject = paramJceStruct.k;
     if ((GameLogin.a(this.a).b((byte[])localObject)) || (!GameLogin.b(this.a).contains(paramJceStruct.o))) {
-      paramInt1 = d.a.a.a;
+      paramInt1 = fm.a;
     }
     for (;;)
     {
       return new Pair(Integer.valueOf(51), new b.a.d(paramJceStruct.a, paramJceStruct.b));
-      paramInt1 = d.a.a.a;
+      paramInt1 = fm.a;
       localObject = paramJceStruct.c;
       long l = paramJceStruct.b;
       l = paramJceStruct.a;

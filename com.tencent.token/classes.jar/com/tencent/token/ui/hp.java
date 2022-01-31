@@ -1,24 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.view.View.OnClickListener;
 
-final class hp
-  implements Runnable
+class hp
+  implements View.OnClickListener
 {
-  private View b;
+  hp(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
   
-  public hp(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld, View paramView)
+  public void onClick(View paramView)
   {
-    this.b = paramView;
-    FaceRecognitionCameraActivityOld.access$3502(paramFaceRecognitionCameraActivityOld, new AlphaAnimation(1.0F, 0.0F));
-    FaceRecognitionCameraActivityOld.access$3500(paramFaceRecognitionCameraActivityOld).setDuration(500L);
-    FaceRecognitionCameraActivityOld.access$3500(paramFaceRecognitionCameraActivityOld).setAnimationListener(new hq(this, paramFaceRecognitionCameraActivityOld));
-  }
-  
-  public final void run()
-  {
-    this.b.startAnimation(FaceRecognitionCameraActivityOld.access$3500(this.a));
+    paramView = new Intent(this.a, FaceRecognitionAddFaceActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

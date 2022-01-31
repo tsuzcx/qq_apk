@@ -1,8 +1,15 @@
 package com.tencent.service;
 
-public abstract interface d
+import com.tencent.halley.downloader.DownloaderTaskStatus;
+
+public class d
 {
-  public abstract void a(a parama);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public int e;
+  public DownloaderTaskStatus f = DownloaderTaskStatus.PENDING;
 }
 
 

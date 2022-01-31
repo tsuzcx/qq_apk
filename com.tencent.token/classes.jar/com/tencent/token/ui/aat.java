@@ -1,29 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class aat
+class aat
   implements View.OnClickListener
 {
-  aat(aas paramaas) {}
+  aat(TakeIDPhotoComfirmActivity paramTakeIDPhotoComfirmActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (SmsContentTipActivity.access$2100(this.a.a) == 10)
-    {
-      paramView = new Intent(this.a.a, IndexActivity.class);
-      paramView.putExtra("index_from", 16);
-      this.a.a.startActivity(paramView);
-    }
-    for (;;)
-    {
-      this.a.a.finish();
-      return;
-      paramView = new Intent(this.a.a, IndexActivity.class);
-      this.a.a.startActivity(paramView);
-    }
+    this.a.setResult(20);
+    this.a.finish();
   }
 }
 

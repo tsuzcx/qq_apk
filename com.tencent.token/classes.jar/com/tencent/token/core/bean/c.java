@@ -1,39 +1,28 @@
 package com.tencent.token.core.bean;
 
-public final class c
+public class c
 {
-  private String a;
-  private String b;
-  private boolean c;
+  private int a;
+  private int b = 0;
   
-  public final String a()
+  public int a()
   {
     return this.a;
   }
   
-  public final void a(String paramString)
+  public void a(int paramInt)
   {
-    this.a = paramString;
+    this.a = paramInt;
   }
   
-  public final void a(boolean paramBoolean)
+  public void b(int paramInt)
   {
-    this.c = paramBoolean;
+    this.b = paramInt;
   }
   
-  public final String b()
+  public boolean b()
   {
-    return this.b;
-  }
-  
-  public final void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public final boolean c()
-  {
-    return this.c;
+    return this.b == 1;
   }
 }
 

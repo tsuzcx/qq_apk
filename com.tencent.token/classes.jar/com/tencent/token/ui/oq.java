@@ -1,15 +1,13 @@
 package com.tencent.token.ui;
 
-import android.widget.TextView;
-
-final class oq
+class oq
   implements Runnable
 {
-  private oq(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity, byte paramByte) {}
+  oq(LogoActivity paramLogoActivity) {}
   
-  public final void run()
+  public void run()
   {
-    LoginMsgReportLocationActivity.access$800(this.a).setVisibility(8);
+    LogoActivity.access$300(this.a);
   }
 }
 

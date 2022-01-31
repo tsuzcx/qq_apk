@@ -1,14 +1,14 @@
 package com.tencent.token.ui;
 
-final class em
-  implements Runnable
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class em
+  implements DialogInterface.OnClickListener
 {
-  em(FacePKCameraActivity paramFacePKCameraActivity) {}
+  em(el paramel) {}
   
-  public final void run()
-  {
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

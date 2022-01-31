@@ -1,16 +1,36 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.token.core.bean.a;
+import com.tencent.token.dk;
+import com.tencent.token.dm;
+import com.tencent.token.ui.IndexActivity;
 
-final class g
-  implements View.OnClickListener
+class g
+  implements w
 {
-  g(CommonActionSheetDialog paramCommonActionSheetDialog) {}
+  g(DualMsgShowDialog paramDualMsgShowDialog) {}
   
-  public final void onClick(View paramView)
+  public void a()
   {
-    CommonActionSheetDialog.a(this.a).a(1);
+    this.a.dismiss();
+    if (DualMsgShowDialog.a(this.a))
+    {
+      Intent localIntent = new Intent(DualMsgShowDialog.b(this.a), IndexActivity.class);
+      localIntent.putExtra("intent.retcode", DualMsgShowDialog.c(this.a));
+      DualMsgShowDialog.b(this.a).startActivity(localIntent);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (DualMsgShowDialog.d(this.a) == 0) {}
+    for (a locala = dm.a().a(DualMsgShowDialog.e(this.a));; locala = dk.a().a(DualMsgShowDialog.e(this.a)))
+    {
+      DualMsgShowDialog.a(this.a, locala, paramInt);
+      return;
+    }
   }
 }
 

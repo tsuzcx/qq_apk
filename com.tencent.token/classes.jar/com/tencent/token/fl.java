@@ -1,239 +1,101 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.global.e;
+import android.text.TextUtils;
+import android.util.Log;
+import btmsdkobf.ad;
+import btmsdkobf.cp;
+import btmsdkobf.z;
+import com.tmsdk.TMSDKContext;
+import com.tmsdk.base.conch.ConchService.ConchPushInfo;
+import com.tmsdk.base.conch.ConchService.IConchPushListener;
+import com.tmsdk.base.conch.ConchServiceProxy;
+import com.tmsdk.base.utils.ConvertUtil;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class fl
+final class fl
+  extends ConchService.IConchPushListener
 {
-  List a = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem b;
-  String c;
-  long d;
-  public boolean e;
-  public boolean f = false;
-  
-  private void a(List paramList)
+  public void onRecvPush(ConchService.ConchPushInfo paramConchPushInfo)
   {
-    Object localObject;
-    g localg;
-    try
+    if ((paramConchPushInfo == null) || (paramConchPushInfo.mConch == null)) {
+      return;
+    }
+    Log.i("SecureGuideUtil", "receive cmd " + paramConchPushInfo.mConch.cmdId);
+    int i;
+    Object localObject2;
+    int j;
+    switch (paramConchPushInfo.mConch.cmdId)
     {
-      if (this.b == null) {
-        this.b = ba.a().h.a("account_prot");
-      }
-      if (this.b.mClientVersion <= this.b.mClickVersion) {
-        break label259;
-      }
-      if (this.b.mClickVersion == -1)
+    default: 
+      return;
+    case 6275: 
+      localObject1 = (ad)cp.a(paramConchPushInfo.mConch.aZ, new ad(), false);
+      if ((((ad)localObject1).bm != null) && (((ad)localObject1).bm.size() >= 6))
       {
-        if (this.b.mConfIDs == null) {
-          break label259;
-        }
-        localObject = this.b.mConfIDs.iterator();
-        while (((Iterator)localObject).hasNext())
+        i = ConvertUtil.stringToInt((String)((ad)localObject1).bm.get(0));
+        localObject2 = (String)((ad)localObject1).bm.get(1);
+        String str1 = (String)((ad)localObject1).bm.get(2);
+        String str2 = (String)((ad)localObject1).bm.get(3);
+        String str3 = (String)((ad)localObject1).bm.get(4);
+        j = ConvertUtil.stringToInt((String)((ad)localObject1).bm.get(5));
+        fk.a("guide_qqpimsecure_dialog_ison", i);
+        Log.i("SecureGuideUtil", "cloud data: ison- " + i);
+        fk.a("guide_qqpimsecure_dialog_line1", (String)localObject2);
+        Log.i("SecureGuideUtil", "cloud data: line1- " + (String)localObject2);
+        fk.a("guide_qqpimsecure_dialog_line2", str1);
+        Log.i("SecureGuideUtil", "cloud data: line2- " + str1);
+        fk.a("guide_qqpimsecure_dialog_line3", str2);
+        Log.i("SecureGuideUtil", "cloud data: line3- " + str2);
+        fk.a("guide_qqpimsecure_dialog_line4", str3);
+        Log.i("SecureGuideUtil", "cloud data: line4- " + str3);
+        fk.a("guide_qqpimsecure_dialog_limit_hour", j);
+        Log.i("SecureGuideUtil", "cloud data: hour limit- " + j);
+      }
+      ConchServiceProxy.getInstance().reportConchResult(paramConchPushInfo, 10, 1);
+      TMSDKContext.saveActionData(1150099);
+      return;
+    case 6277: 
+      localObject2 = (ad)cp.a(paramConchPushInfo.mConch.aZ, new ad(), false);
+      if ((((ad)localObject2).bm != null) && (((ad)localObject2).bm.size() >= 2))
+      {
+        i = ConvertUtil.stringToInt((String)((ad)localObject2).bm.get(0));
+        j = ConvertUtil.stringToInt((String)((ad)localObject2).bm.get(1));
+        fk.a("guide_qqpimsecure_tips_ison", i);
+        Log.i("SecureGuideUtil", "cloud data: ison- " + i);
+        fk.a("guide_qqpimsecure_tips_limit_hour", j);
+        Log.i("SecureGuideUtil", "cloud data: hour limit- " + j);
+        if (((ad)localObject2).bm.size() >= 4)
         {
-          int i = ((Integer)((Iterator)localObject).next()).intValue();
-          localIterator = paramList.iterator();
-          while (localIterator.hasNext())
-          {
-            localg = (g)localIterator.next();
-            if (i == localg.a) {
-              localg.f = true;
-            }
-          }
+          localObject1 = (String)((ad)localObject2).bm.get(2);
+          localObject2 = (String)((ad)localObject2).bm.get(3);
+          fk.a("guide_qqpimsecure_tips_line1", (String)localObject1);
+          Log.i("SecureGuideUtil", "cloud data: line1- " + (String)localObject1);
+          fk.a("guide_qqpimsecure_tips_line2", (String)localObject2);
+          Log.i("SecureGuideUtil", "cloud data: line2- " + (String)localObject2);
         }
       }
-      localObject = new HashSet();
+      ConchServiceProxy.getInstance().reportConchResult(paramConchPushInfo, 10, 1);
+      TMSDKContext.saveActionData(1150100);
+      return;
     }
-    finally {}
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((Set)localObject).add(Integer.valueOf(((g)localIterator.next()).a));
-    }
-    localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = (ad)cp.a(paramConchPushInfo.mConch.aZ, new ad(), false);
+    if ((((ad)localObject1).bm != null) && (((ad)localObject1).bm.size() >= 1))
     {
-      localg = (g)localIterator.next();
-      if (!((Set)localObject).contains(Integer.valueOf(localg.a))) {
-        localg.f = true;
+      i = ConvertUtil.stringToInt((String)((ad)localObject1).bm.get(0));
+      if (i > 0) {
+        fk.a("privacy_dialog_agree_time", -1L);
       }
-    }
-    label259:
-    this.a.clear();
-    this.a = paramList;
-    ax.a();
-    this.c = ax.c;
-    if (ax.a().e() != null) {
-      this.d = ax.a().e().mUin;
-    }
-  }
-  
-  public final int a(int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      g localg = (g)localIterator.next();
-      int j = i + 1;
-      i = j;
-      if (localg.a == paramInt) {
-        return j;
-      }
-    }
-    return -1;
-  }
-  
-  public final List a()
-  {
-    try
-    {
-      List localList = this.a;
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean a(JSONArray paramJSONArray)
-  {
-    boolean bool;
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    if (paramJSONArray != null)
-    {
-      bool = true;
-      e.a(bool);
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      if (paramJSONArray == null) {}
-    }
-    for (;;)
-    {
-      try
+      Log.i("SecureGuideUtil", "cloud data: ison- " + i);
+      if (((ad)localObject1).bm.size() >= 2)
       {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i >= paramJSONArray.length()) {
-            break label234;
-          }
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label229;
-          }
-          bool = true;
-          e.a(bool);
-          g localg = new g();
-          if (!localg.a(localJSONObject)) {
-            e.c("object item parse failed: " + i);
-          }
-          localArrayList1.add(localg);
-          i += 1;
-          continue;
-          if (i >= localArrayList1.size()) {
-            break label246;
-          }
-          paramJSONArray = (g)localArrayList1.get(i);
-          if (paramJSONArray.g) {
-            break label239;
-          }
-          localArrayList2.add(paramJSONArray);
-          break label239;
-          if (i < localArrayList1.size())
-          {
-            paramJSONArray = (g)localArrayList1.get(i);
-            if (paramJSONArray.g) {
-              localArrayList2.add(paramJSONArray);
-            }
-            i += 1;
-            continue;
-          }
+        localObject1 = (String)((ad)localObject1).bm.get(1);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          fk.a("privacy_dialog_line2_wording", (String)localObject1);
         }
-        a(localArrayList2);
-        return true;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        return false;
-      }
-      bool = false;
-      break;
-      label229:
-      bool = false;
-      continue;
-      label234:
-      int i = 0;
-      continue;
-      label239:
-      i += 1;
-      continue;
-      label246:
-      i = 0;
-    }
-  }
-  
-  public final boolean b()
-  {
-    Object localObject = ax.a().e();
-    if ((this.c == null) || (localObject == null)) {}
-    do
-    {
-      return false;
-      localObject = this.c;
-      ax.a();
-    } while ((!((String)localObject).equals(ax.c)) || (this.d != ax.a().e().mUin) || (!this.e));
-    return true;
-  }
-  
-  public final int c()
-  {
-    int i = 0;
-    int k = 0;
-    try
-    {
-      List localList = a();
-      if (localList == null) {}
-      int j;
-      do
-      {
-        return k;
-        j = 0;
-        k = i;
-      } while (j >= localList.size());
-      boolean bool = ((g)localList.get(j)).g;
-      if (!bool) {
-        i += 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
+        Log.i("SecureGuideUtil", "cloud data: line2- " + (String)localObject1);
       }
     }
-    finally {}
-  }
-  
-  public final void d()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((g)localIterator.next()).f = false;
-    }
+    ConchServiceProxy.getInstance().reportConchResult(paramConchPushInfo, 10, 1);
   }
 }
 

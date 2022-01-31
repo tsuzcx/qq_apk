@@ -1,16 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 
-final class ay
-  implements View.OnClickListener
+class ay
+  implements Runnable
 {
-  ay(BaseActivity paramBaseActivity) {}
+  ay(ax paramax) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    this.a.dismissDialog();
+    this.a.a();
+    ax.b(this.a).postDelayed(ax.a(this.a), 50L);
   }
 }
 

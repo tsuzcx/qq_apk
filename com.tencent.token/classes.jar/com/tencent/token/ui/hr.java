@@ -1,32 +1,57 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.animation.RotateAnimation;
-import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import com.tencent.token.global.h;
 
-final class hr
-  implements Runnable
+class hr
+  implements pr
 {
-  private View b;
-  private View c;
-  private View d;
+  hr(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
   
-  public hr(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld, View paramView1, View paramView2)
+  public void a(int paramInt)
   {
-    this.b = paramView1;
-    this.c = null;
-    this.d = paramView2;
-    FaceRecognitionCameraActivityOld.access$3002(paramFaceRecognitionCameraActivityOld, new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F));
-    FaceRecognitionCameraActivityOld.access$3000(paramFaceRecognitionCameraActivityOld).setDuration(250L);
-    FaceRecognitionCameraActivityOld.access$3102(paramFaceRecognitionCameraActivityOld, new TranslateAnimation(0.0F, 0.0F, 0.0F, -FaceRecognitionCameraActivityOld.access$2200(paramFaceRecognitionCameraActivityOld)));
-    FaceRecognitionCameraActivityOld.access$3100(paramFaceRecognitionCameraActivityOld).setDuration(500L);
-    FaceRecognitionCameraActivityOld.access$3000(paramFaceRecognitionCameraActivityOld).setAnimationListener(new hs(this, paramFaceRecognitionCameraActivityOld));
-    FaceRecognitionCameraActivityOld.access$3100(paramFaceRecognitionCameraActivityOld).setAnimationListener(new ht(this, paramFaceRecognitionCameraActivityOld));
-  }
-  
-  public final void run()
-  {
-    this.d.startAnimation(FaceRecognitionCameraActivityOld.access$3000(this.a));
+    boolean bool2 = false;
+    FaceRecognitionDefaultActivity localFaceRecognitionDefaultActivity = this.a;
+    boolean bool1;
+    if ((paramInt == 1) || (paramInt == 3))
+    {
+      bool1 = true;
+      FaceRecognitionDefaultActivity.access$002(localFaceRecognitionDefaultActivity, bool1);
+      localFaceRecognitionDefaultActivity = this.a;
+      if (paramInt != 2)
+      {
+        bool1 = bool2;
+        if (paramInt != 3) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      FaceRecognitionDefaultActivity.access$102(localFaceRecognitionDefaultActivity, bool1);
+      h.a("psw_open_switch" + FaceRecognitionDefaultActivity.access$000(this.a));
+      if (!FaceRecognitionDefaultActivity.access$000(this.a)) {
+        break label164;
+      }
+      FaceRecognitionDefaultActivity.access$300(this.a).setText(2131231443);
+      FaceRecognitionDefaultActivity.access$300(this.a).setTextAppearance(this.a, 2131362196);
+    }
+    for (;;)
+    {
+      if (!FaceRecognitionDefaultActivity.access$100(this.a)) {
+        break label195;
+      }
+      FaceRecognitionDefaultActivity.access$400(this.a).setText(2131231443);
+      FaceRecognitionDefaultActivity.access$400(this.a).setTextAppearance(this.a, 2131362196);
+      return;
+      bool1 = false;
+      break;
+      label164:
+      FaceRecognitionDefaultActivity.access$300(this.a).setText(2131231442);
+      FaceRecognitionDefaultActivity.access$300(this.a).setTextAppearance(this.a, 2131362197);
+    }
+    label195:
+    FaceRecognitionDefaultActivity.access$400(this.a).setText(2131231442);
+    FaceRecognitionDefaultActivity.access$400(this.a).setTextAppearance(this.a, 2131362197);
   }
 }
 

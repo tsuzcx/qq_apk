@@ -2,11 +2,9 @@ package com.tencent.feedback.eup.jni;
 
 import android.content.Context;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 
 public class c
 {
@@ -214,9 +212,9 @@ public class c
     //   0	320	0	paramContext	Context
     //   0	320	1	paramString	String
     //   13	162	2	localObject1	Object
-    //   218	11	2	localIOException1	IOException
-    //   234	15	2	localIOException2	IOException
-    //   314	1	2	localIOException3	IOException
+    //   218	11	2	localIOException1	java.io.IOException
+    //   234	15	2	localIOException2	java.io.IOException
+    //   314	1	2	localIOException3	java.io.IOException
     //   44	272	3	localFileInputStream	java.io.FileInputStream
     //   1	266	4	localObject2	Object
     //   125	23	5	str	String
@@ -250,7 +248,7 @@ public class c
     //   205	212	314	java/io/IOException
   }
   
-  private static com.tencent.feedback.eup.e a(Context paramContext, Map<String, String> paramMap)
+  private static com.tencent.feedback.eup.e a(Context paramContext, Map paramMap)
   {
     if (paramMap == null)
     {
@@ -322,11 +320,11 @@ public class c
           }
           localObject = "unknown2";
           String str7 = (String)paramMap.get("jstack");
-          paramMap = (Map<String, String>)localObject;
+          paramMap = (Map)localObject;
           if (str7 != null) {
             paramMap = (String)localObject + "java:\n" + str7;
           }
-          paramMap = b.a(paramContext, l1 * 1000L + l2 / 1000L, str4, str1, paramMap, str3, i, str2, -j, str6, null, null, str5);
+          paramMap = b.a(paramContext, l2 / 1000L + 1000L * l1, str4, str1, paramMap, str3, i, str2, -j, str6, null, null, str5);
           paramContext = paramMap;
           if (paramMap == null) {
             break;
@@ -350,7 +348,6 @@ public class c
   }
   
   private static String a(InputStream paramInputStream)
-    throws IOException
   {
     if (paramInputStream == null) {
       return null;
@@ -379,7 +376,7 @@ public class c
     com.tencent.feedback.common.e.b("delete record file %s", new Object[] { paramString.getAbsoluteFile() });
   }
   
-  private static Map<String, Integer> b(String paramString)
+  private static Map b(String paramString)
   {
     if (paramString == null) {
       return null;

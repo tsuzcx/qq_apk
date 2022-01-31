@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class WFastLoginInfo$1
-  implements Parcelable.Creator<WFastLoginInfo>
+  implements Parcelable.Creator
 {
   public WFastLoginInfo createFromParcel(Parcel paramParcel)
   {

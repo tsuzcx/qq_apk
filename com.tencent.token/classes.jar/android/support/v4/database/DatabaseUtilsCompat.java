@@ -2,8 +2,10 @@ package android.support.v4.database;
 
 import android.text.TextUtils;
 
-public class DatabaseUtilsCompat
+@Deprecated
+public final class DatabaseUtilsCompat
 {
+  @Deprecated
   public static String[] appendSelectionArgs(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     if ((paramArrayOfString1 == null) || (paramArrayOfString1.length == 0)) {
@@ -15,6 +17,7 @@ public class DatabaseUtilsCompat
     return arrayOfString;
   }
   
+  @Deprecated
   public static String concatenateWhere(String paramString1, String paramString2)
   {
     if (TextUtils.isEmpty(paramString1)) {

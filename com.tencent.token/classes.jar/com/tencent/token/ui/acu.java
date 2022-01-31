@@ -1,16 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class acu
-  implements DialogInterface.OnClickListener
+class acu
+  implements View.OnClickListener
 {
-  acu(UnbindUinActivity paramUnbindUinActivity) {}
+  acu(UtilsLoginProtectActivity paramUtilsLoginProtectActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.dismissDialog();
+    h.c("retry: ");
+    this.a.queryLoginProtect();
   }
 }
 

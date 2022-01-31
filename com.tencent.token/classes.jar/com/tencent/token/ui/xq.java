@@ -1,42 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.token.global.RqdApplication;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-final class xq
-  implements View.OnClickListener
+class xq
+  implements TextWatcher
 {
   xq(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (RealNameStep1InputNameIdActivity.access$1000(this.a))
-    {
-      if (!RealNameStep1InputNameIdActivity.access$3000(this.a, RealNameStep1InputNameIdActivity.access$1700(this.a).getText().toString()))
-      {
-        RealNameStep1InputNameIdActivity.access$700(this.a).setVisibility(0);
-        RealNameStep1InputNameIdActivity.access$700(this.a).setText(this.a.getResources().getString(2131362553));
-        RealNameStep1InputNameIdActivity.access$700(this.a).setTextColor(-65536);
-      }
-    }
-    else {
-      return;
-    }
-    if (!RealNameStep1InputNameIdActivity.access$2800(this.a))
-    {
-      this.a.showUserDialogComfig(2130903168, null, String.format(this.a.getResources().getString(2131362540), new Object[] { RealNameStep1InputNameIdActivity.access$1600(this.a).getText().toString(), RealNameStep1InputNameIdActivity.access$1700(this.a).getText().toString() }), 0, new xr(this), new xs(this));
-      return;
-    }
-    this.a.dismiss();
-    RealNameStep1InputNameIdActivity.access$3100(this.a);
-    RqdApplication.i().getSharedPreferences("sp_name_global", 0).edit().putBoolean("key_zzb_refused_firsttime", true).commit();
+    RealNameStep1InputNameIdActivity.access$3102(this.a, false);
+    RealNameStep1InputNameIdActivity.access$502(this.a, false);
+    RealNameStep1InputNameIdActivity.access$1000(this.a);
   }
 }
 

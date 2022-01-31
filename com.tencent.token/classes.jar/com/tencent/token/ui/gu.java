@@ -1,19 +1,22 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
 
-final class gu
-  implements Runnable
+class gu
+  implements View.OnClickListener
 {
-  gu(fz paramfz) {}
+  gu(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity, QQUser paramQQUser) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.a, ModifyQQPwdActivity.class);
-    localIntent.putExtra("face_vry_succ", true);
-    localIntent.addFlags(67108864);
-    this.a.a.startActivity(localIntent);
-    this.a.a.finish();
+    paramView = new Intent(this.b, NetActiveVryOtherListActivity.class);
+    paramView.putExtra("intent.qquser", this.a);
+    paramView.putExtra("intent.determin_factors_result", FaceRecognitionCameraActivity.access$1300(this.b));
+    paramView.putExtra("intent.determin_verify_type", FaceRecognitionCameraActivity.access$2500(this.b));
+    this.b.startActivityForResult(paramView, 111);
   }
 }
 

@@ -1,17 +1,16 @@
 package com.tencent.token.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.content.DialogInterface.OnCancelListener;
 
-final class xa
-  implements DialogInterface.OnClickListener
+class xa
+  implements DialogInterface.OnCancelListener
 {
-  xa(wy paramwy) {}
+  xa(wp paramwp) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    af.a().a(RealNameStep0VerifyMobileUpActivity.access$200(this.a.a));
+    this.a.a.dismissDialog();
   }
 }
 

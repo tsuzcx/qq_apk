@@ -7,7 +7,7 @@ public final class f
   public long a;
   public String b;
   public long c;
-  public Map<String, String[]> d;
+  public Map d;
 }
 
 

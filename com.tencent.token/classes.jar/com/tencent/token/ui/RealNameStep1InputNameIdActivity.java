@@ -23,12 +23,13 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import com.tencent.token.af;
+import com.tencent.token.ch;
 import com.tencent.token.core.bean.RealNameRegResult;
 import com.tencent.token.core.bean.RealNameStatusResult;
-import com.tencent.token.global.e;
-import com.tencent.token.p;
-import com.tencent.token.utils.s;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.i;
+import com.tencent.token.utils.w;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,49 +37,45 @@ public class RealNameStep1InputNameIdActivity
   extends BaseActivity
 {
   private final String RECEIVE_SMS_ACTION = "android.net.conn.CONNECTIVITY_CHANGE";
-  private final int START_ANIM = 0;
-  private final String UPDATE_INTERVAL_TIME_ACTION = "com.tencent.token.realname.AUDIT_INTERVAL";
   private final int UPDATE_TIME = -100;
   private Handler _handler;
   private byte[] backphotoinfo;
   private LinearLayout baselayout;
   private boolean checkid;
   private byte[] frontphotoinfo;
+  private boolean isFromRecommView = false;
   private boolean isGetQryIdResult = false;
   private boolean isValidId = false;
-  private long mAuditTime;
   private boolean mAutoIDCardDetect = true;
   private byte[] mBackData;
   private String mBackPath;
-  private TextView mChanceLeft;
   Dialog mDialog;
   private byte[] mFaceData;
   private byte[] mFrontData;
   private String mFrontPath;
-  private Handler mHandler = new xg(this);
+  private Handler mHandler = new wp(this);
   private HandlerThread mHandlerThread;
   private EditText mId;
   private ProgressBar mIdPb;
   private boolean mIsNETRegisted;
   private boolean mIsRegOk = false;
+  private View mLogoLayout;
   private EditText mName;
   private Button mNext;
   private int mOpType = 1;
   private long mRealUin = 0L;
   private RealNameStatusResult mResult;
+  private TextView mResultTipText;
   private View mScanFaceLayout;
   private ImageView mScanFaceOk;
   private View mScanIdLayout;
   private ImageView mScanIdOk;
-  private TextView mTip1;
-  private TextView mTip3;
   private TextView mTipText;
-  private ak mView;
-  private BroadcastReceiver mnetReceiver = new xy(this);
+  private ax mView;
+  private BroadcastReceiver mnetReceiver = new xn(this);
   private ScrollView scrollView;
+  private int sourceFromAddFace = AddFaceResultActivity.ADD_FACE_UPDATE_ZZB_DEFAULT_VALUE;
   private View toastView = null;
-  private RelativeLayout topToast;
-  private TextView topToastText;
   
   private void back2RealNameActivity()
   {
@@ -88,7 +85,7 @@ public class RealNameStep1InputNameIdActivity
     startActivity(localIntent);
   }
   
-  private static int calculateInSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  public static int calculateInSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
     int k = paramOptions.outHeight;
     int j = paramOptions.outWidth;
@@ -115,13 +112,13 @@ public class RealNameStep1InputNameIdActivity
     {
       if (i != 0)
       {
-        this.mNext.setTextAppearance(this, 2131427381);
-        this.mNext.setBackgroundResource(2130837549);
+        this.mNext.setTextAppearance(this, 2131362228);
+        this.mNext.setBackgroundResource(2130837632);
         this.mNext.setEnabled(true);
         return true;
       }
-      this.mNext.setTextAppearance(this, 2131427335);
-      this.mNext.setBackgroundResource(2130837636);
+      this.mNext.setTextAppearance(this, 2131362186);
+      this.mNext.setBackgroundResource(2130837728);
       this.mNext.setEnabled(false);
       return false;
     }
@@ -133,118 +130,116 @@ public class RealNameStep1InputNameIdActivity
     if (isVaildID(str))
     {
       this.mIdPb.setVisibility(0);
-      af.a().a(s.f(this.mRealUin), this.mRealUin, str, this.mHandler);
+      cw.a().a(w.f(this.mRealUin), this.mRealUin, str, this.mHandler, true);
       return;
     }
     this.mTipText.setVisibility(0);
     if (TextUtils.isEmpty(str))
     {
-      this.mTipText.setText(getResources().getString(2131362554));
+      this.mTipText.setText(getResources().getString(2131231652));
       this.mTipText.setTextColor(-7829368);
       if ((this.toastView == null) || (this.toastView.getVisibility() != 0)) {
-        break label182;
+        break label183;
       }
-      this.scrollView.scrollTo(0, this.mTipText.getMeasuredHeight() + s.a(this, 20.0F) + this.toastView.getMeasuredHeight());
+      this.scrollView.scrollTo(0, this.mTipText.getMeasuredHeight() + w.a(this, 20.0F) + this.toastView.getMeasuredHeight());
     }
     for (;;)
     {
       this.isValidId = false;
       checkCanCommit();
       return;
-      this.mTipText.setText(getResources().getString(2131362553));
+      this.mTipText.setText(getResources().getString(2131231651));
       this.mTipText.setTextColor(-65536);
       break;
-      label182:
-      this.scrollView.scrollTo(0, this.mTipText.getMeasuredHeight() + s.a(this, 20.0F));
+      label183:
+      this.scrollView.scrollTo(0, this.mTipText.getMeasuredHeight() + w.a(this, 20.0F));
     }
   }
   
   /* Error */
-  private byte[] compressPicData(byte[] paramArrayOfByte)
+  public static byte[] compressPicData(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 268	android/graphics/BitmapFactory$Options
+    //   0: new 263	android/graphics/BitmapFactory$Options
     //   3: dup
-    //   4: invokespecial 397	android/graphics/BitmapFactory$Options:<init>	()V
-    //   7: astore_2
-    //   8: aload_2
+    //   4: invokespecial 394	android/graphics/BitmapFactory$Options:<init>	()V
+    //   7: astore_1
+    //   8: aload_1
     //   9: iconst_1
-    //   10: putfield 400	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   13: aload_1
+    //   10: putfield 397	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   13: aload_0
     //   14: iconst_0
-    //   15: aload_1
+    //   15: aload_0
     //   16: arraylength
-    //   17: aload_2
-    //   18: invokestatic 406	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   17: aload_1
+    //   18: invokestatic 403	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   21: pop
-    //   22: aload_2
-    //   23: aload_2
+    //   22: aload_1
+    //   23: aload_1
     //   24: sipush 640
     //   27: sipush 640
-    //   30: invokestatic 408	com/tencent/token/ui/RealNameStep1InputNameIdActivity:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   33: putfield 411	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   36: aload_2
+    //   30: invokestatic 405	com/tencent/token/ui/RealNameStep1InputNameIdActivity:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   33: putfield 408	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   36: aload_1
     //   37: iconst_0
-    //   38: putfield 400	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   41: aload_1
+    //   38: putfield 397	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   41: aload_0
     //   42: iconst_0
-    //   43: aload_1
+    //   43: aload_0
     //   44: arraylength
-    //   45: aload_2
-    //   46: invokestatic 406	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   49: astore_2
-    //   50: new 413	java/io/ByteArrayOutputStream
+    //   45: aload_1
+    //   46: invokestatic 403	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   49: astore_1
+    //   50: new 410	java/io/ByteArrayOutputStream
     //   53: dup
-    //   54: invokespecial 414	java/io/ByteArrayOutputStream:<init>	()V
-    //   57: astore_1
-    //   58: aload_2
-    //   59: getstatic 420	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   54: invokespecial 411	java/io/ByteArrayOutputStream:<init>	()V
+    //   57: astore_0
+    //   58: aload_1
+    //   59: getstatic 417	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   62: bipush 85
-    //   64: aload_1
-    //   65: invokevirtual 426	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   64: aload_0
+    //   65: invokevirtual 423	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   68: pop
-    //   69: aload_1
-    //   70: invokevirtual 429	java/io/ByteArrayOutputStream:close	()V
-    //   73: aload_1
-    //   74: invokevirtual 433	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   77: areturn
-    //   78: astore_2
-    //   79: aload_2
-    //   80: invokevirtual 436	java/io/IOException:printStackTrace	()V
-    //   83: goto -10 -> 73
-    //   86: astore_2
-    //   87: aload_1
-    //   88: invokevirtual 429	java/io/ByteArrayOutputStream:close	()V
-    //   91: aload_2
-    //   92: athrow
-    //   93: astore_1
-    //   94: aload_1
-    //   95: invokevirtual 436	java/io/IOException:printStackTrace	()V
-    //   98: goto -7 -> 91
+    //   69: aload_0
+    //   70: ifnull +7 -> 77
+    //   73: aload_0
+    //   74: invokevirtual 426	java/io/ByteArrayOutputStream:close	()V
+    //   77: aload_0
+    //   78: invokevirtual 430	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   81: areturn
+    //   82: astore_1
+    //   83: aload_1
+    //   84: invokevirtual 433	java/io/IOException:printStackTrace	()V
+    //   87: goto -10 -> 77
+    //   90: astore_1
+    //   91: aload_0
+    //   92: ifnull +7 -> 99
+    //   95: aload_0
+    //   96: invokevirtual 426	java/io/ByteArrayOutputStream:close	()V
+    //   99: aload_1
+    //   100: athrow
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 433	java/io/IOException:printStackTrace	()V
+    //   106: goto -7 -> 99
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	101	0	this	RealNameStep1InputNameIdActivity
-    //   0	101	1	paramArrayOfByte	byte[]
-    //   7	52	2	localObject1	Object
-    //   78	2	2	localIOException	java.io.IOException
-    //   86	6	2	localObject2	Object
+    //   0	109	0	paramArrayOfByte	byte[]
+    //   7	52	1	localObject1	Object
+    //   82	2	1	localIOException	java.io.IOException
+    //   90	10	1	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   69	73	78	java/io/IOException
-    //   58	69	86	finally
-    //   87	91	93	java/io/IOException
+    //   73	77	82	java/io/IOException
+    //   58	69	90	finally
+    //   95	99	101	java/io/IOException
   }
   
   private void dosuccess(RealNameRegResult paramRealNameRegResult)
   {
     dismissDialog();
-    setContentView(2130903164);
-    setTitle(2131362604);
-    this.mAuditTime = paramRealNameRegResult.time_left;
-    this.mTip3 = ((TextView)findViewById(2131296961));
-    this.mTip3.setText(Html.fromHtml(String.format(getResources().getString(2131362777), new Object[] { Integer.valueOf(paramRealNameRegResult.chance_left) })));
-    this.mTip1 = ((TextView)findViewById(2131296955));
-    this.mTip1.setText(String.format(getResources().getString(2131362775), new Object[] { Integer.valueOf(paramRealNameRegResult.dispatch_time), Integer.valueOf(paramRealNameRegResult.daily_zzb_cnt) }));
+    setContentView(2130968726);
+    setTitle(2131230849);
     this.mResult.mRealStatus = 2;
     this.mResult.mLeftTime = paramRealNameRegResult.time_left;
     this.mResult.mCompleteTime = paramRealNameRegResult.complete_time;
@@ -253,47 +248,54 @@ public class RealNameStep1InputNameIdActivity
     this.mResult.mDailyZzbCnt = paramRealNameRegResult.daily_zzb_cnt;
     this.mResult.mMsgText = paramRealNameRegResult.top_msg_text;
     this.mIsRegOk = true;
-    this.topToast = ((RelativeLayout)findViewById(2131296950));
-    this.topToastText = ((TextView)findViewById(2131296784));
-    if ((!TextUtils.isEmpty(paramRealNameRegResult.top_msg_text)) && (paramRealNameRegResult.chance_left > 0))
-    {
-      this.topToast.setVisibility(0);
-      this.topToastText.setText(paramRealNameRegResult.top_msg_text);
-    }
-    this.mBackArrow.setOnClickListener(new xu(this));
+    this.mResultTipText = ((TextView)findViewById(2131559167));
+    int i = w.c(this.mResult.mLeftTime);
+    this.mResultTipText.setText(Html.fromHtml(String.format(getResources().getString(2131231671), new Object[] { Integer.valueOf(i) })));
+    this.mBackArrow.setOnClickListener(new xj(this));
   }
   
   private void initView()
   {
-    this.toastView = findViewById(2131297337);
-    this.scrollView = ((ScrollView)findViewById(2131296934));
+    this.toastView = findViewById(2131559531);
+    this.scrollView = ((ScrollView)findViewById(2131558485));
     this.mResult = ((RealNameStatusResult)getIntent().getSerializableExtra("realname_result"));
+    this.isFromRecommView = getIntent().getBooleanExtra("zzb_recommend_view", false);
+    this.sourceFromAddFace = getIntent().getIntExtra("from_add_face", -1);
     this.mRealUin = getIntent().getLongExtra("real_uin", 0L);
-    this.mName = ((EditText)findViewById(2131296804));
-    this.mId = ((EditText)findViewById(2131296935));
+    this.mName = ((EditText)findViewById(2131559008));
+    this.mId = ((EditText)findViewById(2131559152));
     if ((this.mName != null) && (this.mId != null))
     {
       this.mName.clearFocus();
       this.mId.clearFocus();
     }
-    this.mIdPb = ((ProgressBar)findViewById(2131296936));
-    this.mTipText = ((TextView)findViewById(2131296593));
-    this.mNext = ((Button)findViewById(2131296932));
-    this.mScanFaceOk = ((ImageView)findViewById(2131296939));
-    this.mScanIdOk = ((ImageView)findViewById(2131296942));
-    this.mScanFaceLayout = findViewById(2131296937);
-    this.mScanIdLayout = findViewById(2131296940);
-    this.mName.addTextChangedListener(new ya(this));
-    this.mId.addTextChangedListener(new yb(this));
-    this.mId.setOnFocusChangeListener(new yc(this));
-    this.mId.setOnEditorActionListener(new yd(this));
-    ScrollView localScrollView = (ScrollView)findViewById(2131296934);
-    localScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new xn(this, localScrollView));
-    this.mScanFaceLayout.setOnClickListener(new xo(this));
-    this.mScanIdLayout.setOnClickListener(new xp(this));
-    this.mNext.setOnClickListener(new xq(this));
-    this.baselayout = ((LinearLayout)findViewById(2131296933));
-    this.mView = new ak(getApplicationContext(), this.lineImg, this.arcImg);
+    this.mIdPb = ((ProgressBar)findViewById(2131559153));
+    this.mTipText = ((TextView)findViewById(2131559154));
+    this.mNext = ((Button)findViewById(2131559148));
+    this.mScanFaceOk = ((ImageView)findViewById(2131559157));
+    this.mScanIdOk = ((ImageView)findViewById(2131559160));
+    this.mScanFaceLayout = findViewById(2131559155);
+    this.mScanIdLayout = findViewById(2131559158);
+    Object localObject = (TextView)findViewById(2131559151);
+    this.mLogoLayout = findViewById(2131559150);
+    if (this.sourceFromAddFace != AddFaceResultActivity.ADD_FACE_UPDATE_ZZB_DEFAULT_VALUE)
+    {
+      ch.a().a(System.currentTimeMillis(), 215);
+      setTitle(getResources().getString(2131230839));
+      this.mLogoLayout.setVisibility(8);
+      ((TextView)localObject).setText(getResources().getString(2131231329));
+    }
+    this.mName.addTextChangedListener(new xp(this));
+    this.mId.addTextChangedListener(new xq(this));
+    this.mId.setOnFocusChangeListener(new xr(this));
+    this.mId.setOnEditorActionListener(new xs(this));
+    localObject = (ScrollView)findViewById(2131558485);
+    ((ScrollView)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new xc(this, (ScrollView)localObject));
+    this.mScanFaceLayout.setOnClickListener(new xd(this));
+    this.mScanIdLayout.setOnClickListener(new xe(this));
+    this.mNext.setOnClickListener(new xf(this));
+    this.baselayout = ((LinearLayout)findViewById(2131559149));
+    this.mView = new ax(getApplicationContext(), this.lineImg, this.arcImg);
     this.animLayout.addView(this.mView);
   }
   
@@ -315,11 +317,11 @@ public class RealNameStep1InputNameIdActivity
   
   private void showErrDialog(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 2131361804;
+    int i = 2131230886;
     if (paramBoolean2) {
-      i = 2131361803;
+      i = 2131231389;
     }
-    showUserDialog(2131361808, paramString, 2131361914, i, new xv(this, paramBoolean1), new xx(this, paramBoolean2));
+    showUserDialog(2131230843, paramString, 2131230881, i, new xk(this, paramBoolean1), new xm(this, paramBoolean2));
   }
   
   private void startAnim()
@@ -331,7 +333,7 @@ public class RealNameStep1InputNameIdActivity
     this.animLayout.requestFocus();
     this.animLayout.requestFocusFromTouch();
     this.baselayout.setEnabled(false);
-    this.mView.c();
+    this.mView.d();
   }
   
   private void unregisterNETReceiver()
@@ -353,7 +355,7 @@ public class RealNameStep1InputNameIdActivity
     if (this._handler == null) {
       this._handler = new Handler(this.mHandlerThread.getLooper());
     }
-    this._handler.post(new xt(this));
+    this._handler.post(new xi(this));
     startAnim();
   }
   
@@ -374,7 +376,7 @@ public class RealNameStep1InputNameIdActivity
       }
       catch (Exception localException)
       {
-        e.b(localException.toString());
+        h.b(localException.toString());
       }
     }
   }
@@ -415,9 +417,9 @@ public class RealNameStep1InputNameIdActivity
       if ((paramInt2 == 0) && (paramIntent != null) && (paramIntent.getByteArrayExtra("facedata") != null) && (paramIntent.getByteArrayExtra("facedata").length > 0))
       {
         this.mFaceData = paramIntent.getByteArrayExtra("facedata");
-        e.a("realname facedata len=" + this.mFaceData.length);
+        h.a("realname facedata len=" + this.mFaceData.length);
         this.mScanFaceOk.setVisibility(0);
-        p.a().a(System.currentTimeMillis(), 85);
+        ch.a().a(System.currentTimeMillis(), 85);
         checkCanCommit();
       }
     }
@@ -446,9 +448,9 @@ public class RealNameStep1InputNameIdActivity
           this.mBackPath = paramIntent.getStringExtra("backdata");
           this.frontphotoinfo = paramIntent.getByteArrayExtra("frontphotoinfo");
           this.backphotoinfo = paramIntent.getByteArrayExtra("backphotoinfo");
-          e.a("realname id frontlen=" + this.mFrontPath.length() + ", backlen=" + this.mBackPath.length());
+          h.a("realname id frontlen=" + this.mFrontPath.length() + ", backlen=" + this.mBackPath.length());
           this.mScanIdOk.setVisibility(0);
-          p.a().a(System.currentTimeMillis(), 86);
+          ch.a().a(System.currentTimeMillis(), 86);
           checkCanCommit();
         }
       }
@@ -458,20 +460,18 @@ public class RealNameStep1InputNameIdActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903161);
+    setContentView(2130968724);
     initView();
     registerNETReceiver();
-    af.a().n(-1L, this.mHandler);
+    cw.a().l(-1L, this.mHandler);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.mIsNETRegisted)
-    {
-      unregisterReceiver(this.mnetReceiver);
-      this.mIsNETRegisted = false;
-    }
+    unregisterNETReceiver();
+    i.b(this.mFrontPath);
+    i.b(this.mBackPath);
   }
   
   public void showUserDialogComfig(int paramInt1, String paramString1, String paramString2, int paramInt2, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
@@ -480,22 +480,22 @@ public class RealNameStep1InputNameIdActivity
       return;
     }
     dismiss();
-    this.mDialog = new Dialog(this, 2131427443);
+    this.mDialog = new Dialog(this, 2131362064);
     this.mDialog.setContentView(paramInt1);
     if (paramInt2 != 0) {
-      ((ImageView)this.mDialog.findViewById(2131296966)).setImageResource(paramInt2);
+      ((ImageView)this.mDialog.findViewById(2131559172)).setImageResource(paramInt2);
     }
     if (paramString1 != null) {
-      ((TextView)this.mDialog.findViewById(2131296404)).setText(paramString1);
+      ((TextView)this.mDialog.findViewById(2131558419)).setText(paramString1);
     }
     if (paramString2 != null) {
-      ((TextView)this.mDialog.findViewById(2131296804)).setText(paramString2);
+      ((TextView)this.mDialog.findViewById(2131559008)).setText(paramString2);
     }
-    paramString1 = (Button)this.mDialog.findViewById(2131296514);
+    paramString1 = (Button)this.mDialog.findViewById(2131558797);
     if (paramString1 != null) {
       paramString1.setOnClickListener(paramOnClickListener2);
     }
-    paramString1 = (Button)this.mDialog.findViewById(2131296516);
+    paramString1 = (Button)this.mDialog.findViewById(2131558799);
     if (paramString1 != null) {
       paramString1.setOnClickListener(paramOnClickListener1);
     }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/realname_toast_layout" android:background="@drawable/realname_toast_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/orange_toast_height">
+        <ImageView android:id="@id/realname_toast_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/realname_toast_icon" android:layout_centerVertical="true" />
+        <TextView android:textColor="#ffffffff" android:id="@id/zzbtitletext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/zzb_mod_mobile_tip" android:layout_toRightOf="@id/realname_toast_icon" android:layout_centerVertical="true" />
+    </RelativeLayout>
     <RelativeLayout android:id="@id/item_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="24.0dip">
         <TableLayout android:id="@id/table_content" android:background="@drawable/utils_mb_info_table_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <TextView android:id="@id/msg_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/table_content" style="@style/msg_item_tip_text" />

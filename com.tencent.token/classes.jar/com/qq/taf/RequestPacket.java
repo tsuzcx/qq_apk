@@ -1,7 +1,6 @@
 package com.qq.taf;
 
 import com.qq.jce.wup.WupHexUtil;
-import com.qq.taf.jce.JceDisplayer;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -13,10 +12,10 @@ import java.util.Map;
 public final class RequestPacket
   extends JceStruct
 {
-  static Map<String, String> cache_context;
+  static Map cache_context;
   static byte[] cache_sBuffer;
   public byte cPacketType = 0;
-  public Map<String, String> context;
+  public Map context;
   public int iMessageType = 0;
   public int iRequestId = 0;
   public int iTimeout = 0;
@@ -24,7 +23,7 @@ public final class RequestPacket
   public byte[] sBuffer;
   public String sFuncName = null;
   public String sServantName = null;
-  public Map<String, String> status;
+  public Map status;
   
   static
   {
@@ -40,7 +39,7 @@ public final class RequestPacket
   
   public RequestPacket() {}
   
-  public RequestPacket(short paramShort, byte paramByte, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt3, Map<String, String> paramMap1, Map<String, String> paramMap2)
+  public RequestPacket(short paramShort, byte paramByte, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt3, Map paramMap1, Map paramMap2)
   {
     this.iVersion = paramShort;
     this.cPacketType = paramByte;
@@ -68,21 +67,6 @@ public final class RequestPacket
       throw new AssertionError();
     }
     return localObject1;
-  }
-  
-  public void display(StringBuilder paramStringBuilder, int paramInt)
-  {
-    paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
-    paramStringBuilder.display(this.iVersion, "iVersion");
-    paramStringBuilder.display(this.cPacketType, "cPacketType");
-    paramStringBuilder.display(this.iMessageType, "iMessageType");
-    paramStringBuilder.display(this.iRequestId, "iRequestId");
-    paramStringBuilder.display(this.sServantName, "sServantName");
-    paramStringBuilder.display(this.sFuncName, "sFuncName");
-    paramStringBuilder.display(this.sBuffer, "sBuffer");
-    paramStringBuilder.display(this.iTimeout, "iTimeout");
-    paramStringBuilder.display(this.context, "context");
-    paramStringBuilder.display(this.status, "status");
   }
   
   public boolean equals(Object paramObject)

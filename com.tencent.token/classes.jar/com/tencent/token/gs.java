@@ -1,72 +1,62 @@
 package com.tencent.token;
 
-import java.util.Vector;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import okio.f;
+import okio.h;
+import okio.i;
+import okio.y;
+import okio.z;
 
-final class gs
-  extends Thread
+class gs
+  implements y
 {
-  int a = -1;
-  volatile boolean b = false;
+  boolean a;
   
-  gs(gr paramgr) {}
+  gs(gr paramgr, i parami, gt paramgt, h paramh) {}
   
-  public final void run()
+  public long a(f paramf, long paramLong)
   {
-    for (;;)
+    try
     {
-      if (gr.a(this.c))
+      paramLong = this.b.a(paramf, paramLong);
+      if (paramLong == -1L)
       {
-        synchronized (gr.b(this.c))
+        if (!this.a)
         {
-          label20:
-          int i = gr.c(this.c).size();
-          if (i != 0) {}
+          this.a = true;
+          this.d.close();
         }
-        try
-        {
-          gr.b(this.c).wait();
-          label45:
-          if (gr.a(this.c)) {
-            break label20;
-          }
-          return;
-          gt localgt = (gt)gr.c(this.c).firstElement();
-          if ((gr.d(this.c)) || (localgt.d() == 1))
-          {
-            gr.c(this.c).removeElement(localgt);
-            this.a = localgt.d();
-          }
-          try
-          {
-            for (;;)
-            {
-              Thread.sleep(100L);
-              label118:
-              this.b = false;
-              gr.a(this.c, localgt, this);
-              this.a = -1;
-              break;
-              try
-              {
-                gr.b(this.c).wait();
-              }
-              catch (InterruptedException localInterruptedException2) {}
-            }
-            break label45;
-            localObject = finally;
-            throw localObject;
-          }
-          catch (InterruptedException localInterruptedException1)
-          {
-            break label118;
-          }
-        }
-        catch (InterruptedException localInterruptedException3)
-        {
-          break label45;
-        }
+        return -1L;
       }
     }
+    catch (IOException paramf)
+    {
+      if (!this.a)
+      {
+        this.a = true;
+        this.c.b();
+      }
+      throw paramf;
+    }
+    paramf.a(this.d.c(), paramf.b() - paramLong, paramLong);
+    this.d.u();
+    return paramLong;
+  }
+  
+  public z a()
+  {
+    return this.b.a();
+  }
+  
+  public void close()
+  {
+    if ((!this.a) && (!gn.a(this, 100, TimeUnit.MILLISECONDS)))
+    {
+      this.a = true;
+      this.c.b();
+    }
+    this.b.close();
   }
 }
 

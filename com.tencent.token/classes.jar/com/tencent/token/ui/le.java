@@ -1,20 +1,13 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-
-final class le
-  implements DialogInterface.OnClickListener
+class le
+  implements Runnable
 {
-  le(lc paramlc) {}
+  le(IndexActivity paramIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.dismissDialog();
-    paramDialogInterface = new Intent(this.a.a, WtLoginAccountInput.class);
-    paramDialogInterface.putExtra("page_id", 4);
-    this.a.a.startActivity(paramDialogInterface);
+    IndexActivity.access$1900(this.a);
   }
 }
 

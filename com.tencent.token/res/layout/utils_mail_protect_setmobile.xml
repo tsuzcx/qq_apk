@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="94.0dip">
+        <ImageView android:id="@id/utils_need_verify_img" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="23.0dip" android:src="@drawable/icon_mail_protect" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        <TextView android:id="@id/utils_need_verify_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/utils_mail_protect_tile" android:layout_toRightOf="@id/utils_need_verify_img" android:layout_centerVertical="true" style="@style/utils_text_item_detail" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/utils_tip_verify_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/utils_mail_protect_use" style="@style/largest_text_view" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/utils_tip_verify_desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="34.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="34.0dip" android:text="@string/utils_login_protect_use_detail" style="@style/small_text_view" />
+    <Button android:id="@id/utils_tip_bindmobile_action" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="14.0dip" android:text="@string/account_unbind_tobind_button" style="@style/text_view_white" />
+</LinearLayout>

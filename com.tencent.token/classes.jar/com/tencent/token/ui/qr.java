@@ -1,19 +1,27 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.bb;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 
-final class qr
-  implements View.OnClickListener
+class qr
+  implements DialogInterface.OnCancelListener
 {
-  qr(MyPswSubPageActivity paramMyPswSubPageActivity) {}
+  qr(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    af.a().a(0L, bb.e, MyPswSubPageActivity.access$300(this.a));
-    this.a.showUserDialog(12);
+    NetActiveVryMobileNoSmsActivity.access$602(this.a, 0);
+    if (NetActiveVryMobileNoSmsActivity.access$100(this.a).j())
+    {
+      paramDialogInterface = new Intent(this.a, GeneralVerifyMobileUpActivity.class);
+      paramDialogInterface.putExtra("intent.qquser", NetActiveVryMobileNoSmsActivity.access$000(this.a));
+      paramDialogInterface.putExtra("intent.determin_factors_result", NetActiveVryMobileNoSmsActivity.access$100(this.a));
+      paramDialogInterface.putExtra("intent.determin_verify_type", NetActiveVryMobileNoSmsActivity.access$200(this.a));
+      paramDialogInterface.putExtra("intent.determin_verify_factor_id", 3);
+      this.a.startActivity(paramDialogInterface);
+    }
   }
 }
 

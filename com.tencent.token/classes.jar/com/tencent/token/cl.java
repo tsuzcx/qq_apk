@@ -1,106 +1,113 @@
 package com.tencent.token;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.NotificationCompat.Builder;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.BaseActivity;
+import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.utils.w;
+import gameloginsdk.CallbackAppidTypeStruct;
+import gameloginsdk.CallbackGameConfirmStruct;
+import gameloginsdk.CallbackPushStruct;
+import gameloginsdk.GameLoginConst;
+import gameloginsdk.IGameLoginCallback;
 
-public final class cl
-  extends bm
+class cl
+  implements IGameLoginCallback
 {
-  ag c = ag.c();
-  gj d = ax.a().l;
-  private long e;
-  private int f;
-  private int g;
+  cl(cj paramcj) {}
   
-  protected final String a()
+  public void onPush(int paramInt, Object paramObject)
   {
-    this.c.m();
-    String str2 = this.c.o();
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str1 = ax.c; str1 == null; str1 = null)
+    h.d("game login push rsp callback: info=" + paramInt + ", obj=" + paramObject);
+    w.j();
+    switch (paramInt)
     {
-      this.a.a(104, null, null);
-      return null;
     }
-    str2 = s.a(new Object[] { "tkn_code", str2, "ksid", this.c.h(), "channel_id", s.k(), "clear_kick", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.g), "op_time", Long.valueOf(ag.c().r() / 1000L) });
-    str1 = "?uin=" + this.e + "&aq_base_sid=" + str1 + "&data=" + str2;
-    return b.c() + "/cn/mbtoken3/mbtoken3_login_v2" + str1;
+    do
+    {
+      return;
+    } while (paramObject == null);
+    paramObject = (CallbackPushStruct)paramObject;
+    h.c(paramObject.toString() + ", foreground=" + BaseActivity.getIsAppForeground());
+    cj.a(this.a, paramObject);
+    cj.a(this.a, cx.c().s());
+    if (BaseActivity.getIsAppForeground())
+    {
+      this.a.b.sendEmptyMessage(0);
+      return;
+    }
+    IndexActivity.s_ShowGameLoginPushInfo = true;
+    paramObject = "QQ" + w.a(cj.a(this.a).uin) + RqdApplication.l().getResources().getString(2131231083);
+    Object localObject = new Intent(RqdApplication.l(), IndexActivity.class);
+    ((Intent)localObject).putExtra("index_from", 24);
+    localObject = PendingIntent.getActivity(RqdApplication.l(), 0, (Intent)localObject, 134217728);
+    Context localContext = RqdApplication.l();
+    RqdApplication.l();
+    ((NotificationManager)localContext.getSystemService("notification")).notify(3, new NotificationCompat.Builder(RqdApplication.l()).setDefaults(1).setAutoCancel(true).setContentTitle(RqdApplication.l().getResources().getString(2131230844)).setSmallIcon(2130837767).setContentIntent((PendingIntent)localObject).addAction(2130837767, RqdApplication.l().getResources().getString(2131230844), (PendingIntent)localObject).setContentText(paramObject).build());
   }
   
-  protected final void a(fs paramfs)
+  public void onRespCallback(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    this.e = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.f = ((Integer)paramfs.c.get("param.loginv2.clearkick")).intValue();
-    this.g = paramfs.j;
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    h.d("game login rsp callback: ret=" + paramInt1 + ", respno=" + paramInt2 + ", info=" + paramInt3 + ", obj=" + paramObject);
+    switch (paramInt3)
     {
-      if (i == 270)
+    }
+    do
+    {
+      do
       {
-        Object localObject1 = s.d(paramJSONObject.getString("data"));
-        if (localObject1 != null)
+        return;
+        paramObject = (CallbackAppidTypeStruct)paramObject;
+        if (paramInt1 != 0)
         {
-          Object localObject2 = new JSONObject(new String((byte[])localObject1));
-          localObject1 = ((JSONObject)localObject2).optString("masked_mobile");
-          localObject2 = ((JSONObject)localObject2).optString("mSmsPrefix");
-          UpgradeDeterminResult localUpgradeDeterminResult = new UpgradeDeterminResult();
-          localUpgradeDeterminResult.mMobileMask = ((String)localObject1);
-          localUpgradeDeterminResult.mSmsPrefix = ((String)localObject2);
-          this.a.d = localUpgradeDeterminResult;
+          switch (GameLoginConst.filterNormalCode(paramInt1))
+          {
+          }
+          w.j();
+        }
+        h.a("game login getflowtype: appidtype=" + paramObject.appidType);
+        cj.a(this.a, true);
+        if (paramObject.appidType == 1)
+        {
+          cj.b(this.a, true);
+          return;
+        }
+        cj.b(this.a, false);
+        return;
+      } while (paramInt1 == 0);
+      switch (GameLoginConst.filterNormalCode(paramInt1))
+      {
+      }
+      w.j();
+      return;
+      paramObject = (CallbackGameConfirmStruct)paramObject;
+      h.b("game login confirm:" + paramObject);
+      paramInt2 = paramInt1;
+      if (paramInt1 != 0)
+      {
+        paramInt1 = GameLoginConst.filterNormalCode(paramInt1);
+        h.b("game login confirm: code=" + paramInt1);
+        paramInt2 = paramInt1;
+        switch (paramInt1)
+        {
+        default: 
+          paramInt2 = paramInt1;
         }
       }
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      e.a("login_v2 ret: " + paramJSONObject);
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.g)
-      {
-        this.a.a(10030, null, null);
-        e.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.g);
-        return;
-      }
-      long l = paramJSONObject.getLong("uin");
-      ax.a();
-      ax.a(paramJSONObject);
-      if (l != this.e)
-      {
-        this.a.a(10000, "uin not match=" + l + ":" + this.e, null);
-        return;
-      }
-      ax.a().m();
-      if (!this.d.a(l)) {
-        this.a.a(10000, "mUserStorage.setCurrentUserByUin failed", null);
-      }
-      System.currentTimeMillis();
-      l = paramJSONObject.getInt("valid_time");
-      ax.a().a(this.e, l);
-      if (this.c.h().length() == 0) {
-        this.c.c(paramJSONObject.getString("ksid"));
-      }
-      this.a.a = 0;
-      return;
-    }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+    } while ((cj.a(this.a) == null) || (cj.b(this.a) == null));
+    Message localMessage = cj.b(this.a).obtainMessage(3040);
+    localMessage.arg1 = cj.c(this.a);
+    localMessage.arg2 = paramInt2;
+    localMessage.obj = paramObject;
+    cj.b(this.a).sendMessage(localMessage);
   }
 }
 

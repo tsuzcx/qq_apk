@@ -1,18 +1,32 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.er;
 
-final class sq
-  implements View.OnClickListener
+class sq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  sq(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  SafeMsgItem a;
   
-  public final void onClick(View paramView)
+  public sq(sn paramsn, SafeMsgItem paramSafeMsgItem)
   {
-    paramView = new Intent(this.a, UtilsLoginProtectActivity.class);
-    this.a.startActivity(paramView);
+    this.a = paramSafeMsgItem;
+  }
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.mIsChecked = true;
+      if (this.b.b.d()) {
+        sn.b(this.b).setSelectState(true);
+      }
+      return;
+    }
+    this.a.mIsChecked = false;
+    sn.b(this.b).setSelectState(false);
   }
 }
 

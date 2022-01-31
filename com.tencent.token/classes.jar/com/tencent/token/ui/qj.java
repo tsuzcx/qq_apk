@@ -1,67 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
-final class qj
-  implements View.OnTouchListener
+class qj
+  implements DialogInterface.OnClickListener
 {
-  private boolean b;
-  private boolean c;
+  qj(qh paramqh) {}
   
-  public qj(qf paramqf, boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramBoolean1;
-    this.c = paramBoolean2;
-  }
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131296280);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131296281);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131296282);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131296279);
-    int i = qf.a(this.a).getResources().getColor(2131165194);
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      for (;;)
-      {
-        return false;
-        localTextView1.setTextColor(i);
-        localTextView2.setTextColor(i);
-        localTextView3.setTextColor(i);
-        localRelativeLayout.setBackgroundResource(2130837728);
-        continue;
-        if (!paramView.isPressed()) {
-          break;
-        }
-        localTextView1.setTextColor(i);
-        localTextView2.setTextColor(i);
-        localTextView3.setTextColor(i);
-        localRelativeLayout.setBackgroundResource(2130837728);
-      }
-    }
-    if ((this.b) && (!this.c))
-    {
-      localRelativeLayout.setBackgroundResource(2130837726);
-      localTextView1.setTextAppearance(qf.a(this.a), 2131427426);
-      localTextView2.setTextAppearance(qf.a(this.a), 2131427427);
-    }
-    for (;;)
-    {
-      localTextView3.setTextAppearance(qf.a(this.a), 2131427436);
-      break;
-      localRelativeLayout.setBackgroundResource(2130837727);
-      localTextView1.setTextAppearance(qf.a(this.a), 2131427424);
-      localTextView2.setTextAppearance(qf.a(this.a), 2131427425);
-    }
+    this.a.a.dismissDialog();
+    h.b("dir bind token cofirm");
+    this.a.a.showProDialog(this.a.a, 2131230843, 2131231298, null);
+    cw.a().b(NetActiveSetDirBySeqActivity.access$300(this.a.a).mRealUin, NetActiveSetDirBySeqActivity.access$400(this.a.a), NetActiveSetDirBySeqActivity.access$200(this.a.a), NetActiveSetDirBySeqActivity.access$500(this.a.a), NetActiveSetDirBySeqActivity.access$600(this.a.a));
   }
 }
 

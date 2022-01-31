@@ -3,6 +3,7 @@ package android.support.v4.widget;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.RestrictTo;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,12 +11,14 @@ import android.widget.TextView;
 public class SimpleCursorAdapter
   extends ResourceCursorAdapter
 {
-  private CursorToStringConverter mCursorToStringConverter;
+  private SimpleCursorAdapter.CursorToStringConverter mCursorToStringConverter;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected int[] mFrom;
   String[] mOriginalFrom;
   private int mStringConversionColumn = -1;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected int[] mTo;
-  private ViewBinder mViewBinder;
+  private SimpleCursorAdapter.ViewBinder mViewBinder;
   
   @Deprecated
   public SimpleCursorAdapter(Context paramContext, int paramInt, Cursor paramCursor, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -23,7 +26,7 @@ public class SimpleCursorAdapter
     super(paramContext, paramInt, paramCursor);
     this.mTo = paramArrayOfInt;
     this.mOriginalFrom = paramArrayOfString;
-    findColumns(paramArrayOfString);
+    findColumns(paramCursor, paramArrayOfString);
   }
   
   public SimpleCursorAdapter(Context paramContext, int paramInt1, Cursor paramCursor, String[] paramArrayOfString, int[] paramArrayOfInt, int paramInt2)
@@ -31,12 +34,12 @@ public class SimpleCursorAdapter
     super(paramContext, paramInt1, paramCursor, paramInt2);
     this.mTo = paramArrayOfInt;
     this.mOriginalFrom = paramArrayOfString;
-    findColumns(paramArrayOfString);
+    findColumns(paramCursor, paramArrayOfString);
   }
   
-  private void findColumns(String[] paramArrayOfString)
+  private void findColumns(Cursor paramCursor, String[] paramArrayOfString)
   {
-    if (this.mCursor != null)
+    if (paramCursor != null)
     {
       int j = paramArrayOfString.length;
       if ((this.mFrom == null) || (this.mFrom.length != j)) {
@@ -45,7 +48,7 @@ public class SimpleCursorAdapter
       int i = 0;
       while (i < j)
       {
-        this.mFrom[i] = this.mCursor.getColumnIndexOrThrow(paramArrayOfString[i]);
+        this.mFrom[i] = paramCursor.getColumnIndexOrThrow(paramArrayOfString[i]);
         i += 1;
       }
     }
@@ -54,45 +57,49 @@ public class SimpleCursorAdapter
   
   public void bindView(View paramView, Context paramContext, Cursor paramCursor)
   {
-    ViewBinder localViewBinder = this.mViewBinder;
+    SimpleCursorAdapter.ViewBinder localViewBinder = this.mViewBinder;
     int j = this.mTo.length;
     int[] arrayOfInt1 = this.mFrom;
     int[] arrayOfInt2 = this.mTo;
     int i = 0;
+    View localView;
     if (i < j)
     {
-      View localView = paramView.findViewById(arrayOfInt2[i]);
-      if (localView != null)
+      localView = paramView.findViewById(arrayOfInt2[i]);
+      if (localView != null) {
+        if (localViewBinder == null) {
+          break label190;
+        }
+      }
+    }
+    label129:
+    label150:
+    label190:
+    for (boolean bool = localViewBinder.setViewValue(localView, paramCursor, arrayOfInt1[i]);; bool = false)
+    {
+      if (!bool)
       {
-        boolean bool = false;
-        if (localViewBinder != null) {
-          bool = localViewBinder.setViewValue(localView, paramCursor, arrayOfInt1[i]);
+        String str = paramCursor.getString(arrayOfInt1[i]);
+        paramContext = str;
+        if (str == null) {
+          paramContext = "";
         }
-        if (!bool)
-        {
-          String str = paramCursor.getString(arrayOfInt1[i]);
-          paramContext = str;
-          if (str == null) {
-            paramContext = "";
-          }
-          if (!(localView instanceof TextView)) {
-            break label132;
-          }
-          setViewText((TextView)localView, paramContext);
+        if (!(localView instanceof TextView)) {
+          break label129;
         }
+        setViewText((TextView)localView, paramContext);
       }
       for (;;)
       {
         i += 1;
         break;
-        label132:
         if (!(localView instanceof ImageView)) {
-          break label153;
+          break label150;
         }
         setViewImage((ImageView)localView, paramContext);
       }
-      label153:
       throw new IllegalStateException(localView.getClass().getName() + " is not a " + " view that can be bounds by this SimpleCursorAdapter");
+      return;
     }
   }
   
@@ -100,8 +107,8 @@ public class SimpleCursorAdapter
   {
     this.mOriginalFrom = paramArrayOfString;
     this.mTo = paramArrayOfInt;
+    findColumns(paramCursor, this.mOriginalFrom);
     super.changeCursor(paramCursor);
-    findColumns(this.mOriginalFrom);
   }
   
   public CharSequence convertToString(Cursor paramCursor)
@@ -115,7 +122,7 @@ public class SimpleCursorAdapter
     return super.convertToString(paramCursor);
   }
   
-  public CursorToStringConverter getCursorToStringConverter()
+  public SimpleCursorAdapter.CursorToStringConverter getCursorToStringConverter()
   {
     return this.mCursorToStringConverter;
   }
@@ -125,12 +132,12 @@ public class SimpleCursorAdapter
     return this.mStringConversionColumn;
   }
   
-  public ViewBinder getViewBinder()
+  public SimpleCursorAdapter.ViewBinder getViewBinder()
   {
     return this.mViewBinder;
   }
   
-  public void setCursorToStringConverter(CursorToStringConverter paramCursorToStringConverter)
+  public void setCursorToStringConverter(SimpleCursorAdapter.CursorToStringConverter paramCursorToStringConverter)
   {
     this.mCursorToStringConverter = paramCursorToStringConverter;
   }
@@ -140,7 +147,7 @@ public class SimpleCursorAdapter
     this.mStringConversionColumn = paramInt;
   }
   
-  public void setViewBinder(ViewBinder paramViewBinder)
+  public void setViewBinder(SimpleCursorAdapter.ViewBinder paramViewBinder)
   {
     this.mViewBinder = paramViewBinder;
   }
@@ -165,19 +172,8 @@ public class SimpleCursorAdapter
   
   public Cursor swapCursor(Cursor paramCursor)
   {
-    paramCursor = super.swapCursor(paramCursor);
-    findColumns(this.mOriginalFrom);
-    return paramCursor;
-  }
-  
-  public static abstract interface CursorToStringConverter
-  {
-    public abstract CharSequence convertToString(Cursor paramCursor);
-  }
-  
-  public static abstract interface ViewBinder
-  {
-    public abstract boolean setViewValue(View paramView, Cursor paramCursor, int paramInt);
+    findColumns(paramCursor, this.mOriginalFrom);
+    return super.swapCursor(paramCursor);
   }
 }
 

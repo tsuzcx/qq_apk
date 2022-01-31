@@ -1,21 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.token.cw;
 
-final class jm
-  implements Animation.AnimationListener
+class jm
+  implements Runnable
 {
   jm(jl paramjl) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.startAnimation();
+    cw.a().a(FindPasswdActivity.access$100(this.a.a), "".getBytes(), FindPasswdActivity.access$200(this.a.a), 0, 2);
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

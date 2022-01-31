@@ -2,7 +2,9 @@ package com.tencent.token.utils.encrypt.random;
 
 public abstract interface a
 {
-  public abstract int a(byte[] paramArrayOfByte);
+  public abstract int a();
+  
+  public abstract int a(byte[] paramArrayOfByte, int paramInt);
   
   public abstract void a(byte paramByte);
   

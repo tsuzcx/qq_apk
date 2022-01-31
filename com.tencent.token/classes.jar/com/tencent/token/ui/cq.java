@@ -1,18 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.p;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class cq
-  implements View.OnClickListener
+class cq
+  implements DialogInterface.OnClickListener
 {
-  cq(CorrectTokenActivity paramCorrectTokenActivity) {}
+  cq(co paramco) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    p.a().a(System.currentTimeMillis(), 55);
-    this.a.showDialog(0);
+    CommonVerifyActivity.access$500(this.a.a);
   }
 }
 

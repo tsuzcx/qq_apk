@@ -2,17 +2,16 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.p;
+import com.tencent.token.utils.w;
 
-final class adm
+class adm
   implements View.OnClickListener
 {
-  adm(UtilsActivity paramUtilsActivity) {}
+  adm(UtilsMbInfoActivity paramUtilsMbInfoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    p.a().a(System.currentTimeMillis(), 60);
-    this.a.showNoAccountTipDialog(this.a, 0, 1);
+    w.b(this.a, this.a.getString(2131231487));
   }
 }
 

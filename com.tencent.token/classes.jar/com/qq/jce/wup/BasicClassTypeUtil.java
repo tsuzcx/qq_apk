@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class BasicClassTypeUtil
 {
-  private static void addType(ArrayList<String> paramArrayList, String paramString)
+  private static void addType(ArrayList paramArrayList, String paramString)
   {
     int i = paramString.length();
     int j;
@@ -29,7 +29,6 @@ public class BasicClassTypeUtil
   }
   
   public static Object createClassByName(String paramString)
-    throws ObjectCreateException
   {
     Object localObject;
     if (paramString.equals("java.lang.Integer")) {
@@ -86,116 +85,111 @@ public class BasicClassTypeUtil
   }
   
   public static Object createClassByUni(String paramString)
-    throws ObjectCreateException
   {
-    paramString = getTypeList(paramString);
-    Object localObject2 = null;
-    Iterator localIterator = paramString.iterator();
+    Iterator localIterator = getTypeList(paramString).iterator();
+    Object localObject3 = null;
     paramString = null;
-    Object localObject1 = null;
-    Object localObject3;
+    Object localObject2 = null;
+    Object localObject1;
     if (localIterator.hasNext())
     {
-      localObject2 = createClassByName((String)localIterator.next());
-      if ((localObject2 instanceof String)) {
-        if ("Array".equals((String)localObject2))
+      localObject1 = createClassByName((String)localIterator.next());
+      if ((localObject1 instanceof String)) {
+        if ("Array".equals((String)localObject1))
         {
-          if (localObject1 != null) {
-            break label308;
+          if (localObject2 != null) {
+            break label310;
           }
-          localObject2 = Array.newInstance(Byte.class, 0);
-          localObject3 = localObject1;
-          localObject1 = paramString;
-          paramString = (String)localObject3;
+          localObject3 = Array.newInstance(Byte.class, 0);
+          localObject1 = localObject2;
         }
       }
     }
     for (;;)
     {
-      localObject3 = localObject1;
-      localObject1 = paramString;
-      paramString = (String)localObject3;
+      localObject2 = localObject1;
       break;
-      if ("?".equals((String)localObject2))
+      if ("?".equals((String)localObject1))
       {
-        localObject3 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject3;
-      }
-      else if (localObject1 == null)
-      {
+        localObject3 = localObject1;
         localObject1 = localObject2;
-        localObject3 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject3;
+      }
+      else if (localObject2 == null)
+      {
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
       }
       else
       {
-        paramString = (String)localObject2;
+        paramString = localObject2;
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
         continue;
-        if ((localObject2 instanceof List))
+        if ((localObject1 instanceof List))
         {
-          if ((localObject1 != null) && ((localObject1 instanceof Byte)))
+          if ((localObject2 != null) && ((localObject2 instanceof Byte)))
           {
             localObject3 = Array.newInstance(Byte.class, 1);
-            Array.set(localObject3, 0, localObject1);
-            localObject2 = paramString;
-            paramString = (String)localObject1;
+            Array.set(localObject3, 0, localObject2);
             localObject1 = localObject2;
-            localObject2 = localObject3;
           }
           else
           {
-            if (localObject1 != null) {
-              ((List)localObject2).add(localObject1);
+            if (localObject2 != null) {
+              ((List)localObject1).add(localObject2);
             }
-            localObject3 = null;
-            localObject1 = paramString;
-            paramString = (String)localObject3;
+            localObject2 = null;
+            localObject3 = localObject1;
+            localObject1 = localObject2;
           }
         }
         else
         {
-          if ((localObject2 instanceof Map))
+          if ((localObject1 instanceof Map))
           {
             int i;
-            if (localObject1 != null)
+            if (localObject2 != null)
             {
               i = 1;
-              label239:
+              label226:
               if (paramString == null) {
-                break label276;
+                break label270;
               }
             }
-            label276:
+            label270:
             for (int j = 1;; j = 0)
             {
               if ((j & i) != 0) {
-                ((Map)localObject2).put(localObject1, paramString);
+                ((Map)localObject1).put(localObject2, paramString);
               }
               paramString = null;
-              localObject1 = null;
+              localObject2 = null;
+              localObject3 = localObject1;
+              localObject1 = localObject2;
               break;
               i = 0;
-              break label239;
+              break label226;
             }
           }
-          if (localObject1 == null)
+          if (localObject2 == null)
           {
+            localObject2 = localObject1;
+            localObject3 = localObject1;
             localObject1 = localObject2;
-            localObject3 = paramString;
-            paramString = (String)localObject1;
-            localObject1 = localObject3;
           }
           else
           {
-            paramString = (String)localObject2;
+            paramString = localObject2;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            localObject1 = localObject2;
             continue;
-            return localObject2;
-            label308:
-            localObject3 = paramString;
-            paramString = (String)localObject1;
-            localObject1 = localObject3;
+            return localObject3;
+            label310:
+            localObject3 = localObject1;
+            localObject1 = localObject2;
           }
         }
       }
@@ -234,36 +228,33 @@ public class BasicClassTypeUtil
     return "Character";
   }
   
-  public static ArrayList<String> getTypeList(String paramString)
+  public static ArrayList getTypeList(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    int m = 0;
+    int j = 0;
     int i = paramString.indexOf("<");
-    while (m < i)
+    for (;;)
     {
-      addType(localArrayList, paramString.substring(m, i));
-      int n = i + 1;
-      i = paramString.indexOf("<", n);
-      int k = paramString.indexOf(",", n);
-      int j = i;
-      if (i == -1) {
-        j = k;
-      }
-      m = n;
-      i = j;
-      if (k != -1)
+      if (j < i)
       {
-        m = n;
-        i = j;
-        if (k < j)
-        {
+        addType(localArrayList, paramString.substring(j, i));
+        j = i + 1;
+        int m = paramString.indexOf("<", j);
+        int k = paramString.indexOf(",", j);
+        i = m;
+        if (m == -1) {
           i = k;
-          m = n;
+        }
+        if ((k != -1) && (k < i)) {
+          i = k;
         }
       }
+      else
+      {
+        addType(localArrayList, paramString.substring(j, paramString.length()));
+        return localArrayList;
+      }
     }
-    addType(localArrayList, paramString.substring(m, paramString.length()));
-    return localArrayList;
   }
   
   public static String getVariableInit(String paramString1, String paramString2)
@@ -370,7 +361,7 @@ public class BasicClassTypeUtil
     }
   }
   
-  public static String transTypeList(ArrayList<String> paramArrayList)
+  public static String transTypeList(ArrayList paramArrayList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;

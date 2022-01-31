@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/title_layout" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.token.ui.base.RoundImageView android:id="@id/account_bind_qqface" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="1.5dip" android:layout_marginTop="6.5dip" android:src="@drawable/no_login_default" android:scaleType="fitXY" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/img_head_border" android:layout_width="43.0dip" android:layout_height="43.0dip" android:src="@drawable/active_succ_img_border" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
-    <ImageView android:id="@id/img_head_border2" android:visibility="invisible" android:layout_width="39.0dip" android:layout_height="15.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="31.0dip" android:src="@drawable/zzb_icon_pic" android:scaleType="fitXY" />
-    <ImageView android:id="@id/qqface_not_verify" android:visibility="invisible" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/icon_error" android:scaleType="fitXY" />
-    <TextView android:textSize="18.0sp" android:textColor="@color/title_text_color" android:gravity="center" android:id="@id/title_text" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="100.0dip" android:layout_height="fill_parent" android:maxWidth="185.0dip" android:singleLine="true" android:layout_centerInParent="true" />
-</RelativeLayout>

@@ -1,49 +1,23 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.token.core.bean.JLProtectionInfo;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class kn
-  extends bo
+class kn
+  implements View.OnClickListener
 {
-  kn(FindItemsActivity paramFindItemsActivity)
-  {
-    super(paramFindItemsActivity);
-  }
+  kn(GeneralVerifyMobileUpActivity paramGeneralVerifyMobileUpActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    e.b("jianling what=" + paramMessage.what + ", arg1=" + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.dismissDialog();
-    if (paramMessage.arg1 == 0)
-    {
-      FindItemsActivity.access$002(this.a, (JLProtectionInfo)paramMessage.obj);
-      paramMessage = new Intent(this.a, JLFindItems.class);
-      paramMessage.putExtra("is_xy", FindItemsActivity.access$000(this.a).is_xy);
-      paramMessage.putExtra("detail_max", FindItemsActivity.access$000(this.a).detail_max);
-      paramMessage.putExtra("detail_min", FindItemsActivity.access$000(this.a).detail_min);
-      this.a.startActivity(paramMessage);
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    e.c("get jianling protection failed:" + paramMessage.a + "-" + paramMessage.b);
-    if ((111 == paramMessage.a) || (110 == paramMessage.a) || (103 == paramMessage.a))
-    {
-      this.a.showUserDialog(2131361808, this.a.getResources().getString(2131362193), 2131362297, 2131361804, new ko(this), null);
-      return;
-    }
-    this.a.showUserDialog(2131361808, paramMessage.c, 2131361914, 2131361804, new kp(this), null);
+    paramView = new Intent(this.a, SmsContentTipActivity.class);
+    paramView.putExtra("intent.qquser", GeneralVerifyMobileUpActivity.access$100(this.a));
+    paramView.putExtra("intent.determin_factors_result", GeneralVerifyMobileUpActivity.access$500(this.a));
+    paramView.putExtra("intent.determin_verify_type", GeneralVerifyMobileUpActivity.access$000(this.a));
+    paramView.putExtra("up_sms_scene_id", 8);
+    paramView.putExtra("intent.determin_verify_factor_id", GeneralVerifyMobileUpActivity.access$800(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

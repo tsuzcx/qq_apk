@@ -9,11 +9,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.ag;
-import com.tencent.token.ah;
-import com.tencent.token.ai;
-import com.tencent.token.global.e;
+import com.tencent.token.cx;
+import com.tencent.token.cy;
+import com.tencent.token.cz;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.WidgetTransitionActivity;
+import com.tencent.token.utils.x;
 
 public class TokenService
   extends Service
@@ -32,39 +33,39 @@ public class TokenService
   
   public TokenService()
   {
-    this.h[0] = 2130837987;
-    this.h[1] = 2130837988;
-    this.h[2] = 2130837989;
-    this.h[3] = 2130837990;
-    this.h[4] = 2130837991;
-    this.h[5] = 2130837992;
-    this.h[6] = 2130837993;
-    this.h[7] = 2130837994;
-    this.h[8] = 2130837995;
-    this.h[9] = 2130837996;
+    this.h[0] = 2130838037;
+    this.h[1] = 2130838038;
+    this.h[2] = 2130838039;
+    this.h[3] = 2130838040;
+    this.h[4] = 2130838041;
+    this.h[5] = 2130838042;
+    this.h[6] = 2130838043;
+    this.h[7] = 2130838044;
+    this.h[8] = 2130838045;
+    this.h[9] = 2130838046;
   }
   
   private void a()
   {
     int i1 = 0;
-    ag localag = ag.c();
-    if (!localag.g())
+    cx localcx = cx.c();
+    if (!localcx.g())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       int[] arrayOfInt = localAppWidgetManager.getAppWidgetIds(this.e);
-      this.c.setImageViewResource(2131297176, 2130838013);
+      this.c.setImageViewResource(2131559337, 2130838055);
       if (!this.f)
       {
-        localag.m();
-        this.b = localag.l();
+        localcx.m();
+        this.b = localcx.l();
         if (this.g) {
-          this.c.setImageViewResource(2131297176, 2130838010);
+          this.c.setImageViewResource(2131559337, 2130838052);
         }
-        this.c.setViewVisibility(2131297175, 4);
-        this.c.setViewVisibility(2131297174, 4);
-        this.c.setViewVisibility(2131297173, 0);
-        this.c.setViewVisibility(2131297177, 0);
-        this.c.setOnClickPendingIntent(2131297173, this.j);
+        this.c.setViewVisibility(2131559336, 4);
+        this.c.setViewVisibility(2131559335, 4);
+        this.c.setViewVisibility(2131559334, 0);
+        this.c.setViewVisibility(2131559338, 0);
+        this.c.setOnClickPendingIntent(2131559334, this.j);
         int m = 0;
         for (;;)
         {
@@ -72,15 +73,15 @@ public class TokenService
           if (m >= this.b.length) {
             break;
           }
-          this.c.setImageViewResource(2131297178 + m, this.h[this.b[m]]);
+          this.c.setImageViewResource(2131559339 + m, this.h[this.b[m]]);
           m += 1;
         }
       }
-      this.c.setViewVisibility(2131297173, 4);
-      this.c.setViewVisibility(2131297177, 4);
-      this.c.setViewVisibility(2131297175, 0);
-      this.c.setViewVisibility(2131297174, 0);
-      this.c.setOnClickPendingIntent(2131297175, this.i);
+      this.c.setViewVisibility(2131559334, 4);
+      this.c.setViewVisibility(2131559338, 4);
+      this.c.setViewVisibility(2131559336, 0);
+      this.c.setViewVisibility(2131559335, 0);
+      this.c.setOnClickPendingIntent(2131559336, this.i);
       int n = i1;
       try
       {
@@ -94,8 +95,24 @@ public class TokenService
       catch (Exception localException)
       {
         localException.printStackTrace();
-        e.d("TokenService " + localException.toString());
+        h.d("TokenService " + localException.toString());
       }
+    }
+  }
+  
+  private void b()
+  {
+    if (this.c == null)
+    {
+      this.i = PendingIntent.getActivity(this, 0, new Intent(this, WidgetTransitionActivity.class), 0);
+      this.d = new Intent(this, TokenService.class);
+      this.c = new RemoteViews(getPackageName(), 2130968785);
+      this.e = new ComponentName(this, TokenWidgetProvider.class);
+      this.c.setOnClickPendingIntent(2131559338, this.i);
+      this.c.setOnClickPendingIntent(2131559336, this.i);
+      this.j = PendingIntent.getBroadcast(this, 0, new Intent("com.tencent.token.widget.SPEECH"), 0);
+      this.c.setOnClickPendingIntent(2131559334, this.j);
+      cz.a(this);
     }
   }
   
@@ -106,7 +123,7 @@ public class TokenService
   
   public void onCreate()
   {
-    e.a("onCreate");
+    h.a("onCreate");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -118,24 +135,13 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    ai.a(this).b();
+    cz.a(this).b();
     unregisterReceiver(this.k);
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    if (this.c == null)
-    {
-      this.i = PendingIntent.getActivity(this, 0, new Intent(this, WidgetTransitionActivity.class), 0);
-      this.d = new Intent(this, TokenService.class);
-      this.c = new RemoteViews(getPackageName(), 2130903223);
-      this.e = new ComponentName(this, TokenWidgetProvider.class);
-      this.c.setOnClickPendingIntent(2131297177, this.i);
-      this.c.setOnClickPendingIntent(2131297175, this.i);
-      this.j = PendingIntent.getBroadcast(this, 0, new Intent("com.tencent.token.widget.SPEECH"), 0);
-      this.c.setOnClickPendingIntent(2131297173, this.j);
-      ai.a(this);
-    }
+    b();
     long l2 = System.currentTimeMillis();
     paramIntent = this.a;
     long l1 = 120000L;
@@ -143,33 +149,35 @@ public class TokenService
     {
       try
       {
-        if (!ag.c().g())
+        if (!cx.c().g())
         {
-          if (ah.a().c())
-          {
-            this.f = true;
-            l1 = 30000L;
-            a();
+          if ((!cy.a().c()) && (x.e() == 0L)) {
+            continue;
           }
+          this.f = true;
+          l1 = 30000L;
+          a();
         }
-        else
-        {
-          ((AlarmManager)getSystemService("alarm")).set(1, l2 + l1, PendingIntent.getService(this, 0, this.d, 0));
-          return;
-        }
-        this.f = false;
-        l1 = ag.c().q();
-        if (l1 > 5000L)
-        {
-          l1 -= 5000L;
-          this.g = false;
-        }
-        else
-        {
-          this.g = true;
-        }
+        ((AlarmManager)getSystemService("alarm")).set(1, l2 + l1, PendingIntent.getService(this, 0, this.d, 0));
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
       }
       finally {}
+      return;
+      this.f = false;
+      l1 = cx.c().r();
+      if (l1 > 5000L)
+      {
+        l1 -= 5000L;
+        this.g = false;
+      }
+      else
+      {
+        this.g = true;
+      }
     }
   }
 }

@@ -1,16 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.webkit.DownloadListener;
+import com.tencent.token.utils.w;
 
-final class ef
-  implements DialogInterface.OnClickListener
+class ef
+  implements DownloadListener
 {
-  ef(ee paramee) {}
+  ef(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    this.a.a.dismissDialog();
+    w.a(this.a, paramString1);
   }
 }
 

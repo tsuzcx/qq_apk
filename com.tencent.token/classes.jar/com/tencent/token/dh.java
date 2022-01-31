@@ -1,77 +1,152 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.token.global.h;
 
-public final class dh
-  extends bm
+public class dh
+  implements gj
 {
-  private long c;
-  private String d;
+  private gg a = null;
+  private di b = null;
+  private int c = 0;
+  private dc d = null;
   
-  protected final String a()
+  public dh(dc paramdc)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    str = "?uin=" + this.c + "&aq_base_sid=" + str;
-    return b.c() + "/cn/mbtoken3/mbtoken3_get_domain" + str;
+    this.d = paramdc;
+    this.b = new di();
   }
   
-  protected final void a(fs paramfs)
+  private String a()
   {
-    this.c = ((Long)paramfs.c.get("param.realuin")).longValue();
+    return cx.a() + "/cn/manage/token/gprs_get_svr_time_req";
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  private String a(de paramde)
   {
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    if ((paramde.c != null) && (paramde.c.length() != 0))
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      e.a("domain name:" + paramJSONObject);
-      int i = paramJSONObject.getInt("err");
-      if (i != 0)
-      {
-        a(i, paramJSONObject.getString("info"));
-        return;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("domain_list");
-      if (paramJSONObject.length() > 0) {
-        this.d = paramJSONObject.getString(0);
-      }
-      this.a.a = 0;
+      str = paramde.c;
+      return str;
+    }
+    String str = "其它错误：" + paramde.b;
+    switch (paramde.b)
+    {
+    case 0: 
+    default: 
+      h.b("其它错误：" + paramde.b);
+      return "其它错误：" + paramde.b;
+    case 1: 
+      h.b("短信没有到达");
+      return "短信没有到达";
+    case 2: 
+      h.b("六位验证码验证错误");
+      return "六位验证码验证错误";
+    case 3: 
+      h.b("该号码已经绑定令牌");
+      return "该号码已经绑定令牌";
+    case 4: 
+      h.b("解除绑定时该号码还没有绑定qq");
+      return "解除绑定时该号码还没有绑定qq";
+    case 5: 
+      h.b("密保手机不正确");
+      return "密保手机不正确";
+    case 6: 
+      h.b("还没有密保手机");
+      return "还没有密保手机";
+    case 7: 
+      h.b("客户端输入错误");
+      return "客户端输入错误";
+    case 8: 
+      h.b("令牌序列号不存在");
+      return "令牌序列号不存在";
+    case 9: 
+      h.b("已经到令牌的最大绑定个数");
+      return "已经到令牌的最大绑定个数";
+    case 100: 
+      h.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
+      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
+    }
+    h.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
+    return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
+  }
+  
+  public void a(long paramLong)
+  {
+    Object localObject = this.b.a(paramLong, this.c);
+    localObject = new gi(a(), (byte[])localObject, this, true);
+    ((gi)localObject).a("POST");
+    this.a.a((gi)localObject);
+    this.c += 1;
+  }
+  
+  public void a(gg paramgg)
+  {
+    this.a = paramgg;
+  }
+  
+  public void a(gi paramgi, String paramString)
+  {
+    this.d.c();
+  }
+  
+  public void a(gi paramgi, byte[] paramArrayOfByte)
+  {
+    int i = this.b.a(paramArrayOfByte);
+    if (i == -1) {
       return;
     }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+    paramgi = new de();
+    switch (i)
+    {
+    case 103: 
+    case 104: 
+    default: 
+      return;
+    case 101: 
+      this.b.a(paramgi, paramArrayOfByte);
+      if (paramgi.b == 0)
+      {
+        h.b("服务器时间:" + paramgi.d);
+        this.d.a(paramgi.d);
+        return;
+      }
+      this.d.a(a(paramgi));
+      return;
+    case 102: 
+      paramgi = new dd();
+      this.b.a(paramgi, paramArrayOfByte);
+      this.b.a(paramgi);
+      if (paramgi.b == 0)
+      {
+        this.d.b(paramgi.a);
+        return;
+      }
+      this.d.c(a(paramgi));
+      return;
+    case 105: 
+      this.b.a(paramgi, paramArrayOfByte);
+      if (paramgi.b == 0)
+      {
+        do.a().n();
+        this.d.a();
+        return;
+      }
+      this.d.a(paramgi.b, a(paramgi));
+      return;
+    }
+    this.b.a(paramgi, paramArrayOfByte);
+    if (paramgi.b == 0)
+    {
+      do.a().n();
+      this.d.b();
+      return;
+    }
+    this.d.b(paramgi.b, a(paramgi));
   }
   
-  protected final void b()
+  public boolean a(gi paramgi, int paramInt)
   {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    return false;
   }
 }
 

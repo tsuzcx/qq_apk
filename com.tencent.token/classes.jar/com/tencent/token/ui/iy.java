@@ -1,28 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.token.ui.base.co;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.token.ui.base.FaceView;
 
-final class iy
-  implements DialogInterface.OnClickListener
+class iy
+  implements Runnable
 {
-  iy(iv paramiv) {}
+  iy(FaceStartVryCameraActivity paramFaceStartVryCameraActivity, float paramFloat) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    FaceRegCameraActivity.access$1300(this.a.a).b();
-    FaceRegCameraActivity.access$1600(this.a.a).removeMessages(13);
-    this.a.a.setContentView(2130903091);
-    this.a.a.hideTitle();
-    this.a.a.findViewById(2131296572).setOnClickListener(new iz(this));
-    FaceRegCameraActivity.access$1700(this.a.a);
-    if (FaceRegCameraActivity.access$400(this.a.a) != null) {
-      FaceRegCameraActivity.access$400(this.a.a).a(this.a.a, FaceRegCameraActivity.access$1800(this.a.a), FaceRegCameraActivity.access$1600(this.a.a), FaceRegCameraActivity.access$500(this.a.a), FaceRegCameraActivity.access$600(this.a.a));
-    }
-    FaceRegCameraActivity.access$302(this.a.a, 0);
+    ((ViewGroup.MarginLayoutParams)FaceStartVryCameraActivity.access$900(this.b).getLayoutParams()).topMargin = ((int)(FaceStartVryCameraActivity.access$600(this.b).getCenterY() - this.a * 170.0F));
+    ((ViewGroup.MarginLayoutParams)FaceStartVryCameraActivity.access$1000(this.b).getLayoutParams()).topMargin = ((int)(FaceStartVryCameraActivity.access$600(this.b).getCenterY() - this.a * 170.0F));
   }
 }
 

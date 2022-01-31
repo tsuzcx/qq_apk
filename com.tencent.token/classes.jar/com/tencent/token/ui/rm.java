@@ -1,20 +1,19 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.UpgradeDeterminResult;
+import com.tencent.token.cw;
 
-final class rm
+class rm
   implements View.OnClickListener
 {
-  rm(NetActiveVryOtherListActivity paramNetActiveVryOtherListActivity) {}
+  rm(NoCheckWithAuthActivity paramNoCheckWithAuthActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, BindUinActivity.class);
-    paramView.putExtra("intent.qquser", NetActiveVryOtherListActivity.access$000(this.a));
-    paramView.putExtra("intent.upgradedetermin", NetActiveVryOtherListActivity.access$100(this.a));
-    this.a.startActivity(paramView);
+    cw.a().c(NoCheckWithAuthActivity.access$100(this.a).mRealUin, NoCheckWithAuthActivity.access$200(this.a).f(), "", "", NoCheckWithAuthActivity.access$300(this.a));
   }
 }
 

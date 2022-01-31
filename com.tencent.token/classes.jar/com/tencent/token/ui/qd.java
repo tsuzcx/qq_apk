@@ -1,13 +1,21 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.cw;
 
-public class qd
-  extends Handler
+class qd
+  implements View.OnClickListener
 {
-  public qd(pv parampv)
+  qd(MyPswSubPageActivity paramMyPswSubPageActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(pv.b(parampv));
+    if ((Integer)paramView.getTag() == null) {
+      return;
+    }
+    cw.a().d(0L, MyPswSubPageActivity.access$300(this.a));
+    this.a.showUserDialog(12);
   }
 }
 

@@ -18,10 +18,10 @@ public class StartPwdDigitSelActivity
   {
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
-    localHashMap.put("setting_op_name", getResources().getString(2131361936));
+    localHashMap.put("setting_op_name", getResources().getString(2131231493));
     localArrayList.add(localHashMap);
     localHashMap = new HashMap();
-    localHashMap.put("setting_op_name", getResources().getString(2131361937));
+    localHashMap.put("setting_op_name", getResources().getString(2131231492));
     localArrayList.add(localHashMap);
     return localArrayList;
   }
@@ -29,10 +29,10 @@ public class StartPwdDigitSelActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903221);
-    this.mListView = ((ListView)findViewById(2131297161));
+    setContentView(2130968783);
+    this.mListView = ((ListView)findViewById(2131559322));
     this.mData = getData();
-    paramBundle = new ack(this, this.mData);
+    paramBundle = new aau(this, this.mData);
     this.mListView.setAdapter(paramBundle);
   }
 }

@@ -1,11 +1,20 @@
 package com.tencent.token.ui.base;
 
-import com.tencent.token.utils.UserTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class cx
-  extends UserTask
+class cx
+  implements View.OnClickListener
 {
-  cx(cw paramcw) {}
+  cx(TitleOptionMenu paramTitleOptionMenu) {}
+  
+  public void onClick(View paramView)
+  {
+    if (TitleOptionMenu.a(this.a) != null) {
+      TitleOptionMenu.a(this.a).a(((Integer)paramView.getTag()).intValue());
+    }
+    this.a.b();
+  }
 }
 
 

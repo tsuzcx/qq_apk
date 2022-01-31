@@ -1,76 +1,38 @@
 package com.tencent.token.ui;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import java.util.List;
+import com.tencent.token.core.bean.UpgradeDeterminResult;
+import com.tencent.token.do;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 
-final class ep
-  extends BaseAdapter
+class ep
+  implements Handler.Callback
 {
-  private List a;
-  private BaseActivity b;
-  private LayoutInflater c;
+  ep(FaceChangeMobileActivity paramFaceChangeMobileActivity) {}
   
-  public ep(BaseActivity paramBaseActivity, List paramList)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.c = LayoutInflater.from(paramBaseActivity);
-    this.b = paramBaseActivity;
-    this.a = paramList;
-  }
-  
-  public final int getCount()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.size();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.c.inflate(2130903084, paramViewGroup, false);
-    }
-    Object localObject = (TextView)localView.findViewById(2131296563);
-    paramView = (ImageView)localView.findViewById(2131296543);
-    if (this.a != null)
+    h.a("Callback=" + paramMessage.arg1);
+    if (paramMessage.arg1 == 270)
     {
-      paramViewGroup = (QQUser)this.a.get(paramInt);
-      if (paramViewGroup != null)
-      {
-        ((TextView)localObject).setText(paramViewGroup.mNickName + "(" + s.e(paramViewGroup.mRealUin) + ")");
-        localObject = t.f();
-        if ((localObject == null) || (((QQUser)localObject).mUin != paramViewGroup.mUin)) {
-          break label155;
-        }
-        paramView.setVisibility(0);
-      }
+      this.a.dismissDialog();
+      paramMessage = (UpgradeDeterminResult)((f)paramMessage.obj).d;
+      h.a("mSmsPrefix=" + paramMessage.mSmsPrefix);
+      h.a("mMobileMask=" + paramMessage.mMobileMask);
+      QQUser localQQUser = do.a().e();
+      h.a("currentUser=" + localQQUser);
+      Intent localIntent = new Intent(this.a, VryMobileForStrategyActivity.class);
+      localIntent.setFlags(536870912);
+      localIntent.putExtra("intent.qquser", localQQUser);
+      localIntent.putExtra("page_id", 13);
+      localIntent.putExtra("intent.upgradedetermin", paramMessage);
+      this.a.startActivity(localIntent);
     }
-    for (;;)
-    {
-      localView.setOnClickListener(new eq(this, paramViewGroup));
-      return localView;
-      label155:
-      paramView.setVisibility(4);
-    }
+    return false;
   }
 }
 

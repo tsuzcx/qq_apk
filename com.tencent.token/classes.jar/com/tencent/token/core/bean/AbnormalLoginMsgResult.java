@@ -12,44 +12,27 @@ public class AbnormalLoginMsgResult
 {
   private static final long serialVersionUID = -5970917243977567223L;
   public int mCnt;
-  public boolean mIsNeedAgain;
   public List mMsgList = null;
   
   public AbnormalLoginMsgResult(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("is_have_msg");
     this.mCnt = paramJSONObject.getInt("rsp_msg_num");
-    boolean bool;
-    JSONArray localJSONArray;
-    if ((j > 0) && (this.mCnt > 0))
+    JSONArray localJSONArray = paramJSONObject.getJSONArray("msgs");
+    if ((localJSONArray != null) && (localJSONArray.length() > 0))
     {
-      bool = true;
-      this.mIsNeedAgain = bool;
-      localJSONArray = paramJSONObject.getJSONArray("msgs");
-      if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-        this.mMsgList = new ArrayList();
-      }
-    }
-    else
-    {
-      for (;;)
+      this.mMsgList = new ArrayList();
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        if (i >= localJSONArray.length()) {
-          break label184;
-        }
         JSONObject localJSONObject = localJSONArray.getJSONObject(i);
         SafeMsgItem localSafeMsgItem = new SafeMsgItem();
         localSafeMsgItem.mUin = paramJSONObject.getLong("uin");
-        if (!localSafeMsgItem.a(localJSONObject))
-        {
+        if (!localSafeMsgItem.a(localJSONObject)) {
           throw new JSONException("parse msg[" + i + "] error");
-          bool = false;
-          break;
         }
         this.mMsgList.add(localSafeMsgItem);
         i += 1;
       }
-      label184:
       if (this.mCnt != this.mMsgList.size()) {
         throw new JSONException("cnt not equas msgs.size");
       }

@@ -1,20 +1,25 @@
 package com.tencent.token.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 
-final class xm
-  implements DialogInterface.OnCancelListener
+class xm
+  implements DialogInterface.OnClickListener
 {
-  xm(xg paramxg) {}
+  xm(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity, boolean paramBoolean) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.a.a, IndexActivity.class);
-    paramDialogInterface.addFlags(67108864);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    if (this.a)
+    {
+      paramDialogInterface = new Intent(this.b, IndexActivity.class);
+      paramDialogInterface.addFlags(67108864);
+      this.b.startActivity(paramDialogInterface);
+      this.b.finish();
+      return;
+    }
+    this.b.dismissDialog();
   }
 }
 

@@ -1,21 +1,18 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class qp
-  implements View.OnClickListener
+class qp
+  implements DialogInterface.OnClickListener
 {
-  qp(MyProtecSubPageActivity paramMyProtecSubPageActivity) {}
+  qp(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((Integer)paramView.getTag() == null) {
-      return;
-    }
-    af.a().d(0L, MyProtecSubPageActivity.access$300(this.a));
-    this.a.showUserDialog(12);
+    this.a.setContentView(2130968704);
+    NetActiveVryMobileNoSmsActivity.access$1200(this.a);
+    NetActiveVryMobileNoSmsActivity.access$400(this.a);
   }
 }
 

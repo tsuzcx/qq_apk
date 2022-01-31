@@ -1,16 +1,16 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class di
-  implements View.OnClickListener
+class di
+  implements DialogInterface.OnClickListener
 {
-  di(UtilsAccountLockTipDialog paramUtilsAccountLockTipDialog) {}
+  di(dh paramdh) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.dismiss();
+    dd.d(this.a.a);
   }
 }
 

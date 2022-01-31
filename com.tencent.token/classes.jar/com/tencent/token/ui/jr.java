@@ -1,16 +1,25 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+import com.tencent.token.utils.w;
 
-final class jr
-  implements DialogInterface.OnCancelListener
+class jr
+  implements View.OnClickListener
 {
-  jr(jl paramjl) {}
+  jr(FreezeStatusActivity paramFreezeStatusActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FaceStartVryCameraActivity.access$1200(this.a.a);
+    String str = this.a.getString(2131231047);
+    QQUser localQQUser = do.a().e();
+    paramView = str;
+    if (localQQUser != null) {
+      paramView = String.format(str, new Object[] { Long.valueOf(localQQUser.b()) });
+    }
+    w.a(this.a, paramView, this.a.getString(2131231051));
   }
 }
 

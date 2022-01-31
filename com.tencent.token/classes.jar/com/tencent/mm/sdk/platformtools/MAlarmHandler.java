@@ -14,16 +14,16 @@ public class MAlarmHandler
 {
   public static final long NEXT_FIRE_INTERVAL = 9223372036854775807L;
   private static int ac;
-  private static Map<Integer, MAlarmHandler> ah = new HashMap();
-  private static IBumper aj;
+  private static Map ah = new HashMap();
+  private static MAlarmHandler.IBumper aj;
   private static boolean ak = false;
   private final int ad;
   private final boolean ae;
   private long af = 0L;
   private long ag = 0L;
-  private final CallBack ai;
+  private final MAlarmHandler.CallBack ai;
   
-  public MAlarmHandler(CallBack paramCallBack, boolean paramBoolean)
+  public MAlarmHandler(MAlarmHandler.CallBack paramCallBack, boolean paramBoolean)
   {
     Assert.assertTrue("bumper not initialized", ak);
     this.ai = paramCallBack;
@@ -91,7 +91,7 @@ public class MAlarmHandler
     }
   }
   
-  public static void initAlarmBumper(IBumper paramIBumper)
+  public static void initAlarmBumper(MAlarmHandler.IBumper paramIBumper)
   {
     ak = true;
     aj = paramIBumper;
@@ -161,18 +161,6 @@ public class MAlarmHandler
   public boolean stopped()
   {
     return !ah.containsKey(Integer.valueOf(this.ad));
-  }
-  
-  public static abstract interface CallBack
-  {
-    public abstract boolean onTimerExpired();
-  }
-  
-  public static abstract interface IBumper
-  {
-    public abstract void cancel();
-    
-    public abstract void prepare();
   }
 }
 

@@ -1,82 +1,57 @@
 package com.tencent.token;
 
-import java.io.UnsupportedEncodingException;
+import com.qq.taf.jce.JceStruct;
+import java.lang.ref.WeakReference;
+import tmsdk.common.d.a.b.y;
 
 public class e
+  implements fr
 {
-  static
+  private static y b;
+  private long a;
+  
+  public e(long paramLong)
   {
-    if (!e.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    this.a = paramLong;
+    if (b == null) {}
+    try
     {
-      a = bool;
+      if (b == null) {
+        b = new y(paramLong);
+      }
       return;
     }
+    finally {}
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  public fo a(int paramInt1, int paramInt2)
   {
-    int j;
-    int i;
-    int m;
-    label169:
-    for (;;)
-    {
-      int k;
-      g localg;
-      try
-      {
-        k = paramArrayOfByte.length;
-        localg = new g();
-        j = k / 3 * 4;
-        if (!localg.d) {
-          break label120;
-        }
-        i = j;
-        if (k % 3 > 0) {
-          i = j + 4;
-        }
-        if ((!localg.e) || (k <= 0)) {
-          break label169;
-        }
-        m = (k - 1) / 57;
-        if (!localg.f) {
-          break;
-        }
-        j = 2;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte)
-      {
-        label71:
-        throw new AssertionError(paramArrayOfByte);
-      }
-      localg.a = new byte[i];
-      localg.a(paramArrayOfByte, k);
-      if ((!a) && (localg.b != i))
-      {
-        throw new AssertionError();
-        label120:
-        i = j;
-      }
-      switch (k % 3)
-      {
-      case 0: 
-        paramArrayOfByte = new String(localg.a, "US-ASCII");
-        return paramArrayOfByte;
-      }
-    }
-    for (;;)
-    {
-      i = j * (m + 1) + i;
-      break label71;
-      i = j;
-      break;
-      i = j + 2;
-      break;
-      i = j + 3;
-      break;
-      j = 1;
-    }
+    return b.a(paramInt1, paramInt2);
+  }
+  
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, fn paramfn)
+  {
+    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramfn);
+  }
+  
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, fn paramfn, long paramLong)
+  {
+    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramfn, paramLong);
+  }
+  
+  public void a(int paramInt)
+  {
+    b.a(paramInt);
+  }
+  
+  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, fo paramfo)
+  {
+    b.a(paramInt1, paramJceStruct, paramInt2, paramfo);
+  }
+  
+  public void b(int paramInt)
+  {
+    b.b(paramInt);
   }
 }
 

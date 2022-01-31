@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/freeze_loading_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:id="@id/account_lock_list_tip_progress" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="10.0dip" android:layout_centerVertical="true" style="@style/TokenProgressStyle" />
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/safe_conf_loading" android:layout_toRightOf="@id/account_lock_list_tip_progress" android:layout_alignTop="@id/account_lock_list_tip_progress" style="@style/utils_text_item_name" />
+    </RelativeLayout>
+</RelativeLayout>

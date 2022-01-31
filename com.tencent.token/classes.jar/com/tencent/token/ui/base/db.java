@@ -1,13 +1,16 @@
 package com.tencent.token.ui.base;
 
-final class db
-  implements Runnable
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class db
+  implements View.OnClickListener
 {
-  db(SwitchButton paramSwitchButton, boolean paramBoolean) {}
+  db(UtilsAccountLockTipDialog paramUtilsAccountLockTipDialog) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.b.a(this.a, true);
+    this.a.dismiss();
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tmsdk.TMSDKContext;
 
-final class aby
-  implements DialogInterface.OnClickListener
+class aby
+  implements View.OnClickListener
 {
-  aby(abw paramabw) {}
+  aby(UtilsActivity paramUtilsActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, StartPwdGestureForgetActivity.class);
-    paramDialogInterface.putExtra("startpwd_forget_source", 3);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    TMSDKContext.saveActionData(1150069);
+    paramView = new Intent(this.a, VerifyStartScanActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

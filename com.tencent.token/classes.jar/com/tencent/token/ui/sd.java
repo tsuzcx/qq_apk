@@ -1,18 +1,20 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
 
-final class sd
+class sd
   implements View.OnClickListener
 {
-  sd(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
+  sd(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    af.a().b(NetActiveVryQuesActivity.access$1400(this.a));
-    this.a.showProDialog(this.a, 2131361808, 2131361817, null);
+    paramView = new Intent(this.a, IndexActivity.class);
+    paramView.putExtra("index_from", 21);
+    this.a.startActivity(paramView);
+    this.a.finish();
   }
 }
 

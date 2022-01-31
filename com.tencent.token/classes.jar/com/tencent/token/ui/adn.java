@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.ui.base.TitleOptionMenu;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class adn
-  implements Runnable
+class adn
+  implements View.OnClickListener
 {
-  adn(UtilsActivity paramUtilsActivity) {}
+  adn(UtilsMbInfoFeedbackMobileUsingSuccActivity paramUtilsMbInfoFeedbackMobileUsingSuccActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.setRightTitleImage(2130837539, UtilsActivity.access$1100(this.a));
-    UtilsActivity.access$102(this.a, this.a.getDialogMenu());
-    if (UtilsActivity.access$100(this.a) != null) {
-      UtilsActivity.access$100(this.a).a(2);
-    }
+    this.a.finish();
   }
 }
 

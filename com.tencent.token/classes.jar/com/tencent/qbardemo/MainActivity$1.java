@@ -6,7 +6,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.p;
+import com.tencent.token.ch;
 import com.tencent.token.ui.GetOtherBarcodeActivity;
 
 class MainActivity$1
@@ -29,7 +29,7 @@ class MainActivity$1
         return;
       case 0: 
         MainActivity.access$002(this.this$0, false);
-        if (MainActivity.access$100(this.this$0) > 0)
+        if (MainActivity.access$100(this.this$0) >= 1)
         {
           MainActivity.access$200(this.this$0).getPen().setColor(-65536);
           MainActivity.access$200(this.this$0).invalidate();
@@ -68,7 +68,7 @@ class MainActivity$1
     localBundle.putString("url_txt", str);
     paramMessage.putExtra("com.tencent.input_param", localBundle);
     this.this$0.startActivityForResult(paramMessage, 1);
-    p.a().a(System.currentTimeMillis(), 10);
+    ch.a().a(System.currentTimeMillis(), 10);
     this.this$0.finish();
   }
 }

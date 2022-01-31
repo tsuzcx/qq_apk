@@ -1,16 +1,15 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.token.cw;
 
-final class lf
-  implements DialogInterface.OnCancelListener
+class lf
+  implements Runnable
 {
-  lf(lc paramlc) {}
+  lf(IndexActivity paramIndexActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a.finish();
+    cw.a().f(IndexActivity.access$100(this.a));
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.token.ui.base;
 
 public abstract interface da
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,17 +1,20 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import com.tencent.token.ch;
 
-final class afx
+class afx
   implements View.OnClickListener
 {
-  afx(UtilsQbQdProtectActivity paramUtilsQbQdProtectActivity) {}
+  afx(WtLoginAccountInput paramWtLoginAccountInput) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    s.b(this.a, this.a.getString(2131361978));
+    ch.a().a(System.currentTimeMillis(), 87);
+    paramView = new Intent(this.a, FindPasswdActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

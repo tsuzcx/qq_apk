@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class ww
-  implements Runnable
+class ww
+  implements DialogInterface.OnCancelListener
 {
-  ww(RealNameStep0VerifyMobileDownActivity paramRealNameStep0VerifyMobileDownActivity, String paramString) {}
+  ww(wp paramwp) {}
   
-  public final void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Message localMessage = new Message();
-    localMessage.what = 100;
-    RealNameStep0VerifyMobileDownActivity.access$500(this.b).sendMessage(localMessage);
-    RealNameStep0VerifyMobileDownActivity.access$1700(this.b, this.a);
+    this.a.a.dismissDialog();
   }
 }
 

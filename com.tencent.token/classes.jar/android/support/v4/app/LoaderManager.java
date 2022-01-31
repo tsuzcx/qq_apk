@@ -1,6 +1,9 @@
 package android.support.v4.app;
 
 import android.os.Bundle;
+import android.support.annotation.MainThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.Loader;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -12,29 +15,26 @@ public abstract class LoaderManager
     LoaderManagerImpl.DEBUG = paramBoolean;
   }
   
+  @MainThread
   public abstract void destroyLoader(int paramInt);
   
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public abstract <D> Loader<D> getLoader(int paramInt);
+  @Nullable
+  public abstract Loader getLoader(int paramInt);
   
   public boolean hasRunningLoaders()
   {
     return false;
   }
   
-  public abstract <D> Loader<D> initLoader(int paramInt, Bundle paramBundle, LoaderCallbacks<D> paramLoaderCallbacks);
+  @MainThread
+  @NonNull
+  public abstract Loader initLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks);
   
-  public abstract <D> Loader<D> restartLoader(int paramInt, Bundle paramBundle, LoaderCallbacks<D> paramLoaderCallbacks);
-  
-  public static abstract interface LoaderCallbacks<D>
-  {
-    public abstract Loader<D> onCreateLoader(int paramInt, Bundle paramBundle);
-    
-    public abstract void onLoadFinished(Loader<D> paramLoader, D paramD);
-    
-    public abstract void onLoaderReset(Loader<D> paramLoader);
-  }
+  @MainThread
+  @NonNull
+  public abstract Loader restartLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks);
 }
 
 

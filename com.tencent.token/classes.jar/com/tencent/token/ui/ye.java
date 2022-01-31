@@ -1,16 +1,46 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.ds;
+import com.tencent.token.du;
+import com.tencent.token.er;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 
-final class ye
-  implements View.OnClickListener
+class ye
+  implements DialogInterface.OnClickListener
 {
-  ye(RealNameTakeIDPhotoActivity paramRealNameTakeIDPhotoActivity) {}
+  ye(yd paramyd, QQUser paramQQUser) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    try
+    {
+      cp.a(RqdApplication.l()).a(this.a.mRealUin + "", 523005419L);
+      cw.a().h(this.a.mRealUin, ScanLoginAccountListActivity.access$300(this.b.a));
+      do.a().b(this.a);
+      do.a().n();
+      du.a().f.a(w.f(this.a.mUin));
+      ds.a().f.a(w.f(this.a.mUin));
+      du.a().f.a(w.f(this.a.mRealUin));
+      ds.a().f.a(w.f(this.a.mRealUin));
+      ScanLoginAccountListActivity.access$700(this.b.a).notifyDataSetChanged();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        h.c("clearUserLoginDataSync exception: " + paramDialogInterface.getMessage());
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 

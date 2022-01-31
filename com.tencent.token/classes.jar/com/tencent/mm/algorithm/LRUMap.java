@@ -8,19 +8,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class LRUMap<K, O>
+public class LRUMap
 {
-  private Map<K, LRUMap<K, O>.TimeVal<O>> c = null;
+  private Map c = null;
   private int d;
   private int e;
-  private PreRemoveCallback<K, O> f = null;
+  private LRUMap.PreRemoveCallback f = null;
   
   public LRUMap(int paramInt)
   {
     this(paramInt, null);
   }
   
-  public LRUMap(int paramInt, PreRemoveCallback<K, O> paramPreRemoveCallback)
+  public LRUMap(int paramInt, LRUMap.PreRemoveCallback paramPreRemoveCallback)
   {
     this.d = paramInt;
     this.e = 0;
@@ -28,16 +28,16 @@ public class LRUMap<K, O>
     this.c = new HashMap();
   }
   
-  public boolean check(K paramK)
+  public boolean check(Object paramObject)
   {
-    return this.c.containsKey(paramK);
+    return this.c.containsKey(paramObject);
   }
   
-  public boolean checkAndUpTime(K paramK)
+  public boolean checkAndUpTime(Object paramObject)
   {
-    if (this.c.containsKey(paramK))
+    if (this.c.containsKey(paramObject))
     {
-      ((TimeVal)this.c.get(paramK)).UpTime();
+      ((LRUMap.TimeVal)this.c.get(paramObject)).UpTime();
       return true;
     }
     return false;
@@ -48,7 +48,7 @@ public class LRUMap<K, O>
     this.c.clear();
   }
   
-  public void clear(OnClearListener<K, O> paramOnClearListener)
+  public void clear(LRUMap.OnClearListener paramOnClearListener)
   {
     if (this.c != null)
     {
@@ -58,37 +58,37 @@ public class LRUMap<K, O>
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          paramOnClearListener.onClear(localEntry.getKey(), ((TimeVal)localEntry.getValue()).obj);
+          paramOnClearListener.onClear(localEntry.getKey(), ((LRUMap.TimeVal)localEntry.getValue()).obj);
         }
       }
       this.c.clear();
     }
   }
   
-  public O get(K paramK)
+  public Object get(Object paramObject)
   {
-    return getAndUptime(paramK);
+    return getAndUptime(paramObject);
   }
   
-  public O getAndUptime(K paramK)
+  public Object getAndUptime(Object paramObject)
   {
-    paramK = (TimeVal)this.c.get(paramK);
-    if (paramK == null) {
+    paramObject = (LRUMap.TimeVal)this.c.get(paramObject);
+    if (paramObject == null) {
       return null;
     }
-    paramK.UpTime();
-    return paramK.obj;
+    paramObject.UpTime();
+    return paramObject.obj;
   }
   
-  public void remove(K paramK)
+  public void remove(Object paramObject)
   {
-    if (!this.c.containsKey(paramK)) {
+    if (!this.c.containsKey(paramObject)) {
       return;
     }
     if (this.f != null) {
-      this.f.preRemoveCallback(paramK, ((TimeVal)this.c.get(paramK)).obj);
+      this.f.preRemoveCallback(paramObject, ((LRUMap.TimeVal)this.c.get(paramObject)).obj);
     }
-    this.c.remove(paramK);
+    this.c.remove(paramObject);
   }
   
   public void setMaxSize(int paramInt)
@@ -110,17 +110,17 @@ public class LRUMap<K, O>
     return this.c.size();
   }
   
-  public void update(K paramK, O paramO)
+  public void update(Object paramObject1, Object paramObject2)
   {
     int i;
-    if ((TimeVal)this.c.get(paramK) == null)
+    if ((LRUMap.TimeVal)this.c.get(paramObject1) == null)
     {
-      paramO = new TimeVal(paramO);
-      this.c.put(paramK, paramO);
+      paramObject2 = new LRUMap.TimeVal(this, paramObject2);
+      this.c.put(paramObject1, paramObject2);
       if (this.c.size() > this.d)
       {
-        paramK = new ArrayList(this.c.entrySet());
-        Collections.sort(paramK, new LRUMap.1(this));
+        paramObject1 = new ArrayList(this.c.entrySet());
+        Collections.sort(paramObject1, new LRUMap.1(this));
         if (this.e > 0) {
           break label150;
         }
@@ -129,14 +129,14 @@ public class LRUMap<K, O>
         if (j <= 0) {
           i = 1;
         }
-        paramK = paramK.iterator();
+        paramObject1 = paramObject1.iterator();
       }
     }
     for (;;)
     {
-      if (paramK.hasNext())
+      if (paramObject1.hasNext())
       {
-        remove(((Map.Entry)paramK.next()).getKey());
+        remove(((Map.Entry)paramObject1.next()).getKey());
         i -= 1;
         if (i > 0) {}
       }
@@ -146,38 +146,10 @@ public class LRUMap<K, O>
         label150:
         i = this.e;
         break;
-        ((TimeVal)this.c.get(paramK)).UpTime();
-        ((TimeVal)this.c.get(paramK)).obj = paramO;
+        ((LRUMap.TimeVal)this.c.get(paramObject1)).UpTime();
+        ((LRUMap.TimeVal)this.c.get(paramObject1)).obj = paramObject2;
         return;
       }
-    }
-  }
-  
-  public static abstract interface OnClearListener<K, O>
-  {
-    public abstract void onClear(K paramK, O paramO);
-  }
-  
-  public static abstract interface PreRemoveCallback<K, O>
-  {
-    public abstract void preRemoveCallback(K paramK, O paramO);
-  }
-  
-  public class TimeVal<OO>
-  {
-    public OO obj;
-    public Long t;
-    
-    public TimeVal()
-    {
-      Object localObject;
-      this.obj = localObject;
-      UpTime();
-    }
-    
-    public void UpTime()
-    {
-      this.t = Long.valueOf(System.currentTimeMillis());
     }
   }
 }

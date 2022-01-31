@@ -1,33 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.af;
-import com.tencent.token.utils.t;
+import com.tencent.token.ui.base.LockPatternView;
 
-final class aaa
-  implements View.OnClickListener
+class aaa
+  implements Runnable
 {
-  aaa(SettingSubmitCommentActivity paramSettingSubmitCommentActivity) {}
+  aaa(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    SettingSubmitCommentActivity.access$002(this.a, SettingSubmitCommentActivity.access$300(this.a).getText().toString());
-    if (SettingSubmitCommentActivity.access$000(this.a).length() == 0) {
-      return;
-    }
-    t.a(this.a);
-    try
-    {
-      SettingSubmitCommentActivity.access$200(this.a).a(SettingSubmitCommentActivity.access$000(this.a), SettingSubmitCommentActivity.access$100(this.a));
-      this.a.showProDialog(this.a, 2131361808, 2131361817, null);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
+    StartPwdGestureModifyActivity.access$300(this.a).a();
+    StartPwdGestureModifyActivity.access$300(this.a).c();
   }
 }
 

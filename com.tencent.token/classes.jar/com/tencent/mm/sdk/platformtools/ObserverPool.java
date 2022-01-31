@@ -1,6 +1,5 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import java.util.Collections;
@@ -12,42 +11,42 @@ import junit.framework.Assert;
 
 public final class ObserverPool
 {
-  private final HashMap<String, LinkedList<Listener>> ay = new HashMap();
+  private final HashMap ay = new HashMap();
   
   /* Error */
-  public final boolean add(String paramString, Listener paramListener)
+  public final boolean add(String paramString, ObserverPool.Listener paramListener)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_2
-    //   3: invokestatic 31	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
+    //   3: invokestatic 24	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
     //   6: aload_0
-    //   7: getfield 22	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
+    //   7: getfield 15	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
     //   10: aload_1
-    //   11: invokevirtual 35	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: checkcast 37	java/util/LinkedList
+    //   11: invokevirtual 28	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   14: checkcast 30	java/util/LinkedList
     //   17: astore 5
     //   19: aload 5
     //   21: astore 4
     //   23: aload 5
     //   25: ifnonnull +23 -> 48
-    //   28: new 37	java/util/LinkedList
+    //   28: new 30	java/util/LinkedList
     //   31: dup
-    //   32: invokespecial 38	java/util/LinkedList:<init>	()V
+    //   32: invokespecial 31	java/util/LinkedList:<init>	()V
     //   35: astore 4
     //   37: aload_0
-    //   38: getfield 22	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
+    //   38: getfield 15	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
     //   41: aload_1
     //   42: aload 4
-    //   44: invokevirtual 42	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: invokevirtual 35	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   47: pop
     //   48: aload 4
     //   50: aload_2
-    //   51: invokevirtual 46	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
+    //   51: invokevirtual 39	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
     //   54: ifeq +30 -> 84
-    //   57: ldc 48
-    //   59: ldc 50
+    //   57: ldc 41
+    //   59: ldc 43
     //   61: iconst_2
     //   62: anewarray 4	java/lang/Object
     //   65: dup
@@ -56,9 +55,9 @@ public final class ObserverPool
     //   68: aastore
     //   69: dup
     //   70: iconst_1
-    //   71: invokestatic 56	com/tencent/mm/sdk/platformtools/Util:getStack	()Ljava/lang/String;
+    //   71: invokestatic 49	com/tencent/mm/sdk/platformtools/Util:getStack	()Ljava/lang/String;
     //   74: aastore
-    //   75: invokestatic 62	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   75: invokestatic 55	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   78: iconst_0
     //   79: istore_3
     //   80: aload_0
@@ -67,7 +66,7 @@ public final class ObserverPool
     //   83: ireturn
     //   84: aload 4
     //   86: aload_2
-    //   87: invokevirtual 64	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   87: invokevirtual 57	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   90: istore_3
     //   91: goto -11 -> 80
     //   94: astore_1
@@ -79,7 +78,7 @@ public final class ObserverPool
     //   start	length	slot	name	signature
     //   0	99	0	this	ObserverPool
     //   0	99	1	paramString	String
-    //   0	99	2	paramListener	Listener
+    //   0	99	2	paramListener	ObserverPool.Listener
     //   79	12	3	bool	boolean
     //   21	64	4	localLinkedList1	LinkedList
     //   17	7	5	localLinkedList2	LinkedList
@@ -91,18 +90,18 @@ public final class ObserverPool
     //   84	91	94	finally
   }
   
-  public final void asyncPublish(Event paramEvent)
+  public final void asyncPublish(ObserverPool.Event paramEvent)
   {
     asyncPublish(paramEvent, Looper.myLooper());
   }
   
-  public final void asyncPublish(Event paramEvent, Looper paramLooper)
+  public final void asyncPublish(ObserverPool.Event paramEvent, Looper paramLooper)
   {
     Assert.assertNotNull(paramLooper);
     new Handler(paramLooper).post(new ObserverPool.2(this, paramEvent));
   }
   
-  public final boolean publish(Event paramEvent)
+  public final boolean publish(ObserverPool.Event paramEvent)
   {
     int i = 0;
     Assert.assertNotNull(paramEvent);
@@ -120,7 +119,7 @@ public final class ObserverPool
       Collections.sort(localLinkedList, new ObserverPool.1(this));
     }
     localObject = localLinkedList.iterator();
-    while ((((Iterator)localObject).hasNext()) && ((!((Listener)((Iterator)localObject).next()).callback(paramEvent)) || (i == 0))) {}
+    while ((((Iterator)localObject).hasNext()) && ((!((ObserverPool.Listener)((Iterator)localObject).next()).callback(paramEvent)) || (i == 0))) {}
     paramEvent.onComplete();
     return true;
   }
@@ -146,11 +145,11 @@ public final class ObserverPool
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 31	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
+    //   3: invokestatic 24	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
     //   6: aload_0
-    //   7: getfield 22	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
+    //   7: getfield 15	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
     //   10: aload_1
-    //   11: invokevirtual 142	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   11: invokevirtual 139	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   14: astore_1
     //   15: aload_1
     //   16: ifnull +9 -> 25
@@ -178,7 +177,7 @@ public final class ObserverPool
     //   2	15	30	finally
   }
   
-  public final boolean remove(String paramString, Listener paramListener)
+  public final boolean remove(String paramString, ObserverPool.Listener paramListener)
   {
     for (;;)
     {
@@ -214,60 +213,6 @@ public final class ObserverPool
     }
     localStringBuilder.append("End...");
     return localStringBuilder.toString();
-  }
-  
-  public static class Event
-  {
-    public static final int FLAG_ORDER_EXE = 1;
-    private final String aB;
-    private int aC;
-    public final Bundle data = new Bundle();
-    
-    public Event(String paramString)
-    {
-      Assert.assertNotNull(paramString);
-      this.aB = paramString;
-    }
-    
-    public int getFlag()
-    {
-      return this.aC;
-    }
-    
-    public String getId()
-    {
-      return this.aB;
-    }
-    
-    public void onComplete() {}
-    
-    public Event setFlag(int paramInt)
-    {
-      this.aC = paramInt;
-      return this;
-    }
-  }
-  
-  public static abstract class Listener
-  {
-    private final int priority;
-    
-    public Listener()
-    {
-      this.priority = 0;
-    }
-    
-    public Listener(int paramInt)
-    {
-      this.priority = paramInt;
-    }
-    
-    public abstract boolean callback(ObserverPool.Event paramEvent);
-    
-    public int getPriority()
-    {
-      return this.priority;
-    }
   }
 }
 

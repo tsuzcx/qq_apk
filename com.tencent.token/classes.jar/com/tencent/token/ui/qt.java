@@ -1,21 +1,13 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-
-final class qt
-  implements View.OnClickListener
+class qt
+  implements Runnable
 {
-  qt(MyPswSubPageActivity paramMyPswSubPageActivity) {}
+  qt(NetActiveVryOtherListActivity paramNetActiveVryOtherListActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    if ((Integer)paramView.getTag() == null) {
-      return;
-    }
-    af.a().d(0L, MyPswSubPageActivity.access$300(this.a));
-    this.a.showUserDialog(12);
+    NetActiveVryOtherListActivity.access$000(this.a);
   }
 }
 

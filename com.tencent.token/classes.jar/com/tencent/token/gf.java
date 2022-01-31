@@ -1,17 +1,17 @@
 package com.tencent.token;
 
-import com.tencent.kingkong.DatabaseErrorHandler;
-import com.tencent.kingkong.DefaultDatabaseErrorHandler;
-import com.tencent.kingkong.database.SQLiteDatabase;
-
-public final class gf
-  implements DatabaseErrorHandler
+public class gf
 {
-  private DefaultDatabaseErrorHandler a = new DefaultDatabaseErrorHandler();
+  private static gg a = null;
   
-  public final void onCorruption(SQLiteDatabase paramSQLiteDatabase)
+  public static gg a()
   {
-    this.a.onCorruption(paramSQLiteDatabase);
+    if (a == null)
+    {
+      a = new gg(4, 20);
+      a.a();
+    }
+    return a;
   }
 }
 

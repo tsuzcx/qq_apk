@@ -1,40 +1,82 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.token.p;
-import com.tencent.token.ui.base.bz;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
+import com.tmsdk.TMSDKContext;
 
-final class ace
-  implements bz
+class ace
+  implements View.OnClickListener
 {
-  ace(StartPwdGestureVerifyActivity paramStartPwdGestureVerifyActivity) {}
+  private int b;
+  private int c;
+  private int d;
+  private String e;
+  private String f;
   
-  public final void a()
+  public ace(UtilsActivity paramUtilsActivity, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    this.a.setResult(35);
-    p.a().a(System.currentTimeMillis(), 18);
-    this.a.finish();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramString1;
+    this.f = paramString2;
   }
   
-  public final void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      Intent localIntent = new Intent(this.a, StartPwdGestureForgetActivity.class);
-      localIntent.putExtra("startpwd_forget_source", 3);
-      this.a.startActivity(localIntent);
-      this.a.finish();
-      return;
+    if (this.c == 0) {
+      TMSDKContext.SaveStringData(1150109, this.f);
     }
-    this.a.showUserDialog(2131361808, this.a.getResources().getString(2131362152), 2131361800, new acf(this));
-  }
-  
-  public final void b()
-  {
-    Intent localIntent = new Intent(this.a, StartPwdGestureForgetActivity.class);
-    localIntent.putExtra("startpwd_forget_source", this.a.mActivityType);
-    this.a.startActivityForResult(localIntent, 256);
+    if (this.b == 1)
+    {
+      TMSDKContext.saveActionData(1150070);
+      if ((this.b > 10) || (this.b < 1)) {
+        break label175;
+      }
+      UtilsActivity.access$200(this.a, this);
+    }
+    label175:
+    while ((this.e == null) || (this.e.length() <= 0))
+    {
+      return;
+      if (this.b == 3)
+      {
+        TMSDKContext.saveActionData(1150071);
+        break;
+      }
+      if (this.b == 2)
+      {
+        TMSDKContext.saveActionData(1150072);
+        break;
+      }
+      if (this.b == 4)
+      {
+        TMSDKContext.saveActionData(1150073);
+        break;
+      }
+      if (this.b == 8)
+      {
+        TMSDKContext.saveActionData(1150075);
+        break;
+      }
+      if (this.b == 11)
+      {
+        UtilsActivity.access$000(this.a);
+        break;
+      }
+      if (this.b == 12)
+      {
+        TMSDKContext.saveActionData(1150074);
+        break;
+      }
+      if (this.b != 20) {
+        break;
+      }
+      UtilsActivity.access$100(this.a);
+      break;
+    }
+    w.b(this.a, this.e);
   }
 }
 

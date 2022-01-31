@@ -5,36 +5,43 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.ag;
-import com.tencent.token.ah;
-import com.tencent.token.ai;
+import com.tencent.token.cx;
+import com.tencent.token.cy;
+import com.tencent.token.cz;
 
 public class WidgetReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      paramContext.startService(new Intent(paramContext, TokenService.class));
-    }
-    ah localah;
-    do
+    try
     {
-      do
+      paramIntent = paramIntent.getAction();
+      if ("android.intent.action.SCREEN_ON".equals(paramIntent))
       {
+        paramContext.startService(new Intent(paramContext, TokenService.class));
         return;
-        if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
-        {
-          paramIntent = PendingIntent.getService(paramContext, 0, new Intent(paramContext, TokenService.class), 0);
-          ((AlarmManager)paramContext.getSystemService("alarm")).cancel(paramIntent);
-          return;
-        }
-      } while (!paramIntent.equals("com.tencent.token.widget.SPEECH"));
-      paramIntent = ag.c();
-      localah = ah.a();
-    } while ((paramIntent.g()) || (localah.c()));
-    ai.a(paramContext).a(paramIntent.l());
+      }
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
+      {
+        paramIntent = PendingIntent.getService(paramContext, 0, new Intent(paramContext, TokenService.class), 0);
+        ((AlarmManager)paramContext.getSystemService("alarm")).cancel(paramIntent);
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+      return;
+    }
+    if (paramIntent.equals("com.tencent.token.widget.SPEECH"))
+    {
+      paramIntent = cx.c();
+      cy localcy = cy.a();
+      if ((!paramIntent.g()) && (!localcy.c())) {
+        cz.a(paramContext).a(paramIntent.l(), 0);
+      }
+    }
   }
 }
 

@@ -1,24 +1,18 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class aco
-  implements Runnable
+class aco
+  implements View.OnClickListener
 {
-  aco(UnbindUinActivity paramUnbindUinActivity) {}
+  aco(UtilsGameProtectActivity paramUtilsGameProtectActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    e.a("send unbind seq request:" + this.a.mUnBindRetryTimes);
-    if (!UnbindUinActivity.access$000(this.a)) {
-      return;
-    }
-    ag.c().n();
-    af.a().a(UnbindUinActivity.access$100(this.a), UnbindUinActivity.access$200(this.a), 1005, this.a.handler);
-    UnbindUinActivity localUnbindUinActivity = this.a;
-    localUnbindUinActivity.mUnBindRetryTimes += 1;
+    h.c("retry: ");
+    this.a.queryGameProtectStatus();
   }
 }
 

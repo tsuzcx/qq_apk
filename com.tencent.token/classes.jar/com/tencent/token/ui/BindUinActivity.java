@@ -1,7 +1,6 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,35 +8,27 @@ import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ag;
-import com.tencent.token.as;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.core.push.a;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
-import com.tencent.token.p;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
+import com.tencent.token.cx;
+import com.tencent.token.dj;
+import com.tencent.token.do;
+import com.tencent.token.global.h;
 
 public class BindUinActivity
   extends BaseActivity
   implements Runnable
 {
   private int mBindRetryTimes = 0;
-  Runnable mBindRunnable = new bp(this);
-  private View.OnClickListener mChangeListener = new bt(this);
-  private View.OnClickListener mCompleteButtonListener = new br(this);
-  Handler mHandler = new bq(this);
+  Runnable mBindRunnable = new cc(this);
+  private View.OnClickListener mChangeListener = new cf(this);
+  Handler mHandler = new cd(this);
   private boolean mIsActiveSuccess = false;
   private boolean mIsRunning = true;
   private boolean mIsTimeTask = false;
   private int mPageId;
-  private View.OnClickListener mSmsListener = new bs(this);
+  private View.OnClickListener mSmsListener = new ce(this);
   private String mSmsPort;
   private long mTimeConter;
   private String mUin;
@@ -47,53 +38,31 @@ public class BindUinActivity
   private void displaySucc()
   {
     dismissDialog();
-    Object localObject = ax.a().d(this.mUser.mRealUin);
+    Object localObject = do.a().d(this.mUser.mRealUin);
     if (localObject != null) {
-      ax.a().b((QQUser)localObject);
+      do.a().b((QQUser)localObject);
     }
-    ag.c().n();
+    cx.c().n();
     localObject = this.mUser.mRealUin + "";
-    this.mIsActiveSuccess = true;
-    setContentView(2130903050);
-    this.mBackArrow.setVisibility(4);
-    findViewById(2131296398).setOnClickListener(this.mCompleteButtonListener);
-    setTitle(2131361842);
-    ((ImageView)findViewById(2131296395)).setImageDrawable(k.a((String)localObject, s.f(Long.parseLong((String)localObject)) + " "));
-    ax.a().f(Long.parseLong((String)localObject));
-    a.a().a(8);
-  }
-  
-  private String getUrlFromXml()
-  {
-    int i = b.a();
-    String str = getResources().getString(2131361845);
-    e.b(str);
-    switch (i)
-    {
-    case 1: 
-    default: 
-      return str;
-    case 0: 
-      return "test." + str;
-    case 2: 
-      return "exp." + str;
-    }
-    return "gray." + str;
+    Intent localIntent = new Intent(this, VerifySuccActivity.class);
+    localIntent.putExtra("mRealUin", Long.parseLong((String)localObject));
+    startActivity(localIntent);
+    finish();
   }
   
   private void init()
   {
     this.mIsActiveSuccess = false;
     this.mUin = (this.mUser.mRealUin + "");
-    String str = this.mUpDetermin.mMobileMask;
+    String str = this.mUpDetermin.b();
     if ((str == null) || (str.length() == 0))
     {
       finish();
       return;
     }
-    ((Button)findViewById(2131296442)).setOnClickListener(this.mSmsListener);
-    ((Button)findViewById(2131296443)).setOnClickListener(this.mChangeListener);
-    ((TextView)findViewById(2131296440)).setText(str);
+    findViewById(2131558730).setOnClickListener(this.mSmsListener);
+    findViewById(2131558731).setOnClickListener(this.mChangeListener);
+    ((TextView)findViewById(2131558728)).setText(str);
   }
   
   private void sendBindUinSmsBySMSAPP(String paramString1, String paramString2)
@@ -103,7 +72,7 @@ public class BindUinActivity
       paramString1 = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + paramString1));
       paramString1.putExtra("sms_body", paramString2);
       startActivityForResult(paramString1, 0);
-      p.a().a(System.currentTimeMillis(), 57);
+      com.tencent.token.ch.a().a(System.currentTimeMillis(), 57);
       return;
     }
     catch (Exception paramString1)
@@ -111,14 +80,14 @@ public class BindUinActivity
       for (;;)
       {
         paramString1.printStackTrace();
-        e.b(paramString1.toString());
+        h.b(paramString1.toString());
       }
     }
   }
   
   private void showFailDialog(String paramString)
   {
-    showUserDialog(2131361831, paramString, 2131361800, new bv(this));
+    showUserDialog(2131230779, paramString, 2131230897, new ch(this));
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -139,7 +108,7 @@ public class BindUinActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
     }
@@ -148,15 +117,15 @@ public class BindUinActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.mHandler.sendEmptyMessage(3);
-    startTimeTask(3);
-    e.b("startTimeTask onActivityResult");
+    startTimeTask();
+    h.b("startTimeTask onActivityResult");
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2130903058);
+    setContentView(2130968622);
     this.mUser = ((QQUser)getIntent().getSerializableExtra("intent.qquser"));
     this.mUpDetermin = ((UpgradeDeterminResult)getIntent().getSerializableExtra("intent.upgradedetermin"));
     if ((this.mUser == null) || (this.mUpDetermin == null))
@@ -178,16 +147,16 @@ public class BindUinActivity
   protected void onResume()
   {
     super.onResume();
-    ag.c().a.a(this.mHandler);
+    cx.c().a.a(this.mHandler);
   }
   
   protected void onStop()
   {
     super.onStop();
-    ag.c().a.a(null);
+    cx.c().a.a(null);
   }
   
-  public void removeTimeTask(int paramInt)
+  public void removeTimeTask()
   {
     this.mIsTimeTask = false;
   }
@@ -198,8 +167,8 @@ public class BindUinActivity
       if ((this.mIsTimeTask) && (System.currentTimeMillis() - this.mTimeConter > 60000L)) {
         try
         {
-          e.c("removeTimeTask removeTimeTask");
-          removeTimeTask(6);
+          h.c("removeTimeTask removeTimeTask");
+          removeTimeTask();
           Message localMessage = new Message();
           localMessage.what = 15;
           this.mHandler.sendMessage(localMessage);
@@ -214,10 +183,10 @@ public class BindUinActivity
   
   public void showProgressDialog()
   {
-    showProDialog(this, 2131362363, 2131361827, new bu(this));
+    showProDialog(this, 2131231657, 2131230804, new cg(this));
   }
   
-  public void startTimeTask(int paramInt)
+  public void startTimeTask()
   {
     this.mTimeConter = System.currentTimeMillis();
     this.mIsTimeTask = true;

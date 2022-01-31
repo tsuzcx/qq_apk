@@ -1,44 +1,54 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.widget.Button;
+import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class nm
-  extends bo
+class nm
+  extends cb
 {
-  nm(JLFinditemsResult paramJLFinditemsResult)
+  nm(LoginMsgIpShareActivity paramLoginMsgIpShareActivity)
   {
-    super(paramJLFinditemsResult);
+    super(paramLoginMsgIpShareActivity);
   }
   
-  public final void handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.dismissDialog();
     switch (paramMessage.what)
     {
     default: 
       return;
     }
-    Intent localIntent = new Intent();
-    if (paramMessage.arg1 == 0)
+    if (paramMessage.arg1 == 0) {}
+    try
     {
-      paramMessage = (Bundle)paramMessage.obj;
-      localIntent.putExtra("result", paramMessage.getInt("result"));
-      localIntent.putExtra("title", paramMessage.getString("title"));
-      localIntent.putExtra("desc", paramMessage.getString("desc"));
-    }
-    for (;;)
-    {
-      JLFinditemsResult.access$900(this.a, localIntent);
+      paramMessage = new JSONObject((String)paramMessage.obj);
+      LoginMsgIpShareActivity.access$000(this.a).setText(paramMessage.getString("ip_share_btn_word"));
+      LoginMsgIpShareActivity.access$100(this.a).setText(paramMessage.getString("ip_share_big_word"));
+      LoginMsgIpShareActivity.access$200(this.a).setText(paramMessage.getString("ip_share_small_word"));
+      this.a.setTitle(paramMessage.getString("ip_share_title"));
       return;
-      paramMessage = (d)paramMessage.obj;
-      d.a(this.a.getResources(), paramMessage);
-      e.c("jl get appeal failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-      localIntent.putExtra("result", -1);
-      localIntent.putExtra("title", "");
-      localIntent.putExtra("desc", paramMessage.c);
+    }
+    catch (JSONException paramMessage)
+    {
+      paramMessage.printStackTrace();
+      LoginMsgIpShareActivity.access$000(this.a).setText(2131231176);
+      LoginMsgIpShareActivity.access$100(this.a).setText(2131231182);
+      LoginMsgIpShareActivity.access$200(this.a).setText(2131231178);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      for (;;)
+      {
+        paramMessage.printStackTrace();
+      }
     }
   }
 }

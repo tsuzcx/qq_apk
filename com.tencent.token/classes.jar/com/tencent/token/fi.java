@@ -1,14 +1,42 @@
 package com.tencent.token;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import java.util.ArrayList;
 
-final class fi
-  implements FilenameFilter
+public class fi
 {
-  public final boolean accept(File paramFile, String paramString)
+  public static byte[] a(int paramInt)
   {
-    return paramString.startsWith("TOKEN_");
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
+  }
+  
+  public static byte[] a(ArrayList paramArrayList)
+  {
+    int k = paramArrayList.size();
+    int i = 0;
+    int j = k * 4 + 4;
+    while (i < k)
+    {
+      j += ((byte[])paramArrayList.get(i)).length;
+      i += 1;
+    }
+    byte[] arrayOfByte = new byte[j];
+    System.arraycopy(a(k), 0, arrayOfByte, 0, 4);
+    i = 0;
+    while (i < k)
+    {
+      System.arraycopy(a(((byte[])paramArrayList.get(i)).length), 0, arrayOfByte, i * 4 + 4, 4);
+      i += 1;
+    }
+    i = 0;
+    j = k * 4 + 4;
+    while (i < k)
+    {
+      int m = ((byte[])paramArrayList.get(i)).length;
+      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, m);
+      j += m;
+      i += 1;
+    }
+    return arrayOfByte;
   }
 }
 

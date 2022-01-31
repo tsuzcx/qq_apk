@@ -1,12 +1,16 @@
 package tmsdk.common.d.a.b;
 
-import a.e.f;
+import a.e.c;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import d.b.d;
+import com.tencent.token.fn;
+import com.tencent.token.fo;
+import com.tencent.token.fp;
+import com.tencent.token.fq;
+import com.tencent.token.g;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -23,7 +27,7 @@ class u
   
   private u(r paramr) {}
   
-  private void a(f paramf)
+  private void a(a.e.f paramf)
   {
     Object localObject2 = null;
     JceStruct localJceStruct = null;
@@ -83,10 +87,10 @@ class u
     if (paramt.f == null) {
       return;
     }
-    switch (d.b.c.a(paramt.e))
+    switch (fp.a(paramt.e))
     {
     default: 
-      c.b.a.a.a().b(new w(this, paramt, paramInteger1, paramInteger2), "shark callback");
+      com.tencent.token.f.a().b(new w(this, paramt, paramInteger1, paramInteger2), "shark callback");
       return;
     case 16: 
       paramt.f.a(paramt.g, paramt.b, paramInteger1.intValue(), paramInteger2.intValue(), paramt.d);
@@ -177,21 +181,21 @@ class u
         if (!((t)((Map.Entry)localObject7).getValue()).h.a())
         {
           ((t)((Map.Entry)localObject7).getValue()).h.a(1);
-          localObject8 = new a.e.c();
-          ((a.e.c)localObject8).a = ((t)((Map.Entry)localObject7).getValue()).b;
-          ((a.e.c)localObject8).b = ((t)((Map.Entry)localObject7).getValue()).g;
-          ((a.e.c)localObject8).e = ((t)((Map.Entry)localObject7).getValue()).a;
-          ((a.e.c)localObject8).c = 0;
-          ((a.e.c)localObject8).d = null;
+          localObject8 = new c();
+          ((c)localObject8).a = ((t)((Map.Entry)localObject7).getValue()).b;
+          ((c)localObject8).b = ((t)((Map.Entry)localObject7).getValue()).g;
+          ((c)localObject8).e = ((t)((Map.Entry)localObject7).getValue()).a;
+          ((c)localObject8).c = 0;
+          ((c)localObject8).d = null;
           if (((t)((Map.Entry)localObject7).getValue()).c != null)
           {
             TextUtils.isEmpty(((l)???).b);
-            ((a.e.c)localObject8).d = b.a(r.e(this.b), ((l)???).b.getBytes(), ((t)((Map.Entry)localObject7).getValue()).c);
+            ((c)localObject8).d = b.a(r.e(this.b), ((l)???).b.getBytes(), ((t)((Map.Entry)localObject7).getValue()).c);
           }
           if (((t)((Map.Entry)localObject7).getValue()).i > 0L)
           {
-            new StringBuilder().append("对seq : ").append(((a.e.c)localObject8).b).append("计时 : ").append(((t)((Map.Entry)localObject7).getValue()).i).append("ms").toString();
-            this.d.sendEmptyMessageDelayed(((a.e.c)localObject8).b, ((t)((Map.Entry)localObject7).getValue()).i);
+            new StringBuilder().append("对seq : ").append(((c)localObject8).b).append("计时 : ").append(((t)((Map.Entry)localObject7).getValue()).i).append("ms").toString();
+            this.d.sendEmptyMessageDelayed(((c)localObject8).b, ((t)((Map.Entry)localObject7).getValue()).i);
           }
           localArrayList.add(localObject8);
         }
@@ -209,18 +213,18 @@ class u
       if (((Iterator)localObject6).hasNext())
       {
         localObject8 = (t)((Iterator)localObject6).next();
-        localObject7 = new a.e.c();
-        ((a.e.c)localObject7).a = ((t)localObject8).b;
-        ((a.e.c)localObject7).b = 0;
-        ((a.e.c)localObject7).c = ((t)localObject8).g;
-        ((a.e.c)localObject7).d = null;
+        localObject7 = new c();
+        ((c)localObject7).a = ((t)localObject8).b;
+        ((c)localObject7).b = 0;
+        ((c)localObject7).c = ((t)localObject8).g;
+        ((c)localObject7).d = null;
         if (((t)localObject8).c != null) {
           TextUtils.isEmpty(((l)???).b);
         }
       }
       try
       {
-        ((a.e.c)localObject7).d = b.a(r.e(this.b), ((l)???).b.getBytes(), ((t)localObject8).c);
+        ((c)localObject7).d = b.a(r.e(this.b), ((l)???).b.getBytes(), ((t)localObject8).c);
         localException1.add(localObject7);
         continue;
         int i = r.d(this.b).a((l)???, localException1, (AtomicReference)localObject4);
@@ -229,26 +233,26 @@ class u
           localObject4 = ((ArrayList)((AtomicReference)localObject4).get()).iterator();
           while (((Iterator)localObject4).hasNext())
           {
-            ??? = (f)((Iterator)localObject4).next();
-            if (a(((f)???).c))
+            ??? = (a.e.f)((Iterator)localObject4).next();
+            if (a(((a.e.f)???).c))
             {
-              a((f)???);
+              a((a.e.f)???);
             }
             else
             {
               Object localObject1;
-              if (r.f(this.b).containsKey(Integer.valueOf(((f)???).a)))
+              if (r.f(this.b).containsKey(Integer.valueOf(((a.e.f)???).a)))
               {
-                localObject6 = (Pair)r.f(this.b).get(Integer.valueOf(((f)???).a));
-                if ((((Pair)localObject6).first == null) || (((f)???).f == null)) {
+                localObject6 = (Pair)r.f(this.b).get(Integer.valueOf(((a.e.f)???).a));
+                if ((((Pair)localObject6).first == null) || (((a.e.f)???).f == null)) {
                   break label876;
                 }
-                localObject1 = b.a(r.e(this.b), r.d(this.b).b().b.getBytes(), ((f)???).f, (JceStruct)((Pair)localObject6).first);
-                localObject1 = ((d.b.b)((Pair)localObject6).second).a(((f)???).b, ((f)???).a, (JceStruct)localObject1);
+                localObject1 = b.a(r.e(this.b), r.d(this.b).b().b.getBytes(), ((a.e.f)???).f, (JceStruct)((Pair)localObject6).first);
+                localObject1 = ((fo)((Pair)localObject6).second).a(((a.e.f)???).b, ((a.e.f)???).a, (JceStruct)localObject1);
                 if (localObject1 != null)
                 {
                   localObject1 = new t(this.b, -1L, ((Integer)((Pair)localObject1).first).intValue(), (JceStruct)((Pair)localObject1).second, null, 1073741824, null);
-                  ((t)localObject1).g = ((f)???).b;
+                  ((t)localObject1).g = ((a.e.f)???).b;
                 }
               }
               else

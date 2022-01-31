@@ -1,32 +1,75 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.token.core.bean.h;
 
-final class dj
-  implements View.OnClickListener
+public class dj
 {
-  dj(UtilsAccountLockTipDialog paramUtilsAccountLockTipDialog) {}
+  View a;
+  TextView b;
+  ProgressBar c;
+  SwitchButton d;
+  ImageView e;
+  ImageView f;
+  ImageView g;
+  h h;
   
-  public final void onClick(View paramView)
+  public dj(View paramView, h paramh)
   {
-    if (UtilsAccountLockTipDialog.a(this.a) != null)
-    {
-      paramView = UtilsAccountLockTipDialog.a(this.a).obtainMessage(3035);
-      if (!UtilsAccountLockTipDialog.b(this.a)) {
-        break label72;
-      }
-    }
-    label72:
-    for (int i = 1;; i = 0)
-    {
-      paramView.arg1 = i;
-      paramView.obj = UtilsAccountLockTipDialog.c(this.a);
-      UtilsAccountLockTipDialog.a(this.a).sendMessage(paramView);
-      this.a.dismiss();
+    this.a = paramView;
+    if (this.a == null) {
       return;
     }
+    this.h = paramh;
+    this.d = ((SwitchButton)this.a.findViewById(2131559356));
+    this.b = ((TextView)this.a.findViewById(2131559353));
+    this.c = ((ProgressBar)this.a.findViewById(2131559357));
+    this.e = ((ImageView)this.a.findViewById(2131559355));
+    this.f = ((ImageView)this.a.findViewById(2131559358));
+    this.g = ((ImageView)this.a.findViewById(2131559354));
+  }
+  
+  public h a()
+  {
+    return this.h;
+  }
+  
+  public SwitchButton b()
+  {
+    return this.d;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public ProgressBar d()
+  {
+    return this.c;
+  }
+  
+  public ImageView e()
+  {
+    return this.e;
+  }
+  
+  public ImageView f()
+  {
+    return this.f;
+  }
+  
+  public ImageView g()
+  {
+    return this.g;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 

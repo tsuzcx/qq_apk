@@ -21,15 +21,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.ai;
-import com.tencent.token.ax;
+import com.tencent.token.cj;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cz;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
-import com.tencent.token.r;
+import com.tencent.token.global.h;
 import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.w;
+import com.tencent.token.utils.x;
 import gameloginsdk.CallbackPushStruct;
 
 public class GameLoginSndConfirmView
@@ -78,56 +78,66 @@ public class GameLoginSndConfirmView
     this.g = ((Activity)paramContext);
   }
   
-  public final void a()
+  private void f()
+  {
+    if (this.s != null) {
+      return;
+    }
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("com.tencent.token.update_btn_interval_time_action");
+    this.g.registerReceiver(this.w, (IntentFilter)localObject);
+    localObject = new Intent("com.tencent.token.update_btn_interval_time_action");
+    this.s = ((AlarmManager)this.g.getSystemService("alarm"));
+    this.t = PendingIntent.getBroadcast(this.g, 0, (Intent)localObject, 0);
+  }
+  
+  public void a()
   {
     this.x.post(new as(this, this.j, this.k, this.l, this.m));
   }
   
-  public final void a(az paramaz)
+  public void a(int paramInt)
   {
-    this.r = paramaz;
+    if (paramInt == 2)
+    {
+      c();
+      return;
+    }
+    b();
   }
   
-  public final void a(CallbackPushStruct paramCallbackPushStruct)
+  public void a(CallbackPushStruct paramCallbackPushStruct)
   {
     if (paramCallbackPushStruct == null) {
       return;
     }
-    if (this.s == null)
-    {
-      localObject = new IntentFilter();
-      ((IntentFilter)localObject).addAction("com.tencent.token.update_btn_interval_time_action");
-      this.g.registerReceiver(this.w, (IntentFilter)localObject);
-      localObject = new Intent("com.tencent.token.update_btn_interval_time_action");
-      this.s = ((AlarmManager)this.g.getSystemService("alarm"));
-      this.t = PendingIntent.getBroadcast(this.g, 0, (Intent)localObject, 0);
-    }
-    this.u = (paramCallbackPushStruct.expirtTime + 1 - r.a(RqdApplication.i()).c());
-    this.a.setText(2131362434);
+    f();
+    this.u = (paramCallbackPushStruct.expirtTime + 1 - cj.a(RqdApplication.l()).c());
+    this.a.setText(2131231089);
     if (paramCallbackPushStruct.player.length() > 10)
     {
       localObject = new StringBuffer(paramCallbackPushStruct.player.substring(0, 10) + "...");
       if (((StringBuffer)localObject).length() == 0) {
-        break label510;
+        break label440;
       }
     }
-    label294:
-    label497:
-    label510:
+    label427:
+    label440:
     for (Object localObject = "(<font color=#df642c>" + localObject + "</font>)";; localObject = "")
     {
-      localObject = new StringBuffer(s.b(paramCallbackPushStruct.uin) + (String)localObject + this.g.getResources().getString(2131362435) + "<font color=#df642c>" + paramCallbackPushStruct.gameName + "-" + paramCallbackPushStruct.world + "</font>" + this.g.getResources().getString(2131362436));
+      localObject = new StringBuffer(w.a(paramCallbackPushStruct.uin) + (String)localObject + this.g.getResources().getString(2131231077) + "<font color=#df642c>" + paramCallbackPushStruct.gameName + "-" + paramCallbackPushStruct.world + "</font>" + this.g.getResources().getString(2131231078));
       if (paramCallbackPushStruct.schemeFlag == 2)
       {
         ((StringBuffer)localObject).append("。");
+        label224:
         this.b.setText(Html.fromHtml(((StringBuffer)localObject).toString()));
-        this.d.setText(getResources().getString(2131362438) + "(" + this.u + ")");
-        this.e.setText(getResources().getString(2131362439));
-        paramCallbackPushStruct = ax.a().d(Long.parseLong(paramCallbackPushStruct.uin));
+        this.d.setText(getResources().getString(2131231075) + "(" + this.u + ")");
+        this.e.setText(getResources().getString(2131231086));
+        paramCallbackPushStruct = do.a().d(Long.parseLong(paramCallbackPushStruct.uin));
         if (paramCallbackPushStruct == null) {
-          break label497;
+          break label427;
         }
-        this.f.setImageDrawable(k.a(paramCallbackPushStruct.mRealUin + "", paramCallbackPushStruct.mUin + ""));
+        this.f.setImageDrawable(k.a(paramCallbackPushStruct.b() + "", paramCallbackPushStruct.mUin + ""));
         this.c.setText(paramCallbackPushStruct.mNickName);
       }
       for (;;)
@@ -136,61 +146,61 @@ public class GameLoginSndConfirmView
         return;
         localObject = new StringBuffer(paramCallbackPushStruct.player);
         break;
-        ((StringBuffer)localObject).append(this.g.getString(2131362437));
-        break label294;
+        ((StringBuffer)localObject).append(this.g.getString(2131231079));
+        break label224;
         this.c.setText("");
       }
     }
   }
   
-  public final boolean a(Context paramContext)
+  public boolean a(Context paramContext)
   {
     if ((this.g == null) || ((this.g != null) && (this.g.isFinishing()))) {
       return false;
     }
     this.h = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.i = this.h.inflate(2130903075, null);
+    this.i = this.h.inflate(2130968640, null);
     this.i.setVisibility(4);
-    this.j = this.i.findViewById(2131296536);
-    this.k = this.i.findViewById(2131296522);
-    this.l = this.i.findViewById(2131296517);
-    this.m = this.i.findViewById(2131296519);
-    this.n = t.a(this.g.getResources(), 2130837596);
-    this.o = t.a(this.g.getResources(), 2130837595);
+    this.j = this.i.findViewById(2131558822);
+    this.k = this.i.findViewById(2131558808);
+    this.l = this.i.findViewById(2131558803);
+    this.m = this.i.findViewById(2131558805);
+    this.n = x.a(this.g.getResources(), 2130837681);
+    this.o = x.a(this.g.getResources(), 2130837680);
     if (this.n != null) {
-      ((LinearLayout)this.i.findViewById(2131296523)).setBackgroundDrawable(new BitmapDrawable(this.n));
+      ((LinearLayout)this.i.findViewById(2131558809)).setBackgroundDrawable(new BitmapDrawable(this.n));
     }
     if (this.o != null)
     {
-      ((LinearLayout)this.i.findViewById(2131296524)).setBackgroundDrawable(new BitmapDrawable(this.o));
-      ((LinearLayout)this.i.findViewById(2131296525)).setBackgroundDrawable(new BitmapDrawable(this.o));
+      ((LinearLayout)this.i.findViewById(2131558810)).setBackgroundDrawable(new BitmapDrawable(this.o));
+      ((LinearLayout)this.i.findViewById(2131558811)).setBackgroundDrawable(new BitmapDrawable(this.o));
     }
-    this.a = ((TextView)this.i.findViewById(2131296529));
-    this.b = ((TextView)this.i.findViewById(2131296530));
-    this.f = ((ImageView)this.i.findViewById(2131296538));
-    this.d = ((Button)this.i.findViewById(2131296534));
-    this.e = ((Button)this.i.findViewById(2131296535));
-    this.c = ((TextView)this.i.findViewById(2131296527));
+    this.a = ((TextView)this.i.findViewById(2131558815));
+    this.b = ((TextView)this.i.findViewById(2131558816));
+    this.f = ((ImageView)this.i.findViewById(2131558824));
+    this.d = ((Button)this.i.findViewById(2131558820));
+    this.e = ((Button)this.i.findViewById(2131558821));
+    this.c = ((TextView)this.i.findViewById(2131558813));
     this.d.setOnClickListener(new ap(this));
     this.e.setOnClickListener(new aq(this));
     addView(this.i, new RelativeLayout.LayoutParams(-1, -1));
     return true;
   }
   
-  public final void b()
+  public void b()
   {
     this.x.post(new au(this, this.j, this.k, this.l, this.m));
-    ai.a(RqdApplication.i()).a();
+    cz.a(RqdApplication.l()).a();
   }
   
-  public final void c()
+  public void c()
   {
     this.x.post(new aw(this, this));
   }
   
-  public final void d()
+  public void d()
   {
-    e.a("game login unregister interval timer");
+    h.a("game login unregister interval timer");
     if (this.s != null)
     {
       this.s.cancel(this.t);
@@ -199,7 +209,7 @@ public class GameLoginSndConfirmView
     }
   }
   
-  public final void e()
+  public void e()
   {
     this.u -= 1;
     if (this.u <= 0)
@@ -211,7 +221,7 @@ public class GameLoginSndConfirmView
     do
     {
       return;
-      this.d.setText(getResources().getString(2131362438) + "(" + this.u + ")");
+      this.d.setText(getResources().getString(2131231075) + "(" + this.u + ")");
       l1 = System.currentTimeMillis();
     } while (this.s == null);
     this.s.set(1, l1 + 1000L, this.t);
@@ -222,6 +232,11 @@ public class GameLoginSndConfirmView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.p = this.j.getMeasuredHeight();
     this.q = this.k.getMeasuredHeight();
+  }
+  
+  public void setListener(az paramaz)
+  {
+    this.r = paramaz;
   }
 }
 

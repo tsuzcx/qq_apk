@@ -1,33 +1,44 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
 import android.os.Handler;
-import android.os.HandlerThread;
+import android.os.Message;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.i;
 
-final class xv
-  implements DialogInterface.OnClickListener
+class xv
+  implements Camera.PictureCallback
 {
-  xv(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity, boolean paramBoolean) {}
+  xv(xu paramxu) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if (RealNameStep1InputNameIdActivity.access$2100(this.b) == null)
+    Message localMessage;
+    if (RealNameTakeIDPhotoActivity.access$100(this.a.a) == 1)
     {
-      RealNameStep1InputNameIdActivity.access$2102(this.b, new HandlerThread("uploadphoto", 1));
-      RealNameStep1InputNameIdActivity.access$2100(this.b).start();
+      RealNameTakeIDPhotoActivity.access$202(this.a.a, i.a(paramArrayOfByte, "frontdata"));
+      localMessage = RealNameTakeIDPhotoActivity.access$300(this.a.a).obtainMessage(0);
+      localMessage.what = 1;
+      localMessage.obj = RealNameTakeIDPhotoActivity.access$200(this.a.a);
+      localMessage.arg1 = 1;
+      localMessage.sendToTarget();
     }
-    if (RealNameStep1InputNameIdActivity.access$2200(this.b) == null) {
-      RealNameStep1InputNameIdActivity.access$2202(this.b, new Handler(RealNameStep1InputNameIdActivity.access$2100(this.b).getLooper()));
-    }
-    RealNameStep1InputNameIdActivity.access$2200(this.b).post(new xw(this));
-    if (this.a)
+    for (;;)
     {
-      this.b.showProDialogWithoutShutDown(this.b, this.b.getResources().getString(2131361817));
+      h.a("take id photo data=" + paramArrayOfByte.length);
+      paramCamera.stopPreview();
       return;
+      if (RealNameTakeIDPhotoActivity.access$100(this.a.a) == 2)
+      {
+        RealNameTakeIDPhotoActivity.access$402(this.a.a, i.a(paramArrayOfByte, "backdata"));
+        localMessage = RealNameTakeIDPhotoActivity.access$300(this.a.a).obtainMessage(0);
+        localMessage.what = 1;
+        localMessage.obj = RealNameTakeIDPhotoActivity.access$400(this.a.a);
+        localMessage.arg1 = 2;
+        localMessage.sendToTarget();
+      }
     }
-    RealNameStep1InputNameIdActivity.access$2700(this.b);
   }
 }
 

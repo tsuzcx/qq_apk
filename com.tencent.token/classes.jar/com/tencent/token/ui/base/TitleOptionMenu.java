@@ -22,9 +22,15 @@ public class TitleOptionMenu
   private View c;
   private View d;
   private int e = 2;
-  private dh f;
-  private View.OnClickListener g = new de(this);
-  private View.OnTouchListener h = new df(this);
+  private da f;
+  private View.OnClickListener g = new cx(this);
+  private View.OnTouchListener h = new cy(this);
+  
+  public TitleOptionMenu(Context paramContext)
+  {
+    super(paramContext);
+    this.b = paramContext;
+  }
   
   public TitleOptionMenu(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,30 +44,19 @@ public class TitleOptionMenu
     this.b = paramContext;
   }
   
-  public final void a()
+  private void c()
   {
-    Object localObject = getTag();
-    if (localObject != null) {
-      ((View)localObject).setSelected(false);
-    }
-    setVisibility(8);
-    AnimationUtils.loadAnimation(this.b, 2130968578).setAnimationListener(new dg(this));
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.e = paramInt;
     this.a = true;
     Object localObject = (LayoutInflater)this.b.getSystemService("layout_inflater");
     if (this.e == 2)
     {
-      this.c = ((LayoutInflater)localObject).inflate(2130903217, null);
+      this.c = ((LayoutInflater)localObject).inflate(2130968779, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131297149);
-      localObject = findViewById(2131297153);
+      this.d = findViewById(2131559308);
+      localObject = findViewById(2131559311);
       ((View)localObject).setTag(Integer.valueOf(0));
       ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131297151);
+      localObject = findViewById(2131559310);
       ((View)localObject).setTag(Integer.valueOf(1));
       ((View)localObject).setOnClickListener(this.g);
     }
@@ -72,46 +67,71 @@ public class TitleOptionMenu
       return;
       if (this.e == 3)
       {
-        this.c = ((LayoutInflater)localObject).inflate(2130903215, null);
+        this.c = ((LayoutInflater)localObject).inflate(2130968778, null);
         addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-        this.d = findViewById(2131297149);
-        localObject = findViewById(2131297150);
+        this.d = findViewById(2131559308);
+        localObject = findViewById(2131559309);
         ((View)localObject).setTag(Integer.valueOf(0));
         ((View)localObject).setOnClickListener(this.g);
-        localObject = findViewById(2131297151);
+        localObject = findViewById(2131559310);
         ((View)localObject).setTag(Integer.valueOf(1));
         ((View)localObject).setOnClickListener(this.g);
       }
       else if (this.e == 4)
       {
-        this.c = ((LayoutInflater)localObject).inflate(2130903214, null);
+        this.c = ((LayoutInflater)localObject).inflate(2130968777, null);
         addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-        this.d = findViewById(2131297149);
-        localObject = findViewById(2131297150);
+        this.d = findViewById(2131559308);
+        localObject = findViewById(2131559309);
         ((View)localObject).setTag(Integer.valueOf(0));
         ((View)localObject).setOnClickListener(this.g);
-        localObject = findViewById(2131297151);
+        localObject = findViewById(2131559310);
         ((View)localObject).setTag(Integer.valueOf(1));
         ((View)localObject).setOnClickListener(this.g);
       }
       else if (this.e == 5)
       {
-        this.c = ((LayoutInflater)localObject).inflate(2130903213, null);
+        this.c = ((LayoutInflater)localObject).inflate(2130968776, null);
         addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-        this.d = findViewById(2131297149);
-        localObject = findViewById(2131297150);
+        this.d = findViewById(2131559308);
+        localObject = findViewById(2131559309);
         ((View)localObject).setTag(Integer.valueOf(0));
         ((View)localObject).setOnClickListener(this.g);
-        localObject = findViewById(2131297151);
+        localObject = findViewById(2131559310);
         ((View)localObject).setTag(Integer.valueOf(1));
         ((View)localObject).setOnClickListener(this.g);
       }
     }
   }
   
-  public final void a(dh paramdh)
+  public void a()
   {
-    this.f = paramdh;
+    Object localObject = getTag();
+    if (localObject != null) {
+      ((View)localObject).setSelected(true);
+    }
+    setVisibility(0);
+  }
+  
+  public void b()
+  {
+    Object localObject = getTag();
+    if (localObject != null) {
+      ((View)localObject).setSelected(false);
+    }
+    setVisibility(8);
+    AnimationUtils.loadAnimation(this.b, 2131034127).setAnimationListener(new cz(this));
+  }
+  
+  public void setDisplayMode(int paramInt)
+  {
+    this.e = paramInt;
+    c();
+  }
+  
+  public void setOnItemClickedListener(da paramda)
+  {
+    this.f = paramda;
   }
 }
 

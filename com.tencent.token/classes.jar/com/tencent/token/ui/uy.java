@@ -1,26 +1,29 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.token.upload.useraction.CustomerEditText;
 
-final class uy
-  implements DialogInterface.OnClickListener
+class uy
+  implements View.OnFocusChangeListener
 {
-  uy(ux paramux) {}
+  uy(RealNameFindActivity paramRealNameFindActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (RealNameFindActivity.access$1300(this.a.a) == null)
+    try
     {
-      RealNameFindActivity.access$1302(this.a.a, new HandlerThread("uploadphoto", 1));
-      RealNameFindActivity.access$1300(this.a.a).start();
+      ((CustomerEditText)RealNameFindActivity.access$2500(this.a)).a(paramBoolean);
+      RealNameFindActivity.access$3100(this.a);
+      return;
     }
-    if (RealNameFindActivity.access$1400(this.a.a) == null) {
-      RealNameFindActivity.access$1402(this.a.a, new Handler(RealNameFindActivity.access$1300(this.a.a).getLooper()));
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
     }
-    RealNameFindActivity.access$1400(this.a.a).post(new uz(this));
   }
 }
 

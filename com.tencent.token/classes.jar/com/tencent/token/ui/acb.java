@@ -1,22 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.p;
-import com.tencent.token.utils.s;
+import com.tencent.token.ui.base.GuideQQPimSecureTipsView;
+import com.tmsdk.TMSDKContext;
 
-final class acb
-  implements View.OnClickListener
+class acb
+  implements Runnable
 {
-  acb(StartPwdGestureSelActivity paramStartPwdGestureSelActivity) {}
+  acb(aca paramaca) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    p.a().a(System.currentTimeMillis(), 15);
-    paramView = new Intent(this.a, StartPwdGestureModifyActivity.class);
-    this.a.startActivityForResult(paramView, 258);
-    s.a(this.a, 1);
+    UtilsActivity.access$2100(this.a.a).setDownloadUrl("http://qqwx.qq.com/s?aid=index&p=1&c=107015&vt=1&pf=0");
+    UtilsActivity.access$2100(this.a.a).setVisibility(0);
+    TMSDKContext.saveActionData(1150102);
   }
 }
 

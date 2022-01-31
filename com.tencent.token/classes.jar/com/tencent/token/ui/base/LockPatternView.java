@@ -14,10 +14,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.n;
+import com.tencent.token.utils.x;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LockPatternView
   extends View
@@ -32,8 +32,8 @@ public class LockPatternView
   private boolean a = false;
   private Paint b = new Paint();
   private boolean c = false;
-  private cb d;
-  private cb e;
+  private bu d;
+  private bu e;
   private ArrayList f = new ArrayList(9);
   private boolean[][] g = (boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 });
   private float h = -1.0F;
@@ -56,14 +56,17 @@ public class LockPatternView
   private Bitmap y;
   private Bitmap z;
   
+  public LockPatternView(Context paramContext)
+  {
+    this(paramContext, null);
+  }
+  
   public LockPatternView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.F = ((Activity)paramContext);
-    if (!"square".equals("square")) {
-      if ("lock_width".equals("square")) {
-        this.E = 1;
-      }
+    if ("square".equals("square")) {
+      this.E = 0;
     }
     for (;;)
     {
@@ -72,20 +75,22 @@ public class LockPatternView
       this.F.getWindowManager().getDefaultDisplay().getMetrics(paramContext);
       this.G = paramContext.widthPixels;
       int i1 = this.G * 60 / 320;
-      this.u = t.a(getResources(), 2130837908, i1);
-      this.s = t.a(getResources(), 2130837909, i1);
-      this.t = t.a(getResources(), 2130837910, i1);
-      this.v = t.a(getResources(), 2130837905, i1);
-      this.y = t.a(getResources(), 2130837904, i1);
-      this.w = t.a(getResources(), 2130837906, i1);
-      this.x = t.a(getResources(), 2130837907, i1);
-      this.z = t.a(getResources(), 2130837915);
+      this.u = x.a(getResources(), 2130837970, i1);
+      this.s = x.a(getResources(), 2130837971, i1);
+      this.t = x.a(getResources(), 2130837972, i1);
+      this.v = x.a(getResources(), 2130837967, i1);
+      this.y = x.a(getResources(), 2130837966, i1);
+      this.w = x.a(getResources(), 2130837968, i1);
+      this.x = x.a(getResources(), 2130837969, i1);
+      this.z = x.a(getResources(), 2130837977);
       if ((this.u != null) && (this.s != null) && (this.t != null) && (this.v != null) && (this.y != null) && (this.w != null) && (this.x != null) && (this.z != null)) {
         break;
       }
       this.c = false;
       return;
-      if ("lock_height".equals("square")) {
+      if ("lock_width".equals("square")) {
+        this.E = 1;
+      } else if ("lock_height".equals("square")) {
         this.E = 2;
       } else {
         this.E = 0;
@@ -102,120 +107,88 @@ public class LockPatternView
     this(paramContext, paramAttributeSet);
   }
   
-  private ca a(float paramFloat1, float paramFloat2)
+  private float a(int paramInt)
   {
-    int i4 = 0;
-    int i3 = 1;
-    Object localObject1 = null;
-    Object localObject2 = null;
+    return getPaddingLeft() + paramInt * this.q + this.q / 2.0F;
+  }
+  
+  private int a(float paramFloat)
+  {
     float f1 = this.r;
     float f2 = f1 * this.p;
     float f3 = getPaddingTop();
     float f4 = (f1 - f2) / 2.0F;
     int i1 = 0;
-    int i2;
-    label83:
-    ca localca;
-    if (i1 < 3)
+    while (i1 < 3)
     {
       float f5 = i1 * f1 + (f4 + f3);
-      label212:
-      if ((paramFloat2 >= f5) && (paramFloat2 <= f5 + f2))
+      if ((paramFloat >= f5) && (paramFloat <= f5 + f2)) {
+        return i1;
+      }
+      i1 += 1;
+    }
+    return -1;
+  }
+  
+  private bt a(float paramFloat1, float paramFloat2)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int i2 = 1;
+    bt localbt = b(paramFloat1, paramFloat2);
+    int i3;
+    int i1;
+    if (localbt != null)
+    {
+      ArrayList localArrayList = this.f;
+      localObject1 = localObject2;
+      if (!localArrayList.isEmpty())
       {
-        i2 = i1;
-        if (i2 >= 0) {
-          break label327;
-        }
-        localca = null;
-        label91:
-        if (localca != null)
+        localObject1 = (bt)localArrayList.get(localArrayList.size() - 1);
+        int i6 = localbt.a - ((bt)localObject1).a;
+        int i5 = localbt.b - ((bt)localObject1).b;
+        int i4 = ((bt)localObject1).a;
+        i3 = ((bt)localObject1).b;
+        i1 = i4;
+        if (Math.abs(i6) == 2)
         {
-          ArrayList localArrayList = this.f;
-          localObject1 = localObject2;
-          if (!localArrayList.isEmpty())
+          i1 = i4;
+          if (Math.abs(i5) != 1)
           {
-            localObject1 = (ca)localArrayList.get(localArrayList.size() - 1);
-            int i6 = localca.a - ((ca)localObject1).a;
-            int i5 = localca.b - ((ca)localObject1).b;
-            i4 = ((ca)localObject1).a;
-            i2 = ((ca)localObject1).b;
-            i1 = i4;
-            if (Math.abs(i6) == 2)
-            {
-              i1 = i4;
-              if (Math.abs(i5) != 1)
-              {
-                i4 = ((ca)localObject1).a;
-                if (i6 <= 0) {
-                  break label449;
-                }
-                i1 = 1;
-                i1 += i4;
-              }
+            i4 = ((bt)localObject1).a;
+            if (i6 <= 0) {
+              break label228;
             }
-            if ((Math.abs(i5) != 2) || (Math.abs(i6) == 1)) {
-              break label461;
-            }
-            i4 = ((ca)localObject1).b;
-            if (i5 <= 0) {
-              break label455;
-            }
-            i2 = i3;
-            label253:
-            i2 = i4 + i2;
+            i1 = 1;
+            i1 += i4;
           }
+        }
+        if ((Math.abs(i5) != 2) || (Math.abs(i6) == 1)) {
+          break label239;
+        }
+        i3 = ((bt)localObject1).b;
+        if (i5 <= 0) {
+          break label233;
         }
       }
     }
-    label327:
-    label455:
-    label461:
-    for (;;)
+    label170:
+    label228:
+    label233:
+    label239:
+    for (i2 = i3 + i2;; i2 = i3)
     {
-      localObject1 = ca.a(i1, i2);
+      localObject1 = bt.a(i1, i2);
       if ((localObject1 != null) && (this.g[localObject1.a][localObject1.b] == 0)) {
-        a((ca)localObject1);
+        a((bt)localObject1);
       }
-      a(localca);
-      localObject1 = localca;
+      a(localbt);
+      localObject1 = localbt;
       return localObject1;
-      i1 += 1;
+      i1 = -1;
       break;
       i2 = -1;
-      break label83;
-      paramFloat2 = this.q;
-      f1 = this.p * paramFloat2;
-      f2 = getPaddingLeft();
-      f3 = (paramFloat2 - f1) / 2.0F;
-      i1 = i4;
-      label357:
-      if (i1 < 3)
-      {
-        f4 = i1 * paramFloat2 + (f2 + f3);
-        if ((paramFloat1 < f4) || (paramFloat1 > f4 + f1)) {}
-      }
-      for (;;)
-      {
-        if (i1 >= 0) {
-          break label418;
-        }
-        localca = null;
-        break;
-        i1 += 1;
-        break label357;
-        i1 = -1;
-      }
-      if (this.g[i2][i1] != 0)
-      {
-        localca = null;
-        break label91;
-      }
-      localca = ca.a(i2, i1);
-      break label91;
-      i1 = -1;
-      break label212;
-      i2 = -1;
-      break label253;
+      break label170;
     }
   }
   
@@ -236,7 +209,7 @@ public class LockPatternView
         if (!this.n) {
           break label183;
         }
-        localBitmap = t.a(getResources(), 2130837915, (int)paramFloat3, this.A);
+        localBitmap = x.a(getResources(), 2130837977, (int)paramFloat3, this.A);
       }
       for (;;)
       {
@@ -259,9 +232,9 @@ public class LockPatternView
         paramFloat3 = (float)Math.sqrt(f1 * f1 + paramFloat4 * paramFloat4);
         break;
         if (this.j == LockPatternView.DisplayMode.Wrong) {
-          localBitmap = t.a(getResources(), 2130837917, (int)paramFloat3, this.A);
+          localBitmap = x.a(getResources(), 2130837979, (int)paramFloat3, this.A);
         } else if (this.j == LockPatternView.DisplayMode.Correct) {
-          localBitmap = t.a(getResources(), 2130837916, (int)paramFloat3, this.A);
+          localBitmap = x.a(getResources(), 2130837978, (int)paramFloat3, this.A);
         } else {
           localBitmap = null;
         }
@@ -269,19 +242,109 @@ public class LockPatternView
     }
   }
   
-  private void a(ca paramca)
+  private void a(Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.g[paramca.a()][paramca.b()] = 1;
-    this.f.add(paramca);
+    Bitmap localBitmap2;
+    Bitmap localBitmap1;
+    if ((!paramBoolean) || ((this.l) && (this.j != LockPatternView.DisplayMode.Wrong)))
+    {
+      localBitmap2 = this.v;
+      localBitmap1 = null;
+    }
+    for (;;)
+    {
+      int i2 = this.C;
+      int i1 = this.D;
+      float f1 = this.q;
+      float f2 = this.r;
+      i2 = (int)((f1 - i2) / 2.0F);
+      i1 = (int)((f2 - i1) / 2.0F);
+      if (localBitmap2 != null) {
+        paramCanvas.drawBitmap(localBitmap2, paramInt1 + i2, paramInt2 + i1, this.b);
+      }
+      if (localBitmap1 != null) {
+        paramCanvas.drawBitmap(localBitmap1, paramInt1 + i2, paramInt2 + i1, this.b);
+      }
+      return;
+      if (this.n)
+      {
+        localBitmap2 = this.y;
+        localBitmap1 = this.u;
+      }
+      else if (this.j == LockPatternView.DisplayMode.Wrong)
+      {
+        localBitmap2 = this.x;
+        localBitmap1 = this.t;
+      }
+      else
+      {
+        if ((this.j != LockPatternView.DisplayMode.Correct) && (this.j != LockPatternView.DisplayMode.Animate)) {
+          break;
+        }
+        localBitmap2 = this.w;
+        localBitmap1 = this.s;
+      }
+    }
+    throw new IllegalStateException("unknown display mode " + this.j);
+  }
+  
+  private void a(bt parambt)
+  {
+    this.g[parambt.a()][parambt.b()] = 1;
+    this.f.add(parambt);
     if (this.e != null) {
-      this.e.c();
+      this.e.a(this.f);
     }
     if (this.d != null) {
-      this.d.c();
+      this.d.a(this.f);
     }
   }
   
-  private void i()
+  private float b(int paramInt)
+  {
+    return getPaddingTop() + paramInt * this.r + this.r / 2.0F;
+  }
+  
+  private int b(float paramFloat)
+  {
+    float f1 = this.q;
+    float f2 = f1 * this.p;
+    float f3 = getPaddingLeft();
+    float f4 = (f1 - f2) / 2.0F;
+    int i1 = 0;
+    while (i1 < 3)
+    {
+      float f5 = i1 * f1 + (f4 + f3);
+      if ((paramFloat >= f5) && (paramFloat <= f5 + f2)) {
+        return i1;
+      }
+      i1 += 1;
+    }
+    return -1;
+  }
+  
+  private bt b(float paramFloat1, float paramFloat2)
+  {
+    int i1 = a(paramFloat2);
+    if (i1 < 0) {}
+    int i2;
+    do
+    {
+      return null;
+      i2 = b(paramFloat1);
+    } while ((i2 < 0) || (this.g[i1][i2] != 0));
+    return bt.a(i1, i2);
+  }
+  
+  private void e()
+  {
+    this.f.clear();
+    f();
+    this.j = LockPatternView.DisplayMode.Correct;
+    invalidate();
+  }
+  
+  private void f()
   {
     int i1 = 0;
     while (i1 < 3)
@@ -296,70 +359,27 @@ public class LockPatternView
     }
   }
   
-  public final void a()
+  public void a()
   {
-    this.l = true;
+    e();
   }
   
-  public final void a(LockPatternSmallView paramLockPatternSmallView)
+  public void a(LockPatternSmallView paramLockPatternSmallView)
   {
     this.e = paramLockPatternSmallView;
   }
   
-  public final void a(LockPatternView.DisplayMode paramDisplayMode)
-  {
-    this.j = paramDisplayMode;
-    if (paramDisplayMode == LockPatternView.DisplayMode.Animate)
-    {
-      if (this.f.size() == 0) {
-        throw new IllegalStateException("you must have a pattern to animate if you want to set the display mode to animate");
-      }
-      paramDisplayMode = (ca)this.f.get(0);
-      int i1 = paramDisplayMode.b();
-      float f1 = getPaddingLeft();
-      this.h = (i1 * this.q + f1 + this.q / 2.0F);
-      i1 = paramDisplayMode.a();
-      f1 = getPaddingTop();
-      this.i = (i1 * this.r + f1 + this.r / 2.0F);
-      i();
-    }
-    invalidate();
-  }
-  
-  public final void a(cb paramcb)
-  {
-    this.d = paramcb;
-  }
-  
-  public final ArrayList b()
-  {
-    return this.f;
-  }
-  
-  public final LockPatternView.DisplayMode c()
-  {
-    return this.j;
-  }
-  
-  public final void d()
-  {
-    this.f.clear();
-    i();
-    this.j = LockPatternView.DisplayMode.Correct;
-    invalidate();
-  }
-  
-  public final void e()
+  public void b()
   {
     this.k = false;
   }
   
-  public final void f()
+  public void c()
   {
     this.k = true;
   }
   
-  public final void g()
+  public void d()
   {
     if (this.c)
     {
@@ -374,144 +394,72 @@ public class LockPatternView
     }
   }
   
-  public final String h()
+  public LockPatternView.DisplayMode getDispalyMode()
   {
-    Object localObject = this.f;
-    if (localObject == null) {
-      return "";
-    }
-    int i2 = ((List)localObject).size();
-    byte[] arrayOfByte = new byte[i2];
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      ca localca = (ca)((List)localObject).get(i1);
-      int i3 = localca.a();
-      arrayOfByte[i1] = ((byte)(localca.b() + i3 * 3));
-      i1 += 1;
-    }
-    localObject = new StringBuffer();
-    i1 = 0;
-    while (i1 < arrayOfByte.length)
-    {
-      ((StringBuffer)localObject).append(arrayOfByte[i1]);
-      i1 += 1;
-    }
-    return ((StringBuffer)localObject).toString();
+    return this.j;
+  }
+  
+  public ArrayList getPattern()
+  {
+    return this.f;
+  }
+  
+  public String getPatternString()
+  {
+    return n.a(this.f);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    Object localObject1 = this.f;
-    int i2 = ((ArrayList)localObject1).size();
+    Object localObject = this.f;
+    int i2 = ((ArrayList)localObject).size();
     boolean[][] arrayOfBoolean = this.g;
     float f1 = this.q;
     float f2 = this.r;
     int i3 = getPaddingTop();
     int i4 = getPaddingLeft();
     if (!this.c) {}
+    label279:
     for (;;)
     {
       return;
       int i1 = 0;
-      Object localObject2;
-      int i5;
-      float f3;
-      float f4;
-      float f5;
-      float f6;
-      float f7;
-      while (i1 < i2 - 1)
+      bt localbt1;
+      bt localbt2;
+      if (i1 < i2 - 1)
       {
-        localObject2 = (ca)((ArrayList)localObject1).get(i1);
-        ca localca = (ca)((ArrayList)localObject1).get(i1 + 1);
-        if (arrayOfBoolean[localca.a][localca.b] == 0) {
-          break;
-        }
-        i5 = ((ca)localObject2).b;
-        f3 = getPaddingLeft();
-        f4 = i5;
-        f5 = this.q;
-        f6 = this.q / 2.0F;
-        i5 = ((ca)localObject2).a;
-        f7 = getPaddingTop();
-        float f8 = i5;
-        float f9 = this.r;
-        float f10 = this.r / 2.0F;
-        i5 = localca.b;
-        float f11 = getPaddingLeft();
-        float f12 = i5;
-        float f13 = this.q;
-        float f14 = this.q / 2.0F;
-        i5 = localca.a;
-        float f15 = getPaddingTop();
-        a(paramCanvas, f4 * f5 + f3 + f6, f10 + (f8 * f9 + f7), f14 + (f12 * f13 + f11), i5 * this.r + f15 + this.r / 2.0F);
-        i1 += 1;
+        localbt1 = (bt)((ArrayList)localObject).get(i1);
+        localbt2 = (bt)((ArrayList)localObject).get(i1 + 1);
+        if (arrayOfBoolean[localbt2.a][localbt2.b] != 0) {}
       }
-      if (this.n)
+      else
       {
-        localObject1 = (ca)((ArrayList)localObject1).get(i1);
-        i1 = ((ca)localObject1).b;
-        f3 = getPaddingLeft();
-        f4 = i1;
-        f5 = this.q;
-        f6 = this.q / 2.0F;
-        i1 = ((ca)localObject1).a;
-        f7 = getPaddingTop();
-        a(paramCanvas, f6 + (f4 * f5 + f3), i1 * this.r + f7 + this.r / 2.0F, this.h, this.i);
-      }
-      i1 = 0;
-      while (i1 < 3)
-      {
-        f3 = i3;
-        f4 = i1;
-        i2 = 0;
-        if (i2 < 3)
+        if (this.n)
         {
-          i5 = (int)(i4 + i2 * f1);
-          int i6 = (int)(f3 + f4 * f2);
-          if ((arrayOfBoolean[i1][i2] == 0) || ((this.l) && (this.j != LockPatternView.DisplayMode.Wrong)))
+          localObject = (bt)((ArrayList)localObject).get(i1);
+          a(paramCanvas, a(((bt)localObject).b), b(((bt)localObject).a), this.h, this.i);
+        }
+        i1 = 0;
+      }
+      for (;;)
+      {
+        if (i1 >= 3) {
+          break label279;
+        }
+        float f3 = i3;
+        float f4 = i1;
+        i2 = 0;
+        for (;;)
+        {
+          if (i2 < 3)
           {
-            localObject2 = this.v;
-            localObject1 = null;
-          }
-          for (;;)
-          {
-            int i8 = this.C;
-            int i7 = this.D;
-            f5 = this.q;
-            f6 = this.r;
-            i8 = (int)((f5 - i8) / 2.0F);
-            i7 = (int)((f6 - i7) / 2.0F);
-            if (localObject2 != null) {
-              paramCanvas.drawBitmap((Bitmap)localObject2, i5 + i8, i6 + i7, this.b);
-            }
-            if (localObject1 != null) {
-              paramCanvas.drawBitmap((Bitmap)localObject1, i5 + i8, i6 + i7, this.b);
-            }
+            a(paramCanvas, (int)(i4 + i2 * f1), (int)(f4 * f2 + f3), arrayOfBoolean[i1][i2]);
             i2 += 1;
+            continue;
+            a(paramCanvas, a(localbt1.b), b(localbt1.a), a(localbt2.b), b(localbt2.a));
+            i1 += 1;
             break;
-            if (this.n)
-            {
-              localObject2 = this.y;
-              localObject1 = this.u;
-            }
-            else if (this.j == LockPatternView.DisplayMode.Wrong)
-            {
-              localObject2 = this.x;
-              localObject1 = this.t;
-            }
-            else
-            {
-              if ((this.j != LockPatternView.DisplayMode.Correct) && (this.j != LockPatternView.DisplayMode.Animate)) {
-                break label668;
-              }
-              localObject2 = this.w;
-              localObject1 = this.s;
-            }
           }
-          label668:
-          throw new IllegalStateException("unknown display mode " + this.j);
         }
         i1 += 1;
       }
@@ -554,7 +502,6 @@ public class LockPatternView
     }
     float f6 = paramMotionEvent.getX();
     float f4 = paramMotionEvent.getY();
-    int i1;
     float f1;
     float f2;
     float f3;
@@ -564,10 +511,7 @@ public class LockPatternView
     default: 
       return false;
     case 0: 
-      this.f.clear();
-      i();
-      this.j = LockPatternView.DisplayMode.Correct;
-      invalidate();
+      e();
       paramMotionEvent = a(f6, f4);
       if ((paramMotionEvent != null) && (this.d != null))
       {
@@ -582,12 +526,8 @@ public class LockPatternView
       {
         if (paramMotionEvent != null)
         {
-          i1 = paramMotionEvent.b;
-          f1 = getPaddingLeft();
-          f1 = i1 * this.q + f1 + this.q / 2.0F;
-          i1 = paramMotionEvent.a;
-          f2 = getPaddingTop();
-          f2 = i1 * this.r + f2 + this.r / 2.0F;
+          f1 = a(paramMotionEvent.b);
+          f2 = b(paramMotionEvent.a);
           f3 = this.q / 2.0F;
           f5 = this.r / 2.0F;
           invalidate((int)(f1 - f3), (int)(f2 - f5), (int)(f1 + f3), (int)(f2 + f5));
@@ -609,14 +549,14 @@ public class LockPatternView
       {
         this.n = false;
         if (this.e != null) {
-          this.e.a(this.f);
+          this.e.b(this.f);
         }
-        this.d.a(this.f);
+        this.d.b(this.f);
         invalidate();
       }
       return true;
     case 2: 
-      i1 = this.f.size();
+      int i1 = this.f.size();
       paramMotionEvent = a(f6, f4);
       int i2 = this.f.size();
       if ((paramMotionEvent != null) && (this.d != null) && (i2 == 1))
@@ -628,8 +568,8 @@ public class LockPatternView
         this.d.a();
       }
       float f7;
-      float f8;
       float f9;
+      float f8;
       if (Math.abs(f6 - this.h) + Math.abs(f4 - this.i) > this.q * 0.01F)
       {
         f5 = this.h;
@@ -637,39 +577,31 @@ public class LockPatternView
         this.h = f6;
         this.i = f4;
         if ((!this.n) || (i2 <= 0)) {
-          break label1049;
+          break label833;
         }
         ArrayList localArrayList = this.f;
         float f10 = this.q * this.o * 0.5F;
-        Object localObject = (ca)localArrayList.get(i2 - 1);
-        int i3 = ((ca)localObject).b;
-        f1 = getPaddingLeft();
-        f2 = i3;
-        f7 = this.q;
-        f2 = this.q / 2.0F + (f2 * f7 + f1);
-        i3 = ((ca)localObject).a;
-        f1 = getPaddingTop();
-        f7 = i3;
-        f8 = this.r;
-        f1 = this.r / 2.0F + (f7 * f8 + f1);
+        Object localObject = (bt)localArrayList.get(i2 - 1);
+        f2 = a(((bt)localObject).b);
+        f1 = b(((bt)localObject).a);
         localObject = this.B;
         if (f2 >= f6) {
-          break label991;
+          break label777;
         }
         f7 = f2;
         if (f1 >= f4) {
-          break label1001;
+          break label787;
         }
         f9 = f1;
         f8 = f4;
-        label647:
+        label531:
         ((Rect)localObject).set((int)(f7 - f10), (int)(f9 - f10), (int)(f6 + f10), (int)(f8 + f10));
         if (f2 >= f5) {
-          break label1011;
+          break label797;
         }
         f4 = f2;
         f2 = f5;
-        label689:
+        label573:
         f6 = f1;
         f5 = f3;
         if (f1 < f3)
@@ -680,81 +612,64 @@ public class LockPatternView
         ((Rect)localObject).union((int)(f4 - f10), (int)(f5 - f10), (int)(f2 + f10), (int)(f6 + f10));
         if (paramMotionEvent != null)
         {
-          i3 = paramMotionEvent.b;
-          f1 = getPaddingLeft();
-          f2 = i3;
-          f3 = this.q;
-          f1 = this.q / 2.0F + (f2 * f3 + f1);
-          i3 = paramMotionEvent.a;
-          f2 = getPaddingTop();
-          f2 = i3 * this.r + f2 + this.r / 2.0F;
+          f2 = a(paramMotionEvent.b);
+          f1 = b(paramMotionEvent.a);
           if (i2 < 2) {
-            break label1037;
+            break label814;
           }
-          paramMotionEvent = (ca)localArrayList.get(i2 - 1 - (i2 - i1));
-          i1 = paramMotionEvent.b;
-          f3 = getPaddingLeft();
-          f4 = i1;
-          f5 = this.q;
-          f3 = this.q / 2.0F + (f4 * f5 + f3);
-          i1 = paramMotionEvent.a;
-          f4 = getPaddingTop();
-          f5 = i1;
-          f6 = this.r;
-          f4 = this.r / 2.0F + (f5 * f6 + f4);
-          if (f1 >= f3) {
-            break label1018;
+          paramMotionEvent = (bt)localArrayList.get(i2 - 1 - (i2 - i1));
+          f6 = a(paramMotionEvent.b);
+          f5 = b(paramMotionEvent.a);
+          f3 = f2;
+          f4 = f6;
+          if (f2 < f6)
+          {
+            f3 = f6;
+            f4 = f2;
           }
-          f5 = f3;
+          if (f1 >= f5) {
+            break label804;
+          }
+          f2 = f3;
           f3 = f1;
           f1 = f5;
-          label932:
-          if (f2 >= f4) {
-            break label1021;
-          }
-          f5 = f1;
-          label942:
-          f1 = this.q / 2.0F;
+          label726:
+          f5 = this.q / 2.0F;
           f6 = this.r / 2.0F;
-          ((Rect)localObject).set((int)(f3 - f1), (int)(f2 - f6), (int)(f5 + f1), (int)(f4 + f6));
+          ((Rect)localObject).set((int)(f4 - f5), (int)(f3 - f6), (int)(f2 + f5), (int)(f1 + f6));
         }
         invalidate((Rect)localObject);
       }
       for (;;)
       {
         return true;
-        label991:
+        label777:
         f7 = f6;
         f6 = f2;
         break;
-        label1001:
+        label787:
         f8 = f1;
         f9 = f4;
-        break label647;
-        label1011:
+        break label531;
+        label797:
         f4 = f5;
-        break label689;
-        label1018:
-        break label932;
-        label1021:
-        f6 = f4;
-        f5 = f1;
-        f4 = f2;
-        f2 = f6;
-        break label942;
-        label1037:
-        f5 = f1;
-        f4 = f2;
+        break label573;
+        label804:
+        f2 = f3;
+        f3 = f5;
+        break label726;
+        label814:
         f3 = f1;
-        break label942;
-        label1049:
+        f4 = f2;
+        f5 = f1;
+        f1 = f3;
+        f3 = f5;
+        break label726;
+        label833:
         invalidate();
       }
     }
-    this.f.clear();
-    i();
-    this.j = LockPatternView.DisplayMode.Correct;
-    invalidate();
+    e();
     if (this.d != null)
     {
       this.n = false;
@@ -764,6 +679,37 @@ public class LockPatternView
       this.d.b();
     }
     return true;
+  }
+  
+  public void setDisplayMode(LockPatternView.DisplayMode paramDisplayMode)
+  {
+    this.j = paramDisplayMode;
+    if (paramDisplayMode == LockPatternView.DisplayMode.Animate)
+    {
+      if (this.f.size() == 0) {
+        throw new IllegalStateException("you must have a pattern to animate if you want to set the display mode to animate");
+      }
+      paramDisplayMode = (bt)this.f.get(0);
+      this.h = a(paramDisplayMode.b());
+      this.i = b(paramDisplayMode.a());
+      f();
+    }
+    invalidate();
+  }
+  
+  public void setInStealthMode(boolean paramBoolean)
+  {
+    this.l = paramBoolean;
+  }
+  
+  public void setOnPatternListener(bu parambu)
+  {
+    this.d = parambu;
+  }
+  
+  public void setTactileFeedbackEnabled(boolean paramBoolean)
+  {
+    this.m = paramBoolean;
   }
 }
 

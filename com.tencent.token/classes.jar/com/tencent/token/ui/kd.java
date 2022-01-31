@@ -3,15 +3,18 @@ package com.tencent.token.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class kd
+class kd
   implements View.OnClickListener
 {
-  kd(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  kd(kb paramkb) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    FaceStartVryCameraActivity.access$1300(this.a);
-    this.a.finish();
+    kb.c(this.a).findViewById(2131559430).setVisibility(8);
+    kb.c(this.a).findViewById(2131559429).setVisibility(8);
+    kb.c(this.a).setVisibility(8);
+    this.a.a = false;
+    this.a.notifyDataSetChanged();
   }
 }
 
